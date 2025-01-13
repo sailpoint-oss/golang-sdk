@@ -8,12 +8,12 @@ Name | Type | Description | Notes
 **CreatedBy** | Pointer to [**FormInstanceCreatedBy**](FormInstanceCreatedBy.md) |  | [optional] 
 **Expire** | Pointer to **string** | Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record | [optional] 
 **FormConditions** | Pointer to [**[]FormCondition**](FormCondition.md) | FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form | [optional] 
-**FormData** | Pointer to **map[string]interface{}** | FormData is the data provided by the form on submit. The data is in a key -&gt; value map | [optional] 
+**FormData** | Pointer to **map[string]map[string]interface{}** | FormData is the data provided by the form on submit. The data is in a key -&gt; value map | [optional] 
 **FormDefinitionId** | Pointer to **string** | FormDefinitionID is the id of the form definition that created this form | [optional] 
 **FormElements** | Pointer to [**[]FormElement**](FormElement.md) | FormElements is the configuration of the form, this would be a repeat of the fields from the form-config | [optional] 
 **FormErrors** | Pointer to [**[]FormError**](FormError.md) | FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors | [optional] 
 **FormInput** | Pointer to **map[string]map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
-**Id** | Pointer to **string** | Unique guid identifying this form instance | [optional] 
+**Id** | Pointer to **string** | FormInstanceID is a unique guid identifying this form instance | [optional] 
 **Modified** | Pointer to **time.Time** | Modified is the last date the form instance was modified | [optional] 
 **Recipients** | Pointer to [**[]FormInstanceRecipient**](FormInstanceRecipient.md) | Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it | [optional] 
 **StandAloneForm** | Pointer to **bool** | StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form | [optional] [default to false]
@@ -141,20 +141,20 @@ HasFormConditions returns a boolean if a field has been set.
 
 ### GetFormData
 
-`func (o *FormInstanceResponse) GetFormData() map[string]interface{}`
+`func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{}`
 
 GetFormData returns the FormData field if non-nil, zero value otherwise.
 
 ### GetFormDataOk
 
-`func (o *FormInstanceResponse) GetFormDataOk() (*map[string]interface{}, bool)`
+`func (o *FormInstanceResponse) GetFormDataOk() (*map[string]map[string]interface{}, bool)`
 
 GetFormDataOk returns a tuple with the FormData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormData
 
-`func (o *FormInstanceResponse) SetFormData(v map[string]interface{})`
+`func (o *FormInstanceResponse) SetFormData(v map[string]map[string]interface{})`
 
 SetFormData sets FormData field to given value.
 
@@ -164,16 +164,6 @@ SetFormData sets FormData field to given value.
 
 HasFormData returns a boolean if a field has been set.
 
-### SetFormDataNil
-
-`func (o *FormInstanceResponse) SetFormDataNil(b bool)`
-
- SetFormDataNil sets the value for FormData to be an explicit nil
-
-### UnsetFormData
-`func (o *FormInstanceResponse) UnsetFormData()`
-
-UnsetFormData ensures that no value is present for FormData, not even an explicit nil
 ### GetFormDefinitionId
 
 `func (o *FormInstanceResponse) GetFormDefinitionId() string`
@@ -274,16 +264,6 @@ SetFormInput sets FormInput field to given value.
 
 HasFormInput returns a boolean if a field has been set.
 
-### SetFormInputNil
-
-`func (o *FormInstanceResponse) SetFormInputNil(b bool)`
-
- SetFormInputNil sets the value for FormInput to be an explicit nil
-
-### UnsetFormInput
-`func (o *FormInstanceResponse) UnsetFormInput()`
-
-UnsetFormInput ensures that no value is present for FormInput, not even an explicit nil
 ### GetId
 
 `func (o *FormInstanceResponse) GetId() string`

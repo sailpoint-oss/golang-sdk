@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,14 +26,14 @@ type Role struct {
 	// The human-readable display name of the Role
 	Name string `json:"name"`
 	// Date the Role was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Date the Role was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// A human-readable description of the Role
 	Description NullableString `json:"description,omitempty"`
 	Owner OwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
-	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
+	Entitlements []EntitlementRef `json:"Entitlements,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
@@ -45,11 +45,6 @@ type Role struct {
 	RevocationRequestConfig *RevocabilityForRole `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Role is assigned.
 	Segments []string `json:"segments,omitempty"`
-	// Whether the Role is dimensional.
-	Dimensional NullableBool `json:"dimensional,omitempty"`
-	// List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.
-	DimensionRefs []DimensionRef `json:"dimensionRefs,omitempty"`
-	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -67,8 +62,6 @@ func NewRole(name string, owner OwnerReference) *Role {
 	this.Enabled = &enabled
 	var requestable bool = false
 	this.Requestable = &requestable
-	var dimensional bool = false
-	this.Dimensional = *NewNullableBool(&dimensional)
 	return &this
 }
 
@@ -81,8 +74,6 @@ func NewRoleWithDefaults() *Role {
 	this.Enabled = &enabled
 	var requestable bool = false
 	this.Requestable = &requestable
-	var dimensional bool = false
-	this.Dimensional = *NewNullableBool(&dimensional)
 	return &this
 }
 
@@ -143,9 +134,9 @@ func (o *Role) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Role) GetCreated() SailPointTime {
+func (o *Role) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -153,7 +144,7 @@ func (o *Role) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Role) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -169,15 +160,15 @@ func (o *Role) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Role) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Role) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Role) GetModified() SailPointTime {
+func (o *Role) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -185,7 +176,7 @@ func (o *Role) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Role) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -201,8 +192,8 @@ func (o *Role) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Role) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Role) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -305,9 +296,9 @@ func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Role) GetEntitlements() []EntitlementRef {
-	if o == nil || IsNil(o.Entitlements) {
+	if o == nil {
 		var ret []EntitlementRef
 		return ret
 	}
@@ -316,6 +307,7 @@ func (o *Role) GetEntitlements() []EntitlementRef {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
@@ -573,113 +565,6 @@ func (o *Role) SetSegments(v []string) {
 	o.Segments = v
 }
 
-// GetDimensional returns the Dimensional field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetDimensional() bool {
-	if o == nil || IsNil(o.Dimensional.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.Dimensional.Get()
-}
-
-// GetDimensionalOk returns a tuple with the Dimensional field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetDimensionalOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Dimensional.Get(), o.Dimensional.IsSet()
-}
-
-// HasDimensional returns a boolean if a field has been set.
-func (o *Role) HasDimensional() bool {
-	if o != nil && o.Dimensional.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDimensional gets a reference to the given NullableBool and assigns it to the Dimensional field.
-func (o *Role) SetDimensional(v bool) {
-	o.Dimensional.Set(&v)
-}
-// SetDimensionalNil sets the value for Dimensional to be an explicit nil
-func (o *Role) SetDimensionalNil() {
-	o.Dimensional.Set(nil)
-}
-
-// UnsetDimensional ensures that no value is present for Dimensional, not even an explicit nil
-func (o *Role) UnsetDimensional() {
-	o.Dimensional.Unset()
-}
-
-// GetDimensionRefs returns the DimensionRefs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetDimensionRefs() []DimensionRef {
-	if o == nil {
-		var ret []DimensionRef
-		return ret
-	}
-	return o.DimensionRefs
-}
-
-// GetDimensionRefsOk returns a tuple with the DimensionRefs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetDimensionRefsOk() ([]DimensionRef, bool) {
-	if o == nil || IsNil(o.DimensionRefs) {
-		return nil, false
-	}
-	return o.DimensionRefs, true
-}
-
-// HasDimensionRefs returns a boolean if a field has been set.
-func (o *Role) HasDimensionRefs() bool {
-	if o != nil && !IsNil(o.DimensionRefs) {
-		return true
-	}
-
-	return false
-}
-
-// SetDimensionRefs gets a reference to the given []DimensionRef and assigns it to the DimensionRefs field.
-func (o *Role) SetDimensionRefs(v []DimensionRef) {
-	o.DimensionRefs = v
-}
-
-// GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
-func (o *Role) GetAccessModelMetadata() AttributeDTOList {
-	if o == nil || IsNil(o.AccessModelMetadata) {
-		var ret AttributeDTOList
-		return ret
-	}
-	return *o.AccessModelMetadata
-}
-
-// GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Role) GetAccessModelMetadataOk() (*AttributeDTOList, bool) {
-	if o == nil || IsNil(o.AccessModelMetadata) {
-		return nil, false
-	}
-	return o.AccessModelMetadata, true
-}
-
-// HasAccessModelMetadata returns a boolean if a field has been set.
-func (o *Role) HasAccessModelMetadata() bool {
-	if o != nil && !IsNil(o.AccessModelMetadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessModelMetadata gets a reference to the given AttributeDTOList and assigns it to the AccessModelMetadata field.
-func (o *Role) SetAccessModelMetadata(v AttributeDTOList) {
-	o.AccessModelMetadata = &v
-}
-
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -707,8 +592,8 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !IsNil(o.Entitlements) {
-		toSerialize["entitlements"] = o.Entitlements
+	if o.Entitlements != nil {
+		toSerialize["Entitlements"] = o.Entitlements
 	}
 	if o.Membership.IsSet() {
 		toSerialize["membership"] = o.Membership.Get()
@@ -730,15 +615,6 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments
-	}
-	if o.Dimensional.IsSet() {
-		toSerialize["dimensional"] = o.Dimensional.Get()
-	}
-	if o.DimensionRefs != nil {
-		toSerialize["dimensionRefs"] = o.DimensionRefs
-	}
-	if !IsNil(o.AccessModelMetadata) {
-		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -791,7 +667,7 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "accessProfiles")
-		delete(additionalProperties, "entitlements")
+		delete(additionalProperties, "Entitlements")
 		delete(additionalProperties, "membership")
 		delete(additionalProperties, "legacyMembershipInfo")
 		delete(additionalProperties, "enabled")
@@ -799,9 +675,6 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accessRequestConfig")
 		delete(additionalProperties, "revocationRequestConfig")
 		delete(additionalProperties, "segments")
-		delete(additionalProperties, "dimensional")
-		delete(additionalProperties, "dimensionRefs")
-		delete(additionalProperties, "accessModelMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

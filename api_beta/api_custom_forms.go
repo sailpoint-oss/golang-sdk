@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -27,12 +27,12 @@ type CustomFormsAPIService service
 type ApiCreateFormDefinitionRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	createFormDefinitionRequest *CreateFormDefinitionRequest
+	body *CreateFormDefinitionRequest
 }
 
 // Body is the request payload to create form definition request
-func (r ApiCreateFormDefinitionRequest) CreateFormDefinitionRequest(createFormDefinitionRequest CreateFormDefinitionRequest) ApiCreateFormDefinitionRequest {
-	r.createFormDefinitionRequest = &createFormDefinitionRequest
+func (r ApiCreateFormDefinitionRequest) Body(body CreateFormDefinitionRequest) ApiCreateFormDefinitionRequest {
+	r.body = &body
 	return r
 }
 
@@ -92,167 +92,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionExecute(r ApiCreateFormDefin
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createFormDefinitionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v SearchFormDefinitionsByTenant400Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v SearchFormDefinitionsByTenant400Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v SearchFormDefinitionsByTenant400Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v SearchFormDefinitionsByTenant400Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCreateFormDefinitionByTemplateRequest struct {
-	ctx context.Context
-	ApiService *CustomFormsAPIService
-	createFormDefinitionRequest *CreateFormDefinitionRequest
-}
-
-// Body is the request payload to create form definition request
-func (r ApiCreateFormDefinitionByTemplateRequest) CreateFormDefinitionRequest(createFormDefinitionRequest CreateFormDefinitionRequest) ApiCreateFormDefinitionByTemplateRequest {
-	r.createFormDefinitionRequest = &createFormDefinitionRequest
-	return r
-}
-
-func (r ApiCreateFormDefinitionByTemplateRequest) Execute() (*FormDefinitionResponse, *http.Response, error) {
-	return r.ApiService.CreateFormDefinitionByTemplateExecute(r)
-}
-
-/*
-CreateFormDefinitionByTemplate Create a form definition by template.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateFormDefinitionByTemplateRequest
-*/
-func (a *CustomFormsAPIService) CreateFormDefinitionByTemplate(ctx context.Context) ApiCreateFormDefinitionByTemplateRequest {
-	return ApiCreateFormDefinitionByTemplateRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return FormDefinitionResponse
-func (a *CustomFormsAPIService) CreateFormDefinitionByTemplateExecute(r ApiCreateFormDefinitionByTemplateRequest) (*FormDefinitionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FormDefinitionResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.CreateFormDefinitionByTemplate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/form-definitions/template"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.createFormDefinitionRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -436,7 +276,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -447,7 +287,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -458,7 +298,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -469,7 +309,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -491,7 +331,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -629,7 +469,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -640,7 +480,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,7 +491,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -662,7 +502,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -673,7 +513,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -684,7 +524,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -706,7 +546,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -717,7 +557,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +673,7 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -844,7 +684,7 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -855,7 +695,7 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -877,7 +717,7 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -990,7 +830,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1001,7 +841,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1012,7 +852,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1023,7 +863,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1045,7 +885,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1203,7 +1043,7 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1214,7 +1054,7 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1225,7 +1065,7 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1247,7 +1087,7 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1362,7 +1202,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1373,7 +1213,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1384,7 +1224,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1395,7 +1235,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1417,7 +1257,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1428,7 +1268,7 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1541,7 +1381,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1552,7 +1392,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1563,7 +1403,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1574,7 +1414,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1596,7 +1436,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1709,7 +1549,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1720,7 +1560,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1731,7 +1571,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1742,7 +1582,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1764,7 +1604,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1879,7 +1719,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1890,7 +1730,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1901,7 +1741,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1912,7 +1752,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1934,7 +1774,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1945,7 +1785,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1972,11 +1812,11 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 type ApiImportFormDefinitionsRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	body *[]ImportFormDefinitionsRequestInner
+	body *[]ExportFormDefinitionsByTenant200ResponseInner
 }
 
 // Body is the request payload to import form definitions
-func (r ApiImportFormDefinitionsRequest) Body(body []ImportFormDefinitionsRequestInner) ApiImportFormDefinitionsRequest {
+func (r ApiImportFormDefinitionsRequest) Body(body []ExportFormDefinitionsByTenant200ResponseInner) ApiImportFormDefinitionsRequest {
 	r.body = &body
 	return r
 }
@@ -2061,7 +1901,7 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2072,7 +1912,7 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2083,7 +1923,7 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2105,7 +1945,7 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2227,7 +2067,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2238,7 +2078,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2249,7 +2089,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2260,7 +2100,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2282,7 +2122,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2404,7 +2244,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2415,7 +2255,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2426,7 +2266,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2437,7 +2277,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2448,7 +2288,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2470,7 +2310,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2703,7 +2543,6 @@ type ApiSearchFormElementDataByElementIDRequest struct {
 	formElementID string
 	limit *int64
 	filters *string
-	query *string
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -2712,15 +2551,9 @@ func (r ApiSearchFormElementDataByElementIDRequest) Limit(limit int64) ApiSearch
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*
 func (r ApiSearchFormElementDataByElementIDRequest) Filters(filters string) ApiSearchFormElementDataByElementIDRequest {
 	r.filters = &filters
-	return r
-}
-
-// String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields.
-func (r ApiSearchFormElementDataByElementIDRequest) Query(query string) ApiSearchFormElementDataByElementIDRequest {
-	r.query = &query
 	return r
 }
 
@@ -2780,9 +2613,6 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
-	if r.query != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2823,7 +2653,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2834,7 +2664,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2845,7 +2675,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2856,7 +2686,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2878,7 +2708,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2907,7 +2737,7 @@ type ApiSearchFormInstancesByTenantRequest struct {
 	ApiService *CustomFormsAPIService
 }
 
-func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]FormInstanceResponse, *http.Response, error) {
+func (r ApiSearchFormInstancesByTenantRequest) Execute() (*ListFormInstancesByTenantResponse, *http.Response, error) {
 	return r.ApiService.SearchFormInstancesByTenantExecute(r)
 }
 
@@ -2927,13 +2757,13 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenant(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return []FormInstanceResponse
-func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFormInstancesByTenantRequest) ([]FormInstanceResponse, *http.Response, error) {
+//  @return ListFormInstancesByTenantResponse
+func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFormInstancesByTenantRequest) (*ListFormInstancesByTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []FormInstanceResponse
+		localVarReturnValue  *ListFormInstancesByTenantResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchFormInstancesByTenant")
@@ -2987,7 +2817,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2998,7 +2828,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3009,7 +2839,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3031,7 +2861,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3140,7 +2970,7 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3151,7 +2981,7 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3162,7 +2992,7 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3184,7 +3014,7 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3224,13 +3054,13 @@ func (r ApiShowPreviewDataSourceRequest) Limit(limit int64) ApiShowPreviewDataSo
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*
 func (r ApiShowPreviewDataSourceRequest) Filters(filters string) ApiShowPreviewDataSourceRequest {
 	r.filters = &filters
 	return r
 }
 
-// String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields.
+// Query  String specifying to query against
 func (r ApiShowPreviewDataSourceRequest) Query(query string) ApiShowPreviewDataSourceRequest {
 	r.query = &query
 	return r
@@ -3337,7 +3167,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3348,7 +3178,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3359,7 +3189,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3370,7 +3200,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3392,7 +3222,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v GetFormDefinitionByKey400Response
+			var v SearchFormDefinitionsByTenant400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

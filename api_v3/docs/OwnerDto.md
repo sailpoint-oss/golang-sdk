@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | Owner&#39;s DTO type. | [optional] 
 **Id** | Pointer to **string** | Owner&#39;s identity ID. | [optional] 
-**Name** | Pointer to **string** | Owner&#39;s name. | [optional] 
+**Name** | Pointer to **string** | Owner&#39;s display name. | [optional] 
 
 ## Methods
 

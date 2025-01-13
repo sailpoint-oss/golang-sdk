@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -21,30 +21,30 @@ var _ MappedNullable = &Identity{}
 
 // Identity struct for Identity
 type Identity struct {
-	// System-generated unique ID of the identity
+	// System-generated unique ID of the Object
 	Id *string `json:"id,omitempty"`
-	// The identity's name is equivalent to its Display Name attribute.
+	// Name of the Object
 	Name string `json:"name"`
-	// Creation date of the identity
-	Created *SailPointTime `json:"created,omitempty"`
-	// Last modification date of the identity
-	Modified *SailPointTime `json:"modified,omitempty"`
-	// The identity's alternate unique identifier is equivalent to its Account Name on the authoritative source account schema.
+	// Creation date of the Object
+	Created *time.Time `json:"created,omitempty"`
+	// Last modification date of the Object
+	Modified *time.Time `json:"modified,omitempty"`
+	// Alternate unique identifier for the identity
 	Alias *string `json:"alias,omitempty"`
 	// The email address of the identity
-	EmailAddress NullableString `json:"emailAddress,omitempty"`
+	EmailAddress *string `json:"emailAddress,omitempty"`
 	// The processing state of the identity
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	// The identity's status in the system
 	IdentityStatus *string `json:"identityStatus,omitempty"`
-	ManagerRef NullableIdentityManagerRef `json:"managerRef,omitempty"`
+	ManagerRef *IdentityDtoManagerRef `json:"managerRef,omitempty"`
 	// Whether this identity is a manager of another identity
 	IsManager *bool `json:"isManager,omitempty"`
 	// The last time the identity was refreshed by the system
-	LastRefresh *SailPointTime `json:"lastRefresh,omitempty"`
+	LastRefresh *time.Time `json:"lastRefresh,omitempty"`
 	// A map with the identity attributes for the identity
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	LifecycleState *IdentityLifecycleState `json:"lifecycleState,omitempty"`
+	LifecycleState *LifecycleStateDto `json:"lifecycleState,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -129,9 +129,9 @@ func (o *Identity) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Identity) GetCreated() SailPointTime {
+func (o *Identity) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -139,7 +139,7 @@ func (o *Identity) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Identity) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -155,15 +155,15 @@ func (o *Identity) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Identity) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Identity) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Identity) GetModified() SailPointTime {
+func (o *Identity) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -171,7 +171,7 @@ func (o *Identity) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Identity) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -187,8 +187,8 @@ func (o *Identity) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Identity) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Identity) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -224,46 +224,36 @@ func (o *Identity) SetAlias(v string) {
 	o.Alias = &v
 }
 
-// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
 func (o *Identity) GetEmailAddress() string {
-	if o == nil || IsNil(o.EmailAddress.Get()) {
+	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
 		return ret
 	}
-	return *o.EmailAddress.Get()
+	return *o.EmailAddress
 }
 
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Identity) GetEmailAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
-	return o.EmailAddress.Get(), o.EmailAddress.IsSet()
+	return o.EmailAddress, true
 }
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *Identity) HasEmailAddress() bool {
-	if o != nil && o.EmailAddress.IsSet() {
+	if o != nil && !IsNil(o.EmailAddress) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmailAddress gets a reference to the given NullableString and assigns it to the EmailAddress field.
+// SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
 func (o *Identity) SetEmailAddress(v string) {
-	o.EmailAddress.Set(&v)
-}
-// SetEmailAddressNil sets the value for EmailAddress to be an explicit nil
-func (o *Identity) SetEmailAddressNil() {
-	o.EmailAddress.Set(nil)
-}
-
-// UnsetEmailAddress ensures that no value is present for EmailAddress, not even an explicit nil
-func (o *Identity) UnsetEmailAddress() {
-	o.EmailAddress.Unset()
+	o.EmailAddress = &v
 }
 
 // GetProcessingState returns the ProcessingState field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -340,46 +330,36 @@ func (o *Identity) SetIdentityStatus(v string) {
 	o.IdentityStatus = &v
 }
 
-// GetManagerRef returns the ManagerRef field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Identity) GetManagerRef() IdentityManagerRef {
-	if o == nil || IsNil(o.ManagerRef.Get()) {
-		var ret IdentityManagerRef
+// GetManagerRef returns the ManagerRef field value if set, zero value otherwise.
+func (o *Identity) GetManagerRef() IdentityDtoManagerRef {
+	if o == nil || IsNil(o.ManagerRef) {
+		var ret IdentityDtoManagerRef
 		return ret
 	}
-	return *o.ManagerRef.Get()
+	return *o.ManagerRef
 }
 
 // GetManagerRefOk returns a tuple with the ManagerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Identity) GetManagerRefOk() (*IdentityManagerRef, bool) {
-	if o == nil {
+func (o *Identity) GetManagerRefOk() (*IdentityDtoManagerRef, bool) {
+	if o == nil || IsNil(o.ManagerRef) {
 		return nil, false
 	}
-	return o.ManagerRef.Get(), o.ManagerRef.IsSet()
+	return o.ManagerRef, true
 }
 
 // HasManagerRef returns a boolean if a field has been set.
 func (o *Identity) HasManagerRef() bool {
-	if o != nil && o.ManagerRef.IsSet() {
+	if o != nil && !IsNil(o.ManagerRef) {
 		return true
 	}
 
 	return false
 }
 
-// SetManagerRef gets a reference to the given NullableIdentityManagerRef and assigns it to the ManagerRef field.
-func (o *Identity) SetManagerRef(v IdentityManagerRef) {
-	o.ManagerRef.Set(&v)
-}
-// SetManagerRefNil sets the value for ManagerRef to be an explicit nil
-func (o *Identity) SetManagerRefNil() {
-	o.ManagerRef.Set(nil)
-}
-
-// UnsetManagerRef ensures that no value is present for ManagerRef, not even an explicit nil
-func (o *Identity) UnsetManagerRef() {
-	o.ManagerRef.Unset()
+// SetManagerRef gets a reference to the given IdentityDtoManagerRef and assigns it to the ManagerRef field.
+func (o *Identity) SetManagerRef(v IdentityDtoManagerRef) {
+	o.ManagerRef = &v
 }
 
 // GetIsManager returns the IsManager field value if set, zero value otherwise.
@@ -415,9 +395,9 @@ func (o *Identity) SetIsManager(v bool) {
 }
 
 // GetLastRefresh returns the LastRefresh field value if set, zero value otherwise.
-func (o *Identity) GetLastRefresh() SailPointTime {
+func (o *Identity) GetLastRefresh() time.Time {
 	if o == nil || IsNil(o.LastRefresh) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastRefresh
@@ -425,7 +405,7 @@ func (o *Identity) GetLastRefresh() SailPointTime {
 
 // GetLastRefreshOk returns a tuple with the LastRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetLastRefreshOk() (*SailPointTime, bool) {
+func (o *Identity) GetLastRefreshOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastRefresh) {
 		return nil, false
 	}
@@ -441,8 +421,8 @@ func (o *Identity) HasLastRefresh() bool {
 	return false
 }
 
-// SetLastRefresh gets a reference to the given SailPointTime and assigns it to the LastRefresh field.
-func (o *Identity) SetLastRefresh(v SailPointTime) {
+// SetLastRefresh gets a reference to the given time.Time and assigns it to the LastRefresh field.
+func (o *Identity) SetLastRefresh(v time.Time) {
 	o.LastRefresh = &v
 }
 
@@ -479,9 +459,9 @@ func (o *Identity) SetAttributes(v map[string]interface{}) {
 }
 
 // GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
-func (o *Identity) GetLifecycleState() IdentityLifecycleState {
+func (o *Identity) GetLifecycleState() LifecycleStateDto {
 	if o == nil || IsNil(o.LifecycleState) {
-		var ret IdentityLifecycleState
+		var ret LifecycleStateDto
 		return ret
 	}
 	return *o.LifecycleState
@@ -489,7 +469,7 @@ func (o *Identity) GetLifecycleState() IdentityLifecycleState {
 
 // GetLifecycleStateOk returns a tuple with the LifecycleState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetLifecycleStateOk() (*IdentityLifecycleState, bool) {
+func (o *Identity) GetLifecycleStateOk() (*LifecycleStateDto, bool) {
 	if o == nil || IsNil(o.LifecycleState) {
 		return nil, false
 	}
@@ -505,8 +485,8 @@ func (o *Identity) HasLifecycleState() bool {
 	return false
 }
 
-// SetLifecycleState gets a reference to the given IdentityLifecycleState and assigns it to the LifecycleState field.
-func (o *Identity) SetLifecycleState(v IdentityLifecycleState) {
+// SetLifecycleState gets a reference to the given LifecycleStateDto and assigns it to the LifecycleState field.
+func (o *Identity) SetLifecycleState(v LifecycleStateDto) {
 	o.LifecycleState = &v
 }
 
@@ -533,8 +513,8 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if o.EmailAddress.IsSet() {
-		toSerialize["emailAddress"] = o.EmailAddress.Get()
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
 	}
 	if o.ProcessingState.IsSet() {
 		toSerialize["processingState"] = o.ProcessingState.Get()
@@ -542,8 +522,8 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdentityStatus) {
 		toSerialize["identityStatus"] = o.IdentityStatus
 	}
-	if o.ManagerRef.IsSet() {
-		toSerialize["managerRef"] = o.ManagerRef.Get()
+	if !IsNil(o.ManagerRef) {
+		toSerialize["managerRef"] = o.ManagerRef
 	}
 	if !IsNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager

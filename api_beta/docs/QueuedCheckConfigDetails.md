@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProvisioningStatusCheckIntervalMinutes** | **string** | Interval in minutes between status checks | 
-**ProvisioningMaxStatusCheckDays** | **string** | Maximum number of days to check | 
+**ProvisioningStatusCheckIntervalMinutes** | **string** | interval in minutes between status checks | 
+**ProvisioningMaxStatusCheckDays** | **string** | maximum number of days to check | 
 
 ## Methods
 

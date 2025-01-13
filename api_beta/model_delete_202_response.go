@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -19,11 +19,11 @@ var _ MappedNullable = &Delete202Response{}
 
 // Delete202Response struct for Delete202Response
 type Delete202Response struct {
-	// Type of object being referenced.
+	// The type of object being referenced
 	Type *string `json:"type,omitempty"`
-	// Task result ID.
+	// ID of the task result
 	Id *string `json:"id,omitempty"`
-	// Task result's human-readable display name (this should be null/empty).
+	// Human-readable display name of the task result (should be null/empty)
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

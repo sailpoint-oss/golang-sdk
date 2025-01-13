@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,8 +22,7 @@ var _ MappedNullable = &AccessRequestDynamicApprover{}
 type AccessRequestDynamicApprover struct {
 	// The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. 
 	AccessRequestId string `json:"accessRequestId"`
-	// Identities access was requested for.
-	RequestedFor []AccessItemRequestedForDto `json:"requestedFor"`
+	RequestedFor AccessItemRequestedForDto `json:"requestedFor"`
 	// The access items that are being requested.
 	RequestedItems []AccessRequestDynamicApproverRequestedItemsInner `json:"requestedItems"`
 	RequestedBy AccessItemRequesterDto `json:"requestedBy"`
@@ -36,7 +35,7 @@ type _AccessRequestDynamicApprover AccessRequestDynamicApprover
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessItemRequesterDto) *AccessRequestDynamicApprover {
+func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor AccessItemRequestedForDto, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessItemRequesterDto) *AccessRequestDynamicApprover {
 	this := AccessRequestDynamicApprover{}
 	this.AccessRequestId = accessRequestId
 	this.RequestedFor = requestedFor
@@ -78,9 +77,9 @@ func (o *AccessRequestDynamicApprover) SetAccessRequestId(v string) {
 }
 
 // GetRequestedFor returns the RequestedFor field value
-func (o *AccessRequestDynamicApprover) GetRequestedFor() []AccessItemRequestedForDto {
+func (o *AccessRequestDynamicApprover) GetRequestedFor() AccessItemRequestedForDto {
 	if o == nil {
-		var ret []AccessItemRequestedForDto
+		var ret AccessItemRequestedForDto
 		return ret
 	}
 
@@ -89,15 +88,15 @@ func (o *AccessRequestDynamicApprover) GetRequestedFor() []AccessItemRequestedFo
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestDynamicApprover) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
+func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RequestedFor, true
+	return &o.RequestedFor, true
 }
 
 // SetRequestedFor sets field value
-func (o *AccessRequestDynamicApprover) SetRequestedFor(v []AccessItemRequestedForDto) {
+func (o *AccessRequestDynamicApprover) SetRequestedFor(v AccessItemRequestedForDto) {
 	o.RequestedFor = v
 }
 

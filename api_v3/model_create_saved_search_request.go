@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -37,8 +37,6 @@ type CreateSavedSearchRequest struct {
 	Query string `json:"query"`
 	// The fields to be searched against in a multi-field query. 
 	Fields []string `json:"fields,omitempty"`
-	// Sort by index. This takes precedence over the `sort` property. 
-	OrderBy map[string][]string `json:"orderBy,omitempty"`
 	// The fields to be used to sort the search results. 
 	Sort []string `json:"sort,omitempty"`
 	Filters NullableSavedSearchDetailFilters `json:"filters,omitempty"`
@@ -141,9 +139,9 @@ func (o *CreateSavedSearchRequest) UnsetDescription() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateSavedSearchRequest) GetCreated() SailPointTime {
+func (o *CreateSavedSearchRequest) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -152,7 +150,7 @@ func (o *CreateSavedSearchRequest) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateSavedSearchRequest) GetCreatedOk() (*SailPointTime, bool) {
+func (o *CreateSavedSearchRequest) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,7 +167,7 @@ func (o *CreateSavedSearchRequest) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *CreateSavedSearchRequest) SetCreated(v SailPointTime) {
+func (o *CreateSavedSearchRequest) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -183,9 +181,9 @@ func (o *CreateSavedSearchRequest) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateSavedSearchRequest) GetModified() SailPointTime {
+func (o *CreateSavedSearchRequest) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -194,7 +192,7 @@ func (o *CreateSavedSearchRequest) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateSavedSearchRequest) GetModifiedOk() (*SailPointTime, bool) {
+func (o *CreateSavedSearchRequest) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -211,7 +209,7 @@ func (o *CreateSavedSearchRequest) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *CreateSavedSearchRequest) SetModified(v SailPointTime) {
+func (o *CreateSavedSearchRequest) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -337,42 +335,9 @@ func (o *CreateSavedSearchRequest) SetFields(v []string) {
 	o.Fields = v
 }
 
-// GetOrderBy returns the OrderBy field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateSavedSearchRequest) GetOrderBy() map[string][]string {
-	if o == nil {
-		var ret map[string][]string
-		return ret
-	}
-	return o.OrderBy
-}
-
-// GetOrderByOk returns a tuple with the OrderBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateSavedSearchRequest) GetOrderByOk() (*map[string][]string, bool) {
-	if o == nil || IsNil(o.OrderBy) {
-		return nil, false
-	}
-	return &o.OrderBy, true
-}
-
-// HasOrderBy returns a boolean if a field has been set.
-func (o *CreateSavedSearchRequest) HasOrderBy() bool {
-	if o != nil && !IsNil(o.OrderBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderBy gets a reference to the given map[string][]string and assigns it to the OrderBy field.
-func (o *CreateSavedSearchRequest) SetOrderBy(v map[string][]string) {
-	o.OrderBy = v
-}
-
-// GetSort returns the Sort field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSort returns the Sort field value if set, zero value otherwise.
 func (o *CreateSavedSearchRequest) GetSort() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Sort) {
 		var ret []string
 		return ret
 	}
@@ -381,7 +346,6 @@ func (o *CreateSavedSearchRequest) GetSort() []string {
 
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSavedSearchRequest) GetSortOk() ([]string, bool) {
 	if o == nil || IsNil(o.Sort) {
 		return nil, false
@@ -475,10 +439,7 @@ func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
-	if o.OrderBy != nil {
-		toSerialize["orderBy"] = o.OrderBy
-	}
-	if o.Sort != nil {
+	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
 	if o.Filters.IsSet() {
@@ -536,7 +497,6 @@ func (o *CreateSavedSearchRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "columns")
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "fields")
-		delete(additionalProperties, "orderBy")
 		delete(additionalProperties, "sort")
 		delete(additionalProperties, "filters")
 		o.AdditionalProperties = additionalProperties

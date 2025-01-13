@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **RoleName** | Pointer to **string** | Name of the new role being created | [optional] 
 **RoleDescription** | Pointer to **string** | Short description of the new role being created | [optional] 
 **OwnerId** | Pointer to **string** | ID of the identity that will own this role | [optional] 
-**IncludeIdentities** | Pointer to **bool** | When true, create access requests for the identities associated with the potential role | [optional] [default to false]
-**DirectlyAssignedEntitlements** | Pointer to **bool** | When true, assign entitlements directly to the role; otherwise, create access profiles containing the entitlements | [optional] [default to false]
 
 ## Methods
 
@@ -103,56 +101,6 @@ SetOwnerId sets OwnerId field to given value.
 `func (o *RoleMiningPotentialRoleProvisionRequest) HasOwnerId() bool`
 
 HasOwnerId returns a boolean if a field has been set.
-
-### GetIncludeIdentities
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentities() bool`
-
-GetIncludeIdentities returns the IncludeIdentities field if non-nil, zero value otherwise.
-
-### GetIncludeIdentitiesOk
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentitiesOk() (*bool, bool)`
-
-GetIncludeIdentitiesOk returns a tuple with the IncludeIdentities field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIncludeIdentities
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) SetIncludeIdentities(v bool)`
-
-SetIncludeIdentities sets IncludeIdentities field to given value.
-
-### HasIncludeIdentities
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) HasIncludeIdentities() bool`
-
-HasIncludeIdentities returns a boolean if a field has been set.
-
-### GetDirectlyAssignedEntitlements
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlements() bool`
-
-GetDirectlyAssignedEntitlements returns the DirectlyAssignedEntitlements field if non-nil, zero value otherwise.
-
-### GetDirectlyAssignedEntitlementsOk
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlementsOk() (*bool, bool)`
-
-GetDirectlyAssignedEntitlementsOk returns a tuple with the DirectlyAssignedEntitlements field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDirectlyAssignedEntitlements
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) SetDirectlyAssignedEntitlements(v bool)`
-
-SetDirectlyAssignedEntitlements sets DirectlyAssignedEntitlements field to given value.
-
-### HasDirectlyAssignedEntitlements
-
-`func (o *RoleMiningPotentialRoleProvisionRequest) HasDirectlyAssignedEntitlements() bool`
-
-HasDirectlyAssignedEntitlements returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

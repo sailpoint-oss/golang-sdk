@@ -12,23 +12,17 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | the description for the role | [optional] 
 **DisplayName** | Pointer to **string** | the role display name | [optional] 
 **EntitlementCount** | Pointer to **string** | the number of entitlements the account will create | [optional] 
-**AppDisplayName** | Pointer to **string** | the name of | [optional] 
-**RemoveDate** | Pointer to **string** | the date the role is no longer assigned to the specified identity | [optional] 
-**Standalone** | **bool** | indicates whether the entitlement is standalone | 
-**Revocable** | **bool** | indicates whether the role is revocable | 
+**AppDisplayName** | Pointer to **string** | the name of app | [optional] 
 **NativeIdentity** | Pointer to **string** | the native identifier used to uniquely identify an acccount | [optional] 
-**AppRoleId** | Pointer to **string** | the app role id | [optional] 
 **Attribute** | Pointer to **string** | the entitlement attribute | [optional] 
 **Value** | Pointer to **string** | the associated value | [optional] 
 **EntitlementType** | Pointer to **string** | the type of entitlement | [optional] 
-**Privileged** | **bool** | indicates whether the entitlement is privileged | 
-**CloudGoverned** | **bool** | indicates whether the entitlement is cloud governed | 
 
 ## Methods
 
 ### NewAccessItemAssociatedAccessItem
 
-`func NewAccessItemAssociatedAccessItem(standalone bool, revocable bool, privileged bool, cloudGoverned bool, ) *AccessItemAssociatedAccessItem`
+`func NewAccessItemAssociatedAccessItem() *AccessItemAssociatedAccessItem`
 
 NewAccessItemAssociatedAccessItem instantiates a new AccessItemAssociatedAccessItem object
 This constructor will assign default values to properties that have it defined,
@@ -268,71 +262,6 @@ SetAppDisplayName sets AppDisplayName field to given value.
 
 HasAppDisplayName returns a boolean if a field has been set.
 
-### GetRemoveDate
-
-`func (o *AccessItemAssociatedAccessItem) GetRemoveDate() string`
-
-GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
-
-### GetRemoveDateOk
-
-`func (o *AccessItemAssociatedAccessItem) GetRemoveDateOk() (*string, bool)`
-
-GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRemoveDate
-
-`func (o *AccessItemAssociatedAccessItem) SetRemoveDate(v string)`
-
-SetRemoveDate sets RemoveDate field to given value.
-
-### HasRemoveDate
-
-`func (o *AccessItemAssociatedAccessItem) HasRemoveDate() bool`
-
-HasRemoveDate returns a boolean if a field has been set.
-
-### GetStandalone
-
-`func (o *AccessItemAssociatedAccessItem) GetStandalone() bool`
-
-GetStandalone returns the Standalone field if non-nil, zero value otherwise.
-
-### GetStandaloneOk
-
-`func (o *AccessItemAssociatedAccessItem) GetStandaloneOk() (*bool, bool)`
-
-GetStandaloneOk returns a tuple with the Standalone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStandalone
-
-`func (o *AccessItemAssociatedAccessItem) SetStandalone(v bool)`
-
-SetStandalone sets Standalone field to given value.
-
-
-### GetRevocable
-
-`func (o *AccessItemAssociatedAccessItem) GetRevocable() bool`
-
-GetRevocable returns the Revocable field if non-nil, zero value otherwise.
-
-### GetRevocableOk
-
-`func (o *AccessItemAssociatedAccessItem) GetRevocableOk() (*bool, bool)`
-
-GetRevocableOk returns a tuple with the Revocable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRevocable
-
-`func (o *AccessItemAssociatedAccessItem) SetRevocable(v bool)`
-
-SetRevocable sets Revocable field to given value.
-
-
 ### GetNativeIdentity
 
 `func (o *AccessItemAssociatedAccessItem) GetNativeIdentity() string`
@@ -357,31 +286,6 @@ SetNativeIdentity sets NativeIdentity field to given value.
 `func (o *AccessItemAssociatedAccessItem) HasNativeIdentity() bool`
 
 HasNativeIdentity returns a boolean if a field has been set.
-
-### GetAppRoleId
-
-`func (o *AccessItemAssociatedAccessItem) GetAppRoleId() string`
-
-GetAppRoleId returns the AppRoleId field if non-nil, zero value otherwise.
-
-### GetAppRoleIdOk
-
-`func (o *AccessItemAssociatedAccessItem) GetAppRoleIdOk() (*string, bool)`
-
-GetAppRoleIdOk returns a tuple with the AppRoleId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAppRoleId
-
-`func (o *AccessItemAssociatedAccessItem) SetAppRoleId(v string)`
-
-SetAppRoleId sets AppRoleId field to given value.
-
-### HasAppRoleId
-
-`func (o *AccessItemAssociatedAccessItem) HasAppRoleId() bool`
-
-HasAppRoleId returns a boolean if a field has been set.
 
 ### GetAttribute
 
@@ -457,46 +361,6 @@ SetEntitlementType sets EntitlementType field to given value.
 `func (o *AccessItemAssociatedAccessItem) HasEntitlementType() bool`
 
 HasEntitlementType returns a boolean if a field has been set.
-
-### GetPrivileged
-
-`func (o *AccessItemAssociatedAccessItem) GetPrivileged() bool`
-
-GetPrivileged returns the Privileged field if non-nil, zero value otherwise.
-
-### GetPrivilegedOk
-
-`func (o *AccessItemAssociatedAccessItem) GetPrivilegedOk() (*bool, bool)`
-
-GetPrivilegedOk returns a tuple with the Privileged field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivileged
-
-`func (o *AccessItemAssociatedAccessItem) SetPrivileged(v bool)`
-
-SetPrivileged sets Privileged field to given value.
-
-
-### GetCloudGoverned
-
-`func (o *AccessItemAssociatedAccessItem) GetCloudGoverned() bool`
-
-GetCloudGoverned returns the CloudGoverned field if non-nil, zero value otherwise.
-
-### GetCloudGovernedOk
-
-`func (o *AccessItemAssociatedAccessItem) GetCloudGovernedOk() (*bool, bool)`
-
-GetCloudGovernedOk returns a tuple with the CloudGoverned field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudGoverned
-
-`func (o *AccessItemAssociatedAccessItem) SetCloudGoverned(v bool)`
-
-SetCloudGoverned sets CloudGoverned field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

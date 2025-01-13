@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	
 	"fmt"
 )
 
@@ -61,10 +60,6 @@ type ManagedCluster struct {
 	ServiceCount *int32 `json:"serviceCount,omitempty"`
 	// CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished
 	CcId *string `json:"ccId,omitempty"`
-	// The date/time this cluster was created
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	// The date/time this cluster was last updated
-	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -860,90 +855,6 @@ func (o *ManagedCluster) SetCcId(v string) {
 	o.CcId = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ManagedCluster) GetCreatedAt() SailPointTime {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.CreatedAt.Get()
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ManagedCluster) GetCreatedAtOk() (*SailPointTime, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ManagedCluster) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
-func (o *ManagedCluster) SetCreatedAt(v SailPointTime) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *ManagedCluster) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *ManagedCluster) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ManagedCluster) GetUpdatedAt() SailPointTime {
-	if o == nil || IsNil(o.UpdatedAt.Get()) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.UpdatedAt.Get()
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ManagedCluster) GetUpdatedAtOk() (*SailPointTime, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ManagedCluster) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
-func (o *ManagedCluster) SetUpdatedAt(v SailPointTime) {
-	o.UpdatedAt.Set(&v)
-}
-// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-func (o *ManagedCluster) SetUpdatedAtNil() {
-	o.UpdatedAt.Set(nil)
-}
-
-// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
-func (o *ManagedCluster) UnsetUpdatedAt() {
-	o.UpdatedAt.Unset()
-}
-
 func (o ManagedCluster) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1017,12 +928,6 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CcId) {
 		toSerialize["ccId"] = o.CcId
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.UpdatedAt.IsSet() {
-		toSerialize["updatedAt"] = o.UpdatedAt.Get()
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1091,8 +996,6 @@ func (o *ManagedCluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "clientIds")
 		delete(additionalProperties, "serviceCount")
 		delete(additionalProperties, "ccId")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

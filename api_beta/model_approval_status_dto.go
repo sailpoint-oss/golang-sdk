@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ApprovalStatusDto type satisfies the MappedNullable interface at compile time
@@ -20,22 +20,20 @@ var _ MappedNullable = &ApprovalStatusDto{}
 
 // ApprovalStatusDto struct for ApprovalStatusDto
 type ApprovalStatusDto struct {
-	// Unique identifier for the approval.
-	ApprovalId NullableString `json:"approvalId,omitempty"`
 	// True if the request for this item was forwarded from one owner to another.
 	Forwarded *bool `json:"forwarded,omitempty"`
 	OriginalOwner *ApprovalStatusDtoOriginalOwner `json:"originalOwner,omitempty"`
-	CurrentOwner *ApprovalStatusDtoCurrentOwner `json:"currentOwner,omitempty"`
+	CurrentOwner *AccessItemReviewedBy `json:"currentOwner,omitempty"`
 	// Time at which item was modified.
-	Modified NullableTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	Status *ManualWorkItemState `json:"status,omitempty"`
 	Scheme *ApprovalScheme `json:"scheme,omitempty"`
 	// If the request failed, includes any error messages that were generated.
 	ErrorMessages []ErrorMessageDto `json:"errorMessages,omitempty"`
 	// Comment, if any, provided by the approver.
-	Comment NullableString `json:"comment,omitempty"`
-	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
-	RemoveDate NullableTime `json:"removeDate,omitempty"`
+	Comment *string `json:"comment,omitempty"`
+	// The date the role or access profile is no longer assigned to the specified identity.
+	RemoveDate *time.Time `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,8 +45,6 @@ type _ApprovalStatusDto ApprovalStatusDto
 // will change when the set of required properties is changed
 func NewApprovalStatusDto() *ApprovalStatusDto {
 	this := ApprovalStatusDto{}
-	var forwarded bool = false
-	this.Forwarded = &forwarded
 	return &this
 }
 
@@ -57,51 +53,7 @@ func NewApprovalStatusDto() *ApprovalStatusDto {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalStatusDtoWithDefaults() *ApprovalStatusDto {
 	this := ApprovalStatusDto{}
-	var forwarded bool = false
-	this.Forwarded = &forwarded
 	return &this
-}
-
-// GetApprovalId returns the ApprovalId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalStatusDto) GetApprovalId() string {
-	if o == nil || IsNil(o.ApprovalId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ApprovalId.Get()
-}
-
-// GetApprovalIdOk returns a tuple with the ApprovalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalStatusDto) GetApprovalIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ApprovalId.Get(), o.ApprovalId.IsSet()
-}
-
-// HasApprovalId returns a boolean if a field has been set.
-func (o *ApprovalStatusDto) HasApprovalId() bool {
-	if o != nil && o.ApprovalId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetApprovalId gets a reference to the given NullableString and assigns it to the ApprovalId field.
-func (o *ApprovalStatusDto) SetApprovalId(v string) {
-	o.ApprovalId.Set(&v)
-}
-// SetApprovalIdNil sets the value for ApprovalId to be an explicit nil
-func (o *ApprovalStatusDto) SetApprovalIdNil() {
-	o.ApprovalId.Set(nil)
-}
-
-// UnsetApprovalId ensures that no value is present for ApprovalId, not even an explicit nil
-func (o *ApprovalStatusDto) UnsetApprovalId() {
-	o.ApprovalId.Unset()
 }
 
 // GetForwarded returns the Forwarded field value if set, zero value otherwise.
@@ -169,9 +121,9 @@ func (o *ApprovalStatusDto) SetOriginalOwner(v ApprovalStatusDtoOriginalOwner) {
 }
 
 // GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise.
-func (o *ApprovalStatusDto) GetCurrentOwner() ApprovalStatusDtoCurrentOwner {
+func (o *ApprovalStatusDto) GetCurrentOwner() AccessItemReviewedBy {
 	if o == nil || IsNil(o.CurrentOwner) {
-		var ret ApprovalStatusDtoCurrentOwner
+		var ret AccessItemReviewedBy
 		return ret
 	}
 	return *o.CurrentOwner
@@ -179,7 +131,7 @@ func (o *ApprovalStatusDto) GetCurrentOwner() ApprovalStatusDtoCurrentOwner {
 
 // GetCurrentOwnerOk returns a tuple with the CurrentOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*ApprovalStatusDtoCurrentOwner, bool) {
+func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*AccessItemReviewedBy, bool) {
 	if o == nil || IsNil(o.CurrentOwner) {
 		return nil, false
 	}
@@ -195,51 +147,41 @@ func (o *ApprovalStatusDto) HasCurrentOwner() bool {
 	return false
 }
 
-// SetCurrentOwner gets a reference to the given ApprovalStatusDtoCurrentOwner and assigns it to the CurrentOwner field.
-func (o *ApprovalStatusDto) SetCurrentOwner(v ApprovalStatusDtoCurrentOwner) {
+// SetCurrentOwner gets a reference to the given AccessItemReviewedBy and assigns it to the CurrentOwner field.
+func (o *ApprovalStatusDto) SetCurrentOwner(v AccessItemReviewedBy) {
 	o.CurrentOwner = &v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalStatusDto) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *ApprovalStatusDto) GetModified() time.Time {
+	if o == nil || IsNil(o.Modified) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Modified.Get()
+	return *o.Modified
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalStatusDto) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil {
+func (o *ApprovalStatusDto) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
-	return o.Modified.Get(), o.Modified.IsSet()
+	return o.Modified, true
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasModified() bool {
-	if o != nil && o.Modified.IsSet() {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *ApprovalStatusDto) SetModified(v SailPointTime) {
-	o.Modified.Set(&v)
-}
-// SetModifiedNil sets the value for Modified to be an explicit nil
-func (o *ApprovalStatusDto) SetModifiedNil() {
-	o.Modified.Set(nil)
-}
-
-// UnsetModified ensures that no value is present for Modified, not even an explicit nil
-func (o *ApprovalStatusDto) UnsetModified() {
-	o.Modified.Unset()
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *ApprovalStatusDto) SetModified(v time.Time) {
+	o.Modified = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -306,9 +248,9 @@ func (o *ApprovalStatusDto) SetScheme(v ApprovalScheme) {
 	o.Scheme = &v
 }
 
-// GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetErrorMessages() []ErrorMessageDto {
-	if o == nil {
+	if o == nil || IsNil(o.ErrorMessages) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -317,7 +259,6 @@ func (o *ApprovalStatusDto) GetErrorMessages() []ErrorMessageDto {
 
 // GetErrorMessagesOk returns a tuple with the ErrorMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalStatusDto) GetErrorMessagesOk() ([]ErrorMessageDto, bool) {
 	if o == nil || IsNil(o.ErrorMessages) {
 		return nil, false
@@ -339,88 +280,68 @@ func (o *ApprovalStatusDto) SetErrorMessages(v []ErrorMessageDto) {
 	o.ErrorMessages = v
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetComment() string {
-	if o == nil || IsNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
-	return *o.Comment.Get()
+	return *o.Comment
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalStatusDto) GetCommentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
-	return o.Comment.Get(), o.Comment.IsSet()
+	return o.Comment, true
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasComment() bool {
-	if o != nil && o.Comment.IsSet() {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
+// SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ApprovalStatusDto) SetComment(v string) {
-	o.Comment.Set(&v)
-}
-// SetCommentNil sets the value for Comment to be an explicit nil
-func (o *ApprovalStatusDto) SetCommentNil() {
-	o.Comment.Set(nil)
+	o.Comment = &v
 }
 
-// UnsetComment ensures that no value is present for Comment, not even an explicit nil
-func (o *ApprovalStatusDto) UnsetComment() {
-	o.Comment.Unset()
-}
-
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalStatusDto) GetRemoveDate() SailPointTime {
-	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret SailPointTime
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+func (o *ApprovalStatusDto) GetRemoveDate() time.Time {
+	if o == nil || IsNil(o.RemoveDate) {
+		var ret time.Time
 		return ret
 	}
-	return *o.RemoveDate.Get()
+	return *o.RemoveDate
 }
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalStatusDto) GetRemoveDateOk() (*SailPointTime, bool) {
-	if o == nil {
+func (o *ApprovalStatusDto) GetRemoveDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
-	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
+	return o.RemoveDate, true
 }
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasRemoveDate() bool {
-	if o != nil && o.RemoveDate.IsSet() {
+	if o != nil && !IsNil(o.RemoveDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *ApprovalStatusDto) SetRemoveDate(v SailPointTime) {
-	o.RemoveDate.Set(&v)
-}
-// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
-func (o *ApprovalStatusDto) SetRemoveDateNil() {
-	o.RemoveDate.Set(nil)
-}
-
-// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
-func (o *ApprovalStatusDto) UnsetRemoveDate() {
-	o.RemoveDate.Unset()
+// SetRemoveDate gets a reference to the given time.Time and assigns it to the RemoveDate field.
+func (o *ApprovalStatusDto) SetRemoveDate(v time.Time) {
+	o.RemoveDate = &v
 }
 
 func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
@@ -433,9 +354,6 @@ func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ApprovalId.IsSet() {
-		toSerialize["approvalId"] = o.ApprovalId.Get()
-	}
 	if !IsNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
 	}
@@ -445,8 +363,8 @@ func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CurrentOwner) {
 		toSerialize["currentOwner"] = o.CurrentOwner
 	}
-	if o.Modified.IsSet() {
-		toSerialize["modified"] = o.Modified.Get()
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -454,14 +372,14 @@ func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Scheme) {
 		toSerialize["scheme"] = o.Scheme
 	}
-	if o.ErrorMessages != nil {
+	if !IsNil(o.ErrorMessages) {
 		toSerialize["errorMessages"] = o.ErrorMessages
 	}
-	if o.Comment.IsSet() {
-		toSerialize["comment"] = o.Comment.Get()
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
 	}
-	if o.RemoveDate.IsSet() {
-		toSerialize["removeDate"] = o.RemoveDate.Get()
+	if !IsNil(o.RemoveDate) {
+		toSerialize["removeDate"] = o.RemoveDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -485,7 +403,6 @@ func (o *ApprovalStatusDto) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "approvalId")
 		delete(additionalProperties, "forwarded")
 		delete(additionalProperties, "originalOwner")
 		delete(additionalProperties, "currentOwner")

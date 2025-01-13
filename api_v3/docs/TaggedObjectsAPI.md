@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteTaggedObject**](TaggedObjectsAPI.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Object Tags
+[**DeleteTaggedObject**](TaggedObjectsAPI.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
 [**DeleteTagsToManyObject**](TaggedObjectsAPI.md#DeleteTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 [**GetTaggedObject**](TaggedObjectsAPI.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 [**ListTaggedObjects**](TaggedObjectsAPI.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > DeleteTaggedObject(ctx, type_, id).Execute()
 
-Delete Object Tags
+Delete Tagged Object
 
 
 
@@ -36,8 +36,8 @@ import (
 )
 
 func main() {
-	type_ := "ROLE" // string | The type of object to delete tags from.
-	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object to delete tags from.
+	type_ := "ROLE" // string | The type of tagged object to delete.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,8 +55,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**type_** | **string** | The type of object to delete tags from. | 
-**id** | **string** | The ID of the object to delete tags from. | 
+**type_** | **string** | The type of tagged object to delete. | 
+**id** | **string** | The ID of the object reference to delete. | 
 
 ### Other Parameters
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTagsToManyObject
 
-> DeleteTagsToManyObject(ctx).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
+> DeleteTagsToManyObject(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
 Remove Tags from Multiple Objects
 
@@ -107,11 +107,11 @@ import (
 )
 
 func main() {
-	bulkRemoveTaggedObject := *openapiclient.NewBulkRemoveTaggedObject() // BulkRemoveTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+	bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
+	r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObject``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteTagsToManyObjectRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkRemoveTaggedObject** | [**BulkRemoveTaggedObject**](BulkRemoveTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ## SetTagsToManyObjects
 
-> []BulkTaggedObjectResponse SetTagsToManyObjects(ctx).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
+> BulkTaggedObject SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
 Tag Multiple Objects
 
@@ -533,16 +533,16 @@ import (
 )
 
 func main() {
-	bulkAddTaggedObject := *openapiclient.NewBulkAddTaggedObject() // BulkAddTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+	bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
+	resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjects``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SetTagsToManyObjects`: []BulkTaggedObjectResponse
+	// response from `SetTagsToManyObjects`: BulkTaggedObject
 	fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.SetTagsToManyObjects`: %v\n", resp)
 }
 ```
@@ -558,15 +558,15 @@ Other parameters are passed through a pointer to a apiSetTagsToManyObjectsReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkAddTaggedObject** | [**BulkAddTaggedObject**](BulkAddTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
-[**[]BulkTaggedObjectResponse**](BulkTaggedObjectResponse.md)
+[**BulkTaggedObject**](BulkTaggedObject.md)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

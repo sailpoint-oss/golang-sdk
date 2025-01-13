@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -17,13 +17,13 @@ import (
 // checks if the SourceManagementWorkgroup type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceManagementWorkgroup{}
 
-// SourceManagementWorkgroup Reference to management workgroup for the source.
+// SourceManagementWorkgroup Reference to Management Workgroup for this Source
 type SourceManagementWorkgroup struct {
-	// Type of object being referenced.
+	// The type of object being referenced
 	Type *string `json:"type,omitempty"`
-	// Management workgroup ID.
+	// ID of the management workgroup
 	Id *string `json:"id,omitempty"`
-	// Management workgroup's human-readable display name.
+	// Human-readable display name of the management workgroup
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &SetLifecycleState200Response{}
 
 // SetLifecycleState200Response struct for SetLifecycleState200Response
 type SetLifecycleState200Response struct {
-	// ID of the IdentityRequest object that is generated when the workflow launches. To follow the IdentityRequest, you can provide this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/). The response will contain relevant information about the IdentityRequest, such as its status.
+	// The ID of the IdentityRequest object that was generated when the workflow launches
 	AccountActivityId *string `json:"accountActivityId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

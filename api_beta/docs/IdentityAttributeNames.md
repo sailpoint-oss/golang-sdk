@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ids** | Pointer to **[]string** | List of identity attributes&#39; technical names. | [optional] 
+**Ids** | Pointer to **[]string** | List of identity attributes&#39; technical names | [optional] 
 
 ## Methods
 

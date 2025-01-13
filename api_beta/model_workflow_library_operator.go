@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	
 )
 
 // checks if the WorkflowLibraryOperator type satisfies the MappedNullable interface at compile time
@@ -28,11 +27,6 @@ type WorkflowLibraryOperator struct {
 	Type *string `json:"type,omitempty"`
 	// Description of the operator
 	Description *string `json:"description,omitempty"`
-	// Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.
-	IsDynamicSchema *bool `json:"isDynamicSchema,omitempty"`
-	Deprecated *bool `json:"deprecated,omitempty"`
-	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
-	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
 	// One or more inputs that the operator accepts
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -185,137 +179,9 @@ func (o *WorkflowLibraryOperator) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
-func (o *WorkflowLibraryOperator) GetIsDynamicSchema() bool {
-	if o == nil || IsNil(o.IsDynamicSchema) {
-		var ret bool
-		return ret
-	}
-	return *o.IsDynamicSchema
-}
-
-// GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryOperator) GetIsDynamicSchemaOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDynamicSchema) {
-		return nil, false
-	}
-	return o.IsDynamicSchema, true
-}
-
-// HasIsDynamicSchema returns a boolean if a field has been set.
-func (o *WorkflowLibraryOperator) HasIsDynamicSchema() bool {
-	if o != nil && !IsNil(o.IsDynamicSchema) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDynamicSchema gets a reference to the given bool and assigns it to the IsDynamicSchema field.
-func (o *WorkflowLibraryOperator) SetIsDynamicSchema(v bool) {
-	o.IsDynamicSchema = &v
-}
-
-// GetDeprecated returns the Deprecated field value if set, zero value otherwise.
-func (o *WorkflowLibraryOperator) GetDeprecated() bool {
-	if o == nil || IsNil(o.Deprecated) {
-		var ret bool
-		return ret
-	}
-	return *o.Deprecated
-}
-
-// GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryOperator) GetDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Deprecated) {
-		return nil, false
-	}
-	return o.Deprecated, true
-}
-
-// HasDeprecated returns a boolean if a field has been set.
-func (o *WorkflowLibraryOperator) HasDeprecated() bool {
-	if o != nil && !IsNil(o.Deprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeprecated gets a reference to the given bool and assigns it to the Deprecated field.
-func (o *WorkflowLibraryOperator) SetDeprecated(v bool) {
-	o.Deprecated = &v
-}
-
-// GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
-func (o *WorkflowLibraryOperator) GetDeprecatedBy() SailPointTime {
-	if o == nil || IsNil(o.DeprecatedBy) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.DeprecatedBy
-}
-
-// GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryOperator) GetDeprecatedByOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.DeprecatedBy) {
-		return nil, false
-	}
-	return o.DeprecatedBy, true
-}
-
-// HasDeprecatedBy returns a boolean if a field has been set.
-func (o *WorkflowLibraryOperator) HasDeprecatedBy() bool {
-	if o != nil && !IsNil(o.DeprecatedBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeprecatedBy gets a reference to the given SailPointTime and assigns it to the DeprecatedBy field.
-func (o *WorkflowLibraryOperator) SetDeprecatedBy(v SailPointTime) {
-	o.DeprecatedBy = &v
-}
-
-// GetIsSimulationEnabled returns the IsSimulationEnabled field value if set, zero value otherwise.
-func (o *WorkflowLibraryOperator) GetIsSimulationEnabled() bool {
-	if o == nil || IsNil(o.IsSimulationEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.IsSimulationEnabled
-}
-
-// GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryOperator) GetIsSimulationEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSimulationEnabled) {
-		return nil, false
-	}
-	return o.IsSimulationEnabled, true
-}
-
-// HasIsSimulationEnabled returns a boolean if a field has been set.
-func (o *WorkflowLibraryOperator) HasIsSimulationEnabled() bool {
-	if o != nil && !IsNil(o.IsSimulationEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsSimulationEnabled gets a reference to the given bool and assigns it to the IsSimulationEnabled field.
-func (o *WorkflowLibraryOperator) SetIsSimulationEnabled(v bool) {
-	o.IsSimulationEnabled = &v
-}
-
-// GetFormFields returns the FormFields field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFormFields returns the FormFields field value if set, zero value otherwise.
 func (o *WorkflowLibraryOperator) GetFormFields() []WorkflowLibraryFormFields {
-	if o == nil {
+	if o == nil || IsNil(o.FormFields) {
 		var ret []WorkflowLibraryFormFields
 		return ret
 	}
@@ -324,7 +190,6 @@ func (o *WorkflowLibraryOperator) GetFormFields() []WorkflowLibraryFormFields {
 
 // GetFormFieldsOk returns a tuple with the FormFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryOperator) GetFormFieldsOk() ([]WorkflowLibraryFormFields, bool) {
 	if o == nil || IsNil(o.FormFields) {
 		return nil, false
@@ -368,19 +233,7 @@ func (o WorkflowLibraryOperator) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.IsDynamicSchema) {
-		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
-	}
-	if !IsNil(o.Deprecated) {
-		toSerialize["deprecated"] = o.Deprecated
-	}
-	if !IsNil(o.DeprecatedBy) {
-		toSerialize["deprecatedBy"] = o.DeprecatedBy
-	}
-	if !IsNil(o.IsSimulationEnabled) {
-		toSerialize["isSimulationEnabled"] = o.IsSimulationEnabled
-	}
-	if o.FormFields != nil {
+	if !IsNil(o.FormFields) {
 		toSerialize["formFields"] = o.FormFields
 	}
 
@@ -409,10 +262,6 @@ func (o *WorkflowLibraryOperator) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "isDynamicSchema")
-		delete(additionalProperties, "deprecated")
-		delete(additionalProperties, "deprecatedBy")
-		delete(additionalProperties, "isSimulationEnabled")
 		delete(additionalProperties, "formFields")
 		o.AdditionalProperties = additionalProperties
 	}

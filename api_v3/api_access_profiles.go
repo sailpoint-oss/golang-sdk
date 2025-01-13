@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -39,11 +39,11 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 }
 
 /*
-CreateAccessProfile Create Access Profile
+CreateAccessProfile Create an Access Profile
 
-Use this API to create an access profile.
-A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
-The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+This API creates an Access Profile.
+A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source.
+The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessProfileRequest
@@ -206,7 +206,7 @@ This API deletes an existing Access Profile.
 
 The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.
 
-A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a SOURCE_SUBADMIN token must be able to administer the Source associated with the Access Profile.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile to delete
@@ -357,11 +357,11 @@ func (r ApiDeleteAccessProfilesInBulkRequest) Execute() (*AccessProfileBulkDelet
 /*
 DeleteAccessProfilesInBulk Delete Access Profile(s)
 
-This endpoint initiates a bulk deletion of one or more access profiles.
-When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
-This endpoint can only bulk delete up to a limit of 50 access profiles per request. 
-By default, if any of the indicated access profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated access profiles will be deleted.
-A SOURCE_SUBADMIN user can only use this endpoint to delete access profiles associated with sources they're able to administer.
+This API initiates a bulk deletion of one or more Access Profiles.
+
+By default, if any of the indicated Access Profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated Access Profiles will be deleted.
+
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to delete Access Profiles which are associated with Sources they are able to administer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteAccessProfilesInBulkRequest
@@ -521,6 +521,8 @@ func (r ApiGetAccessProfileRequest) Execute() (*AccessProfile, *http.Response, e
 GetAccessProfile Get an Access Profile
 
 This API returns an Access Profile by its ID.
+
+A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile
@@ -693,7 +695,7 @@ func (r ApiGetAccessProfileEntitlementsRequest) Count(count bool) ApiGetAccessPr
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*
 func (r ApiGetAccessProfileEntitlementsRequest) Filters(filters string) ApiGetAccessProfileEntitlementsRequest {
 	r.filters = &filters
 	return r
@@ -712,12 +714,12 @@ func (r ApiGetAccessProfileEntitlementsRequest) Execute() ([]Entitlement, *http.
 /*
 GetAccessProfileEntitlements List Access Profile's Entitlements
 
-Use this API to get a list of an access profile's entitlements. 
-A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
->**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
+This API lists the Entitlements associated with a given Access Profile
+
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the access profile containing the entitlements.
+ @param id ID of the containing Access Profile
  @return ApiGetAccessProfileEntitlementsRequest
 */
 func (a *AccessProfilesAPIService) GetAccessProfileEntitlements(ctx context.Context, id string) ApiGetAccessProfileEntitlementsRequest {
@@ -895,7 +897,7 @@ type ApiListAccessProfilesRequest struct {
 	includeUnsegmented *bool
 }
 
-// If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity&#39;s ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
+// If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity&#39;s ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
 func (r ApiListAccessProfilesRequest) ForSubadmin(forSubadmin string) ApiListAccessProfilesRequest {
 	r.forSubadmin = &forSubadmin
 	return r
@@ -919,7 +921,7 @@ func (r ApiListAccessProfilesRequest) Count(count bool) ApiListAccessProfilesReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*
 func (r ApiListAccessProfilesRequest) Filters(filters string) ApiListAccessProfilesRequest {
 	r.filters = &filters
 	return r
@@ -931,13 +933,13 @@ func (r ApiListAccessProfilesRequest) Sorters(sorters string) ApiListAccessProfi
 	return r
 }
 
-// If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
 func (r ApiListAccessProfilesRequest) ForSegmentIds(forSegmentIds string) ApiListAccessProfilesRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
 }
 
-// Indicates whether the response list should contain unsegmented access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+// Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
 func (r ApiListAccessProfilesRequest) IncludeUnsegmented(includeUnsegmented bool) ApiListAccessProfilesRequest {
 	r.includeUnsegmented = &includeUnsegmented
 	return r
@@ -950,8 +952,9 @@ func (r ApiListAccessProfilesRequest) Execute() ([]AccessProfile, *http.Response
 /*
 ListAccessProfiles List Access Profiles
 
-Use this API to get a list of access profiles.
->**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
+This API returns a list of Access Profiles.
+
+A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessProfilesRequest
@@ -1173,10 +1176,12 @@ This API updates an existing Access Profile. The following fields are patchable:
 
 If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example "Replace Source" in the examples dropdown.
 
-A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
 >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
 > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
+
+>  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile to patch

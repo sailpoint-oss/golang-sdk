@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -30,9 +30,11 @@ type RoleMiningSessionDto struct {
 	PotentialRoleCount *int32 `json:"potentialRoleCount,omitempty"`
 	// Number of potential roles ready
 	PotentialRolesReadyCount *int32 `json:"potentialRolesReadyCount,omitempty"`
+	Status *RoleMiningSessionStatus `json:"status,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
 	// The id of the user who will receive an email about the role mining session
 	EmailRecipientId NullableString `json:"emailRecipientId,omitempty"`
+	CreatedBy *RoleMiningSessionDtoCreatedBy `json:"createdBy,omitempty"`
 	// Number of identities in the population which meet the search criteria or identity list provided
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	// The session's saved status
@@ -287,6 +289,38 @@ func (o *RoleMiningSessionDto) SetPotentialRolesReadyCount(v int32) {
 	o.PotentialRolesReadyCount = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *RoleMiningSessionDto) GetStatus() RoleMiningSessionStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret RoleMiningSessionStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDto) GetStatusOk() (*RoleMiningSessionStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *RoleMiningSessionDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given RoleMiningSessionStatus and assigns it to the Status field.
+func (o *RoleMiningSessionDto) SetStatus(v RoleMiningSessionStatus) {
+	o.Status = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMiningSessionDto) GetType() RoleMiningRoleType {
 	if o == nil || IsNil(o.Type) {
@@ -359,6 +393,38 @@ func (o *RoleMiningSessionDto) SetEmailRecipientIdNil() {
 // UnsetEmailRecipientId ensures that no value is present for EmailRecipientId, not even an explicit nil
 func (o *RoleMiningSessionDto) UnsetEmailRecipientId() {
 	o.EmailRecipientId.Unset()
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *RoleMiningSessionDto) GetCreatedBy() RoleMiningSessionDtoCreatedBy {
+	if o == nil || IsNil(o.CreatedBy) {
+		var ret RoleMiningSessionDtoCreatedBy
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDto) GetCreatedByOk() (*RoleMiningSessionDtoCreatedBy, bool) {
+	if o == nil || IsNil(o.CreatedBy) {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *RoleMiningSessionDto) HasCreatedBy() bool {
+	if o != nil && !IsNil(o.CreatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given RoleMiningSessionDtoCreatedBy and assigns it to the CreatedBy field.
+func (o *RoleMiningSessionDto) SetCreatedBy(v RoleMiningSessionDtoCreatedBy) {
+	o.CreatedBy = &v
 }
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
@@ -495,11 +561,17 @@ func (o RoleMiningSessionDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PotentialRolesReadyCount) {
 		toSerialize["potentialRolesReadyCount"] = o.PotentialRolesReadyCount
 	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.EmailRecipientId.IsSet() {
 		toSerialize["emailRecipientId"] = o.EmailRecipientId.Get()
+	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
 	if !IsNil(o.IdentityCount) {
 		toSerialize["identityCount"] = o.IdentityCount
@@ -538,8 +610,10 @@ func (o *RoleMiningSessionDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "minNumIdentitiesInPotentialRole")
 		delete(additionalProperties, "potentialRoleCount")
 		delete(additionalProperties, "potentialRolesReadyCount")
+		delete(additionalProperties, "status")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "emailRecipientId")
+		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "identityCount")
 		delete(additionalProperties, "saved")
 		delete(additionalProperties, "name")

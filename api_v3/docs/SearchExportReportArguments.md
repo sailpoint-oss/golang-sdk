@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Indices** | Pointer to [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**Query** | **string** | The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries. | 
-**Columns** | Pointer to **string** | Comma separated string consisting of technical attribute names of fields to include in report.  Use &#x60;access.spread&#x60;, &#x60;apps.spread&#x60;, &#x60;accounts.spread&#x60; to include respective identity access details.  Use &#x60;accessProfiles.spread&#x60; to unclude access profile details.  Use &#x60;entitlements.spread&#x60; to include entitlement details.  | [optional] 
+**Filters** | Pointer to [**map[string]Filter**](Filter.md) | The filters to be applied for each filtered field name. | [optional] 
+**Query** | [**Query**](Query.md) |  | 
+**IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
+**DefaultS3Bucket** | **bool** | Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and &#39;s3Bucket&#39; argument is null or absent there will be default s3Bucket assigned to the report. | 
+**S3Bucket** | Pointer to **string** | If you want to be specific you could use this argument with defaultS3Bucket &#x3D; false. | [optional] 
 
 ## Methods
 
 ### NewSearchExportReportArguments
 
-`func NewSearchExportReportArguments(query string, ) *SearchExportReportArguments`
+`func NewSearchExportReportArguments(query Query, defaultS3Bucket bool, ) *SearchExportReportArguments`
 
 NewSearchExportReportArguments instantiates a new SearchExportReportArguments object
 This constructor will assign default values to properties that have it defined,
@@ -53,50 +56,75 @@ SetIndices sets Indices field to given value.
 
 HasIndices returns a boolean if a field has been set.
 
+### GetFilters
+
+`func (o *SearchExportReportArguments) GetFilters() map[string]Filter`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *SearchExportReportArguments) GetFiltersOk() (*map[string]Filter, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *SearchExportReportArguments) SetFilters(v map[string]Filter)`
+
+SetFilters sets Filters field to given value.
+
+### HasFilters
+
+`func (o *SearchExportReportArguments) HasFilters() bool`
+
+HasFilters returns a boolean if a field has been set.
+
 ### GetQuery
 
-`func (o *SearchExportReportArguments) GetQuery() string`
+`func (o *SearchExportReportArguments) GetQuery() Query`
 
 GetQuery returns the Query field if non-nil, zero value otherwise.
 
 ### GetQueryOk
 
-`func (o *SearchExportReportArguments) GetQueryOk() (*string, bool)`
+`func (o *SearchExportReportArguments) GetQueryOk() (*Query, bool)`
 
 GetQueryOk returns a tuple with the Query field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuery
 
-`func (o *SearchExportReportArguments) SetQuery(v string)`
+`func (o *SearchExportReportArguments) SetQuery(v Query)`
 
 SetQuery sets Query field to given value.
 
 
-### GetColumns
+### GetIncludeNested
 
-`func (o *SearchExportReportArguments) GetColumns() string`
+`func (o *SearchExportReportArguments) GetIncludeNested() bool`
 
-GetColumns returns the Columns field if non-nil, zero value otherwise.
+GetIncludeNested returns the IncludeNested field if non-nil, zero value otherwise.
 
-### GetColumnsOk
+### GetIncludeNestedOk
 
-`func (o *SearchExportReportArguments) GetColumnsOk() (*string, bool)`
+`func (o *SearchExportReportArguments) GetIncludeNestedOk() (*bool, bool)`
 
-GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
+GetIncludeNestedOk returns a tuple with the IncludeNested field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetColumns
+### SetIncludeNested
 
-`func (o *SearchExportReportArguments) SetColumns(v string)`
+`func (o *SearchExportReportArguments) SetIncludeNested(v bool)`
 
-SetColumns sets Columns field to given value.
+SetIncludeNested sets IncludeNested field to given value.
 
-### HasColumns
+### HasIncludeNested
 
-`func (o *SearchExportReportArguments) HasColumns() bool`
+`func (o *SearchExportReportArguments) HasIncludeNested() bool`
 
-HasColumns returns a boolean if a field has been set.
+HasIncludeNested returns a boolean if a field has been set.
 
 ### GetSort
 
@@ -122,6 +150,51 @@ SetSort sets Sort field to given value.
 `func (o *SearchExportReportArguments) HasSort() bool`
 
 HasSort returns a boolean if a field has been set.
+
+### GetDefaultS3Bucket
+
+`func (o *SearchExportReportArguments) GetDefaultS3Bucket() bool`
+
+GetDefaultS3Bucket returns the DefaultS3Bucket field if non-nil, zero value otherwise.
+
+### GetDefaultS3BucketOk
+
+`func (o *SearchExportReportArguments) GetDefaultS3BucketOk() (*bool, bool)`
+
+GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultS3Bucket
+
+`func (o *SearchExportReportArguments) SetDefaultS3Bucket(v bool)`
+
+SetDefaultS3Bucket sets DefaultS3Bucket field to given value.
+
+
+### GetS3Bucket
+
+`func (o *SearchExportReportArguments) GetS3Bucket() string`
+
+GetS3Bucket returns the S3Bucket field if non-nil, zero value otherwise.
+
+### GetS3BucketOk
+
+`func (o *SearchExportReportArguments) GetS3BucketOk() (*string, bool)`
+
+GetS3BucketOk returns a tuple with the S3Bucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3Bucket
+
+`func (o *SearchExportReportArguments) SetS3Bucket(v string)`
+
+SetS3Bucket sets S3Bucket field to given value.
+
+### HasS3Bucket
+
+`func (o *SearchExportReportArguments) HasS3Bucket() bool`
+
+HasS3Bucket returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPendingTaskHeaders**](TaskManagementAPI.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve Pending Task List Headers
-[**GetPendingTasks**](TaskManagementAPI.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve Pending Task Status List
-[**GetTaskStatus**](TaskManagementAPI.md#GetTaskStatus) | **Get** /task-status/{id} | Get Task Status by ID
-[**GetTaskStatusList**](TaskManagementAPI.md#GetTaskStatusList) | **Get** /task-status | Retrieve Task Status List
-[**UpdateTaskStatus**](TaskManagementAPI.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update Task Status by ID
+[**GetPendingTaskHeaders**](TaskManagementAPI.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
+[**GetPendingTasks**](TaskManagementAPI.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
+[**GetTaskStatus**](TaskManagementAPI.md#GetTaskStatus) | **Get** /task-status/{id} | Get task status by ID.
+[**GetTaskStatusList**](TaskManagementAPI.md#GetTaskStatusList) | **Get** /task-status | Retrieve a task status list.
+[**UpdateTaskStatus**](TaskManagementAPI.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update task status by ID
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > GetPendingTaskHeaders(ctx).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieve Pending Task List Headers
+Retrieve headers only for pending task list.
 
 
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > []TaskStatus GetPendingTasks(ctx).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieve Pending Task Status List
+Retrieve a pending task list.
 
 
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > TaskStatus GetTaskStatus(ctx, id).Execute()
 
-Get Task Status by ID
+Get task status by ID.
 
 
 
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	id := "00eebcf881994e419d72e757fd30dc0e" // string | Task ID.
+	id := "anId" // string | Task ID of the TaskStatus to get
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -191,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Task ID. | 
+**id** | **string** | Task ID of the TaskStatus to get | 
 
 ### Other Parameters
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 > []TaskStatus GetTaskStatusList(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Retrieve Task Status List
+Retrieve a task status list.
 
 
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -296,9 +296,9 @@ Name | Type | Description  | Notes
 
 ## UpdateTaskStatus
 
-> TaskStatus UpdateTaskStatus(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
+> TaskStatus UpdateTaskStatus(ctx, id).JsonPatch(jsonPatch).Execute()
 
-Update Task Status by ID
+Update task status by ID
 
 
 
@@ -315,12 +315,12 @@ import (
 )
 
 func main() {
-	id := "00eebcf881994e419d72e757fd30dc0e" // string | Task ID.
-	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
+	id := "anId" // string | Task ID of the task whose TaskStatus to update
+	jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,7 +336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Task ID. | 
+**id** | **string** | Task ID of the task whose TaskStatus to update | 
 
 ### Other Parameters
 
@@ -346,7 +346,7 @@ Other parameters are passed through a pointer to a apiUpdateTaskStatusRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
+ **jsonPatch** | [**JsonPatch**](JsonPatch.md) |  | 
 
 ### Return type
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

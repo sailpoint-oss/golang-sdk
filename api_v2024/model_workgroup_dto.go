@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the WorkgroupDto type satisfies the MappedNullable interface at compile time
@@ -31,8 +31,8 @@ type WorkgroupDto struct {
 	MemberCount *int64 `json:"memberCount,omitempty"`
 	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
-	Created *SailPointTime `json:"created,omitempty"`
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -248,9 +248,9 @@ func (o *WorkgroupDto) SetConnectionCount(v int64) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetCreated() SailPointTime {
+func (o *WorkgroupDto) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -258,7 +258,7 @@ func (o *WorkgroupDto) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetCreatedOk() (*SailPointTime, bool) {
+func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -274,15 +274,15 @@ func (o *WorkgroupDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *WorkgroupDto) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WorkgroupDto) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetModified() SailPointTime {
+func (o *WorkgroupDto) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -290,7 +290,7 @@ func (o *WorkgroupDto) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetModifiedOk() (*SailPointTime, bool) {
+func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -306,8 +306,8 @@ func (o *WorkgroupDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *WorkgroupDto) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *WorkgroupDto) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

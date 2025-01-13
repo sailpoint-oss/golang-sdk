@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -37,18 +37,12 @@ type SavedSearch struct {
 	Query string `json:"query"`
 	// The fields to be searched against in a multi-field query. 
 	Fields []string `json:"fields,omitempty"`
-	// Sort by index. This takes precedence over the `sort` property. 
-	OrderBy map[string][]string `json:"orderBy,omitempty"`
 	// The fields to be used to sort the search results. 
 	Sort []string `json:"sort,omitempty"`
 	Filters NullableSavedSearchDetailFilters `json:"filters,omitempty"`
 	// The saved search ID. 
 	Id *string `json:"id,omitempty"`
 	Owner *TypedReference `json:"owner,omitempty"`
-	// The ID of the identity that owns this saved search.
-	OwnerId *string `json:"ownerId,omitempty"`
-	// Whether this saved search is visible to anyone but the owner. This field will always be false as there is no way to set a saved search as public at this time.
-	Public *bool `json:"public,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -62,8 +56,6 @@ func NewSavedSearch(indices []Index, query string) *SavedSearch {
 	this := SavedSearch{}
 	this.Indices = indices
 	this.Query = query
-	var public bool = false
-	this.Public = &public
 	return &this
 }
 
@@ -72,8 +64,6 @@ func NewSavedSearch(indices []Index, query string) *SavedSearch {
 // but it doesn't guarantee that properties required by API are set
 func NewSavedSearchWithDefaults() *SavedSearch {
 	this := SavedSearch{}
-	var public bool = false
-	this.Public = &public
 	return &this
 }
 
@@ -152,9 +142,9 @@ func (o *SavedSearch) UnsetDescription() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SavedSearch) GetCreated() SailPointTime {
+func (o *SavedSearch) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -163,7 +153,7 @@ func (o *SavedSearch) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SavedSearch) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SavedSearch) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,7 +170,7 @@ func (o *SavedSearch) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *SavedSearch) SetCreated(v SailPointTime) {
+func (o *SavedSearch) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -194,9 +184,9 @@ func (o *SavedSearch) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SavedSearch) GetModified() SailPointTime {
+func (o *SavedSearch) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -205,7 +195,7 @@ func (o *SavedSearch) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SavedSearch) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SavedSearch) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -222,7 +212,7 @@ func (o *SavedSearch) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *SavedSearch) SetModified(v SailPointTime) {
+func (o *SavedSearch) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -348,42 +338,9 @@ func (o *SavedSearch) SetFields(v []string) {
 	o.Fields = v
 }
 
-// GetOrderBy returns the OrderBy field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SavedSearch) GetOrderBy() map[string][]string {
-	if o == nil {
-		var ret map[string][]string
-		return ret
-	}
-	return o.OrderBy
-}
-
-// GetOrderByOk returns a tuple with the OrderBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SavedSearch) GetOrderByOk() (*map[string][]string, bool) {
-	if o == nil || IsNil(o.OrderBy) {
-		return nil, false
-	}
-	return &o.OrderBy, true
-}
-
-// HasOrderBy returns a boolean if a field has been set.
-func (o *SavedSearch) HasOrderBy() bool {
-	if o != nil && !IsNil(o.OrderBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderBy gets a reference to the given map[string][]string and assigns it to the OrderBy field.
-func (o *SavedSearch) SetOrderBy(v map[string][]string) {
-	o.OrderBy = v
-}
-
-// GetSort returns the Sort field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSort returns the Sort field value if set, zero value otherwise.
 func (o *SavedSearch) GetSort() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Sort) {
 		var ret []string
 		return ret
 	}
@@ -392,7 +349,6 @@ func (o *SavedSearch) GetSort() []string {
 
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearch) GetSortOk() ([]string, bool) {
 	if o == nil || IsNil(o.Sort) {
 		return nil, false
@@ -520,70 +476,6 @@ func (o *SavedSearch) SetOwner(v TypedReference) {
 	o.Owner = &v
 }
 
-// GetOwnerId returns the OwnerId field value if set, zero value otherwise.
-func (o *SavedSearch) GetOwnerId() string {
-	if o == nil || IsNil(o.OwnerId) {
-		var ret string
-		return ret
-	}
-	return *o.OwnerId
-}
-
-// GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedSearch) GetOwnerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OwnerId) {
-		return nil, false
-	}
-	return o.OwnerId, true
-}
-
-// HasOwnerId returns a boolean if a field has been set.
-func (o *SavedSearch) HasOwnerId() bool {
-	if o != nil && !IsNil(o.OwnerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwnerId gets a reference to the given string and assigns it to the OwnerId field.
-func (o *SavedSearch) SetOwnerId(v string) {
-	o.OwnerId = &v
-}
-
-// GetPublic returns the Public field value if set, zero value otherwise.
-func (o *SavedSearch) GetPublic() bool {
-	if o == nil || IsNil(o.Public) {
-		var ret bool
-		return ret
-	}
-	return *o.Public
-}
-
-// GetPublicOk returns a tuple with the Public field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedSearch) GetPublicOk() (*bool, bool) {
-	if o == nil || IsNil(o.Public) {
-		return nil, false
-	}
-	return o.Public, true
-}
-
-// HasPublic returns a boolean if a field has been set.
-func (o *SavedSearch) HasPublic() bool {
-	if o != nil && !IsNil(o.Public) {
-		return true
-	}
-
-	return false
-}
-
-// SetPublic gets a reference to the given bool and assigns it to the Public field.
-func (o *SavedSearch) SetPublic(v bool) {
-	o.Public = &v
-}
-
 func (o SavedSearch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -614,10 +506,7 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
-	if o.OrderBy != nil {
-		toSerialize["orderBy"] = o.OrderBy
-	}
-	if o.Sort != nil {
+	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
 	if o.Filters.IsSet() {
@@ -628,12 +517,6 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
-	}
-	if !IsNil(o.OwnerId) {
-		toSerialize["ownerId"] = o.OwnerId
-	}
-	if !IsNil(o.Public) {
-		toSerialize["public"] = o.Public
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -687,13 +570,10 @@ func (o *SavedSearch) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "columns")
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "fields")
-		delete(additionalProperties, "orderBy")
 		delete(additionalProperties, "sort")
 		delete(additionalProperties, "filters")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "owner")
-		delete(additionalProperties, "ownerId")
-		delete(additionalProperties, "public")
 		o.AdditionalProperties = additionalProperties
 	}
 

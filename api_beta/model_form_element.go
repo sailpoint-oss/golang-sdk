@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -21,13 +21,14 @@ var _ MappedNullable = &FormElement{}
 type FormElement struct {
 	// Form element identifier.
 	Id *string `json:"id,omitempty"`
-	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription
+	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns
 	ElementType *string `json:"elementType,omitempty"`
 	// Config object.
-	Config map[string]interface{} `json:"config,omitempty"`
+	Config map[string]map[string]interface{} `json:"config,omitempty"`
 	// Technical key.
 	Key *string `json:"key,omitempty"`
-	Validations []FormElementValidationsSet `json:"validations,omitempty"`
+	// Set of FormElementValidation items.
+	Validations map[string]interface{} `json:"validations,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -115,9 +116,9 @@ func (o *FormElement) SetElementType(v string) {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *FormElement) GetConfig() map[string]interface{} {
+func (o *FormElement) GetConfig() map[string]map[string]interface{} {
 	if o == nil || IsNil(o.Config) {
-		var ret map[string]interface{}
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 	return o.Config
@@ -125,9 +126,9 @@ func (o *FormElement) GetConfig() map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormElement) GetConfigOk() (map[string]interface{}, bool) {
+func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Config) {
-		return map[string]interface{}{}, false
+		return map[string]map[string]interface{}{}, false
 	}
 	return o.Config, true
 }
@@ -141,8 +142,8 @@ func (o *FormElement) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *FormElement) SetConfig(v map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
+func (o *FormElement) SetConfig(v map[string]map[string]interface{}) {
 	o.Config = v
 }
 
@@ -178,10 +179,10 @@ func (o *FormElement) SetKey(v string) {
 	o.Key = &v
 }
 
-// GetValidations returns the Validations field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FormElement) GetValidations() []FormElementValidationsSet {
-	if o == nil {
-		var ret []FormElementValidationsSet
+// GetValidations returns the Validations field value if set, zero value otherwise.
+func (o *FormElement) GetValidations() map[string]interface{} {
+	if o == nil || IsNil(o.Validations) {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Validations
@@ -189,10 +190,9 @@ func (o *FormElement) GetValidations() []FormElementValidationsSet {
 
 // GetValidationsOk returns a tuple with the Validations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FormElement) GetValidationsOk() ([]FormElementValidationsSet, bool) {
+func (o *FormElement) GetValidationsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Validations) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Validations, true
 }
@@ -206,8 +206,8 @@ func (o *FormElement) HasValidations() bool {
 	return false
 }
 
-// SetValidations gets a reference to the given []FormElementValidationsSet and assigns it to the Validations field.
-func (o *FormElement) SetValidations(v []FormElementValidationsSet) {
+// SetValidations gets a reference to the given map[string]interface{} and assigns it to the Validations field.
+func (o *FormElement) SetValidations(v map[string]interface{}) {
 	o.Validations = v
 }
 
@@ -233,7 +233,7 @@ func (o FormElement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if o.Validations != nil {
+	if !IsNil(o.Validations) {
 		toSerialize["validations"] = o.Validations
 	}
 

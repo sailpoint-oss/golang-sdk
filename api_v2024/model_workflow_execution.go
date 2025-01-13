@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the WorkflowExecution type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type WorkflowExecution struct {
 	// Backend ID that tracks a workflow request in the system. Provide this ID in a customer support ticket for debugging purposes.
 	RequestId *string `json:"requestId,omitempty"`
 	// Date/time when the workflow started.
-	StartTime *SailPointTime `json:"startTime,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
 	// Date/time when the workflow ended.
-	CloseTime *SailPointTime `json:"closeTime,omitempty"`
+	CloseTime *time.Time `json:"closeTime,omitempty"`
 	// Workflow execution status.
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -151,9 +151,9 @@ func (o *WorkflowExecution) SetRequestId(v string) {
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
-func (o *WorkflowExecution) GetStartTime() SailPointTime {
+func (o *WorkflowExecution) GetStartTime() time.Time {
 	if o == nil || IsNil(o.StartTime) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.StartTime
@@ -161,7 +161,7 @@ func (o *WorkflowExecution) GetStartTime() SailPointTime {
 
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowExecution) GetStartTimeOk() (*SailPointTime, bool) {
+func (o *WorkflowExecution) GetStartTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
@@ -177,15 +177,15 @@ func (o *WorkflowExecution) HasStartTime() bool {
 	return false
 }
 
-// SetStartTime gets a reference to the given SailPointTime and assigns it to the StartTime field.
-func (o *WorkflowExecution) SetStartTime(v SailPointTime) {
+// SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
+func (o *WorkflowExecution) SetStartTime(v time.Time) {
 	o.StartTime = &v
 }
 
 // GetCloseTime returns the CloseTime field value if set, zero value otherwise.
-func (o *WorkflowExecution) GetCloseTime() SailPointTime {
+func (o *WorkflowExecution) GetCloseTime() time.Time {
 	if o == nil || IsNil(o.CloseTime) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.CloseTime
@@ -193,7 +193,7 @@ func (o *WorkflowExecution) GetCloseTime() SailPointTime {
 
 // GetCloseTimeOk returns a tuple with the CloseTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowExecution) GetCloseTimeOk() (*SailPointTime, bool) {
+func (o *WorkflowExecution) GetCloseTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CloseTime) {
 		return nil, false
 	}
@@ -209,8 +209,8 @@ func (o *WorkflowExecution) HasCloseTime() bool {
 	return false
 }
 
-// SetCloseTime gets a reference to the given SailPointTime and assigns it to the CloseTime field.
-func (o *WorkflowExecution) SetCloseTime(v SailPointTime) {
+// SetCloseTime gets a reference to the given time.Time and assigns it to the CloseTime field.
+func (o *WorkflowExecution) SetCloseTime(v time.Time) {
 	o.CloseTime = &v
 }
 

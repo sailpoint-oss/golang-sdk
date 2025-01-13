@@ -9,9 +9,8 @@ Name | Type | Description | Notes
 **Alias** | Pointer to **string** | Alternate unique identifier for the identity. | [optional] 
 **Email** | Pointer to **NullableString** | Email address of identity. | [optional] 
 **Status** | Pointer to **NullableString** | The lifecycle status for the identity | [optional] 
-**IdentityState** | Pointer to **NullableString** | The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features.  | [optional] 
 **Manager** | Pointer to [**NullableIdentityReference**](IdentityReference.md) |  | [optional] 
-**Attributes** | Pointer to [**[]PublicIdentityAttributesInner**](PublicIdentityAttributesInner.md) | The public identity attributes of the identity | [optional] 
+**Attributes** | Pointer to [**[]IdentityAttribute**](IdentityAttribute.md) | The public identity attributes of the identity | [optional] 
 
 ## Methods
 
@@ -177,41 +176,6 @@ HasStatus returns a boolean if a field has been set.
 `func (o *PublicIdentity) UnsetStatus()`
 
 UnsetStatus ensures that no value is present for Status, not even an explicit nil
-### GetIdentityState
-
-`func (o *PublicIdentity) GetIdentityState() string`
-
-GetIdentityState returns the IdentityState field if non-nil, zero value otherwise.
-
-### GetIdentityStateOk
-
-`func (o *PublicIdentity) GetIdentityStateOk() (*string, bool)`
-
-GetIdentityStateOk returns a tuple with the IdentityState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIdentityState
-
-`func (o *PublicIdentity) SetIdentityState(v string)`
-
-SetIdentityState sets IdentityState field to given value.
-
-### HasIdentityState
-
-`func (o *PublicIdentity) HasIdentityState() bool`
-
-HasIdentityState returns a boolean if a field has been set.
-
-### SetIdentityStateNil
-
-`func (o *PublicIdentity) SetIdentityStateNil(b bool)`
-
- SetIdentityStateNil sets the value for IdentityState to be an explicit nil
-
-### UnsetIdentityState
-`func (o *PublicIdentity) UnsetIdentityState()`
-
-UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
 ### GetManager
 
 `func (o *PublicIdentity) GetManager() IdentityReference`
@@ -249,20 +213,20 @@ HasManager returns a boolean if a field has been set.
 UnsetManager ensures that no value is present for Manager, not even an explicit nil
 ### GetAttributes
 
-`func (o *PublicIdentity) GetAttributes() []PublicIdentityAttributesInner`
+`func (o *PublicIdentity) GetAttributes() []IdentityAttribute`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *PublicIdentity) GetAttributesOk() (*[]PublicIdentityAttributesInner, bool)`
+`func (o *PublicIdentity) GetAttributesOk() (*[]IdentityAttribute, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *PublicIdentity) SetAttributes(v []PublicIdentityAttributesInner)`
+`func (o *PublicIdentity) SetAttributes(v []IdentityAttribute)`
 
 SetAttributes sets Attributes field to given value.
 

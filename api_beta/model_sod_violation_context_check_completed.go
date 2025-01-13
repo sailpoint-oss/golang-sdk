@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -20,9 +20,9 @@ var _ MappedNullable = &SodViolationContextCheckCompleted{}
 // SodViolationContextCheckCompleted An object referencing a completed SOD violation check
 type SodViolationContextCheckCompleted struct {
 	// The status of SOD violation check
-	State NullableString `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 	// The id of the Violation check event
-	Uuid NullableString `json:"uuid,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
 	ViolationCheckResult *SodViolationCheckResult `json:"violationCheckResult,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -46,88 +46,68 @@ func NewSodViolationContextCheckCompletedWithDefaults() *SodViolationContextChec
 	return &this
 }
 
-// GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetState returns the State field value if set, zero value otherwise.
 func (o *SodViolationContextCheckCompleted) GetState() string {
-	if o == nil || IsNil(o.State.Get()) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-	return *o.State.Get()
+	return *o.State
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationContextCheckCompleted) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return o.State.Get(), o.State.IsSet()
+	return o.State, true
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *SodViolationContextCheckCompleted) HasState() bool {
-	if o != nil && o.State.IsSet() {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given NullableString and assigns it to the State field.
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *SodViolationContextCheckCompleted) SetState(v string) {
-	o.State.Set(&v)
-}
-// SetStateNil sets the value for State to be an explicit nil
-func (o *SodViolationContextCheckCompleted) SetStateNil() {
-	o.State.Set(nil)
+	o.State = &v
 }
 
-// UnsetState ensures that no value is present for State, not even an explicit nil
-func (o *SodViolationContextCheckCompleted) UnsetState() {
-	o.State.Unset()
-}
-
-// GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *SodViolationContextCheckCompleted) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
-	return *o.Uuid.Get()
+	return *o.Uuid
 }
 
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationContextCheckCompleted) GetUuidOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
-	return o.Uuid.Get(), o.Uuid.IsSet()
+	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *SodViolationContextCheckCompleted) HasUuid() bool {
-	if o != nil && o.Uuid.IsSet() {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
 	return false
 }
 
-// SetUuid gets a reference to the given NullableString and assigns it to the Uuid field.
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
 func (o *SodViolationContextCheckCompleted) SetUuid(v string) {
-	o.Uuid.Set(&v)
-}
-// SetUuidNil sets the value for Uuid to be an explicit nil
-func (o *SodViolationContextCheckCompleted) SetUuidNil() {
-	o.Uuid.Set(nil)
-}
-
-// UnsetUuid ensures that no value is present for Uuid, not even an explicit nil
-func (o *SodViolationContextCheckCompleted) UnsetUuid() {
-	o.Uuid.Unset()
+	o.Uuid = &v
 }
 
 // GetViolationCheckResult returns the ViolationCheckResult field value if set, zero value otherwise.
@@ -172,11 +152,11 @@ func (o SodViolationContextCheckCompleted) MarshalJSON() ([]byte, error) {
 
 func (o SodViolationContextCheckCompleted) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.State.IsSet() {
-		toSerialize["state"] = o.State.Get()
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
 	}
-	if o.Uuid.IsSet() {
-		toSerialize["uuid"] = o.Uuid.Get()
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ViolationCheckResult) {
 		toSerialize["violationCheckResult"] = o.ViolationCheckResult

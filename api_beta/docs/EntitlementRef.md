@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | Entitlement&#39;s DTO type. | [optional] 
 **Id** | Pointer to **string** | Entitlement&#39;s ID. | [optional] 
-**Name** | Pointer to **NullableString** | Entitlement&#39;s display name. | [optional] 
+**Name** | Pointer to **string** | Entitlement&#39;s display name. | [optional] 
 
 ## Methods
 
@@ -102,16 +102,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### SetNameNil
-
-`func (o *EntitlementRef) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *EntitlementRef) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

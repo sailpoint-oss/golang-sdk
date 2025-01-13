@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Phone** | Pointer to **string** | Non-Employee&#39;s phone. | [optional] 
 **Manager** | Pointer to **string** | The account ID of a valid identity to serve as this non-employee&#39;s manager. | [optional] 
 **SourceId** | Pointer to **string** | Non-Employee&#39;s source id. | [optional] 
-**Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
+**Data** | Pointer to **map[string]string** | Attribute blob/bag for a non-employee. | [optional] 
 **StartDate** | Pointer to **time.Time** | Non-Employee employment start date. | [optional] 
 **EndDate** | Pointer to **time.Time** | Non-Employee employment end date. | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 

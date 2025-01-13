@@ -13,15 +13,12 @@ Name | Type | Description | Notes
 **SourceId** | Pointer to **string** | the id of the source | [optional] 
 **Description** | Pointer to **string** | the description for the entitlment | [optional] 
 **DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
-**Standalone** | **bool** | indicates whether the entitlement is standalone | 
-**Privileged** | **bool** | indicates whether the entitlement is privileged | 
-**CloudGoverned** | **bool** | indicates whether the entitlement is cloud governed | 
 
 ## Methods
 
 ### NewAccessItemEntitlementResponse
 
-`func NewAccessItemEntitlementResponse(standalone bool, privileged bool, cloudGoverned bool, ) *AccessItemEntitlementResponse`
+`func NewAccessItemEntitlementResponse() *AccessItemEntitlementResponse`
 
 NewAccessItemEntitlementResponse instantiates a new AccessItemEntitlementResponse object
 This constructor will assign default values to properties that have it defined,
@@ -260,66 +257,6 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *AccessItemEntitlementResponse) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
-
-### GetStandalone
-
-`func (o *AccessItemEntitlementResponse) GetStandalone() bool`
-
-GetStandalone returns the Standalone field if non-nil, zero value otherwise.
-
-### GetStandaloneOk
-
-`func (o *AccessItemEntitlementResponse) GetStandaloneOk() (*bool, bool)`
-
-GetStandaloneOk returns a tuple with the Standalone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStandalone
-
-`func (o *AccessItemEntitlementResponse) SetStandalone(v bool)`
-
-SetStandalone sets Standalone field to given value.
-
-
-### GetPrivileged
-
-`func (o *AccessItemEntitlementResponse) GetPrivileged() bool`
-
-GetPrivileged returns the Privileged field if non-nil, zero value otherwise.
-
-### GetPrivilegedOk
-
-`func (o *AccessItemEntitlementResponse) GetPrivilegedOk() (*bool, bool)`
-
-GetPrivilegedOk returns a tuple with the Privileged field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivileged
-
-`func (o *AccessItemEntitlementResponse) SetPrivileged(v bool)`
-
-SetPrivileged sets Privileged field to given value.
-
-
-### GetCloudGoverned
-
-`func (o *AccessItemEntitlementResponse) GetCloudGoverned() bool`
-
-GetCloudGoverned returns the CloudGoverned field if non-nil, zero value otherwise.
-
-### GetCloudGovernedOk
-
-`func (o *AccessItemEntitlementResponse) GetCloudGovernedOk() (*bool, bool)`
-
-GetCloudGovernedOk returns a tuple with the CloudGoverned field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudGoverned
-
-`func (o *AccessItemEntitlementResponse) SetCloudGoverned(v bool)`
-
-SetCloudGoverned sets CloudGoverned field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

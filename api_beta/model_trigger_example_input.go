@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -35,9 +35,7 @@ type TriggerExampleInput struct {
 	IdentityDeleted *IdentityDeleted
 	ProvisioningCompleted *ProvisioningCompleted
 	SavedSearchComplete *SavedSearchComplete
-	SourceAccountCreated *SourceAccountCreated
-	SourceAccountDeleted *SourceAccountDeleted
-	SourceAccountUpdated *SourceAccountUpdated
+	SourceAccount *SourceAccount
 	SourceCreated *SourceCreated
 	SourceDeleted *SourceDeleted
 	SourceUpdated *SourceUpdated
@@ -163,24 +161,10 @@ func SavedSearchCompleteAsTriggerExampleInput(v *SavedSearchComplete) TriggerExa
 	}
 }
 
-// SourceAccountCreatedAsTriggerExampleInput is a convenience function that returns SourceAccountCreated wrapped in TriggerExampleInput
-func SourceAccountCreatedAsTriggerExampleInput(v *SourceAccountCreated) TriggerExampleInput {
+// SourceAccountAsTriggerExampleInput is a convenience function that returns SourceAccount wrapped in TriggerExampleInput
+func SourceAccountAsTriggerExampleInput(v *SourceAccount) TriggerExampleInput {
 	return TriggerExampleInput{
-		SourceAccountCreated: v,
-	}
-}
-
-// SourceAccountDeletedAsTriggerExampleInput is a convenience function that returns SourceAccountDeleted wrapped in TriggerExampleInput
-func SourceAccountDeletedAsTriggerExampleInput(v *SourceAccountDeleted) TriggerExampleInput {
-	return TriggerExampleInput{
-		SourceAccountDeleted: v,
-	}
-}
-
-// SourceAccountUpdatedAsTriggerExampleInput is a convenience function that returns SourceAccountUpdated wrapped in TriggerExampleInput
-func SourceAccountUpdatedAsTriggerExampleInput(v *SourceAccountUpdated) TriggerExampleInput {
-	return TriggerExampleInput{
-		SourceAccountUpdated: v,
+		SourceAccount: v,
 	}
 }
 
@@ -506,55 +490,21 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.SavedSearchComplete = nil
 	}
 
-	// try to unmarshal data into SourceAccountCreated
-	err = newStrictDecoder(data).Decode(&dst.SourceAccountCreated)
+	// try to unmarshal data into SourceAccount
+	err = newStrictDecoder(data).Decode(&dst.SourceAccount)
 	if err == nil {
-		jsonSourceAccountCreated, _ := json.Marshal(dst.SourceAccountCreated)
-		if string(jsonSourceAccountCreated) == "{}" { // empty struct
-			dst.SourceAccountCreated = nil
+		jsonSourceAccount, _ := json.Marshal(dst.SourceAccount)
+		if string(jsonSourceAccount) == "{}" { // empty struct
+			dst.SourceAccount = nil
 		} else {
-			if err = validator.Validate(dst.SourceAccountCreated); err != nil {
-				dst.SourceAccountCreated = nil
+			if err = validator.Validate(dst.SourceAccount); err != nil {
+				dst.SourceAccount = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.SourceAccountCreated = nil
-	}
-
-	// try to unmarshal data into SourceAccountDeleted
-	err = newStrictDecoder(data).Decode(&dst.SourceAccountDeleted)
-	if err == nil {
-		jsonSourceAccountDeleted, _ := json.Marshal(dst.SourceAccountDeleted)
-		if string(jsonSourceAccountDeleted) == "{}" { // empty struct
-			dst.SourceAccountDeleted = nil
-		} else {
-			if err = validator.Validate(dst.SourceAccountDeleted); err != nil {
-				dst.SourceAccountDeleted = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.SourceAccountDeleted = nil
-	}
-
-	// try to unmarshal data into SourceAccountUpdated
-	err = newStrictDecoder(data).Decode(&dst.SourceAccountUpdated)
-	if err == nil {
-		jsonSourceAccountUpdated, _ := json.Marshal(dst.SourceAccountUpdated)
-		if string(jsonSourceAccountUpdated) == "{}" { // empty struct
-			dst.SourceAccountUpdated = nil
-		} else {
-			if err = validator.Validate(dst.SourceAccountUpdated); err != nil {
-				dst.SourceAccountUpdated = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.SourceAccountUpdated = nil
+		dst.SourceAccount = nil
 	}
 
 	// try to unmarshal data into SourceCreated
@@ -644,9 +594,7 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.IdentityDeleted = nil
 		dst.ProvisioningCompleted = nil
 		dst.SavedSearchComplete = nil
-		dst.SourceAccountCreated = nil
-		dst.SourceAccountDeleted = nil
-		dst.SourceAccountUpdated = nil
+		dst.SourceAccount = nil
 		dst.SourceCreated = nil
 		dst.SourceDeleted = nil
 		dst.SourceUpdated = nil
@@ -730,16 +678,8 @@ func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SavedSearchComplete)
 	}
 
-	if src.SourceAccountCreated != nil {
-		return json.Marshal(&src.SourceAccountCreated)
-	}
-
-	if src.SourceAccountDeleted != nil {
-		return json.Marshal(&src.SourceAccountDeleted)
-	}
-
-	if src.SourceAccountUpdated != nil {
-		return json.Marshal(&src.SourceAccountUpdated)
+	if src.SourceAccount != nil {
+		return json.Marshal(&src.SourceAccount)
 	}
 
 	if src.SourceCreated != nil {
@@ -834,16 +774,8 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 		return obj.SavedSearchComplete
 	}
 
-	if obj.SourceAccountCreated != nil {
-		return obj.SourceAccountCreated
-	}
-
-	if obj.SourceAccountDeleted != nil {
-		return obj.SourceAccountDeleted
-	}
-
-	if obj.SourceAccountUpdated != nil {
-		return obj.SourceAccountUpdated
+	if obj.SourceAccount != nil {
+		return obj.SourceAccount
 	}
 
 	if obj.SourceCreated != nil {

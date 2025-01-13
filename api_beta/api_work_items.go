@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -541,7 +541,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemExecute(r ApiForwardWorkItemRequest
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -563,7 +563,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemExecute(r ApiForwardWorkItemRequest
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -815,7 +815,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/work-items/completed/count"
+	localVarPath := localBasePath + "/work-items/count/completed"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -922,7 +922,7 @@ func (r ApiGetCountWorkItemsRequest) OwnerId(ownerId string) ApiGetCountWorkItem
 	return r
 }
 
-func (r ApiGetCountWorkItemsRequest) Execute() (*WorkItemsCount, *http.Response, error) {
+func (r ApiGetCountWorkItemsRequest) Execute() ([]WorkItemsCount, *http.Response, error) {
 	return r.ApiService.GetCountWorkItemsExecute(r)
 }
 
@@ -942,13 +942,13 @@ func (a *WorkItemsAPIService) GetCountWorkItems(ctx context.Context) ApiGetCount
 }
 
 // Execute executes the request
-//  @return WorkItemsCount
-func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
+//  @return []WorkItemsCount
+func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) ([]WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *WorkItemsCount
+		localVarReturnValue  []WorkItemsCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountWorkItems")
@@ -1208,7 +1208,7 @@ func (r ApiGetWorkItemsSummaryRequest) OwnerId(ownerId string) ApiGetWorkItemsSu
 	return r
 }
 
-func (r ApiGetWorkItemsSummaryRequest) Execute() (*WorkItemsSummary, *http.Response, error) {
+func (r ApiGetWorkItemsSummaryRequest) Execute() ([]WorkItemsSummary, *http.Response, error) {
 	return r.ApiService.GetWorkItemsSummaryExecute(r)
 }
 
@@ -1228,13 +1228,13 @@ func (a *WorkItemsAPIService) GetWorkItemsSummary(ctx context.Context) ApiGetWor
 }
 
 // Execute executes the request
-//  @return WorkItemsSummary
-func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) (*WorkItemsSummary, *http.Response, error) {
+//  @return []WorkItemsSummary
+func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) ([]WorkItemsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *WorkItemsSummary
+		localVarReturnValue  []WorkItemsSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItemsSummary")

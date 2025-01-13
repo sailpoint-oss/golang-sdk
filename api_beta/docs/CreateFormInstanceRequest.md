@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreatedBy** | [**FormInstanceCreatedBy**](FormInstanceCreatedBy.md) |  | 
 **Expire** | **string** | Expire is required | 
 **FormDefinitionId** | **string** | FormDefinitionID is the id of the form definition that created this form | 
-**FormInput** | Pointer to **map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
+**FormInput** | Pointer to **map[string]map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
 **Recipients** | [**[]FormInstanceRecipient**](FormInstanceRecipient.md) | Recipients is required | 
 **StandAloneForm** | Pointer to **bool** | StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form | [optional] [default to false]
 **State** | Pointer to **string** | State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled | [optional] 
@@ -94,20 +94,20 @@ SetFormDefinitionId sets FormDefinitionId field to given value.
 
 ### GetFormInput
 
-`func (o *CreateFormInstanceRequest) GetFormInput() map[string]interface{}`
+`func (o *CreateFormInstanceRequest) GetFormInput() map[string]map[string]interface{}`
 
 GetFormInput returns the FormInput field if non-nil, zero value otherwise.
 
 ### GetFormInputOk
 
-`func (o *CreateFormInstanceRequest) GetFormInputOk() (*map[string]interface{}, bool)`
+`func (o *CreateFormInstanceRequest) GetFormInputOk() (*map[string]map[string]interface{}, bool)`
 
 GetFormInputOk returns a tuple with the FormInput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormInput
 
-`func (o *CreateFormInstanceRequest) SetFormInput(v map[string]interface{})`
+`func (o *CreateFormInstanceRequest) SetFormInput(v map[string]map[string]interface{})`
 
 SetFormInput sets FormInput field to given value.
 

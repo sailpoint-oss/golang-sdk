@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Identifier of identity in bulk member add request. | 
-**Status** | **int32** |  The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation. The HTTP response status code returned for an individual Governance Group is requested for deletion.  &gt; 201   - Identity is added into Governance Group members list.  &gt; 409   - Identity is already member of  Governance Group.  | 
+**Status** | **string** |  The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.   The HTTP response status code returned for an individual Governance Group is requested for deletion.   &gt; 201   - Identity is added into Governance Group members list.  &gt; 409   - Identity is already member of  Governance Group.  | 
 **Description** | Pointer to **string** | Human readable status description and containing additional context information about success or failures etc.  | [optional] 
 
 ## Methods
 
 ### NewWorkgroupMemberAddItem
 
-`func NewWorkgroupMemberAddItem(id string, status int32, ) *WorkgroupMemberAddItem`
+`func NewWorkgroupMemberAddItem(id string, status string, ) *WorkgroupMemberAddItem`
 
 NewWorkgroupMemberAddItem instantiates a new WorkgroupMemberAddItem object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetId sets Id field to given value.
 
 ### GetStatus
 
-`func (o *WorkgroupMemberAddItem) GetStatus() int32`
+`func (o *WorkgroupMemberAddItem) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *WorkgroupMemberAddItem) GetStatusOk() (*int32, bool)`
+`func (o *WorkgroupMemberAddItem) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *WorkgroupMemberAddItem) SetStatus(v int32)`
+`func (o *WorkgroupMemberAddItem) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 

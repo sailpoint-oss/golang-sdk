@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Dt** | Pointer to **string** | the date of event | [optional] 
 **GovernanceEvent** | Pointer to [**CorrelatedGovernanceEvent**](CorrelatedGovernanceEvent.md) |  | [optional] 
 **Changes** | Pointer to [**[]AttributeChange**](AttributeChange.md) |  | [optional] 
-**AccessRequest** | Pointer to [**AccessRequestResponse1**](AccessRequestResponse1.md) |  | [optional] 
+**AccessRequest** | Pointer to [**AccessRequestResponse**](AccessRequestResponse.md) |  | [optional] 
 **CertificationId** | Pointer to **string** | the id of the certification item | [optional] 
 **CertificationName** | Pointer to **string** | the certification item name | [optional] 
 **SignedDate** | Pointer to **string** | the date ceritification was signed | [optional] 
@@ -191,20 +191,20 @@ HasChanges returns a boolean if a field has been set.
 
 ### GetAccessRequest
 
-`func (o *GetHistoricalIdentityEvents200ResponseInner) GetAccessRequest() AccessRequestResponse1`
+`func (o *GetHistoricalIdentityEvents200ResponseInner) GetAccessRequest() AccessRequestResponse`
 
 GetAccessRequest returns the AccessRequest field if non-nil, zero value otherwise.
 
 ### GetAccessRequestOk
 
-`func (o *GetHistoricalIdentityEvents200ResponseInner) GetAccessRequestOk() (*AccessRequestResponse1, bool)`
+`func (o *GetHistoricalIdentityEvents200ResponseInner) GetAccessRequestOk() (*AccessRequestResponse, bool)`
 
 GetAccessRequestOk returns a tuple with the AccessRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessRequest
 
-`func (o *GetHistoricalIdentityEvents200ResponseInner) SetAccessRequest(v AccessRequestResponse1)`
+`func (o *GetHistoricalIdentityEvents200ResponseInner) SetAccessRequest(v AccessRequestResponse)`
 
 SetAccessRequest sets AccessRequest field to given value.
 

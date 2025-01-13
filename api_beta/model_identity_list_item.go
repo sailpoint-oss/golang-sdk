@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -24,9 +24,9 @@ type IdentityListItem struct {
 	// the display name of the identity
 	DisplayName *string `json:"displayName,omitempty"`
 	// the first name of the identity
-	FirstName NullableString `json:"firstName,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
 	// the last name of the identity
-	LastName NullableString `json:"lastName,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
 	// indicates if an identity is active or not
 	Active *bool `json:"active,omitempty"`
 	// the date when the identity was deleted
@@ -121,88 +121,68 @@ func (o *IdentityListItem) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *IdentityListItem) GetFirstName() string {
-	if o == nil || IsNil(o.FirstName.Get()) {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
-	return *o.FirstName.Get()
+	return *o.FirstName
 }
 
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityListItem) GetFirstNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
-	return o.FirstName.Get(), o.FirstName.IsSet()
+	return o.FirstName, true
 }
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *IdentityListItem) HasFirstName() bool {
-	if o != nil && o.FirstName.IsSet() {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstName gets a reference to the given NullableString and assigns it to the FirstName field.
+// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
 func (o *IdentityListItem) SetFirstName(v string) {
-	o.FirstName.Set(&v)
-}
-// SetFirstNameNil sets the value for FirstName to be an explicit nil
-func (o *IdentityListItem) SetFirstNameNil() {
-	o.FirstName.Set(nil)
+	o.FirstName = &v
 }
 
-// UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
-func (o *IdentityListItem) UnsetFirstName() {
-	o.FirstName.Unset()
-}
-
-// GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *IdentityListItem) GetLastName() string {
-	if o == nil || IsNil(o.LastName.Get()) {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
-	return *o.LastName.Get()
+	return *o.LastName
 }
 
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityListItem) GetLastNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
-	return o.LastName.Get(), o.LastName.IsSet()
+	return o.LastName, true
 }
 
 // HasLastName returns a boolean if a field has been set.
 func (o *IdentityListItem) HasLastName() bool {
-	if o != nil && o.LastName.IsSet() {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastName gets a reference to the given NullableString and assigns it to the LastName field.
+// SetLastName gets a reference to the given string and assigns it to the LastName field.
 func (o *IdentityListItem) SetLastName(v string) {
-	o.LastName.Set(&v)
-}
-// SetLastNameNil sets the value for LastName to be an explicit nil
-func (o *IdentityListItem) SetLastNameNil() {
-	o.LastName.Set(nil)
-}
-
-// UnsetLastName ensures that no value is present for LastName, not even an explicit nil
-func (o *IdentityListItem) UnsetLastName() {
-	o.LastName.Unset()
+	o.LastName = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -295,11 +275,11 @@ func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if o.FirstName.IsSet() {
-		toSerialize["firstName"] = o.FirstName.Get()
+	if !IsNil(o.FirstName) {
+		toSerialize["firstName"] = o.FirstName
 	}
-	if o.LastName.IsSet() {
-		toSerialize["lastName"] = o.LastName.Get()
+	if !IsNil(o.LastName) {
+		toSerialize["lastName"] = o.LastName
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active

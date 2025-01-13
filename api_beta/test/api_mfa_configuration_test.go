@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing MFAConfigurationAPIService
 
@@ -48,18 +48,6 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationAPIService GetMFAKbaConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MFAConfigurationAPI.GetMFAKbaConfig(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MFAConfigurationAPIService GetMFAOktaConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -77,18 +65,6 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MFAConfigurationAPI.SetMFADuoConfig(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MFAConfigurationAPIService SetMFAKBAConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

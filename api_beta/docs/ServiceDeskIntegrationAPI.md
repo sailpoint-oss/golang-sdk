@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**CreateServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#CreateServiceDeskIntegration) | **Post** /service-desk-integrations | Create new Service Desk integration
 [**DeleteServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#DeleteServiceDeskIntegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
 [**GetServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
-[**GetServiceDeskIntegrationList**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationList) | **Get** /service-desk-integrations | List existing Service Desk integrations
-[**GetServiceDeskIntegrationTemplate**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName
-[**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | List Service Desk integration types
+[**GetServiceDeskIntegrationList**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationList) | **Get** /service-desk-integrations | List existing Service Desk Integrations
+[**GetServiceDeskIntegrationTemplate**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
+[**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
 [**GetStatusCheckDetails**](ServiceDeskIntegrationAPI.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
-[**PatchServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Patch a Service Desk Integration
+[**PatchServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
 [**PutServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#PutServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
 [**UpdateStatusCheckDetails**](ServiceDeskIntegrationAPI.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 > []ServiceDeskIntegrationDto GetServiceDeskIntegrationList(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
 
-List existing Service Desk integrations
+List existing Service Desk Integrations
 
 
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 > ServiceDeskIntegrationTemplateDto GetServiceDeskIntegrationTemplate(ctx, scriptName).Execute()
 
-Service Desk integration template by scriptName
+Service Desk integration template by scriptName.
 
 
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 > []ServiceDeskIntegrationTemplateType GetServiceDeskIntegrationTypes(ctx).Execute()
 
-List Service Desk integration types
+Service Desk Integration Types List.
 
 
 
@@ -414,7 +414,7 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -475,7 +475,7 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -491,7 +491,7 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 
 > ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
 
-Patch a Service Desk Integration
+Service Desk Integration Update PATCH
 
 
 
@@ -509,7 +509,7 @@ import (
 
 func main() {
 	id := "anId" // string | ID of the Service Desk integration to update
-	patchServiceDeskIntegrationRequest := *openapiclient.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+	patchServiceDeskIntegrationRequest := *openapiclient.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -539,7 +539,7 @@ Other parameters are passed through a pointer to a apiPatchServiceDeskIntegratio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchServiceDeskIntegrationRequest** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  | 
+ **patchServiceDeskIntegrationRequest** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
 
 ### Return type
 
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -619,7 +619,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -652,7 +652,7 @@ import (
 )
 
 func main() {
-	queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | The modified time check configuration
+	queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -677,7 +677,7 @@ Other parameters are passed through a pointer to a apiUpdateStatusCheckDetailsRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | The modified time check configuration | 
+ **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | the modified time check configuration | 
 
 ### Return type
 
@@ -685,7 +685,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

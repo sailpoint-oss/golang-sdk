@@ -7,19 +7,19 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Item id | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of item | [optional] 
 **Requested** | Pointer to **time.Time** | Date and time item was requested | [optional] 
-**ApprovalStatus** | Pointer to [**NullableAccountActivityApprovalStatus**](AccountActivityApprovalStatus.md) |  | [optional] 
+**ApprovalStatus** | Pointer to [**WorkItemState**](WorkItemState.md) |  | [optional] 
 **ProvisioningStatus** | Pointer to [**ProvisioningState**](ProvisioningState.md) |  | [optional] 
 **RequesterComment** | Pointer to [**NullableComment**](Comment.md) |  | [optional] 
 **ReviewerIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
 **ReviewerComment** | Pointer to [**NullableComment**](Comment.md) |  | [optional] 
-**Operation** | Pointer to [**NullableAccountActivityItemOperation**](AccountActivityItemOperation.md) |  | [optional] 
+**Operation** | Pointer to [**AccountActivityItemOperation**](AccountActivityItemOperation.md) |  | [optional] 
 **Attribute** | Pointer to **NullableString** | Attribute to which account activity applies | [optional] 
 **Value** | Pointer to **NullableString** | Value of attribute | [optional] 
 **NativeIdentity** | Pointer to **NullableString** | Native identity in the target system to which the account activity applies | [optional] 
 **SourceId** | Pointer to **string** | Id of Source to which account activity applies | [optional] 
 **AccountRequestInfo** | Pointer to [**NullableAccountRequestInfo**](AccountRequestInfo.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
 
 ## Methods
 
@@ -117,20 +117,20 @@ HasRequested returns a boolean if a field has been set.
 
 ### GetApprovalStatus
 
-`func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus`
+`func (o *AccountActivityItem) GetApprovalStatus() WorkItemState`
 
 GetApprovalStatus returns the ApprovalStatus field if non-nil, zero value otherwise.
 
 ### GetApprovalStatusOk
 
-`func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool)`
+`func (o *AccountActivityItem) GetApprovalStatusOk() (*WorkItemState, bool)`
 
 GetApprovalStatusOk returns a tuple with the ApprovalStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalStatus
 
-`func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus)`
+`func (o *AccountActivityItem) SetApprovalStatus(v WorkItemState)`
 
 SetApprovalStatus sets ApprovalStatus field to given value.
 
@@ -140,16 +140,6 @@ SetApprovalStatus sets ApprovalStatus field to given value.
 
 HasApprovalStatus returns a boolean if a field has been set.
 
-### SetApprovalStatusNil
-
-`func (o *AccountActivityItem) SetApprovalStatusNil(b bool)`
-
- SetApprovalStatusNil sets the value for ApprovalStatus to be an explicit nil
-
-### UnsetApprovalStatus
-`func (o *AccountActivityItem) UnsetApprovalStatus()`
-
-UnsetApprovalStatus ensures that no value is present for ApprovalStatus, not even an explicit nil
 ### GetProvisioningStatus
 
 `func (o *AccountActivityItem) GetProvisioningStatus() ProvisioningState`
@@ -305,16 +295,6 @@ SetOperation sets Operation field to given value.
 
 HasOperation returns a boolean if a field has been set.
 
-### SetOperationNil
-
-`func (o *AccountActivityItem) SetOperationNil(b bool)`
-
- SetOperationNil sets the value for Operation to be an explicit nil
-
-### UnsetOperation
-`func (o *AccountActivityItem) UnsetOperation()`
-
-UnsetOperation ensures that no value is present for Operation, not even an explicit nil
 ### GetAttribute
 
 `func (o *AccountActivityItem) GetAttribute() string`

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -17,13 +17,13 @@ import (
 // checks if the SourceAccountCorrelationRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceAccountCorrelationRule{}
 
-// SourceAccountCorrelationRule Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
+// SourceAccountCorrelationRule Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
 type SourceAccountCorrelationRule struct {
-	// Type of object being referenced.
+	// The type of object being referenced
 	Type *string `json:"type,omitempty"`
-	// Rule ID.
+	// ID of the rule
 	Id *string `json:"id,omitempty"`
-	// Rule's human-readable display name.
+	// Human-readable display name of the rule
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

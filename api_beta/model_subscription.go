@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -32,7 +32,7 @@ type Subscription struct {
 	TriggerName string `json:"triggerName"`
 	Type SubscriptionType `json:"type"`
 	// Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.
-	ResponseDeadline *string `json:"responseDeadline,omitempty"`
+	ResponseDeadline string `json:"responseDeadline"`
 	HttpConfig *HttpConfig `json:"httpConfig,omitempty"`
 	EventBridgeConfig *EventBridgeConfig `json:"eventBridgeConfig,omitempty"`
 	// Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.
@@ -48,15 +48,14 @@ type _Subscription Subscription
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, enabled bool) *Subscription {
+func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, responseDeadline string, enabled bool) *Subscription {
 	this := Subscription{}
 	this.Id = id
 	this.Name = name
 	this.TriggerId = triggerId
 	this.TriggerName = triggerName
 	this.Type = type_
-	var responseDeadline string = "PT1H"
-	this.ResponseDeadline = &responseDeadline
+	this.ResponseDeadline = responseDeadline
 	this.Enabled = enabled
 	return &this
 }
@@ -67,7 +66,7 @@ func NewSubscription(id string, name string, triggerId string, triggerName strin
 func NewSubscriptionWithDefaults() *Subscription {
 	this := Subscription{}
 	var responseDeadline string = "PT1H"
-	this.ResponseDeadline = &responseDeadline
+	this.ResponseDeadline = responseDeadline
 	var enabled bool = true
 	this.Enabled = enabled
 	return &this
@@ -225,36 +224,28 @@ func (o *Subscription) SetType(v SubscriptionType) {
 	o.Type = v
 }
 
-// GetResponseDeadline returns the ResponseDeadline field value if set, zero value otherwise.
+// GetResponseDeadline returns the ResponseDeadline field value
 func (o *Subscription) GetResponseDeadline() string {
-	if o == nil || IsNil(o.ResponseDeadline) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResponseDeadline
+
+	return o.ResponseDeadline
 }
 
-// GetResponseDeadlineOk returns a tuple with the ResponseDeadline field value if set, nil otherwise
+// GetResponseDeadlineOk returns a tuple with the ResponseDeadline field value
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetResponseDeadlineOk() (*string, bool) {
-	if o == nil || IsNil(o.ResponseDeadline) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResponseDeadline, true
+	return &o.ResponseDeadline, true
 }
 
-// HasResponseDeadline returns a boolean if a field has been set.
-func (o *Subscription) HasResponseDeadline() bool {
-	if o != nil && !IsNil(o.ResponseDeadline) {
-		return true
-	}
-
-	return false
-}
-
-// SetResponseDeadline gets a reference to the given string and assigns it to the ResponseDeadline field.
+// SetResponseDeadline sets field value
 func (o *Subscription) SetResponseDeadline(v string) {
-	o.ResponseDeadline = &v
+	o.ResponseDeadline = v
 }
 
 // GetHttpConfig returns the HttpConfig field value if set, zero value otherwise.
@@ -395,9 +386,7 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	toSerialize["triggerId"] = o.TriggerId
 	toSerialize["triggerName"] = o.TriggerName
 	toSerialize["type"] = o.Type
-	if !IsNil(o.ResponseDeadline) {
-		toSerialize["responseDeadline"] = o.ResponseDeadline
-	}
+	toSerialize["responseDeadline"] = o.ResponseDeadline
 	if !IsNil(o.HttpConfig) {
 		toSerialize["httpConfig"] = o.HttpConfig
 	}
@@ -426,6 +415,7 @@ func (o *Subscription) UnmarshalJSON(data []byte) (err error) {
 		"triggerId",
 		"triggerName",
 		"type",
+		"responseDeadline",
 		"enabled",
 	}
 

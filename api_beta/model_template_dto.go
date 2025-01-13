@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -48,11 +48,9 @@ type TemplateDto struct {
 	// This is auto-generated.
 	Id *string `json:"id,omitempty"`
 	// The time when this template is created. This is auto-generated.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The time when this template was last modified. This is auto-generated.
-	Modified *SailPointTime `json:"modified,omitempty"`
-	SlackTemplate NullableString `json:"slackTemplate,omitempty"`
-	TeamsTemplate NullableString `json:"teamsTemplate,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -465,9 +463,9 @@ func (o *TemplateDto) SetId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *TemplateDto) GetCreated() SailPointTime {
+func (o *TemplateDto) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -475,7 +473,7 @@ func (o *TemplateDto) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateDto) GetCreatedOk() (*SailPointTime, bool) {
+func (o *TemplateDto) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -491,15 +489,15 @@ func (o *TemplateDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *TemplateDto) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *TemplateDto) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *TemplateDto) GetModified() SailPointTime {
+func (o *TemplateDto) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -507,7 +505,7 @@ func (o *TemplateDto) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateDto) GetModifiedOk() (*SailPointTime, bool) {
+func (o *TemplateDto) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -523,93 +521,9 @@ func (o *TemplateDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *TemplateDto) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *TemplateDto) SetModified(v time.Time) {
 	o.Modified = &v
-}
-
-// GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateDto) GetSlackTemplate() string {
-	if o == nil || IsNil(o.SlackTemplate.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.SlackTemplate.Get()
-}
-
-// GetSlackTemplateOk returns a tuple with the SlackTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateDto) GetSlackTemplateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SlackTemplate.Get(), o.SlackTemplate.IsSet()
-}
-
-// HasSlackTemplate returns a boolean if a field has been set.
-func (o *TemplateDto) HasSlackTemplate() bool {
-	if o != nil && o.SlackTemplate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSlackTemplate gets a reference to the given NullableString and assigns it to the SlackTemplate field.
-func (o *TemplateDto) SetSlackTemplate(v string) {
-	o.SlackTemplate.Set(&v)
-}
-// SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
-func (o *TemplateDto) SetSlackTemplateNil() {
-	o.SlackTemplate.Set(nil)
-}
-
-// UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
-func (o *TemplateDto) UnsetSlackTemplate() {
-	o.SlackTemplate.Unset()
-}
-
-// GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateDto) GetTeamsTemplate() string {
-	if o == nil || IsNil(o.TeamsTemplate.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TeamsTemplate.Get()
-}
-
-// GetTeamsTemplateOk returns a tuple with the TeamsTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateDto) GetTeamsTemplateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TeamsTemplate.Get(), o.TeamsTemplate.IsSet()
-}
-
-// HasTeamsTemplate returns a boolean if a field has been set.
-func (o *TemplateDto) HasTeamsTemplate() bool {
-	if o != nil && o.TeamsTemplate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTeamsTemplate gets a reference to the given NullableString and assigns it to the TeamsTemplate field.
-func (o *TemplateDto) SetTeamsTemplate(v string) {
-	o.TeamsTemplate.Set(&v)
-}
-// SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
-func (o *TemplateDto) SetTeamsTemplateNil() {
-	o.TeamsTemplate.Set(nil)
-}
-
-// UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
-func (o *TemplateDto) UnsetTeamsTemplate() {
-	o.TeamsTemplate.Unset()
 }
 
 func (o TemplateDto) MarshalJSON() ([]byte, error) {
@@ -657,12 +571,6 @@ func (o TemplateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
-	}
-	if o.SlackTemplate.IsSet() {
-		toSerialize["slackTemplate"] = o.SlackTemplate.Get()
-	}
-	if o.TeamsTemplate.IsSet() {
-		toSerialize["teamsTemplate"] = o.TeamsTemplate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -723,8 +631,6 @@ func (o *TemplateDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "slackTemplate")
-		delete(additionalProperties, "teamsTemplate")
 		o.AdditionalProperties = additionalProperties
 	}
 

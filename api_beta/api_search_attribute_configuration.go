@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -39,9 +39,9 @@ func (r ApiCreateSearchAttributeConfigRequest) Execute() (map[string]interface{}
 }
 
 /*
-CreateSearchAttributeConfig Create Extended Search Attributes
+CreateSearchAttributeConfig Configure/create extended search attributes in IdentityNow.
 
-Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -131,7 +131,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -210,9 +210,10 @@ func (r ApiDeleteSearchAttributeConfigRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteSearchAttributeConfig Delete Extended Search Attribute
+DeleteSearchAttributeConfig Delete an extended search attribute in IdentityNow.
 
-Delete an extended attribute configuration by name.
+This API accepts an extended attribute name and deletes the corresponding extended attribute configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name Name of the extended search attribute configuration to delete.
@@ -286,7 +287,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +320,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -355,9 +356,9 @@ func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, 
 }
 
 /*
-GetSearchAttributeConfig List Extended Search Attributes
+GetSearchAttributeConfig Retrieve a list of extended search attributes in IdentityNow.
 
-Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
+This API retrieves a list of attribute/application associates currently configured in IdentityNow.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -431,7 +432,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -453,7 +454,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -499,12 +500,13 @@ func (r ApiGetSingleSearchAttributeConfigRequest) Execute() ([]SearchAttributeCo
 }
 
 /*
-GetSingleSearchAttributeConfig Get Extended Search Attribute
+GetSingleSearchAttributeConfig Get the details of a specific extended search attribute in IdentityNow.
 
-Get an extended attribute configuration by name.
+This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the extended search attribute configuration to get.
+ @param name Name of the extended search attribute configuration to delete.
  @return ApiGetSingleSearchAttributeConfigRequest
 */
 func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfig(ctx context.Context, name string) ApiGetSingleSearchAttributeConfigRequest {
@@ -577,7 +579,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigE
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -610,7 +612,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigE
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -662,14 +664,14 @@ func (r ApiPatchSearchAttributeConfigRequest) Execute() (*SearchAttributeConfig,
 }
 
 /*
-PatchSearchAttributeConfig Update Extended Search Attribute
+PatchSearchAttributeConfig Update the details of a specific extended search attribute in IdentityNow.
 
-Update an existing search attribute configuration. 
-You can patch these fields:
-* name  * displayName * applicationAttributes
+This API updates an existing Search Attribute Configuration. The following fields are patchable:
+**name**, **displayName**, **applicationAttributes**
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the extended search attribute configuration to patch.
+ @param name Name of the Search Attribute Configuration to patch.
  @return ApiPatchSearchAttributeConfigRequest
 */
 func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfig(ctx context.Context, name string) ApiPatchSearchAttributeConfigRequest {
@@ -758,7 +760,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -791,7 +793,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

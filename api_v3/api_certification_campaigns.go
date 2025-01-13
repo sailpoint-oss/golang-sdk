@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -51,12 +51,14 @@ This endpoint will return a content error if the campaign is **not past due**.
 
 :::
 
-Use this API to complete a certification campaign. This functionality is provided to admins so that they
+Completes a certification campaign. This is provided to admins so that they
 can complete a certification even if all items have not been completed.
+
+Requires roles of CERT_ADMIN and ORG_ADMIN
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Campaign ID.
+ @param id The campaign id
  @return ApiCompleteCampaignRequest
 */
 func (a *CertificationCampaignsAPIService) CompleteCampaign(ctx context.Context, id string) ApiCompleteCampaignRequest {
@@ -228,8 +230,7 @@ func (r ApiCreateCampaignRequest) Execute() (*Campaign, *http.Response, error) {
 /*
 CreateCampaign Create a campaign
 
-Use this API to create a certification campaign with the information provided in the request body.    
-
+Creates a new Certification Campaign with the information provided in the request body.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignRequest
@@ -393,8 +394,7 @@ func (r ApiCreateCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Re
 /*
 CreateCampaignTemplate Create a Campaign Template
 
-Use this API to create a certification campaign template based on campaign.
-
+Create a campaign Template based on campaign.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
@@ -553,11 +553,10 @@ func (r ApiDeleteCampaignTemplateRequest) Execute() (*http.Response, error) {
 /*
 DeleteCampaignTemplate Delete a Campaign Template
 
-Use this API to delete a certification campaign template by ID.
-
+Deletes a campaign template by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template being deleted.
+ @param id The ID of the campaign template being deleted.
  @return ApiDeleteCampaignTemplateRequest
 */
 func (a *CertificationCampaignsAPIService) DeleteCampaignTemplate(ctx context.Context, id string) ApiDeleteCampaignTemplateRequest {
@@ -709,13 +708,12 @@ func (r ApiDeleteCampaignTemplateScheduleRequest) Execute() (*http.Response, err
 }
 
 /*
-DeleteCampaignTemplateSchedule Delete Campaign Template Schedule
+DeleteCampaignTemplateSchedule Deletes a Campaign Template's Schedule
 
-Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
+Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template whose schedule is being deleted.
+ @param id The ID of the campaign template whose schedule is being deleted.
  @return ApiDeleteCampaignTemplateScheduleRequest
 */
 func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateSchedule(ctx context.Context, id string) ApiDeleteCampaignTemplateScheduleRequest {
@@ -862,7 +860,7 @@ type ApiDeleteCampaignsRequest struct {
 	campaignsDeleteRequest *CampaignsDeleteRequest
 }
 
-// IDs of the campaigns to delete.
+// The ids of the campaigns to delete.
 func (r ApiDeleteCampaignsRequest) CampaignsDeleteRequest(campaignsDeleteRequest CampaignsDeleteRequest) ApiDeleteCampaignsRequest {
 	r.campaignsDeleteRequest = &campaignsDeleteRequest
 	return r
@@ -873,10 +871,9 @@ func (r ApiDeleteCampaignsRequest) Execute() (map[string]interface{}, *http.Resp
 }
 
 /*
-DeleteCampaigns Delete Campaigns
+DeleteCampaigns Deletes Campaigns
 
-Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.
-
+Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignsRequest
@@ -1087,8 +1084,7 @@ func (r ApiGetActiveCampaignsRequest) Execute() ([]GetActiveCampaigns200Response
 /*
 GetActiveCampaigns List Campaigns
 
-Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query.
-
+Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetActiveCampaignsRequest
@@ -1260,27 +1256,19 @@ type ApiGetCampaignRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	detail *string
 }
 
-// Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
-func (r ApiGetCampaignRequest) Detail(detail string) ApiGetCampaignRequest {
-	r.detail = &detail
-	return r
-}
-
-func (r ApiGetCampaignRequest) Execute() (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
+func (r ApiGetCampaignRequest) Execute() (*SlimCampaign, *http.Response, error) {
 	return r.ApiService.GetCampaignExecute(r)
 }
 
 /*
-GetCampaign Get Campaign
+GetCampaign Get a campaign
 
-Use this API to get information for an existing certification campaign by the campaign's ID.
-
+Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign to be retrieved.
+ @param id The ID of the campaign to be retrieved
  @return ApiGetCampaignRequest
 */
 func (a *CertificationCampaignsAPIService) GetCampaign(ctx context.Context, id string) ApiGetCampaignRequest {
@@ -1292,13 +1280,13 @@ func (a *CertificationCampaignsAPIService) GetCampaign(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return GetActiveCampaigns200ResponseInner
-func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
+//  @return SlimCampaign
+func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*SlimCampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetActiveCampaigns200ResponseInner
+		localVarReturnValue  *SlimCampaign
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaign")
@@ -1313,9 +1301,6 @@ func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.detail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "detail", r.detail, "", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1448,11 +1433,11 @@ func (r ApiGetCampaignReportsRequest) Execute() ([]CampaignReport, *http.Respons
 /*
 GetCampaignReports Get Campaign Reports
 
-Use this API to fetch all reports for a certification campaign by campaign ID.
-
+Fetches all reports for a certification campaign by campaign ID.
+Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign whose reports are being fetched.
+ @param id The ID of the campaign for which reports are being fetched.
  @return ApiGetCampaignReportsRequest
 */
 func (a *CertificationCampaignsAPIService) GetCampaignReports(ctx context.Context, id string) ApiGetCampaignReportsRequest {
@@ -1616,8 +1601,8 @@ func (r ApiGetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 /*
 GetCampaignReportsConfig Get Campaign Reports Configuration
 
-Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. 
-
+Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns.
+Requires roles of CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignReportsConfigRequest
@@ -1771,11 +1756,10 @@ func (r ApiGetCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Respo
 /*
 GetCampaignTemplate Get a Campaign Template
 
-Use this API to fetch a certification campaign template by ID.
-
+Fetches a campaign template by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Requested campaign template's ID.
+ @param id The desired campaign template's ID.
  @return ApiGetCampaignTemplateRequest
 */
 func (a *CertificationCampaignsAPIService) GetCampaignTemplate(ctx context.Context, id string) ApiGetCampaignTemplateRequest {
@@ -1938,13 +1922,12 @@ func (r ApiGetCampaignTemplateScheduleRequest) Execute() (*Schedule, *http.Respo
 }
 
 /*
-GetCampaignTemplateSchedule Get Campaign Template Schedule
+GetCampaignTemplateSchedule Gets a Campaign Template's Schedule
 
-Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
+Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template whose schedule is being fetched.
+ @param id The ID of the campaign template whose schedule is being fetched.
  @return ApiGetCampaignTemplateScheduleRequest
 */
 func (a *CertificationCampaignsAPIService) GetCampaignTemplateSchedule(ctx context.Context, id string) ApiGetCampaignTemplateScheduleRequest {
@@ -2096,7 +2079,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetCampaignTemplatesRequest struct {
+type ApiListCampaignTemplatesRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	limit *int32
@@ -2107,52 +2090,51 @@ type ApiGetCampaignTemplatesRequest struct {
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetCampaignTemplatesRequest) Limit(limit int32) ApiGetCampaignTemplatesRequest {
+func (r ApiListCampaignTemplatesRequest) Limit(limit int32) ApiListCampaignTemplatesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetCampaignTemplatesRequest) Offset(offset int32) ApiGetCampaignTemplatesRequest {
+func (r ApiListCampaignTemplatesRequest) Offset(offset int32) ApiListCampaignTemplatesRequest {
 	r.offset = &offset
 	return r
 }
 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetCampaignTemplatesRequest) Count(count bool) ApiGetCampaignTemplatesRequest {
+func (r ApiListCampaignTemplatesRequest) Count(count bool) ApiListCampaignTemplatesRequest {
 	r.count = &count
 	return r
 }
 
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
-func (r ApiGetCampaignTemplatesRequest) Sorters(sorters string) ApiGetCampaignTemplatesRequest {
+func (r ApiListCampaignTemplatesRequest) Sorters(sorters string) ApiListCampaignTemplatesRequest {
 	r.sorters = &sorters
 	return r
 }
 
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw*
-func (r ApiGetCampaignTemplatesRequest) Filters(filters string) ApiGetCampaignTemplatesRequest {
+func (r ApiListCampaignTemplatesRequest) Filters(filters string) ApiListCampaignTemplatesRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ApiGetCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Response, error) {
-	return r.ApiService.GetCampaignTemplatesExecute(r)
+func (r ApiListCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Response, error) {
+	return r.ApiService.ListCampaignTemplatesExecute(r)
 }
 
 /*
-GetCampaignTemplates List Campaign Templates
+ListCampaignTemplates List Campaign Templates
 
-Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.
+Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
 
-The API returns all campaign templates matching the query parameters. 
-
+All CampaignTemplates matching the query params
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetCampaignTemplatesRequest
+ @return ApiListCampaignTemplatesRequest
 */
-func (a *CertificationCampaignsAPIService) GetCampaignTemplates(ctx context.Context) ApiGetCampaignTemplatesRequest {
-	return ApiGetCampaignTemplatesRequest{
+func (a *CertificationCampaignsAPIService) ListCampaignTemplates(ctx context.Context) ApiListCampaignTemplatesRequest {
+	return ApiListCampaignTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2160,7 +2142,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplates(ctx context.Cont
 
 // Execute executes the request
 //  @return []CampaignTemplate
-func (a *CertificationCampaignsAPIService) GetCampaignTemplatesExecute(r ApiGetCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) ListCampaignTemplatesExecute(r ApiListCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2168,7 +2150,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplatesExecute(r ApiGetC
 		localVarReturnValue  []CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.ListCampaignTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2330,8 +2312,7 @@ func (r ApiMoveRequest) Execute() (*CertificationTask, *http.Response, error) {
 /*
 Move Reassign Certifications
 
-This API reassigns the specified certifications from one identity to another.    
-
+This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification campaign ID
@@ -2511,11 +2492,10 @@ func (r ApiPatchCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Res
 /*
 PatchCampaignTemplate Update a Campaign Template
 
-Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
+Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template being modified.
+ @param id The ID of the campaign template being modified.
  @return ApiPatchCampaignTemplateRequest
 */
 func (a *CertificationCampaignsAPIService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
@@ -2678,7 +2658,7 @@ type ApiSetCampaignReportsConfigRequest struct {
 	campaignReportsConfig *CampaignReportsConfig
 }
 
-// Campaign report configuration.
+// Campaign Report Configuration
 func (r ApiSetCampaignReportsConfigRequest) CampaignReportsConfig(campaignReportsConfig CampaignReportsConfig) ApiSetCampaignReportsConfigRequest {
 	r.campaignReportsConfig = &campaignReportsConfig
 	return r
@@ -2691,8 +2671,8 @@ func (r ApiSetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 /*
 SetCampaignReportsConfig Set Campaign Reports Configuration
 
-Use this API to overwrite the configuration for campaign reports. 
-
+Overwrites configuration for campaign reports.
+Requires roles CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
@@ -2855,13 +2835,12 @@ func (r ApiSetCampaignTemplateScheduleRequest) Execute() (*http.Response, error)
 }
 
 /*
-SetCampaignTemplateSchedule Set Campaign Template Schedule
+SetCampaignTemplateSchedule Sets a Campaign Template's Schedule
 
-Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.
-
+Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template being scheduled.
+ @param id The ID of the campaign template being scheduled.
  @return ApiSetCampaignTemplateScheduleRequest
 */
 func (a *CertificationCampaignsAPIService) SetCampaignTemplateSchedule(ctx context.Context, id string) ApiSetCampaignTemplateScheduleRequest {
@@ -3024,11 +3003,11 @@ func (r ApiStartCampaignRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 StartCampaign Activate a Campaign
 
-Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.
-
+Submits a job to activate the campaign with the given Id. The campaign must be staged.
+Requires roles of CERT_ADMIN and ORG_ADMIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Campaign ID.
+ @param id The campaign id
  @return ApiStartCampaignRequest
 */
 func (a *CertificationCampaignsAPIService) StartCampaign(ctx context.Context, id string) ApiStartCampaignRequest {
@@ -3195,11 +3174,11 @@ func (r ApiStartCampaignRemediationScanRequest) Execute() (map[string]interface{
 /*
 StartCampaignRemediationScan Run Campaign Remediation Scan
 
-Use this API to run a remediation scan task for a certification campaign.
-
+Kicks off remediation scan task for a certification campaign.
+Requires roles of CERT_ADMIN and ORG_ADMIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign the remediation scan is being run for.
+ @param id The ID of the campaign for which remediation scan is being run.
  @return ApiStartCampaignRemediationScanRequest
 */
 func (a *CertificationCampaignsAPIService) StartCampaignRemediationScan(ctx context.Context, id string) ApiStartCampaignRemediationScanRequest {
@@ -3365,12 +3344,12 @@ func (r ApiStartCampaignReportRequest) Execute() (map[string]interface{}, *http.
 /*
 StartCampaignReport Run Campaign Report
 
-Use this API to run a report for a certification campaign.
-
+Runs a report for a certification campaign.
+Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign the report is being run for.
- @param type_ Type of the report to run.
+ @param id The ID of the campaign for which report is being run.
+ @param type_ The type of the report to run.
  @return ApiStartCampaignReportRequest
 */
 func (a *CertificationCampaignsAPIService) StartCampaignReport(ctx context.Context, id string, type_ ReportType) ApiStartCampaignReportRequest {
@@ -3537,21 +3516,14 @@ func (r ApiStartGenerateCampaignTemplateRequest) Execute() (*CampaignReference, 
 /*
 StartGenerateCampaignTemplate Generate a Campaign from Template
 
-Use this API to generate a new certification campaign from a campaign template.
-
-The campaign object contained in the template has special formatting applied to its name and description
-fields that determine the generated campaign's name/description. Placeholders in those fields are
-formatted with the current date and time upon generation.
-
-Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For
-example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a
-campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
-
+Generates a new campaign from a campaign template.
+The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
+Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, "%Y" will insert the current year; a campaign template named "Campaign for %y" would generate a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
 Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
-
+Requires roles ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template to use for generation.
+ @param id The ID of the campaign template to use for generation.
  @return ApiStartGenerateCampaignTemplateRequest
 */
 func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplate(ctx context.Context, id string) ApiStartGenerateCampaignTemplateRequest {
@@ -3699,7 +3671,7 @@ type ApiUpdateCampaignRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
 func (r ApiUpdateCampaignRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateCampaignRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -3712,11 +3684,10 @@ func (r ApiUpdateCampaignRequest) Execute() (*SlimCampaign, *http.Response, erro
 /*
 UpdateCampaign Update a Campaign
 
-Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
+Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template being modified.
+ @param id The ID of the campaign template being modified.
  @return ApiUpdateCampaignRequest
 */
 func (a *CertificationCampaignsAPIService) UpdateCampaign(ctx context.Context, id string) ApiUpdateCampaignRequest {

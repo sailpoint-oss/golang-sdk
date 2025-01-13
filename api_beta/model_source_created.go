@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type SourceCreated struct {
 	// The connection type.
 	Type string `json:"type"`
 	// The date and time the source was created.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceCreatedActor `json:"actor"`
@@ -41,7 +41,7 @@ type _SourceCreated SourceCreated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceCreated(id string, name string, type_ string, created SailPointTime, connector string, actor SourceCreatedActor) *SourceCreated {
+func NewSourceCreated(id string, name string, type_ string, created time.Time, connector string, actor SourceCreatedActor) *SourceCreated {
 	this := SourceCreated{}
 	this.Id = id
 	this.Name = name
@@ -133,9 +133,9 @@ func (o *SourceCreated) SetType(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *SourceCreated) GetCreated() SailPointTime {
+func (o *SourceCreated) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *SourceCreated) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *SourceCreated) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SourceCreated) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *SourceCreated) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *SourceCreated) SetCreated(v SailPointTime) {
+func (o *SourceCreated) SetCreated(v time.Time) {
 	o.Created = v
 }
 

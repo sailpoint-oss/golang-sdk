@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -34,7 +34,7 @@ func (r ApiGetPublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, *ht
 /*
 GetPublicIdentityConfig Get the Public Identities Configuration
 
-Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
+Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentityConfigRequest
@@ -193,7 +193,7 @@ func (r ApiUpdatePublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, 
 /*
 UpdatePublicIdentityConfig Update the Public Identities Configuration
 
-Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
+Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePublicIdentityConfigRequest

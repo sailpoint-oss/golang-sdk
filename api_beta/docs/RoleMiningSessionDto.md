@@ -10,8 +10,10 @@ Name | Type | Description | Notes
 **MinNumIdentitiesInPotentialRole** | Pointer to **NullableInt32** | Minimum number of identities in a potential role | [optional] 
 **PotentialRoleCount** | Pointer to **int32** | Number of potential roles | [optional] 
 **PotentialRolesReadyCount** | Pointer to **int32** | Number of potential roles ready | [optional] 
+**Status** | Pointer to [**RoleMiningSessionStatus**](RoleMiningSessionStatus.md) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
 **EmailRecipientId** | Pointer to **NullableString** | The id of the user who will receive an email about the role mining session | [optional] 
+**CreatedBy** | Pointer to [**RoleMiningSessionDtoCreatedBy**](RoleMiningSessionDtoCreatedBy.md) |  | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities in the population which meet the search criteria or identity list provided | [optional] 
 **Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] [default to false]
 **Name** | Pointer to **NullableString** | The session&#39;s saved name | [optional] 
@@ -215,6 +217,31 @@ SetPotentialRolesReadyCount sets PotentialRolesReadyCount field to given value.
 
 HasPotentialRolesReadyCount returns a boolean if a field has been set.
 
+### GetStatus
+
+`func (o *RoleMiningSessionDto) GetStatus() RoleMiningSessionStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *RoleMiningSessionDto) GetStatusOk() (*RoleMiningSessionStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *RoleMiningSessionDto) SetStatus(v RoleMiningSessionStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *RoleMiningSessionDto) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *RoleMiningSessionDto) GetType() RoleMiningRoleType`
@@ -275,6 +302,31 @@ HasEmailRecipientId returns a boolean if a field has been set.
 `func (o *RoleMiningSessionDto) UnsetEmailRecipientId()`
 
 UnsetEmailRecipientId ensures that no value is present for EmailRecipientId, not even an explicit nil
+### GetCreatedBy
+
+`func (o *RoleMiningSessionDto) GetCreatedBy() RoleMiningSessionDtoCreatedBy`
+
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+
+### GetCreatedByOk
+
+`func (o *RoleMiningSessionDto) GetCreatedByOk() (*RoleMiningSessionDtoCreatedBy, bool)`
+
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *RoleMiningSessionDto) SetCreatedBy(v RoleMiningSessionDtoCreatedBy)`
+
+SetCreatedBy sets CreatedBy field to given value.
+
+### HasCreatedBy
+
+`func (o *RoleMiningSessionDto) HasCreatedBy() bool`
+
+HasCreatedBy returns a boolean if a field has been set.
+
 ### GetIdentityCount
 
 `func (o *RoleMiningSessionDto) GetIdentityCount() int32`

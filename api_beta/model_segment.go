@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Segment type satisfies the MappedNullable interface at compile time
@@ -25,13 +25,13 @@ type Segment struct {
 	// The segment's business name.
 	Name *string `json:"name,omitempty"`
 	// The time when the segment is created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The time when the segment is modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
 	Owner NullableOwnerReferenceSegments `json:"owner,omitempty"`
-	VisibilityCriteria NullableVisibilityCriteria `json:"visibilityCriteria,omitempty"`
+	VisibilityCriteria *VisibilityCriteria `json:"visibilityCriteria,omitempty"`
 	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -125,9 +125,9 @@ func (o *Segment) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Segment) GetCreated() SailPointTime {
+func (o *Segment) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -135,7 +135,7 @@ func (o *Segment) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Segment) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Segment) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -151,15 +151,15 @@ func (o *Segment) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Segment) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Segment) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Segment) GetModified() SailPointTime {
+func (o *Segment) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -167,7 +167,7 @@ func (o *Segment) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Segment) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Segment) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -183,8 +183,8 @@ func (o *Segment) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Segment) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Segment) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -262,46 +262,36 @@ func (o *Segment) UnsetOwner() {
 	o.Owner.Unset()
 }
 
-// GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise.
 func (o *Segment) GetVisibilityCriteria() VisibilityCriteria {
-	if o == nil || IsNil(o.VisibilityCriteria.Get()) {
+	if o == nil || IsNil(o.VisibilityCriteria) {
 		var ret VisibilityCriteria
 		return ret
 	}
-	return *o.VisibilityCriteria.Get()
+	return *o.VisibilityCriteria
 }
 
 // GetVisibilityCriteriaOk returns a tuple with the VisibilityCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Segment) GetVisibilityCriteriaOk() (*VisibilityCriteria, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VisibilityCriteria) {
 		return nil, false
 	}
-	return o.VisibilityCriteria.Get(), o.VisibilityCriteria.IsSet()
+	return o.VisibilityCriteria, true
 }
 
 // HasVisibilityCriteria returns a boolean if a field has been set.
 func (o *Segment) HasVisibilityCriteria() bool {
-	if o != nil && o.VisibilityCriteria.IsSet() {
+	if o != nil && !IsNil(o.VisibilityCriteria) {
 		return true
 	}
 
 	return false
 }
 
-// SetVisibilityCriteria gets a reference to the given NullableVisibilityCriteria and assigns it to the VisibilityCriteria field.
+// SetVisibilityCriteria gets a reference to the given VisibilityCriteria and assigns it to the VisibilityCriteria field.
 func (o *Segment) SetVisibilityCriteria(v VisibilityCriteria) {
-	o.VisibilityCriteria.Set(&v)
-}
-// SetVisibilityCriteriaNil sets the value for VisibilityCriteria to be an explicit nil
-func (o *Segment) SetVisibilityCriteriaNil() {
-	o.VisibilityCriteria.Set(nil)
-}
-
-// UnsetVisibilityCriteria ensures that no value is present for VisibilityCriteria, not even an explicit nil
-func (o *Segment) UnsetVisibilityCriteria() {
-	o.VisibilityCriteria.Unset()
+	o.VisibilityCriteria = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -364,8 +354,8 @@ func (o Segment) ToMap() (map[string]interface{}, error) {
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if o.VisibilityCriteria.IsSet() {
-		toSerialize["visibilityCriteria"] = o.VisibilityCriteria.Get()
+	if !IsNil(o.VisibilityCriteria) {
+		toSerialize["visibilityCriteria"] = o.VisibilityCriteria
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active

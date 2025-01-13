@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | Pointer to **string** | The operation to be performed | [optional] 
 **Path** | **string** | A string JSON Pointer representing the target path to an element to be affected by the operation | 
-**Value** | Pointer to [**UpdateMultiHostSourcesRequestInnerValue**](UpdateMultiHostSourcesRequestInnerValue.md) |  | [optional] 
+**Value** | Pointer to [**JsonPatchOperationValue**](JsonPatchOperationValue.md) |  | [optional] 
 
 ## Methods
 
@@ -74,20 +74,20 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *PatchPotentialRoleRequestInner) GetValue() UpdateMultiHostSourcesRequestInnerValue`
+`func (o *PatchPotentialRoleRequestInner) GetValue() JsonPatchOperationValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *PatchPotentialRoleRequestInner) GetValueOk() (*UpdateMultiHostSourcesRequestInnerValue, bool)`
+`func (o *PatchPotentialRoleRequestInner) GetValueOk() (*JsonPatchOperationValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *PatchPotentialRoleRequestInner) SetValue(v UpdateMultiHostSourcesRequestInnerValue)`
+`func (o *PatchPotentialRoleRequestInner) SetValue(v JsonPatchOperationValue)`
 
 SetValue sets Value field to given value.
 

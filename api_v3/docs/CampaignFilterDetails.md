@@ -4,19 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the campaign filter | 
-**Name** | **string** | Campaign filter name. | 
-**Description** | Pointer to **string** | Campaign filter description. | [optional] 
-**Owner** | **NullableString** | Owner of the filter. This field automatically populates at creation time with the current user. | 
-**Mode** | **map[string]interface{}** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
+**Id** | Pointer to **string** | Id of the campaign filter | [optional] 
+**Name** | **string** | This is campaign filter&#39;s name. | 
+**Description** | **string** | This is campaign filter&#39;s description. | 
+**Owner** | **string** | The owner of this filter. This field is automatically populated at creation time with the current user. | 
+**Mode** | **map[string]interface{}** | The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria. | 
 **CriteriaList** | Pointer to [**[]CampaignFilterDetailsCriteriaListInner**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
-**IsSystemFilter** | **bool** | If true, the filter is created by the system. If false, the filter is created by a user. | [default to false]
 
 ## Methods
 
 ### NewCampaignFilterDetails
 
-`func NewCampaignFilterDetails(id string, name string, owner NullableString, mode map[string]interface{}, isSystemFilter bool, ) *CampaignFilterDetails`
+`func NewCampaignFilterDetails(name string, description string, owner string, mode map[string]interface{}, ) *CampaignFilterDetails`
 
 NewCampaignFilterDetails instantiates a new CampaignFilterDetails object
 This constructor will assign default values to properties that have it defined,
@@ -50,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *CampaignFilterDetails) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -90,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *CampaignFilterDetails) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetOwner
 
@@ -116,16 +115,6 @@ and a boolean to check if the value has been set.
 SetOwner sets Owner field to given value.
 
 
-### SetOwnerNil
-
-`func (o *CampaignFilterDetails) SetOwnerNil(b bool)`
-
- SetOwnerNil sets the value for Owner to be an explicit nil
-
-### UnsetOwner
-`func (o *CampaignFilterDetails) UnsetOwner()`
-
-UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetMode
 
 `func (o *CampaignFilterDetails) GetMode() map[string]interface{}`
@@ -170,26 +159,6 @@ SetCriteriaList sets CriteriaList field to given value.
 `func (o *CampaignFilterDetails) HasCriteriaList() bool`
 
 HasCriteriaList returns a boolean if a field has been set.
-
-### GetIsSystemFilter
-
-`func (o *CampaignFilterDetails) GetIsSystemFilter() bool`
-
-GetIsSystemFilter returns the IsSystemFilter field if non-nil, zero value otherwise.
-
-### GetIsSystemFilterOk
-
-`func (o *CampaignFilterDetails) GetIsSystemFilterOk() (*bool, bool)`
-
-GetIsSystemFilterOk returns a tuple with the IsSystemFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsSystemFilter
-
-`func (o *CampaignFilterDetails) SetIsSystemFilter(v bool)`
-
-SetIsSystemFilter sets IsSystemFilter field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

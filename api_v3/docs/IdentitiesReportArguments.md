@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CorrelatedOnly** | Pointer to **bool** | Flag to specify if only correlated identities are included in report. | [optional] [default to false]
+**CorrelatedOnly** | Pointer to **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [optional] [default to false]
+**DefaultS3Bucket** | **bool** | Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and &#39;s3Bucket&#39; argument is null or absent there will be default s3Bucket assigned to the report. | 
+**S3Bucket** | Pointer to **string** | If you want to be specific you could use this argument with defaultS3Bucket &#x3D; false. | [optional] 
 
 ## Methods
 
 ### NewIdentitiesReportArguments
 
-`func NewIdentitiesReportArguments() *IdentitiesReportArguments`
+`func NewIdentitiesReportArguments(defaultS3Bucket bool, ) *IdentitiesReportArguments`
 
 NewIdentitiesReportArguments instantiates a new IdentitiesReportArguments object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +51,51 @@ SetCorrelatedOnly sets CorrelatedOnly field to given value.
 `func (o *IdentitiesReportArguments) HasCorrelatedOnly() bool`
 
 HasCorrelatedOnly returns a boolean if a field has been set.
+
+### GetDefaultS3Bucket
+
+`func (o *IdentitiesReportArguments) GetDefaultS3Bucket() bool`
+
+GetDefaultS3Bucket returns the DefaultS3Bucket field if non-nil, zero value otherwise.
+
+### GetDefaultS3BucketOk
+
+`func (o *IdentitiesReportArguments) GetDefaultS3BucketOk() (*bool, bool)`
+
+GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultS3Bucket
+
+`func (o *IdentitiesReportArguments) SetDefaultS3Bucket(v bool)`
+
+SetDefaultS3Bucket sets DefaultS3Bucket field to given value.
+
+
+### GetS3Bucket
+
+`func (o *IdentitiesReportArguments) GetS3Bucket() string`
+
+GetS3Bucket returns the S3Bucket field if non-nil, zero value otherwise.
+
+### GetS3BucketOk
+
+`func (o *IdentitiesReportArguments) GetS3BucketOk() (*string, bool)`
+
+GetS3BucketOk returns a tuple with the S3Bucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3Bucket
+
+`func (o *IdentitiesReportArguments) SetS3Bucket(v string)`
+
+SetS3Bucket sets S3Bucket field to given value.
+
+### HasS3Bucket
+
+`func (o *IdentitiesReportArguments) HasS3Bucket() bool`
+
+HasS3Bucket returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

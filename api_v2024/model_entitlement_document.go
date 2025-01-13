@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -157,9 +157,9 @@ func (o *EntitlementDocument) SetType(v DocumentType) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EntitlementDocument) GetModified() SailPointTime {
+func (o *EntitlementDocument) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -168,7 +168,7 @@ func (o *EntitlementDocument) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EntitlementDocument) GetModifiedOk() (*SailPointTime, bool) {
+func (o *EntitlementDocument) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *EntitlementDocument) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *EntitlementDocument) SetModified(v SailPointTime) {
+func (o *EntitlementDocument) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -423,9 +423,9 @@ func (o *EntitlementDocument) SetCloudGoverned(v bool) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EntitlementDocument) GetCreated() SailPointTime {
+func (o *EntitlementDocument) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -434,7 +434,7 @@ func (o *EntitlementDocument) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EntitlementDocument) GetCreatedOk() (*SailPointTime, bool) {
+func (o *EntitlementDocument) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -451,7 +451,7 @@ func (o *EntitlementDocument) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *EntitlementDocument) SetCreated(v SailPointTime) {
+func (o *EntitlementDocument) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil

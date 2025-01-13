@@ -9,14 +9,12 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | the role display name | [optional] 
 **Description** | Pointer to **string** | the description for the role | [optional] 
 **SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
-**RemoveDate** | Pointer to **string** | the date the role is no longer assigned to the specified identity | [optional] 
-**Revocable** | **bool** | indicates whether the role is revocable | 
 
 ## Methods
 
 ### NewAccessItemRoleResponse
 
-`func NewAccessItemRoleResponse(revocable bool, ) *AccessItemRoleResponse`
+`func NewAccessItemRoleResponse() *AccessItemRoleResponse`
 
 NewAccessItemRoleResponse instantiates a new AccessItemRoleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -155,51 +153,6 @@ SetSourceName sets SourceName field to given value.
 `func (o *AccessItemRoleResponse) HasSourceName() bool`
 
 HasSourceName returns a boolean if a field has been set.
-
-### GetRemoveDate
-
-`func (o *AccessItemRoleResponse) GetRemoveDate() string`
-
-GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
-
-### GetRemoveDateOk
-
-`func (o *AccessItemRoleResponse) GetRemoveDateOk() (*string, bool)`
-
-GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRemoveDate
-
-`func (o *AccessItemRoleResponse) SetRemoveDate(v string)`
-
-SetRemoveDate sets RemoveDate field to given value.
-
-### HasRemoveDate
-
-`func (o *AccessItemRoleResponse) HasRemoveDate() bool`
-
-HasRemoveDate returns a boolean if a field has been set.
-
-### GetRevocable
-
-`func (o *AccessItemRoleResponse) GetRevocable() bool`
-
-GetRevocable returns the Revocable field if non-nil, zero value otherwise.
-
-### GetRevocableOk
-
-`func (o *AccessItemRoleResponse) GetRevocableOk() (*bool, bool)`
-
-GetRevocableOk returns a tuple with the Revocable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRevocable
-
-`func (o *AccessItemRoleResponse) SetRevocable(v bool)`
-
-SetRevocable sets Revocable field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

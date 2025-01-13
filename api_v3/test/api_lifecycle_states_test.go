@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
 Testing LifecycleStatesAPIService
 
@@ -66,13 +66,13 @@ func Test_api_v3_LifecycleStatesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesAPIService GetLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

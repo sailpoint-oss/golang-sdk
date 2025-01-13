@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -23,26 +23,25 @@ var _ MappedNullable = &Campaign{}
 type Campaign struct {
 	// Id of the campaign
 	Id *string `json:"id,omitempty"`
-	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
+	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
 	Name string `json:"name"`
-	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
+	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
 	Description string `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
-	Deadline *SailPointTime `json:"deadline,omitempty"`
+	Deadline *time.Time `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
 	// Enables email notification for this campaign
 	EmailNotificationEnabled *bool `json:"emailNotificationEnabled,omitempty"`
 	// Allows auto revoke for this campaign
 	AutoRevokeAllowed *bool `json:"autoRevokeAllowed,omitempty"`
-	// Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. 
+	// Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.
 	RecommendationsEnabled *bool `json:"recommendationsEnabled,omitempty"`
 	// The campaign's current status.
 	Status *string `json:"status,omitempty"`
-	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
-	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
+	CorrelatedStatus *FullcampaignAllOfCorrelatedStatus `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
 	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
 	// The number of completed certifications in this campaign.
@@ -50,14 +49,13 @@ type Campaign struct {
 	// A list of errors and warnings that have accumulated.
 	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	// Modified time of the campaign
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	Filter *FullcampaignAllOfFilter `json:"filter,omitempty"`
 	// Determines if comments on sunset date changes are required.
 	SunsetCommentsRequired *bool `json:"sunsetCommentsRequired,omitempty"`
 	SourceOwnerCampaignInfo *FullcampaignAllOfSourceOwnerCampaignInfo `json:"sourceOwnerCampaignInfo,omitempty"`
 	SearchCampaignInfo *FullcampaignAllOfSearchCampaignInfo `json:"searchCampaignInfo,omitempty"`
 	RoleCompositionCampaignInfo *FullcampaignAllOfRoleCompositionCampaignInfo `json:"roleCompositionCampaignInfo,omitempty"`
-	MachineAccountCampaignInfo *FullcampaignAllOfMachineAccountCampaignInfo `json:"machineAccountCampaignInfo,omitempty"`
 	// A list of sources in the campaign that contain \\\"orphan entitlements\\\" (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented).
 	SourcesWithOrphanEntitlements []FullcampaignAllOfSourcesWithOrphanEntitlements `json:"sourcesWithOrphanEntitlements,omitempty"`
 	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
@@ -184,9 +182,9 @@ func (o *Campaign) SetDescription(v string) {
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
-func (o *Campaign) GetDeadline() SailPointTime {
+func (o *Campaign) GetDeadline() time.Time {
 	if o == nil || IsNil(o.Deadline) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Deadline
@@ -194,7 +192,7 @@ func (o *Campaign) GetDeadline() SailPointTime {
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign) GetDeadlineOk() (*SailPointTime, bool) {
+func (o *Campaign) GetDeadlineOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
@@ -210,8 +208,8 @@ func (o *Campaign) HasDeadline() bool {
 	return false
 }
 
-// SetDeadline gets a reference to the given SailPointTime and assigns it to the Deadline field.
-func (o *Campaign) SetDeadline(v SailPointTime) {
+// SetDeadline gets a reference to the given time.Time and assigns it to the Deadline field.
+func (o *Campaign) SetDeadline(v time.Time) {
 	o.Deadline = &v
 }
 
@@ -368,9 +366,9 @@ func (o *Campaign) SetStatus(v string) {
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
-func (o *Campaign) GetCorrelatedStatus() string {
+func (o *Campaign) GetCorrelatedStatus() FullcampaignAllOfCorrelatedStatus {
 	if o == nil || IsNil(o.CorrelatedStatus) {
-		var ret string
+		var ret FullcampaignAllOfCorrelatedStatus
 		return ret
 	}
 	return *o.CorrelatedStatus
@@ -378,7 +376,7 @@ func (o *Campaign) GetCorrelatedStatus() string {
 
 // GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign) GetCorrelatedStatusOk() (*string, bool) {
+func (o *Campaign) GetCorrelatedStatusOk() (*FullcampaignAllOfCorrelatedStatus, bool) {
 	if o == nil || IsNil(o.CorrelatedStatus) {
 		return nil, false
 	}
@@ -394,15 +392,15 @@ func (o *Campaign) HasCorrelatedStatus() bool {
 	return false
 }
 
-// SetCorrelatedStatus gets a reference to the given string and assigns it to the CorrelatedStatus field.
-func (o *Campaign) SetCorrelatedStatus(v string) {
+// SetCorrelatedStatus gets a reference to the given FullcampaignAllOfCorrelatedStatus and assigns it to the CorrelatedStatus field.
+func (o *Campaign) SetCorrelatedStatus(v FullcampaignAllOfCorrelatedStatus) {
 	o.CorrelatedStatus = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Campaign) GetCreated() SailPointTime {
+func (o *Campaign) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -410,7 +408,7 @@ func (o *Campaign) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Campaign) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -426,8 +424,8 @@ func (o *Campaign) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Campaign) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Campaign) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -528,9 +526,9 @@ func (o *Campaign) SetAlerts(v []CampaignAlert) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Campaign) GetModified() SailPointTime {
+func (o *Campaign) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -538,7 +536,7 @@ func (o *Campaign) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Campaign) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -554,8 +552,8 @@ func (o *Campaign) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Campaign) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Campaign) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -719,38 +717,6 @@ func (o *Campaign) SetRoleCompositionCampaignInfo(v FullcampaignAllOfRoleComposi
 	o.RoleCompositionCampaignInfo = &v
 }
 
-// GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field value if set, zero value otherwise.
-func (o *Campaign) GetMachineAccountCampaignInfo() FullcampaignAllOfMachineAccountCampaignInfo {
-	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
-		var ret FullcampaignAllOfMachineAccountCampaignInfo
-		return ret
-	}
-	return *o.MachineAccountCampaignInfo
-}
-
-// GetMachineAccountCampaignInfoOk returns a tuple with the MachineAccountCampaignInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Campaign) GetMachineAccountCampaignInfoOk() (*FullcampaignAllOfMachineAccountCampaignInfo, bool) {
-	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
-		return nil, false
-	}
-	return o.MachineAccountCampaignInfo, true
-}
-
-// HasMachineAccountCampaignInfo returns a boolean if a field has been set.
-func (o *Campaign) HasMachineAccountCampaignInfo() bool {
-	if o != nil && !IsNil(o.MachineAccountCampaignInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetMachineAccountCampaignInfo gets a reference to the given FullcampaignAllOfMachineAccountCampaignInfo and assigns it to the MachineAccountCampaignInfo field.
-func (o *Campaign) SetMachineAccountCampaignInfo(v FullcampaignAllOfMachineAccountCampaignInfo) {
-	o.MachineAccountCampaignInfo = &v
-}
-
 // GetSourcesWithOrphanEntitlements returns the SourcesWithOrphanEntitlements field value if set, zero value otherwise.
 func (o *Campaign) GetSourcesWithOrphanEntitlements() []FullcampaignAllOfSourcesWithOrphanEntitlements {
 	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
@@ -879,9 +845,6 @@ func (o Campaign) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleCompositionCampaignInfo) {
 		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
 	}
-	if !IsNil(o.MachineAccountCampaignInfo) {
-		toSerialize["machineAccountCampaignInfo"] = o.MachineAccountCampaignInfo
-	}
 	if !IsNil(o.SourcesWithOrphanEntitlements) {
 		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
 	}
@@ -953,7 +916,6 @@ func (o *Campaign) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sourceOwnerCampaignInfo")
 		delete(additionalProperties, "searchCampaignInfo")
 		delete(additionalProperties, "roleCompositionCampaignInfo")
-		delete(additionalProperties, "machineAccountCampaignInfo")
 		delete(additionalProperties, "sourcesWithOrphanEntitlements")
 		delete(additionalProperties, "mandatoryCommentRequirement")
 		o.AdditionalProperties = additionalProperties

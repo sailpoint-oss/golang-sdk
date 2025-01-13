@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -41,12 +41,12 @@ func (r ApiApproveAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ApproveAccessRequest Approve Access Request Approval
+ApproveAccessRequest Approves an access request approval.
 
-Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId Approval ID.
+ @param approvalId The id of the approval.
  @return ApiApproveAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) ApproveAccessRequest(ctx context.Context, approvalId string) ApiApproveAccessRequestRequest {
@@ -78,9 +78,6 @@ func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiAppr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.commentDto == nil {
-		return localVarReturnValue, nil, reportError("commentDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -123,19 +120,8 @@ func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiAppr
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,7 +154,7 @@ func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -221,12 +207,12 @@ func (r ApiForwardAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ForwardAccessRequest Forward Access Request Approval
+ForwardAccessRequest Forwards an access request approval to a new owner.
 
-Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+This endpoint forwards an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId Approval ID.
+ @param approvalId The id of the approval.
  @return ApiForwardAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) ForwardAccessRequest(ctx context.Context, approvalId string) ApiForwardAccessRequestRequest {
@@ -315,7 +301,7 @@ func (a *AccessRequestApprovalsAPIService) ForwardAccessRequestExecute(r ApiForw
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +334,7 @@ func (a *AccessRequestApprovalsAPIService) ForwardAccessRequestExecute(r ApiForw
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -390,13 +376,13 @@ type ApiGetAccessRequestApprovalSummaryRequest struct {
 	fromDate *string
 }
 
-// The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+// The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
 func (r ApiGetAccessRequestApprovalSummaryRequest) OwnerId(ownerId string) ApiGetAccessRequestApprovalSummaryRequest {
 	r.ownerId = &ownerId
 	return r
 }
 
-// This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
+// From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date&#x3D;2020-03-19T19:59:11Z
 func (r ApiGetAccessRequestApprovalSummaryRequest) FromDate(fromDate string) ApiGetAccessRequestApprovalSummaryRequest {
 	r.fromDate = &fromDate
 	return r
@@ -407,9 +393,9 @@ func (r ApiGetAccessRequestApprovalSummaryRequest) Execute() (*ApprovalSummary, 
 }
 
 /*
-GetAccessRequestApprovalSummary Get Access Requests Approvals Number
+GetAccessRequestApprovalSummary Get the number of pending, approved and rejected access requests approvals
 
-Use this API to return the number of pending, approved and rejected access requests approvals. See the "owner-id" query parameter for authorization information.
+This endpoint returns the number of pending, approved and rejected access requests approvals. See "owner-id" query parameter below for authorization info.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestApprovalSummaryRequest
@@ -499,7 +485,7 @@ func (a *AccessRequestApprovalsAPIService) GetAccessRequestApprovalSummaryExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -521,7 +507,7 @@ func (a *AccessRequestApprovalsAPIService) GetAccessRequestApprovalSummaryExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -710,7 +696,7 @@ func (a *AccessRequestApprovalsAPIService) ListCompletedApprovalsExecute(r ApiLi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -732,7 +718,7 @@ func (a *AccessRequestApprovalsAPIService) ListCompletedApprovalsExecute(r ApiLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -921,7 +907,7 @@ func (a *AccessRequestApprovalsAPIService) ListPendingApprovalsExecute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -943,7 +929,7 @@ func (a *AccessRequestApprovalsAPIService) ListPendingApprovalsExecute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -996,12 +982,12 @@ func (r ApiRejectAccessRequestRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-RejectAccessRequest Reject Access Request Approval
+RejectAccessRequest Rejects an access request approval.
 
-Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId Approval ID.
+ @param approvalId The id of the approval.
  @return ApiRejectAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) RejectAccessRequest(ctx context.Context, approvalId string) ApiRejectAccessRequestRequest {
@@ -1033,9 +1019,6 @@ func (a *AccessRequestApprovalsAPIService) RejectAccessRequestExecute(r ApiRejec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.commentDto == nil {
-		return localVarReturnValue, nil, reportError("commentDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1090,7 +1073,7 @@ func (a *AccessRequestApprovalsAPIService) RejectAccessRequestExecute(r ApiRejec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1123,7 +1106,7 @@ func (a *AccessRequestApprovalsAPIService) RejectAccessRequestExecute(r ApiRejec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

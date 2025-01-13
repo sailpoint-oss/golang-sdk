@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the FormInstanceResponse type satisfies the MappedNullable interface at compile time
@@ -21,7 +21,7 @@ var _ MappedNullable = &FormInstanceResponse{}
 // FormInstanceResponse struct for FormInstanceResponse
 type FormInstanceResponse struct {
 	// Created is the date the form instance was assigned
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	CreatedBy *FormInstanceCreatedBy `json:"createdBy,omitempty"`
 	// Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record
 	Expire *string `json:"expire,omitempty"`
@@ -40,7 +40,7 @@ type FormInstanceResponse struct {
 	// Unique guid identifying this form instance
 	Id *string `json:"id,omitempty"`
 	// Modified is the last date the form instance was modified
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it
 	Recipients []FormInstanceRecipient `json:"recipients,omitempty"`
 	// StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form
@@ -76,9 +76,9 @@ func NewFormInstanceResponseWithDefaults() *FormInstanceResponse {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *FormInstanceResponse) GetCreated() SailPointTime {
+func (o *FormInstanceResponse) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -86,7 +86,7 @@ func (o *FormInstanceResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormInstanceResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *FormInstanceResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *FormInstanceResponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *FormInstanceResponse) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *FormInstanceResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -398,9 +398,9 @@ func (o *FormInstanceResponse) SetId(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *FormInstanceResponse) GetModified() SailPointTime {
+func (o *FormInstanceResponse) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -408,7 +408,7 @@ func (o *FormInstanceResponse) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormInstanceResponse) GetModifiedOk() (*SailPointTime, bool) {
+func (o *FormInstanceResponse) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -424,8 +424,8 @@ func (o *FormInstanceResponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *FormInstanceResponse) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *FormInstanceResponse) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

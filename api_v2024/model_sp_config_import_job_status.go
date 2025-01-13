@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -28,15 +28,15 @@ type SpConfigImportJobStatus struct {
 	// Type of the job, either export or import.
 	Type string `json:"type"`
 	// The time until which the artifacts will be available for download.
-	Expiration SailPointTime `json:"expiration"`
+	Expiration time.Time `json:"expiration"`
 	// The time the job was started.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// The time of the last update to the job.
-	Modified SailPointTime `json:"modified"`
+	Modified time.Time `json:"modified"`
 	// This message contains additional information about the overall status of the job.
 	Message *string `json:"message,omitempty"`
 	// The time the job was completed.
-	Completed *SailPointTime `json:"completed,omitempty"`
+	Completed *time.Time `json:"completed,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,7 +46,7 @@ type _SpConfigImportJobStatus SpConfigImportJobStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration SailPointTime, created SailPointTime, modified SailPointTime) *SpConfigImportJobStatus {
+func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time) *SpConfigImportJobStatus {
 	this := SpConfigImportJobStatus{}
 	this.JobId = jobId
 	this.Status = status
@@ -138,9 +138,9 @@ func (o *SpConfigImportJobStatus) SetType(v string) {
 }
 
 // GetExpiration returns the Expiration field value
-func (o *SpConfigImportJobStatus) GetExpiration() SailPointTime {
+func (o *SpConfigImportJobStatus) GetExpiration() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -149,7 +149,7 @@ func (o *SpConfigImportJobStatus) GetExpiration() SailPointTime {
 
 // GetExpirationOk returns a tuple with the Expiration field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportJobStatus) GetExpirationOk() (*SailPointTime, bool) {
+func (o *SpConfigImportJobStatus) GetExpirationOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -157,14 +157,14 @@ func (o *SpConfigImportJobStatus) GetExpirationOk() (*SailPointTime, bool) {
 }
 
 // SetExpiration sets field value
-func (o *SpConfigImportJobStatus) SetExpiration(v SailPointTime) {
+func (o *SpConfigImportJobStatus) SetExpiration(v time.Time) {
 	o.Expiration = v
 }
 
 // GetCreated returns the Created field value
-func (o *SpConfigImportJobStatus) GetCreated() SailPointTime {
+func (o *SpConfigImportJobStatus) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -173,7 +173,7 @@ func (o *SpConfigImportJobStatus) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportJobStatus) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SpConfigImportJobStatus) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -181,14 +181,14 @@ func (o *SpConfigImportJobStatus) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *SpConfigImportJobStatus) SetCreated(v SailPointTime) {
+func (o *SpConfigImportJobStatus) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *SpConfigImportJobStatus) GetModified() SailPointTime {
+func (o *SpConfigImportJobStatus) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -197,7 +197,7 @@ func (o *SpConfigImportJobStatus) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportJobStatus) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SpConfigImportJobStatus) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,7 +205,7 @@ func (o *SpConfigImportJobStatus) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *SpConfigImportJobStatus) SetModified(v SailPointTime) {
+func (o *SpConfigImportJobStatus) SetModified(v time.Time) {
 	o.Modified = v
 }
 
@@ -242,9 +242,9 @@ func (o *SpConfigImportJobStatus) SetMessage(v string) {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *SpConfigImportJobStatus) GetCompleted() SailPointTime {
+func (o *SpConfigImportJobStatus) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Completed
@@ -252,7 +252,7 @@ func (o *SpConfigImportJobStatus) GetCompleted() SailPointTime {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportJobStatus) GetCompletedOk() (*SailPointTime, bool) {
+func (o *SpConfigImportJobStatus) GetCompletedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -268,8 +268,8 @@ func (o *SpConfigImportJobStatus) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
-func (o *SpConfigImportJobStatus) SetCompleted(v SailPointTime) {
+// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
+func (o *SpConfigImportJobStatus) SetCompleted(v time.Time) {
 	o.Completed = &v
 }
 

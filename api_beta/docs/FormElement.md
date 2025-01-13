@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Form element identifier. | [optional] 
-**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription | [optional] 
-**Config** | Pointer to **map[string]interface{}** | Config object. | [optional] 
+**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
+**Config** | Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
 **Key** | Pointer to **string** | Technical key. | [optional] 
-**Validations** | Pointer to [**[]FormElementValidationsSet**](FormElementValidationsSet.md) |  | [optional] 
+**Validations** | Pointer to **map[string]interface{}** | Set of FormElementValidation items. | [optional] 
 
 ## Methods
 
@@ -81,20 +81,20 @@ HasElementType returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *FormElement) GetConfig() map[string]interface{}`
+`func (o *FormElement) GetConfig() map[string]map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *FormElement) GetConfigOk() (*map[string]interface{}, bool)`
+`func (o *FormElement) GetConfigOk() (*map[string]map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *FormElement) SetConfig(v map[string]interface{})`
+`func (o *FormElement) SetConfig(v map[string]map[string]interface{})`
 
 SetConfig sets Config field to given value.
 
@@ -131,20 +131,20 @@ HasKey returns a boolean if a field has been set.
 
 ### GetValidations
 
-`func (o *FormElement) GetValidations() []FormElementValidationsSet`
+`func (o *FormElement) GetValidations() map[string]interface{}`
 
 GetValidations returns the Validations field if non-nil, zero value otherwise.
 
 ### GetValidationsOk
 
-`func (o *FormElement) GetValidationsOk() (*[]FormElementValidationsSet, bool)`
+`func (o *FormElement) GetValidationsOk() (*map[string]interface{}, bool)`
 
 GetValidationsOk returns a tuple with the Validations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValidations
 
-`func (o *FormElement) SetValidations(v []FormElementValidationsSet)`
+`func (o *FormElement) SetValidations(v map[string]interface{})`
 
 SetValidations sets Validations field to given value.
 
@@ -154,16 +154,6 @@ SetValidations sets Validations field to given value.
 
 HasValidations returns a boolean if a field has been set.
 
-### SetValidationsNil
-
-`func (o *FormElement) SetValidationsNil(b bool)`
-
- SetValidationsNil sets the value for Validations to be an explicit nil
-
-### UnsetValidations
-`func (o *FormElement) UnsetValidations()`
-
-UnsetValidations ensures that no value is present for Validations, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

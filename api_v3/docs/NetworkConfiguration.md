@@ -52,16 +52,6 @@ SetRange sets Range field to given value.
 
 HasRange returns a boolean if a field has been set.
 
-### SetRangeNil
-
-`func (o *NetworkConfiguration) SetRangeNil(b bool)`
-
- SetRangeNil sets the value for Range to be an explicit nil
-
-### UnsetRange
-`func (o *NetworkConfiguration) UnsetRange()`
-
-UnsetRange ensures that no value is present for Range, not even an explicit nil
 ### GetGeolocation
 
 `func (o *NetworkConfiguration) GetGeolocation() []string`
@@ -87,16 +77,6 @@ SetGeolocation sets Geolocation field to given value.
 
 HasGeolocation returns a boolean if a field has been set.
 
-### SetGeolocationNil
-
-`func (o *NetworkConfiguration) SetGeolocationNil(b bool)`
-
- SetGeolocationNil sets the value for Geolocation to be an explicit nil
-
-### UnsetGeolocation
-`func (o *NetworkConfiguration) UnsetGeolocation()`
-
-UnsetGeolocation ensures that no value is present for Geolocation, not even an explicit nil
 ### GetWhitelisted
 
 `func (o *NetworkConfiguration) GetWhitelisted() bool`

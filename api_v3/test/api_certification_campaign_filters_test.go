@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
 Testing CertificationCampaignFiltersAPIService
 
@@ -49,9 +49,9 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var filterId string
 
-		resp, httpRes, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

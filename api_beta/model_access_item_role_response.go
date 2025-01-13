@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AccessItemRoleResponse type satisfies the MappedNullable interface at compile time
@@ -30,10 +29,6 @@ type AccessItemRoleResponse struct {
 	Description *string `json:"description,omitempty"`
 	// the associated source name if it exists
 	SourceName *string `json:"sourceName,omitempty"`
-	// the date the role is no longer assigned to the specified identity
-	RemoveDate *string `json:"removeDate,omitempty"`
-	// indicates whether the role is revocable
-	Revocable bool `json:"revocable"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,9 +38,8 @@ type _AccessItemRoleResponse AccessItemRoleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemRoleResponse(revocable bool) *AccessItemRoleResponse {
+func NewAccessItemRoleResponse() *AccessItemRoleResponse {
 	this := AccessItemRoleResponse{}
-	this.Revocable = revocable
 	return &this
 }
 
@@ -217,62 +211,6 @@ func (o *AccessItemRoleResponse) SetSourceName(v string) {
 	o.SourceName = &v
 }
 
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
-func (o *AccessItemRoleResponse) GetRemoveDate() string {
-	if o == nil || IsNil(o.RemoveDate) {
-		var ret string
-		return ret
-	}
-	return *o.RemoveDate
-}
-
-// GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemRoleResponse) GetRemoveDateOk() (*string, bool) {
-	if o == nil || IsNil(o.RemoveDate) {
-		return nil, false
-	}
-	return o.RemoveDate, true
-}
-
-// HasRemoveDate returns a boolean if a field has been set.
-func (o *AccessItemRoleResponse) HasRemoveDate() bool {
-	if o != nil && !IsNil(o.RemoveDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetRemoveDate gets a reference to the given string and assigns it to the RemoveDate field.
-func (o *AccessItemRoleResponse) SetRemoveDate(v string) {
-	o.RemoveDate = &v
-}
-
-// GetRevocable returns the Revocable field value
-func (o *AccessItemRoleResponse) GetRevocable() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Revocable
-}
-
-// GetRevocableOk returns a tuple with the Revocable field value
-// and a boolean to check if the value has been set.
-func (o *AccessItemRoleResponse) GetRevocableOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Revocable, true
-}
-
-// SetRevocable sets field value
-func (o *AccessItemRoleResponse) SetRevocable(v bool) {
-	o.Revocable = v
-}
-
 func (o AccessItemRoleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -298,10 +236,6 @@ func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !IsNil(o.RemoveDate) {
-		toSerialize["removeDate"] = o.RemoveDate
-	}
-	toSerialize["revocable"] = o.Revocable
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -311,27 +245,6 @@ func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessItemRoleResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"revocable",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varAccessItemRoleResponse := _AccessItemRoleResponse{}
 
 	err = json.Unmarshal(data, &varAccessItemRoleResponse)
@@ -350,8 +263,6 @@ func (o *AccessItemRoleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "sourceName")
-		delete(additionalProperties, "removeDate")
-		delete(additionalProperties, "revocable")
 		o.AdditionalProperties = additionalProperties
 	}
 

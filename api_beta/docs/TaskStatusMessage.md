@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Type of the message | 
-**LocalizedText** | [**NullableLocalizedMessage**](LocalizedMessage.md) |  | 
+**LocalizedText** | [**LocalizedMessage**](LocalizedMessage.md) |  | 
 **Key** | **string** | Key of the message | 
-**Parameters** | [**[]TaskStatusMessageParametersInner**](TaskStatusMessageParametersInner.md) | Message parameters for internationalization | 
+**Parameters** | **[]map[string]interface{}** | Message parameters for internationalization | 
 
 ## Methods
 
 ### NewTaskStatusMessage
 
-`func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []TaskStatusMessageParametersInner, ) *TaskStatusMessage`
+`func NewTaskStatusMessage(type_ string, localizedText LocalizedMessage, key string, parameters []map[string]interface{}, ) *TaskStatusMessage`
 
 NewTaskStatusMessage instantiates a new TaskStatusMessage object
 This constructor will assign default values to properties that have it defined,
@@ -68,16 +68,6 @@ and a boolean to check if the value has been set.
 SetLocalizedText sets LocalizedText field to given value.
 
 
-### SetLocalizedTextNil
-
-`func (o *TaskStatusMessage) SetLocalizedTextNil(b bool)`
-
- SetLocalizedTextNil sets the value for LocalizedText to be an explicit nil
-
-### UnsetLocalizedText
-`func (o *TaskStatusMessage) UnsetLocalizedText()`
-
-UnsetLocalizedText ensures that no value is present for LocalizedText, not even an explicit nil
 ### GetKey
 
 `func (o *TaskStatusMessage) GetKey() string`
@@ -100,34 +90,24 @@ SetKey sets Key field to given value.
 
 ### GetParameters
 
-`func (o *TaskStatusMessage) GetParameters() []TaskStatusMessageParametersInner`
+`func (o *TaskStatusMessage) GetParameters() []map[string]interface{}`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *TaskStatusMessage) GetParametersOk() (*[]TaskStatusMessageParametersInner, bool)`
+`func (o *TaskStatusMessage) GetParametersOk() (*[]map[string]interface{}, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *TaskStatusMessage) SetParameters(v []TaskStatusMessageParametersInner)`
+`func (o *TaskStatusMessage) SetParameters(v []map[string]interface{})`
 
 SetParameters sets Parameters field to given value.
 
 
-### SetParametersNil
-
-`func (o *TaskStatusMessage) SetParametersNil(b bool)`
-
- SetParametersNil sets the value for Parameters to be an explicit nil
-
-### UnsetParameters
-`func (o *TaskStatusMessage) UnsetParameters()`
-
-UnsetParameters ensures that no value is present for Parameters, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

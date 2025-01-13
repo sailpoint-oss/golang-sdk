@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the NotificationTemplateContext type satisfies the MappedNullable interface at compile time
@@ -23,9 +23,9 @@ type NotificationTemplateContext struct {
 	// A JSON object that stores the context.
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// When the global context was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// When the global context was last modified
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,9 +81,9 @@ func (o *NotificationTemplateContext) SetAttributes(v map[string]interface{}) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NotificationTemplateContext) GetCreated() SailPointTime {
+func (o *NotificationTemplateContext) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -91,7 +91,7 @@ func (o *NotificationTemplateContext) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationTemplateContext) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NotificationTemplateContext) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -107,15 +107,15 @@ func (o *NotificationTemplateContext) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NotificationTemplateContext) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NotificationTemplateContext) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NotificationTemplateContext) GetModified() SailPointTime {
+func (o *NotificationTemplateContext) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -123,7 +123,7 @@ func (o *NotificationTemplateContext) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationTemplateContext) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NotificationTemplateContext) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *NotificationTemplateContext) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NotificationTemplateContext) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NotificationTemplateContext) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

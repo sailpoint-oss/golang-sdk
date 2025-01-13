@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type ManagedClientStatusAggResponse struct {
 	Status ManagedClientStatusEnum `json:"status"`
 	Type NullableManagedClientType `json:"type"`
 	// timestamp on the Client Status update
-	Timestamp SailPointTime `json:"timestamp"`
+	Timestamp time.Time `json:"timestamp"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _ManagedClientStatusAggResponse ManagedClientStatusAggResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManagedClientStatusAggResponse(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp SailPointTime) *ManagedClientStatusAggResponse {
+func NewManagedClientStatusAggResponse(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp time.Time) *ManagedClientStatusAggResponse {
 	this := ManagedClientStatusAggResponse{}
 	this.Body = body
 	this.Status = status
@@ -128,9 +128,9 @@ func (o *ManagedClientStatusAggResponse) SetType(v ManagedClientType) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *ManagedClientStatusAggResponse) GetTimestamp() SailPointTime {
+func (o *ManagedClientStatusAggResponse) GetTimestamp() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *ManagedClientStatusAggResponse) GetTimestamp() SailPointTime {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*SailPointTime, bool) {
+func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*SailPointTime, bool)
 }
 
 // SetTimestamp sets field value
-func (o *ManagedClientStatusAggResponse) SetTimestamp(v SailPointTime) {
+func (o *ManagedClientStatusAggResponse) SetTimestamp(v time.Time) {
 	o.Timestamp = v
 }
 

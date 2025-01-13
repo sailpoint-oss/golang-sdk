@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -19,9 +19,9 @@ var _ MappedNullable = &RequestOnBehalfOfConfig{}
 
 // RequestOnBehalfOfConfig struct for RequestOnBehalfOfConfig
 type RequestOnBehalfOfConfig struct {
-	// If this is true, anyone can request access for anyone.
+	// If anyone can request access for anyone.
 	AllowRequestOnBehalfOfAnyoneByAnyone *bool `json:"allowRequestOnBehalfOfAnyoneByAnyone,omitempty"`
-	// If this is true, a manager can request access for his or her direct reports.
+	// If a manager can request access for his/her direct reports.
 	AllowRequestOnBehalfOfEmployeeByManager *bool `json:"allowRequestOnBehalfOfEmployeeByManager,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,10 +34,6 @@ type _RequestOnBehalfOfConfig RequestOnBehalfOfConfig
 // will change when the set of required properties is changed
 func NewRequestOnBehalfOfConfig() *RequestOnBehalfOfConfig {
 	this := RequestOnBehalfOfConfig{}
-	var allowRequestOnBehalfOfAnyoneByAnyone bool = false
-	this.AllowRequestOnBehalfOfAnyoneByAnyone = &allowRequestOnBehalfOfAnyoneByAnyone
-	var allowRequestOnBehalfOfEmployeeByManager bool = false
-	this.AllowRequestOnBehalfOfEmployeeByManager = &allowRequestOnBehalfOfEmployeeByManager
 	return &this
 }
 
@@ -46,10 +42,6 @@ func NewRequestOnBehalfOfConfig() *RequestOnBehalfOfConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewRequestOnBehalfOfConfigWithDefaults() *RequestOnBehalfOfConfig {
 	this := RequestOnBehalfOfConfig{}
-	var allowRequestOnBehalfOfAnyoneByAnyone bool = false
-	this.AllowRequestOnBehalfOfAnyoneByAnyone = &allowRequestOnBehalfOfAnyoneByAnyone
-	var allowRequestOnBehalfOfEmployeeByManager bool = false
-	this.AllowRequestOnBehalfOfEmployeeByManager = &allowRequestOnBehalfOfEmployeeByManager
 	return &this
 }
 

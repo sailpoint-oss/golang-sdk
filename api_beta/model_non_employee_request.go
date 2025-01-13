@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the NonEmployeeRequest type satisfies the MappedNullable interface at compile time
@@ -41,23 +41,23 @@ type NonEmployeeRequest struct {
 	// The account ID of a valid identity to serve as this non-employee's manager.
 	Manager *string `json:"manager,omitempty"`
 	NonEmployeeSource *NonEmployeeSourceLite `json:"nonEmployeeSource,omitempty"`
-	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
+	// Attribute blob/bag for a non-employee.
 	Data *map[string]string `json:"data,omitempty"`
 	// List of approval item for the request
 	ApprovalItems []NonEmployeeApprovalItemBase `json:"approvalItems,omitempty"`
 	ApprovalStatus *ApprovalStatus `json:"approvalStatus,omitempty"`
-	// Comment of requester
+	// comment of requester
 	Comment *string `json:"comment,omitempty"`
 	// When the request was completely approved.
-	CompletionDate *SailPointTime `json:"completionDate,omitempty"`
+	CompletionDate *time.Time `json:"completionDate,omitempty"`
 	// Non-Employee employment start date.
-	StartDate *SailPointTime `json:"startDate,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
 	// Non-Employee employment end date.
-	EndDate *SailPointTime `json:"endDate,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
 	// When the request was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -561,9 +561,9 @@ func (o *NonEmployeeRequest) SetComment(v string) {
 }
 
 // GetCompletionDate returns the CompletionDate field value if set, zero value otherwise.
-func (o *NonEmployeeRequest) GetCompletionDate() SailPointTime {
+func (o *NonEmployeeRequest) GetCompletionDate() time.Time {
 	if o == nil || IsNil(o.CompletionDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.CompletionDate
@@ -571,7 +571,7 @@ func (o *NonEmployeeRequest) GetCompletionDate() SailPointTime {
 
 // GetCompletionDateOk returns a tuple with the CompletionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequest) GetCompletionDateOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequest) GetCompletionDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CompletionDate) {
 		return nil, false
 	}
@@ -587,15 +587,15 @@ func (o *NonEmployeeRequest) HasCompletionDate() bool {
 	return false
 }
 
-// SetCompletionDate gets a reference to the given SailPointTime and assigns it to the CompletionDate field.
-func (o *NonEmployeeRequest) SetCompletionDate(v SailPointTime) {
+// SetCompletionDate gets a reference to the given time.Time and assigns it to the CompletionDate field.
+func (o *NonEmployeeRequest) SetCompletionDate(v time.Time) {
 	o.CompletionDate = &v
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *NonEmployeeRequest) GetStartDate() SailPointTime {
+func (o *NonEmployeeRequest) GetStartDate() time.Time {
 	if o == nil || IsNil(o.StartDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.StartDate
@@ -603,7 +603,7 @@ func (o *NonEmployeeRequest) GetStartDate() SailPointTime {
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequest) GetStartDateOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequest) GetStartDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
@@ -619,15 +619,15 @@ func (o *NonEmployeeRequest) HasStartDate() bool {
 	return false
 }
 
-// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
-func (o *NonEmployeeRequest) SetStartDate(v SailPointTime) {
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *NonEmployeeRequest) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *NonEmployeeRequest) GetEndDate() SailPointTime {
+func (o *NonEmployeeRequest) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.EndDate
@@ -635,7 +635,7 @@ func (o *NonEmployeeRequest) GetEndDate() SailPointTime {
 
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequest) GetEndDateOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequest) GetEndDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
@@ -651,15 +651,15 @@ func (o *NonEmployeeRequest) HasEndDate() bool {
 	return false
 }
 
-// SetEndDate gets a reference to the given SailPointTime and assigns it to the EndDate field.
-func (o *NonEmployeeRequest) SetEndDate(v SailPointTime) {
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *NonEmployeeRequest) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeRequest) GetModified() SailPointTime {
+func (o *NonEmployeeRequest) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -667,7 +667,7 @@ func (o *NonEmployeeRequest) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequest) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequest) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -683,15 +683,15 @@ func (o *NonEmployeeRequest) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NonEmployeeRequest) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NonEmployeeRequest) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeRequest) GetCreated() SailPointTime {
+func (o *NonEmployeeRequest) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -699,7 +699,7 @@ func (o *NonEmployeeRequest) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequest) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequest) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -715,8 +715,8 @@ func (o *NonEmployeeRequest) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NonEmployeeRequest) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NonEmployeeRequest) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

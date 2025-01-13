@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -72,7 +72,7 @@ func (r ApiGetIdentityAccessSummariesRequest) Execute() ([]AccessSummary, *http.
 /*
 GetIdentityAccessSummaries Access Summaries
 
-This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
+This API returns a list of access summaries for the specified identity campaign certification and type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
@@ -274,7 +274,7 @@ func (r ApiGetIdentityDecisionSummaryRequest) Execute() (*IdentityCertDecisionSu
 /*
 GetIdentityDecisionSummary Summary of Certification Decisions
 
-This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
+This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification ID
@@ -480,7 +480,7 @@ func (r ApiGetIdentitySummariesRequest) Execute() ([]CertificationIdentitySummar
 /*
 GetIdentitySummaries Identity Summaries for Campaign Certification
 
-This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
+This API returns a list of the identity summaries for a specific identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
@@ -673,7 +673,7 @@ func (r ApiGetIdentitySummaryRequest) Execute() (*CertificationIdentitySummary, 
 /*
 GetIdentitySummary Summary for Identity
 
-This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
+This API returns the summary for an identity on a specified identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID

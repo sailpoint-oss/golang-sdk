@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
 Testing IdentityProfilesAPIService
 
@@ -21,18 +21,6 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-
-	t.Run("Test IdentityProfilesAPIService CreateIdentityProfile", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.IdentityProfilesAPI.CreateIdentityProfile(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
 
 	t.Run("Test IdentityProfilesAPIService DeleteIdentityProfile", func(t *testing.T) {
 
@@ -124,18 +112,6 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityProfilesAPIService ShowIdentityPreview", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.IdentityProfilesAPI.ShowIdentityPreview(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test IdentityProfilesAPIService SyncIdentityProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -143,20 +119,6 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 		var identityProfileId string
 
 		resp, httpRes, err := apiClient.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityProfilesAPIService UpdateIdentityProfile", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var identityProfileId string
-
-		resp, httpRes, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

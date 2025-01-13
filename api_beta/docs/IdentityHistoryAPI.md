@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**GetIdentitySnapshotSummary**](IdentityHistoryAPI.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**GetIdentityStartDate**](IdentityHistoryAPI.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**ListHistoricalIdentities**](IdentityHistoryAPI.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
-[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | List Access Items by Identity
-[**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
+[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
 [**ListIdentitySnapshots**](IdentityHistoryAPI.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -277,7 +277,7 @@ import (
 
 func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-	from := "2024-03-01T13:00:00Z" // string | The optional instant until which access events are returned (optional)
+	from := "2007-03-01T13:00:00Z" // string | The optional instant from which to return the access events (optional)
 	eventTypes := []string{"Inner_example"} // []string | An optional list of event types to return.  If null or empty, all events are returned (optional)
 	accessItemTypes := []string{"Inner_example"} // []string | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned (optional)
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -312,7 +312,7 @@ Other parameters are passed through a pointer to a apiGetHistoricalIdentityEvent
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **from** | **string** | The optional instant until which access events are returned | 
+ **from** | **string** | The optional instant from which to return the access events | 
  **eventTypes** | **[]string** | An optional list of event types to return.  If null or empty, all events are returned | 
  **accessItemTypes** | **[]string** | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned | 
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -398,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -638,9 +638,9 @@ Name | Type | Description  | Notes
 
 ## ListIdentityAccessItems
 
-> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Limit(limit).Count(count).Offset(offset).Execute()
+> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Execute()
 
-List Access Items by Identity
+Gets a list of access items for the identity filtered by item type
 
 
 
@@ -658,17 +658,11 @@ import (
 
 func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-	type_ := "account" // string | The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** (optional)
-	filters := "source eq "DataScienceDataset"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* (optional)
-	sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** (optional)
-	query := "Dr. Arden" // string | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** (optional)
-	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	type_ := "account" // string | The type of access item for the identity. If not provided, it defaults to account (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Limit(limit).Count(count).Offset(offset).Execute()
+	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -694,13 +688,7 @@ Other parameters are passed through a pointer to a apiListIdentityAccessItemsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **type_** | **string** | The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** | 
- **query** | **string** | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** | 
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **type_** | **string** | The type of access item for the identity. If not provided, it defaults to account | 
 
 ### Return type
 
@@ -708,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -724,7 +712,7 @@ Name | Type | Description  | Notes
 
 > []ListIdentityAccessItems200ResponseInner ListIdentitySnapshotAccessItems(ctx, id, date).Type_(type_).Execute()
 
-Get Identity Access Items Snapshot
+Gets the list of identity access items at a given date filterd by item type
 
 
 
@@ -741,9 +729,9 @@ import (
 )
 
 func main() {
-	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | Identity ID.
-	date := "2007-03-01T13:00:00Z" // string | Specified date.
-	type_ := "account" // string | Access item type. (optional)
+	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
+	date := "2007-03-01T13:00:00Z" // string | The specified date
+	type_ := "account" // string | The access item type (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -763,8 +751,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Identity ID. | 
-**date** | **string** | Specified date. | 
+**id** | **string** | The identity id | 
+**date** | **string** | The specified date | 
 
 ### Other Parameters
 
@@ -775,7 +763,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **type_** | **string** | Access item type. | 
+ **type_** | **string** | The access item type | 
 
 ### Return type
 
@@ -783,7 +771,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -863,7 +851,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

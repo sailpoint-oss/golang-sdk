@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Id of the campaign | [optional] [readonly] 
-**Name** | **string** | The campaign name. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details.  | 
-**Description** | **NullableString** | The campaign description. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details.  | 
+**Name** | **string** | The campaign name. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details. | 
+**Description** | **string** | The campaign description. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details. | 
 **Deadline** | Pointer to **time.Time** | The campaign&#39;s completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response. | [optional] 
 **Type** | **string** | The type of campaign. Could be extended in the future. | 
 **EmailNotificationEnabled** | Pointer to **bool** | Enables email notification for this campaign | [optional] [default to false]
 **AutoRevokeAllowed** | Pointer to **bool** | Allows auto revoke for this campaign | [optional] [default to false]
 **RecommendationsEnabled** | Pointer to **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to false]
 **Status** | Pointer to **string** | The campaign&#39;s current status. | [optional] [readonly] 
-**CorrelatedStatus** | Pointer to **string** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
+**CorrelatedStatus** | Pointer to [**CampaignAllOfCorrelatedStatus**](CampaignAllOfCorrelatedStatus.md) |  | [optional] 
 **Created** | Pointer to **time.Time** | Created time of the campaign | [optional] [readonly] 
 **TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
 **CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 **SourceOwnerCampaignInfo** | Pointer to [**CampaignAllOfSourceOwnerCampaignInfo**](CampaignAllOfSourceOwnerCampaignInfo.md) |  | [optional] 
 **SearchCampaignInfo** | Pointer to [**CampaignAllOfSearchCampaignInfo**](CampaignAllOfSearchCampaignInfo.md) |  | [optional] 
 **RoleCompositionCampaignInfo** | Pointer to [**CampaignAllOfRoleCompositionCampaignInfo**](CampaignAllOfRoleCompositionCampaignInfo.md) |  | [optional] 
-**MachineAccountCampaignInfo** | Pointer to [**CampaignAllOfMachineAccountCampaignInfo**](CampaignAllOfMachineAccountCampaignInfo.md) |  | [optional] 
 **SourcesWithOrphanEntitlements** | Pointer to [**[]CampaignAllOfSourcesWithOrphanEntitlements**](CampaignAllOfSourcesWithOrphanEntitlements.md) | A list of sources in the campaign that contain \\\&quot;orphan entitlements\\\&quot; (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented). | [optional] [readonly] 
 **MandatoryCommentRequirement** | Pointer to **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | [optional] 
 
@@ -32,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewCampaign
 
-`func NewCampaign(name string, description NullableString, type_ string, ) *Campaign`
+`func NewCampaign(name string, description string, type_ string, ) *Campaign`
 
 NewCampaign instantiates a new Campaign object
 This constructor will assign default values to properties that have it defined,
@@ -112,16 +111,6 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### SetDescriptionNil
-
-`func (o *Campaign) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Campaign) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetDeadline
 
 `func (o *Campaign) GetDeadline() time.Time`
@@ -269,20 +258,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetCorrelatedStatus
 
-`func (o *Campaign) GetCorrelatedStatus() string`
+`func (o *Campaign) GetCorrelatedStatus() CampaignAllOfCorrelatedStatus`
 
 GetCorrelatedStatus returns the CorrelatedStatus field if non-nil, zero value otherwise.
 
 ### GetCorrelatedStatusOk
 
-`func (o *Campaign) GetCorrelatedStatusOk() (*string, bool)`
+`func (o *Campaign) GetCorrelatedStatusOk() (*CampaignAllOfCorrelatedStatus, bool)`
 
 GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCorrelatedStatus
 
-`func (o *Campaign) SetCorrelatedStatus(v string)`
+`func (o *Campaign) SetCorrelatedStatus(v CampaignAllOfCorrelatedStatus)`
 
 SetCorrelatedStatus sets CorrelatedStatus field to given value.
 
@@ -541,31 +530,6 @@ SetRoleCompositionCampaignInfo sets RoleCompositionCampaignInfo field to given v
 `func (o *Campaign) HasRoleCompositionCampaignInfo() bool`
 
 HasRoleCompositionCampaignInfo returns a boolean if a field has been set.
-
-### GetMachineAccountCampaignInfo
-
-`func (o *Campaign) GetMachineAccountCampaignInfo() CampaignAllOfMachineAccountCampaignInfo`
-
-GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field if non-nil, zero value otherwise.
-
-### GetMachineAccountCampaignInfoOk
-
-`func (o *Campaign) GetMachineAccountCampaignInfoOk() (*CampaignAllOfMachineAccountCampaignInfo, bool)`
-
-GetMachineAccountCampaignInfoOk returns a tuple with the MachineAccountCampaignInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMachineAccountCampaignInfo
-
-`func (o *Campaign) SetMachineAccountCampaignInfo(v CampaignAllOfMachineAccountCampaignInfo)`
-
-SetMachineAccountCampaignInfo sets MachineAccountCampaignInfo field to given value.
-
-### HasMachineAccountCampaignInfo
-
-`func (o *Campaign) HasMachineAccountCampaignInfo() bool`
-
-HasMachineAccountCampaignInfo returns a boolean if a field has been set.
 
 ### GetSourcesWithOrphanEntitlements
 

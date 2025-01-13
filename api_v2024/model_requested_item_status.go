@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the RequestedItemStatus type satisfies the MappedNullable interface at compile time
@@ -40,7 +40,7 @@ type RequestedItemStatus struct {
 	// When the request was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
 	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
@@ -439,9 +439,9 @@ func (o *RequestedItemStatus) UnsetRequestType() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RequestedItemStatus) GetModified() SailPointTime {
+func (o *RequestedItemStatus) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -450,7 +450,7 @@ func (o *RequestedItemStatus) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RequestedItemStatus) GetModifiedOk() (*SailPointTime, bool) {
+func (o *RequestedItemStatus) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -467,7 +467,7 @@ func (o *RequestedItemStatus) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *RequestedItemStatus) SetModified(v SailPointTime) {
+func (o *RequestedItemStatus) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -481,9 +481,9 @@ func (o *RequestedItemStatus) UnsetModified() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetCreated() SailPointTime {
+func (o *RequestedItemStatus) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -491,7 +491,7 @@ func (o *RequestedItemStatus) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetCreatedOk() (*SailPointTime, bool) {
+func (o *RequestedItemStatus) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -507,8 +507,8 @@ func (o *RequestedItemStatus) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *RequestedItemStatus) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *RequestedItemStatus) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -780,9 +780,9 @@ func (o *RequestedItemStatus) UnsetDescription() {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RequestedItemStatus) GetRemoveDate() SailPointTime {
+func (o *RequestedItemStatus) GetRemoveDate() time.Time {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -791,7 +791,7 @@ func (o *RequestedItemStatus) GetRemoveDate() SailPointTime {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RequestedItemStatus) GetRemoveDateOk() (*SailPointTime, bool) {
+func (o *RequestedItemStatus) GetRemoveDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -808,7 +808,7 @@ func (o *RequestedItemStatus) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *RequestedItemStatus) SetRemoveDate(v SailPointTime) {
+func (o *RequestedItemStatus) SetRemoveDate(v time.Time) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	
 )
 
 // checks if the PasswordSyncGroup type satisfies the MappedNullable interface at compile time
@@ -28,10 +27,6 @@ type PasswordSyncGroup struct {
 	PasswordPolicyId *string `json:"passwordPolicyId,omitempty"`
 	// List of password managed sources IDs
 	SourceIds []string `json:"sourceIds,omitempty"`
-	// The date and time this sync group was created
-	Created NullableTime `json:"created,omitempty"`
-	// The date and time this sync group was last modified
-	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,90 +177,6 @@ func (o *PasswordSyncGroup) SetSourceIds(v []string) {
 	o.SourceIds = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PasswordSyncGroup) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Created.Get()
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PasswordSyncGroup) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Created.Get(), o.Created.IsSet()
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasCreated() bool {
-	if o != nil && o.Created.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *PasswordSyncGroup) SetCreated(v SailPointTime) {
-	o.Created.Set(&v)
-}
-// SetCreatedNil sets the value for Created to be an explicit nil
-func (o *PasswordSyncGroup) SetCreatedNil() {
-	o.Created.Set(nil)
-}
-
-// UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *PasswordSyncGroup) UnsetCreated() {
-	o.Created.Unset()
-}
-
-// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PasswordSyncGroup) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Modified.Get()
-}
-
-// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PasswordSyncGroup) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Modified.Get(), o.Modified.IsSet()
-}
-
-// HasModified returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasModified() bool {
-	if o != nil && o.Modified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *PasswordSyncGroup) SetModified(v SailPointTime) {
-	o.Modified.Set(&v)
-}
-// SetModifiedNil sets the value for Modified to be an explicit nil
-func (o *PasswordSyncGroup) SetModifiedNil() {
-	o.Modified.Set(nil)
-}
-
-// UnsetModified ensures that no value is present for Modified, not even an explicit nil
-func (o *PasswordSyncGroup) UnsetModified() {
-	o.Modified.Unset()
-}
-
 func (o PasswordSyncGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -287,12 +198,6 @@ func (o PasswordSyncGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
-	}
-	if o.Created.IsSet() {
-		toSerialize["created"] = o.Created.Get()
-	}
-	if o.Modified.IsSet() {
-		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -320,8 +225,6 @@ func (o *PasswordSyncGroup) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "passwordPolicyId")
 		delete(additionalProperties, "sourceIds")
-		delete(additionalProperties, "created")
-		delete(additionalProperties, "modified")
 		o.AdditionalProperties = additionalProperties
 	}
 

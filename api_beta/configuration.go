@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -93,7 +93,7 @@ ClientId 		 string
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string, experimental bool) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string, userAgent string, experimental bool) *Configuration {
 	cfg := &Configuration{
 ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
@@ -101,7 +101,7 @@ ClientId: 		  clientId,
 		TokenURL:		  tokenURL,
 		Token:			  token,
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/2.1.17/go",
+		UserAgent:        userAgent,
 		Debug:            false,
 		Experimental:	  experimental,
 		Servers:          ServerConfigurations{

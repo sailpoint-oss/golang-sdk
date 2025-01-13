@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Question Id | 
+**QuestionId** | **string** | Question Id | 
 **Answer** | **string** | An answer for the KBA question | 
 
 ## Methods
 
 ### NewKbaAnswerRequestItem
 
-`func NewKbaAnswerRequestItem(id string, answer string, ) *KbaAnswerRequestItem`
+`func NewKbaAnswerRequestItem(questionId string, answer string, ) *KbaAnswerRequestItem`
 
 NewKbaAnswerRequestItem instantiates a new KbaAnswerRequestItem object
 This constructor will assign default values to properties that have it defined,
@@ -26,24 +26,24 @@ NewKbaAnswerRequestItemWithDefaults instantiates a new KbaAnswerRequestItem obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetQuestionId
 
-`func (o *KbaAnswerRequestItem) GetId() string`
+`func (o *KbaAnswerRequestItem) GetQuestionId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetQuestionId returns the QuestionId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetQuestionIdOk
 
-`func (o *KbaAnswerRequestItem) GetIdOk() (*string, bool)`
+`func (o *KbaAnswerRequestItem) GetQuestionIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetQuestionIdOk returns a tuple with the QuestionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetQuestionId
 
-`func (o *KbaAnswerRequestItem) SetId(v string)`
+`func (o *KbaAnswerRequestItem) SetQuestionId(v string)`
 
-SetId sets Id field to given value.
+SetQuestionId sets QuestionId field to given value.
 
 
 ### GetAnswer

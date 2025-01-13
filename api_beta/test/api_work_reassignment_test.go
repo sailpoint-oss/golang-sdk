@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing WorkReassignmentAPIService
 
@@ -39,9 +39,8 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
-		var configType ConfigTypeEnum
 
-		httpRes, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).Execute()
+		httpRes, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

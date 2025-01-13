@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type SourceDeleted struct {
 	// The connection type.
 	Type string `json:"type"`
 	// The date and time the source was deleted.
-	Deleted SailPointTime `json:"deleted"`
+	Deleted time.Time `json:"deleted"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceDeletedActor `json:"actor"`
@@ -41,7 +41,7 @@ type _SourceDeleted SourceDeleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceDeleted(id string, name string, type_ string, deleted SailPointTime, connector string, actor SourceDeletedActor) *SourceDeleted {
+func NewSourceDeleted(id string, name string, type_ string, deleted time.Time, connector string, actor SourceDeletedActor) *SourceDeleted {
 	this := SourceDeleted{}
 	this.Id = id
 	this.Name = name
@@ -133,9 +133,9 @@ func (o *SourceDeleted) SetType(v string) {
 }
 
 // GetDeleted returns the Deleted field value
-func (o *SourceDeleted) GetDeleted() SailPointTime {
+func (o *SourceDeleted) GetDeleted() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *SourceDeleted) GetDeleted() SailPointTime {
 
 // GetDeletedOk returns a tuple with the Deleted field value
 // and a boolean to check if the value has been set.
-func (o *SourceDeleted) GetDeletedOk() (*SailPointTime, bool) {
+func (o *SourceDeleted) GetDeletedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *SourceDeleted) GetDeletedOk() (*SailPointTime, bool) {
 }
 
 // SetDeleted sets field value
-func (o *SourceDeleted) SetDeleted(v SailPointTime) {
+func (o *SourceDeleted) SetDeleted(v time.Time) {
 	o.Deleted = v
 }
 

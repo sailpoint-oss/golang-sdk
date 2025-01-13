@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -30,20 +30,19 @@ type TaskStatus struct {
 	// Description of the task this TaskStatus represents
 	Description string `json:"description"`
 	// Name of the parent of the task this TaskStatus represents
-	ParentName NullableString `json:"parentName"`
+	ParentName string `json:"parentName"`
 	// Service to execute the task this TaskStatus represents
 	Launcher string `json:"launcher"`
-	Target NullableTarget `json:"target,omitempty"`
 	// Creation date of the task this TaskStatus represents
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// Last modification date of the task this TaskStatus represents
-	Modified SailPointTime `json:"modified"`
+	Modified time.Time `json:"modified"`
 	// Launch date of the task this TaskStatus represents
-	Launched NullableTime `json:"launched"`
+	Launched time.Time `json:"launched"`
 	// Completion date of the task this TaskStatus represents
-	Completed NullableTime `json:"completed"`
+	Completed time.Time `json:"completed"`
 	// Completion status of the task this TaskStatus represents
-	CompletionStatus NullableString `json:"completionStatus"`
+	CompletionStatus string `json:"completionStatus"`
 	// Messages associated with the task this TaskStatus represents
 	Messages []TaskStatusMessage `json:"messages"`
 	// Return values from the task this TaskStatus represents
@@ -51,10 +50,9 @@ type TaskStatus struct {
 	// Attributes of the task this TaskStatus represents
 	Attributes map[string]interface{} `json:"attributes"`
 	// Current progress of the task this TaskStatus represents
-	Progress NullableString `json:"progress"`
+	Progress string `json:"progress"`
 	// Current percentage completion of the task this TaskStatus represents
 	PercentComplete int32 `json:"percentComplete"`
-	TaskDefinitionSummary *TaskDefinitionSummary `json:"taskDefinitionSummary,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,7 +62,7 @@ type _TaskStatus TaskStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created SailPointTime, modified SailPointTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress NullableString, percentComplete int32) *TaskStatus {
+func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName string, launcher string, created time.Time, modified time.Time, launched time.Time, completed time.Time, completionStatus string, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress string, percentComplete int32) *TaskStatus {
 	this := TaskStatus{}
 	this.Id = id
 	this.Type = type_
@@ -190,29 +188,27 @@ func (o *TaskStatus) SetDescription(v string) {
 }
 
 // GetParentName returns the ParentName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *TaskStatus) GetParentName() string {
-	if o == nil || o.ParentName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ParentName.Get()
+	return o.ParentName
 }
 
 // GetParentNameOk returns a tuple with the ParentName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatus) GetParentNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ParentName.Get(), o.ParentName.IsSet()
+	return &o.ParentName, true
 }
 
 // SetParentName sets field value
 func (o *TaskStatus) SetParentName(v string) {
-	o.ParentName.Set(&v)
+	o.ParentName = v
 }
 
 // GetLauncher returns the Launcher field value
@@ -239,52 +235,10 @@ func (o *TaskStatus) SetLauncher(v string) {
 	o.Launcher = v
 }
 
-// GetTarget returns the Target field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TaskStatus) GetTarget() Target {
-	if o == nil || IsNil(o.Target.Get()) {
-		var ret Target
-		return ret
-	}
-	return *o.Target.Get()
-}
-
-// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TaskStatus) GetTargetOk() (*Target, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Target.Get(), o.Target.IsSet()
-}
-
-// HasTarget returns a boolean if a field has been set.
-func (o *TaskStatus) HasTarget() bool {
-	if o != nil && o.Target.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTarget gets a reference to the given NullableTarget and assigns it to the Target field.
-func (o *TaskStatus) SetTarget(v Target) {
-	o.Target.Set(&v)
-}
-// SetTargetNil sets the value for Target to be an explicit nil
-func (o *TaskStatus) SetTargetNil() {
-	o.Target.Set(nil)
-}
-
-// UnsetTarget ensures that no value is present for Target, not even an explicit nil
-func (o *TaskStatus) UnsetTarget() {
-	o.Target.Unset()
-}
-
 // GetCreated returns the Created field value
-func (o *TaskStatus) GetCreated() SailPointTime {
+func (o *TaskStatus) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -293,7 +247,7 @@ func (o *TaskStatus) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *TaskStatus) GetCreatedOk() (*SailPointTime, bool) {
+func (o *TaskStatus) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,14 +255,14 @@ func (o *TaskStatus) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *TaskStatus) SetCreated(v SailPointTime) {
+func (o *TaskStatus) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *TaskStatus) GetModified() SailPointTime {
+func (o *TaskStatus) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -317,7 +271,7 @@ func (o *TaskStatus) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *TaskStatus) GetModifiedOk() (*SailPointTime, bool) {
+func (o *TaskStatus) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -325,86 +279,80 @@ func (o *TaskStatus) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *TaskStatus) SetModified(v SailPointTime) {
+func (o *TaskStatus) SetModified(v time.Time) {
 	o.Modified = v
 }
 
 // GetLaunched returns the Launched field value
-// If the value is explicit nil, the zero value for SailPointTime will be returned
-func (o *TaskStatus) GetLaunched() SailPointTime {
-	if o == nil || o.Launched.Get() == nil {
-		var ret SailPointTime
+func (o *TaskStatus) GetLaunched() time.Time {
+	if o == nil {
+		var ret time.Time
 		return ret
 	}
 
-	return *o.Launched.Get()
+	return o.Launched
 }
 
 // GetLaunchedOk returns a tuple with the Launched field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TaskStatus) GetLaunchedOk() (*SailPointTime, bool) {
+func (o *TaskStatus) GetLaunchedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Launched.Get(), o.Launched.IsSet()
+	return &o.Launched, true
 }
 
 // SetLaunched sets field value
-func (o *TaskStatus) SetLaunched(v SailPointTime) {
-	o.Launched.Set(&v)
+func (o *TaskStatus) SetLaunched(v time.Time) {
+	o.Launched = v
 }
 
 // GetCompleted returns the Completed field value
-// If the value is explicit nil, the zero value for SailPointTime will be returned
-func (o *TaskStatus) GetCompleted() SailPointTime {
-	if o == nil || o.Completed.Get() == nil {
-		var ret SailPointTime
+func (o *TaskStatus) GetCompleted() time.Time {
+	if o == nil {
+		var ret time.Time
 		return ret
 	}
 
-	return *o.Completed.Get()
+	return o.Completed
 }
 
 // GetCompletedOk returns a tuple with the Completed field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TaskStatus) GetCompletedOk() (*SailPointTime, bool) {
+func (o *TaskStatus) GetCompletedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Completed.Get(), o.Completed.IsSet()
+	return &o.Completed, true
 }
 
 // SetCompleted sets field value
-func (o *TaskStatus) SetCompleted(v SailPointTime) {
-	o.Completed.Set(&v)
+func (o *TaskStatus) SetCompleted(v time.Time) {
+	o.Completed = v
 }
 
 // GetCompletionStatus returns the CompletionStatus field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *TaskStatus) GetCompletionStatus() string {
-	if o == nil || o.CompletionStatus.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CompletionStatus.Get()
+	return o.CompletionStatus
 }
 
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatus) GetCompletionStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CompletionStatus.Get(), o.CompletionStatus.IsSet()
+	return &o.CompletionStatus, true
 }
 
 // SetCompletionStatus sets field value
 func (o *TaskStatus) SetCompletionStatus(v string) {
-	o.CompletionStatus.Set(&v)
+	o.CompletionStatus = v
 }
 
 // GetMessages returns the Messages field value
@@ -480,29 +428,27 @@ func (o *TaskStatus) SetAttributes(v map[string]interface{}) {
 }
 
 // GetProgress returns the Progress field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *TaskStatus) GetProgress() string {
-	if o == nil || o.Progress.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Progress.Get()
+	return o.Progress
 }
 
 // GetProgressOk returns a tuple with the Progress field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatus) GetProgressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Progress.Get(), o.Progress.IsSet()
+	return &o.Progress, true
 }
 
 // SetProgress sets field value
 func (o *TaskStatus) SetProgress(v string) {
-	o.Progress.Set(&v)
+	o.Progress = v
 }
 
 // GetPercentComplete returns the PercentComplete field value
@@ -529,38 +475,6 @@ func (o *TaskStatus) SetPercentComplete(v int32) {
 	o.PercentComplete = v
 }
 
-// GetTaskDefinitionSummary returns the TaskDefinitionSummary field value if set, zero value otherwise.
-func (o *TaskStatus) GetTaskDefinitionSummary() TaskDefinitionSummary {
-	if o == nil || IsNil(o.TaskDefinitionSummary) {
-		var ret TaskDefinitionSummary
-		return ret
-	}
-	return *o.TaskDefinitionSummary
-}
-
-// GetTaskDefinitionSummaryOk returns a tuple with the TaskDefinitionSummary field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TaskStatus) GetTaskDefinitionSummaryOk() (*TaskDefinitionSummary, bool) {
-	if o == nil || IsNil(o.TaskDefinitionSummary) {
-		return nil, false
-	}
-	return o.TaskDefinitionSummary, true
-}
-
-// HasTaskDefinitionSummary returns a boolean if a field has been set.
-func (o *TaskStatus) HasTaskDefinitionSummary() bool {
-	if o != nil && !IsNil(o.TaskDefinitionSummary) {
-		return true
-	}
-
-	return false
-}
-
-// SetTaskDefinitionSummary gets a reference to the given TaskDefinitionSummary and assigns it to the TaskDefinitionSummary field.
-func (o *TaskStatus) SetTaskDefinitionSummary(v TaskDefinitionSummary) {
-	o.TaskDefinitionSummary = &v
-}
-
 func (o TaskStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -575,24 +489,18 @@ func (o TaskStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["uniqueName"] = o.UniqueName
 	toSerialize["description"] = o.Description
-	toSerialize["parentName"] = o.ParentName.Get()
+	toSerialize["parentName"] = o.ParentName
 	toSerialize["launcher"] = o.Launcher
-	if o.Target.IsSet() {
-		toSerialize["target"] = o.Target.Get()
-	}
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	toSerialize["launched"] = o.Launched.Get()
-	toSerialize["completed"] = o.Completed.Get()
-	toSerialize["completionStatus"] = o.CompletionStatus.Get()
+	toSerialize["launched"] = o.Launched
+	toSerialize["completed"] = o.Completed
+	toSerialize["completionStatus"] = o.CompletionStatus
 	toSerialize["messages"] = o.Messages
 	toSerialize["returns"] = o.Returns
 	toSerialize["attributes"] = o.Attributes
-	toSerialize["progress"] = o.Progress.Get()
+	toSerialize["progress"] = o.Progress
 	toSerialize["percentComplete"] = o.PercentComplete
-	if !IsNil(o.TaskDefinitionSummary) {
-		toSerialize["taskDefinitionSummary"] = o.TaskDefinitionSummary
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -657,7 +565,6 @@ func (o *TaskStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "parentName")
 		delete(additionalProperties, "launcher")
-		delete(additionalProperties, "target")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "launched")
@@ -668,7 +575,6 @@ func (o *TaskStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "progress")
 		delete(additionalProperties, "percentComplete")
-		delete(additionalProperties, "taskDefinitionSummary")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -54,9 +54,9 @@ func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
 }
 
 /*
-GetPendingTaskHeaders Retrieve Pending Task List Headers
+GetPendingTaskHeaders Retrieve headers only for pending task list.
 
-Responds with headers only for list of task statuses for pending tasks.
+Retrieve headers for a list of TaskStatus for pending tasks.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTaskHeadersRequest
@@ -155,40 +155,7 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -235,9 +202,9 @@ func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, erro
 }
 
 /*
-GetPendingTasks Retrieve Pending Task Status List
+GetPendingTasks Retrieve a pending task list.
 
-Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
+Retrieve a list of TaskStatus for pending tasks.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTasksRequest
@@ -338,40 +305,7 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -407,12 +341,12 @@ func (r ApiGetTaskStatusRequest) Execute() (*TaskStatus, *http.Response, error) 
 }
 
 /*
-GetTaskStatus Get Task Status by ID
+GetTaskStatus Get task status by ID.
 
-Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
+Get a TaskStatus for a task by task ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Task ID.
+ @param id Task ID of the TaskStatus to get
  @return ApiGetTaskStatusRequest
 */
 func (a *TaskManagementAPIService) GetTaskStatus(ctx context.Context, id string) ApiGetTaskStatusRequest {
@@ -496,7 +430,7 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -507,7 +441,7 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,10 +521,9 @@ func (r ApiGetTaskStatusListRequest) Execute() ([]TaskStatus, *http.Response, er
 }
 
 /*
-GetTaskStatusList Retrieve Task Status List
+GetTaskStatusList Retrieve a task status list.
 
-Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint.
-
+Get a TaskStatus list.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTaskStatusListRequest
@@ -698,7 +631,7 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -731,7 +664,7 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -770,12 +703,11 @@ type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	jsonPatchOperation *[]JsonPatchOperation
+	jsonPatch *JsonPatch
 }
 
-// The JSONPatch payload used to update the object.
-func (r ApiUpdateTaskStatusRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateTaskStatusRequest {
-	r.jsonPatchOperation = &jsonPatchOperation
+func (r ApiUpdateTaskStatusRequest) JsonPatch(jsonPatch JsonPatch) ApiUpdateTaskStatusRequest {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
@@ -784,12 +716,12 @@ func (r ApiUpdateTaskStatusRequest) Execute() (*TaskStatus, *http.Response, erro
 }
 
 /*
-UpdateTaskStatus Update Task Status by ID
+UpdateTaskStatus Update task status by ID
 
-Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
+Update a current TaskStatus for a task by task ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Task ID.
+ @param id Task ID of the task whose TaskStatus to update
  @return ApiUpdateTaskStatusRequest
 */
 func (a *TaskManagementAPIService) UpdateTaskStatus(ctx context.Context, id string) ApiUpdateTaskStatusRequest {
@@ -821,8 +753,8 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatchOperation == nil {
-		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -843,7 +775,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatchOperation
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -900,7 +832,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -911,7 +843,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

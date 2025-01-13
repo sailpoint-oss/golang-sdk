@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,11 +22,11 @@ var _ MappedNullable = &TaskStatusMessage{}
 type TaskStatusMessage struct {
 	// Type of the message
 	Type string `json:"type"`
-	LocalizedText NullableLocalizedMessage `json:"localizedText"`
+	LocalizedText LocalizedMessage `json:"localizedText"`
 	// Key of the message
 	Key string `json:"key"`
 	// Message parameters for internationalization
-	Parameters []TaskStatusMessageParametersInner `json:"parameters"`
+	Parameters []map[string]interface{} `json:"parameters"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _TaskStatusMessage TaskStatusMessage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []TaskStatusMessageParametersInner) *TaskStatusMessage {
+func NewTaskStatusMessage(type_ string, localizedText LocalizedMessage, key string, parameters []map[string]interface{}) *TaskStatusMessage {
 	this := TaskStatusMessage{}
 	this.Type = type_
 	this.LocalizedText = localizedText
@@ -78,29 +78,27 @@ func (o *TaskStatusMessage) SetType(v string) {
 }
 
 // GetLocalizedText returns the LocalizedText field value
-// If the value is explicit nil, the zero value for LocalizedMessage will be returned
 func (o *TaskStatusMessage) GetLocalizedText() LocalizedMessage {
-	if o == nil || o.LocalizedText.Get() == nil {
+	if o == nil {
 		var ret LocalizedMessage
 		return ret
 	}
 
-	return *o.LocalizedText.Get()
+	return o.LocalizedText
 }
 
 // GetLocalizedTextOk returns a tuple with the LocalizedText field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatusMessage) GetLocalizedTextOk() (*LocalizedMessage, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LocalizedText.Get(), o.LocalizedText.IsSet()
+	return &o.LocalizedText, true
 }
 
 // SetLocalizedText sets field value
 func (o *TaskStatusMessage) SetLocalizedText(v LocalizedMessage) {
-	o.LocalizedText.Set(&v)
+	o.LocalizedText = v
 }
 
 // GetKey returns the Key field value
@@ -128,10 +126,9 @@ func (o *TaskStatusMessage) SetKey(v string) {
 }
 
 // GetParameters returns the Parameters field value
-// If the value is explicit nil, the zero value for []TaskStatusMessageParametersInner will be returned
-func (o *TaskStatusMessage) GetParameters() []TaskStatusMessageParametersInner {
+func (o *TaskStatusMessage) GetParameters() []map[string]interface{} {
 	if o == nil {
-		var ret []TaskStatusMessageParametersInner
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -140,16 +137,15 @@ func (o *TaskStatusMessage) GetParameters() []TaskStatusMessageParametersInner {
 
 // GetParametersOk returns a tuple with the Parameters field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TaskStatusMessage) GetParametersOk() ([]TaskStatusMessageParametersInner, bool) {
-	if o == nil || IsNil(o.Parameters) {
+func (o *TaskStatusMessage) GetParametersOk() ([]map[string]interface{}, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Parameters, true
 }
 
 // SetParameters sets field value
-func (o *TaskStatusMessage) SetParameters(v []TaskStatusMessageParametersInner) {
+func (o *TaskStatusMessage) SetParameters(v []map[string]interface{}) {
 	o.Parameters = v
 }
 
@@ -164,11 +160,9 @@ func (o TaskStatusMessage) MarshalJSON() ([]byte, error) {
 func (o TaskStatusMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["localizedText"] = o.LocalizedText.Get()
+	toSerialize["localizedText"] = o.LocalizedText
 	toSerialize["key"] = o.Key
-	if o.Parameters != nil {
-		toSerialize["parameters"] = o.Parameters
-	}
+	toSerialize["parameters"] = o.Parameters
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **NullableString** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
-**IsVerifiedByDomain** | Pointer to **bool** |  | [optional] 
 **VerificationStatus** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -53,16 +52,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### SetIdNil
-
-`func (o *EmailStatusDto) SetIdNil(b bool)`
-
- SetIdNil sets the value for Id to be an explicit nil
-
-### UnsetId
-`func (o *EmailStatusDto) UnsetId()`
-
-UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetEmail
 
 `func (o *EmailStatusDto) GetEmail() string`
@@ -87,31 +76,6 @@ SetEmail sets Email field to given value.
 `func (o *EmailStatusDto) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
-
-### GetIsVerifiedByDomain
-
-`func (o *EmailStatusDto) GetIsVerifiedByDomain() bool`
-
-GetIsVerifiedByDomain returns the IsVerifiedByDomain field if non-nil, zero value otherwise.
-
-### GetIsVerifiedByDomainOk
-
-`func (o *EmailStatusDto) GetIsVerifiedByDomainOk() (*bool, bool)`
-
-GetIsVerifiedByDomainOk returns a tuple with the IsVerifiedByDomain field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsVerifiedByDomain
-
-`func (o *EmailStatusDto) SetIsVerifiedByDomain(v bool)`
-
-SetIsVerifiedByDomain sets IsVerifiedByDomain field to given value.
-
-### HasIsVerifiedByDomain
-
-`func (o *EmailStatusDto) HasIsVerifiedByDomain() bool`
-
-HasIsVerifiedByDomain returns a boolean if a field has been set.
 
 ### GetVerificationStatus
 

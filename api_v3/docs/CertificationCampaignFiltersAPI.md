@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCampaignFilter**](CertificationCampaignFiltersAPI.md#CreateCampaignFilter) | **Post** /campaign-filters | Create Campaign Filter
+[**CreateCampaignFilter**](CertificationCampaignFiltersAPI.md#CreateCampaignFilter) | **Post** /campaign-filters | Create a Campaign Filter
 [**DeleteCampaignFilters**](CertificationCampaignFiltersAPI.md#DeleteCampaignFilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
 [**GetCampaignFilterById**](CertificationCampaignFiltersAPI.md#GetCampaignFilterById) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
 [**ListCampaignFilters**](CertificationCampaignFiltersAPI.md#ListCampaignFilters) | **Get** /campaign-filters | List Campaign Filters
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > CampaignFilterDetails CreateCampaignFilter(ctx).CampaignFilterDetails(campaignFilterDetails).Execute()
 
-Create Campaign Filter
+Create a Campaign Filter
 
 
 
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | 
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "Campaign filter to certify data based on specified property of Identity Attribute.", "SailPoint Support", map[string]interface{}(INCLUSION)) // CampaignFilterDetails | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## GetCampaignFilterById
 
-> CampaignFilterDetails GetCampaignFilterById(ctx, id).Execute()
+> []CampaignFilterDetails GetCampaignFilterById(ctx, filterId).Execute()
 
 Get Campaign Filter by ID
 
@@ -163,16 +163,16 @@ import (
 )
 
 func main() {
-	id := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter to be retrieved.
+	filterId := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter to be retrieved.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), id).Execute()
+	resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCampaignFilterById`: CampaignFilterDetails
+	// response from `GetCampaignFilterById`: []CampaignFilterDetails
 	fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.GetCampaignFilterById`: %v\n", resp)
 }
 ```
@@ -183,7 +183,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign filter to be retrieved. | 
+**filterId** | **string** | The ID of the campaign filter to be retrieved. | 
 
 ### Other Parameters
 
@@ -196,11 +196,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CampaignFilterDetails**](CampaignFilterDetails.md)
+[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ## ListCampaignFilters
 
-> ListCampaignFilters200Response ListCampaignFilters(ctx).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
+> []CampaignFilterDetails ListCampaignFilters(ctx).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
 
 List Campaign Filters
 
@@ -235,7 +235,7 @@ import (
 func main() {
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 	start := int32(0) // int32 | Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-	includeSystemFilters := true // bool | If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true.  (optional) (default to true)
+	includeSystemFilters := true // bool | If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true. (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -244,7 +244,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.ListCampaignFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListCampaignFilters`: ListCampaignFilters200Response
+	// response from `ListCampaignFilters`: []CampaignFilterDetails
 	fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.ListCampaignFilters`: %v\n", resp)
 }
 ```
@@ -262,15 +262,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **start** | **int32** | Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **includeSystemFilters** | **bool** | If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true.  | [default to true]
+ **includeSystemFilters** | **bool** | If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true. | [default to true]
 
 ### Return type
 
-[**ListCampaignFilters200Response**](ListCampaignFilters200Response.md)
+[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -304,7 +304,7 @@ import (
 
 func main() {
 	filterId := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter being modified.
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | A campaign filter details with updated field values.
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "Campaign filter to certify data based on specified property of Identity Attribute.", "SailPoint Support", map[string]interface{}(INCLUSION)) // CampaignFilterDetails | A campaign filter details with updated field values.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

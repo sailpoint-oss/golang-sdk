@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Unique name of this transform | 
 **Type** | **string** | The type of transform operation | 
-**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
+**Attributes** | [**NullableTransformAttributes**](TransformAttributes.md) |  | 
 
 ## Methods
 
 ### NewTransform
 
-`func NewTransform(name string, type_ string, attributes map[string]interface{}, ) *Transform`
+`func NewTransform(name string, type_ string, attributes NullableTransformAttributes, ) *Transform`
 
 NewTransform instantiates a new Transform object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *Transform) GetAttributes() map[string]interface{}`
+`func (o *Transform) GetAttributes() TransformAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Transform) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *Transform) GetAttributesOk() (*TransformAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Transform) SetAttributes(v map[string]interface{})`
+`func (o *Transform) SetAttributes(v TransformAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

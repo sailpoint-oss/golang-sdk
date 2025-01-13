@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Certification type satisfies the MappedNullable interface at compile time
@@ -32,15 +32,15 @@ type Certification struct {
 	// The total number of identities in the Certification, both complete and incomplete.
 	IdentitiesTotal *int32 `json:"identitiesTotal,omitempty"`
 	// created date
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// modified date
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// The number of approve/revoke/acknowledge decisions that have been made.
 	DecisionsMade *int32 `json:"decisionsMade,omitempty"`
 	// The total number of approve/revoke/acknowledge decisions.
 	DecisionsTotal *int32 `json:"decisionsTotal,omitempty"`
 	// The due date of the certification.
-	Due *SailPointTime `json:"due,omitempty"`
+	Due *time.Time `json:"due,omitempty"`
 	// The date the reviewer signed off on the Certification.
 	Signed NullableTime `json:"signed,omitempty"`
 	Reviewer *Reviewer `json:"reviewer,omitempty"`
@@ -265,9 +265,9 @@ func (o *Certification) SetIdentitiesTotal(v int32) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Certification) GetCreated() SailPointTime {
+func (o *Certification) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -275,7 +275,7 @@ func (o *Certification) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certification) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Certification) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -291,15 +291,15 @@ func (o *Certification) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Certification) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Certification) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Certification) GetModified() SailPointTime {
+func (o *Certification) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -307,7 +307,7 @@ func (o *Certification) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certification) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Certification) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -323,8 +323,8 @@ func (o *Certification) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Certification) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Certification) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -393,9 +393,9 @@ func (o *Certification) SetDecisionsTotal(v int32) {
 }
 
 // GetDue returns the Due field value if set, zero value otherwise.
-func (o *Certification) GetDue() SailPointTime {
+func (o *Certification) GetDue() time.Time {
 	if o == nil || IsNil(o.Due) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Due
@@ -403,7 +403,7 @@ func (o *Certification) GetDue() SailPointTime {
 
 // GetDueOk returns a tuple with the Due field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certification) GetDueOk() (*SailPointTime, bool) {
+func (o *Certification) GetDueOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Due) {
 		return nil, false
 	}
@@ -419,15 +419,15 @@ func (o *Certification) HasDue() bool {
 	return false
 }
 
-// SetDue gets a reference to the given SailPointTime and assigns it to the Due field.
-func (o *Certification) SetDue(v SailPointTime) {
+// SetDue gets a reference to the given time.Time and assigns it to the Due field.
+func (o *Certification) SetDue(v time.Time) {
 	o.Due = &v
 }
 
 // GetSigned returns the Signed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Certification) GetSigned() SailPointTime {
+func (o *Certification) GetSigned() time.Time {
 	if o == nil || IsNil(o.Signed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Signed.Get()
@@ -436,7 +436,7 @@ func (o *Certification) GetSigned() SailPointTime {
 // GetSignedOk returns a tuple with the Signed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Certification) GetSignedOk() (*SailPointTime, bool) {
+func (o *Certification) GetSignedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -453,7 +453,7 @@ func (o *Certification) HasSigned() bool {
 }
 
 // SetSigned gets a reference to the given NullableTime and assigns it to the Signed field.
-func (o *Certification) SetSigned(v SailPointTime) {
+func (o *Certification) SetSigned(v time.Time) {
 	o.Signed.Set(&v)
 }
 // SetSignedNil sets the value for Signed to be an explicit nil

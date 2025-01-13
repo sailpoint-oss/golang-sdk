@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the SpConfigExportResults type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type SpConfigExportResults struct {
 	// Current version of the export results object.
 	Version *int32 `json:"version,omitempty"`
 	// Time the export was completed.
-	Timestamp *SailPointTime `json:"timestamp,omitempty"`
+	Timestamp *time.Time `json:"timestamp,omitempty"`
 	// Name of the tenant where this export originated.
 	Tenant *string `json:"tenant,omitempty"`
 	// Optional user defined description/name for export job.
@@ -85,9 +85,9 @@ func (o *SpConfigExportResults) SetVersion(v int32) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *SpConfigExportResults) GetTimestamp() SailPointTime {
+func (o *SpConfigExportResults) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Timestamp
@@ -95,7 +95,7 @@ func (o *SpConfigExportResults) GetTimestamp() SailPointTime {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigExportResults) GetTimestampOk() (*SailPointTime, bool) {
+func (o *SpConfigExportResults) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *SpConfigExportResults) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given SailPointTime and assigns it to the Timestamp field.
-func (o *SpConfigExportResults) SetTimestamp(v SailPointTime) {
+// SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
+func (o *SpConfigExportResults) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 

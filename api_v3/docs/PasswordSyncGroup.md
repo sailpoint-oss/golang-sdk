@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the sync group | [optional] 
 **PasswordPolicyId** | Pointer to **string** | ID of the password policy | [optional] 
 **SourceIds** | Pointer to **[]string** | List of password managed sources IDs | [optional] 
-**Created** | Pointer to **NullableTime** | The date and time this sync group was created | [optional] 
-**Modified** | Pointer to **NullableTime** | The date and time this sync group was last modified | [optional] 
 
 ## Methods
 
@@ -130,76 +128,6 @@ SetSourceIds sets SourceIds field to given value.
 
 HasSourceIds returns a boolean if a field has been set.
 
-### GetCreated
-
-`func (o *PasswordSyncGroup) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *PasswordSyncGroup) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *PasswordSyncGroup) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *PasswordSyncGroup) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
-
-### SetCreatedNil
-
-`func (o *PasswordSyncGroup) SetCreatedNil(b bool)`
-
- SetCreatedNil sets the value for Created to be an explicit nil
-
-### UnsetCreated
-`func (o *PasswordSyncGroup) UnsetCreated()`
-
-UnsetCreated ensures that no value is present for Created, not even an explicit nil
-### GetModified
-
-`func (o *PasswordSyncGroup) GetModified() time.Time`
-
-GetModified returns the Modified field if non-nil, zero value otherwise.
-
-### GetModifiedOk
-
-`func (o *PasswordSyncGroup) GetModifiedOk() (*time.Time, bool)`
-
-GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModified
-
-`func (o *PasswordSyncGroup) SetModified(v time.Time)`
-
-SetModified sets Modified field to given value.
-
-### HasModified
-
-`func (o *PasswordSyncGroup) HasModified() bool`
-
-HasModified returns a boolean if a field has been set.
-
-### SetModifiedNil
-
-`func (o *PasswordSyncGroup) SetModifiedNil(b bool)`
-
- SetModifiedNil sets the value for Modified to be an explicit nil
-
-### UnsetModified
-`func (o *PasswordSyncGroup) UnsetModified()`
-
-UnsetModified ensures that no value is present for Modified, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

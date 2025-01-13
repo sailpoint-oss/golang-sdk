@@ -21,8 +21,6 @@ Name | Type | Description | Notes
 **ClaimsSupported** | **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when the API Client was created | 
 **Modified** | **time.Time** | The date and time, down to the millisecond, when the API Client was last updated | 
-**Secret** | Pointer to **NullableString** |  | [optional] 
-**Metadata** | Pointer to **NullableString** |  | [optional] 
 **LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
 **Scope** | **[]string** | Scopes of the API Client. | 
 
@@ -425,76 +423,6 @@ and a boolean to check if the value has been set.
 SetModified sets Modified field to given value.
 
 
-### GetSecret
-
-`func (o *GetOAuthClientResponse) GetSecret() string`
-
-GetSecret returns the Secret field if non-nil, zero value otherwise.
-
-### GetSecretOk
-
-`func (o *GetOAuthClientResponse) GetSecretOk() (*string, bool)`
-
-GetSecretOk returns a tuple with the Secret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSecret
-
-`func (o *GetOAuthClientResponse) SetSecret(v string)`
-
-SetSecret sets Secret field to given value.
-
-### HasSecret
-
-`func (o *GetOAuthClientResponse) HasSecret() bool`
-
-HasSecret returns a boolean if a field has been set.
-
-### SetSecretNil
-
-`func (o *GetOAuthClientResponse) SetSecretNil(b bool)`
-
- SetSecretNil sets the value for Secret to be an explicit nil
-
-### UnsetSecret
-`func (o *GetOAuthClientResponse) UnsetSecret()`
-
-UnsetSecret ensures that no value is present for Secret, not even an explicit nil
-### GetMetadata
-
-`func (o *GetOAuthClientResponse) GetMetadata() string`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *GetOAuthClientResponse) GetMetadataOk() (*string, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *GetOAuthClientResponse) SetMetadata(v string)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *GetOAuthClientResponse) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
-
-### SetMetadataNil
-
-`func (o *GetOAuthClientResponse) SetMetadataNil(b bool)`
-
- SetMetadataNil sets the value for Metadata to be an explicit nil
-
-### UnsetMetadata
-`func (o *GetOAuthClientResponse) UnsetMetadata()`
-
-UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetLastUsed
 
 `func (o *GetOAuthClientResponse) GetLastUsed() time.Time`

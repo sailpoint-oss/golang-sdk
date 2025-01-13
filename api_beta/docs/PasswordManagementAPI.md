@@ -4,16 +4,16 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDigitToken**](PasswordManagementAPI.md#CreateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
+[**GenerateDigitToken**](PasswordManagementAPI.md#GenerateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
 [**GetIdentityPasswordChangeStatus**](PasswordManagementAPI.md#GetIdentityPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 [**QueryPasswordInfo**](PasswordManagementAPI.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
 [**SetIdentityPassword**](PasswordManagementAPI.md#SetIdentityPassword) | **Post** /set-password | Set Identity&#39;s Password
 
 
 
-## CreateDigitToken
+## GenerateDigitToken
 
-> PasswordDigitToken CreateDigitToken(ctx).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+> PasswordDigitToken GenerateDigitToken(ctx).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
 
 Generate a digit token
 
@@ -36,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PasswordManagementAPI.CreateDigitToken(context.Background()).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+	resp, r, err := apiClient.PasswordManagementAPI.GenerateDigitToken(context.Background()).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.CreateDigitToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GenerateDigitToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateDigitToken`: PasswordDigitToken
-	fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.CreateDigitToken`: %v\n", resp)
+	// response from `GenerateDigitToken`: PasswordDigitToken
+	fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GenerateDigitToken`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateDigitTokenRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGenerateDigitTokenRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

@@ -9,13 +9,8 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **SourceId** | **string** | The unique ID of the source this account belongs to | 
-**SourceName** | **NullableString** | The display name of the source this account belongs to | 
+**SourceName** | **string** | The display name of the source this account belongs to | 
 **IdentityId** | Pointer to **string** | The unique ID of the identity this account is correlated to | [optional] 
-**CloudLifecycleState** | Pointer to **NullableString** | The lifecycle state of the identity this account is correlated to | [optional] 
-**IdentityState** | Pointer to **NullableString** | The identity state of the identity this account is correlated to | [optional] 
-**ConnectionType** | Pointer to **NullableString** | The connection type of the source this account is from | [optional] 
-**IsMachine** | Pointer to **bool** | Indicates if the account is of machine type | [optional] [default to false]
-**Recommendation** | Pointer to [**Recommendation**](Recommendation.md) |  | [optional] 
 **Attributes** | **map[string]interface{}** | The account attributes that are aggregated | 
 **Authoritative** | **bool** | Indicates if this account is from an authoritative source | 
 **Description** | Pointer to **NullableString** | A description of the account | [optional] 
@@ -29,15 +24,12 @@ Name | Type | Description | Notes
 **HasEntitlements** | **bool** | Indicates if the account has entitlements | 
 **Identity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **SourceOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**Features** | Pointer to **NullableString** | A string list containing the owning source&#39;s features | [optional] 
-**Origin** | Pointer to **NullableString** | The origin of the account either aggregated or provisioned | [optional] 
-**OwnerIdentity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 
 ## Methods
 
 ### NewAccount
 
-`func NewAccount(name string, sourceId string, sourceName NullableString, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool, ) *Account`
+`func NewAccount(name string, sourceId string, sourceName string, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool, ) *Account`
 
 NewAccount instantiates a new Account object
 This constructor will assign default values to properties that have it defined,
@@ -187,16 +179,6 @@ and a boolean to check if the value has been set.
 SetSourceName sets SourceName field to given value.
 
 
-### SetSourceNameNil
-
-`func (o *Account) SetSourceNameNil(b bool)`
-
- SetSourceNameNil sets the value for SourceName to be an explicit nil
-
-### UnsetSourceName
-`func (o *Account) UnsetSourceName()`
-
-UnsetSourceName ensures that no value is present for SourceName, not even an explicit nil
 ### GetIdentityId
 
 `func (o *Account) GetIdentityId() string`
@@ -222,161 +204,6 @@ SetIdentityId sets IdentityId field to given value.
 
 HasIdentityId returns a boolean if a field has been set.
 
-### GetCloudLifecycleState
-
-`func (o *Account) GetCloudLifecycleState() string`
-
-GetCloudLifecycleState returns the CloudLifecycleState field if non-nil, zero value otherwise.
-
-### GetCloudLifecycleStateOk
-
-`func (o *Account) GetCloudLifecycleStateOk() (*string, bool)`
-
-GetCloudLifecycleStateOk returns a tuple with the CloudLifecycleState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudLifecycleState
-
-`func (o *Account) SetCloudLifecycleState(v string)`
-
-SetCloudLifecycleState sets CloudLifecycleState field to given value.
-
-### HasCloudLifecycleState
-
-`func (o *Account) HasCloudLifecycleState() bool`
-
-HasCloudLifecycleState returns a boolean if a field has been set.
-
-### SetCloudLifecycleStateNil
-
-`func (o *Account) SetCloudLifecycleStateNil(b bool)`
-
- SetCloudLifecycleStateNil sets the value for CloudLifecycleState to be an explicit nil
-
-### UnsetCloudLifecycleState
-`func (o *Account) UnsetCloudLifecycleState()`
-
-UnsetCloudLifecycleState ensures that no value is present for CloudLifecycleState, not even an explicit nil
-### GetIdentityState
-
-`func (o *Account) GetIdentityState() string`
-
-GetIdentityState returns the IdentityState field if non-nil, zero value otherwise.
-
-### GetIdentityStateOk
-
-`func (o *Account) GetIdentityStateOk() (*string, bool)`
-
-GetIdentityStateOk returns a tuple with the IdentityState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIdentityState
-
-`func (o *Account) SetIdentityState(v string)`
-
-SetIdentityState sets IdentityState field to given value.
-
-### HasIdentityState
-
-`func (o *Account) HasIdentityState() bool`
-
-HasIdentityState returns a boolean if a field has been set.
-
-### SetIdentityStateNil
-
-`func (o *Account) SetIdentityStateNil(b bool)`
-
- SetIdentityStateNil sets the value for IdentityState to be an explicit nil
-
-### UnsetIdentityState
-`func (o *Account) UnsetIdentityState()`
-
-UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
-### GetConnectionType
-
-`func (o *Account) GetConnectionType() string`
-
-GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
-
-### GetConnectionTypeOk
-
-`func (o *Account) GetConnectionTypeOk() (*string, bool)`
-
-GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConnectionType
-
-`func (o *Account) SetConnectionType(v string)`
-
-SetConnectionType sets ConnectionType field to given value.
-
-### HasConnectionType
-
-`func (o *Account) HasConnectionType() bool`
-
-HasConnectionType returns a boolean if a field has been set.
-
-### SetConnectionTypeNil
-
-`func (o *Account) SetConnectionTypeNil(b bool)`
-
- SetConnectionTypeNil sets the value for ConnectionType to be an explicit nil
-
-### UnsetConnectionType
-`func (o *Account) UnsetConnectionType()`
-
-UnsetConnectionType ensures that no value is present for ConnectionType, not even an explicit nil
-### GetIsMachine
-
-`func (o *Account) GetIsMachine() bool`
-
-GetIsMachine returns the IsMachine field if non-nil, zero value otherwise.
-
-### GetIsMachineOk
-
-`func (o *Account) GetIsMachineOk() (*bool, bool)`
-
-GetIsMachineOk returns a tuple with the IsMachine field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsMachine
-
-`func (o *Account) SetIsMachine(v bool)`
-
-SetIsMachine sets IsMachine field to given value.
-
-### HasIsMachine
-
-`func (o *Account) HasIsMachine() bool`
-
-HasIsMachine returns a boolean if a field has been set.
-
-### GetRecommendation
-
-`func (o *Account) GetRecommendation() Recommendation`
-
-GetRecommendation returns the Recommendation field if non-nil, zero value otherwise.
-
-### GetRecommendationOk
-
-`func (o *Account) GetRecommendationOk() (*Recommendation, bool)`
-
-GetRecommendationOk returns a tuple with the Recommendation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRecommendation
-
-`func (o *Account) SetRecommendation(v Recommendation)`
-
-SetRecommendation sets Recommendation field to given value.
-
-### HasRecommendation
-
-`func (o *Account) HasRecommendation() bool`
-
-HasRecommendation returns a boolean if a field has been set.
-
 ### GetAttributes
 
 `func (o *Account) GetAttributes() map[string]interface{}`
@@ -397,16 +224,6 @@ and a boolean to check if the value has been set.
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *Account) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *Account) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 ### GetAuthoritative
 
 `func (o *Account) GetAuthoritative() bool`
@@ -686,101 +503,6 @@ SetSourceOwner sets SourceOwner field to given value.
 `func (o *Account) HasSourceOwner() bool`
 
 HasSourceOwner returns a boolean if a field has been set.
-
-### GetFeatures
-
-`func (o *Account) GetFeatures() string`
-
-GetFeatures returns the Features field if non-nil, zero value otherwise.
-
-### GetFeaturesOk
-
-`func (o *Account) GetFeaturesOk() (*string, bool)`
-
-GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeatures
-
-`func (o *Account) SetFeatures(v string)`
-
-SetFeatures sets Features field to given value.
-
-### HasFeatures
-
-`func (o *Account) HasFeatures() bool`
-
-HasFeatures returns a boolean if a field has been set.
-
-### SetFeaturesNil
-
-`func (o *Account) SetFeaturesNil(b bool)`
-
- SetFeaturesNil sets the value for Features to be an explicit nil
-
-### UnsetFeatures
-`func (o *Account) UnsetFeatures()`
-
-UnsetFeatures ensures that no value is present for Features, not even an explicit nil
-### GetOrigin
-
-`func (o *Account) GetOrigin() string`
-
-GetOrigin returns the Origin field if non-nil, zero value otherwise.
-
-### GetOriginOk
-
-`func (o *Account) GetOriginOk() (*string, bool)`
-
-GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrigin
-
-`func (o *Account) SetOrigin(v string)`
-
-SetOrigin sets Origin field to given value.
-
-### HasOrigin
-
-`func (o *Account) HasOrigin() bool`
-
-HasOrigin returns a boolean if a field has been set.
-
-### SetOriginNil
-
-`func (o *Account) SetOriginNil(b bool)`
-
- SetOriginNil sets the value for Origin to be an explicit nil
-
-### UnsetOrigin
-`func (o *Account) UnsetOrigin()`
-
-UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
-### GetOwnerIdentity
-
-`func (o *Account) GetOwnerIdentity() BaseReferenceDto`
-
-GetOwnerIdentity returns the OwnerIdentity field if non-nil, zero value otherwise.
-
-### GetOwnerIdentityOk
-
-`func (o *Account) GetOwnerIdentityOk() (*BaseReferenceDto, bool)`
-
-GetOwnerIdentityOk returns a tuple with the OwnerIdentity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwnerIdentity
-
-`func (o *Account) SetOwnerIdentity(v BaseReferenceDto)`
-
-SetOwnerIdentity sets OwnerIdentity field to given value.
-
-### HasOwnerIdentity
-
-`func (o *Account) HasOwnerIdentity() bool`
-
-HasOwnerIdentity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

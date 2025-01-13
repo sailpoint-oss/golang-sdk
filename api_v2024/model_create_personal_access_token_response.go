@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -31,7 +31,7 @@ type CreatePersonalAccessTokenResponse struct {
 	Name string `json:"name"`
 	Owner PatOwner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
 	AccessTokenValiditySeconds int32 `json:"accessTokenValiditySeconds"`
 	AdditionalProperties map[string]interface{}
@@ -43,7 +43,7 @@ type _CreatePersonalAccessTokenResponse CreatePersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created SailPointTime, accessTokenValiditySeconds int32) *CreatePersonalAccessTokenResponse {
+func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time, accessTokenValiditySeconds int32) *CreatePersonalAccessTokenResponse {
 	this := CreatePersonalAccessTokenResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -186,9 +186,9 @@ func (o *CreatePersonalAccessTokenResponse) SetOwner(v PatOwner) {
 }
 
 // GetCreated returns the Created field value
-func (o *CreatePersonalAccessTokenResponse) GetCreated() SailPointTime {
+func (o *CreatePersonalAccessTokenResponse) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -197,7 +197,7 @@ func (o *CreatePersonalAccessTokenResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,7 +205,7 @@ func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool
 }
 
 // SetCreated sets field value
-func (o *CreatePersonalAccessTokenResponse) SetCreated(v SailPointTime) {
+func (o *CreatePersonalAccessTokenResponse) SetCreated(v time.Time) {
 	o.Created = v
 }
 

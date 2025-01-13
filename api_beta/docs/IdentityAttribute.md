@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Identity attribute&#39;s technical name. | 
-**DisplayName** | Pointer to **string** | Identity attribute&#39;s business-friendly name. | [optional] 
-**Standard** | Pointer to **bool** | Indicates whether the attribute is &#39;standard&#39; or &#39;default&#39;. | [optional] [default to false]
-**Type** | Pointer to **NullableString** | Identity attribute&#39;s type. | [optional] 
-**Multi** | Pointer to **bool** | Indicates whether the identity attribute is multi-valued. | [optional] [default to false]
-**Searchable** | Pointer to **bool** | Indicates whether the identity attribute is searchable. | [optional] [default to false]
-**System** | Pointer to **bool** | Indicates whether the identity attribute is &#39;system&#39;, meaning that it doesn&#39;t have a source and isn&#39;t configurable. | [optional] [default to false]
-**Sources** | Pointer to [**[]Source1**](Source1.md) | Identity attribute&#39;s list of sources - this specifies how the rule&#39;s value is derived. | [optional] 
+**Name** | Pointer to **string** | The technical name of the identity attribute | [optional] 
+**DisplayName** | Pointer to **string** | The business-friendly name of the identity attribute | [optional] 
+**Standard** | Pointer to **bool** | Shows if the attribute is &#39;standard&#39; or default | [optional] [default to false]
+**Type** | Pointer to **string** | The type of the identity attribute | [optional] 
+**Multi** | Pointer to **bool** | Shows if the identity attribute is multi-valued | [optional] [default to false]
+**Searchable** | Pointer to **bool** | Shows if the identity attribute is searchable | [optional] [default to false]
+**System** | Pointer to **bool** | Shows this is &#39;system&#39; identity attribute that does not have a source and is not configurable. | [optional] [default to false]
+**Sources** | Pointer to [**[]Source1**](Source1.md) | List of sources for an attribute, this specifies how the value of the rule is derived | [optional] 
 
 ## Methods
 
 ### NewIdentityAttribute
 
-`func NewIdentityAttribute(name string, ) *IdentityAttribute`
+`func NewIdentityAttribute() *IdentityAttribute`
 
 NewIdentityAttribute instantiates a new IdentityAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -51,6 +51,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *IdentityAttribute) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDisplayName
 
@@ -127,16 +132,6 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### SetTypeNil
-
-`func (o *IdentityAttribute) SetTypeNil(b bool)`
-
- SetTypeNil sets the value for Type to be an explicit nil
-
-### UnsetType
-`func (o *IdentityAttribute) UnsetType()`
-
-UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetMulti
 
 `func (o *IdentityAttribute) GetMulti() bool`

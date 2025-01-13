@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ApprovalComment type satisfies the MappedNullable interface at compile time
@@ -113,9 +113,9 @@ func (o *ApprovalComment) SetCommenter(v string) {
 }
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalComment) GetDate() SailPointTime {
+func (o *ApprovalComment) GetDate() time.Time {
 	if o == nil || IsNil(o.Date.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Date.Get()
@@ -124,7 +124,7 @@ func (o *ApprovalComment) GetDate() SailPointTime {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalComment) GetDateOk() (*SailPointTime, bool) {
+func (o *ApprovalComment) GetDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *ApprovalComment) HasDate() bool {
 }
 
 // SetDate gets a reference to the given NullableTime and assigns it to the Date field.
-func (o *ApprovalComment) SetDate(v SailPointTime) {
+func (o *ApprovalComment) SetDate(v time.Time) {
 	o.Date.Set(&v)
 }
 // SetDateNil sets the value for Date to be an explicit nil

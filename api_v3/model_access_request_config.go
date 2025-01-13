@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -19,12 +19,10 @@ var _ MappedNullable = &AccessRequestConfig{}
 
 // AccessRequestConfig struct for AccessRequestConfig
 type AccessRequestConfig struct {
-	// If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.
+	// If true, then approvals must be processed by external system.
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
-	// If this is true and the requester and reviewer are the same, the request is automatically approved.
+	// If true and requester and reviewer are the same, then automatically approve the approval.
 	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
-	// If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.
-	ReauthorizationEnabled *bool `json:"reauthorizationEnabled,omitempty"`
 	RequestOnBehalfOfConfig *RequestOnBehalfOfConfig `json:"requestOnBehalfOfConfig,omitempty"`
 	ApprovalReminderAndEscalationConfig *ApprovalReminderAndEscalationConfig `json:"approvalReminderAndEscalationConfig,omitempty"`
 	EntitlementRequestConfig *EntitlementRequestConfig `json:"entitlementRequestConfig,omitempty"`
@@ -39,12 +37,6 @@ type _AccessRequestConfig AccessRequestConfig
 // will change when the set of required properties is changed
 func NewAccessRequestConfig() *AccessRequestConfig {
 	this := AccessRequestConfig{}
-	var approvalsMustBeExternal bool = false
-	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
-	var reauthorizationEnabled bool = false
-	this.ReauthorizationEnabled = &reauthorizationEnabled
 	return &this
 }
 
@@ -53,12 +45,6 @@ func NewAccessRequestConfig() *AccessRequestConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewAccessRequestConfigWithDefaults() *AccessRequestConfig {
 	this := AccessRequestConfig{}
-	var approvalsMustBeExternal bool = false
-	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
-	var reauthorizationEnabled bool = false
-	this.ReauthorizationEnabled = &reauthorizationEnabled
 	return &this
 }
 
@@ -124,38 +110,6 @@ func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool {
 // SetAutoApprovalEnabled gets a reference to the given bool and assigns it to the AutoApprovalEnabled field.
 func (o *AccessRequestConfig) SetAutoApprovalEnabled(v bool) {
 	o.AutoApprovalEnabled = &v
-}
-
-// GetReauthorizationEnabled returns the ReauthorizationEnabled field value if set, zero value otherwise.
-func (o *AccessRequestConfig) GetReauthorizationEnabled() bool {
-	if o == nil || IsNil(o.ReauthorizationEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.ReauthorizationEnabled
-}
-
-// GetReauthorizationEnabledOk returns a tuple with the ReauthorizationEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequestConfig) GetReauthorizationEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.ReauthorizationEnabled) {
-		return nil, false
-	}
-	return o.ReauthorizationEnabled, true
-}
-
-// HasReauthorizationEnabled returns a boolean if a field has been set.
-func (o *AccessRequestConfig) HasReauthorizationEnabled() bool {
-	if o != nil && !IsNil(o.ReauthorizationEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetReauthorizationEnabled gets a reference to the given bool and assigns it to the ReauthorizationEnabled field.
-func (o *AccessRequestConfig) SetReauthorizationEnabled(v bool) {
-	o.ReauthorizationEnabled = &v
 }
 
 // GetRequestOnBehalfOfConfig returns the RequestOnBehalfOfConfig field value if set, zero value otherwise.
@@ -270,9 +224,6 @@ func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoApprovalEnabled) {
 		toSerialize["autoApprovalEnabled"] = o.AutoApprovalEnabled
 	}
-	if !IsNil(o.ReauthorizationEnabled) {
-		toSerialize["reauthorizationEnabled"] = o.ReauthorizationEnabled
-	}
 	if !IsNil(o.RequestOnBehalfOfConfig) {
 		toSerialize["requestOnBehalfOfConfig"] = o.RequestOnBehalfOfConfig
 	}
@@ -306,7 +257,6 @@ func (o *AccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalsMustBeExternal")
 		delete(additionalProperties, "autoApprovalEnabled")
-		delete(additionalProperties, "reauthorizationEnabled")
 		delete(additionalProperties, "requestOnBehalfOfConfig")
 		delete(additionalProperties, "approvalReminderAndEscalationConfig")
 		delete(additionalProperties, "entitlementRequestConfig")

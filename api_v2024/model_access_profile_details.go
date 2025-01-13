@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AccessProfileDetails type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type AccessProfileDetails struct {
 	// Information about the Access Profile
 	Description NullableString `json:"description,omitempty"`
 	// Date the Access Profile was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Date the Access Profile was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// Whether the Access Profile is enabled.
 	Disabled *bool `json:"disabled,omitempty"`
 	// Whether the Access Profile is requestable via access request.
@@ -214,9 +214,9 @@ func (o *AccessProfileDetails) UnsetDescription() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *AccessProfileDetails) GetCreated() SailPointTime {
+func (o *AccessProfileDetails) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -224,7 +224,7 @@ func (o *AccessProfileDetails) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDetails) GetCreatedOk() (*SailPointTime, bool) {
+func (o *AccessProfileDetails) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -240,15 +240,15 @@ func (o *AccessProfileDetails) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *AccessProfileDetails) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *AccessProfileDetails) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *AccessProfileDetails) GetModified() SailPointTime {
+func (o *AccessProfileDetails) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -256,7 +256,7 @@ func (o *AccessProfileDetails) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDetails) GetModifiedOk() (*SailPointTime, bool) {
+func (o *AccessProfileDetails) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -272,8 +272,8 @@ func (o *AccessProfileDetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *AccessProfileDetails) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *AccessProfileDetails) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

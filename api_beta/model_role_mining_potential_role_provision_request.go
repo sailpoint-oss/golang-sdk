@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -25,10 +25,6 @@ type RoleMiningPotentialRoleProvisionRequest struct {
 	RoleDescription *string `json:"roleDescription,omitempty"`
 	// ID of the identity that will own this role
 	OwnerId *string `json:"ownerId,omitempty"`
-	// When true, create access requests for the identities associated with the potential role
-	IncludeIdentities *bool `json:"includeIdentities,omitempty"`
-	// When true, assign entitlements directly to the role; otherwise, create access profiles containing the entitlements
-	DirectlyAssignedEntitlements *bool `json:"directlyAssignedEntitlements,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,10 +36,6 @@ type _RoleMiningPotentialRoleProvisionRequest RoleMiningPotentialRoleProvisionRe
 // will change when the set of required properties is changed
 func NewRoleMiningPotentialRoleProvisionRequest() *RoleMiningPotentialRoleProvisionRequest {
 	this := RoleMiningPotentialRoleProvisionRequest{}
-	var includeIdentities bool = false
-	this.IncludeIdentities = &includeIdentities
-	var directlyAssignedEntitlements bool = false
-	this.DirectlyAssignedEntitlements = &directlyAssignedEntitlements
 	return &this
 }
 
@@ -52,10 +44,6 @@ func NewRoleMiningPotentialRoleProvisionRequest() *RoleMiningPotentialRoleProvis
 // but it doesn't guarantee that properties required by API are set
 func NewRoleMiningPotentialRoleProvisionRequestWithDefaults() *RoleMiningPotentialRoleProvisionRequest {
 	this := RoleMiningPotentialRoleProvisionRequest{}
-	var includeIdentities bool = false
-	this.IncludeIdentities = &includeIdentities
-	var directlyAssignedEntitlements bool = false
-	this.DirectlyAssignedEntitlements = &directlyAssignedEntitlements
 	return &this
 }
 
@@ -155,70 +143,6 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetOwnerId(v string) {
 	o.OwnerId = &v
 }
 
-// GetIncludeIdentities returns the IncludeIdentities field value if set, zero value otherwise.
-func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentities() bool {
-	if o == nil || IsNil(o.IncludeIdentities) {
-		var ret bool
-		return ret
-	}
-	return *o.IncludeIdentities
-}
-
-// GetIncludeIdentitiesOk returns a tuple with the IncludeIdentities field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentitiesOk() (*bool, bool) {
-	if o == nil || IsNil(o.IncludeIdentities) {
-		return nil, false
-	}
-	return o.IncludeIdentities, true
-}
-
-// HasIncludeIdentities returns a boolean if a field has been set.
-func (o *RoleMiningPotentialRoleProvisionRequest) HasIncludeIdentities() bool {
-	if o != nil && !IsNil(o.IncludeIdentities) {
-		return true
-	}
-
-	return false
-}
-
-// SetIncludeIdentities gets a reference to the given bool and assigns it to the IncludeIdentities field.
-func (o *RoleMiningPotentialRoleProvisionRequest) SetIncludeIdentities(v bool) {
-	o.IncludeIdentities = &v
-}
-
-// GetDirectlyAssignedEntitlements returns the DirectlyAssignedEntitlements field value if set, zero value otherwise.
-func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlements() bool {
-	if o == nil || IsNil(o.DirectlyAssignedEntitlements) {
-		var ret bool
-		return ret
-	}
-	return *o.DirectlyAssignedEntitlements
-}
-
-// GetDirectlyAssignedEntitlementsOk returns a tuple with the DirectlyAssignedEntitlements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlementsOk() (*bool, bool) {
-	if o == nil || IsNil(o.DirectlyAssignedEntitlements) {
-		return nil, false
-	}
-	return o.DirectlyAssignedEntitlements, true
-}
-
-// HasDirectlyAssignedEntitlements returns a boolean if a field has been set.
-func (o *RoleMiningPotentialRoleProvisionRequest) HasDirectlyAssignedEntitlements() bool {
-	if o != nil && !IsNil(o.DirectlyAssignedEntitlements) {
-		return true
-	}
-
-	return false
-}
-
-// SetDirectlyAssignedEntitlements gets a reference to the given bool and assigns it to the DirectlyAssignedEntitlements field.
-func (o *RoleMiningPotentialRoleProvisionRequest) SetDirectlyAssignedEntitlements(v bool) {
-	o.DirectlyAssignedEntitlements = &v
-}
-
 func (o RoleMiningPotentialRoleProvisionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -237,12 +161,6 @@ func (o RoleMiningPotentialRoleProvisionRequest) ToMap() (map[string]interface{}
 	}
 	if !IsNil(o.OwnerId) {
 		toSerialize["ownerId"] = o.OwnerId
-	}
-	if !IsNil(o.IncludeIdentities) {
-		toSerialize["includeIdentities"] = o.IncludeIdentities
-	}
-	if !IsNil(o.DirectlyAssignedEntitlements) {
-		toSerialize["directlyAssignedEntitlements"] = o.DirectlyAssignedEntitlements
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -269,8 +187,6 @@ func (o *RoleMiningPotentialRoleProvisionRequest) UnmarshalJSON(data []byte) (er
 		delete(additionalProperties, "roleName")
 		delete(additionalProperties, "roleDescription")
 		delete(additionalProperties, "ownerId")
-		delete(additionalProperties, "includeIdentities")
-		delete(additionalProperties, "directlyAssignedEntitlements")
 		o.AdditionalProperties = additionalProperties
 	}
 

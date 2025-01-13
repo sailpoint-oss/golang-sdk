@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -20,7 +20,7 @@ var _ MappedNullable = &ExportFormDefinitionsByTenant200ResponseInner{}
 // ExportFormDefinitionsByTenant200ResponseInner struct for ExportFormDefinitionsByTenant200ResponseInner
 type ExportFormDefinitionsByTenant200ResponseInner struct {
 	Object *FormDefinitionResponse `json:"object,omitempty"`
-	Self *FormDefinitionSelfImportExportDto `json:"self,omitempty"`
+	Self *string `json:"self,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -77,9 +77,9 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) SetObject(v FormDefiniti
 }
 
 // GetSelf returns the Self field value if set, zero value otherwise.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() FormDefinitionSelfImportExportDto {
+func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string {
 	if o == nil || IsNil(o.Self) {
-		var ret FormDefinitionSelfImportExportDto
+		var ret string
 		return ret
 	}
 	return *o.Self
@@ -87,7 +87,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() FormDefinition
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*FormDefinitionSelfImportExportDto, bool) {
+func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*string, bool) {
 	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) HasSelf() bool {
 	return false
 }
 
-// SetSelf gets a reference to the given FormDefinitionSelfImportExportDto and assigns it to the Self field.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v FormDefinitionSelfImportExportDto) {
+// SetSelf gets a reference to the given string and assigns it to the Self field.
+func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v string) {
 	o.Self = &v
 }
 

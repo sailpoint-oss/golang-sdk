@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	identityId := "7025c863-c270-4ba6-beea-edf3cb091573" // string | Manager's identity ID.
+	identityId := "7025c863-c270-4ba6-beea-edf3cb091573" // string | Identity's ID.
 	requestedObjectId := "2db501be-f0fb-4cc5-a695-334133c52891" // string | Requested access item's ID.
 	type_ := "ENTITLEMENT" // string | Requested access item's type.
 
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Manager&#39;s identity ID. | 
+**identityId** | **string** | Identity&#39;s ID. | 
 **requestedObjectId** | **string** | Requested access item&#39;s ID. | 
 **type_** | **string** | Requested access item&#39;s type. | 
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

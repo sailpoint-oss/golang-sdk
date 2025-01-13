@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -19,14 +19,14 @@ var _ MappedNullable = &EntitlementRequestConfig1{}
 
 // EntitlementRequestConfig1 struct for EntitlementRequestConfig1
 type EntitlementRequestConfig1 struct {
-	// If this is true, entitlement requests are allowed.
+	// Flag for allowing entitlement request.
 	AllowEntitlementRequest *bool `json:"allowEntitlementRequest,omitempty"`
-	// If this is true, comments are required to submit entitlement requests.
+	// Flag for requiring comments while submitting an entitlement request.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	// If this is true, comments are required to reject entitlement requests.
+	// Flag for requiring comments while rejecting an entitlement request.
 	DeniedCommentsRequired *bool `json:"deniedCommentsRequired,omitempty"`
-	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"`workgroup:{id}`\". You can use multiple governance groups (workgroups). 
-	GrantRequestApprovalSchemes NullableString `json:"grantRequestApprovalSchemes,omitempty"`
+	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". Multiple workgroups (governance groups) can be used. 
+	GrantRequestApprovalSchemes *string `json:"grantRequestApprovalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,14 +38,12 @@ type _EntitlementRequestConfig1 EntitlementRequestConfig1
 // will change when the set of required properties is changed
 func NewEntitlementRequestConfig1() *EntitlementRequestConfig1 {
 	this := EntitlementRequestConfig1{}
-	var allowEntitlementRequest bool = false
-	this.AllowEntitlementRequest = &allowEntitlementRequest
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	var deniedCommentsRequired bool = false
 	this.DeniedCommentsRequired = &deniedCommentsRequired
 	var grantRequestApprovalSchemes string = "sourceOwner"
-	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
+	this.GrantRequestApprovalSchemes = &grantRequestApprovalSchemes
 	return &this
 }
 
@@ -54,14 +52,12 @@ func NewEntitlementRequestConfig1() *EntitlementRequestConfig1 {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementRequestConfig1WithDefaults() *EntitlementRequestConfig1 {
 	this := EntitlementRequestConfig1{}
-	var allowEntitlementRequest bool = false
-	this.AllowEntitlementRequest = &allowEntitlementRequest
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	var deniedCommentsRequired bool = false
 	this.DeniedCommentsRequired = &deniedCommentsRequired
 	var grantRequestApprovalSchemes string = "sourceOwner"
-	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
+	this.GrantRequestApprovalSchemes = &grantRequestApprovalSchemes
 	return &this
 }
 
@@ -161,46 +157,36 @@ func (o *EntitlementRequestConfig1) SetDeniedCommentsRequired(v bool) {
 	o.DeniedCommentsRequired = &v
 }
 
-// GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise.
 func (o *EntitlementRequestConfig1) GetGrantRequestApprovalSchemes() string {
-	if o == nil || IsNil(o.GrantRequestApprovalSchemes.Get()) {
+	if o == nil || IsNil(o.GrantRequestApprovalSchemes) {
 		var ret string
 		return ret
 	}
-	return *o.GrantRequestApprovalSchemes.Get()
+	return *o.GrantRequestApprovalSchemes
 }
 
 // GetGrantRequestApprovalSchemesOk returns a tuple with the GrantRequestApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EntitlementRequestConfig1) GetGrantRequestApprovalSchemesOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GrantRequestApprovalSchemes) {
 		return nil, false
 	}
-	return o.GrantRequestApprovalSchemes.Get(), o.GrantRequestApprovalSchemes.IsSet()
+	return o.GrantRequestApprovalSchemes, true
 }
 
 // HasGrantRequestApprovalSchemes returns a boolean if a field has been set.
 func (o *EntitlementRequestConfig1) HasGrantRequestApprovalSchemes() bool {
-	if o != nil && o.GrantRequestApprovalSchemes.IsSet() {
+	if o != nil && !IsNil(o.GrantRequestApprovalSchemes) {
 		return true
 	}
 
 	return false
 }
 
-// SetGrantRequestApprovalSchemes gets a reference to the given NullableString and assigns it to the GrantRequestApprovalSchemes field.
+// SetGrantRequestApprovalSchemes gets a reference to the given string and assigns it to the GrantRequestApprovalSchemes field.
 func (o *EntitlementRequestConfig1) SetGrantRequestApprovalSchemes(v string) {
-	o.GrantRequestApprovalSchemes.Set(&v)
-}
-// SetGrantRequestApprovalSchemesNil sets the value for GrantRequestApprovalSchemes to be an explicit nil
-func (o *EntitlementRequestConfig1) SetGrantRequestApprovalSchemesNil() {
-	o.GrantRequestApprovalSchemes.Set(nil)
-}
-
-// UnsetGrantRequestApprovalSchemes ensures that no value is present for GrantRequestApprovalSchemes, not even an explicit nil
-func (o *EntitlementRequestConfig1) UnsetGrantRequestApprovalSchemes() {
-	o.GrantRequestApprovalSchemes.Unset()
+	o.GrantRequestApprovalSchemes = &v
 }
 
 func (o EntitlementRequestConfig1) MarshalJSON() ([]byte, error) {
@@ -222,8 +208,8 @@ func (o EntitlementRequestConfig1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeniedCommentsRequired) {
 		toSerialize["deniedCommentsRequired"] = o.DeniedCommentsRequired
 	}
-	if o.GrantRequestApprovalSchemes.IsSet() {
-		toSerialize["grantRequestApprovalSchemes"] = o.GrantRequestApprovalSchemes.Get()
+	if !IsNil(o.GrantRequestApprovalSchemes) {
+		toSerialize["grantRequestApprovalSchemes"] = o.GrantRequestApprovalSchemes
 	}
 
 	for key, value := range o.AdditionalProperties {

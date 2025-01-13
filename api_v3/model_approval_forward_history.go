@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ApprovalForwardHistory type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type ApprovalForwardHistory struct {
 	// Comment made while forwarding.
 	Comment NullableString `json:"comment,omitempty"`
 	// Time at which approval was forwarded.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// Display name of forwarder who forwarded the approval.
 	ForwarderName NullableString `json:"forwarderName,omitempty"`
 	ReassignmentType *ReassignmentType `json:"reassignmentType,omitempty"`
@@ -160,9 +160,9 @@ func (o *ApprovalForwardHistory) UnsetComment() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *ApprovalForwardHistory) GetModified() SailPointTime {
+func (o *ApprovalForwardHistory) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -170,7 +170,7 @@ func (o *ApprovalForwardHistory) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalForwardHistory) GetModifiedOk() (*SailPointTime, bool) {
+func (o *ApprovalForwardHistory) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -186,8 +186,8 @@ func (o *ApprovalForwardHistory) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *ApprovalForwardHistory) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *ApprovalForwardHistory) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -38,12 +38,6 @@ type _EmailNotificationOption EmailNotificationOption
 // will change when the set of required properties is changed
 func NewEmailNotificationOption() *EmailNotificationOption {
 	this := EmailNotificationOption{}
-	var notifyManagers bool = false
-	this.NotifyManagers = &notifyManagers
-	var notifyAllAdmins bool = false
-	this.NotifyAllAdmins = &notifyAllAdmins
-	var notifySpecificUsers bool = false
-	this.NotifySpecificUsers = &notifySpecificUsers
 	return &this
 }
 
@@ -52,12 +46,6 @@ func NewEmailNotificationOption() *EmailNotificationOption {
 // but it doesn't guarantee that properties required by API are set
 func NewEmailNotificationOptionWithDefaults() *EmailNotificationOption {
 	this := EmailNotificationOption{}
-	var notifyManagers bool = false
-	this.NotifyManagers = &notifyManagers
-	var notifyAllAdmins bool = false
-	this.NotifyAllAdmins = &notifyAllAdmins
-	var notifySpecificUsers bool = false
-	this.NotifySpecificUsers = &notifySpecificUsers
 	return &this
 }
 

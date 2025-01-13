@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NewRequests** | Pointer to [**[]AccessRequestTracking**](AccessRequestTracking.md) | A list of new access request tracking data mapped to the values requested. | [optional] 
-**ExistingRequests** | Pointer to [**[]AccessRequestTracking**](AccessRequestTracking.md) | A list of existing access request tracking data mapped to the values requested.  This indicates access has already been requested for this item. | [optional] 
+**RequesterId** | Pointer to **string** | the requester Id | [optional] 
+**RequesterName** | Pointer to **string** | the requesterName | [optional] 
+**Items** | Pointer to [**[]AccessRequestItemResponse**](AccessRequestItemResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -26,55 +27,80 @@ NewAccessRequestResponseWithDefaults instantiates a new AccessRequestResponse ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetNewRequests
+### GetRequesterId
 
-`func (o *AccessRequestResponse) GetNewRequests() []AccessRequestTracking`
+`func (o *AccessRequestResponse) GetRequesterId() string`
 
-GetNewRequests returns the NewRequests field if non-nil, zero value otherwise.
+GetRequesterId returns the RequesterId field if non-nil, zero value otherwise.
 
-### GetNewRequestsOk
+### GetRequesterIdOk
 
-`func (o *AccessRequestResponse) GetNewRequestsOk() (*[]AccessRequestTracking, bool)`
+`func (o *AccessRequestResponse) GetRequesterIdOk() (*string, bool)`
 
-GetNewRequestsOk returns a tuple with the NewRequests field if it's non-nil, zero value otherwise
+GetRequesterIdOk returns a tuple with the RequesterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNewRequests
+### SetRequesterId
 
-`func (o *AccessRequestResponse) SetNewRequests(v []AccessRequestTracking)`
+`func (o *AccessRequestResponse) SetRequesterId(v string)`
 
-SetNewRequests sets NewRequests field to given value.
+SetRequesterId sets RequesterId field to given value.
 
-### HasNewRequests
+### HasRequesterId
 
-`func (o *AccessRequestResponse) HasNewRequests() bool`
+`func (o *AccessRequestResponse) HasRequesterId() bool`
 
-HasNewRequests returns a boolean if a field has been set.
+HasRequesterId returns a boolean if a field has been set.
 
-### GetExistingRequests
+### GetRequesterName
 
-`func (o *AccessRequestResponse) GetExistingRequests() []AccessRequestTracking`
+`func (o *AccessRequestResponse) GetRequesterName() string`
 
-GetExistingRequests returns the ExistingRequests field if non-nil, zero value otherwise.
+GetRequesterName returns the RequesterName field if non-nil, zero value otherwise.
 
-### GetExistingRequestsOk
+### GetRequesterNameOk
 
-`func (o *AccessRequestResponse) GetExistingRequestsOk() (*[]AccessRequestTracking, bool)`
+`func (o *AccessRequestResponse) GetRequesterNameOk() (*string, bool)`
 
-GetExistingRequestsOk returns a tuple with the ExistingRequests field if it's non-nil, zero value otherwise
+GetRequesterNameOk returns a tuple with the RequesterName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExistingRequests
+### SetRequesterName
 
-`func (o *AccessRequestResponse) SetExistingRequests(v []AccessRequestTracking)`
+`func (o *AccessRequestResponse) SetRequesterName(v string)`
 
-SetExistingRequests sets ExistingRequests field to given value.
+SetRequesterName sets RequesterName field to given value.
 
-### HasExistingRequests
+### HasRequesterName
 
-`func (o *AccessRequestResponse) HasExistingRequests() bool`
+`func (o *AccessRequestResponse) HasRequesterName() bool`
 
-HasExistingRequests returns a boolean if a field has been set.
+HasRequesterName returns a boolean if a field has been set.
+
+### GetItems
+
+`func (o *AccessRequestResponse) GetItems() []AccessRequestItemResponse`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *AccessRequestResponse) GetItemsOk() (*[]AccessRequestItemResponse, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *AccessRequestResponse) SetItems(v []AccessRequestItemResponse)`
+
+SetItems sets Items field to given value.
+
+### HasItems
+
+`func (o *AccessRequestResponse) HasItems() bool`
+
+HasItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	
 )
 
 // checks if the WorkflowLibraryTrigger type satisfies the MappedNullable interface at compile time
@@ -23,12 +22,7 @@ type WorkflowLibraryTrigger struct {
 	// Trigger ID. This is a static namespaced ID for the trigger.
 	Id *string `json:"id,omitempty"`
 	// Trigger type
-	Type *string `json:"type,omitempty"`
-	Deprecated *bool `json:"deprecated,omitempty"`
-	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
-	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
-	// Example output schema
-	OutputSchema map[string]interface{} `json:"outputSchema,omitempty"`
+	Type map[string]interface{} `json:"type,omitempty"`
 	// Trigger Name
 	Name *string `json:"name,omitempty"`
 	// Trigger Description
@@ -94,19 +88,19 @@ func (o *WorkflowLibraryTrigger) SetId(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetType() string {
+func (o *WorkflowLibraryTrigger) GetType() map[string]interface{} {
 	if o == nil || IsNil(o.Type) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Type
+	return o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetTypeOk() (*string, bool) {
+func (o *WorkflowLibraryTrigger) GetTypeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Type) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Type, true
 }
@@ -120,137 +114,9 @@ func (o *WorkflowLibraryTrigger) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *WorkflowLibraryTrigger) SetType(v string) {
-	o.Type = &v
-}
-
-// GetDeprecated returns the Deprecated field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetDeprecated() bool {
-	if o == nil || IsNil(o.Deprecated) {
-		var ret bool
-		return ret
-	}
-	return *o.Deprecated
-}
-
-// GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Deprecated) {
-		return nil, false
-	}
-	return o.Deprecated, true
-}
-
-// HasDeprecated returns a boolean if a field has been set.
-func (o *WorkflowLibraryTrigger) HasDeprecated() bool {
-	if o != nil && !IsNil(o.Deprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeprecated gets a reference to the given bool and assigns it to the Deprecated field.
-func (o *WorkflowLibraryTrigger) SetDeprecated(v bool) {
-	o.Deprecated = &v
-}
-
-// GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetDeprecatedBy() SailPointTime {
-	if o == nil || IsNil(o.DeprecatedBy) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.DeprecatedBy
-}
-
-// GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.DeprecatedBy) {
-		return nil, false
-	}
-	return o.DeprecatedBy, true
-}
-
-// HasDeprecatedBy returns a boolean if a field has been set.
-func (o *WorkflowLibraryTrigger) HasDeprecatedBy() bool {
-	if o != nil && !IsNil(o.DeprecatedBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeprecatedBy gets a reference to the given SailPointTime and assigns it to the DeprecatedBy field.
-func (o *WorkflowLibraryTrigger) SetDeprecatedBy(v SailPointTime) {
-	o.DeprecatedBy = &v
-}
-
-// GetIsSimulationEnabled returns the IsSimulationEnabled field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetIsSimulationEnabled() bool {
-	if o == nil || IsNil(o.IsSimulationEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.IsSimulationEnabled
-}
-
-// GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetIsSimulationEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSimulationEnabled) {
-		return nil, false
-	}
-	return o.IsSimulationEnabled, true
-}
-
-// HasIsSimulationEnabled returns a boolean if a field has been set.
-func (o *WorkflowLibraryTrigger) HasIsSimulationEnabled() bool {
-	if o != nil && !IsNil(o.IsSimulationEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsSimulationEnabled gets a reference to the given bool and assigns it to the IsSimulationEnabled field.
-func (o *WorkflowLibraryTrigger) SetIsSimulationEnabled(v bool) {
-	o.IsSimulationEnabled = &v
-}
-
-// GetOutputSchema returns the OutputSchema field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetOutputSchema() map[string]interface{} {
-	if o == nil || IsNil(o.OutputSchema) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.OutputSchema
-}
-
-// GetOutputSchemaOk returns a tuple with the OutputSchema field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetOutputSchemaOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.OutputSchema) {
-		return map[string]interface{}{}, false
-	}
-	return o.OutputSchema, true
-}
-
-// HasOutputSchema returns a boolean if a field has been set.
-func (o *WorkflowLibraryTrigger) HasOutputSchema() bool {
-	if o != nil && !IsNil(o.OutputSchema) {
-		return true
-	}
-
-	return false
-}
-
-// SetOutputSchema gets a reference to the given map[string]interface{} and assigns it to the OutputSchema field.
-func (o *WorkflowLibraryTrigger) SetOutputSchema(v map[string]interface{}) {
-	o.OutputSchema = v
+// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
+func (o *WorkflowLibraryTrigger) SetType(v map[string]interface{}) {
+	o.Type = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -431,18 +297,6 @@ func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Deprecated) {
-		toSerialize["deprecated"] = o.Deprecated
-	}
-	if !IsNil(o.DeprecatedBy) {
-		toSerialize["deprecatedBy"] = o.DeprecatedBy
-	}
-	if !IsNil(o.IsSimulationEnabled) {
-		toSerialize["isSimulationEnabled"] = o.IsSimulationEnabled
-	}
-	if !IsNil(o.OutputSchema) {
-		toSerialize["outputSchema"] = o.OutputSchema
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -482,10 +336,6 @@ func (o *WorkflowLibraryTrigger) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "deprecated")
-		delete(additionalProperties, "deprecatedBy")
-		delete(additionalProperties, "isSimulationEnabled")
-		delete(additionalProperties, "outputSchema")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "isDynamicSchema")

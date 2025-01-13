@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**CriteriaType**](CriteriaType.md) |  | 
 **Operation** | [**Operation**](Operation.md) |  | 
-**Property** | **NullableString** | Specified key from the type of criteria. | 
-**Value** | **NullableString** | Value for the specified key from the type of criteria. | 
+**Property** | **string** | The specified key from the Type of criteria. | 
+**Value** | **string** | The value for the specified key from the Type of Criteria | 
 
 ## Methods
 
 ### NewCampaignFilterDetailsCriteriaListInner
 
-`func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property NullableString, value NullableString, ) *CampaignFilterDetailsCriteriaListInner`
+`func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property string, value string, ) *CampaignFilterDetailsCriteriaListInner`
 
 NewCampaignFilterDetailsCriteriaListInner instantiates a new CampaignFilterDetailsCriteriaListInner object
 This constructor will assign default values to properties that have it defined,
@@ -88,16 +88,6 @@ and a boolean to check if the value has been set.
 SetProperty sets Property field to given value.
 
 
-### SetPropertyNil
-
-`func (o *CampaignFilterDetailsCriteriaListInner) SetPropertyNil(b bool)`
-
- SetPropertyNil sets the value for Property to be an explicit nil
-
-### UnsetProperty
-`func (o *CampaignFilterDetailsCriteriaListInner) UnsetProperty()`
-
-UnsetProperty ensures that no value is present for Property, not even an explicit nil
 ### GetValue
 
 `func (o *CampaignFilterDetailsCriteriaListInner) GetValue() string`
@@ -118,16 +108,6 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
-### SetValueNil
-
-`func (o *CampaignFilterDetailsCriteriaListInner) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *CampaignFilterDetailsCriteriaListInner) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

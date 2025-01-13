@@ -16,10 +16,6 @@ Name | Type | Description | Notes
 **Freshness** | Pointer to **int32** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
 **Quality** | Pointer to **int32** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
-**CreatedBy** | Pointer to [**RoleMiningPotentialRoleSummaryCreatedBy**](RoleMiningPotentialRoleSummaryCreatedBy.md) |  | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time when this potential role was created. | [optional] 
-**Saved** | Pointer to **bool** | The potential role&#39;s saved status | [optional] [default to false]
-**Description** | Pointer to **NullableString** | Description of the potential role | [optional] 
 **Session** | Pointer to [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 
 ## Methods
@@ -351,116 +347,6 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### GetCreatedBy
-
-`func (o *RoleMiningPotentialRoleSummary) GetCreatedBy() RoleMiningPotentialRoleSummaryCreatedBy`
-
-GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
-
-### GetCreatedByOk
-
-`func (o *RoleMiningPotentialRoleSummary) GetCreatedByOk() (*RoleMiningPotentialRoleSummaryCreatedBy, bool)`
-
-GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedBy
-
-`func (o *RoleMiningPotentialRoleSummary) SetCreatedBy(v RoleMiningPotentialRoleSummaryCreatedBy)`
-
-SetCreatedBy sets CreatedBy field to given value.
-
-### HasCreatedBy
-
-`func (o *RoleMiningPotentialRoleSummary) HasCreatedBy() bool`
-
-HasCreatedBy returns a boolean if a field has been set.
-
-### GetCreatedDate
-
-`func (o *RoleMiningPotentialRoleSummary) GetCreatedDate() time.Time`
-
-GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
-
-### GetCreatedDateOk
-
-`func (o *RoleMiningPotentialRoleSummary) GetCreatedDateOk() (*time.Time, bool)`
-
-GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedDate
-
-`func (o *RoleMiningPotentialRoleSummary) SetCreatedDate(v time.Time)`
-
-SetCreatedDate sets CreatedDate field to given value.
-
-### HasCreatedDate
-
-`func (o *RoleMiningPotentialRoleSummary) HasCreatedDate() bool`
-
-HasCreatedDate returns a boolean if a field has been set.
-
-### GetSaved
-
-`func (o *RoleMiningPotentialRoleSummary) GetSaved() bool`
-
-GetSaved returns the Saved field if non-nil, zero value otherwise.
-
-### GetSavedOk
-
-`func (o *RoleMiningPotentialRoleSummary) GetSavedOk() (*bool, bool)`
-
-GetSavedOk returns a tuple with the Saved field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSaved
-
-`func (o *RoleMiningPotentialRoleSummary) SetSaved(v bool)`
-
-SetSaved sets Saved field to given value.
-
-### HasSaved
-
-`func (o *RoleMiningPotentialRoleSummary) HasSaved() bool`
-
-HasSaved returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *RoleMiningPotentialRoleSummary) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *RoleMiningPotentialRoleSummary) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *RoleMiningPotentialRoleSummary) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *RoleMiningPotentialRoleSummary) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *RoleMiningPotentialRoleSummary) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *RoleMiningPotentialRoleSummary) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSession
 
 `func (o *RoleMiningPotentialRoleSummary) GetSession() RoleMiningSessionParametersDto`

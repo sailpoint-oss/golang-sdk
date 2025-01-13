@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **TriggerId** | **string** | ID of trigger subscribed to. | 
 **TriggerName** | **string** | Trigger name of trigger subscribed to. | 
 **Type** | [**SubscriptionType**](SubscriptionType.md) |  | 
-**ResponseDeadline** | Pointer to **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to "PT1H"]
+**ResponseDeadline** | **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [default to "PT1H"]
 **HttpConfig** | Pointer to [**HttpConfig**](HttpConfig.md) |  | [optional] 
 **EventBridgeConfig** | Pointer to [**EventBridgeConfig**](EventBridgeConfig.md) |  | [optional] 
 **Enabled** | **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [default to true]
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewSubscription
 
-`func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, enabled bool, ) *Subscription`
+`func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, responseDeadline string, enabled bool, ) *Subscription`
 
 NewSubscription instantiates a new Subscription object
 This constructor will assign default values to properties that have it defined,
@@ -179,11 +179,6 @@ and a boolean to check if the value has been set.
 
 SetResponseDeadline sets ResponseDeadline field to given value.
 
-### HasResponseDeadline
-
-`func (o *Subscription) HasResponseDeadline() bool`
-
-HasResponseDeadline returns a boolean if a field has been set.
 
 ### GetHttpConfig
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -23,32 +23,32 @@ import (
 // LifecycleStatesAPIService LifecycleStatesAPI service
 type LifecycleStatesAPIService service
 
-type ApiGetLifecycleStatesRequest struct {
+type ApiListLifecycleStatesRequest struct {
 	ctx context.Context
 	ApiService *LifecycleStatesAPIService
 	identityProfileId string
 	lifecycleStateId string
 }
 
-func (r ApiGetLifecycleStatesRequest) Execute() (*LifecycleState, *http.Response, error) {
-	return r.ApiService.GetLifecycleStatesExecute(r)
+func (r ApiListLifecycleStatesRequest) Execute() (*LifecycleState, *http.Response, error) {
+	return r.ApiService.ListLifecycleStatesExecute(r)
 }
 
 /*
-GetLifecycleStates Get Lifecycle State
+ListLifecycleStates Lifecycle State
 
-Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
+This endpoint returns a lifecycle state.
 
 A token with ORG_ADMIN or API authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID.
- @param lifecycleStateId Lifecycle State ID.
- @return ApiGetLifecycleStatesRequest
+ @param identityProfileId Identity Profile ID
+ @param lifecycleStateId Lifecycle State ID
+ @return ApiListLifecycleStatesRequest
 */
-func (a *LifecycleStatesAPIService) GetLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiGetLifecycleStatesRequest {
-	return ApiGetLifecycleStatesRequest{
+func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiListLifecycleStatesRequest {
+	return ApiListLifecycleStatesRequest{
 		ApiService: a,
 		ctx: ctx,
 		identityProfileId: identityProfileId,
@@ -58,7 +58,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStates(ctx context.Context, iden
 
 // Execute executes the request
 //  @return LifecycleState
-func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
+func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleS
 		localVarReturnValue  *LifecycleState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.GetLifecycleStates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.ListLifecycleStates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -130,7 +130,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -208,14 +208,14 @@ func (r ApiUpdateLifecycleStatesRequest) Execute() (*LifecycleState, *http.Respo
 /*
 UpdateLifecycleStates Update Lifecycle State
 
-Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 A token with ORG_ADMIN or API authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID.
- @param lifecycleStateId Lifecycle State ID.
+ @param identityProfileId Identity Profile ID
+ @param lifecycleStateId Lifecycle State ID
  @return ApiUpdateLifecycleStatesRequest
 */
 func (a *LifecycleStatesAPIService) UpdateLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiUpdateLifecycleStatesRequest {
@@ -306,7 +306,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -328,7 +328,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

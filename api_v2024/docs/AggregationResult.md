@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Aggregations** | Pointer to **map[string]interface{}** | The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information.  | [optional] 
-**Hits** | Pointer to **[]map[string]interface{}** | The results of the aggregation search query.  | [optional] 
+**Hits** | Pointer to [**[]SearchDocument**](SearchDocument.md) | The results of the aggregation search query.  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAggregations returns a boolean if a field has been set.
 
 ### GetHits
 
-`func (o *AggregationResult) GetHits() []map[string]interface{}`
+`func (o *AggregationResult) GetHits() []SearchDocument`
 
 GetHits returns the Hits field if non-nil, zero value otherwise.
 
 ### GetHitsOk
 
-`func (o *AggregationResult) GetHitsOk() (*[]map[string]interface{}, bool)`
+`func (o *AggregationResult) GetHitsOk() (*[]SearchDocument, bool)`
 
 GetHitsOk returns a tuple with the Hits field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHits
 
-`func (o *AggregationResult) SetHits(v []map[string]interface{})`
+`func (o *AggregationResult) SetHits(v []SearchDocument)`
 
 SetHits sets Hits field to given value.
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -22,10 +22,10 @@ var _ MappedNullable = &CampaignFilterDetailsCriteriaListInner{}
 type CampaignFilterDetailsCriteriaListInner struct {
 	Type CriteriaType `json:"type"`
 	Operation Operation `json:"operation"`
-	// Specified key from the type of criteria.
-	Property NullableString `json:"property"`
-	// Value for the specified key from the type of criteria.
-	Value NullableString `json:"value"`
+	// The specified key from the Type of criteria.
+	Property string `json:"property"`
+	// The value for the specified key from the Type of Criteria
+	Value string `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +35,7 @@ type _CampaignFilterDetailsCriteriaListInner CampaignFilterDetailsCriteriaListIn
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property NullableString, value NullableString) *CampaignFilterDetailsCriteriaListInner {
+func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property string, value string) *CampaignFilterDetailsCriteriaListInner {
 	this := CampaignFilterDetailsCriteriaListInner{}
 	this.Type = type_
 	this.Operation = operation
@@ -101,55 +101,51 @@ func (o *CampaignFilterDetailsCriteriaListInner) SetOperation(v Operation) {
 }
 
 // GetProperty returns the Property field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *CampaignFilterDetailsCriteriaListInner) GetProperty() string {
-	if o == nil || o.Property.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Property.Get()
+	return o.Property
 }
 
 // GetPropertyOk returns a tuple with the Property field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignFilterDetailsCriteriaListInner) GetPropertyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Property.Get(), o.Property.IsSet()
+	return &o.Property, true
 }
 
 // SetProperty sets field value
 func (o *CampaignFilterDetailsCriteriaListInner) SetProperty(v string) {
-	o.Property.Set(&v)
+	o.Property = v
 }
 
 // GetValue returns the Value field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *CampaignFilterDetailsCriteriaListInner) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Value.Get()
+	return o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignFilterDetailsCriteriaListInner) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return &o.Value, true
 }
 
 // SetValue sets field value
 func (o *CampaignFilterDetailsCriteriaListInner) SetValue(v string) {
-	o.Value.Set(&v)
+	o.Value = v
 }
 
 func (o CampaignFilterDetailsCriteriaListInner) MarshalJSON() ([]byte, error) {
@@ -164,8 +160,8 @@ func (o CampaignFilterDetailsCriteriaListInner) ToMap() (map[string]interface{},
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["operation"] = o.Operation
-	toSerialize["property"] = o.Property.Get()
-	toSerialize["value"] = o.Value.Get()
+	toSerialize["property"] = o.Property
+	toSerialize["value"] = o.Value
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

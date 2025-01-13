@@ -19,12 +19,12 @@ var _ MappedNullable = &Owns{}
 
 // Owns struct for Owns
 type Owns struct {
-	Sources []Reference `json:"sources,omitempty"`
-	Entitlements []Reference `json:"entitlements,omitempty"`
-	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
-	Roles []Reference `json:"roles,omitempty"`
-	Apps []Reference `json:"apps,omitempty"`
-	GovernanceGroups []Reference `json:"governanceGroups,omitempty"`
+	Sources []Reference1 `json:"sources,omitempty"`
+	Entitlements []Reference1 `json:"entitlements,omitempty"`
+	AccessProfiles []Reference1 `json:"accessProfiles,omitempty"`
+	Roles []Reference1 `json:"roles,omitempty"`
+	Apps []Reference1 `json:"apps,omitempty"`
+	GovernanceGroups []Reference1 `json:"governanceGroups,omitempty"`
 	FallbackApprover *bool `json:"fallbackApprover,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,9 +49,9 @@ func NewOwnsWithDefaults() *Owns {
 }
 
 // GetSources returns the Sources field value if set, zero value otherwise.
-func (o *Owns) GetSources() []Reference {
+func (o *Owns) GetSources() []Reference1 {
 	if o == nil || IsNil(o.Sources) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.Sources
@@ -59,7 +59,7 @@ func (o *Owns) GetSources() []Reference {
 
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetSourcesOk() ([]Reference, bool) {
+func (o *Owns) GetSourcesOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
@@ -75,15 +75,15 @@ func (o *Owns) HasSources() bool {
 	return false
 }
 
-// SetSources gets a reference to the given []Reference and assigns it to the Sources field.
-func (o *Owns) SetSources(v []Reference) {
+// SetSources gets a reference to the given []Reference1 and assigns it to the Sources field.
+func (o *Owns) SetSources(v []Reference1) {
 	o.Sources = v
 }
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *Owns) GetEntitlements() []Reference {
+func (o *Owns) GetEntitlements() []Reference1 {
 	if o == nil || IsNil(o.Entitlements) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.Entitlements
@@ -91,7 +91,7 @@ func (o *Owns) GetEntitlements() []Reference {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetEntitlementsOk() ([]Reference, bool) {
+func (o *Owns) GetEntitlementsOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
@@ -107,15 +107,15 @@ func (o *Owns) HasEntitlements() bool {
 	return false
 }
 
-// SetEntitlements gets a reference to the given []Reference and assigns it to the Entitlements field.
-func (o *Owns) SetEntitlements(v []Reference) {
+// SetEntitlements gets a reference to the given []Reference1 and assigns it to the Entitlements field.
+func (o *Owns) SetEntitlements(v []Reference1) {
 	o.Entitlements = v
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
-func (o *Owns) GetAccessProfiles() []Reference {
+func (o *Owns) GetAccessProfiles() []Reference1 {
 	if o == nil || IsNil(o.AccessProfiles) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.AccessProfiles
@@ -123,7 +123,7 @@ func (o *Owns) GetAccessProfiles() []Reference {
 
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetAccessProfilesOk() ([]Reference, bool) {
+func (o *Owns) GetAccessProfilesOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -139,15 +139,15 @@ func (o *Owns) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Reference and assigns it to the AccessProfiles field.
-func (o *Owns) SetAccessProfiles(v []Reference) {
+// SetAccessProfiles gets a reference to the given []Reference1 and assigns it to the AccessProfiles field.
+func (o *Owns) SetAccessProfiles(v []Reference1) {
 	o.AccessProfiles = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *Owns) GetRoles() []Reference {
+func (o *Owns) GetRoles() []Reference1 {
 	if o == nil || IsNil(o.Roles) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.Roles
@@ -155,7 +155,7 @@ func (o *Owns) GetRoles() []Reference {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetRolesOk() ([]Reference, bool) {
+func (o *Owns) GetRolesOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -171,15 +171,15 @@ func (o *Owns) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []Reference and assigns it to the Roles field.
-func (o *Owns) SetRoles(v []Reference) {
+// SetRoles gets a reference to the given []Reference1 and assigns it to the Roles field.
+func (o *Owns) SetRoles(v []Reference1) {
 	o.Roles = v
 }
 
 // GetApps returns the Apps field value if set, zero value otherwise.
-func (o *Owns) GetApps() []Reference {
+func (o *Owns) GetApps() []Reference1 {
 	if o == nil || IsNil(o.Apps) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.Apps
@@ -187,7 +187,7 @@ func (o *Owns) GetApps() []Reference {
 
 // GetAppsOk returns a tuple with the Apps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetAppsOk() ([]Reference, bool) {
+func (o *Owns) GetAppsOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.Apps) {
 		return nil, false
 	}
@@ -203,15 +203,15 @@ func (o *Owns) HasApps() bool {
 	return false
 }
 
-// SetApps gets a reference to the given []Reference and assigns it to the Apps field.
-func (o *Owns) SetApps(v []Reference) {
+// SetApps gets a reference to the given []Reference1 and assigns it to the Apps field.
+func (o *Owns) SetApps(v []Reference1) {
 	o.Apps = v
 }
 
 // GetGovernanceGroups returns the GovernanceGroups field value if set, zero value otherwise.
-func (o *Owns) GetGovernanceGroups() []Reference {
+func (o *Owns) GetGovernanceGroups() []Reference1 {
 	if o == nil || IsNil(o.GovernanceGroups) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.GovernanceGroups
@@ -219,7 +219,7 @@ func (o *Owns) GetGovernanceGroups() []Reference {
 
 // GetGovernanceGroupsOk returns a tuple with the GovernanceGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owns) GetGovernanceGroupsOk() ([]Reference, bool) {
+func (o *Owns) GetGovernanceGroupsOk() ([]Reference1, bool) {
 	if o == nil || IsNil(o.GovernanceGroups) {
 		return nil, false
 	}
@@ -235,8 +235,8 @@ func (o *Owns) HasGovernanceGroups() bool {
 	return false
 }
 
-// SetGovernanceGroups gets a reference to the given []Reference and assigns it to the GovernanceGroups field.
-func (o *Owns) SetGovernanceGroups(v []Reference) {
+// SetGovernanceGroups gets a reference to the given []Reference1 and assigns it to the GovernanceGroups field.
+func (o *Owns) SetGovernanceGroups(v []Reference1) {
 	o.GovernanceGroups = v
 }
 

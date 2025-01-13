@@ -5,11 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
-**Type** | Pointer to **string** | Trigger type | [optional] 
-**Deprecated** | Pointer to **bool** |  | [optional] 
-**DeprecatedBy** | Pointer to **time.Time** |  | [optional] 
-**IsSimulationEnabled** | Pointer to **bool** |  | [optional] 
-**OutputSchema** | Pointer to **map[string]interface{}** | Example output schema | [optional] 
+**Type** | Pointer to **map[string]interface{}** | Trigger type | [optional] 
 **Name** | Pointer to **string** | Trigger Name | [optional] 
 **Description** | Pointer to **string** | Trigger Description | [optional] 
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
@@ -62,20 +58,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *WorkflowLibraryTrigger) GetType() string`
+`func (o *WorkflowLibraryTrigger) GetType() map[string]interface{}`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *WorkflowLibraryTrigger) GetTypeOk() (*string, bool)`
+`func (o *WorkflowLibraryTrigger) GetTypeOk() (*map[string]interface{}, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *WorkflowLibraryTrigger) SetType(v string)`
+`func (o *WorkflowLibraryTrigger) SetType(v map[string]interface{})`
 
 SetType sets Type field to given value.
 
@@ -84,106 +80,6 @@ SetType sets Type field to given value.
 `func (o *WorkflowLibraryTrigger) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetDeprecated
-
-`func (o *WorkflowLibraryTrigger) GetDeprecated() bool`
-
-GetDeprecated returns the Deprecated field if non-nil, zero value otherwise.
-
-### GetDeprecatedOk
-
-`func (o *WorkflowLibraryTrigger) GetDeprecatedOk() (*bool, bool)`
-
-GetDeprecatedOk returns a tuple with the Deprecated field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeprecated
-
-`func (o *WorkflowLibraryTrigger) SetDeprecated(v bool)`
-
-SetDeprecated sets Deprecated field to given value.
-
-### HasDeprecated
-
-`func (o *WorkflowLibraryTrigger) HasDeprecated() bool`
-
-HasDeprecated returns a boolean if a field has been set.
-
-### GetDeprecatedBy
-
-`func (o *WorkflowLibraryTrigger) GetDeprecatedBy() time.Time`
-
-GetDeprecatedBy returns the DeprecatedBy field if non-nil, zero value otherwise.
-
-### GetDeprecatedByOk
-
-`func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*time.Time, bool)`
-
-GetDeprecatedByOk returns a tuple with the DeprecatedBy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeprecatedBy
-
-`func (o *WorkflowLibraryTrigger) SetDeprecatedBy(v time.Time)`
-
-SetDeprecatedBy sets DeprecatedBy field to given value.
-
-### HasDeprecatedBy
-
-`func (o *WorkflowLibraryTrigger) HasDeprecatedBy() bool`
-
-HasDeprecatedBy returns a boolean if a field has been set.
-
-### GetIsSimulationEnabled
-
-`func (o *WorkflowLibraryTrigger) GetIsSimulationEnabled() bool`
-
-GetIsSimulationEnabled returns the IsSimulationEnabled field if non-nil, zero value otherwise.
-
-### GetIsSimulationEnabledOk
-
-`func (o *WorkflowLibraryTrigger) GetIsSimulationEnabledOk() (*bool, bool)`
-
-GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsSimulationEnabled
-
-`func (o *WorkflowLibraryTrigger) SetIsSimulationEnabled(v bool)`
-
-SetIsSimulationEnabled sets IsSimulationEnabled field to given value.
-
-### HasIsSimulationEnabled
-
-`func (o *WorkflowLibraryTrigger) HasIsSimulationEnabled() bool`
-
-HasIsSimulationEnabled returns a boolean if a field has been set.
-
-### GetOutputSchema
-
-`func (o *WorkflowLibraryTrigger) GetOutputSchema() map[string]interface{}`
-
-GetOutputSchema returns the OutputSchema field if non-nil, zero value otherwise.
-
-### GetOutputSchemaOk
-
-`func (o *WorkflowLibraryTrigger) GetOutputSchemaOk() (*map[string]interface{}, bool)`
-
-GetOutputSchemaOk returns a tuple with the OutputSchema field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOutputSchema
-
-`func (o *WorkflowLibraryTrigger) SetOutputSchema(v map[string]interface{})`
-
-SetOutputSchema sets OutputSchema field to given value.
-
-### HasOutputSchema
-
-`func (o *WorkflowLibraryTrigger) HasOutputSchema() bool`
-
-HasOutputSchema returns a boolean if a field has been set.
 
 ### GetName
 

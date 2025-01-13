@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Insight id | [optional] 
 **NumberOfUpdates** | Pointer to **int32** | Total number of updates for this role | [optional] 
 **CreatedDate** | Pointer to **time.Time** | The date-time insights were last created for this role. | [optional] 
-**ModifiedDate** | Pointer to **NullableTime** | The date-time insights were last modified for this role. | [optional] 
 **Role** | Pointer to [**RoleInsightsRole**](RoleInsightsRole.md) |  | [optional] 
 **Insight** | Pointer to [**RoleInsightsInsight**](RoleInsightsInsight.md) |  | [optional] 
 
@@ -105,41 +104,6 @@ SetCreatedDate sets CreatedDate field to given value.
 
 HasCreatedDate returns a boolean if a field has been set.
 
-### GetModifiedDate
-
-`func (o *RoleInsight) GetModifiedDate() time.Time`
-
-GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
-
-### GetModifiedDateOk
-
-`func (o *RoleInsight) GetModifiedDateOk() (*time.Time, bool)`
-
-GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModifiedDate
-
-`func (o *RoleInsight) SetModifiedDate(v time.Time)`
-
-SetModifiedDate sets ModifiedDate field to given value.
-
-### HasModifiedDate
-
-`func (o *RoleInsight) HasModifiedDate() bool`
-
-HasModifiedDate returns a boolean if a field has been set.
-
-### SetModifiedDateNil
-
-`func (o *RoleInsight) SetModifiedDateNil(b bool)`
-
- SetModifiedDateNil sets the value for ModifiedDate to be an explicit nil
-
-### UnsetModifiedDate
-`func (o *RoleInsight) UnsetModifiedDate()`
-
-UnsetModifiedDate ensures that no value is present for ModifiedDate, not even an explicit nil
 ### GetRole
 
 `func (o *RoleInsight) GetRole() RoleInsightsRole`

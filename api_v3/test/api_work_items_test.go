@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
 Testing WorkItemsAPIService
 
@@ -164,19 +164,6 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkItemsAPIService SendWorkItemForward", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		httpRes, err := apiClient.WorkItemsAPI.SendWorkItemForward(context.Background(), id).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

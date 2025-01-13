@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -28,7 +28,7 @@ type TemplateDtoDefault struct {
 	// The locale for the message text, a BCP 47 language tag.
 	Locale *string `json:"locale,omitempty"`
 	// The subject of the default template
-	Subject NullableString `json:"subject,omitempty"`
+	Subject *string `json:"subject,omitempty"`
 	// The header value is now located within the body field. If included with non-null values, will result in a 400.
 	// Deprecated
 	Header NullableString `json:"header,omitempty"`
@@ -38,13 +38,11 @@ type TemplateDtoDefault struct {
 	// Deprecated
 	Footer NullableString `json:"footer,omitempty"`
 	// The \"From:\" address of the default template
-	From NullableString `json:"from,omitempty"`
+	From *string `json:"from,omitempty"`
 	// The \"Reply To\" field of the default template
-	ReplyTo NullableString `json:"replyTo,omitempty"`
+	ReplyTo *string `json:"replyTo,omitempty"`
 	// The description of the default template
-	Description NullableString `json:"description,omitempty"`
-	SlackTemplate NullableTemplateSlack `json:"slackTemplate,omitempty"`
-	TeamsTemplate NullableTemplateTeams `json:"teamsTemplate,omitempty"`
+	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -195,46 +193,36 @@ func (o *TemplateDtoDefault) SetLocale(v string) {
 	o.Locale = &v
 }
 
-// GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetSubject() string {
-	if o == nil || IsNil(o.Subject.Get()) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
-	return *o.Subject.Get()
+	return *o.Subject
 }
 
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetSubjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
-	return o.Subject.Get(), o.Subject.IsSet()
+	return o.Subject, true
 }
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasSubject() bool {
-	if o != nil && o.Subject.IsSet() {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
+// SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *TemplateDtoDefault) SetSubject(v string) {
-	o.Subject.Set(&v)
-}
-// SetSubjectNil sets the value for Subject to be an explicit nil
-func (o *TemplateDtoDefault) SetSubjectNil() {
-	o.Subject.Set(nil)
-}
-
-// UnsetSubject ensures that no value is present for Subject, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetSubject() {
-	o.Subject.Unset()
+	o.Subject = &v
 }
 
 // GetHeader returns the Header field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -359,214 +347,100 @@ func (o *TemplateDtoDefault) UnsetFooter() {
 	o.Footer.Unset()
 }
 
-// GetFrom returns the From field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFrom returns the From field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetFrom() string {
-	if o == nil || IsNil(o.From.Get()) {
+	if o == nil || IsNil(o.From) {
 		var ret string
 		return ret
 	}
-	return *o.From.Get()
+	return *o.From
 }
 
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetFromOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.From) {
 		return nil, false
 	}
-	return o.From.Get(), o.From.IsSet()
+	return o.From, true
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasFrom() bool {
-	if o != nil && o.From.IsSet() {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
 	return false
 }
 
-// SetFrom gets a reference to the given NullableString and assigns it to the From field.
+// SetFrom gets a reference to the given string and assigns it to the From field.
 func (o *TemplateDtoDefault) SetFrom(v string) {
-	o.From.Set(&v)
-}
-// SetFromNil sets the value for From to be an explicit nil
-func (o *TemplateDtoDefault) SetFromNil() {
-	o.From.Set(nil)
+	o.From = &v
 }
 
-// UnsetFrom ensures that no value is present for From, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetFrom() {
-	o.From.Unset()
-}
-
-// GetReplyTo returns the ReplyTo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetReplyTo() string {
-	if o == nil || IsNil(o.ReplyTo.Get()) {
+	if o == nil || IsNil(o.ReplyTo) {
 		var ret string
 		return ret
 	}
-	return *o.ReplyTo.Get()
+	return *o.ReplyTo
 }
 
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetReplyToOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ReplyTo) {
 		return nil, false
 	}
-	return o.ReplyTo.Get(), o.ReplyTo.IsSet()
+	return o.ReplyTo, true
 }
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasReplyTo() bool {
-	if o != nil && o.ReplyTo.IsSet() {
+	if o != nil && !IsNil(o.ReplyTo) {
 		return true
 	}
 
 	return false
 }
 
-// SetReplyTo gets a reference to the given NullableString and assigns it to the ReplyTo field.
+// SetReplyTo gets a reference to the given string and assigns it to the ReplyTo field.
 func (o *TemplateDtoDefault) SetReplyTo(v string) {
-	o.ReplyTo.Set(&v)
-}
-// SetReplyToNil sets the value for ReplyTo to be an explicit nil
-func (o *TemplateDtoDefault) SetReplyToNil() {
-	o.ReplyTo.Set(nil)
+	o.ReplyTo = &v
 }
 
-// UnsetReplyTo ensures that no value is present for ReplyTo, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetReplyTo() {
-	o.ReplyTo.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *TemplateDtoDefault) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *TemplateDtoDefault) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateDtoDefault) GetSlackTemplate() TemplateSlack {
-	if o == nil || IsNil(o.SlackTemplate.Get()) {
-		var ret TemplateSlack
-		return ret
-	}
-	return *o.SlackTemplate.Get()
-}
-
-// GetSlackTemplateOk returns a tuple with the SlackTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateDtoDefault) GetSlackTemplateOk() (*TemplateSlack, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SlackTemplate.Get(), o.SlackTemplate.IsSet()
-}
-
-// HasSlackTemplate returns a boolean if a field has been set.
-func (o *TemplateDtoDefault) HasSlackTemplate() bool {
-	if o != nil && o.SlackTemplate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSlackTemplate gets a reference to the given NullableTemplateSlack and assigns it to the SlackTemplate field.
-func (o *TemplateDtoDefault) SetSlackTemplate(v TemplateSlack) {
-	o.SlackTemplate.Set(&v)
-}
-// SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
-func (o *TemplateDtoDefault) SetSlackTemplateNil() {
-	o.SlackTemplate.Set(nil)
-}
-
-// UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetSlackTemplate() {
-	o.SlackTemplate.Unset()
-}
-
-// GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TemplateDtoDefault) GetTeamsTemplate() TemplateTeams {
-	if o == nil || IsNil(o.TeamsTemplate.Get()) {
-		var ret TemplateTeams
-		return ret
-	}
-	return *o.TeamsTemplate.Get()
-}
-
-// GetTeamsTemplateOk returns a tuple with the TeamsTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TemplateDtoDefault) GetTeamsTemplateOk() (*TemplateTeams, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TeamsTemplate.Get(), o.TeamsTemplate.IsSet()
-}
-
-// HasTeamsTemplate returns a boolean if a field has been set.
-func (o *TemplateDtoDefault) HasTeamsTemplate() bool {
-	if o != nil && o.TeamsTemplate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTeamsTemplate gets a reference to the given NullableTemplateTeams and assigns it to the TeamsTemplate field.
-func (o *TemplateDtoDefault) SetTeamsTemplate(v TemplateTeams) {
-	o.TeamsTemplate.Set(&v)
-}
-// SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
-func (o *TemplateDtoDefault) SetTeamsTemplateNil() {
-	o.TeamsTemplate.Set(nil)
-}
-
-// UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
-func (o *TemplateDtoDefault) UnsetTeamsTemplate() {
-	o.TeamsTemplate.Unset()
+	o.Description = &v
 }
 
 func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
@@ -591,8 +465,8 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	if o.Subject.IsSet() {
-		toSerialize["subject"] = o.Subject.Get()
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
 	}
 	if o.Header.IsSet() {
 		toSerialize["header"] = o.Header.Get()
@@ -603,20 +477,14 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if o.Footer.IsSet() {
 		toSerialize["footer"] = o.Footer.Get()
 	}
-	if o.From.IsSet() {
-		toSerialize["from"] = o.From.Get()
+	if !IsNil(o.From) {
+		toSerialize["from"] = o.From
 	}
-	if o.ReplyTo.IsSet() {
-		toSerialize["replyTo"] = o.ReplyTo.Get()
+	if !IsNil(o.ReplyTo) {
+		toSerialize["replyTo"] = o.ReplyTo
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.SlackTemplate.IsSet() {
-		toSerialize["slackTemplate"] = o.SlackTemplate.Get()
-	}
-	if o.TeamsTemplate.IsSet() {
-		toSerialize["teamsTemplate"] = o.TeamsTemplate.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -651,8 +519,6 @@ func (o *TemplateDtoDefault) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "from")
 		delete(additionalProperties, "replyTo")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "slackTemplate")
-		delete(additionalProperties, "teamsTemplate")
 		o.AdditionalProperties = additionalProperties
 	}
 

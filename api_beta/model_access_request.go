@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,7 +22,7 @@ var _ MappedNullable = &AccessRequest{}
 type AccessRequest struct {
 	// A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.
 	RequestedFor []string `json:"requestedFor"`
-	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
+	RequestType *AccessRequestType `json:"requestType,omitempty"`
 	RequestedItems []AccessRequestItem `json:"requestedItems"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
@@ -74,46 +74,36 @@ func (o *AccessRequest) SetRequestedFor(v []string) {
 	o.RequestedFor = v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequestType returns the RequestType field value if set, zero value otherwise.
 func (o *AccessRequest) GetRequestType() AccessRequestType {
-	if o == nil || IsNil(o.RequestType.Get()) {
+	if o == nil || IsNil(o.RequestType) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType.Get()
+	return *o.RequestType
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequest) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestType) {
 		return nil, false
 	}
-	return o.RequestType.Get(), o.RequestType.IsSet()
+	return o.RequestType, true
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *AccessRequest) HasRequestType() bool {
-	if o != nil && o.RequestType.IsSet() {
+	if o != nil && !IsNil(o.RequestType) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
 func (o *AccessRequest) SetRequestType(v AccessRequestType) {
-	o.RequestType.Set(&v)
-}
-// SetRequestTypeNil sets the value for RequestType to be an explicit nil
-func (o *AccessRequest) SetRequestTypeNil() {
-	o.RequestType.Set(nil)
-}
-
-// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
-func (o *AccessRequest) UnsetRequestType() {
-	o.RequestType.Unset()
+	o.RequestType = &v
 }
 
 // GetRequestedItems returns the RequestedItems field value
@@ -183,8 +173,8 @@ func (o AccessRequest) MarshalJSON() ([]byte, error) {
 func (o AccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["requestedFor"] = o.RequestedFor
-	if o.RequestType.IsSet() {
-		toSerialize["requestType"] = o.RequestType.Get()
+	if !IsNil(o.RequestType) {
+		toSerialize["requestType"] = o.RequestType
 	}
 	toSerialize["requestedItems"] = o.RequestedItems
 	if !IsNil(o.ClientMetadata) {

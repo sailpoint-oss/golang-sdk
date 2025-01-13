@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the CompletedApproval type satisfies the MappedNullable interface at compile time
@@ -25,14 +25,14 @@ type CompletedApproval struct {
 	// The name of the approval.
 	Name *string `json:"name,omitempty"`
 	// When the approval was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// When the approval was modified last time.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the access-request was created.
-	RequestCreated *SailPointTime `json:"requestCreated,omitempty"`
-	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
+	RequestCreated *time.Time `json:"requestCreated,omitempty"`
+	RequestType *AccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequesterDto `json:"requester,omitempty"`
-	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
+	RequestedFor *AccessItemRequestedForDto `json:"requestedFor,omitempty"`
 	ReviewedBy *CompletedApprovalReviewedBy `json:"reviewedBy,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
@@ -46,16 +46,13 @@ type CompletedApproval struct {
 	// When true the rejector has to provide comments when rejecting
 	CommentRequiredWhenRejected *bool `json:"commentRequiredWhenRejected,omitempty"`
 	State *CompletedApprovalState `json:"state,omitempty"`
-	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
+	// The date the role or access profile is no longer assigned to the specified identity.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// If true, then the request was to change the remove date or sunset date.
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate NullableTime `json:"currentRemoveDate,omitempty"`
-	SodViolationContext NullableSodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
-	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
-	// Arbitrary key-value pairs provided during the request.
-	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	SodViolationContext *SodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -67,10 +64,6 @@ type _CompletedApproval CompletedApproval
 // will change when the set of required properties is changed
 func NewCompletedApproval() *CompletedApproval {
 	this := CompletedApproval{}
-	var commentRequiredWhenRejected bool = false
-	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
-	var removeDateUpdateRequested bool = false
-	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -79,10 +72,6 @@ func NewCompletedApproval() *CompletedApproval {
 // but it doesn't guarantee that properties required by API are set
 func NewCompletedApprovalWithDefaults() *CompletedApproval {
 	this := CompletedApproval{}
-	var commentRequiredWhenRejected bool = false
-	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
-	var removeDateUpdateRequested bool = false
-	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -151,9 +140,9 @@ func (o *CompletedApproval) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *CompletedApproval) GetCreated() SailPointTime {
+func (o *CompletedApproval) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -161,7 +150,7 @@ func (o *CompletedApproval) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetCreatedOk() (*SailPointTime, bool) {
+func (o *CompletedApproval) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -177,15 +166,15 @@ func (o *CompletedApproval) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *CompletedApproval) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *CompletedApproval) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *CompletedApproval) GetModified() SailPointTime {
+func (o *CompletedApproval) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -193,7 +182,7 @@ func (o *CompletedApproval) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetModifiedOk() (*SailPointTime, bool) {
+func (o *CompletedApproval) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -209,15 +198,15 @@ func (o *CompletedApproval) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *CompletedApproval) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *CompletedApproval) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetRequestCreated returns the RequestCreated field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestCreated() SailPointTime {
+func (o *CompletedApproval) GetRequestCreated() time.Time {
 	if o == nil || IsNil(o.RequestCreated) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.RequestCreated
@@ -225,7 +214,7 @@ func (o *CompletedApproval) GetRequestCreated() SailPointTime {
 
 // GetRequestCreatedOk returns a tuple with the RequestCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestCreatedOk() (*SailPointTime, bool) {
+func (o *CompletedApproval) GetRequestCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.RequestCreated) {
 		return nil, false
 	}
@@ -241,51 +230,41 @@ func (o *CompletedApproval) HasRequestCreated() bool {
 	return false
 }
 
-// SetRequestCreated gets a reference to the given SailPointTime and assigns it to the RequestCreated field.
-func (o *CompletedApproval) SetRequestCreated(v SailPointTime) {
+// SetRequestCreated gets a reference to the given time.Time and assigns it to the RequestCreated field.
+func (o *CompletedApproval) SetRequestCreated(v time.Time) {
 	o.RequestCreated = &v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequestType returns the RequestType field value if set, zero value otherwise.
 func (o *CompletedApproval) GetRequestType() AccessRequestType {
-	if o == nil || IsNil(o.RequestType.Get()) {
+	if o == nil || IsNil(o.RequestType) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType.Get()
+	return *o.RequestType
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestType) {
 		return nil, false
 	}
-	return o.RequestType.Get(), o.RequestType.IsSet()
+	return o.RequestType, true
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *CompletedApproval) HasRequestType() bool {
-	if o != nil && o.RequestType.IsSet() {
+	if o != nil && !IsNil(o.RequestType) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
 func (o *CompletedApproval) SetRequestType(v AccessRequestType) {
-	o.RequestType.Set(&v)
-}
-// SetRequestTypeNil sets the value for RequestType to be an explicit nil
-func (o *CompletedApproval) SetRequestTypeNil() {
-	o.RequestType.Set(nil)
-}
-
-// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
-func (o *CompletedApproval) UnsetRequestType() {
-	o.RequestType.Unset()
+	o.RequestType = &v
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
@@ -321,9 +300,9 @@ func (o *CompletedApproval) SetRequester(v AccessItemRequesterDto) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor {
+func (o *CompletedApproval) GetRequestedFor() AccessItemRequestedForDto {
 	if o == nil || IsNil(o.RequestedFor) {
-		var ret RequestedItemStatusRequestedFor
+		var ret AccessItemRequestedForDto
 		return ret
 	}
 	return *o.RequestedFor
@@ -331,7 +310,7 @@ func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool) {
+func (o *CompletedApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
 	if o == nil || IsNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -347,8 +326,8 @@ func (o *CompletedApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given RequestedItemStatusRequestedFor and assigns it to the RequestedFor field.
-func (o *CompletedApproval) SetRequestedFor(v RequestedItemStatusRequestedFor) {
+// SetRequestedFor gets a reference to the given AccessItemRequestedForDto and assigns it to the RequestedFor field.
+func (o *CompletedApproval) SetRequestedFor(v AccessItemRequestedForDto) {
 	o.RequestedFor = &v
 }
 
@@ -651,9 +630,9 @@ func (o *CompletedApproval) SetState(v CompletedApprovalState) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompletedApproval) GetRemoveDate() SailPointTime {
+func (o *CompletedApproval) GetRemoveDate() time.Time {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -662,7 +641,7 @@ func (o *CompletedApproval) GetRemoveDate() SailPointTime {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompletedApproval) GetRemoveDateOk() (*SailPointTime, bool) {
+func (o *CompletedApproval) GetRemoveDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -679,7 +658,7 @@ func (o *CompletedApproval) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *CompletedApproval) SetRemoveDate(v SailPointTime) {
+func (o *CompletedApproval) SetRemoveDate(v time.Time) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
@@ -725,9 +704,9 @@ func (o *CompletedApproval) SetRemoveDateUpdateRequested(v bool) {
 }
 
 // GetCurrentRemoveDate returns the CurrentRemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompletedApproval) GetCurrentRemoveDate() SailPointTime {
+func (o *CompletedApproval) GetCurrentRemoveDate() time.Time {
 	if o == nil || IsNil(o.CurrentRemoveDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.CurrentRemoveDate.Get()
@@ -736,7 +715,7 @@ func (o *CompletedApproval) GetCurrentRemoveDate() SailPointTime {
 // GetCurrentRemoveDateOk returns a tuple with the CurrentRemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompletedApproval) GetCurrentRemoveDateOk() (*SailPointTime, bool) {
+func (o *CompletedApproval) GetCurrentRemoveDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -753,7 +732,7 @@ func (o *CompletedApproval) HasCurrentRemoveDate() bool {
 }
 
 // SetCurrentRemoveDate gets a reference to the given NullableTime and assigns it to the CurrentRemoveDate field.
-func (o *CompletedApproval) SetCurrentRemoveDate(v SailPointTime) {
+func (o *CompletedApproval) SetCurrentRemoveDate(v time.Time) {
 	o.CurrentRemoveDate.Set(&v)
 }
 // SetCurrentRemoveDateNil sets the value for CurrentRemoveDate to be an explicit nil
@@ -766,120 +745,36 @@ func (o *CompletedApproval) UnsetCurrentRemoveDate() {
 	o.CurrentRemoveDate.Unset()
 }
 
-// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
 func (o *CompletedApproval) GetSodViolationContext() SodViolationContextCheckCompleted1 {
-	if o == nil || IsNil(o.SodViolationContext.Get()) {
+	if o == nil || IsNil(o.SodViolationContext) {
 		var ret SodViolationContextCheckCompleted1
 		return ret
 	}
-	return *o.SodViolationContext.Get()
+	return *o.SodViolationContext
 }
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted1, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SodViolationContext) {
 		return nil, false
 	}
-	return o.SodViolationContext.Get(), o.SodViolationContext.IsSet()
+	return o.SodViolationContext, true
 }
 
 // HasSodViolationContext returns a boolean if a field has been set.
 func (o *CompletedApproval) HasSodViolationContext() bool {
-	if o != nil && o.SodViolationContext.IsSet() {
+	if o != nil && !IsNil(o.SodViolationContext) {
 		return true
 	}
 
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted1 and assigns it to the SodViolationContext field.
+// SetSodViolationContext gets a reference to the given SodViolationContextCheckCompleted1 and assigns it to the SodViolationContext field.
 func (o *CompletedApproval) SetSodViolationContext(v SodViolationContextCheckCompleted1) {
-	o.SodViolationContext.Set(&v)
-}
-// SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
-func (o *CompletedApproval) SetSodViolationContextNil() {
-	o.SodViolationContext.Set(nil)
-}
-
-// UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
-func (o *CompletedApproval) UnsetSodViolationContext() {
-	o.SodViolationContext.Unset()
-}
-
-// GetPreApprovalTriggerResult returns the PreApprovalTriggerResult field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompletedApproval) GetPreApprovalTriggerResult() CompletedApprovalPreApprovalTriggerResult {
-	if o == nil || IsNil(o.PreApprovalTriggerResult.Get()) {
-		var ret CompletedApprovalPreApprovalTriggerResult
-		return ret
-	}
-	return *o.PreApprovalTriggerResult.Get()
-}
-
-// GetPreApprovalTriggerResultOk returns a tuple with the PreApprovalTriggerResult field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompletedApproval) GetPreApprovalTriggerResultOk() (*CompletedApprovalPreApprovalTriggerResult, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PreApprovalTriggerResult.Get(), o.PreApprovalTriggerResult.IsSet()
-}
-
-// HasPreApprovalTriggerResult returns a boolean if a field has been set.
-func (o *CompletedApproval) HasPreApprovalTriggerResult() bool {
-	if o != nil && o.PreApprovalTriggerResult.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPreApprovalTriggerResult gets a reference to the given NullableCompletedApprovalPreApprovalTriggerResult and assigns it to the PreApprovalTriggerResult field.
-func (o *CompletedApproval) SetPreApprovalTriggerResult(v CompletedApprovalPreApprovalTriggerResult) {
-	o.PreApprovalTriggerResult.Set(&v)
-}
-// SetPreApprovalTriggerResultNil sets the value for PreApprovalTriggerResult to be an explicit nil
-func (o *CompletedApproval) SetPreApprovalTriggerResultNil() {
-	o.PreApprovalTriggerResult.Set(nil)
-}
-
-// UnsetPreApprovalTriggerResult ensures that no value is present for PreApprovalTriggerResult, not even an explicit nil
-func (o *CompletedApproval) UnsetPreApprovalTriggerResult() {
-	o.PreApprovalTriggerResult.Unset()
-}
-
-// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise.
-func (o *CompletedApproval) GetClientMetadata() map[string]string {
-	if o == nil || IsNil(o.ClientMetadata) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.ClientMetadata
-}
-
-// GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetClientMetadataOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.ClientMetadata) {
-		return nil, false
-	}
-	return o.ClientMetadata, true
-}
-
-// HasClientMetadata returns a boolean if a field has been set.
-func (o *CompletedApproval) HasClientMetadata() bool {
-	if o != nil && !IsNil(o.ClientMetadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientMetadata gets a reference to the given map[string]string and assigns it to the ClientMetadata field.
-func (o *CompletedApproval) SetClientMetadata(v map[string]string) {
-	o.ClientMetadata = &v
+	o.SodViolationContext = &v
 }
 
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
@@ -907,8 +802,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RequestCreated) {
 		toSerialize["requestCreated"] = o.RequestCreated
 	}
-	if o.RequestType.IsSet() {
-		toSerialize["requestType"] = o.RequestType.Get()
+	if !IsNil(o.RequestType) {
+		toSerialize["requestType"] = o.RequestType
 	}
 	if !IsNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
@@ -952,14 +847,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.CurrentRemoveDate.IsSet() {
 		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate.Get()
 	}
-	if o.SodViolationContext.IsSet() {
-		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
-	}
-	if o.PreApprovalTriggerResult.IsSet() {
-		toSerialize["preApprovalTriggerResult"] = o.PreApprovalTriggerResult.Get()
-	}
-	if !IsNil(o.ClientMetadata) {
-		toSerialize["clientMetadata"] = o.ClientMetadata
+	if !IsNil(o.SodViolationContext) {
+		toSerialize["sodViolationContext"] = o.SodViolationContext
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1004,8 +893,6 @@ func (o *CompletedApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "removeDateUpdateRequested")
 		delete(additionalProperties, "currentRemoveDate")
 		delete(additionalProperties, "sodViolationContext")
-		delete(additionalProperties, "preApprovalTriggerResult")
-		delete(additionalProperties, "clientMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

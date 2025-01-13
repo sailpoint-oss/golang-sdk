@@ -18,8 +18,6 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | This is auto-generated. | [optional] 
 **Created** | Pointer to **time.Time** | The time when this template is created. This is auto-generated. | [optional] 
 **Modified** | Pointer to **time.Time** | The time when this template was last modified. This is auto-generated. | [optional] 
-**SlackTemplate** | Pointer to **NullableString** |  | [optional] 
-**TeamsTemplate** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -395,76 +393,6 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### GetSlackTemplate
-
-`func (o *TemplateDto) GetSlackTemplate() string`
-
-GetSlackTemplate returns the SlackTemplate field if non-nil, zero value otherwise.
-
-### GetSlackTemplateOk
-
-`func (o *TemplateDto) GetSlackTemplateOk() (*string, bool)`
-
-GetSlackTemplateOk returns a tuple with the SlackTemplate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlackTemplate
-
-`func (o *TemplateDto) SetSlackTemplate(v string)`
-
-SetSlackTemplate sets SlackTemplate field to given value.
-
-### HasSlackTemplate
-
-`func (o *TemplateDto) HasSlackTemplate() bool`
-
-HasSlackTemplate returns a boolean if a field has been set.
-
-### SetSlackTemplateNil
-
-`func (o *TemplateDto) SetSlackTemplateNil(b bool)`
-
- SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
-
-### UnsetSlackTemplate
-`func (o *TemplateDto) UnsetSlackTemplate()`
-
-UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
-### GetTeamsTemplate
-
-`func (o *TemplateDto) GetTeamsTemplate() string`
-
-GetTeamsTemplate returns the TeamsTemplate field if non-nil, zero value otherwise.
-
-### GetTeamsTemplateOk
-
-`func (o *TemplateDto) GetTeamsTemplateOk() (*string, bool)`
-
-GetTeamsTemplateOk returns a tuple with the TeamsTemplate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTeamsTemplate
-
-`func (o *TemplateDto) SetTeamsTemplate(v string)`
-
-SetTeamsTemplate sets TeamsTemplate field to given value.
-
-### HasTeamsTemplate
-
-`func (o *TemplateDto) HasTeamsTemplate() bool`
-
-HasTeamsTemplate returns a boolean if a field has been set.
-
-### SetTeamsTemplateNil
-
-`func (o *TemplateDto) SetTeamsTemplateNil(b bool)`
-
- SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
-
-### UnsetTeamsTemplate
-`func (o *TemplateDto) UnsetTeamsTemplate()`
-
-UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

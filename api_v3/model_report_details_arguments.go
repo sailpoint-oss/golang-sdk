@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -22,9 +22,8 @@ type ReportDetailsArguments struct {
 	IdentitiesDetailsReportArguments *IdentitiesDetailsReportArguments
 	IdentitiesReportArguments *IdentitiesReportArguments
 	IdentityProfileIdentityErrorReportArguments *IdentityProfileIdentityErrorReportArguments
-	OrphanIdentitiesReportArguments *OrphanIdentitiesReportArguments
+	OrphanUncorrelatedReportArguments *OrphanUncorrelatedReportArguments
 	SearchExportReportArguments *SearchExportReportArguments
-	UncorrelatedAccountsReportArguments *UncorrelatedAccountsReportArguments
 }
 
 // AccountsExportReportArgumentsAsReportDetailsArguments is a convenience function that returns AccountsExportReportArguments wrapped in ReportDetailsArguments
@@ -55,10 +54,10 @@ func IdentityProfileIdentityErrorReportArgumentsAsReportDetailsArguments(v *Iden
 	}
 }
 
-// OrphanIdentitiesReportArgumentsAsReportDetailsArguments is a convenience function that returns OrphanIdentitiesReportArguments wrapped in ReportDetailsArguments
-func OrphanIdentitiesReportArgumentsAsReportDetailsArguments(v *OrphanIdentitiesReportArguments) ReportDetailsArguments {
+// OrphanUncorrelatedReportArgumentsAsReportDetailsArguments is a convenience function that returns OrphanUncorrelatedReportArguments wrapped in ReportDetailsArguments
+func OrphanUncorrelatedReportArgumentsAsReportDetailsArguments(v *OrphanUncorrelatedReportArguments) ReportDetailsArguments {
 	return ReportDetailsArguments{
-		OrphanIdentitiesReportArguments: v,
+		OrphanUncorrelatedReportArguments: v,
 	}
 }
 
@@ -66,13 +65,6 @@ func OrphanIdentitiesReportArgumentsAsReportDetailsArguments(v *OrphanIdentities
 func SearchExportReportArgumentsAsReportDetailsArguments(v *SearchExportReportArguments) ReportDetailsArguments {
 	return ReportDetailsArguments{
 		SearchExportReportArguments: v,
-	}
-}
-
-// UncorrelatedAccountsReportArgumentsAsReportDetailsArguments is a convenience function that returns UncorrelatedAccountsReportArguments wrapped in ReportDetailsArguments
-func UncorrelatedAccountsReportArgumentsAsReportDetailsArguments(v *UncorrelatedAccountsReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		UncorrelatedAccountsReportArguments: v,
 	}
 }
 
@@ -149,21 +141,21 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		dst.IdentityProfileIdentityErrorReportArguments = nil
 	}
 
-	// try to unmarshal data into OrphanIdentitiesReportArguments
-	err = newStrictDecoder(data).Decode(&dst.OrphanIdentitiesReportArguments)
+	// try to unmarshal data into OrphanUncorrelatedReportArguments
+	err = newStrictDecoder(data).Decode(&dst.OrphanUncorrelatedReportArguments)
 	if err == nil {
-		jsonOrphanIdentitiesReportArguments, _ := json.Marshal(dst.OrphanIdentitiesReportArguments)
-		if string(jsonOrphanIdentitiesReportArguments) == "{}" { // empty struct
-			dst.OrphanIdentitiesReportArguments = nil
+		jsonOrphanUncorrelatedReportArguments, _ := json.Marshal(dst.OrphanUncorrelatedReportArguments)
+		if string(jsonOrphanUncorrelatedReportArguments) == "{}" { // empty struct
+			dst.OrphanUncorrelatedReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.OrphanIdentitiesReportArguments); err != nil {
-				dst.OrphanIdentitiesReportArguments = nil
+			if err = validator.Validate(dst.OrphanUncorrelatedReportArguments); err != nil {
+				dst.OrphanUncorrelatedReportArguments = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.OrphanIdentitiesReportArguments = nil
+		dst.OrphanUncorrelatedReportArguments = nil
 	}
 
 	// try to unmarshal data into SearchExportReportArguments
@@ -183,32 +175,14 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		dst.SearchExportReportArguments = nil
 	}
 
-	// try to unmarshal data into UncorrelatedAccountsReportArguments
-	err = newStrictDecoder(data).Decode(&dst.UncorrelatedAccountsReportArguments)
-	if err == nil {
-		jsonUncorrelatedAccountsReportArguments, _ := json.Marshal(dst.UncorrelatedAccountsReportArguments)
-		if string(jsonUncorrelatedAccountsReportArguments) == "{}" { // empty struct
-			dst.UncorrelatedAccountsReportArguments = nil
-		} else {
-			if err = validator.Validate(dst.UncorrelatedAccountsReportArguments); err != nil {
-				dst.UncorrelatedAccountsReportArguments = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.UncorrelatedAccountsReportArguments = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.AccountsExportReportArguments = nil
 		dst.IdentitiesDetailsReportArguments = nil
 		dst.IdentitiesReportArguments = nil
 		dst.IdentityProfileIdentityErrorReportArguments = nil
-		dst.OrphanIdentitiesReportArguments = nil
+		dst.OrphanUncorrelatedReportArguments = nil
 		dst.SearchExportReportArguments = nil
-		dst.UncorrelatedAccountsReportArguments = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(ReportDetailsArguments)")
 	} else if match == 1 {
@@ -236,16 +210,12 @@ func (src ReportDetailsArguments) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IdentityProfileIdentityErrorReportArguments)
 	}
 
-	if src.OrphanIdentitiesReportArguments != nil {
-		return json.Marshal(&src.OrphanIdentitiesReportArguments)
+	if src.OrphanUncorrelatedReportArguments != nil {
+		return json.Marshal(&src.OrphanUncorrelatedReportArguments)
 	}
 
 	if src.SearchExportReportArguments != nil {
 		return json.Marshal(&src.SearchExportReportArguments)
-	}
-
-	if src.UncorrelatedAccountsReportArguments != nil {
-		return json.Marshal(&src.UncorrelatedAccountsReportArguments)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -272,16 +242,12 @@ func (obj *ReportDetailsArguments) GetActualInstance() (interface{}) {
 		return obj.IdentityProfileIdentityErrorReportArguments
 	}
 
-	if obj.OrphanIdentitiesReportArguments != nil {
-		return obj.OrphanIdentitiesReportArguments
+	if obj.OrphanUncorrelatedReportArguments != nil {
+		return obj.OrphanUncorrelatedReportArguments
 	}
 
 	if obj.SearchExportReportArguments != nil {
 		return obj.SearchExportReportArguments
-	}
-
-	if obj.UncorrelatedAccountsReportArguments != nil {
-		return obj.UncorrelatedAccountsReportArguments
 	}
 
 	// all schemas are nil

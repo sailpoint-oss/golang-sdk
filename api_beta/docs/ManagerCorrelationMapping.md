@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountAttributeName** | Pointer to **string** | Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager&#39;s identity. | [optional] 
-**IdentityAttributeName** | Pointer to **string** | Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute. | [optional] 
+**AccountAttribute** | Pointer to **string** | Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager&#39;s identity. | [optional] 
+**IdentityAttribute** | Pointer to **string** | Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute. | [optional] 
 
 ## Methods
 
@@ -26,55 +26,55 @@ NewManagerCorrelationMappingWithDefaults instantiates a new ManagerCorrelationMa
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAccountAttributeName
+### GetAccountAttribute
 
-`func (o *ManagerCorrelationMapping) GetAccountAttributeName() string`
+`func (o *ManagerCorrelationMapping) GetAccountAttribute() string`
 
-GetAccountAttributeName returns the AccountAttributeName field if non-nil, zero value otherwise.
+GetAccountAttribute returns the AccountAttribute field if non-nil, zero value otherwise.
 
-### GetAccountAttributeNameOk
+### GetAccountAttributeOk
 
-`func (o *ManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, bool)`
+`func (o *ManagerCorrelationMapping) GetAccountAttributeOk() (*string, bool)`
 
-GetAccountAttributeNameOk returns a tuple with the AccountAttributeName field if it's non-nil, zero value otherwise
+GetAccountAttributeOk returns a tuple with the AccountAttribute field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountAttributeName
+### SetAccountAttribute
 
-`func (o *ManagerCorrelationMapping) SetAccountAttributeName(v string)`
+`func (o *ManagerCorrelationMapping) SetAccountAttribute(v string)`
 
-SetAccountAttributeName sets AccountAttributeName field to given value.
+SetAccountAttribute sets AccountAttribute field to given value.
 
-### HasAccountAttributeName
+### HasAccountAttribute
 
-`func (o *ManagerCorrelationMapping) HasAccountAttributeName() bool`
+`func (o *ManagerCorrelationMapping) HasAccountAttribute() bool`
 
-HasAccountAttributeName returns a boolean if a field has been set.
+HasAccountAttribute returns a boolean if a field has been set.
 
-### GetIdentityAttributeName
+### GetIdentityAttribute
 
-`func (o *ManagerCorrelationMapping) GetIdentityAttributeName() string`
+`func (o *ManagerCorrelationMapping) GetIdentityAttribute() string`
 
-GetIdentityAttributeName returns the IdentityAttributeName field if non-nil, zero value otherwise.
+GetIdentityAttribute returns the IdentityAttribute field if non-nil, zero value otherwise.
 
-### GetIdentityAttributeNameOk
+### GetIdentityAttributeOk
 
-`func (o *ManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string, bool)`
+`func (o *ManagerCorrelationMapping) GetIdentityAttributeOk() (*string, bool)`
 
-GetIdentityAttributeNameOk returns a tuple with the IdentityAttributeName field if it's non-nil, zero value otherwise
+GetIdentityAttributeOk returns a tuple with the IdentityAttribute field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIdentityAttributeName
+### SetIdentityAttribute
 
-`func (o *ManagerCorrelationMapping) SetIdentityAttributeName(v string)`
+`func (o *ManagerCorrelationMapping) SetIdentityAttribute(v string)`
 
-SetIdentityAttributeName sets IdentityAttributeName field to given value.
+SetIdentityAttribute sets IdentityAttribute field to given value.
 
-### HasIdentityAttributeName
+### HasIdentityAttribute
 
-`func (o *ManagerCorrelationMapping) HasIdentityAttributeName() bool`
+`func (o *ManagerCorrelationMapping) HasIdentityAttribute() bool`
 
-HasIdentityAttributeName returns a boolean if a field has been set.
+HasIdentityAttribute returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

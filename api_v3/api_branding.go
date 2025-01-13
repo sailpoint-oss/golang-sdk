@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -93,6 +93,7 @@ func (r ApiCreateBrandingItemRequest) Execute() (*BrandingItem, *http.Response, 
 CreateBrandingItem Create a branding item
 
 This API endpoint creates a branding item.
+A token with API, ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateBrandingItemRequest
@@ -284,7 +285,8 @@ func (r ApiDeleteBrandingRequest) Execute() (*http.Response, error) {
 /*
 DeleteBranding Delete a branding item
 
-This API endpoint delete information for an existing branding item by name.    
+This API endpoint delete information for an existing branding item by name.
+A token with API, ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The name of the branding item to be deleted
@@ -441,7 +443,8 @@ func (r ApiGetBrandingRequest) Execute() (*BrandingItem, *http.Response, error) 
 /*
 GetBranding Get a branding item
 
-This API endpoint retrieves information for an existing branding item by name.    
+This API endpoint retrieves information for an existing branding item by name.
+A token with API, ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The name of the branding item to be retrieved
@@ -609,6 +612,8 @@ func (r ApiGetBrandingListRequest) Execute() ([]BrandingItem, *http.Response, er
 GetBrandingList List of branding items
 
 This API endpoint returns a list of branding items.
+
+A token with API, ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBrandingListRequest
@@ -819,6 +824,7 @@ func (r ApiSetBrandingItemRequest) Execute() (*BrandingItem, *http.Response, err
 SetBrandingItem Update a branding item
 
 This API endpoint updates information for an existing branding item.
+A token with API, ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The name of the branding item to be retrieved

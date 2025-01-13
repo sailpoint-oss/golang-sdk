@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
 Testing SavedSearchAPIService
 

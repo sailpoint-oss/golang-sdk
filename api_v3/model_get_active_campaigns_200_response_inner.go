@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,50 +12,84 @@ package api_v3
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-
-// GetActiveCampaigns200ResponseInner struct for GetActiveCampaigns200ResponseInner
+// GetActiveCampaigns200ResponseInner - struct for GetActiveCampaigns200ResponseInner
 type GetActiveCampaigns200ResponseInner struct {
 	Campaign *Campaign
 	SlimCampaign *SlimCampaign
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// CampaignAsGetActiveCampaigns200ResponseInner is a convenience function that returns Campaign wrapped in GetActiveCampaigns200ResponseInner
+func CampaignAsGetActiveCampaigns200ResponseInner(v *Campaign) GetActiveCampaigns200ResponseInner {
+	return GetActiveCampaigns200ResponseInner{
+		Campaign: v,
+	}
+}
+
+// SlimCampaignAsGetActiveCampaigns200ResponseInner is a convenience function that returns SlimCampaign wrapped in GetActiveCampaigns200ResponseInner
+func SlimCampaignAsGetActiveCampaigns200ResponseInner(v *SlimCampaign) GetActiveCampaigns200ResponseInner {
+	return GetActiveCampaigns200ResponseInner{
+		SlimCampaign: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *GetActiveCampaigns200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into Campaign
-	err = json.Unmarshal(data, &dst.Campaign);
+	match := 0
+	// try to unmarshal data into Campaign
+	err = newStrictDecoder(data).Decode(&dst.Campaign)
 	if err == nil {
 		jsonCampaign, _ := json.Marshal(dst.Campaign)
 		if string(jsonCampaign) == "{}" { // empty struct
 			dst.Campaign = nil
 		} else {
-			return nil // data stored in dst.Campaign, return on the first match
+			if err = validator.Validate(dst.Campaign); err != nil {
+				dst.Campaign = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Campaign = nil
 	}
 
-	// try to unmarshal JSON data into SlimCampaign
-	err = json.Unmarshal(data, &dst.SlimCampaign);
+	// try to unmarshal data into SlimCampaign
+	err = newStrictDecoder(data).Decode(&dst.SlimCampaign)
 	if err == nil {
 		jsonSlimCampaign, _ := json.Marshal(dst.SlimCampaign)
 		if string(jsonSlimCampaign) == "{}" { // empty struct
 			dst.SlimCampaign = nil
 		} else {
-			return nil // data stored in dst.SlimCampaign, return on the first match
+			if err = validator.Validate(dst.SlimCampaign); err != nil {
+				dst.SlimCampaign = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SlimCampaign = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(GetActiveCampaigns200ResponseInner)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.Campaign = nil
+		dst.SlimCampaign = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(GetActiveCampaigns200ResponseInner)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(GetActiveCampaigns200ResponseInner)")
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
+func (src GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
 	if src.Campaign != nil {
 		return json.Marshal(&src.Campaign)
 	}
@@ -64,9 +98,25 @@ func (src *GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SlimCampaign)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
 }
 
+// Get the actual instance
+func (obj *GetActiveCampaigns200ResponseInner) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.Campaign != nil {
+		return obj.Campaign
+	}
+
+	if obj.SlimCampaign != nil {
+		return obj.SlimCampaign
+	}
+
+	// all schemas are nil
+	return nil
+}
 
 type NullableGetActiveCampaigns200ResponseInner struct {
 	value *GetActiveCampaigns200ResponseInner

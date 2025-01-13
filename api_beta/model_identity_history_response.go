@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -28,9 +28,9 @@ type IdentityHistoryResponse struct {
 	// the date when the identity was deleted
 	DeletedDate *string `json:"deletedDate,omitempty"`
 	// A map containing the count of each access item
-	AccessItemCount *map[string]int32 `json:"accessItemCount,omitempty"`
+	AccessItemCount *map[string]string `json:"accessItemCount,omitempty"`
 	// A map containing the identity attributes
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Attributes *map[string]string `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,9 +182,9 @@ func (o *IdentityHistoryResponse) SetDeletedDate(v string) {
 }
 
 // GetAccessItemCount returns the AccessItemCount field value if set, zero value otherwise.
-func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]int32 {
+func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]string {
 	if o == nil || IsNil(o.AccessItemCount) {
-		var ret map[string]int32
+		var ret map[string]string
 		return ret
 	}
 	return *o.AccessItemCount
@@ -192,7 +192,7 @@ func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]int32 {
 
 // GetAccessItemCountOk returns a tuple with the AccessItemCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]int32, bool) {
+func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.AccessItemCount) {
 		return nil, false
 	}
@@ -208,25 +208,25 @@ func (o *IdentityHistoryResponse) HasAccessItemCount() bool {
 	return false
 }
 
-// SetAccessItemCount gets a reference to the given map[string]int32 and assigns it to the AccessItemCount field.
-func (o *IdentityHistoryResponse) SetAccessItemCount(v map[string]int32) {
+// SetAccessItemCount gets a reference to the given map[string]string and assigns it to the AccessItemCount field.
+func (o *IdentityHistoryResponse) SetAccessItemCount(v map[string]string) {
 	o.AccessItemCount = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *IdentityHistoryResponse) GetAttributes() map[string]interface{} {
+func (o *IdentityHistoryResponse) GetAttributes() map[string]string {
 	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.Attributes
+	return *o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityHistoryResponse) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *IdentityHistoryResponse) GetAttributesOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Attributes, true
 }
@@ -240,9 +240,9 @@ func (o *IdentityHistoryResponse) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *IdentityHistoryResponse) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
+// SetAttributes gets a reference to the given map[string]string and assigns it to the Attributes field.
+func (o *IdentityHistoryResponse) SetAttributes(v map[string]string) {
+	o.Attributes = &v
 }
 
 func (o IdentityHistoryResponse) MarshalJSON() ([]byte, error) {

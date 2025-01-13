@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -39,9 +39,9 @@ func (r ApiCreateCampaignFilterRequest) Execute() (*CampaignFilterDetails, *http
 }
 
 /*
-CreateCampaignFilter Create Campaign Filter
+CreateCampaignFilter Create a Campaign Filter
 
-Use this API to create a campaign filter based on filter details and criteria.
+Create a campaign Filter based on filter details and criteria.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignFilterRequest
@@ -355,10 +355,10 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersExecute(r 
 type ApiGetCampaignFilterByIdRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignFiltersAPIService
-	id string
+	filterId string
 }
 
-func (r ApiGetCampaignFilterByIdRequest) Execute() (*CampaignFilterDetails, *http.Response, error) {
+func (r ApiGetCampaignFilterByIdRequest) Execute() ([]CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.GetCampaignFilterByIdExecute(r)
 }
 
@@ -368,25 +368,25 @@ GetCampaignFilterById Get Campaign Filter by ID
 Retrieves information for an existing campaign filter using the filter's ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign filter to be retrieved.
+ @param filterId The ID of the campaign filter to be retrieved.
  @return ApiGetCampaignFilterByIdRequest
 */
-func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx context.Context, id string) ApiGetCampaignFilterByIdRequest {
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx context.Context, filterId string) ApiGetCampaignFilterByIdRequest {
 	return ApiGetCampaignFilterByIdRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		filterId: filterId,
 	}
 }
 
 // Execute executes the request
-//  @return CampaignFilterDetails
-func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) (*CampaignFilterDetails, *http.Response, error) {
+//  @return []CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) ([]CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CampaignFilterDetails
+		localVarReturnValue  []CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.GetCampaignFilterById")
@@ -395,7 +395,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r 
 	}
 
 	localVarPath := localBasePath + "/campaign-filters/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"filterId"+"}", url.PathEscape(parameterValueToString(r.filterId, "filterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -540,20 +540,22 @@ func (r ApiListCampaignFiltersRequest) Start(start int32) ApiListCampaignFilters
 	return r
 }
 
-// If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. 
+// If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
 func (r ApiListCampaignFiltersRequest) IncludeSystemFilters(includeSystemFilters bool) ApiListCampaignFiltersRequest {
 	r.includeSystemFilters = &includeSystemFilters
 	return r
 }
 
-func (r ApiListCampaignFiltersRequest) Execute() (*ListCampaignFilters200Response, *http.Response, error) {
+func (r ApiListCampaignFiltersRequest) Execute() ([]CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.ListCampaignFiltersExecute(r)
 }
 
 /*
 ListCampaignFilters List Campaign Filters
 
-Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
+Lists all Campaign Filters. Scope can be reduced via standard V3 query params.
+
+All Campaign Filters matching the query params
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCampaignFiltersRequest
@@ -566,13 +568,13 @@ func (a *CertificationCampaignFiltersAPIService) ListCampaignFilters(ctx context
 }
 
 // Execute executes the request
-//  @return ListCampaignFilters200Response
-func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersExecute(r ApiListCampaignFiltersRequest) (*ListCampaignFilters200Response, *http.Response, error) {
+//  @return []CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersExecute(r ApiListCampaignFiltersRequest) ([]CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListCampaignFilters200Response
+		localVarReturnValue  []CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.ListCampaignFilters")

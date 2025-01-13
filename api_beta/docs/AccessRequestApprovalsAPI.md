@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApproveAccessRequest**](AccessRequestApprovalsAPI.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
-[**ForwardAccessRequest**](AccessRequestApprovalsAPI.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
-[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsAPI.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
+[**ApproveAccessRequest**](AccessRequestApprovalsAPI.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
+[**ForwardAccessRequest**](AccessRequestApprovalsAPI.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
+[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsAPI.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
 [**ListCompletedApprovals**](AccessRequestApprovalsAPI.md#ListCompletedApprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 [**ListPendingApprovals**](AccessRequestApprovalsAPI.md#ListPendingApprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-[**RejectAccessRequest**](AccessRequestApprovalsAPI.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
+[**RejectAccessRequest**](AccessRequestApprovalsAPI.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} ApproveAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
-Approve Access Request Approval
+Approves an access request approval.
 
 
 
@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-	approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
-	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment.
+	approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
+	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | Approval ID. | 
+**approvalId** | **string** | The id of the approval. | 
 
 ### Other Parameters
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} ForwardAccessRequest(ctx, approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
 
-Forward Access Request Approval
+Forwards an access request approval to a new owner.
 
 
 
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-	approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
+	approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
 	forwardApprovalDto := *openapiclient.NewForwardApprovalDto("NewOwnerId_example", "Comment_example") // ForwardApprovalDto | Information about the forwarded approval.
 
 	configuration := openapiclient.NewConfiguration()
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | Approval ID. | 
+**approvalId** | **string** | The id of the approval. | 
 
 ### Other Parameters
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > ApprovalSummary GetAccessRequestApprovalSummary(ctx).OwnerId(ownerId).FromDate(fromDate).Execute()
 
-Get Access Requests Approvals Number
+Get the number of pending, approved and rejected access requests approvals
 
 
 
@@ -178,8 +178,8 @@ import (
 )
 
 func main() {
-	ownerId := "2c91808568c529c60168cca6f90c1313" // string | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
-	fromDate := "from-date=2020-03-19T19:59:11Z" // string | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional)
+	ownerId := "ownerId_example" // string | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+	fromDate := "fromDate_example" // string | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -204,8 +204,8 @@ Other parameters are passed through a pointer to a apiGetAccessRequestApprovalSu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
- **fromDate** | **string** | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. | 
+ **ownerId** | **string** | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
+ **fromDate** | **string** | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date&#x3D;2020-03-19T19:59:11Z | 
 
 ### Return type
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} RejectAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
-Reject Access Request Approval
+Rejects an access request approval.
 
 
 
@@ -398,8 +398,8 @@ import (
 )
 
 func main() {
-	approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
-	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment.
+	approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
+	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -419,7 +419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | Approval ID. | 
+**approvalId** | **string** | The id of the approval. | 
 
 ### Other Parameters
 
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

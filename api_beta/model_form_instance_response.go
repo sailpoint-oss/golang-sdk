@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the FormInstanceResponse type satisfies the MappedNullable interface at compile time
@@ -21,14 +21,14 @@ var _ MappedNullable = &FormInstanceResponse{}
 // FormInstanceResponse struct for FormInstanceResponse
 type FormInstanceResponse struct {
 	// Created is the date the form instance was assigned
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	CreatedBy *FormInstanceCreatedBy `json:"createdBy,omitempty"`
 	// Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record
 	Expire *string `json:"expire,omitempty"`
 	// FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form
 	FormConditions []FormCondition `json:"formConditions,omitempty"`
 	// FormData is the data provided by the form on submit. The data is in a key -> value map
-	FormData map[string]interface{} `json:"formData,omitempty"`
+	FormData map[string]map[string]interface{} `json:"formData,omitempty"`
 	// FormDefinitionID is the id of the form definition that created this form
 	FormDefinitionId *string `json:"formDefinitionId,omitempty"`
 	// FormElements is the configuration of the form, this would be a repeat of the fields from the form-config
@@ -37,10 +37,10 @@ type FormInstanceResponse struct {
 	FormErrors []FormError `json:"formErrors,omitempty"`
 	// FormInput is an object of form input labels to value
 	FormInput map[string]map[string]interface{} `json:"formInput,omitempty"`
-	// Unique guid identifying this form instance
+	// FormInstanceID is a unique guid identifying this form instance
 	Id *string `json:"id,omitempty"`
 	// Modified is the last date the form instance was modified
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it
 	Recipients []FormInstanceRecipient `json:"recipients,omitempty"`
 	// StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form
@@ -76,9 +76,9 @@ func NewFormInstanceResponseWithDefaults() *FormInstanceResponse {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *FormInstanceResponse) GetCreated() SailPointTime {
+func (o *FormInstanceResponse) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -86,7 +86,7 @@ func (o *FormInstanceResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormInstanceResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *FormInstanceResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *FormInstanceResponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *FormInstanceResponse) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *FormInstanceResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -203,10 +203,10 @@ func (o *FormInstanceResponse) SetFormConditions(v []FormCondition) {
 	o.FormConditions = v
 }
 
-// GetFormData returns the FormData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FormInstanceResponse) GetFormData() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// GetFormData returns the FormData field value if set, zero value otherwise.
+func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{} {
+	if o == nil || IsNil(o.FormData) {
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 	return o.FormData
@@ -214,10 +214,9 @@ func (o *FormInstanceResponse) GetFormData() map[string]interface{} {
 
 // GetFormDataOk returns a tuple with the FormData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FormInstanceResponse) GetFormDataOk() (map[string]interface{}, bool) {
+func (o *FormInstanceResponse) GetFormDataOk() (map[string]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FormData) {
-		return map[string]interface{}{}, false
+		return map[string]map[string]interface{}{}, false
 	}
 	return o.FormData, true
 }
@@ -231,8 +230,8 @@ func (o *FormInstanceResponse) HasFormData() bool {
 	return false
 }
 
-// SetFormData gets a reference to the given map[string]interface{} and assigns it to the FormData field.
-func (o *FormInstanceResponse) SetFormData(v map[string]interface{}) {
+// SetFormData gets a reference to the given map[string]map[string]interface{} and assigns it to the FormData field.
+func (o *FormInstanceResponse) SetFormData(v map[string]map[string]interface{}) {
 	o.FormData = v
 }
 
@@ -332,9 +331,9 @@ func (o *FormInstanceResponse) SetFormErrors(v []FormError) {
 	o.FormErrors = v
 }
 
-// GetFormInput returns the FormInput field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFormInput returns the FormInput field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormInput() map[string]map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.FormInput) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -343,7 +342,6 @@ func (o *FormInstanceResponse) GetFormInput() map[string]map[string]interface{} 
 
 // GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FormInstanceResponse) GetFormInputOk() (map[string]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FormInput) {
 		return map[string]map[string]interface{}{}, false
@@ -398,9 +396,9 @@ func (o *FormInstanceResponse) SetId(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *FormInstanceResponse) GetModified() SailPointTime {
+func (o *FormInstanceResponse) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -408,7 +406,7 @@ func (o *FormInstanceResponse) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormInstanceResponse) GetModifiedOk() (*SailPointTime, bool) {
+func (o *FormInstanceResponse) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -424,8 +422,8 @@ func (o *FormInstanceResponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *FormInstanceResponse) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *FormInstanceResponse) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -579,7 +577,7 @@ func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FormConditions) {
 		toSerialize["formConditions"] = o.FormConditions
 	}
-	if o.FormData != nil {
+	if !IsNil(o.FormData) {
 		toSerialize["formData"] = o.FormData
 	}
 	if !IsNil(o.FormDefinitionId) {
@@ -591,7 +589,7 @@ func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FormErrors) {
 		toSerialize["formErrors"] = o.FormErrors
 	}
-	if o.FormInput != nil {
+	if !IsNil(o.FormInput) {
 		toSerialize["formInput"] = o.FormInput
 	}
 	if !IsNil(o.Id) {

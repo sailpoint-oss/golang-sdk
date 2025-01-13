@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **NullableString** | ID of the form | [optional] 
-**Name** | Pointer to **NullableString** | Name of the form | [optional] 
+**Id** | Pointer to **string** | ID of the form | [optional] 
+**Name** | Pointer to **string** | Name of the form | [optional] 
 **Title** | Pointer to **string** | The form title | [optional] 
 **Subtitle** | Pointer to **string** | The form subtitle. | [optional] 
 **TargetUser** | Pointer to **string** | The name of the user that should be shown this form | [optional] 
-**Sections** | Pointer to [**[]SectionDetails**](SectionDetails.md) | Sections of the form | [optional] 
+**Sections** | Pointer to [**SectionDetails**](SectionDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -55,16 +55,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### SetIdNil
-
-`func (o *FormDetails) SetIdNil(b bool)`
-
- SetIdNil sets the value for Id to be an explicit nil
-
-### UnsetId
-`func (o *FormDetails) UnsetId()`
-
-UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *FormDetails) GetName() string`
@@ -90,16 +80,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### SetNameNil
-
-`func (o *FormDetails) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *FormDetails) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetTitle
 
 `func (o *FormDetails) GetTitle() string`
@@ -177,20 +157,20 @@ HasTargetUser returns a boolean if a field has been set.
 
 ### GetSections
 
-`func (o *FormDetails) GetSections() []SectionDetails`
+`func (o *FormDetails) GetSections() SectionDetails`
 
 GetSections returns the Sections field if non-nil, zero value otherwise.
 
 ### GetSectionsOk
 
-`func (o *FormDetails) GetSectionsOk() (*[]SectionDetails, bool)`
+`func (o *FormDetails) GetSectionsOk() (*SectionDetails, bool)`
 
 GetSectionsOk returns a tuple with the Sections field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSections
 
-`func (o *FormDetails) SetSections(v []SectionDetails)`
+`func (o *FormDetails) SetSections(v SectionDetails)`
 
 SetSections sets Sections field to given value.
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -18,11 +18,11 @@ import (
 // checks if the QueuedCheckConfigDetails type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &QueuedCheckConfigDetails{}
 
-// QueuedCheckConfigDetails Configuration of maximum number of days and interval for checking Service Desk integration queue status.
+// QueuedCheckConfigDetails Configuration of maximum number days and interval for checking Service Desk integration queue status
 type QueuedCheckConfigDetails struct {
-	// Interval in minutes between status checks
+	// interval in minutes between status checks
 	ProvisioningStatusCheckIntervalMinutes string `json:"provisioningStatusCheckIntervalMinutes"`
-	// Maximum number of days to check
+	// maximum number of days to check
 	ProvisioningMaxStatusCheckDays string `json:"provisioningMaxStatusCheckDays"`
 	AdditionalProperties map[string]interface{}
 }

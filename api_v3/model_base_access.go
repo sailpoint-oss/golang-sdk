@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the BaseAccess type satisfies the MappedNullable interface at compile time
@@ -170,9 +170,9 @@ func (o *BaseAccess) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BaseAccess) GetCreated() SailPointTime {
+func (o *BaseAccess) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -181,7 +181,7 @@ func (o *BaseAccess) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BaseAccess) GetCreatedOk() (*SailPointTime, bool) {
+func (o *BaseAccess) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -198,7 +198,7 @@ func (o *BaseAccess) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *BaseAccess) SetCreated(v SailPointTime) {
+func (o *BaseAccess) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -212,9 +212,9 @@ func (o *BaseAccess) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BaseAccess) GetModified() SailPointTime {
+func (o *BaseAccess) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -223,7 +223,7 @@ func (o *BaseAccess) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BaseAccess) GetModifiedOk() (*SailPointTime, bool) {
+func (o *BaseAccess) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -240,7 +240,7 @@ func (o *BaseAccess) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *BaseAccess) SetModified(v SailPointTime) {
+func (o *BaseAccess) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -254,9 +254,9 @@ func (o *BaseAccess) UnsetModified() {
 }
 
 // GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BaseAccess) GetSynced() SailPointTime {
+func (o *BaseAccess) GetSynced() time.Time {
 	if o == nil || IsNil(o.Synced.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Synced.Get()
@@ -265,7 +265,7 @@ func (o *BaseAccess) GetSynced() SailPointTime {
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BaseAccess) GetSyncedOk() (*SailPointTime, bool) {
+func (o *BaseAccess) GetSyncedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -282,7 +282,7 @@ func (o *BaseAccess) HasSynced() bool {
 }
 
 // SetSynced gets a reference to the given NullableTime and assigns it to the Synced field.
-func (o *BaseAccess) SetSynced(v SailPointTime) {
+func (o *BaseAccess) SetSynced(v time.Time) {
 	o.Synced.Set(&v)
 }
 // SetSyncedNil sets the value for Synced to be an explicit nil

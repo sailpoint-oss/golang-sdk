@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -43,10 +43,8 @@ func (r ApiExportOutliersZipRequest) Execute() (*os.File, *http.Response, error)
 /*
 ExportOutliersZip IAI Identity Outliers Export
 
-This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.
-
-Columns will include: identityId, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes).
-
+This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported Columns will include: identityID, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes)
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportOutliersZipRequest
@@ -133,7 +131,7 @@ func (a *IAIOutliersAPIService) ExportOutliersZipExecute(r ApiExportOutliersZipR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +153,7 @@ func (a *IAIOutliersAPIService) ExportOutliersZipExecute(r ApiExportOutliersZipR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -237,7 +235,8 @@ func (r ApiGetIdentityOutlierSnapshotsRequest) Execute() ([]OutlierSummary, *htt
 /*
 GetIdentityOutlierSnapshots IAI Identity Outliers Summary
 
-This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
+This API receives a summary containing: the number of identities that customer has, the number of outliers, and the type of outlier
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityOutlierSnapshotsRequest
@@ -342,7 +341,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -364,7 +363,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -453,7 +452,8 @@ func (r ApiGetIdentityOutliersRequest) Execute() ([]Outlier, *http.Response, err
 /*
 GetIdentityOutliers IAI Get Identity Outliers
 
-This API returns a list of outliers, containing data such as identity ID, outlier type, detection dates, identity attributes, if identity is ignored, and certification information.
+This API receives a list of outliers, containing data such as: identityId, outlier type, detection dates, identity attributes, if identity is ignore, and certification information
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityOutliersRequest
@@ -564,7 +564,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -586,7 +586,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -640,7 +640,8 @@ func (r ApiGetLatestIdentityOutlierSnapshotsRequest) Execute() ([]LatestOutlierS
 /*
 GetLatestIdentityOutlierSnapshots IAI Identity Outliers Latest Summary
 
-This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
+This API returns a most recent snapshot of each outlier type, each containing: the number of identities that customer has, the number of outliers, and the type of outlier
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetLatestIdentityOutlierSnapshotsRequest
@@ -727,7 +728,7 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -749,7 +750,7 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -797,10 +798,8 @@ func (r ApiGetOutlierContributingFeatureSummaryRequest) Execute() (*OutlierFeatu
 /*
 GetOutlierContributingFeatureSummary Get identity outlier contibuting feature summary
 
-This API returns a summary of a contributing feature for an identity outlier.
-
-The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object.
-
+This API returns a summary of a contributing feature for an identity outlier. The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param outlierFeatureId Contributing feature id
@@ -887,7 +886,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -920,7 +919,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1003,10 +1002,8 @@ func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) Execute() ([]Outlier
 /*
 GetPeerGroupOutliersContributingFeatures Get identity outlier's contibuting features
 
-This API returns a list of contributing feature objects for a single outlier.
-
-The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object.
-
+This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param outlierId The outlier id
@@ -1117,7 +1114,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1150,7 +1147,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1203,7 +1200,8 @@ func (r ApiIgnoreIdentityOutliersRequest) Execute() (*http.Response, error) {
 /*
 IgnoreIdentityOutliers IAI Identity Outliers Ignore
 
-This API receives a list of identity IDs in the request, changes the outliers to be ignored.
+This API receives a list of IdentityIDs in the request, changes the outliers to be ignored--returning a 204 if successful.
+Requires authorization scope of 'iai:outliers-management:update'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIgnoreIdentityOutliersRequest
@@ -1290,7 +1288,7 @@ func (a *IAIOutliersAPIService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentit
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1312,7 +1310,7 @@ func (a *IAIOutliersAPIService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentit
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1368,7 +1366,7 @@ func (r ApiListOutliersContributingFeatureAccessItemsRequest) Count(count bool) 
 	return r
 }
 
-// The type of access item for the identity outlier contributing feature. If not provided, it returns all.
+// The type of access item for the identity outlier contributing feature. If not provided, it returns all
 func (r ApiListOutliersContributingFeatureAccessItemsRequest) AccessType(accessType string) ApiListOutliersContributingFeatureAccessItemsRequest {
 	r.accessType = &accessType
 	return r
@@ -1387,10 +1385,8 @@ func (r ApiListOutliersContributingFeatureAccessItemsRequest) Execute() ([]Outli
 /*
 ListOutliersContributingFeatureAccessItems Gets a list of access items associated with each identity outlier contributing feature
 
-This API returns a list of the enriched access items associated with each feature filtered by the access item type.
-
-The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare.
-
+This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare
+Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param outlierId The outlier id
@@ -1504,7 +1500,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1537,7 +1533,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1590,7 +1586,8 @@ func (r ApiUnIgnoreIdentityOutliersRequest) Execute() (*http.Response, error) {
 /*
 UnIgnoreIdentityOutliers IAI Identity Outliers Unignore
 
-This API receives a list of identity IDs in the request, changes the outliers to be un-ignored.
+This API receives a list of IdentityIDs in the request, changes the outliers to be un-ignored--returning a 204 if successful.
+Requires authorization scope of 'iai:outliers-management:update'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUnIgnoreIdentityOutliersRequest
@@ -1677,7 +1674,7 @@ func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersExecute(r ApiUnIgnoreIde
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1699,7 +1696,7 @@ func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersExecute(r ApiUnIgnoreIde
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -31,9 +31,9 @@ type InvocationStatus struct {
 	SubscriptionId string `json:"subscriptionId"`
 	Type InvocationStatusType `json:"type"`
 	// Invocation created timestamp. ISO-8601 in UTC.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC.
-	Completed *SailPointTime `json:"completed,omitempty"`
+	Completed *time.Time `json:"completed,omitempty"`
 	StartInvocationInput StartInvocationInput `json:"startInvocationInput"`
 	CompleteInvocationInput *CompleteInvocationInput `json:"completeInvocationInput,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,7 +45,7 @@ type _InvocationStatus InvocationStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvocationStatus(id string, triggerId string, subscriptionName string, subscriptionId string, type_ InvocationStatusType, created SailPointTime, startInvocationInput StartInvocationInput) *InvocationStatus {
+func NewInvocationStatus(id string, triggerId string, subscriptionName string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput) *InvocationStatus {
 	this := InvocationStatus{}
 	this.Id = id
 	this.TriggerId = triggerId
@@ -186,9 +186,9 @@ func (o *InvocationStatus) SetType(v InvocationStatusType) {
 }
 
 // GetCreated returns the Created field value
-func (o *InvocationStatus) GetCreated() SailPointTime {
+func (o *InvocationStatus) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -197,7 +197,7 @@ func (o *InvocationStatus) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *InvocationStatus) GetCreatedOk() (*SailPointTime, bool) {
+func (o *InvocationStatus) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,14 +205,14 @@ func (o *InvocationStatus) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *InvocationStatus) SetCreated(v SailPointTime) {
+func (o *InvocationStatus) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *InvocationStatus) GetCompleted() SailPointTime {
+func (o *InvocationStatus) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Completed
@@ -220,7 +220,7 @@ func (o *InvocationStatus) GetCompleted() SailPointTime {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvocationStatus) GetCompletedOk() (*SailPointTime, bool) {
+func (o *InvocationStatus) GetCompletedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -236,8 +236,8 @@ func (o *InvocationStatus) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
-func (o *InvocationStatus) SetCompleted(v SailPointTime) {
+// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
+func (o *InvocationStatus) SetCompleted(v time.Time) {
 	o.Completed = &v
 }
 

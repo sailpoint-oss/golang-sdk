@@ -4,16 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the draft role | [optional] 
 **Description** | Pointer to **string** | Draft role description | [optional] 
 **IdentityIds** | Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
 **EntitlementIds** | Pointer to **[]string** | The list of entitlement ids for this role mining session. | [optional] 
 **ExcludedEntitlements** | Pointer to **[]string** | The list of excluded entitlement ids. | [optional] 
 **Modified** | Pointer to **time.Time** | Last modified date | [optional] 
+**Name** | Pointer to **string** | Name of the draft role | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
-**Id** | Pointer to **string** | Id of the potential draft role | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time when this potential draft role was created. | [optional] 
-**ModifiedDate** | Pointer to **time.Time** | The date-time when this potential draft role was modified. | [optional] 
 
 ## Methods
 
@@ -33,31 +30,6 @@ will change when the set of required properties is changed
 NewRoleMiningSessionDraftRoleDtoWithDefaults instantiates a new RoleMiningSessionDraftRoleDto object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *RoleMiningSessionDraftRoleDto) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *RoleMiningSessionDraftRoleDto) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *RoleMiningSessionDraftRoleDto) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -184,6 +156,31 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *RoleMiningSessionDraftRoleDto) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *RoleMiningSessionDraftRoleDto) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *RoleMiningSessionDraftRoleDto) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *RoleMiningSessionDraftRoleDto) GetType() RoleMiningRoleType`
@@ -208,81 +205,6 @@ SetType sets Type field to given value.
 `func (o *RoleMiningSessionDraftRoleDto) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *RoleMiningSessionDraftRoleDto) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *RoleMiningSessionDraftRoleDto) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *RoleMiningSessionDraftRoleDto) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *RoleMiningSessionDraftRoleDto) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetCreatedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) GetCreatedDate() time.Time`
-
-GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
-
-### GetCreatedDateOk
-
-`func (o *RoleMiningSessionDraftRoleDto) GetCreatedDateOk() (*time.Time, bool)`
-
-GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) SetCreatedDate(v time.Time)`
-
-SetCreatedDate sets CreatedDate field to given value.
-
-### HasCreatedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) HasCreatedDate() bool`
-
-HasCreatedDate returns a boolean if a field has been set.
-
-### GetModifiedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) GetModifiedDate() time.Time`
-
-GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
-
-### GetModifiedDateOk
-
-`func (o *RoleMiningSessionDraftRoleDto) GetModifiedDateOk() (*time.Time, bool)`
-
-GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModifiedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) SetModifiedDate(v time.Time)`
-
-SetModifiedDate sets ModifiedDate field to given value.
-
-### HasModifiedDate
-
-`func (o *RoleMiningSessionDraftRoleDto) HasModifiedDate() bool`
-
-HasModifiedDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

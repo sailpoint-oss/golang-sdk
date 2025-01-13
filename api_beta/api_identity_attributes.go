@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -41,7 +41,7 @@ func (r ApiCreateIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.
 /*
 CreateIdentityAttribute Create Identity Attribute
 
-Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
+This creates a new identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityAttributeRequest
@@ -130,7 +130,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeExecute(r ApiCreat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeExecute(r ApiCreat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -211,7 +211,7 @@ func (r ApiDeleteIdentityAttributeRequest) Execute() (*http.Response, error) {
 /*
 DeleteIdentityAttribute Delete Identity Attribute
 
-This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.
@@ -296,7 +296,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDelet
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +329,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDelet
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -373,7 +373,7 @@ func (r ApiDeleteIdentityAttributesInBulkRequest) Execute() (*http.Response, err
 /*
 DeleteIdentityAttributesInBulk Bulk delete Identity Attributes
 
-Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
+This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityAttributesInBulkRequest
@@ -388,7 +388,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulk(ctx contex
 // Execute executes the request
 func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r ApiDeleteIdentityAttributesInBulkRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
@@ -460,7 +460,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -493,7 +493,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -619,7 +619,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -652,7 +652,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -696,19 +696,19 @@ type ApiListIdentityAttributesRequest struct {
 	count *bool
 }
 
-// Include &#39;system&#39; attributes in the response.
+// Include \&quot;system\&quot; attributes in the response.
 func (r ApiListIdentityAttributesRequest) IncludeSystem(includeSystem bool) ApiListIdentityAttributesRequest {
 	r.includeSystem = &includeSystem
 	return r
 }
 
-// Include &#39;silent&#39; attributes in the response.
+// Include \&quot;silent\&quot; attributes in the response.
 func (r ApiListIdentityAttributesRequest) IncludeSilent(includeSilent bool) ApiListIdentityAttributesRequest {
 	r.includeSilent = &includeSilent
 	return r
 }
 
-// Include only &#39;searchable&#39; attributes in the response.
+// Include only \&quot;searchable\&quot; attributes in the response.
 func (r ApiListIdentityAttributesRequest) SearchableOnly(searchableOnly bool) ApiListIdentityAttributesRequest {
 	r.searchableOnly = &searchableOnly
 	return r
@@ -727,7 +727,7 @@ func (r ApiListIdentityAttributesRequest) Execute() ([]IdentityAttribute, *http.
 /*
 ListIdentityAttributes List Identity Attributes
 
-Use this API to get a collection of identity attributes.
+This gets a collection of identity attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityAttributesRequest
@@ -835,7 +835,7 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListId
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,7 +857,7 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListId
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -911,7 +911,7 @@ func (r ApiPutIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Res
 /*
 PutIdentityAttribute Update Identity Attribute
 
-This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.
@@ -1003,7 +1003,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeExecute(r ApiPutIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1036,7 +1036,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeExecute(r ApiPutIdent
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

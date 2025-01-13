@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID of this identity summary | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of identity | [optional] 
 **IdentityId** | Pointer to **string** | ID of the identity that this summary represents | [optional] 
-**Completed** | Pointer to **bool** | Indicates if all access items for this summary have been decided on | [optional] [default to false]
+**Completed** | Pointer to **bool** | Indicates if all access items for this summary have been decided on | [optional] 
 
 ## Methods
 

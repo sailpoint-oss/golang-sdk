@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -192,7 +192,7 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsExecute(r ApiCompare
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -422,7 +422,7 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessTypeExecute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -579,7 +579,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityExecute(r ApiGetHistori
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -601,7 +601,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityExecute(r ApiGetHistori
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -648,7 +648,7 @@ type ApiGetHistoricalIdentityEventsRequest struct {
 	count *bool
 }
 
-// The optional instant until which access events are returned
+// The optional instant from which to return the access events
 func (r ApiGetHistoricalIdentityEventsRequest) From(from string) ApiGetHistoricalIdentityEventsRequest {
 	r.from = &from
 	return r
@@ -805,7 +805,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityEventsExecute(r ApiGetH
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -838,7 +838,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityEventsExecute(r ApiGetH
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -977,7 +977,7 @@ func (a *IdentityHistoryAPIService) GetIdentitySnapshotExecute(r ApiGetIdentityS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1203,7 +1203,7 @@ func (a *IdentityHistoryAPIService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1360,7 +1360,7 @@ func (a *IdentityHistoryAPIService) GetIdentityStartDateExecute(r ApiGetIdentity
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1569,7 +1569,7 @@ func (a *IdentityHistoryAPIService) ListHistoricalIdentitiesExecute(r ApiListHis
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1591,7 +1591,7 @@ func (a *IdentityHistoryAPIService) ListHistoricalIdentitiesExecute(r ApiListHis
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1631,53 +1631,11 @@ type ApiListIdentityAccessItemsRequest struct {
 	ApiService *IdentityHistoryAPIService
 	id string
 	type_ *string
-	filters *string
-	sorters *string
-	query *string
-	limit *int32
-	count *bool
-	offset *int32
 }
 
-// The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
+// The type of access item for the identity. If not provided, it defaults to account
 func (r ApiListIdentityAccessItemsRequest) Type_(type_ string) ApiListIdentityAccessItemsRequest {
 	r.type_ = &type_
-	return r
-}
-
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*
-func (r ApiListIdentityAccessItemsRequest) Filters(filters string) ApiListIdentityAccessItemsRequest {
-	r.filters = &filters
-	return r
-}
-
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
-func (r ApiListIdentityAccessItemsRequest) Sorters(sorters string) ApiListIdentityAccessItemsRequest {
-	r.sorters = &sorters
-	return r
-}
-
-// This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**
-func (r ApiListIdentityAccessItemsRequest) Query(query string) ApiListIdentityAccessItemsRequest {
-	r.query = &query
-	return r
-}
-
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListIdentityAccessItemsRequest) Limit(limit int32) ApiListIdentityAccessItemsRequest {
-	r.limit = &limit
-	return r
-}
-
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListIdentityAccessItemsRequest) Count(count bool) ApiListIdentityAccessItemsRequest {
-	r.count = &count
-	return r
-}
-
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListIdentityAccessItemsRequest) Offset(offset int32) ApiListIdentityAccessItemsRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1686,9 +1644,9 @@ func (r ApiListIdentityAccessItemsRequest) Execute() ([]ListIdentityAccessItems2
 }
 
 /*
-ListIdentityAccessItems List Access Items by Identity
+ListIdentityAccessItems Gets a list of access items for the identity filtered by item type
 
-This method retrieves a list of access item for the identity filtered by the access item type
+This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity id
@@ -1726,33 +1684,6 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
-	}
-	if r.filters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
-	}
-	if r.sorters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
-	}
-	if r.query != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
-	} else {
-		var defaultValue int32 = 250
-		r.limit = &defaultValue
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
-	} else {
-		var defaultValue int32 = 0
-		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1805,7 +1736,7 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1828,17 +1759,6 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1881,7 +1801,7 @@ type ApiListIdentitySnapshotAccessItemsRequest struct {
 	type_ *string
 }
 
-// Access item type.
+// The access item type
 func (r ApiListIdentitySnapshotAccessItemsRequest) Type_(type_ string) ApiListIdentitySnapshotAccessItemsRequest {
 	r.type_ = &type_
 	return r
@@ -1892,13 +1812,13 @@ func (r ApiListIdentitySnapshotAccessItemsRequest) Execute() ([]ListIdentityAcce
 }
 
 /*
-ListIdentitySnapshotAccessItems Get Identity Access Items Snapshot
+ListIdentitySnapshotAccessItems Gets the list of identity access items at a given date filterd by item type
 
-Use this API to get a list of identity access items at a specified date, filtered by item type.
+This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Identity ID.
- @param date Specified date.
+ @param id The identity id
+ @param date The specified date
  @return ApiListIdentitySnapshotAccessItemsRequest
 */
 func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItems(ctx context.Context, id string, date string) ApiListIdentitySnapshotAccessItemsRequest {
@@ -1987,7 +1907,7 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2010,17 +1930,6 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r Api
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2214,7 +2123,7 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotsExecute(r ApiListIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

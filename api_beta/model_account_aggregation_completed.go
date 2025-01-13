@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -25,9 +25,9 @@ type AccountAggregationCompleted struct {
 	// The overall status of the aggregation.
 	Status map[string]interface{} `json:"status"`
 	// The date and time when the account aggregation started.
-	Started SailPointTime `json:"started"`
+	Started time.Time `json:"started"`
 	// The date and time when the account aggregation finished.
-	Completed SailPointTime `json:"completed"`
+	Completed time.Time `json:"completed"`
 	// A list of errors that occurred during the aggregation.
 	Errors []string `json:"errors"`
 	// A list of warnings that occurred during the aggregation.
@@ -42,7 +42,7 @@ type _AccountAggregationCompleted AccountAggregationCompleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountAggregationCompleted(source AccountAggregationCompletedSource, status map[string]interface{}, started SailPointTime, completed SailPointTime, errors []string, warnings []string, stats AccountAggregationCompletedStats) *AccountAggregationCompleted {
+func NewAccountAggregationCompleted(source AccountAggregationCompletedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountAggregationCompletedStats) *AccountAggregationCompleted {
 	this := AccountAggregationCompleted{}
 	this.Source = source
 	this.Status = status
@@ -111,9 +111,9 @@ func (o *AccountAggregationCompleted) SetStatus(v map[string]interface{}) {
 }
 
 // GetStarted returns the Started field value
-func (o *AccountAggregationCompleted) GetStarted() SailPointTime {
+func (o *AccountAggregationCompleted) GetStarted() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -122,7 +122,7 @@ func (o *AccountAggregationCompleted) GetStarted() SailPointTime {
 
 // GetStartedOk returns a tuple with the Started field value
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationCompleted) GetStartedOk() (*SailPointTime, bool) {
+func (o *AccountAggregationCompleted) GetStartedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -130,14 +130,14 @@ func (o *AccountAggregationCompleted) GetStartedOk() (*SailPointTime, bool) {
 }
 
 // SetStarted sets field value
-func (o *AccountAggregationCompleted) SetStarted(v SailPointTime) {
+func (o *AccountAggregationCompleted) SetStarted(v time.Time) {
 	o.Started = v
 }
 
 // GetCompleted returns the Completed field value
-func (o *AccountAggregationCompleted) GetCompleted() SailPointTime {
+func (o *AccountAggregationCompleted) GetCompleted() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -146,7 +146,7 @@ func (o *AccountAggregationCompleted) GetCompleted() SailPointTime {
 
 // GetCompletedOk returns a tuple with the Completed field value
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationCompleted) GetCompletedOk() (*SailPointTime, bool) {
+func (o *AccountAggregationCompleted) GetCompletedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *AccountAggregationCompleted) GetCompletedOk() (*SailPointTime, bool) {
 }
 
 // SetCompleted sets field value
-func (o *AccountAggregationCompleted) SetCompleted(v SailPointTime) {
+func (o *AccountAggregationCompleted) SetCompleted(v time.Time) {
 	o.Completed = v
 }
 

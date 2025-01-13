@@ -4,12 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Description of the form field | [optional] 
 **HelpText** | Pointer to **string** | Describes the form field in the UI | [optional] 
 **Label** | Pointer to **string** | A human readable name for this form field in the UI | [optional] 
 **Name** | Pointer to **string** | The name of the input attribute | [optional] 
 **Required** | Pointer to **bool** | Denotes if this field is a required attribute | [optional] 
-**Type** | Pointer to **NullableString** | The type of the form field | [optional] 
+**Type** | Pointer to **map[string]interface{}** | The type of the form field | [optional] 
 
 ## Methods
 
@@ -29,31 +28,6 @@ will change when the set of required properties is changed
 NewWorkflowLibraryFormFieldsWithDefaults instantiates a new WorkflowLibraryFormFields object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDescription
-
-`func (o *WorkflowLibraryFormFields) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *WorkflowLibraryFormFields) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *WorkflowLibraryFormFields) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *WorkflowLibraryFormFields) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetHelpText
 
@@ -157,20 +131,20 @@ HasRequired returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *WorkflowLibraryFormFields) GetType() string`
+`func (o *WorkflowLibraryFormFields) GetType() map[string]interface{}`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *WorkflowLibraryFormFields) GetTypeOk() (*string, bool)`
+`func (o *WorkflowLibraryFormFields) GetTypeOk() (*map[string]interface{}, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *WorkflowLibraryFormFields) SetType(v string)`
+`func (o *WorkflowLibraryFormFields) SetType(v map[string]interface{})`
 
 SetType sets Type field to given value.
 

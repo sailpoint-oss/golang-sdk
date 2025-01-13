@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &CustomPasswordInstruction{}
 type CustomPasswordInstruction struct {
 	// The page ID that represents the page for forget user name, reset password and unlock account flow.
 	PageId *string `json:"pageId,omitempty"`
-	// The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like `<A HREF=\\\"URL\\\">...</A>` clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: `<a href=\\\"URL\" target=\\\"_blank\\\" >link</a>`. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target. 
+	// The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: <a href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target.
 	PageContent *string `json:"pageContent,omitempty"`
 	// The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".
 	Locale *string `json:"locale,omitempty"`

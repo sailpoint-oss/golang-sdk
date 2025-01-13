@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -20,8 +20,8 @@ var _ MappedNullable = &ErrorMessageDto{}
 // ErrorMessageDto struct for ErrorMessageDto
 type ErrorMessageDto struct {
 	// The locale for the message text, a BCP 47 language tag.
-	Locale NullableString `json:"locale,omitempty"`
-	LocaleOrigin NullableLocaleOrigin `json:"localeOrigin,omitempty"`
+	Locale *string `json:"locale,omitempty"`
+	LocaleOrigin *LocaleOrigin `json:"localeOrigin,omitempty"`
 	// Actual text of the error message in the indicated locale.
 	Text *string `json:"text,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,88 +46,68 @@ func NewErrorMessageDtoWithDefaults() *ErrorMessageDto {
 	return &this
 }
 
-// GetLocale returns the Locale field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *ErrorMessageDto) GetLocale() string {
-	if o == nil || IsNil(o.Locale.Get()) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
-	return *o.Locale.Get()
+	return *o.Locale
 }
 
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ErrorMessageDto) GetLocaleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
-	return o.Locale.Get(), o.Locale.IsSet()
+	return o.Locale, true
 }
 
 // HasLocale returns a boolean if a field has been set.
 func (o *ErrorMessageDto) HasLocale() bool {
-	if o != nil && o.Locale.IsSet() {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
 	return false
 }
 
-// SetLocale gets a reference to the given NullableString and assigns it to the Locale field.
+// SetLocale gets a reference to the given string and assigns it to the Locale field.
 func (o *ErrorMessageDto) SetLocale(v string) {
-	o.Locale.Set(&v)
-}
-// SetLocaleNil sets the value for Locale to be an explicit nil
-func (o *ErrorMessageDto) SetLocaleNil() {
-	o.Locale.Set(nil)
+	o.Locale = &v
 }
 
-// UnsetLocale ensures that no value is present for Locale, not even an explicit nil
-func (o *ErrorMessageDto) UnsetLocale() {
-	o.Locale.Unset()
-}
-
-// GetLocaleOrigin returns the LocaleOrigin field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLocaleOrigin returns the LocaleOrigin field value if set, zero value otherwise.
 func (o *ErrorMessageDto) GetLocaleOrigin() LocaleOrigin {
-	if o == nil || IsNil(o.LocaleOrigin.Get()) {
+	if o == nil || IsNil(o.LocaleOrigin) {
 		var ret LocaleOrigin
 		return ret
 	}
-	return *o.LocaleOrigin.Get()
+	return *o.LocaleOrigin
 }
 
 // GetLocaleOriginOk returns a tuple with the LocaleOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ErrorMessageDto) GetLocaleOriginOk() (*LocaleOrigin, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LocaleOrigin) {
 		return nil, false
 	}
-	return o.LocaleOrigin.Get(), o.LocaleOrigin.IsSet()
+	return o.LocaleOrigin, true
 }
 
 // HasLocaleOrigin returns a boolean if a field has been set.
 func (o *ErrorMessageDto) HasLocaleOrigin() bool {
-	if o != nil && o.LocaleOrigin.IsSet() {
+	if o != nil && !IsNil(o.LocaleOrigin) {
 		return true
 	}
 
 	return false
 }
 
-// SetLocaleOrigin gets a reference to the given NullableLocaleOrigin and assigns it to the LocaleOrigin field.
+// SetLocaleOrigin gets a reference to the given LocaleOrigin and assigns it to the LocaleOrigin field.
 func (o *ErrorMessageDto) SetLocaleOrigin(v LocaleOrigin) {
-	o.LocaleOrigin.Set(&v)
-}
-// SetLocaleOriginNil sets the value for LocaleOrigin to be an explicit nil
-func (o *ErrorMessageDto) SetLocaleOriginNil() {
-	o.LocaleOrigin.Set(nil)
-}
-
-// UnsetLocaleOrigin ensures that no value is present for LocaleOrigin, not even an explicit nil
-func (o *ErrorMessageDto) UnsetLocaleOrigin() {
-	o.LocaleOrigin.Unset()
+	o.LocaleOrigin = &v
 }
 
 // GetText returns the Text field value if set, zero value otherwise.
@@ -172,11 +152,11 @@ func (o ErrorMessageDto) MarshalJSON() ([]byte, error) {
 
 func (o ErrorMessageDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Locale.IsSet() {
-		toSerialize["locale"] = o.Locale.Get()
+	if !IsNil(o.Locale) {
+		toSerialize["locale"] = o.Locale
 	}
-	if o.LocaleOrigin.IsSet() {
-		toSerialize["localeOrigin"] = o.LocaleOrigin.Get()
+	if !IsNil(o.LocaleOrigin) {
+		toSerialize["localeOrigin"] = o.LocaleOrigin
 	}
 	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text

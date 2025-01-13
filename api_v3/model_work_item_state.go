@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -20,24 +20,22 @@ type WorkItemState string
 
 // List of WorkItemState
 const (
-	WORKITEMSTATE_FINISHED WorkItemState = "Finished"
-	WORKITEMSTATE_REJECTED WorkItemState = "Rejected"
-	WORKITEMSTATE_RETURNED WorkItemState = "Returned"
-	WORKITEMSTATE_EXPIRED WorkItemState = "Expired"
-	WORKITEMSTATE_PENDING WorkItemState = "Pending"
-	WORKITEMSTATE_CANCELED WorkItemState = "Canceled"
-	WORKITEMSTATE_NULL WorkItemState = "null"
+	WORKITEMSTATE_FINISHED WorkItemState = "FINISHED"
+	WORKITEMSTATE_REJECTED WorkItemState = "REJECTED"
+	WORKITEMSTATE_RETURNED WorkItemState = "RETURNED"
+	WORKITEMSTATE_EXPIRED WorkItemState = "EXPIRED"
+	WORKITEMSTATE_PENDING WorkItemState = "PENDING"
+	WORKITEMSTATE_CANCELED WorkItemState = "CANCELED"
 )
 
 // All allowed values of WorkItemState enum
 var AllowedWorkItemStateEnumValues = []WorkItemState{
-	"Finished",
-	"Rejected",
-	"Returned",
-	"Expired",
-	"Pending",
-	"Canceled",
-	"null",
+	"FINISHED",
+	"REJECTED",
+	"RETURNED",
+	"EXPIRED",
+	"PENDING",
+	"CANCELED",
 }
 
 func (v *WorkItemState) UnmarshalJSON(src []byte) error {

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,9 +22,9 @@ type IdentityAttributePreview struct {
 	// Name of the attribute that is being previewed.
 	Name *string `json:"name,omitempty"`
 	// Value that was derived during the preview.
-	Value *string `json:"value,omitempty"`
+	Value map[string]interface{} `json:"value,omitempty"`
 	// The value of the attribute before the preview.
-	PreviousValue *string `json:"previousValue,omitempty"`
+	PreviousValue map[string]interface{} `json:"previousValue,omitempty"`
 	ErrorMessages []ErrorMessageDto `json:"errorMessages,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -81,19 +81,19 @@ func (o *IdentityAttributePreview) SetName(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *IdentityAttributePreview) GetValue() string {
+func (o *IdentityAttributePreview) GetValue() map[string]interface{} {
 	if o == nil || IsNil(o.Value) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Value
+	return o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributePreview) GetValueOk() (*string, bool) {
+func (o *IdentityAttributePreview) GetValueOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Value) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Value, true
 }
@@ -107,25 +107,25 @@ func (o *IdentityAttributePreview) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *IdentityAttributePreview) SetValue(v string) {
-	o.Value = &v
+// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
+func (o *IdentityAttributePreview) SetValue(v map[string]interface{}) {
+	o.Value = v
 }
 
 // GetPreviousValue returns the PreviousValue field value if set, zero value otherwise.
-func (o *IdentityAttributePreview) GetPreviousValue() string {
+func (o *IdentityAttributePreview) GetPreviousValue() map[string]interface{} {
 	if o == nil || IsNil(o.PreviousValue) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.PreviousValue
+	return o.PreviousValue
 }
 
 // GetPreviousValueOk returns a tuple with the PreviousValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributePreview) GetPreviousValueOk() (*string, bool) {
+func (o *IdentityAttributePreview) GetPreviousValueOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PreviousValue) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.PreviousValue, true
 }
@@ -139,9 +139,9 @@ func (o *IdentityAttributePreview) HasPreviousValue() bool {
 	return false
 }
 
-// SetPreviousValue gets a reference to the given string and assigns it to the PreviousValue field.
-func (o *IdentityAttributePreview) SetPreviousValue(v string) {
-	o.PreviousValue = &v
+// SetPreviousValue gets a reference to the given map[string]interface{} and assigns it to the PreviousValue field.
+func (o *IdentityAttributePreview) SetPreviousValue(v map[string]interface{}) {
+	o.PreviousValue = v
 }
 
 // GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise.

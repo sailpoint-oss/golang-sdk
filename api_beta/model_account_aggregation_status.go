@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AccountAggregationStatus type satisfies the MappedNullable interface at compile time
@@ -21,7 +21,7 @@ var _ MappedNullable = &AccountAggregationStatus{}
 // AccountAggregationStatus struct for AccountAggregationStatus
 type AccountAggregationStatus struct {
 	// When the aggregation started.
-	Start *SailPointTime `json:"start,omitempty"`
+	Start *time.Time `json:"start,omitempty"`
 	// STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance. 
 	Status *string `json:"status,omitempty"`
 	// The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
@@ -51,9 +51,9 @@ func NewAccountAggregationStatusWithDefaults() *AccountAggregationStatus {
 }
 
 // GetStart returns the Start field value if set, zero value otherwise.
-func (o *AccountAggregationStatus) GetStart() SailPointTime {
+func (o *AccountAggregationStatus) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Start
@@ -61,7 +61,7 @@ func (o *AccountAggregationStatus) GetStart() SailPointTime {
 
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationStatus) GetStartOk() (*SailPointTime, bool) {
+func (o *AccountAggregationStatus) GetStartOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *AccountAggregationStatus) HasStart() bool {
 	return false
 }
 
-// SetStart gets a reference to the given SailPointTime and assigns it to the Start field.
-func (o *AccountAggregationStatus) SetStart(v SailPointTime) {
+// SetStart gets a reference to the given time.Time and assigns it to the Start field.
+func (o *AccountAggregationStatus) SetStart(v time.Time) {
 	o.Start = &v
 }
 

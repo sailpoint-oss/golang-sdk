@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing CustomFormsAPIService
 
@@ -27,18 +27,6 @@ func Test_api_beta_CustomFormsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomFormsAPIService CreateFormDefinitionByTemplate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.CustomFormsAPI.CreateFormDefinitionByTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

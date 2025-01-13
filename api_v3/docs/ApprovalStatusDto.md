@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalId** | Pointer to **NullableString** | Unique identifier for the approval. | [optional] 
-**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
+**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
 **OriginalOwner** | Pointer to [**ApprovalStatusDtoOriginalOwner**](ApprovalStatusDtoOriginalOwner.md) |  | [optional] 
-**CurrentOwner** | Pointer to [**ApprovalStatusDtoCurrentOwner**](ApprovalStatusDtoCurrentOwner.md) |  | [optional] 
-**Modified** | Pointer to **NullableTime** | Time at which item was modified. | [optional] 
+**CurrentOwner** | Pointer to [**AccessItemReviewedBy**](AccessItemReviewedBy.md) |  | [optional] 
+**Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **Scheme** | Pointer to [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 
 **ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) | If the request failed, includes any error messages that were generated. | [optional] 
-**Comment** | Pointer to **NullableString** | Comment, if any, provided by the approver. | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
+**Comment** | Pointer to **string** | Comment, if any, provided by the approver. | [optional] 
+**RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
 
 ## Methods
 
@@ -34,41 +33,6 @@ NewApprovalStatusDtoWithDefaults instantiates a new ApprovalStatusDto object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetApprovalId
-
-`func (o *ApprovalStatusDto) GetApprovalId() string`
-
-GetApprovalId returns the ApprovalId field if non-nil, zero value otherwise.
-
-### GetApprovalIdOk
-
-`func (o *ApprovalStatusDto) GetApprovalIdOk() (*string, bool)`
-
-GetApprovalIdOk returns a tuple with the ApprovalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApprovalId
-
-`func (o *ApprovalStatusDto) SetApprovalId(v string)`
-
-SetApprovalId sets ApprovalId field to given value.
-
-### HasApprovalId
-
-`func (o *ApprovalStatusDto) HasApprovalId() bool`
-
-HasApprovalId returns a boolean if a field has been set.
-
-### SetApprovalIdNil
-
-`func (o *ApprovalStatusDto) SetApprovalIdNil(b bool)`
-
- SetApprovalIdNil sets the value for ApprovalId to be an explicit nil
-
-### UnsetApprovalId
-`func (o *ApprovalStatusDto) UnsetApprovalId()`
-
-UnsetApprovalId ensures that no value is present for ApprovalId, not even an explicit nil
 ### GetForwarded
 
 `func (o *ApprovalStatusDto) GetForwarded() bool`
@@ -121,20 +85,20 @@ HasOriginalOwner returns a boolean if a field has been set.
 
 ### GetCurrentOwner
 
-`func (o *ApprovalStatusDto) GetCurrentOwner() ApprovalStatusDtoCurrentOwner`
+`func (o *ApprovalStatusDto) GetCurrentOwner() AccessItemReviewedBy`
 
 GetCurrentOwner returns the CurrentOwner field if non-nil, zero value otherwise.
 
 ### GetCurrentOwnerOk
 
-`func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*ApprovalStatusDtoCurrentOwner, bool)`
+`func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*AccessItemReviewedBy, bool)`
 
 GetCurrentOwnerOk returns a tuple with the CurrentOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentOwner
 
-`func (o *ApprovalStatusDto) SetCurrentOwner(v ApprovalStatusDtoCurrentOwner)`
+`func (o *ApprovalStatusDto) SetCurrentOwner(v AccessItemReviewedBy)`
 
 SetCurrentOwner sets CurrentOwner field to given value.
 
@@ -169,16 +133,6 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### SetModifiedNil
-
-`func (o *ApprovalStatusDto) SetModifiedNil(b bool)`
-
- SetModifiedNil sets the value for Modified to be an explicit nil
-
-### UnsetModified
-`func (o *ApprovalStatusDto) UnsetModified()`
-
-UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetStatus
 
 `func (o *ApprovalStatusDto) GetStatus() ManualWorkItemState`
@@ -254,16 +208,6 @@ SetErrorMessages sets ErrorMessages field to given value.
 
 HasErrorMessages returns a boolean if a field has been set.
 
-### SetErrorMessagesNil
-
-`func (o *ApprovalStatusDto) SetErrorMessagesNil(b bool)`
-
- SetErrorMessagesNil sets the value for ErrorMessages to be an explicit nil
-
-### UnsetErrorMessages
-`func (o *ApprovalStatusDto) UnsetErrorMessages()`
-
-UnsetErrorMessages ensures that no value is present for ErrorMessages, not even an explicit nil
 ### GetComment
 
 `func (o *ApprovalStatusDto) GetComment() string`
@@ -289,16 +233,6 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### SetCommentNil
-
-`func (o *ApprovalStatusDto) SetCommentNil(b bool)`
-
- SetCommentNil sets the value for Comment to be an explicit nil
-
-### UnsetComment
-`func (o *ApprovalStatusDto) UnsetComment()`
-
-UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetRemoveDate
 
 `func (o *ApprovalStatusDto) GetRemoveDate() time.Time`
@@ -324,16 +258,6 @@ SetRemoveDate sets RemoveDate field to given value.
 
 HasRemoveDate returns a boolean if a field has been set.
 
-### SetRemoveDateNil
-
-`func (o *ApprovalStatusDto) SetRemoveDateNil(b bool)`
-
- SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
-
-### UnsetRemoveDate
-`func (o *ApprovalStatusDto) UnsetRemoveDate()`
-
-UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

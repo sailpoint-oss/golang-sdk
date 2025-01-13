@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
 **Snapshot** | Pointer to **string** | the date when the identity record was created | [optional] 
 **DeletedDate** | Pointer to **string** | the date when the identity was deleted | [optional] 
-**AccessItemCount** | Pointer to **map[string]int32** | A map containing the count of each access item | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | A map containing the identity attributes | [optional] 
+**AccessItemCount** | Pointer to **map[string]string** | A map containing the count of each access item | [optional] 
+**Attributes** | Pointer to **map[string]string** | A map containing the identity attributes | [optional] 
 
 ## Methods
 
@@ -132,20 +132,20 @@ HasDeletedDate returns a boolean if a field has been set.
 
 ### GetAccessItemCount
 
-`func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]int32`
+`func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]string`
 
 GetAccessItemCount returns the AccessItemCount field if non-nil, zero value otherwise.
 
 ### GetAccessItemCountOk
 
-`func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]int32, bool)`
+`func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]string, bool)`
 
 GetAccessItemCountOk returns a tuple with the AccessItemCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessItemCount
 
-`func (o *IdentityHistoryResponse) SetAccessItemCount(v map[string]int32)`
+`func (o *IdentityHistoryResponse) SetAccessItemCount(v map[string]string)`
 
 SetAccessItemCount sets AccessItemCount field to given value.
 
@@ -157,20 +157,20 @@ HasAccessItemCount returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *IdentityHistoryResponse) GetAttributes() map[string]interface{}`
+`func (o *IdentityHistoryResponse) GetAttributes() map[string]string`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *IdentityHistoryResponse) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *IdentityHistoryResponse) GetAttributesOk() (*map[string]string, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *IdentityHistoryResponse) SetAttributes(v map[string]interface{})`
+`func (o *IdentityHistoryResponse) SetAttributes(v map[string]string)`
 
 SetAttributes sets Attributes field to given value.
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type SourceUpdated struct {
 	// The connection type of the source.
 	Type string `json:"type"`
 	// The date and time the source was modified.
-	Modified SailPointTime `json:"modified"`
+	Modified time.Time `json:"modified"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceUpdatedActor `json:"actor"`
@@ -41,7 +41,7 @@ type _SourceUpdated SourceUpdated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceUpdated(id string, name string, type_ string, modified SailPointTime, connector string, actor SourceUpdatedActor) *SourceUpdated {
+func NewSourceUpdated(id string, name string, type_ string, modified time.Time, connector string, actor SourceUpdatedActor) *SourceUpdated {
 	this := SourceUpdated{}
 	this.Id = id
 	this.Name = name
@@ -133,9 +133,9 @@ func (o *SourceUpdated) SetType(v string) {
 }
 
 // GetModified returns the Modified field value
-func (o *SourceUpdated) GetModified() SailPointTime {
+func (o *SourceUpdated) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *SourceUpdated) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *SourceUpdated) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SourceUpdated) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *SourceUpdated) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *SourceUpdated) SetModified(v SailPointTime) {
+func (o *SourceUpdated) SetModified(v time.Time) {
 	o.Modified = v
 }
 

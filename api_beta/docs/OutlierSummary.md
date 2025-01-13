@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **SnapshotDate** | Pointer to **time.Time** | The date the bulk outlier detection ran/snapshot was created | [optional] 
 **TotalOutliers** | Pointer to **int32** | Total number of outliers for the customer making the request | [optional] 
 **TotalIdentities** | Pointer to **int32** | Total number of identities for the customer making the request | [optional] 
-**TotalIgnored** | Pointer to **int32** |  | [optional] [default to 0]
 
 ## Methods
 
@@ -128,31 +127,6 @@ SetTotalIdentities sets TotalIdentities field to given value.
 `func (o *OutlierSummary) HasTotalIdentities() bool`
 
 HasTotalIdentities returns a boolean if a field has been set.
-
-### GetTotalIgnored
-
-`func (o *OutlierSummary) GetTotalIgnored() int32`
-
-GetTotalIgnored returns the TotalIgnored field if non-nil, zero value otherwise.
-
-### GetTotalIgnoredOk
-
-`func (o *OutlierSummary) GetTotalIgnoredOk() (*int32, bool)`
-
-GetTotalIgnoredOk returns a tuple with the TotalIgnored field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotalIgnored
-
-`func (o *OutlierSummary) SetTotalIgnored(v int32)`
-
-SetTotalIgnored sets TotalIgnored field to given value.
-
-### HasTotalIgnored
-
-`func (o *OutlierSummary) HasTotalIgnored() bool`
-
-HasTotalIgnored returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

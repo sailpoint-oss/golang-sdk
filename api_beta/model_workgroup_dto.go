@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	
 )
 
 // checks if the WorkgroupDto type satisfies the MappedNullable interface at compile time
@@ -20,7 +19,7 @@ var _ MappedNullable = &WorkgroupDto{}
 
 // WorkgroupDto struct for WorkgroupDto
 type WorkgroupDto struct {
-	Owner *WorkgroupDtoOwner `json:"owner,omitempty"`
+	Owner *OwnerDto `json:"owner,omitempty"`
 	// Governance group ID.
 	Id *string `json:"id,omitempty"`
 	// Governance group name.
@@ -31,8 +30,6 @@ type WorkgroupDto struct {
 	MemberCount *int64 `json:"memberCount,omitempty"`
 	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
-	Created *SailPointTime `json:"created,omitempty"`
-	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -56,9 +53,9 @@ func NewWorkgroupDtoWithDefaults() *WorkgroupDto {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner {
+func (o *WorkgroupDto) GetOwner() OwnerDto {
 	if o == nil || IsNil(o.Owner) {
-		var ret WorkgroupDtoOwner
+		var ret OwnerDto
 		return ret
 	}
 	return *o.Owner
@@ -66,7 +63,7 @@ func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetOwnerOk() (*WorkgroupDtoOwner, bool) {
+func (o *WorkgroupDto) GetOwnerOk() (*OwnerDto, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -82,8 +79,8 @@ func (o *WorkgroupDto) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given WorkgroupDtoOwner and assigns it to the Owner field.
-func (o *WorkgroupDto) SetOwner(v WorkgroupDtoOwner) {
+// SetOwner gets a reference to the given OwnerDto and assigns it to the Owner field.
+func (o *WorkgroupDto) SetOwner(v OwnerDto) {
 	o.Owner = &v
 }
 
@@ -247,70 +244,6 @@ func (o *WorkgroupDto) SetConnectionCount(v int64) {
 	o.ConnectionCount = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Created) {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *WorkgroupDto) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *WorkgroupDto) SetCreated(v SailPointTime) {
-	o.Created = &v
-}
-
-// GetModified returns the Modified field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Modified
-}
-
-// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Modified) {
-		return nil, false
-	}
-	return o.Modified, true
-}
-
-// HasModified returns a boolean if a field has been set.
-func (o *WorkgroupDto) HasModified() bool {
-	if o != nil && !IsNil(o.Modified) {
-		return true
-	}
-
-	return false
-}
-
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *WorkgroupDto) SetModified(v SailPointTime) {
-	o.Modified = &v
-}
-
 func (o WorkgroupDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -338,12 +271,6 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ConnectionCount) {
 		toSerialize["connectionCount"] = o.ConnectionCount
-	}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !IsNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -373,8 +300,6 @@ func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "memberCount")
 		delete(additionalProperties, "connectionCount")
-		delete(additionalProperties, "created")
-		delete(additionalProperties, "modified")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the NonEmployeeSourceWithCloudExternalId type satisfies the MappedNullable interface at compile time
@@ -33,9 +33,9 @@ type NonEmployeeSourceWithCloudExternalId struct {
 	// List of account managers
 	AccountManagers []IdentityReferenceWithId `json:"accountManagers,omitempty"`
 	// When the request was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The number of non-employee records on all sources that *requested-for* user manages.
 	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
 	// Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.
@@ -255,9 +255,9 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetAccountManagers(v []IdentityRe
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithCloudExternalId) GetModified() SailPointTime {
+func (o *NonEmployeeSourceWithCloudExternalId) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -265,7 +265,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithCloudExternalId) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSourceWithCloudExternalId) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -281,15 +281,15 @@ func (o *NonEmployeeSourceWithCloudExternalId) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NonEmployeeSourceWithCloudExternalId) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NonEmployeeSourceWithCloudExternalId) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithCloudExternalId) GetCreated() SailPointTime {
+func (o *NonEmployeeSourceWithCloudExternalId) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -297,7 +297,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithCloudExternalId) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSourceWithCloudExternalId) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -313,8 +313,8 @@ func (o *NonEmployeeSourceWithCloudExternalId) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NonEmployeeSourceWithCloudExternalId) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NonEmployeeSourceWithCloudExternalId) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

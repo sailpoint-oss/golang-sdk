@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locale** | Pointer to **NullableString** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**LocaleOrigin** | Pointer to [**NullableLocaleOrigin**](LocaleOrigin.md) |  | [optional] 
+**Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
+**LocaleOrigin** | Pointer to [**LocaleOrigin**](LocaleOrigin.md) |  | [optional] 
 **Text** | Pointer to **string** | Actual text of the error message in the indicated locale. | [optional] 
 
 ## Methods
@@ -52,16 +52,6 @@ SetLocale sets Locale field to given value.
 
 HasLocale returns a boolean if a field has been set.
 
-### SetLocaleNil
-
-`func (o *ErrorMessageDto) SetLocaleNil(b bool)`
-
- SetLocaleNil sets the value for Locale to be an explicit nil
-
-### UnsetLocale
-`func (o *ErrorMessageDto) UnsetLocale()`
-
-UnsetLocale ensures that no value is present for Locale, not even an explicit nil
 ### GetLocaleOrigin
 
 `func (o *ErrorMessageDto) GetLocaleOrigin() LocaleOrigin`
@@ -87,16 +77,6 @@ SetLocaleOrigin sets LocaleOrigin field to given value.
 
 HasLocaleOrigin returns a boolean if a field has been set.
 
-### SetLocaleOriginNil
-
-`func (o *ErrorMessageDto) SetLocaleOriginNil(b bool)`
-
- SetLocaleOriginNil sets the value for LocaleOrigin to be an explicit nil
-
-### UnsetLocaleOrigin
-`func (o *ErrorMessageDto) UnsetLocaleOrigin()`
-
-UnsetLocaleOrigin ensures that no value is present for LocaleOrigin, not even an explicit nil
 ### GetText
 
 `func (o *ErrorMessageDto) GetText() string`

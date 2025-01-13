@@ -15,18 +15,17 @@ Method | HTTP request | Description
 [**GetEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 [**GetExcludedEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetExcludedEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 [**GetIdentitiesPotentialRole**](IAIRoleMiningAPI.md#GetIdentitiesPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
-[**GetPotentialRole**](IAIRoleMiningAPI.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieve potential role in session
+[**GetPotentialRole**](IAIRoleMiningAPI.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 [**GetPotentialRoleApplications**](IAIRoleMiningAPI.md#GetPotentialRoleApplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
-[**GetPotentialRoleEntitlements**](IAIRoleMiningAPI.md#GetPotentialRoleEntitlements) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements | Retrieves the entitlements of a potential role for a role mining session
 [**GetPotentialRoleSourceIdentityUsage**](IAIRoleMiningAPI.md#GetPotentialRoleSourceIdentityUsage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
-[**GetPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieve session&#39;s potential role summaries
+[**GetPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
 [**GetRoleMiningPotentialRole**](IAIRoleMiningAPI.md#GetRoleMiningPotentialRole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 [**GetRoleMiningSession**](IAIRoleMiningAPI.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 [**GetRoleMiningSessionStatus**](IAIRoleMiningAPI.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**GetRoleMiningSessions**](IAIRoleMiningAPI.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
 [**GetSavedPotentialRoles**](IAIRoleMiningAPI.md#GetSavedPotentialRoles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-[**PatchPotentialRole**](IAIRoleMiningAPI.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role in session
-[**PatchRoleMiningPotentialRole**](IAIRoleMiningAPI.md#PatchRoleMiningPotentialRole) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+[**PatchPotentialRole**](IAIRoleMiningAPI.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+[**PatchPotentialRole_0**](IAIRoleMiningAPI.md#PatchPotentialRole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 [**PatchRoleMiningSession**](IAIRoleMiningAPI.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**UpdateEntitlementsPotentialRole**](IAIRoleMiningAPI.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
@@ -99,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -165,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -241,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -314,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -389,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -465,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -539,7 +538,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -614,7 +613,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -649,8 +648,8 @@ import (
 func main() {
 	sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
 	potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
-	includeCommonAccess := true // bool | Boolean determining whether common access entitlements will be included or not (optional) (default to true)
-	sorters := "popularity" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity, entitlementName, applicationName**  The default sort is **popularity** in descending order.  (optional)
+	includeCommonAccess := true // bool | Boolean determining whether common access entitlements will be included or not (optional)
+	sorters := "popularity" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity**  The default sort is **popularity** in descending order.  (optional)
 	filters := "applicationName sw "AD"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw*  **entitlementRef.name**: *sw* (optional)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -686,8 +685,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeCommonAccess** | **bool** | Boolean determining whether common access entitlements will be included or not | [default to true]
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity, entitlementName, applicationName**  The default sort is **popularity** in descending order.  | 
+ **includeCommonAccess** | **bool** | Boolean determining whether common access entitlements will be included or not | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity**  The default sort is **popularity** in descending order.  | 
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw*  **entitlementRef.name**: *sw* | 
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
@@ -699,7 +698,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -782,7 +781,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -865,7 +864,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -881,7 +880,7 @@ Name | Type | Description  | Notes
 
 > RoleMiningPotentialRole GetPotentialRole(ctx, sessionId, potentialRoleId).Execute()
 
-Retrieve potential role in session
+Retrieves a specific potential role
 
 
 
@@ -938,7 +937,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -952,7 +951,7 @@ Name | Type | Description  | Notes
 
 ## GetPotentialRoleApplications
 
-> []RoleMiningPotentialRoleApplication GetPotentialRoleApplications(ctx, sessionId, potentialRoleId).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+> []RoleMiningPotentialRoleApplication GetPotentialRoleApplications(ctx, sessionId, potentialRoleId).Offset(offset).Limit(limit).Count(count).Execute()
 
 Retrieves the applications of a potential role for a role mining session
 
@@ -972,15 +971,14 @@ import (
 
 func main() {
 	sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
-	potentialRoleId := "62f28d91-7d9f-4d17-be15-666d5b41d77f" // string | A potential role id in a role mining session
-	filters := "applicationName sw "test"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw* (optional)
+	potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+	resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Offset(offset).Limit(limit).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleApplications``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1008,7 +1006,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw* | 
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -1019,88 +1016,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetPotentialRoleEntitlements
-
-> []RoleMiningPotentialRoleEntitlements GetPotentialRoleEntitlements(ctx, sessionId, potentialRoleId).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
-
-Retrieves the entitlements of a potential role for a role mining session
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
-	potentialRoleId := "62f28d91-7d9f-4d17-be15-666d5b41d77f" // string | A potential role id in a role mining session
-	filters := "entitlementRef.name sw "test"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementRef.name**: *sw* (optional)
-	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleEntitlements(context.Background(), sessionId, potentialRoleId).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleEntitlements``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetPotentialRoleEntitlements`: []RoleMiningPotentialRoleEntitlements
-	fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleEntitlements`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sessionId** | **string** | The role mining session id | 
-**potentialRoleId** | **string** | A potential role id in a role mining session | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPotentialRoleEntitlementsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementRef.name**: *sw* | 
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
-
-### Return type
-
-[**[]RoleMiningPotentialRoleEntitlements**](RoleMiningPotentialRoleEntitlements.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1181,7 +1097,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1197,7 +1113,7 @@ Name | Type | Description  | Notes
 
 > []RoleMiningPotentialRoleSummary GetPotentialRoleSummaries(ctx, sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieve session's potential role summaries
+Retrieves all potential role summaries
 
 
 
@@ -1261,7 +1177,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1331,7 +1247,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1401,7 +1317,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1471,7 +1387,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1485,7 +1401,7 @@ Name | Type | Description  | Notes
 
 ## GetRoleMiningSessions
 
-> []RoleMiningSessionResponse GetRoleMiningSessions(ctx).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+> []RoleMiningSessionDto GetRoleMiningSessions(ctx).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
 
 Retrieves all role mining sessions
 
@@ -1517,7 +1433,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRoleMiningSessions`: []RoleMiningSessionResponse
+	// response from `GetRoleMiningSessions`: []RoleMiningSessionDto
 	fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessions`: %v\n", resp)
 }
 ```
@@ -1541,11 +1457,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RoleMiningSessionResponse**](RoleMiningSessionResponse.md)
+[**[]RoleMiningSessionDto**](RoleMiningSessionDto.md)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1617,7 +1533,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1633,7 +1549,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PatchPotentialRole(ctx, sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
 
-Update a potential role in session
+Update a potential role
 
 
 
@@ -1692,7 +1608,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1704,9 +1620,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchRoleMiningPotentialRole
+## PatchPotentialRole_0
 
-> map[string]interface{} PatchRoleMiningPotentialRole(ctx, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+> map[string]interface{} PatchPotentialRole_0(ctx, sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
 
 Update a potential role
 
@@ -1725,18 +1641,19 @@ import (
 )
 
 func main() {
+	sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
 	potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The potential role summary id
 	patchPotentialRoleRequestInner := []openapiclient.PatchPotentialRoleRequestInner{*openapiclient.NewPatchPotentialRoleRequestInner("replace", "/description")} // []PatchPotentialRoleRequestInner | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningPotentialRole(context.Background(), potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+	resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole_0(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchRoleMiningPotentialRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRole_0``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchRoleMiningPotentialRole`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchRoleMiningPotentialRole`: %v\n", resp)
+	// response from `PatchPotentialRole_0`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchPotentialRole_0`: %v\n", resp)
 }
 ```
 
@@ -1746,15 +1663,17 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sessionId** | **string** | The role mining session id | 
 **potentialRoleId** | **string** | The potential role summary id | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPatchRoleMiningPotentialRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchPotentialRole_1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **patchPotentialRoleRequestInner** | [**[]PatchPotentialRoleRequestInner**](PatchPotentialRoleRequestInner.md) |  | 
 
@@ -1764,7 +1683,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1836,7 +1755,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1911,7 +1830,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

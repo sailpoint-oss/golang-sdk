@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DaysUntilEscalation** | Pointer to **NullableInt32** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
-**DaysBetweenReminders** | Pointer to **NullableInt32** | Number of days to wait between reminder notifications. | [optional] 
-**MaxReminders** | Pointer to **NullableInt32** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
+**DaysUntilEscalation** | Pointer to **int32** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
+**DaysBetweenReminders** | Pointer to **int32** | Number of days to wait between reminder notifications. | [optional] 
+**MaxReminders** | Pointer to **int32** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
 **FallbackApproverRef** | Pointer to [**NullableIdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail.md) |  | [optional] 
 
 ## Methods
@@ -53,16 +53,6 @@ SetDaysUntilEscalation sets DaysUntilEscalation field to given value.
 
 HasDaysUntilEscalation returns a boolean if a field has been set.
 
-### SetDaysUntilEscalationNil
-
-`func (o *ApprovalReminderAndEscalationConfig) SetDaysUntilEscalationNil(b bool)`
-
- SetDaysUntilEscalationNil sets the value for DaysUntilEscalation to be an explicit nil
-
-### UnsetDaysUntilEscalation
-`func (o *ApprovalReminderAndEscalationConfig) UnsetDaysUntilEscalation()`
-
-UnsetDaysUntilEscalation ensures that no value is present for DaysUntilEscalation, not even an explicit nil
 ### GetDaysBetweenReminders
 
 `func (o *ApprovalReminderAndEscalationConfig) GetDaysBetweenReminders() int32`
@@ -88,16 +78,6 @@ SetDaysBetweenReminders sets DaysBetweenReminders field to given value.
 
 HasDaysBetweenReminders returns a boolean if a field has been set.
 
-### SetDaysBetweenRemindersNil
-
-`func (o *ApprovalReminderAndEscalationConfig) SetDaysBetweenRemindersNil(b bool)`
-
- SetDaysBetweenRemindersNil sets the value for DaysBetweenReminders to be an explicit nil
-
-### UnsetDaysBetweenReminders
-`func (o *ApprovalReminderAndEscalationConfig) UnsetDaysBetweenReminders()`
-
-UnsetDaysBetweenReminders ensures that no value is present for DaysBetweenReminders, not even an explicit nil
 ### GetMaxReminders
 
 `func (o *ApprovalReminderAndEscalationConfig) GetMaxReminders() int32`
@@ -123,16 +103,6 @@ SetMaxReminders sets MaxReminders field to given value.
 
 HasMaxReminders returns a boolean if a field has been set.
 
-### SetMaxRemindersNil
-
-`func (o *ApprovalReminderAndEscalationConfig) SetMaxRemindersNil(b bool)`
-
- SetMaxRemindersNil sets the value for MaxReminders to be an explicit nil
-
-### UnsetMaxReminders
-`func (o *ApprovalReminderAndEscalationConfig) UnsetMaxReminders()`
-
-UnsetMaxReminders ensures that no value is present for MaxReminders, not even an explicit nil
 ### GetFallbackApproverRef
 
 `func (o *ApprovalReminderAndEscalationConfig) GetFallbackApproverRef() IdentityReferenceWithNameAndEmail`

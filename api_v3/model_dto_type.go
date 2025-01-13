@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -35,7 +35,6 @@ const (
 	DTOTYPE_IDENTITY DtoType = "IDENTITY"
 	DTOTYPE_IDENTITY_PROFILE DtoType = "IDENTITY_PROFILE"
 	DTOTYPE_IDENTITY_REQUEST DtoType = "IDENTITY_REQUEST"
-	DTOTYPE_MACHINE_IDENTITY DtoType = "MACHINE_IDENTITY"
 	DTOTYPE_LIFECYCLE_STATE DtoType = "LIFECYCLE_STATE"
 	DTOTYPE_PASSWORD_POLICY DtoType = "PASSWORD_POLICY"
 	DTOTYPE_ROLE DtoType = "ROLE"
@@ -68,7 +67,6 @@ var AllowedDtoTypeEnumValues = []DtoType{
 	"IDENTITY",
 	"IDENTITY_PROFILE",
 	"IDENTITY_REQUEST",
-	"MACHINE_IDENTITY",
 	"LIFECYCLE_STATE",
 	"PASSWORD_POLICY",
 	"ROLE",

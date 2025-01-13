@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ManualWorkItemDetails type satisfies the MappedNullable interface at compile time
@@ -22,10 +22,10 @@ var _ MappedNullable = &ManualWorkItemDetails{}
 type ManualWorkItemDetails struct {
 	// True if the request for this item was forwarded from one owner to another.
 	Forwarded *bool `json:"forwarded,omitempty"`
-	OriginalOwner NullableManualWorkItemDetailsOriginalOwner `json:"originalOwner,omitempty"`
-	CurrentOwner NullableManualWorkItemDetailsCurrentOwner `json:"currentOwner,omitempty"`
+	OriginalOwner *ManualWorkItemDetailsOriginalOwner `json:"originalOwner,omitempty"`
+	CurrentOwner *ManualWorkItemDetailsCurrentOwner `json:"currentOwner,omitempty"`
 	// Time at which item was modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	Status *ManualWorkItemState `json:"status,omitempty"`
 	// The history of approval forward action.
 	ForwardHistory []ApprovalForwardHistory `json:"forwardHistory,omitempty"`
@@ -40,8 +40,6 @@ type _ManualWorkItemDetails ManualWorkItemDetails
 // will change when the set of required properties is changed
 func NewManualWorkItemDetails() *ManualWorkItemDetails {
 	this := ManualWorkItemDetails{}
-	var forwarded bool = false
-	this.Forwarded = &forwarded
 	return &this
 }
 
@@ -50,8 +48,6 @@ func NewManualWorkItemDetails() *ManualWorkItemDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewManualWorkItemDetailsWithDefaults() *ManualWorkItemDetails {
 	this := ManualWorkItemDetails{}
-	var forwarded bool = false
-	this.Forwarded = &forwarded
 	return &this
 }
 
@@ -87,94 +83,74 @@ func (o *ManualWorkItemDetails) SetForwarded(v bool) {
 	o.Forwarded = &v
 }
 
-// GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetOriginalOwner() ManualWorkItemDetailsOriginalOwner {
-	if o == nil || IsNil(o.OriginalOwner.Get()) {
+	if o == nil || IsNil(o.OriginalOwner) {
 		var ret ManualWorkItemDetailsOriginalOwner
 		return ret
 	}
-	return *o.OriginalOwner.Get()
+	return *o.OriginalOwner
 }
 
 // GetOriginalOwnerOk returns a tuple with the OriginalOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManualWorkItemDetails) GetOriginalOwnerOk() (*ManualWorkItemDetailsOriginalOwner, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginalOwner) {
 		return nil, false
 	}
-	return o.OriginalOwner.Get(), o.OriginalOwner.IsSet()
+	return o.OriginalOwner, true
 }
 
 // HasOriginalOwner returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasOriginalOwner() bool {
-	if o != nil && o.OriginalOwner.IsSet() {
+	if o != nil && !IsNil(o.OriginalOwner) {
 		return true
 	}
 
 	return false
 }
 
-// SetOriginalOwner gets a reference to the given NullableManualWorkItemDetailsOriginalOwner and assigns it to the OriginalOwner field.
+// SetOriginalOwner gets a reference to the given ManualWorkItemDetailsOriginalOwner and assigns it to the OriginalOwner field.
 func (o *ManualWorkItemDetails) SetOriginalOwner(v ManualWorkItemDetailsOriginalOwner) {
-	o.OriginalOwner.Set(&v)
-}
-// SetOriginalOwnerNil sets the value for OriginalOwner to be an explicit nil
-func (o *ManualWorkItemDetails) SetOriginalOwnerNil() {
-	o.OriginalOwner.Set(nil)
+	o.OriginalOwner = &v
 }
 
-// UnsetOriginalOwner ensures that no value is present for OriginalOwner, not even an explicit nil
-func (o *ManualWorkItemDetails) UnsetOriginalOwner() {
-	o.OriginalOwner.Unset()
-}
-
-// GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetCurrentOwner() ManualWorkItemDetailsCurrentOwner {
-	if o == nil || IsNil(o.CurrentOwner.Get()) {
+	if o == nil || IsNil(o.CurrentOwner) {
 		var ret ManualWorkItemDetailsCurrentOwner
 		return ret
 	}
-	return *o.CurrentOwner.Get()
+	return *o.CurrentOwner
 }
 
 // GetCurrentOwnerOk returns a tuple with the CurrentOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManualWorkItemDetails) GetCurrentOwnerOk() (*ManualWorkItemDetailsCurrentOwner, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CurrentOwner) {
 		return nil, false
 	}
-	return o.CurrentOwner.Get(), o.CurrentOwner.IsSet()
+	return o.CurrentOwner, true
 }
 
 // HasCurrentOwner returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasCurrentOwner() bool {
-	if o != nil && o.CurrentOwner.IsSet() {
+	if o != nil && !IsNil(o.CurrentOwner) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrentOwner gets a reference to the given NullableManualWorkItemDetailsCurrentOwner and assigns it to the CurrentOwner field.
+// SetCurrentOwner gets a reference to the given ManualWorkItemDetailsCurrentOwner and assigns it to the CurrentOwner field.
 func (o *ManualWorkItemDetails) SetCurrentOwner(v ManualWorkItemDetailsCurrentOwner) {
-	o.CurrentOwner.Set(&v)
-}
-// SetCurrentOwnerNil sets the value for CurrentOwner to be an explicit nil
-func (o *ManualWorkItemDetails) SetCurrentOwnerNil() {
-	o.CurrentOwner.Set(nil)
-}
-
-// UnsetCurrentOwner ensures that no value is present for CurrentOwner, not even an explicit nil
-func (o *ManualWorkItemDetails) UnsetCurrentOwner() {
-	o.CurrentOwner.Unset()
+	o.CurrentOwner = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *ManualWorkItemDetails) GetModified() SailPointTime {
+func (o *ManualWorkItemDetails) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -182,7 +158,7 @@ func (o *ManualWorkItemDetails) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManualWorkItemDetails) GetModifiedOk() (*SailPointTime, bool) {
+func (o *ManualWorkItemDetails) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -198,8 +174,8 @@ func (o *ManualWorkItemDetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *ManualWorkItemDetails) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *ManualWorkItemDetails) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -235,9 +211,9 @@ func (o *ManualWorkItemDetails) SetStatus(v ManualWorkItemState) {
 	o.Status = &v
 }
 
-// GetForwardHistory returns the ForwardHistory field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetForwardHistory returns the ForwardHistory field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetForwardHistory() []ApprovalForwardHistory {
-	if o == nil {
+	if o == nil || IsNil(o.ForwardHistory) {
 		var ret []ApprovalForwardHistory
 		return ret
 	}
@@ -246,7 +222,6 @@ func (o *ManualWorkItemDetails) GetForwardHistory() []ApprovalForwardHistory {
 
 // GetForwardHistoryOk returns a tuple with the ForwardHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManualWorkItemDetails) GetForwardHistoryOk() ([]ApprovalForwardHistory, bool) {
 	if o == nil || IsNil(o.ForwardHistory) {
 		return nil, false
@@ -281,11 +256,11 @@ func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
 	}
-	if o.OriginalOwner.IsSet() {
-		toSerialize["originalOwner"] = o.OriginalOwner.Get()
+	if !IsNil(o.OriginalOwner) {
+		toSerialize["originalOwner"] = o.OriginalOwner
 	}
-	if o.CurrentOwner.IsSet() {
-		toSerialize["currentOwner"] = o.CurrentOwner.Get()
+	if !IsNil(o.CurrentOwner) {
+		toSerialize["currentOwner"] = o.CurrentOwner
 	}
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
@@ -293,7 +268,7 @@ func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.ForwardHistory != nil {
+	if !IsNil(o.ForwardHistory) {
 		toSerialize["forwardHistory"] = o.ForwardHistory
 	}
 

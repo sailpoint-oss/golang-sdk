@@ -4,15 +4,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Delete identity
+[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
 [**GetIdentity**](IdentitiesAPI.md#GetIdentity) | **Get** /identities/{id} | Identity Details
 [**GetIdentityOwnershipDetails**](IdentitiesAPI.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
-[**GetRoleAssignment**](IdentitiesAPI.md#GetRoleAssignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
-[**GetRoleAssignments**](IdentitiesAPI.md#GetRoleAssignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 [**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
-[**ResetIdentity**](IdentitiesAPI.md#ResetIdentity) | **Post** /identities/{id}/reset | Reset an identity
-[**SendIdentityVerificationAccountToken**](IdentitiesAPI.md#SendIdentityVerificationAccountToken) | **Post** /identities/{id}/verification/account/send | Send password reset email
-[**StartIdentitiesInvite**](IdentitiesAPI.md#StartIdentitiesInvite) | **Post** /identities/invite | Invite identities to register
 [**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
 [**SynchronizeAttributesForIdentity**](IdentitiesAPI.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 
@@ -22,7 +17,7 @@ Method | HTTP request | Description
 
 > DeleteIdentity(ctx, id).Execute()
 
-Delete identity
+Deletes an identity.
 
 
 
@@ -74,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -144,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -177,7 +172,7 @@ import (
 )
 
 func main() {
-	identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | Identity ID.
+	identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | The identity id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -197,7 +192,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity ID. | 
+**identityId** | **string** | The identity id | 
 
 ### Other Parameters
 
@@ -214,152 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetRoleAssignment
-
-> RoleAssignmentDto GetRoleAssignment(ctx, identityId, assignmentId).Execute()
-
-Role assignment details
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
-	assignmentId := "1cbb0705b38c4226b1334eadd8874086" // string | Assignment Id
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignment``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetRoleAssignment`: RoleAssignmentDto
-	fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetRoleAssignment`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity Id | 
-**assignmentId** | **string** | Assignment Id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetRoleAssignmentRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**RoleAssignmentDto**](RoleAssignmentDto.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetRoleAssignments
-
-> []GetRoleAssignments200ResponseInner GetRoleAssignments(ctx, identityId).RoleId(roleId).RoleName(roleName).Execute()
-
-List role assignments
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id to get the role assignments for
-	roleId := "e7697a1e96d04db1ac7b0f4544915d2c" // string | Role Id to filter the role assignments with (optional)
-	roleName := "Engineer" // string | Role name to filter the role assignments with (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).RoleId(roleId).RoleName(roleName).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignments``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetRoleAssignments`: []GetRoleAssignments200ResponseInner
-	fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetRoleAssignments`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity Id to get the role assignments for | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetRoleAssignmentsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **roleId** | **string** | Role Id to filter the role assignments with | 
- **roleName** | **string** | Role name to filter the role assignments with | 
-
-### Return type
-
-[**[]GetRoleAssignments200ResponseInner**](GetRoleAssignments200ResponseInner.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -435,215 +285,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ResetIdentity
-
-> ResetIdentity(ctx, identityId).Execute()
-
-Reset an identity
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ResetIdentity``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity Id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiResetIdentityRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SendIdentityVerificationAccountToken
-
-> SendIdentityVerificationAccountToken(ctx, id).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
-
-Send password reset email
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity ID
-	sendAccountVerificationRequest := *openapiclient.NewSendAccountVerificationRequest("EMAIL_WORK") // SendAccountVerificationRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background(), id).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SendIdentityVerificationAccountToken``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Identity ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSendIdentityVerificationAccountTokenRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **sendAccountVerificationRequest** | [**SendAccountVerificationRequest**](SendAccountVerificationRequest.md) |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StartIdentitiesInvite
-
-> TaskStatus StartIdentitiesInvite(ctx).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
-
-Invite identities to register
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	inviteIdentitiesRequest := *openapiclient.NewInviteIdentitiesRequest() // InviteIdentitiesRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInvite(context.Background()).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentitiesInvite``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StartIdentitiesInvite`: TaskStatus
-	fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentitiesInvite`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStartIdentitiesInviteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inviteIdentitiesRequest** | [**InviteIdentitiesRequest**](InviteIdentitiesRequest.md) |  | 
-
-### Return type
-
-[**TaskStatus**](TaskStatus.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -705,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -775,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

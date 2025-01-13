@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Schema type satisfies the MappedNullable interface at compile time
@@ -41,9 +41,9 @@ type Schema struct {
 	// The attribute definitions which form the schema.
 	Attributes []AttributeDefinition `json:"attributes,omitempty"`
 	// The date the Schema was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The date the Schema was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -387,9 +387,9 @@ func (o *Schema) SetAttributes(v []AttributeDefinition) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Schema) GetCreated() SailPointTime {
+func (o *Schema) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -397,7 +397,7 @@ func (o *Schema) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schema) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Schema) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -413,15 +413,15 @@ func (o *Schema) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Schema) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Schema) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Schema) GetModified() SailPointTime {
+func (o *Schema) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -429,7 +429,7 @@ func (o *Schema) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schema) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Schema) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -445,8 +445,8 @@ func (o *Schema) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Schema) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Schema) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

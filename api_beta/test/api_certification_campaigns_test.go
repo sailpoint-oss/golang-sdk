@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing CertificationCampaignsAPIService
 
@@ -178,11 +178,11 @@ func Test_api_beta_CertificationCampaignsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignsAPIService GetCampaignTemplates", func(t *testing.T) {
+	t.Run("Test CertificationCampaignsAPIService ListCampaignTemplates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplates(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

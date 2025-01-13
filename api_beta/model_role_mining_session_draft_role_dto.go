@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the RoleMiningSessionDraftRoleDto type satisfies the MappedNullable interface at compile time
@@ -20,8 +20,6 @@ var _ MappedNullable = &RoleMiningSessionDraftRoleDto{}
 
 // RoleMiningSessionDraftRoleDto struct for RoleMiningSessionDraftRoleDto
 type RoleMiningSessionDraftRoleDto struct {
-	// Name of the draft role
-	Name *string `json:"name,omitempty"`
 	// Draft role description
 	Description *string `json:"description,omitempty"`
 	// The list of identities for this role mining session.
@@ -31,14 +29,10 @@ type RoleMiningSessionDraftRoleDto struct {
 	// The list of excluded entitlement ids.
 	ExcludedEntitlements []string `json:"excludedEntitlements,omitempty"`
 	// Last modified date
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
+	// Name of the draft role
+	Name *string `json:"name,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
-	// Id of the potential draft role
-	Id *string `json:"id,omitempty"`
-	// The date-time when this potential draft role was created.
-	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
-	// The date-time when this potential draft role was modified.
-	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -59,38 +53,6 @@ func NewRoleMiningSessionDraftRoleDto() *RoleMiningSessionDraftRoleDto {
 func NewRoleMiningSessionDraftRoleDtoWithDefaults() *RoleMiningSessionDraftRoleDto {
 	this := RoleMiningSessionDraftRoleDto{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *RoleMiningSessionDraftRoleDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *RoleMiningSessionDraftRoleDto) SetName(v string) {
-	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -222,9 +184,9 @@ func (o *RoleMiningSessionDraftRoleDto) SetExcludedEntitlements(v []string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetModified() SailPointTime {
+func (o *RoleMiningSessionDraftRoleDto) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -232,7 +194,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetModifiedOk() (*SailPointTime, bool) {
+func (o *RoleMiningSessionDraftRoleDto) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -248,9 +210,41 @@ func (o *RoleMiningSessionDraftRoleDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *RoleMiningSessionDraftRoleDto) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *RoleMiningSessionDraftRoleDto) SetModified(v time.Time) {
 	o.Modified = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *RoleMiningSessionDraftRoleDto) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *RoleMiningSessionDraftRoleDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *RoleMiningSessionDraftRoleDto) SetName(v string) {
+	o.Name = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -285,102 +279,6 @@ func (o *RoleMiningSessionDraftRoleDto) SetType(v RoleMiningRoleType) {
 	o.Type = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *RoleMiningSessionDraftRoleDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RoleMiningSessionDraftRoleDto) SetId(v string) {
-	o.Id = &v
-}
-
-// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetCreatedDate() SailPointTime {
-	if o == nil || IsNil(o.CreatedDate) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.CreatedDate
-}
-
-// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetCreatedDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.CreatedDate) {
-		return nil, false
-	}
-	return o.CreatedDate, true
-}
-
-// HasCreatedDate returns a boolean if a field has been set.
-func (o *RoleMiningSessionDraftRoleDto) HasCreatedDate() bool {
-	if o != nil && !IsNil(o.CreatedDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
-func (o *RoleMiningSessionDraftRoleDto) SetCreatedDate(v SailPointTime) {
-	o.CreatedDate = &v
-}
-
-// GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetModifiedDate() SailPointTime {
-	if o == nil || IsNil(o.ModifiedDate) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.ModifiedDate
-}
-
-// GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetModifiedDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.ModifiedDate) {
-		return nil, false
-	}
-	return o.ModifiedDate, true
-}
-
-// HasModifiedDate returns a boolean if a field has been set.
-func (o *RoleMiningSessionDraftRoleDto) HasModifiedDate() bool {
-	if o != nil && !IsNil(o.ModifiedDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
-func (o *RoleMiningSessionDraftRoleDto) SetModifiedDate(v SailPointTime) {
-	o.ModifiedDate = &v
-}
-
 func (o RoleMiningSessionDraftRoleDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -391,9 +289,6 @@ func (o RoleMiningSessionDraftRoleDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -409,17 +304,11 @@ func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.CreatedDate) {
-		toSerialize["createdDate"] = o.CreatedDate
-	}
-	if !IsNil(o.ModifiedDate) {
-		toSerialize["modifiedDate"] = o.ModifiedDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -443,16 +332,13 @@ func (o *RoleMiningSessionDraftRoleDto) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "identityIds")
 		delete(additionalProperties, "entitlementIds")
 		delete(additionalProperties, "excludedEntitlements")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "createdDate")
-		delete(additionalProperties, "modifiedDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

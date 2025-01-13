@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -17,13 +17,13 @@ import (
 // checks if the SourceOwner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceOwner{}
 
-// SourceOwner Reference to identity object who owns the source.
+// SourceOwner Reference to an owning Identity Object
 type SourceOwner struct {
-	// Type of object being referenced.
+	// The type of object being referenced
 	Type *string `json:"type,omitempty"`
-	// Owner identity's ID.
+	// ID of the identity
 	Id *string `json:"id,omitempty"`
-	// Owner identity's human-readable display name.
+	// Human-readable display name of the identity
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

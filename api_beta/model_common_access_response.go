@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the CommonAccessResponse type satisfies the MappedNullable interface at compile time
@@ -20,17 +20,13 @@ var _ MappedNullable = &CommonAccessResponse{}
 
 // CommonAccessResponse struct for CommonAccessResponse
 type CommonAccessResponse struct {
-	// Unique ID of the common access item
-	Id *string `json:"id,omitempty"`
 	Access *CommonAccessItemAccess `json:"access,omitempty"`
 	// CONFIRMED or DENIED
 	Status *string `json:"status,omitempty"`
-	CommonAccessType *string `json:"commonAccessType,omitempty"`
-	LastUpdated *SailPointTime `json:"lastUpdated,omitempty"`
+	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 	// true if user has confirmed or denied status
 	ReviewedByUser *bool `json:"reviewedByUser,omitempty"`
-	LastReviewed NullableTime `json:"lastReviewed,omitempty"`
-	CreatedByUser *bool `json:"createdByUser,omitempty"`
+	LastReviewed *time.Time `json:"lastReviewed,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,8 +38,6 @@ type _CommonAccessResponse CommonAccessResponse
 // will change when the set of required properties is changed
 func NewCommonAccessResponse() *CommonAccessResponse {
 	this := CommonAccessResponse{}
-	var createdByUser bool = false
-	this.CreatedByUser = &createdByUser
 	return &this
 }
 
@@ -52,41 +46,7 @@ func NewCommonAccessResponse() *CommonAccessResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewCommonAccessResponseWithDefaults() *CommonAccessResponse {
 	this := CommonAccessResponse{}
-	var createdByUser bool = false
-	this.CreatedByUser = &createdByUser
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CommonAccessResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommonAccessResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *CommonAccessResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CommonAccessResponse) SetId(v string) {
-	o.Id = &v
 }
 
 // GetAccess returns the Access field value if set, zero value otherwise.
@@ -153,42 +113,10 @@ func (o *CommonAccessResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetCommonAccessType returns the CommonAccessType field value if set, zero value otherwise.
-func (o *CommonAccessResponse) GetCommonAccessType() string {
-	if o == nil || IsNil(o.CommonAccessType) {
-		var ret string
-		return ret
-	}
-	return *o.CommonAccessType
-}
-
-// GetCommonAccessTypeOk returns a tuple with the CommonAccessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommonAccessResponse) GetCommonAccessTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.CommonAccessType) {
-		return nil, false
-	}
-	return o.CommonAccessType, true
-}
-
-// HasCommonAccessType returns a boolean if a field has been set.
-func (o *CommonAccessResponse) HasCommonAccessType() bool {
-	if o != nil && !IsNil(o.CommonAccessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCommonAccessType gets a reference to the given string and assigns it to the CommonAccessType field.
-func (o *CommonAccessResponse) SetCommonAccessType(v string) {
-	o.CommonAccessType = &v
-}
-
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
-func (o *CommonAccessResponse) GetLastUpdated() SailPointTime {
+func (o *CommonAccessResponse) GetLastUpdated() time.Time {
 	if o == nil || IsNil(o.LastUpdated) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUpdated
@@ -196,7 +124,7 @@ func (o *CommonAccessResponse) GetLastUpdated() SailPointTime {
 
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommonAccessResponse) GetLastUpdatedOk() (*SailPointTime, bool) {
+func (o *CommonAccessResponse) GetLastUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastUpdated) {
 		return nil, false
 	}
@@ -212,8 +140,8 @@ func (o *CommonAccessResponse) HasLastUpdated() bool {
 	return false
 }
 
-// SetLastUpdated gets a reference to the given SailPointTime and assigns it to the LastUpdated field.
-func (o *CommonAccessResponse) SetLastUpdated(v SailPointTime) {
+// SetLastUpdated gets a reference to the given time.Time and assigns it to the LastUpdated field.
+func (o *CommonAccessResponse) SetLastUpdated(v time.Time) {
 	o.LastUpdated = &v
 }
 
@@ -249,78 +177,36 @@ func (o *CommonAccessResponse) SetReviewedByUser(v bool) {
 	o.ReviewedByUser = &v
 }
 
-// GetLastReviewed returns the LastReviewed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CommonAccessResponse) GetLastReviewed() SailPointTime {
-	if o == nil || IsNil(o.LastReviewed.Get()) {
-		var ret SailPointTime
+// GetLastReviewed returns the LastReviewed field value if set, zero value otherwise.
+func (o *CommonAccessResponse) GetLastReviewed() time.Time {
+	if o == nil || IsNil(o.LastReviewed) {
+		var ret time.Time
 		return ret
 	}
-	return *o.LastReviewed.Get()
+	return *o.LastReviewed
 }
 
 // GetLastReviewedOk returns a tuple with the LastReviewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CommonAccessResponse) GetLastReviewedOk() (*SailPointTime, bool) {
-	if o == nil {
+func (o *CommonAccessResponse) GetLastReviewedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastReviewed) {
 		return nil, false
 	}
-	return o.LastReviewed.Get(), o.LastReviewed.IsSet()
+	return o.LastReviewed, true
 }
 
 // HasLastReviewed returns a boolean if a field has been set.
 func (o *CommonAccessResponse) HasLastReviewed() bool {
-	if o != nil && o.LastReviewed.IsSet() {
+	if o != nil && !IsNil(o.LastReviewed) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastReviewed gets a reference to the given NullableTime and assigns it to the LastReviewed field.
-func (o *CommonAccessResponse) SetLastReviewed(v SailPointTime) {
-	o.LastReviewed.Set(&v)
-}
-// SetLastReviewedNil sets the value for LastReviewed to be an explicit nil
-func (o *CommonAccessResponse) SetLastReviewedNil() {
-	o.LastReviewed.Set(nil)
-}
-
-// UnsetLastReviewed ensures that no value is present for LastReviewed, not even an explicit nil
-func (o *CommonAccessResponse) UnsetLastReviewed() {
-	o.LastReviewed.Unset()
-}
-
-// GetCreatedByUser returns the CreatedByUser field value if set, zero value otherwise.
-func (o *CommonAccessResponse) GetCreatedByUser() bool {
-	if o == nil || IsNil(o.CreatedByUser) {
-		var ret bool
-		return ret
-	}
-	return *o.CreatedByUser
-}
-
-// GetCreatedByUserOk returns a tuple with the CreatedByUser field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommonAccessResponse) GetCreatedByUserOk() (*bool, bool) {
-	if o == nil || IsNil(o.CreatedByUser) {
-		return nil, false
-	}
-	return o.CreatedByUser, true
-}
-
-// HasCreatedByUser returns a boolean if a field has been set.
-func (o *CommonAccessResponse) HasCreatedByUser() bool {
-	if o != nil && !IsNil(o.CreatedByUser) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedByUser gets a reference to the given bool and assigns it to the CreatedByUser field.
-func (o *CommonAccessResponse) SetCreatedByUser(v bool) {
-	o.CreatedByUser = &v
+// SetLastReviewed gets a reference to the given time.Time and assigns it to the LastReviewed field.
+func (o *CommonAccessResponse) SetLastReviewed(v time.Time) {
+	o.LastReviewed = &v
 }
 
 func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
@@ -333,17 +219,11 @@ func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
 
 func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.CommonAccessType) {
-		toSerialize["commonAccessType"] = o.CommonAccessType
 	}
 	if !IsNil(o.LastUpdated) {
 		toSerialize["lastUpdated"] = o.LastUpdated
@@ -351,11 +231,8 @@ func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReviewedByUser) {
 		toSerialize["reviewedByUser"] = o.ReviewedByUser
 	}
-	if o.LastReviewed.IsSet() {
-		toSerialize["lastReviewed"] = o.LastReviewed.Get()
-	}
-	if !IsNil(o.CreatedByUser) {
-		toSerialize["createdByUser"] = o.CreatedByUser
+	if !IsNil(o.LastReviewed) {
+		toSerialize["lastReviewed"] = o.LastReviewed
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -379,14 +256,11 @@ func (o *CommonAccessResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "status")
-		delete(additionalProperties, "commonAccessType")
 		delete(additionalProperties, "lastUpdated")
 		delete(additionalProperties, "reviewedByUser")
 		delete(additionalProperties, "lastReviewed")
-		delete(additionalProperties, "createdByUser")
 		o.AdditionalProperties = additionalProperties
 	}
 

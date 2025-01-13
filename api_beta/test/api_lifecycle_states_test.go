@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing LifecycleStatesAPIService
 
@@ -22,14 +22,14 @@ func Test_api_beta_LifecycleStatesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test LifecycleStatesAPIService GetLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -29,11 +29,9 @@ type GetPersonalAccessTokenResponse struct {
 	Scope []string `json:"scope"`
 	Owner PatOwner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.
 	LastUsed NullableTime `json:"lastUsed,omitempty"`
-	// If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.
-	Managed *bool `json:"managed,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,15 +41,13 @@ type _GetPersonalAccessTokenResponse GetPersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, owner PatOwner, created SailPointTime) *GetPersonalAccessTokenResponse {
+func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, owner PatOwner, created time.Time) *GetPersonalAccessTokenResponse {
 	this := GetPersonalAccessTokenResponse{}
 	this.Id = id
 	this.Name = name
 	this.Scope = scope
 	this.Owner = owner
 	this.Created = created
-	var managed bool = false
-	this.Managed = &managed
 	return &this
 }
 
@@ -60,8 +56,6 @@ func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, o
 // but it doesn't guarantee that properties required by API are set
 func NewGetPersonalAccessTokenResponseWithDefaults() *GetPersonalAccessTokenResponse {
 	this := GetPersonalAccessTokenResponse{}
-	var managed bool = false
-	this.Managed = &managed
 	return &this
 }
 
@@ -164,9 +158,9 @@ func (o *GetPersonalAccessTokenResponse) SetOwner(v PatOwner) {
 }
 
 // GetCreated returns the Created field value
-func (o *GetPersonalAccessTokenResponse) GetCreated() SailPointTime {
+func (o *GetPersonalAccessTokenResponse) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -175,7 +169,7 @@ func (o *GetPersonalAccessTokenResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *GetPersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *GetPersonalAccessTokenResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,14 +177,14 @@ func (o *GetPersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *GetPersonalAccessTokenResponse) SetCreated(v SailPointTime) {
+func (o *GetPersonalAccessTokenResponse) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetPersonalAccessTokenResponse) GetLastUsed() SailPointTime {
+func (o *GetPersonalAccessTokenResponse) GetLastUsed() time.Time {
 	if o == nil || IsNil(o.LastUsed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUsed.Get()
@@ -199,7 +193,7 @@ func (o *GetPersonalAccessTokenResponse) GetLastUsed() SailPointTime {
 // GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetPersonalAccessTokenResponse) GetLastUsedOk() (*SailPointTime, bool) {
+func (o *GetPersonalAccessTokenResponse) GetLastUsedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -216,7 +210,7 @@ func (o *GetPersonalAccessTokenResponse) HasLastUsed() bool {
 }
 
 // SetLastUsed gets a reference to the given NullableTime and assigns it to the LastUsed field.
-func (o *GetPersonalAccessTokenResponse) SetLastUsed(v SailPointTime) {
+func (o *GetPersonalAccessTokenResponse) SetLastUsed(v time.Time) {
 	o.LastUsed.Set(&v)
 }
 // SetLastUsedNil sets the value for LastUsed to be an explicit nil
@@ -227,38 +221,6 @@ func (o *GetPersonalAccessTokenResponse) SetLastUsedNil() {
 // UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
 func (o *GetPersonalAccessTokenResponse) UnsetLastUsed() {
 	o.LastUsed.Unset()
-}
-
-// GetManaged returns the Managed field value if set, zero value otherwise.
-func (o *GetPersonalAccessTokenResponse) GetManaged() bool {
-	if o == nil || IsNil(o.Managed) {
-		var ret bool
-		return ret
-	}
-	return *o.Managed
-}
-
-// GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetPersonalAccessTokenResponse) GetManagedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Managed) {
-		return nil, false
-	}
-	return o.Managed, true
-}
-
-// HasManaged returns a boolean if a field has been set.
-func (o *GetPersonalAccessTokenResponse) HasManaged() bool {
-	if o != nil && !IsNil(o.Managed) {
-		return true
-	}
-
-	return false
-}
-
-// SetManaged gets a reference to the given bool and assigns it to the Managed field.
-func (o *GetPersonalAccessTokenResponse) SetManaged(v bool) {
-	o.Managed = &v
 }
 
 func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
@@ -280,9 +242,6 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	toSerialize["created"] = o.Created
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
-	}
-	if !IsNil(o.Managed) {
-		toSerialize["managed"] = o.Managed
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -337,7 +296,6 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "lastUsed")
-		delete(additionalProperties, "managed")
 		o.AdditionalProperties = additionalProperties
 	}
 

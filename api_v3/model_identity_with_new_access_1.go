@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -23,7 +23,7 @@ type IdentityWithNewAccess1 struct {
 	// Set of identity IDs to be checked.
 	IdentityId string `json:"identityId"`
 	// The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.
-	AccessRefs []EntitlementRef1 `json:"accessRefs"`
+	AccessRefs []EntitlementRef `json:"accessRefs"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _IdentityWithNewAccess1 IdentityWithNewAccess1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityWithNewAccess1(identityId string, accessRefs []EntitlementRef1) *IdentityWithNewAccess1 {
+func NewIdentityWithNewAccess1(identityId string, accessRefs []EntitlementRef) *IdentityWithNewAccess1 {
 	this := IdentityWithNewAccess1{}
 	this.IdentityId = identityId
 	this.AccessRefs = accessRefs
@@ -75,9 +75,9 @@ func (o *IdentityWithNewAccess1) SetIdentityId(v string) {
 }
 
 // GetAccessRefs returns the AccessRefs field value
-func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef1 {
+func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef {
 	if o == nil {
-		var ret []EntitlementRef1
+		var ret []EntitlementRef
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef1 {
 
 // GetAccessRefsOk returns a tuple with the AccessRefs field value
 // and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef1, bool) {
+func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef1, bool) {
 }
 
 // SetAccessRefs sets field value
-func (o *IdentityWithNewAccess1) SetAccessRefs(v []EntitlementRef1) {
+func (o *IdentityWithNewAccess1) SetAccessRefs(v []EntitlementRef) {
 	o.AccessRefs = v
 }
 

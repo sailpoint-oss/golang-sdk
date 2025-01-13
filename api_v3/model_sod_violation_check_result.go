@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &SodViolationCheckResult{}
 type SodViolationCheckResult struct {
 	Message *ErrorMessageDto `json:"message,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
-	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
+	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	ViolationContexts []SodViolationContext `json:"violationContexts,omitempty"`
 	// A list of the SOD policies that were violated.
 	ViolatedPolicies []SodPolicyDto `json:"violatedPolicies,omitempty"`
@@ -79,23 +79,22 @@ func (o *SodViolationCheckResult) SetMessage(v ErrorMessageDto) {
 	o.Message = &v
 }
 
-// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise.
 func (o *SodViolationCheckResult) GetClientMetadata() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.ClientMetadata) {
 		var ret map[string]string
 		return ret
 	}
-	return o.ClientMetadata
+	return *o.ClientMetadata
 }
 
 // GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetClientMetadataOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
-	return &o.ClientMetadata, true
+	return o.ClientMetadata, true
 }
 
 // HasClientMetadata returns a boolean if a field has been set.
@@ -109,12 +108,12 @@ func (o *SodViolationCheckResult) HasClientMetadata() bool {
 
 // SetClientMetadata gets a reference to the given map[string]string and assigns it to the ClientMetadata field.
 func (o *SodViolationCheckResult) SetClientMetadata(v map[string]string) {
-	o.ClientMetadata = v
+	o.ClientMetadata = &v
 }
 
-// GetViolationContexts returns the ViolationContexts field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetViolationContexts returns the ViolationContexts field value if set, zero value otherwise.
 func (o *SodViolationCheckResult) GetViolationContexts() []SodViolationContext {
-	if o == nil {
+	if o == nil || IsNil(o.ViolationContexts) {
 		var ret []SodViolationContext
 		return ret
 	}
@@ -123,7 +122,6 @@ func (o *SodViolationCheckResult) GetViolationContexts() []SodViolationContext {
 
 // GetViolationContextsOk returns a tuple with the ViolationContexts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetViolationContextsOk() ([]SodViolationContext, bool) {
 	if o == nil || IsNil(o.ViolationContexts) {
 		return nil, false
@@ -145,9 +143,9 @@ func (o *SodViolationCheckResult) SetViolationContexts(v []SodViolationContext) 
 	o.ViolationContexts = v
 }
 
-// GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise.
 func (o *SodViolationCheckResult) GetViolatedPolicies() []SodPolicyDto {
-	if o == nil {
+	if o == nil || IsNil(o.ViolatedPolicies) {
 		var ret []SodPolicyDto
 		return ret
 	}
@@ -156,7 +154,6 @@ func (o *SodViolationCheckResult) GetViolatedPolicies() []SodPolicyDto {
 
 // GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetViolatedPoliciesOk() ([]SodPolicyDto, bool) {
 	if o == nil || IsNil(o.ViolatedPolicies) {
 		return nil, false
@@ -191,13 +188,13 @@ func (o SodViolationCheckResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if o.ClientMetadata != nil {
+	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if o.ViolationContexts != nil {
+	if !IsNil(o.ViolationContexts) {
 		toSerialize["violationContexts"] = o.ViolationContexts
 	}
-	if o.ViolatedPolicies != nil {
+	if !IsNil(o.ViolatedPolicies) {
 		toSerialize["violatedPolicies"] = o.ViolatedPolicies
 	}
 

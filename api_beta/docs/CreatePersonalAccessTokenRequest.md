@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created. | 
 **Scope** | Pointer to **[]string** | Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \&quot;sp:scopes:all\&quot;. This means the personal access token will have all the rights of the owner who created it. | [optional] 
-**AccessTokenValiditySeconds** | Pointer to **int32** | Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200. | [optional] 
 
 ## Methods
 
@@ -82,31 +81,6 @@ HasScope returns a boolean if a field has been set.
 `func (o *CreatePersonalAccessTokenRequest) UnsetScope()`
 
 UnsetScope ensures that no value is present for Scope, not even an explicit nil
-### GetAccessTokenValiditySeconds
-
-`func (o *CreatePersonalAccessTokenRequest) GetAccessTokenValiditySeconds() int32`
-
-GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field if non-nil, zero value otherwise.
-
-### GetAccessTokenValiditySecondsOk
-
-`func (o *CreatePersonalAccessTokenRequest) GetAccessTokenValiditySecondsOk() (*int32, bool)`
-
-GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessTokenValiditySeconds
-
-`func (o *CreatePersonalAccessTokenRequest) SetAccessTokenValiditySeconds(v int32)`
-
-SetAccessTokenValiditySeconds sets AccessTokenValiditySeconds field to given value.
-
-### HasAccessTokenValiditySeconds
-
-`func (o *CreatePersonalAccessTokenRequest) HasAccessTokenValiditySeconds() bool`
-
-HasAccessTokenValiditySeconds returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

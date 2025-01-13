@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -29,8 +29,6 @@ const (
 	ACCOUNTACTIVITYITEMOPERATION_UNLOCK AccountActivityItemOperation = "UNLOCK"
 	ACCOUNTACTIVITYITEMOPERATION_LOCK AccountActivityItemOperation = "LOCK"
 	ACCOUNTACTIVITYITEMOPERATION_REMOVE AccountActivityItemOperation = "REMOVE"
-	ACCOUNTACTIVITYITEMOPERATION_SET AccountActivityItemOperation = "SET"
-	ACCOUNTACTIVITYITEMOPERATION_NULL AccountActivityItemOperation = "null"
 )
 
 // All allowed values of AccountActivityItemOperation enum
@@ -44,8 +42,6 @@ var AllowedAccountActivityItemOperationEnumValues = []AccountActivityItemOperati
 	"UNLOCK",
 	"LOCK",
 	"REMOVE",
-	"SET",
-	"null",
 }
 
 func (v *AccountActivityItemOperation) UnmarshalJSON(src []byte) error {

@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## SendKbaAnswers
 
-> KbaAuthResponse SendKbaAnswers(ctx).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
+> KbaAuthResponse SendKbaAnswers(ctx).KbaAnswerRequest(kbaAnswerRequest).Execute()
 
 Authenticate KBA provided MFA method
 
@@ -238,11 +238,11 @@ import (
 )
 
 func main() {
-	kbaAnswerRequestItem := []openapiclient.KbaAnswerRequestItem{*openapiclient.NewKbaAnswerRequestItem("c54fee53-2d63-4fc5-9259-3e93b9994135", "Your answer")} // []KbaAnswerRequestItem | 
+	kbaAnswerRequest := *openapiclient.NewKbaAnswerRequest([]openapiclient.KbaAnswerRequestItem{*openapiclient.NewKbaAnswerRequestItem("089899f13a8f4da7824996191587bab9", "Your answer")}) // KbaAnswerRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MFAControllerAPI.SendKbaAnswers(context.Background()).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
+	resp, r, err := apiClient.MFAControllerAPI.SendKbaAnswers(context.Background()).KbaAnswerRequest(kbaAnswerRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.SendKbaAnswers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -263,7 +263,7 @@ Other parameters are passed through a pointer to a apiSendKbaAnswersRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **kbaAnswerRequestItem** | [**[]KbaAnswerRequestItem**](KbaAnswerRequestItem.md) |  | 
+ **kbaAnswerRequest** | [**KbaAnswerRequest**](KbaAnswerRequest.md) |  | 
 
 ### Return type
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

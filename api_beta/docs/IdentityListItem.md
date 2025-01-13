@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | the identity ID | [optional] 
 **DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
-**FirstName** | Pointer to **NullableString** | the first name of the identity | [optional] 
-**LastName** | Pointer to **NullableString** | the last name of the identity | [optional] 
+**FirstName** | Pointer to **string** | the first name of the identity | [optional] 
+**LastName** | Pointer to **string** | the last name of the identity | [optional] 
 **Active** | Pointer to **bool** | indicates if an identity is active or not | [optional] [default to true]
 **DeletedDate** | Pointer to **NullableString** | the date when the identity was deleted | [optional] 
 
@@ -105,16 +105,6 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
-### SetFirstNameNil
-
-`func (o *IdentityListItem) SetFirstNameNil(b bool)`
-
- SetFirstNameNil sets the value for FirstName to be an explicit nil
-
-### UnsetFirstName
-`func (o *IdentityListItem) UnsetFirstName()`
-
-UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *IdentityListItem) GetLastName() string`
@@ -140,16 +130,6 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
-### SetLastNameNil
-
-`func (o *IdentityListItem) SetLastNameNil(b bool)`
-
- SetLastNameNil sets the value for LastName to be an explicit nil
-
-### UnsetLastName
-`func (o *IdentityListItem) UnsetLastName()`
-
-UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetActive
 
 `func (o *IdentityListItem) GetActive() bool`

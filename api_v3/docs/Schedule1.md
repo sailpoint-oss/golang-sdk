@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ScheduleType**](ScheduleType.md) |  | 
-**Months** | Pointer to [**Schedule1Months**](Schedule1Months.md) |  | [optional] 
 **Days** | Pointer to [**Schedule1Days**](Schedule1Days.md) |  | [optional] 
 **Hours** | [**Schedule1Hours**](Schedule1Hours.md) |  | 
 **Expiration** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
@@ -49,31 +48,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-### GetMonths
-
-`func (o *Schedule1) GetMonths() Schedule1Months`
-
-GetMonths returns the Months field if non-nil, zero value otherwise.
-
-### GetMonthsOk
-
-`func (o *Schedule1) GetMonthsOk() (*Schedule1Months, bool)`
-
-GetMonthsOk returns a tuple with the Months field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMonths
-
-`func (o *Schedule1) SetMonths(v Schedule1Months)`
-
-SetMonths sets Months field to given value.
-
-### HasMonths
-
-`func (o *Schedule1) HasMonths() bool`
-
-HasMonths returns a boolean if a field has been set.
 
 ### GetDays
 

@@ -3,19 +3,17 @@
 ## Enum
 
 
-* `FINISHED` (value: `"Finished"`)
+* `FINISHED` (value: `"FINISHED"`)
 
-* `REJECTED` (value: `"Rejected"`)
+* `REJECTED` (value: `"REJECTED"`)
 
-* `RETURNED` (value: `"Returned"`)
+* `RETURNED` (value: `"RETURNED"`)
 
-* `EXPIRED` (value: `"Expired"`)
+* `EXPIRED` (value: `"EXPIRED"`)
 
-* `PENDING` (value: `"Pending"`)
+* `PENDING` (value: `"PENDING"`)
 
-* `CANCELED` (value: `"Canceled"`)
-
-* `NULL` (value: `"null"`)
+* `CANCELED` (value: `"CANCELED"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Schema Attribute Id | [optional] 
-**System** | Pointer to **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] [default to false]
+**System** | Pointer to **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] 
 **Modified** | Pointer to **time.Time** | When the schema attribute was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the schema attribute was created. | [optional] 
 **Type** | [**NonEmployeeSchemaAttributeType**](NonEmployeeSchemaAttributeType.md) |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **TechnicalName** | **string** | The technical name of the attribute. Must be unique per source. | 
 **HelpText** | Pointer to **string** | help text displayed by UI. | [optional] 
 **Placeholder** | Pointer to **string** | Hint text that fills UI box. | [optional] 
-**Required** | Pointer to **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] [default to false]
+**Required** | Pointer to **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] 
 
 ## Methods
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessRequested{}
 
 // AccessRequested struct for AccessRequested
 type AccessRequested struct {
-	AccessRequest *AccessRequestResponse1 `json:"accessRequest,omitempty"`
+	AccessRequest *AccessRequestResponse `json:"accessRequest,omitempty"`
 	// the identity id
 	IdentityId *string `json:"identityId,omitempty"`
 	// the event type
@@ -49,9 +49,9 @@ func NewAccessRequestedWithDefaults() *AccessRequested {
 }
 
 // GetAccessRequest returns the AccessRequest field value if set, zero value otherwise.
-func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1 {
+func (o *AccessRequested) GetAccessRequest() AccessRequestResponse {
 	if o == nil || IsNil(o.AccessRequest) {
-		var ret AccessRequestResponse1
+		var ret AccessRequestResponse
 		return ret
 	}
 	return *o.AccessRequest
@@ -59,7 +59,7 @@ func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1 {
 
 // GetAccessRequestOk returns a tuple with the AccessRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse1, bool) {
+func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse, bool) {
 	if o == nil || IsNil(o.AccessRequest) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *AccessRequested) HasAccessRequest() bool {
 	return false
 }
 
-// SetAccessRequest gets a reference to the given AccessRequestResponse1 and assigns it to the AccessRequest field.
-func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse1) {
+// SetAccessRequest gets a reference to the given AccessRequestResponse and assigns it to the AccessRequest field.
+func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse) {
 	o.AccessRequest = &v
 }
 

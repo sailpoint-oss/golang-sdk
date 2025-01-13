@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AccountActivityItem type satisfies the MappedNullable interface at compile time
@@ -25,13 +25,13 @@ type AccountActivityItem struct {
 	// Human-readable display name of item
 	Name *string `json:"name,omitempty"`
 	// Date and time item was requested
-	Requested *SailPointTime `json:"requested,omitempty"`
-	ApprovalStatus NullableAccountActivityApprovalStatus `json:"approvalStatus,omitempty"`
+	Requested *time.Time `json:"requested,omitempty"`
+	ApprovalStatus *WorkItemState `json:"approvalStatus,omitempty"`
 	ProvisioningStatus *ProvisioningState `json:"provisioningStatus,omitempty"`
 	RequesterComment NullableComment `json:"requesterComment,omitempty"`
 	ReviewerIdentitySummary NullableIdentitySummary `json:"reviewerIdentitySummary,omitempty"`
 	ReviewerComment NullableComment `json:"reviewerComment,omitempty"`
-	Operation NullableAccountActivityItemOperation `json:"operation,omitempty"`
+	Operation *AccountActivityItemOperation `json:"operation,omitempty"`
 	// Attribute to which account activity applies
 	Attribute NullableString `json:"attribute,omitempty"`
 	// Value of attribute
@@ -43,7 +43,7 @@ type AccountActivityItem struct {
 	AccountRequestInfo NullableAccountRequestInfo `json:"accountRequestInfo,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
-	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
+	// The date the role or access profile is no longer assigned to the specified identity.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -132,9 +132,9 @@ func (o *AccountActivityItem) SetName(v string) {
 }
 
 // GetRequested returns the Requested field value if set, zero value otherwise.
-func (o *AccountActivityItem) GetRequested() SailPointTime {
+func (o *AccountActivityItem) GetRequested() time.Time {
 	if o == nil || IsNil(o.Requested) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Requested
@@ -142,7 +142,7 @@ func (o *AccountActivityItem) GetRequested() SailPointTime {
 
 // GetRequestedOk returns a tuple with the Requested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActivityItem) GetRequestedOk() (*SailPointTime, bool) {
+func (o *AccountActivityItem) GetRequestedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Requested) {
 		return nil, false
 	}
@@ -158,51 +158,41 @@ func (o *AccountActivityItem) HasRequested() bool {
 	return false
 }
 
-// SetRequested gets a reference to the given SailPointTime and assigns it to the Requested field.
-func (o *AccountActivityItem) SetRequested(v SailPointTime) {
+// SetRequested gets a reference to the given time.Time and assigns it to the Requested field.
+func (o *AccountActivityItem) SetRequested(v time.Time) {
 	o.Requested = &v
 }
 
-// GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus {
-	if o == nil || IsNil(o.ApprovalStatus.Get()) {
-		var ret AccountActivityApprovalStatus
+// GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
+func (o *AccountActivityItem) GetApprovalStatus() WorkItemState {
+	if o == nil || IsNil(o.ApprovalStatus) {
+		var ret WorkItemState
 		return ret
 	}
-	return *o.ApprovalStatus.Get()
+	return *o.ApprovalStatus
 }
 
 // GetApprovalStatusOk returns a tuple with the ApprovalStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool) {
-	if o == nil {
+func (o *AccountActivityItem) GetApprovalStatusOk() (*WorkItemState, bool) {
+	if o == nil || IsNil(o.ApprovalStatus) {
 		return nil, false
 	}
-	return o.ApprovalStatus.Get(), o.ApprovalStatus.IsSet()
+	return o.ApprovalStatus, true
 }
 
 // HasApprovalStatus returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasApprovalStatus() bool {
-	if o != nil && o.ApprovalStatus.IsSet() {
+	if o != nil && !IsNil(o.ApprovalStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetApprovalStatus gets a reference to the given NullableAccountActivityApprovalStatus and assigns it to the ApprovalStatus field.
-func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus) {
-	o.ApprovalStatus.Set(&v)
-}
-// SetApprovalStatusNil sets the value for ApprovalStatus to be an explicit nil
-func (o *AccountActivityItem) SetApprovalStatusNil() {
-	o.ApprovalStatus.Set(nil)
-}
-
-// UnsetApprovalStatus ensures that no value is present for ApprovalStatus, not even an explicit nil
-func (o *AccountActivityItem) UnsetApprovalStatus() {
-	o.ApprovalStatus.Unset()
+// SetApprovalStatus gets a reference to the given WorkItemState and assigns it to the ApprovalStatus field.
+func (o *AccountActivityItem) SetApprovalStatus(v WorkItemState) {
+	o.ApprovalStatus = &v
 }
 
 // GetProvisioningStatus returns the ProvisioningStatus field value if set, zero value otherwise.
@@ -363,46 +353,36 @@ func (o *AccountActivityItem) UnsetReviewerComment() {
 	o.ReviewerComment.Unset()
 }
 
-// GetOperation returns the Operation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetOperation() AccountActivityItemOperation {
-	if o == nil || IsNil(o.Operation.Get()) {
+	if o == nil || IsNil(o.Operation) {
 		var ret AccountActivityItemOperation
 		return ret
 	}
-	return *o.Operation.Get()
+	return *o.Operation
 }
 
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivityItem) GetOperationOk() (*AccountActivityItemOperation, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
-	return o.Operation.Get(), o.Operation.IsSet()
+	return o.Operation, true
 }
 
 // HasOperation returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasOperation() bool {
-	if o != nil && o.Operation.IsSet() {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
 	return false
 }
 
-// SetOperation gets a reference to the given NullableAccountActivityItemOperation and assigns it to the Operation field.
+// SetOperation gets a reference to the given AccountActivityItemOperation and assigns it to the Operation field.
 func (o *AccountActivityItem) SetOperation(v AccountActivityItemOperation) {
-	o.Operation.Set(&v)
-}
-// SetOperationNil sets the value for Operation to be an explicit nil
-func (o *AccountActivityItem) SetOperationNil() {
-	o.Operation.Set(nil)
-}
-
-// UnsetOperation ensures that no value is present for Operation, not even an explicit nil
-func (o *AccountActivityItem) UnsetOperation() {
-	o.Operation.Unset()
+	o.Operation = &v
 }
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -639,9 +619,9 @@ func (o *AccountActivityItem) SetClientMetadata(v map[string]string) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActivityItem) GetRemoveDate() SailPointTime {
+func (o *AccountActivityItem) GetRemoveDate() time.Time {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -650,7 +630,7 @@ func (o *AccountActivityItem) GetRemoveDate() SailPointTime {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActivityItem) GetRemoveDateOk() (*SailPointTime, bool) {
+func (o *AccountActivityItem) GetRemoveDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -667,7 +647,7 @@ func (o *AccountActivityItem) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *AccountActivityItem) SetRemoveDate(v SailPointTime) {
+func (o *AccountActivityItem) SetRemoveDate(v time.Time) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
@@ -699,8 +679,8 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Requested) {
 		toSerialize["requested"] = o.Requested
 	}
-	if o.ApprovalStatus.IsSet() {
-		toSerialize["approvalStatus"] = o.ApprovalStatus.Get()
+	if !IsNil(o.ApprovalStatus) {
+		toSerialize["approvalStatus"] = o.ApprovalStatus
 	}
 	if !IsNil(o.ProvisioningStatus) {
 		toSerialize["provisioningStatus"] = o.ProvisioningStatus
@@ -714,8 +694,8 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if o.ReviewerComment.IsSet() {
 		toSerialize["reviewerComment"] = o.ReviewerComment.Get()
 	}
-	if o.Operation.IsSet() {
-		toSerialize["operation"] = o.Operation.Get()
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
 	if o.Attribute.IsSet() {
 		toSerialize["attribute"] = o.Attribute.Get()

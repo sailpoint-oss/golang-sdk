@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the WorkItems type satisfies the MappedNullable interface at compile time
@@ -23,32 +23,30 @@ type WorkItems struct {
 	// ID of the work item
 	Id *string `json:"id,omitempty"`
 	// ID of the requester
-	RequesterId NullableString `json:"requesterId,omitempty"`
+	RequesterId *string `json:"requesterId,omitempty"`
 	// The displayname of the requester
-	RequesterDisplayName NullableString `json:"requesterDisplayName,omitempty"`
+	RequesterDisplayName *string `json:"requesterDisplayName,omitempty"`
 	// The ID of the owner
-	OwnerId NullableString `json:"ownerId,omitempty"`
+	OwnerId *string `json:"ownerId,omitempty"`
 	// The name of the owner
 	OwnerName *string `json:"ownerName,omitempty"`
 	// Time when the work item was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Time when the work item was last updated
-	Modified NullableTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// The description of the work item
 	Description *string `json:"description,omitempty"`
-	State *WorkItemStateManualWorkItems `json:"state,omitempty"`
-	Type *WorkItemTypeManualWorkItems `json:"type,omitempty"`
-	// A list of remediation items
-	RemediationItems []RemediationItemDetails `json:"remediationItems,omitempty"`
-	// A list of items that need to be approved
-	ApprovalItems []ApprovalItemDetails `json:"approvalItems,omitempty"`
+	State *WorkItemState `json:"state,omitempty"`
+	Type *WorkItemType `json:"type,omitempty"`
+	RemediationItems *RemediationItemDetails `json:"remediationItems,omitempty"`
+	ApprovalItems *ApprovalItemDetails `json:"approvalItems,omitempty"`
 	// The work item name
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// The time at which the work item completed
-	Completed NullableTime `json:"completed,omitempty"`
+	Completed *time.Time `json:"completed,omitempty"`
 	// The number of items in the work item
-	NumItems NullableInt32 `json:"numItems,omitempty"`
-	Form *WorkItemsForm `json:"form,omitempty"`
+	NumItems *int32 `json:"numItems,omitempty"`
+	Form *FormDetails `json:"form,omitempty"`
 	// An array of errors that ocurred during the work item
 	Errors []string `json:"errors,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -105,130 +103,100 @@ func (o *WorkItems) SetId(v string) {
 	o.Id = &v
 }
 
-// GetRequesterId returns the RequesterId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequesterId returns the RequesterId field value if set, zero value otherwise.
 func (o *WorkItems) GetRequesterId() string {
-	if o == nil || IsNil(o.RequesterId.Get()) {
+	if o == nil || IsNil(o.RequesterId) {
 		var ret string
 		return ret
 	}
-	return *o.RequesterId.Get()
+	return *o.RequesterId
 }
 
 // GetRequesterIdOk returns a tuple with the RequesterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetRequesterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequesterId) {
 		return nil, false
 	}
-	return o.RequesterId.Get(), o.RequesterId.IsSet()
+	return o.RequesterId, true
 }
 
 // HasRequesterId returns a boolean if a field has been set.
 func (o *WorkItems) HasRequesterId() bool {
-	if o != nil && o.RequesterId.IsSet() {
+	if o != nil && !IsNil(o.RequesterId) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequesterId gets a reference to the given NullableString and assigns it to the RequesterId field.
+// SetRequesterId gets a reference to the given string and assigns it to the RequesterId field.
 func (o *WorkItems) SetRequesterId(v string) {
-	o.RequesterId.Set(&v)
-}
-// SetRequesterIdNil sets the value for RequesterId to be an explicit nil
-func (o *WorkItems) SetRequesterIdNil() {
-	o.RequesterId.Set(nil)
+	o.RequesterId = &v
 }
 
-// UnsetRequesterId ensures that no value is present for RequesterId, not even an explicit nil
-func (o *WorkItems) UnsetRequesterId() {
-	o.RequesterId.Unset()
-}
-
-// GetRequesterDisplayName returns the RequesterDisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequesterDisplayName returns the RequesterDisplayName field value if set, zero value otherwise.
 func (o *WorkItems) GetRequesterDisplayName() string {
-	if o == nil || IsNil(o.RequesterDisplayName.Get()) {
+	if o == nil || IsNil(o.RequesterDisplayName) {
 		var ret string
 		return ret
 	}
-	return *o.RequesterDisplayName.Get()
+	return *o.RequesterDisplayName
 }
 
 // GetRequesterDisplayNameOk returns a tuple with the RequesterDisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetRequesterDisplayNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequesterDisplayName) {
 		return nil, false
 	}
-	return o.RequesterDisplayName.Get(), o.RequesterDisplayName.IsSet()
+	return o.RequesterDisplayName, true
 }
 
 // HasRequesterDisplayName returns a boolean if a field has been set.
 func (o *WorkItems) HasRequesterDisplayName() bool {
-	if o != nil && o.RequesterDisplayName.IsSet() {
+	if o != nil && !IsNil(o.RequesterDisplayName) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequesterDisplayName gets a reference to the given NullableString and assigns it to the RequesterDisplayName field.
+// SetRequesterDisplayName gets a reference to the given string and assigns it to the RequesterDisplayName field.
 func (o *WorkItems) SetRequesterDisplayName(v string) {
-	o.RequesterDisplayName.Set(&v)
-}
-// SetRequesterDisplayNameNil sets the value for RequesterDisplayName to be an explicit nil
-func (o *WorkItems) SetRequesterDisplayNameNil() {
-	o.RequesterDisplayName.Set(nil)
+	o.RequesterDisplayName = &v
 }
 
-// UnsetRequesterDisplayName ensures that no value is present for RequesterDisplayName, not even an explicit nil
-func (o *WorkItems) UnsetRequesterDisplayName() {
-	o.RequesterDisplayName.Unset()
-}
-
-// GetOwnerId returns the OwnerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOwnerId returns the OwnerId field value if set, zero value otherwise.
 func (o *WorkItems) GetOwnerId() string {
-	if o == nil || IsNil(o.OwnerId.Get()) {
+	if o == nil || IsNil(o.OwnerId) {
 		var ret string
 		return ret
 	}
-	return *o.OwnerId.Get()
+	return *o.OwnerId
 }
 
 // GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetOwnerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OwnerId) {
 		return nil, false
 	}
-	return o.OwnerId.Get(), o.OwnerId.IsSet()
+	return o.OwnerId, true
 }
 
 // HasOwnerId returns a boolean if a field has been set.
 func (o *WorkItems) HasOwnerId() bool {
-	if o != nil && o.OwnerId.IsSet() {
+	if o != nil && !IsNil(o.OwnerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnerId gets a reference to the given NullableString and assigns it to the OwnerId field.
+// SetOwnerId gets a reference to the given string and assigns it to the OwnerId field.
 func (o *WorkItems) SetOwnerId(v string) {
-	o.OwnerId.Set(&v)
-}
-// SetOwnerIdNil sets the value for OwnerId to be an explicit nil
-func (o *WorkItems) SetOwnerIdNil() {
-	o.OwnerId.Set(nil)
-}
-
-// UnsetOwnerId ensures that no value is present for OwnerId, not even an explicit nil
-func (o *WorkItems) UnsetOwnerId() {
-	o.OwnerId.Unset()
+	o.OwnerId = &v
 }
 
 // GetOwnerName returns the OwnerName field value if set, zero value otherwise.
@@ -264,9 +232,9 @@ func (o *WorkItems) SetOwnerName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkItems) GetCreated() SailPointTime {
+func (o *WorkItems) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -274,7 +242,7 @@ func (o *WorkItems) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetCreatedOk() (*SailPointTime, bool) {
+func (o *WorkItems) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -290,51 +258,41 @@ func (o *WorkItems) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *WorkItems) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WorkItems) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *WorkItems) GetModified() time.Time {
+	if o == nil || IsNil(o.Modified) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Modified.Get()
+	return *o.Modified
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil {
+func (o *WorkItems) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
-	return o.Modified.Get(), o.Modified.IsSet()
+	return o.Modified, true
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *WorkItems) HasModified() bool {
-	if o != nil && o.Modified.IsSet() {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *WorkItems) SetModified(v SailPointTime) {
-	o.Modified.Set(&v)
-}
-// SetModifiedNil sets the value for Modified to be an explicit nil
-func (o *WorkItems) SetModifiedNil() {
-	o.Modified.Set(nil)
-}
-
-// UnsetModified ensures that no value is present for Modified, not even an explicit nil
-func (o *WorkItems) UnsetModified() {
-	o.Modified.Unset()
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *WorkItems) SetModified(v time.Time) {
+	o.Modified = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -370,9 +328,9 @@ func (o *WorkItems) SetDescription(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *WorkItems) GetState() WorkItemStateManualWorkItems {
+func (o *WorkItems) GetState() WorkItemState {
 	if o == nil || IsNil(o.State) {
-		var ret WorkItemStateManualWorkItems
+		var ret WorkItemState
 		return ret
 	}
 	return *o.State
@@ -380,7 +338,7 @@ func (o *WorkItems) GetState() WorkItemStateManualWorkItems {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetStateOk() (*WorkItemStateManualWorkItems, bool) {
+func (o *WorkItems) GetStateOk() (*WorkItemState, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
@@ -396,15 +354,15 @@ func (o *WorkItems) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given WorkItemStateManualWorkItems and assigns it to the State field.
-func (o *WorkItems) SetState(v WorkItemStateManualWorkItems) {
+// SetState gets a reference to the given WorkItemState and assigns it to the State field.
+func (o *WorkItems) SetState(v WorkItemState) {
 	o.State = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *WorkItems) GetType() WorkItemTypeManualWorkItems {
+func (o *WorkItems) GetType() WorkItemType {
 	if o == nil || IsNil(o.Type) {
-		var ret WorkItemTypeManualWorkItems
+		var ret WorkItemType
 		return ret
 	}
 	return *o.Type
@@ -412,7 +370,7 @@ func (o *WorkItems) GetType() WorkItemTypeManualWorkItems {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetTypeOk() (*WorkItemTypeManualWorkItems, bool) {
+func (o *WorkItems) GetTypeOk() (*WorkItemType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -428,24 +386,23 @@ func (o *WorkItems) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given WorkItemTypeManualWorkItems and assigns it to the Type field.
-func (o *WorkItems) SetType(v WorkItemTypeManualWorkItems) {
+// SetType gets a reference to the given WorkItemType and assigns it to the Type field.
+func (o *WorkItems) SetType(v WorkItemType) {
 	o.Type = &v
 }
 
-// GetRemediationItems returns the RemediationItems field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetRemediationItems() []RemediationItemDetails {
-	if o == nil {
-		var ret []RemediationItemDetails
+// GetRemediationItems returns the RemediationItems field value if set, zero value otherwise.
+func (o *WorkItems) GetRemediationItems() RemediationItemDetails {
+	if o == nil || IsNil(o.RemediationItems) {
+		var ret RemediationItemDetails
 		return ret
 	}
-	return o.RemediationItems
+	return *o.RemediationItems
 }
 
 // GetRemediationItemsOk returns a tuple with the RemediationItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetRemediationItemsOk() ([]RemediationItemDetails, bool) {
+func (o *WorkItems) GetRemediationItemsOk() (*RemediationItemDetails, bool) {
 	if o == nil || IsNil(o.RemediationItems) {
 		return nil, false
 	}
@@ -461,24 +418,23 @@ func (o *WorkItems) HasRemediationItems() bool {
 	return false
 }
 
-// SetRemediationItems gets a reference to the given []RemediationItemDetails and assigns it to the RemediationItems field.
-func (o *WorkItems) SetRemediationItems(v []RemediationItemDetails) {
-	o.RemediationItems = v
+// SetRemediationItems gets a reference to the given RemediationItemDetails and assigns it to the RemediationItems field.
+func (o *WorkItems) SetRemediationItems(v RemediationItemDetails) {
+	o.RemediationItems = &v
 }
 
-// GetApprovalItems returns the ApprovalItems field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetApprovalItems() []ApprovalItemDetails {
-	if o == nil {
-		var ret []ApprovalItemDetails
+// GetApprovalItems returns the ApprovalItems field value if set, zero value otherwise.
+func (o *WorkItems) GetApprovalItems() ApprovalItemDetails {
+	if o == nil || IsNil(o.ApprovalItems) {
+		var ret ApprovalItemDetails
 		return ret
 	}
-	return o.ApprovalItems
+	return *o.ApprovalItems
 }
 
 // GetApprovalItemsOk returns a tuple with the ApprovalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetApprovalItemsOk() ([]ApprovalItemDetails, bool) {
+func (o *WorkItems) GetApprovalItemsOk() (*ApprovalItemDetails, bool) {
 	if o == nil || IsNil(o.ApprovalItems) {
 		return nil, false
 	}
@@ -494,141 +450,111 @@ func (o *WorkItems) HasApprovalItems() bool {
 	return false
 }
 
-// SetApprovalItems gets a reference to the given []ApprovalItemDetails and assigns it to the ApprovalItems field.
-func (o *WorkItems) SetApprovalItems(v []ApprovalItemDetails) {
-	o.ApprovalItems = v
+// SetApprovalItems gets a reference to the given ApprovalItemDetails and assigns it to the ApprovalItems field.
+func (o *WorkItems) SetApprovalItems(v ApprovalItemDetails) {
+	o.ApprovalItems = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkItems) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkItems) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *WorkItems) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *WorkItems) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *WorkItems) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetCompleted() SailPointTime {
-	if o == nil || IsNil(o.Completed.Get()) {
-		var ret SailPointTime
+// GetCompleted returns the Completed field value if set, zero value otherwise.
+func (o *WorkItems) GetCompleted() time.Time {
+	if o == nil || IsNil(o.Completed) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Completed.Get()
+	return *o.Completed
 }
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetCompletedOk() (*SailPointTime, bool) {
-	if o == nil {
+func (o *WorkItems) GetCompletedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
-	return o.Completed.Get(), o.Completed.IsSet()
+	return o.Completed, true
 }
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *WorkItems) HasCompleted() bool {
-	if o != nil && o.Completed.IsSet() {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
 	return false
 }
 
-// SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *WorkItems) SetCompleted(v SailPointTime) {
-	o.Completed.Set(&v)
-}
-// SetCompletedNil sets the value for Completed to be an explicit nil
-func (o *WorkItems) SetCompletedNil() {
-	o.Completed.Set(nil)
+// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
+func (o *WorkItems) SetCompleted(v time.Time) {
+	o.Completed = &v
 }
 
-// UnsetCompleted ensures that no value is present for Completed, not even an explicit nil
-func (o *WorkItems) UnsetCompleted() {
-	o.Completed.Unset()
-}
-
-// GetNumItems returns the NumItems field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNumItems returns the NumItems field value if set, zero value otherwise.
 func (o *WorkItems) GetNumItems() int32 {
-	if o == nil || IsNil(o.NumItems.Get()) {
+	if o == nil || IsNil(o.NumItems) {
 		var ret int32
 		return ret
 	}
-	return *o.NumItems.Get()
+	return *o.NumItems
 }
 
 // GetNumItemsOk returns a tuple with the NumItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetNumItemsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NumItems) {
 		return nil, false
 	}
-	return o.NumItems.Get(), o.NumItems.IsSet()
+	return o.NumItems, true
 }
 
 // HasNumItems returns a boolean if a field has been set.
 func (o *WorkItems) HasNumItems() bool {
-	if o != nil && o.NumItems.IsSet() {
+	if o != nil && !IsNil(o.NumItems) {
 		return true
 	}
 
 	return false
 }
 
-// SetNumItems gets a reference to the given NullableInt32 and assigns it to the NumItems field.
+// SetNumItems gets a reference to the given int32 and assigns it to the NumItems field.
 func (o *WorkItems) SetNumItems(v int32) {
-	o.NumItems.Set(&v)
-}
-// SetNumItemsNil sets the value for NumItems to be an explicit nil
-func (o *WorkItems) SetNumItemsNil() {
-	o.NumItems.Set(nil)
-}
-
-// UnsetNumItems ensures that no value is present for NumItems, not even an explicit nil
-func (o *WorkItems) UnsetNumItems() {
-	o.NumItems.Unset()
+	o.NumItems = &v
 }
 
 // GetForm returns the Form field value if set, zero value otherwise.
-func (o *WorkItems) GetForm() WorkItemsForm {
+func (o *WorkItems) GetForm() FormDetails {
 	if o == nil || IsNil(o.Form) {
-		var ret WorkItemsForm
+		var ret FormDetails
 		return ret
 	}
 	return *o.Form
@@ -636,7 +562,7 @@ func (o *WorkItems) GetForm() WorkItemsForm {
 
 // GetFormOk returns a tuple with the Form field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetFormOk() (*WorkItemsForm, bool) {
+func (o *WorkItems) GetFormOk() (*FormDetails, bool) {
 	if o == nil || IsNil(o.Form) {
 		return nil, false
 	}
@@ -652,8 +578,8 @@ func (o *WorkItems) HasForm() bool {
 	return false
 }
 
-// SetForm gets a reference to the given WorkItemsForm and assigns it to the Form field.
-func (o *WorkItems) SetForm(v WorkItemsForm) {
+// SetForm gets a reference to the given FormDetails and assigns it to the Form field.
+func (o *WorkItems) SetForm(v FormDetails) {
 	o.Form = &v
 }
 
@@ -702,14 +628,14 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.RequesterId.IsSet() {
-		toSerialize["requesterId"] = o.RequesterId.Get()
+	if !IsNil(o.RequesterId) {
+		toSerialize["requesterId"] = o.RequesterId
 	}
-	if o.RequesterDisplayName.IsSet() {
-		toSerialize["requesterDisplayName"] = o.RequesterDisplayName.Get()
+	if !IsNil(o.RequesterDisplayName) {
+		toSerialize["requesterDisplayName"] = o.RequesterDisplayName
 	}
-	if o.OwnerId.IsSet() {
-		toSerialize["ownerId"] = o.OwnerId.Get()
+	if !IsNil(o.OwnerId) {
+		toSerialize["ownerId"] = o.OwnerId
 	}
 	if !IsNil(o.OwnerName) {
 		toSerialize["ownerName"] = o.OwnerName
@@ -717,8 +643,8 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if o.Modified.IsSet() {
-		toSerialize["modified"] = o.Modified.Get()
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -729,20 +655,20 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.RemediationItems != nil {
+	if !IsNil(o.RemediationItems) {
 		toSerialize["remediationItems"] = o.RemediationItems
 	}
-	if o.ApprovalItems != nil {
+	if !IsNil(o.ApprovalItems) {
 		toSerialize["approvalItems"] = o.ApprovalItems
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Completed.IsSet() {
-		toSerialize["completed"] = o.Completed.Get()
+	if !IsNil(o.Completed) {
+		toSerialize["completed"] = o.Completed
 	}
-	if o.NumItems.IsSet() {
-		toSerialize["numItems"] = o.NumItems.Get()
+	if !IsNil(o.NumItems) {
+		toSerialize["numItems"] = o.NumItems
 	}
 	if !IsNil(o.Form) {
 		toSerialize["form"] = o.Form

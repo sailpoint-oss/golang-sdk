@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequest** | Pointer to [**AccessRequestResponse1**](AccessRequestResponse1.md) |  | [optional] 
+**AccessRequest** | Pointer to [**AccessRequestResponse**](AccessRequestResponse.md) |  | [optional] 
 **IdentityId** | Pointer to **string** | the identity id | [optional] 
 **EventType** | Pointer to **string** | the event type | [optional] 
 **Dt** | Pointer to **string** | the date of event | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccessRequest
 
-`func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1`
+`func (o *AccessRequested) GetAccessRequest() AccessRequestResponse`
 
 GetAccessRequest returns the AccessRequest field if non-nil, zero value otherwise.
 
 ### GetAccessRequestOk
 
-`func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse1, bool)`
+`func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse, bool)`
 
 GetAccessRequestOk returns a tuple with the AccessRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessRequest
 
-`func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse1)`
+`func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse)`
 
 SetAccessRequest sets AccessRequest field to given value.
 

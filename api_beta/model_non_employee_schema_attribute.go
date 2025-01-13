@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type NonEmployeeSchemaAttribute struct {
 	// True if this schema attribute is mandatory on all non-employees sources.
 	System *bool `json:"system,omitempty"`
 	// When the schema attribute was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the schema attribute was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	Type NonEmployeeSchemaAttributeType `json:"type"`
 	// Label displayed on the UI for this schema attribute.
 	Label string `json:"label"`
@@ -51,13 +51,9 @@ type _NonEmployeeSchemaAttribute NonEmployeeSchemaAttribute
 // will change when the set of required properties is changed
 func NewNonEmployeeSchemaAttribute(type_ NonEmployeeSchemaAttributeType, label string, technicalName string) *NonEmployeeSchemaAttribute {
 	this := NonEmployeeSchemaAttribute{}
-	var system bool = false
-	this.System = &system
 	this.Type = type_
 	this.Label = label
 	this.TechnicalName = technicalName
-	var required bool = false
-	this.Required = &required
 	return &this
 }
 
@@ -66,10 +62,6 @@ func NewNonEmployeeSchemaAttribute(type_ NonEmployeeSchemaAttributeType, label s
 // but it doesn't guarantee that properties required by API are set
 func NewNonEmployeeSchemaAttributeWithDefaults() *NonEmployeeSchemaAttribute {
 	this := NonEmployeeSchemaAttribute{}
-	var system bool = false
-	this.System = &system
-	var required bool = false
-	this.Required = &required
 	return &this
 }
 
@@ -138,9 +130,9 @@ func (o *NonEmployeeSchemaAttribute) SetSystem(v bool) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeSchemaAttribute) GetModified() SailPointTime {
+func (o *NonEmployeeSchemaAttribute) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -148,7 +140,7 @@ func (o *NonEmployeeSchemaAttribute) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -164,15 +156,15 @@ func (o *NonEmployeeSchemaAttribute) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NonEmployeeSchemaAttribute) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NonEmployeeSchemaAttribute) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeSchemaAttribute) GetCreated() SailPointTime {
+func (o *NonEmployeeSchemaAttribute) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -180,7 +172,7 @@ func (o *NonEmployeeSchemaAttribute) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -196,8 +188,8 @@ func (o *NonEmployeeSchemaAttribute) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NonEmployeeSchemaAttribute) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NonEmployeeSchemaAttribute) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

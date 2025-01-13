@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **NullableString** | The type of attribute value | [optional] 
+**Type** | Pointer to **string** | The type of attribute value | [optional] 
 **Value** | Pointer to **string** | The attribute value | [optional] 
 
 ## Methods
@@ -51,16 +51,6 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### SetTypeNil
-
-`func (o *Value) SetTypeNil(b bool)`
-
- SetTypeNil sets the value for Type to be an explicit nil
-
-### UnsetType
-`func (o *Value) UnsetType()`
-
-UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetValue
 
 `func (o *Value) GetValue() string`

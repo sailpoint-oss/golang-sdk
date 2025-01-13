@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Invocation ID | 
 **TriggerId** | **string** | Trigger ID | 
-**SubscriptionName** | **string** | Subscription name | 
 **SubscriptionId** | **string** | Subscription ID | 
 **Type** | [**InvocationStatusType**](InvocationStatusType.md) |  | 
 **Created** | **time.Time** | Invocation created timestamp. ISO-8601 in UTC. | 
@@ -18,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewInvocationStatus
 
-`func NewInvocationStatus(id string, triggerId string, subscriptionName string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput, ) *InvocationStatus`
+`func NewInvocationStatus(id string, triggerId string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput, ) *InvocationStatus`
 
 NewInvocationStatus instantiates a new InvocationStatus object
 This constructor will assign default values to properties that have it defined,
@@ -71,26 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *InvocationStatus) SetTriggerId(v string)`
 
 SetTriggerId sets TriggerId field to given value.
-
-
-### GetSubscriptionName
-
-`func (o *InvocationStatus) GetSubscriptionName() string`
-
-GetSubscriptionName returns the SubscriptionName field if non-nil, zero value otherwise.
-
-### GetSubscriptionNameOk
-
-`func (o *InvocationStatus) GetSubscriptionNameOk() (*string, bool)`
-
-GetSubscriptionNameOk returns a tuple with the SubscriptionName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSubscriptionName
-
-`func (o *InvocationStatus) SetSubscriptionName(v string)`
-
-SetSubscriptionName sets SubscriptionName field to given value.
 
 
 ### GetSubscriptionId

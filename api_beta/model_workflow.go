@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Workflow type satisfies the MappedNullable interface at compile time
@@ -31,15 +31,12 @@ type Workflow struct {
 	Trigger *WorkflowTrigger `json:"trigger,omitempty"`
 	// Workflow ID. This is a UUID generated upon creation.
 	Id *string `json:"id,omitempty"`
-	// The date and time the workflow was modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
-	ModifiedBy *WorkflowModifiedBy `json:"modifiedBy,omitempty"`
 	// The number of times this workflow has been executed.
 	ExecutionCount *int32 `json:"executionCount,omitempty"`
 	// The number of times this workflow has failed during execution.
 	FailureCount *int32 `json:"failureCount,omitempty"`
 	// The date and time the workflow was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -291,70 +288,6 @@ func (o *Workflow) SetId(v string) {
 	o.Id = &v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Workflow) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Modified
-}
-
-// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Modified) {
-		return nil, false
-	}
-	return o.Modified, true
-}
-
-// HasModified returns a boolean if a field has been set.
-func (o *Workflow) HasModified() bool {
-	if o != nil && !IsNil(o.Modified) {
-		return true
-	}
-
-	return false
-}
-
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Workflow) SetModified(v SailPointTime) {
-	o.Modified = &v
-}
-
-// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise.
-func (o *Workflow) GetModifiedBy() WorkflowModifiedBy {
-	if o == nil || IsNil(o.ModifiedBy) {
-		var ret WorkflowModifiedBy
-		return ret
-	}
-	return *o.ModifiedBy
-}
-
-// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool) {
-	if o == nil || IsNil(o.ModifiedBy) {
-		return nil, false
-	}
-	return o.ModifiedBy, true
-}
-
-// HasModifiedBy returns a boolean if a field has been set.
-func (o *Workflow) HasModifiedBy() bool {
-	if o != nil && !IsNil(o.ModifiedBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetModifiedBy gets a reference to the given WorkflowModifiedBy and assigns it to the ModifiedBy field.
-func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy) {
-	o.ModifiedBy = &v
-}
-
 // GetExecutionCount returns the ExecutionCount field value if set, zero value otherwise.
 func (o *Workflow) GetExecutionCount() int32 {
 	if o == nil || IsNil(o.ExecutionCount) {
@@ -420,9 +353,9 @@ func (o *Workflow) SetFailureCount(v int32) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Workflow) GetCreated() SailPointTime {
+func (o *Workflow) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -430,7 +363,7 @@ func (o *Workflow) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Workflow) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -446,8 +379,8 @@ func (o *Workflow) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Workflow) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Workflow) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -514,12 +447,6 @@ func (o Workflow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if !IsNil(o.ModifiedBy) {
-		toSerialize["modifiedBy"] = o.ModifiedBy
-	}
 	if !IsNil(o.ExecutionCount) {
 		toSerialize["executionCount"] = o.ExecutionCount
 	}
@@ -561,8 +488,6 @@ func (o *Workflow) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "trigger")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "modified")
-		delete(additionalProperties, "modifiedBy")
 		delete(additionalProperties, "executionCount")
 		delete(additionalProperties, "failureCount")
 		delete(additionalProperties, "created")

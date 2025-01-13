@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Expiration** | **time.Time** | The time until which the artifacts will be available for download. | 
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
-**Message** | Pointer to **string** | This message contains additional information about the overall status of the job. | [optional] 
-**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
+**Message** | **string** | This message contains additional information about the overall status of the job. | 
+**Completed** | **time.Time** | The time the job was completed. | 
 
 ## Methods
 
 ### NewSpConfigImportJobStatus
 
-`func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, ) *SpConfigImportJobStatus`
+`func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string, completed time.Time, ) *SpConfigImportJobStatus`
 
 NewSpConfigImportJobStatus instantiates a new SpConfigImportJobStatus object
 This constructor will assign default values to properties that have it defined,
@@ -171,11 +171,6 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-### HasMessage
-
-`func (o *SpConfigImportJobStatus) HasMessage() bool`
-
-HasMessage returns a boolean if a field has been set.
 
 ### GetCompleted
 
@@ -196,11 +191,6 @@ and a boolean to check if the value has been set.
 
 SetCompleted sets Completed field to given value.
 
-### HasCompleted
-
-`func (o *SpConfigImportJobStatus) HasCompleted() bool`
-
-HasCompleted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalsMustBeExternal** | Pointer to **bool** | If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn&#39;t an org admin. | [optional] [default to false]
-**AutoApprovalEnabled** | Pointer to **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved. | [optional] [default to false]
-**ReauthorizationEnabled** | Pointer to **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to false]
+**ApprovalsMustBeExternal** | Pointer to **bool** | If true, then approvals must be processed by external system. | [optional] 
+**AutoApprovalEnabled** | Pointer to **bool** | If true and requester and reviewer are the same, then automatically approve the approval. | [optional] 
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](RequestOnBehalfOfConfig.md) |  | [optional] 
 **ApprovalReminderAndEscalationConfig** | Pointer to [**ApprovalReminderAndEscalationConfig**](ApprovalReminderAndEscalationConfig.md) |  | [optional] 
 **EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig**](EntitlementRequestConfig.md) |  | [optional] 
@@ -79,31 +78,6 @@ SetAutoApprovalEnabled sets AutoApprovalEnabled field to given value.
 `func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool`
 
 HasAutoApprovalEnabled returns a boolean if a field has been set.
-
-### GetReauthorizationEnabled
-
-`func (o *AccessRequestConfig) GetReauthorizationEnabled() bool`
-
-GetReauthorizationEnabled returns the ReauthorizationEnabled field if non-nil, zero value otherwise.
-
-### GetReauthorizationEnabledOk
-
-`func (o *AccessRequestConfig) GetReauthorizationEnabledOk() (*bool, bool)`
-
-GetReauthorizationEnabledOk returns a tuple with the ReauthorizationEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReauthorizationEnabled
-
-`func (o *AccessRequestConfig) SetReauthorizationEnabled(v bool)`
-
-SetReauthorizationEnabled sets ReauthorizationEnabled field to given value.
-
-### HasReauthorizationEnabled
-
-`func (o *AccessRequestConfig) HasReauthorizationEnabled() bool`
-
-HasReauthorizationEnabled returns a boolean if a field has been set.
 
 ### GetRequestOnBehalfOfConfig
 

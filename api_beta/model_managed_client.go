@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -40,7 +40,7 @@ type ManagedClient struct {
 	// The public IP address of the ManagedClient
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// When the ManagedClient was last seen by the server
-	LastSeen *SailPointTime `json:"lastSeen,omitempty"`
+	LastSeen *time.Time `json:"lastSeen,omitempty"`
 	// ManagedClient name
 	Name *string `json:"name,omitempty"`
 	// Milliseconds since the ManagedClient has polled the server
@@ -346,9 +346,9 @@ func (o *ManagedClient) SetIpAddress(v string) {
 }
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise.
-func (o *ManagedClient) GetLastSeen() SailPointTime {
+func (o *ManagedClient) GetLastSeen() time.Time {
 	if o == nil || IsNil(o.LastSeen) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastSeen
@@ -356,7 +356,7 @@ func (o *ManagedClient) GetLastSeen() SailPointTime {
 
 // GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagedClient) GetLastSeenOk() (*SailPointTime, bool) {
+func (o *ManagedClient) GetLastSeenOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastSeen) {
 		return nil, false
 	}
@@ -372,8 +372,8 @@ func (o *ManagedClient) HasLastSeen() bool {
 	return false
 }
 
-// SetLastSeen gets a reference to the given SailPointTime and assigns it to the LastSeen field.
-func (o *ManagedClient) SetLastSeen(v SailPointTime) {
+// SetLastSeen gets a reference to the given time.Time and assigns it to the LastSeen field.
+func (o *ManagedClient) SetLastSeen(v time.Time) {
 	o.LastSeen = &v
 }
 

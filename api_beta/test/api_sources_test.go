@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing SourcesAPIService
 
@@ -76,20 +76,6 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesAPIService DeleteAccountsAsync", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesAPIService DeleteNativeChangeDetectionConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -127,20 +113,6 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 		httpRes, err := apiClient.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesAPIService GetCorrelationConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -269,48 +241,6 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesAPIService GetSourceSchemas", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-
-		resp, httpRes, err := apiClient.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesAPIService ImportAccounts", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesAPIService ImportEntitlements", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.ImportEntitlements(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesAPIService ImportSourceAccountsSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -353,20 +283,6 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesAPIService ImportUncorrelatedAccounts", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesAPIService ListProvisioningPolicies", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -374,6 +290,20 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService ListSourceSchemas", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.ListSourceSchemas(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -414,20 +344,6 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.PingCluster(context.Background(), sourceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesAPIService PutCorrelationConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

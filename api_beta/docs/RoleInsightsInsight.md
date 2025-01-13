@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **IdentitiesWithAccess** | Pointer to **int32** | The number of identities in this role with the entitlement. | [optional] 
 **IdentitiesImpacted** | Pointer to **int32** | The number of identities in this role that do not have the specified entitlement. | [optional] 
 **TotalNumberOfIdentities** | Pointer to **int32** | The total number of identities. | [optional] 
-**ImpactedIdentityNames** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -129,41 +128,6 @@ SetTotalNumberOfIdentities sets TotalNumberOfIdentities field to given value.
 
 HasTotalNumberOfIdentities returns a boolean if a field has been set.
 
-### GetImpactedIdentityNames
-
-`func (o *RoleInsightsInsight) GetImpactedIdentityNames() string`
-
-GetImpactedIdentityNames returns the ImpactedIdentityNames field if non-nil, zero value otherwise.
-
-### GetImpactedIdentityNamesOk
-
-`func (o *RoleInsightsInsight) GetImpactedIdentityNamesOk() (*string, bool)`
-
-GetImpactedIdentityNamesOk returns a tuple with the ImpactedIdentityNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImpactedIdentityNames
-
-`func (o *RoleInsightsInsight) SetImpactedIdentityNames(v string)`
-
-SetImpactedIdentityNames sets ImpactedIdentityNames field to given value.
-
-### HasImpactedIdentityNames
-
-`func (o *RoleInsightsInsight) HasImpactedIdentityNames() bool`
-
-HasImpactedIdentityNames returns a boolean if a field has been set.
-
-### SetImpactedIdentityNamesNil
-
-`func (o *RoleInsightsInsight) SetImpactedIdentityNamesNil(b bool)`
-
- SetImpactedIdentityNamesNil sets the value for ImpactedIdentityNames to be an explicit nil
-
-### UnsetImpactedIdentityNames
-`func (o *RoleInsightsInsight) UnsetImpactedIdentityNames()`
-
-UnsetImpactedIdentityNames ensures that no value is present for ImpactedIdentityNames, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

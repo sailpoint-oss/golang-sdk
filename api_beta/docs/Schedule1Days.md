@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApplicationId** | Pointer to **string** | The application id | [optional] 
-**AccountMatchConfig** | Pointer to [**SelectorAccountMatchConfig**](SelectorAccountMatchConfig.md) |  | [optional] 
+**Type** | [**SelectorType**](SelectorType.md) |  | 
+**Values** | **[]string** | The selected values.  | 
+**Interval** | Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
 
 ## Methods
 
 ### NewSchedule1Days
 
-`func NewSchedule1Days() *Schedule1Days`
+`func NewSchedule1Days(type_ SelectorType, values []string, ) *Schedule1Days`
 
 NewSchedule1Days instantiates a new Schedule1Days object
 This constructor will assign default values to properties that have it defined,
@@ -26,56 +27,81 @@ NewSchedule1DaysWithDefaults instantiates a new Schedule1Days object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetApplicationId
+### GetType
 
-`func (o *Schedule1Days) GetApplicationId() string`
+`func (o *Schedule1Days) GetType() SelectorType`
 
-GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetApplicationIdOk
+### GetTypeOk
 
-`func (o *Schedule1Days) GetApplicationIdOk() (*string, bool)`
+`func (o *Schedule1Days) GetTypeOk() (*SelectorType, bool)`
 
-GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetApplicationId
+### SetType
 
-`func (o *Schedule1Days) SetApplicationId(v string)`
+`func (o *Schedule1Days) SetType(v SelectorType)`
 
-SetApplicationId sets ApplicationId field to given value.
+SetType sets Type field to given value.
 
-### HasApplicationId
 
-`func (o *Schedule1Days) HasApplicationId() bool`
+### GetValues
 
-HasApplicationId returns a boolean if a field has been set.
+`func (o *Schedule1Days) GetValues() []string`
 
-### GetAccountMatchConfig
+GetValues returns the Values field if non-nil, zero value otherwise.
 
-`func (o *Schedule1Days) GetAccountMatchConfig() SelectorAccountMatchConfig`
+### GetValuesOk
 
-GetAccountMatchConfig returns the AccountMatchConfig field if non-nil, zero value otherwise.
+`func (o *Schedule1Days) GetValuesOk() (*[]string, bool)`
 
-### GetAccountMatchConfigOk
-
-`func (o *Schedule1Days) GetAccountMatchConfigOk() (*SelectorAccountMatchConfig, bool)`
-
-GetAccountMatchConfigOk returns a tuple with the AccountMatchConfig field if it's non-nil, zero value otherwise
+GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountMatchConfig
+### SetValues
 
-`func (o *Schedule1Days) SetAccountMatchConfig(v SelectorAccountMatchConfig)`
+`func (o *Schedule1Days) SetValues(v []string)`
 
-SetAccountMatchConfig sets AccountMatchConfig field to given value.
+SetValues sets Values field to given value.
 
-### HasAccountMatchConfig
 
-`func (o *Schedule1Days) HasAccountMatchConfig() bool`
+### GetInterval
 
-HasAccountMatchConfig returns a boolean if a field has been set.
+`func (o *Schedule1Days) GetInterval() int32`
 
+GetInterval returns the Interval field if non-nil, zero value otherwise.
+
+### GetIntervalOk
+
+`func (o *Schedule1Days) GetIntervalOk() (*int32, bool)`
+
+GetIntervalOk returns a tuple with the Interval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterval
+
+`func (o *Schedule1Days) SetInterval(v int32)`
+
+SetInterval sets Interval field to given value.
+
+### HasInterval
+
+`func (o *Schedule1Days) HasInterval() bool`
+
+HasInterval returns a boolean if a field has been set.
+
+### SetIntervalNil
+
+`func (o *Schedule1Days) SetIntervalNil(b bool)`
+
+ SetIntervalNil sets the value for Interval to be an explicit nil
+
+### UnsetInterval
+`func (o *Schedule1Days) UnsetInterval()`
+
+UnsetInterval ensures that no value is present for Interval, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -41,7 +41,7 @@ func (r ApiCancelAccessRequestRequest) Execute() (map[string]interface{}, *http.
 CancelAccessRequest Cancel Access Request
 
 This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
-In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
+Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCancelAccessRequestRequest
@@ -130,7 +130,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestExecute(r ApiCancelAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestExecute(r ApiCancelAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -216,7 +216,7 @@ func (r ApiCloseAccessRequestRequest) Execute() (map[string]interface{}, *http.R
 /*
 CloseAccessRequest Close Access Request
 
-This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).
+This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.
 
 To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND "Access Request". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.
 
@@ -316,7 +316,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestExecute(r ApiCloseAccessReq
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestExecute(r ApiCloseAccessReq
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -384,24 +384,22 @@ func (r ApiCreateAccessRequestRequest) AccessRequest(accessRequest AccessRequest
 	return r
 }
 
-func (r ApiCreateAccessRequestRequest) Execute() (*AccessRequestResponse, *http.Response, error) {
+func (r ApiCreateAccessRequestRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CreateAccessRequestExecute(r)
 }
 
 /*
-CreateAccessRequest Submit Access Request
+CreateAccessRequest Submit an Access Request
 
-Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
+This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.
 
-Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request
-has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it doesn't return an error
-if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.
-
-It's best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can
-be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) APIs. You can also
-use the [Search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items an identity has before submitting
-an access request to ensure that you aren't requesting access that is already granted. If you use this API to request access that an identity already has, the API will ignore the request. 
-These ignored requests do not display when you use the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) API.
+Access requests are processed asynchronously by IdentityNow.  A success response from this endpoint means the request
+has been submitted to IDN and is queued for processing.  Because this endpoint is asynchronous, it will not return an error
+if you submit duplicate access requests in quick succession, or you submit an access request for access that is already in progress, approved, or rejected.
+It is best practice to check for any existing access requests that reference the same access items before submitting a new access request.  This can
+be accomplished by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) endpoints.  You can also
+use the [search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items that an identity has before submitting
+an access request to ensure you are not requesting access that is already granted.
 
 There are two types of access request:
 
@@ -416,11 +414,15 @@ __REVOKE_ACCESS__
 * Can only be requested for a single identity at a time.
 * You cannot use an access request to revoke access from an identity if that access has been granted by role membership or by birthright provisioning. 
 * Does not support self request. Only manager can request to revoke access for their directly managed employees.
-* If a `removeDate` is specified, then the access will be removed on that date and time only for roles, access profiles and entitlements.
+* If a `removeDate` is specified, then the access will be removed on that date and time only for roles and access profiles. Entitlements are currently unsupported for `removeDate`.
 * Roles, access profiles, and entitlements can be requested for revocation.
 * Revoke requests for entitlements are limited to 1 entitlement per access request currently.
-* You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
-* Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone.
+* [Roles, Access Profiles] You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
+* Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.
+
+>**Note:** There is no indication to the approver in the IdentityNow UI that the approval request is for a revoke action. Take this into consideration when calling this API.
+
+A token with API authority cannot be used to call this endpoint. 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -434,13 +436,13 @@ func (a *AccessRequestsAPIService) CreateAccessRequest(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return AccessRequestResponse
-func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (*AccessRequestResponse, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AccessRequestResponse
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CreateAccessRequest")
@@ -510,7 +512,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -532,7 +534,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -663,7 +665,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -685,7 +687,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -732,34 +734,33 @@ type ApiListAccessRequestStatusRequest struct {
 	offset *int32
 	filters *string
 	sorters *string
-	requestState *string
 }
 
-// Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+// Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
 func (r ApiListAccessRequestStatusRequest) RequestedFor(requestedFor string) ApiListAccessRequestStatusRequest {
 	r.requestedFor = &requestedFor
 	return r
 }
 
-// Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+// Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
 func (r ApiListAccessRequestStatusRequest) RequestedBy(requestedBy string) ApiListAccessRequestStatusRequest {
 	r.requestedBy = &requestedBy
 	return r
 }
 
-// Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+// Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
 func (r ApiListAccessRequestStatusRequest) RegardingIdentity(regardingIdentity string) ApiListAccessRequestStatusRequest {
 	r.regardingIdentity = &regardingIdentity
 	return r
 }
 
-// Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
+// Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.
 func (r ApiListAccessRequestStatusRequest) AssignedTo(assignedTo string) ApiListAccessRequestStatusRequest {
 	r.assignedTo = &assignedTo
 	return r
 }
 
-// If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
 func (r ApiListAccessRequestStatusRequest) Count(count bool) ApiListAccessRequestStatusRequest {
 	r.count = &count
 	return r
@@ -777,7 +778,7 @@ func (r ApiListAccessRequestStatusRequest) Offset(offset int32) ApiListAccessReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *in*  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 func (r ApiListAccessRequestStatusRequest) Filters(filters string) ApiListAccessRequestStatusRequest {
 	r.filters = &filters
 	return r
@@ -789,12 +790,6 @@ func (r ApiListAccessRequestStatusRequest) Sorters(sorters string) ApiListAccess
 	return r
 }
 
-// Filter the results by the state of the request. The only valid value is *EXECUTING*.
-func (r ApiListAccessRequestStatusRequest) RequestState(requestState string) ApiListAccessRequestStatusRequest {
-	r.requestState = &requestState
-	return r
-}
-
 func (r ApiListAccessRequestStatusRequest) Execute() ([]RequestedItemStatus, *http.Response, error) {
 	return r.ApiService.ListAccessRequestStatusExecute(r)
 }
@@ -802,9 +797,8 @@ func (r ApiListAccessRequestStatusRequest) Execute() ([]RequestedItemStatus, *ht
 /*
 ListAccessRequestStatus Access Request Status
 
-Use this API to return a list of access request statuses based on the specified query parameters.
-If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
-Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
+The Access Request Status API returns a list of access request statuses based on the specified query parameters.
+Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessRequestStatusRequest
@@ -870,9 +864,6 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
-	if r.requestState != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "request-state", r.requestState, "", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -924,7 +915,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -946,7 +937,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1000,6 +991,7 @@ func (r ApiSetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http
 SetAccessRequestConfig Update Access Request Configuration
 
 This endpoint replaces the current access-request configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigRequest
@@ -1088,7 +1080,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigExecute(r ApiSetAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1110,7 +1102,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigExecute(r ApiSetAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

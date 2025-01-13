@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attributes** | Pointer to [**[]PublicIdentityAttributeConfig**](PublicIdentityAttributeConfig.md) |  | [optional] 
 **ModifiedBy** | Pointer to [**NullableIdentityReference**](IdentityReference.md) |  | [optional] 
-**Modified** | Pointer to **NullableTime** | the date/time of the modification | [optional] 
+**Modified** | Pointer to **time.Time** | the date/time of the modification | [optional] 
 
 ## Methods
 
@@ -112,16 +112,6 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### SetModifiedNil
-
-`func (o *PublicIdentityConfig) SetModifiedNil(b bool)`
-
- SetModifiedNil sets the value for Modified to be an explicit nil
-
-### UnsetModified
-`func (o *PublicIdentityConfig) UnsetModified()`
-
-UnsetModified ensures that no value is present for Modified, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Identity struct {
 	// The identity's name is equivalent to its Display Name attribute.
 	Name string `json:"name"`
 	// Creation date of the identity
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Last modification date of the identity
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// The identity's alternate unique identifier is equivalent to its Account Name on the authoritative source account schema.
 	Alias *string `json:"alias,omitempty"`
 	// The email address of the identity
@@ -41,7 +41,7 @@ type Identity struct {
 	// Whether this identity is a manager of another identity
 	IsManager *bool `json:"isManager,omitempty"`
 	// The last time the identity was refreshed by the system
-	LastRefresh *SailPointTime `json:"lastRefresh,omitempty"`
+	LastRefresh *time.Time `json:"lastRefresh,omitempty"`
 	// A map with the identity attributes for the identity
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	LifecycleState *IdentityLifecycleState `json:"lifecycleState,omitempty"`
@@ -129,9 +129,9 @@ func (o *Identity) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Identity) GetCreated() SailPointTime {
+func (o *Identity) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -139,7 +139,7 @@ func (o *Identity) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Identity) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -155,15 +155,15 @@ func (o *Identity) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Identity) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Identity) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Identity) GetModified() SailPointTime {
+func (o *Identity) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -171,7 +171,7 @@ func (o *Identity) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Identity) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -187,8 +187,8 @@ func (o *Identity) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Identity) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Identity) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
@@ -415,9 +415,9 @@ func (o *Identity) SetIsManager(v bool) {
 }
 
 // GetLastRefresh returns the LastRefresh field value if set, zero value otherwise.
-func (o *Identity) GetLastRefresh() SailPointTime {
+func (o *Identity) GetLastRefresh() time.Time {
 	if o == nil || IsNil(o.LastRefresh) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastRefresh
@@ -425,7 +425,7 @@ func (o *Identity) GetLastRefresh() SailPointTime {
 
 // GetLastRefreshOk returns a tuple with the LastRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetLastRefreshOk() (*SailPointTime, bool) {
+func (o *Identity) GetLastRefreshOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastRefresh) {
 		return nil, false
 	}
@@ -441,8 +441,8 @@ func (o *Identity) HasLastRefresh() bool {
 	return false
 }
 
-// SetLastRefresh gets a reference to the given SailPointTime and assigns it to the LastRefresh field.
-func (o *Identity) SetLastRefresh(v SailPointTime) {
+// SetLastRefresh gets a reference to the given time.Time and assigns it to the LastRefresh field.
+func (o *Identity) SetLastRefresh(v time.Time) {
 	o.LastRefresh = &v
 }
 

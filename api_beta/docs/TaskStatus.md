@@ -8,26 +8,24 @@ Name | Type | Description | Notes
 **Type** | **string** | Type of task this TaskStatus represents | 
 **UniqueName** | **string** | Name of the task this TaskStatus represents | 
 **Description** | **string** | Description of the task this TaskStatus represents | 
-**ParentName** | **NullableString** | Name of the parent of the task this TaskStatus represents | 
+**ParentName** | **string** | Name of the parent of the task this TaskStatus represents | 
 **Launcher** | **string** | Service to execute the task this TaskStatus represents | 
-**Target** | Pointer to [**NullableTarget**](Target.md) |  | [optional] 
 **Created** | **time.Time** | Creation date of the task this TaskStatus represents | 
 **Modified** | **time.Time** | Last modification date of the task this TaskStatus represents | 
-**Launched** | **NullableTime** | Launch date of the task this TaskStatus represents | 
-**Completed** | **NullableTime** | Completion date of the task this TaskStatus represents | 
-**CompletionStatus** | **NullableString** | Completion status of the task this TaskStatus represents | 
+**Launched** | **time.Time** | Launch date of the task this TaskStatus represents | 
+**Completed** | **time.Time** | Completion date of the task this TaskStatus represents | 
+**CompletionStatus** | **string** | Completion status of the task this TaskStatus represents | 
 **Messages** | [**[]TaskStatusMessage**](TaskStatusMessage.md) | Messages associated with the task this TaskStatus represents | 
 **Returns** | [**[]TaskReturnDetails**](TaskReturnDetails.md) | Return values from the task this TaskStatus represents | 
 **Attributes** | **map[string]interface{}** | Attributes of the task this TaskStatus represents | 
-**Progress** | **NullableString** | Current progress of the task this TaskStatus represents | 
+**Progress** | **string** | Current progress of the task this TaskStatus represents | 
 **PercentComplete** | **int32** | Current percentage completion of the task this TaskStatus represents | 
-**TaskDefinitionSummary** | Pointer to [**TaskDefinitionSummary**](TaskDefinitionSummary.md) |  | [optional] 
 
 ## Methods
 
 ### NewTaskStatus
 
-`func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created time.Time, modified time.Time, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress NullableString, percentComplete int32, ) *TaskStatus`
+`func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName string, launcher string, created time.Time, modified time.Time, launched time.Time, completed time.Time, completionStatus string, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress string, percentComplete int32, ) *TaskStatus`
 
 NewTaskStatus instantiates a new TaskStatus object
 This constructor will assign default values to properties that have it defined,
@@ -142,16 +140,6 @@ and a boolean to check if the value has been set.
 SetParentName sets ParentName field to given value.
 
 
-### SetParentNameNil
-
-`func (o *TaskStatus) SetParentNameNil(b bool)`
-
- SetParentNameNil sets the value for ParentName to be an explicit nil
-
-### UnsetParentName
-`func (o *TaskStatus) UnsetParentName()`
-
-UnsetParentName ensures that no value is present for ParentName, not even an explicit nil
 ### GetLauncher
 
 `func (o *TaskStatus) GetLauncher() string`
@@ -172,41 +160,6 @@ and a boolean to check if the value has been set.
 SetLauncher sets Launcher field to given value.
 
 
-### GetTarget
-
-`func (o *TaskStatus) GetTarget() Target`
-
-GetTarget returns the Target field if non-nil, zero value otherwise.
-
-### GetTargetOk
-
-`func (o *TaskStatus) GetTargetOk() (*Target, bool)`
-
-GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTarget
-
-`func (o *TaskStatus) SetTarget(v Target)`
-
-SetTarget sets Target field to given value.
-
-### HasTarget
-
-`func (o *TaskStatus) HasTarget() bool`
-
-HasTarget returns a boolean if a field has been set.
-
-### SetTargetNil
-
-`func (o *TaskStatus) SetTargetNil(b bool)`
-
- SetTargetNil sets the value for Target to be an explicit nil
-
-### UnsetTarget
-`func (o *TaskStatus) UnsetTarget()`
-
-UnsetTarget ensures that no value is present for Target, not even an explicit nil
 ### GetCreated
 
 `func (o *TaskStatus) GetCreated() time.Time`
@@ -267,16 +220,6 @@ and a boolean to check if the value has been set.
 SetLaunched sets Launched field to given value.
 
 
-### SetLaunchedNil
-
-`func (o *TaskStatus) SetLaunchedNil(b bool)`
-
- SetLaunchedNil sets the value for Launched to be an explicit nil
-
-### UnsetLaunched
-`func (o *TaskStatus) UnsetLaunched()`
-
-UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
 `func (o *TaskStatus) GetCompleted() time.Time`
@@ -297,16 +240,6 @@ and a boolean to check if the value has been set.
 SetCompleted sets Completed field to given value.
 
 
-### SetCompletedNil
-
-`func (o *TaskStatus) SetCompletedNil(b bool)`
-
- SetCompletedNil sets the value for Completed to be an explicit nil
-
-### UnsetCompleted
-`func (o *TaskStatus) UnsetCompleted()`
-
-UnsetCompleted ensures that no value is present for Completed, not even an explicit nil
 ### GetCompletionStatus
 
 `func (o *TaskStatus) GetCompletionStatus() string`
@@ -327,16 +260,6 @@ and a boolean to check if the value has been set.
 SetCompletionStatus sets CompletionStatus field to given value.
 
 
-### SetCompletionStatusNil
-
-`func (o *TaskStatus) SetCompletionStatusNil(b bool)`
-
- SetCompletionStatusNil sets the value for CompletionStatus to be an explicit nil
-
-### UnsetCompletionStatus
-`func (o *TaskStatus) UnsetCompletionStatus()`
-
-UnsetCompletionStatus ensures that no value is present for CompletionStatus, not even an explicit nil
 ### GetMessages
 
 `func (o *TaskStatus) GetMessages() []TaskStatusMessage`
@@ -417,16 +340,6 @@ and a boolean to check if the value has been set.
 SetProgress sets Progress field to given value.
 
 
-### SetProgressNil
-
-`func (o *TaskStatus) SetProgressNil(b bool)`
-
- SetProgressNil sets the value for Progress to be an explicit nil
-
-### UnsetProgress
-`func (o *TaskStatus) UnsetProgress()`
-
-UnsetProgress ensures that no value is present for Progress, not even an explicit nil
 ### GetPercentComplete
 
 `func (o *TaskStatus) GetPercentComplete() int32`
@@ -446,31 +359,6 @@ and a boolean to check if the value has been set.
 
 SetPercentComplete sets PercentComplete field to given value.
 
-
-### GetTaskDefinitionSummary
-
-`func (o *TaskStatus) GetTaskDefinitionSummary() TaskDefinitionSummary`
-
-GetTaskDefinitionSummary returns the TaskDefinitionSummary field if non-nil, zero value otherwise.
-
-### GetTaskDefinitionSummaryOk
-
-`func (o *TaskStatus) GetTaskDefinitionSummaryOk() (*TaskDefinitionSummary, bool)`
-
-GetTaskDefinitionSummaryOk returns a tuple with the TaskDefinitionSummary field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTaskDefinitionSummary
-
-`func (o *TaskStatus) SetTaskDefinitionSummary(v TaskDefinitionSummary)`
-
-SetTaskDefinitionSummary sets TaskDefinitionSummary field to given value.
-
-### HasTaskDefinitionSummary
-
-`func (o *TaskStatus) HasTaskDefinitionSummary() bool`
-
-HasTaskDefinitionSummary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

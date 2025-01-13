@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing IdentityProfilesAPIService
 
@@ -72,6 +72,18 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentityProfilesAPIService GenerateIdentityPreview", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentityProfilesAPIService GetDefaultIdentityAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -117,18 +129,6 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityProfilesAPIService ShowGenerateIdentityPreview", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.IdentityProfilesAPI.ShowGenerateIdentityPreview(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

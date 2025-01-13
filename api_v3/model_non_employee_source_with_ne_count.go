@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the NonEmployeeSourceWithNECount type satisfies the MappedNullable interface at compile time
@@ -33,11 +33,11 @@ type NonEmployeeSourceWithNECount struct {
 	// List of account managers
 	AccountManagers []NonEmployeeIdentityReferenceWithId `json:"accountManagers,omitempty"`
 	// When the request was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Number of non-employee records associated with this source.
-	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
+	NonEmployeeCount *int32 `json:"nonEmployeeCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -253,9 +253,9 @@ func (o *NonEmployeeSourceWithNECount) SetAccountManagers(v []NonEmployeeIdentit
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithNECount) GetModified() SailPointTime {
+func (o *NonEmployeeSourceWithNECount) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -263,7 +263,7 @@ func (o *NonEmployeeSourceWithNECount) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -279,15 +279,15 @@ func (o *NonEmployeeSourceWithNECount) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NonEmployeeSourceWithNECount) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NonEmployeeSourceWithNECount) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithNECount) GetCreated() SailPointTime {
+func (o *NonEmployeeSourceWithNECount) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -295,7 +295,7 @@ func (o *NonEmployeeSourceWithNECount) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -311,51 +311,41 @@ func (o *NonEmployeeSourceWithNECount) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NonEmployeeSourceWithNECount) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NonEmployeeSourceWithNECount) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCount() int32 {
-	if o == nil || IsNil(o.NonEmployeeCount.Get()) {
+	if o == nil || IsNil(o.NonEmployeeCount) {
 		var ret int32
 		return ret
 	}
-	return *o.NonEmployeeCount.Get()
+	return *o.NonEmployeeCount
 }
 
 // GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCountOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NonEmployeeCount) {
 		return nil, false
 	}
-	return o.NonEmployeeCount.Get(), o.NonEmployeeCount.IsSet()
+	return o.NonEmployeeCount, true
 }
 
 // HasNonEmployeeCount returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasNonEmployeeCount() bool {
-	if o != nil && o.NonEmployeeCount.IsSet() {
+	if o != nil && !IsNil(o.NonEmployeeCount) {
 		return true
 	}
 
 	return false
 }
 
-// SetNonEmployeeCount gets a reference to the given NullableInt32 and assigns it to the NonEmployeeCount field.
+// SetNonEmployeeCount gets a reference to the given int32 and assigns it to the NonEmployeeCount field.
 func (o *NonEmployeeSourceWithNECount) SetNonEmployeeCount(v int32) {
-	o.NonEmployeeCount.Set(&v)
-}
-// SetNonEmployeeCountNil sets the value for NonEmployeeCount to be an explicit nil
-func (o *NonEmployeeSourceWithNECount) SetNonEmployeeCountNil() {
-	o.NonEmployeeCount.Set(nil)
-}
-
-// UnsetNonEmployeeCount ensures that no value is present for NonEmployeeCount, not even an explicit nil
-func (o *NonEmployeeSourceWithNECount) UnsetNonEmployeeCount() {
-	o.NonEmployeeCount.Unset()
+	o.NonEmployeeCount = &v
 }
 
 func (o NonEmployeeSourceWithNECount) MarshalJSON() ([]byte, error) {
@@ -392,8 +382,8 @@ func (o NonEmployeeSourceWithNECount) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if o.NonEmployeeCount.IsSet() {
-		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount.Get()
+	if !IsNil(o.NonEmployeeCount) {
+		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount
 	}
 
 	for key, value := range o.AdditionalProperties {

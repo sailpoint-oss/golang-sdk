@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -28,13 +28,13 @@ type SpConfigExportJob struct {
 	// Type of the job, either export or import.
 	Type string `json:"type"`
 	// The time until which the artifacts will be available for download.
-	Expiration SailPointTime `json:"expiration"`
+	Expiration time.Time `json:"expiration"`
 	// The time the job was started.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// The time of the last update to the job.
-	Modified SailPointTime `json:"modified"`
+	Modified time.Time `json:"modified"`
 	// Optional user defined description/name for export job.
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,7 +44,7 @@ type _SpConfigExportJob SpConfigExportJob
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigExportJob(jobId string, status string, type_ string, expiration SailPointTime, created SailPointTime, modified SailPointTime) *SpConfigExportJob {
+func NewSpConfigExportJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string) *SpConfigExportJob {
 	this := SpConfigExportJob{}
 	this.JobId = jobId
 	this.Status = status
@@ -52,6 +52,7 @@ func NewSpConfigExportJob(jobId string, status string, type_ string, expiration 
 	this.Expiration = expiration
 	this.Created = created
 	this.Modified = modified
+	this.Description = description
 	return &this
 }
 
@@ -136,9 +137,9 @@ func (o *SpConfigExportJob) SetType(v string) {
 }
 
 // GetExpiration returns the Expiration field value
-func (o *SpConfigExportJob) GetExpiration() SailPointTime {
+func (o *SpConfigExportJob) GetExpiration() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -147,7 +148,7 @@ func (o *SpConfigExportJob) GetExpiration() SailPointTime {
 
 // GetExpirationOk returns a tuple with the Expiration field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigExportJob) GetExpirationOk() (*SailPointTime, bool) {
+func (o *SpConfigExportJob) GetExpirationOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -155,14 +156,14 @@ func (o *SpConfigExportJob) GetExpirationOk() (*SailPointTime, bool) {
 }
 
 // SetExpiration sets field value
-func (o *SpConfigExportJob) SetExpiration(v SailPointTime) {
+func (o *SpConfigExportJob) SetExpiration(v time.Time) {
 	o.Expiration = v
 }
 
 // GetCreated returns the Created field value
-func (o *SpConfigExportJob) GetCreated() SailPointTime {
+func (o *SpConfigExportJob) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -171,7 +172,7 @@ func (o *SpConfigExportJob) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigExportJob) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SpConfigExportJob) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -179,14 +180,14 @@ func (o *SpConfigExportJob) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *SpConfigExportJob) SetCreated(v SailPointTime) {
+func (o *SpConfigExportJob) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *SpConfigExportJob) GetModified() SailPointTime {
+func (o *SpConfigExportJob) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -195,7 +196,7 @@ func (o *SpConfigExportJob) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigExportJob) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SpConfigExportJob) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -203,40 +204,32 @@ func (o *SpConfigExportJob) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *SpConfigExportJob) SetModified(v SailPointTime) {
+func (o *SpConfigExportJob) SetModified(v time.Time) {
 	o.Modified = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *SpConfigExportJob) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportJob) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *SpConfigExportJob) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription sets field value
 func (o *SpConfigExportJob) SetDescription(v string) {
-	o.Description = &v
+	o.Description = v
 }
 
 func (o SpConfigExportJob) MarshalJSON() ([]byte, error) {
@@ -255,9 +248,7 @@ func (o SpConfigExportJob) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiration"] = o.Expiration
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["description"] = o.Description
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -277,6 +268,7 @@ func (o *SpConfigExportJob) UnmarshalJSON(data []byte) (err error) {
 		"expiration",
 		"created",
 		"modified",
+		"description",
 	}
 
 	allProperties := make(map[string]interface{})

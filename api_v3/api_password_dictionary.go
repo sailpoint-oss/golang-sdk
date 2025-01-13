@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -36,6 +36,7 @@ func (r ApiGetPasswordDictionaryRequest) Execute() (string, *http.Response, erro
 GetPasswordDictionary Get Password Dictionary
 
 This gets password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
 The password dictionary file can contain lines that are:
 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
 2. empty lines
@@ -234,6 +235,7 @@ func (r ApiPutPasswordDictionaryRequest) Execute() (*http.Response, error) {
 PutPasswordDictionary Update Password Dictionary
 
 This updates password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
 The password dictionary file can contain lines that are:
 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
 2. empty lines

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,8 +22,8 @@ var _ MappedNullable = &WorkflowTrigger{}
 type WorkflowTrigger struct {
 	// The trigger type
 	Type string `json:"type"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	Attributes NullableWorkflowTriggerAttributes `json:"attributes"`
+	// Workflow Trigger Attributes.
+	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,7 +33,7 @@ type _WorkflowTrigger WorkflowTrigger
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowTrigger(type_ string, attributes NullableWorkflowTriggerAttributes) *WorkflowTrigger {
+func NewWorkflowTrigger(type_ string, attributes map[string]interface{}) *WorkflowTrigger {
 	this := WorkflowTrigger{}
 	this.Type = type_
 	this.Attributes = attributes
@@ -72,72 +72,28 @@ func (o *WorkflowTrigger) SetType(v string) {
 	o.Type = v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkflowTrigger) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DisplayName.Get()
-}
-
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkflowTrigger) GetDisplayNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DisplayName.Get(), o.DisplayName.IsSet()
-}
-
-// HasDisplayName returns a boolean if a field has been set.
-func (o *WorkflowTrigger) HasDisplayName() bool {
-	if o != nil && o.DisplayName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
-func (o *WorkflowTrigger) SetDisplayName(v string) {
-	o.DisplayName.Set(&v)
-}
-// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
-func (o *WorkflowTrigger) SetDisplayNameNil() {
-	o.DisplayName.Set(nil)
-}
-
-// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
-func (o *WorkflowTrigger) UnsetDisplayName() {
-	o.DisplayName.Unset()
-}
-
 // GetAttributes returns the Attributes field value
-// If the value is explicit nil, the zero value for WorkflowTriggerAttributes will be returned
-func (o *WorkflowTrigger) GetAttributes() WorkflowTriggerAttributes {
-	if o == nil || o.Attributes.Get() == nil {
-		var ret WorkflowTriggerAttributes
+func (o *WorkflowTrigger) GetAttributes() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 
-	return *o.Attributes.Get()
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkflowTrigger) GetAttributesOk() (*WorkflowTriggerAttributes, bool) {
+func (o *WorkflowTrigger) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return o.Attributes.Get(), o.Attributes.IsSet()
+	return o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *WorkflowTrigger) SetAttributes(v WorkflowTriggerAttributes) {
-	o.Attributes.Set(&v)
+func (o *WorkflowTrigger) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
 }
 
 func (o WorkflowTrigger) MarshalJSON() ([]byte, error) {
@@ -151,10 +107,7 @@ func (o WorkflowTrigger) MarshalJSON() ([]byte, error) {
 func (o WorkflowTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if o.DisplayName.IsSet() {
-		toSerialize["displayName"] = o.DisplayName.Get()
-	}
-	toSerialize["attributes"] = o.Attributes.Get()
+	toSerialize["attributes"] = o.Attributes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -200,7 +153,6 @@ func (o *WorkflowTrigger) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}

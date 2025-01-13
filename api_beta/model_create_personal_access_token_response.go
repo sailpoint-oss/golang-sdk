@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -31,9 +31,7 @@ type CreatePersonalAccessTokenResponse struct {
 	Name string `json:"name"`
 	Owner PatOwner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
-	Created SailPointTime `json:"created"`
-	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
-	AccessTokenValiditySeconds int32 `json:"accessTokenValiditySeconds"`
+	Created time.Time `json:"created"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,7 +41,7 @@ type _CreatePersonalAccessTokenResponse CreatePersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created SailPointTime, accessTokenValiditySeconds int32) *CreatePersonalAccessTokenResponse {
+func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time) *CreatePersonalAccessTokenResponse {
 	this := CreatePersonalAccessTokenResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -51,7 +49,6 @@ func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []stri
 	this.Name = name
 	this.Owner = owner
 	this.Created = created
-	this.AccessTokenValiditySeconds = accessTokenValiditySeconds
 	return &this
 }
 
@@ -186,9 +183,9 @@ func (o *CreatePersonalAccessTokenResponse) SetOwner(v PatOwner) {
 }
 
 // GetCreated returns the Created field value
-func (o *CreatePersonalAccessTokenResponse) GetCreated() SailPointTime {
+func (o *CreatePersonalAccessTokenResponse) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -197,7 +194,7 @@ func (o *CreatePersonalAccessTokenResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,32 +202,8 @@ func (o *CreatePersonalAccessTokenResponse) GetCreatedOk() (*SailPointTime, bool
 }
 
 // SetCreated sets field value
-func (o *CreatePersonalAccessTokenResponse) SetCreated(v SailPointTime) {
+func (o *CreatePersonalAccessTokenResponse) SetCreated(v time.Time) {
 	o.Created = v
-}
-
-// GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value
-func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySeconds() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.AccessTokenValiditySeconds
-}
-
-// GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field value
-// and a boolean to check if the value has been set.
-func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySecondsOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccessTokenValiditySeconds, true
-}
-
-// SetAccessTokenValiditySeconds sets field value
-func (o *CreatePersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int32) {
-	o.AccessTokenValiditySeconds = v
 }
 
 func (o CreatePersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
@@ -251,7 +224,6 @@ func (o CreatePersonalAccessTokenResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["name"] = o.Name
 	toSerialize["owner"] = o.Owner
 	toSerialize["created"] = o.Created
-	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -271,7 +243,6 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		"name",
 		"owner",
 		"created",
-		"accessTokenValiditySeconds",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -307,7 +278,6 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "created")
-		delete(additionalProperties, "accessTokenValiditySeconds")
 		o.AdditionalProperties = additionalProperties
 	}
 

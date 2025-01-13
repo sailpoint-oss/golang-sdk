@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -35,13 +35,13 @@ func (r ApiDeleteTaggedObjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteTaggedObject Delete Object Tags
+DeleteTaggedObject Delete Tagged Object
 
-Delete all tags from a tagged object.
+This deletes a tagged object for the specified type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param type_ The type of object to delete tags from.
- @param id The ID of the object to delete tags from.
+ @param type_ The type of tagged object to delete.
+ @param id The ID of the object reference to delete.
  @return ApiDeleteTaggedObjectRequest
 */
 func (a *TaggedObjectsAPIService) DeleteTaggedObject(ctx context.Context, type_ string, id string) ApiDeleteTaggedObjectRequest {
@@ -176,12 +176,12 @@ func (a *TaggedObjectsAPIService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObj
 type ApiDeleteTagsToManyObjectRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsAPIService
-	bulkRemoveTaggedObject *BulkRemoveTaggedObject
+	bulkTaggedObject *BulkTaggedObject
 }
 
 // Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
-func (r ApiDeleteTagsToManyObjectRequest) BulkRemoveTaggedObject(bulkRemoveTaggedObject BulkRemoveTaggedObject) ApiDeleteTagsToManyObjectRequest {
-	r.bulkRemoveTaggedObject = &bulkRemoveTaggedObject
+func (r ApiDeleteTagsToManyObjectRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiDeleteTagsToManyObjectRequest {
+	r.bulkTaggedObject = &bulkTaggedObject
 	return r
 }
 
@@ -193,6 +193,8 @@ func (r ApiDeleteTagsToManyObjectRequest) Execute() (*http.Response, error) {
 DeleteTagsToManyObject Remove Tags from Multiple Objects
 
 This API removes tags from multiple objects.
+
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteTagsToManyObjectRequest
@@ -222,8 +224,8 @@ func (a *TaggedObjectsAPIService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkRemoveTaggedObject == nil {
-		return nil, reportError("bulkRemoveTaggedObject is required and must be specified")
+	if r.bulkTaggedObject == nil {
+		return nil, reportError("bulkTaggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -244,7 +246,7 @@ func (a *TaggedObjectsAPIService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkRemoveTaggedObject
+	localVarPostBody = r.bulkTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1230,16 +1232,16 @@ func (a *TaggedObjectsAPIService) SetTagToObjectExecute(r ApiSetTagToObjectReque
 type ApiSetTagsToManyObjectsRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsAPIService
-	bulkAddTaggedObject *BulkAddTaggedObject
+	bulkTaggedObject *BulkTaggedObject
 }
 
 // Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
-func (r ApiSetTagsToManyObjectsRequest) BulkAddTaggedObject(bulkAddTaggedObject BulkAddTaggedObject) ApiSetTagsToManyObjectsRequest {
-	r.bulkAddTaggedObject = &bulkAddTaggedObject
+func (r ApiSetTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiSetTagsToManyObjectsRequest {
+	r.bulkTaggedObject = &bulkTaggedObject
 	return r
 }
 
-func (r ApiSetTagsToManyObjectsRequest) Execute() ([]BulkTaggedObjectResponse, *http.Response, error) {
+func (r ApiSetTagsToManyObjectsRequest) Execute() (*BulkTaggedObject, *http.Response, error) {
 	return r.ApiService.SetTagsToManyObjectsExecute(r)
 }
 
@@ -1247,6 +1249,8 @@ func (r ApiSetTagsToManyObjectsRequest) Execute() ([]BulkTaggedObjectResponse, *
 SetTagsToManyObjects Tag Multiple Objects
 
 This API adds tags to multiple objects.
+
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTagsToManyObjectsRequest
@@ -1259,13 +1263,13 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjects(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return []BulkTaggedObjectResponse
-func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) ([]BulkTaggedObjectResponse, *http.Response, error) {
+//  @return BulkTaggedObject
+func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []BulkTaggedObjectResponse
+		localVarReturnValue  *BulkTaggedObject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.SetTagsToManyObjects")
@@ -1278,8 +1282,8 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkAddTaggedObject == nil {
-		return localVarReturnValue, nil, reportError("bulkAddTaggedObject is required and must be specified")
+	if r.bulkTaggedObject == nil {
+		return localVarReturnValue, nil, reportError("bulkTaggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1300,7 +1304,7 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkAddTaggedObject
+	localVarPostBody = r.bulkTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

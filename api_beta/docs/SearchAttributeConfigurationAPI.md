@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Create Extended Search Attributes
-[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
-[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | List Extended Search Attributes
-[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get Extended Search Attribute
-[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update Extended Search Attribute
+[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
+[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
+[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
+[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
+[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} CreateSearchAttributeConfig(ctx).SearchAttributeConfig(searchAttributeConfig).Execute()
 
-Create Extended Search Attributes
+Configure/create extended search attributes in IdentityNow.
 
 
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > DeleteSearchAttributeConfig(ctx, name).Execute()
 
-Delete Extended Search Attribute
+Delete an extended search attribute in IdentityNow.
 
 
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > []SearchAttributeConfig GetSearchAttributeConfig(ctx).Execute()
 
-List Extended Search Attributes
+Retrieve a list of extended search attributes in IdentityNow.
 
 
 
@@ -195,7 +195,7 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRe
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRe
 
 > []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).Execute()
 
-Get Extended Search Attribute
+Get the details of a specific extended search attribute in IdentityNow.
 
 
 
@@ -228,7 +228,7 @@ import (
 )
 
 func main() {
-	name := "newMailAttribute" // string | Name of the extended search attribute configuration to get.
+	name := "newMailAttribute" // string | Name of the extended search attribute configuration to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -248,7 +248,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the extended search attribute configuration to get. | 
+**name** | **string** | Name of the extended search attribute configuration to delete. | 
 
 ### Other Parameters
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 > SearchAttributeConfig PatchSearchAttributeConfig(ctx, name).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update Extended Search Attribute
+Update the details of a specific extended search attribute in IdentityNow.
 
 
 
@@ -298,7 +298,7 @@ import (
 )
 
 func main() {
-	name := "promotedMailAttribute" // string | Name of the extended search attribute configuration to patch.
+	name := "promotedMailAttribute" // string | Name of the Search Attribute Configuration to patch.
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -319,7 +319,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the extended search attribute configuration to patch. | 
+**name** | **string** | Name of the Search Attribute Configuration to patch. | 
 
 ### Other Parameters
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

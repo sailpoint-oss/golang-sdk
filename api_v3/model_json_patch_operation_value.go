@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -19,7 +19,6 @@ import (
 // JsonPatchOperationValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
 type JsonPatchOperationValue struct {
 	ArrayOfArrayInner *[]ArrayInner
-	Bool *bool
 	Int32 *int32
 	MapmapOfStringAny *map[string]interface{}
 	String *string
@@ -29,13 +28,6 @@ type JsonPatchOperationValue struct {
 func ArrayOfArrayInnerAsJsonPatchOperationValue(v *[]ArrayInner) JsonPatchOperationValue {
 	return JsonPatchOperationValue{
 		ArrayOfArrayInner: v,
-	}
-}
-
-// boolAsJsonPatchOperationValue is a convenience function that returns bool wrapped in JsonPatchOperationValue
-func BoolAsJsonPatchOperationValue(v *bool) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
-		Bool: v,
 	}
 }
 
@@ -80,23 +72,6 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.ArrayOfArrayInner = nil
-	}
-
-	// try to unmarshal data into Bool
-	err = newStrictDecoder(data).Decode(&dst.Bool)
-	if err == nil {
-		jsonBool, _ := json.Marshal(dst.Bool)
-		if string(jsonBool) == "{}" { // empty struct
-			dst.Bool = nil
-		} else {
-			if err = validator.Validate(dst.Bool); err != nil {
-				dst.Bool = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.Bool = nil
 	}
 
 	// try to unmarshal data into Int32
@@ -153,7 +128,6 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ArrayOfArrayInner = nil
-		dst.Bool = nil
 		dst.Int32 = nil
 		dst.MapmapOfStringAny = nil
 		dst.String = nil
@@ -170,10 +144,6 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 func (src JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
 	if src.ArrayOfArrayInner != nil {
 		return json.Marshal(&src.ArrayOfArrayInner)
-	}
-
-	if src.Bool != nil {
-		return json.Marshal(&src.Bool)
 	}
 
 	if src.Int32 != nil {
@@ -198,10 +168,6 @@ func (obj *JsonPatchOperationValue) GetActualInstance() (interface{}) {
 	}
 	if obj.ArrayOfArrayInner != nil {
 		return obj.ArrayOfArrayInner
-	}
-
-	if obj.Bool != nil {
-		return obj.Bool
 	}
 
 	if obj.Int32 != nil {

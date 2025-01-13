@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -22,7 +22,7 @@ type TransformDefinition struct {
 	// The type of the transform definition.
 	Type *string `json:"type,omitempty"`
 	// Arbitrary key-value pairs to store any metadata for the object
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Attributes *map[string]TransformDefinitionAttributesValue `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,19 +78,19 @@ func (o *TransformDefinition) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *TransformDefinition) GetAttributes() map[string]interface{} {
+func (o *TransformDefinition) GetAttributes() map[string]TransformDefinitionAttributesValue {
 	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+		var ret map[string]TransformDefinitionAttributesValue
 		return ret
 	}
-	return o.Attributes
+	return *o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransformDefinition) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *TransformDefinition) GetAttributesOk() (*map[string]TransformDefinitionAttributesValue, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Attributes, true
 }
@@ -104,9 +104,9 @@ func (o *TransformDefinition) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *TransformDefinition) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
+// SetAttributes gets a reference to the given map[string]TransformDefinitionAttributesValue and assigns it to the Attributes field.
+func (o *TransformDefinition) SetAttributes(v map[string]TransformDefinitionAttributesValue) {
+	o.Attributes = &v
 }
 
 func (o TransformDefinition) MarshalJSON() ([]byte, error) {

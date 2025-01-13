@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Operator** | Pointer to **string** | Operator for the expression | [optional] 
-**Attribute** | Pointer to **NullableString** | Name for the attribute | [optional] 
-**Value** | Pointer to [**NullableValue**](Value.md) |  | [optional] 
-**Children** | Pointer to [**[]Children**](Children.md) | List of expressions | [optional] 
+**Attribute** | Pointer to **string** | Name for the attribute | [optional] 
+**Value** | Pointer to [**Value**](Value.md) |  | [optional] 
+**Children** | Pointer to [**[]Value**](Value.md) | List of expressions | [optional] 
 
 ## Methods
 
@@ -78,16 +78,6 @@ SetAttribute sets Attribute field to given value.
 
 HasAttribute returns a boolean if a field has been set.
 
-### SetAttributeNil
-
-`func (o *Expression) SetAttributeNil(b bool)`
-
- SetAttributeNil sets the value for Attribute to be an explicit nil
-
-### UnsetAttribute
-`func (o *Expression) UnsetAttribute()`
-
-UnsetAttribute ensures that no value is present for Attribute, not even an explicit nil
 ### GetValue
 
 `func (o *Expression) GetValue() Value`
@@ -113,32 +103,22 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
-### SetValueNil
-
-`func (o *Expression) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *Expression) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetChildren
 
-`func (o *Expression) GetChildren() []Children`
+`func (o *Expression) GetChildren() []Value`
 
 GetChildren returns the Children field if non-nil, zero value otherwise.
 
 ### GetChildrenOk
 
-`func (o *Expression) GetChildrenOk() (*[]Children, bool)`
+`func (o *Expression) GetChildrenOk() (*[]Value, bool)`
 
 GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChildren
 
-`func (o *Expression) SetChildren(v []Children)`
+`func (o *Expression) SetChildren(v []Value)`
 
 SetChildren sets Children field to given value.
 
@@ -148,16 +128,6 @@ SetChildren sets Children field to given value.
 
 HasChildren returns a boolean if a field has been set.
 
-### SetChildrenNil
-
-`func (o *Expression) SetChildrenNil(b bool)`
-
- SetChildrenNil sets the value for Children to be an explicit nil
-
-### UnsetChildren
-`func (o *Expression) UnsetChildren()`
-
-UnsetChildren ensures that no value is present for Children, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

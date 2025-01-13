@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -41,8 +41,6 @@ Get managed cluster's log configuration.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to get log configuration for
  @return ApiGetClientLogConfigurationRequest
-
-Deprecated
 */
 func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
 	return ApiGetClientLogConfigurationRequest{
@@ -54,7 +52,6 @@ func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
-// Deprecated
 func (a *ManagedClustersAPIService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -126,7 +123,7 @@ func (a *ManagedClustersAPIService) GetClientLogConfigurationExecute(r ApiGetCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -159,7 +156,7 @@ func (a *ManagedClustersAPIService) GetClientLogConfigurationExecute(r ApiGetCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -212,8 +209,6 @@ Retrieve a ManagedCluster by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the ManagedCluster to get
  @return ApiGetManagedClusterRequest
-
-Deprecated
 */
 func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
 	return ApiGetManagedClusterRequest{
@@ -225,7 +220,6 @@ func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id st
 
 // Execute executes the request
 //  @return ManagedCluster
-// Deprecated
 func (a *ManagedClustersAPIService) GetManagedClusterExecute(r ApiGetManagedClusterRequest) (*ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -297,7 +291,7 @@ func (a *ManagedClustersAPIService) GetManagedClusterExecute(r ApiGetManagedClus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -330,7 +324,7 @@ func (a *ManagedClustersAPIService) GetManagedClusterExecute(r ApiGetManagedClus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -409,8 +403,6 @@ Retrieve all Managed Clusters for the current Org, based on request context.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetManagedClustersRequest
-
-Deprecated
 */
 func (a *ManagedClustersAPIService) GetManagedClusters(ctx context.Context) ApiGetManagedClustersRequest {
 	return ApiGetManagedClustersRequest{
@@ -421,7 +413,6 @@ func (a *ManagedClustersAPIService) GetManagedClusters(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return []ManagedCluster
-// Deprecated
 func (a *ManagedClustersAPIService) GetManagedClustersExecute(r ApiGetManagedClustersRequest) ([]ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -513,7 +504,7 @@ func (a *ManagedClustersAPIService) GetManagedClustersExecute(r ApiGetManagedClu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +526,7 @@ func (a *ManagedClustersAPIService) GetManagedClustersExecute(r ApiGetManagedClu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -595,8 +586,6 @@ Update managed cluster's log configuration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to update log configuration for
  @return ApiPutClientLogConfigurationRequest
-
-Deprecated
 */
 func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
 	return ApiPutClientLogConfigurationRequest{
@@ -608,7 +597,6 @@ func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
-// Deprecated
 func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -685,7 +673,7 @@ func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -718,7 +706,7 @@ func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

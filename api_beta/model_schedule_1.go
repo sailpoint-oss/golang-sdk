@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -22,7 +22,6 @@ var _ MappedNullable = &Schedule1{}
 // Schedule1 The schedule information.
 type Schedule1 struct {
 	Type ScheduleType `json:"type"`
-	Months *Schedule1Months `json:"months,omitempty"`
 	Days *Schedule1Days `json:"days,omitempty"`
 	Hours Schedule1Hours `json:"hours"`
 	// A date-time in ISO-8601 format
@@ -75,38 +74,6 @@ func (o *Schedule1) GetTypeOk() (*ScheduleType, bool) {
 // SetType sets field value
 func (o *Schedule1) SetType(v ScheduleType) {
 	o.Type = v
-}
-
-// GetMonths returns the Months field value if set, zero value otherwise.
-func (o *Schedule1) GetMonths() Schedule1Months {
-	if o == nil || IsNil(o.Months) {
-		var ret Schedule1Months
-		return ret
-	}
-	return *o.Months
-}
-
-// GetMonthsOk returns a tuple with the Months field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule1) GetMonthsOk() (*Schedule1Months, bool) {
-	if o == nil || IsNil(o.Months) {
-		return nil, false
-	}
-	return o.Months, true
-}
-
-// HasMonths returns a boolean if a field has been set.
-func (o *Schedule1) HasMonths() bool {
-	if o != nil && !IsNil(o.Months) {
-		return true
-	}
-
-	return false
-}
-
-// SetMonths gets a reference to the given Schedule1Months and assigns it to the Months field.
-func (o *Schedule1) SetMonths(v Schedule1Months) {
-	o.Months = &v
 }
 
 // GetDays returns the Days field value if set, zero value otherwise.
@@ -166,9 +133,9 @@ func (o *Schedule1) SetHours(v Schedule1Hours) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Schedule1) GetExpiration() SailPointTime {
+func (o *Schedule1) GetExpiration() time.Time {
 	if o == nil || IsNil(o.Expiration.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Expiration.Get()
@@ -177,7 +144,7 @@ func (o *Schedule1) GetExpiration() SailPointTime {
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Schedule1) GetExpirationOk() (*SailPointTime, bool) {
+func (o *Schedule1) GetExpirationOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -194,7 +161,7 @@ func (o *Schedule1) HasExpiration() bool {
 }
 
 // SetExpiration gets a reference to the given NullableTime and assigns it to the Expiration field.
-func (o *Schedule1) SetExpiration(v SailPointTime) {
+func (o *Schedule1) SetExpiration(v time.Time) {
 	o.Expiration.Set(&v)
 }
 // SetExpirationNil sets the value for Expiration to be an explicit nil
@@ -260,9 +227,6 @@ func (o Schedule1) MarshalJSON() ([]byte, error) {
 func (o Schedule1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Months) {
-		toSerialize["months"] = o.Months
-	}
 	if !IsNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
@@ -318,7 +282,6 @@ func (o *Schedule1) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "months")
 		delete(additionalProperties, "days")
 		delete(additionalProperties, "hours")
 		delete(additionalProperties, "expiration")

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the OutlierSummary type satisfies the MappedNullable interface at compile time
@@ -23,12 +23,11 @@ type OutlierSummary struct {
 	// The type of outlier summary
 	Type *string `json:"type,omitempty"`
 	// The date the bulk outlier detection ran/snapshot was created
-	SnapshotDate *SailPointTime `json:"snapshotDate,omitempty"`
+	SnapshotDate *time.Time `json:"snapshotDate,omitempty"`
 	// Total number of outliers for the customer making the request
 	TotalOutliers *int32 `json:"totalOutliers,omitempty"`
 	// Total number of identities for the customer making the request
 	TotalIdentities *int32 `json:"totalIdentities,omitempty"`
-	TotalIgnored *int32 `json:"totalIgnored,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,8 +39,6 @@ type _OutlierSummary OutlierSummary
 // will change when the set of required properties is changed
 func NewOutlierSummary() *OutlierSummary {
 	this := OutlierSummary{}
-	var totalIgnored int32 = 0
-	this.TotalIgnored = &totalIgnored
 	return &this
 }
 
@@ -50,8 +47,6 @@ func NewOutlierSummary() *OutlierSummary {
 // but it doesn't guarantee that properties required by API are set
 func NewOutlierSummaryWithDefaults() *OutlierSummary {
 	this := OutlierSummary{}
-	var totalIgnored int32 = 0
-	this.TotalIgnored = &totalIgnored
 	return &this
 }
 
@@ -88,9 +83,9 @@ func (o *OutlierSummary) SetType(v string) {
 }
 
 // GetSnapshotDate returns the SnapshotDate field value if set, zero value otherwise.
-func (o *OutlierSummary) GetSnapshotDate() SailPointTime {
+func (o *OutlierSummary) GetSnapshotDate() time.Time {
 	if o == nil || IsNil(o.SnapshotDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.SnapshotDate
@@ -98,7 +93,7 @@ func (o *OutlierSummary) GetSnapshotDate() SailPointTime {
 
 // GetSnapshotDateOk returns a tuple with the SnapshotDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutlierSummary) GetSnapshotDateOk() (*SailPointTime, bool) {
+func (o *OutlierSummary) GetSnapshotDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.SnapshotDate) {
 		return nil, false
 	}
@@ -114,8 +109,8 @@ func (o *OutlierSummary) HasSnapshotDate() bool {
 	return false
 }
 
-// SetSnapshotDate gets a reference to the given SailPointTime and assigns it to the SnapshotDate field.
-func (o *OutlierSummary) SetSnapshotDate(v SailPointTime) {
+// SetSnapshotDate gets a reference to the given time.Time and assigns it to the SnapshotDate field.
+func (o *OutlierSummary) SetSnapshotDate(v time.Time) {
 	o.SnapshotDate = &v
 }
 
@@ -183,38 +178,6 @@ func (o *OutlierSummary) SetTotalIdentities(v int32) {
 	o.TotalIdentities = &v
 }
 
-// GetTotalIgnored returns the TotalIgnored field value if set, zero value otherwise.
-func (o *OutlierSummary) GetTotalIgnored() int32 {
-	if o == nil || IsNil(o.TotalIgnored) {
-		var ret int32
-		return ret
-	}
-	return *o.TotalIgnored
-}
-
-// GetTotalIgnoredOk returns a tuple with the TotalIgnored field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OutlierSummary) GetTotalIgnoredOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalIgnored) {
-		return nil, false
-	}
-	return o.TotalIgnored, true
-}
-
-// HasTotalIgnored returns a boolean if a field has been set.
-func (o *OutlierSummary) HasTotalIgnored() bool {
-	if o != nil && !IsNil(o.TotalIgnored) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalIgnored gets a reference to the given int32 and assigns it to the TotalIgnored field.
-func (o *OutlierSummary) SetTotalIgnored(v int32) {
-	o.TotalIgnored = &v
-}
-
 func (o OutlierSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -236,9 +199,6 @@ func (o OutlierSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalIdentities) {
 		toSerialize["totalIdentities"] = o.TotalIdentities
-	}
-	if !IsNil(o.TotalIgnored) {
-		toSerialize["totalIgnored"] = o.TotalIgnored
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -266,7 +226,6 @@ func (o *OutlierSummary) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "snapshotDate")
 		delete(additionalProperties, "totalOutliers")
 		delete(additionalProperties, "totalIdentities")
-		delete(additionalProperties, "totalIgnored")
 		o.AdditionalProperties = additionalProperties
 	}
 

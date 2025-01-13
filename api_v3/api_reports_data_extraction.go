@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -560,7 +560,7 @@ func (r ApiStartReportRequest) Execute() (*TaskResultDetails, *http.Response, er
 /*
 StartReport Run Report
 
-Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
+Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartReportRequest

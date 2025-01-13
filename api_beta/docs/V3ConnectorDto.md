@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The connector name | [optional] 
 **Type** | Pointer to **string** | The connector type | [optional] 
 **ScriptName** | Pointer to **string** | The connector script name | [optional] 
-**ClassName** | Pointer to **NullableString** | The connector class name. | [optional] 
 **Features** | Pointer to **[]string** | The list of features supported by the connector | [optional] 
 **DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] [default to false]
 **ConnectorMetadata** | Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
@@ -107,41 +106,6 @@ SetScriptName sets ScriptName field to given value.
 
 HasScriptName returns a boolean if a field has been set.
 
-### GetClassName
-
-`func (o *V3ConnectorDto) GetClassName() string`
-
-GetClassName returns the ClassName field if non-nil, zero value otherwise.
-
-### GetClassNameOk
-
-`func (o *V3ConnectorDto) GetClassNameOk() (*string, bool)`
-
-GetClassNameOk returns a tuple with the ClassName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClassName
-
-`func (o *V3ConnectorDto) SetClassName(v string)`
-
-SetClassName sets ClassName field to given value.
-
-### HasClassName
-
-`func (o *V3ConnectorDto) HasClassName() bool`
-
-HasClassName returns a boolean if a field has been set.
-
-### SetClassNameNil
-
-`func (o *V3ConnectorDto) SetClassNameNil(b bool)`
-
- SetClassNameNil sets the value for ClassName to be an explicit nil
-
-### UnsetClassName
-`func (o *V3ConnectorDto) UnsetClassName()`
-
-UnsetClassName ensures that no value is present for ClassName, not even an explicit nil
 ### GetFeatures
 
 `func (o *V3ConnectorDto) GetFeatures() []string`

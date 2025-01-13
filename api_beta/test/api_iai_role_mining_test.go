@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing IAIRoleMiningAPIService
 
@@ -213,21 +213,6 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleEntitlements", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sessionId string
-		var potentialRoleId string
-
-		resp, httpRes, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleEntitlements(context.Background(), sessionId, potentialRoleId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleSourceIdentityUsage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -338,13 +323,14 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIRoleMiningAPIService PatchRoleMiningPotentialRole", func(t *testing.T) {
+	t.Run("Test IAIRoleMiningAPIService PatchPotentialRole_1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
+		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningPotentialRole(context.Background(), potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole_0(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -5,7 +5,6 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateFormDefinition**](CustomFormsAPI.md#CreateFormDefinition) | **Post** /form-definitions | Creates a form definition.
-[**CreateFormDefinitionByTemplate**](CustomFormsAPI.md#CreateFormDefinitionByTemplate) | **Post** /form-definitions/template | Create a form definition by template.
 [**CreateFormDefinitionDynamicSchema**](CustomFormsAPI.md#CreateFormDefinitionDynamicSchema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 [**CreateFormDefinitionFileRequest**](CustomFormsAPI.md#CreateFormDefinitionFileRequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 [**CreateFormInstance**](CustomFormsAPI.md#CreateFormInstance) | **Post** /form-instances | Creates a form instance.
@@ -28,7 +27,7 @@ Method | HTTP request | Description
 
 ## CreateFormDefinition
 
-> FormDefinitionResponse CreateFormDefinition(ctx).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
+> FormDefinitionResponse CreateFormDefinition(ctx).Body(body).Execute()
 
 Creates a form definition.
 
@@ -45,11 +44,11 @@ import (
 )
 
 func main() {
-	createFormDefinitionRequest := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+	body := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinition``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +69,7 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createFormDefinitionRequest** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
+ **body** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
 
 ### Return type
 
@@ -78,71 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateFormDefinitionByTemplate
-
-> FormDefinitionResponse CreateFormDefinitionByTemplate(ctx).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
-
-Create a form definition by template.
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	createFormDefinitionRequest := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionByTemplate(context.Background()).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionByTemplate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateFormDefinitionByTemplate`: FormDefinitionResponse
-	fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormDefinitionByTemplate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateFormDefinitionByTemplateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createFormDefinitionRequest** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
-
-### Return type
-
-[**FormDefinitionResponse**](FormDefinitionResponse.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -206,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -278,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -342,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -412,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -484,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -555,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -625,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -695,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -766,7 +701,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -797,7 +732,7 @@ import (
 )
 
 func main() {
-	body := []openapiclient.ImportFormDefinitionsRequestInner{*openapiclient.NewImportFormDefinitionsRequestInner()} // []ImportFormDefinitionsRequestInner | Body is the request payload to import form definitions (optional)
+	body := []openapiclient.ExportFormDefinitionsByTenant200ResponseInner{*openapiclient.NewExportFormDefinitionsByTenant200ResponseInner()} // []ExportFormDefinitionsByTenant200ResponseInner | Body is the request payload to import form definitions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -822,7 +757,7 @@ Other parameters are passed through a pointer to a apiImportFormDefinitionsReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[]ImportFormDefinitionsRequestInner**](ImportFormDefinitionsRequestInner.md) | Body is the request payload to import form definitions | 
+ **body** | [**[]ExportFormDefinitionsByTenant200ResponseInner**](ExportFormDefinitionsByTenant200ResponseInner.md) | Body is the request payload to import form definitions | 
 
 ### Return type
 
@@ -830,7 +765,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -902,7 +837,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -974,7 +909,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1046,7 +981,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1060,7 +995,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormElementDataByElementID
 
-> ListFormElementDataByElementIDResponse SearchFormElementDataByElementID(ctx, formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
+> ListFormElementDataByElementIDResponse SearchFormElementDataByElementID(ctx, formInstanceID, formElementID).Limit(limit).Filters(filters).Execute()
 
 Retrieves dynamic data by element.
 
@@ -1082,12 +1017,11 @@ func main() {
 	formInstanceID := "00000000-0000-0000-0000-000000000000" // string | Form instance ID
 	formElementID := "1" // string | Form element ID
 	limit := int64(250) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
-	filters := "value eq "ID01"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
-	query := "support" // string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
+	filters := "label sw "my label"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in* (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).Limit(limit).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormElementDataByElementID``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1116,8 +1050,7 @@ Name | Type | Description  | Notes
 
 
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 250]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60; | 
- **query** | **string** | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields. | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in* | 
 
 ### Return type
 
@@ -1125,7 +1058,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1139,7 +1072,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormInstancesByTenant
 
-> []FormInstanceResponse SearchFormInstancesByTenant(ctx).Execute()
+> ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).Execute()
 
 List form instances by tenant.
 
@@ -1166,7 +1099,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SearchFormInstancesByTenant`: []FormInstanceResponse
+	// response from `SearchFormInstancesByTenant`: ListFormInstancesByTenantResponse
 	fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormInstancesByTenant`: %v\n", resp)
 }
 ```
@@ -1182,11 +1115,11 @@ Other parameters are passed through a pointer to a apiSearchFormInstancesByTenan
 
 ### Return type
 
-[**[]FormInstanceResponse**](FormInstanceResponse.md)
+[**ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1247,7 +1180,7 @@ Other parameters are passed through a pointer to a apiSearchPreDefinedSelectOpti
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1280,8 +1213,8 @@ import (
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | Form definition ID
 	limit := int64(10) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
-	filters := "value eq "ID01"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
-	query := "ac" // string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
+	filters := "label sw "my label"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in* (optional)
+	query := "support" // string | Query  String specifying to query against (optional)
 	formElementPreviewRequest := *openapiclient.NewFormElementPreviewRequest() // FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -1313,8 +1246,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 10]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60; | 
- **query** | **string** | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields. | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in* | 
+ **query** | **string** | Query  String specifying to query against | 
  **formElementPreviewRequest** | [**FormElementPreviewRequest**](FormElementPreviewRequest.md) | Body is the request payload to create a form definition dynamic schema | 
 
 ### Return type
@@ -1323,7 +1256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

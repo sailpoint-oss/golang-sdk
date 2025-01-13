@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,14 +22,12 @@ type AccessRequestType string
 const (
 	ACCESSREQUESTTYPE_GRANT_ACCESS AccessRequestType = "GRANT_ACCESS"
 	ACCESSREQUESTTYPE_REVOKE_ACCESS AccessRequestType = "REVOKE_ACCESS"
-	ACCESSREQUESTTYPE_NULL AccessRequestType = "null"
 )
 
 // All allowed values of AccessRequestType enum
 var AllowedAccessRequestTypeEnumValues = []AccessRequestType{
 	"GRANT_ACCESS",
 	"REVOKE_ACCESS",
-	"null",
 }
 
 func (v *AccessRequestType) UnmarshalJSON(src []byte) error {

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -51,9 +51,9 @@ func NewNetworkConfigurationWithDefaults() *NetworkConfiguration {
 	return &this
 }
 
-// GetRange returns the Range field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRange returns the Range field value if set, zero value otherwise.
 func (o *NetworkConfiguration) GetRange() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Range) {
 		var ret []string
 		return ret
 	}
@@ -62,7 +62,6 @@ func (o *NetworkConfiguration) GetRange() []string {
 
 // GetRangeOk returns a tuple with the Range field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetRangeOk() ([]string, bool) {
 	if o == nil || IsNil(o.Range) {
 		return nil, false
@@ -84,9 +83,9 @@ func (o *NetworkConfiguration) SetRange(v []string) {
 	o.Range = v
 }
 
-// GetGeolocation returns the Geolocation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGeolocation returns the Geolocation field value if set, zero value otherwise.
 func (o *NetworkConfiguration) GetGeolocation() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Geolocation) {
 		var ret []string
 		return ret
 	}
@@ -95,7 +94,6 @@ func (o *NetworkConfiguration) GetGeolocation() []string {
 
 // GetGeolocationOk returns a tuple with the Geolocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetGeolocationOk() ([]string, bool) {
 	if o == nil || IsNil(o.Geolocation) {
 		return nil, false
@@ -159,10 +157,10 @@ func (o NetworkConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o NetworkConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Range != nil {
+	if !IsNil(o.Range) {
 		toSerialize["range"] = o.Range
 	}
-	if o.Geolocation != nil {
+	if !IsNil(o.Geolocation) {
 		toSerialize["geolocation"] = o.Geolocation
 	}
 	if !IsNil(o.Whitelisted) {

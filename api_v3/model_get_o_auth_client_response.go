@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -50,11 +50,9 @@ type GetOAuthClientResponse struct {
 	// An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow
 	ClaimsSupported bool `json:"claimsSupported"`
 	// The date and time, down to the millisecond, when the API Client was created
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// The date and time, down to the millisecond, when the API Client was last updated
-	Modified SailPointTime `json:"modified"`
-	Secret NullableString `json:"secret,omitempty"`
-	Metadata NullableString `json:"metadata,omitempty"`
+	Modified time.Time `json:"modified"`
 	// The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.
 	LastUsed NullableTime `json:"lastUsed,omitempty"`
 	// Scopes of the API Client.
@@ -68,7 +66,7 @@ type _GetOAuthClientResponse GetOAuthClientResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetOAuthClientResponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created SailPointTime, modified SailPointTime, scope []string) *GetOAuthClientResponse {
+func NewGetOAuthClientResponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created time.Time, modified time.Time, scope []string) *GetOAuthClientResponse {
 	this := GetOAuthClientResponse{}
 	this.Id = id
 	this.BusinessName = businessName
@@ -468,9 +466,9 @@ func (o *GetOAuthClientResponse) SetClaimsSupported(v bool) {
 }
 
 // GetCreated returns the Created field value
-func (o *GetOAuthClientResponse) GetCreated() SailPointTime {
+func (o *GetOAuthClientResponse) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -479,7 +477,7 @@ func (o *GetOAuthClientResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *GetOAuthClientResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *GetOAuthClientResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -487,14 +485,14 @@ func (o *GetOAuthClientResponse) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *GetOAuthClientResponse) SetCreated(v SailPointTime) {
+func (o *GetOAuthClientResponse) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *GetOAuthClientResponse) GetModified() SailPointTime {
+func (o *GetOAuthClientResponse) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -503,7 +501,7 @@ func (o *GetOAuthClientResponse) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *GetOAuthClientResponse) GetModifiedOk() (*SailPointTime, bool) {
+func (o *GetOAuthClientResponse) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -511,98 +509,14 @@ func (o *GetOAuthClientResponse) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *GetOAuthClientResponse) SetModified(v SailPointTime) {
+func (o *GetOAuthClientResponse) SetModified(v time.Time) {
 	o.Modified = v
 }
 
-// GetSecret returns the Secret field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetOAuthClientResponse) GetSecret() string {
-	if o == nil || IsNil(o.Secret.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Secret.Get()
-}
-
-// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetOAuthClientResponse) GetSecretOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Secret.Get(), o.Secret.IsSet()
-}
-
-// HasSecret returns a boolean if a field has been set.
-func (o *GetOAuthClientResponse) HasSecret() bool {
-	if o != nil && o.Secret.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSecret gets a reference to the given NullableString and assigns it to the Secret field.
-func (o *GetOAuthClientResponse) SetSecret(v string) {
-	o.Secret.Set(&v)
-}
-// SetSecretNil sets the value for Secret to be an explicit nil
-func (o *GetOAuthClientResponse) SetSecretNil() {
-	o.Secret.Set(nil)
-}
-
-// UnsetSecret ensures that no value is present for Secret, not even an explicit nil
-func (o *GetOAuthClientResponse) UnsetSecret() {
-	o.Secret.Unset()
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetOAuthClientResponse) GetMetadata() string {
-	if o == nil || IsNil(o.Metadata.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Metadata.Get()
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetOAuthClientResponse) GetMetadataOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Metadata.Get(), o.Metadata.IsSet()
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *GetOAuthClientResponse) HasMetadata() bool {
-	if o != nil && o.Metadata.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given NullableString and assigns it to the Metadata field.
-func (o *GetOAuthClientResponse) SetMetadata(v string) {
-	o.Metadata.Set(&v)
-}
-// SetMetadataNil sets the value for Metadata to be an explicit nil
-func (o *GetOAuthClientResponse) SetMetadataNil() {
-	o.Metadata.Set(nil)
-}
-
-// UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
-func (o *GetOAuthClientResponse) UnsetMetadata() {
-	o.Metadata.Unset()
-}
-
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetOAuthClientResponse) GetLastUsed() SailPointTime {
+func (o *GetOAuthClientResponse) GetLastUsed() time.Time {
 	if o == nil || IsNil(o.LastUsed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUsed.Get()
@@ -611,7 +525,7 @@ func (o *GetOAuthClientResponse) GetLastUsed() SailPointTime {
 // GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetOAuthClientResponse) GetLastUsedOk() (*SailPointTime, bool) {
+func (o *GetOAuthClientResponse) GetLastUsedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -628,7 +542,7 @@ func (o *GetOAuthClientResponse) HasLastUsed() bool {
 }
 
 // SetLastUsed gets a reference to the given NullableTime and assigns it to the LastUsed field.
-func (o *GetOAuthClientResponse) SetLastUsed(v SailPointTime) {
+func (o *GetOAuthClientResponse) SetLastUsed(v time.Time) {
 	o.LastUsed.Set(&v)
 }
 // SetLastUsedNil sets the value for LastUsed to be an explicit nil
@@ -696,12 +610,6 @@ func (o GetOAuthClientResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["claimsSupported"] = o.ClaimsSupported
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	if o.Secret.IsSet() {
-		toSerialize["secret"] = o.Secret.Get()
-	}
-	if o.Metadata.IsSet() {
-		toSerialize["metadata"] = o.Metadata.Get()
-	}
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
 	}
@@ -785,8 +693,6 @@ func (o *GetOAuthClientResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "claimsSupported")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "secret")
-		delete(additionalProperties, "metadata")
 		delete(additionalProperties, "lastUsed")
 		delete(additionalProperties, "scope")
 		o.AdditionalProperties = additionalProperties

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the application | [optional] 
-**Name** | Pointer to **string** | Name of the application | [optional] 
+**Id** | Pointer to **string** | Id of the potential role | [optional] 
+**Name** | Pointer to **string** | Name of the potential role | [optional] 
 
 ## Methods
 

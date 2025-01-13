@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -130,7 +130,7 @@ func (a *MFAControllerAPIService) CreateSendTokenExecute(r ApiCreateSendTokenReq
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *MFAControllerAPIService) CreateSendTokenExecute(r ApiCreateSendTokenReq
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -206,7 +206,7 @@ func (r ApiPingVerificationStatusRequest) Execute() (*VerificationResponse, *htt
 /*
 PingVerificationStatus Polling MFA method by VerificationPollRequest
 
-This API poll the VerificationPollRequest for the specified MFA method.
+This API poll the VerificationPollRequest for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param method The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', 'kba','token', 'rsa'
@@ -298,7 +298,7 @@ func (a *MFAControllerAPIService) PingVerificationStatusExecute(r ApiPingVerific
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -320,7 +320,7 @@ func (a *MFAControllerAPIService) PingVerificationStatusExecute(r ApiPingVerific
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -462,7 +462,7 @@ func (a *MFAControllerAPIService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -484,7 +484,7 @@ func (a *MFAControllerAPIService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -522,11 +522,11 @@ func (a *MFAControllerAPIService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 type ApiSendKbaAnswersRequest struct {
 	ctx context.Context
 	ApiService *MFAControllerAPIService
-	kbaAnswerRequestItem *[]KbaAnswerRequestItem
+	kbaAnswerRequest *KbaAnswerRequest
 }
 
-func (r ApiSendKbaAnswersRequest) KbaAnswerRequestItem(kbaAnswerRequestItem []KbaAnswerRequestItem) ApiSendKbaAnswersRequest {
-	r.kbaAnswerRequestItem = &kbaAnswerRequestItem
+func (r ApiSendKbaAnswersRequest) KbaAnswerRequest(kbaAnswerRequest KbaAnswerRequest) ApiSendKbaAnswersRequest {
+	r.kbaAnswerRequest = &kbaAnswerRequest
 	return r
 }
 
@@ -569,8 +569,8 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.kbaAnswerRequestItem == nil {
-		return localVarReturnValue, nil, reportError("kbaAnswerRequestItem is required and must be specified")
+	if r.kbaAnswerRequest == nil {
+		return localVarReturnValue, nil, reportError("kbaAnswerRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -591,7 +591,7 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.kbaAnswerRequestItem
+	localVarPostBody = r.kbaAnswerRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -626,7 +626,7 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -648,7 +648,7 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -790,7 +790,7 @@ func (a *MFAControllerAPIService) SendOktaVerifyRequestExecute(r ApiSendOktaVeri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -812,7 +812,7 @@ func (a *MFAControllerAPIService) SendOktaVerifyRequestExecute(r ApiSendOktaVeri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -954,7 +954,7 @@ func (a *MFAControllerAPIService) SendTokenAuthRequestExecute(r ApiSendTokenAuth
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -976,7 +976,7 @@ func (a *MFAControllerAPIService) SendTokenAuthRequestExecute(r ApiSendTokenAuth
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

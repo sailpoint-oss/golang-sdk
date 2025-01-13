@@ -1,5 +1,5 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
 Testing AccessProfilesAPIService
 
@@ -106,18 +106,6 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesInBulk", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

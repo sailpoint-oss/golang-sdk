@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -23,31 +23,31 @@ import (
 // PasswordManagementAPIService PasswordManagementAPI service
 type PasswordManagementAPIService service
 
-type ApiCreateDigitTokenRequest struct {
+type ApiGenerateDigitTokenRequest struct {
 	ctx context.Context
 	ApiService *PasswordManagementAPIService
 	passwordDigitTokenReset *PasswordDigitTokenReset
 }
 
-func (r ApiCreateDigitTokenRequest) PasswordDigitTokenReset(passwordDigitTokenReset PasswordDigitTokenReset) ApiCreateDigitTokenRequest {
+func (r ApiGenerateDigitTokenRequest) PasswordDigitTokenReset(passwordDigitTokenReset PasswordDigitTokenReset) ApiGenerateDigitTokenRequest {
 	r.passwordDigitTokenReset = &passwordDigitTokenReset
 	return r
 }
 
-func (r ApiCreateDigitTokenRequest) Execute() (*PasswordDigitToken, *http.Response, error) {
-	return r.ApiService.CreateDigitTokenExecute(r)
+func (r ApiGenerateDigitTokenRequest) Execute() (*PasswordDigitToken, *http.Response, error) {
+	return r.ApiService.GenerateDigitTokenExecute(r)
 }
 
 /*
-CreateDigitToken Generate a digit token
+GenerateDigitToken Generate a digit token
 
 This API is used to generate a digit token for password management. Requires authorization scope of "idn:password-digit-token:create".
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateDigitTokenRequest
+ @return ApiGenerateDigitTokenRequest
 */
-func (a *PasswordManagementAPIService) CreateDigitToken(ctx context.Context) ApiCreateDigitTokenRequest {
-	return ApiCreateDigitTokenRequest{
+func (a *PasswordManagementAPIService) GenerateDigitToken(ctx context.Context) ApiGenerateDigitTokenRequest {
+	return ApiGenerateDigitTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -55,7 +55,7 @@ func (a *PasswordManagementAPIService) CreateDigitToken(ctx context.Context) Api
 
 // Execute executes the request
 //  @return PasswordDigitToken
-func (a *PasswordManagementAPIService) CreateDigitTokenExecute(r ApiCreateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
+func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *PasswordManagementAPIService) CreateDigitTokenExecute(r ApiCreateDigitT
 		localVarReturnValue  *PasswordDigitToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.CreateDigitToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.GenerateDigitToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -129,30 +129,8 @@ func (a *PasswordManagementAPIService) CreateDigitTokenExecute(r ApiCreateDigitT
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -287,7 +265,7 @@ func (a *PasswordManagementAPIService) GetIdentityPasswordChangeStatusExecute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -459,7 +437,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoExecute(r ApiQueryPasswo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -481,7 +459,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoExecute(r ApiQueryPasswo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -536,12 +514,10 @@ SetIdentityPassword Set Identity's Password
 
 This API is used to set a password for an identity. 
 
-An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their ISC user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or ["authorization_code" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).
+An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their IDN user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or ["authorization_code" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).
 
 A token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow) can be used to change **any** identity's password or the password of any of the identity's accounts. 
 "API authority" refers to a token that only has the "client_credentials" grant type.
-
->**Note: If you want to set an identity's source account password, you must enable `PASSWORD` as one of the source's features. You can use the [PATCH Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source) to add the `PASSWORD` feature.**
 
 You can use this endpoint to generate an `encryptedPassword` (RSA encrypted using publicKey). 
 To do so, follow these steps:
@@ -666,7 +642,7 @@ func (a *PasswordManagementAPIService) SetIdentityPasswordExecute(r ApiSetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +664,7 @@ func (a *PasswordManagementAPIService) SetIdentityPasswordExecute(r ApiSetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

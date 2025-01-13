@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -23,12 +23,12 @@ var _ MappedNullable = &SlimCampaign{}
 type SlimCampaign struct {
 	// Id of the campaign
 	Id *string `json:"id,omitempty"`
-	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
+	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
 	Name string `json:"name"`
-	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
-	Description NullableString `json:"description"`
+	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
+	Description string `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
-	Deadline *SailPointTime `json:"deadline,omitempty"`
+	Deadline *time.Time `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
 	// Enables email notification for this campaign
@@ -42,7 +42,7 @@ type SlimCampaign struct {
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
 	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
 	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
 	// The number of completed certifications in this campaign.
@@ -58,7 +58,7 @@ type _SlimCampaign SlimCampaign
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSlimCampaign(name string, description NullableString, type_ string) *SlimCampaign {
+func NewSlimCampaign(name string, description string, type_ string) *SlimCampaign {
 	this := SlimCampaign{}
 	this.Name = name
 	this.Description = description
@@ -143,35 +143,33 @@ func (o *SlimCampaign) SetName(v string) {
 }
 
 // GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *SlimCampaign) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Description.Get()
+	return o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return &o.Description, true
 }
 
 // SetDescription sets field value
 func (o *SlimCampaign) SetDescription(v string) {
-	o.Description.Set(&v)
+	o.Description = v
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
-func (o *SlimCampaign) GetDeadline() SailPointTime {
+func (o *SlimCampaign) GetDeadline() time.Time {
 	if o == nil || IsNil(o.Deadline) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Deadline
@@ -179,7 +177,7 @@ func (o *SlimCampaign) GetDeadline() SailPointTime {
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SlimCampaign) GetDeadlineOk() (*SailPointTime, bool) {
+func (o *SlimCampaign) GetDeadlineOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
@@ -195,8 +193,8 @@ func (o *SlimCampaign) HasDeadline() bool {
 	return false
 }
 
-// SetDeadline gets a reference to the given SailPointTime and assigns it to the Deadline field.
-func (o *SlimCampaign) SetDeadline(v SailPointTime) {
+// SetDeadline gets a reference to the given time.Time and assigns it to the Deadline field.
+func (o *SlimCampaign) SetDeadline(v time.Time) {
 	o.Deadline = &v
 }
 
@@ -385,9 +383,9 @@ func (o *SlimCampaign) SetCorrelatedStatus(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *SlimCampaign) GetCreated() SailPointTime {
+func (o *SlimCampaign) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -395,7 +393,7 @@ func (o *SlimCampaign) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SlimCampaign) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SlimCampaign) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -411,8 +409,8 @@ func (o *SlimCampaign) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *SlimCampaign) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *SlimCampaign) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
@@ -526,7 +524,7 @@ func (o SlimCampaign) ToMap() (map[string]interface{}, error) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description.Get()
+	toSerialize["description"] = o.Description
 	if !IsNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type ClientLogConfiguration struct {
 	// Duration in minutes for log configuration to remain in effect before resetting to defaults
 	DurationMinutes int32 `json:"durationMinutes"`
 	// Expiration date-time of the log configuration request
-	Expiration *SailPointTime `json:"expiration,omitempty"`
+	Expiration *time.Time `json:"expiration,omitempty"`
 	RootLevel StandardLevel `json:"rootLevel"`
 	// Mapping of identifiers to Standard Log Level values
 	LogLevels *map[string]StandardLevel `json:"logLevels,omitempty"`
@@ -111,9 +111,9 @@ func (o *ClientLogConfiguration) SetDurationMinutes(v int32) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
-func (o *ClientLogConfiguration) GetExpiration() SailPointTime {
+func (o *ClientLogConfiguration) GetExpiration() time.Time {
 	if o == nil || IsNil(o.Expiration) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Expiration
@@ -121,7 +121,7 @@ func (o *ClientLogConfiguration) GetExpiration() SailPointTime {
 
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClientLogConfiguration) GetExpirationOk() (*SailPointTime, bool) {
+func (o *ClientLogConfiguration) GetExpirationOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *ClientLogConfiguration) HasExpiration() bool {
 	return false
 }
 
-// SetExpiration gets a reference to the given SailPointTime and assigns it to the Expiration field.
-func (o *ClientLogConfiguration) SetExpiration(v SailPointTime) {
+// SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
+func (o *ClientLogConfiguration) SetExpiration(v time.Time) {
 	o.Expiration = &v
 }
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the Selector type satisfies the MappedNullable interface at compile time
@@ -19,9 +20,11 @@ var _ MappedNullable = &Selector{}
 
 // Selector struct for Selector
 type Selector struct {
-	// The application id
-	ApplicationId *string `json:"applicationId,omitempty"`
-	AccountMatchConfig *SelectorAccountMatchConfig `json:"accountMatchConfig,omitempty"`
+	Type SelectorType `json:"type"`
+	// The selected values. 
+	Values []string `json:"values"`
+	// The selected interval for RANGE selectors. 
+	Interval NullableInt32 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +34,10 @@ type _Selector Selector
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSelector() *Selector {
+func NewSelector(type_ SelectorType, values []string) *Selector {
 	this := Selector{}
+	this.Type = type_
+	this.Values = values
 	return &this
 }
 
@@ -44,68 +49,94 @@ func NewSelectorWithDefaults() *Selector {
 	return &this
 }
 
-// GetApplicationId returns the ApplicationId field value if set, zero value otherwise.
-func (o *Selector) GetApplicationId() string {
-	if o == nil || IsNil(o.ApplicationId) {
-		var ret string
+// GetType returns the Type field value
+func (o *Selector) GetType() SelectorType {
+	if o == nil {
+		var ret SelectorType
 		return ret
 	}
-	return *o.ApplicationId
+
+	return o.Type
 }
 
-// GetApplicationIdOk returns a tuple with the ApplicationId field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Selector) GetApplicationIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ApplicationId) {
+func (o *Selector) GetTypeOk() (*SelectorType, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApplicationId, true
+	return &o.Type, true
 }
 
-// HasApplicationId returns a boolean if a field has been set.
-func (o *Selector) HasApplicationId() bool {
-	if o != nil && !IsNil(o.ApplicationId) {
+// SetType sets field value
+func (o *Selector) SetType(v SelectorType) {
+	o.Type = v
+}
+
+// GetValues returns the Values field value
+func (o *Selector) GetValues() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Values
+}
+
+// GetValuesOk returns a tuple with the Values field value
+// and a boolean to check if the value has been set.
+func (o *Selector) GetValuesOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Values, true
+}
+
+// SetValues sets field value
+func (o *Selector) SetValues(v []string) {
+	o.Values = v
+}
+
+// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Selector) GetInterval() int32 {
+	if o == nil || IsNil(o.Interval.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Interval.Get()
+}
+
+// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Selector) GetIntervalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Interval.Get(), o.Interval.IsSet()
+}
+
+// HasInterval returns a boolean if a field has been set.
+func (o *Selector) HasInterval() bool {
+	if o != nil && o.Interval.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApplicationId gets a reference to the given string and assigns it to the ApplicationId field.
-func (o *Selector) SetApplicationId(v string) {
-	o.ApplicationId = &v
+// SetInterval gets a reference to the given NullableInt32 and assigns it to the Interval field.
+func (o *Selector) SetInterval(v int32) {
+	o.Interval.Set(&v)
+}
+// SetIntervalNil sets the value for Interval to be an explicit nil
+func (o *Selector) SetIntervalNil() {
+	o.Interval.Set(nil)
 }
 
-// GetAccountMatchConfig returns the AccountMatchConfig field value if set, zero value otherwise.
-func (o *Selector) GetAccountMatchConfig() SelectorAccountMatchConfig {
-	if o == nil || IsNil(o.AccountMatchConfig) {
-		var ret SelectorAccountMatchConfig
-		return ret
-	}
-	return *o.AccountMatchConfig
-}
-
-// GetAccountMatchConfigOk returns a tuple with the AccountMatchConfig field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Selector) GetAccountMatchConfigOk() (*SelectorAccountMatchConfig, bool) {
-	if o == nil || IsNil(o.AccountMatchConfig) {
-		return nil, false
-	}
-	return o.AccountMatchConfig, true
-}
-
-// HasAccountMatchConfig returns a boolean if a field has been set.
-func (o *Selector) HasAccountMatchConfig() bool {
-	if o != nil && !IsNil(o.AccountMatchConfig) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountMatchConfig gets a reference to the given SelectorAccountMatchConfig and assigns it to the AccountMatchConfig field.
-func (o *Selector) SetAccountMatchConfig(v SelectorAccountMatchConfig) {
-	o.AccountMatchConfig = &v
+// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
+func (o *Selector) UnsetInterval() {
+	o.Interval.Unset()
 }
 
 func (o Selector) MarshalJSON() ([]byte, error) {
@@ -118,11 +149,10 @@ func (o Selector) MarshalJSON() ([]byte, error) {
 
 func (o Selector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApplicationId) {
-		toSerialize["applicationId"] = o.ApplicationId
-	}
-	if !IsNil(o.AccountMatchConfig) {
-		toSerialize["accountMatchConfig"] = o.AccountMatchConfig
+	toSerialize["type"] = o.Type
+	toSerialize["values"] = o.Values
+	if o.Interval.IsSet() {
+		toSerialize["interval"] = o.Interval.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -133,6 +163,28 @@ func (o Selector) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Selector) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"values",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSelector := _Selector{}
 
 	err = json.Unmarshal(data, &varSelector)
@@ -146,8 +198,9 @@ func (o *Selector) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "applicationId")
-		delete(additionalProperties, "accountMatchConfig")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "values")
+		delete(additionalProperties, "interval")
 		o.AdditionalProperties = additionalProperties
 	}
 

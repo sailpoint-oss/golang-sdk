@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentities**](PublicIdentitiesAPI.md#GetPublicIdentities) | **Get** /public-identities | Get list of public identities
+[**GetPublicIdentities**](PublicIdentitiesAPI.md#GetPublicIdentities) | **Get** /public-identities | Get a list of public identities
 
 
 
@@ -12,9 +12,7 @@ Method | HTTP request | Description
 
 > []PublicIdentity GetPublicIdentities(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
 
-Get list of public identities
-
-
+Get a list of public identities
 
 ### Example
 
@@ -72,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

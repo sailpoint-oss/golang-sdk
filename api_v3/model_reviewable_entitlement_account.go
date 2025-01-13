@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ReviewableEntitlementAccount type satisfies the MappedNullable interface at compile time
@@ -36,11 +36,6 @@ type ReviewableEntitlementAccount struct {
 	// When the account was last modified
 	Modified NullableTime `json:"modified,omitempty"`
 	ActivityInsights *ActivityInsights `json:"activityInsights,omitempty"`
-	// Information about the account
-	Description NullableString `json:"description,omitempty"`
-	// The id associated with the machine Account Governance Group
-	GovernanceGroupId NullableString `json:"governanceGroupId,omitempty"`
-	Owner NullableReviewableEntitlementAccountOwner `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -284,9 +279,9 @@ func (o *ReviewableEntitlementAccount) UnsetName() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableEntitlementAccount) GetCreated() SailPointTime {
+func (o *ReviewableEntitlementAccount) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -295,7 +290,7 @@ func (o *ReviewableEntitlementAccount) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableEntitlementAccount) GetCreatedOk() (*SailPointTime, bool) {
+func (o *ReviewableEntitlementAccount) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -312,7 +307,7 @@ func (o *ReviewableEntitlementAccount) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *ReviewableEntitlementAccount) SetCreated(v SailPointTime) {
+func (o *ReviewableEntitlementAccount) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -326,9 +321,9 @@ func (o *ReviewableEntitlementAccount) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableEntitlementAccount) GetModified() SailPointTime {
+func (o *ReviewableEntitlementAccount) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -337,7 +332,7 @@ func (o *ReviewableEntitlementAccount) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableEntitlementAccount) GetModifiedOk() (*SailPointTime, bool) {
+func (o *ReviewableEntitlementAccount) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -354,7 +349,7 @@ func (o *ReviewableEntitlementAccount) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *ReviewableEntitlementAccount) SetModified(v SailPointTime) {
+func (o *ReviewableEntitlementAccount) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -399,132 +394,6 @@ func (o *ReviewableEntitlementAccount) SetActivityInsights(v ActivityInsights) {
 	o.ActivityInsights = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableEntitlementAccount) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableEntitlementAccount) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ReviewableEntitlementAccount) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ReviewableEntitlementAccount) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ReviewableEntitlementAccount) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ReviewableEntitlementAccount) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetGovernanceGroupId returns the GovernanceGroupId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableEntitlementAccount) GetGovernanceGroupId() string {
-	if o == nil || IsNil(o.GovernanceGroupId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.GovernanceGroupId.Get()
-}
-
-// GetGovernanceGroupIdOk returns a tuple with the GovernanceGroupId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableEntitlementAccount) GetGovernanceGroupIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GovernanceGroupId.Get(), o.GovernanceGroupId.IsSet()
-}
-
-// HasGovernanceGroupId returns a boolean if a field has been set.
-func (o *ReviewableEntitlementAccount) HasGovernanceGroupId() bool {
-	if o != nil && o.GovernanceGroupId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGovernanceGroupId gets a reference to the given NullableString and assigns it to the GovernanceGroupId field.
-func (o *ReviewableEntitlementAccount) SetGovernanceGroupId(v string) {
-	o.GovernanceGroupId.Set(&v)
-}
-// SetGovernanceGroupIdNil sets the value for GovernanceGroupId to be an explicit nil
-func (o *ReviewableEntitlementAccount) SetGovernanceGroupIdNil() {
-	o.GovernanceGroupId.Set(nil)
-}
-
-// UnsetGovernanceGroupId ensures that no value is present for GovernanceGroupId, not even an explicit nil
-func (o *ReviewableEntitlementAccount) UnsetGovernanceGroupId() {
-	o.GovernanceGroupId.Unset()
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableEntitlementAccount) GetOwner() ReviewableEntitlementAccountOwner {
-	if o == nil || IsNil(o.Owner.Get()) {
-		var ret ReviewableEntitlementAccountOwner
-		return ret
-	}
-	return *o.Owner.Get()
-}
-
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableEntitlementAccount) GetOwnerOk() (*ReviewableEntitlementAccountOwner, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Owner.Get(), o.Owner.IsSet()
-}
-
-// HasOwner returns a boolean if a field has been set.
-func (o *ReviewableEntitlementAccount) HasOwner() bool {
-	if o != nil && o.Owner.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given NullableReviewableEntitlementAccountOwner and assigns it to the Owner field.
-func (o *ReviewableEntitlementAccount) SetOwner(v ReviewableEntitlementAccountOwner) {
-	o.Owner.Set(&v)
-}
-// SetOwnerNil sets the value for Owner to be an explicit nil
-func (o *ReviewableEntitlementAccount) SetOwnerNil() {
-	o.Owner.Set(nil)
-}
-
-// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
-func (o *ReviewableEntitlementAccount) UnsetOwner() {
-	o.Owner.Unset()
-}
-
 func (o ReviewableEntitlementAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -562,15 +431,6 @@ func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivityInsights) {
 		toSerialize["activityInsights"] = o.ActivityInsights
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.GovernanceGroupId.IsSet() {
-		toSerialize["governanceGroupId"] = o.GovernanceGroupId.Get()
-	}
-	if o.Owner.IsSet() {
-		toSerialize["owner"] = o.Owner.Get()
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -602,9 +462,6 @@ func (o *ReviewableEntitlementAccount) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "activityInsights")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "governanceGroupId")
-		delete(additionalProperties, "owner")
 		o.AdditionalProperties = additionalProperties
 	}
 

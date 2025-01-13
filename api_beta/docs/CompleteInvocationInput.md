@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LocalizedError** | Pointer to [**NullableLocalizedMessage**](LocalizedMessage.md) |  | [optional] 
+**LocalizedError** | Pointer to [**LocalizedMessage**](LocalizedMessage.md) |  | [optional] 
 **Output** | Pointer to **map[string]interface{}** | Trigger output that completed the invocation. Its schema is defined in the trigger definition. | [optional] 
 
 ## Methods
@@ -51,16 +51,6 @@ SetLocalizedError sets LocalizedError field to given value.
 
 HasLocalizedError returns a boolean if a field has been set.
 
-### SetLocalizedErrorNil
-
-`func (o *CompleteInvocationInput) SetLocalizedErrorNil(b bool)`
-
- SetLocalizedErrorNil sets the value for LocalizedError to be an explicit nil
-
-### UnsetLocalizedError
-`func (o *CompleteInvocationInput) UnsetLocalizedError()`
-
-UnsetLocalizedError ensures that no value is present for LocalizedError, not even an explicit nil
 ### GetOutput
 
 `func (o *CompleteInvocationInput) GetOutput() map[string]interface{}`
@@ -86,16 +76,6 @@ SetOutput sets Output field to given value.
 
 HasOutput returns a boolean if a field has been set.
 
-### SetOutputNil
-
-`func (o *CompleteInvocationInput) SetOutputNil(b bool)`
-
- SetOutputNil sets the value for Output to be an explicit nil
-
-### UnsetOutput
-`func (o *CompleteInvocationInput) UnsetOutput()`
-
-UnsetOutput ensures that no value is present for Output, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

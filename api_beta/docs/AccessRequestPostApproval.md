@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
+**RequestedFor** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
 **RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
 **RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAccessRequestPostApproval
 
-`func NewAccessRequestPostApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, requestedBy AccessItemRequesterDto, ) *AccessRequestPostApproval`
+`func NewAccessRequestPostApproval(accessRequestId string, requestedFor AccessItemRequestedForDto, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, requestedBy AccessItemRequesterDto, ) *AccessRequestPostApproval`
 
 NewAccessRequestPostApproval instantiates a new AccessRequestPostApproval object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestPostApproval) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *AccessRequestPostApproval) GetRequestedFor() AccessItemRequestedForDto`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestPostApproval) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *AccessRequestPostApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestPostApproval) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *AccessRequestPostApproval) SetRequestedFor(v AccessItemRequestedForDto)`
 
 SetRequestedFor sets RequestedFor field to given value.
 

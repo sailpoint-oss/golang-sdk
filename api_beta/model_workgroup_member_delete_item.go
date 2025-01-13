@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -22,8 +22,8 @@ var _ MappedNullable = &WorkgroupMemberDeleteItem{}
 type WorkgroupMemberDeleteItem struct {
 	// Identifier of identity in bulk member add /remove request.
 	Id string `json:"id"`
-	// The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. 
-	Status int32 `json:"status"`
+	//  The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. 
+	Status string `json:"status"`
 	// Human readable status description and containing additional context information about success or failures etc. 
 	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _WorkgroupMemberDeleteItem WorkgroupMemberDeleteItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkgroupMemberDeleteItem(id string, status int32) *WorkgroupMemberDeleteItem {
+func NewWorkgroupMemberDeleteItem(id string, status string) *WorkgroupMemberDeleteItem {
 	this := WorkgroupMemberDeleteItem{}
 	this.Id = id
 	this.Status = status
@@ -75,9 +75,9 @@ func (o *WorkgroupMemberDeleteItem) SetId(v string) {
 }
 
 // GetStatus returns the Status field value
-func (o *WorkgroupMemberDeleteItem) GetStatus() int32 {
+func (o *WorkgroupMemberDeleteItem) GetStatus() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *WorkgroupMemberDeleteItem) GetStatus() int32 {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *WorkgroupMemberDeleteItem) GetStatusOk() (*int32, bool) {
+func (o *WorkgroupMemberDeleteItem) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *WorkgroupMemberDeleteItem) GetStatusOk() (*int32, bool) {
 }
 
 // SetStatus sets field value
-func (o *WorkgroupMemberDeleteItem) SetStatus(v int32) {
+func (o *WorkgroupMemberDeleteItem) SetStatus(v string) {
 	o.Status = v
 }
 

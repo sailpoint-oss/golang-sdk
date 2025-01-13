@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Started** | Pointer to **time.Time** | The time that this phase started. | [optional] 
-**Finished** | Pointer to **NullableTime** | The time that this phase finished. | [optional] 
+**Finished** | Pointer to **time.Time** | The time that this phase finished. | [optional] 
 **Name** | Pointer to **string** | The name of this phase. | [optional] 
 **State** | Pointer to **string** | The state of this phase. | [optional] 
-**Result** | Pointer to **NullableString** | The state of this phase. | [optional] 
-**PhaseReference** | Pointer to **NullableString** | A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items. | [optional] 
+**Result** | Pointer to **string** | The state of this phase. | [optional] 
+**PhaseReference** | Pointer to **string** | A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items. | [optional] 
 
 ## Methods
 
@@ -80,16 +80,6 @@ SetFinished sets Finished field to given value.
 
 HasFinished returns a boolean if a field has been set.
 
-### SetFinishedNil
-
-`func (o *AccessRequestPhases) SetFinishedNil(b bool)`
-
- SetFinishedNil sets the value for Finished to be an explicit nil
-
-### UnsetFinished
-`func (o *AccessRequestPhases) UnsetFinished()`
-
-UnsetFinished ensures that no value is present for Finished, not even an explicit nil
 ### GetName
 
 `func (o *AccessRequestPhases) GetName() string`
@@ -165,16 +155,6 @@ SetResult sets Result field to given value.
 
 HasResult returns a boolean if a field has been set.
 
-### SetResultNil
-
-`func (o *AccessRequestPhases) SetResultNil(b bool)`
-
- SetResultNil sets the value for Result to be an explicit nil
-
-### UnsetResult
-`func (o *AccessRequestPhases) UnsetResult()`
-
-UnsetResult ensures that no value is present for Result, not even an explicit nil
 ### GetPhaseReference
 
 `func (o *AccessRequestPhases) GetPhaseReference() string`
@@ -200,16 +180,6 @@ SetPhaseReference sets PhaseReference field to given value.
 
 HasPhaseReference returns a boolean if a field has been set.
 
-### SetPhaseReferenceNil
-
-`func (o *AccessRequestPhases) SetPhaseReferenceNil(b bool)`
-
- SetPhaseReferenceNil sets the value for PhaseReference to be an explicit nil
-
-### UnsetPhaseReference
-`func (o *AccessRequestPhases) UnsetPhaseReference()`
-
-UnsetPhaseReference ensures that no value is present for PhaseReference, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

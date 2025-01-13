@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -24,8 +24,6 @@ type ProvisioningCriteriaLevel3 struct {
 	Attribute NullableString `json:"attribute,omitempty"`
 	// String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type.
 	Value *string `json:"value,omitempty"`
-	// Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes.
-	Children NullableString `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -154,48 +152,6 @@ func (o *ProvisioningCriteriaLevel3) SetValue(v string) {
 	o.Value = &v
 }
 
-// GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProvisioningCriteriaLevel3) GetChildren() string {
-	if o == nil || IsNil(o.Children.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Children.Get()
-}
-
-// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProvisioningCriteriaLevel3) GetChildrenOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Children.Get(), o.Children.IsSet()
-}
-
-// HasChildren returns a boolean if a field has been set.
-func (o *ProvisioningCriteriaLevel3) HasChildren() bool {
-	if o != nil && o.Children.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetChildren gets a reference to the given NullableString and assigns it to the Children field.
-func (o *ProvisioningCriteriaLevel3) SetChildren(v string) {
-	o.Children.Set(&v)
-}
-// SetChildrenNil sets the value for Children to be an explicit nil
-func (o *ProvisioningCriteriaLevel3) SetChildrenNil() {
-	o.Children.Set(nil)
-}
-
-// UnsetChildren ensures that no value is present for Children, not even an explicit nil
-func (o *ProvisioningCriteriaLevel3) UnsetChildren() {
-	o.Children.Unset()
-}
-
 func (o ProvisioningCriteriaLevel3) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -214,9 +170,6 @@ func (o ProvisioningCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
-	}
-	if o.Children.IsSet() {
-		toSerialize["children"] = o.Children.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -243,7 +196,6 @@ func (o *ProvisioningCriteriaLevel3) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
-		delete(additionalProperties, "children")
 		o.AdditionalProperties = additionalProperties
 	}
 

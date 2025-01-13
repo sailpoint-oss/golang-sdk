@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
-**OriginalOwner** | Pointer to [**NullableManualWorkItemDetailsOriginalOwner**](ManualWorkItemDetailsOriginalOwner.md) |  | [optional] 
-**CurrentOwner** | Pointer to [**NullableManualWorkItemDetailsCurrentOwner**](ManualWorkItemDetailsCurrentOwner.md) |  | [optional] 
+**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
+**OriginalOwner** | Pointer to [**ManualWorkItemDetailsOriginalOwner**](ManualWorkItemDetailsOriginalOwner.md) |  | [optional] 
+**CurrentOwner** | Pointer to [**ManualWorkItemDetailsCurrentOwner**](ManualWorkItemDetailsCurrentOwner.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
@@ -80,16 +80,6 @@ SetOriginalOwner sets OriginalOwner field to given value.
 
 HasOriginalOwner returns a boolean if a field has been set.
 
-### SetOriginalOwnerNil
-
-`func (o *ManualWorkItemDetails) SetOriginalOwnerNil(b bool)`
-
- SetOriginalOwnerNil sets the value for OriginalOwner to be an explicit nil
-
-### UnsetOriginalOwner
-`func (o *ManualWorkItemDetails) UnsetOriginalOwner()`
-
-UnsetOriginalOwner ensures that no value is present for OriginalOwner, not even an explicit nil
 ### GetCurrentOwner
 
 `func (o *ManualWorkItemDetails) GetCurrentOwner() ManualWorkItemDetailsCurrentOwner`
@@ -115,16 +105,6 @@ SetCurrentOwner sets CurrentOwner field to given value.
 
 HasCurrentOwner returns a boolean if a field has been set.
 
-### SetCurrentOwnerNil
-
-`func (o *ManualWorkItemDetails) SetCurrentOwnerNil(b bool)`
-
- SetCurrentOwnerNil sets the value for CurrentOwner to be an explicit nil
-
-### UnsetCurrentOwner
-`func (o *ManualWorkItemDetails) UnsetCurrentOwner()`
-
-UnsetCurrentOwner ensures that no value is present for CurrentOwner, not even an explicit nil
 ### GetModified
 
 `func (o *ManualWorkItemDetails) GetModified() time.Time`
@@ -200,16 +180,6 @@ SetForwardHistory sets ForwardHistory field to given value.
 
 HasForwardHistory returns a boolean if a field has been set.
 
-### SetForwardHistoryNil
-
-`func (o *ManualWorkItemDetails) SetForwardHistoryNil(b bool)`
-
- SetForwardHistoryNil sets the value for ForwardHistory to be an explicit nil
-
-### UnsetForwardHistory
-`func (o *ManualWorkItemDetails) UnsetForwardHistory()`
-
-UnsetForwardHistory ensures that no value is present for ForwardHistory, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

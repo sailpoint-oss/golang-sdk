@@ -6,9 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessType** | Pointer to **string** | the access item type. entitlement in this case | [optional] 
 **Id** | Pointer to **string** | the access item id | [optional] 
-**DisplayName** | Pointer to **string** | the access item display name | [optional] 
+**DisplayName** | Pointer to **string** | the access profile display name | [optional] 
 **SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
-**AppRoleId** | Pointer to **string** | the app role id | [optional] 
 
 ## Methods
 
@@ -128,31 +127,6 @@ SetSourceName sets SourceName field to given value.
 `func (o *AccessItemAppResponse) HasSourceName() bool`
 
 HasSourceName returns a boolean if a field has been set.
-
-### GetAppRoleId
-
-`func (o *AccessItemAppResponse) GetAppRoleId() string`
-
-GetAppRoleId returns the AppRoleId field if non-nil, zero value otherwise.
-
-### GetAppRoleIdOk
-
-`func (o *AccessItemAppResponse) GetAppRoleIdOk() (*string, bool)`
-
-GetAppRoleIdOk returns a tuple with the AppRoleId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAppRoleId
-
-`func (o *AccessItemAppResponse) SetAppRoleId(v string)`
-
-SetAppRoleId sets AppRoleId field to given value.
-
-### HasAppRoleId
-
-`func (o *AccessItemAppResponse) HasAppRoleId() bool`
-
-HasAppRoleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

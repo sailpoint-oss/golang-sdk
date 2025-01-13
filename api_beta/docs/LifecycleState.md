@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Lifecycle state ID. | [optional] [readonly] 
-**Name** | Pointer to **string** | Lifecycle state name. | [optional] [readonly] 
-**TechnicalName** | Pointer to **string** | Lifecycle state technical name. This is for internal use. | [optional] [readonly] 
+**Id** | Pointer to **string** | lifecycle stat id. | [optional] [readonly] 
+**Name** | Pointer to **string** | Lifecycle-state name. | [optional] [readonly] 
+**TechnicalName** | Pointer to **string** | The technical name for lifecycle state. This is for internal use. | [optional] [readonly] 
 **Description** | Pointer to **string** | Lifecycle state description. | [optional] 
 **Created** | Pointer to **time.Time** | Lifecycle state created date. | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Lifecycle state modified date. | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to false]
+**Enabled** | Pointer to **bool** | Whether the lifecycle state is enabled or disabled. | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities that have the lifecycle state. | [optional] [readonly] 
 **EmailNotificationOption** | Pointer to [**EmailNotificationOption**](EmailNotificationOption.md) |  | [optional] 
 **AccountActions** | Pointer to [**[]AccountAction**](AccountAction.md) |  | [optional] 

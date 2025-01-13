@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the RoleBulkUpdateResponse type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type RoleBulkUpdateResponse struct {
 	// The status of the bulk update request, could also checked by getBulkUpdateStatus API
 	Status *string `json:"status,omitempty"`
 	// Time when the bulk update request was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,9 +147,9 @@ func (o *RoleBulkUpdateResponse) SetStatus(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *RoleBulkUpdateResponse) GetCreated() SailPointTime {
+func (o *RoleBulkUpdateResponse) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -157,7 +157,7 @@ func (o *RoleBulkUpdateResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleBulkUpdateResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *RoleBulkUpdateResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -173,8 +173,8 @@ func (o *RoleBulkUpdateResponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *RoleBulkUpdateResponse) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *RoleBulkUpdateResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

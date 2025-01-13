@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud V3 API
+IdentityNow V3 API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -36,7 +36,7 @@ func (r ApiGetCertificationTaskRequest) Execute() (*CertificationTask, *http.Res
 /*
 GetCertificationTask Certification Task by ID
 
-This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
+This API returns the certification task for the specified ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for the specified certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The task ID
@@ -204,7 +204,7 @@ func (r ApiGetIdentityCertificationRequest) Execute() (*IdentityCertificationDto
 /*
 GetIdentityCertification Identity Certification by ID
 
-This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+This API returns a single identity campaign certification by its ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification id
@@ -401,7 +401,7 @@ func (r ApiGetIdentityCertificationItemPermissionsRequest) Execute() ([]Permissi
 /*
 GetIdentityCertificationItemPermissions Permissions for Entitlement Certification Item
 
-This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
+This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param certificationId The certification ID
@@ -851,7 +851,7 @@ func (r ApiListCertificationReviewersRequest) Execute() ([]IdentityReferenceWith
 /*
 ListCertificationReviewers List of Reviewers for certification
 
-This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
+This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification ID
@@ -1099,7 +1099,7 @@ func (r ApiListIdentityAccessReviewItemsRequest) Execute() ([]AccessReviewItem, 
 /*
 ListIdentityAccessReviewItems List of Access Review Items
 
-This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+This API returns a list of access review items for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
@@ -1298,7 +1298,7 @@ type ApiListIdentityCertificationsRequest struct {
 	sorters *string
 }
 
-// Reviewer&#39;s identity. *me* indicates the current user.
+// The ID of reviewer identity. *me* indicates the current user.
 func (r ApiListIdentityCertificationsRequest) ReviewerIdentity(reviewerIdentity string) ApiListIdentityCertificationsRequest {
 	r.reviewerIdentity = &reviewerIdentity
 	return r
@@ -1322,7 +1322,7 @@ func (r ApiListIdentityCertificationsRequest) Count(count bool) ApiListIdentityC
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq, ne*
 func (r ApiListIdentityCertificationsRequest) Filters(filters string) ApiListIdentityCertificationsRequest {
 	r.filters = &filters
 	return r
@@ -1339,9 +1339,9 @@ func (r ApiListIdentityCertificationsRequest) Execute() ([]IdentityCertification
 }
 
 /*
-ListIdentityCertifications List Identity Campaign Certifications
+ListIdentityCertifications Identity Campaign Certifications by IDs
 
-Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
+This API returns a list of identity campaign certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to Governance Groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityCertificationsRequest
@@ -1529,7 +1529,7 @@ func (r ApiMakeIdentityDecisionRequest) Execute() (*IdentityCertificationDto, *h
 /*
 MakeIdentityDecision Decide on a Certification Item
 
-The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+The API makes a decision to approve or revoke one or more identity campaign certification items. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the identity campaign certification on which to make decisions
@@ -1887,7 +1887,7 @@ func (r ApiSignOffIdentityCertificationRequest) Execute() (*IdentityCertificatio
 /*
 SignOffIdentityCertification Finalize Identity Certification Decisions
 
-This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
@@ -2061,12 +2061,7 @@ func (r ApiSubmitReassignCertsAsyncRequest) Execute() (*CertificationTask, *http
 /*
 SubmitReassignCertsAsync Reassign Certifications Asynchronously
 
-This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another
-reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the
-reassignment is complete. 
-
-Reviewers for this certification can also call this API.
-
+This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID

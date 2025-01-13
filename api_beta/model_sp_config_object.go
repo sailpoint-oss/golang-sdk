@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -21,17 +21,23 @@ var _ MappedNullable = &SpConfigObject{}
 type SpConfigObject struct {
 	// The object type this configuration is for.
 	ObjectType *string `json:"objectType,omitempty"`
+	ResolveByIdUrl *SpConfigUrl `json:"resolveByIdUrl,omitempty"`
+	// Url and query parameters to be used to resolve this type of object by name.
+	ResolveByNameUrl []SpConfigUrl `json:"resolveByNameUrl,omitempty"`
+	ExportUrl *SpConfigUrl `json:"exportUrl,omitempty"`
+	// Rights needed by the invoker of sp-config/export in order to export this type of object.
+	ExportRight *string `json:"exportRight,omitempty"`
+	// Pagination limit imposed by the target service for this object type.
+	ExportLimit *int32 `json:"exportLimit,omitempty"`
+	ImportUrl *SpConfigUrl `json:"importUrl,omitempty"`
+	// Rights needed by the invoker of sp-config/import in order to import this type of object.
+	ImportRight *string `json:"importRight,omitempty"`
+	// Pagination limit imposed by the target service for this object type.
+	ImportLimit *int32 `json:"importLimit,omitempty"`
 	// List of json paths within an exported object of this type that represent references that need to be resolved.
 	ReferenceExtractors []string `json:"referenceExtractors,omitempty"`
 	// If true, this type of object will be JWS signed and cannot be modified before import.
 	SignatureRequired *bool `json:"signatureRequired,omitempty"`
-	// Whether this is a legacy object
-	LegacyObject *bool `json:"legacyObject,omitempty"`
-	// Whether there is only one object of this type
-	OnePerTenant *bool `json:"onePerTenant,omitempty"`
-	// Whether this object can be exported or it is just a reference object
-	Exportable *bool `json:"exportable,omitempty"`
-	Rules *SpConfigRules `json:"rules,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,12 +51,6 @@ func NewSpConfigObject() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
-	var legacyObject bool = false
-	this.LegacyObject = &legacyObject
-	var onePerTenant bool = false
-	this.OnePerTenant = &onePerTenant
-	var exportable bool = false
-	this.Exportable = &exportable
 	return &this
 }
 
@@ -61,12 +61,6 @@ func NewSpConfigObjectWithDefaults() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
-	var legacyObject bool = false
-	this.LegacyObject = &legacyObject
-	var onePerTenant bool = false
-	this.OnePerTenant = &onePerTenant
-	var exportable bool = false
-	this.Exportable = &exportable
 	return &this
 }
 
@@ -100,6 +94,262 @@ func (o *SpConfigObject) HasObjectType() bool {
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
 func (o *SpConfigObject) SetObjectType(v string) {
 	o.ObjectType = &v
+}
+
+// GetResolveByIdUrl returns the ResolveByIdUrl field value if set, zero value otherwise.
+func (o *SpConfigObject) GetResolveByIdUrl() SpConfigUrl {
+	if o == nil || IsNil(o.ResolveByIdUrl) {
+		var ret SpConfigUrl
+		return ret
+	}
+	return *o.ResolveByIdUrl
+}
+
+// GetResolveByIdUrlOk returns a tuple with the ResolveByIdUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetResolveByIdUrlOk() (*SpConfigUrl, bool) {
+	if o == nil || IsNil(o.ResolveByIdUrl) {
+		return nil, false
+	}
+	return o.ResolveByIdUrl, true
+}
+
+// HasResolveByIdUrl returns a boolean if a field has been set.
+func (o *SpConfigObject) HasResolveByIdUrl() bool {
+	if o != nil && !IsNil(o.ResolveByIdUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolveByIdUrl gets a reference to the given SpConfigUrl and assigns it to the ResolveByIdUrl field.
+func (o *SpConfigObject) SetResolveByIdUrl(v SpConfigUrl) {
+	o.ResolveByIdUrl = &v
+}
+
+// GetResolveByNameUrl returns the ResolveByNameUrl field value if set, zero value otherwise.
+func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl {
+	if o == nil || IsNil(o.ResolveByNameUrl) {
+		var ret []SpConfigUrl
+		return ret
+	}
+	return o.ResolveByNameUrl
+}
+
+// GetResolveByNameUrlOk returns a tuple with the ResolveByNameUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetResolveByNameUrlOk() ([]SpConfigUrl, bool) {
+	if o == nil || IsNil(o.ResolveByNameUrl) {
+		return nil, false
+	}
+	return o.ResolveByNameUrl, true
+}
+
+// HasResolveByNameUrl returns a boolean if a field has been set.
+func (o *SpConfigObject) HasResolveByNameUrl() bool {
+	if o != nil && !IsNil(o.ResolveByNameUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolveByNameUrl gets a reference to the given []SpConfigUrl and assigns it to the ResolveByNameUrl field.
+func (o *SpConfigObject) SetResolveByNameUrl(v []SpConfigUrl) {
+	o.ResolveByNameUrl = v
+}
+
+// GetExportUrl returns the ExportUrl field value if set, zero value otherwise.
+func (o *SpConfigObject) GetExportUrl() SpConfigUrl {
+	if o == nil || IsNil(o.ExportUrl) {
+		var ret SpConfigUrl
+		return ret
+	}
+	return *o.ExportUrl
+}
+
+// GetExportUrlOk returns a tuple with the ExportUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool) {
+	if o == nil || IsNil(o.ExportUrl) {
+		return nil, false
+	}
+	return o.ExportUrl, true
+}
+
+// HasExportUrl returns a boolean if a field has been set.
+func (o *SpConfigObject) HasExportUrl() bool {
+	if o != nil && !IsNil(o.ExportUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportUrl gets a reference to the given SpConfigUrl and assigns it to the ExportUrl field.
+func (o *SpConfigObject) SetExportUrl(v SpConfigUrl) {
+	o.ExportUrl = &v
+}
+
+// GetExportRight returns the ExportRight field value if set, zero value otherwise.
+func (o *SpConfigObject) GetExportRight() string {
+	if o == nil || IsNil(o.ExportRight) {
+		var ret string
+		return ret
+	}
+	return *o.ExportRight
+}
+
+// GetExportRightOk returns a tuple with the ExportRight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetExportRightOk() (*string, bool) {
+	if o == nil || IsNil(o.ExportRight) {
+		return nil, false
+	}
+	return o.ExportRight, true
+}
+
+// HasExportRight returns a boolean if a field has been set.
+func (o *SpConfigObject) HasExportRight() bool {
+	if o != nil && !IsNil(o.ExportRight) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportRight gets a reference to the given string and assigns it to the ExportRight field.
+func (o *SpConfigObject) SetExportRight(v string) {
+	o.ExportRight = &v
+}
+
+// GetExportLimit returns the ExportLimit field value if set, zero value otherwise.
+func (o *SpConfigObject) GetExportLimit() int32 {
+	if o == nil || IsNil(o.ExportLimit) {
+		var ret int32
+		return ret
+	}
+	return *o.ExportLimit
+}
+
+// GetExportLimitOk returns a tuple with the ExportLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetExportLimitOk() (*int32, bool) {
+	if o == nil || IsNil(o.ExportLimit) {
+		return nil, false
+	}
+	return o.ExportLimit, true
+}
+
+// HasExportLimit returns a boolean if a field has been set.
+func (o *SpConfigObject) HasExportLimit() bool {
+	if o != nil && !IsNil(o.ExportLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportLimit gets a reference to the given int32 and assigns it to the ExportLimit field.
+func (o *SpConfigObject) SetExportLimit(v int32) {
+	o.ExportLimit = &v
+}
+
+// GetImportUrl returns the ImportUrl field value if set, zero value otherwise.
+func (o *SpConfigObject) GetImportUrl() SpConfigUrl {
+	if o == nil || IsNil(o.ImportUrl) {
+		var ret SpConfigUrl
+		return ret
+	}
+	return *o.ImportUrl
+}
+
+// GetImportUrlOk returns a tuple with the ImportUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool) {
+	if o == nil || IsNil(o.ImportUrl) {
+		return nil, false
+	}
+	return o.ImportUrl, true
+}
+
+// HasImportUrl returns a boolean if a field has been set.
+func (o *SpConfigObject) HasImportUrl() bool {
+	if o != nil && !IsNil(o.ImportUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportUrl gets a reference to the given SpConfigUrl and assigns it to the ImportUrl field.
+func (o *SpConfigObject) SetImportUrl(v SpConfigUrl) {
+	o.ImportUrl = &v
+}
+
+// GetImportRight returns the ImportRight field value if set, zero value otherwise.
+func (o *SpConfigObject) GetImportRight() string {
+	if o == nil || IsNil(o.ImportRight) {
+		var ret string
+		return ret
+	}
+	return *o.ImportRight
+}
+
+// GetImportRightOk returns a tuple with the ImportRight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetImportRightOk() (*string, bool) {
+	if o == nil || IsNil(o.ImportRight) {
+		return nil, false
+	}
+	return o.ImportRight, true
+}
+
+// HasImportRight returns a boolean if a field has been set.
+func (o *SpConfigObject) HasImportRight() bool {
+	if o != nil && !IsNil(o.ImportRight) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportRight gets a reference to the given string and assigns it to the ImportRight field.
+func (o *SpConfigObject) SetImportRight(v string) {
+	o.ImportRight = &v
+}
+
+// GetImportLimit returns the ImportLimit field value if set, zero value otherwise.
+func (o *SpConfigObject) GetImportLimit() int32 {
+	if o == nil || IsNil(o.ImportLimit) {
+		var ret int32
+		return ret
+	}
+	return *o.ImportLimit
+}
+
+// GetImportLimitOk returns a tuple with the ImportLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetImportLimitOk() (*int32, bool) {
+	if o == nil || IsNil(o.ImportLimit) {
+		return nil, false
+	}
+	return o.ImportLimit, true
+}
+
+// HasImportLimit returns a boolean if a field has been set.
+func (o *SpConfigObject) HasImportLimit() bool {
+	if o != nil && !IsNil(o.ImportLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportLimit gets a reference to the given int32 and assigns it to the ImportLimit field.
+func (o *SpConfigObject) SetImportLimit(v int32) {
+	o.ImportLimit = &v
 }
 
 // GetReferenceExtractors returns the ReferenceExtractors field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -167,134 +417,6 @@ func (o *SpConfigObject) SetSignatureRequired(v bool) {
 	o.SignatureRequired = &v
 }
 
-// GetLegacyObject returns the LegacyObject field value if set, zero value otherwise.
-func (o *SpConfigObject) GetLegacyObject() bool {
-	if o == nil || IsNil(o.LegacyObject) {
-		var ret bool
-		return ret
-	}
-	return *o.LegacyObject
-}
-
-// GetLegacyObjectOk returns a tuple with the LegacyObject field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetLegacyObjectOk() (*bool, bool) {
-	if o == nil || IsNil(o.LegacyObject) {
-		return nil, false
-	}
-	return o.LegacyObject, true
-}
-
-// HasLegacyObject returns a boolean if a field has been set.
-func (o *SpConfigObject) HasLegacyObject() bool {
-	if o != nil && !IsNil(o.LegacyObject) {
-		return true
-	}
-
-	return false
-}
-
-// SetLegacyObject gets a reference to the given bool and assigns it to the LegacyObject field.
-func (o *SpConfigObject) SetLegacyObject(v bool) {
-	o.LegacyObject = &v
-}
-
-// GetOnePerTenant returns the OnePerTenant field value if set, zero value otherwise.
-func (o *SpConfigObject) GetOnePerTenant() bool {
-	if o == nil || IsNil(o.OnePerTenant) {
-		var ret bool
-		return ret
-	}
-	return *o.OnePerTenant
-}
-
-// GetOnePerTenantOk returns a tuple with the OnePerTenant field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetOnePerTenantOk() (*bool, bool) {
-	if o == nil || IsNil(o.OnePerTenant) {
-		return nil, false
-	}
-	return o.OnePerTenant, true
-}
-
-// HasOnePerTenant returns a boolean if a field has been set.
-func (o *SpConfigObject) HasOnePerTenant() bool {
-	if o != nil && !IsNil(o.OnePerTenant) {
-		return true
-	}
-
-	return false
-}
-
-// SetOnePerTenant gets a reference to the given bool and assigns it to the OnePerTenant field.
-func (o *SpConfigObject) SetOnePerTenant(v bool) {
-	o.OnePerTenant = &v
-}
-
-// GetExportable returns the Exportable field value if set, zero value otherwise.
-func (o *SpConfigObject) GetExportable() bool {
-	if o == nil || IsNil(o.Exportable) {
-		var ret bool
-		return ret
-	}
-	return *o.Exportable
-}
-
-// GetExportableOk returns a tuple with the Exportable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetExportableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Exportable) {
-		return nil, false
-	}
-	return o.Exportable, true
-}
-
-// HasExportable returns a boolean if a field has been set.
-func (o *SpConfigObject) HasExportable() bool {
-	if o != nil && !IsNil(o.Exportable) {
-		return true
-	}
-
-	return false
-}
-
-// SetExportable gets a reference to the given bool and assigns it to the Exportable field.
-func (o *SpConfigObject) SetExportable(v bool) {
-	o.Exportable = &v
-}
-
-// GetRules returns the Rules field value if set, zero value otherwise.
-func (o *SpConfigObject) GetRules() SpConfigRules {
-	if o == nil || IsNil(o.Rules) {
-		var ret SpConfigRules
-		return ret
-	}
-	return *o.Rules
-}
-
-// GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetRulesOk() (*SpConfigRules, bool) {
-	if o == nil || IsNil(o.Rules) {
-		return nil, false
-	}
-	return o.Rules, true
-}
-
-// HasRules returns a boolean if a field has been set.
-func (o *SpConfigObject) HasRules() bool {
-	if o != nil && !IsNil(o.Rules) {
-		return true
-	}
-
-	return false
-}
-
-// SetRules gets a reference to the given SpConfigRules and assigns it to the Rules field.
-func (o *SpConfigObject) SetRules(v SpConfigRules) {
-	o.Rules = &v
-}
-
 func (o SpConfigObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -308,23 +430,35 @@ func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
 	}
+	if !IsNil(o.ResolveByIdUrl) {
+		toSerialize["resolveByIdUrl"] = o.ResolveByIdUrl
+	}
+	if !IsNil(o.ResolveByNameUrl) {
+		toSerialize["resolveByNameUrl"] = o.ResolveByNameUrl
+	}
+	if !IsNil(o.ExportUrl) {
+		toSerialize["exportUrl"] = o.ExportUrl
+	}
+	if !IsNil(o.ExportRight) {
+		toSerialize["exportRight"] = o.ExportRight
+	}
+	if !IsNil(o.ExportLimit) {
+		toSerialize["exportLimit"] = o.ExportLimit
+	}
+	if !IsNil(o.ImportUrl) {
+		toSerialize["importUrl"] = o.ImportUrl
+	}
+	if !IsNil(o.ImportRight) {
+		toSerialize["importRight"] = o.ImportRight
+	}
+	if !IsNil(o.ImportLimit) {
+		toSerialize["importLimit"] = o.ImportLimit
+	}
 	if o.ReferenceExtractors != nil {
 		toSerialize["referenceExtractors"] = o.ReferenceExtractors
 	}
 	if !IsNil(o.SignatureRequired) {
 		toSerialize["signatureRequired"] = o.SignatureRequired
-	}
-	if !IsNil(o.LegacyObject) {
-		toSerialize["legacyObject"] = o.LegacyObject
-	}
-	if !IsNil(o.OnePerTenant) {
-		toSerialize["onePerTenant"] = o.OnePerTenant
-	}
-	if !IsNil(o.Exportable) {
-		toSerialize["exportable"] = o.Exportable
-	}
-	if !IsNil(o.Rules) {
-		toSerialize["rules"] = o.Rules
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -349,12 +483,16 @@ func (o *SpConfigObject) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectType")
+		delete(additionalProperties, "resolveByIdUrl")
+		delete(additionalProperties, "resolveByNameUrl")
+		delete(additionalProperties, "exportUrl")
+		delete(additionalProperties, "exportRight")
+		delete(additionalProperties, "exportLimit")
+		delete(additionalProperties, "importUrl")
+		delete(additionalProperties, "importRight")
+		delete(additionalProperties, "importLimit")
 		delete(additionalProperties, "referenceExtractors")
 		delete(additionalProperties, "signatureRequired")
-		delete(additionalProperties, "legacyObject")
-		delete(additionalProperties, "onePerTenant")
-		delete(additionalProperties, "exportable")
-		delete(additionalProperties, "rules")
 		o.AdditionalProperties = additionalProperties
 	}
 

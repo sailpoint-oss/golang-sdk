@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -24,9 +24,9 @@ type CertificationDto struct {
 	CampaignRef CampaignReference `json:"campaignRef"`
 	Phase CertificationPhase `json:"phase"`
 	// The due date of the certification.
-	Due SailPointTime `json:"due"`
+	Due time.Time `json:"due"`
 	// The date the reviewer signed off on the certification.
-	Signed SailPointTime `json:"signed"`
+	Signed time.Time `json:"signed"`
 	Reviewer Reviewer `json:"reviewer"`
 	Reassignment *Reassignment `json:"reassignment,omitempty"`
 	// Indicates it the certification has any errors.
@@ -52,7 +52,7 @@ type _CertificationDto CertificationDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificationDto(campaignRef CampaignReference, phase CertificationPhase, due SailPointTime, signed SailPointTime, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationDto {
+func NewCertificationDto(campaignRef CampaignReference, phase CertificationPhase, due time.Time, signed time.Time, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationDto {
 	this := CertificationDto{}
 	this.CampaignRef = campaignRef
 	this.Phase = phase
@@ -125,9 +125,9 @@ func (o *CertificationDto) SetPhase(v CertificationPhase) {
 }
 
 // GetDue returns the Due field value
-func (o *CertificationDto) GetDue() SailPointTime {
+func (o *CertificationDto) GetDue() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -136,7 +136,7 @@ func (o *CertificationDto) GetDue() SailPointTime {
 
 // GetDueOk returns a tuple with the Due field value
 // and a boolean to check if the value has been set.
-func (o *CertificationDto) GetDueOk() (*SailPointTime, bool) {
+func (o *CertificationDto) GetDueOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,14 +144,14 @@ func (o *CertificationDto) GetDueOk() (*SailPointTime, bool) {
 }
 
 // SetDue sets field value
-func (o *CertificationDto) SetDue(v SailPointTime) {
+func (o *CertificationDto) SetDue(v time.Time) {
 	o.Due = v
 }
 
 // GetSigned returns the Signed field value
-func (o *CertificationDto) GetSigned() SailPointTime {
+func (o *CertificationDto) GetSigned() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -160,7 +160,7 @@ func (o *CertificationDto) GetSigned() SailPointTime {
 
 // GetSignedOk returns a tuple with the Signed field value
 // and a boolean to check if the value has been set.
-func (o *CertificationDto) GetSignedOk() (*SailPointTime, bool) {
+func (o *CertificationDto) GetSignedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *CertificationDto) GetSignedOk() (*SailPointTime, bool) {
 }
 
 // SetSigned sets field value
-func (o *CertificationDto) SetSigned(v SailPointTime) {
+func (o *CertificationDto) SetSigned(v time.Time) {
 	o.Signed = v
 }
 

@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &ViolationOwnerAssignmentConfig{}
 type ViolationOwnerAssignmentConfig struct {
 	// Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity
 	AssignmentRule NullableString `json:"assignmentRule,omitempty"`
-	OwnerRef NullableViolationOwnerAssignmentConfigOwnerRef `json:"ownerRef,omitempty"`
+	OwnerRef *ViolationOwnerAssignmentConfigOwnerRef `json:"ownerRef,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,46 +86,36 @@ func (o *ViolationOwnerAssignmentConfig) UnsetAssignmentRule() {
 	o.AssignmentRule.Unset()
 }
 
-// GetOwnerRef returns the OwnerRef field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
 func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() ViolationOwnerAssignmentConfigOwnerRef {
-	if o == nil || IsNil(o.OwnerRef.Get()) {
+	if o == nil || IsNil(o.OwnerRef) {
 		var ret ViolationOwnerAssignmentConfigOwnerRef
 		return ret
 	}
-	return *o.OwnerRef.Get()
+	return *o.OwnerRef
 }
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*ViolationOwnerAssignmentConfigOwnerRef, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OwnerRef) {
 		return nil, false
 	}
-	return o.OwnerRef.Get(), o.OwnerRef.IsSet()
+	return o.OwnerRef, true
 }
 
 // HasOwnerRef returns a boolean if a field has been set.
 func (o *ViolationOwnerAssignmentConfig) HasOwnerRef() bool {
-	if o != nil && o.OwnerRef.IsSet() {
+	if o != nil && !IsNil(o.OwnerRef) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnerRef gets a reference to the given NullableViolationOwnerAssignmentConfigOwnerRef and assigns it to the OwnerRef field.
+// SetOwnerRef gets a reference to the given ViolationOwnerAssignmentConfigOwnerRef and assigns it to the OwnerRef field.
 func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v ViolationOwnerAssignmentConfigOwnerRef) {
-	o.OwnerRef.Set(&v)
-}
-// SetOwnerRefNil sets the value for OwnerRef to be an explicit nil
-func (o *ViolationOwnerAssignmentConfig) SetOwnerRefNil() {
-	o.OwnerRef.Set(nil)
-}
-
-// UnsetOwnerRef ensures that no value is present for OwnerRef, not even an explicit nil
-func (o *ViolationOwnerAssignmentConfig) UnsetOwnerRef() {
-	o.OwnerRef.Unset()
+	o.OwnerRef = &v
 }
 
 func (o ViolationOwnerAssignmentConfig) MarshalJSON() ([]byte, error) {
@@ -141,8 +131,8 @@ func (o ViolationOwnerAssignmentConfig) ToMap() (map[string]interface{}, error) 
 	if o.AssignmentRule.IsSet() {
 		toSerialize["assignmentRule"] = o.AssignmentRule.Get()
 	}
-	if o.OwnerRef.IsSet() {
-		toSerialize["ownerRef"] = o.OwnerRef.Get()
+	if !IsNil(o.OwnerRef) {
+		toSerialize["ownerRef"] = o.OwnerRef
 	}
 
 	for key, value := range o.AdditionalProperties {

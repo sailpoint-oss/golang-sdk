@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -25,15 +25,13 @@ type InvocationStatus struct {
 	Id string `json:"id"`
 	// Trigger ID
 	TriggerId string `json:"triggerId"`
-	// Subscription name
-	SubscriptionName string `json:"subscriptionName"`
 	// Subscription ID
 	SubscriptionId string `json:"subscriptionId"`
 	Type InvocationStatusType `json:"type"`
 	// Invocation created timestamp. ISO-8601 in UTC.
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC.
-	Completed *SailPointTime `json:"completed,omitempty"`
+	Completed *time.Time `json:"completed,omitempty"`
 	StartInvocationInput StartInvocationInput `json:"startInvocationInput"`
 	CompleteInvocationInput *CompleteInvocationInput `json:"completeInvocationInput,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,11 +43,10 @@ type _InvocationStatus InvocationStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvocationStatus(id string, triggerId string, subscriptionName string, subscriptionId string, type_ InvocationStatusType, created SailPointTime, startInvocationInput StartInvocationInput) *InvocationStatus {
+func NewInvocationStatus(id string, triggerId string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput) *InvocationStatus {
 	this := InvocationStatus{}
 	this.Id = id
 	this.TriggerId = triggerId
-	this.SubscriptionName = subscriptionName
 	this.SubscriptionId = subscriptionId
 	this.Type = type_
 	this.Created = created
@@ -113,30 +110,6 @@ func (o *InvocationStatus) SetTriggerId(v string) {
 	o.TriggerId = v
 }
 
-// GetSubscriptionName returns the SubscriptionName field value
-func (o *InvocationStatus) GetSubscriptionName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SubscriptionName
-}
-
-// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value
-// and a boolean to check if the value has been set.
-func (o *InvocationStatus) GetSubscriptionNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SubscriptionName, true
-}
-
-// SetSubscriptionName sets field value
-func (o *InvocationStatus) SetSubscriptionName(v string) {
-	o.SubscriptionName = v
-}
-
 // GetSubscriptionId returns the SubscriptionId field value
 func (o *InvocationStatus) GetSubscriptionId() string {
 	if o == nil {
@@ -186,9 +159,9 @@ func (o *InvocationStatus) SetType(v InvocationStatusType) {
 }
 
 // GetCreated returns the Created field value
-func (o *InvocationStatus) GetCreated() SailPointTime {
+func (o *InvocationStatus) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -197,7 +170,7 @@ func (o *InvocationStatus) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *InvocationStatus) GetCreatedOk() (*SailPointTime, bool) {
+func (o *InvocationStatus) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,14 +178,14 @@ func (o *InvocationStatus) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *InvocationStatus) SetCreated(v SailPointTime) {
+func (o *InvocationStatus) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *InvocationStatus) GetCompleted() SailPointTime {
+func (o *InvocationStatus) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Completed
@@ -220,7 +193,7 @@ func (o *InvocationStatus) GetCompleted() SailPointTime {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvocationStatus) GetCompletedOk() (*SailPointTime, bool) {
+func (o *InvocationStatus) GetCompletedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -236,8 +209,8 @@ func (o *InvocationStatus) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
-func (o *InvocationStatus) SetCompleted(v SailPointTime) {
+// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
+func (o *InvocationStatus) SetCompleted(v time.Time) {
 	o.Completed = &v
 }
 
@@ -309,7 +282,6 @@ func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["triggerId"] = o.TriggerId
-	toSerialize["subscriptionName"] = o.SubscriptionName
 	toSerialize["subscriptionId"] = o.SubscriptionId
 	toSerialize["type"] = o.Type
 	toSerialize["created"] = o.Created
@@ -335,7 +307,6 @@ func (o *InvocationStatus) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"triggerId",
-		"subscriptionName",
 		"subscriptionId",
 		"type",
 		"created",
@@ -371,7 +342,6 @@ func (o *InvocationStatus) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "triggerId")
-		delete(additionalProperties, "subscriptionName")
 		delete(additionalProperties, "subscriptionId")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "created")

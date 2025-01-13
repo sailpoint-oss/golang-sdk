@@ -1,7 +1,7 @@
 /*
-Identity Security Cloud Beta API
+IdentityNow Beta API
 
-Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the LifecycleState type satisfies the MappedNullable interface at compile time
@@ -20,19 +20,19 @@ var _ MappedNullable = &LifecycleState{}
 
 // LifecycleState struct for LifecycleState
 type LifecycleState struct {
-	// Lifecycle state ID.
+	// lifecycle stat id.
 	Id *string `json:"id,omitempty"`
-	// Lifecycle state name.
+	// Lifecycle-state name.
 	Name *string `json:"name,omitempty"`
-	// Lifecycle state technical name. This is for internal use.
+	// The technical name for lifecycle state. This is for internal use.
 	TechnicalName *string `json:"technicalName,omitempty"`
 	// Lifecycle state description.
 	Description *string `json:"description,omitempty"`
 	// Lifecycle state created date.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Lifecycle state modified date.
-	Modified *SailPointTime `json:"modified,omitempty"`
-	// Indicates whether the lifecycle state is enabled or disabled.
+	Modified *time.Time `json:"modified,omitempty"`
+	// Whether the lifecycle state is enabled or disabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Number of identities that have the lifecycle state.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
@@ -51,8 +51,6 @@ type _LifecycleState LifecycleState
 // will change when the set of required properties is changed
 func NewLifecycleState() *LifecycleState {
 	this := LifecycleState{}
-	var enabled bool = false
-	this.Enabled = &enabled
 	return &this
 }
 
@@ -61,8 +59,6 @@ func NewLifecycleState() *LifecycleState {
 // but it doesn't guarantee that properties required by API are set
 func NewLifecycleStateWithDefaults() *LifecycleState {
 	this := LifecycleState{}
-	var enabled bool = false
-	this.Enabled = &enabled
 	return &this
 }
 
@@ -195,9 +191,9 @@ func (o *LifecycleState) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *LifecycleState) GetCreated() SailPointTime {
+func (o *LifecycleState) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -205,7 +201,7 @@ func (o *LifecycleState) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LifecycleState) GetCreatedOk() (*SailPointTime, bool) {
+func (o *LifecycleState) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -221,15 +217,15 @@ func (o *LifecycleState) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *LifecycleState) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *LifecycleState) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *LifecycleState) GetModified() SailPointTime {
+func (o *LifecycleState) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -237,7 +233,7 @@ func (o *LifecycleState) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LifecycleState) GetModifiedOk() (*SailPointTime, bool) {
+func (o *LifecycleState) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -253,8 +249,8 @@ func (o *LifecycleState) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *LifecycleState) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *LifecycleState) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
