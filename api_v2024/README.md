@@ -628,6 +628,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**SyncAttributesForSource**](docs/SourcesAPI.md#syncattributesforsource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 *SourcesAPI* | [**TestSourceConfiguration**](docs/SourcesAPI.md#testsourceconfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesAPI* | [**TestSourceConnection**](docs/SourcesAPI.md#testsourceconnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
+*SourcesAPI* | [**UpdatePasswordPolicyHolders**](docs/SourcesAPI.md#updatepasswordpolicyholders) | **Patch** /sources/{sourceId}/password-policies | Update Password Policy
 *SourcesAPI* | [**UpdateProvisioningPoliciesInBulk**](docs/SourcesAPI.md#updateprovisioningpoliciesinbulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesAPI* | [**UpdateProvisioningPolicy**](docs/SourcesAPI.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
@@ -1334,6 +1335,9 @@ Class | Method | HTTP request | Description
  - [PasswordInfoAccount](docs/PasswordInfoAccount.md)
  - [PasswordInfoQueryDTO](docs/PasswordInfoQueryDTO.md)
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
+ - [PasswordPolicyHoldersDtoAttributes](docs/PasswordPolicyHoldersDtoAttributes.md)
+ - [PasswordPolicyHoldersDtoAttributesIdentityAttrInner](docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md)
+ - [PasswordPolicyHoldersDtoInner](docs/PasswordPolicyHoldersDtoInner.md)
  - [PasswordPolicyV3Dto](docs/PasswordPolicyV3Dto.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)

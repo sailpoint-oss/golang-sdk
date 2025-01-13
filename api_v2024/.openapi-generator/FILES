@@ -753,6 +753,9 @@ docs/PasswordInfoQueryDTO.md
 docs/PasswordManagementAPI.md
 docs/PasswordOrgConfig.md
 docs/PasswordPoliciesAPI.md
+docs/PasswordPolicyHoldersDtoAttributes.md
+docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md
+docs/PasswordPolicyHoldersDtoInner.md
 docs/PasswordPolicyV3Dto.md
 docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
@@ -1812,6 +1815,9 @@ model_password_info.go
 model_password_info_account.go
 model_password_info_query_dto.go
 model_password_org_config.go
+model_password_policy_holders_dto_attributes.go
+model_password_policy_holders_dto_attributes_identity_attr_inner.go
+model_password_policy_holders_dto_inner.go
 model_password_policy_v3_dto.go
 model_password_status.go
 model_password_sync_group.go

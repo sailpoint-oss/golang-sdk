@@ -46,6 +46,7 @@ Method | HTTP request | Description
 [**SyncAttributesForSource**](SourcesAPI.md#SyncAttributesForSource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 [**TestSourceConfiguration**](SourcesAPI.md#TestSourceConfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 [**TestSourceConnection**](SourcesAPI.md#TestSourceConnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
+[**UpdatePasswordPolicyHolders**](SourcesAPI.md#UpdatePasswordPolicyHolders) | **Patch** /sources/{sourceId}/password-policies | Update Password Policy
 [**UpdateProvisioningPoliciesInBulk**](SourcesAPI.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**UpdateProvisioningPolicy**](SourcesAPI.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesAPI.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
@@ -3076,6 +3077,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePasswordPolicyHolders
+
+> []PasswordPolicyHoldersDtoInner UpdatePasswordPolicyHolders(ctx, sourceId).PasswordPolicyHoldersDtoInner(passwordPolicyHoldersDtoInner).Execute()
+
+Update Password Policy
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+	passwordPolicyHoldersDtoInner := []openapiclient.PasswordPolicyHoldersDtoInner{*openapiclient.NewPasswordPolicyHoldersDtoInner()} // []PasswordPolicyHoldersDtoInner | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHolders(context.Background(), sourceId).PasswordPolicyHoldersDtoInner(passwordPolicyHoldersDtoInner).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdatePasswordPolicyHolders``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePasswordPolicyHolders`: []PasswordPolicyHoldersDtoInner
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdatePasswordPolicyHolders`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePasswordPolicyHoldersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **passwordPolicyHoldersDtoInner** | [**[]PasswordPolicyHoldersDtoInner**](PasswordPolicyHoldersDtoInner.md) |  | 
+
+### Return type
+
+[**[]PasswordPolicyHoldersDtoInner**](PasswordPolicyHoldersDtoInner.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
