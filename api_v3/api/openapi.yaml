@@ -14844,9 +14844,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:identity-lifecycle-state:update
-      - applicationAuth:
-        - idn:identity-lifecycle-state:update
+        - idn:identity-lifecycle-state:manage
       summary: Set Lifecycle State
       tags:
       - Lifecycle States
