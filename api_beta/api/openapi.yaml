@@ -2961,6 +2961,8 @@ paths:
           **accessRequestId**: *in*
 
           **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+
+          **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
         example: accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"
         in: query
         name: filters

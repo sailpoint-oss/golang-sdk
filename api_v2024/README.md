@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit Access Request
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
 *AccessRequestsAPI* | [**ListAccessRequestStatus**](docs/AccessRequestsAPI.md#listaccessrequeststatus) | **Get** /access-request-status | Access Request Status
+*AccessRequestsAPI* | [**ListAdministratorsAccessRequestStatus**](docs/AccessRequestsAPI.md#listadministratorsaccessrequeststatus) | **Get** /access-request-administration | Access Request Status for Administrators
 *AccessRequestsAPI* | [**SetAccessRequestConfig**](docs/AccessRequestsAPI.md#setaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
 *AccountActivitiesAPI* | [**GetAccountActivity**](docs/AccountActivitiesAPI.md#getaccountactivity) | **Get** /account-activities/{id} | Get an Account Activity
 *AccountActivitiesAPI* | [**ListAccountActivities**](docs/AccountActivitiesAPI.md#listaccountactivities) | **Get** /account-activities | List Account Activities
@@ -759,6 +760,9 @@ Class | Method | HTTP request | Description
  - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
  - [AccessRequest](docs/AccessRequest.md)
+ - [AccessRequestAdminItemStatus](docs/AccessRequestAdminItemStatus.md)
+ - [AccessRequestAdminItemStatusCancelledRequestDetails](docs/AccessRequestAdminItemStatusCancelledRequestDetails.md)
+ - [AccessRequestAdminItemStatusSodViolationContext](docs/AccessRequestAdminItemStatusSodViolationContext.md)
  - [AccessRequestApproversListResponse](docs/AccessRequestApproversListResponse.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
  - [AccessRequestContext](docs/AccessRequestContext.md)
@@ -856,6 +860,7 @@ Class | Method | HTTP request | Description
  - [ApprovalComment2](docs/ApprovalComment2.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
+ - [ApprovalForwardHistory1](docs/ApprovalForwardHistory1.md)
  - [ApprovalIdentity](docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](docs/ApprovalItemDetails.md)
@@ -867,6 +872,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDto1](docs/ApprovalStatusDto1.md)
  - [ApprovalStatusDtoCurrentOwner](docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
@@ -945,6 +951,7 @@ Class | Method | HTTP request | Description
  - [CampaignsDeleteRequest](docs/CampaignsDeleteRequest.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)
+ - [CancelledRequestDetails1](docs/CancelledRequestDetails1.md)
  - [Certification](docs/Certification.md)
  - [CertificationDecision](docs/CertificationDecision.md)
  - [CertificationDto](docs/CertificationDto.md)
@@ -1076,6 +1083,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorMessage](docs/ErrorMessage.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorMessageDto1](docs/ErrorMessageDto1.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [EvaluateResponse](docs/EvaluateResponse.md)
  - [Event](docs/Event.md)
@@ -1257,6 +1265,7 @@ Class | Method | HTTP request | Description
  - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
+ - [ManualWorkItemDetails1](docs/ManualWorkItemDetails1.md)
  - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
@@ -1574,6 +1583,7 @@ Class | Method | HTTP request | Description
  - [SlimCampaign](docs/SlimCampaign.md)
  - [SlimDiscoveredApplications](docs/SlimDiscoveredApplications.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
+ - [SodExemptCriteria1](docs/SodExemptCriteria1.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](docs/SodPolicyDto.md)
@@ -1583,8 +1593,13 @@ Class | Method | HTTP request | Description
  - [SodReportResultDto](docs/SodReportResultDto.md)
  - [SodViolationCheck](docs/SodViolationCheck.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
+ - [SodViolationCheckResult1](docs/SodViolationCheckResult1.md)
  - [SodViolationContext](docs/SodViolationContext.md)
+ - [SodViolationContext1](docs/SodViolationContext1.md)
+ - [SodViolationContext1ConflictingAccessCriteria](docs/SodViolationContext1ConflictingAccessCriteria.md)
+ - [SodViolationContext1ConflictingAccessCriteriaLeftCriteria](docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md)
  - [SodViolationContextCheckCompleted](docs/SodViolationContextCheckCompleted.md)
+ - [SodViolationContextCheckCompleted1](docs/SodViolationContextCheckCompleted1.md)
  - [SodViolationContextConflictingAccessCriteria](docs/SodViolationContextConflictingAccessCriteria.md)
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](docs/Source.md)

@@ -1151,7 +1151,7 @@ func (r ApiListAccessRequestStatusRequest) Offset(offset int32) ApiListAccessReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *in*  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *in*  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 func (r ApiListAccessRequestStatusRequest) Filters(filters string) ApiListAccessRequestStatusRequest {
 	r.filters = &filters
 	return r
@@ -1206,6 +1206,266 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 	}
 
 	localVarPath := localBasePath + "/access-request-status"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.requestedFor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-for", r.requestedFor, "", "")
+	}
+	if r.requestedBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-by", r.requestedBy, "", "")
+	}
+	if r.regardingIdentity != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "regarding-identity", r.regardingIdentity, "", "")
+	}
+	if r.assignedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assigned-to", r.assignedTo, "", "")
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
+	}
+	if r.requestState != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request-state", r.requestState, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListAdministratorsAccessRequestStatusRequest struct {
+	ctx context.Context
+	ApiService *AccessRequestsAPIService
+	requestedFor *string
+	requestedBy *string
+	regardingIdentity *string
+	assignedTo *string
+	count *bool
+	limit *int32
+	offset *int32
+	filters *string
+	sorters *string
+	requestState *string
+}
+
+// Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+func (r ApiListAdministratorsAccessRequestStatusRequest) RequestedFor(requestedFor string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.requestedFor = &requestedFor
+	return r
+}
+
+// Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+func (r ApiListAdministratorsAccessRequestStatusRequest) RequestedBy(requestedBy string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.requestedBy = &requestedBy
+	return r
+}
+
+// Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+func (r ApiListAdministratorsAccessRequestStatusRequest) RegardingIdentity(regardingIdentity string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.regardingIdentity = &regardingIdentity
+	return r
+}
+
+// Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
+func (r ApiListAdministratorsAccessRequestStatusRequest) AssignedTo(assignedTo string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.assignedTo = &assignedTo
+	return r
+}
+
+// If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
+func (r ApiListAdministratorsAccessRequestStatusRequest) Count(count bool) ApiListAdministratorsAccessRequestStatusRequest {
+	r.count = &count
+	return r
+}
+
+// Max number of results to return.
+func (r ApiListAdministratorsAccessRequestStatusRequest) Limit(limit int32) ApiListAdministratorsAccessRequestStatusRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+func (r ApiListAdministratorsAccessRequestStatusRequest) Offset(offset int32) ApiListAdministratorsAccessRequestStatusRequest {
+	r.offset = &offset
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+func (r ApiListAdministratorsAccessRequestStatusRequest) Filters(filters string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+func (r ApiListAdministratorsAccessRequestStatusRequest) Sorters(sorters string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// Filter the results by the state of the request. The only valid value is *EXECUTING*.
+func (r ApiListAdministratorsAccessRequestStatusRequest) RequestState(requestState string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.requestState = &requestState
+	return r
+}
+
+func (r ApiListAdministratorsAccessRequestStatusRequest) Execute() ([]AccessRequestAdminItemStatus, *http.Response, error) {
+	return r.ApiService.ListAdministratorsAccessRequestStatusExecute(r)
+}
+
+/*
+ListAdministratorsAccessRequestStatus Access Request Status for Administrators
+
+Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters.
+Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAdministratorsAccessRequestStatusRequest
+*/
+func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatus(ctx context.Context) ApiListAdministratorsAccessRequestStatusRequest {
+	return ApiListAdministratorsAccessRequestStatusRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []AccessRequestAdminItemStatus
+func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusExecute(r ApiListAdministratorsAccessRequestStatusRequest) ([]AccessRequestAdminItemStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []AccessRequestAdminItemStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.ListAdministratorsAccessRequestStatus")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access-request-administration"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
