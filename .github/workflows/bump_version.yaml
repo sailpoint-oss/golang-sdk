@@ -70,6 +70,9 @@ jobs:
             LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
             sed -e "s/${LATEST_TAG:1}/${{ github.event.inputs.version }}/g" configuration.go > configuration.go.tmp && mv configuration.go.tmp configuration.go
   
+      - name: Download OpenAPI Generator
+        run: |
+          wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.11.0/openapi-generator-cli-7.11.0.jar -O openapi-generator-cli.jar
 
       - name: Run Prescript
         id: prescript
