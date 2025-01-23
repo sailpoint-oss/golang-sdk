@@ -63,6 +63,13 @@ jobs:
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v3-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v2024-config.yaml
 
+      - name: Update configuration.go user agent version
+        id: updateUserAgentVersion
+        if: steps.updateVersion.outcome == 'success'
+        run: |
+            LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+            sed -e "s/${LATEST_TAG:1}/${{ github.event.inputs.version }}/g" configuration.go > configuration.go.tmp && mv configuration.go.tmp configuration.go
+  
 
       - name: Run Prescript
         id: prescript
@@ -71,7 +78,7 @@ jobs:
 
       - name: Build V3 SDK
         id: buildV3
-        if: steps.updateVersion.outcome == 'success'
+        if: steps.updateUserAgentVersion.outcome == 'success'
         run: |
           rm -rf ./api_v3
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g go -o api_v3 --global-property skipFormModel=false --config sdk-resources/v3-config.yaml
