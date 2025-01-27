@@ -24,7 +24,6 @@ const (
 	MANAGEDCLIENTTYPE_VA ManagedClientType = "VA"
 	MANAGEDCLIENTTYPE_INTERNAL ManagedClientType = "INTERNAL"
 	MANAGEDCLIENTTYPE_IIQ_HARVESTER ManagedClientType = "IIQ_HARVESTER"
-	MANAGEDCLIENTTYPE_NULL ManagedClientType = "null"
 )
 
 // All allowed values of ManagedClientType enum
@@ -33,7 +32,6 @@ var AllowedManagedClientTypeEnumValues = []ManagedClientType{
 	"VA",
 	"INTERNAL",
 	"IIQ_HARVESTER",
-	"null",
 }
 
 func (v *ManagedClientType) UnmarshalJSON(src []byte) error {

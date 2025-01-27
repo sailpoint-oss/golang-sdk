@@ -27,7 +27,6 @@ const (
 	OPERATION_ENDS_WITH Operation = "ENDS_WITH"
 	OPERATION_AND Operation = "AND"
 	OPERATION_OR Operation = "OR"
-	OPERATION_NULL Operation = "null"
 )
 
 // All allowed values of Operation enum
@@ -39,7 +38,6 @@ var AllowedOperationEnumValues = []Operation{
 	"ENDS_WITH",
 	"AND",
 	"OR",
-	"null",
 }
 
 func (v *Operation) UnmarshalJSON(src []byte) error {

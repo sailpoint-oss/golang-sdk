@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Owner type. | [optional] 
+**Type** | Pointer to **NullableString** | Owner type. | [optional] 
 **Id** | Pointer to **string** | Owner&#39;s ID. | [optional] 
 **Name** | Pointer to **string** | Owner&#39;s name. | [optional] 
 
@@ -52,6 +52,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *ViolationOwnerAssignmentConfigOwnerRef) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetId
 
 `func (o *ViolationOwnerAssignmentConfigOwnerRef) GetId() string`

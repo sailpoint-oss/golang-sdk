@@ -22,14 +22,12 @@ type LocaleOrigin string
 const (
 	LOCALEORIGIN_DEFAULT LocaleOrigin = "DEFAULT"
 	LOCALEORIGIN_REQUEST LocaleOrigin = "REQUEST"
-	LOCALEORIGIN_NULL LocaleOrigin = "null"
 )
 
 // All allowed values of LocaleOrigin enum
 var AllowedLocaleOriginEnumValues = []LocaleOrigin{
 	"DEFAULT",
 	"REQUEST",
-	"null",
 }
 
 func (v *LocaleOrigin) UnmarshalJSON(src []byte) error {

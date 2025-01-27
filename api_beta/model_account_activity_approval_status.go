@@ -26,7 +26,6 @@ const (
 	ACCOUNTACTIVITYAPPROVALSTATUS_EXPIRED AccountActivityApprovalStatus = "EXPIRED"
 	ACCOUNTACTIVITYAPPROVALSTATUS_PENDING AccountActivityApprovalStatus = "PENDING"
 	ACCOUNTACTIVITYAPPROVALSTATUS_CANCELED AccountActivityApprovalStatus = "CANCELED"
-	ACCOUNTACTIVITYAPPROVALSTATUS_NULL AccountActivityApprovalStatus = "null"
 )
 
 // All allowed values of AccountActivityApprovalStatus enum
@@ -37,7 +36,6 @@ var AllowedAccountActivityApprovalStatusEnumValues = []AccountActivityApprovalSt
 	"EXPIRED",
 	"PENDING",
 	"CANCELED",
-	"null",
 }
 
 func (v *AccountActivityApprovalStatus) UnmarshalJSON(src []byte) error {

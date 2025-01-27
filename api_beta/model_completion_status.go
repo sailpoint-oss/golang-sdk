@@ -24,7 +24,6 @@ const (
 	COMPLETIONSTATUS_FAILURE CompletionStatus = "FAILURE"
 	COMPLETIONSTATUS_INCOMPLETE CompletionStatus = "INCOMPLETE"
 	COMPLETIONSTATUS_PENDING CompletionStatus = "PENDING"
-	COMPLETIONSTATUS_NULL CompletionStatus = "null"
 )
 
 // All allowed values of CompletionStatus enum
@@ -33,7 +32,6 @@ var AllowedCompletionStatusEnumValues = []CompletionStatus{
 	"FAILURE",
 	"INCOMPLETE",
 	"PENDING",
-	"null",
 }
 
 func (v *CompletionStatus) UnmarshalJSON(src []byte) error {

@@ -23,7 +23,6 @@ const (
 	REQUESTABLEOBJECTREQUESTSTATUS_AVAILABLE RequestableObjectRequestStatus = "AVAILABLE"
 	REQUESTABLEOBJECTREQUESTSTATUS_PENDING RequestableObjectRequestStatus = "PENDING"
 	REQUESTABLEOBJECTREQUESTSTATUS_ASSIGNED RequestableObjectRequestStatus = "ASSIGNED"
-	REQUESTABLEOBJECTREQUESTSTATUS_NULL RequestableObjectRequestStatus = "null"
 )
 
 // All allowed values of RequestableObjectRequestStatus enum
@@ -31,7 +30,6 @@ var AllowedRequestableObjectRequestStatusEnumValues = []RequestableObjectRequest
 	"AVAILABLE",
 	"PENDING",
 	"ASSIGNED",
-	"null",
 }
 
 func (v *RequestableObjectRequestStatus) UnmarshalJSON(src []byte) error {

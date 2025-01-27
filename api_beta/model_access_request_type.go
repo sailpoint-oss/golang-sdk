@@ -22,14 +22,12 @@ type AccessRequestType string
 const (
 	ACCESSREQUESTTYPE_GRANT_ACCESS AccessRequestType = "GRANT_ACCESS"
 	ACCESSREQUESTTYPE_REVOKE_ACCESS AccessRequestType = "REVOKE_ACCESS"
-	ACCESSREQUESTTYPE_NULL AccessRequestType = "null"
 )
 
 // All allowed values of AccessRequestType enum
 var AllowedAccessRequestTypeEnumValues = []AccessRequestType{
 	"GRANT_ACCESS",
 	"REVOKE_ACCESS",
-	"null",
 }
 
 func (v *AccessRequestType) UnmarshalJSON(src []byte) error {

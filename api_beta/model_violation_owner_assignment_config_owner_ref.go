@@ -20,7 +20,7 @@ var _ MappedNullable = &ViolationOwnerAssignmentConfigOwnerRef{}
 // ViolationOwnerAssignmentConfigOwnerRef The owner of the violation assignment config.
 type ViolationOwnerAssignmentConfigOwnerRef struct {
 	// Owner type.
-	Type *string `json:"type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	// Owner's ID.
 	Id *string `json:"id,omitempty"`
 	// Owner's name.
@@ -47,36 +47,46 @@ func NewViolationOwnerAssignmentConfigOwnerRefWithDefaults() *ViolationOwnerAssi
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ViolationOwnerAssignmentConfigOwnerRef) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *ViolationOwnerAssignmentConfigOwnerRef) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *ViolationOwnerAssignmentConfigOwnerRef) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -153,8 +163,8 @@ func (o ViolationOwnerAssignmentConfigOwnerRef) MarshalJSON() ([]byte, error) {
 
 func (o ViolationOwnerAssignmentConfigOwnerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

@@ -24984,7 +24984,11 @@ paths:
         name: method
         required: true
         schema:
+          enum:
+          - okta-verify
+          - duo-web
           example: okta-verify
+          nullable: false
           type: string
       responses:
         "200":
@@ -25072,7 +25076,11 @@ paths:
         name: method
         required: true
         schema:
+          enum:
+          - okta-verify
+          - duo-web
           example: okta-verify
+          nullable: false
           type: string
       responses:
         "200":
@@ -25336,7 +25344,14 @@ paths:
         name: method
         required: true
         schema:
+          enum:
+          - okta-verify
+          - duo-web
+          - kba
+          - token
+          - rsa
           example: okta-verify
+          nullable: false
           type: string
       requestBody:
         content:
@@ -28900,6 +28915,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPasswordSyncGroups
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -28979,6 +28995,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPasswordSyncGroups
       responses:
         "200":
           content:
@@ -29086,6 +29103,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPasswordSyncGroups
       requestBody:
         content:
           application/json:
@@ -29207,6 +29225,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPasswordPolicies
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -29304,6 +29323,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPasswordPolicies
       responses:
         "200":
           content:
@@ -29436,6 +29456,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPasswordPolicies
       requestBody:
         content:
           application/json:
@@ -42279,6 +42300,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -42388,6 +42410,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -42564,6 +42587,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
           \ can support various provisioning operations. For example, when a joiner\
           \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
@@ -42688,6 +42712,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
           \ can support various provisioning operations. For example, when a joiner\
           \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
@@ -42825,6 +42850,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
           \ can support various provisioning operations. For example, when a joiner\
           \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
@@ -42981,6 +43007,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
           \ can support various provisioning operations. For example, when a joiner\
           \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
@@ -43119,6 +43146,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
