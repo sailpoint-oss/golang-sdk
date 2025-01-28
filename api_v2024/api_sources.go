@@ -383,14 +383,7 @@ type ApiCreateSourceScheduleRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
 	schedule1 *Schedule1
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateSourceScheduleRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateSourceScheduleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiCreateSourceScheduleRequest) Schedule1(schedule1 Schedule1) ApiCreateSourceScheduleRequest {
@@ -441,21 +434,6 @@ func (a *SourcesAPIService) CreateSourceScheduleExecute(r ApiCreateSourceSchedul
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.schedule1 == nil {
 		return localVarReturnValue, nil, reportError("schedule1 is required and must be specified")
 	}
@@ -477,7 +455,6 @@ func (a *SourcesAPIService) CreateSourceScheduleExecute(r ApiCreateSourceSchedul
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.schedule1
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1429,13 +1406,6 @@ type ApiDeleteSourceScheduleRequest struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	scheduleType string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteSourceScheduleRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteSourceScheduleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteSourceScheduleRequest) Execute() (*http.Response, error) {
@@ -1479,15 +1449,6 @@ func (a *SourcesAPIService) DeleteSourceScheduleExecute(r ApiDeleteSourceSchedul
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1506,7 +1467,6 @@ func (a *SourcesAPIService) DeleteSourceScheduleExecute(r ApiDeleteSourceSchedul
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -3495,13 +3455,6 @@ type ApiGetSourceScheduleRequest struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	scheduleType string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSourceScheduleRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSourceScheduleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSourceScheduleRequest) Execute() (*Schedule1, *http.Response, error) {
@@ -3550,15 +3503,6 @@ func (a *SourcesAPIService) GetSourceScheduleExecute(r ApiGetSourceScheduleReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3577,7 +3521,6 @@ func (a *SourcesAPIService) GetSourceScheduleExecute(r ApiGetSourceScheduleReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3684,13 +3627,6 @@ type ApiGetSourceSchedulesRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSourceSchedulesRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSourceSchedulesRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSourceSchedulesRequest) Execute() ([]Schedule1, *http.Response, error) {
@@ -3735,15 +3671,6 @@ func (a *SourcesAPIService) GetSourceSchedulesExecute(r ApiGetSourceSchedulesReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3762,7 +3689,6 @@ func (a *SourcesAPIService) GetSourceSchedulesExecute(r ApiGetSourceSchedulesReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8631,14 +8557,7 @@ type ApiUpdateSourceScheduleRequest struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	scheduleType string
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateSourceScheduleRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateSourceScheduleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The JSONPatch payload used to update the schedule.
@@ -8697,21 +8616,6 @@ func (a *SourcesAPIService) UpdateSourceScheduleExecute(r ApiUpdateSourceSchedul
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -8733,7 +8637,6 @@ func (a *SourcesAPIService) UpdateSourceScheduleExecute(r ApiUpdateSourceSchedul
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

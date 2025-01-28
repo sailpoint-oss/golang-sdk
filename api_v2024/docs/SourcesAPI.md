@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ## CreateSourceSchedule
 
-> Schedule1 CreateSourceSchedule(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).Schedule1(schedule1).Execute()
+> Schedule1 CreateSourceSchedule(ctx, sourceId).Schedule1(schedule1).Execute()
 
 Create Schedule on Source
 
@@ -218,12 +218,11 @@ import (
 
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	schedule1 := *openapiclient.NewSchedule1("ACCOUNT_AGGREGATION", "0 0 5,13,21 * * ?") // Schedule1 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.CreateSourceSchedule(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Schedule1(schedule1).Execute()
+	resp, r, err := apiClient.SourcesAPI.CreateSourceSchedule(context.Background(), sourceId).Schedule1(schedule1).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceSchedule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -249,7 +248,6 @@ Other parameters are passed through a pointer to a apiCreateSourceScheduleReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **schedule1** | [**Schedule1**](Schedule1.md) |  | 
 
 ### Return type
@@ -627,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## DeleteSourceSchedule
 
-> DeleteSourceSchedule(ctx, sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).Execute()
+> DeleteSourceSchedule(ctx, sourceId, scheduleType).Execute()
 
 Delete Source Schedule by type.
 
@@ -646,11 +644,10 @@ import (
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
 	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.DeleteSourceSchedule(context.Background(), sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).Execute()
+	r, err := apiClient.SourcesAPI.DeleteSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceSchedule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -676,7 +673,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -1472,7 +1468,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceSchedule
 
-> Schedule1 GetSourceSchedule(ctx, sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).Execute()
+> Schedule1 GetSourceSchedule(ctx, sourceId, scheduleType).Execute()
 
 Get Source Schedule by Type
 
@@ -1493,11 +1489,10 @@ import (
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
 	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceSchedule(context.Background(), sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchedule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1525,7 +1520,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -1547,7 +1541,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceSchedules
 
-> []Schedule1 GetSourceSchedules(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+> []Schedule1 GetSourceSchedules(ctx, sourceId).Execute()
 
 List Schedules on Source
 
@@ -1567,11 +1561,10 @@ import (
 
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceSchedules(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceSchedules(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchedules``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1597,7 +1590,6 @@ Other parameters are passed through a pointer to a apiGetSourceSchedulesRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -3445,7 +3437,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSourceSchedule
 
-> Schedule1 UpdateSourceSchedule(ctx, sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+> Schedule1 UpdateSourceSchedule(ctx, sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update Source Schedule (Partial)
 
@@ -3466,12 +3458,11 @@ import (
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
 	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schedule.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.UpdateSourceSchedule(context.Background(), sourceId, scheduleType).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	resp, r, err := apiClient.SourcesAPI.UpdateSourceSchedule(context.Background(), sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchedule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3499,7 +3490,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the schedule. | 
 
 ### Return type
