@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetProfileConfig
 
-> AuthProfile GetProfileConfig(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> AuthProfile GetProfileConfig(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get Auth Profile.
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	id := "2c91808a7813090a017814121919ecca" // string | ID of the Auth Profile to patch.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AuthProfileAPI.GetProfileConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.AuthProfileAPI.GetProfileConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,6 +49,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of the Auth Profile to patch. | 
 
 ### Other Parameters
 
@@ -57,6 +62,7 @@ Other parameters are passed through a pointer to a apiGetProfileConfigRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
 
 ### Return type
 
