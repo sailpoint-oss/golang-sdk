@@ -3816,7 +3816,7 @@ A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the campaign template being modified.
+ @param id ID of the campaign being modified.
  @return ApiUpdateCampaignRequest
 
 Deprecated

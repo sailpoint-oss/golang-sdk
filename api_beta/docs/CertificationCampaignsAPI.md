@@ -1513,7 +1513,7 @@ import (
 )
 
 func main() {
-	id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign template being modified.
+	id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign being modified.
 	requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1534,7 +1534,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the campaign template being modified. | 
+**id** | **string** | ID of the campaign being modified. | 
 
 ### Other Parameters
 

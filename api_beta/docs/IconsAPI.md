@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	objectType := "application" // string | Object type. Available options ['application']
+	objectType := "application" // string | Object type
 	objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
 
 	configuration := openapiclient.NewConfiguration()
@@ -49,7 +49,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**objectType** | **string** | Object type. Available options [&#39;application&#39;] | 
+**objectType** | **string** | Object type | 
 **objectId** | **string** | Object id. | 
 
 ### Other Parameters
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-	objectType := "application" // string | Object type. Available options ['application']
+	objectType := "application" // string | Object type
 	objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
 	image := os.NewFile(1234, "some_file") // *os.File | file with icon. Allowed mime-types ['image/png', 'image/jpeg']
 
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**objectType** | **string** | Object type. Available options [&#39;application&#39;] | 
+**objectType** | **string** | Object type | 
 **objectId** | **string** | Object id. | 
 
 ### Other Parameters

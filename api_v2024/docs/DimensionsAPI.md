@@ -408,7 +408,7 @@ import (
 
 func main() {
 	roleId := "6603fba3004f43c687610a29195252ce" // string | Parent Role Id of the dimension.
-	dimensionId := "2c9180835d191a86015d28455b4a2329" // string | Id of the Dimension
+	dimensionId := "2c9180835d191a86015d28455b4a2329" // string | ID of the Dimension
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **roleId** | **string** | Parent Role Id of the dimension. | 
-**dimensionId** | **string** | Id of the Dimension | 
+**dimensionId** | **string** | ID of the Dimension | 
 
 ### Other Parameters
 

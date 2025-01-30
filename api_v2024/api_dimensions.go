@@ -956,7 +956,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param roleId Parent Role Id of the dimension.
- @param dimensionId Id of the Dimension
+ @param dimensionId ID of the Dimension
  @return ApiListDimensionAccessProfilesRequest
 */
 func (a *DimensionsAPIService) ListDimensionAccessProfiles(ctx context.Context, roleId string, dimensionId string) ApiListDimensionAccessProfilesRequest {

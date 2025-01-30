@@ -41,7 +41,7 @@ DeleteIcon Delete an icon
 This API endpoint delete an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param objectType Object type. Available options ['application']
+ @param objectType Object type
  @param objectId Object id.
  @return ApiDeleteIconRequest
 */
@@ -209,7 +209,7 @@ SetIcon Update an icon
 This API endpoint updates an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param objectType Object type. Available options ['application']
+ @param objectType Object type
  @param objectId Object id.
  @return ApiSetIconRequest
 */

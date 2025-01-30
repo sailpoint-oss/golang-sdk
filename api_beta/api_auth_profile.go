@@ -26,6 +26,7 @@ type AuthProfileAPIService service
 type ApiGetProfileConfigRequest struct {
 	ctx context.Context
 	ApiService *AuthProfileAPIService
+	id string
 }
 
 func (r ApiGetProfileConfigRequest) Execute() (*AuthProfile, *http.Response, error) {
@@ -38,12 +39,14 @@ GetProfileConfig Get Auth Profile.
 This API returns auth profile information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id ID of the Auth Profile to get.
  @return ApiGetProfileConfigRequest
 */
-func (a *AuthProfileAPIService) GetProfileConfig(ctx context.Context) ApiGetProfileConfigRequest {
+func (a *AuthProfileAPIService) GetProfileConfig(ctx context.Context, id string) ApiGetProfileConfigRequest {
 	return ApiGetProfileConfigRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
@@ -63,6 +66,7 @@ func (a *AuthProfileAPIService) GetProfileConfigExecute(r ApiGetProfileConfigReq
 	}
 
 	localVarPath := localBasePath + "/auth-profiles/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

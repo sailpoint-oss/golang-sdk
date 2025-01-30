@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetProfileConfig
 
-> AuthProfile GetProfileConfig(ctx).Execute()
+> AuthProfile GetProfileConfig(ctx, id).Execute()
 
 Get Auth Profile.
 
@@ -31,10 +31,11 @@ import (
 )
 
 func main() {
+	id := "2c91808a7813090a017814121919ecca" // string | ID of the Auth Profile to get.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AuthProfileAPI.GetProfileConfig(context.Background()).Execute()
+	resp, r, err := apiClient.AuthProfileAPI.GetProfileConfig(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,11 +47,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of the Auth Profile to get. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetProfileConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

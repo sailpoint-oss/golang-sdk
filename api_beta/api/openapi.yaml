@@ -1210,6 +1210,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
       responses:
         "200":
           content:
@@ -1291,6 +1292,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
       responses:
         "200":
           content:
@@ -1374,6 +1376,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
       - description: Technical name of the Attribute value.
         example: public
         in: path
@@ -1381,6 +1384,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
       responses:
         "200":
           content:
@@ -1719,6 +1723,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: listAccessProfiles
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -1809,6 +1814,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessProfiles
       responses:
         "200":
           content:
@@ -1905,6 +1911,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: listAccessProfiles
       requestBody:
         content:
           application/json-patch+json:
@@ -2262,6 +2269,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: listAccessProfiles
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -3351,6 +3359,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getApprovals
       requestBody:
         content:
           application/json:
@@ -3456,6 +3465,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPendingApprovals
       requestBody:
         content:
           application/json:
@@ -3562,6 +3572,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPendingApprovals
       requestBody:
         content:
           application/json:
@@ -4971,6 +4982,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       responses:
         "202":
           content:
@@ -5071,6 +5083,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       responses:
         "200":
           content:
@@ -5181,6 +5194,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       requestBody:
         content:
           application/json-patch+json:
@@ -5323,6 +5337,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       requestBody:
         content:
           application/json:
@@ -5430,6 +5445,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -5572,6 +5588,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       responses:
         "202":
           content:
@@ -5673,6 +5690,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       requestBody:
         content:
           application/json:
@@ -5780,6 +5798,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       requestBody:
         content:
           application/json:
@@ -5889,6 +5908,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       requestBody:
         content:
           application/json:
@@ -6001,6 +6021,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       responses:
         "202":
           content:
@@ -6089,6 +6110,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "202":
           content:
@@ -6192,6 +6214,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "202":
           content:
@@ -6648,6 +6671,7 @@ paths:
         schema:
           example: newMailAttribute
           type: string
+        x-sailpoint-resource-operation-id: getSearchAttributeConfig
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -6739,6 +6763,7 @@ paths:
         schema:
           example: newMailAttribute
           type: string
+        x-sailpoint-resource-operation-id: getSearchAttributeConfig
       responses:
         "200":
           content:
@@ -6839,6 +6864,7 @@ paths:
         schema:
           example: promotedMailAttribute
           type: string
+        x-sailpoint-resource-operation-id: getSearchAttributeConfig
       requestBody:
         content:
           application/json-patch+json:
@@ -7122,6 +7148,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccountActivities
       responses:
         "200":
           content:
@@ -7227,6 +7254,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: importAccounts
       responses:
         "200":
           content:
@@ -7384,6 +7412,15 @@ paths:
     get:
       description: This API returns auth profile information.
       operationId: getProfileConfig
+      parameters:
+      - description: ID of the Auth Profile to get.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        x-sailpoint-resource-operation-id: getProfileConfigList
       responses:
         "200":
           content:
@@ -7484,6 +7521,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: getProfileConfigList
       requestBody:
         content:
           application/json-patch+json:
@@ -7950,6 +7988,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       responses:
         "200":
           content:
@@ -8055,13 +8094,14 @@ paths:
         A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: updateCampaign
       parameters:
-      - description: ID of the campaign template being modified.
+      - description: ID of the campaign being modified.
         example: 2c91808571bcfcf80171c23e4b4221fc
         in: path
         name: id
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       requestBody:
         content:
           application/json-patch+json:
@@ -8205,6 +8245,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       requestBody:
         content:
           application/json:
@@ -8330,6 +8371,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       requestBody:
         content:
           application/json:
@@ -8442,6 +8484,7 @@ paths:
         schema:
           example: 2c91808571bcfcf80171c23e4b4221fc
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       responses:
         "202":
           content:
@@ -8546,6 +8589,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       requestBody:
         content:
           application/json:
@@ -8663,6 +8707,7 @@ paths:
         schema:
           example: 2c91808571bcfcf80171c23e4b4221fc
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       responses:
         "200":
           content:
@@ -8769,6 +8814,7 @@ paths:
         schema:
           example: 2c91808571bcfcf80171c23e4b4221fc
           type: string
+        x-sailpoint-resource-operation-id: getActiveCampaigns
       - description: Type of report to run.
         in: path
         name: type
@@ -9287,6 +9333,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -9386,6 +9433,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       responses:
         "200":
           content:
@@ -9498,6 +9546,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       requestBody:
         content:
           application/json-patch+json:
@@ -9646,6 +9695,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       responses:
         "200":
           content:
@@ -9732,6 +9782,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -9830,6 +9881,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       responses:
         "200":
           content:
@@ -9935,6 +9987,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getCampaignTemplates
       requestBody:
         content:
           application/json:
@@ -10109,6 +10162,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityCertifications
       requestBody:
         content:
           application/json:
@@ -10216,12 +10270,14 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityCertifications
       - description: The certification task ID
         in: path
         name: taskId
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getIdentityCertificationPendingTasks
       responses:
         "200":
           content:
@@ -10320,6 +10376,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityCertifications
       responses:
         "200":
           content:
@@ -10444,6 +10501,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityCertifications
       - description: The certification item ID
         example: 2c91808671bcbab40171bd945d961227
         in: path
@@ -10451,6 +10509,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityAccessReviewItems
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -10593,6 +10652,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listCertifications
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -10920,6 +10980,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -11019,6 +11080,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
       responses:
         "200":
           content:
@@ -11122,6 +11184,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
       requestBody:
         content:
           application/json:
@@ -11977,6 +12040,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       responses:
         "200":
           content:
@@ -12115,6 +12179,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       requestBody:
         content:
           application/json-patch+json:
@@ -12325,6 +12390,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -12540,6 +12606,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -12803,6 +12870,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       responses:
         "200":
           content:
@@ -12916,6 +12984,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       requestBody:
         content:
           application/json:
@@ -13037,6 +13106,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "202":
           content:
@@ -13118,6 +13188,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       - description: Technical name of the Attribute.
         example: iscPrivacy
         in: path
@@ -13125,6 +13196,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
       - description: Technical name of the Attribute Value.
         example: public
         in: path
@@ -13132,6 +13204,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
       responses:
         "200":
           description: OK
@@ -13208,6 +13281,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       - description: Technical name of the Attribute.
         example: iscPrivacy
         in: path
@@ -13215,6 +13289,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
       - description: Technical name of the Attribute Value.
         example: public
         in: path
@@ -13222,6 +13297,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
       responses:
         "200":
           content:
@@ -13309,6 +13385,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -13607,6 +13684,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       responses:
         "200":
           content:
@@ -13689,6 +13767,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: |-
           The type of access item for the identity. If not provided, it defaults to account.
 
@@ -13950,6 +14029,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The specified start date
         example: 2007-03-01T13:00:00Z
         in: query
@@ -14094,6 +14174,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The date before which snapshot summary is required
         example: 2007-03-01T13:00:00Z
         in: query
@@ -14244,6 +14325,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The specified date
         example: 2007-03-01T13:00:00Z
         in: path
@@ -14340,6 +14422,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: Specified date.
         example: 2007-03-01T13:00:00Z
         in: path
@@ -14352,6 +14435,12 @@ paths:
         in: query
         name: type
         schema:
+          enum:
+          - role
+          - access_profile
+          - entitlement
+          - app
+          - account
           type: string
       responses:
         "200":
@@ -14802,6 +14891,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The optional instant until which access events are returned
         example: 2024-03-01T13:00:00Z
         in: query
@@ -15089,6 +15179,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       responses:
         "200":
           content:
@@ -15180,6 +15271,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The snapshot 1 of identity
         example: 2007-03-01T13:00:00Z
         in: query
@@ -15332,12 +15424,19 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listHistoricalIdentities
       - description: The specific type which needs to be compared
         example: role
         in: path
         name: accessType
         required: true
         schema:
+          enum:
+          - accessProfile
+          - account
+          - app
+          - entitlement
+          - role
           type: string
       - description: "Indicates if added or removed access needs to be returned. true\
           \ - added, false - removed, null - both added & removed"
@@ -15488,6 +15587,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "202":
           content:
@@ -15596,6 +15696,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "200":
           content:
@@ -15875,6 +15976,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -15979,6 +16081,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "200":
           content:
@@ -16186,6 +16289,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       requestBody:
         content:
           application/json:
@@ -16404,6 +16508,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "202":
           description: Accepted. The reset request accepted and is in progress.
@@ -16501,6 +16606,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       - description: Role Id to filter the role assignments with
         example: e7697a1e96d04db1ac7b0f4544915d2c
         in: query
@@ -16508,6 +16614,7 @@ paths:
         required: false
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       - description: Role name to filter the role assignments with
         example: Engineer
         in: query
@@ -16615,6 +16722,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       - description: Assignment Id
         example: 1cbb0705b38c4226b1334eadd8874086
         in: path
@@ -16622,6 +16730,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleAssignments
       responses:
         "200":
           content:
@@ -16933,6 +17042,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityAttributes
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -17028,6 +17138,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityAttributes
       responses:
         "200":
           content:
@@ -17129,6 +17240,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityAttributes
       requestBody:
         content:
           application/json:
@@ -17976,6 +18088,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       responses:
         "202":
           content:
@@ -18079,6 +18192,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       responses:
         "200":
           content:
@@ -18191,6 +18305,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       requestBody:
         content:
           application/json-patch+json:
@@ -18317,6 +18432,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       responses:
         "200":
           content:
@@ -18435,6 +18551,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       responses:
         "202":
           content:
@@ -18538,6 +18655,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       - description: Lifecycle State ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
@@ -18545,6 +18663,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listLifecycleStates
       responses:
         "200":
           content:
@@ -18625,6 +18744,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentityProfiles
       - description: Lifecycle State ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
@@ -18632,6 +18752,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listLifecycleStates
       requestBody:
         content:
           application/json-patch+json:
@@ -19131,6 +19252,7 @@ paths:
           example: 2c91808568c529c60168cca6f90c1326
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           description: OK. Returned if the request was successfully accepted into
@@ -19230,6 +19352,7 @@ paths:
           example: 2c91808568c529c60168cca6f90c1326
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           content:
@@ -19335,6 +19458,7 @@ paths:
           example: anId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       requestBody:
         content:
           application/json-patch+json:
@@ -19450,6 +19574,7 @@ paths:
           example: 2c91808568c529c60168cca6f90c1326
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       requestBody:
         content:
           application/json:
@@ -19561,6 +19686,7 @@ paths:
           example: 2c91808568c529c60168cca6f90c1324
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           description: OK. Returned if the request was successfully accepted into
@@ -19662,6 +19788,7 @@ paths:
           example: 2c91808568c529c60168cca6f90c1326
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       - description: ID of the source within the Multi-Host Integration
         explode: false
         in: path
@@ -19671,6 +19798,7 @@ paths:
           example: 2c91808568c529f60168cca6f90c1324
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getSourcesWithinMultiHost
       responses:
         "200":
           content:
@@ -19939,6 +20067,7 @@ paths:
           example: 004091cb79b04636b88662afa50a4440
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           content:
@@ -20047,6 +20176,7 @@ paths:
           example: aMultiHostId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           content:
@@ -20151,6 +20281,7 @@ paths:
           example: aMultiHostId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       responses:
         "200":
           content:
@@ -20470,6 +20601,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRecords
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -20547,6 +20679,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRecords
       responses:
         "200":
           content:
@@ -20627,6 +20760,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRecords
       requestBody:
         content:
           application/json-patch+json:
@@ -20742,6 +20876,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRecords
       requestBody:
         content:
           application/json:
@@ -21176,6 +21311,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRequests
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -21271,6 +21407,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRequests
       responses:
         "200":
           content:
@@ -21380,6 +21517,7 @@ paths:
         schema:
           format: uuid (if user is Org Admin)
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeRecords
       responses:
         "200":
           content:
@@ -21684,6 +21822,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -21761,6 +21900,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -21842,6 +21982,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       requestBody:
         content:
           application/json-patch+json:
@@ -21944,6 +22085,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -22049,6 +22191,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       requestBody:
         content:
           multipart/form-data:
@@ -22157,6 +22300,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -22241,6 +22385,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -22484,6 +22629,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeApprovals
       - description: The object nonEmployeeRequest will not be included detail when
           set to false. *Default value is true*
         example: include-detail=false
@@ -22573,6 +22719,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeApprovals
       requestBody:
         content:
           application/json:
@@ -22659,6 +22806,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeApprovals
       requestBody:
         content:
           application/json:
@@ -22754,6 +22902,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "200":
           content:
@@ -22836,6 +22985,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -22917,6 +23067,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -23117,6 +23268,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getNonEmployeeSourceSchemaAttributes
       - description: The Source id
         example: 2c91808b6ef1d43e016efba0ce470904
         in: path
@@ -23124,6 +23276,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -23202,6 +23355,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getNonEmployeeSourceSchemaAttributes
       - description: The Source id
         example: 2c918085842e69ae018432d22ccb212f
         in: path
@@ -23209,6 +23363,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       responses:
         "200":
           content:
@@ -23292,6 +23447,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getNonEmployeeSourceSchemaAttributes
       - description: The Source id
         example: 2c91808b6ef1d43e016efba0ce470904
         in: path
@@ -23299,6 +23455,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       requestBody:
         content:
           application/json-patch+json:
@@ -23416,6 +23573,7 @@ paths:
         schema:
           example: aClientId
           type: string
+        x-sailpoint-resource-operation-id: getManagedClients
       - description: Type of the Managed Client Status to get
         in: query
         name: type
@@ -23522,6 +23680,7 @@ paths:
         schema:
           example: aClientId
           type: string
+        x-sailpoint-resource-operation-id: getManagedClients
       requestBody:
         content:
           application/json:
@@ -23630,6 +23789,7 @@ paths:
           example: aClusterId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getManagedClusters
       responses:
         "200":
           content:
@@ -23733,6 +23893,7 @@ paths:
           example: aClusterId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getManagedClusters
       responses:
         "200":
           content:
@@ -23836,6 +23997,7 @@ paths:
           example: aClusterId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getManagedClusters
       requestBody:
         content:
           application/json:
@@ -24342,6 +24504,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getApprovals
       responses:
         "200":
           content:
@@ -26030,6 +26193,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listNotificationTemplates
       responses:
         "200":
           content:
@@ -26356,6 +26520,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listOauthClients
       responses:
         "204":
           description: No content.
@@ -26450,6 +26615,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listOauthClients
       responses:
         "200":
           content:
@@ -26550,6 +26716,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listOauthClients
       requestBody:
         content:
           application/json-patch+json:
@@ -27442,6 +27609,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getIdentityOutliers
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -27613,6 +27781,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getIdentityOutliers
       - description: The name of contributing feature
         example: entitlement_count
         in: path
@@ -28030,6 +28199,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPeerGroupOutliersContributingFeatures
       responses:
         "200":
           content:
@@ -28613,6 +28783,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: setPassword
       responses:
         "200":
           content:
@@ -30199,6 +30370,8 @@ paths:
         name: strategy
         required: true
         schema:
+          enum:
+          - entitlement
           type: string
       - description: |-
           Max number of results to return.
@@ -30507,6 +30680,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPersonalAccessTokens
       responses:
         "204":
           description: No content.
@@ -30603,6 +30777,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listPersonalAccessTokens
       requestBody:
         content:
           application/json-patch+json:
@@ -31285,6 +31460,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       responses:
         "200":
           content:
@@ -31384,6 +31560,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       requestBody:
         content:
           application/json:
@@ -31471,6 +31648,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       - in: path
         name: configType
         required: true
@@ -31562,6 +31740,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       - description: Reassignment work type
         example: accessRequests
         in: path
@@ -32317,6 +32496,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       responses:
         "200":
           content:
@@ -32592,6 +32772,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       responses:
         "200":
           content:
@@ -32663,6 +32844,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -32763,6 +32945,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -32865,6 +33048,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
@@ -32957,6 +33141,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleInsights
       - description: The entitlement id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -32964,6 +33149,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listEntitlements
       - description: Identity has this entitlement or not
         explode: true
         in: query
@@ -33322,6 +33508,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       responses:
         "200":
           content:
@@ -33418,6 +33605,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       requestBody:
         content:
           application/json-patch+json:
@@ -33542,6 +33730,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       responses:
         "200":
           content:
@@ -33613,6 +33802,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -33779,6 +33969,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -33786,6 +33977,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       responses:
         "200":
           content:
@@ -33876,6 +34068,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: The potential role summary id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -33883,6 +34076,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       requestBody:
         content:
           application/json-patch+json:
@@ -34019,6 +34213,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 62f28d91-7d9f-4d17-be15-666d5b41d77f
         in: path
@@ -34026,6 +34221,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -34163,6 +34359,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 62f28d91-7d9f-4d17-be15-666d5b41d77f
         in: path
@@ -34170,6 +34367,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -34295,6 +34493,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -34302,6 +34501,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: Boolean determining whether common access entitlements will be
           included or not
         example: true
@@ -34463,6 +34663,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -34470,6 +34671,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: Boolean determining whether common access entitlements will be
           included or not
         explode: true
@@ -34554,6 +34756,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -34561,6 +34764,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       requestBody:
         content:
           application/json:
@@ -34640,6 +34844,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -34647,6 +34852,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -34784,6 +34990,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -34791,6 +34998,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       responses:
         "200":
           content:
@@ -34865,6 +35073,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 278359a6-04b7-4669-9468-924cf580964a
         in: path
@@ -34872,6 +35081,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       requestBody:
         content:
           application/json:
@@ -34951,6 +35161,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 278359a6-04b7-4669-9468-924cf580964a
         in: path
@@ -34959,6 +35170,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: The id of a previously run export job for this potential role
         example: 4940ffd4-836f-48a3-b2b0-6d498c3fdf40
         in: path
@@ -34967,6 +35179,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: exportRoleMiningPotentialRole
       responses:
         "200":
           content:
@@ -35039,6 +35252,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 278359a6-04b7-4669-9468-924cf580964a
         in: path
@@ -35047,6 +35261,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: The id of a previously run export job for this potential role
         example: 4940ffd4-836f-48a3-b2b0-6d498c3fdf40
         in: path
@@ -35055,6 +35270,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: exportRoleMiningPotentialRole
       responses:
         "200":
           content:
@@ -35127,6 +35343,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -35134,6 +35351,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: Minimum popularity required for an entitlement to be included
           in the provisioned role.
         explode: true
@@ -35252,6 +35470,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getRoleMiningSessions
       - description: A potential role id in a role mining session
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -35259,6 +35478,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
@@ -35565,6 +35785,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       responses:
         "200":
           content:
@@ -35657,6 +35878,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       requestBody:
         content:
           application/json-patch+json:
@@ -35909,6 +36131,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getPotentialRoleSummaries
       - description: A source id
         example: 2c9180877620c1460176267f336a106f
         in: path
@@ -35916,6 +36139,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "Sort results using the standard syntax described in [V3 API\
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/)\
           \ Sorting is supported for the following fields: **displayName, email, usageCount**"
@@ -36332,6 +36556,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -36416,6 +36641,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       responses:
         "200":
           content:
@@ -36516,6 +36742,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       requestBody:
         content:
           application/json-patch+json:
@@ -36831,6 +37058,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -36985,6 +37213,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121919ecca
           type: string
+        x-sailpoint-resource-operation-id: listRoles
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -37338,6 +37567,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSegments
       responses:
         "204":
           description: No content.
@@ -37431,6 +37661,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSegments
       responses:
         "200":
           content:
@@ -37529,6 +37760,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSegments
       requestBody:
         content:
           application/json-patch+json:
@@ -38029,6 +38261,7 @@ paths:
           example: anId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getServiceDeskIntegrations
       responses:
         "204":
           description: Service Desk integration with the given ID successfully deleted
@@ -38127,6 +38360,7 @@ paths:
           example: anId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getServiceDeskIntegrations
       responses:
         "200":
           content:
@@ -38231,6 +38465,7 @@ paths:
           example: anId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getServiceDeskIntegrations
       requestBody:
         content:
           application/json-patch+json:
@@ -38345,6 +38580,7 @@ paths:
           example: anId
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getServiceDeskIntegrations
       requestBody:
         content:
           application/json:
@@ -38555,6 +38791,7 @@ paths:
           example: aScriptName
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getServiceDeskIntegrations
       responses:
         "200":
           content:
@@ -38852,6 +39089,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSIMIntegrations
       responses:
         "200":
           description: No content response
@@ -38947,6 +39185,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSIMIntegrations
       responses:
         "200":
           content:
@@ -39046,6 +39285,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSIMIntegrations
       requestBody:
         content:
           application/json-patch+json:
@@ -39152,6 +39392,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSIMIntegrations
       requestBody:
         content:
           application/json:
@@ -39260,6 +39501,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSIMIntegrations
       requestBody:
         content:
           application/json-patch+json:
@@ -39744,6 +39986,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: exportSpConfig
       responses:
         "200":
           content:
@@ -39857,6 +40100,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: exportSpConfig
       responses:
         "200":
           content:
@@ -40123,6 +40367,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: importSpConfig
       responses:
         "200":
           content:
@@ -40237,6 +40482,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: importSpConfig
       responses:
         "200":
           content:
@@ -40737,6 +40983,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "202":
           content:
@@ -40845,6 +41092,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -40959,6 +41207,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json-patch+json:
@@ -41149,6 +41398,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -41258,6 +41508,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -41362,6 +41613,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -41469,6 +41721,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -41571,6 +41824,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -41678,6 +41932,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -41779,6 +42034,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -41880,6 +42136,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "The locale to apply to the config. If no viable locale is given,\
           \ it will default to \"en\""
         in: query
@@ -41998,6 +42255,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -42095,6 +42353,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -42195,6 +42454,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -43266,6 +43526,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "202":
           content:
@@ -43352,6 +43613,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: "If set to 'group', then the account schema is filtered and only\
           \ group schemas are returned. Only a value of 'group' is recognized presently.\
           \ \nNote: The API will check whether include-types is group or not, if not,\
@@ -43478,6 +43740,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -43567,6 +43830,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: The Schema ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
@@ -43574,6 +43838,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSourceSchemas
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -43667,6 +43932,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: The Schema ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
@@ -43674,6 +43940,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSourceSchemas
       responses:
         "200":
           content:
@@ -43781,6 +44048,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: The Schema id.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
@@ -43788,6 +44056,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSourceSchemas
       requestBody:
         content:
           application/json-patch+json:
@@ -43903,6 +44172,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: The Schema ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
@@ -43910,6 +44180,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSourceSchemas
       requestBody:
         content:
           application/json:
@@ -44011,6 +44282,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -44110,6 +44382,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -44196,6 +44469,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: Name of entitlement schema
         example: ?schemaName=group
         in: query
@@ -44301,6 +44575,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: Name of entitlement schema
         example: ?schemaName=group
         in: query
@@ -44396,6 +44671,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -44484,6 +44760,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "202":
           content:
@@ -44820,6 +45097,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -44913,6 +45191,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -45000,6 +45279,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           multipart/form-data:
@@ -45087,6 +45367,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -45191,6 +45472,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -45300,6 +45582,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAllSourceApp
       responses:
         "200":
           content:
@@ -45381,6 +45664,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllSourceApp
       responses:
         "200":
           content:
@@ -45482,6 +45766,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllSourceApp
       requestBody:
         content:
           application/json-patch+json:
@@ -46281,6 +46566,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllSourceApp
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -46410,6 +46696,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllSourceApp
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -46523,6 +46810,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getTaskStatusList
       responses:
         "200":
           content:
@@ -46606,6 +46894,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getTaskStatusList
       requestBody:
         content:
           application/json-patch+json:
@@ -47537,6 +47826,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTaggedObjects
       responses:
         "204":
           description: No content.
@@ -47629,6 +47919,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTaggedObjects
       responses:
         "200":
           content:
@@ -47726,6 +48017,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTaggedObjects
       requestBody:
         content:
           application/json:
@@ -48218,6 +48510,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTags
       responses:
         "204":
           description: No content.
@@ -48333,6 +48626,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTags
       responses:
         "200":
           content:
@@ -48807,6 +49101,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listTransforms
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -48906,6 +49201,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listTransforms
       responses:
         "200":
           content:
@@ -49009,6 +49305,7 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listTransforms
       requestBody:
         content:
           application/json:
@@ -49673,6 +49970,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSubscriptions
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -49771,6 +50069,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSubscriptions
       requestBody:
         content:
           application/json-patch+json:
@@ -49885,6 +50184,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSubscriptions
       requestBody:
         content:
           application/json:
@@ -50265,6 +50565,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listTriggerInvocationStatus
       requestBody:
         content:
           application/json:
@@ -50645,6 +50946,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllUserApps
       requestBody:
         content:
           application/json-patch+json:
@@ -50758,6 +51060,7 @@ paths:
         schema:
           example: 2c91808a7813090a017814121e121518
           type: string
+        x-sailpoint-resource-operation-id: listAllUserApps
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -51357,6 +51660,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listFromAddresses
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -52036,6 +52340,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       - description: Indicates whether this is a soft delete (logical true) or a hard
           delete.
         example: true
@@ -52142,6 +52447,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       responses:
         "200":
           content:
@@ -52314,6 +52620,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       requestBody:
         content:
           application/json-patch+json:
@@ -52528,6 +52835,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       requestBody:
         content:
           application/json:
@@ -52774,6 +53082,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       responses:
         "204":
           description: No content.
@@ -52871,6 +53180,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       responses:
         "200":
           content:
@@ -52954,6 +53264,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       requestBody:
         content:
           application/json:
@@ -53044,6 +53355,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSodPolicies
       responses:
         "200":
           content:
@@ -53151,6 +53463,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: startSodPolicy
       responses:
         "200":
           content:
@@ -53368,6 +53681,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: getSodAllReportRunStatus
       responses:
         "200":
           content:
@@ -53647,6 +53961,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: startSodPolicy
       responses:
         "200":
           content:
@@ -53751,6 +54066,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: startSodPolicy
       - description: Custom Name for the  file.
         example: custom-name
         in: path
@@ -54268,6 +54584,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       responses:
         "200":
           content:
@@ -54334,6 +54651,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       responses:
         "200":
           content:
@@ -54399,6 +54717,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       requestBody:
         content:
           application/json:
@@ -54480,6 +54799,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       - description: The ID of the approval item.
         example: 1211bcaa32112bcef6122adb21cef1ac
         in: path
@@ -54552,6 +54872,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       - description: The ID of the approval item.
         example: 1211bcaa32112bcef6122adb21cef1ac
         in: path
@@ -54624,6 +54945,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       responses:
         "200":
           content:
@@ -54689,6 +55011,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       responses:
         "200":
           content:
@@ -54754,6 +55077,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listWorkItems
       requestBody:
         content:
           application/json:
@@ -55045,6 +55369,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -55124,6 +55449,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       responses:
         "200":
           content:
@@ -55207,6 +55533,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       requestBody:
         content:
           application/json-patch+json:
@@ -55341,6 +55668,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       requestBody:
         content:
           application/json:
@@ -55433,6 +55761,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       requestBody:
         content:
           application/json:
@@ -55559,6 +55888,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -55717,6 +56047,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       responses:
         "200":
           content:
@@ -55823,6 +56154,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getWorkflowExecutions
       responses:
         "200":
           content:
@@ -55926,6 +56258,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getWorkflowExecutions
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -56438,6 +56771,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       responses:
         "200":
           content:
@@ -56524,6 +56858,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       requestBody:
         content:
           application/json:
@@ -56615,6 +56950,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listWorkflows
       requestBody:
         content:
           application/json:
@@ -57916,6 +58252,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       responses:
         "204":
@@ -57979,6 +58316,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       responses:
         "200":
@@ -58042,6 +58380,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       requestBody:
         content:
@@ -58117,6 +58456,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       - description: |-
           Limit
@@ -58614,6 +58954,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       requestBody:
         content:
@@ -58707,6 +59048,7 @@ paths:
         schema:
           type: string
           x-go-name: FormDefinitionID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormDefinitionID
       - description: |-
           FileID
@@ -58719,6 +59061,7 @@ paths:
         schema:
           type: string
           x-go-name: FileID
+        x-sailpoint-resource-operation-id: createFormDefinitionFileRequest
         x-go-name: FileID
       responses:
         "200":
@@ -58968,6 +59311,7 @@ paths:
         schema:
           type: string
           x-go-name: FormInstanceID
+        x-sailpoint-resource-operation-id: searchFormInstancesByTenant
         x-go-name: FormInstanceID
       responses:
         "200":
@@ -59029,6 +59373,7 @@ paths:
         schema:
           type: string
           x-go-name: FormInstanceID
+        x-sailpoint-resource-operation-id: searchFormInstancesByTenant
         x-go-name: FormInstanceID
       requestBody:
         content:
@@ -59118,6 +59463,7 @@ paths:
         schema:
           type: string
           x-go-name: FormInstanceID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormInstanceID
       - description: Form element ID
         example: 1
@@ -59127,6 +59473,7 @@ paths:
         schema:
           type: string
           x-go-name: FormElementID
+        x-sailpoint-resource-operation-id: getFormInstanceByKey
         x-go-name: FormElementID
       - description: |-
           Limit
@@ -59239,6 +59586,7 @@ paths:
         schema:
           type: string
           x-go-name: FormInstanceID
+        x-sailpoint-resource-operation-id: searchFormDefinitionsByTenant
         x-go-name: FormInstanceID
       - description: |-
           FileID
@@ -59251,6 +59599,7 @@ paths:
         schema:
           type: string
           x-go-name: FileID
+        x-sailpoint-resource-operation-id: createFormDefinitionFileRequest
         x-go-name: FileID
       responses:
         "200":
@@ -59436,6 +59785,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -59518,6 +59868,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listSources
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -59650,6 +60001,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listAccounts
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -59781,6 +60133,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listIdentities
       - description: Requested access item's ID.
         example: 2db501be-f0fb-4cc5-a695-334133c52891
         in: path
@@ -59788,14 +60141,19 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listRequestableObjects
       - description: Requested access item's type.
         example: ENTITLEMENT
         in: path
         name: type
         required: true
         schema:
-          items:
-            $ref: ../schemas/AccessItemRef.yaml
+          description: Access item's type.
+          enum:
+          - ENTITLEMENT
+          - ACCESS_PROFILE
+          - ROLE
+          example: ENTITLEMENT
           type: string
       responses:
         "200":
@@ -60704,12 +61062,14 @@ paths:
         A token with ORG_ADMIN authority is required to call this API.
       operationId: deleteIcon
       parameters:
-      - description: "Object type. Available options ['application']"
+      - description: Object type
         example: application
         in: path
         name: objectType
         required: true
         schema:
+          enum:
+          - application
           type: string
       - description: Object id.
         example: a291e870-48c3-4953-b656-fb5ce2a93169
@@ -60718,6 +61078,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: searchObjects
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -60807,12 +61168,14 @@ paths:
         A token with ORG_ADMIN authority is required to call this API.
       operationId: setIcon
       parameters:
-      - description: "Object type. Available options ['application']"
+      - description: Object type
         example: application
         in: path
         name: objectType
         required: true
         schema:
+          enum:
+          - application
           type: string
       - description: Object id.
         example: a291e870-48c3-4953-b656-fb5ce2a93169
@@ -60821,6 +61184,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: searchObjects
       requestBody:
         content:
           multipart/form-data:
@@ -60931,6 +61295,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getSedBatches
       responses:
         "200":
           content:
@@ -61615,6 +61980,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: listSeds
       requestBody:
         content:
           application/json-patch+json:
@@ -61956,6 +62322,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getLaunchers
       responses:
         "204":
           description: Launcher deleted successfully
@@ -62053,6 +62420,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getLaunchers
       responses:
         "200":
           content:
@@ -62155,6 +62523,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getLaunchers
       requestBody:
         content:
           application/json:
@@ -62264,6 +62633,7 @@ paths:
         schema:
           format: uuid
           type: string
+        x-sailpoint-resource-operation-id: getLaunchers
       responses:
         "200":
           content:
