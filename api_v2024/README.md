@@ -256,6 +256,14 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DataSegmentationAPI* | [**CreateDataSegment**](docs/DataSegmentationAPI.md#createdatasegment) | **Post** /data-segments | Create Segment
+*DataSegmentationAPI* | [**DeleteDataSegment**](docs/DataSegmentationAPI.md#deletedatasegment) | **Delete** /data-segments/{segmentId} | Delete Segment by ID
+*DataSegmentationAPI* | [**GetDataSegment**](docs/DataSegmentationAPI.md#getdatasegment) | **Get** /data-segments/{segmentId} | Get Segment by ID
+*DataSegmentationAPI* | [**GetDataSegmentIdentityMembership**](docs/DataSegmentationAPI.md#getdatasegmentidentitymembership) | **Get** /data-segments/membership/{identityId} | Get SegmentMembership by Identity ID
+*DataSegmentationAPI* | [**GetDataSegmentationEnabledForUser**](docs/DataSegmentationAPI.md#getdatasegmentationenabledforuser) | **Get** /data-segments/user-enabled/{identityId} | Is Segmentation enabled by Identity
+*DataSegmentationAPI* | [**ListDataSegments**](docs/DataSegmentationAPI.md#listdatasegments) | **Get** /data-segments | Get Segments
+*DataSegmentationAPI* | [**PatchDataSegment**](docs/DataSegmentationAPI.md#patchdatasegment) | **Patch** /data-segments/{segmentId} | Update Segment
+*DataSegmentationAPI* | [**PublishDataSegment**](docs/DataSegmentationAPI.md#publishdatasegment) | **Post** /data-segments/{segmentId} | Publish segment by ID
 *DimensionsAPI* | [**CreateDimension**](docs/DimensionsAPI.md#createdimension) | **Post** /roles/{roleId}/dimensions | Create a Dimension
 *DimensionsAPI* | [**DeleteBulkDimensions**](docs/DimensionsAPI.md#deletebulkdimensions) | **Post** /roles/{roleId}/dimensions/bulk-delete | Delete Dimension(s)
 *DimensionsAPI* | [**DeleteDimension**](docs/DimensionsAPI.md#deletedimension) | **Delete** /roles/{roleId}/dimensions/{dimensionId} | Delete a Dimension
@@ -1035,6 +1043,7 @@ Class | Method | HTTP request | Description
  - [DataAccessCategoriesInner](docs/DataAccessCategoriesInner.md)
  - [DataAccessImpactScore](docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
+ - [DataSegment](docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
@@ -1272,6 +1281,7 @@ Class | Method | HTTP request | Description
  - [ManuallyUpdatedFieldsDTO](docs/ManuallyUpdatedFieldsDTO.md)
  - [MatchTerm](docs/MatchTerm.md)
  - [Medium](docs/Medium.md)
+ - [MembershipType](docs/MembershipType.md)
  - [MetricAggregation](docs/MetricAggregation.md)
  - [MetricResponse](docs/MetricResponse.md)
  - [MetricType](docs/MetricType.md)
@@ -1412,6 +1422,7 @@ Class | Method | HTTP request | Description
  - [RecommendationResponseDto](docs/RecommendationResponseDto.md)
  - [RecommenderCalculations](docs/RecommenderCalculations.md)
  - [RecommenderCalculationsIdentityAttributesValue](docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [Ref](docs/Ref.md)
  - [Reference](docs/Reference.md)
  - [RemediationItemDetails](docs/RemediationItemDetails.md)
  - [RemediationItems](docs/RemediationItems.md)
@@ -1540,6 +1551,9 @@ Class | Method | HTTP request | Description
  - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchName](docs/ScheduledSearchName.md)
  - [Schema](docs/Schema.md)
+ - [Scope](docs/Scope.md)
+ - [ScopeType](docs/ScopeType.md)
+ - [ScopeVisibilityType](docs/ScopeVisibilityType.md)
  - [Search](docs/Search.md)
  - [SearchAggregationSpecification](docs/SearchAggregationSpecification.md)
  - [SearchArguments](docs/SearchArguments.md)

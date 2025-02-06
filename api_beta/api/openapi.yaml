@@ -226,7 +226,7 @@ tags:
     \ configuration. \nWhen the identity profile is created, its authentication profile\
     \ is also created. \nAn authentication profile includes information like its authentication\
     \ profile type (`BLOCK`, `MFA`, `NON_PTA`, PTA`) and settings controlling whether\
-    \ or not it blocks access from off network or untrusted geographies. \n"
+    \ or not it blocks access from off network or untrusted geographies.\n"
   name: Auth Profile
 - description: |
     Use this API to implement certification campaign functionality.
@@ -510,12 +510,11 @@ tags:
   name: Lifecycle States
 - description: "Use this API to implement managed client functionality. \nWith this\
     \ functionality in place, administrators can modify and delete existing managed\
-    \ clients, create new ones, and view and make changes to their log configurations.\
-    \ \n"
+    \ clients, create new ones, and view and make changes to their log configurations.\n"
   name: Managed Clients
 - description: "Use this API to implement managed cluster functionality. \nWith this\
     \ functionality in place, administrators can modify and delete existing managed\
-    \ clients, get their statuses, and create new ones. \n"
+    \ clients, get their statuses, and create new ones.\n"
   name: Managed Clusters
 - description: Configure and test multifactor authentication (MFA) methods
   name: MFA Configuration
@@ -569,7 +568,7 @@ tags:
   name: OAuth Clients
 - description: "Use this API to implement organization configuration functionality.\
     \ \nAdministrators can use this functionality to manage organization settings,\
-    \ such as time zones. \n"
+    \ such as time zones.\n"
   name: Org Config
 - description: |
     Use this API to implement organization password configuration functionality.
@@ -977,7 +976,7 @@ tags:
 - description: "Use this API to implement Suggested Entitlement Description (SED)\
     \ functionality. \nSED functionality leverages the power of LLM to generate suggested\
     \ entitlement descriptions. \nRefer to [GenAI Entitlement Descriptions](https://documentation.sailpoint.com/saas/help/access/entitlements.html#genai-entitlement-descriptions)\
-    \ to learn more about SED in Identity Security Cloud (ISC). \n"
+    \ to learn more about SED in Identity Security Cloud (ISC).\n"
   name: Suggested Entitlement Description
 - description: "Use this API to implement object tagging functionality. \nWith object\
     \ tagging functionality in place, any user in an organization can use tags as\
