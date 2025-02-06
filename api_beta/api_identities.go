@@ -1141,7 +1141,7 @@ func (a *IdentitiesAPIService) ResetIdentityExecute(r ApiResetIdentityRequest) (
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/identities/{id}/reset"
+	localVarPath := localBasePath + "/identities/{identityId}/reset"
 	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

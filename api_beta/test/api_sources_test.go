@@ -80,9 +80,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,9 +94,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		httpRes, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -135,9 +135,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -149,9 +149,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -192,9 +192,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		httpRes, err := apiClient.SourcesAPI.GetSourceAccountsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.GetSourceAccountsSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -233,7 +233,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -245,9 +247,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementsSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -287,9 +289,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -301,9 +303,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.ImportEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportEntitlements(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -315,9 +317,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.ImportSourceAccountsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportSourceAccountsSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -343,9 +345,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.ImportSourceEntitlementsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportSourceEntitlementsSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -357,9 +359,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -425,9 +427,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -439,9 +441,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -511,9 +513,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.SyncAttributesForSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.SyncAttributesForSource(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -596,7 +598,9 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

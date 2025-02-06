@@ -8,44 +8,44 @@ Method | HTTP request | Description
 [**CreateSource**](SourcesAPI.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
 [**CreateSourceSchema**](SourcesAPI.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 [**Delete**](SourcesAPI.md#Delete) | **Delete** /sources/{id} | Delete Source by ID
-[**DeleteAccountsAsync**](SourcesAPI.md#DeleteAccountsAsync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts in a Source
+[**DeleteAccountsAsync**](SourcesAPI.md#DeleteAccountsAsync) | **Post** /sources/{sourceId}/remove-accounts | Remove All Accounts in a Source
 [**DeleteNativeChangeDetectionConfig**](SourcesAPI.md#DeleteNativeChangeDetectionConfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**DeleteProvisioningPolicy**](SourcesAPI.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSourceSchema**](SourcesAPI.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-[**GetCorrelationConfig**](SourcesAPI.md#GetCorrelationConfig) | **Get** /sources/{id}/correlation-config | Get Source Correlation Configuration
+[**GetCorrelationConfig**](SourcesAPI.md#GetCorrelationConfig) | **Get** /sources/{sourceId}/correlation-config | Get Source Correlation Configuration
 [**GetNativeChangeDetectionConfig**](SourcesAPI.md#GetNativeChangeDetectionConfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 [**GetProvisioningPolicy**](SourcesAPI.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
-[**GetSourceAccountsSchema**](SourcesAPI.md#GetSourceAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+[**GetSourceAccountsSchema**](SourcesAPI.md#GetSourceAccountsSchema) | **Get** /sources/{sourceId}/schemas/accounts | Downloads source accounts schema template
 [**GetSourceAttrSyncConfig**](SourcesAPI.md#GetSourceAttrSyncConfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 [**GetSourceConfig**](SourcesAPI.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
-[**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
-[**GetSourceEntitlementsSchema**](SourcesAPI.md#GetSourceEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+[**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{sourceId}/entitlement-request-config | Get Source Entitlement Request Configuration
+[**GetSourceEntitlementsSchema**](SourcesAPI.md#GetSourceEntitlementsSchema) | **Get** /sources/{sourceId}/schemas/entitlements | Downloads source entitlements schema template
 [**GetSourceSchema**](SourcesAPI.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**GetSourceSchemas**](SourcesAPI.md#GetSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
-[**ImportAccounts**](SourcesAPI.md#ImportAccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
-[**ImportEntitlements**](SourcesAPI.md#ImportEntitlements) | **Post** /sources/{id}/load-entitlements | Entitlement Aggregation
-[**ImportSourceAccountsSchema**](SourcesAPI.md#ImportSourceAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+[**ImportAccounts**](SourcesAPI.md#ImportAccounts) | **Post** /sources/{sourceId}/load-accounts | Account Aggregation
+[**ImportEntitlements**](SourcesAPI.md#ImportEntitlements) | **Post** /sources/{sourceId}/load-entitlements | Entitlement Aggregation
+[**ImportSourceAccountsSchema**](SourcesAPI.md#ImportSourceAccountsSchema) | **Post** /sources/{sourceId}/schemas/accounts | Uploads source accounts schema template
 [**ImportSourceConnectorFile**](SourcesAPI.md#ImportSourceConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-[**ImportSourceEntitlementsSchema**](SourcesAPI.md#ImportSourceEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-[**ImportUncorrelatedAccounts**](SourcesAPI.md#ImportUncorrelatedAccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
+[**ImportSourceEntitlementsSchema**](SourcesAPI.md#ImportSourceEntitlementsSchema) | **Post** /sources/{sourceId}/schemas/entitlements | Uploads source entitlements schema template
+[**ImportUncorrelatedAccounts**](SourcesAPI.md#ImportUncorrelatedAccounts) | **Post** /sources/{sourceId}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 [**ListProvisioningPolicies**](SourcesAPI.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**ListSources**](SourcesAPI.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
 [**PeekResourceObjects**](SourcesAPI.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**PingCluster**](SourcesAPI.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
-[**PutCorrelationConfig**](SourcesAPI.md#PutCorrelationConfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
+[**PutCorrelationConfig**](SourcesAPI.md#PutCorrelationConfig) | **Put** /sources/{sourceId}/correlation-config | Update Source Correlation Configuration
 [**PutNativeChangeDetectionConfig**](SourcesAPI.md#PutNativeChangeDetectionConfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 [**PutProvisioningPolicy**](SourcesAPI.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**PutSource**](SourcesAPI.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
 [**PutSourceAttrSyncConfig**](SourcesAPI.md#PutSourceAttrSyncConfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 [**PutSourceSchema**](SourcesAPI.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-[**SyncAttributesForSource**](SourcesAPI.md#SyncAttributesForSource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
+[**SyncAttributesForSource**](SourcesAPI.md#SyncAttributesForSource) | **Post** /sources/{sourceId}/synchronize-attributes | Synchronize single source attributes.
 [**TestSourceConfiguration**](SourcesAPI.md#TestSourceConfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 [**TestSourceConnection**](SourcesAPI.md#TestSourceConnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 [**UpdateProvisioningPoliciesInBulk**](SourcesAPI.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**UpdateProvisioningPolicy**](SourcesAPI.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesAPI.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
-[**UpdateSourceEntitlementRequestConfig**](SourcesAPI.md#UpdateSourceEntitlementRequestConfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+[**UpdateSourceEntitlementRequestConfig**](SourcesAPI.md#UpdateSourceEntitlementRequestConfig) | **Put** /sources/{sourceId}/entitlement-request-config | Update Source Entitlement Request Configuration
 [**UpdateSourceSchema**](SourcesAPI.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAccountsAsync
 
-> TaskResultDto DeleteAccountsAsync(ctx, id).Execute()
+> TaskResultDto DeleteAccountsAsync(ctx, sourceId).Execute()
 
 Remove All Accounts in a Source
 
@@ -353,11 +353,11 @@ import (
 )
 
 func main() {
-	id := "ebbf35756e1140699ce52b233121384a" // string | The source id
+	sourceId := "ebbf35756e1140699ce52b233121384a" // string | The source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), id).Execute()
+	resp, r, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteAccountsAsync``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +373,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ## DeleteNativeChangeDetectionConfig
 
-> DeleteNativeChangeDetectionConfig(ctx, id).Execute()
+> DeleteNativeChangeDetectionConfig(ctx, sourceId).Execute()
 
 Delete Native Change Detection Configuration
 
@@ -423,11 +423,11 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+	r, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteNativeChangeDetectionConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -441,7 +441,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 ## GetCorrelationConfig
 
-> CorrelationConfig GetCorrelationConfig(ctx, id).Execute()
+> CorrelationConfig GetCorrelationConfig(ctx, sourceId).Execute()
 
 Get Source Correlation Configuration
 
@@ -631,11 +631,11 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), id).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetCorrelationConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -651,7 +651,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 
 ## GetNativeChangeDetectionConfig
 
-> NativeChangeDetectionConfig GetNativeChangeDetectionConfig(ctx, id).Execute()
+> NativeChangeDetectionConfig GetNativeChangeDetectionConfig(ctx, sourceId).Execute()
 
 Native Change Detection Configuration
 
@@ -701,11 +701,11 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetNativeChangeDetectionConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -721,7 +721,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -895,7 +895,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceAccountsSchema
 
-> GetSourceAccountsSchema(ctx, id).Execute()
+> GetSourceAccountsSchema(ctx, sourceId).Execute()
 
 Downloads source accounts schema template
 
@@ -912,11 +912,11 @@ import (
 )
 
 func main() {
-	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.GetSourceAccountsSchema(context.Background(), id).Execute()
+	r, err := apiClient.SourcesAPI.GetSourceAccountsSchema(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceAccountsSchema``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -930,7 +930,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -1103,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceEntitlementRequestConfig
 
-> SourceEntitlementRequestConfig GetSourceEntitlementRequestConfig(ctx).Execute()
+> SourceEntitlementRequestConfig GetSourceEntitlementRequestConfig(ctx, sourceId).Execute()
 
 Get Source Entitlement Request Configuration
 
@@ -1122,10 +1122,11 @@ import (
 )
 
 func main() {
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceEntitlementRequestConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1137,11 +1138,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSourceEntitlementRequestConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -1164,7 +1173,7 @@ Other parameters are passed through a pointer to a apiGetSourceEntitlementReques
 
 ## GetSourceEntitlementsSchema
 
-> GetSourceEntitlementsSchema(ctx, id).SchemaName(schemaName).Execute()
+> GetSourceEntitlementsSchema(ctx, sourceId).SchemaName(schemaName).Execute()
 
 Downloads source entitlements schema template
 
@@ -1181,12 +1190,12 @@ import (
 )
 
 func main() {
-	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 	schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.GetSourceEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
+	r, err := apiClient.SourcesAPI.GetSourceEntitlementsSchema(context.Background(), sourceId).SchemaName(schemaName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceEntitlementsSchema``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1200,7 +1209,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -1379,7 +1388,7 @@ Name | Type | Description  | Notes
 
 ## ImportAccounts
 
-> LoadAccountsTask ImportAccounts(ctx, id).File(file).DisableOptimization(disableOptimization).Execute()
+> LoadAccountsTask ImportAccounts(ctx, sourceId).File(file).DisableOptimization(disableOptimization).Execute()
 
 Account Aggregation
 
@@ -1398,13 +1407,13 @@ import (
 )
 
 func main() {
-	id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
+	sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
 	file := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source accounts to aggregate. (optional)
 	disableOptimization := "disableOptimization_example" // string | Use this flag to reprocess every account whether or not the data has changed. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).File(file).DisableOptimization(disableOptimization).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), sourceId).File(file).DisableOptimization(disableOptimization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccounts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1420,7 +1429,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Source Id | 
+**sourceId** | **string** | Source Id | 
 
 ### Other Parameters
 
@@ -1453,7 +1462,7 @@ Name | Type | Description  | Notes
 
 ## ImportEntitlements
 
-> LoadEntitlementTask ImportEntitlements(ctx, id).File(file).Execute()
+> LoadEntitlementTask ImportEntitlements(ctx, sourceId).File(file).Execute()
 
 Entitlement Aggregation
 
@@ -1472,12 +1481,12 @@ import (
 )
 
 func main() {
-	id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
+	sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
 	file := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source entitlements to aggregate. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportEntitlements(context.Background(), id).File(file).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportEntitlements(context.Background(), sourceId).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1493,7 +1502,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Source Id | 
+**sourceId** | **string** | Source Id | 
 
 ### Other Parameters
 
@@ -1525,7 +1534,7 @@ Name | Type | Description  | Notes
 
 ## ImportSourceAccountsSchema
 
-> Schema ImportSourceAccountsSchema(ctx, id).File(file).Execute()
+> Schema ImportSourceAccountsSchema(ctx, sourceId).File(file).Execute()
 
 Uploads source accounts schema template
 
@@ -1544,12 +1553,12 @@ import (
 )
 
 func main() {
-	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportSourceAccountsSchema(context.Background(), id).File(file).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportSourceAccountsSchema(context.Background(), sourceId).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportSourceAccountsSchema``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1565,7 +1574,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -1669,7 +1678,7 @@ Name | Type | Description  | Notes
 
 ## ImportSourceEntitlementsSchema
 
-> Schema ImportSourceEntitlementsSchema(ctx, id).SchemaName(schemaName).File(file).Execute()
+> Schema ImportSourceEntitlementsSchema(ctx, sourceId).SchemaName(schemaName).File(file).Execute()
 
 Uploads source entitlements schema template
 
@@ -1688,13 +1697,13 @@ import (
 )
 
 func main() {
-	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 	schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
 	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportSourceEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportSourceEntitlementsSchema(context.Background(), sourceId).SchemaName(schemaName).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportSourceEntitlementsSchema``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1710,7 +1719,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -1743,7 +1752,7 @@ Name | Type | Description  | Notes
 
 ## ImportUncorrelatedAccounts
 
-> LoadUncorrelatedAccountsTask ImportUncorrelatedAccounts(ctx, id).File(file).Execute()
+> LoadUncorrelatedAccountsTask ImportUncorrelatedAccounts(ctx, sourceId).File(file).Execute()
 
 Process Uncorrelated Accounts
 
@@ -1762,12 +1771,12 @@ import (
 )
 
 func main() {
-	id := "75dbec1ebe154d5785da27b95e1dd5d7" // string | Source Id
+	sourceId := "75dbec1ebe154d5785da27b95e1dd5d7" // string | Source Id
 	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).File(file).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), sourceId).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportUncorrelatedAccounts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1783,7 +1792,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Source Id | 
+**sourceId** | **string** | Source Id | 
 
 ### Other Parameters
 
@@ -2105,7 +2114,7 @@ Name | Type | Description  | Notes
 
 ## PutCorrelationConfig
 
-> CorrelationConfig PutCorrelationConfig(ctx, id).CorrelationConfig(correlationConfig).Execute()
+> CorrelationConfig PutCorrelationConfig(ctx, sourceId).CorrelationConfig(correlationConfig).Execute()
 
 Update Source Correlation Configuration
 
@@ -2124,12 +2133,12 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The source id
 	correlationConfig := *openapiclient.NewCorrelationConfig() // CorrelationConfig | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), id).CorrelationConfig(correlationConfig).Execute()
+	resp, r, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), sourceId).CorrelationConfig(correlationConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutCorrelationConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2145,7 +2154,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -2177,7 +2186,7 @@ Name | Type | Description  | Notes
 
 ## PutNativeChangeDetectionConfig
 
-> NativeChangeDetectionConfig PutNativeChangeDetectionConfig(ctx, id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+> NativeChangeDetectionConfig PutNativeChangeDetectionConfig(ctx, sourceId).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
 
 Update Native Change Detection Configuration
 
@@ -2196,12 +2205,12 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The source id
 	nativeChangeDetectionConfig := *openapiclient.NewNativeChangeDetectionConfig() // NativeChangeDetectionConfig | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+	resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), sourceId).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutNativeChangeDetectionConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2217,7 +2226,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The source id | 
+**sourceId** | **string** | The source id | 
 
 ### Other Parameters
 
@@ -2543,7 +2552,7 @@ Name | Type | Description  | Notes
 
 ## SyncAttributesForSource
 
-> SourceSyncJob SyncAttributesForSource(ctx, id).Execute()
+> SourceSyncJob SyncAttributesForSource(ctx, sourceId).Execute()
 
 Synchronize single source attributes.
 
@@ -2562,11 +2571,11 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | The Source id
+	sourceId := "sourceId_example" // string | The Source id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SyncAttributesForSource(context.Background(), id).Execute()
+	resp, r, err := apiClient.SourcesAPI.SyncAttributesForSource(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SyncAttributesForSource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2582,7 +2591,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -2972,7 +2981,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSourceEntitlementRequestConfig
 
-> SourceEntitlementRequestConfig UpdateSourceEntitlementRequestConfig(ctx).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+> SourceEntitlementRequestConfig UpdateSourceEntitlementRequestConfig(ctx, sourceId).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
 
 Update Source Entitlement Request Configuration
 
@@ -2991,11 +3000,12 @@ import (
 )
 
 func main() {
+	sourceId := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 	sourceEntitlementRequestConfig := *openapiclient.NewSourceEntitlementRequestConfig() // SourceEntitlementRequestConfig | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+	resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background(), sourceId).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceEntitlementRequestConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3008,6 +3018,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
 
 ### Other Parameters
 
@@ -3016,6 +3030,7 @@ Other parameters are passed through a pointer to a apiUpdateSourceEntitlementReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **sourceEntitlementRequestConfig** | [**SourceEntitlementRequestConfig**](SourceEntitlementRequestConfig.md) |  | 
 
 ### Return type

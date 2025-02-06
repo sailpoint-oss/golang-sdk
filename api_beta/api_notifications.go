@@ -994,13 +994,7 @@ func (a *NotificationsAPIService) GetDkimAttributesExecute(r ApiGetDkimAttribute
 type ApiGetMailFromAttributesRequest struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	id *string
-}
-
-// Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
-func (r ApiGetMailFromAttributesRequest) Id(id string) ApiGetMailFromAttributesRequest {
-	r.id = &id
-	return r
+	identityId string
 }
 
 func (r ApiGetMailFromAttributesRequest) Execute() (*MailFromAttributes, *http.Response, error) {
@@ -1013,12 +1007,14 @@ GetMailFromAttributes Get MAIL FROM Attributes
 Retrieve MAIL FROM attributes for a given AWS SES identity.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identityId Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
  @return ApiGetMailFromAttributesRequest
 */
-func (a *NotificationsAPIService) GetMailFromAttributes(ctx context.Context) ApiGetMailFromAttributesRequest {
+func (a *NotificationsAPIService) GetMailFromAttributes(ctx context.Context, identityId string) ApiGetMailFromAttributesRequest {
 	return ApiGetMailFromAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
+		identityId: identityId,
 	}
 }
 
@@ -1037,16 +1033,13 @@ func (a *NotificationsAPIService) GetMailFromAttributesExecute(r ApiGetMailFromA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/mail-from-attributes/{identity}"
+	localVarPath := localBasePath + "/mail-from-attributes/{identityId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.id == nil {
-		return localVarReturnValue, nil, reportError("id is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1670,6 +1663,7 @@ func (a *NotificationsAPIService) ListFromAddressesExecute(r ApiListFromAddresse
 type ApiListNotificationPreferencesRequest struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
+	key string
 }
 
 func (r ApiListNotificationPreferencesRequest) Execute() ([]PreferencesDto, *http.Response, error) {
@@ -1682,12 +1676,14 @@ ListNotificationPreferences List Notification Preferences for tenant.
 Returns a list of notification preferences for tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param key The notification key.
  @return ApiListNotificationPreferencesRequest
 */
-func (a *NotificationsAPIService) ListNotificationPreferences(ctx context.Context) ApiListNotificationPreferencesRequest {
+func (a *NotificationsAPIService) ListNotificationPreferences(ctx context.Context, key string) ApiListNotificationPreferencesRequest {
 	return ApiListNotificationPreferencesRequest{
 		ApiService: a,
 		ctx: ctx,
+		key: key,
 	}
 }
 
@@ -1707,6 +1703,7 @@ func (a *NotificationsAPIService) ListNotificationPreferencesExecute(r ApiListNo
 	}
 
 	localVarPath := localBasePath + "/notification-preferences/{key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

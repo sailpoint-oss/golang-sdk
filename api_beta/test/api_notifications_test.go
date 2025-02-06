@@ -98,7 +98,9 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background()).Execute()
+		var identityId string
+
+		resp, httpRes, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -148,7 +150,9 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background()).Execute()
+		var key string
+
+		resp, httpRes, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background(), key).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -13091,7 +13091,7 @@ paths:
       summary: Replace Entitlement Request Config
       tags:
       - Entitlements
-  /entitlements/reset/sources/{id}:
+  /entitlements/reset/sources/{sourceId}:
     post:
       description: "Remove all entitlements from a specific source.\nTo reload the\
         \ accounts along with the entitlements you removed, you must run an unoptimized\
@@ -13101,7 +13101,7 @@ paths:
       parameters:
       - description: ID of source for the entitlement reset
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           example: 2c91808a7813090a017814121919ecca
@@ -15410,7 +15410,7 @@ paths:
         identity between 2 snapshots
       tags:
       - Identity History
-  /historical-identities/{id}/compare/{access-type}:
+  /historical-identities/{id}/compare/{accessType}:
     get:
       description: 'This method gets a list of differences of specific accessType
         for the given identity between 2 snapshots Requires authorization scope of
@@ -16493,7 +16493,7 @@ paths:
       summary: Process a list of identityIds
       tags:
       - Identities
-  /identities/{id}/reset:
+  /identities/{identityId}/reset:
     post:
       description: Use this endpoint to reset a user's identity if they have forgotten
         their authentication information like their answers to knowledge-based questions.
@@ -19236,7 +19236,7 @@ paths:
       summary: List Multi-Host Integration Types
       tags:
       - Multi-Host Integration
-  /multihosts/{id}:
+  /multihosts/{multihostId}:
     delete:
       description: "Delete an existing Multi-Host Integration by ID.  \n\nA token\
         \ with Org Admin or Multi Host Admin authority is required to access this\
@@ -19246,7 +19246,7 @@ paths:
       - description: ID of Multi-Host Integration to delete.
         explode: false
         in: path
-        name: id
+        name: multihostId
         required: true
         schema:
           example: 2c91808568c529c60168cca6f90c1326
@@ -19346,7 +19346,7 @@ paths:
       - description: ID of the Multi-Host Integration.
         explode: false
         in: path
-        name: id
+        name: multihostId
         required: true
         schema:
           example: 2c91808568c529c60168cca6f90c1326
@@ -19452,7 +19452,7 @@ paths:
       - description: ID of the Multi-Host Integration to update.
         explode: false
         in: path
-        name: multihost_id
+        name: multihostId
         required: true
         schema:
           example: anId
@@ -19568,7 +19568,7 @@ paths:
       - description: ID of the Multi-Host Integration.
         explode: false
         in: path
-        name: id
+        name: multihostId
         required: true
         schema:
           example: 2c91808568c529c60168cca6f90c1326
@@ -19669,7 +19669,7 @@ paths:
       summary: Create Sources Within Multi-Host Integration
       tags:
       - Multi-Host Integration
-  /multihosts/{multihost_id}/sources/testConnection:
+  /multihosts/{multihostId}/sources/testConnection:
     post:
       description: |-
         This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.
@@ -19680,7 +19680,7 @@ paths:
       - description: ID of the Multi-Host Integration
         explode: false
         in: path
-        name: multihost_id
+        name: multihostId
         required: true
         schema:
           example: 2c91808568c529c60168cca6f90c1324
@@ -19772,7 +19772,7 @@ paths:
       summary: Test Configuration For Multi-Host Integration
       tags:
       - Multi-Host Integration
-  /multihosts/{multihost_id}/sources/{sourceId}/testConnection:
+  /multihosts/{multihostId}/sources/{sourceId}/testConnection:
     get:
       description: "This endpoint performs a more detailed validation of the source's\
         \ configuration.  \n\nA token with Org Admin or Multi-Host Admin authority\
@@ -19782,7 +19782,7 @@ paths:
       - description: ID of the Multi-Host Integration
         explode: false
         in: path
-        name: multihost_id
+        name: multihostId
         required: true
         schema:
           example: 2c91808568c529c60168cca6f90c1326
@@ -19888,13 +19888,23 @@ paths:
       summary: Test Configuration For Multi-Host Integration's Single Source
       tags:
       - Multi-Host Integration
-  /multihosts/{id}/sources:
+  /multihosts/{multihostId}/sources:
     get:
       description: "Get a list of sources within Multi-Host Integration ID.  \n\n\
         A token with Org Admin or Multi-Host Admin authority is required to access\
         \ this endpoint."
       operationId: getSourcesWithinMultiHost
       parameters:
+      - description: ID of the Multi-Host Integration to update
+        explode: false
+        in: path
+        name: multihostId
+        required: true
+        schema:
+          example: aMultiHostId
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getMultiHostIntegrations
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -20170,7 +20180,7 @@ paths:
       - description: ID of the Multi-Host Integration to update
         explode: false
         in: path
-        name: multiHostId
+        name: multihostId
         required: true
         schema:
           example: aMultiHostId
@@ -24303,7 +24313,7 @@ paths:
       summary: Change MAIL FROM domain
       tags:
       - Notifications
-  /mail-from-attributes/{identity}:
+  /mail-from-attributes/{identityId}:
     get:
       description: Retrieve MAIL FROM attributes for a given AWS SES identity.
       operationId: getMailFromAttributes
@@ -24311,8 +24321,8 @@ paths:
       - description: "Returns the MX and TXT record to be put in your DNS, as well\
           \ as the MAIL FROM domain status"
         example: bobsmith@sailpoint.com
-        in: query
-        name: id
+        in: path
+        name: identityId
         required: true
         schema:
           type: string
@@ -31112,6 +31122,15 @@ paths:
     get:
       description: Returns a list of notification preferences for tenant.
       operationId: listNotificationPreferences
+      parameters:
+      - description: The notification key.
+        example: cloud_manual_work_item_summary
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listNotificationPreferences
       responses:
         "200":
           content:
@@ -42251,7 +42270,7 @@ paths:
       - description: The source id
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -42349,7 +42368,7 @@ paths:
       - description: The source id
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -42450,7 +42469,7 @@ paths:
       - description: The source id
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -43508,7 +43527,7 @@ paths:
       - Sources
       x-sailpoint-userLevels:
       - ORG_ADMIN
-  /sources/{id}/remove-accounts:
+  /sources/{sourceId}/remove-accounts:
     post:
       description: |
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
@@ -43522,7 +43541,7 @@ paths:
       - description: The source id
         example: ebbf35756e1140699ce52b233121384a
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44271,14 +44290,14 @@ paths:
       summary: Update Source Schema (Full)
       tags:
       - Sources
-  /sources/{id}/schemas/accounts:
+  /sources/{sourceId}/schemas/accounts:
     get:
       operationId: getSourceAccountsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44378,7 +44397,7 @@ paths:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44458,14 +44477,14 @@ paths:
       summary: Uploads source accounts schema template
       tags:
       - Sources
-  /sources/{id}/schemas/entitlements:
+  /sources/{sourceId}/schemas/entitlements:
     get:
       operationId: getSourceEntitlementsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44571,7 +44590,7 @@ paths:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44747,7 +44766,7 @@ paths:
       summary: Upload connector file to source
       tags:
       - Sources
-  /sources/{id}/synchronize-attributes:
+  /sources/{sourceId}/synchronize-attributes:
     post:
       description: |-
         This end-point performs attribute synchronization for a selected source.
@@ -44756,7 +44775,7 @@ paths:
       parameters:
       - description: The Source id
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -44851,7 +44870,7 @@ paths:
       summary: Synchronize single source attributes.
       tags:
       - Sources
-  /sources/{id}/entitlement-request-config:
+  /sources/{sourceId}/entitlement-request-config:
     get:
       description: |-
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
@@ -44862,6 +44881,15 @@ paths:
 
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: getSourceEntitlementRequestConfig
+      parameters:
+      - description: The Source id
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listSources
       responses:
         "200":
           content:
@@ -44977,6 +45005,15 @@ paths:
 
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: updateSourceEntitlementRequestConfig
+      parameters:
+      - description: The Source id
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listSources
       requestBody:
         content:
           application/json:
@@ -45081,7 +45118,7 @@ paths:
       summary: Update Source Entitlement Request Configuration
       tags:
       - Sources
-  /sources/{id}/load-accounts:
+  /sources/{sourceId}/load-accounts:
     post:
       description: "Starts an account aggregation on the specified source. \nIf the\
         \ target source is a delimited file source, then the CSV file needs to be\
@@ -45093,7 +45130,7 @@ paths:
       - description: Source Id
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -45175,7 +45212,7 @@ paths:
       summary: Account Aggregation
       tags:
       - Sources
-  /sources/{id}/load-entitlements:
+  /sources/{sourceId}/load-entitlements:
     post:
       description: "Starts an entitlement aggregation on the specified source. \n\
         If the target source is a delimited file source, then the CSV file needs to\
@@ -45187,7 +45224,7 @@ paths:
       - description: Source Id
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -45266,7 +45303,7 @@ paths:
       summary: Entitlement Aggregation
       tags:
       - Sources
-  /sources/{id}/load-uncorrelated-accounts:
+  /sources/{sourceId}/load-uncorrelated-accounts:
     post:
       description: File is required for upload. You will also need to set the Content-Type
         header to `multipart/form-data`
@@ -45275,7 +45312,7 @@ paths:
       - description: Source Id
         example: 75dbec1ebe154d5785da27b95e1dd5d7
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -45354,7 +45391,7 @@ paths:
       summary: Process Uncorrelated Accounts
       tags:
       - Sources
-  /sources/{id}/correlation-config:
+  /sources/{sourceId}/correlation-config:
     get:
       description: This API returns the existing correlation configuration for a source
         specified by the given ID.
@@ -45363,7 +45400,7 @@ paths:
       - description: The source id
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -45468,7 +45505,7 @@ paths:
       - description: The source id
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -70745,14 +70782,14 @@ components:
       type: object
     SourceCreationErrors:
       example:
-        multihost_id: 2c91808568c529c60168cca6f90c1324
         created: 2022-02-08T14:50:03.827Z
         modified: 2024-01-23T18:08:50.897Z
+        multihostId: 2c91808568c529c60168cca6f90c1324
         operation: DELETE
         source_name: My Source
         source_error: "Source with internal name \"My Source [source]\" already exists."
       properties:
-        multihost_id:
+        multihostId:
           description: Multi-Host Integration ID.
           example: 2c91808568c529c60168cca6f90c1324
           readOnly: true
@@ -70785,7 +70822,7 @@ components:
       allOf:
       - description: Multi-Host Integration's aggregation schedule specification.
         properties:
-          multihost_id:
+          multihostId:
             description: Multi-Host Integration ID. The ID must be unique
             example: 004091cb79b04636b88662afa50a4456
             type: string
@@ -70832,16 +70869,16 @@ components:
         - aggregation_grp_id
         - aggregation_grp_name
         - enableSchedule
-        - multihost_id
+        - multihostId
         - source_id_list
         type: object
       example:
         aggregation_cron_schedule: 0 0 0 * * ?
-        multihost_id: 004091cb79b04636b88662afa50a4456
         created: 2024-01-23T18:08:50.897Z
         modified: 2024-01-23T18:08:50.897Z
         aggregation_grp_id: 004091cb79b04636b88662afa50a4448
         aggregation_grp_name: Multi-Host Integration aggregation group name
+        multihostId: 004091cb79b04636b88662afa50a4456
         source_id_list:
         - 004091cb79b04636b88662afa50a4440
         - 00af6d0d562a49b591c47be908740542

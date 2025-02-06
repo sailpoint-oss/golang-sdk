@@ -215,7 +215,7 @@ Class | Method | HTTP request | Description
 *EntitlementsAPI* | [**ListEntitlements**](docs/EntitlementsAPI.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
 *EntitlementsAPI* | [**PatchEntitlement**](docs/EntitlementsAPI.md#patchentitlement) | **Patch** /entitlements/{id} | Patch an entitlement
 *EntitlementsAPI* | [**PutEntitlementRequestConfig**](docs/EntitlementsAPI.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
-*EntitlementsAPI* | [**ResetSourceEntitlements**](docs/EntitlementsAPI.md#resetsourceentitlements) | **Post** /entitlements/reset/sources/{id} | Reset Source Entitlements
+*EntitlementsAPI* | [**ResetSourceEntitlements**](docs/EntitlementsAPI.md#resetsourceentitlements) | **Post** /entitlements/reset/sources/{sourceId} | Reset Source Entitlements
 *EntitlementsAPI* | [**UpdateEntitlementsInBulk**](docs/EntitlementsAPI.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsAPI* | [**CreateWorkgroup**](docs/GovernanceGroupsAPI.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
 *GovernanceGroupsAPI* | [**DeleteWorkgroup**](docs/GovernanceGroupsAPI.md#deleteworkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
@@ -285,7 +285,7 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**GetRoleAssignment**](docs/IdentitiesAPI.md#getroleassignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List Identities
-*IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{id}/reset | Reset an identity
+*IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{identityId}/reset | Reset an identity
 *IdentitiesAPI* | [**SendIdentityVerificationAccountToken**](docs/IdentitiesAPI.md#sendidentityverificationaccounttoken) | **Post** /identities/{id}/verification/account/send | Send password reset email
 *IdentitiesAPI* | [**StartIdentitiesInvite**](docs/IdentitiesAPI.md#startidentitiesinvite) | **Post** /identities/invite | Invite identities to register
 *IdentitiesAPI* | [**StartIdentityProcessing**](docs/IdentitiesAPI.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
@@ -297,7 +297,7 @@ Class | Method | HTTP request | Description
 *IdentityAttributesAPI* | [**ListIdentityAttributes**](docs/IdentityAttributesAPI.md#listidentityattributes) | **Get** /identity-attributes | List Identity Attributes
 *IdentityAttributesAPI* | [**PutIdentityAttribute**](docs/IdentityAttributesAPI.md#putidentityattribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
 *IdentityHistoryAPI* | [**CompareIdentitySnapshots**](docs/IdentityHistoryAPI.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
-*IdentityHistoryAPI* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryAPI.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+*IdentityHistoryAPI* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryAPI.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{accessType} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
 *IdentityHistoryAPI* | [**GetHistoricalIdentity**](docs/IdentityHistoryAPI.md#gethistoricalidentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
 *IdentityHistoryAPI* | [**GetHistoricalIdentityEvents**](docs/IdentityHistoryAPI.md#gethistoricalidentityevents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
 *IdentityHistoryAPI* | [**GetIdentitySnapshot**](docs/IdentityHistoryAPI.md#getidentitysnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
@@ -347,18 +347,18 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 *MultiHostIntegrationAPI* | [**CreateMultiHostIntegration**](docs/MultiHostIntegrationAPI.md#createmultihostintegration) | **Post** /multihosts | Create Multi-Host Integration
-*MultiHostIntegrationAPI* | [**CreateSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#createsourceswithinmultihost) | **Post** /multihosts/{id} | Create Sources Within Multi-Host Integration
-*MultiHostIntegrationAPI* | [**DeleteMultiHost**](docs/MultiHostIntegrationAPI.md#deletemultihost) | **Delete** /multihosts/{id} | Delete Multi-Host Integration
+*MultiHostIntegrationAPI* | [**CreateSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#createsourceswithinmultihost) | **Post** /multihosts/{multihostId} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**DeleteMultiHost**](docs/MultiHostIntegrationAPI.md#deletemultihost) | **Delete** /multihosts/{multihostId} | Delete Multi-Host Integration
 *MultiHostIntegrationAPI* | [**GetAcctAggregationGroups**](docs/MultiHostIntegrationAPI.md#getacctaggregationgroups) | **Get** /multihosts/{multihostId}/acctAggregationGroups | Get Account Aggregation Groups Within Multi-Host Integration ID
 *MultiHostIntegrationAPI* | [**GetEntitlementAggregationGroups**](docs/MultiHostIntegrationAPI.md#getentitlementaggregationgroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
-*MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{id} | Get Multi-Host Integration By ID
+*MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{multihostId} | Get Multi-Host Integration By ID
 *MultiHostIntegrationAPI* | [**GetMultiHostIntegrationsList**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationslist) | **Get** /multihosts | List All Existing Multi-Host Integrations
 *MultiHostIntegrationAPI* | [**GetMultiHostSourceCreationErrors**](docs/MultiHostIntegrationAPI.md#getmultihostsourcecreationerrors) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 *MultiHostIntegrationAPI* | [**GetMultihostIntegrationTypes**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationtypes) | **Get** /multihosts/types | List Multi-Host Integration Types
-*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost) | **Get** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-*MultiHostIntegrationAPI* | [**TestConnectionMultiHostSources**](docs/MultiHostIntegrationAPI.md#testconnectionmultihostsources) | **Post** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
-*MultiHostIntegrationAPI* | [**TestSourceConnectionMultihost**](docs/MultiHostIntegrationAPI.md#testsourceconnectionmultihost) | **Get** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
-*MultiHostIntegrationAPI* | [**UpdateMultiHostSources**](docs/MultiHostIntegrationAPI.md#updatemultihostsources) | **Patch** /multihosts/{id} | Update Multi-Host Integration
+*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost) | **Get** /multihosts/{multihostId}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**TestConnectionMultiHostSources**](docs/MultiHostIntegrationAPI.md#testconnectionmultihostsources) | **Post** /multihosts/{multihostId}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationAPI* | [**TestSourceConnectionMultihost**](docs/MultiHostIntegrationAPI.md#testsourceconnectionmultihost) | **Get** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationAPI* | [**UpdateMultiHostSources**](docs/MultiHostIntegrationAPI.md#updatemultihostsources) | **Patch** /multihosts/{multihostId} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -397,7 +397,7 @@ Class | Method | HTTP request | Description
 *NotificationsAPI* | [**DeleteNotificationTemplatesInBulk**](docs/NotificationsAPI.md#deletenotificationtemplatesinbulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 *NotificationsAPI* | [**DeleteVerifiedFromAddress**](docs/NotificationsAPI.md#deleteverifiedfromaddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 *NotificationsAPI* | [**GetDkimAttributes**](docs/NotificationsAPI.md#getdkimattributes) | **Get** /verified-domains | Get DKIM Attributes
-*NotificationsAPI* | [**GetMailFromAttributes**](docs/NotificationsAPI.md#getmailfromattributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
+*NotificationsAPI* | [**GetMailFromAttributes**](docs/NotificationsAPI.md#getmailfromattributes) | **Get** /mail-from-attributes/{identityId} | Get MAIL FROM Attributes
 *NotificationsAPI* | [**GetNotificationTemplate**](docs/NotificationsAPI.md#getnotificationtemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsAPI* | [**GetNotificationsTemplateContext**](docs/NotificationsAPI.md#getnotificationstemplatecontext) | **Get** /notification-template-context | Get Notification Template Context
 *NotificationsAPI* | [**ListFromAddresses**](docs/NotificationsAPI.md#listfromaddresses) | **Get** /verified-from-addresses | List From Addresses
@@ -514,44 +514,44 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**CreateSource**](docs/SourcesAPI.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesAPI* | [**CreateSourceSchema**](docs/SourcesAPI.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 *SourcesAPI* | [**Delete**](docs/SourcesAPI.md#delete) | **Delete** /sources/{id} | Delete Source by ID
-*SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts in a Source
+*SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{sourceId}/remove-accounts | Remove All Accounts in a Source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesAPI.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesAPI* | [**DeleteProvisioningPolicy**](docs/SourcesAPI.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesAPI* | [**DeleteSourceSchema**](docs/SourcesAPI.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-*SourcesAPI* | [**GetCorrelationConfig**](docs/SourcesAPI.md#getcorrelationconfig) | **Get** /sources/{id}/correlation-config | Get Source Correlation Configuration
+*SourcesAPI* | [**GetCorrelationConfig**](docs/SourcesAPI.md#getcorrelationconfig) | **Get** /sources/{sourceId}/correlation-config | Get Source Correlation Configuration
 *SourcesAPI* | [**GetNativeChangeDetectionConfig**](docs/SourcesAPI.md#getnativechangedetectionconfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesAPI* | [**GetProvisioningPolicy**](docs/SourcesAPI.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesAPI* | [**GetSource**](docs/SourcesAPI.md#getsource) | **Get** /sources/{id} | Get Source by ID
-*SourcesAPI* | [**GetSourceAccountsSchema**](docs/SourcesAPI.md#getsourceaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesAPI* | [**GetSourceAccountsSchema**](docs/SourcesAPI.md#getsourceaccountsschema) | **Get** /sources/{sourceId}/schemas/accounts | Downloads source accounts schema template
 *SourcesAPI* | [**GetSourceAttrSyncConfig**](docs/SourcesAPI.md#getsourceattrsyncconfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesAPI* | [**GetSourceConfig**](docs/SourcesAPI.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
-*SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
-*SourcesAPI* | [**GetSourceEntitlementsSchema**](docs/SourcesAPI.md#getsourceentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+*SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{sourceId}/entitlement-request-config | Get Source Entitlement Request Configuration
+*SourcesAPI* | [**GetSourceEntitlementsSchema**](docs/SourcesAPI.md#getsourceentitlementsschema) | **Get** /sources/{sourceId}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesAPI* | [**GetSourceSchema**](docs/SourcesAPI.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesAPI* | [**GetSourceSchemas**](docs/SourcesAPI.md#getsourceschemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
-*SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
-*SourcesAPI* | [**ImportEntitlements**](docs/SourcesAPI.md#importentitlements) | **Post** /sources/{id}/load-entitlements | Entitlement Aggregation
-*SourcesAPI* | [**ImportSourceAccountsSchema**](docs/SourcesAPI.md#importsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+*SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{sourceId}/load-accounts | Account Aggregation
+*SourcesAPI* | [**ImportEntitlements**](docs/SourcesAPI.md#importentitlements) | **Post** /sources/{sourceId}/load-entitlements | Entitlement Aggregation
+*SourcesAPI* | [**ImportSourceAccountsSchema**](docs/SourcesAPI.md#importsourceaccountsschema) | **Post** /sources/{sourceId}/schemas/accounts | Uploads source accounts schema template
 *SourcesAPI* | [**ImportSourceConnectorFile**](docs/SourcesAPI.md#importsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-*SourcesAPI* | [**ImportSourceEntitlementsSchema**](docs/SourcesAPI.md#importsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-*SourcesAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesAPI.md#importuncorrelatedaccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
+*SourcesAPI* | [**ImportSourceEntitlementsSchema**](docs/SourcesAPI.md#importsourceentitlementsschema) | **Post** /sources/{sourceId}/schemas/entitlements | Uploads source entitlements schema template
+*SourcesAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesAPI.md#importuncorrelatedaccounts) | **Post** /sources/{sourceId}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 *SourcesAPI* | [**ListProvisioningPolicies**](docs/SourcesAPI.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesAPI* | [**ListSources**](docs/SourcesAPI.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
 *SourcesAPI* | [**PeekResourceObjects**](docs/SourcesAPI.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesAPI* | [**PingCluster**](docs/SourcesAPI.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
-*SourcesAPI* | [**PutCorrelationConfig**](docs/SourcesAPI.md#putcorrelationconfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
+*SourcesAPI* | [**PutCorrelationConfig**](docs/SourcesAPI.md#putcorrelationconfig) | **Put** /sources/{sourceId}/correlation-config | Update Source Correlation Configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfig**](docs/SourcesAPI.md#putnativechangedetectionconfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesAPI* | [**PutProvisioningPolicy**](docs/SourcesAPI.md#putprovisioningpolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesAPI* | [**PutSource**](docs/SourcesAPI.md#putsource) | **Put** /sources/{id} | Update Source (Full)
 *SourcesAPI* | [**PutSourceAttrSyncConfig**](docs/SourcesAPI.md#putsourceattrsyncconfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 *SourcesAPI* | [**PutSourceSchema**](docs/SourcesAPI.md#putsourceschema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-*SourcesAPI* | [**SyncAttributesForSource**](docs/SourcesAPI.md#syncattributesforsource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
+*SourcesAPI* | [**SyncAttributesForSource**](docs/SourcesAPI.md#syncattributesforsource) | **Post** /sources/{sourceId}/synchronize-attributes | Synchronize single source attributes.
 *SourcesAPI* | [**TestSourceConfiguration**](docs/SourcesAPI.md#testsourceconfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesAPI* | [**TestSourceConnection**](docs/SourcesAPI.md#testsourceconnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 *SourcesAPI* | [**UpdateProvisioningPoliciesInBulk**](docs/SourcesAPI.md#updateprovisioningpoliciesinbulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesAPI* | [**UpdateProvisioningPolicy**](docs/SourcesAPI.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
-*SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+*SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{sourceId}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request

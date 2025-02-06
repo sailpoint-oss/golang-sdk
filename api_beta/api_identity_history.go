@@ -336,7 +336,7 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessTypeExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/historical-identities/{id}/compare/{access-type}"
+	localVarPath := localBasePath + "/historical-identities/{id}/compare/{accessType}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"accessType"+"}", url.PathEscape(parameterValueToString(r.accessType, "accessType")), -1)
 

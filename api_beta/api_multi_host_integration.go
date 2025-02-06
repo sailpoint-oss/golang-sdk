@@ -204,7 +204,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationExecute(r Api
 type ApiCreateSourcesWithinMultiHostRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
-	id string
+	multihostId string
 	multiHostIntegrationsCreateSources *[]MultiHostIntegrationsCreateSources
 }
 
@@ -226,14 +226,14 @@ This API is used to create sources within Multi-Host Integration. Multi-Host Int
 A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Multi-Host Integration.
+ @param multihostId ID of the Multi-Host Integration.
  @return ApiCreateSourcesWithinMultiHostRequest
 */
-func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHost(ctx context.Context, id string) ApiCreateSourcesWithinMultiHostRequest {
+func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHost(ctx context.Context, multihostId string) ApiCreateSourcesWithinMultiHostRequest {
 	return ApiCreateSourcesWithinMultiHostRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		multihostId: multihostId,
 	}
 }
 
@@ -250,8 +250,8 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostExecute(r A
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,7 +375,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostExecute(r A
 type ApiDeleteMultiHostRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
-	id string
+	multihostId string
 }
 
 func (r ApiDeleteMultiHostRequest) Execute() (*http.Response, error) {
@@ -390,14 +390,14 @@ Delete an existing Multi-Host Integration by ID.
 A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of Multi-Host Integration to delete.
+ @param multihostId ID of Multi-Host Integration to delete.
  @return ApiDeleteMultiHostRequest
 */
-func (a *MultiHostIntegrationAPIService) DeleteMultiHost(ctx context.Context, id string) ApiDeleteMultiHostRequest {
+func (a *MultiHostIntegrationAPIService) DeleteMultiHost(ctx context.Context, multihostId string) ApiDeleteMultiHostRequest {
 	return ApiDeleteMultiHostRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		multihostId: multihostId,
 	}
 }
 
@@ -414,8 +414,8 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostExecute(r ApiDeleteMulti
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -534,7 +534,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostExecute(r ApiDeleteMulti
 type ApiGetAcctAggregationGroupsRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
-	multiHostId string
+	multihostId string
 }
 
 func (r ApiGetAcctAggregationGroupsRequest) Execute() (*MultiHostIntegrationsAggScheduleUpdate, *http.Response, error) {
@@ -549,14 +549,14 @@ This API will return array of account aggregation groups within provided Multi-H
 A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param multiHostId ID of the Multi-Host Integration to update
+ @param multihostId ID of the Multi-Host Integration to update
  @return ApiGetAcctAggregationGroupsRequest
 */
-func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroups(ctx context.Context, multiHostId string) ApiGetAcctAggregationGroupsRequest {
+func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroups(ctx context.Context, multihostId string) ApiGetAcctAggregationGroupsRequest {
 	return ApiGetAcctAggregationGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
-		multiHostId: multiHostId,
+		multihostId: multihostId,
 	}
 }
 
@@ -576,7 +576,7 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsExecute(r ApiGe
 	}
 
 	localVarPath := localBasePath + "/multihosts/{multihostId}/acctAggregationGroups"
-	localVarPath = strings.Replace(localVarPath, "{"+"multiHostId"+"}", url.PathEscape(parameterValueToString(r.multiHostId, "multiHostId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -874,7 +874,7 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsExecute(
 type ApiGetMultiHostIntegrationsRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
-	id string
+	multihostId string
 }
 
 func (r ApiGetMultiHostIntegrationsRequest) Execute() (*MultiHostIntegrations, *http.Response, error) {
@@ -889,14 +889,14 @@ Get an existing Multi-Host Integration.
 A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Multi-Host Integration.
+ @param multihostId ID of the Multi-Host Integration.
  @return ApiGetMultiHostIntegrationsRequest
 */
-func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrations(ctx context.Context, id string) ApiGetMultiHostIntegrationsRequest {
+func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrations(ctx context.Context, multihostId string) ApiGetMultiHostIntegrationsRequest {
 	return ApiGetMultiHostIntegrationsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		multihostId: multihostId,
 	}
 }
 
@@ -915,8 +915,8 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsExecute(r ApiGe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1615,6 +1615,7 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesExecute(r A
 type ApiGetSourcesWithinMultiHostRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
+	multihostId string
 	offset *int32
 	limit *int32
 	sorters *string
@@ -1664,12 +1665,14 @@ Get a list of sources within Multi-Host Integration ID.
 A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param multihostId ID of the Multi-Host Integration to update
  @return ApiGetSourcesWithinMultiHostRequest
 */
-func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHost(ctx context.Context) ApiGetSourcesWithinMultiHostRequest {
+func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHost(ctx context.Context, multihostId string) ApiGetSourcesWithinMultiHostRequest {
 	return ApiGetSourcesWithinMultiHostRequest{
 		ApiService: a,
 		ctx: ctx,
+		multihostId: multihostId,
 	}
 }
 
@@ -1688,7 +1691,8 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostExecute(r ApiG
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{id}/sources"
+	localVarPath := localBasePath + "/multihosts/{multihostId}/sources"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1879,8 +1883,8 @@ func (a *MultiHostIntegrationAPIService) TestConnectionMultiHostSourcesExecute(r
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{multihost_id}/sources/testConnection"
-	localVarPath = strings.Replace(localVarPath, "{"+"multihost_id"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}/sources/testConnection"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2043,8 +2047,8 @@ func (a *MultiHostIntegrationAPIService) TestSourceConnectionMultihostExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{multihost_id}/sources/{sourceId}/testConnection"
-	localVarPath = strings.Replace(localVarPath, "{"+"multihost_id"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}/sources/{sourceId}/testConnection"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2219,8 +2223,8 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesExecute(r ApiUpda
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/multihosts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"multihost_id"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
+	localVarPath := localBasePath + "/multihosts/{multihostId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"multihostId"+"}", url.PathEscape(parameterValueToString(r.multihostId, "multihostId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

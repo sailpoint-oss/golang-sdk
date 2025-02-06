@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompareIdentitySnapshots**](IdentityHistoryAPI.md#CompareIdentitySnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
-[**CompareIdentitySnapshotsAccessType**](IdentityHistoryAPI.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+[**CompareIdentitySnapshotsAccessType**](IdentityHistoryAPI.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{accessType} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
 [**GetHistoricalIdentity**](IdentityHistoryAPI.md#GetHistoricalIdentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
 [**GetHistoricalIdentityEvents**](IdentityHistoryAPI.md#GetHistoricalIdentityEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
 [**GetIdentitySnapshot**](IdentityHistoryAPI.md#GetIdentitySnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date

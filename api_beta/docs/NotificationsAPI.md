@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**DeleteNotificationTemplatesInBulk**](NotificationsAPI.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**DeleteVerifiedFromAddress**](NotificationsAPI.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 [**GetDkimAttributes**](NotificationsAPI.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
-[**GetMailFromAttributes**](NotificationsAPI.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
+[**GetMailFromAttributes**](NotificationsAPI.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identityId} | Get MAIL FROM Attributes
 [**GetNotificationTemplate**](NotificationsAPI.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 [**GetNotificationsTemplateContext**](NotificationsAPI.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context
 [**ListFromAddresses**](NotificationsAPI.md#ListFromAddresses) | **Get** /verified-from-addresses | List From Addresses
@@ -415,7 +415,7 @@ Other parameters are passed through a pointer to a apiGetDkimAttributesRequest s
 
 ## GetMailFromAttributes
 
-> MailFromAttributes GetMailFromAttributes(ctx).Id(id).Execute()
+> MailFromAttributes GetMailFromAttributes(ctx, identityId).Execute()
 
 Get MAIL FROM Attributes
 
@@ -434,11 +434,11 @@ import (
 )
 
 func main() {
-	id := "bobsmith@sailpoint.com" // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+	identityId := "bobsmith@sailpoint.com" // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background()).Id(id).Execute()
+	resp, r, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background(), identityId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,6 +451,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identityId** | **string** | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status | 
 
 ### Other Parameters
 
@@ -459,7 +463,7 @@ Other parameters are passed through a pointer to a apiGetMailFromAttributesReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string** | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status | 
+
 
 ### Return type
 
@@ -686,7 +690,7 @@ Name | Type | Description  | Notes
 
 ## ListNotificationPreferences
 
-> []PreferencesDto ListNotificationPreferences(ctx).Execute()
+> []PreferencesDto ListNotificationPreferences(ctx, key).Execute()
 
 List Notification Preferences for tenant.
 
@@ -705,10 +709,11 @@ import (
 )
 
 func main() {
+	key := "cloud_manual_work_item_summary" // string | The notification key.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background()).Execute()
+	resp, r, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background(), key).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationPreferences``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -720,11 +725,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**key** | **string** | The notification key. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListNotificationPreferencesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

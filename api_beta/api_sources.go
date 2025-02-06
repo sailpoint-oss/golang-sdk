@@ -721,7 +721,7 @@ func (a *SourcesAPIService) DeleteExecute(r ApiDeleteRequest) (*Delete202Respons
 type ApiDeleteAccountsAsyncRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiDeleteAccountsAsyncRequest) Execute() (*TaskResultDto, *http.Response, error) {
@@ -740,14 +740,14 @@ This endpoint is good for:
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiDeleteAccountsAsyncRequest
 */
-func (a *SourcesAPIService) DeleteAccountsAsync(ctx context.Context, id string) ApiDeleteAccountsAsyncRequest {
+func (a *SourcesAPIService) DeleteAccountsAsync(ctx context.Context, sourceId string) ApiDeleteAccountsAsyncRequest {
 	return ApiDeleteAccountsAsyncRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -766,8 +766,8 @@ func (a *SourcesAPIService) DeleteAccountsAsyncExecute(r ApiDeleteAccountsAsyncR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/remove-accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/remove-accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -884,7 +884,7 @@ func (a *SourcesAPIService) DeleteAccountsAsyncExecute(r ApiDeleteAccountsAsyncR
 type ApiDeleteNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiDeleteNativeChangeDetectionConfigRequest) Execute() (*http.Response, error) {
@@ -898,14 +898,14 @@ Deletes the native change detection configuration for the source specified by th
 A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiDeleteNativeChangeDetectionConfigRequest
 */
-func (a *SourcesAPIService) DeleteNativeChangeDetectionConfig(ctx context.Context, id string) ApiDeleteNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) DeleteNativeChangeDetectionConfig(ctx context.Context, sourceId string) ApiDeleteNativeChangeDetectionConfigRequest {
 	return ApiDeleteNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -923,7 +923,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1362,7 +1362,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaReq
 type ApiGetCorrelationConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiGetCorrelationConfigRequest) Execute() (*CorrelationConfig, *http.Response, error) {
@@ -1375,14 +1375,14 @@ GetCorrelationConfig Get Source Correlation Configuration
 This API returns the existing correlation configuration for a source specified by the given ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiGetCorrelationConfigRequest
 */
-func (a *SourcesAPIService) GetCorrelationConfig(ctx context.Context, id string) ApiGetCorrelationConfigRequest {
+func (a *SourcesAPIService) GetCorrelationConfig(ctx context.Context, sourceId string) ApiGetCorrelationConfigRequest {
 	return ApiGetCorrelationConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -1401,8 +1401,8 @@ func (a *SourcesAPIService) GetCorrelationConfigExecute(r ApiGetCorrelationConfi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/correlation-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/correlation-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1530,7 +1530,7 @@ func (a *SourcesAPIService) GetCorrelationConfigExecute(r ApiGetCorrelationConfi
 type ApiGetNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiGetNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetectionConfig, *http.Response, error) {
@@ -1544,14 +1544,14 @@ This API returns the existing native change detection configuration for a source
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiGetNativeChangeDetectionConfigRequest
 */
-func (a *SourcesAPIService) GetNativeChangeDetectionConfig(ctx context.Context, id string) ApiGetNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) GetNativeChangeDetectionConfig(ctx context.Context, sourceId string) ApiGetNativeChangeDetectionConfigRequest {
 	return ApiGetNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -1571,7 +1571,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2040,7 +2040,7 @@ func (a *SourcesAPIService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *h
 type ApiGetSourceAccountsSchemaRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiGetSourceAccountsSchemaRequest) Execute() (*http.Response, error) {
@@ -2051,14 +2051,14 @@ func (r ApiGetSourceAccountsSchemaRequest) Execute() (*http.Response, error) {
 GetSourceAccountsSchema Downloads source accounts schema template
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param sourceId The Source id
  @return ApiGetSourceAccountsSchemaRequest
 */
-func (a *SourcesAPIService) GetSourceAccountsSchema(ctx context.Context, id string) ApiGetSourceAccountsSchemaRequest {
+func (a *SourcesAPIService) GetSourceAccountsSchema(ctx context.Context, sourceId string) ApiGetSourceAccountsSchemaRequest {
 	return ApiGetSourceAccountsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -2075,8 +2075,8 @@ func (a *SourcesAPIService) GetSourceAccountsSchemaExecute(r ApiGetSourceAccount
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/schemas/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/schemas/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2532,6 +2532,7 @@ func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 type ApiGetSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
+	sourceId string
 }
 
 func (r ApiGetSourceEntitlementRequestConfigRequest) Execute() (*SourceEntitlementRequestConfig, *http.Response, error) {
@@ -2550,12 +2551,14 @@ Access request to any entitlements in the source should follow this configuratio
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId The Source id
  @return ApiGetSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesAPIService) GetSourceEntitlementRequestConfig(ctx context.Context) ApiGetSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) GetSourceEntitlementRequestConfig(ctx context.Context, sourceId string) ApiGetSourceEntitlementRequestConfigRequest {
 	return ApiGetSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
+		sourceId: sourceId,
 	}
 }
 
@@ -2574,7 +2577,8 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/entitlement-request-config"
+	localVarPath := localBasePath + "/sources/{sourceId}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2691,7 +2695,7 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 type ApiGetSourceEntitlementsSchemaRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	schemaName *string
 }
 
@@ -2709,14 +2713,14 @@ func (r ApiGetSourceEntitlementsSchemaRequest) Execute() (*http.Response, error)
 GetSourceEntitlementsSchema Downloads source entitlements schema template
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param sourceId The Source id
  @return ApiGetSourceEntitlementsSchemaRequest
 */
-func (a *SourcesAPIService) GetSourceEntitlementsSchema(ctx context.Context, id string) ApiGetSourceEntitlementsSchemaRequest {
+func (a *SourcesAPIService) GetSourceEntitlementsSchema(ctx context.Context, sourceId string) ApiGetSourceEntitlementsSchemaRequest {
 	return ApiGetSourceEntitlementsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -2733,8 +2737,8 @@ func (a *SourcesAPIService) GetSourceEntitlementsSchemaExecute(r ApiGetSourceEnt
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/schemas/entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/schemas/entitlements"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3217,7 +3221,7 @@ func (a *SourcesAPIService) GetSourceSchemasExecute(r ApiGetSourceSchemasRequest
 type ApiImportAccountsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	file *os.File
 	disableOptimization *string
 }
@@ -3247,14 +3251,14 @@ You will also need to set the Content-Type header to `multipart/form-data`.
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source Id
+ @param sourceId Source Id
  @return ApiImportAccountsRequest
 */
-func (a *SourcesAPIService) ImportAccounts(ctx context.Context, id string) ApiImportAccountsRequest {
+func (a *SourcesAPIService) ImportAccounts(ctx context.Context, sourceId string) ApiImportAccountsRequest {
 	return ApiImportAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -3273,8 +3277,8 @@ func (a *SourcesAPIService) ImportAccountsExecute(r ApiImportAccountsRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/load-accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/load-accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3409,7 +3413,7 @@ func (a *SourcesAPIService) ImportAccountsExecute(r ApiImportAccountsRequest) (*
 type ApiImportEntitlementsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	file *os.File
 }
 
@@ -3432,14 +3436,14 @@ You will also need to set the Content-Type header to `multipart/form-data`.
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source Id
+ @param sourceId Source Id
  @return ApiImportEntitlementsRequest
 */
-func (a *SourcesAPIService) ImportEntitlements(ctx context.Context, id string) ApiImportEntitlementsRequest {
+func (a *SourcesAPIService) ImportEntitlements(ctx context.Context, sourceId string) ApiImportEntitlementsRequest {
 	return ApiImportEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -3458,8 +3462,8 @@ func (a *SourcesAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/load-entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/load-entitlements"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3591,7 +3595,7 @@ func (a *SourcesAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsReq
 type ApiImportSourceAccountsSchemaRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	file *os.File
 }
 
@@ -3610,14 +3614,14 @@ ImportSourceAccountsSchema Uploads source accounts schema template
 This API uploads a source schema template file to configure a source's account attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param sourceId The Source id
  @return ApiImportSourceAccountsSchemaRequest
 */
-func (a *SourcesAPIService) ImportSourceAccountsSchema(ctx context.Context, id string) ApiImportSourceAccountsSchemaRequest {
+func (a *SourcesAPIService) ImportSourceAccountsSchema(ctx context.Context, sourceId string) ApiImportSourceAccountsSchemaRequest {
 	return ApiImportSourceAccountsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -3636,8 +3640,8 @@ func (a *SourcesAPIService) ImportSourceAccountsSchemaExecute(r ApiImportSourceA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/schemas/accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/schemas/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3948,7 +3952,7 @@ func (a *SourcesAPIService) ImportSourceConnectorFileExecute(r ApiImportSourceCo
 type ApiImportSourceEntitlementsSchemaRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	schemaName *string
 	file *os.File
 }
@@ -3974,14 +3978,14 @@ ImportSourceEntitlementsSchema Uploads source entitlements schema template
 This API uploads a source schema template file to configure a source's entitlement attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param sourceId The Source id
  @return ApiImportSourceEntitlementsSchemaRequest
 */
-func (a *SourcesAPIService) ImportSourceEntitlementsSchema(ctx context.Context, id string) ApiImportSourceEntitlementsSchemaRequest {
+func (a *SourcesAPIService) ImportSourceEntitlementsSchema(ctx context.Context, sourceId string) ApiImportSourceEntitlementsSchemaRequest {
 	return ApiImportSourceEntitlementsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -4000,8 +4004,8 @@ func (a *SourcesAPIService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/schemas/entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/schemas/entitlements"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4136,7 +4140,7 @@ func (a *SourcesAPIService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 type ApiImportUncorrelatedAccountsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	file *os.File
 }
 
@@ -4155,14 +4159,14 @@ ImportUncorrelatedAccounts Process Uncorrelated Accounts
 File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source Id
+ @param sourceId Source Id
  @return ApiImportUncorrelatedAccountsRequest
 */
-func (a *SourcesAPIService) ImportUncorrelatedAccounts(ctx context.Context, id string) ApiImportUncorrelatedAccountsRequest {
+func (a *SourcesAPIService) ImportUncorrelatedAccounts(ctx context.Context, sourceId string) ApiImportUncorrelatedAccountsRequest {
 	return ApiImportUncorrelatedAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -4181,8 +4185,8 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsExecute(r ApiImportUncorre
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/load-uncorrelated-accounts"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/load-uncorrelated-accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5079,7 +5083,7 @@ func (a *SourcesAPIService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 type ApiPutCorrelationConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	correlationConfig *CorrelationConfig
 }
 
@@ -5098,14 +5102,14 @@ PutCorrelationConfig Update Source Correlation Configuration
 Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiPutCorrelationConfigRequest
 */
-func (a *SourcesAPIService) PutCorrelationConfig(ctx context.Context, id string) ApiPutCorrelationConfigRequest {
+func (a *SourcesAPIService) PutCorrelationConfig(ctx context.Context, sourceId string) ApiPutCorrelationConfigRequest {
 	return ApiPutCorrelationConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -5124,8 +5128,8 @@ func (a *SourcesAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationConfi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/correlation-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/correlation-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5258,7 +5262,7 @@ func (a *SourcesAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationConfi
 type ApiPutNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 	nativeChangeDetectionConfig *NativeChangeDetectionConfig
 }
 
@@ -5279,14 +5283,14 @@ Replaces the native change detection configuration for the source specified by t
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The source id
+ @param sourceId The source id
  @return ApiPutNativeChangeDetectionConfigRequest
 */
-func (a *SourcesAPIService) PutNativeChangeDetectionConfig(ctx context.Context, id string) ApiPutNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) PutNativeChangeDetectionConfig(ctx context.Context, sourceId string) ApiPutNativeChangeDetectionConfigRequest {
 	return ApiPutNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -5306,7 +5310,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6186,7 +6190,7 @@ func (a *SourcesAPIService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) 
 type ApiSyncAttributesForSourceRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiSyncAttributesForSourceRequest) Execute() (*SourceSyncJob, *http.Response, error) {
@@ -6200,14 +6204,14 @@ This end-point performs attribute synchronization for a selected source.
 A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param sourceId The Source id
  @return ApiSyncAttributesForSourceRequest
 */
-func (a *SourcesAPIService) SyncAttributesForSource(ctx context.Context, id string) ApiSyncAttributesForSourceRequest {
+func (a *SourcesAPIService) SyncAttributesForSource(ctx context.Context, sourceId string) ApiSyncAttributesForSourceRequest {
 	return ApiSyncAttributesForSourceRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -6226,8 +6230,8 @@ func (a *SourcesAPIService) SyncAttributesForSourceExecute(r ApiSyncAttributesFo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/synchronize-attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/sources/{sourceId}/synchronize-attributes"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7254,6 +7258,7 @@ func (a *SourcesAPIService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Sour
 type ApiUpdateSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
+	sourceId string
 	sourceEntitlementRequestConfig *SourceEntitlementRequestConfig
 }
 
@@ -7278,12 +7283,14 @@ Access request to any entitlements in the source should follow this configuratio
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId The Source id
  @return ApiUpdateSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfig(ctx context.Context) ApiUpdateSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfig(ctx context.Context, sourceId string) ApiUpdateSourceEntitlementRequestConfigRequest {
 	return ApiUpdateSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
+		sourceId: sourceId,
 	}
 }
 
@@ -7302,7 +7309,8 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpd
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/{id}/entitlement-request-config"
+	localVarPath := localBasePath + "/sources/{sourceId}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

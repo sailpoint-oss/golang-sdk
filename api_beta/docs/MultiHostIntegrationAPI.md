@@ -5,18 +5,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateMultiHostIntegration**](MultiHostIntegrationAPI.md#CreateMultiHostIntegration) | **Post** /multihosts | Create Multi-Host Integration
-[**CreateSourcesWithinMultiHost**](MultiHostIntegrationAPI.md#CreateSourcesWithinMultiHost) | **Post** /multihosts/{id} | Create Sources Within Multi-Host Integration
-[**DeleteMultiHost**](MultiHostIntegrationAPI.md#DeleteMultiHost) | **Delete** /multihosts/{id} | Delete Multi-Host Integration
+[**CreateSourcesWithinMultiHost**](MultiHostIntegrationAPI.md#CreateSourcesWithinMultiHost) | **Post** /multihosts/{multihostId} | Create Sources Within Multi-Host Integration
+[**DeleteMultiHost**](MultiHostIntegrationAPI.md#DeleteMultiHost) | **Delete** /multihosts/{multihostId} | Delete Multi-Host Integration
 [**GetAcctAggregationGroups**](MultiHostIntegrationAPI.md#GetAcctAggregationGroups) | **Get** /multihosts/{multihostId}/acctAggregationGroups | Get Account Aggregation Groups Within Multi-Host Integration ID
 [**GetEntitlementAggregationGroups**](MultiHostIntegrationAPI.md#GetEntitlementAggregationGroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
-[**GetMultiHostIntegrations**](MultiHostIntegrationAPI.md#GetMultiHostIntegrations) | **Get** /multihosts/{id} | Get Multi-Host Integration By ID
+[**GetMultiHostIntegrations**](MultiHostIntegrationAPI.md#GetMultiHostIntegrations) | **Get** /multihosts/{multihostId} | Get Multi-Host Integration By ID
 [**GetMultiHostIntegrationsList**](MultiHostIntegrationAPI.md#GetMultiHostIntegrationsList) | **Get** /multihosts | List All Existing Multi-Host Integrations
 [**GetMultiHostSourceCreationErrors**](MultiHostIntegrationAPI.md#GetMultiHostSourceCreationErrors) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 [**GetMultihostIntegrationTypes**](MultiHostIntegrationAPI.md#GetMultihostIntegrationTypes) | **Get** /multihosts/types | List Multi-Host Integration Types
-[**GetSourcesWithinMultiHost**](MultiHostIntegrationAPI.md#GetSourcesWithinMultiHost) | **Get** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-[**TestConnectionMultiHostSources**](MultiHostIntegrationAPI.md#TestConnectionMultiHostSources) | **Post** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
-[**TestSourceConnectionMultihost**](MultiHostIntegrationAPI.md#TestSourceConnectionMultihost) | **Get** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
-[**UpdateMultiHostSources**](MultiHostIntegrationAPI.md#UpdateMultiHostSources) | **Patch** /multihosts/{id} | Update Multi-Host Integration
+[**GetSourcesWithinMultiHost**](MultiHostIntegrationAPI.md#GetSourcesWithinMultiHost) | **Get** /multihosts/{multihostId}/sources | List Sources Within Multi-Host Integration
+[**TestConnectionMultiHostSources**](MultiHostIntegrationAPI.md#TestConnectionMultiHostSources) | **Post** /multihosts/{multihostId}/sources/testConnection | Test Configuration For Multi-Host Integration
+[**TestSourceConnectionMultihost**](MultiHostIntegrationAPI.md#TestSourceConnectionMultihost) | **Get** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+[**UpdateMultiHostSources**](MultiHostIntegrationAPI.md#UpdateMultiHostSources) | **Patch** /multihosts/{multihostId} | Update Multi-Host Integration
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## CreateSourcesWithinMultiHost
 
-> CreateSourcesWithinMultiHost(ctx, id).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
+> CreateSourcesWithinMultiHost(ctx, multihostId).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
 
 Create Sources Within Multi-Host Integration
 
@@ -107,12 +107,12 @@ import (
 )
 
 func main() {
-	id := "2c91808568c529c60168cca6f90c1326" // string | ID of the Multi-Host Integration.
+	multihostId := "2c91808568c529c60168cca6f90c1326" // string | ID of the Multi-Host Integration.
 	multiHostIntegrationsCreateSources := []openapiclient.MultiHostIntegrationsCreateSources{*openapiclient.NewMultiHostIntegrationsCreateSources("My Source")} // []MultiHostIntegrationsCreateSources | The specifics of the sources to create within Multi-Host Integration.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHost(context.Background(), id).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
+	r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHost(context.Background(), multihostId).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateSourcesWithinMultiHost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,7 +126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Multi-Host Integration. | 
+**multihostId** | **string** | ID of the Multi-Host Integration. | 
 
 ### Other Parameters
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## DeleteMultiHost
 
-> DeleteMultiHost(ctx, id).Execute()
+> DeleteMultiHost(ctx, multihostId).Execute()
 
 Delete Multi-Host Integration
 
@@ -177,11 +177,11 @@ import (
 )
 
 func main() {
-	id := "2c91808568c529c60168cca6f90c1326" // string | ID of Multi-Host Integration to delete.
+	multihostId := "2c91808568c529c60168cca6f90c1326" // string | ID of Multi-Host Integration to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHost(context.Background(), id).Execute()
+	r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHost(context.Background(), multihostId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.DeleteMultiHost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,7 +195,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of Multi-Host Integration to delete. | 
+**multihostId** | **string** | ID of Multi-Host Integration to delete. | 
 
 ### Other Parameters
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetAcctAggregationGroups
 
-> MultiHostIntegrationsAggScheduleUpdate GetAcctAggregationGroups(ctx, multiHostId).Execute()
+> MultiHostIntegrationsAggScheduleUpdate GetAcctAggregationGroups(ctx, multihostId).Execute()
 
 Get Account Aggregation Groups Within Multi-Host Integration ID
 
@@ -245,11 +245,11 @@ import (
 )
 
 func main() {
-	multiHostId := "aMultiHostId" // string | ID of the Multi-Host Integration to update
+	multihostId := "aMultiHostId" // string | ID of the Multi-Host Integration to update
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroups(context.Background(), multiHostId).Execute()
+	resp, r, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroups(context.Background(), multihostId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetAcctAggregationGroups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**multiHostId** | **string** | ID of the Multi-Host Integration to update | 
+**multihostId** | **string** | ID of the Multi-Host Integration to update | 
 
 ### Other Parameters
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ## GetMultiHostIntegrations
 
-> MultiHostIntegrations GetMultiHostIntegrations(ctx, id).Execute()
+> MultiHostIntegrations GetMultiHostIntegrations(ctx, multihostId).Execute()
 
 Get Multi-Host Integration By ID
 
@@ -385,11 +385,11 @@ import (
 )
 
 func main() {
-	id := "2c91808568c529c60168cca6f90c1326" // string | ID of the Multi-Host Integration.
+	multihostId := "2c91808568c529c60168cca6f90c1326" // string | ID of the Multi-Host Integration.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrations(context.Background(), id).Execute()
+	resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrations(context.Background(), multihostId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -405,7 +405,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Multi-Host Integration. | 
+**multihostId** | **string** | ID of the Multi-Host Integration. | 
 
 ### Other Parameters
 
@@ -643,7 +643,7 @@ Other parameters are passed through a pointer to a apiGetMultihostIntegrationTyp
 
 ## GetSourcesWithinMultiHost
 
-> []MultiHostSources GetSourcesWithinMultiHost(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+> []MultiHostSources GetSourcesWithinMultiHost(ctx, multihostId).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
 
 List Sources Within Multi-Host Integration
 
@@ -662,6 +662,7 @@ import (
 )
 
 func main() {
+	multihostId := "aMultiHostId" // string | ID of the Multi-Host Integration to update
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 	sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
@@ -670,7 +671,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+	resp, r, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost(context.Background(), multihostId).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetSourcesWithinMultiHost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -683,6 +684,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**multihostId** | **string** | ID of the Multi-Host Integration to update | 
 
 ### Other Parameters
 
@@ -691,6 +696,7 @@ Other parameters are passed through a pointer to a apiGetSourcesWithinMultiHostR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** | 

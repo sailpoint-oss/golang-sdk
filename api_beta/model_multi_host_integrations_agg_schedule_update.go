@@ -22,7 +22,7 @@ var _ MappedNullable = &MultiHostIntegrationsAggScheduleUpdate{}
 // MultiHostIntegrationsAggScheduleUpdate struct for MultiHostIntegrationsAggScheduleUpdate
 type MultiHostIntegrationsAggScheduleUpdate struct {
 	// Multi-Host Integration ID. The ID must be unique
-	MultihostId string `json:"multihost_id"`
+	MultihostId string `json:"multihostId"`
 	// Multi-Host Integration aggregation group ID
 	AggregationGrpId string `json:"aggregation_grp_id"`
 	// Multi-Host Integration name
@@ -285,7 +285,7 @@ func (o MultiHostIntegrationsAggScheduleUpdate) MarshalJSON() ([]byte, error) {
 
 func (o MultiHostIntegrationsAggScheduleUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["multihost_id"] = o.MultihostId
+	toSerialize["multihostId"] = o.MultihostId
 	toSerialize["aggregation_grp_id"] = o.AggregationGrpId
 	toSerialize["aggregation_grp_name"] = o.AggregationGrpName
 	toSerialize["aggregation_cron_schedule"] = o.AggregationCronSchedule
@@ -310,7 +310,7 @@ func (o *MultiHostIntegrationsAggScheduleUpdate) UnmarshalJSON(data []byte) (err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"multihost_id",
+		"multihostId",
 		"aggregation_grp_id",
 		"aggregation_grp_name",
 		"aggregation_cron_schedule",
@@ -345,7 +345,7 @@ func (o *MultiHostIntegrationsAggScheduleUpdate) UnmarshalJSON(data []byte) (err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "multihost_id")
+		delete(additionalProperties, "multihostId")
 		delete(additionalProperties, "aggregation_grp_id")
 		delete(additionalProperties, "aggregation_grp_name")
 		delete(additionalProperties, "aggregation_cron_schedule")

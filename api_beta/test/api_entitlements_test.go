@@ -167,9 +167,9 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

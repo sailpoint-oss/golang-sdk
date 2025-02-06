@@ -21,7 +21,7 @@ var _ MappedNullable = &SourceCreationErrors{}
 // SourceCreationErrors struct for SourceCreationErrors
 type SourceCreationErrors struct {
 	// Multi-Host Integration ID.
-	MultihostId *string `json:"multihost_id,omitempty"`
+	MultihostId *string `json:"multihostId,omitempty"`
 	// Source's human-readable name.
 	SourceName *string `json:"source_name,omitempty"`
 	// Source's human-readable description.
@@ -267,7 +267,7 @@ func (o SourceCreationErrors) MarshalJSON() ([]byte, error) {
 func (o SourceCreationErrors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MultihostId) {
-		toSerialize["multihost_id"] = o.MultihostId
+		toSerialize["multihostId"] = o.MultihostId
 	}
 	if !IsNil(o.SourceName) {
 		toSerialize["source_name"] = o.SourceName
@@ -306,7 +306,7 @@ func (o *SourceCreationErrors) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "multihost_id")
+		delete(additionalProperties, "multihostId")
 		delete(additionalProperties, "source_name")
 		delete(additionalProperties, "source_error")
 		delete(additionalProperties, "created")

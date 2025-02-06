@@ -38,9 +38,9 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var multihostId string
 
-		httpRes, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHost(context.Background(), id).Execute()
+		httpRes, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHost(context.Background(), multihostId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,9 +51,9 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var multihostId string
 
-		httpRes, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHost(context.Background(), id).Execute()
+		httpRes, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHost(context.Background(), multihostId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -64,9 +64,9 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var multiHostId string
+		var multihostId string
 
-		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroups(context.Background(), multiHostId).Execute()
+		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroups(context.Background(), multihostId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,9 +92,9 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var multihostId string
 
-		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrations(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrations(context.Background(), multihostId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -144,7 +144,9 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost(context.Background()).Execute()
+		var multihostId string
+
+		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost(context.Background(), multihostId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

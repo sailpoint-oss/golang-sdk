@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**ListEntitlements**](EntitlementsAPI.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
 [**PatchEntitlement**](EntitlementsAPI.md#PatchEntitlement) | **Patch** /entitlements/{id} | Patch an entitlement
 [**PutEntitlementRequestConfig**](EntitlementsAPI.md#PutEntitlementRequestConfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
-[**ResetSourceEntitlements**](EntitlementsAPI.md#ResetSourceEntitlements) | **Post** /entitlements/reset/sources/{id} | Reset Source Entitlements
+[**ResetSourceEntitlements**](EntitlementsAPI.md#ResetSourceEntitlements) | **Post** /entitlements/reset/sources/{sourceId} | Reset Source Entitlements
 [**UpdateEntitlementsInBulk**](EntitlementsAPI.md#UpdateEntitlementsInBulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 
 
@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 
 ## ResetSourceEntitlements
 
-> EntitlementSourceResetBaseReferenceDto ResetSourceEntitlements(ctx, id).Execute()
+> EntitlementSourceResetBaseReferenceDto ResetSourceEntitlements(ctx, sourceId).Execute()
 
 Reset Source Entitlements
 
@@ -788,11 +788,11 @@ import (
 )
 
 func main() {
-	id := "2c91808a7813090a017814121919ecca" // string | ID of source for the entitlement reset
+	sourceId := "2c91808a7813090a017814121919ecca" // string | ID of source for the entitlement reset
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
+	resp, r, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ResetSourceEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -808,7 +808,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of source for the entitlement reset | 
+**sourceId** | **string** | ID of source for the entitlement reset | 
 
 ### Other Parameters
 

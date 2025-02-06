@@ -1943,7 +1943,7 @@ func (a *EntitlementsAPIService) PutEntitlementRequestConfigExecute(r ApiPutEnti
 type ApiResetSourceEntitlementsRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiResetSourceEntitlementsRequest) Execute() (*EntitlementSourceResetBaseReferenceDto, *http.Response, error) {
@@ -1957,14 +1957,14 @@ Remove all entitlements from a specific source.
 To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Import Accounts](https://developer.sailpoint.com/docs/api/beta/import-accounts/) with `disableOptimization` = `true`. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of source for the entitlement reset
+ @param sourceId ID of source for the entitlement reset
  @return ApiResetSourceEntitlementsRequest
 */
-func (a *EntitlementsAPIService) ResetSourceEntitlements(ctx context.Context, id string) ApiResetSourceEntitlementsRequest {
+func (a *EntitlementsAPIService) ResetSourceEntitlements(ctx context.Context, sourceId string) ApiResetSourceEntitlementsRequest {
 	return ApiResetSourceEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -1983,8 +1983,8 @@ func (a *EntitlementsAPIService) ResetSourceEntitlementsExecute(r ApiResetSource
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/entitlements/reset/sources/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/entitlements/reset/sources/{sourceId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
