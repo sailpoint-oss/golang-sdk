@@ -22,6 +22,8 @@ var _ MappedNullable = &PendingApproval{}
 type PendingApproval struct {
 	// The approval id.
 	Id *string `json:"id,omitempty"`
+	// This is the access request id.
+	AccessRequestId *string `json:"accessRequestId,omitempty"`
 	// The name of the approval.
 	Name *string `json:"name,omitempty"`
 	// When the approval was created.
@@ -111,6 +113,38 @@ func (o *PendingApproval) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PendingApproval) SetId(v string) {
 	o.Id = &v
+}
+
+// GetAccessRequestId returns the AccessRequestId field value if set, zero value otherwise.
+func (o *PendingApproval) GetAccessRequestId() string {
+	if o == nil || IsNil(o.AccessRequestId) {
+		var ret string
+		return ret
+	}
+	return *o.AccessRequestId
+}
+
+// GetAccessRequestIdOk returns a tuple with the AccessRequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingApproval) GetAccessRequestIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessRequestId) {
+		return nil, false
+	}
+	return o.AccessRequestId, true
+}
+
+// HasAccessRequestId returns a boolean if a field has been set.
+func (o *PendingApproval) HasAccessRequestId() bool {
+	if o != nil && !IsNil(o.AccessRequestId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessRequestId gets a reference to the given string and assigns it to the AccessRequestId field.
+func (o *PendingApproval) SetAccessRequestId(v string) {
+	o.AccessRequestId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -722,6 +756,9 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+	if !IsNil(o.AccessRequestId) {
+		toSerialize["accessRequestId"] = o.AccessRequestId
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -799,6 +836,7 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "accessRequestId")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The approval id. | [optional] 
+**AccessRequestId** | Pointer to **string** | This is the access request id. | [optional] 
 **Name** | Pointer to **string** | The name of the approval. | [optional] 
 **Created** | Pointer to **time.Time** | When the approval was created. | [optional] 
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
@@ -67,6 +68,31 @@ SetId sets Id field to given value.
 `func (o *PendingApproval) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetAccessRequestId
+
+`func (o *PendingApproval) GetAccessRequestId() string`
+
+GetAccessRequestId returns the AccessRequestId field if non-nil, zero value otherwise.
+
+### GetAccessRequestIdOk
+
+`func (o *PendingApproval) GetAccessRequestIdOk() (*string, bool)`
+
+GetAccessRequestIdOk returns a tuple with the AccessRequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessRequestId
+
+`func (o *PendingApproval) SetAccessRequestId(v string)`
+
+SetAccessRequestId sets AccessRequestId field to given value.
+
+### HasAccessRequestId
+
+`func (o *PendingApproval) HasAccessRequestId() bool`
+
+HasAccessRequestId returns a boolean if a field has been set.
 
 ### GetName
 
