@@ -47892,19 +47892,7 @@ components:
           id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         requestedFor:
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
+          name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
         owner:
@@ -48064,12 +48052,7 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
-          description: Identities access was requested for.
-          items:
-            $ref: '#/components/schemas/AccessItemRequestedFor'
-          maxItems: 10
-          minItems: 1
-          type: array
+          $ref: '#/components/schemas/AccessItemRequestedFor'
         owner:
           $ref: '#/components/schemas/PendingApproval_owner'
         requestedObject:

@@ -32,8 +32,7 @@ type PendingApproval struct {
 	RequestCreated *SailPointTime `json:"requestCreated,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequesterDto `json:"requester,omitempty"`
-	// Identities access was requested for.
-	RequestedFor []AccessItemRequestedForDto `json:"requestedFor,omitempty"`
+	RequestedFor *AccessItemRequestedForDto `json:"requestedFor,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
@@ -316,17 +315,17 @@ func (o *PendingApproval) SetRequester(v AccessItemRequesterDto) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequestedFor() []AccessItemRequestedForDto {
+func (o *PendingApproval) GetRequestedFor() AccessItemRequestedForDto {
 	if o == nil || IsNil(o.RequestedFor) {
-		var ret []AccessItemRequestedForDto
+		var ret AccessItemRequestedForDto
 		return ret
 	}
-	return o.RequestedFor
+	return *o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
+func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
 	if o == nil || IsNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -342,9 +341,9 @@ func (o *PendingApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given []AccessItemRequestedForDto and assigns it to the RequestedFor field.
-func (o *PendingApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
-	o.RequestedFor = v
+// SetRequestedFor gets a reference to the given AccessItemRequestedForDto and assigns it to the RequestedFor field.
+func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedForDto) {
+	o.RequestedFor = &v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.

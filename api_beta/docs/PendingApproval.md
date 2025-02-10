@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
-**RequestedFor** | Pointer to [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | [optional] 
+**RequestedFor** | Pointer to [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | [optional] 
 **Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
@@ -230,20 +230,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *PendingApproval) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *PendingApproval) GetRequestedFor() AccessItemRequestedForDto`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *PendingApproval) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *PendingApproval) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedForDto)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
