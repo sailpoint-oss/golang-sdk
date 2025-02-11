@@ -33499,6 +33499,10 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
       summary: Lists all sources in IdentityNow.
       tags:
       - Sources
