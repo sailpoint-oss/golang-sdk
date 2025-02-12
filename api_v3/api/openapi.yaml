@@ -26352,12 +26352,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listSavedSearches
       responses:
         "204":
           description: No Content - Indicates the request was successful but there
@@ -26451,12 +26446,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listSavedSearches
       responses:
         "200":
           content:
@@ -26553,12 +26543,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listSavedSearches
       requestBody:
         content:
           application/json:
@@ -27108,12 +27093,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listScheduledSearch
       responses:
         "204":
           description: No Content - Indicates the request was successful but there
@@ -27206,12 +27186,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listScheduledSearch
       responses:
         "200":
           content:
@@ -27308,12 +27283,7 @@ paths:
         required: true
         schema:
           type: string
-        x-sailpoint-resource-operation-id:
-        - listAccessProfiles
-        - listAccountActivities
-        - listEntitlements
-        - listRoles
-        - listIdentities
+        x-sailpoint-resource-operation-id: listScheduledSearch
       requestBody:
         content:
           application/json:
