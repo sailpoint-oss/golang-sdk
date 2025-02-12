@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**GetIdentityCertificationPendingTasks**](docs/CertificationsAPI.md#getidentitycertificationpendingtasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
 *CertificationsAPI* | [**GetIdentityCertificationTaskStatus**](docs/CertificationsAPI.md#getidentitycertificationtaskstatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
 *CertificationsAPI* | [**ListCertificationReviewers**](docs/CertificationsAPI.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
+*CertificationsAPI* | [**ListCertifications**](docs/CertificationsAPI.md#listcertifications) | **Get** /certifications | Certifications by IDs
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
