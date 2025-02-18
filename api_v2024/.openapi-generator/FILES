@@ -89,6 +89,8 @@ api_workflows.go
 client.go
 configuration.go
 docs/Access.md
+docs/AccessApps.md
+docs/AccessAppsOwner.md
 docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
@@ -218,6 +220,7 @@ docs/AccountsCollectedForAggregationSource.md
 docs/AccountsCollectedForAggregationStats.md
 docs/AccountsExportReportArguments.md
 docs/ActivateCampaignOptions.md
+docs/ActivityIdentity.md
 docs/ActivityInsights.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
@@ -268,6 +271,7 @@ docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
+docs/AttributeRequestValue.md
 docs/AttributeValueDTO.md
 docs/AttributesChanged.md
 docs/AuditDetails.md
@@ -279,7 +283,7 @@ docs/AuthUsersAPI.md
 docs/BackupOptions.md
 docs/BackupResponse.md
 docs/BaseAccess.md
-docs/BaseAccessAllOfOwner.md
+docs/BaseAccessOwner.md
 docs/BaseAccessProfile.md
 docs/BaseAccount.md
 docs/BaseCommonDto.md
@@ -447,7 +451,6 @@ docs/DimensionRef.md
 docs/DimensionsAPI.md
 docs/DisplayReference.md
 docs/DkimAttributes.md
-docs/DocumentType.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
 docs/DraftResponse.md
@@ -464,6 +467,8 @@ docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
 docs/EntitlementBulkUpdateRequest.md
 docs/EntitlementDocument.md
+docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
+docs/EntitlementDocumentAllOfPermissions.md
 docs/EntitlementDocumentAllOfSource.md
 docs/EntitlementDto.md
 docs/EntitlementRef.md
@@ -482,9 +487,11 @@ docs/ErrorMessageDto1.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
 docs/Event.md
+docs/EventActor.md
 docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/EventDocument.md
+docs/EventTarget.md
 docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
 docs/ExceptionCriteriaAccess.md
@@ -868,6 +875,7 @@ docs/RequestedItemStatusSodViolationContext.md
 docs/ResourceObject.md
 docs/ResourceObjectsRequest.md
 docs/ResourceObjectsResponse.md
+docs/Result.md
 docs/ReviewDecision.md
 docs/ReviewReassign.md
 docs/ReviewRecommendation.md
@@ -893,6 +901,10 @@ docs/RoleCriteriaLevel2.md
 docs/RoleCriteriaLevel3.md
 docs/RoleCriteriaOperation.md
 docs/RoleDocument.md
+docs/RoleDocumentAllOfDimensionSchemaAttributes.md
+docs/RoleDocumentAllOfDimensions.md
+docs/RoleDocumentAllOfEntitlements.md
+docs/RoleDocumentAllOfEntitlements1.md
 docs/RoleGetAllBulkUpdateResponse.md
 docs/RoleIdentity.md
 docs/RoleInsight.md
@@ -1223,6 +1235,8 @@ git_push.sh
 go.mod
 go.sum
 model_access.go
+model_access_apps.go
+model_access_apps_owner.go
 model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
@@ -1343,6 +1357,7 @@ model_accounts_collected_for_aggregation_source.go
 model_accounts_collected_for_aggregation_stats.go
 model_accounts_export_report_arguments.go
 model_activate_campaign_options.go
+model_activity_identity.go
 model_activity_insights.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
@@ -1390,6 +1405,7 @@ model_attribute_definition_type.go
 model_attribute_dto.go
 model_attribute_dto_list.go
 model_attribute_request.go
+model_attribute_request_value.go
 model_attribute_value_dto.go
 model_attributes_changed.go
 model_audit_details.go
@@ -1399,7 +1415,7 @@ model_auth_user.go
 model_backup_options.go
 model_backup_response.go
 model_base_access.go
-model_base_access_all_of_owner.go
+model_base_access_owner.go
 model_base_access_profile.go
 model_base_account.go
 model_base_common_dto.go
@@ -1555,7 +1571,6 @@ model_dimension_membership_selector_type.go
 model_dimension_ref.go
 model_display_reference.go
 model_dkim_attributes.go
-model_document_type.go
 model_domain_address.go
 model_domain_status_dto.go
 model_draft_response.go
@@ -1572,6 +1587,8 @@ model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
 model_entitlement_bulk_update_request.go
 model_entitlement_document.go
+model_entitlement_document_all_of_manually_updated_fields.go
+model_entitlement_document_all_of_permissions.go
 model_entitlement_document_all_of_source.go
 model_entitlement_dto.go
 model_entitlement_ref.go
@@ -1589,9 +1606,11 @@ model_error_message_dto_1.go
 model_error_response_dto.go
 model_evaluate_response.go
 model_event.go
+model_event_actor.go
 model_event_attributes.go
 model_event_bridge_config.go
 model_event_document.go
+model_event_target.go
 model_exception_access_criteria.go
 model_exception_criteria.go
 model_exception_criteria_access.go
@@ -1944,6 +1963,7 @@ model_requested_item_status_sod_violation_context.go
 model_resource_object.go
 model_resource_objects_request.go
 model_resource_objects_response.go
+model_result.go
 model_review_decision.go
 model_review_reassign.go
 model_review_recommendation.go
@@ -1969,6 +1989,10 @@ model_role_criteria_level2.go
 model_role_criteria_level3.go
 model_role_criteria_operation.go
 model_role_document.go
+model_role_document_all_of_dimension_schema_attributes.go
+model_role_document_all_of_dimensions.go
+model_role_document_all_of_entitlements.go
+model_role_document_all_of_entitlements_1.go
 model_role_get_all_bulk_update_response.go
 model_role_identity.go
 model_role_insight.go

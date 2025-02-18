@@ -19,9 +19,11 @@ var _ MappedNullable = &AccountRequestResult{}
 
 // AccountRequestResult struct for AccountRequestResult
 type AccountRequestResult struct {
+	// Error message.
 	Errors []string `json:"errors,omitempty"`
 	// The status of the account request
 	Status *string `json:"status,omitempty"`
+	// ID of associated ticket.
 	TicketId NullableString `json:"ticketId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

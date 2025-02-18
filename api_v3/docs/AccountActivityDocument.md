@@ -4,17 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
+**Id** | Pointer to **string** | ID of account activity. | [optional] 
 **Action** | Pointer to **string** | Type of action performed in the activity. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Synced** | Pointer to **string** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
 **Stage** | Pointer to **string** | Activity&#39;s current stage. | [optional] 
-**Origin** | Pointer to **NullableString** | Activity&#39;s origin. | [optional] 
 **Status** | Pointer to **string** | Activity&#39;s current status. | [optional] 
-**Requester** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
-**Recipient** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
+**Requester** | Pointer to [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
+**Recipient** | Pointer to [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
 **TrackingNumber** | Pointer to **string** | Account activity&#39;s tracking number. | [optional] 
 **Errors** | Pointer to **[]string** | Errors provided by the source while completing account actions. | [optional] 
 **Warnings** | Pointer to **[]string** | Warnings provided by the source while completing account actions. | [optional] 
@@ -28,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewAccountActivityDocument
 
-`func NewAccountActivityDocument(id string, name string, type_ DocumentType, ) *AccountActivityDocument`
+`func NewAccountActivityDocument() *AccountActivityDocument`
 
 NewAccountActivityDocument instantiates a new AccountActivityDocument object
 This constructor will assign default values to properties that have it defined,
@@ -62,46 +60,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
 
-### GetName
+`func (o *AccountActivityDocument) HasId() bool`
 
-`func (o *AccountActivityDocument) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *AccountActivityDocument) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *AccountActivityDocument) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### GetType
-
-`func (o *AccountActivityDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AccountActivityDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AccountActivityDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
-
+HasId returns a boolean if a field has been set.
 
 ### GetAction
 
@@ -198,6 +161,31 @@ HasModified returns a boolean if a field has been set.
 `func (o *AccountActivityDocument) UnsetModified()`
 
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
+### GetSynced
+
+`func (o *AccountActivityDocument) GetSynced() string`
+
+GetSynced returns the Synced field if non-nil, zero value otherwise.
+
+### GetSyncedOk
+
+`func (o *AccountActivityDocument) GetSyncedOk() (*string, bool)`
+
+GetSyncedOk returns a tuple with the Synced field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynced
+
+`func (o *AccountActivityDocument) SetSynced(v string)`
+
+SetSynced sets Synced field to given value.
+
+### HasSynced
+
+`func (o *AccountActivityDocument) HasSynced() bool`
+
+HasSynced returns a boolean if a field has been set.
+
 ### GetStage
 
 `func (o *AccountActivityDocument) GetStage() string`
@@ -223,41 +211,6 @@ SetStage sets Stage field to given value.
 
 HasStage returns a boolean if a field has been set.
 
-### GetOrigin
-
-`func (o *AccountActivityDocument) GetOrigin() string`
-
-GetOrigin returns the Origin field if non-nil, zero value otherwise.
-
-### GetOriginOk
-
-`func (o *AccountActivityDocument) GetOriginOk() (*string, bool)`
-
-GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrigin
-
-`func (o *AccountActivityDocument) SetOrigin(v string)`
-
-SetOrigin sets Origin field to given value.
-
-### HasOrigin
-
-`func (o *AccountActivityDocument) HasOrigin() bool`
-
-HasOrigin returns a boolean if a field has been set.
-
-### SetOriginNil
-
-`func (o *AccountActivityDocument) SetOriginNil(b bool)`
-
- SetOriginNil sets the value for Origin to be an explicit nil
-
-### UnsetOrigin
-`func (o *AccountActivityDocument) UnsetOrigin()`
-
-UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetStatus
 
 `func (o *AccountActivityDocument) GetStatus() string`
@@ -285,20 +238,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *AccountActivityDocument) GetRequester() AccountSource`
+`func (o *AccountActivityDocument) GetRequester() ActivityIdentity`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *AccountActivityDocument) GetRequesterOk() (*AccountSource, bool)`
+`func (o *AccountActivityDocument) GetRequesterOk() (*ActivityIdentity, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *AccountActivityDocument) SetRequester(v AccountSource)`
+`func (o *AccountActivityDocument) SetRequester(v ActivityIdentity)`
 
 SetRequester sets Requester field to given value.
 
@@ -310,20 +263,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRecipient
 
-`func (o *AccountActivityDocument) GetRecipient() AccountSource`
+`func (o *AccountActivityDocument) GetRecipient() ActivityIdentity`
 
 GetRecipient returns the Recipient field if non-nil, zero value otherwise.
 
 ### GetRecipientOk
 
-`func (o *AccountActivityDocument) GetRecipientOk() (*AccountSource, bool)`
+`func (o *AccountActivityDocument) GetRecipientOk() (*ActivityIdentity, bool)`
 
 GetRecipientOk returns a tuple with the Recipient field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipient
 
-`func (o *AccountActivityDocument) SetRecipient(v AccountSource)`
+`func (o *AccountActivityDocument) SetRecipient(v ActivityIdentity)`
 
 SetRecipient sets Recipient field to given value.
 

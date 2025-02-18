@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** | Description of access item. | [optional] 
+**Type** | Pointer to **string** | Type of the access item. | [optional] 
 **Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Owner** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **Revocable** | Pointer to **bool** |  | [optional] 
@@ -112,31 +112,6 @@ SetDisplayName sets DisplayName field to given value.
 
 HasDisplayName returns a boolean if a field has been set.
 
-### GetType
-
-`func (o *IdentityAccess) GetType() DtoType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *IdentityAccess) GetTypeOk() (*DtoType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *IdentityAccess) SetType(v DtoType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *IdentityAccess) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *IdentityAccess) GetDescription() string`
@@ -172,6 +147,31 @@ HasDescription returns a boolean if a field has been set.
 `func (o *IdentityAccess) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetType
+
+`func (o *IdentityAccess) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *IdentityAccess) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *IdentityAccess) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *IdentityAccess) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetSource
 
 `func (o *IdentityAccess) GetSource() Reference`

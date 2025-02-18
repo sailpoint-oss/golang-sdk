@@ -21,11 +21,6 @@ var _ MappedNullable = &RoleDocument{}
 
 // RoleDocument Role
 type RoleDocument struct {
-	// The unique ID of the referenced object.
-	Id string `json:"id"`
-	// The human readable name of the referenced object.
-	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
 	// Access item's description.
 	Description *string `json:"description,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
@@ -40,21 +35,31 @@ type RoleDocument struct {
 	Requestable *bool `json:"requestable,omitempty"`
 	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
+	Owner *BaseAccessOwner `json:"owner,omitempty"`
+	// ID of the role.
+	Id string `json:"id"`
+	// Name of the role.
+	Name string `json:"name"`
 	// Access profiles included with the role.
 	AccessProfiles []BaseAccessProfile `json:"accessProfiles,omitempty"`
 	// Number of access profiles included with the role.
-	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
+	AccessProfileCount NullableInt32 `json:"accessProfileCount,omitempty"`
 	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
 	// Segments with the role.
 	Segments []BaseSegment `json:"segments,omitempty"`
 	// Number of segments with the role.
-	SegmentCount *int32 `json:"segmentCount,omitempty"`
+	SegmentCount NullableInt32 `json:"segmentCount,omitempty"`
 	// Entitlements included with the role.
-	Entitlements []BaseEntitlement `json:"entitlements,omitempty"`
+	Entitlements []RoleDocumentAllOfEntitlements `json:"entitlements,omitempty"`
 	// Number of entitlements included with the role.
-	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
+	EntitlementCount NullableInt32 `json:"entitlementCount,omitempty"`
+	Dimensional *bool `json:"dimensional,omitempty"`
+	// Number of dimension attributes included with the role.
+	DimensionSchemaAttributeCount NullableInt32 `json:"dimensionSchemaAttributeCount,omitempty"`
+	// Dimension attributes included with the role.
+	DimensionSchemaAttributes []RoleDocumentAllOfDimensionSchemaAttributes `json:"dimensionSchemaAttributes,omitempty"`
+	Dimensions []RoleDocumentAllOfDimensions `json:"dimensions,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,17 +69,18 @@ type _RoleDocument RoleDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleDocument(id string, name string, type_ DocumentType) *RoleDocument {
+func NewRoleDocument(id string, name string) *RoleDocument {
 	this := RoleDocument{}
-	this.Id = id
-	this.Name = name
-	this.Type = type_
 	var enabled bool = false
 	this.Enabled = &enabled
 	var requestable bool = true
 	this.Requestable = &requestable
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
+	this.Id = id
+	this.Name = name
+	var dimensional bool = false
+	this.Dimensional = &dimensional
 	return &this
 }
 
@@ -89,79 +95,9 @@ func NewRoleDocumentWithDefaults() *RoleDocument {
 	this.Requestable = &requestable
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
+	var dimensional bool = false
+	this.Dimensional = &dimensional
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *RoleDocument) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *RoleDocument) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *RoleDocument) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value
-func (o *RoleDocument) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *RoleDocument) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *RoleDocument) SetName(v string) {
-	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *RoleDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RoleDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RoleDocument) SetType(v DocumentType) {
-	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -419,9 +355,9 @@ func (o *RoleDocument) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner {
+func (o *RoleDocument) GetOwner() BaseAccessOwner {
 	if o == nil || IsNil(o.Owner) {
-		var ret BaseAccessAllOfOwner
+		var ret BaseAccessOwner
 		return ret
 	}
 	return *o.Owner
@@ -429,7 +365,7 @@ func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
+func (o *RoleDocument) GetOwnerOk() (*BaseAccessOwner, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -445,14 +381,62 @@ func (o *RoleDocument) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
-func (o *RoleDocument) SetOwner(v BaseAccessAllOfOwner) {
+// SetOwner gets a reference to the given BaseAccessOwner and assigns it to the Owner field.
+func (o *RoleDocument) SetOwner(v BaseAccessOwner) {
 	o.Owner = &v
 }
 
-// GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
+// GetId returns the Id field value
+func (o *RoleDocument) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *RoleDocument) SetId(v string) {
+	o.Id = v
+}
+
+// GetName returns the Name field value
+func (o *RoleDocument) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *RoleDocument) SetName(v string) {
+	o.Name = v
+}
+
+// GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile {
-	if o == nil || IsNil(o.AccessProfiles) {
+	if o == nil {
 		var ret []BaseAccessProfile
 		return ret
 	}
@@ -461,6 +445,7 @@ func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile {
 
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleDocument) GetAccessProfilesOk() ([]BaseAccessProfile, bool) {
 	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
@@ -482,36 +467,46 @@ func (o *RoleDocument) SetAccessProfiles(v []BaseAccessProfile) {
 	o.AccessProfiles = v
 }
 
-// GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise.
+// GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetAccessProfileCount() int32 {
-	if o == nil || IsNil(o.AccessProfileCount) {
+	if o == nil || IsNil(o.AccessProfileCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AccessProfileCount
+	return *o.AccessProfileCount.Get()
 }
 
 // GetAccessProfileCountOk returns a tuple with the AccessProfileCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleDocument) GetAccessProfileCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AccessProfileCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessProfileCount, true
+	return o.AccessProfileCount.Get(), o.AccessProfileCount.IsSet()
 }
 
 // HasAccessProfileCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasAccessProfileCount() bool {
-	if o != nil && !IsNil(o.AccessProfileCount) {
+	if o != nil && o.AccessProfileCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessProfileCount gets a reference to the given int32 and assigns it to the AccessProfileCount field.
+// SetAccessProfileCount gets a reference to the given NullableInt32 and assigns it to the AccessProfileCount field.
 func (o *RoleDocument) SetAccessProfileCount(v int32) {
-	o.AccessProfileCount = &v
+	o.AccessProfileCount.Set(&v)
+}
+// SetAccessProfileCountNil sets the value for AccessProfileCount to be an explicit nil
+func (o *RoleDocument) SetAccessProfileCountNil() {
+	o.AccessProfileCount.Set(nil)
+}
+
+// UnsetAccessProfileCount ensures that no value is present for AccessProfileCount, not even an explicit nil
+func (o *RoleDocument) UnsetAccessProfileCount() {
+	o.AccessProfileCount.Unset()
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -546,9 +541,9 @@ func (o *RoleDocument) SetTags(v []string) {
 	o.Tags = v
 }
 
-// GetSegments returns the Segments field value if set, zero value otherwise.
+// GetSegments returns the Segments field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetSegments() []BaseSegment {
-	if o == nil || IsNil(o.Segments) {
+	if o == nil {
 		var ret []BaseSegment
 		return ret
 	}
@@ -557,6 +552,7 @@ func (o *RoleDocument) GetSegments() []BaseSegment {
 
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleDocument) GetSegmentsOk() ([]BaseSegment, bool) {
 	if o == nil || IsNil(o.Segments) {
 		return nil, false
@@ -578,42 +574,52 @@ func (o *RoleDocument) SetSegments(v []BaseSegment) {
 	o.Segments = v
 }
 
-// GetSegmentCount returns the SegmentCount field value if set, zero value otherwise.
+// GetSegmentCount returns the SegmentCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetSegmentCount() int32 {
-	if o == nil || IsNil(o.SegmentCount) {
+	if o == nil || IsNil(o.SegmentCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SegmentCount
+	return *o.SegmentCount.Get()
 }
 
 // GetSegmentCountOk returns a tuple with the SegmentCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleDocument) GetSegmentCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.SegmentCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SegmentCount, true
+	return o.SegmentCount.Get(), o.SegmentCount.IsSet()
 }
 
 // HasSegmentCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasSegmentCount() bool {
-	if o != nil && !IsNil(o.SegmentCount) {
+	if o != nil && o.SegmentCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSegmentCount gets a reference to the given int32 and assigns it to the SegmentCount field.
+// SetSegmentCount gets a reference to the given NullableInt32 and assigns it to the SegmentCount field.
 func (o *RoleDocument) SetSegmentCount(v int32) {
-	o.SegmentCount = &v
+	o.SegmentCount.Set(&v)
+}
+// SetSegmentCountNil sets the value for SegmentCount to be an explicit nil
+func (o *RoleDocument) SetSegmentCountNil() {
+	o.SegmentCount.Set(nil)
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *RoleDocument) GetEntitlements() []BaseEntitlement {
-	if o == nil || IsNil(o.Entitlements) {
-		var ret []BaseEntitlement
+// UnsetSegmentCount ensures that no value is present for SegmentCount, not even an explicit nil
+func (o *RoleDocument) UnsetSegmentCount() {
+	o.SegmentCount.Unset()
+}
+
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleDocument) GetEntitlements() []RoleDocumentAllOfEntitlements {
+	if o == nil {
+		var ret []RoleDocumentAllOfEntitlements
 		return ret
 	}
 	return o.Entitlements
@@ -621,7 +627,8 @@ func (o *RoleDocument) GetEntitlements() []BaseEntitlement {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleDocument) GetEntitlementsOk() ([]RoleDocumentAllOfEntitlements, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
@@ -637,41 +644,191 @@ func (o *RoleDocument) HasEntitlements() bool {
 	return false
 }
 
-// SetEntitlements gets a reference to the given []BaseEntitlement and assigns it to the Entitlements field.
-func (o *RoleDocument) SetEntitlements(v []BaseEntitlement) {
+// SetEntitlements gets a reference to the given []RoleDocumentAllOfEntitlements and assigns it to the Entitlements field.
+func (o *RoleDocument) SetEntitlements(v []RoleDocumentAllOfEntitlements) {
 	o.Entitlements = v
 }
 
-// GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
+// GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetEntitlementCount() int32 {
-	if o == nil || IsNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.EntitlementCount
+	return *o.EntitlementCount.Get()
 }
 
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleDocument) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.EntitlementCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EntitlementCount, true
+	return o.EntitlementCount.Get(), o.EntitlementCount.IsSet()
 }
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasEntitlementCount() bool {
-	if o != nil && !IsNil(o.EntitlementCount) {
+	if o != nil && o.EntitlementCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEntitlementCount gets a reference to the given int32 and assigns it to the EntitlementCount field.
+// SetEntitlementCount gets a reference to the given NullableInt32 and assigns it to the EntitlementCount field.
 func (o *RoleDocument) SetEntitlementCount(v int32) {
-	o.EntitlementCount = &v
+	o.EntitlementCount.Set(&v)
+}
+// SetEntitlementCountNil sets the value for EntitlementCount to be an explicit nil
+func (o *RoleDocument) SetEntitlementCountNil() {
+	o.EntitlementCount.Set(nil)
+}
+
+// UnsetEntitlementCount ensures that no value is present for EntitlementCount, not even an explicit nil
+func (o *RoleDocument) UnsetEntitlementCount() {
+	o.EntitlementCount.Unset()
+}
+
+// GetDimensional returns the Dimensional field value if set, zero value otherwise.
+func (o *RoleDocument) GetDimensional() bool {
+	if o == nil || IsNil(o.Dimensional) {
+		var ret bool
+		return ret
+	}
+	return *o.Dimensional
+}
+
+// GetDimensionalOk returns a tuple with the Dimensional field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetDimensionalOk() (*bool, bool) {
+	if o == nil || IsNil(o.Dimensional) {
+		return nil, false
+	}
+	return o.Dimensional, true
+}
+
+// HasDimensional returns a boolean if a field has been set.
+func (o *RoleDocument) HasDimensional() bool {
+	if o != nil && !IsNil(o.Dimensional) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensional gets a reference to the given bool and assigns it to the Dimensional field.
+func (o *RoleDocument) SetDimensional(v bool) {
+	o.Dimensional = &v
+}
+
+// GetDimensionSchemaAttributeCount returns the DimensionSchemaAttributeCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleDocument) GetDimensionSchemaAttributeCount() int32 {
+	if o == nil || IsNil(o.DimensionSchemaAttributeCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DimensionSchemaAttributeCount.Get()
+}
+
+// GetDimensionSchemaAttributeCountOk returns a tuple with the DimensionSchemaAttributeCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleDocument) GetDimensionSchemaAttributeCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DimensionSchemaAttributeCount.Get(), o.DimensionSchemaAttributeCount.IsSet()
+}
+
+// HasDimensionSchemaAttributeCount returns a boolean if a field has been set.
+func (o *RoleDocument) HasDimensionSchemaAttributeCount() bool {
+	if o != nil && o.DimensionSchemaAttributeCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionSchemaAttributeCount gets a reference to the given NullableInt32 and assigns it to the DimensionSchemaAttributeCount field.
+func (o *RoleDocument) SetDimensionSchemaAttributeCount(v int32) {
+	o.DimensionSchemaAttributeCount.Set(&v)
+}
+// SetDimensionSchemaAttributeCountNil sets the value for DimensionSchemaAttributeCount to be an explicit nil
+func (o *RoleDocument) SetDimensionSchemaAttributeCountNil() {
+	o.DimensionSchemaAttributeCount.Set(nil)
+}
+
+// UnsetDimensionSchemaAttributeCount ensures that no value is present for DimensionSchemaAttributeCount, not even an explicit nil
+func (o *RoleDocument) UnsetDimensionSchemaAttributeCount() {
+	o.DimensionSchemaAttributeCount.Unset()
+}
+
+// GetDimensionSchemaAttributes returns the DimensionSchemaAttributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleDocument) GetDimensionSchemaAttributes() []RoleDocumentAllOfDimensionSchemaAttributes {
+	if o == nil {
+		var ret []RoleDocumentAllOfDimensionSchemaAttributes
+		return ret
+	}
+	return o.DimensionSchemaAttributes
+}
+
+// GetDimensionSchemaAttributesOk returns a tuple with the DimensionSchemaAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleDocument) GetDimensionSchemaAttributesOk() ([]RoleDocumentAllOfDimensionSchemaAttributes, bool) {
+	if o == nil || IsNil(o.DimensionSchemaAttributes) {
+		return nil, false
+	}
+	return o.DimensionSchemaAttributes, true
+}
+
+// HasDimensionSchemaAttributes returns a boolean if a field has been set.
+func (o *RoleDocument) HasDimensionSchemaAttributes() bool {
+	if o != nil && !IsNil(o.DimensionSchemaAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionSchemaAttributes gets a reference to the given []RoleDocumentAllOfDimensionSchemaAttributes and assigns it to the DimensionSchemaAttributes field.
+func (o *RoleDocument) SetDimensionSchemaAttributes(v []RoleDocumentAllOfDimensionSchemaAttributes) {
+	o.DimensionSchemaAttributes = v
+}
+
+// GetDimensions returns the Dimensions field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleDocument) GetDimensions() []RoleDocumentAllOfDimensions {
+	if o == nil {
+		var ret []RoleDocumentAllOfDimensions
+		return ret
+	}
+	return o.Dimensions
+}
+
+// GetDimensionsOk returns a tuple with the Dimensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleDocument) GetDimensionsOk() ([]RoleDocumentAllOfDimensions, bool) {
+	if o == nil || IsNil(o.Dimensions) {
+		return nil, false
+	}
+	return o.Dimensions, true
+}
+
+// HasDimensions returns a boolean if a field has been set.
+func (o *RoleDocument) HasDimensions() bool {
+	if o != nil && !IsNil(o.Dimensions) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensions gets a reference to the given []RoleDocumentAllOfDimensions and assigns it to the Dimensions field.
+func (o *RoleDocument) SetDimensions(v []RoleDocumentAllOfDimensions) {
+	o.Dimensions = v
 }
 
 func (o RoleDocument) MarshalJSON() ([]byte, error) {
@@ -684,9 +841,6 @@ func (o RoleDocument) MarshalJSON() ([]byte, error) {
 
 func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -711,26 +865,40 @@ func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !IsNil(o.AccessProfiles) {
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !IsNil(o.AccessProfileCount) {
-		toSerialize["accessProfileCount"] = o.AccessProfileCount
+	if o.AccessProfileCount.IsSet() {
+		toSerialize["accessProfileCount"] = o.AccessProfileCount.Get()
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
-	if !IsNil(o.Segments) {
+	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments
 	}
-	if !IsNil(o.SegmentCount) {
-		toSerialize["segmentCount"] = o.SegmentCount
+	if o.SegmentCount.IsSet() {
+		toSerialize["segmentCount"] = o.SegmentCount.Get()
 	}
-	if !IsNil(o.Entitlements) {
+	if o.Entitlements != nil {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !IsNil(o.EntitlementCount) {
-		toSerialize["entitlementCount"] = o.EntitlementCount
+	if o.EntitlementCount.IsSet() {
+		toSerialize["entitlementCount"] = o.EntitlementCount.Get()
+	}
+	if !IsNil(o.Dimensional) {
+		toSerialize["dimensional"] = o.Dimensional
+	}
+	if o.DimensionSchemaAttributeCount.IsSet() {
+		toSerialize["dimensionSchemaAttributeCount"] = o.DimensionSchemaAttributeCount.Get()
+	}
+	if o.DimensionSchemaAttributes != nil {
+		toSerialize["dimensionSchemaAttributes"] = o.DimensionSchemaAttributes
+	}
+	if o.Dimensions != nil {
+		toSerialize["dimensions"] = o.Dimensions
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -747,7 +915,6 @@ func (o *RoleDocument) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -777,9 +944,6 @@ func (o *RoleDocument) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
@@ -788,6 +952,8 @@ func (o *RoleDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "requestCommentsRequired")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "accessProfiles")
 		delete(additionalProperties, "accessProfileCount")
 		delete(additionalProperties, "tags")
@@ -795,6 +961,10 @@ func (o *RoleDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "segmentCount")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "entitlementCount")
+		delete(additionalProperties, "dimensional")
+		delete(additionalProperties, "dimensionSchemaAttributeCount")
+		delete(additionalProperties, "dimensionSchemaAttributes")
+		delete(additionalProperties, "dimensions")
 		o.AdditionalProperties = additionalProperties
 	}
 

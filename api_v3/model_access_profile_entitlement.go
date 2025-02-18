@@ -24,9 +24,11 @@ type AccessProfileEntitlement struct {
 	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
-	Type *DtoType `json:"type,omitempty"`
+	// Description of access item.
 	Description NullableString `json:"description,omitempty"`
 	Source *Reference `json:"source,omitempty"`
+	// Type of the access item.
+	Type *string `json:"type,omitempty"`
 	Privileged *bool `json:"privileged,omitempty"`
 	Attribute *string `json:"attribute,omitempty"`
 	Value *string `json:"value,omitempty"`
@@ -149,38 +151,6 @@ func (o *AccessProfileEntitlement) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AccessProfileEntitlement) GetType() DtoType {
-	if o == nil || IsNil(o.Type) {
-		var ret DtoType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessProfileEntitlement) GetTypeOk() (*DtoType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AccessProfileEntitlement) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *AccessProfileEntitlement) SetType(v DtoType) {
-	o.Type = &v
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileEntitlement) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
@@ -253,6 +223,38 @@ func (o *AccessProfileEntitlement) HasSource() bool {
 // SetSource gets a reference to the given Reference and assigns it to the Source field.
 func (o *AccessProfileEntitlement) SetSource(v Reference) {
 	o.Source = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AccessProfileEntitlement) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfileEntitlement) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AccessProfileEntitlement) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AccessProfileEntitlement) SetType(v string) {
+	o.Type = &v
 }
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
@@ -402,14 +404,14 @@ func (o AccessProfileEntitlement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
@@ -448,9 +450,9 @@ func (o *AccessProfileEntitlement) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "privileged")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")

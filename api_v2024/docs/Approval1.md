@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comments** | Pointer to [**[]ApprovalComment2**](ApprovalComment2.md) |  | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Owner** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
+**Owner** | Pointer to [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
 **Result** | Pointer to **string** | The result of the approval | [optional] 
-**Type** | Pointer to **NullableString** |  | [optional] 
+**AttributeRequest** | Pointer to [**AttributeRequest**](AttributeRequest.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Methods
 
@@ -55,41 +55,6 @@ SetComments sets Comments field to given value.
 
 HasComments returns a boolean if a field has been set.
 
-### GetCreated
-
-`func (o *Approval1) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *Approval1) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *Approval1) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *Approval1) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
-
-### SetCreatedNil
-
-`func (o *Approval1) SetCreatedNil(b bool)`
-
- SetCreatedNil sets the value for Created to be an explicit nil
-
-### UnsetCreated
-`func (o *Approval1) UnsetCreated()`
-
-UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
 `func (o *Approval1) GetModified() time.Time`
@@ -127,20 +92,20 @@ HasModified returns a boolean if a field has been set.
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetOwner
 
-`func (o *Approval1) GetOwner() AccountSource`
+`func (o *Approval1) GetOwner() ActivityIdentity`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Approval1) GetOwnerOk() (*AccountSource, bool)`
+`func (o *Approval1) GetOwnerOk() (*ActivityIdentity, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Approval1) SetOwner(v AccountSource)`
+`func (o *Approval1) SetOwner(v ActivityIdentity)`
 
 SetOwner sets Owner field to given value.
 
@@ -175,41 +140,56 @@ SetResult sets Result field to given value.
 
 HasResult returns a boolean if a field has been set.
 
-### GetType
+### GetAttributeRequest
 
-`func (o *Approval1) GetType() string`
+`func (o *Approval1) GetAttributeRequest() AttributeRequest`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetAttributeRequest returns the AttributeRequest field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetAttributeRequestOk
 
-`func (o *Approval1) GetTypeOk() (*string, bool)`
+`func (o *Approval1) GetAttributeRequestOk() (*AttributeRequest, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetAttributeRequestOk returns a tuple with the AttributeRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetAttributeRequest
 
-`func (o *Approval1) SetType(v string)`
+`func (o *Approval1) SetAttributeRequest(v AttributeRequest)`
 
-SetType sets Type field to given value.
+SetAttributeRequest sets AttributeRequest field to given value.
 
-### HasType
+### HasAttributeRequest
 
-`func (o *Approval1) HasType() bool`
+`func (o *Approval1) HasAttributeRequest() bool`
 
-HasType returns a boolean if a field has been set.
+HasAttributeRequest returns a boolean if a field has been set.
 
-### SetTypeNil
+### GetSource
 
-`func (o *Approval1) SetTypeNil(b bool)`
+`func (o *Approval1) GetSource() AccountSource`
 
- SetTypeNil sets the value for Type to be an explicit nil
+GetSource returns the Source field if non-nil, zero value otherwise.
 
-### UnsetType
-`func (o *Approval1) UnsetType()`
+### GetSourceOk
 
-UnsetType ensures that no value is present for Type, not even an explicit nil
+`func (o *Approval1) GetSourceOk() (*AccountSource, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *Approval1) SetSource(v AccountSource)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *Approval1) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

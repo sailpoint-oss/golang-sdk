@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **PasswordLastSet** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **EntitlementAttributes** | Pointer to **map[string]interface{}** | Map or dictionary of key/value pairs. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**SupportsPasswordChange** | Pointer to **bool** | Indicates whether the account supports password change. | [optional] [default to false]
+**AccountAttributes** | Pointer to **map[string]interface{}** | Map or dictionary of key/value pairs. | [optional] 
 
 ## Methods
 
@@ -340,6 +342,66 @@ HasCreated returns a boolean if a field has been set.
 `func (o *BaseAccount) UnsetCreated()`
 
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
+### GetSupportsPasswordChange
+
+`func (o *BaseAccount) GetSupportsPasswordChange() bool`
+
+GetSupportsPasswordChange returns the SupportsPasswordChange field if non-nil, zero value otherwise.
+
+### GetSupportsPasswordChangeOk
+
+`func (o *BaseAccount) GetSupportsPasswordChangeOk() (*bool, bool)`
+
+GetSupportsPasswordChangeOk returns a tuple with the SupportsPasswordChange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsPasswordChange
+
+`func (o *BaseAccount) SetSupportsPasswordChange(v bool)`
+
+SetSupportsPasswordChange sets SupportsPasswordChange field to given value.
+
+### HasSupportsPasswordChange
+
+`func (o *BaseAccount) HasSupportsPasswordChange() bool`
+
+HasSupportsPasswordChange returns a boolean if a field has been set.
+
+### GetAccountAttributes
+
+`func (o *BaseAccount) GetAccountAttributes() map[string]interface{}`
+
+GetAccountAttributes returns the AccountAttributes field if non-nil, zero value otherwise.
+
+### GetAccountAttributesOk
+
+`func (o *BaseAccount) GetAccountAttributesOk() (*map[string]interface{}, bool)`
+
+GetAccountAttributesOk returns a tuple with the AccountAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountAttributes
+
+`func (o *BaseAccount) SetAccountAttributes(v map[string]interface{})`
+
+SetAccountAttributes sets AccountAttributes field to given value.
+
+### HasAccountAttributes
+
+`func (o *BaseAccount) HasAccountAttributes() bool`
+
+HasAccountAttributes returns a boolean if a field has been set.
+
+### SetAccountAttributesNil
+
+`func (o *BaseAccount) SetAccountAttributesNil(b bool)`
+
+ SetAccountAttributesNil sets the value for AccountAttributes to be an explicit nil
+
+### UnsetAccountAttributes
+`func (o *BaseAccount) UnsetAccountAttributes()`
+
+UnsetAccountAttributes ensures that no value is present for AccountAttributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

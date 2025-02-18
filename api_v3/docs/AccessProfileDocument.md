@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Access profile&#39;s ID. | 
-**Name** | **string** | Access profile&#39;s name. | 
 **Description** | Pointer to **string** | Access item&#39;s description. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
@@ -13,18 +11,22 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Indicates whether the access item is currently enabled. | [optional] [default to false]
 **Requestable** | Pointer to **bool** | Indicates whether the access item can be requested. | [optional] [default to true]
 **RequestCommentsRequired** | Pointer to **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to false]
-**Owner** | Pointer to [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
-**Type** | **string** | Access profile&#39;s document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice. | 
+**Owner** | Pointer to [**BaseAccessOwner**](BaseAccessOwner.md) |  | [optional] 
+**Id** | **string** | Access profile&#39;s ID. | 
+**Name** | **string** | Access profile&#39;s name. | 
 **Source** | Pointer to [**AccessProfileDocumentAllOfSource**](AccessProfileDocumentAllOfSource.md) |  | [optional] 
 **Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) | Entitlements the access profile has access to. | [optional] 
 **EntitlementCount** | Pointer to **int32** | Number of entitlements. | [optional] 
+**Segments** | Pointer to [**[]BaseSegment**](BaseSegment.md) | Segments with the access profile. | [optional] 
+**SegmentCount** | Pointer to **int32** | Number of segments with the access profile. | [optional] 
 **Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
+**Apps** | Pointer to [**[]AccessApps**](AccessApps.md) | Applications with the access profile | [optional] 
 
 ## Methods
 
 ### NewAccessProfileDocument
 
-`func NewAccessProfileDocument(id string, name string, type_ string, ) *AccessProfileDocument`
+`func NewAccessProfileDocument(id string, name string, ) *AccessProfileDocument`
 
 NewAccessProfileDocument instantiates a new AccessProfileDocument object
 This constructor will assign default values to properties that have it defined,
@@ -38,46 +40,6 @@ will change when the set of required properties is changed
 NewAccessProfileDocumentWithDefaults instantiates a new AccessProfileDocument object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *AccessProfileDocument) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AccessProfileDocument) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AccessProfileDocument) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *AccessProfileDocument) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *AccessProfileDocument) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *AccessProfileDocument) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetDescription
 
@@ -286,20 +248,20 @@ HasRequestCommentsRequired returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner`
+`func (o *AccessProfileDocument) GetOwner() BaseAccessOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool)`
+`func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *AccessProfileDocument) SetOwner(v BaseAccessAllOfOwner)`
+`func (o *AccessProfileDocument) SetOwner(v BaseAccessOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -309,24 +271,44 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
-### GetType
+### GetId
 
-`func (o *AccessProfileDocument) GetType() string`
+`func (o *AccessProfileDocument) GetId() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetIdOk
 
-`func (o *AccessProfileDocument) GetTypeOk() (*string, bool)`
+`func (o *AccessProfileDocument) GetIdOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetId
 
-`func (o *AccessProfileDocument) SetType(v string)`
+`func (o *AccessProfileDocument) SetId(v string)`
 
-SetType sets Type field to given value.
+SetId sets Id field to given value.
+
+
+### GetName
+
+`func (o *AccessProfileDocument) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *AccessProfileDocument) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *AccessProfileDocument) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetSource
@@ -404,6 +386,56 @@ SetEntitlementCount sets EntitlementCount field to given value.
 
 HasEntitlementCount returns a boolean if a field has been set.
 
+### GetSegments
+
+`func (o *AccessProfileDocument) GetSegments() []BaseSegment`
+
+GetSegments returns the Segments field if non-nil, zero value otherwise.
+
+### GetSegmentsOk
+
+`func (o *AccessProfileDocument) GetSegmentsOk() (*[]BaseSegment, bool)`
+
+GetSegmentsOk returns a tuple with the Segments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegments
+
+`func (o *AccessProfileDocument) SetSegments(v []BaseSegment)`
+
+SetSegments sets Segments field to given value.
+
+### HasSegments
+
+`func (o *AccessProfileDocument) HasSegments() bool`
+
+HasSegments returns a boolean if a field has been set.
+
+### GetSegmentCount
+
+`func (o *AccessProfileDocument) GetSegmentCount() int32`
+
+GetSegmentCount returns the SegmentCount field if non-nil, zero value otherwise.
+
+### GetSegmentCountOk
+
+`func (o *AccessProfileDocument) GetSegmentCountOk() (*int32, bool)`
+
+GetSegmentCountOk returns a tuple with the SegmentCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegmentCount
+
+`func (o *AccessProfileDocument) SetSegmentCount(v int32)`
+
+SetSegmentCount sets SegmentCount field to given value.
+
+### HasSegmentCount
+
+`func (o *AccessProfileDocument) HasSegmentCount() bool`
+
+HasSegmentCount returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *AccessProfileDocument) GetTags() []string`
@@ -428,6 +460,31 @@ SetTags sets Tags field to given value.
 `func (o *AccessProfileDocument) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetApps
+
+`func (o *AccessProfileDocument) GetApps() []AccessApps`
+
+GetApps returns the Apps field if non-nil, zero value otherwise.
+
+### GetAppsOk
+
+`func (o *AccessProfileDocument) GetAppsOk() (*[]AccessApps, bool)`
+
+GetAppsOk returns a tuple with the Apps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApps
+
+`func (o *AccessProfileDocument) SetApps(v []AccessApps)`
+
+SetApps sets Apps field to given value.
+
+### HasApps
+
+`func (o *AccessProfileDocument) HasApps() bool`
+
+HasApps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

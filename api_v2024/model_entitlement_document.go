@@ -21,9 +21,10 @@ var _ MappedNullable = &EntitlementDocument{}
 
 // EntitlementDocument Entitlement
 type EntitlementDocument struct {
+	// ID of the referenced object.
 	Id string `json:"id"`
+	// The human readable name of the referenced object.
 	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
 	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
@@ -31,7 +32,7 @@ type EntitlementDocument struct {
 	// Entitlement's display name.
 	DisplayName *string `json:"displayName,omitempty"`
 	Source *EntitlementDocumentAllOfSource `json:"source,omitempty"`
-	// Segments with the role.
+	// Segments with the entitlement.
 	Segments []BaseSegment `json:"segments,omitempty"`
 	// Number of segments with the role.
 	SegmentCount *int32 `json:"segmentCount,omitempty"`
@@ -43,10 +44,26 @@ type EntitlementDocument struct {
 	Created NullableTime `json:"created,omitempty"`
 	// Indicates whether the entitlement is privileged.
 	Privileged *bool `json:"privileged,omitempty"`
-	// Number of identities who have access to the entitlement.
-	IdentityCount *int32 `json:"identityCount,omitempty"`
 	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
+	// Attribute information for the entitlement.
+	Attribute *string `json:"attribute,omitempty"`
+	// Value of the entitlement.
+	Value *string `json:"value,omitempty"`
+	// Source schema object type of the entitlement.
+	SourceSchemaObjectType *string `json:"sourceSchemaObjectType,omitempty"`
+	// Schema type of the entitlement.
+	Schema *string `json:"schema,omitempty"`
+	// Read-only calculated hash value of an entitlement.
+	Hash *string `json:"hash,omitempty"`
+	// Attributes of the entitlement.
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	// Truncated attributes of the entitlement.
+	TruncatedAttributes []string `json:"truncatedAttributes,omitempty"`
+	// Indicates whether the entitlement contains data access.
+	ContainsDataAccess *bool `json:"containsDataAccess,omitempty"`
+	ManuallyUpdatedFields NullableEntitlementDocumentAllOfManuallyUpdatedFields `json:"manuallyUpdatedFields,omitempty"`
+	Permissions []EntitlementDocumentAllOfPermissions `json:"permissions,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -56,17 +73,18 @@ type _EntitlementDocument EntitlementDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementDocument(id string, name string, type_ DocumentType) *EntitlementDocument {
+func NewEntitlementDocument(id string, name string) *EntitlementDocument {
 	this := EntitlementDocument{}
 	this.Id = id
 	this.Name = name
-	this.Type = type_
 	var requestable bool = false
 	this.Requestable = &requestable
 	var cloudGoverned bool = false
 	this.CloudGoverned = &cloudGoverned
 	var privileged bool = false
 	this.Privileged = &privileged
+	var containsDataAccess bool = false
+	this.ContainsDataAccess = &containsDataAccess
 	return &this
 }
 
@@ -81,6 +99,8 @@ func NewEntitlementDocumentWithDefaults() *EntitlementDocument {
 	this.CloudGoverned = &cloudGoverned
 	var privileged bool = false
 	this.Privileged = &privileged
+	var containsDataAccess bool = false
+	this.ContainsDataAccess = &containsDataAccess
 	return &this
 }
 
@@ -130,30 +150,6 @@ func (o *EntitlementDocument) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *EntitlementDocument) SetName(v string) {
 	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *EntitlementDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *EntitlementDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *EntitlementDocument) SetType(v DocumentType) {
-	o.Type = v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -496,38 +492,6 @@ func (o *EntitlementDocument) SetPrivileged(v bool) {
 	o.Privileged = &v
 }
 
-// GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
-func (o *EntitlementDocument) GetIdentityCount() int32 {
-	if o == nil || IsNil(o.IdentityCount) {
-		var ret int32
-		return ret
-	}
-	return *o.IdentityCount
-}
-
-// GetIdentityCountOk returns a tuple with the IdentityCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EntitlementDocument) GetIdentityCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.IdentityCount) {
-		return nil, false
-	}
-	return o.IdentityCount, true
-}
-
-// HasIdentityCount returns a boolean if a field has been set.
-func (o *EntitlementDocument) HasIdentityCount() bool {
-	if o != nil && !IsNil(o.IdentityCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityCount gets a reference to the given int32 and assigns it to the IdentityCount field.
-func (o *EntitlementDocument) SetIdentityCount(v int32) {
-	o.IdentityCount = &v
-}
-
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -560,6 +524,336 @@ func (o *EntitlementDocument) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetAttribute returns the Attribute field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetAttribute() string {
+	if o == nil || IsNil(o.Attribute) {
+		var ret string
+		return ret
+	}
+	return *o.Attribute
+}
+
+// GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetAttributeOk() (*string, bool) {
+	if o == nil || IsNil(o.Attribute) {
+		return nil, false
+	}
+	return o.Attribute, true
+}
+
+// HasAttribute returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasAttribute() bool {
+	if o != nil && !IsNil(o.Attribute) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttribute gets a reference to the given string and assigns it to the Attribute field.
+func (o *EntitlementDocument) SetAttribute(v string) {
+	o.Attribute = &v
+}
+
+// GetValue returns the Value field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetValue() string {
+	if o == nil || IsNil(o.Value) {
+		var ret string
+		return ret
+	}
+	return *o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetValueOk() (*string, bool) {
+	if o == nil || IsNil(o.Value) {
+		return nil, false
+	}
+	return o.Value, true
+}
+
+// HasValue returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *EntitlementDocument) SetValue(v string) {
+	o.Value = &v
+}
+
+// GetSourceSchemaObjectType returns the SourceSchemaObjectType field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetSourceSchemaObjectType() string {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
+		var ret string
+		return ret
+	}
+	return *o.SourceSchemaObjectType
+}
+
+// GetSourceSchemaObjectTypeOk returns a tuple with the SourceSchemaObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetSourceSchemaObjectTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
+		return nil, false
+	}
+	return o.SourceSchemaObjectType, true
+}
+
+// HasSourceSchemaObjectType returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasSourceSchemaObjectType() bool {
+	if o != nil && !IsNil(o.SourceSchemaObjectType) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceSchemaObjectType gets a reference to the given string and assigns it to the SourceSchemaObjectType field.
+func (o *EntitlementDocument) SetSourceSchemaObjectType(v string) {
+	o.SourceSchemaObjectType = &v
+}
+
+// GetSchema returns the Schema field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetSchema() string {
+	if o == nil || IsNil(o.Schema) {
+		var ret string
+		return ret
+	}
+	return *o.Schema
+}
+
+// GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetSchemaOk() (*string, bool) {
+	if o == nil || IsNil(o.Schema) {
+		return nil, false
+	}
+	return o.Schema, true
+}
+
+// HasSchema returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasSchema() bool {
+	if o != nil && !IsNil(o.Schema) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchema gets a reference to the given string and assigns it to the Schema field.
+func (o *EntitlementDocument) SetSchema(v string) {
+	o.Schema = &v
+}
+
+// GetHash returns the Hash field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetHash() string {
+	if o == nil || IsNil(o.Hash) {
+		var ret string
+		return ret
+	}
+	return *o.Hash
+}
+
+// GetHashOk returns a tuple with the Hash field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetHashOk() (*string, bool) {
+	if o == nil || IsNil(o.Hash) {
+		return nil, false
+	}
+	return o.Hash, true
+}
+
+// HasHash returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasHash() bool {
+	if o != nil && !IsNil(o.Hash) {
+		return true
+	}
+
+	return false
+}
+
+// SetHash gets a reference to the given string and assigns it to the Hash field.
+func (o *EntitlementDocument) SetHash(v string) {
+	o.Hash = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetAttributes() map[string]interface{} {
+	if o == nil || IsNil(o.Attributes) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasAttributes() bool {
+	if o != nil && !IsNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *EntitlementDocument) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
+}
+
+// GetTruncatedAttributes returns the TruncatedAttributes field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetTruncatedAttributes() []string {
+	if o == nil || IsNil(o.TruncatedAttributes) {
+		var ret []string
+		return ret
+	}
+	return o.TruncatedAttributes
+}
+
+// GetTruncatedAttributesOk returns a tuple with the TruncatedAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetTruncatedAttributesOk() ([]string, bool) {
+	if o == nil || IsNil(o.TruncatedAttributes) {
+		return nil, false
+	}
+	return o.TruncatedAttributes, true
+}
+
+// HasTruncatedAttributes returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasTruncatedAttributes() bool {
+	if o != nil && !IsNil(o.TruncatedAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetTruncatedAttributes gets a reference to the given []string and assigns it to the TruncatedAttributes field.
+func (o *EntitlementDocument) SetTruncatedAttributes(v []string) {
+	o.TruncatedAttributes = v
+}
+
+// GetContainsDataAccess returns the ContainsDataAccess field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetContainsDataAccess() bool {
+	if o == nil || IsNil(o.ContainsDataAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.ContainsDataAccess
+}
+
+// GetContainsDataAccessOk returns a tuple with the ContainsDataAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetContainsDataAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.ContainsDataAccess) {
+		return nil, false
+	}
+	return o.ContainsDataAccess, true
+}
+
+// HasContainsDataAccess returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasContainsDataAccess() bool {
+	if o != nil && !IsNil(o.ContainsDataAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainsDataAccess gets a reference to the given bool and assigns it to the ContainsDataAccess field.
+func (o *EntitlementDocument) SetContainsDataAccess(v bool) {
+	o.ContainsDataAccess = &v
+}
+
+// GetManuallyUpdatedFields returns the ManuallyUpdatedFields field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EntitlementDocument) GetManuallyUpdatedFields() EntitlementDocumentAllOfManuallyUpdatedFields {
+	if o == nil || IsNil(o.ManuallyUpdatedFields.Get()) {
+		var ret EntitlementDocumentAllOfManuallyUpdatedFields
+		return ret
+	}
+	return *o.ManuallyUpdatedFields.Get()
+}
+
+// GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EntitlementDocument) GetManuallyUpdatedFieldsOk() (*EntitlementDocumentAllOfManuallyUpdatedFields, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManuallyUpdatedFields.Get(), o.ManuallyUpdatedFields.IsSet()
+}
+
+// HasManuallyUpdatedFields returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasManuallyUpdatedFields() bool {
+	if o != nil && o.ManuallyUpdatedFields.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetManuallyUpdatedFields gets a reference to the given NullableEntitlementDocumentAllOfManuallyUpdatedFields and assigns it to the ManuallyUpdatedFields field.
+func (o *EntitlementDocument) SetManuallyUpdatedFields(v EntitlementDocumentAllOfManuallyUpdatedFields) {
+	o.ManuallyUpdatedFields.Set(&v)
+}
+// SetManuallyUpdatedFieldsNil sets the value for ManuallyUpdatedFields to be an explicit nil
+func (o *EntitlementDocument) SetManuallyUpdatedFieldsNil() {
+	o.ManuallyUpdatedFields.Set(nil)
+}
+
+// UnsetManuallyUpdatedFields ensures that no value is present for ManuallyUpdatedFields, not even an explicit nil
+func (o *EntitlementDocument) UnsetManuallyUpdatedFields() {
+	o.ManuallyUpdatedFields.Unset()
+}
+
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *EntitlementDocument) GetPermissions() []EntitlementDocumentAllOfPermissions {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []EntitlementDocumentAllOfPermissions
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementDocument) GetPermissionsOk() ([]EntitlementDocumentAllOfPermissions, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *EntitlementDocument) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []EntitlementDocumentAllOfPermissions and assigns it to the Permissions field.
+func (o *EntitlementDocument) SetPermissions(v []EntitlementDocumentAllOfPermissions) {
+	o.Permissions = v
+}
+
 func (o EntitlementDocument) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -572,7 +866,6 @@ func (o EntitlementDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
@@ -603,11 +896,38 @@ func (o EntitlementDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
-	if !IsNil(o.IdentityCount) {
-		toSerialize["identityCount"] = o.IdentityCount
-	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Attribute) {
+		toSerialize["attribute"] = o.Attribute
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.SourceSchemaObjectType) {
+		toSerialize["sourceSchemaObjectType"] = o.SourceSchemaObjectType
+	}
+	if !IsNil(o.Schema) {
+		toSerialize["schema"] = o.Schema
+	}
+	if !IsNil(o.Hash) {
+		toSerialize["hash"] = o.Hash
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.TruncatedAttributes) {
+		toSerialize["truncatedAttributes"] = o.TruncatedAttributes
+	}
+	if !IsNil(o.ContainsDataAccess) {
+		toSerialize["containsDataAccess"] = o.ContainsDataAccess
+	}
+	if o.ManuallyUpdatedFields.IsSet() {
+		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields.Get()
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -624,7 +944,6 @@ func (o *EntitlementDocument) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -656,7 +975,6 @@ func (o *EntitlementDocument) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "synced")
 		delete(additionalProperties, "displayName")
@@ -667,8 +985,17 @@ func (o *EntitlementDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cloudGoverned")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "privileged")
-		delete(additionalProperties, "identityCount")
 		delete(additionalProperties, "tags")
+		delete(additionalProperties, "attribute")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "sourceSchemaObjectType")
+		delete(additionalProperties, "schema")
+		delete(additionalProperties, "hash")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "truncatedAttributes")
+		delete(additionalProperties, "containsDataAccess")
+		delete(additionalProperties, "manuallyUpdatedFields")
+		delete(additionalProperties, "permissions")
 		o.AdditionalProperties = additionalProperties
 	}
 

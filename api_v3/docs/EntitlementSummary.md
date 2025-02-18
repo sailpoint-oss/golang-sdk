@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** | Description of access item. | [optional] 
 **Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Type** | Pointer to **string** | Type of the access item. | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
 **Attribute** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
@@ -109,31 +109,6 @@ SetDisplayName sets DisplayName field to given value.
 
 HasDisplayName returns a boolean if a field has been set.
 
-### GetType
-
-`func (o *EntitlementSummary) GetType() DtoType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *EntitlementSummary) GetTypeOk() (*DtoType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *EntitlementSummary) SetType(v DtoType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *EntitlementSummary) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *EntitlementSummary) GetDescription() string`
@@ -193,6 +168,31 @@ SetSource sets Source field to given value.
 `func (o *EntitlementSummary) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *EntitlementSummary) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *EntitlementSummary) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *EntitlementSummary) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *EntitlementSummary) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetPrivileged
 

@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
+**Id** | **string** | ID of the referenced object. | 
+**Name** | **string** | The human readable name of the referenced object. | 
 
 ## Methods
 
 ### NewBaseDocument
 
-`func NewBaseDocument(id string, name string, type_ DocumentType, ) *BaseDocument`
+`func NewBaseDocument(id string, name string, ) *BaseDocument`
 
 NewBaseDocument instantiates a new BaseDocument object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *BaseDocument) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetType
-
-`func (o *BaseDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *BaseDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *BaseDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
 
 
 

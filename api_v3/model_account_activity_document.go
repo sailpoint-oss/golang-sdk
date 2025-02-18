@@ -13,7 +13,6 @@ package api_v3
 import (
 	"encoding/json"
 	
-	"fmt"
 )
 
 // checks if the AccountActivityDocument type satisfies the MappedNullable interface at compile time
@@ -21,23 +20,22 @@ var _ MappedNullable = &AccountActivityDocument{}
 
 // AccountActivityDocument AccountActivity
 type AccountActivityDocument struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
+	// ID of account activity.
+	Id *string `json:"id,omitempty"`
 	// Type of action performed in the activity.
 	Action *string `json:"action,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
+	Synced *string `json:"synced,omitempty"`
 	// Activity's current stage.
 	Stage *string `json:"stage,omitempty"`
-	// Activity's origin.
-	Origin NullableString `json:"origin,omitempty"`
 	// Activity's current status.
 	Status *string `json:"status,omitempty"`
-	Requester *AccountSource `json:"requester,omitempty"`
-	Recipient *AccountSource `json:"recipient,omitempty"`
+	Requester *ActivityIdentity `json:"requester,omitempty"`
+	Recipient *ActivityIdentity `json:"recipient,omitempty"`
 	// Account activity's tracking number.
 	TrackingNumber *string `json:"trackingNumber,omitempty"`
 	// Errors provided by the source while completing account actions.
@@ -63,11 +61,8 @@ type _AccountActivityDocument AccountActivityDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountActivityDocument(id string, name string, type_ DocumentType) *AccountActivityDocument {
+func NewAccountActivityDocument() *AccountActivityDocument {
 	this := AccountActivityDocument{}
-	this.Id = id
-	this.Name = name
-	this.Type = type_
 	return &this
 }
 
@@ -79,76 +74,36 @@ func NewAccountActivityDocumentWithDefaults() *AccountActivityDocument {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *AccountActivityDocument) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityDocument) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *AccountActivityDocument) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AccountActivityDocument) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value
-func (o *AccountActivityDocument) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AccountActivityDocument) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AccountActivityDocument) SetName(v string) {
-	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *AccountActivityDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AccountActivityDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AccountActivityDocument) SetType(v DocumentType) {
-	o.Type = v
+	o.Id = &v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
@@ -267,6 +222,38 @@ func (o *AccountActivityDocument) UnsetModified() {
 	o.Modified.Unset()
 }
 
+// GetSynced returns the Synced field value if set, zero value otherwise.
+func (o *AccountActivityDocument) GetSynced() string {
+	if o == nil || IsNil(o.Synced) {
+		var ret string
+		return ret
+	}
+	return *o.Synced
+}
+
+// GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActivityDocument) GetSyncedOk() (*string, bool) {
+	if o == nil || IsNil(o.Synced) {
+		return nil, false
+	}
+	return o.Synced, true
+}
+
+// HasSynced returns a boolean if a field has been set.
+func (o *AccountActivityDocument) HasSynced() bool {
+	if o != nil && !IsNil(o.Synced) {
+		return true
+	}
+
+	return false
+}
+
+// SetSynced gets a reference to the given string and assigns it to the Synced field.
+func (o *AccountActivityDocument) SetSynced(v string) {
+	o.Synced = &v
+}
+
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *AccountActivityDocument) GetStage() string {
 	if o == nil || IsNil(o.Stage) {
@@ -297,48 +284,6 @@ func (o *AccountActivityDocument) HasStage() bool {
 // SetStage gets a reference to the given string and assigns it to the Stage field.
 func (o *AccountActivityDocument) SetStage(v string) {
 	o.Stage = &v
-}
-
-// GetOrigin returns the Origin field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActivityDocument) GetOrigin() string {
-	if o == nil || IsNil(o.Origin.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Origin.Get()
-}
-
-// GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActivityDocument) GetOriginOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Origin.Get(), o.Origin.IsSet()
-}
-
-// HasOrigin returns a boolean if a field has been set.
-func (o *AccountActivityDocument) HasOrigin() bool {
-	if o != nil && o.Origin.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrigin gets a reference to the given NullableString and assigns it to the Origin field.
-func (o *AccountActivityDocument) SetOrigin(v string) {
-	o.Origin.Set(&v)
-}
-// SetOriginNil sets the value for Origin to be an explicit nil
-func (o *AccountActivityDocument) SetOriginNil() {
-	o.Origin.Set(nil)
-}
-
-// UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
-func (o *AccountActivityDocument) UnsetOrigin() {
-	o.Origin.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -374,9 +319,9 @@ func (o *AccountActivityDocument) SetStatus(v string) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *AccountActivityDocument) GetRequester() AccountSource {
+func (o *AccountActivityDocument) GetRequester() ActivityIdentity {
 	if o == nil || IsNil(o.Requester) {
-		var ret AccountSource
+		var ret ActivityIdentity
 		return ret
 	}
 	return *o.Requester
@@ -384,7 +329,7 @@ func (o *AccountActivityDocument) GetRequester() AccountSource {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActivityDocument) GetRequesterOk() (*AccountSource, bool) {
+func (o *AccountActivityDocument) GetRequesterOk() (*ActivityIdentity, bool) {
 	if o == nil || IsNil(o.Requester) {
 		return nil, false
 	}
@@ -400,15 +345,15 @@ func (o *AccountActivityDocument) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given AccountSource and assigns it to the Requester field.
-func (o *AccountActivityDocument) SetRequester(v AccountSource) {
+// SetRequester gets a reference to the given ActivityIdentity and assigns it to the Requester field.
+func (o *AccountActivityDocument) SetRequester(v ActivityIdentity) {
 	o.Requester = &v
 }
 
 // GetRecipient returns the Recipient field value if set, zero value otherwise.
-func (o *AccountActivityDocument) GetRecipient() AccountSource {
+func (o *AccountActivityDocument) GetRecipient() ActivityIdentity {
 	if o == nil || IsNil(o.Recipient) {
-		var ret AccountSource
+		var ret ActivityIdentity
 		return ret
 	}
 	return *o.Recipient
@@ -416,7 +361,7 @@ func (o *AccountActivityDocument) GetRecipient() AccountSource {
 
 // GetRecipientOk returns a tuple with the Recipient field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActivityDocument) GetRecipientOk() (*AccountSource, bool) {
+func (o *AccountActivityDocument) GetRecipientOk() (*ActivityIdentity, bool) {
 	if o == nil || IsNil(o.Recipient) {
 		return nil, false
 	}
@@ -432,8 +377,8 @@ func (o *AccountActivityDocument) HasRecipient() bool {
 	return false
 }
 
-// SetRecipient gets a reference to the given AccountSource and assigns it to the Recipient field.
-func (o *AccountActivityDocument) SetRecipient(v AccountSource) {
+// SetRecipient gets a reference to the given ActivityIdentity and assigns it to the Recipient field.
+func (o *AccountActivityDocument) SetRecipient(v ActivityIdentity) {
 	o.Recipient = &v
 }
 
@@ -705,9 +650,9 @@ func (o AccountActivityDocument) MarshalJSON() ([]byte, error) {
 
 func (o AccountActivityDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
@@ -717,11 +662,11 @@ func (o AccountActivityDocument) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
+	if !IsNil(o.Synced) {
+		toSerialize["synced"] = o.Synced
+	}
 	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
-	}
-	if o.Origin.IsSet() {
-		toSerialize["origin"] = o.Origin.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -765,29 +710,6 @@ func (o AccountActivityDocument) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountActivityDocument) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"_type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varAccountActivityDocument := _AccountActivityDocument{}
 
 	err = json.Unmarshal(data, &varAccountActivityDocument)
@@ -802,13 +724,11 @@ func (o *AccountActivityDocument) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "action")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "synced")
 		delete(additionalProperties, "stage")
-		delete(additionalProperties, "origin")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "requester")
 		delete(additionalProperties, "recipient")

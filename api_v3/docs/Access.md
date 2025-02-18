@@ -7,8 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** | Description of access item. | [optional] 
 
 ## Methods
 
@@ -103,31 +102,6 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *Access) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *Access) GetType() DtoType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Access) GetTypeOk() (*DtoType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Access) SetType(v DtoType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *Access) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetDescription
 

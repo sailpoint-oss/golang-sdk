@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | Pointer to **string** | The ID of the account | [optional] 
-**Cause** | Pointer to **string** |  | [optional] 
+**Cause** | Pointer to **string** | Cause of the expansion item. | [optional] 
 **Name** | Pointer to **string** | The name of the item | [optional] 
-**AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) |  | [optional] 
+**AttributeRequest** | Pointer to [**AttributeRequest**](AttributeRequest.md) |  | [optional] 
 **Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
+**Id** | Pointer to **string** | ID of the expansion item | [optional] 
+**State** | Pointer to **string** | State of the expansion item | [optional] 
 
 ## Methods
 
@@ -104,30 +106,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetAttributeRequests
+### GetAttributeRequest
 
-`func (o *ExpansionItem) GetAttributeRequests() []AttributeRequest`
+`func (o *ExpansionItem) GetAttributeRequest() AttributeRequest`
 
-GetAttributeRequests returns the AttributeRequests field if non-nil, zero value otherwise.
+GetAttributeRequest returns the AttributeRequest field if non-nil, zero value otherwise.
 
-### GetAttributeRequestsOk
+### GetAttributeRequestOk
 
-`func (o *ExpansionItem) GetAttributeRequestsOk() (*[]AttributeRequest, bool)`
+`func (o *ExpansionItem) GetAttributeRequestOk() (*AttributeRequest, bool)`
 
-GetAttributeRequestsOk returns a tuple with the AttributeRequests field if it's non-nil, zero value otherwise
+GetAttributeRequestOk returns a tuple with the AttributeRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAttributeRequests
+### SetAttributeRequest
 
-`func (o *ExpansionItem) SetAttributeRequests(v []AttributeRequest)`
+`func (o *ExpansionItem) SetAttributeRequest(v AttributeRequest)`
 
-SetAttributeRequests sets AttributeRequests field to given value.
+SetAttributeRequest sets AttributeRequest field to given value.
 
-### HasAttributeRequests
+### HasAttributeRequest
 
-`func (o *ExpansionItem) HasAttributeRequests() bool`
+`func (o *ExpansionItem) HasAttributeRequest() bool`
 
-HasAttributeRequests returns a boolean if a field has been set.
+HasAttributeRequest returns a boolean if a field has been set.
 
 ### GetSource
 
@@ -153,6 +155,56 @@ SetSource sets Source field to given value.
 `func (o *ExpansionItem) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *ExpansionItem) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ExpansionItem) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ExpansionItem) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ExpansionItem) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *ExpansionItem) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *ExpansionItem) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *ExpansionItem) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *ExpansionItem) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

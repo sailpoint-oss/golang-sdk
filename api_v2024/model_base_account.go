@@ -41,6 +41,10 @@ type BaseAccount struct {
 	EntitlementAttributes map[string]interface{} `json:"entitlementAttributes,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
+	// Indicates whether the account supports password change.
+	SupportsPasswordChange *bool `json:"supportsPasswordChange,omitempty"`
+	// Map or dictionary of key/value pairs.
+	AccountAttributes map[string]interface{} `json:"accountAttributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -60,6 +64,8 @@ func NewBaseAccount() *BaseAccount {
 	this.Privileged = &privileged
 	var manuallyCorrelated bool = false
 	this.ManuallyCorrelated = &manuallyCorrelated
+	var supportsPasswordChange bool = false
+	this.SupportsPasswordChange = &supportsPasswordChange
 	return &this
 }
 
@@ -76,6 +82,8 @@ func NewBaseAccountWithDefaults() *BaseAccount {
 	this.Privileged = &privileged
 	var manuallyCorrelated bool = false
 	this.ManuallyCorrelated = &manuallyCorrelated
+	var supportsPasswordChange bool = false
+	this.SupportsPasswordChange = &supportsPasswordChange
 	return &this
 }
 
@@ -452,6 +460,71 @@ func (o *BaseAccount) UnsetCreated() {
 	o.Created.Unset()
 }
 
+// GetSupportsPasswordChange returns the SupportsPasswordChange field value if set, zero value otherwise.
+func (o *BaseAccount) GetSupportsPasswordChange() bool {
+	if o == nil || IsNil(o.SupportsPasswordChange) {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsPasswordChange
+}
+
+// GetSupportsPasswordChangeOk returns a tuple with the SupportsPasswordChange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseAccount) GetSupportsPasswordChangeOk() (*bool, bool) {
+	if o == nil || IsNil(o.SupportsPasswordChange) {
+		return nil, false
+	}
+	return o.SupportsPasswordChange, true
+}
+
+// HasSupportsPasswordChange returns a boolean if a field has been set.
+func (o *BaseAccount) HasSupportsPasswordChange() bool {
+	if o != nil && !IsNil(o.SupportsPasswordChange) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsPasswordChange gets a reference to the given bool and assigns it to the SupportsPasswordChange field.
+func (o *BaseAccount) SetSupportsPasswordChange(v bool) {
+	o.SupportsPasswordChange = &v
+}
+
+// GetAccountAttributes returns the AccountAttributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BaseAccount) GetAccountAttributes() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.AccountAttributes
+}
+
+// GetAccountAttributesOk returns a tuple with the AccountAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BaseAccount) GetAccountAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.AccountAttributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.AccountAttributes, true
+}
+
+// HasAccountAttributes returns a boolean if a field has been set.
+func (o *BaseAccount) HasAccountAttributes() bool {
+	if o != nil && !IsNil(o.AccountAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountAttributes gets a reference to the given map[string]interface{} and assigns it to the AccountAttributes field.
+func (o *BaseAccount) SetAccountAttributes(v map[string]interface{}) {
+	o.AccountAttributes = v
+}
+
 func (o BaseAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -495,6 +568,12 @@ func (o BaseAccount) ToMap() (map[string]interface{}, error) {
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
+	if !IsNil(o.SupportsPasswordChange) {
+		toSerialize["supportsPasswordChange"] = o.SupportsPasswordChange
+	}
+	if o.AccountAttributes != nil {
+		toSerialize["accountAttributes"] = o.AccountAttributes
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -528,6 +607,8 @@ func (o *BaseAccount) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "passwordLastSet")
 		delete(additionalProperties, "entitlementAttributes")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "supportsPasswordChange")
+		delete(additionalProperties, "accountAttributes")
 		o.AdditionalProperties = additionalProperties
 	}
 

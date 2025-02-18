@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** | Description of access item. | [optional] 
+**Type** | Pointer to **string** | Type of the access item. | [optional] 
 **Owner** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **Disabled** | Pointer to **bool** |  | [optional] 
 **Revocable** | Pointer to **bool** |  | [optional] 
@@ -107,31 +107,6 @@ SetDisplayName sets DisplayName field to given value.
 
 HasDisplayName returns a boolean if a field has been set.
 
-### GetType
-
-`func (o *AccessProfileRole) GetType() DtoType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AccessProfileRole) GetTypeOk() (*DtoType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AccessProfileRole) SetType(v DtoType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *AccessProfileRole) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *AccessProfileRole) GetDescription() string`
@@ -167,6 +142,31 @@ HasDescription returns a boolean if a field has been set.
 `func (o *AccessProfileRole) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetType
+
+`func (o *AccessProfileRole) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AccessProfileRole) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AccessProfileRole) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AccessProfileRole) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetOwner
 
 `func (o *AccessProfileRole) GetOwner() DisplayReference`

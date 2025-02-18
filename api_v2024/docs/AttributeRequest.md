@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Attribute name. | [optional] 
 **Op** | Pointer to **string** | Operation to perform on attribute. | [optional] 
-**Value** | Pointer to **string** | Value of attribute. | [optional] 
+**Value** | Pointer to [**AttributeRequestValue**](AttributeRequestValue.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasOp returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *AttributeRequest) GetValue() string`
+`func (o *AttributeRequest) GetValue() AttributeRequestValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AttributeRequest) GetValueOk() (*string, bool)`
+`func (o *AttributeRequest) GetValueOk() (*AttributeRequestValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AttributeRequest) SetValue(v string)`
+`func (o *AttributeRequest) SetValue(v AttributeRequestValue)`
 
 SetValue sets Value field to given value.
 

@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
+**Id** | Pointer to **string** | ID of the entitlement. | [optional] 
+**Name** | Pointer to **string** | Name of the entitlement. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **Synced** | Pointer to **string** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
 **Action** | Pointer to **string** | Name of the event as it&#39;s displayed in audit reports. | [optional] 
 **Type** | Pointer to **string** | Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings. | [optional] 
-**Actor** | Pointer to **string** | Name of the actor that generated the event. | [optional] 
-**Target** | Pointer to **string** | Name of the target, or recipient, of the event. | [optional] 
+**Actor** | Pointer to [**EventActor**](EventActor.md) |  | [optional] 
+**Target** | Pointer to [**EventTarget**](EventTarget.md) |  | [optional] 
 **Stack** | Pointer to **string** | The event&#39;s stack. | [optional] 
 **TrackingNumber** | Pointer to **string** | ID of the group of events. | [optional] 
 **IpAddress** | Pointer to **string** | Target system&#39;s IP address. | [optional] 
@@ -27,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewEventDocument
 
-`func NewEventDocument(id string, name string, type_ DocumentType, ) *EventDocument`
+`func NewEventDocument() *EventDocument`
 
 NewEventDocument instantiates a new EventDocument object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +60,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *EventDocument) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -81,26 +85,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
 
-### GetType
+`func (o *EventDocument) HasName() bool`
 
-`func (o *EventDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *EventDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *EventDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
-
+HasName returns a boolean if a field has been set.
 
 ### GetCreated
 
@@ -214,20 +203,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetActor
 
-`func (o *EventDocument) GetActor() string`
+`func (o *EventDocument) GetActor() EventActor`
 
 GetActor returns the Actor field if non-nil, zero value otherwise.
 
 ### GetActorOk
 
-`func (o *EventDocument) GetActorOk() (*string, bool)`
+`func (o *EventDocument) GetActorOk() (*EventActor, bool)`
 
 GetActorOk returns a tuple with the Actor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActor
 
-`func (o *EventDocument) SetActor(v string)`
+`func (o *EventDocument) SetActor(v EventActor)`
 
 SetActor sets Actor field to given value.
 
@@ -239,20 +228,20 @@ HasActor returns a boolean if a field has been set.
 
 ### GetTarget
 
-`func (o *EventDocument) GetTarget() string`
+`func (o *EventDocument) GetTarget() EventTarget`
 
 GetTarget returns the Target field if non-nil, zero value otherwise.
 
 ### GetTargetOk
 
-`func (o *EventDocument) GetTargetOk() (*string, bool)`
+`func (o *EventDocument) GetTargetOk() (*EventTarget, bool)`
 
 GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTarget
 
-`func (o *EventDocument) SetTarget(v string)`
+`func (o *EventDocument) SetTarget(v EventTarget)`
 
 SetTarget sets Target field to given value.
 

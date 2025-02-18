@@ -22,13 +22,12 @@ var _ MappedNullable = &Approval1{}
 type Approval1 struct {
 	Comments []ApprovalComment2 `json:"comments,omitempty"`
 	// A date-time in ISO-8601 format
-	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
 	Modified NullableTime `json:"modified,omitempty"`
-	Owner *AccountSource `json:"owner,omitempty"`
+	Owner *ActivityIdentity `json:"owner,omitempty"`
 	// The result of the approval
 	Result *string `json:"result,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	AttributeRequest *AttributeRequest `json:"attributeRequest,omitempty"`
+	Source *AccountSource `json:"source,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,48 +82,6 @@ func (o *Approval1) SetComments(v []ApprovalComment2) {
 	o.Comments = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Approval1) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
-		return ret
-	}
-	return *o.Created.Get()
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Approval1) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Created.Get(), o.Created.IsSet()
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *Approval1) HasCreated() bool {
-	if o != nil && o.Created.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *Approval1) SetCreated(v SailPointTime) {
-	o.Created.Set(&v)
-}
-// SetCreatedNil sets the value for Created to be an explicit nil
-func (o *Approval1) SetCreatedNil() {
-	o.Created.Set(nil)
-}
-
-// UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *Approval1) UnsetCreated() {
-	o.Created.Unset()
-}
-
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Approval1) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
@@ -168,9 +125,9 @@ func (o *Approval1) UnsetModified() {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *Approval1) GetOwner() AccountSource {
+func (o *Approval1) GetOwner() ActivityIdentity {
 	if o == nil || IsNil(o.Owner) {
-		var ret AccountSource
+		var ret ActivityIdentity
 		return ret
 	}
 	return *o.Owner
@@ -178,7 +135,7 @@ func (o *Approval1) GetOwner() AccountSource {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval1) GetOwnerOk() (*AccountSource, bool) {
+func (o *Approval1) GetOwnerOk() (*ActivityIdentity, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -194,8 +151,8 @@ func (o *Approval1) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given AccountSource and assigns it to the Owner field.
-func (o *Approval1) SetOwner(v AccountSource) {
+// SetOwner gets a reference to the given ActivityIdentity and assigns it to the Owner field.
+func (o *Approval1) SetOwner(v ActivityIdentity) {
 	o.Owner = &v
 }
 
@@ -231,46 +188,68 @@ func (o *Approval1) SetResult(v string) {
 	o.Result = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Approval1) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
-		var ret string
+// GetAttributeRequest returns the AttributeRequest field value if set, zero value otherwise.
+func (o *Approval1) GetAttributeRequest() AttributeRequest {
+	if o == nil || IsNil(o.AttributeRequest) {
+		var ret AttributeRequest
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.AttributeRequest
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetAttributeRequestOk returns a tuple with the AttributeRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Approval1) GetTypeOk() (*string, bool) {
-	if o == nil {
+func (o *Approval1) GetAttributeRequestOk() (*AttributeRequest, bool) {
+	if o == nil || IsNil(o.AttributeRequest) {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.AttributeRequest, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Approval1) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+// HasAttributeRequest returns a boolean if a field has been set.
+func (o *Approval1) HasAttributeRequest() bool {
+	if o != nil && !IsNil(o.AttributeRequest) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
-func (o *Approval1) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *Approval1) SetTypeNil() {
-	o.Type.Set(nil)
+// SetAttributeRequest gets a reference to the given AttributeRequest and assigns it to the AttributeRequest field.
+func (o *Approval1) SetAttributeRequest(v AttributeRequest) {
+	o.AttributeRequest = &v
 }
 
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *Approval1) UnsetType() {
-	o.Type.Unset()
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *Approval1) GetSource() AccountSource {
+	if o == nil || IsNil(o.Source) {
+		var ret AccountSource
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval1) GetSourceOk() (*AccountSource, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *Approval1) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given AccountSource and assigns it to the Source field.
+func (o *Approval1) SetSource(v AccountSource) {
+	o.Source = &v
 }
 
 func (o Approval1) MarshalJSON() ([]byte, error) {
@@ -286,9 +265,6 @@ func (o Approval1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
-	if o.Created.IsSet() {
-		toSerialize["created"] = o.Created.Get()
-	}
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
@@ -298,8 +274,11 @@ func (o Approval1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if !IsNil(o.AttributeRequest) {
+		toSerialize["attributeRequest"] = o.AttributeRequest
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -324,11 +303,11 @@ func (o *Approval1) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comments")
-		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "result")
-		delete(additionalProperties, "type")
+		delete(additionalProperties, "attributeRequest")
+		delete(additionalProperties, "source")
 		o.AdditionalProperties = additionalProperties
 	}
 

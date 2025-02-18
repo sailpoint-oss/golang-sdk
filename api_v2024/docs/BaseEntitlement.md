@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HasPermissions** | Pointer to **bool** | Indicates whether the entitlement has permissions. | [optional] [default to false]
-**Description** | Pointer to **string** | Entitlement&#39;s description. | [optional] 
+**Description** | Pointer to **NullableString** | Entitlement&#39;s description. | [optional] 
 **Attribute** | Pointer to **string** | Entitlement attribute&#39;s name. | [optional] 
 **Value** | Pointer to **string** | Entitlement&#39;s value. | [optional] 
 **Schema** | Pointer to **string** | Entitlement&#39;s schema. | [optional] 
@@ -82,6 +82,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *BaseEntitlement) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *BaseEntitlement) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAttribute
 
 `func (o *BaseEntitlement) GetAttribute() string`

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Errors** | Pointer to **[]string** |  | [optional] 
+**Errors** | Pointer to **[]string** | Error message. | [optional] 
 **Status** | Pointer to **string** | The status of the account request | [optional] 
-**TicketId** | Pointer to **NullableString** |  | [optional] 
+**TicketId** | Pointer to **NullableString** | ID of associated ticket. | [optional] 
 
 ## Methods
 

@@ -21,10 +21,6 @@ var _ MappedNullable = &AccessProfileDocument{}
 
 // AccessProfileDocument More complete representation of an access profile.  
 type AccessProfileDocument struct {
-	// Access profile's ID.
-	Id string `json:"id"`
-	// Access profile's name.
-	Name string `json:"name"`
 	// Access item's description.
 	Description *string `json:"description,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
@@ -39,16 +35,24 @@ type AccessProfileDocument struct {
 	Requestable *bool `json:"requestable,omitempty"`
 	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
-	// Access profile's document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice.
-	Type string `json:"_type"`
+	Owner *BaseAccessOwner `json:"owner,omitempty"`
+	// Access profile's ID.
+	Id string `json:"id"`
+	// Access profile's name.
+	Name string `json:"name"`
 	Source *AccessProfileDocumentAllOfSource `json:"source,omitempty"`
 	// Entitlements the access profile has access to.
 	Entitlements []BaseEntitlement `json:"entitlements,omitempty"`
 	// Number of entitlements.
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
+	// Segments with the access profile.
+	Segments []BaseSegment `json:"segments,omitempty"`
+	// Number of segments with the access profile.
+	SegmentCount *int32 `json:"segmentCount,omitempty"`
 	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
+	// Applications with the access profile
+	Apps []AccessApps `json:"apps,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,17 +62,16 @@ type _AccessProfileDocument AccessProfileDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfileDocument(id string, name string, type_ string) *AccessProfileDocument {
+func NewAccessProfileDocument(id string, name string) *AccessProfileDocument {
 	this := AccessProfileDocument{}
-	this.Id = id
-	this.Name = name
 	var enabled bool = false
 	this.Enabled = &enabled
 	var requestable bool = true
 	this.Requestable = &requestable
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
-	this.Type = type_
+	this.Id = id
+	this.Name = name
 	return &this
 }
 
@@ -84,54 +87,6 @@ func NewAccessProfileDocumentWithDefaults() *AccessProfileDocument {
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *AccessProfileDocument) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *AccessProfileDocument) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value
-func (o *AccessProfileDocument) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AccessProfileDocument) SetName(v string) {
-	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -389,9 +344,9 @@ func (o *AccessProfileDocument) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner {
+func (o *AccessProfileDocument) GetOwner() BaseAccessOwner {
 	if o == nil || IsNil(o.Owner) {
-		var ret BaseAccessAllOfOwner
+		var ret BaseAccessOwner
 		return ret
 	}
 	return *o.Owner
@@ -399,7 +354,7 @@ func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
+func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessOwner, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -415,33 +370,57 @@ func (o *AccessProfileDocument) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
-func (o *AccessProfileDocument) SetOwner(v BaseAccessAllOfOwner) {
+// SetOwner gets a reference to the given BaseAccessOwner and assigns it to the Owner field.
+func (o *AccessProfileDocument) SetOwner(v BaseAccessOwner) {
 	o.Owner = &v
 }
 
-// GetType returns the Type field value
-func (o *AccessProfileDocument) GetType() string {
+// GetId returns the Id field value
+func (o *AccessProfileDocument) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.Id
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetTypeOk() (*string, bool) {
+func (o *AccessProfileDocument) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.Id, true
 }
 
-// SetType sets field value
-func (o *AccessProfileDocument) SetType(v string) {
-	o.Type = v
+// SetId sets field value
+func (o *AccessProfileDocument) SetId(v string) {
+	o.Id = v
+}
+
+// GetName returns the Name field value
+func (o *AccessProfileDocument) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AccessProfileDocument) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AccessProfileDocument) SetName(v string) {
+	o.Name = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -540,6 +519,70 @@ func (o *AccessProfileDocument) SetEntitlementCount(v int32) {
 	o.EntitlementCount = &v
 }
 
+// GetSegments returns the Segments field value if set, zero value otherwise.
+func (o *AccessProfileDocument) GetSegments() []BaseSegment {
+	if o == nil || IsNil(o.Segments) {
+		var ret []BaseSegment
+		return ret
+	}
+	return o.Segments
+}
+
+// GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfileDocument) GetSegmentsOk() ([]BaseSegment, bool) {
+	if o == nil || IsNil(o.Segments) {
+		return nil, false
+	}
+	return o.Segments, true
+}
+
+// HasSegments returns a boolean if a field has been set.
+func (o *AccessProfileDocument) HasSegments() bool {
+	if o != nil && !IsNil(o.Segments) {
+		return true
+	}
+
+	return false
+}
+
+// SetSegments gets a reference to the given []BaseSegment and assigns it to the Segments field.
+func (o *AccessProfileDocument) SetSegments(v []BaseSegment) {
+	o.Segments = v
+}
+
+// GetSegmentCount returns the SegmentCount field value if set, zero value otherwise.
+func (o *AccessProfileDocument) GetSegmentCount() int32 {
+	if o == nil || IsNil(o.SegmentCount) {
+		var ret int32
+		return ret
+	}
+	return *o.SegmentCount
+}
+
+// GetSegmentCountOk returns a tuple with the SegmentCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfileDocument) GetSegmentCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.SegmentCount) {
+		return nil, false
+	}
+	return o.SegmentCount, true
+}
+
+// HasSegmentCount returns a boolean if a field has been set.
+func (o *AccessProfileDocument) HasSegmentCount() bool {
+	if o != nil && !IsNil(o.SegmentCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSegmentCount gets a reference to the given int32 and assigns it to the SegmentCount field.
+func (o *AccessProfileDocument) SetSegmentCount(v int32) {
+	o.SegmentCount = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -572,6 +615,38 @@ func (o *AccessProfileDocument) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetApps returns the Apps field value if set, zero value otherwise.
+func (o *AccessProfileDocument) GetApps() []AccessApps {
+	if o == nil || IsNil(o.Apps) {
+		var ret []AccessApps
+		return ret
+	}
+	return o.Apps
+}
+
+// GetAppsOk returns a tuple with the Apps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfileDocument) GetAppsOk() ([]AccessApps, bool) {
+	if o == nil || IsNil(o.Apps) {
+		return nil, false
+	}
+	return o.Apps, true
+}
+
+// HasApps returns a boolean if a field has been set.
+func (o *AccessProfileDocument) HasApps() bool {
+	if o != nil && !IsNil(o.Apps) {
+		return true
+	}
+
+	return false
+}
+
+// SetApps gets a reference to the given []AccessApps and assigns it to the Apps field.
+func (o *AccessProfileDocument) SetApps(v []AccessApps) {
+	o.Apps = v
+}
+
 func (o AccessProfileDocument) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -582,8 +657,6 @@ func (o AccessProfileDocument) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -608,7 +681,8 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	toSerialize["_type"] = o.Type
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
@@ -618,8 +692,17 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
+	if !IsNil(o.Segments) {
+		toSerialize["segments"] = o.Segments
+	}
+	if !IsNil(o.SegmentCount) {
+		toSerialize["segmentCount"] = o.SegmentCount
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Apps) {
+		toSerialize["apps"] = o.Apps
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -636,7 +719,6 @@ func (o *AccessProfileDocument) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -666,8 +748,6 @@ func (o *AccessProfileDocument) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
@@ -676,11 +756,15 @@ func (o *AccessProfileDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "requestCommentsRequired")
 		delete(additionalProperties, "owner")
-		delete(additionalProperties, "_type")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "entitlementCount")
+		delete(additionalProperties, "segments")
+		delete(additionalProperties, "segmentCount")
 		delete(additionalProperties, "tags")
+		delete(additionalProperties, "apps")
 		o.AdditionalProperties = additionalProperties
 	}
 

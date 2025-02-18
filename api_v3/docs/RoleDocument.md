@@ -4,9 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the referenced object. | 
-**Name** | **string** | The human readable name of the referenced object. | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
 **Description** | Pointer to **string** | Access item&#39;s description. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
@@ -14,20 +11,26 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Indicates whether the access item is currently enabled. | [optional] [default to false]
 **Requestable** | Pointer to **bool** | Indicates whether the access item can be requested. | [optional] [default to true]
 **RequestCommentsRequired** | Pointer to **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to false]
-**Owner** | Pointer to [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**Owner** | Pointer to [**BaseAccessOwner**](BaseAccessOwner.md) |  | [optional] 
+**Id** | **string** | ID of the role. | 
+**Name** | **string** | Name of the role. | 
 **AccessProfiles** | Pointer to [**[]BaseAccessProfile**](BaseAccessProfile.md) | Access profiles included with the role. | [optional] 
-**AccessProfileCount** | Pointer to **int32** | Number of access profiles included with the role. | [optional] 
+**AccessProfileCount** | Pointer to **NullableInt32** | Number of access profiles included with the role. | [optional] 
 **Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
 **Segments** | Pointer to [**[]BaseSegment**](BaseSegment.md) | Segments with the role. | [optional] 
-**SegmentCount** | Pointer to **int32** | Number of segments with the role. | [optional] 
-**Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) | Entitlements included with the role. | [optional] 
-**EntitlementCount** | Pointer to **int32** | Number of entitlements included with the role. | [optional] 
+**SegmentCount** | Pointer to **NullableInt32** | Number of segments with the role. | [optional] 
+**Entitlements** | Pointer to [**[]RoleDocumentAllOfEntitlements**](RoleDocumentAllOfEntitlements.md) | Entitlements included with the role. | [optional] 
+**EntitlementCount** | Pointer to **NullableInt32** | Number of entitlements included with the role. | [optional] 
+**Dimensional** | Pointer to **bool** |  | [optional] [default to false]
+**DimensionSchemaAttributeCount** | Pointer to **NullableInt32** | Number of dimension attributes included with the role. | [optional] 
+**DimensionSchemaAttributes** | Pointer to [**[]RoleDocumentAllOfDimensionSchemaAttributes**](RoleDocumentAllOfDimensionSchemaAttributes.md) | Dimension attributes included with the role. | [optional] 
+**Dimensions** | Pointer to [**[]RoleDocumentAllOfDimensions**](RoleDocumentAllOfDimensions.md) |  | [optional] 
 
 ## Methods
 
 ### NewRoleDocument
 
-`func NewRoleDocument(id string, name string, type_ DocumentType, ) *RoleDocument`
+`func NewRoleDocument(id string, name string, ) *RoleDocument`
 
 NewRoleDocument instantiates a new RoleDocument object
 This constructor will assign default values to properties that have it defined,
@@ -41,66 +44,6 @@ will change when the set of required properties is changed
 NewRoleDocumentWithDefaults instantiates a new RoleDocument object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *RoleDocument) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *RoleDocument) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *RoleDocument) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *RoleDocument) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *RoleDocument) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *RoleDocument) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### GetType
-
-`func (o *RoleDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RoleDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RoleDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
-
 
 ### GetDescription
 
@@ -309,20 +252,20 @@ HasRequestCommentsRequired returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner`
+`func (o *RoleDocument) GetOwner() BaseAccessOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool)`
+`func (o *RoleDocument) GetOwnerOk() (*BaseAccessOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *RoleDocument) SetOwner(v BaseAccessAllOfOwner)`
+`func (o *RoleDocument) SetOwner(v BaseAccessOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -331,6 +274,46 @@ SetOwner sets Owner field to given value.
 `func (o *RoleDocument) HasOwner() bool`
 
 HasOwner returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *RoleDocument) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *RoleDocument) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *RoleDocument) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetName
+
+`func (o *RoleDocument) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *RoleDocument) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *RoleDocument) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetAccessProfiles
 
@@ -357,6 +340,16 @@ SetAccessProfiles sets AccessProfiles field to given value.
 
 HasAccessProfiles returns a boolean if a field has been set.
 
+### SetAccessProfilesNil
+
+`func (o *RoleDocument) SetAccessProfilesNil(b bool)`
+
+ SetAccessProfilesNil sets the value for AccessProfiles to be an explicit nil
+
+### UnsetAccessProfiles
+`func (o *RoleDocument) UnsetAccessProfiles()`
+
+UnsetAccessProfiles ensures that no value is present for AccessProfiles, not even an explicit nil
 ### GetAccessProfileCount
 
 `func (o *RoleDocument) GetAccessProfileCount() int32`
@@ -382,6 +375,16 @@ SetAccessProfileCount sets AccessProfileCount field to given value.
 
 HasAccessProfileCount returns a boolean if a field has been set.
 
+### SetAccessProfileCountNil
+
+`func (o *RoleDocument) SetAccessProfileCountNil(b bool)`
+
+ SetAccessProfileCountNil sets the value for AccessProfileCount to be an explicit nil
+
+### UnsetAccessProfileCount
+`func (o *RoleDocument) UnsetAccessProfileCount()`
+
+UnsetAccessProfileCount ensures that no value is present for AccessProfileCount, not even an explicit nil
 ### GetTags
 
 `func (o *RoleDocument) GetTags() []string`
@@ -432,6 +435,16 @@ SetSegments sets Segments field to given value.
 
 HasSegments returns a boolean if a field has been set.
 
+### SetSegmentsNil
+
+`func (o *RoleDocument) SetSegmentsNil(b bool)`
+
+ SetSegmentsNil sets the value for Segments to be an explicit nil
+
+### UnsetSegments
+`func (o *RoleDocument) UnsetSegments()`
+
+UnsetSegments ensures that no value is present for Segments, not even an explicit nil
 ### GetSegmentCount
 
 `func (o *RoleDocument) GetSegmentCount() int32`
@@ -457,22 +470,32 @@ SetSegmentCount sets SegmentCount field to given value.
 
 HasSegmentCount returns a boolean if a field has been set.
 
+### SetSegmentCountNil
+
+`func (o *RoleDocument) SetSegmentCountNil(b bool)`
+
+ SetSegmentCountNil sets the value for SegmentCount to be an explicit nil
+
+### UnsetSegmentCount
+`func (o *RoleDocument) UnsetSegmentCount()`
+
+UnsetSegmentCount ensures that no value is present for SegmentCount, not even an explicit nil
 ### GetEntitlements
 
-`func (o *RoleDocument) GetEntitlements() []BaseEntitlement`
+`func (o *RoleDocument) GetEntitlements() []RoleDocumentAllOfEntitlements`
 
 GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
 
 ### GetEntitlementsOk
 
-`func (o *RoleDocument) GetEntitlementsOk() (*[]BaseEntitlement, bool)`
+`func (o *RoleDocument) GetEntitlementsOk() (*[]RoleDocumentAllOfEntitlements, bool)`
 
 GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlements
 
-`func (o *RoleDocument) SetEntitlements(v []BaseEntitlement)`
+`func (o *RoleDocument) SetEntitlements(v []RoleDocumentAllOfEntitlements)`
 
 SetEntitlements sets Entitlements field to given value.
 
@@ -482,6 +505,16 @@ SetEntitlements sets Entitlements field to given value.
 
 HasEntitlements returns a boolean if a field has been set.
 
+### SetEntitlementsNil
+
+`func (o *RoleDocument) SetEntitlementsNil(b bool)`
+
+ SetEntitlementsNil sets the value for Entitlements to be an explicit nil
+
+### UnsetEntitlements
+`func (o *RoleDocument) UnsetEntitlements()`
+
+UnsetEntitlements ensures that no value is present for Entitlements, not even an explicit nil
 ### GetEntitlementCount
 
 `func (o *RoleDocument) GetEntitlementCount() int32`
@@ -507,6 +540,146 @@ SetEntitlementCount sets EntitlementCount field to given value.
 
 HasEntitlementCount returns a boolean if a field has been set.
 
+### SetEntitlementCountNil
+
+`func (o *RoleDocument) SetEntitlementCountNil(b bool)`
+
+ SetEntitlementCountNil sets the value for EntitlementCount to be an explicit nil
+
+### UnsetEntitlementCount
+`func (o *RoleDocument) UnsetEntitlementCount()`
+
+UnsetEntitlementCount ensures that no value is present for EntitlementCount, not even an explicit nil
+### GetDimensional
+
+`func (o *RoleDocument) GetDimensional() bool`
+
+GetDimensional returns the Dimensional field if non-nil, zero value otherwise.
+
+### GetDimensionalOk
+
+`func (o *RoleDocument) GetDimensionalOk() (*bool, bool)`
+
+GetDimensionalOk returns a tuple with the Dimensional field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensional
+
+`func (o *RoleDocument) SetDimensional(v bool)`
+
+SetDimensional sets Dimensional field to given value.
+
+### HasDimensional
+
+`func (o *RoleDocument) HasDimensional() bool`
+
+HasDimensional returns a boolean if a field has been set.
+
+### GetDimensionSchemaAttributeCount
+
+`func (o *RoleDocument) GetDimensionSchemaAttributeCount() int32`
+
+GetDimensionSchemaAttributeCount returns the DimensionSchemaAttributeCount field if non-nil, zero value otherwise.
+
+### GetDimensionSchemaAttributeCountOk
+
+`func (o *RoleDocument) GetDimensionSchemaAttributeCountOk() (*int32, bool)`
+
+GetDimensionSchemaAttributeCountOk returns a tuple with the DimensionSchemaAttributeCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensionSchemaAttributeCount
+
+`func (o *RoleDocument) SetDimensionSchemaAttributeCount(v int32)`
+
+SetDimensionSchemaAttributeCount sets DimensionSchemaAttributeCount field to given value.
+
+### HasDimensionSchemaAttributeCount
+
+`func (o *RoleDocument) HasDimensionSchemaAttributeCount() bool`
+
+HasDimensionSchemaAttributeCount returns a boolean if a field has been set.
+
+### SetDimensionSchemaAttributeCountNil
+
+`func (o *RoleDocument) SetDimensionSchemaAttributeCountNil(b bool)`
+
+ SetDimensionSchemaAttributeCountNil sets the value for DimensionSchemaAttributeCount to be an explicit nil
+
+### UnsetDimensionSchemaAttributeCount
+`func (o *RoleDocument) UnsetDimensionSchemaAttributeCount()`
+
+UnsetDimensionSchemaAttributeCount ensures that no value is present for DimensionSchemaAttributeCount, not even an explicit nil
+### GetDimensionSchemaAttributes
+
+`func (o *RoleDocument) GetDimensionSchemaAttributes() []RoleDocumentAllOfDimensionSchemaAttributes`
+
+GetDimensionSchemaAttributes returns the DimensionSchemaAttributes field if non-nil, zero value otherwise.
+
+### GetDimensionSchemaAttributesOk
+
+`func (o *RoleDocument) GetDimensionSchemaAttributesOk() (*[]RoleDocumentAllOfDimensionSchemaAttributes, bool)`
+
+GetDimensionSchemaAttributesOk returns a tuple with the DimensionSchemaAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensionSchemaAttributes
+
+`func (o *RoleDocument) SetDimensionSchemaAttributes(v []RoleDocumentAllOfDimensionSchemaAttributes)`
+
+SetDimensionSchemaAttributes sets DimensionSchemaAttributes field to given value.
+
+### HasDimensionSchemaAttributes
+
+`func (o *RoleDocument) HasDimensionSchemaAttributes() bool`
+
+HasDimensionSchemaAttributes returns a boolean if a field has been set.
+
+### SetDimensionSchemaAttributesNil
+
+`func (o *RoleDocument) SetDimensionSchemaAttributesNil(b bool)`
+
+ SetDimensionSchemaAttributesNil sets the value for DimensionSchemaAttributes to be an explicit nil
+
+### UnsetDimensionSchemaAttributes
+`func (o *RoleDocument) UnsetDimensionSchemaAttributes()`
+
+UnsetDimensionSchemaAttributes ensures that no value is present for DimensionSchemaAttributes, not even an explicit nil
+### GetDimensions
+
+`func (o *RoleDocument) GetDimensions() []RoleDocumentAllOfDimensions`
+
+GetDimensions returns the Dimensions field if non-nil, zero value otherwise.
+
+### GetDimensionsOk
+
+`func (o *RoleDocument) GetDimensionsOk() (*[]RoleDocumentAllOfDimensions, bool)`
+
+GetDimensionsOk returns a tuple with the Dimensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensions
+
+`func (o *RoleDocument) SetDimensions(v []RoleDocumentAllOfDimensions)`
+
+SetDimensions sets Dimensions field to given value.
+
+### HasDimensions
+
+`func (o *RoleDocument) HasDimensions() bool`
+
+HasDimensions returns a boolean if a field has been set.
+
+### SetDimensionsNil
+
+`func (o *RoleDocument) SetDimensionsNil(b bool)`
+
+ SetDimensionsNil sets the value for Dimensions to be an explicit nil
+
+### UnsetDimensions
+`func (o *RoleDocument) UnsetDimensions()`
+
+UnsetDimensions ensures that no value is present for Dimensions, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

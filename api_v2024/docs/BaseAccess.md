@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
-**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **Description** | Pointer to **string** | Access item&#39;s description. | [optional] 
 **Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
@@ -13,7 +11,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Indicates whether the access item is currently enabled. | [optional] [default to false]
 **Requestable** | Pointer to **bool** | Indicates whether the access item can be requested. | [optional] [default to true]
 **RequestCommentsRequired** | Pointer to **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to false]
-**Owner** | Pointer to [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**Owner** | Pointer to [**BaseAccessOwner**](BaseAccessOwner.md) |  | [optional] 
 
 ## Methods
 
@@ -33,56 +31,6 @@ will change when the set of required properties is changed
 NewBaseAccessWithDefaults instantiates a new BaseAccess object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *BaseAccess) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *BaseAccess) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *BaseAccess) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *BaseAccess) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *BaseAccess) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *BaseAccess) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *BaseAccess) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *BaseAccess) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -291,20 +239,20 @@ HasRequestCommentsRequired returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner`
+`func (o *BaseAccess) GetOwner() BaseAccessOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *BaseAccess) GetOwnerOk() (*BaseAccessAllOfOwner, bool)`
+`func (o *BaseAccess) GetOwnerOk() (*BaseAccessOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *BaseAccess) SetOwner(v BaseAccessAllOfOwner)`
+`func (o *BaseAccess) SetOwner(v BaseAccessOwner)`
 
 SetOwner sets Owner field to given value.
 

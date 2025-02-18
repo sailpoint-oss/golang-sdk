@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | ID of entitlement&#39;s source. | [optional] 
 **Name** | Pointer to **string** | Display name of entitlement&#39;s source. | [optional] 
+**Type** | Pointer to **string** | Type of object. | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetName sets Name field to given value.
 `func (o *EntitlementDocumentAllOfSource) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *EntitlementDocumentAllOfSource) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *EntitlementDocumentAllOfSource) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *EntitlementDocumentAllOfSource) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *EntitlementDocumentAllOfSource) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

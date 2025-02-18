@@ -23,8 +23,7 @@ type AttributeRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Operation to perform on attribute.
 	Op *string `json:"op,omitempty"`
-	// Value of attribute.
-	Value *string `json:"value,omitempty"`
+	Value *AttributeRequestValue `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,9 +111,9 @@ func (o *AttributeRequest) SetOp(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *AttributeRequest) GetValue() string {
+func (o *AttributeRequest) GetValue() AttributeRequestValue {
 	if o == nil || IsNil(o.Value) {
-		var ret string
+		var ret AttributeRequestValue
 		return ret
 	}
 	return *o.Value
@@ -122,7 +121,7 @@ func (o *AttributeRequest) GetValue() string {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AttributeRequest) GetValueOk() (*string, bool) {
+func (o *AttributeRequest) GetValueOk() (*AttributeRequestValue, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -138,8 +137,8 @@ func (o *AttributeRequest) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *AttributeRequest) SetValue(v string) {
+// SetValue gets a reference to the given AttributeRequestValue and assigns it to the Value field.
+func (o *AttributeRequest) SetValue(v AttributeRequestValue) {
 	o.Value = &v
 }
 

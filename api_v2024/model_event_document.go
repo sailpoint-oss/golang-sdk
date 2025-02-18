@@ -13,7 +13,6 @@ package api_v2024
 import (
 	"encoding/json"
 	
-	"fmt"
 )
 
 // checks if the EventDocument type satisfies the MappedNullable interface at compile time
@@ -21,9 +20,10 @@ var _ MappedNullable = &EventDocument{}
 
 // EventDocument Event
 type EventDocument struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	DocumentType DocumentType `json:"_type"`
+	// ID of the entitlement.
+	Id *string `json:"id,omitempty"`
+	// Name of the entitlement.
+	Name *string `json:"name,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
 	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
@@ -32,10 +32,8 @@ type EventDocument struct {
 	Action *string `json:"action,omitempty"`
 	// Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings.
 	Type *string `json:"type,omitempty"`
-	// Name of the actor that generated the event.
-	Actor *string `json:"actor,omitempty"`
-	// Name of the target, or recipient, of the event.
-	Target *string `json:"target,omitempty"`
+	Actor *EventActor `json:"actor,omitempty"`
+	Target *EventTarget `json:"target,omitempty"`
 	// The event's stack.
 	Stack *string `json:"stack,omitempty"`
 	// ID of the group of events.
@@ -63,11 +61,8 @@ type _EventDocument EventDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEventDocument(id string, name string, type_ DocumentType) *EventDocument {
+func NewEventDocument() *EventDocument {
 	this := EventDocument{}
-	this.Id = id
-	this.Name = name
-	this.DocumentType = type_
 	return &this
 }
 
@@ -79,76 +74,68 @@ func NewEventDocumentWithDefaults() *EventDocument {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *EventDocument) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *EventDocument) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EventDocument) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EventDocument) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *EventDocument) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EventDocument) SetName(v string) {
-	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *EventDocument) GetDocumentType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.DocumentType
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *EventDocument) GetDocumentTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DocumentType, true
-}
-
-// SetType sets field value
-func (o *EventDocument) SetDocumentType(v DocumentType) {
-	o.DocumentType = v
+	o.Name = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -290,9 +277,9 @@ func (o *EventDocument) SetType(v string) {
 }
 
 // GetActor returns the Actor field value if set, zero value otherwise.
-func (o *EventDocument) GetActor() string {
+func (o *EventDocument) GetActor() EventActor {
 	if o == nil || IsNil(o.Actor) {
-		var ret string
+		var ret EventActor
 		return ret
 	}
 	return *o.Actor
@@ -300,7 +287,7 @@ func (o *EventDocument) GetActor() string {
 
 // GetActorOk returns a tuple with the Actor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventDocument) GetActorOk() (*string, bool) {
+func (o *EventDocument) GetActorOk() (*EventActor, bool) {
 	if o == nil || IsNil(o.Actor) {
 		return nil, false
 	}
@@ -316,15 +303,15 @@ func (o *EventDocument) HasActor() bool {
 	return false
 }
 
-// SetActor gets a reference to the given string and assigns it to the Actor field.
-func (o *EventDocument) SetActor(v string) {
+// SetActor gets a reference to the given EventActor and assigns it to the Actor field.
+func (o *EventDocument) SetActor(v EventActor) {
 	o.Actor = &v
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
-func (o *EventDocument) GetTarget() string {
+func (o *EventDocument) GetTarget() EventTarget {
 	if o == nil || IsNil(o.Target) {
-		var ret string
+		var ret EventTarget
 		return ret
 	}
 	return *o.Target
@@ -332,7 +319,7 @@ func (o *EventDocument) GetTarget() string {
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventDocument) GetTargetOk() (*string, bool) {
+func (o *EventDocument) GetTargetOk() (*EventTarget, bool) {
 	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
@@ -348,8 +335,8 @@ func (o *EventDocument) HasTarget() bool {
 	return false
 }
 
-// SetTarget gets a reference to the given string and assigns it to the Target field.
-func (o *EventDocument) SetTarget(v string) {
+// SetTarget gets a reference to the given EventTarget and assigns it to the Target field.
+func (o *EventDocument) SetTarget(v EventTarget) {
 	o.Target = &v
 }
 
@@ -651,9 +638,12 @@ func (o EventDocument) MarshalJSON() ([]byte, error) {
 
 func (o EventDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
@@ -708,29 +698,6 @@ func (o EventDocument) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *EventDocument) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"_type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varEventDocument := _EventDocument{}
 
 	err = json.Unmarshal(data, &varEventDocument)
@@ -746,7 +713,6 @@ func (o *EventDocument) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "synced")
 		delete(additionalProperties, "action")

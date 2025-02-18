@@ -24,7 +24,7 @@ type Access struct {
 	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
-	Type *DtoType `json:"type,omitempty"`
+	// Description of access item.
 	Description NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -144,38 +144,6 @@ func (o *Access) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Access) GetType() DtoType {
-	if o == nil || IsNil(o.Type) {
-		var ret DtoType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Access) GetTypeOk() (*DtoType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Access) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *Access) SetType(v DtoType) {
-	o.Type = &v
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Access) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
@@ -237,9 +205,6 @@ func (o Access) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -268,7 +233,6 @@ func (o *Access) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -24,8 +24,10 @@ type AccessProfileSummary struct {
 	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
-	Type *DtoType `json:"type,omitempty"`
+	// Description of access item.
 	Description NullableString `json:"description,omitempty"`
+	// Type of the access item.
+	Type *string `json:"type,omitempty"`
 	Source *Reference `json:"source,omitempty"`
 	Owner *DisplayReference `json:"owner,omitempty"`
 	Revocable *bool `json:"revocable,omitempty"`
@@ -147,38 +149,6 @@ func (o *AccessProfileSummary) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AccessProfileSummary) GetType() DtoType {
-	if o == nil || IsNil(o.Type) {
-		var ret DtoType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessProfileSummary) GetTypeOk() (*DtoType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AccessProfileSummary) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *AccessProfileSummary) SetType(v DtoType) {
-	o.Type = &v
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileSummary) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
@@ -219,6 +189,38 @@ func (o *AccessProfileSummary) SetDescriptionNil() {
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
 func (o *AccessProfileSummary) UnsetDescription() {
 	o.Description.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AccessProfileSummary) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfileSummary) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AccessProfileSummary) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AccessProfileSummary) SetType(v string) {
+	o.Type = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -336,11 +338,11 @@ func (o AccessProfileSummary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -376,8 +378,8 @@ func (o *AccessProfileSummary) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "revocable")

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | Pointer to **string** | Account ID. | [optional] 
+**Result** | Pointer to [**Result**](Result.md) |  | [optional] 
 **AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) | Attribute changes requested for account. | [optional] 
 **Op** | Pointer to **string** | Operation used. | [optional] 
 **Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
@@ -52,6 +53,31 @@ SetAccountId sets AccountId field to given value.
 `func (o *OriginalRequest) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetResult
+
+`func (o *OriginalRequest) GetResult() Result`
+
+GetResult returns the Result field if non-nil, zero value otherwise.
+
+### GetResultOk
+
+`func (o *OriginalRequest) GetResultOk() (*Result, bool)`
+
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResult
+
+`func (o *OriginalRequest) SetResult(v Result)`
+
+SetResult sets Result field to given value.
+
+### HasResult
+
+`func (o *OriginalRequest) HasResult() bool`
+
+HasResult returns a boolean if a field has been set.
 
 ### GetAttributeRequests
 

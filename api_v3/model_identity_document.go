@@ -25,7 +25,6 @@ type IdentityDocument struct {
 	Id string `json:"id"`
 	// The human readable name of the referenced object.
 	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
 	// Identity's display name.
 	DisplayName *string `json:"displayName,omitempty"`
 	// Identity's first name.
@@ -57,6 +56,10 @@ type IdentityDocument struct {
 	Source *IdentityDocumentAllOfSource `json:"source,omitempty"`
 	// Map or dictionary of key/value pairs.
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	// Indicates whether the identity is disabled.
+	Disabled *bool `json:"disabled,omitempty"`
+	// Indicates whether the identity is locked.
+	Locked *bool `json:"locked,omitempty"`
 	// Identity's processing state.
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	ProcessingDetails *ProcessingDetails `json:"processingDetails,omitempty"`
@@ -84,6 +87,12 @@ type IdentityDocument struct {
 	OwnsCount *int32 `json:"ownsCount,omitempty"`
 	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
+	// Number of tags on the identity.
+	TagsCount *int32 `json:"tagsCount,omitempty"`
+	// List of segments that the identity is in.
+	VisibleSegments []string `json:"visibleSegments,omitempty"`
+	// Number of segments the identity is in.
+	VisibleSegmentCount *int32 `json:"visibleSegmentCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -93,15 +102,18 @@ type _IdentityDocument IdentityDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityDocument(id string, name string, type_ DocumentType) *IdentityDocument {
+func NewIdentityDocument(id string, name string) *IdentityDocument {
 	this := IdentityDocument{}
 	this.Id = id
 	this.Name = name
-	this.Type = type_
 	var inactive bool = false
 	this.Inactive = &inactive
 	var protected bool = false
 	this.Protected = &protected
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
 	return &this
 }
 
@@ -114,6 +126,10 @@ func NewIdentityDocumentWithDefaults() *IdentityDocument {
 	this.Inactive = &inactive
 	var protected bool = false
 	this.Protected = &protected
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
 	return &this
 }
 
@@ -163,30 +179,6 @@ func (o *IdentityDocument) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *IdentityDocument) SetName(v string) {
 	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *IdentityDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *IdentityDocument) SetType(v DocumentType) {
-	o.Type = v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -763,6 +755,70 @@ func (o *IdentityDocument) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetDisabled returns the Disabled field value if set, zero value otherwise.
+func (o *IdentityDocument) GetDisabled() bool {
+	if o == nil || IsNil(o.Disabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Disabled
+}
+
+// GetDisabledOk returns a tuple with the Disabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Disabled) {
+		return nil, false
+	}
+	return o.Disabled, true
+}
+
+// HasDisabled returns a boolean if a field has been set.
+func (o *IdentityDocument) HasDisabled() bool {
+	if o != nil && !IsNil(o.Disabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisabled gets a reference to the given bool and assigns it to the Disabled field.
+func (o *IdentityDocument) SetDisabled(v bool) {
+	o.Disabled = &v
+}
+
+// GetLocked returns the Locked field value if set, zero value otherwise.
+func (o *IdentityDocument) GetLocked() bool {
+	if o == nil || IsNil(o.Locked) {
+		var ret bool
+		return ret
+	}
+	return *o.Locked
+}
+
+// GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetLockedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Locked) {
+		return nil, false
+	}
+	return o.Locked, true
+}
+
+// HasLocked returns a boolean if a field has been set.
+func (o *IdentityDocument) HasLocked() bool {
+	if o != nil && !IsNil(o.Locked) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocked gets a reference to the given bool and assigns it to the Locked field.
+func (o *IdentityDocument) SetLocked(v bool) {
+	o.Locked = &v
+}
+
 // GetProcessingState returns the ProcessingState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityDocument) GetProcessingState() string {
 	if o == nil || IsNil(o.ProcessingState.Get()) {
@@ -1221,6 +1277,103 @@ func (o *IdentityDocument) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetTagsCount returns the TagsCount field value if set, zero value otherwise.
+func (o *IdentityDocument) GetTagsCount() int32 {
+	if o == nil || IsNil(o.TagsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TagsCount
+}
+
+// GetTagsCountOk returns a tuple with the TagsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetTagsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TagsCount) {
+		return nil, false
+	}
+	return o.TagsCount, true
+}
+
+// HasTagsCount returns a boolean if a field has been set.
+func (o *IdentityDocument) HasTagsCount() bool {
+	if o != nil && !IsNil(o.TagsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTagsCount gets a reference to the given int32 and assigns it to the TagsCount field.
+func (o *IdentityDocument) SetTagsCount(v int32) {
+	o.TagsCount = &v
+}
+
+// GetVisibleSegments returns the VisibleSegments field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentityDocument) GetVisibleSegments() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.VisibleSegments
+}
+
+// GetVisibleSegmentsOk returns a tuple with the VisibleSegments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentityDocument) GetVisibleSegmentsOk() ([]string, bool) {
+	if o == nil || IsNil(o.VisibleSegments) {
+		return nil, false
+	}
+	return o.VisibleSegments, true
+}
+
+// HasVisibleSegments returns a boolean if a field has been set.
+func (o *IdentityDocument) HasVisibleSegments() bool {
+	if o != nil && !IsNil(o.VisibleSegments) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibleSegments gets a reference to the given []string and assigns it to the VisibleSegments field.
+func (o *IdentityDocument) SetVisibleSegments(v []string) {
+	o.VisibleSegments = v
+}
+
+// GetVisibleSegmentCount returns the VisibleSegmentCount field value if set, zero value otherwise.
+func (o *IdentityDocument) GetVisibleSegmentCount() int32 {
+	if o == nil || IsNil(o.VisibleSegmentCount) {
+		var ret int32
+		return ret
+	}
+	return *o.VisibleSegmentCount
+}
+
+// GetVisibleSegmentCountOk returns a tuple with the VisibleSegmentCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetVisibleSegmentCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.VisibleSegmentCount) {
+		return nil, false
+	}
+	return o.VisibleSegmentCount, true
+}
+
+// HasVisibleSegmentCount returns a boolean if a field has been set.
+func (o *IdentityDocument) HasVisibleSegmentCount() bool {
+	if o != nil && !IsNil(o.VisibleSegmentCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisibleSegmentCount gets a reference to the given int32 and assigns it to the VisibleSegmentCount field.
+func (o *IdentityDocument) SetVisibleSegmentCount(v int32) {
+	o.VisibleSegmentCount = &v
+}
+
 func (o IdentityDocument) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1233,7 +1386,6 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
@@ -1285,6 +1437,12 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+	if !IsNil(o.Disabled) {
+		toSerialize["disabled"] = o.Disabled
+	}
+	if !IsNil(o.Locked) {
+		toSerialize["locked"] = o.Locked
+	}
 	if o.ProcessingState.IsSet() {
 		toSerialize["processingState"] = o.ProcessingState.Get()
 	}
@@ -1327,6 +1485,15 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
+	if !IsNil(o.TagsCount) {
+		toSerialize["tagsCount"] = o.TagsCount
+	}
+	if o.VisibleSegments != nil {
+		toSerialize["visibleSegments"] = o.VisibleSegments
+	}
+	if !IsNil(o.VisibleSegmentCount) {
+		toSerialize["visibleSegmentCount"] = o.VisibleSegmentCount
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1342,7 +1509,6 @@ func (o *IdentityDocument) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1374,7 +1540,6 @@ func (o *IdentityDocument) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "firstName")
 		delete(additionalProperties, "lastName")
@@ -1392,6 +1557,8 @@ func (o *IdentityDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "identityProfile")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "disabled")
+		delete(additionalProperties, "locked")
 		delete(additionalProperties, "processingState")
 		delete(additionalProperties, "processingDetails")
 		delete(additionalProperties, "accounts")
@@ -1406,6 +1573,9 @@ func (o *IdentityDocument) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "owns")
 		delete(additionalProperties, "ownsCount")
 		delete(additionalProperties, "tags")
+		delete(additionalProperties, "tagsCount")
+		delete(additionalProperties, "visibleSegments")
+		delete(additionalProperties, "visibleSegmentCount")
 		o.AdditionalProperties = additionalProperties
 	}
 

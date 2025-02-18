@@ -21,6 +21,7 @@ var _ MappedNullable = &OriginalRequest{}
 type OriginalRequest struct {
 	// Account ID.
 	AccountId *string `json:"accountId,omitempty"`
+	Result *Result `json:"result,omitempty"`
 	// Attribute changes requested for account.
 	AttributeRequests []AttributeRequest `json:"attributeRequests,omitempty"`
 	// Operation used.
@@ -78,6 +79,38 @@ func (o *OriginalRequest) HasAccountId() bool {
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *OriginalRequest) SetAccountId(v string) {
 	o.AccountId = &v
+}
+
+// GetResult returns the Result field value if set, zero value otherwise.
+func (o *OriginalRequest) GetResult() Result {
+	if o == nil || IsNil(o.Result) {
+		var ret Result
+		return ret
+	}
+	return *o.Result
+}
+
+// GetResultOk returns a tuple with the Result field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OriginalRequest) GetResultOk() (*Result, bool) {
+	if o == nil || IsNil(o.Result) {
+		return nil, false
+	}
+	return o.Result, true
+}
+
+// HasResult returns a boolean if a field has been set.
+func (o *OriginalRequest) HasResult() bool {
+	if o != nil && !IsNil(o.Result) {
+		return true
+	}
+
+	return false
+}
+
+// SetResult gets a reference to the given Result and assigns it to the Result field.
+func (o *OriginalRequest) SetResult(v Result) {
+	o.Result = &v
 }
 
 // GetAttributeRequests returns the AttributeRequests field value if set, zero value otherwise.
@@ -189,6 +222,9 @@ func (o OriginalRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
+	if !IsNil(o.Result) {
+		toSerialize["result"] = o.Result
+	}
 	if !IsNil(o.AttributeRequests) {
 		toSerialize["attributeRequests"] = o.AttributeRequests
 	}
@@ -221,6 +257,7 @@ func (o *OriginalRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "result")
 		delete(additionalProperties, "attributeRequests")
 		delete(additionalProperties, "op")
 		delete(additionalProperties, "source")

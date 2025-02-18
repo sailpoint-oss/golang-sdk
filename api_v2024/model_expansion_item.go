@@ -21,11 +21,16 @@ var _ MappedNullable = &ExpansionItem{}
 type ExpansionItem struct {
 	// The ID of the account
 	AccountId *string `json:"accountId,omitempty"`
+	// Cause of the expansion item.
 	Cause *string `json:"cause,omitempty"`
 	// The name of the item
 	Name *string `json:"name,omitempty"`
-	AttributeRequests []AttributeRequest `json:"attributeRequests,omitempty"`
+	AttributeRequest *AttributeRequest `json:"attributeRequest,omitempty"`
 	Source *AccountSource `json:"source,omitempty"`
+	// ID of the expansion item
+	Id *string `json:"id,omitempty"`
+	// State of the expansion item
+	State *string `json:"state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,36 +149,36 @@ func (o *ExpansionItem) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAttributeRequests returns the AttributeRequests field value if set, zero value otherwise.
-func (o *ExpansionItem) GetAttributeRequests() []AttributeRequest {
-	if o == nil || IsNil(o.AttributeRequests) {
-		var ret []AttributeRequest
+// GetAttributeRequest returns the AttributeRequest field value if set, zero value otherwise.
+func (o *ExpansionItem) GetAttributeRequest() AttributeRequest {
+	if o == nil || IsNil(o.AttributeRequest) {
+		var ret AttributeRequest
 		return ret
 	}
-	return o.AttributeRequests
+	return *o.AttributeRequest
 }
 
-// GetAttributeRequestsOk returns a tuple with the AttributeRequests field value if set, nil otherwise
+// GetAttributeRequestOk returns a tuple with the AttributeRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExpansionItem) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
-	if o == nil || IsNil(o.AttributeRequests) {
+func (o *ExpansionItem) GetAttributeRequestOk() (*AttributeRequest, bool) {
+	if o == nil || IsNil(o.AttributeRequest) {
 		return nil, false
 	}
-	return o.AttributeRequests, true
+	return o.AttributeRequest, true
 }
 
-// HasAttributeRequests returns a boolean if a field has been set.
-func (o *ExpansionItem) HasAttributeRequests() bool {
-	if o != nil && !IsNil(o.AttributeRequests) {
+// HasAttributeRequest returns a boolean if a field has been set.
+func (o *ExpansionItem) HasAttributeRequest() bool {
+	if o != nil && !IsNil(o.AttributeRequest) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeRequests gets a reference to the given []AttributeRequest and assigns it to the AttributeRequests field.
-func (o *ExpansionItem) SetAttributeRequests(v []AttributeRequest) {
-	o.AttributeRequests = v
+// SetAttributeRequest gets a reference to the given AttributeRequest and assigns it to the AttributeRequest field.
+func (o *ExpansionItem) SetAttributeRequest(v AttributeRequest) {
+	o.AttributeRequest = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -208,6 +213,70 @@ func (o *ExpansionItem) SetSource(v AccountSource) {
 	o.Source = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ExpansionItem) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExpansionItem) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ExpansionItem) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ExpansionItem) SetId(v string) {
+	o.Id = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *ExpansionItem) GetState() string {
+	if o == nil || IsNil(o.State) {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExpansionItem) GetStateOk() (*string, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *ExpansionItem) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *ExpansionItem) SetState(v string) {
+	o.State = &v
+}
+
 func (o ExpansionItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -227,11 +296,17 @@ func (o ExpansionItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.AttributeRequests) {
-		toSerialize["attributeRequests"] = o.AttributeRequests
+	if !IsNil(o.AttributeRequest) {
+		toSerialize["attributeRequest"] = o.AttributeRequest
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -258,8 +333,10 @@ func (o *ExpansionItem) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "cause")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "attributeRequests")
+		delete(additionalProperties, "attributeRequest")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "state")
 		o.AdditionalProperties = additionalProperties
 	}
 

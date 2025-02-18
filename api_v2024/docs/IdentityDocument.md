@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique ID of the referenced object. | 
 **Name** | **string** | The human readable name of the referenced object. | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
 **DisplayName** | Pointer to **string** | Identity&#39;s display name. | [optional] 
 **FirstName** | Pointer to **string** | Identity&#39;s first name. | [optional] 
 **LastName** | Pointer to **string** | Identity&#39;s last name. | [optional] 
@@ -24,6 +23,8 @@ Name | Type | Description | Notes
 **IdentityProfile** | Pointer to [**IdentityDocumentAllOfIdentityProfile**](IdentityDocumentAllOfIdentityProfile.md) |  | [optional] 
 **Source** | Pointer to [**IdentityDocumentAllOfSource**](IdentityDocumentAllOfSource.md) |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | Map or dictionary of key/value pairs. | [optional] 
+**Disabled** | Pointer to **bool** | Indicates whether the identity is disabled. | [optional] [default to false]
+**Locked** | Pointer to **bool** | Indicates whether the identity is locked. | [optional] [default to false]
 **ProcessingState** | Pointer to **NullableString** | Identity&#39;s processing state. | [optional] 
 **ProcessingDetails** | Pointer to [**ProcessingDetails**](ProcessingDetails.md) |  | [optional] 
 **Accounts** | Pointer to [**[]BaseAccount**](BaseAccount.md) | List of accounts associated with the identity. | [optional] 
@@ -38,12 +39,15 @@ Name | Type | Description | Notes
 **Owns** | Pointer to [**[]Owns**](Owns.md) | Access items the identity owns. | [optional] 
 **OwnsCount** | Pointer to **int32** | Number of access items the identity owns. | [optional] 
 **Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
+**TagsCount** | Pointer to **int32** | Number of tags on the identity. | [optional] 
+**VisibleSegments** | Pointer to **[]string** | List of segments that the identity is in. | [optional] 
+**VisibleSegmentCount** | Pointer to **int32** | Number of segments the identity is in. | [optional] 
 
 ## Methods
 
 ### NewIdentityDocument
 
-`func NewIdentityDocument(id string, name string, type_ DocumentType, ) *IdentityDocument`
+`func NewIdentityDocument(id string, name string, ) *IdentityDocument`
 
 NewIdentityDocument instantiates a new IdentityDocument object
 This constructor will assign default values to properties that have it defined,
@@ -96,26 +100,6 @@ and a boolean to check if the value has been set.
 `func (o *IdentityDocument) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetType
-
-`func (o *IdentityDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *IdentityDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *IdentityDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
 
 
 ### GetDisplayName
@@ -573,6 +557,56 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### GetDisabled
+
+`func (o *IdentityDocument) GetDisabled() bool`
+
+GetDisabled returns the Disabled field if non-nil, zero value otherwise.
+
+### GetDisabledOk
+
+`func (o *IdentityDocument) GetDisabledOk() (*bool, bool)`
+
+GetDisabledOk returns a tuple with the Disabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisabled
+
+`func (o *IdentityDocument) SetDisabled(v bool)`
+
+SetDisabled sets Disabled field to given value.
+
+### HasDisabled
+
+`func (o *IdentityDocument) HasDisabled() bool`
+
+HasDisabled returns a boolean if a field has been set.
+
+### GetLocked
+
+`func (o *IdentityDocument) GetLocked() bool`
+
+GetLocked returns the Locked field if non-nil, zero value otherwise.
+
+### GetLockedOk
+
+`func (o *IdentityDocument) GetLockedOk() (*bool, bool)`
+
+GetLockedOk returns a tuple with the Locked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocked
+
+`func (o *IdentityDocument) SetLocked(v bool)`
+
+SetLocked sets Locked field to given value.
+
+### HasLocked
+
+`func (o *IdentityDocument) HasLocked() bool`
+
+HasLocked returns a boolean if a field has been set.
+
 ### GetProcessingState
 
 `func (o *IdentityDocument) GetProcessingState() string`
@@ -932,6 +966,91 @@ SetTags sets Tags field to given value.
 `func (o *IdentityDocument) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetTagsCount
+
+`func (o *IdentityDocument) GetTagsCount() int32`
+
+GetTagsCount returns the TagsCount field if non-nil, zero value otherwise.
+
+### GetTagsCountOk
+
+`func (o *IdentityDocument) GetTagsCountOk() (*int32, bool)`
+
+GetTagsCountOk returns a tuple with the TagsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTagsCount
+
+`func (o *IdentityDocument) SetTagsCount(v int32)`
+
+SetTagsCount sets TagsCount field to given value.
+
+### HasTagsCount
+
+`func (o *IdentityDocument) HasTagsCount() bool`
+
+HasTagsCount returns a boolean if a field has been set.
+
+### GetVisibleSegments
+
+`func (o *IdentityDocument) GetVisibleSegments() []string`
+
+GetVisibleSegments returns the VisibleSegments field if non-nil, zero value otherwise.
+
+### GetVisibleSegmentsOk
+
+`func (o *IdentityDocument) GetVisibleSegmentsOk() (*[]string, bool)`
+
+GetVisibleSegmentsOk returns a tuple with the VisibleSegments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibleSegments
+
+`func (o *IdentityDocument) SetVisibleSegments(v []string)`
+
+SetVisibleSegments sets VisibleSegments field to given value.
+
+### HasVisibleSegments
+
+`func (o *IdentityDocument) HasVisibleSegments() bool`
+
+HasVisibleSegments returns a boolean if a field has been set.
+
+### SetVisibleSegmentsNil
+
+`func (o *IdentityDocument) SetVisibleSegmentsNil(b bool)`
+
+ SetVisibleSegmentsNil sets the value for VisibleSegments to be an explicit nil
+
+### UnsetVisibleSegments
+`func (o *IdentityDocument) UnsetVisibleSegments()`
+
+UnsetVisibleSegments ensures that no value is present for VisibleSegments, not even an explicit nil
+### GetVisibleSegmentCount
+
+`func (o *IdentityDocument) GetVisibleSegmentCount() int32`
+
+GetVisibleSegmentCount returns the VisibleSegmentCount field if non-nil, zero value otherwise.
+
+### GetVisibleSegmentCountOk
+
+`func (o *IdentityDocument) GetVisibleSegmentCountOk() (*int32, bool)`
+
+GetVisibleSegmentCountOk returns a tuple with the VisibleSegmentCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisibleSegmentCount
+
+`func (o *IdentityDocument) SetVisibleSegmentCount(v int32)`
+
+SetVisibleSegmentCount sets VisibleSegmentCount field to given value.
+
+### HasVisibleSegmentCount
+
+`func (o *IdentityDocument) HasVisibleSegmentCount() bool`
+
+HasVisibleSegmentCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

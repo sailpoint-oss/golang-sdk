@@ -1,4 +1,4 @@
-# BaseAccessAllOfOwner
+# BaseAccessOwner
 
 ## Properties
 
@@ -11,120 +11,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewBaseAccessAllOfOwner
+### NewBaseAccessOwner
 
-`func NewBaseAccessAllOfOwner() *BaseAccessAllOfOwner`
+`func NewBaseAccessOwner() *BaseAccessOwner`
 
-NewBaseAccessAllOfOwner instantiates a new BaseAccessAllOfOwner object
+NewBaseAccessOwner instantiates a new BaseAccessOwner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBaseAccessAllOfOwnerWithDefaults
+### NewBaseAccessOwnerWithDefaults
 
-`func NewBaseAccessAllOfOwnerWithDefaults() *BaseAccessAllOfOwner`
+`func NewBaseAccessOwnerWithDefaults() *BaseAccessOwner`
 
-NewBaseAccessAllOfOwnerWithDefaults instantiates a new BaseAccessAllOfOwner object
+NewBaseAccessOwnerWithDefaults instantiates a new BaseAccessOwner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *BaseAccessAllOfOwner) GetType() string`
+`func (o *BaseAccessOwner) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *BaseAccessAllOfOwner) GetTypeOk() (*string, bool)`
+`func (o *BaseAccessOwner) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *BaseAccessAllOfOwner) SetType(v string)`
+`func (o *BaseAccessOwner) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *BaseAccessAllOfOwner) HasType() bool`
+`func (o *BaseAccessOwner) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *BaseAccessAllOfOwner) GetId() string`
+`func (o *BaseAccessOwner) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *BaseAccessAllOfOwner) GetIdOk() (*string, bool)`
+`func (o *BaseAccessOwner) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *BaseAccessAllOfOwner) SetId(v string)`
+`func (o *BaseAccessOwner) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *BaseAccessAllOfOwner) HasId() bool`
+`func (o *BaseAccessOwner) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *BaseAccessAllOfOwner) GetName() string`
+`func (o *BaseAccessOwner) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *BaseAccessAllOfOwner) GetNameOk() (*string, bool)`
+`func (o *BaseAccessOwner) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *BaseAccessAllOfOwner) SetName(v string)`
+`func (o *BaseAccessOwner) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *BaseAccessAllOfOwner) HasName() bool`
+`func (o *BaseAccessOwner) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetEmail
 
-`func (o *BaseAccessAllOfOwner) GetEmail() string`
+`func (o *BaseAccessOwner) GetEmail() string`
 
 GetEmail returns the Email field if non-nil, zero value otherwise.
 
 ### GetEmailOk
 
-`func (o *BaseAccessAllOfOwner) GetEmailOk() (*string, bool)`
+`func (o *BaseAccessOwner) GetEmailOk() (*string, bool)`
 
 GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmail
 
-`func (o *BaseAccessAllOfOwner) SetEmail(v string)`
+`func (o *BaseAccessOwner) SetEmail(v string)`
 
 SetEmail sets Email field to given value.
 
 ### HasEmail
 
-`func (o *BaseAccessAllOfOwner) HasEmail() bool`
+`func (o *BaseAccessOwner) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
 

@@ -20,10 +20,6 @@ var _ MappedNullable = &BaseAccess{}
 
 // BaseAccess struct for BaseAccess
 type BaseAccess struct {
-	// The unique ID of the referenced object.
-	Id *string `json:"id,omitempty"`
-	// The human readable name of the referenced object.
-	Name *string `json:"name,omitempty"`
 	// Access item's description.
 	Description *string `json:"description,omitempty"`
 	// ISO-8601 date-time referring to the time when the object was created.
@@ -38,7 +34,7 @@ type BaseAccess struct {
 	Requestable *bool `json:"requestable,omitempty"`
 	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
+	Owner *BaseAccessOwner `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -71,70 +67,6 @@ func NewBaseAccessWithDefaults() *BaseAccess {
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *BaseAccess) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseAccess) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *BaseAccess) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BaseAccess) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *BaseAccess) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseAccess) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *BaseAccess) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *BaseAccess) SetName(v string) {
-	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -392,9 +324,9 @@ func (o *BaseAccess) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner {
+func (o *BaseAccess) GetOwner() BaseAccessOwner {
 	if o == nil || IsNil(o.Owner) {
-		var ret BaseAccessAllOfOwner
+		var ret BaseAccessOwner
 		return ret
 	}
 	return *o.Owner
@@ -402,7 +334,7 @@ func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseAccess) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
+func (o *BaseAccess) GetOwnerOk() (*BaseAccessOwner, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -418,8 +350,8 @@ func (o *BaseAccess) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
-func (o *BaseAccess) SetOwner(v BaseAccessAllOfOwner) {
+// SetOwner gets a reference to the given BaseAccessOwner and assigns it to the Owner field.
+func (o *BaseAccess) SetOwner(v BaseAccessOwner) {
 	o.Owner = &v
 }
 
@@ -433,12 +365,6 @@ func (o BaseAccess) MarshalJSON() ([]byte, error) {
 
 func (o BaseAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -485,8 +411,6 @@ func (o *BaseAccess) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

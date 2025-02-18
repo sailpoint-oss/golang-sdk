@@ -20,9 +20,10 @@ var _ MappedNullable = &BaseDocument{}
 
 // BaseDocument struct for BaseDocument
 type BaseDocument struct {
+	// ID of the referenced object.
 	Id string `json:"id"`
+	// The human readable name of the referenced object.
 	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,11 +33,10 @@ type _BaseDocument BaseDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseDocument(id string, name string, type_ DocumentType) *BaseDocument {
+func NewBaseDocument(id string, name string) *BaseDocument {
 	this := BaseDocument{}
 	this.Id = id
 	this.Name = name
-	this.Type = type_
 	return &this
 }
 
@@ -96,30 +96,6 @@ func (o *BaseDocument) SetName(v string) {
 	o.Name = v
 }
 
-// GetType returns the Type field value
-func (o *BaseDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *BaseDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *BaseDocument) SetType(v DocumentType) {
-	o.Type = v
-}
-
 func (o BaseDocument) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,7 +108,6 @@ func (o BaseDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -148,7 +123,6 @@ func (o *BaseDocument) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
-		"_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -180,7 +154,6 @@ func (o *BaseDocument) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		o.AdditionalProperties = additionalProperties
 	}
 
