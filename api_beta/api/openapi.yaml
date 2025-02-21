@@ -81476,7 +81476,7 @@ components:
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
     PreviewDataSourceResponse:
-      description: "PreviewDataSourceResponse is the response sent by /form-definitions/{formDefinitionID}/data-source\
+      description: "PreviewDataSourceResponse is the response sent by `/form-definitions/{formDefinitionID}/data-source`\
         \ endpoint"
       example:
         results: "{\"results\":[{\"label\":\"Alfred 255e71dfc6e\",\"subLabel\":\"\

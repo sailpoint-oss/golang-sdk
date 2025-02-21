@@ -17,7 +17,7 @@ import (
 // checks if the PreviewDataSourceResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PreviewDataSourceResponse{}
 
-// PreviewDataSourceResponse PreviewDataSourceResponse is the response sent by /form-definitions/{formDefinitionID}/data-source endpoint
+// PreviewDataSourceResponse PreviewDataSourceResponse is the response sent by `/form-definitions/{formDefinitionID}/data-source` endpoint
 type PreviewDataSourceResponse struct {
 	// Results holds a list of FormElementDataSourceConfigOptions items
 	Results []FormElementDataSourceConfigOptions `json:"results,omitempty"`
