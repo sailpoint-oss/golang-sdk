@@ -3339,6 +3339,7 @@ paths:
         example: FULL
         in: query
         name: detailLevel
+        required: false
         schema:
           enum:
           - SLIM
@@ -3356,6 +3357,8 @@ paths:
           **name**: *eq, in, sw*
 
           **nativeIdentity**: *eq, in, sw*
+
+          **hasEntitlements**: *eq*
 
           **sourceId**: *eq, in, sw*
 
@@ -3380,6 +3383,10 @@ paths:
           **source.connectionType**: *eq, in*
 
           **recommendation.method**: *eq, in, isnull*
+
+          **created**: *eq, ge, gt, le, lt*
+
+          **modified**: *eq, ge, gt, le, lt*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -3389,7 +3396,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, identity.id, nativeIdentity, uuid, manuallyCorrelated, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
         example: "id,name"
         in: query
         name: sorters
