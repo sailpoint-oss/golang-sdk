@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**AddAccessRequestRecommendationsViewedItem**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsViewedItem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
 [**AddAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsViewedItems) | **Post** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
 [**GetAccessRequestRecommendations**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendations) | **Get** /ai-access-request-recommendations | Identity Access Request Recommendations
+[**GetAccessRequestRecommendationsConfig**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsConfig) | **Get** /ai-access-request-recommendations/config | Get Access Request Recommendations config
 [**GetAccessRequestRecommendationsIgnoredItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsIgnoredItems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 [**GetAccessRequestRecommendationsRequestedItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsRequestedItems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 [**GetAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsViewedItems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
+[**SetAccessRequestRecommendationsConfig**](IAIAccessRequestRecommendationsAPI.md#SetAccessRequestRecommendationsConfig) | **Put** /ai-access-request-recommendations/config | Update Access Request Recommendations config
 
 
 
@@ -367,6 +369,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAccessRequestRecommendationsConfig
+
+> AccessRequestRecommendationConfigDto GetAccessRequestRecommendationsConfig(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+
+Get Access Request Recommendations config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAccessRequestRecommendationsConfig`: AccessRequestRecommendationConfigDto
+	fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccessRequestRecommendationsConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAccessRequestRecommendationsIgnoredItems
 
 > []AccessRequestRecommendationActionItemResponseDto GetAccessRequestRecommendationsIgnoredItems(ctx).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
@@ -588,6 +656,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetAccessRequestRecommendationsConfig
+
+> AccessRequestRecommendationConfigDto SetAccessRequestRecommendationsConfig(ctx).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationConfigDto(accessRequestRecommendationConfigDto).Execute()
+
+Update Access Request Recommendations config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	accessRequestRecommendationConfigDto := *openapiclient.NewAccessRequestRecommendationConfigDto(float32(0.5)) // AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationConfigDto(accessRequestRecommendationConfigDto).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SetAccessRequestRecommendationsConfig`: AccessRequestRecommendationConfigDto
+	fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetAccessRequestRecommendationsConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **accessRequestRecommendationConfigDto** | [**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md) | The desired configurations for Access Request Recommender for the tenant. | 
+
+### Return type
+
+[**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -302,9 +302,11 @@ Class | Method | HTTP request | Description
 *IAIAccessRequestRecommendationsAPI* | [**AddAccessRequestRecommendationsViewedItem**](docs/IAIAccessRequestRecommendationsAPI.md#addaccessrequestrecommendationsvieweditem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
 *IAIAccessRequestRecommendationsAPI* | [**AddAccessRequestRecommendationsViewedItems**](docs/IAIAccessRequestRecommendationsAPI.md#addaccessrequestrecommendationsvieweditems) | **Post** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
 *IAIAccessRequestRecommendationsAPI* | [**GetAccessRequestRecommendations**](docs/IAIAccessRequestRecommendationsAPI.md#getaccessrequestrecommendations) | **Get** /ai-access-request-recommendations | Identity Access Request Recommendations
+*IAIAccessRequestRecommendationsAPI* | [**GetAccessRequestRecommendationsConfig**](docs/IAIAccessRequestRecommendationsAPI.md#getaccessrequestrecommendationsconfig) | **Get** /ai-access-request-recommendations/config | Get Access Request Recommendations config
 *IAIAccessRequestRecommendationsAPI* | [**GetAccessRequestRecommendationsIgnoredItems**](docs/IAIAccessRequestRecommendationsAPI.md#getaccessrequestrecommendationsignoreditems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsAPI* | [**GetAccessRequestRecommendationsRequestedItems**](docs/IAIAccessRequestRecommendationsAPI.md#getaccessrequestrecommendationsrequesteditems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsAPI* | [**GetAccessRequestRecommendationsViewedItems**](docs/IAIAccessRequestRecommendationsAPI.md#getaccessrequestrecommendationsvieweditems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
+*IAIAccessRequestRecommendationsAPI* | [**SetAccessRequestRecommendationsConfig**](docs/IAIAccessRequestRecommendationsAPI.md#setaccessrequestrecommendationsconfig) | **Put** /ai-access-request-recommendations/config | Update Access Request Recommendations config
 *IAICommonAccessAPI* | [**CreateCommonAccess**](docs/IAICommonAccessAPI.md#createcommonaccess) | **Post** /common-access | Create common access items
 *IAICommonAccessAPI* | [**GetCommonAccess**](docs/IAICommonAccessAPI.md#getcommonaccess) | **Get** /common-access | Get a paginated list of common access
 *IAICommonAccessAPI* | [**UpdateCommonAccessStatusInBulk**](docs/IAICommonAccessAPI.md#updatecommonaccessstatusinbulk) | **Post** /common-access/update-status | Bulk update common access status
@@ -791,6 +793,7 @@ Class | Method | HTTP request | Description
  - [AccessRequestPreApprovalRequestedItemsInner](docs/AccessRequestPreApprovalRequestedItemsInner.md)
  - [AccessRequestRecommendationActionItemDto](docs/AccessRequestRecommendationActionItemDto.md)
  - [AccessRequestRecommendationActionItemResponseDto](docs/AccessRequestRecommendationActionItemResponseDto.md)
+ - [AccessRequestRecommendationConfigDto](docs/AccessRequestRecommendationConfigDto.md)
  - [AccessRequestRecommendationItem](docs/AccessRequestRecommendationItem.md)
  - [AccessRequestRecommendationItemDetail](docs/AccessRequestRecommendationItemDetail.md)
  - [AccessRequestRecommendationItemDetailAccess](docs/AccessRequestRecommendationItemDetailAccess.md)
