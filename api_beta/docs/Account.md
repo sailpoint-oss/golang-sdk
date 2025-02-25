@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **IdentityState** | Pointer to **NullableString** | The identity state of the identity this account is correlated to | [optional] 
 **ConnectionType** | Pointer to **NullableString** | The connection type of the source this account is from | [optional] 
 **IsMachine** | Pointer to **bool** | Indicates if the account is of machine type | [optional] [default to false]
-**Recommendation** | Pointer to [**Recommendation**](Recommendation.md) |  | [optional] 
+**Recommendation** | Pointer to [**NullableRecommendation**](Recommendation.md) |  | [optional] 
 **Attributes** | **map[string]interface{}** | The account attributes that are aggregated | 
 **Authoritative** | **bool** | Indicates if this account is from an authoritative source | 
 **Description** | Pointer to **NullableString** | A description of the account | [optional] 
@@ -377,6 +377,16 @@ SetRecommendation sets Recommendation field to given value.
 
 HasRecommendation returns a boolean if a field has been set.
 
+### SetRecommendationNil
+
+`func (o *Account) SetRecommendationNil(b bool)`
+
+ SetRecommendationNil sets the value for Recommendation to be an explicit nil
+
+### UnsetRecommendation
+`func (o *Account) UnsetRecommendation()`
+
+UnsetRecommendation ensures that no value is present for Recommendation, not even an explicit nil
 ### GetAttributes
 
 `func (o *Account) GetAttributes() map[string]interface{}`

@@ -43,7 +43,7 @@ type Account struct {
 	ConnectionType NullableString `json:"connectionType,omitempty"`
 	// Indicates if the account is of machine type
 	IsMachine *bool `json:"isMachine,omitempty"`
-	Recommendation *Recommendation `json:"recommendation,omitempty"`
+	Recommendation NullableRecommendation `json:"recommendation,omitempty"`
 	// The account attributes that are aggregated
 	Attributes map[string]interface{} `json:"attributes"`
 	// Indicates if this account is from an authoritative source
@@ -471,36 +471,46 @@ func (o *Account) SetIsMachine(v bool) {
 	o.IsMachine = &v
 }
 
-// GetRecommendation returns the Recommendation field value if set, zero value otherwise.
+// GetRecommendation returns the Recommendation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetRecommendation() Recommendation {
-	if o == nil || IsNil(o.Recommendation) {
+	if o == nil || IsNil(o.Recommendation.Get()) {
 		var ret Recommendation
 		return ret
 	}
-	return *o.Recommendation
+	return *o.Recommendation.Get()
 }
 
 // GetRecommendationOk returns a tuple with the Recommendation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetRecommendationOk() (*Recommendation, bool) {
-	if o == nil || IsNil(o.Recommendation) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Recommendation, true
+	return o.Recommendation.Get(), o.Recommendation.IsSet()
 }
 
 // HasRecommendation returns a boolean if a field has been set.
 func (o *Account) HasRecommendation() bool {
-	if o != nil && !IsNil(o.Recommendation) {
+	if o != nil && o.Recommendation.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRecommendation gets a reference to the given Recommendation and assigns it to the Recommendation field.
+// SetRecommendation gets a reference to the given NullableRecommendation and assigns it to the Recommendation field.
 func (o *Account) SetRecommendation(v Recommendation) {
-	o.Recommendation = &v
+	o.Recommendation.Set(&v)
+}
+// SetRecommendationNil sets the value for Recommendation to be an explicit nil
+func (o *Account) SetRecommendationNil() {
+	o.Recommendation.Set(nil)
+}
+
+// UnsetRecommendation ensures that no value is present for Recommendation, not even an explicit nil
+func (o *Account) UnsetRecommendation() {
+	o.Recommendation.Unset()
 }
 
 // GetAttributes returns the Attributes field value
@@ -1022,8 +1032,8 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsMachine) {
 		toSerialize["isMachine"] = o.IsMachine
 	}
-	if !IsNil(o.Recommendation) {
-		toSerialize["recommendation"] = o.Recommendation
+	if o.Recommendation.IsSet() {
+		toSerialize["recommendation"] = o.Recommendation.Get()
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes

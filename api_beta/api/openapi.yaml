@@ -4715,6 +4715,8 @@ paths:
 
           **manuallyCorrelated**: *eq*
 
+          **hasEntitlements**: *eq*
+
           **identity.name**: *eq, in, sw*
 
           **identity.correlated**: *eq*
@@ -4728,6 +4730,10 @@ paths:
           **source.connectionType**: *eq, in*
 
           **recommendation.method**: *eq, in, isnull*
+
+          **created**: *eq, ge, gt, le*
+
+          **modified**: *eq, ge, gt, le, lt*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -4737,7 +4743,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, identity.id, nativeIdentity, uuid, manuallyCorrelated, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, hasEntitlements, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType, sourceOwner.name**
         example: "id,name"
         in: query
         name: sorters
@@ -84148,6 +84154,7 @@ components:
       example:
         method: DISCOVERY
         type: MACHINE
+      nullable: true
       properties:
         type:
           description: Recommended type of account.
