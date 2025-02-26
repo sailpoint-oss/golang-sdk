@@ -27,14 +27,7 @@ type SPConfigAPIService service
 type ApiExportSpConfigRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
-	xSailPointExperimental *string
 	exportPayload *ExportPayload
-}
-
-// Use this header to enable this experimental API.
-func (r ApiExportSpConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiExportSpConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Export options control what will be included in the export.
@@ -83,21 +76,6 @@ func (a *SPConfigAPIService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.exportPayload == nil {
 		return localVarReturnValue, nil, reportError("exportPayload is required and must be specified")
 	}
@@ -119,7 +97,6 @@ func (a *SPConfigAPIService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.exportPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -228,13 +205,6 @@ type ApiGetSpConfigExportRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSpConfigExportRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSpConfigExportRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSpConfigExportRequest) Execute() (*SpConfigExportResults, *http.Response, error) {
@@ -281,15 +251,6 @@ func (a *SPConfigAPIService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -308,7 +269,6 @@ func (a *SPConfigAPIService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -415,13 +375,6 @@ type ApiGetSpConfigExportStatusRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSpConfigExportStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSpConfigExportStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSpConfigExportStatusRequest) Execute() (*SpConfigExportJobStatus, *http.Response, error) {
@@ -468,15 +421,6 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExpo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -495,7 +439,6 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExpo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -602,13 +545,6 @@ type ApiGetSpConfigImportRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSpConfigImportRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSpConfigImportRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSpConfigImportRequest) Execute() (*SpConfigImportResults, *http.Response, error) {
@@ -655,15 +591,6 @@ func (a *SPConfigAPIService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -682,7 +609,6 @@ func (a *SPConfigAPIService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -789,13 +715,6 @@ type ApiGetSpConfigImportStatusRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSpConfigImportStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSpConfigImportStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSpConfigImportStatusRequest) Execute() (*SpConfigImportJobStatus, *http.Response, error) {
@@ -844,15 +763,6 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -871,7 +781,6 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -977,16 +886,9 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 type ApiImportSpConfigRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
-	xSailPointExperimental *string
 	data *os.File
 	preview *bool
 	options *ImportOptions
-}
-
-// Use this header to enable this experimental API.
-func (r ApiImportSpConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiImportSpConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // JSON file containing the objects to be imported.
@@ -1057,21 +959,6 @@ func (a *SPConfigAPIService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.data == nil {
 		return localVarReturnValue, nil, reportError("data is required and must be specified")
 	}
@@ -1099,7 +986,6 @@ func (a *SPConfigAPIService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	var dataLocalVarFormFileName string
 	var dataLocalVarFileName     string
 	var dataLocalVarFileBytes    []byte
@@ -1227,13 +1113,6 @@ func (a *SPConfigAPIService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 type ApiListSpConfigObjectsRequest struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListSpConfigObjectsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListSpConfigObjectsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiListSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Response, error) {
@@ -1275,15 +1154,6 @@ func (a *SPConfigAPIService) ListSpConfigObjectsExecute(r ApiListSpConfigObjects
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1302,7 +1172,6 @@ func (a *SPConfigAPIService) ListSpConfigObjectsExecute(r ApiListSpConfigObjects
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

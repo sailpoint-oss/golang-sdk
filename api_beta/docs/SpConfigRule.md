@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Path** | Pointer to **string** | JSONPath expression denoting the path within the object where a value substitution should be applied | [optional] 
-**Value** | Pointer to **map[string]interface{}** | Value to be assigned at the jsonPath location within the object | [optional] 
-**Mode** | Pointer to **[]string** | Draft modes to which this rule will apply | [optional] 
+**Value** | Pointer to [**NullableSpConfigRuleValue**](SpConfigRuleValue.md) |  | [optional] 
+**Modes** | Pointer to **[]string** | Draft modes to which this rule will apply | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasPath returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *SpConfigRule) GetValue() map[string]interface{}`
+`func (o *SpConfigRule) GetValue() SpConfigRuleValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *SpConfigRule) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *SpConfigRule) GetValueOk() (*SpConfigRuleValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *SpConfigRule) SetValue(v map[string]interface{})`
+`func (o *SpConfigRule) SetValue(v SpConfigRuleValue)`
 
 SetValue sets Value field to given value.
 
@@ -87,30 +87,30 @@ HasValue returns a boolean if a field has been set.
 `func (o *SpConfigRule) UnsetValue()`
 
 UnsetValue ensures that no value is present for Value, not even an explicit nil
-### GetMode
+### GetModes
 
-`func (o *SpConfigRule) GetMode() []string`
+`func (o *SpConfigRule) GetModes() []string`
 
-GetMode returns the Mode field if non-nil, zero value otherwise.
+GetModes returns the Modes field if non-nil, zero value otherwise.
 
-### GetModeOk
+### GetModesOk
 
-`func (o *SpConfigRule) GetModeOk() (*[]string, bool)`
+`func (o *SpConfigRule) GetModesOk() (*[]string, bool)`
 
-GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+GetModesOk returns a tuple with the Modes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMode
+### SetModes
 
-`func (o *SpConfigRule) SetMode(v []string)`
+`func (o *SpConfigRule) SetModes(v []string)`
 
-SetMode sets Mode field to given value.
+SetModes sets Modes field to given value.
 
-### HasMode
+### HasModes
 
-`func (o *SpConfigRule) HasMode() bool`
+`func (o *SpConfigRule) HasModes() bool`
 
-HasMode returns a boolean if a field has been set.
+HasModes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

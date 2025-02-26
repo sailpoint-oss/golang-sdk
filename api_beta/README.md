@@ -1412,6 +1412,7 @@ Class | Method | HTTP request | Description
  - [SpConfigMessage](docs/SpConfigMessage.md)
  - [SpConfigObject](docs/SpConfigObject.md)
  - [SpConfigRule](docs/SpConfigRule.md)
+ - [SpConfigRuleValue](docs/SpConfigRuleValue.md)
  - [SpConfigRules](docs/SpConfigRules.md)
  - [StandardLevel](docs/StandardLevel.md)
  - [StartInvocationInput](docs/StartInvocationInput.md)

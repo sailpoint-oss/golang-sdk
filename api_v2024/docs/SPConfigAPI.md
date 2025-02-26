@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ExportSpConfig
 
-> SpConfigExportJob ExportSpConfig(ctx).XSailPointExperimental(xSailPointExperimental).ExportPayload(exportPayload).Execute()
+> SpConfigExportJob ExportSpConfig(ctx).ExportPayload(exportPayload).Execute()
 
 Initiates configuration objects export job
 
@@ -35,12 +35,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	exportPayload := *openapiclient.NewExportPayload() // ExportPayload | Export options control what will be included in the export.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.ExportSpConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).ExportPayload(exportPayload).Execute()
+	resp, r, err := apiClient.SPConfigAPI.ExportSpConfig(context.Background()).ExportPayload(exportPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ExportSpConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +60,6 @@ Other parameters are passed through a pointer to a apiExportSpConfigRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **exportPayload** | [**ExportPayload**](ExportPayload.md) | Export options control what will be included in the export. | 
 
 ### Return type
@@ -84,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigExport
 
-> SpConfigExportResults GetSpConfigExport(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> SpConfigExportResults GetSpConfigExport(ctx, id).Execute()
 
 Download export job result.
 
@@ -104,11 +102,10 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job whose results will be downloaded.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.GetSpConfigExport(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +131,6 @@ Other parameters are passed through a pointer to a apiGetSpConfigExportRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -156,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigExportStatus
 
-> SpConfigExportJobStatus GetSpConfigExportStatus(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> SpConfigExportJobStatus GetSpConfigExportStatus(ctx, id).Execute()
 
 Get export job status
 
@@ -176,11 +172,10 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job whose status will be returned.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +201,6 @@ Other parameters are passed through a pointer to a apiGetSpConfigExportStatusReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -228,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigImport
 
-> SpConfigImportResults GetSpConfigImport(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> SpConfigImportResults GetSpConfigImport(ctx, id).Execute()
 
 Download import job result
 
@@ -248,11 +242,10 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job whose results will be downloaded.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.GetSpConfigImport(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,7 +271,6 @@ Other parameters are passed through a pointer to a apiGetSpConfigImportRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -300,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigImportStatus
 
-> SpConfigImportJobStatus GetSpConfigImportStatus(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> SpConfigImportJobStatus GetSpConfigImportStatus(ctx, id).Execute()
 
 Get import job status
 
@@ -320,11 +312,10 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job whose status will be returned.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -350,7 +341,6 @@ Other parameters are passed through a pointer to a apiGetSpConfigImportStatusReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -372,7 +362,7 @@ Name | Type | Description  | Notes
 
 ## ImportSpConfig
 
-> SpConfigJob ImportSpConfig(ctx).XSailPointExperimental(xSailPointExperimental).Data(data).Preview(preview).Options(options).Execute()
+> SpConfigJob ImportSpConfig(ctx).Data(data).Preview(preview).Options(options).Execute()
 
 Initiates configuration objects import job
 
@@ -391,14 +381,13 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
 	preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false)
 	options := *openapiclient.NewImportOptions() // ImportOptions |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.ImportSpConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Data(data).Preview(preview).Options(options).Execute()
+	resp, r, err := apiClient.SPConfigAPI.ImportSpConfig(context.Background()).Data(data).Preview(preview).Options(options).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ImportSpConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -419,7 +408,6 @@ Other parameters are passed through a pointer to a apiImportSpConfigRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **data** | ***os.File** | JSON file containing the objects to be imported. | 
  **preview** | **bool** | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  | [default to false]
  **options** | [**ImportOptions**](ImportOptions.md) |  | 
@@ -444,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## ListSpConfigObjects
 
-> []SpConfigObject ListSpConfigObjects(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> []SpConfigObject ListSpConfigObjects(ctx).Execute()
 
 Get config object details
 
@@ -463,11 +451,10 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SPConfigAPI.ListSpConfigObjects(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ListSpConfigObjects``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,16 +466,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListSpConfigObjectsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 

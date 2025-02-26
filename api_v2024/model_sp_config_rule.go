@@ -21,10 +21,9 @@ var _ MappedNullable = &SpConfigRule{}
 type SpConfigRule struct {
 	// JSONPath expression denoting the path within the object where a value substitution should be applied
 	Path *string `json:"path,omitempty"`
-	// Value to be assigned at the jsonPath location within the object
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value NullableSpConfigRuleValue `json:"value,omitempty"`
 	// Draft modes to which this rule will apply
-	Mode []string `json:"mode,omitempty"`
+	Modes []string `json:"modes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,68 +79,77 @@ func (o *SpConfigRule) SetPath(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SpConfigRule) GetValue() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+func (o *SpConfigRule) GetValue() SpConfigRuleValue {
+	if o == nil || IsNil(o.Value.Get()) {
+		var ret SpConfigRuleValue
 		return ret
 	}
-	return o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SpConfigRule) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Value) {
-		return map[string]interface{}{}, false
+func (o *SpConfigRule) GetValueOk() (*SpConfigRuleValue, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *SpConfigRule) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *SpConfigRule) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetValue gets a reference to the given NullableSpConfigRuleValue and assigns it to the Value field.
+func (o *SpConfigRule) SetValue(v SpConfigRuleValue) {
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *SpConfigRule) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
-func (o *SpConfigRule) GetMode() []string {
-	if o == nil || IsNil(o.Mode) {
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *SpConfigRule) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetModes returns the Modes field value if set, zero value otherwise.
+func (o *SpConfigRule) GetModes() []string {
+	if o == nil || IsNil(o.Modes) {
 		var ret []string
 		return ret
 	}
-	return o.Mode
+	return o.Modes
 }
 
-// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// GetModesOk returns a tuple with the Modes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigRule) GetModeOk() ([]string, bool) {
-	if o == nil || IsNil(o.Mode) {
+func (o *SpConfigRule) GetModesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Modes) {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Modes, true
 }
 
-// HasMode returns a boolean if a field has been set.
-func (o *SpConfigRule) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+// HasModes returns a boolean if a field has been set.
+func (o *SpConfigRule) HasModes() bool {
+	if o != nil && !IsNil(o.Modes) {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given []string and assigns it to the Mode field.
-func (o *SpConfigRule) SetMode(v []string) {
-	o.Mode = v
+// SetModes gets a reference to the given []string and assigns it to the Modes field.
+func (o *SpConfigRule) SetModes(v []string) {
+	o.Modes = v
 }
 
 func (o SpConfigRule) MarshalJSON() ([]byte, error) {
@@ -157,11 +165,11 @@ func (o SpConfigRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if !IsNil(o.Modes) {
+		toSerialize["modes"] = o.Modes
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -187,7 +195,7 @@ func (o *SpConfigRule) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "path")
 		delete(additionalProperties, "value")
-		delete(additionalProperties, "mode")
+		delete(additionalProperties, "modes")
 		o.AdditionalProperties = additionalProperties
 	}
 

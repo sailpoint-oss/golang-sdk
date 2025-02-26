@@ -912,6 +912,7 @@ docs/SpConfigJob.md
 docs/SpConfigMessage.md
 docs/SpConfigObject.md
 docs/SpConfigRule.md
+docs/SpConfigRuleValue.md
 docs/SpConfigRules.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
@@ -1811,6 +1812,7 @@ model_sp_config_job.go
 model_sp_config_message.go
 model_sp_config_object.go
 model_sp_config_rule.go
+model_sp_config_rule_value.go
 model_sp_config_rules.go
 model_standard_level.go
 model_start_invocation_input.go

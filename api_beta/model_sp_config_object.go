@@ -25,6 +25,8 @@ type SpConfigObject struct {
 	ReferenceExtractors []string `json:"referenceExtractors,omitempty"`
 	// If true, this type of object will be JWS signed and cannot be modified before import.
 	SignatureRequired *bool `json:"signatureRequired,omitempty"`
+	// Whether this object type has to be resolved always by ID
+	AlwaysResolveById *bool `json:"alwaysResolveById,omitempty"`
 	// Whether this is a legacy object
 	LegacyObject *bool `json:"legacyObject,omitempty"`
 	// Whether there is only one object of this type
@@ -45,6 +47,8 @@ func NewSpConfigObject() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
+	var alwaysResolveById bool = false
+	this.AlwaysResolveById = &alwaysResolveById
 	var legacyObject bool = false
 	this.LegacyObject = &legacyObject
 	var onePerTenant bool = false
@@ -61,6 +65,8 @@ func NewSpConfigObjectWithDefaults() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
+	var alwaysResolveById bool = false
+	this.AlwaysResolveById = &alwaysResolveById
 	var legacyObject bool = false
 	this.LegacyObject = &legacyObject
 	var onePerTenant bool = false
@@ -165,6 +171,38 @@ func (o *SpConfigObject) HasSignatureRequired() bool {
 // SetSignatureRequired gets a reference to the given bool and assigns it to the SignatureRequired field.
 func (o *SpConfigObject) SetSignatureRequired(v bool) {
 	o.SignatureRequired = &v
+}
+
+// GetAlwaysResolveById returns the AlwaysResolveById field value if set, zero value otherwise.
+func (o *SpConfigObject) GetAlwaysResolveById() bool {
+	if o == nil || IsNil(o.AlwaysResolveById) {
+		var ret bool
+		return ret
+	}
+	return *o.AlwaysResolveById
+}
+
+// GetAlwaysResolveByIdOk returns a tuple with the AlwaysResolveById field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetAlwaysResolveByIdOk() (*bool, bool) {
+	if o == nil || IsNil(o.AlwaysResolveById) {
+		return nil, false
+	}
+	return o.AlwaysResolveById, true
+}
+
+// HasAlwaysResolveById returns a boolean if a field has been set.
+func (o *SpConfigObject) HasAlwaysResolveById() bool {
+	if o != nil && !IsNil(o.AlwaysResolveById) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlwaysResolveById gets a reference to the given bool and assigns it to the AlwaysResolveById field.
+func (o *SpConfigObject) SetAlwaysResolveById(v bool) {
+	o.AlwaysResolveById = &v
 }
 
 // GetLegacyObject returns the LegacyObject field value if set, zero value otherwise.
@@ -314,6 +352,9 @@ func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SignatureRequired) {
 		toSerialize["signatureRequired"] = o.SignatureRequired
 	}
+	if !IsNil(o.AlwaysResolveById) {
+		toSerialize["alwaysResolveById"] = o.AlwaysResolveById
+	}
 	if !IsNil(o.LegacyObject) {
 		toSerialize["legacyObject"] = o.LegacyObject
 	}
@@ -351,6 +392,7 @@ func (o *SpConfigObject) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "objectType")
 		delete(additionalProperties, "referenceExtractors")
 		delete(additionalProperties, "signatureRequired")
+		delete(additionalProperties, "alwaysResolveById")
 		delete(additionalProperties, "legacyObject")
 		delete(additionalProperties, "onePerTenant")
 		delete(additionalProperties, "exportable")

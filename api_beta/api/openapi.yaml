@@ -76884,30 +76884,31 @@ components:
         legacyObject: false
         rules:
           defaultRules:
-          - mode:
+          - path: $.enabled
+            modes:
             - RESTORE
             - PROMOTE
-            path: $.enabled
             value: "{}"
-          - mode:
+          - path: $.enabled
+            modes:
             - RESTORE
             - PROMOTE
-            path: $.enabled
             value: "{}"
           takeFromTargetRules:
-          - mode:
+          - path: $.enabled
+            modes:
             - RESTORE
             - PROMOTE
-            path: $.enabled
             value: "{}"
-          - mode:
+          - path: $.enabled
+            modes:
             - RESTORE
             - PROMOTE
-            path: $.enabled
             value: "{}"
           editable: true
         referenceExtractors:
         - $.owner
+        alwaysResolveById: true
         objectType: TRIGGER_SUBSCRIPTION
         onePerTenant: false
       properties:
@@ -76929,6 +76930,11 @@ components:
           description: "If true, this type of object will be JWS signed and cannot\
             \ be modified before import."
           example: false
+          type: boolean
+        alwaysResolveById:
+          default: false
+          description: Whether this object type has to be resolved always by ID
+          example: true
           type: boolean
         legacyObject:
           default: false
@@ -86964,26 +86970,26 @@ components:
       description: Rules to be applied to the config object during draft process
       example:
         defaultRules:
-        - mode:
+        - path: $.enabled
+          modes:
           - RESTORE
           - PROMOTE
-          path: $.enabled
           value: "{}"
-        - mode:
+        - path: $.enabled
+          modes:
           - RESTORE
           - PROMOTE
-          path: $.enabled
           value: "{}"
         takeFromTargetRules:
-        - mode:
+        - path: $.enabled
+          modes:
           - RESTORE
           - PROMOTE
-          path: $.enabled
           value: "{}"
-        - mode:
+        - path: $.enabled
+          modes:
           - RESTORE
           - PROMOTE
-          path: $.enabled
           value: "{}"
         editable: true
       properties:
@@ -90265,10 +90271,10 @@ components:
     SpConfigRule:
       description: Format of Config Hub Object Rules
       example:
-        mode:
+        path: $.enabled
+        modes:
         - RESTORE
         - PROMOTE
-        path: $.enabled
         value: "{}"
       properties:
         path:
@@ -90277,11 +90283,8 @@ components:
           example: $.enabled
           type: string
         value:
-          description: Value to be assigned at the jsonPath location within the object
-          nullable: true
-          type: object
-          example: null
-        mode:
+          $ref: '#/components/schemas/SpConfigRule_value'
+        modes:
           description: Draft modes to which this rule will apply
           example:
           - RESTORE
@@ -96715,6 +96718,18 @@ components:
         value:
           type: string
       type: object
+    SpConfigRule_value:
+      anyOf:
+      - type: object
+      - items:
+          description: TODO default missing array inner type to string
+          type: string
+        type: array
+      - type: string
+      - type: number
+      - type: boolean
+      description: Value to be assigned at the jsonPath location within the object
+      nullable: true
     AccessCriteria_criteriaList_inner:
       properties:
         type:

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ObjectType** | Pointer to **string** | The object type this configuration is for. | [optional] 
 **ReferenceExtractors** | Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
 **SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
+**AlwaysResolveById** | Pointer to **bool** | Whether this object type has to be resolved always by ID | [optional] [default to false]
 **LegacyObject** | Pointer to **bool** | Whether this is a legacy object | [optional] [default to false]
 **OnePerTenant** | Pointer to **bool** | Whether there is only one object of this type | [optional] [default to false]
 **Exportable** | Pointer to **bool** | Whether this object can be exported or it is just a reference object | [optional] [default to false]
@@ -115,6 +116,31 @@ SetSignatureRequired sets SignatureRequired field to given value.
 `func (o *SpConfigObject) HasSignatureRequired() bool`
 
 HasSignatureRequired returns a boolean if a field has been set.
+
+### GetAlwaysResolveById
+
+`func (o *SpConfigObject) GetAlwaysResolveById() bool`
+
+GetAlwaysResolveById returns the AlwaysResolveById field if non-nil, zero value otherwise.
+
+### GetAlwaysResolveByIdOk
+
+`func (o *SpConfigObject) GetAlwaysResolveByIdOk() (*bool, bool)`
+
+GetAlwaysResolveByIdOk returns a tuple with the AlwaysResolveById field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlwaysResolveById
+
+`func (o *SpConfigObject) SetAlwaysResolveById(v bool)`
+
+SetAlwaysResolveById sets AlwaysResolveById field to given value.
+
+### HasAlwaysResolveById
+
+`func (o *SpConfigObject) HasAlwaysResolveById() bool`
+
+HasAlwaysResolveById returns a boolean if a field has been set.
 
 ### GetLegacyObject
 
