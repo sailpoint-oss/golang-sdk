@@ -27,13 +27,6 @@ type ApiGetSedBatchStatsRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
 	batchId string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSedBatchStatsRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSedBatchStatsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSedBatchStatsRequest) Execute() (*SedBatchStats, *http.Response, error) {
@@ -82,15 +75,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -109,7 +93,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -215,13 +198,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 type ApiGetSedBatchesRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSedBatchesRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSedBatchesRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSedBatchesRequest) Execute() (*SedBatchStatus, *http.Response, error) {
@@ -264,15 +240,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -291,7 +258,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -397,25 +363,31 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 type ApiListSedsRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	xSailPointExperimental *string
-	limit *int64
+	limit *int32
+	offset *int32
+	count *bool
 	filters *string
 	sorters *string
-	count *bool
 	countOnly *bool
 	requestedByAnyone *bool
 	showPendingStatusOnly *bool
 }
 
-// Use this header to enable this experimental API.
-func (r ApiListSedsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListSedsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListSedsRequest) Limit(limit int32) ApiListSedsRequest {
+	r.limit = &limit
 	return r
 }
 
-// Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
-func (r ApiListSedsRequest) Limit(limit int64) ApiListSedsRequest {
-	r.limit = &limit
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListSedsRequest) Offset(offset int32) ApiListSedsRequest {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListSedsRequest) Count(count bool) ApiListSedsRequest {
+	r.count = &count
 	return r
 }
 
@@ -431,13 +403,7 @@ func (r ApiListSedsRequest) Sorters(sorters string) ApiListSedsRequest {
 	return r
 }
 
-// If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send &#x60;count&#x3D;true&#x60; if that value will not be used.
-func (r ApiListSedsRequest) Count(count bool) ApiListSedsRequest {
-	r.count = &count
-	return r
-}
-
-// If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.
+// If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
 func (r ApiListSedsRequest) CountOnly(countOnly bool) ApiListSedsRequest {
 	r.countOnly = &countOnly
 	return r
@@ -508,18 +474,24 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
@@ -527,17 +499,23 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
-	}
 	if r.countOnly != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count-only", r.countOnly, "", "")
+	} else {
+		var defaultValue bool = false
+		r.countOnly = &defaultValue
 	}
 	if r.requestedByAnyone != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-by-anyone", r.requestedByAnyone, "", "")
+	} else {
+		var defaultValue bool = false
+		r.requestedByAnyone = &defaultValue
 	}
 	if r.showPendingStatusOnly != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "show-pending-status-only", r.showPendingStatusOnly, "", "")
+	} else {
+		var defaultValue bool = false
+		r.showPendingStatusOnly = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -556,7 +534,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -865,14 +842,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedExecute(r ApiPatchSe
 type ApiSubmitSedApprovalRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	xSailPointExperimental *string
 	sedApproval *[]SedApproval
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSubmitSedApprovalRequest) XSailPointExperimental(xSailPointExperimental string) ApiSubmitSedApprovalRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Sed Approval
@@ -921,21 +891,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.sedApproval == nil {
 		return localVarReturnValue, nil, reportError("sedApproval is required and must be specified")
 	}
@@ -957,7 +912,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.sedApproval
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1065,14 +1019,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalExecute(r A
 type ApiSubmitSedAssignmentRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	xSailPointExperimental *string
 	sedAssignment *SedAssignment
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSubmitSedAssignmentRequest) XSailPointExperimental(xSailPointExperimental string) ApiSubmitSedAssignmentRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Sed Assignment Request
@@ -1121,21 +1068,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentExecute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.sedAssignment == nil {
 		return localVarReturnValue, nil, reportError("sedAssignment is required and must be specified")
 	}
@@ -1157,7 +1089,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentExecute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.sedAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1265,14 +1196,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentExecute(r
 type ApiSubmitSedBatchRequestRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	xSailPointExperimental *string
 	sedBatchRequest *SedBatchRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSubmitSedBatchRequestRequest) XSailPointExperimental(xSailPointExperimental string) ApiSubmitSedBatchRequestRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Sed Batch Request
@@ -1321,15 +1245,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json"}
@@ -1348,7 +1263,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestExecute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.sedBatchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

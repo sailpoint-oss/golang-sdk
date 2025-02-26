@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## GetSedBatchStats
 
-> SedBatchStats GetSedBatchStats(ctx, batchId).XSailPointExperimental(xSailPointExperimental).Execute()
+> SedBatchStats GetSedBatchStats(ctx, batchId).Execute()
 
 Submit Sed Batch Stats Request
 
@@ -36,11 +36,10 @@ import (
 
 func main() {
 	batchId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | Batch Id
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatchStats``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +65,6 @@ Other parameters are passed through a pointer to a apiGetSedBatchStatsRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## GetSedBatches
 
-> SedBatchStatus GetSedBatches(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> SedBatchStatus GetSedBatches(ctx).Execute()
 
 List Sed Batch Request
 
@@ -107,11 +105,10 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatches``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,16 +120,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSedBatchesRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -154,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## ListSeds
 
-> []Sed ListSeds(ctx).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Sorters(sorters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
+> []Sed ListSeds(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
 
 List Suggested Entitlement Descriptions
 
@@ -173,18 +166,18 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	limit := int64(limit=25) // int64 | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 	filters := "displayName co "Read and Write"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* (optional)
 	sorters := "sorters=displayName" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** (optional)
-	count := false // bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used. (optional)
-	countOnly := false // bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. (optional)
-	requestedByAnyone := false // bool | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested (optional)
-	showPendingStatusOnly := false // bool | Will limit records to items that are in \"suggested\" or \"approved\" status (optional)
+	countOnly := false // bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array. (optional) (default to false)
+	requestedByAnyone := false // bool | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested (optional) (default to false)
+	showPendingStatusOnly := false // bool | Will limit records to items that are in \"suggested\" or \"approved\" status (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Sorters(sorters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListSeds``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,14 +198,14 @@ Other parameters are passed through a pointer to a apiListSedsRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **limit** | **int64** | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** | 
- **count** | **bool** | If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send &#x60;count&#x3D;true&#x60; if that value will not be used. | 
- **countOnly** | **bool** | If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. | 
- **requestedByAnyone** | **bool** | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested | 
- **showPendingStatusOnly** | **bool** | Will limit records to items that are in \&quot;suggested\&quot; or \&quot;approved\&quot; status | 
+ **countOnly** | **bool** | If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array. | [default to false]
+ **requestedByAnyone** | **bool** | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested | [default to false]
+ **showPendingStatusOnly** | **bool** | Will limit records to items that are in \&quot;suggested\&quot; or \&quot;approved\&quot; status | [default to false]
 
 ### Return type
 
@@ -308,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## SubmitSedApproval
 
-> []SedApprovalStatus SubmitSedApproval(ctx).XSailPointExperimental(xSailPointExperimental).SedApproval(sedApproval).Execute()
+> []SedApprovalStatus SubmitSedApproval(ctx).SedApproval(sedApproval).Execute()
 
 Submit Bulk Approval Request
 
@@ -327,12 +320,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	sedApproval := []openapiclient.SedApproval{*openapiclient.NewSedApproval()} // []SedApproval | Sed Approval
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).XSailPointExperimental(xSailPointExperimental).SedApproval(sedApproval).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).SedApproval(sedApproval).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedApproval``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,7 +345,6 @@ Other parameters are passed through a pointer to a apiSubmitSedApprovalRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **sedApproval** | [**[]SedApproval**](SedApproval.md) | Sed Approval | 
 
 ### Return type
@@ -376,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## SubmitSedAssignment
 
-> SedAssignmentResponse SubmitSedAssignment(ctx).XSailPointExperimental(xSailPointExperimental).SedAssignment(sedAssignment).Execute()
+> SedAssignmentResponse SubmitSedAssignment(ctx).SedAssignment(sedAssignment).Execute()
 
 Submit Sed Assignment Request
 
@@ -395,12 +386,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	sedAssignment := *openapiclient.NewSedAssignment() // SedAssignment | Sed Assignment Request
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).XSailPointExperimental(xSailPointExperimental).SedAssignment(sedAssignment).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).SedAssignment(sedAssignment).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedAssignment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,7 +411,6 @@ Other parameters are passed through a pointer to a apiSubmitSedAssignmentRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **sedAssignment** | [**SedAssignment**](SedAssignment.md) | Sed Assignment Request | 
 
 ### Return type
@@ -444,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## SubmitSedBatchRequest
 
-> SedBatchResponse SubmitSedBatchRequest(ctx).XSailPointExperimental(xSailPointExperimental).SedBatchRequest(sedBatchRequest).Execute()
+> SedBatchResponse SubmitSedBatchRequest(ctx).SedBatchRequest(sedBatchRequest).Execute()
 
 Submit Sed Batch Request
 
@@ -463,12 +452,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	sedBatchRequest := *openapiclient.NewSedBatchRequest() // SedBatchRequest | Sed Batch Request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).SedBatchRequest(sedBatchRequest).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).SedBatchRequest(sedBatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,7 +477,6 @@ Other parameters are passed through a pointer to a apiSubmitSedBatchRequestReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **sedBatchRequest** | [**SedBatchRequest**](SedBatchRequest.md) | Sed Batch Request | 
 
 ### Return type
