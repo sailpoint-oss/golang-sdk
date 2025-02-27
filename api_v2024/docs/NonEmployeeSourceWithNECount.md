@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AccountManagers** | Pointer to [**[]NonEmployeeIdentityReferenceWithId**](NonEmployeeIdentityReferenceWithId.md) | List of account managers | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeCount** | Pointer to **NullableInt32** | Number of non-employee records associated with this source. | [optional] 
+**NonEmployeeCount** | Pointer to **NullableInt32** | Number of non-employee records associated with this source. This value is &#39;NULL&#39; by default. To get the non-employee count, you must set the &#x60;non-employee-count&#x60; flag in your request to &#39;true&#39;. | [optional] 
 
 ## Methods
 

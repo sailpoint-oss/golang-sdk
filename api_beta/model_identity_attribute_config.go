@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityAttributeConfig{}
 
 // IdentityAttributeConfig struct for IdentityAttributeConfig
 type IdentityAttributeConfig struct {
-	// If the profile or mapping is enabled
+	// Backend will only promote values if the profile/mapping is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	AttributeTransforms []IdentityAttributeTransform `json:"attributeTransforms,omitempty"`
 	AdditionalProperties map[string]interface{}

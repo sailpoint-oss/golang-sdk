@@ -39,10 +39,9 @@ func (r ApiCreateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-CreateIdentityProfile Create an Identity Profile
+CreateIdentityProfile Create Identity Profile
 
-This creates an Identity Profile.
-
+Create an identity profile.
 A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -200,18 +199,14 @@ func (r ApiDeleteIdentityProfileRequest) Execute() (*TaskResultSimplified, *http
 }
 
 /*
-DeleteIdentityProfile Delete an Identity Profile
+DeleteIdentityProfile Delete Identity Profile
 
-This deletes an Identity Profile based on ID.
-
+Delete an identity profile by ID.
 On success, this endpoint will return a reference to the bulk delete task result.
-
 A token with ORG_ADMIN authority is required to call this API.
 
-The following rights are required to access this endpoint: idn:identity-profile:delete
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId The Identity Profile ID.
+ @param identityProfileId Identity profile ID.
  @return ApiDeleteIdentityProfileRequest
 */
 func (a *IdentityProfilesAPIService) DeleteIdentityProfile(ctx context.Context, identityProfileId string) ApiDeleteIdentityProfileRequest {
@@ -937,14 +932,13 @@ func (r ApiGetIdentityProfileRequest) Execute() (*IdentityProfile, *http.Respons
 }
 
 /*
-GetIdentityProfile Gets a single Identity Profile
+GetIdentityProfile Get Identity Profile
 
-This returns a single Identity Profile based on ID.
-
+Get a single identity profile by ID.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId The Identity Profile ID
+ @param identityProfileId Identity profile ID.
  @return ApiGetIdentityProfileRequest
 */
 func (a *IdentityProfilesAPIService) GetIdentityProfile(ctx context.Context, identityProfileId string) ApiGetIdentityProfileRequest {
@@ -1289,7 +1283,7 @@ func (r ApiListIdentityProfilesRequest) Count(count bool) ApiListIdentityProfile
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*
 func (r ApiListIdentityProfilesRequest) Filters(filters string) ApiListIdentityProfilesRequest {
 	r.filters = &filters
 	return r
@@ -1306,9 +1300,9 @@ func (r ApiListIdentityProfilesRequest) Execute() ([]IdentityProfile, *http.Resp
 }
 
 /*
-ListIdentityProfiles Identity Profiles List
+ListIdentityProfiles List Identity Profiles
 
-This returns a list of Identity Profiles based on the specified query parameters.
+Get a list of identity profiles, based on the specified query parameters.
 A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1821,7 +1815,7 @@ type ApiUpdateIdentityProfileRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+// List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 func (r ApiUpdateIdentityProfileRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateIdentityProfileRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -1832,15 +1826,12 @@ func (r ApiUpdateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-UpdateIdentityProfile Update the Identity Profile
+UpdateIdentityProfile Update Identity Profile
 
-This updates the specified Identity Profile.
-
+Update the specified identity profile with this PATCH request. 
 A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
-
-Some fields of the Schema cannot be updated. These fields are listed below:
+These fields cannot be updated:
 * id
-* name
 * created
 * modified
 * identityCount
@@ -1848,7 +1839,7 @@ Some fields of the Schema cannot be updated. These fields are listed below:
 * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId The Identity Profile ID
+ @param identityProfileId Identity profile ID.
  @return ApiUpdateIdentityProfileRequest
 */
 func (a *IdentityProfilesAPIService) UpdateIdentityProfile(ctx context.Context, identityProfileId string) ApiUpdateIdentityProfileRequest {

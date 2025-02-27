@@ -543,9 +543,7 @@ func (r ApiCreateNonEmployeeSourceRequest) Execute() (*NonEmployeeSourceWithClou
 /*
 CreateNonEmployeeSource Create Non-Employee Source
 
-This request will create a non-employee source.
-Request will require the following security scope:
-'idn:nesr:create'
+Create a non-employee source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeSourceRequest
@@ -4381,24 +4379,12 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsExecut
 type ApiListNonEmployeeSourcesRequest struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
-	requestedFor *string
-	nonEmployeeCount *bool
 	limit *int32
 	offset *int32
 	count *bool
+	requestedFor *string
+	nonEmployeeCount *bool
 	sorters *string
-}
-
-// The identity for whom the request was made. *me* indicates the current user.
-func (r ApiListNonEmployeeSourcesRequest) RequestedFor(requestedFor string) ApiListNonEmployeeSourcesRequest {
-	r.requestedFor = &requestedFor
-	return r
-}
-
-// The flag to determine whether return a non-employee count associate with source.
-func (r ApiListNonEmployeeSourcesRequest) NonEmployeeCount(nonEmployeeCount bool) ApiListNonEmployeeSourcesRequest {
-	r.nonEmployeeCount = &nonEmployeeCount
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -4419,6 +4405,18 @@ func (r ApiListNonEmployeeSourcesRequest) Count(count bool) ApiListNonEmployeeSo
 	return r
 }
 
+// Identity the request was made for. Use &#39;me&#39; to indicate the current user.
+func (r ApiListNonEmployeeSourcesRequest) RequestedFor(requestedFor string) ApiListNonEmployeeSourcesRequest {
+	r.requestedFor = &requestedFor
+	return r
+}
+
+// Flag that determines whether the API will return a non-employee count associated with the source.
+func (r ApiListNonEmployeeSourcesRequest) NonEmployeeCount(nonEmployeeCount bool) ApiListNonEmployeeSourcesRequest {
+	r.nonEmployeeCount = &nonEmployeeCount
+	return r
+}
+
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**
 func (r ApiListNonEmployeeSourcesRequest) Sorters(sorters string) ApiListNonEmployeeSourcesRequest {
 	r.sorters = &sorters
@@ -4432,7 +4430,9 @@ func (r ApiListNonEmployeeSourcesRequest) Execute() ([]NonEmployeeSourceWithNECo
 /*
 ListNonEmployeeSources List Non-Employee Sources
 
-This gets a list of non-employee sources.
+Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter: 
+  1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.
+  2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeSourcesRequest
@@ -4464,12 +4464,6 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestedFor == nil {
-		return localVarReturnValue, nil, reportError("requestedFor is required and must be specified")
-	}
-	if r.nonEmployeeCount == nil {
-		return localVarReturnValue, nil, reportError("nonEmployeeCount is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -4489,8 +4483,15 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "requested-for", r.requestedFor, "", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "non-employee-count", r.nonEmployeeCount, "", "")
+	if r.requestedFor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-for", r.requestedFor, "", "")
+	}
+	if r.nonEmployeeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "non-employee-count", r.nonEmployeeCount, "", "")
+	} else {
+		var defaultValue bool = false
+		r.nonEmployeeCount = &defaultValue
+	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}

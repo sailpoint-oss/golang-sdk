@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Description** | Pointer to **NullableString** | The description of the Identity Profile. | [optional] 
+**Description** | Pointer to **NullableString** | Identity profile&#39;s description. | [optional] 
 **Owner** | Pointer to [**NullableIdentityProfileAllOfOwner**](IdentityProfileAllOfOwner.md) |  | [optional] 
-**Priority** | Pointer to **int64** | The priority for an Identity Profile. | [optional] 
+**Priority** | Pointer to **int64** | Identity profile&#39;s priority. | [optional] 
 **AuthoritativeSource** | [**IdentityProfileAllOfAuthoritativeSource**](IdentityProfileAllOfAuthoritativeSource.md) |  | 
-**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made | [optional] [default to false]
-**IdentityCount** | Pointer to **int32** | The number of identities that belong to the Identity Profile. | [optional] 
+**IdentityRefreshRequired** | Pointer to **bool** | Set this value to &#39;True&#39; if an identity refresh is necessary. You would typically want to trigger an identity refresh when a change has been made on the source. | [optional] [default to false]
+**IdentityCount** | Pointer to **int32** | Number of identities belonging to the identity profile. | [optional] 
 **IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
 **IdentityExceptionReportReference** | Pointer to [**NullableIdentityExceptionReportReference**](IdentityExceptionReportReference.md) |  | [optional] 
-**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to true]
+**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of &#x60;requiresPeriodicRefresh&#x60; attribute for the identity profile. | [optional] [default to true]
 
 ## Methods
 

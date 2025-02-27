@@ -17,9 +17,9 @@ import (
 // checks if the IdentityAttributeTransform1 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityAttributeTransform1{}
 
-// IdentityAttributeTransform1 Defines a transformation definition for an identity attribute.
+// IdentityAttributeTransform1 Transform definition for an identity attribute.
 type IdentityAttributeTransform1 struct {
-	// Name of the identity attribute.
+	// Identity attribute's name.
 	IdentityAttributeName *string `json:"identityAttributeName,omitempty"`
 	TransformDefinition *TransformDefinition1 `json:"transformDefinition,omitempty"`
 	AdditionalProperties map[string]interface{}

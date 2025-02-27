@@ -308,17 +308,17 @@ Class | Method | HTTP request | Description
 *IdentityHistoryAPI* | [**ListIdentityAccessItems**](docs/IdentityHistoryAPI.md#listidentityaccessitems) | **Get** /historical-identities/{id}/access-items | List Access Items by Identity
 *IdentityHistoryAPI* | [**ListIdentitySnapshotAccessItems**](docs/IdentityHistoryAPI.md#listidentitysnapshotaccessitems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 *IdentityHistoryAPI* | [**ListIdentitySnapshots**](docs/IdentityHistoryAPI.md#listidentitysnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
-*IdentityProfilesAPI* | [**CreateIdentityProfile**](docs/IdentityProfilesAPI.md#createidentityprofile) | **Post** /identity-profiles | Create an Identity Profile
-*IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+*IdentityProfilesAPI* | [**CreateIdentityProfile**](docs/IdentityProfilesAPI.md#createidentityprofile) | **Post** /identity-profiles | Create Identity Profile
+*IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfiles**](docs/IdentityProfilesAPI.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesAPI* | [**ExportIdentityProfiles**](docs/IdentityProfilesAPI.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
 *IdentityProfilesAPI* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesAPI.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
-*IdentityProfilesAPI* | [**GetIdentityProfile**](docs/IdentityProfilesAPI.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
+*IdentityProfilesAPI* | [**GetIdentityProfile**](docs/IdentityProfilesAPI.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Get Identity Profile
 *IdentityProfilesAPI* | [**ImportIdentityProfiles**](docs/IdentityProfilesAPI.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
-*IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles List
+*IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | List Identity Profiles
 *IdentityProfilesAPI* | [**ShowGenerateIdentityPreview**](docs/IdentityProfilesAPI.md#showgenerateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
-*IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update Identity Profile
 *LaunchersAPI* | [**CreateLauncher**](docs/LaunchersAPI.md#createlauncher) | **Post** /launchers | Create launcher
 *LaunchersAPI* | [**DeleteLauncher**](docs/LaunchersAPI.md#deletelauncher) | **Delete** /launchers/{launcherID} | Delete Launcher
 *LaunchersAPI* | [**GetLauncher**](docs/LaunchersAPI.md#getlauncher) | **Get** /launchers/{launcherID} | Get Launcher by ID

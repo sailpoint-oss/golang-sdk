@@ -17,13 +17,13 @@ import (
 // checks if the IdentityProfileAllOfAuthoritativeSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityProfileAllOfAuthoritativeSource{}
 
-// IdentityProfileAllOfAuthoritativeSource The authoritative source for this Identity Profile.
+// IdentityProfileAllOfAuthoritativeSource Identity profile's authoritative source.
 type IdentityProfileAllOfAuthoritativeSource struct {
-	// Type of the object to which this reference applies
+	// Authoritative source's object type.
 	Type *string `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// Authoritative source's ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Authoritative source's name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

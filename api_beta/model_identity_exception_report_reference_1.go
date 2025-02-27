@@ -19,9 +19,9 @@ var _ MappedNullable = &IdentityExceptionReportReference1{}
 
 // IdentityExceptionReportReference1 struct for IdentityExceptionReportReference1
 type IdentityExceptionReportReference1 struct {
-	// The id of the task result.
+	// Task result ID.
 	TaskResultId *string `json:"taskResultId,omitempty"`
-	// The name of the report.
+	// Report name.
 	ReportName *string `json:"reportName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

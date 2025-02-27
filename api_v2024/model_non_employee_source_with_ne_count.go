@@ -36,7 +36,7 @@ type NonEmployeeSourceWithNECount struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the request was created.
 	Created *SailPointTime `json:"created,omitempty"`
-	// Number of non-employee records associated with this source.
+	// Number of non-employee records associated with this source. This value is 'NULL' by default. To get the non-employee count, you must set the `non-employee-count` flag in your request to 'true'.
 	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

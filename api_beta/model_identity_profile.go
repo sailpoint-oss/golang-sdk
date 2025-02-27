@@ -29,19 +29,19 @@ type IdentityProfile struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
 	Modified *SailPointTime `json:"modified,omitempty"`
-	// The description of the Identity Profile.
+	// Identity profile's description.
 	Description NullableString `json:"description,omitempty"`
 	Owner NullableIdentityProfileAllOfOwner `json:"owner,omitempty"`
-	// The priority for an Identity Profile.
+	// Identity profile's priority.
 	Priority *int64 `json:"priority,omitempty"`
 	AuthoritativeSource IdentityProfileAllOfAuthoritativeSource `json:"authoritativeSource"`
-	// True if a identity refresh is needed. Typically triggered when a change on the source has been made
+	// Set this value to 'True' if an identity refresh is necessary. You would typically want to trigger an identity refresh when a change has been made on the source.
 	IdentityRefreshRequired *bool `json:"identityRefreshRequired,omitempty"`
-	// The number of identities that belong to the Identity Profile.
+	// Number of identities belonging to the identity profile.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	IdentityAttributeConfig *IdentityAttributeConfig `json:"identityAttributeConfig,omitempty"`
 	IdentityExceptionReportReference NullableIdentityExceptionReportReference `json:"identityExceptionReportReference,omitempty"`
-	// Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.
+	// Indicates the value of `requiresPeriodicRefresh` attribute for the identity profile.
 	HasTimeBasedAttr *bool `json:"hasTimeBasedAttr,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

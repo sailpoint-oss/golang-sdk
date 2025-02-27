@@ -1861,7 +1861,7 @@ Name | Type | Description  | Notes
 
 ## ListNonEmployeeSources
 
-> []NonEmployeeSourceWithNECount ListNonEmployeeSources(ctx).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+> []NonEmployeeSourceWithNECount ListNonEmployeeSources(ctx).Limit(limit).Offset(offset).Count(count).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
 
 List Non-Employee Sources
 
@@ -1880,16 +1880,16 @@ import (
 )
 
 func main() {
-	requestedFor := "me" // string | The identity for whom the request was made. *me* indicates the current user.
-	nonEmployeeCount := false // bool | The flag to determine whether return a non-employee count associate with source.
 	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	requestedFor := "me" // string | Identity the request was made for. Use 'me' to indicate the current user. (optional)
+	nonEmployeeCount := false // bool | Flag that determines whether the API will return a non-employee count associated with the source. (optional) (default to false)
 	sorters := "name,created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId** (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+	resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).Limit(limit).Offset(offset).Count(count).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1910,11 +1910,11 @@ Other parameters are passed through a pointer to a apiListNonEmployeeSourcesRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestedFor** | **string** | The identity for whom the request was made. *me* indicates the current user. | 
- **nonEmployeeCount** | **bool** | The flag to determine whether return a non-employee count associate with source. | 
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **requestedFor** | **string** | Identity the request was made for. Use &#39;me&#39; to indicate the current user. | 
+ **nonEmployeeCount** | **bool** | Flag that determines whether the API will return a non-employee count associated with the source. | [default to false]
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId** | 
 
 ### Return type

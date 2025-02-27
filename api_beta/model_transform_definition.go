@@ -19,7 +19,7 @@ var _ MappedNullable = &TransformDefinition{}
 
 // TransformDefinition struct for TransformDefinition
 type TransformDefinition struct {
-	// The type of the transform definition.
+	// Transform definition type.
 	Type *string `json:"type,omitempty"`
 	// Arbitrary key-value pairs to store any metadata for the object
 	Attributes map[string]interface{} `json:"attributes,omitempty"`

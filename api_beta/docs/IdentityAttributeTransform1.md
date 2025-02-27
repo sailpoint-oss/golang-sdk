@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityAttributeName** | Pointer to **string** | Name of the identity attribute. | [optional] 
+**IdentityAttributeName** | Pointer to **string** | Identity attribute&#39;s name. | [optional] 
 **TransformDefinition** | Pointer to [**TransformDefinition1**](TransformDefinition1.md) |  | [optional] 
 
 ## Methods

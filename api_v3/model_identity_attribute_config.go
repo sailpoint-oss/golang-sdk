@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityAttributeConfig{}
 
 // IdentityAttributeConfig Defines all the identity attribute mapping configurations. This defines how to generate or collect data for each identity attributes in identity refresh process.
 type IdentityAttributeConfig struct {
-	// The backend will only promote values if the profile/mapping is enabled.
+	// Backend will only promote values if the profile/mapping is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	AttributeTransforms []IdentityAttributeTransform `json:"attributeTransforms,omitempty"`
 	AdditionalProperties map[string]interface{}

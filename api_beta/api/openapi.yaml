@@ -17586,7 +17586,7 @@ paths:
   /identity-profiles:
     get:
       description: |-
-        This returns a list of Identity Profiles based on the specified query parameters.
+        Get a list of identity profiles, based on the specified query parameters.
         A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
       operationId: listIdentityProfiles
       parameters:
@@ -17633,14 +17633,15 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*
+          **id**: *eq, ne, ge, gt, in, le, sw*
 
-          **name**: *eq, ne, in, le, lt, isnull, sw*
+          **name**: *eq, ne, ge, gt, in, le, sw*
 
           **priority**: *eq, ne*
         example: id eq 8c190e6787aa4ed9a90bd9d5344523fb
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -17650,6 +17651,7 @@ paths:
         example: "name,-priority"
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -17661,7 +17663,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/IdentityProfile'
                 type: array
-          description: List of identityProfiles.
+          description: List of identity profiles.
         "400":
           content:
             application/json:
@@ -17721,14 +17723,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:read
-        - idn:identity-profile:manage
-      summary: Identity Profiles List
+      summary: List Identity Profiles
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
-        This creates an Identity Profile.
-
+        Create an identity profile.
         A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
       operationId: createIdentityProfile
       requestBody:
@@ -17743,7 +17745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityProfile'
-          description: The created Identity Profile
+          description: Created identity profile
         "400":
           content:
             application/json:
@@ -17803,9 +17805,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Create an Identity Profile
+      summary: Create Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/bulk-delete:
     post:
       description: |-
@@ -18222,16 +18226,12 @@ paths:
   /identity-profiles/{identity-profile-id}:
     delete:
       description: |-
-        This deletes an Identity Profile based on ID.
-
+        Delete an identity profile by ID.
         On success, this endpoint will return a reference to the bulk delete task result.
-
         A token with ORG_ADMIN authority is required to call this API.
-
-        The following rights are required to access this endpoint: idn:identity-profile:delete
       operationId: deleteIdentityProfile
       parameters:
-      - description: The Identity Profile ID.
+      - description: Identity profile ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: identity-profile-id
@@ -18325,17 +18325,18 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:delete
-      summary: Delete an Identity Profile
+      summary: Delete Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
       description: |-
-        This returns a single Identity Profile based on ID.
-
+        Get a single identity profile by ID.
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: getIdentityProfile
       parameters:
-      - description: The Identity Profile ID
+      - description: Identity profile ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: identity-profile-id
@@ -18350,7 +18351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityProfile'
-          description: An Identity Profile object
+          description: Identity profile object.
         "400":
           content:
             application/json:
@@ -18429,26 +18430,20 @@ paths:
       - userAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
-      summary: Gets a single Identity Profile
+      summary: Get Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
-      description: |-
-        This updates the specified Identity Profile.
-
-        A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
-
-        Some fields of the Schema cannot be updated. These fields are listed below:
-        * id
-        * name
-        * created
-        * modified
-        * identityCount
-        * identityRefreshRequired
-        * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+      description: "Update the specified identity profile with this PATCH request.\
+        \ \nA token with ORG_ADMIN authority is required to call this API to update\
+        \ the Identity Profile.\nThese fields cannot be updated:\n* id\n* created\n\
+        * modified\n* identityCount\n* identityRefreshRequired\n* Authoritative Source\
+        \ and Identity Attribute Configuration cannot be modified at once."
       operationId: updateIdentityProfile
       parameters:
-      - description: The Identity Profile ID
+      - description: Identity profile ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: identity-profile-id
@@ -18478,7 +18473,7 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: "A list of Identity Profile update operations according to the\
+        description: "List of identity profile update operations according to the\
           \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
         required: true
       responses:
@@ -18487,7 +18482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityProfile'
-          description: The updated Identity Profile.
+          description: Updated identity profile.
         "400":
           content:
             application/json:
@@ -18565,9 +18560,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Update the Identity Profile
+      summary: Update Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}/default-identity-attribute-config:
     get:
       description: |-
@@ -21750,7 +21747,13 @@ paths:
       - Non-Employee Lifecycle Management
   /non-employee-sources:
     get:
-      description: This gets a list of non-employee sources.
+      description: "Get a list of non-employee sources. There are two contextual uses\
+        \ for the `requested-for` path parameter: \n  1. If the user has the role\
+        \ context of `idn:nesr:read`, he or she may request a list sources assigned\
+        \ to a particular account manager by passing in that manager's `id`.\n  2.\
+        \ If the current user is an account manager, the user should provide 'me'\
+        \ as the `requested-for` value. Doing so provide the user with a list of the\
+        \ sources he or she owns."
       operationId: listNonEmployeeSources
       parameters:
       - description: |-
@@ -21791,21 +21794,22 @@ paths:
         schema:
           default: false
           type: boolean
-      - description: The identity for whom the request was made. *me* indicates the
-          current user.
+      - description: Identity the request was made for. Use 'me' to indicate the current
+          user.
         example: me
         in: query
         name: requested-for
-        required: true
+        required: false
         schema:
           type: string
-      - description: The flag to determine whether return a non-employee count associate
-          with source.
+      - description: Flag that determines whether the API will return a non-employee
+          count associated with the source.
         example: false
         in: query
         name: non-employee-count
-        required: true
+        required: false
         schema:
+          default: false
           type: boolean
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
@@ -21826,7 +21830,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/NonEmployeeSourceWithNECount'
                 type: array
-          description: List of non-employee sources objects.
+          description: List of non-employee source objects.
         "400":
           content:
             application/json:
@@ -21889,11 +21893,10 @@ paths:
       summary: List Non-Employee Sources
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        This request will create a non-employee source.
-        Request will require the following security scope:
-        'idn:nesr:create'
+      description: Create a non-employee source.
       operationId: createNonEmployeeSource
       requestBody:
         content:
@@ -21971,6 +21974,8 @@ paths:
       summary: Create Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /non-employee-sources/{sourceId}:
     delete:
       description: This request will delete a non-employee source.
@@ -64311,14 +64316,14 @@ components:
       - $ref: '#/components/schemas/BaseCommonDto'
       - properties:
           description:
-            description: The description of the Identity Profile.
+            description: Identity profile's description.
             example: My custom flat file profile
             nullable: true
             type: string
           owner:
             $ref: '#/components/schemas/IdentityProfile_allOf_owner'
           priority:
-            description: The priority for an Identity Profile.
+            description: Identity profile's priority.
             example: 10
             format: int64
             type: integer
@@ -64326,12 +64331,13 @@ components:
             $ref: '#/components/schemas/IdentityProfile_allOf_authoritativeSource'
           identityRefreshRequired:
             default: false
-            description: True if a identity refresh is needed. Typically triggered
-              when a change on the source has been made
+            description: Set this value to 'True' if an identity refresh is necessary.
+              You would typically want to trigger an identity refresh when a change
+              has been made on the source.
             example: true
             type: boolean
           identityCount:
-            description: The number of identities that belong to the Identity Profile.
+            description: Number of identities belonging to the identity profile.
             example: 8
             format: int32
             type: integer
@@ -64341,8 +64347,8 @@ components:
             $ref: '#/components/schemas/IdentityExceptionReportReference'
           hasTimeBasedAttr:
             default: true
-            description: Indicates the value of requiresPeriodicRefresh attribute
-              for the Identity Profile.
+            description: Indicates the value of `requiresPeriodicRefresh` attribute
+              for the identity profile.
             example: true
             type: boolean
         required:
@@ -70298,7 +70304,8 @@ components:
       properties:
         enabled:
           default: true
-          description: If the profile or mapping is enabled
+          description: Backend will only promote values if the profile/mapping is
+            enabled.
           example: true
           type: boolean
         attributeTransforms:
@@ -71426,7 +71433,9 @@ components:
       - $ref: '#/components/schemas/NonEmployeeSource'
       - properties:
           nonEmployeeCount:
-            description: Number of non-employee records associated with this source.
+            description: "Number of non-employee records associated with this source.\
+              \ This value is 'null' by default. To get the non-employee count, you\
+              \ must set the `non-employee-count` flag in your request to 'true'."
             example: 2
             format: int32
             type: integer
@@ -80284,7 +80293,7 @@ components:
           - Completed
           - Failed
           - Canceled
-          - Executing
+          - Running
           example: Completed
           type: string
       type: object
@@ -82744,11 +82753,11 @@ components:
       nullable: true
       properties:
         taskResultId:
-          description: The id of the task result
+          description: Task result ID.
           format: uuid
           type: string
         reportName:
-          description: The name of the report
+          description: Report name.
           example: My annual report
           type: string
       type: object
@@ -85009,14 +85018,14 @@ components:
       - $ref: '#/components/schemas/BaseCommonDto_1'
       - properties:
           description:
-            description: The description of the Identity Profile.
+            description: Identity profile's description.
             example: My custom flat file profile
             nullable: true
             type: string
           owner:
             $ref: '#/components/schemas/IdentityProfile_allOf_owner'
           priority:
-            description: The priority for an Identity Profile.
+            description: Identity profile's priority.
             example: 10
             format: int64
             type: integer
@@ -85024,12 +85033,13 @@ components:
             $ref: '#/components/schemas/IdentityProfile_1_allOf_authoritativeSource'
           identityRefreshRequired:
             default: false
-            description: True if a identity refresh is needed. Typically triggered
-              when a change on the source has been made.
+            description: Set this value to 'True' if an identity refresh is necessary.
+              You would typically want to trigger an identity refresh when a change
+              has been made on the source.
             example: true
             type: boolean
           identityCount:
-            description: The number of identities that belong to the Identity Profile.
+            description: Number of identities belonging to the identity profile.
             example: 8
             format: int32
             type: integer
@@ -85039,8 +85049,8 @@ components:
             $ref: '#/components/schemas/IdentityExceptionReportReference_1'
           hasTimeBasedAttr:
             default: false
-            description: Indicates the value of requiresPeriodicRefresh attribute
-              for the Identity Profile.
+            description: Indicates the value of `requiresPeriodicRefresh` attribute
+              for the identity profile.
             example: true
             type: boolean
         required:
@@ -85175,6 +85185,7 @@ components:
           type: array
       type: object
     IdentityAttributeTransform:
+      description: Transform definition for an identity attribute.
       example:
         transformDefinition:
           attributes:
@@ -85185,7 +85196,7 @@ components:
         identityAttributeName: email
       properties:
         identityAttributeName:
-          description: Name of the identity attribute
+          description: Identity attribute's name.
           example: email
           type: string
         transformDefinition:
@@ -89964,8 +89975,8 @@ components:
       properties:
         enabled:
           default: false
-          description: The backend will only promote values if the profile/mapping
-            is enabled.
+          description: Backend will only promote values if the profile/mapping is
+            enabled.
           example: true
           type: boolean
         attributeTransforms:
@@ -89980,12 +89991,12 @@ components:
       nullable: true
       properties:
         taskResultId:
-          description: The id of the task result.
+          description: Task result ID.
           example: 2b838de9-db9b-abcf-e646-d4f274ad4238
           format: uuid
           type: string
         reportName:
-          description: The name of the report.
+          description: Report name.
           example: My annual report
           type: string
       type: object
@@ -89998,7 +90009,7 @@ components:
         type: accountAttribute
       properties:
         type:
-          description: The type of the transform definition.
+          description: Transform definition type.
           example: accountAttribute
           type: string
         attributes:
@@ -91040,7 +91051,7 @@ components:
           type: boolean
       type: object
     IdentityAttributeTransform_1:
-      description: Defines a transformation definition for an identity attribute.
+      description: Transform definition for an identity attribute.
       example:
         transformDefinition:
           attributes:
@@ -91051,7 +91062,7 @@ components:
         identityAttributeName: email
       properties:
         identityAttributeName:
-          description: Name of the identity attribute.
+          description: Identity attribute's name.
           example: email
           type: string
         transformDefinition:
@@ -91253,7 +91264,7 @@ components:
         type: accountAttribute
       properties:
         type:
-          description: The type of the transform definition.
+          description: Transform definition type.
           example: accountAttribute
           type: string
         attributes:
@@ -92479,7 +92490,7 @@ components:
           type: string
       type: object
     IdentityProfile_allOf_owner:
-      description: The owner of the Identity Profile.
+      description: Identity profile's owner.
       example:
         name: William Wilson
         id: 2c9180835d191a86015d28455b4b232a
@@ -92487,41 +92498,39 @@ components:
       nullable: true
       properties:
         type:
-          description: Type of the object to which this reference applies
+          description: Owner's object type.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: Owner's ID.
           example: 2c9180835d191a86015d28455b4b232a
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Owner's name.
           example: William Wilson
           type: string
       type: object
     IdentityProfile_allOf_authoritativeSource:
-      description: The authoritative source for this Identity Profile.
+      description: Identity profile's authoritative source.
       example:
         name: HR Active Directory
         id: 2c9180835d191a86015d28455b4b232a
         type: SOURCE
       properties:
         type:
-          description: Type of the object to which this reference applies
+          description: Authoritative source's object type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: Authoritative source's ID.
           example: 2c9180835d191a86015d28455b4b232a
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Authoritative source's name.
           example: HR Active Directory
           type: string
       type: object
@@ -95078,18 +95087,17 @@ components:
         type: SOURCE
       properties:
         type:
-          description: Type of the object to which this reference applies
+          description: Authoritative source's object type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: Authoritative source's ID.
           example: 2c9180835d191a86015d28455b4b232a
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Authoritative source's name.
           example: HR Active Directory
           type: string
       type: object

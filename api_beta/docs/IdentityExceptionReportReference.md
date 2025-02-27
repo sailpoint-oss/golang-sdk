@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TaskResultId** | Pointer to **string** | The id of the task result | [optional] 
-**ReportName** | Pointer to **string** | The name of the report | [optional] 
+**TaskResultId** | Pointer to **string** | Task result ID. | [optional] 
+**ReportName** | Pointer to **string** | Report name. | [optional] 
 
 ## Methods
 

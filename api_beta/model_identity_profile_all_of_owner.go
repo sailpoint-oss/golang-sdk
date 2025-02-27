@@ -17,13 +17,13 @@ import (
 // checks if the IdentityProfileAllOfOwner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityProfileAllOfOwner{}
 
-// IdentityProfileAllOfOwner The owner of the Identity Profile.
+// IdentityProfileAllOfOwner Identity profile's owner.
 type IdentityProfileAllOfOwner struct {
-	// Type of the object to which this reference applies
+	// Owner's object type.
 	Type *string `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// Owner's ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Owner's name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
