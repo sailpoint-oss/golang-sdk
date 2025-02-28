@@ -402,6 +402,14 @@ Class | Method | HTTP request | Description
 *MFAConfigurationAPI* | [**SetMFAKBAConfig**](docs/MFAConfigurationAPI.md#setmfakbaconfig) | **Post** /mfa/kba/config/answers | Set MFA KBA configuration
 *MFAConfigurationAPI* | [**SetMFAOktaConfig**](docs/MFAConfigurationAPI.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationAPI* | [**TestMFAConfig**](docs/MFAConfigurationAPI.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+*MachineAccountsAPI* | [**GetMachineAccount**](docs/MachineAccountsAPI.md#getmachineaccount) | **Get** /machine-accounts/{id} | Machine Account Details
+*MachineAccountsAPI* | [**ListMachineAccounts**](docs/MachineAccountsAPI.md#listmachineaccounts) | **Get** /machine-accounts | Machine Accounts List
+*MachineAccountsAPI* | [**UpdateMachineAccount**](docs/MachineAccountsAPI.md#updatemachineaccount) | **Patch** /machine-accounts/{id} | Update a Machine Account
+*MachineIdentitiesAPI* | [**CreateMachineIdentity**](docs/MachineIdentitiesAPI.md#createmachineidentity) | **Post** /machine-identities | Create Machine Identities
+*MachineIdentitiesAPI* | [**DeleteMachineIdentity**](docs/MachineIdentitiesAPI.md#deletemachineidentity) | **Delete** /machine-identities/{id} | Delete machine identity
+*MachineIdentitiesAPI* | [**GetMachineIdentity**](docs/MachineIdentitiesAPI.md#getmachineidentity) | **Get** /machine-identities/{id} | Machine Identity Details
+*MachineIdentitiesAPI* | [**ListMachineIdentities**](docs/MachineIdentitiesAPI.md#listmachineidentities) | **Get** /machine-identities | List Machine Identities
+*MachineIdentitiesAPI* | [**UpdateMachineIdentity**](docs/MachineIdentitiesAPI.md#updatemachineidentity) | **Patch** /machine-identities/{id} | Update a Machine Identity
 *ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create Managed Client
 *ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete Managed Client
 *ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get Managed Client
@@ -1266,6 +1274,8 @@ Class | Method | HTTP request | Description
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
  - [LookupStep](docs/LookupStep.md)
+ - [MachineAccount](docs/MachineAccount.md)
+ - [MachineIdentity](docs/MachineIdentity.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)

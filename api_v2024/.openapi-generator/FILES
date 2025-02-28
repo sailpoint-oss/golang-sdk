@@ -44,6 +44,8 @@ api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
 api_lifecycle_states.go
+api_machine_accounts.go
+api_machine_identities.go
 api_managed_clients.go
 api_managed_clusters.go
 api_mfa_configuration.go
@@ -665,6 +667,10 @@ docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/LookupStep.md
 docs/MFAConfigurationAPI.md
+docs/MachineAccount.md
+docs/MachineAccountsAPI.md
+docs/MachineIdentitiesAPI.md
+docs/MachineIdentity.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -1771,6 +1777,8 @@ model_load_uncorrelated_accounts_task_task_messages_inner.go
 model_locale_origin.go
 model_localized_message.go
 model_lookup_step.go
+model_machine_account.go
+model_machine_identity.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
@@ -2340,6 +2348,8 @@ test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
+test/api_machine_accounts_test.go
+test/api_machine_identities_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go
 test/api_mfa_configuration_test.go
