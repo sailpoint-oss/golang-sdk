@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## PatchSed
 
-> Sed PatchSed(ctx, id).XSailPointExperimental(xSailPointExperimental).SedPatch(sedPatch).Execute()
+> Sed PatchSed(ctx, id).SedPatch(sedPatch).Execute()
 
 Patch Suggested Entitlement Description
 
@@ -247,12 +247,11 @@ import (
 
 func main() {
 	id := "ebab396f-0af1-4050-89b7-dafc63ec70e7" // string | id is sed id
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	sedPatch := []openapiclient.SedPatch{*openapiclient.NewSedPatch()} // []SedPatch | Sed Patch Request
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SedPatch(sedPatch).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).SedPatch(sedPatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchSed``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,7 +277,6 @@ Other parameters are passed through a pointer to a apiPatchSedRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **sedPatch** | [**[]SedPatch**](SedPatch.md) | Sed Patch Request | 
 
 ### Return type

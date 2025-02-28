@@ -640,14 +640,7 @@ type ApiPatchSedRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
 	id string
-	xSailPointExperimental *string
 	sedPatch *[]SedPatch
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchSedRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchSedRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Sed Patch Request
@@ -698,21 +691,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedExecute(r ApiPatchSe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.sedPatch == nil {
 		return localVarReturnValue, nil, reportError("sedPatch is required and must be specified")
 	}
@@ -734,7 +712,6 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedExecute(r ApiPatchSe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.sedPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
