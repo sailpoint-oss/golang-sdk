@@ -6096,7 +6096,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account:remove
+        - idn:account:manage
       summary: Remove Account
       tags:
       - Accounts
@@ -43771,7 +43771,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account:remove
+        - idn:account:manage
       summary: Remove All Accounts in a Source
       tags:
       - Sources
