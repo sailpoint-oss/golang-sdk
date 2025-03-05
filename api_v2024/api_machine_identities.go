@@ -26,7 +26,14 @@ type MachineIdentitiesAPIService service
 type ApiCreateMachineIdentityRequest struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
+	xSailPointExperimental *string
 	machineIdentity *MachineIdentity
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateMachineIdentityRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateMachineIdentityRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateMachineIdentityRequest) MachineIdentity(machineIdentity MachineIdentity) ApiCreateMachineIdentityRequest {
@@ -74,6 +81,21 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.machineIdentity == nil {
 		return localVarReturnValue, nil, reportError("machineIdentity is required and must be specified")
 	}
@@ -95,6 +117,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.machineIdentity
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

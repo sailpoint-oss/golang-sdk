@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateMachineIdentity
 
-> MachineIdentity CreateMachineIdentity(ctx).MachineIdentity(machineIdentity).Execute()
+> MachineIdentity CreateMachineIdentity(ctx).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
 
 Create Machine Identities
 
@@ -33,11 +33,12 @@ import (
 )
 
 func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	machineIdentity := *openapiclient.NewMachineIdentity("aName", "ADService") // MachineIdentity | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).MachineIdentity(machineIdentity).Execute()
+	resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentity``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,6 +59,7 @@ Other parameters are passed through a pointer to a apiCreateMachineIdentityReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **machineIdentity** | [**MachineIdentity**](MachineIdentity.md) |  | 
 
 ### Return type
