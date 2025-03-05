@@ -64,6 +64,8 @@ docs/AccessCriteriaCriteriaListInner.md
 docs/AccessItemRequestedFor.md
 docs/AccessItemRequester.md
 docs/AccessItemReviewedBy.md
+docs/AccessModelMetadata.md
+docs/AccessModelMetadataValuesInner.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
@@ -101,6 +103,10 @@ docs/AccountActivityDocument.md
 docs/AccountActivityItem.md
 docs/AccountActivityItemOperation.md
 docs/AccountActivitySearchedItem.md
+docs/AccountAllOfIdentity.md
+docs/AccountAllOfOwnerIdentity.md
+docs/AccountAllOfRecommendation.md
+docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesCreate.md
 docs/AccountAttributesCreateAttributes.md
@@ -248,11 +254,12 @@ docs/DtoType.md
 docs/DuoVerificationRequest.md
 docs/EmailNotificationOption.md
 docs/Entitlement.md
+docs/EntitlementAccessModelMetadata.md
 docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 docs/EntitlementDocumentAllOfPermissions.md
 docs/EntitlementDocumentAllOfSource.md
-docs/EntitlementDto.md
+docs/EntitlementOwner.md
 docs/EntitlementRef.md
 docs/EntitlementRef1.md
 docs/EntitlementRequestConfig.md
@@ -696,6 +703,8 @@ model_access_criteria_criteria_list_inner.go
 model_access_item_requested_for.go
 model_access_item_requester.go
 model_access_item_reviewed_by.go
+model_access_model_metadata.go
+model_access_model_metadata_values_inner.go
 model_access_profile.go
 model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
@@ -729,6 +738,10 @@ model_account_activity_document.go
 model_account_activity_item.go
 model_account_activity_item_operation.go
 model_account_activity_searched_item.go
+model_account_all_of_identity.go
+model_account_all_of_owner_identity.go
+model_account_all_of_recommendation.go
+model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_create.go
 model_account_attributes_create_attributes.go
@@ -865,11 +878,12 @@ model_dto_type.go
 model_duo_verification_request.go
 model_email_notification_option.go
 model_entitlement.go
+model_entitlement_access_model_metadata.go
 model_entitlement_document.go
 model_entitlement_document_all_of_manually_updated_fields.go
 model_entitlement_document_all_of_permissions.go
 model_entitlement_document_all_of_source.go
-model_entitlement_dto.go
+model_entitlement_owner.go
 model_entitlement_ref.go
 model_entitlement_ref_1.go
 model_entitlement_request_config.go

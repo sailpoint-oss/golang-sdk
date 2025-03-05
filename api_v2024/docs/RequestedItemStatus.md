@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | The ID of the access request. | [optional] 
 **Name** | Pointer to **NullableString** | Human-readable display name of the item being requested. | [optional] 
 **Type** | Pointer to **NullableString** | Type of requested object. | [optional] 
 **CancelledRequestDetails** | Pointer to [**RequestedItemStatusCancelledRequestDetails**](RequestedItemStatusCancelledRequestDetails.md) |  | [optional] 
@@ -47,6 +48,31 @@ will change when the set of required properties is changed
 NewRequestedItemStatusWithDefaults instantiates a new RequestedItemStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *RequestedItemStatus) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *RequestedItemStatus) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *RequestedItemStatus) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *RequestedItemStatus) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 

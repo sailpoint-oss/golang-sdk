@@ -31,11 +31,17 @@ type Entitlement struct {
 	// The object type of the entitlement from the source schema
 	SourceSchemaObjectType *string `json:"sourceSchemaObjectType,omitempty"`
 	// The description of the entitlement
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// True if the entitlement is privileged
 	Privileged *bool `json:"privileged,omitempty"`
 	// True if the entitlement is cloud governed
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
+	// True if the entitlement is able to be directly requested
+	Requestable *bool `json:"requestable,omitempty"`
+	Owner NullableEntitlementOwner `json:"owner,omitempty"`
+	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
+	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
+	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
 	// Time when the entitlement was created
 	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the entitlement was last modified
@@ -57,6 +63,8 @@ type _Entitlement Entitlement
 // will change when the set of required properties is changed
 func NewEntitlement() *Entitlement {
 	this := Entitlement{}
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -65,6 +73,8 @@ func NewEntitlement() *Entitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementWithDefaults() *Entitlement {
 	this := Entitlement{}
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -228,36 +238,46 @@ func (o *Entitlement) SetSourceSchemaObjectType(v string) {
 	o.SourceSchemaObjectType = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Entitlement) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Entitlement) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Entitlement) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Entitlement) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Entitlement) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Entitlement) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
@@ -322,6 +342,145 @@ func (o *Entitlement) HasCloudGoverned() bool {
 // SetCloudGoverned gets a reference to the given bool and assigns it to the CloudGoverned field.
 func (o *Entitlement) SetCloudGoverned(v bool) {
 	o.CloudGoverned = &v
+}
+
+// GetRequestable returns the Requestable field value if set, zero value otherwise.
+func (o *Entitlement) GetRequestable() bool {
+	if o == nil || IsNil(o.Requestable) {
+		var ret bool
+		return ret
+	}
+	return *o.Requestable
+}
+
+// GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetRequestableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Requestable) {
+		return nil, false
+	}
+	return o.Requestable, true
+}
+
+// HasRequestable returns a boolean if a field has been set.
+func (o *Entitlement) HasRequestable() bool {
+	if o != nil && !IsNil(o.Requestable) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestable gets a reference to the given bool and assigns it to the Requestable field.
+func (o *Entitlement) SetRequestable(v bool) {
+	o.Requestable = &v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Entitlement) GetOwner() EntitlementOwner {
+	if o == nil || IsNil(o.Owner.Get()) {
+		var ret EntitlementOwner
+		return ret
+	}
+	return *o.Owner.Get()
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Entitlement) GetOwnerOk() (*EntitlementOwner, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Owner.Get(), o.Owner.IsSet()
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *Entitlement) HasOwner() bool {
+	if o != nil && o.Owner.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given NullableEntitlementOwner and assigns it to the Owner field.
+func (o *Entitlement) SetOwner(v EntitlementOwner) {
+	o.Owner.Set(&v)
+}
+// SetOwnerNil sets the value for Owner to be an explicit nil
+func (o *Entitlement) SetOwnerNil() {
+	o.Owner.Set(nil)
+}
+
+// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+func (o *Entitlement) UnsetOwner() {
+	o.Owner.Unset()
+}
+
+// GetManuallyUpdatedFields returns the ManuallyUpdatedFields field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Entitlement) GetManuallyUpdatedFields() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.ManuallyUpdatedFields
+}
+
+// GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Entitlement) GetManuallyUpdatedFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.ManuallyUpdatedFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.ManuallyUpdatedFields, true
+}
+
+// HasManuallyUpdatedFields returns a boolean if a field has been set.
+func (o *Entitlement) HasManuallyUpdatedFields() bool {
+	if o != nil && !IsNil(o.ManuallyUpdatedFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetManuallyUpdatedFields gets a reference to the given map[string]interface{} and assigns it to the ManuallyUpdatedFields field.
+func (o *Entitlement) SetManuallyUpdatedFields(v map[string]interface{}) {
+	o.ManuallyUpdatedFields = v
+}
+
+// GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
+func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		var ret EntitlementAccessModelMetadata
+		return ret
+	}
+	return *o.AccessModelMetadata
+}
+
+// GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool) {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		return nil, false
+	}
+	return o.AccessModelMetadata, true
+}
+
+// HasAccessModelMetadata returns a boolean if a field has been set.
+func (o *Entitlement) HasAccessModelMetadata() bool {
+	if o != nil && !IsNil(o.AccessModelMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessModelMetadata gets a reference to the given EntitlementAccessModelMetadata and assigns it to the AccessModelMetadata field.
+func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata) {
+	o.AccessModelMetadata = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -542,14 +701,26 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourceSchemaObjectType) {
 		toSerialize["sourceSchemaObjectType"] = o.SourceSchemaObjectType
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
 	if !IsNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
+	}
+	if !IsNil(o.Requestable) {
+		toSerialize["requestable"] = o.Requestable
+	}
+	if o.Owner.IsSet() {
+		toSerialize["owner"] = o.Owner.Get()
+	}
+	if o.ManuallyUpdatedFields != nil {
+		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields
+	}
+	if !IsNil(o.AccessModelMetadata) {
+		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
 	}
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
@@ -599,6 +770,10 @@ func (o *Entitlement) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "privileged")
 		delete(additionalProperties, "cloudGoverned")
+		delete(additionalProperties, "requestable")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "manuallyUpdatedFields")
+		delete(additionalProperties, "accessModelMetadata")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "source")

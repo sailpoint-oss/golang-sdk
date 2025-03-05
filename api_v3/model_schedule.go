@@ -23,11 +23,11 @@ var _ MappedNullable = &Schedule{}
 type Schedule struct {
 	// Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule can have both 'hours' and 'days' set.
 	Type string `json:"type"`
-	Months *ScheduleMonths `json:"months,omitempty"`
+	Months NullableScheduleMonths `json:"months,omitempty"`
 	Days *ScheduleDays `json:"days,omitempty"`
 	Hours ScheduleHours `json:"hours"`
 	// Specifies the time after which this schedule will no longer occur.
-	Expiration *SailPointTime `json:"expiration,omitempty"`
+	Expiration NullableTime `json:"expiration,omitempty"`
 	// The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \"CST\", the schedule will run at 1AM CST.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -78,36 +78,46 @@ func (o *Schedule) SetType(v string) {
 	o.Type = v
 }
 
-// GetMonths returns the Months field value if set, zero value otherwise.
+// GetMonths returns the Months field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule) GetMonths() ScheduleMonths {
-	if o == nil || IsNil(o.Months) {
+	if o == nil || IsNil(o.Months.Get()) {
 		var ret ScheduleMonths
 		return ret
 	}
-	return *o.Months
+	return *o.Months.Get()
 }
 
 // GetMonthsOk returns a tuple with the Months field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schedule) GetMonthsOk() (*ScheduleMonths, bool) {
-	if o == nil || IsNil(o.Months) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Months, true
+	return o.Months.Get(), o.Months.IsSet()
 }
 
 // HasMonths returns a boolean if a field has been set.
 func (o *Schedule) HasMonths() bool {
-	if o != nil && !IsNil(o.Months) {
+	if o != nil && o.Months.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMonths gets a reference to the given ScheduleMonths and assigns it to the Months field.
+// SetMonths gets a reference to the given NullableScheduleMonths and assigns it to the Months field.
 func (o *Schedule) SetMonths(v ScheduleMonths) {
-	o.Months = &v
+	o.Months.Set(&v)
+}
+// SetMonthsNil sets the value for Months to be an explicit nil
+func (o *Schedule) SetMonthsNil() {
+	o.Months.Set(nil)
+}
+
+// UnsetMonths ensures that no value is present for Months, not even an explicit nil
+func (o *Schedule) UnsetMonths() {
+	o.Months.Unset()
 }
 
 // GetDays returns the Days field value if set, zero value otherwise.
@@ -166,36 +176,46 @@ func (o *Schedule) SetHours(v ScheduleHours) {
 	o.Hours = v
 }
 
-// GetExpiration returns the Expiration field value if set, zero value otherwise.
+// GetExpiration returns the Expiration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule) GetExpiration() SailPointTime {
-	if o == nil || IsNil(o.Expiration) {
+	if o == nil || IsNil(o.Expiration.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Expiration
+	return *o.Expiration.Get()
 }
 
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schedule) GetExpirationOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Expiration) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Expiration, true
+	return o.Expiration.Get(), o.Expiration.IsSet()
 }
 
 // HasExpiration returns a boolean if a field has been set.
 func (o *Schedule) HasExpiration() bool {
-	if o != nil && !IsNil(o.Expiration) {
+	if o != nil && o.Expiration.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiration gets a reference to the given SailPointTime and assigns it to the Expiration field.
+// SetExpiration gets a reference to the given NullableTime and assigns it to the Expiration field.
 func (o *Schedule) SetExpiration(v SailPointTime) {
-	o.Expiration = &v
+	o.Expiration.Set(&v)
+}
+// SetExpirationNil sets the value for Expiration to be an explicit nil
+func (o *Schedule) SetExpirationNil() {
+	o.Expiration.Set(nil)
+}
+
+// UnsetExpiration ensures that no value is present for Expiration, not even an explicit nil
+func (o *Schedule) UnsetExpiration() {
+	o.Expiration.Unset()
 }
 
 // GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise.
@@ -241,15 +261,15 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 func (o Schedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Months) {
-		toSerialize["months"] = o.Months
+	if o.Months.IsSet() {
+		toSerialize["months"] = o.Months.Get()
 	}
 	if !IsNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
 	toSerialize["hours"] = o.Hours
-	if !IsNil(o.Expiration) {
-		toSerialize["expiration"] = o.Expiration
+	if o.Expiration.IsSet() {
+		toSerialize["expiration"] = o.Expiration.Get()
 	}
 	if !IsNil(o.TimeZoneId) {
 		toSerialize["timeZoneId"] = o.TimeZoneId

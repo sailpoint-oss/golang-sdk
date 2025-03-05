@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have &#39;hours&#39; set, but not &#39;days&#39;; a WEEKLY schedule can have both &#39;hours&#39; and &#39;days&#39; set. | 
-**Months** | Pointer to [**ScheduleMonths**](ScheduleMonths.md) |  | [optional] 
+**Months** | Pointer to [**NullableScheduleMonths**](ScheduleMonths.md) |  | [optional] 
 **Days** | Pointer to [**ScheduleDays**](ScheduleDays.md) |  | [optional] 
 **Hours** | [**ScheduleHours**](ScheduleHours.md) |  | 
-**Expiration** | Pointer to **time.Time** | Specifies the time after which this schedule will no longer occur. | [optional] 
+**Expiration** | Pointer to **NullableTime** | Specifies the time after which this schedule will no longer occur. | [optional] 
 **TimeZoneId** | Pointer to **string** | The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \&quot;CST\&quot;, the schedule will run at 1AM CST. | [optional] 
 
 ## Methods
@@ -75,6 +75,16 @@ SetMonths sets Months field to given value.
 
 HasMonths returns a boolean if a field has been set.
 
+### SetMonthsNil
+
+`func (o *Schedule) SetMonthsNil(b bool)`
+
+ SetMonthsNil sets the value for Months to be an explicit nil
+
+### UnsetMonths
+`func (o *Schedule) UnsetMonths()`
+
+UnsetMonths ensures that no value is present for Months, not even an explicit nil
 ### GetDays
 
 `func (o *Schedule) GetDays() ScheduleDays`
@@ -145,6 +155,16 @@ SetExpiration sets Expiration field to given value.
 
 HasExpiration returns a boolean if a field has been set.
 
+### SetExpirationNil
+
+`func (o *Schedule) SetExpirationNil(b bool)`
+
+ SetExpirationNil sets the value for Expiration to be an explicit nil
+
+### UnsetExpiration
+`func (o *Schedule) UnsetExpiration()`
+
+UnsetExpiration ensures that no value is present for Expiration, not even an explicit nil
 ### GetTimeZoneId
 
 `func (o *Schedule) GetTimeZoneId() string`

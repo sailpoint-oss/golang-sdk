@@ -922,7 +922,7 @@ func (r ApiGetAccountEntitlementsRequest) Count(count bool) ApiGetAccountEntitle
 	return r
 }
 
-func (r ApiGetAccountEntitlementsRequest) Execute() ([]EntitlementDto, *http.Response, error) {
+func (r ApiGetAccountEntitlementsRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.GetAccountEntitlementsExecute(r)
 }
 
@@ -944,13 +944,13 @@ func (a *AccountsAPIService) GetAccountEntitlements(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return []EntitlementDto
-func (a *AccountsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]EntitlementDto, *http.Response, error) {
+//  @return []Entitlement
+func (a *AccountsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []EntitlementDto
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.GetAccountEntitlements")

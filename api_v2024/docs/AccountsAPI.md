@@ -727,7 +727,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountEntitlements
 
-> []EntitlementDto GetAccountEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Execute()
+> []Entitlement GetAccountEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Execute()
 
 Account Entitlements
 
@@ -758,7 +758,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAccountEntitlements`: []EntitlementDto
+	// response from `GetAccountEntitlements`: []Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccountEntitlements`: %v\n", resp)
 }
 ```
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EntitlementDto**](EntitlementDto.md)
+[**[]Entitlement**](Entitlement.md)
 
 ### Authorization
 

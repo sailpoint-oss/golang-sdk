@@ -9,9 +9,13 @@ Name | Type | Description | Notes
 **Attribute** | Pointer to **string** | The entitlement attribute name | [optional] 
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The object type of the entitlement from the source schema | [optional] 
-**Description** | Pointer to **string** | The description of the entitlement | [optional] 
+**Description** | Pointer to **NullableString** | The description of the entitlement | [optional] 
 **Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] 
 **CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] 
+**Requestable** | Pointer to **bool** | True if the entitlement is able to be directly requested | [optional] [default to false]
+**Owner** | Pointer to [**NullableEntitlementOwner**](EntitlementOwner.md) |  | [optional] 
+**ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
+**AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](EntitlementAccessModelMetadata.md) |  | [optional] 
 **Created** | Pointer to **time.Time** | Time when the entitlement was created | [optional] 
 **Modified** | Pointer to **time.Time** | Time when the entitlement was last modified | [optional] 
 **Source** | Pointer to [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
@@ -188,6 +192,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Entitlement) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Entitlement) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPrivileged
 
 `func (o *Entitlement) GetPrivileged() bool`
@@ -237,6 +251,126 @@ SetCloudGoverned sets CloudGoverned field to given value.
 `func (o *Entitlement) HasCloudGoverned() bool`
 
 HasCloudGoverned returns a boolean if a field has been set.
+
+### GetRequestable
+
+`func (o *Entitlement) GetRequestable() bool`
+
+GetRequestable returns the Requestable field if non-nil, zero value otherwise.
+
+### GetRequestableOk
+
+`func (o *Entitlement) GetRequestableOk() (*bool, bool)`
+
+GetRequestableOk returns a tuple with the Requestable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestable
+
+`func (o *Entitlement) SetRequestable(v bool)`
+
+SetRequestable sets Requestable field to given value.
+
+### HasRequestable
+
+`func (o *Entitlement) HasRequestable() bool`
+
+HasRequestable returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *Entitlement) GetOwner() EntitlementOwner`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *Entitlement) GetOwnerOk() (*EntitlementOwner, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *Entitlement) SetOwner(v EntitlementOwner)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *Entitlement) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
+
+### SetOwnerNil
+
+`func (o *Entitlement) SetOwnerNil(b bool)`
+
+ SetOwnerNil sets the value for Owner to be an explicit nil
+
+### UnsetOwner
+`func (o *Entitlement) UnsetOwner()`
+
+UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+### GetManuallyUpdatedFields
+
+`func (o *Entitlement) GetManuallyUpdatedFields() map[string]interface{}`
+
+GetManuallyUpdatedFields returns the ManuallyUpdatedFields field if non-nil, zero value otherwise.
+
+### GetManuallyUpdatedFieldsOk
+
+`func (o *Entitlement) GetManuallyUpdatedFieldsOk() (*map[string]interface{}, bool)`
+
+GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManuallyUpdatedFields
+
+`func (o *Entitlement) SetManuallyUpdatedFields(v map[string]interface{})`
+
+SetManuallyUpdatedFields sets ManuallyUpdatedFields field to given value.
+
+### HasManuallyUpdatedFields
+
+`func (o *Entitlement) HasManuallyUpdatedFields() bool`
+
+HasManuallyUpdatedFields returns a boolean if a field has been set.
+
+### SetManuallyUpdatedFieldsNil
+
+`func (o *Entitlement) SetManuallyUpdatedFieldsNil(b bool)`
+
+ SetManuallyUpdatedFieldsNil sets the value for ManuallyUpdatedFields to be an explicit nil
+
+### UnsetManuallyUpdatedFields
+`func (o *Entitlement) UnsetManuallyUpdatedFields()`
+
+UnsetManuallyUpdatedFields ensures that no value is present for ManuallyUpdatedFields, not even an explicit nil
+### GetAccessModelMetadata
+
+`func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata`
+
+GetAccessModelMetadata returns the AccessModelMetadata field if non-nil, zero value otherwise.
+
+### GetAccessModelMetadataOk
+
+`func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool)`
+
+GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessModelMetadata
+
+`func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata)`
+
+SetAccessModelMetadata sets AccessModelMetadata field to given value.
+
+### HasAccessModelMetadata
+
+`func (o *Entitlement) HasAccessModelMetadata() bool`
+
+HasAccessModelMetadata returns a boolean if a field has been set.
 
 ### GetCreated
 

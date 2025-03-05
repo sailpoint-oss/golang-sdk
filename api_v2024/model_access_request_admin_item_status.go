@@ -20,6 +20,8 @@ var _ MappedNullable = &AccessRequestAdminItemStatus{}
 
 // AccessRequestAdminItemStatus struct for AccessRequestAdminItemStatus
 type AccessRequestAdminItemStatus struct {
+	// ID of the access request
+	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the item being requested.
 	Name NullableString `json:"name,omitempty"`
 	// Type of requested object.
@@ -87,6 +89,38 @@ func NewAccessRequestAdminItemStatusWithDefaults() *AccessRequestAdminItemStatus
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = &reauthorizationRequired
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AccessRequestAdminItemStatus) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestAdminItemStatus) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AccessRequestAdminItemStatus) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AccessRequestAdminItemStatus) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -931,6 +965,9 @@ func (o AccessRequestAdminItemStatus) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestAdminItemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -1025,6 +1062,7 @@ func (o *AccessRequestAdminItemStatus) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "cancelledRequestDetails")

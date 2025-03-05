@@ -8,18 +8,19 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Identity ID. | [optional] 
 **Uid** | Pointer to **string** | Identity&#39;s unique identitifier. | [optional] 
 **Profile** | Pointer to **string** | ID of the auth profile associated with the auth user. | [optional] 
-**IdentificationNumber** | Pointer to **string** | Auth user&#39;s employee number. | [optional] 
-**Email** | Pointer to **string** | Auth user&#39;s email. | [optional] 
-**Phone** | Pointer to **string** | Auth user&#39;s phone number. | [optional] 
-**WorkPhone** | Pointer to **string** | Auth user&#39;s work phone number. | [optional] 
-**PersonalEmail** | Pointer to **string** | Auth user&#39;s personal email. | [optional] 
-**Firstname** | Pointer to **string** | Auth user&#39;s first name. | [optional] 
-**Lastname** | Pointer to **string** | Auth user&#39;s last name. | [optional] 
+**IdentificationNumber** | Pointer to **NullableString** | Auth user&#39;s employee number. | [optional] 
+**Email** | Pointer to **NullableString** | Auth user&#39;s email. | [optional] 
+**Phone** | Pointer to **NullableString** | Auth user&#39;s phone number. | [optional] 
+**WorkPhone** | Pointer to **NullableString** | Auth user&#39;s work phone number. | [optional] 
+**PersonalEmail** | Pointer to **NullableString** | Auth user&#39;s personal email. | [optional] 
+**Firstname** | Pointer to **NullableString** | Auth user&#39;s first name. | [optional] 
+**Lastname** | Pointer to **NullableString** | Auth user&#39;s last name. | [optional] 
 **DisplayName** | Pointer to **string** | Auth user&#39;s name in displayed format. | [optional] 
 **Alias** | Pointer to **string** | Auth user&#39;s alias. | [optional] 
-**LastPasswordChangeDate** | Pointer to **string** | Date of last password change. | [optional] 
+**LastPasswordChangeDate** | Pointer to **NullableTime** | Date of last password change. | [optional] 
 **LastLoginTimestamp** | Pointer to **int64** | Timestamp of the last login (long type value). | [optional] 
 **CurrentLoginTimestamp** | Pointer to **int64** | Timestamp of the current login (long type value). | [optional] 
+**LastUnlockTimestamp** | Pointer to **NullableTime** | The date and time when the user was last unlocked. | [optional] 
 **Capabilities** | Pointer to **[]string** | Array of the auth user&#39;s capabilities. | [optional] 
 
 ## Methods
@@ -166,6 +167,16 @@ SetIdentificationNumber sets IdentificationNumber field to given value.
 
 HasIdentificationNumber returns a boolean if a field has been set.
 
+### SetIdentificationNumberNil
+
+`func (o *AuthUser) SetIdentificationNumberNil(b bool)`
+
+ SetIdentificationNumberNil sets the value for IdentificationNumber to be an explicit nil
+
+### UnsetIdentificationNumber
+`func (o *AuthUser) UnsetIdentificationNumber()`
+
+UnsetIdentificationNumber ensures that no value is present for IdentificationNumber, not even an explicit nil
 ### GetEmail
 
 `func (o *AuthUser) GetEmail() string`
@@ -191,6 +202,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *AuthUser) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *AuthUser) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetPhone
 
 `func (o *AuthUser) GetPhone() string`
@@ -216,6 +237,16 @@ SetPhone sets Phone field to given value.
 
 HasPhone returns a boolean if a field has been set.
 
+### SetPhoneNil
+
+`func (o *AuthUser) SetPhoneNil(b bool)`
+
+ SetPhoneNil sets the value for Phone to be an explicit nil
+
+### UnsetPhone
+`func (o *AuthUser) UnsetPhone()`
+
+UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 ### GetWorkPhone
 
 `func (o *AuthUser) GetWorkPhone() string`
@@ -241,6 +272,16 @@ SetWorkPhone sets WorkPhone field to given value.
 
 HasWorkPhone returns a boolean if a field has been set.
 
+### SetWorkPhoneNil
+
+`func (o *AuthUser) SetWorkPhoneNil(b bool)`
+
+ SetWorkPhoneNil sets the value for WorkPhone to be an explicit nil
+
+### UnsetWorkPhone
+`func (o *AuthUser) UnsetWorkPhone()`
+
+UnsetWorkPhone ensures that no value is present for WorkPhone, not even an explicit nil
 ### GetPersonalEmail
 
 `func (o *AuthUser) GetPersonalEmail() string`
@@ -266,6 +307,16 @@ SetPersonalEmail sets PersonalEmail field to given value.
 
 HasPersonalEmail returns a boolean if a field has been set.
 
+### SetPersonalEmailNil
+
+`func (o *AuthUser) SetPersonalEmailNil(b bool)`
+
+ SetPersonalEmailNil sets the value for PersonalEmail to be an explicit nil
+
+### UnsetPersonalEmail
+`func (o *AuthUser) UnsetPersonalEmail()`
+
+UnsetPersonalEmail ensures that no value is present for PersonalEmail, not even an explicit nil
 ### GetFirstname
 
 `func (o *AuthUser) GetFirstname() string`
@@ -291,6 +342,16 @@ SetFirstname sets Firstname field to given value.
 
 HasFirstname returns a boolean if a field has been set.
 
+### SetFirstnameNil
+
+`func (o *AuthUser) SetFirstnameNil(b bool)`
+
+ SetFirstnameNil sets the value for Firstname to be an explicit nil
+
+### UnsetFirstname
+`func (o *AuthUser) UnsetFirstname()`
+
+UnsetFirstname ensures that no value is present for Firstname, not even an explicit nil
 ### GetLastname
 
 `func (o *AuthUser) GetLastname() string`
@@ -316,6 +377,16 @@ SetLastname sets Lastname field to given value.
 
 HasLastname returns a boolean if a field has been set.
 
+### SetLastnameNil
+
+`func (o *AuthUser) SetLastnameNil(b bool)`
+
+ SetLastnameNil sets the value for Lastname to be an explicit nil
+
+### UnsetLastname
+`func (o *AuthUser) UnsetLastname()`
+
+UnsetLastname ensures that no value is present for Lastname, not even an explicit nil
 ### GetDisplayName
 
 `func (o *AuthUser) GetDisplayName() string`
@@ -368,20 +439,20 @@ HasAlias returns a boolean if a field has been set.
 
 ### GetLastPasswordChangeDate
 
-`func (o *AuthUser) GetLastPasswordChangeDate() string`
+`func (o *AuthUser) GetLastPasswordChangeDate() time.Time`
 
 GetLastPasswordChangeDate returns the LastPasswordChangeDate field if non-nil, zero value otherwise.
 
 ### GetLastPasswordChangeDateOk
 
-`func (o *AuthUser) GetLastPasswordChangeDateOk() (*string, bool)`
+`func (o *AuthUser) GetLastPasswordChangeDateOk() (*time.Time, bool)`
 
 GetLastPasswordChangeDateOk returns a tuple with the LastPasswordChangeDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastPasswordChangeDate
 
-`func (o *AuthUser) SetLastPasswordChangeDate(v string)`
+`func (o *AuthUser) SetLastPasswordChangeDate(v time.Time)`
 
 SetLastPasswordChangeDate sets LastPasswordChangeDate field to given value.
 
@@ -391,6 +462,16 @@ SetLastPasswordChangeDate sets LastPasswordChangeDate field to given value.
 
 HasLastPasswordChangeDate returns a boolean if a field has been set.
 
+### SetLastPasswordChangeDateNil
+
+`func (o *AuthUser) SetLastPasswordChangeDateNil(b bool)`
+
+ SetLastPasswordChangeDateNil sets the value for LastPasswordChangeDate to be an explicit nil
+
+### UnsetLastPasswordChangeDate
+`func (o *AuthUser) UnsetLastPasswordChangeDate()`
+
+UnsetLastPasswordChangeDate ensures that no value is present for LastPasswordChangeDate, not even an explicit nil
 ### GetLastLoginTimestamp
 
 `func (o *AuthUser) GetLastLoginTimestamp() int64`
@@ -441,6 +522,41 @@ SetCurrentLoginTimestamp sets CurrentLoginTimestamp field to given value.
 
 HasCurrentLoginTimestamp returns a boolean if a field has been set.
 
+### GetLastUnlockTimestamp
+
+`func (o *AuthUser) GetLastUnlockTimestamp() time.Time`
+
+GetLastUnlockTimestamp returns the LastUnlockTimestamp field if non-nil, zero value otherwise.
+
+### GetLastUnlockTimestampOk
+
+`func (o *AuthUser) GetLastUnlockTimestampOk() (*time.Time, bool)`
+
+GetLastUnlockTimestampOk returns a tuple with the LastUnlockTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUnlockTimestamp
+
+`func (o *AuthUser) SetLastUnlockTimestamp(v time.Time)`
+
+SetLastUnlockTimestamp sets LastUnlockTimestamp field to given value.
+
+### HasLastUnlockTimestamp
+
+`func (o *AuthUser) HasLastUnlockTimestamp() bool`
+
+HasLastUnlockTimestamp returns a boolean if a field has been set.
+
+### SetLastUnlockTimestampNil
+
+`func (o *AuthUser) SetLastUnlockTimestampNil(b bool)`
+
+ SetLastUnlockTimestampNil sets the value for LastUnlockTimestamp to be an explicit nil
+
+### UnsetLastUnlockTimestamp
+`func (o *AuthUser) UnsetLastUnlockTimestamp()`
+
+UnsetLastUnlockTimestamp ensures that no value is present for LastUnlockTimestamp, not even an explicit nil
 ### GetCapabilities
 
 `func (o *AuthUser) GetCapabilities() []string`
@@ -466,6 +582,16 @@ SetCapabilities sets Capabilities field to given value.
 
 HasCapabilities returns a boolean if a field has been set.
 
+### SetCapabilitiesNil
+
+`func (o *AuthUser) SetCapabilitiesNil(b bool)`
+
+ SetCapabilitiesNil sets the value for Capabilities to be an explicit nil
+
+### UnsetCapabilities
+`func (o *AuthUser) UnsetCapabilities()`
+
+UnsetCapabilities ensures that no value is present for Capabilities, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

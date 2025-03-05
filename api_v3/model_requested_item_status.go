@@ -20,6 +20,8 @@ var _ MappedNullable = &RequestedItemStatus{}
 
 // RequestedItemStatus struct for RequestedItemStatus
 type RequestedItemStatus struct {
+	// The ID of the access request.
+	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the item being requested.
 	Name NullableString `json:"name,omitempty"`
 	// Type of requested object.
@@ -83,6 +85,38 @@ func NewRequestedItemStatusWithDefaults() *RequestedItemStatus {
 	var cancelable bool = false
 	this.Cancelable = &cancelable
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *RequestedItemStatus) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestedItemStatus) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *RequestedItemStatus) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *RequestedItemStatus) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -928,6 +962,9 @@ func (o RequestedItemStatus) MarshalJSON() ([]byte, error) {
 
 func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -1022,6 +1059,7 @@ func (o *RequestedItemStatus) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "cancelledRequestDetails")

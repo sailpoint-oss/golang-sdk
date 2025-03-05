@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the AuthUser type satisfies the MappedNullable interface at compile time
@@ -28,29 +29,31 @@ type AuthUser struct {
 	// ID of the auth profile associated with the auth user.
 	Profile *string `json:"profile,omitempty"`
 	// Auth user's employee number.
-	IdentificationNumber *string `json:"identificationNumber,omitempty"`
+	IdentificationNumber NullableString `json:"identificationNumber,omitempty"`
 	// Auth user's email.
-	Email *string `json:"email,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 	// Auth user's phone number.
-	Phone *string `json:"phone,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
 	// Auth user's work phone number.
-	WorkPhone *string `json:"workPhone,omitempty"`
+	WorkPhone NullableString `json:"workPhone,omitempty"`
 	// Auth user's personal email.
-	PersonalEmail *string `json:"personalEmail,omitempty"`
+	PersonalEmail NullableString `json:"personalEmail,omitempty"`
 	// Auth user's first name.
-	Firstname *string `json:"firstname,omitempty"`
+	Firstname NullableString `json:"firstname,omitempty"`
 	// Auth user's last name.
-	Lastname *string `json:"lastname,omitempty"`
+	Lastname NullableString `json:"lastname,omitempty"`
 	// Auth user's name in displayed format.
 	DisplayName *string `json:"displayName,omitempty"`
 	// Auth user's alias.
 	Alias *string `json:"alias,omitempty"`
 	// Date of last password change.
-	LastPasswordChangeDate *string `json:"lastPasswordChangeDate,omitempty"`
+	LastPasswordChangeDate NullableTime `json:"lastPasswordChangeDate,omitempty"`
 	// Timestamp of the last login (long type value).
 	LastLoginTimestamp *int64 `json:"lastLoginTimestamp,omitempty"`
 	// Timestamp of the current login (long type value).
 	CurrentLoginTimestamp *int64 `json:"currentLoginTimestamp,omitempty"`
+	// The date and time when the user was last unlocked.
+	LastUnlockTimestamp NullableTime `json:"lastUnlockTimestamp,omitempty"`
 	// Array of the auth user's capabilities.
 	Capabilities []string `json:"capabilities,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -203,228 +206,298 @@ func (o *AuthUser) SetProfile(v string) {
 	o.Profile = &v
 }
 
-// GetIdentificationNumber returns the IdentificationNumber field value if set, zero value otherwise.
+// GetIdentificationNumber returns the IdentificationNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetIdentificationNumber() string {
-	if o == nil || IsNil(o.IdentificationNumber) {
+	if o == nil || IsNil(o.IdentificationNumber.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IdentificationNumber
+	return *o.IdentificationNumber.Get()
 }
 
 // GetIdentificationNumberOk returns a tuple with the IdentificationNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetIdentificationNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.IdentificationNumber) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IdentificationNumber, true
+	return o.IdentificationNumber.Get(), o.IdentificationNumber.IsSet()
 }
 
 // HasIdentificationNumber returns a boolean if a field has been set.
 func (o *AuthUser) HasIdentificationNumber() bool {
-	if o != nil && !IsNil(o.IdentificationNumber) {
+	if o != nil && o.IdentificationNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIdentificationNumber gets a reference to the given string and assigns it to the IdentificationNumber field.
+// SetIdentificationNumber gets a reference to the given NullableString and assigns it to the IdentificationNumber field.
 func (o *AuthUser) SetIdentificationNumber(v string) {
-	o.IdentificationNumber = &v
+	o.IdentificationNumber.Set(&v)
+}
+// SetIdentificationNumberNil sets the value for IdentificationNumber to be an explicit nil
+func (o *AuthUser) SetIdentificationNumberNil() {
+	o.IdentificationNumber.Set(nil)
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// UnsetIdentificationNumber ensures that no value is present for IdentificationNumber, not even an explicit nil
+func (o *AuthUser) UnsetIdentificationNumber() {
+	o.IdentificationNumber.Unset()
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthUser) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *AuthUser) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *AuthUser) SetEmailNil() {
+	o.Email.Set(nil)
 }
 
-// GetPhone returns the Phone field value if set, zero value otherwise.
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *AuthUser) UnsetEmail() {
+	o.Email.Unset()
+}
+
+// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil || IsNil(o.Phone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // HasPhone returns a boolean if a field has been set.
 func (o *AuthUser) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
+	if o != nil && o.Phone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
+// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
 func (o *AuthUser) SetPhone(v string) {
-	o.Phone = &v
+	o.Phone.Set(&v)
+}
+// SetPhoneNil sets the value for Phone to be an explicit nil
+func (o *AuthUser) SetPhoneNil() {
+	o.Phone.Set(nil)
 }
 
-// GetWorkPhone returns the WorkPhone field value if set, zero value otherwise.
+// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+func (o *AuthUser) UnsetPhone() {
+	o.Phone.Unset()
+}
+
+// GetWorkPhone returns the WorkPhone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetWorkPhone() string {
-	if o == nil || IsNil(o.WorkPhone) {
+	if o == nil || IsNil(o.WorkPhone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WorkPhone
+	return *o.WorkPhone.Get()
 }
 
 // GetWorkPhoneOk returns a tuple with the WorkPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetWorkPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.WorkPhone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WorkPhone, true
+	return o.WorkPhone.Get(), o.WorkPhone.IsSet()
 }
 
 // HasWorkPhone returns a boolean if a field has been set.
 func (o *AuthUser) HasWorkPhone() bool {
-	if o != nil && !IsNil(o.WorkPhone) {
+	if o != nil && o.WorkPhone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWorkPhone gets a reference to the given string and assigns it to the WorkPhone field.
+// SetWorkPhone gets a reference to the given NullableString and assigns it to the WorkPhone field.
 func (o *AuthUser) SetWorkPhone(v string) {
-	o.WorkPhone = &v
+	o.WorkPhone.Set(&v)
+}
+// SetWorkPhoneNil sets the value for WorkPhone to be an explicit nil
+func (o *AuthUser) SetWorkPhoneNil() {
+	o.WorkPhone.Set(nil)
 }
 
-// GetPersonalEmail returns the PersonalEmail field value if set, zero value otherwise.
+// UnsetWorkPhone ensures that no value is present for WorkPhone, not even an explicit nil
+func (o *AuthUser) UnsetWorkPhone() {
+	o.WorkPhone.Unset()
+}
+
+// GetPersonalEmail returns the PersonalEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetPersonalEmail() string {
-	if o == nil || IsNil(o.PersonalEmail) {
+	if o == nil || IsNil(o.PersonalEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PersonalEmail
+	return *o.PersonalEmail.Get()
 }
 
 // GetPersonalEmailOk returns a tuple with the PersonalEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetPersonalEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.PersonalEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PersonalEmail, true
+	return o.PersonalEmail.Get(), o.PersonalEmail.IsSet()
 }
 
 // HasPersonalEmail returns a boolean if a field has been set.
 func (o *AuthUser) HasPersonalEmail() bool {
-	if o != nil && !IsNil(o.PersonalEmail) {
+	if o != nil && o.PersonalEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPersonalEmail gets a reference to the given string and assigns it to the PersonalEmail field.
+// SetPersonalEmail gets a reference to the given NullableString and assigns it to the PersonalEmail field.
 func (o *AuthUser) SetPersonalEmail(v string) {
-	o.PersonalEmail = &v
+	o.PersonalEmail.Set(&v)
+}
+// SetPersonalEmailNil sets the value for PersonalEmail to be an explicit nil
+func (o *AuthUser) SetPersonalEmailNil() {
+	o.PersonalEmail.Set(nil)
 }
 
-// GetFirstname returns the Firstname field value if set, zero value otherwise.
+// UnsetPersonalEmail ensures that no value is present for PersonalEmail, not even an explicit nil
+func (o *AuthUser) UnsetPersonalEmail() {
+	o.PersonalEmail.Unset()
+}
+
+// GetFirstname returns the Firstname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetFirstname() string {
-	if o == nil || IsNil(o.Firstname) {
+	if o == nil || IsNil(o.Firstname.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Firstname
+	return *o.Firstname.Get()
 }
 
 // GetFirstnameOk returns a tuple with the Firstname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetFirstnameOk() (*string, bool) {
-	if o == nil || IsNil(o.Firstname) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Firstname, true
+	return o.Firstname.Get(), o.Firstname.IsSet()
 }
 
 // HasFirstname returns a boolean if a field has been set.
 func (o *AuthUser) HasFirstname() bool {
-	if o != nil && !IsNil(o.Firstname) {
+	if o != nil && o.Firstname.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstname gets a reference to the given string and assigns it to the Firstname field.
+// SetFirstname gets a reference to the given NullableString and assigns it to the Firstname field.
 func (o *AuthUser) SetFirstname(v string) {
-	o.Firstname = &v
+	o.Firstname.Set(&v)
+}
+// SetFirstnameNil sets the value for Firstname to be an explicit nil
+func (o *AuthUser) SetFirstnameNil() {
+	o.Firstname.Set(nil)
 }
 
-// GetLastname returns the Lastname field value if set, zero value otherwise.
+// UnsetFirstname ensures that no value is present for Firstname, not even an explicit nil
+func (o *AuthUser) UnsetFirstname() {
+	o.Firstname.Unset()
+}
+
+// GetLastname returns the Lastname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetLastname() string {
-	if o == nil || IsNil(o.Lastname) {
+	if o == nil || IsNil(o.Lastname.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Lastname
+	return *o.Lastname.Get()
 }
 
 // GetLastnameOk returns a tuple with the Lastname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetLastnameOk() (*string, bool) {
-	if o == nil || IsNil(o.Lastname) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Lastname, true
+	return o.Lastname.Get(), o.Lastname.IsSet()
 }
 
 // HasLastname returns a boolean if a field has been set.
 func (o *AuthUser) HasLastname() bool {
-	if o != nil && !IsNil(o.Lastname) {
+	if o != nil && o.Lastname.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastname gets a reference to the given string and assigns it to the Lastname field.
+// SetLastname gets a reference to the given NullableString and assigns it to the Lastname field.
 func (o *AuthUser) SetLastname(v string) {
-	o.Lastname = &v
+	o.Lastname.Set(&v)
+}
+// SetLastnameNil sets the value for Lastname to be an explicit nil
+func (o *AuthUser) SetLastnameNil() {
+	o.Lastname.Set(nil)
+}
+
+// UnsetLastname ensures that no value is present for Lastname, not even an explicit nil
+func (o *AuthUser) UnsetLastname() {
+	o.Lastname.Unset()
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -491,36 +564,46 @@ func (o *AuthUser) SetAlias(v string) {
 	o.Alias = &v
 }
 
-// GetLastPasswordChangeDate returns the LastPasswordChangeDate field value if set, zero value otherwise.
-func (o *AuthUser) GetLastPasswordChangeDate() string {
-	if o == nil || IsNil(o.LastPasswordChangeDate) {
-		var ret string
+// GetLastPasswordChangeDate returns the LastPasswordChangeDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthUser) GetLastPasswordChangeDate() SailPointTime {
+	if o == nil || IsNil(o.LastPasswordChangeDate.Get()) {
+		var ret SailPointTime
 		return ret
 	}
-	return *o.LastPasswordChangeDate
+	return *o.LastPasswordChangeDate.Get()
 }
 
 // GetLastPasswordChangeDateOk returns a tuple with the LastPasswordChangeDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthUser) GetLastPasswordChangeDateOk() (*string, bool) {
-	if o == nil || IsNil(o.LastPasswordChangeDate) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthUser) GetLastPasswordChangeDateOk() (*SailPointTime, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastPasswordChangeDate, true
+	return o.LastPasswordChangeDate.Get(), o.LastPasswordChangeDate.IsSet()
 }
 
 // HasLastPasswordChangeDate returns a boolean if a field has been set.
 func (o *AuthUser) HasLastPasswordChangeDate() bool {
-	if o != nil && !IsNil(o.LastPasswordChangeDate) {
+	if o != nil && o.LastPasswordChangeDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastPasswordChangeDate gets a reference to the given string and assigns it to the LastPasswordChangeDate field.
-func (o *AuthUser) SetLastPasswordChangeDate(v string) {
-	o.LastPasswordChangeDate = &v
+// SetLastPasswordChangeDate gets a reference to the given NullableTime and assigns it to the LastPasswordChangeDate field.
+func (o *AuthUser) SetLastPasswordChangeDate(v SailPointTime) {
+	o.LastPasswordChangeDate.Set(&v)
+}
+// SetLastPasswordChangeDateNil sets the value for LastPasswordChangeDate to be an explicit nil
+func (o *AuthUser) SetLastPasswordChangeDateNil() {
+	o.LastPasswordChangeDate.Set(nil)
+}
+
+// UnsetLastPasswordChangeDate ensures that no value is present for LastPasswordChangeDate, not even an explicit nil
+func (o *AuthUser) UnsetLastPasswordChangeDate() {
+	o.LastPasswordChangeDate.Unset()
 }
 
 // GetLastLoginTimestamp returns the LastLoginTimestamp field value if set, zero value otherwise.
@@ -587,9 +670,51 @@ func (o *AuthUser) SetCurrentLoginTimestamp(v int64) {
 	o.CurrentLoginTimestamp = &v
 }
 
-// GetCapabilities returns the Capabilities field value if set, zero value otherwise.
+// GetLastUnlockTimestamp returns the LastUnlockTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthUser) GetLastUnlockTimestamp() SailPointTime {
+	if o == nil || IsNil(o.LastUnlockTimestamp.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.LastUnlockTimestamp.Get()
+}
+
+// GetLastUnlockTimestampOk returns a tuple with the LastUnlockTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthUser) GetLastUnlockTimestampOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastUnlockTimestamp.Get(), o.LastUnlockTimestamp.IsSet()
+}
+
+// HasLastUnlockTimestamp returns a boolean if a field has been set.
+func (o *AuthUser) HasLastUnlockTimestamp() bool {
+	if o != nil && o.LastUnlockTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUnlockTimestamp gets a reference to the given NullableTime and assigns it to the LastUnlockTimestamp field.
+func (o *AuthUser) SetLastUnlockTimestamp(v SailPointTime) {
+	o.LastUnlockTimestamp.Set(&v)
+}
+// SetLastUnlockTimestampNil sets the value for LastUnlockTimestamp to be an explicit nil
+func (o *AuthUser) SetLastUnlockTimestampNil() {
+	o.LastUnlockTimestamp.Set(nil)
+}
+
+// UnsetLastUnlockTimestamp ensures that no value is present for LastUnlockTimestamp, not even an explicit nil
+func (o *AuthUser) UnsetLastUnlockTimestamp() {
+	o.LastUnlockTimestamp.Unset()
+}
+
+// GetCapabilities returns the Capabilities field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthUser) GetCapabilities() []string {
-	if o == nil || IsNil(o.Capabilities) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -598,6 +723,7 @@ func (o *AuthUser) GetCapabilities() []string {
 
 // GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthUser) GetCapabilitiesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Capabilities) {
 		return nil, false
@@ -641,26 +767,26 @@ func (o AuthUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Profile) {
 		toSerialize["profile"] = o.Profile
 	}
-	if !IsNil(o.IdentificationNumber) {
-		toSerialize["identificationNumber"] = o.IdentificationNumber
+	if o.IdentificationNumber.IsSet() {
+		toSerialize["identificationNumber"] = o.IdentificationNumber.Get()
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.Phone) {
-		toSerialize["phone"] = o.Phone
+	if o.Phone.IsSet() {
+		toSerialize["phone"] = o.Phone.Get()
 	}
-	if !IsNil(o.WorkPhone) {
-		toSerialize["workPhone"] = o.WorkPhone
+	if o.WorkPhone.IsSet() {
+		toSerialize["workPhone"] = o.WorkPhone.Get()
 	}
-	if !IsNil(o.PersonalEmail) {
-		toSerialize["personalEmail"] = o.PersonalEmail
+	if o.PersonalEmail.IsSet() {
+		toSerialize["personalEmail"] = o.PersonalEmail.Get()
 	}
-	if !IsNil(o.Firstname) {
-		toSerialize["firstname"] = o.Firstname
+	if o.Firstname.IsSet() {
+		toSerialize["firstname"] = o.Firstname.Get()
 	}
-	if !IsNil(o.Lastname) {
-		toSerialize["lastname"] = o.Lastname
+	if o.Lastname.IsSet() {
+		toSerialize["lastname"] = o.Lastname.Get()
 	}
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
@@ -668,8 +794,8 @@ func (o AuthUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if !IsNil(o.LastPasswordChangeDate) {
-		toSerialize["lastPasswordChangeDate"] = o.LastPasswordChangeDate
+	if o.LastPasswordChangeDate.IsSet() {
+		toSerialize["lastPasswordChangeDate"] = o.LastPasswordChangeDate.Get()
 	}
 	if !IsNil(o.LastLoginTimestamp) {
 		toSerialize["lastLoginTimestamp"] = o.LastLoginTimestamp
@@ -677,7 +803,10 @@ func (o AuthUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CurrentLoginTimestamp) {
 		toSerialize["currentLoginTimestamp"] = o.CurrentLoginTimestamp
 	}
-	if !IsNil(o.Capabilities) {
+	if o.LastUnlockTimestamp.IsSet() {
+		toSerialize["lastUnlockTimestamp"] = o.LastUnlockTimestamp.Get()
+	}
+	if o.Capabilities != nil {
 		toSerialize["capabilities"] = o.Capabilities
 	}
 
@@ -718,6 +847,7 @@ func (o *AuthUser) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "lastPasswordChangeDate")
 		delete(additionalProperties, "lastLoginTimestamp")
 		delete(additionalProperties, "currentLoginTimestamp")
+		delete(additionalProperties, "lastUnlockTimestamp")
 		delete(additionalProperties, "capabilities")
 		o.AdditionalProperties = additionalProperties
 	}

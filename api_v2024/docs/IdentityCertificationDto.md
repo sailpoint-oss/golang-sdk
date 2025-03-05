@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | modified date | [optional] 
 **DecisionsMade** | Pointer to **int32** | The number of approve/revoke/acknowledge decisions that have been made. | [optional] 
 **DecisionsTotal** | Pointer to **int32** | The total number of approve/revoke/acknowledge decisions. | [optional] 
-**Due** | Pointer to **time.Time** | The due date of the certification. | [optional] 
+**Due** | Pointer to **NullableTime** | The due date of the certification. | [optional] 
 **Signed** | Pointer to **NullableTime** | The date the reviewer signed off on the Certification. | [optional] 
 **Reviewer** | Pointer to [**Reviewer**](Reviewer.md) |  | [optional] 
 **Reassignment** | Pointer to [**NullableReassignment**](Reassignment.md) |  | [optional] 
@@ -316,6 +316,16 @@ SetDue sets Due field to given value.
 
 HasDue returns a boolean if a field has been set.
 
+### SetDueNil
+
+`func (o *IdentityCertificationDto) SetDueNil(b bool)`
+
+ SetDueNil sets the value for Due to be an explicit nil
+
+### UnsetDue
+`func (o *IdentityCertificationDto) UnsetDue()`
+
+UnsetDue ensures that no value is present for Due, not even an explicit nil
 ### GetSigned
 
 `func (o *IdentityCertificationDto) GetSigned() time.Time`

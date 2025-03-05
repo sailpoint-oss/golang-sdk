@@ -854,7 +854,7 @@ Name | Type | Description  | Notes
 
 ## ListDeploys
 
-> []DeployResponse ListDeploys(ctx).Execute()
+> ListDeploys200Response ListDeploys(ctx).Execute()
 
 List Deploys
 
@@ -881,7 +881,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDeploys``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListDeploys`: []DeployResponse
+	// response from `ListDeploys`: ListDeploys200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListDeploys`: %v\n", resp)
 }
 ```
@@ -897,7 +897,7 @@ Other parameters are passed through a pointer to a apiListDeploysRequest struct 
 
 ### Return type
 
-[**[]DeployResponse**](DeployResponse.md)
+[**ListDeploys200Response**](ListDeploys200Response.md)
 
 ### Authorization
 

@@ -2070,7 +2070,7 @@ type ApiListDeploysRequest struct {
 	ApiService *ConfigurationHubAPIService
 }
 
-func (r ApiListDeploysRequest) Execute() ([]DeployResponse, *http.Response, error) {
+func (r ApiListDeploysRequest) Execute() (*ListDeploys200Response, *http.Response, error) {
 	return r.ApiService.ListDeploysExecute(r)
 }
 
@@ -2090,13 +2090,13 @@ func (a *ConfigurationHubAPIService) ListDeploys(ctx context.Context) ApiListDep
 }
 
 // Execute executes the request
-//  @return []DeployResponse
-func (a *ConfigurationHubAPIService) ListDeploysExecute(r ApiListDeploysRequest) ([]DeployResponse, *http.Response, error) {
+//  @return ListDeploys200Response
+func (a *ConfigurationHubAPIService) ListDeploysExecute(r ApiListDeploysRequest) (*ListDeploys200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []DeployResponse
+		localVarReturnValue  *ListDeploys200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.ListDeploys")

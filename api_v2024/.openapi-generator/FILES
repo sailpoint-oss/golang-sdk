@@ -112,7 +112,9 @@ docs/AccessItemRequester.md
 docs/AccessItemRequesterDto.md
 docs/AccessItemReviewedBy.md
 docs/AccessItemRoleResponse.md
+docs/AccessModelMetadata.md
 docs/AccessModelMetadataAPI.md
+docs/AccessModelMetadataValuesInner.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
@@ -186,6 +188,10 @@ docs/AccountAggregationCompletedSource.md
 docs/AccountAggregationCompletedStats.md
 docs/AccountAggregationStatus.md
 docs/AccountAggregationsAPI.md
+docs/AccountAllOfIdentity.md
+docs/AccountAllOfOwnerIdentity.md
+docs/AccountAllOfRecommendation.md
+docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesChanged.md
 docs/AccountAttributesChangedAccount.md
@@ -466,6 +472,7 @@ docs/Entitlement1AccessModelMetadata.md
 docs/Entitlement1ManuallyUpdatedFields.md
 docs/Entitlement1Owner.md
 docs/Entitlement1Source.md
+docs/EntitlementAccessModelMetadata.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
 docs/EntitlementBulkUpdateRequest.md
@@ -473,7 +480,7 @@ docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 docs/EntitlementDocumentAllOfPermissions.md
 docs/EntitlementDocumentAllOfSource.md
-docs/EntitlementDto.md
+docs/EntitlementOwner.md
 docs/EntitlementRef.md
 docs/EntitlementRef1.md
 docs/EntitlementRequestConfig.md
@@ -646,6 +653,7 @@ docs/ListAccessProfiles401Response.md
 docs/ListAccessProfiles429Response.md
 docs/ListCampaignFilters200Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
+docs/ListDeploys200Response.md
 docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
 docs/ListFormInstancesByTenantResponse.md
@@ -1264,6 +1272,8 @@ model_access_item_requester.go
 model_access_item_requester_dto.go
 model_access_item_reviewed_by.go
 model_access_item_role_response.go
+model_access_model_metadata.go
+model_access_model_metadata_values_inner.go
 model_access_profile.go
 model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
@@ -1331,6 +1341,10 @@ model_account_aggregation_completed.go
 model_account_aggregation_completed_source.go
 model_account_aggregation_completed_stats.go
 model_account_aggregation_status.go
+model_account_all_of_identity.go
+model_account_all_of_owner_identity.go
+model_account_all_of_recommendation.go
+model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_changed.go
 model_account_attributes_changed_account.go
@@ -1592,6 +1606,7 @@ model_entitlement_1_access_model_metadata.go
 model_entitlement_1_manually_updated_fields.go
 model_entitlement_1_owner.go
 model_entitlement_1_source.go
+model_entitlement_access_model_metadata.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
 model_entitlement_bulk_update_request.go
@@ -1599,7 +1614,7 @@ model_entitlement_document.go
 model_entitlement_document_all_of_manually_updated_fields.go
 model_entitlement_document_all_of_permissions.go
 model_entitlement_document_all_of_source.go
-model_entitlement_dto.go
+model_entitlement_owner.go
 model_entitlement_ref.go
 model_entitlement_ref_1.go
 model_entitlement_request_config.go
@@ -1757,6 +1772,7 @@ model_list_access_profiles_401_response.go
 model_list_access_profiles_429_response.go
 model_list_campaign_filters_200_response.go
 model_list_complete_workflow_library_200_response_inner.go
+model_list_deploys_200_response.go
 model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
 model_list_form_instances_by_tenant_response.go

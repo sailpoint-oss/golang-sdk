@@ -4112,7 +4112,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EntitlementDto'
+                  $ref: '#/components/schemas/Entitlement'
                 type: array
           description: An array of account entitlements
         "400":
@@ -46179,7 +46179,7 @@ components:
             example: true
             type: boolean
           recommendation:
-            $ref: '#/components/schemas/Recommendation'
+            $ref: '#/components/schemas/Account_allOf_recommendation'
           attributes:
             additionalProperties: true
             description: The account attributes that are aggregated
@@ -46235,9 +46235,9 @@ components:
             example: true
             type: boolean
           identity:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/Account_allOf_identity'
           sourceOwner:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/Account_allOf_sourceOwner'
           features:
             description: A string list containing the owning source's features
             example: ENABLE
@@ -46253,7 +46253,7 @@ components:
             nullable: true
             type: string
           ownerIdentity:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/Account_allOf_ownerIdentity'
         required:
         - attributes
         - authoritative
@@ -46275,8 +46275,8 @@ components:
           type: MACHINE
         description: description
         sourceOwner:
-          name: William Wilson
-          id: 2c91808568c529c60168cca6f90c1313
+          name: Adam Kennedy
+          id: 2c918084660f45d6016617daa9210584
           type: IDENTITY
         connectionType: direct
         uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
@@ -46286,8 +46286,8 @@ components:
           type: IDENTITY
         features: ENABLE
         identity:
-          name: William Wilson
-          id: 2c91808568c529c60168cca6f90c1313
+          name: John Doe
+          id: 2c918084660f45d6016617daa9210584
           type: IDENTITY
         modified: 2015-05-28T14:07:17Z
         disabled: false
@@ -46724,16 +46724,6 @@ components:
             format: date-time
             readOnly: true
             type: string
-          correlatedStatus:
-            description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
-              can be Uncorrelated. An Uncorrelated certification campaign only includes
-              Uncorrelated identities (An identity is uncorrelated if it has no accounts
-              on an authoritative source).
-            enum:
-            - CORRELATED
-            - UNCORRELATED
-            example: CORRELATED
-            type: string
           filter:
             $ref: '#/components/schemas/Campaign_allOf_filter'
           sunsetCommentsRequired:
@@ -46969,6 +46959,7 @@ components:
           description: The due date of the certification.
           example: 2018-10-19T13:49:37.385Z
           format: date-time
+          nullable: true
           type: string
         signed:
           description: The date the reviewer signed off on the Certification.
@@ -48061,6 +48052,7 @@ components:
           description: Specifies the time after which this schedule will no longer
             occur.
           format: date-time
+          nullable: true
           type: string
         timeZoneId:
           description: "The time zone to use when running the schedule. For instance,\
@@ -49370,6 +49362,10 @@ components:
       type: object
     Entitlement:
       example:
+        owner:
+          name: john.doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
         created: 2020-10-08T18:33:52.029Z
         description: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         source:
@@ -49389,13 +49385,53 @@ components:
           - SELECT
           - SELECT
           target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
         name: LauncherTest2
         modified: 2020-10-08T18:33:52.029Z
         sourceSchemaObjectType: group
+        accessModelMetadata:
+          attributes:
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            - general
+            key: iscCsp
+            status: active
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            - general
+            key: iscCsp
+            status: active
         attributes:
           fieldName: fieldValue
         id: 2c91808874ff91550175097daaec161c
         attribute: memberOf
+        requestable: true
         value: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         cloudGoverned: true
       properties:
@@ -49422,6 +49458,7 @@ components:
         description:
           description: The description of the entitlement
           example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+          nullable: true
           type: string
         privileged:
           description: True if the entitlement is privileged
@@ -49431,6 +49468,25 @@ components:
           description: True if the entitlement is cloud governed
           example: true
           type: boolean
+        requestable:
+          default: false
+          description: True if the entitlement is able to be directly requested
+          example: true
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/Entitlement_owner'
+        manuallyUpdatedFields:
+          additionalProperties: true
+          description: "A map of entitlement fields that have been manually updated.\
+            \ The key is the field name in UPPER_SNAKE_CASE format, and the value\
+            \ is true or false to indicate if the field has been updated."
+          example:
+            DISPLAY_NAME: true
+            DESCRIPTION: true
+          nullable: true
+          type: object
+        accessModelMetadata:
+          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
         created:
           description: Time when the entitlement was created
           example: 2020-10-08T18:33:52.029Z
@@ -49584,13 +49640,45 @@ components:
       type: object
     RequestedItemStatus:
       example:
-        requester:
-          name: William Wilson
-          id: 2c7180a46faadee4016fb4e018c20648
-          type: IDENTITY
         requestedFor:
           name: William Wilson
           id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        cancelable: true
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        description: This is the Engineering role that engineers are granted.
+        type: ACCESS_PROFILE
+        approvalIds:
+        - 85f0cf482dd44327b593624c07906c21
+        - fa57e1bfa36f41ee85e33ee59fcbeac5
+        provisioningDetails:
+          orderedSubPhaseReferences: manualWorkItemDetails
+        accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
+        modified: 2019-08-23T18:52:59.162Z
+        id: 2c9180926cbfbddd016cbfc7c3b10010
+        state: EXECUTING
+        accessRequestPhases:
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         removeDate: 2019-10-23T00:00:00Z
         clientMetadata:
@@ -49645,25 +49733,12 @@ components:
           comment: I approve this request
           forwarded: false
           status: PENDING
-        cancelable: true
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
         preApprovalTriggerDetails:
           decision: APPROVED
           comment: Access is Approved
           reviewer: John Doe
-        description: This is the Engineering role that engineers are granted.
-        type: ACCESS_PROFILE
-        approvalIds:
-        - 85f0cf482dd44327b593624c07906c21
-        - fa57e1bfa36f41ee85e33ee59fcbeac5
         errorMessages:
         - - localeOrigin: DEFAULT
             text: The request was syntactically correct but its content is semantically
@@ -49759,9 +49834,6 @@ components:
           modified: 2019-12-20T09:17:12.192Z
           comment: This request must be cancelled.
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
-        provisioningDetails:
-          orderedSubPhaseReferences: manualWorkItemDetails
-        accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
         name: AccessProfile1
         manualWorkItemDetails:
         - originalOwner:
@@ -49812,22 +49884,11 @@ components:
             comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
-        modified: 2019-08-23T18:52:59.162Z
-        state: EXECUTING
-        accessRequestPhases:
-        - result: SUCCESSFUL
-          phaseReference: approvalDetails
-          name: APPROVAL_PHASE
-          started: 2020-07-11T00:00:00Z
-          finished: 2020-07-12T00:00:00Z
-          state: COMPLETED
-        - result: SUCCESSFUL
-          phaseReference: approvalDetails
-          name: APPROVAL_PHASE
-          started: 2020-07-11T00:00:00Z
-          finished: 2020-07-12T00:00:00Z
-          state: COMPLETED
       properties:
+        id:
+          description: The ID of the access request.
+          example: 2c9180926cbfbddd016cbfc7c3b10010
+          type: string
         name:
           description: Human-readable display name of the item being requested.
           example: AccessProfile1
@@ -50475,64 +50536,6 @@ components:
       required:
       - attributes
       type: object
-    EntitlementDto:
-      allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - description: Entitlement object that represents entitlement
-        properties:
-          attribute:
-            description: Name of the entitlement attribute
-            example: authorizationType
-            type: string
-          value:
-            description: Raw value of the entitlement
-            example: "CN=Users,dc=sailpoint,dc=com"
-            type: string
-          description:
-            description: Entitlment description
-            example: Active Directory DC
-            type: string
-          attributes:
-            additionalProperties: true
-            description: Entitlement attributes
-            example:
-              GroupType: Security
-              sAMAccountName: Buyer
-            type: object
-          sourceSchemaObjectType:
-            description: Schema objectType on the given application that maps to an
-              Account Group
-            example: group
-            type: string
-          privileged:
-            description: Determines if this Entitlement is privileged.
-            example: false
-            type: boolean
-          cloudGoverned:
-            description: Determines if this Entitlement is goverened in the cloud.
-            example: false
-            type: boolean
-          source:
-            $ref: '#/components/schemas/EntitlementSource'
-        type: object
-      example:
-        privileged: false
-        created: 2015-05-28T14:07:17Z
-        name: aName
-        modified: 2015-05-28T14:07:17Z
-        description: Active Directory DC
-        attributes:
-          GroupType: Security
-          sAMAccountName: Buyer
-        sourceSchemaObjectType: group
-        id: id12345
-        attribute: authorizationType
-        source:
-          name: HR Active Directory
-          id: 2c9180835d191a86015d28455b4b232a
-          type: SOURCE
-        value: "CN=Users,dc=sailpoint,dc=com"
-        cloudGoverned: false
     SearchAttributeConfig:
       example:
         displayName: New Mail Attribute
@@ -50749,6 +50752,7 @@ components:
         id: 2c91808458ae7a4f0158b1bbf8af0628
         tenant: test-tenant
         email: william.smith@example.com
+        lastUnlockTimestamp: 2021-03-08T22:37:33.901Z
       properties:
         tenant:
           description: Tenant name.
@@ -50769,30 +50773,37 @@ components:
         identificationNumber:
           description: Auth user's employee number.
           example: 19-5588452
+          nullable: true
           type: string
         email:
           description: Auth user's email.
           example: william.smith@example.com
+          nullable: true
           type: string
         phone:
           description: Auth user's phone number.
           example: "5555555555"
+          nullable: true
           type: string
         workPhone:
           description: Auth user's work phone number.
           example: "5555555555"
+          nullable: true
           type: string
         personalEmail:
           description: Auth user's personal email.
           example: william.smith@example.com
+          nullable: true
           type: string
         firstname:
           description: Auth user's first name.
           example: Will
+          nullable: true
           type: string
         lastname:
           description: Auth user's last name.
           example: Smith
+          nullable: true
           type: string
         displayName:
           description: Auth user's name in displayed format.
@@ -50805,6 +50816,8 @@ components:
         lastPasswordChangeDate:
           description: Date of last password change.
           example: 2021-03-08T22:37:33.901Z
+          format: date-time
+          nullable: true
           type: string
         lastLoginTimestamp:
           description: Timestamp of the last login (long type value).
@@ -50816,6 +50829,12 @@ components:
           example: 1656327185832
           format: int64
           type: integer
+        lastUnlockTimestamp:
+          description: The date and time when the user was last unlocked.
+          example: 2021-03-08T22:37:33.901Z
+          format: date-time
+          nullable: true
+          type: string
         capabilities:
           description: Array of the auth user's capabilities.
           items:
@@ -50843,6 +50862,7 @@ components:
             - sp:ui-config-hub-read
             example: ORG_ADMIN
             type: string
+          nullable: true
           type: array
       type: object
     SlimCampaign:
@@ -51603,6 +51623,7 @@ components:
           description: The due date of the certification.
           example: 2018-10-19T13:49:37.385Z
           format: date-time
+          nullable: true
           type: string
         signed:
           description: The date the reviewer signed off on the Certification.
@@ -59813,9 +59834,6 @@ components:
       - name
       type: object
     Recommendation:
-      example:
-        method: DISCOVERY
-        type: MACHINE
       properties:
         type:
           description: Recommended type of account.
@@ -60818,6 +60836,63 @@ components:
             $ref: '#/components/schemas/AccessProfileUsage_usedBy_inner'
           type: array
       type: object
+    AccessModelMetadata:
+      description: Metadata that describes an access item
+      example:
+        multiselect: true
+        values:
+        - name: Development
+          value: development
+          status: active
+        - name: Development
+          value: development
+          status: active
+        name: CSP
+        description: Indicates the type of deployment environment of an access item.
+        type: governance
+        objectTypes:
+        - general
+        - general
+        key: iscCsp
+        status: active
+      properties:
+        key:
+          description: Unique identifier for the metadata type
+          example: iscCsp
+          type: string
+        name:
+          description: Human readable name of the metadata type
+          example: CSP
+          type: string
+        multiselect:
+          default: false
+          description: Allows selecting multiple values
+          example: true
+          type: boolean
+        status:
+          description: The state of the metadata item
+          example: active
+          type: string
+        type:
+          description: The type of the metadata item
+          example: governance
+          type: string
+        objectTypes:
+          description: The types of objects
+          items:
+            example: general
+            type: string
+          type: array
+        description:
+          description: Describes the metadata item
+          example: Indicates the type of deployment environment of an access item.
+          type: string
+        values:
+          description: The value to assign to the metadata item
+          items:
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
+          type: array
+      type: object
     AccessRequestTracking:
       properties:
         requestedFor:
@@ -61418,28 +61493,6 @@ components:
       - REJECTED
       example: APPROVED
       type: string
-    EntitlementSource:
-      description: Source the entitlement belongs to.
-      example:
-        name: HR Active Directory
-        id: 2c9180835d191a86015d28455b4b232a
-        type: SOURCE
-      properties:
-        type:
-          description: DTO type of source the entitlement belongs to.
-          enum:
-          - SOURCE
-          example: SOURCE
-          type: string
-        id:
-          description: ID of source the entitlement belongs to.
-          example: 2c9180835d191a86015d28455b4b232a
-          type: string
-        name:
-          description: Human-readable name of source the entitlement belongs to.
-          example: HR Active Directory
-          type: string
-      type: object
     IdpDetails:
       allOf:
       - $ref: '#/components/schemas/FederationProtocolDetails'
@@ -66675,6 +66728,78 @@ components:
           example: Employees
           type: string
       type: object
+    Account_allOf_recommendation:
+      allOf:
+      - $ref: '#/components/schemas/Recommendation'
+      - description: Indicates that the account is currently classified to be one
+          type but is recommended to be a different one
+        example:
+          type: MACHINE
+          method: DISCOVERY
+        nullable: true
+        type: object
+      example:
+        method: DISCOVERY
+        type: MACHINE
+    Account_allOf_identity:
+      description: The identity this account is correlated to
+      example:
+        name: John Doe
+        id: 2c918084660f45d6016617daa9210584
+        type: IDENTITY
+      properties:
+        id:
+          description: The ID of the identity
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: display name of identity
+          example: John Doe
+          type: string
+      type: object
+    Account_allOf_sourceOwner:
+      description: The owner of the source this account belongs to.
+      example:
+        name: Adam Kennedy
+        id: 2c918084660f45d6016617daa9210584
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The ID of the identity
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: display name of identity
+          example: Adam Kennedy
+          type: string
+      type: object
+    Account_allOf_ownerIdentity:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
+      - description: "The identity who owns this account, used only for machine accounts"
+        example:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        nullable: true
+        type: object
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
     Campaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default
         campaign filter is used if this field is left blank.
@@ -67172,6 +67297,7 @@ components:
         - "1"
         interval: 2
         type: LIST
+      nullable: true
       properties:
         type:
           description: Enum type to specify months value
@@ -67253,6 +67379,7 @@ components:
           description: Interval between the cert generations
           example: 2
           format: int64
+          nullable: true
           type: integer
       required:
       - type
@@ -67298,6 +67425,7 @@ components:
           description: Interval between the cert generations
           example: 2
           format: int64
+          nullable: true
           type: integer
       required:
       - type
@@ -67586,6 +67714,71 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
+    Entitlement_owner:
+      description: The identity that owns the entitlement
+      example:
+        name: john.doe
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The identity ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: The type of object
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: The display name of the identity
+          example: john.doe
+          type: string
+      type: object
+    Entitlement_accessModelMetadata:
+      description: Additional data to classify the entitlement
+      example:
+        attributes:
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          - general
+          key: iscCsp
+          status: active
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          - general
+          key: iscCsp
+          status: active
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/AccessModelMetadata'
+          type: array
+      type: object
     Entitlement_source:
       example:
         name: ODS-AD-Source
@@ -68388,6 +68581,26 @@ components:
         name:
           description: Display name of role using the access profile.
           example: Manager Role
+          type: string
+      type: object
+    AccessModelMetadata_values_inner:
+      description: An individual value to assign to the metadata item
+      example:
+        name: Development
+        value: development
+        status: active
+      properties:
+        value:
+          description: The value to assign to the metdata item
+          example: development
+          type: string
+        name:
+          description: Display name of the value
+          example: Development
+          type: string
+        status:
+          description: The status of the individual value
+          example: active
           type: string
       type: object
     ApprovalStatusDto_originalOwner:

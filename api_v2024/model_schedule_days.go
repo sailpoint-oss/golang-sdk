@@ -25,7 +25,7 @@ type ScheduleDays struct {
 	// Values of the days based on the enum type mentioned above
 	Values []string `json:"values"`
 	// Interval between the cert generations
-	Interval *int64 `json:"interval,omitempty"`
+	Interval NullableInt64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,36 +98,46 @@ func (o *ScheduleDays) SetValues(v []string) {
 	o.Values = v
 }
 
-// GetInterval returns the Interval field value if set, zero value otherwise.
+// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduleDays) GetInterval() int64 {
-	if o == nil || IsNil(o.Interval) {
+	if o == nil || IsNil(o.Interval.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.Interval
+	return *o.Interval.Get()
 }
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduleDays) GetIntervalOk() (*int64, bool) {
-	if o == nil || IsNil(o.Interval) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Interval, true
+	return o.Interval.Get(), o.Interval.IsSet()
 }
 
 // HasInterval returns a boolean if a field has been set.
 func (o *ScheduleDays) HasInterval() bool {
-	if o != nil && !IsNil(o.Interval) {
+	if o != nil && o.Interval.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
+// SetInterval gets a reference to the given NullableInt64 and assigns it to the Interval field.
 func (o *ScheduleDays) SetInterval(v int64) {
-	o.Interval = &v
+	o.Interval.Set(&v)
+}
+// SetIntervalNil sets the value for Interval to be an explicit nil
+func (o *ScheduleDays) SetIntervalNil() {
+	o.Interval.Set(nil)
+}
+
+// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
+func (o *ScheduleDays) UnsetInterval() {
+	o.Interval.Unset()
 }
 
 func (o ScheduleDays) MarshalJSON() ([]byte, error) {
@@ -142,8 +152,8 @@ func (o ScheduleDays) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["values"] = o.Values
-	if !IsNil(o.Interval) {
-		toSerialize["interval"] = o.Interval
+	if o.Interval.IsSet() {
+		toSerialize["interval"] = o.Interval.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

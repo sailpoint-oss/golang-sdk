@@ -40,7 +40,7 @@ type IdentityCertificationDto struct {
 	// The total number of approve/revoke/acknowledge decisions.
 	DecisionsTotal *int32 `json:"decisionsTotal,omitempty"`
 	// The due date of the certification.
-	Due *SailPointTime `json:"due,omitempty"`
+	Due NullableTime `json:"due,omitempty"`
 	// The date the reviewer signed off on the Certification.
 	Signed NullableTime `json:"signed,omitempty"`
 	Reviewer *Reviewer `json:"reviewer,omitempty"`
@@ -392,36 +392,46 @@ func (o *IdentityCertificationDto) SetDecisionsTotal(v int32) {
 	o.DecisionsTotal = &v
 }
 
-// GetDue returns the Due field value if set, zero value otherwise.
+// GetDue returns the Due field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityCertificationDto) GetDue() SailPointTime {
-	if o == nil || IsNil(o.Due) {
+	if o == nil || IsNil(o.Due.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Due
+	return *o.Due.Get()
 }
 
 // GetDueOk returns a tuple with the Due field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityCertificationDto) GetDueOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Due) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Due, true
+	return o.Due.Get(), o.Due.IsSet()
 }
 
 // HasDue returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasDue() bool {
-	if o != nil && !IsNil(o.Due) {
+	if o != nil && o.Due.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDue gets a reference to the given SailPointTime and assigns it to the Due field.
+// SetDue gets a reference to the given NullableTime and assigns it to the Due field.
 func (o *IdentityCertificationDto) SetDue(v SailPointTime) {
-	o.Due = &v
+	o.Due.Set(&v)
+}
+// SetDueNil sets the value for Due to be an explicit nil
+func (o *IdentityCertificationDto) SetDueNil() {
+	o.Due.Set(nil)
+}
+
+// UnsetDue ensures that no value is present for Due, not even an explicit nil
+func (o *IdentityCertificationDto) UnsetDue() {
+	o.Due.Unset()
 }
 
 // GetSigned returns the Signed field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -686,8 +696,8 @@ func (o IdentityCertificationDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DecisionsTotal) {
 		toSerialize["decisionsTotal"] = o.DecisionsTotal
 	}
-	if !IsNil(o.Due) {
-		toSerialize["due"] = o.Due
+	if o.Due.IsSet() {
+		toSerialize["due"] = o.Due.Get()
 	}
 	if o.Signed.IsSet() {
 		toSerialize["signed"] = o.Signed.Get()

@@ -65870,13 +65870,45 @@ components:
       type: object
     RequestedItemStatus:
       example:
-        requester:
-          name: William Wilson
-          id: 2c7180a46faadee4016fb4e018c20648
-          type: IDENTITY
         requestedFor:
           name: William Wilson
           id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        cancelable: true
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        description: This is the Engineering role that engineers are granted.
+        type: ACCESS_PROFILE
+        approvalIds:
+        - 85f0cf482dd44327b593624c07906c21
+        - fa57e1bfa36f41ee85e33ee59fcbeac5
+        provisioningDetails:
+          orderedSubPhaseReferences: manualWorkItemDetails
+        accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
+        modified: 2019-08-23T18:52:59.162Z
+        id: 2c9180926cbfbddd016cbfc7c3b10010
+        state: EXECUTING
+        accessRequestPhases:
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         removeDate: 2019-10-23T00:00:00Z
         clientMetadata:
@@ -65931,25 +65963,12 @@ components:
           comment: I approve this request
           forwarded: false
           status: PENDING
-        cancelable: true
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
         preApprovalTriggerDetails:
           decision: APPROVED
           comment: Access is Approved
           reviewer: John Doe
-        description: This is the Engineering role that engineers are granted.
-        type: ACCESS_PROFILE
-        approvalIds:
-        - 85f0cf482dd44327b593624c07906c21
-        - fa57e1bfa36f41ee85e33ee59fcbeac5
         errorMessages:
         - - localeOrigin: DEFAULT
             text: The request was syntactically correct but its content is semantically
@@ -66045,9 +66064,6 @@ components:
           modified: 2019-12-20T09:17:12.192Z
           comment: This request must be cancelled.
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
-        provisioningDetails:
-          orderedSubPhaseReferences: manualWorkItemDetails
-        accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
         name: AccessProfile1
         manualWorkItemDetails:
         - originalOwner:
@@ -66098,22 +66114,11 @@ components:
             comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
-        modified: 2019-08-23T18:52:59.162Z
-        state: EXECUTING
-        accessRequestPhases:
-        - result: SUCCESSFUL
-          phaseReference: approvalDetails
-          name: APPROVAL_PHASE
-          started: 2020-07-11T00:00:00Z
-          finished: 2020-07-12T00:00:00Z
-          state: COMPLETED
-        - result: SUCCESSFUL
-          phaseReference: approvalDetails
-          name: APPROVAL_PHASE
-          started: 2020-07-11T00:00:00Z
-          finished: 2020-07-12T00:00:00Z
-          state: COMPLETED
       properties:
+        id:
+          description: The ID of the access request.
+          example: 2c9180926cbfbddd016cbfc7c3b10010
+          type: string
         name:
           description: Human-readable display name of the item being requested.
           example: AccessProfile1

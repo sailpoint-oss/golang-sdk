@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Enum type to specify hours value | 
 **Values** | **[]string** | Values of the days based on the enum type mentioned above | 
-**Interval** | Pointer to **int64** | Interval between the cert generations | [optional] 
+**Interval** | Pointer to **NullableInt64** | Interval between the cert generations | [optional] 
 
 ## Methods
 
@@ -92,6 +92,16 @@ SetInterval sets Interval field to given value.
 
 HasInterval returns a boolean if a field has been set.
 
+### SetIntervalNil
+
+`func (o *ScheduleHours) SetIntervalNil(b bool)`
+
+ SetIntervalNil sets the value for Interval to be an explicit nil
+
+### UnsetInterval
+`func (o *ScheduleHours) UnsetInterval()`
+
+UnsetInterval ensures that no value is present for Interval, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
