@@ -19,7 +19,14 @@ var _ MappedNullable = &EntitlementRequestConfig{}
 
 // EntitlementRequestConfig struct for EntitlementRequestConfig
 type EntitlementRequestConfig struct {
-	AccessRequestConfig *EntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
+	// If this is true, entitlement requests are allowed.
+	AllowEntitlementRequest *bool `json:"allowEntitlementRequest,omitempty"`
+	// If this is true, comments are required to submit entitlement requests.
+	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
+	// If this is true, comments are required to reject entitlement requests.
+	DeniedCommentsRequired *bool `json:"deniedCommentsRequired,omitempty"`
+	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"`workgroup:{id}`\". You can use multiple governance groups (workgroups). 
+	GrantRequestApprovalSchemes NullableString `json:"grantRequestApprovalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,6 +38,14 @@ type _EntitlementRequestConfig EntitlementRequestConfig
 // will change when the set of required properties is changed
 func NewEntitlementRequestConfig() *EntitlementRequestConfig {
 	this := EntitlementRequestConfig{}
+	var allowEntitlementRequest bool = false
+	this.AllowEntitlementRequest = &allowEntitlementRequest
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
+	var deniedCommentsRequired bool = false
+	this.DeniedCommentsRequired = &deniedCommentsRequired
+	var grantRequestApprovalSchemes string = "sourceOwner"
+	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
 	return &this
 }
 
@@ -39,39 +54,153 @@ func NewEntitlementRequestConfig() *EntitlementRequestConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementRequestConfigWithDefaults() *EntitlementRequestConfig {
 	this := EntitlementRequestConfig{}
+	var allowEntitlementRequest bool = false
+	this.AllowEntitlementRequest = &allowEntitlementRequest
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
+	var deniedCommentsRequired bool = false
+	this.DeniedCommentsRequired = &deniedCommentsRequired
+	var grantRequestApprovalSchemes string = "sourceOwner"
+	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
 	return &this
 }
 
-// GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
-func (o *EntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig {
-	if o == nil || IsNil(o.AccessRequestConfig) {
-		var ret EntitlementAccessRequestConfig
+// GetAllowEntitlementRequest returns the AllowEntitlementRequest field value if set, zero value otherwise.
+func (o *EntitlementRequestConfig) GetAllowEntitlementRequest() bool {
+	if o == nil || IsNil(o.AllowEntitlementRequest) {
+		var ret bool
 		return ret
 	}
-	return *o.AccessRequestConfig
+	return *o.AllowEntitlementRequest
 }
 
-// GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
+// GetAllowEntitlementRequestOk returns a tuple with the AllowEntitlementRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool) {
-	if o == nil || IsNil(o.AccessRequestConfig) {
+func (o *EntitlementRequestConfig) GetAllowEntitlementRequestOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowEntitlementRequest) {
 		return nil, false
 	}
-	return o.AccessRequestConfig, true
+	return o.AllowEntitlementRequest, true
 }
 
-// HasAccessRequestConfig returns a boolean if a field has been set.
-func (o *EntitlementRequestConfig) HasAccessRequestConfig() bool {
-	if o != nil && !IsNil(o.AccessRequestConfig) {
+// HasAllowEntitlementRequest returns a boolean if a field has been set.
+func (o *EntitlementRequestConfig) HasAllowEntitlementRequest() bool {
+	if o != nil && !IsNil(o.AllowEntitlementRequest) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessRequestConfig gets a reference to the given EntitlementAccessRequestConfig and assigns it to the AccessRequestConfig field.
-func (o *EntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAccessRequestConfig) {
-	o.AccessRequestConfig = &v
+// SetAllowEntitlementRequest gets a reference to the given bool and assigns it to the AllowEntitlementRequest field.
+func (o *EntitlementRequestConfig) SetAllowEntitlementRequest(v bool) {
+	o.AllowEntitlementRequest = &v
+}
+
+// GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
+func (o *EntitlementRequestConfig) GetRequestCommentsRequired() bool {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
+		var ret bool
+		return ret
+	}
+	return *o.RequestCommentsRequired
+}
+
+// GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementRequestConfig) GetRequestCommentsRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
+		return nil, false
+	}
+	return o.RequestCommentsRequired, true
+}
+
+// HasRequestCommentsRequired returns a boolean if a field has been set.
+func (o *EntitlementRequestConfig) HasRequestCommentsRequired() bool {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestCommentsRequired gets a reference to the given bool and assigns it to the RequestCommentsRequired field.
+func (o *EntitlementRequestConfig) SetRequestCommentsRequired(v bool) {
+	o.RequestCommentsRequired = &v
+}
+
+// GetDeniedCommentsRequired returns the DeniedCommentsRequired field value if set, zero value otherwise.
+func (o *EntitlementRequestConfig) GetDeniedCommentsRequired() bool {
+	if o == nil || IsNil(o.DeniedCommentsRequired) {
+		var ret bool
+		return ret
+	}
+	return *o.DeniedCommentsRequired
+}
+
+// GetDeniedCommentsRequiredOk returns a tuple with the DeniedCommentsRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementRequestConfig) GetDeniedCommentsRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeniedCommentsRequired) {
+		return nil, false
+	}
+	return o.DeniedCommentsRequired, true
+}
+
+// HasDeniedCommentsRequired returns a boolean if a field has been set.
+func (o *EntitlementRequestConfig) HasDeniedCommentsRequired() bool {
+	if o != nil && !IsNil(o.DeniedCommentsRequired) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeniedCommentsRequired gets a reference to the given bool and assigns it to the DeniedCommentsRequired field.
+func (o *EntitlementRequestConfig) SetDeniedCommentsRequired(v bool) {
+	o.DeniedCommentsRequired = &v
+}
+
+// GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EntitlementRequestConfig) GetGrantRequestApprovalSchemes() string {
+	if o == nil || IsNil(o.GrantRequestApprovalSchemes.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GrantRequestApprovalSchemes.Get()
+}
+
+// GetGrantRequestApprovalSchemesOk returns a tuple with the GrantRequestApprovalSchemes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EntitlementRequestConfig) GetGrantRequestApprovalSchemesOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GrantRequestApprovalSchemes.Get(), o.GrantRequestApprovalSchemes.IsSet()
+}
+
+// HasGrantRequestApprovalSchemes returns a boolean if a field has been set.
+func (o *EntitlementRequestConfig) HasGrantRequestApprovalSchemes() bool {
+	if o != nil && o.GrantRequestApprovalSchemes.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantRequestApprovalSchemes gets a reference to the given NullableString and assigns it to the GrantRequestApprovalSchemes field.
+func (o *EntitlementRequestConfig) SetGrantRequestApprovalSchemes(v string) {
+	o.GrantRequestApprovalSchemes.Set(&v)
+}
+// SetGrantRequestApprovalSchemesNil sets the value for GrantRequestApprovalSchemes to be an explicit nil
+func (o *EntitlementRequestConfig) SetGrantRequestApprovalSchemesNil() {
+	o.GrantRequestApprovalSchemes.Set(nil)
+}
+
+// UnsetGrantRequestApprovalSchemes ensures that no value is present for GrantRequestApprovalSchemes, not even an explicit nil
+func (o *EntitlementRequestConfig) UnsetGrantRequestApprovalSchemes() {
+	o.GrantRequestApprovalSchemes.Unset()
 }
 
 func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
@@ -84,8 +213,17 @@ func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessRequestConfig) {
-		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
+	if !IsNil(o.AllowEntitlementRequest) {
+		toSerialize["allowEntitlementRequest"] = o.AllowEntitlementRequest
+	}
+	if !IsNil(o.RequestCommentsRequired) {
+		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
+	}
+	if !IsNil(o.DeniedCommentsRequired) {
+		toSerialize["deniedCommentsRequired"] = o.DeniedCommentsRequired
+	}
+	if o.GrantRequestApprovalSchemes.IsSet() {
+		toSerialize["grantRequestApprovalSchemes"] = o.GrantRequestApprovalSchemes.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -109,7 +247,10 @@ func (o *EntitlementRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessRequestConfig")
+		delete(additionalProperties, "allowEntitlementRequest")
+		delete(additionalProperties, "requestCommentsRequired")
+		delete(additionalProperties, "deniedCommentsRequired")
+		delete(additionalProperties, "grantRequestApprovalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}
 

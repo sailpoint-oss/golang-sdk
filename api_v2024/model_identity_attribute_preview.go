@@ -25,6 +25,7 @@ type IdentityAttributePreview struct {
 	Value *string `json:"value,omitempty"`
 	// The value of the attribute before the preview.
 	PreviousValue *string `json:"previousValue,omitempty"`
+	// List of error messages
 	ErrorMessages []ErrorMessageDto `json:"errorMessages,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

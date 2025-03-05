@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ReauthorizationEnabled** | Pointer to **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to false]
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](RequestOnBehalfOfConfig.md) |  | [optional] 
 **ApprovalReminderAndEscalationConfig** | Pointer to [**ApprovalReminderAndEscalationConfig**](ApprovalReminderAndEscalationConfig.md) |  | [optional] 
-**EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig1**](EntitlementRequestConfig1.md) |  | [optional] 
+**EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig**](EntitlementRequestConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasApprovalReminderAndEscalationConfig returns a boolean if a field has been set
 
 ### GetEntitlementRequestConfig
 
-`func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig1`
+`func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig`
 
 GetEntitlementRequestConfig returns the EntitlementRequestConfig field if non-nil, zero value otherwise.
 
 ### GetEntitlementRequestConfigOk
 
-`func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig1, bool)`
+`func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig, bool)`
 
 GetEntitlementRequestConfigOk returns a tuple with the EntitlementRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlementRequestConfig
 
-`func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig1)`
+`func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig)`
 
 SetEntitlementRequestConfig sets EntitlementRequestConfig field to given value.
 

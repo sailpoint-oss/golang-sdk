@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID of the access request | [optional] 
 **Name** | Pointer to **NullableString** | Human-readable display name of the item being requested. | [optional] 
 **Type** | Pointer to **NullableString** | Type of requested object. | [optional] 
-**CancelledRequestDetails** | Pointer to [**AccessRequestAdminItemStatusCancelledRequestDetails**](AccessRequestAdminItemStatusCancelledRequestDetails.md) |  | [optional] 
-**ErrorMessages** | Pointer to [**[][]ErrorMessageDto1**]([]ErrorMessageDto1.md) | List of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
+**CancelledRequestDetails** | Pointer to [**RequestedItemStatusCancelledRequestDetails**](RequestedItemStatusCancelledRequestDetails.md) |  | [optional] 
+**ErrorMessages** | Pointer to [**[][]ErrorMessageDto**]([]ErrorMessageDto.md) | List of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
 **State** | Pointer to [**RequestedItemStatusRequestState**](RequestedItemStatusRequestState.md) |  | [optional] 
-**ApprovalDetails** | Pointer to [**[]ApprovalStatusDto1**](ApprovalStatusDto1.md) | Approval details for each item. | [optional] 
-**ManualWorkItemDetails** | Pointer to [**[]ManualWorkItemDetails1**](ManualWorkItemDetails1.md) | Manual work items created for provisioning the item. | [optional] 
+**ApprovalDetails** | Pointer to [**[]ApprovalStatusDto**](ApprovalStatusDto.md) | Approval details for each item. | [optional] 
+**ManualWorkItemDetails** | Pointer to [**[]ManualWorkItemDetails**](ManualWorkItemDetails.md) | Manual work items created for provisioning the item. | [optional] 
 **AccountActivityItemId** | Pointer to **string** | Id of associated account activity item. | [optional] 
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Modified** | Pointer to **NullableTime** | When the request was last modified. | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
 **RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **RequesterComment** | Pointer to [**RequestedItemStatusRequesterComment**](RequestedItemStatusRequesterComment.md) |  | [optional] 
-**SodViolationContext** | Pointer to [**AccessRequestAdminItemStatusSodViolationContext**](AccessRequestAdminItemStatusSodViolationContext.md) |  | [optional] 
+**SodViolationContext** | Pointer to [**RequestedItemStatusSodViolationContext**](RequestedItemStatusSodViolationContext.md) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**RequestedItemStatusProvisioningDetails**](RequestedItemStatusProvisioningDetails.md) |  | [optional] 
 **PreApprovalTriggerDetails** | Pointer to [**RequestedItemStatusPreApprovalTriggerDetails**](RequestedItemStatusPreApprovalTriggerDetails.md) |  | [optional] 
 **AccessRequestPhases** | Pointer to [**[]AccessRequestPhases**](AccessRequestPhases.md) | A list of Phases that the Access Request has gone through in order, to help determine the status of the request. | [optional] 
@@ -146,20 +146,20 @@ HasType returns a boolean if a field has been set.
 UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetCancelledRequestDetails
 
-`func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetails() AccessRequestAdminItemStatusCancelledRequestDetails`
+`func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetails() RequestedItemStatusCancelledRequestDetails`
 
 GetCancelledRequestDetails returns the CancelledRequestDetails field if non-nil, zero value otherwise.
 
 ### GetCancelledRequestDetailsOk
 
-`func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetailsOk() (*AccessRequestAdminItemStatusCancelledRequestDetails, bool)`
+`func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetailsOk() (*RequestedItemStatusCancelledRequestDetails, bool)`
 
 GetCancelledRequestDetailsOk returns a tuple with the CancelledRequestDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledRequestDetails
 
-`func (o *AccessRequestAdminItemStatus) SetCancelledRequestDetails(v AccessRequestAdminItemStatusCancelledRequestDetails)`
+`func (o *AccessRequestAdminItemStatus) SetCancelledRequestDetails(v RequestedItemStatusCancelledRequestDetails)`
 
 SetCancelledRequestDetails sets CancelledRequestDetails field to given value.
 
@@ -171,20 +171,20 @@ HasCancelledRequestDetails returns a boolean if a field has been set.
 
 ### GetErrorMessages
 
-`func (o *AccessRequestAdminItemStatus) GetErrorMessages() [][]ErrorMessageDto1`
+`func (o *AccessRequestAdminItemStatus) GetErrorMessages() [][]ErrorMessageDto`
 
 GetErrorMessages returns the ErrorMessages field if non-nil, zero value otherwise.
 
 ### GetErrorMessagesOk
 
-`func (o *AccessRequestAdminItemStatus) GetErrorMessagesOk() (*[][]ErrorMessageDto1, bool)`
+`func (o *AccessRequestAdminItemStatus) GetErrorMessagesOk() (*[][]ErrorMessageDto, bool)`
 
 GetErrorMessagesOk returns a tuple with the ErrorMessages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorMessages
 
-`func (o *AccessRequestAdminItemStatus) SetErrorMessages(v [][]ErrorMessageDto1)`
+`func (o *AccessRequestAdminItemStatus) SetErrorMessages(v [][]ErrorMessageDto)`
 
 SetErrorMessages sets ErrorMessages field to given value.
 
@@ -231,20 +231,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetApprovalDetails
 
-`func (o *AccessRequestAdminItemStatus) GetApprovalDetails() []ApprovalStatusDto1`
+`func (o *AccessRequestAdminItemStatus) GetApprovalDetails() []ApprovalStatusDto`
 
 GetApprovalDetails returns the ApprovalDetails field if non-nil, zero value otherwise.
 
 ### GetApprovalDetailsOk
 
-`func (o *AccessRequestAdminItemStatus) GetApprovalDetailsOk() (*[]ApprovalStatusDto1, bool)`
+`func (o *AccessRequestAdminItemStatus) GetApprovalDetailsOk() (*[]ApprovalStatusDto, bool)`
 
 GetApprovalDetailsOk returns a tuple with the ApprovalDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalDetails
 
-`func (o *AccessRequestAdminItemStatus) SetApprovalDetails(v []ApprovalStatusDto1)`
+`func (o *AccessRequestAdminItemStatus) SetApprovalDetails(v []ApprovalStatusDto)`
 
 SetApprovalDetails sets ApprovalDetails field to given value.
 
@@ -256,20 +256,20 @@ HasApprovalDetails returns a boolean if a field has been set.
 
 ### GetManualWorkItemDetails
 
-`func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetails() []ManualWorkItemDetails1`
+`func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetails() []ManualWorkItemDetails`
 
 GetManualWorkItemDetails returns the ManualWorkItemDetails field if non-nil, zero value otherwise.
 
 ### GetManualWorkItemDetailsOk
 
-`func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetailsOk() (*[]ManualWorkItemDetails1, bool)`
+`func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetailsOk() (*[]ManualWorkItemDetails, bool)`
 
 GetManualWorkItemDetailsOk returns a tuple with the ManualWorkItemDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManualWorkItemDetails
 
-`func (o *AccessRequestAdminItemStatus) SetManualWorkItemDetails(v []ManualWorkItemDetails1)`
+`func (o *AccessRequestAdminItemStatus) SetManualWorkItemDetails(v []ManualWorkItemDetails)`
 
 SetManualWorkItemDetails sets ManualWorkItemDetails field to given value.
 
@@ -486,20 +486,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetSodViolationContext
 
-`func (o *AccessRequestAdminItemStatus) GetSodViolationContext() AccessRequestAdminItemStatusSodViolationContext`
+`func (o *AccessRequestAdminItemStatus) GetSodViolationContext() RequestedItemStatusSodViolationContext`
 
 GetSodViolationContext returns the SodViolationContext field if non-nil, zero value otherwise.
 
 ### GetSodViolationContextOk
 
-`func (o *AccessRequestAdminItemStatus) GetSodViolationContextOk() (*AccessRequestAdminItemStatusSodViolationContext, bool)`
+`func (o *AccessRequestAdminItemStatus) GetSodViolationContextOk() (*RequestedItemStatusSodViolationContext, bool)`
 
 GetSodViolationContextOk returns a tuple with the SodViolationContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSodViolationContext
 
-`func (o *AccessRequestAdminItemStatus) SetSodViolationContext(v AccessRequestAdminItemStatusSodViolationContext)`
+`func (o *AccessRequestAdminItemStatus) SetSodViolationContext(v RequestedItemStatusSodViolationContext)`
 
 SetSodViolationContext sets SodViolationContext field to given value.
 

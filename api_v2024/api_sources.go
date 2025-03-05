@@ -2944,7 +2944,7 @@ func (r ApiGetSourceConfigRequest) Locale(locale string) ApiGetSourceConfigReque
 	return r
 }
 
-func (r ApiGetSourceConfigRequest) Execute() (*ConnectorDetail1, *http.Response, error) {
+func (r ApiGetSourceConfigRequest) Execute() (*ConnectorDetail, *http.Response, error) {
 	return r.ApiService.GetSourceConfigExecute(r)
 }
 
@@ -2966,13 +2966,13 @@ func (a *SourcesAPIService) GetSourceConfig(ctx context.Context, id string) ApiG
 }
 
 // Execute executes the request
-//  @return ConnectorDetail1
-func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) (*ConnectorDetail1, *http.Response, error) {
+//  @return ConnectorDetail
+func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) (*ConnectorDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConnectorDetail1
+		localVarReturnValue  *ConnectorDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceConfig")

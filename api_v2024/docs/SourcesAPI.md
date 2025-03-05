@@ -1258,7 +1258,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceConfig
 
-> ConnectorDetail1 GetSourceConfig(ctx, id).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
+> ConnectorDetail GetSourceConfig(ctx, id).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
 
 Gets source config with language translations
 
@@ -1288,7 +1288,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSourceConfig`: ConnectorDetail1
+	// response from `GetSourceConfig`: ConnectorDetail
 	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceConfig`: %v\n", resp)
 }
 ```
@@ -1314,7 +1314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConnectorDetail1**](ConnectorDetail1.md)
+[**ConnectorDetail**](ConnectorDetail.md)
 
 ### Authorization
 

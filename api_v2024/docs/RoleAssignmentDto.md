@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
-**Role** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Role** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **Comments** | Pointer to **string** | Comments added by the user when the assignment was made | [optional] 
 **AssignmentSource** | Pointer to **string** | Source describing how this assignment was made | [optional] 
-**Assigner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**AssignedDimensions** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | Dimensions assigned related to this role | [optional] 
+**Assigner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**AssignedDimensions** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
 **AssignmentContext** | Pointer to [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
 **AccountTargets** | Pointer to [**[]RoleTargetDto**](RoleTargetDto.md) |  | [optional] 
 **RemoveDate** | Pointer to **string** | Date that the assignment will be removed | [optional] 
@@ -60,20 +60,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetRole
 
-`func (o *RoleAssignmentDto) GetRole() BaseReferenceDto1`
+`func (o *RoleAssignmentDto) GetRole() BaseReferenceDto`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto1, bool)`
+`func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto1)`
+`func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto)`
 
 SetRole sets Role field to given value.
 
@@ -135,20 +135,20 @@ HasAssignmentSource returns a boolean if a field has been set.
 
 ### GetAssigner
 
-`func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto1`
+`func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto`
 
 GetAssigner returns the Assigner field if non-nil, zero value otherwise.
 
 ### GetAssignerOk
 
-`func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto1, bool)`
+`func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto, bool)`
 
 GetAssignerOk returns a tuple with the Assigner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssigner
 
-`func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto1)`
+`func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto)`
 
 SetAssigner sets Assigner field to given value.
 
@@ -160,20 +160,20 @@ HasAssigner returns a boolean if a field has been set.
 
 ### GetAssignedDimensions
 
-`func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto1`
+`func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto`
 
 GetAssignedDimensions returns the AssignedDimensions field if non-nil, zero value otherwise.
 
 ### GetAssignedDimensionsOk
 
-`func (o *RoleAssignmentDto) GetAssignedDimensionsOk() (*[]BaseReferenceDto1, bool)`
+`func (o *RoleAssignmentDto) GetAssignedDimensionsOk() (*[]BaseReferenceDto, bool)`
 
 GetAssignedDimensionsOk returns a tuple with the AssignedDimensions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedDimensions
 
-`func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto1)`
+`func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto)`
 
 SetAssignedDimensions sets AssignedDimensions field to given value.
 

@@ -382,11 +382,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfiles**](docs/IdentityProfilesAPI.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesAPI* | [**ExportIdentityProfiles**](docs/IdentityProfilesAPI.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
+*IdentityProfilesAPI* | [**GenerateIdentityPreview**](docs/IdentityProfilesAPI.md#generateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesAPI.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
 *IdentityProfilesAPI* | [**GetIdentityProfile**](docs/IdentityProfilesAPI.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Get Identity Profile
 *IdentityProfilesAPI* | [**ImportIdentityProfiles**](docs/IdentityProfilesAPI.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | List Identity Profiles
-*IdentityProfilesAPI* | [**ShowIdentityPreview**](docs/IdentityProfilesAPI.md#showidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update Identity Profile
 *LifecycleStatesAPI* | [**CreateLifecycleState**](docs/LifecycleStatesAPI.md#createlifecyclestate) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
@@ -698,6 +698,7 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
+*WorkItemsAPI* | [**ForwardWorkItem**](docs/WorkItemsAPI.md#forwardworkitem) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**GetCompletedWorkItems**](docs/WorkItemsAPI.md#getcompletedworkitems) | **Get** /work-items/completed | Completed Work Items
 *WorkItemsAPI* | [**GetCountCompletedWorkItems**](docs/WorkItemsAPI.md#getcountcompletedworkitems) | **Get** /work-items/completed/count | Count Completed Work Items
 *WorkItemsAPI* | [**GetCountWorkItems**](docs/WorkItemsAPI.md#getcountworkitems) | **Get** /work-items/count | Count Work Items
@@ -706,7 +707,6 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**ListWorkItems**](docs/WorkItemsAPI.md#listworkitems) | **Get** /work-items | List Work Items
 *WorkItemsAPI* | [**RejectApprovalItem**](docs/WorkItemsAPI.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsAPI* | [**RejectApprovalItemsInBulk**](docs/WorkItemsAPI.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
-*WorkItemsAPI* | [**SendWorkItemForward**](docs/WorkItemsAPI.md#sendworkitemforward) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkReassignmentAPI* | [**CreateReassignmentConfiguration**](docs/WorkReassignmentAPI.md#createreassignmentconfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
 *WorkReassignmentAPI* | [**DeleteReassignmentConfiguration**](docs/WorkReassignmentAPI.md#deletereassignmentconfiguration) | **Delete** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
@@ -783,8 +783,6 @@ Class | Method | HTTP request | Description
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
  - [AccessRequest](docs/AccessRequest.md)
  - [AccessRequestAdminItemStatus](docs/AccessRequestAdminItemStatus.md)
- - [AccessRequestAdminItemStatusCancelledRequestDetails](docs/AccessRequestAdminItemStatusCancelledRequestDetails.md)
- - [AccessRequestAdminItemStatusSodViolationContext](docs/AccessRequestAdminItemStatusSodViolationContext.md)
  - [AccessRequestApproversListResponse](docs/AccessRequestApproversListResponse.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
  - [AccessRequestContext](docs/AccessRequestContext.md)
@@ -888,7 +886,6 @@ Class | Method | HTTP request | Description
  - [ApprovalComment2](docs/ApprovalComment2.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
- - [ApprovalForwardHistory1](docs/ApprovalForwardHistory1.md)
  - [ApprovalIdentity](docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](docs/ApprovalItemDetails.md)
@@ -900,7 +897,6 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
- - [ApprovalStatusDto1](docs/ApprovalStatusDto1.md)
  - [ApprovalStatusDtoCurrentOwner](docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
@@ -931,11 +927,9 @@ Class | Method | HTTP request | Description
  - [BaseAccessProfile](docs/BaseAccessProfile.md)
  - [BaseAccount](docs/BaseAccount.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
- - [BaseCommonDto1](docs/BaseCommonDto1.md)
  - [BaseDocument](docs/BaseDocument.md)
  - [BaseEntitlement](docs/BaseEntitlement.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
- - [BaseReferenceDto1](docs/BaseReferenceDto1.md)
  - [BaseSegment](docs/BaseSegment.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
@@ -980,15 +974,12 @@ Class | Method | HTTP request | Description
  - [CampaignsDeleteRequest](docs/CampaignsDeleteRequest.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)
- - [CancelledRequestDetails1](docs/CancelledRequestDetails1.md)
  - [Certification](docs/Certification.md)
  - [CertificationDecision](docs/CertificationDecision.md)
  - [CertificationDto](docs/CertificationDto.md)
  - [CertificationIdentitySummary](docs/CertificationIdentitySummary.md)
  - [CertificationPhase](docs/CertificationPhase.md)
  - [CertificationReference](docs/CertificationReference.md)
- - [CertificationReference1](docs/CertificationReference1.md)
- - [CertificationReferenceDto](docs/CertificationReferenceDto.md)
  - [CertificationSignedOff](docs/CertificationSignedOff.md)
  - [CertificationSignedOffCertification](docs/CertificationSignedOffCertification.md)
  - [CertificationTask](docs/CertificationTask.md)
@@ -1032,7 +1023,6 @@ Class | Method | HTTP request | Description
  - [ConnectedObject](docs/ConnectedObject.md)
  - [ConnectedObjectType](docs/ConnectedObjectType.md)
  - [ConnectorDetail](docs/ConnectorDetail.md)
- - [ConnectorDetail1](docs/ConnectorDetail1.md)
  - [ConnectorRuleCreateRequest](docs/ConnectorRuleCreateRequest.md)
  - [ConnectorRuleCreateRequestSignature](docs/ConnectorRuleCreateRequestSignature.md)
  - [ConnectorRuleResponse](docs/ConnectorRuleResponse.md)
@@ -1090,11 +1080,6 @@ Class | Method | HTTP request | Description
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)
  - [Entitlement](docs/Entitlement.md)
- - [Entitlement1](docs/Entitlement1.md)
- - [Entitlement1AccessModelMetadata](docs/Entitlement1AccessModelMetadata.md)
- - [Entitlement1ManuallyUpdatedFields](docs/Entitlement1ManuallyUpdatedFields.md)
- - [Entitlement1Owner](docs/Entitlement1Owner.md)
- - [Entitlement1Source](docs/Entitlement1Source.md)
  - [EntitlementAccessModelMetadata](docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](docs/EntitlementApprovalScheme.md)
@@ -1107,7 +1092,6 @@ Class | Method | HTTP request | Description
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRef1](docs/EntitlementRef1.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
- - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntitlementSummary](docs/EntitlementSummary.md)
@@ -1115,7 +1099,6 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorMessage](docs/ErrorMessage.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
- - [ErrorMessageDto1](docs/ErrorMessageDto1.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [EvaluateResponse](docs/EvaluateResponse.md)
  - [Event](docs/Event.md)
@@ -1132,6 +1115,7 @@ Class | Method | HTTP request | Description
  - [ExpansionItem](docs/ExpansionItem.md)
  - [ExportFormDefinitionsByTenant200ResponseInner](docs/ExportFormDefinitionsByTenant200ResponseInner.md)
  - [ExportOptions](docs/ExportOptions.md)
+ - [ExportOptions1](docs/ExportOptions1.md)
  - [ExportPayload](docs/ExportPayload.md)
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
@@ -1302,11 +1286,9 @@ Class | Method | HTTP request | Description
  - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
- - [ManualWorkItemDetails1](docs/ManualWorkItemDetails1.md)
  - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
- - [ManuallyUpdatedFieldsDTO](docs/ManuallyUpdatedFieldsDTO.md)
  - [MatchTerm](docs/MatchTerm.md)
  - [Medium](docs/Medium.md)
  - [MembershipType](docs/MembershipType.md)
@@ -1371,7 +1353,6 @@ Class | Method | HTTP request | Description
  - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
  - [OwnerDto](docs/OwnerDto.md)
  - [OwnerReference](docs/OwnerReference.md)
- - [OwnerReferenceDto](docs/OwnerReferenceDto.md)
  - [OwnerReferenceSegments](docs/OwnerReferenceSegments.md)
  - [Owns](docs/Owns.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
@@ -1409,9 +1390,6 @@ Class | Method | HTTP request | Description
  - [ProvisioningCompletedRecipient](docs/ProvisioningCompletedRecipient.md)
  - [ProvisioningCompletedRequester](docs/ProvisioningCompletedRequester.md)
  - [ProvisioningConfig](docs/ProvisioningConfig.md)
- - [ProvisioningConfig1](docs/ProvisioningConfig1.md)
- - [ProvisioningConfig1ManagedResourceRefsInner](docs/ProvisioningConfig1ManagedResourceRefsInner.md)
- - [ProvisioningConfig1PlanInitializerScript](docs/ProvisioningConfig1PlanInitializerScript.md)
  - [ProvisioningConfigPlanInitializerScript](docs/ProvisioningConfigPlanInitializerScript.md)
  - [ProvisioningCriteriaLevel1](docs/ProvisioningCriteriaLevel1.md)
  - [ProvisioningCriteriaLevel2](docs/ProvisioningCriteriaLevel2.md)
@@ -1437,7 +1415,6 @@ Class | Method | HTTP request | Description
  - [Range](docs/Range.md)
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
- - [Reassignment1](docs/Reassignment1.md)
  - [ReassignmentReference](docs/ReassignmentReference.md)
  - [ReassignmentTrailDTO](docs/ReassignmentTrailDTO.md)
  - [ReassignmentType](docs/ReassignmentType.md)
@@ -1489,7 +1466,6 @@ Class | Method | HTTP request | Description
  - [ReviewableEntitlementAccountOwner](docs/ReviewableEntitlementAccountOwner.md)
  - [ReviewableRole](docs/ReviewableRole.md)
  - [Reviewer](docs/Reviewer.md)
- - [Reviewer1](docs/Reviewer1.md)
  - [Revocability](docs/Revocability.md)
  - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
@@ -1617,7 +1593,6 @@ Class | Method | HTTP request | Description
  - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationDto1](docs/ServiceDeskIntegrationDto1.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
@@ -1630,7 +1605,6 @@ Class | Method | HTTP request | Description
  - [SlimCampaign](docs/SlimCampaign.md)
  - [SlimDiscoveredApplications](docs/SlimDiscoveredApplications.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
- - [SodExemptCriteria1](docs/SodExemptCriteria1.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](docs/SodPolicyDto.md)
@@ -1640,13 +1614,8 @@ Class | Method | HTTP request | Description
  - [SodReportResultDto](docs/SodReportResultDto.md)
  - [SodViolationCheck](docs/SodViolationCheck.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
- - [SodViolationCheckResult1](docs/SodViolationCheckResult1.md)
  - [SodViolationContext](docs/SodViolationContext.md)
- - [SodViolationContext1](docs/SodViolationContext1.md)
- - [SodViolationContext1ConflictingAccessCriteria](docs/SodViolationContext1ConflictingAccessCriteria.md)
- - [SodViolationContext1ConflictingAccessCriteriaLeftCriteria](docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md)
  - [SodViolationContextCheckCompleted](docs/SodViolationContextCheckCompleted.md)
- - [SodViolationContextCheckCompleted1](docs/SodViolationContextCheckCompleted1.md)
  - [SodViolationContextConflictingAccessCriteria](docs/SodViolationContextConflictingAccessCriteria.md)
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](docs/Source.md)

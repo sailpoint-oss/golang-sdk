@@ -721,7 +721,7 @@ func (r ApiGetDimensionEntitlementsRequest) Sorters(sorters string) ApiGetDimens
 	return r
 }
 
-func (r ApiGetDimensionEntitlementsRequest) Execute() ([]Entitlement1, *http.Response, error) {
+func (r ApiGetDimensionEntitlementsRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.GetDimensionEntitlementsExecute(r)
 }
 
@@ -747,13 +747,13 @@ func (a *DimensionsAPIService) GetDimensionEntitlements(ctx context.Context, rol
 }
 
 // Execute executes the request
-//  @return []Entitlement1
-func (a *DimensionsAPIService) GetDimensionEntitlementsExecute(r ApiGetDimensionEntitlementsRequest) ([]Entitlement1, *http.Response, error) {
+//  @return []Entitlement
+func (a *DimensionsAPIService) GetDimensionEntitlementsExecute(r ApiGetDimensionEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement1
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DimensionsAPIService.GetDimensionEntitlements")
@@ -956,7 +956,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param roleId Parent Role Id of the dimension.
- @param dimensionId ID of the Dimension
+ @param dimensionId Id of the Dimension
  @return ApiListDimensionAccessProfilesRequest
 */
 func (a *DimensionsAPIService) ListDimensionAccessProfiles(ctx context.Context, roleId string, dimensionId string) ApiListDimensionAccessProfilesRequest {

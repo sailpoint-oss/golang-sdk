@@ -72,6 +72,18 @@ func Test_api_v2024_IdentityProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentityProfilesAPIService GenerateIdentityPreview", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentityProfilesAPIService GetDefaultIdentityAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -117,18 +129,6 @@ func Test_api_v2024_IdentityProfilesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityProfilesAPIService ShowIdentityPreview", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.IdentityProfilesAPI.ShowIdentityPreview(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

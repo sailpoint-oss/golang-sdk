@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **Phase** | [**CertificationPhase**](CertificationPhase.md) |  | 
 **Due** | **time.Time** | The due date of the certification. | 
 **Signed** | **time.Time** | The date the reviewer signed off on the certification. | 
-**Reviewer** | [**Reviewer1**](Reviewer1.md) |  | 
-**Reassignment** | Pointer to [**Reassignment1**](Reassignment1.md) |  | [optional] 
+**Reviewer** | [**Reviewer**](Reviewer.md) |  | 
+**Reassignment** | Pointer to [**NullableReassignment**](Reassignment.md) |  | [optional] 
 **HasErrors** | **bool** | Indicates it the certification has any errors. | 
 **ErrorMessage** | Pointer to **NullableString** | A message indicating what the error is. | [optional] 
 **Completed** | **bool** | Indicates if all certification decisions have been made. | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewCertificationSignedOffCertification
 
-`func NewCertificationSignedOffCertification(id string, name string, created time.Time, campaignRef CampaignReference, phase CertificationPhase, due time.Time, signed time.Time, reviewer Reviewer1, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32, ) *CertificationSignedOffCertification`
+`func NewCertificationSignedOffCertification(id string, name string, created time.Time, campaignRef CampaignReference, phase CertificationPhase, due time.Time, signed time.Time, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32, ) *CertificationSignedOffCertification`
 
 NewCertificationSignedOffCertification instantiates a new CertificationSignedOffCertification object
 This constructor will assign default values to properties that have it defined,
@@ -218,40 +218,40 @@ SetSigned sets Signed field to given value.
 
 ### GetReviewer
 
-`func (o *CertificationSignedOffCertification) GetReviewer() Reviewer1`
+`func (o *CertificationSignedOffCertification) GetReviewer() Reviewer`
 
 GetReviewer returns the Reviewer field if non-nil, zero value otherwise.
 
 ### GetReviewerOk
 
-`func (o *CertificationSignedOffCertification) GetReviewerOk() (*Reviewer1, bool)`
+`func (o *CertificationSignedOffCertification) GetReviewerOk() (*Reviewer, bool)`
 
 GetReviewerOk returns a tuple with the Reviewer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewer
 
-`func (o *CertificationSignedOffCertification) SetReviewer(v Reviewer1)`
+`func (o *CertificationSignedOffCertification) SetReviewer(v Reviewer)`
 
 SetReviewer sets Reviewer field to given value.
 
 
 ### GetReassignment
 
-`func (o *CertificationSignedOffCertification) GetReassignment() Reassignment1`
+`func (o *CertificationSignedOffCertification) GetReassignment() Reassignment`
 
 GetReassignment returns the Reassignment field if non-nil, zero value otherwise.
 
 ### GetReassignmentOk
 
-`func (o *CertificationSignedOffCertification) GetReassignmentOk() (*Reassignment1, bool)`
+`func (o *CertificationSignedOffCertification) GetReassignmentOk() (*Reassignment, bool)`
 
 GetReassignmentOk returns a tuple with the Reassignment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReassignment
 
-`func (o *CertificationSignedOffCertification) SetReassignment(v Reassignment1)`
+`func (o *CertificationSignedOffCertification) SetReassignment(v Reassignment)`
 
 SetReassignment sets Reassignment field to given value.
 
@@ -261,6 +261,16 @@ SetReassignment sets Reassignment field to given value.
 
 HasReassignment returns a boolean if a field has been set.
 
+### SetReassignmentNil
+
+`func (o *CertificationSignedOffCertification) SetReassignmentNil(b bool)`
+
+ SetReassignmentNil sets the value for Reassignment to be an explicit nil
+
+### UnsetReassignment
+`func (o *CertificationSignedOffCertification) UnsetReassignment()`
+
+UnsetReassignment ensures that no value is present for Reassignment, not even an explicit nil
 ### GetHasErrors
 
 `func (o *CertificationSignedOffCertification) GetHasErrors() bool`

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Source** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **AccountInfo** | Pointer to [**AccountInfoDto**](AccountInfoDto.md) |  | [optional] 
 **RoleName** | Pointer to **string** | Specific role name for this target if using multiple accounts | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *RoleTargetDto) GetSource() BaseReferenceDto1`
+`func (o *RoleTargetDto) GetSource() BaseReferenceDto`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto1, bool)`
+`func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *RoleTargetDto) SetSource(v BaseReferenceDto1)`
+`func (o *RoleTargetDto) SetSource(v BaseReferenceDto)`
 
 SetSource sets Source field to given value.
 

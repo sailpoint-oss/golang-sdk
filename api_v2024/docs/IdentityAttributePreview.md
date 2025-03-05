@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the attribute that is being previewed. | [optional] 
 **Value** | Pointer to **string** | Value that was derived during the preview. | [optional] 
 **PreviousValue** | Pointer to **string** | The value of the attribute before the preview. | [optional] 
-**ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) |  | [optional] 
+**ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) | List of error messages | [optional] 
 
 ## Methods
 

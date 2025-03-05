@@ -28,7 +28,7 @@ type SpConfigExportResults struct {
 	Tenant *string `json:"tenant,omitempty"`
 	// Optional user defined description/name for export job.
 	Description *string `json:"description,omitempty"`
-	Options *ExportOptions `json:"options,omitempty"`
+	Options *ExportOptions1 `json:"options,omitempty"`
 	Objects []ConfigObject `json:"objects,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -181,9 +181,9 @@ func (o *SpConfigExportResults) SetDescription(v string) {
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
-func (o *SpConfigExportResults) GetOptions() ExportOptions {
+func (o *SpConfigExportResults) GetOptions() ExportOptions1 {
 	if o == nil || IsNil(o.Options) {
-		var ret ExportOptions
+		var ret ExportOptions1
 		return ret
 	}
 	return *o.Options
@@ -191,7 +191,7 @@ func (o *SpConfigExportResults) GetOptions() ExportOptions {
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions, bool) {
+func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions1, bool) {
 	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
@@ -207,8 +207,8 @@ func (o *SpConfigExportResults) HasOptions() bool {
 	return false
 }
 
-// SetOptions gets a reference to the given ExportOptions and assigns it to the Options field.
-func (o *SpConfigExportResults) SetOptions(v ExportOptions) {
+// SetOptions gets a reference to the given ExportOptions1 and assigns it to the Options field.
+func (o *SpConfigExportResults) SetOptions(v ExportOptions1) {
 	o.Options = &v
 }
 

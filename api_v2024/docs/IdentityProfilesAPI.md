@@ -8,11 +8,11 @@ Method | HTTP request | Description
 [**DeleteIdentityProfile**](IdentityProfilesAPI.md#DeleteIdentityProfile) | **Delete** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 [**DeleteIdentityProfiles**](IdentityProfilesAPI.md#DeleteIdentityProfiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 [**ExportIdentityProfiles**](IdentityProfilesAPI.md#ExportIdentityProfiles) | **Get** /identity-profiles/export | Export Identity Profiles
+[**GenerateIdentityPreview**](IdentityProfilesAPI.md#GenerateIdentityPreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 [**GetDefaultIdentityAttributeConfig**](IdentityProfilesAPI.md#GetDefaultIdentityAttributeConfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
 [**GetIdentityProfile**](IdentityProfilesAPI.md#GetIdentityProfile) | **Get** /identity-profiles/{identity-profile-id} | Get Identity Profile
 [**ImportIdentityProfiles**](IdentityProfilesAPI.md#ImportIdentityProfiles) | **Post** /identity-profiles/import | Import Identity Profiles
 [**ListIdentityProfiles**](IdentityProfilesAPI.md#ListIdentityProfiles) | **Get** /identity-profiles | List Identity Profiles
-[**ShowIdentityPreview**](IdentityProfilesAPI.md#ShowIdentityPreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 [**SyncIdentityProfile**](IdentityProfilesAPI.md#SyncIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 [**UpdateIdentityProfile**](IdentityProfilesAPI.md#UpdateIdentityProfile) | **Patch** /identity-profiles/{identity-profile-id} | Update Identity Profile
 
@@ -294,6 +294,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GenerateIdentityPreview
+
+> IdentityPreviewResponse GenerateIdentityPreview(ctx).XSailPointExperimental(xSailPointExperimental).IdentityPreviewRequest(identityPreviewRequest).Execute()
+
+Generate Identity Profile Preview
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	identityPreviewRequest := *openapiclient.NewIdentityPreviewRequest() // IdentityPreviewRequest | Identity Preview request body.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).XSailPointExperimental(xSailPointExperimental).IdentityPreviewRequest(identityPreviewRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GenerateIdentityPreview``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateIdentityPreview`: IdentityPreviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GenerateIdentityPreview`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGenerateIdentityPreviewRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **identityPreviewRequest** | [**IdentityPreviewRequest**](IdentityPreviewRequest.md) | Identity Preview request body. | 
+
+### Return type
+
+[**IdentityPreviewResponse**](IdentityPreviewResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetDefaultIdentityAttributeConfig
 
 > IdentityAttributeConfig GetDefaultIdentityAttributeConfig(ctx, identityProfileId).Execute()
@@ -567,72 +635,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ShowIdentityPreview
-
-> IdentityPreviewResponse ShowIdentityPreview(ctx).IdentityPreviewRequest(identityPreviewRequest).Execute()
-
-Generate Identity Profile Preview
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	identityPreviewRequest := *openapiclient.NewIdentityPreviewRequest() // IdentityPreviewRequest | Identity Preview request body.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentityProfilesAPI.ShowIdentityPreview(context.Background()).IdentityPreviewRequest(identityPreviewRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ShowIdentityPreview``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ShowIdentityPreview`: IdentityPreviewResponse
-	fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ShowIdentityPreview`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiShowIdentityPreviewRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identityPreviewRequest** | [**IdentityPreviewRequest**](IdentityPreviewRequest.md) | Identity Preview request body. | 
-
-### Return type
-
-[**IdentityPreviewResponse**](IdentityPreviewResponse.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

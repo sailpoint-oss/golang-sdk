@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## CreateAccessModelMetadataForEntitlement
 
-> Entitlement1 CreateAccessModelMetadataForEntitlement(ctx, id, attributeKey, attributeValue).XSailPointExperimental(xSailPointExperimental).Execute()
+> Entitlement CreateAccessModelMetadataForEntitlement(ctx, id, attributeKey, attributeValue).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Add metadata to an entitlement.
 
@@ -52,7 +52,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.CreateAccessModelMetadataForEntitlement``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateAccessModelMetadataForEntitlement`: Entitlement1
+	// response from `CreateAccessModelMetadataForEntitlement`: Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.CreateAccessModelMetadataForEntitlement`: %v\n", resp)
 }
 ```
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ## GetEntitlement
 
-> Entitlement1 GetEntitlement(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> Entitlement GetEntitlement(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get an entitlement
 
@@ -204,7 +204,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlement``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetEntitlement`: Entitlement1
+	// response from `GetEntitlement`: Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.GetEntitlement`: %v\n", resp)
 }
 ```
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## ListEntitlementChildren
 
-> []Entitlement1 ListEntitlementChildren(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+> []Entitlement ListEntitlementChildren(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
 
 List of entitlements children
 
@@ -427,7 +427,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementChildren``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListEntitlementChildren`: []Entitlement1
+	// response from `ListEntitlementChildren`: []Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementChildren`: %v\n", resp)
 }
 ```
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlement1**](Entitlement1.md)
+[**[]Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 ## ListEntitlementParents
 
-> []Entitlement1 ListEntitlementParents(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+> []Entitlement ListEntitlementParents(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
 
 List of entitlements parents
 
@@ -509,7 +509,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementParents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListEntitlementParents`: []Entitlement1
+	// response from `ListEntitlementParents`: []Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementParents`: %v\n", resp)
 }
 ```
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlement1**](Entitlement1.md)
+[**[]Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -557,7 +557,7 @@ Name | Type | Description  | Notes
 
 ## ListEntitlements
 
-> []Entitlement1 ListEntitlements(ctx).XSailPointExperimental(xSailPointExperimental).AccountId(accountId).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+> []Entitlement ListEntitlements(ctx).XSailPointExperimental(xSailPointExperimental).AccountId(accountId).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
 
 Gets a list of entitlements.
 
@@ -594,7 +594,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListEntitlements`: []Entitlement1
+	// response from `ListEntitlements`: []Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlements`: %v\n", resp)
 }
 ```
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlement1**](Entitlement1.md)
+[**[]Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ## PatchEntitlement
 
-> Entitlement1 PatchEntitlement(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+> Entitlement PatchEntitlement(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Patch an entitlement
 
@@ -671,7 +671,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PatchEntitlement``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchEntitlement`: Entitlement1
+	// response from `PatchEntitlement`: Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.PatchEntitlement`: %v\n", resp)
 }
 ```
@@ -697,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 

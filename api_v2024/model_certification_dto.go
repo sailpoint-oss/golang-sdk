@@ -27,8 +27,8 @@ type CertificationDto struct {
 	Due SailPointTime `json:"due"`
 	// The date the reviewer signed off on the certification.
 	Signed SailPointTime `json:"signed"`
-	Reviewer Reviewer1 `json:"reviewer"`
-	Reassignment *Reassignment1 `json:"reassignment,omitempty"`
+	Reviewer Reviewer `json:"reviewer"`
+	Reassignment NullableReassignment `json:"reassignment,omitempty"`
 	// Indicates it the certification has any errors.
 	HasErrors bool `json:"hasErrors"`
 	// A message indicating what the error is.
@@ -52,7 +52,7 @@ type _CertificationDto CertificationDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificationDto(campaignRef CampaignReference, phase CertificationPhase, due SailPointTime, signed SailPointTime, reviewer Reviewer1, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationDto {
+func NewCertificationDto(campaignRef CampaignReference, phase CertificationPhase, due SailPointTime, signed SailPointTime, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationDto {
 	this := CertificationDto{}
 	this.CampaignRef = campaignRef
 	this.Phase = phase
@@ -173,9 +173,9 @@ func (o *CertificationDto) SetSigned(v SailPointTime) {
 }
 
 // GetReviewer returns the Reviewer field value
-func (o *CertificationDto) GetReviewer() Reviewer1 {
+func (o *CertificationDto) GetReviewer() Reviewer {
 	if o == nil {
-		var ret Reviewer1
+		var ret Reviewer
 		return ret
 	}
 
@@ -184,7 +184,7 @@ func (o *CertificationDto) GetReviewer() Reviewer1 {
 
 // GetReviewerOk returns a tuple with the Reviewer field value
 // and a boolean to check if the value has been set.
-func (o *CertificationDto) GetReviewerOk() (*Reviewer1, bool) {
+func (o *CertificationDto) GetReviewerOk() (*Reviewer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -192,40 +192,50 @@ func (o *CertificationDto) GetReviewerOk() (*Reviewer1, bool) {
 }
 
 // SetReviewer sets field value
-func (o *CertificationDto) SetReviewer(v Reviewer1) {
+func (o *CertificationDto) SetReviewer(v Reviewer) {
 	o.Reviewer = v
 }
 
-// GetReassignment returns the Reassignment field value if set, zero value otherwise.
-func (o *CertificationDto) GetReassignment() Reassignment1 {
-	if o == nil || IsNil(o.Reassignment) {
-		var ret Reassignment1
+// GetReassignment returns the Reassignment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificationDto) GetReassignment() Reassignment {
+	if o == nil || IsNil(o.Reassignment.Get()) {
+		var ret Reassignment
 		return ret
 	}
-	return *o.Reassignment
+	return *o.Reassignment.Get()
 }
 
 // GetReassignmentOk returns a tuple with the Reassignment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificationDto) GetReassignmentOk() (*Reassignment1, bool) {
-	if o == nil || IsNil(o.Reassignment) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificationDto) GetReassignmentOk() (*Reassignment, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reassignment, true
+	return o.Reassignment.Get(), o.Reassignment.IsSet()
 }
 
 // HasReassignment returns a boolean if a field has been set.
 func (o *CertificationDto) HasReassignment() bool {
-	if o != nil && !IsNil(o.Reassignment) {
+	if o != nil && o.Reassignment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReassignment gets a reference to the given Reassignment1 and assigns it to the Reassignment field.
-func (o *CertificationDto) SetReassignment(v Reassignment1) {
-	o.Reassignment = &v
+// SetReassignment gets a reference to the given NullableReassignment and assigns it to the Reassignment field.
+func (o *CertificationDto) SetReassignment(v Reassignment) {
+	o.Reassignment.Set(&v)
+}
+// SetReassignmentNil sets the value for Reassignment to be an explicit nil
+func (o *CertificationDto) SetReassignmentNil() {
+	o.Reassignment.Set(nil)
+}
+
+// UnsetReassignment ensures that no value is present for Reassignment, not even an explicit nil
+func (o *CertificationDto) UnsetReassignment() {
+	o.Reassignment.Unset()
 }
 
 // GetHasErrors returns the HasErrors field value
@@ -429,8 +439,8 @@ func (o CertificationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["due"] = o.Due
 	toSerialize["signed"] = o.Signed
 	toSerialize["reviewer"] = o.Reviewer
-	if !IsNil(o.Reassignment) {
-		toSerialize["reassignment"] = o.Reassignment
+	if o.Reassignment.IsSet() {
+		toSerialize["reassignment"] = o.Reassignment.Get()
 	}
 	toSerialize["hasErrors"] = o.HasErrors
 	if o.ErrorMessage.IsSet() {

@@ -42,7 +42,7 @@ func (r ApiCreateSIMIntegrationRequest) SimIntegrationDetails(simIntegrationDeta
 	return r
 }
 
-func (r ApiCreateSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiCreateSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.CreateSIMIntegrationExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegration(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) CreateSIMIntegrationExecute(r ApiCreateSIMIntegrationRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) CreateSIMIntegrationExecute(r ApiCreateSIMIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.CreateSIMIntegration")
@@ -409,7 +409,7 @@ func (r ApiGetSIMIntegrationRequest) XSailPointExperimental(xSailPointExperiment
 	return r
 }
 
-func (r ApiGetSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiGetSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetSIMIntegrationExecute(r)
 }
 
@@ -431,13 +431,13 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegration(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) GetSIMIntegrationExecute(r ApiGetSIMIntegrationRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) GetSIMIntegrationExecute(r ApiGetSIMIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.GetSIMIntegration")
@@ -593,7 +593,7 @@ func (r ApiGetSIMIntegrationsRequest) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiGetSIMIntegrationsRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiGetSIMIntegrationsRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetSIMIntegrationsExecute(r)
 }
 
@@ -613,13 +613,13 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrations(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) GetSIMIntegrationsExecute(r ApiGetSIMIntegrationsRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) GetSIMIntegrationsExecute(r ApiGetSIMIntegrationsRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.GetSIMIntegrations")
@@ -782,7 +782,7 @@ func (r ApiPatchBeforeProvisioningRuleRequest) JsonPatch(jsonPatch JsonPatch) Ap
 	return r
 }
 
-func (r ApiPatchBeforeProvisioningRuleRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiPatchBeforeProvisioningRuleRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PatchBeforeProvisioningRuleExecute(r)
 }
 
@@ -804,13 +804,13 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRule(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleExecute(r ApiPatchBeforeProvisioningRuleRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleExecute(r ApiPatchBeforeProvisioningRuleRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PatchBeforeProvisioningRule")
@@ -985,7 +985,7 @@ func (r ApiPatchSIMAttributesRequest) JsonPatch(jsonPatch JsonPatch) ApiPatchSIM
 	return r
 }
 
-func (r ApiPatchSIMAttributesRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiPatchSIMAttributesRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PatchSIMAttributesExecute(r)
 }
 
@@ -1007,13 +1007,13 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributes(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) PatchSIMAttributesExecute(r ApiPatchSIMAttributesRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PatchSIMAttributesExecute(r ApiPatchSIMAttributesRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PatchSIMAttributes")
@@ -1188,7 +1188,7 @@ func (r ApiPutSIMIntegrationRequest) SimIntegrationDetails(simIntegrationDetails
 	return r
 }
 
-func (r ApiPutSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, *http.Response, error) {
+func (r ApiPutSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PutSIMIntegrationExecute(r)
 }
 
@@ -1210,13 +1210,13 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegration(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto1
-func (a *SIMIntegrationsAPIService) PutSIMIntegrationExecute(r ApiPutSIMIntegrationRequest) (*ServiceDeskIntegrationDto1, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PutSIMIntegrationExecute(r ApiPutSIMIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto1
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PutSIMIntegration")

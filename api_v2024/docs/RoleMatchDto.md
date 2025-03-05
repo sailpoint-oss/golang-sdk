@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RoleRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**RoleRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **MatchedAttributes** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRoleRef
 
-`func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto1`
+`func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto`
 
 GetRoleRef returns the RoleRef field if non-nil, zero value otherwise.
 
 ### GetRoleRefOk
 
-`func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto1, bool)`
+`func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto, bool)`
 
 GetRoleRefOk returns a tuple with the RoleRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleRef
 
-`func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto1)`
+`func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto)`
 
 SetRoleRef sets RoleRef field to given value.
 

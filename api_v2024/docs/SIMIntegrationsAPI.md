@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateSIMIntegration
 
-> ServiceDeskIntegrationDto1 CreateSIMIntegration(ctx).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+> ServiceDeskIntegrationDto CreateSIMIntegration(ctx).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
 
 Create new SIM integration
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateSIMIntegration`: ServiceDeskIntegrationDto1
+	// response from `CreateSIMIntegration`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.CreateSIMIntegration`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## GetSIMIntegration
 
-> ServiceDeskIntegrationDto1 GetSIMIntegration(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> ServiceDeskIntegrationDto GetSIMIntegration(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get a SIM integration details.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSIMIntegration`: ServiceDeskIntegrationDto1
+	// response from `GetSIMIntegration`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegration`: %v\n", resp)
 }
 ```
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetSIMIntegrations
 
-> ServiceDeskIntegrationDto1 GetSIMIntegrations(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> ServiceDeskIntegrationDto GetSIMIntegrations(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
 List the existing SIM integrations.
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSIMIntegrations`: ServiceDeskIntegrationDto1
+	// response from `GetSIMIntegrations`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrations`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## PatchBeforeProvisioningRule
 
-> ServiceDeskIntegrationDto1 PatchBeforeProvisioningRule(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+> ServiceDeskIntegrationDto PatchBeforeProvisioningRule(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
 
 Patch a SIM beforeProvisioningRule attribute.
 
@@ -322,7 +322,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchBeforeProvisioningRule`: ServiceDeskIntegrationDto1
+	// response from `PatchBeforeProvisioningRule`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchBeforeProvisioningRule`: %v\n", resp)
 }
 ```
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ## PatchSIMAttributes
 
-> ServiceDeskIntegrationDto1 PatchSIMAttributes(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+> ServiceDeskIntegrationDto PatchSIMAttributes(ctx, id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
 
 Patch a SIM attribute.
 
@@ -396,7 +396,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchSIMAttributes`: ServiceDeskIntegrationDto1
+	// response from `PatchSIMAttributes`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchSIMAttributes`: %v\n", resp)
 }
 ```
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ## PutSIMIntegration
 
-> ServiceDeskIntegrationDto1 PutSIMIntegration(ctx, id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+> ServiceDeskIntegrationDto PutSIMIntegration(ctx, id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
 
 Update an existing SIM integration
 
@@ -470,7 +470,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutSIMIntegration`: ServiceDeskIntegrationDto1
+	// response from `PutSIMIntegration`: ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PutSIMIntegration`: %v\n", resp)
 }
 ```
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 

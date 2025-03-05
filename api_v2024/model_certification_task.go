@@ -30,6 +30,7 @@ type CertificationTask struct {
 	TargetId *string `json:"targetId,omitempty"`
 	// The status of the task.
 	Status *string `json:"status,omitempty"`
+	// List of error messages
 	Errors []ErrorMessageDto `json:"errors,omitempty"`
 	// Reassignment trails that lead to self certification identity
 	ReassignmentTrailDTOs []ReassignmentTrailDTO `json:"reassignmentTrailDTOs,omitempty"`

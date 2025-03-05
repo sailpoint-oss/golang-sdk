@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **TargetType** | Pointer to **string** | The type of item that is being operated on by this task whose ID is stored in the targetId field. | [optional] 
 **TargetId** | Pointer to **string** | The ID of the item being operated on by this task. | [optional] 
 **Status** | Pointer to **string** | The status of the task. | [optional] 
-**Errors** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) |  | [optional] 
+**Errors** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) | List of error messages | [optional] 
 **ReassignmentTrailDTOs** | Pointer to [**[]ReassignmentTrailDTO**](ReassignmentTrailDTO.md) | Reassignment trails that lead to self certification identity | [optional] 
 **Created** | Pointer to **time.Time** | The date and time on which this task was created. | [optional] 
 

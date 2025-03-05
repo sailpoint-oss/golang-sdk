@@ -136,8 +136,6 @@ docs/AccessProfilesAPI.md
 docs/AccessRecommendationMessage.md
 docs/AccessRequest.md
 docs/AccessRequestAdminItemStatus.md
-docs/AccessRequestAdminItemStatusCancelledRequestDetails.md
-docs/AccessRequestAdminItemStatusSodViolationContext.md
 docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestApproversListResponse.md
 docs/AccessRequestConfig.md
@@ -249,7 +247,6 @@ docs/ApprovalComment1.md
 docs/ApprovalComment2.md
 docs/ApprovalDescription.md
 docs/ApprovalForwardHistory.md
-docs/ApprovalForwardHistory1.md
 docs/ApprovalIdentity.md
 docs/ApprovalInfoResponse.md
 docs/ApprovalItemDetails.md
@@ -261,7 +258,6 @@ docs/ApprovalScheme.md
 docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
-docs/ApprovalStatusDto1.md
 docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
@@ -296,11 +292,9 @@ docs/BaseAccessOwner.md
 docs/BaseAccessProfile.md
 docs/BaseAccount.md
 docs/BaseCommonDto.md
-docs/BaseCommonDto1.md
 docs/BaseDocument.md
 docs/BaseEntitlement.md
 docs/BaseReferenceDto.md
-docs/BaseReferenceDto1.md
 docs/BaseSegment.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
@@ -346,7 +340,6 @@ docs/CampaignTemplateOwnerRef.md
 docs/CampaignsDeleteRequest.md
 docs/CancelAccessRequest.md
 docs/CancelledRequestDetails.md
-docs/CancelledRequestDetails1.md
 docs/Certification.md
 docs/CertificationCampaignFiltersAPI.md
 docs/CertificationCampaignsAPI.md
@@ -355,8 +348,6 @@ docs/CertificationDto.md
 docs/CertificationIdentitySummary.md
 docs/CertificationPhase.md
 docs/CertificationReference.md
-docs/CertificationReference1.md
-docs/CertificationReferenceDto.md
 docs/CertificationSignedOff.md
 docs/CertificationSignedOffCertification.md
 docs/CertificationSummariesAPI.md
@@ -403,7 +394,6 @@ docs/ConflictingAccessCriteria.md
 docs/ConnectedObject.md
 docs/ConnectedObjectType.md
 docs/ConnectorDetail.md
-docs/ConnectorDetail1.md
 docs/ConnectorRuleCreateRequest.md
 docs/ConnectorRuleCreateRequestSignature.md
 docs/ConnectorRuleManagementAPI.md
@@ -467,11 +457,6 @@ docs/DtoType.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
 docs/Entitlement.md
-docs/Entitlement1.md
-docs/Entitlement1AccessModelMetadata.md
-docs/Entitlement1ManuallyUpdatedFields.md
-docs/Entitlement1Owner.md
-docs/Entitlement1Source.md
 docs/EntitlementAccessModelMetadata.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
@@ -484,7 +469,6 @@ docs/EntitlementOwner.md
 docs/EntitlementRef.md
 docs/EntitlementRef1.md
 docs/EntitlementRequestConfig.md
-docs/EntitlementRequestConfig1.md
 docs/EntitlementSource.md
 docs/EntitlementSourceResetBaseReferenceDto.md
 docs/EntitlementSummary.md
@@ -493,7 +477,6 @@ docs/EntityCreatedByDTO.md
 docs/Error.md
 docs/ErrorMessage.md
 docs/ErrorMessageDto.md
-docs/ErrorMessageDto1.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
 docs/Event.md
@@ -510,6 +493,7 @@ docs/ExecutionStatus.md
 docs/ExpansionItem.md
 docs/ExportFormDefinitionsByTenant200ResponseInner.md
 docs/ExportOptions.md
+docs/ExportOptions1.md
 docs/ExportPayload.md
 docs/Expression.md
 docs/ExpressionChildrenInner.md
@@ -699,11 +683,9 @@ docs/ManagerCorrelationMapping.md
 docs/ManualDiscoverApplications.md
 docs/ManualDiscoverApplicationsTemplate.md
 docs/ManualWorkItemDetails.md
-docs/ManualWorkItemDetails1.md
 docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
 docs/ManualWorkItemState.md
-docs/ManuallyUpdatedFieldsDTO.md
 docs/MatchTerm.md
 docs/Medium.md
 docs/MembershipType.md
@@ -772,7 +754,6 @@ docs/OutlierSummary.md
 docs/OutliersContributingFeatureAccessItems.md
 docs/OwnerDto.md
 docs/OwnerReference.md
-docs/OwnerReferenceDto.md
 docs/OwnerReferenceSegments.md
 docs/Owns.md
 docs/PasswordChangeRequest.md
@@ -816,9 +797,6 @@ docs/ProvisioningCompletedAccountRequestsInnerSource.md
 docs/ProvisioningCompletedRecipient.md
 docs/ProvisioningCompletedRequester.md
 docs/ProvisioningConfig.md
-docs/ProvisioningConfig1.md
-docs/ProvisioningConfig1ManagedResourceRefsInner.md
-docs/ProvisioningConfig1PlanInitializerScript.md
 docs/ProvisioningConfigPlanInitializerScript.md
 docs/ProvisioningCriteriaLevel1.md
 docs/ProvisioningCriteriaLevel2.md
@@ -846,7 +824,6 @@ docs/QueuedCheckConfigDetails.md
 docs/Range.md
 docs/ReassignReference.md
 docs/Reassignment.md
-docs/Reassignment1.md
 docs/ReassignmentReference.md
 docs/ReassignmentTrailDTO.md
 docs/ReassignmentType.md
@@ -900,7 +877,6 @@ docs/ReviewableEntitlementAccount.md
 docs/ReviewableEntitlementAccountOwner.md
 docs/ReviewableRole.md
 docs/Reviewer.md
-docs/Reviewer1.md
 docs/Revocability.md
 docs/RevocabilityForRole.md
 docs/Role.md
@@ -1040,7 +1016,6 @@ docs/SendAccountVerificationRequest.md
 docs/SendTestNotificationRequestDto.md
 docs/ServiceDeskIntegrationAPI.md
 docs/ServiceDeskIntegrationDto.md
-docs/ServiceDeskIntegrationDto1.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
@@ -1053,7 +1028,6 @@ docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 docs/SlimCampaign.md
 docs/SlimDiscoveredApplications.md
 docs/SodExemptCriteria.md
-docs/SodExemptCriteria1.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyDto.md
@@ -1063,13 +1037,8 @@ docs/SodRecipient.md
 docs/SodReportResultDto.md
 docs/SodViolationCheck.md
 docs/SodViolationCheckResult.md
-docs/SodViolationCheckResult1.md
 docs/SodViolationContext.md
-docs/SodViolationContext1.md
-docs/SodViolationContext1ConflictingAccessCriteria.md
-docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md
 docs/SodViolationContextCheckCompleted.md
-docs/SodViolationContextCheckCompleted1.md
 docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
@@ -1294,8 +1263,6 @@ model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
 model_access_request.go
 model_access_request_admin_item_status.go
-model_access_request_admin_item_status_cancelled_request_details.go
-model_access_request_admin_item_status_sod_violation_context.go
 model_access_request_approvers_list_response.go
 model_access_request_config.go
 model_access_request_context.go
@@ -1399,7 +1366,6 @@ model_approval_comment_1.go
 model_approval_comment_2.go
 model_approval_description.go
 model_approval_forward_history.go
-model_approval_forward_history_1.go
 model_approval_identity.go
 model_approval_info_response.go
 model_approval_item_details.go
@@ -1411,7 +1377,6 @@ model_approval_scheme.go
 model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
-model_approval_status_dto_1.go
 model_approval_status_dto_current_owner.go
 model_approval_status_dto_original_owner.go
 model_approval_summary.go
@@ -1442,11 +1407,9 @@ model_base_access_owner.go
 model_base_access_profile.go
 model_base_account.go
 model_base_common_dto.go
-model_base_common_dto_1.go
 model_base_document.go
 model_base_entitlement.go
 model_base_reference_dto.go
-model_base_reference_dto_1.go
 model_base_segment.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
@@ -1491,15 +1454,12 @@ model_campaign_template_owner_ref.go
 model_campaigns_delete_request.go
 model_cancel_access_request.go
 model_cancelled_request_details.go
-model_cancelled_request_details_1.go
 model_certification.go
 model_certification_decision.go
 model_certification_dto.go
 model_certification_identity_summary.go
 model_certification_phase.go
 model_certification_reference.go
-model_certification_reference_1.go
-model_certification_reference_dto.go
 model_certification_signed_off.go
 model_certification_signed_off_certification.go
 model_certification_task.go
@@ -1543,7 +1503,6 @@ model_conflicting_access_criteria.go
 model_connected_object.go
 model_connected_object_type.go
 model_connector_detail.go
-model_connector_detail_1.go
 model_connector_rule_create_request.go
 model_connector_rule_create_request_signature.go
 model_connector_rule_response.go
@@ -1601,11 +1560,6 @@ model_dto_type.go
 model_email_notification_option.go
 model_email_status_dto.go
 model_entitlement.go
-model_entitlement_1.go
-model_entitlement_1_access_model_metadata.go
-model_entitlement_1_manually_updated_fields.go
-model_entitlement_1_owner.go
-model_entitlement_1_source.go
 model_entitlement_access_model_metadata.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
@@ -1618,7 +1572,6 @@ model_entitlement_owner.go
 model_entitlement_ref.go
 model_entitlement_ref_1.go
 model_entitlement_request_config.go
-model_entitlement_request_config_1.go
 model_entitlement_source.go
 model_entitlement_source_reset_base_reference_dto.go
 model_entitlement_summary.go
@@ -1626,7 +1579,6 @@ model_entity_created_by_dto.go
 model_error.go
 model_error_message.go
 model_error_message_dto.go
-model_error_message_dto_1.go
 model_error_response_dto.go
 model_evaluate_response.go
 model_event.go
@@ -1643,6 +1595,7 @@ model_execution_status.go
 model_expansion_item.go
 model_export_form_definitions_by_tenant_200_response_inner.go
 model_export_options.go
+model_export_options_1.go
 model_export_payload.go
 model_expression.go
 model_expression_children_inner.go
@@ -1813,11 +1766,9 @@ model_manager_correlation_mapping.go
 model_manual_discover_applications.go
 model_manual_discover_applications_template.go
 model_manual_work_item_details.go
-model_manual_work_item_details_1.go
 model_manual_work_item_details_current_owner.go
 model_manual_work_item_details_original_owner.go
 model_manual_work_item_state.go
-model_manually_updated_fields_dto.go
 model_match_term.go
 model_medium.go
 model_membership_type.go
@@ -1882,7 +1833,6 @@ model_outlier_summary.go
 model_outliers_contributing_feature_access_items.go
 model_owner_dto.go
 model_owner_reference.go
-model_owner_reference_dto.go
 model_owner_reference_segments.go
 model_owns.go
 model_password_change_request.go
@@ -1920,9 +1870,6 @@ model_provisioning_completed_account_requests_inner_source.go
 model_provisioning_completed_recipient.go
 model_provisioning_completed_requester.go
 model_provisioning_config.go
-model_provisioning_config_1.go
-model_provisioning_config_1_managed_resource_refs_inner.go
-model_provisioning_config_1_plan_initializer_script.go
 model_provisioning_config_plan_initializer_script.go
 model_provisioning_criteria_level1.go
 model_provisioning_criteria_level2.go
@@ -1948,7 +1895,6 @@ model_queued_check_config_details.go
 model_range.go
 model_reassign_reference.go
 model_reassignment.go
-model_reassignment_1.go
 model_reassignment_reference.go
 model_reassignment_trail_dto.go
 model_reassignment_type.go
@@ -2000,7 +1946,6 @@ model_reviewable_entitlement_account.go
 model_reviewable_entitlement_account_owner.go
 model_reviewable_role.go
 model_reviewer.go
-model_reviewer_1.go
 model_revocability.go
 model_revocability_for_role.go
 model_role.go
@@ -2128,7 +2073,6 @@ model_self_import_export_dto.go
 model_send_account_verification_request.go
 model_send_test_notification_request_dto.go
 model_service_desk_integration_dto.go
-model_service_desk_integration_dto_1.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
@@ -2141,7 +2085,6 @@ model_sim_integration_details_all_of_before_provisioning_rule.go
 model_slim_campaign.go
 model_slim_discovered_applications.go
 model_sod_exempt_criteria.go
-model_sod_exempt_criteria_1.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_dto.go
@@ -2151,13 +2094,8 @@ model_sod_recipient.go
 model_sod_report_result_dto.go
 model_sod_violation_check.go
 model_sod_violation_check_result.go
-model_sod_violation_check_result_1.go
 model_sod_violation_context.go
-model_sod_violation_context_1.go
-model_sod_violation_context_1_conflicting_access_criteria.go
-model_sod_violation_context_1_conflicting_access_criteria_left_criteria.go
 model_sod_violation_context_check_completed.go
-model_sod_violation_context_check_completed_1.go
 model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go

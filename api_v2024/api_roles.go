@@ -42,6 +42,9 @@ func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
 CreateRole Create a Role
 
 This API creates a role.
+
+You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. 
+
 In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves. 
 
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
@@ -526,7 +529,7 @@ DeleteRole Delete a Role
 
 This API deletes a Role by its ID.
 
-A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role
@@ -985,7 +988,7 @@ func (r ApiGetRoleRequest) Execute() (*Role, *http.Response, error) {
 GetRole Get a Role
 
 This API returns a Role by its ID.
-A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role
@@ -1391,7 +1394,7 @@ func (r ApiGetRoleEntitlementsRequest) Sorters(sorters string) ApiGetRoleEntitle
 	return r
 }
 
-func (r ApiGetRoleEntitlementsRequest) Execute() ([]Entitlement1, *http.Response, error) {
+func (r ApiGetRoleEntitlementsRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.GetRoleEntitlementsExecute(r)
 }
 
@@ -1413,13 +1416,13 @@ func (a *RolesAPIService) GetRoleEntitlements(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-//  @return []Entitlement1
-func (a *RolesAPIService) GetRoleEntitlementsExecute(r ApiGetRoleEntitlementsRequest) ([]Entitlement1, *http.Response, error) {
+//  @return []Entitlement
+func (a *RolesAPIService) GetRoleEntitlementsExecute(r ApiGetRoleEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement1
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRoleEntitlements")
@@ -1646,6 +1649,8 @@ ListRoles List Roles
 
 This API returns a list of Roles.
 
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRolesRequest
 */
@@ -1841,7 +1846,9 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 PatchRole Patch a specified Role
 
 This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
 The following fields are patchable:
+
 * name
 * description
 * enabled
@@ -1853,13 +1860,12 @@ The following fields are patchable:
 * accessRequestConfig
 * revokeRequestConfig
 * segments
-* accessModelMetadata
-
-A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+* accessModelMetadata   
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
 
-When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time. 
+When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role to patch

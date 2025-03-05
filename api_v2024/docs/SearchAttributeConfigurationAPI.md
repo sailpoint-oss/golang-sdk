@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateSearchAttributeConfig
 
-> map[string]interface{} CreateSearchAttributeConfig(ctx).SearchAttributeConfig(searchAttributeConfig).Execute()
+> map[string]interface{} CreateSearchAttributeConfig(ctx).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
 
 Create Extended Search Attributes
 
@@ -33,11 +33,12 @@ import (
 )
 
 func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	searchAttributeConfig := *openapiclient.NewSearchAttributeConfig() // SearchAttributeConfig | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
+	resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,6 +59,7 @@ Other parameters are passed through a pointer to a apiCreateSearchAttributeConfi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **searchAttributeConfig** | [**SearchAttributeConfig**](SearchAttributeConfig.md) |  | 
 
 ### Return type
@@ -80,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## DeleteSearchAttributeConfig
 
-> DeleteSearchAttributeConfig(ctx, name).Execute()
+> DeleteSearchAttributeConfig(ctx, name).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Delete Extended Search Attribute
 
@@ -100,10 +102,11 @@ import (
 
 func main() {
 	name := "newMailAttribute" // string | Name of the extended search attribute configuration to delete.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+	r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,6 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteSearchAttributeConfi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -148,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## GetSearchAttributeConfig
 
-> []SearchAttributeConfig GetSearchAttributeConfig(ctx).Execute()
+> []SearchAttributeConfig GetSearchAttributeConfig(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
 List Extended Search Attributes
 
@@ -167,10 +171,11 @@ import (
 )
 
 func main() {
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
+	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,12 +187,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -209,7 +218,7 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRe
 
 ## GetSingleSearchAttributeConfig
 
-> []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).Execute()
+> []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get Extended Search Attribute
 
@@ -228,11 +237,12 @@ import (
 )
 
 func main() {
-	name := "newMailAttribute" // string | Name of the extended search attribute configuration to retrieve.
+	name := "newMailAttribute" // string | Name of the extended search attribute configuration to get.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,7 +258,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the extended search attribute configuration to retrieve. | 
+**name** | **string** | Name of the extended search attribute configuration to get. | 
 
 ### Other Parameters
 
@@ -258,6 +268,7 @@ Other parameters are passed through a pointer to a apiGetSingleSearchAttributeCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -279,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## PatchSearchAttributeConfig
 
-> SearchAttributeConfig PatchSearchAttributeConfig(ctx, name).JsonPatchOperation(jsonPatchOperation).Execute()
+> SearchAttributeConfig PatchSearchAttributeConfig(ctx, name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update Extended Search Attribute
 
@@ -299,11 +310,12 @@ import (
 
 func main() {
 	name := "promotedMailAttribute" // string | Name of the search attribute configuration to patch.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
+	resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,6 +341,7 @@ Other parameters are passed through a pointer to a apiPatchSearchAttributeConfig
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | 
 
 ### Return type

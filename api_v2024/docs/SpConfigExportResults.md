@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Timestamp** | Pointer to **time.Time** | Time the export was completed. | [optional] 
 **Tenant** | Pointer to **string** | Name of the tenant where this export originated. | [optional] 
 **Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
-**Options** | Pointer to [**ExportOptions**](ExportOptions.md) |  | [optional] 
+**Options** | Pointer to [**ExportOptions1**](ExportOptions1.md) |  | [optional] 
 **Objects** | Pointer to [**[]ConfigObject**](ConfigObject.md) |  | [optional] 
 
 ## Methods
@@ -132,20 +132,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOptions
 
-`func (o *SpConfigExportResults) GetOptions() ExportOptions`
+`func (o *SpConfigExportResults) GetOptions() ExportOptions1`
 
 GetOptions returns the Options field if non-nil, zero value otherwise.
 
 ### GetOptionsOk
 
-`func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions, bool)`
+`func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions1, bool)`
 
 GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptions
 
-`func (o *SpConfigExportResults) SetOptions(v ExportOptions)`
+`func (o *SpConfigExportResults) SetOptions(v ExportOptions1)`
 
 SetOptions sets Options field to given value.
 

@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ## GetRoleEntitlements
 
-> []Entitlement1 GetRoleEntitlements(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+> []Entitlement GetRoleEntitlements(ctx, id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
 List role's Entitlements
 
@@ -612,7 +612,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRoleEntitlements`: []Entitlement1
+	// response from `GetRoleEntitlements`: []Entitlement
 	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRoleEntitlements`: %v\n", resp)
 }
 ```
@@ -642,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlement1**](Entitlement1.md)
+[**[]Entitlement**](Entitlement.md)
 
 ### Authorization
 

@@ -39,7 +39,7 @@ func (r ApiCreateAccessModelMetadataForEntitlementRequest) XSailPointExperimenta
 	return r
 }
 
-func (r ApiCreateAccessModelMetadataForEntitlementRequest) Execute() (*Entitlement1, *http.Response, error) {
+func (r ApiCreateAccessModelMetadataForEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
 	return r.ApiService.CreateAccessModelMetadataForEntitlementExecute(r)
 }
 
@@ -65,13 +65,13 @@ func (a *EntitlementsAPIService) CreateAccessModelMetadataForEntitlement(ctx con
 }
 
 // Execute executes the request
-//  @return Entitlement1
-func (a *EntitlementsAPIService) CreateAccessModelMetadataForEntitlementExecute(r ApiCreateAccessModelMetadataForEntitlementRequest) (*Entitlement1, *http.Response, error) {
+//  @return Entitlement
+func (a *EntitlementsAPIService) CreateAccessModelMetadataForEntitlementExecute(r ApiCreateAccessModelMetadataForEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlement1
+		localVarReturnValue  *Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.CreateAccessModelMetadataForEntitlement")
@@ -390,7 +390,7 @@ func (r ApiGetEntitlementRequest) XSailPointExperimental(xSailPointExperimental 
 	return r
 }
 
-func (r ApiGetEntitlementRequest) Execute() (*Entitlement1, *http.Response, error) {
+func (r ApiGetEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
 	return r.ApiService.GetEntitlementExecute(r)
 }
 
@@ -412,13 +412,13 @@ func (a *EntitlementsAPIService) GetEntitlement(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//  @return Entitlement1
-func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*Entitlement1, *http.Response, error) {
+//  @return Entitlement
+func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlement1
+		localVarReturnValue  *Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetEntitlement")
@@ -998,7 +998,7 @@ func (r ApiListEntitlementChildrenRequest) Filters(filters string) ApiListEntitl
 	return r
 }
 
-func (r ApiListEntitlementChildrenRequest) Execute() ([]Entitlement1, *http.Response, error) {
+func (r ApiListEntitlementChildrenRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.ListEntitlementChildrenExecute(r)
 }
 
@@ -1020,13 +1020,13 @@ func (a *EntitlementsAPIService) ListEntitlementChildren(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return []Entitlement1
-func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitlementChildrenRequest) ([]Entitlement1, *http.Response, error) {
+//  @return []Entitlement
+func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitlementChildrenRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement1
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlementChildren")
@@ -1242,7 +1242,7 @@ func (r ApiListEntitlementParentsRequest) Filters(filters string) ApiListEntitle
 	return r
 }
 
-func (r ApiListEntitlementParentsRequest) Execute() ([]Entitlement1, *http.Response, error) {
+func (r ApiListEntitlementParentsRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.ListEntitlementParentsExecute(r)
 }
 
@@ -1264,13 +1264,13 @@ func (a *EntitlementsAPIService) ListEntitlementParents(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return []Entitlement1
-func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlementParentsRequest) ([]Entitlement1, *http.Response, error) {
+//  @return []Entitlement
+func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlementParentsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement1
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlementParents")
@@ -1513,7 +1513,7 @@ func (r ApiListEntitlementsRequest) Filters(filters string) ApiListEntitlementsR
 	return r
 }
 
-func (r ApiListEntitlementsRequest) Execute() ([]Entitlement1, *http.Response, error) {
+func (r ApiListEntitlementsRequest) Execute() ([]Entitlement, *http.Response, error) {
 	return r.ApiService.ListEntitlementsExecute(r)
 }
 
@@ -1537,13 +1537,13 @@ func (a *EntitlementsAPIService) ListEntitlements(ctx context.Context) ApiListEn
 }
 
 // Execute executes the request
-//  @return []Entitlement1
-func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRequest) ([]Entitlement1, *http.Response, error) {
+//  @return []Entitlement
+func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement1
+		localVarReturnValue  []Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlements")
@@ -1733,7 +1733,7 @@ func (r ApiPatchEntitlementRequest) JsonPatchOperation(jsonPatchOperation []Json
 	return r
 }
 
-func (r ApiPatchEntitlementRequest) Execute() (*Entitlement1, *http.Response, error) {
+func (r ApiPatchEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
 	return r.ApiService.PatchEntitlementExecute(r)
 }
 
@@ -1759,13 +1759,13 @@ func (a *EntitlementsAPIService) PatchEntitlement(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return Entitlement1
-func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRequest) (*Entitlement1, *http.Response, error) {
+//  @return Entitlement
+func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlement1
+		localVarReturnValue  *Entitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.PatchEntitlement")

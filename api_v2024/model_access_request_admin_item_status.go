@@ -26,14 +26,14 @@ type AccessRequestAdminItemStatus struct {
 	Name NullableString `json:"name,omitempty"`
 	// Type of requested object.
 	Type NullableString `json:"type,omitempty"`
-	CancelledRequestDetails *AccessRequestAdminItemStatusCancelledRequestDetails `json:"cancelledRequestDetails,omitempty"`
+	CancelledRequestDetails *RequestedItemStatusCancelledRequestDetails `json:"cancelledRequestDetails,omitempty"`
 	// List of localized error messages, if any, encountered during the approval/provisioning process.
-	ErrorMessages [][]ErrorMessageDto1 `json:"errorMessages,omitempty"`
+	ErrorMessages [][]ErrorMessageDto `json:"errorMessages,omitempty"`
 	State *RequestedItemStatusRequestState `json:"state,omitempty"`
 	// Approval details for each item.
-	ApprovalDetails []ApprovalStatusDto1 `json:"approvalDetails,omitempty"`
+	ApprovalDetails []ApprovalStatusDto `json:"approvalDetails,omitempty"`
 	// Manual work items created for provisioning the item.
-	ManualWorkItemDetails []ManualWorkItemDetails1 `json:"manualWorkItemDetails,omitempty"`
+	ManualWorkItemDetails []ManualWorkItemDetails `json:"manualWorkItemDetails,omitempty"`
 	// Id of associated account activity item.
 	AccountActivityItemId *string `json:"accountActivityItemId,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
@@ -44,7 +44,7 @@ type AccessRequestAdminItemStatus struct {
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
 	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
-	SodViolationContext *AccessRequestAdminItemStatusSodViolationContext `json:"sodViolationContext,omitempty"`
+	SodViolationContext *RequestedItemStatusSodViolationContext `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *RequestedItemStatusProvisioningDetails `json:"provisioningDetails,omitempty"`
 	PreApprovalTriggerDetails *RequestedItemStatusPreApprovalTriggerDetails `json:"preApprovalTriggerDetails,omitempty"`
 	// A list of Phases that the Access Request has gone through in order, to help determine the status of the request.
@@ -208,9 +208,9 @@ func (o *AccessRequestAdminItemStatus) UnsetType() {
 }
 
 // GetCancelledRequestDetails returns the CancelledRequestDetails field value if set, zero value otherwise.
-func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetails() AccessRequestAdminItemStatusCancelledRequestDetails {
+func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetails() RequestedItemStatusCancelledRequestDetails {
 	if o == nil || IsNil(o.CancelledRequestDetails) {
-		var ret AccessRequestAdminItemStatusCancelledRequestDetails
+		var ret RequestedItemStatusCancelledRequestDetails
 		return ret
 	}
 	return *o.CancelledRequestDetails
@@ -218,7 +218,7 @@ func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetails() AccessReques
 
 // GetCancelledRequestDetailsOk returns a tuple with the CancelledRequestDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetailsOk() (*AccessRequestAdminItemStatusCancelledRequestDetails, bool) {
+func (o *AccessRequestAdminItemStatus) GetCancelledRequestDetailsOk() (*RequestedItemStatusCancelledRequestDetails, bool) {
 	if o == nil || IsNil(o.CancelledRequestDetails) {
 		return nil, false
 	}
@@ -234,15 +234,15 @@ func (o *AccessRequestAdminItemStatus) HasCancelledRequestDetails() bool {
 	return false
 }
 
-// SetCancelledRequestDetails gets a reference to the given AccessRequestAdminItemStatusCancelledRequestDetails and assigns it to the CancelledRequestDetails field.
-func (o *AccessRequestAdminItemStatus) SetCancelledRequestDetails(v AccessRequestAdminItemStatusCancelledRequestDetails) {
+// SetCancelledRequestDetails gets a reference to the given RequestedItemStatusCancelledRequestDetails and assigns it to the CancelledRequestDetails field.
+func (o *AccessRequestAdminItemStatus) SetCancelledRequestDetails(v RequestedItemStatusCancelledRequestDetails) {
 	o.CancelledRequestDetails = &v
 }
 
 // GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessRequestAdminItemStatus) GetErrorMessages() [][]ErrorMessageDto1 {
+func (o *AccessRequestAdminItemStatus) GetErrorMessages() [][]ErrorMessageDto {
 	if o == nil {
-		var ret [][]ErrorMessageDto1
+		var ret [][]ErrorMessageDto
 		return ret
 	}
 	return o.ErrorMessages
@@ -251,7 +251,7 @@ func (o *AccessRequestAdminItemStatus) GetErrorMessages() [][]ErrorMessageDto1 {
 // GetErrorMessagesOk returns a tuple with the ErrorMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessRequestAdminItemStatus) GetErrorMessagesOk() ([][]ErrorMessageDto1, bool) {
+func (o *AccessRequestAdminItemStatus) GetErrorMessagesOk() ([][]ErrorMessageDto, bool) {
 	if o == nil || IsNil(o.ErrorMessages) {
 		return nil, false
 	}
@@ -267,8 +267,8 @@ func (o *AccessRequestAdminItemStatus) HasErrorMessages() bool {
 	return false
 }
 
-// SetErrorMessages gets a reference to the given [][]ErrorMessageDto1 and assigns it to the ErrorMessages field.
-func (o *AccessRequestAdminItemStatus) SetErrorMessages(v [][]ErrorMessageDto1) {
+// SetErrorMessages gets a reference to the given [][]ErrorMessageDto and assigns it to the ErrorMessages field.
+func (o *AccessRequestAdminItemStatus) SetErrorMessages(v [][]ErrorMessageDto) {
 	o.ErrorMessages = v
 }
 
@@ -305,9 +305,9 @@ func (o *AccessRequestAdminItemStatus) SetState(v RequestedItemStatusRequestStat
 }
 
 // GetApprovalDetails returns the ApprovalDetails field value if set, zero value otherwise.
-func (o *AccessRequestAdminItemStatus) GetApprovalDetails() []ApprovalStatusDto1 {
+func (o *AccessRequestAdminItemStatus) GetApprovalDetails() []ApprovalStatusDto {
 	if o == nil || IsNil(o.ApprovalDetails) {
-		var ret []ApprovalStatusDto1
+		var ret []ApprovalStatusDto
 		return ret
 	}
 	return o.ApprovalDetails
@@ -315,7 +315,7 @@ func (o *AccessRequestAdminItemStatus) GetApprovalDetails() []ApprovalStatusDto1
 
 // GetApprovalDetailsOk returns a tuple with the ApprovalDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestAdminItemStatus) GetApprovalDetailsOk() ([]ApprovalStatusDto1, bool) {
+func (o *AccessRequestAdminItemStatus) GetApprovalDetailsOk() ([]ApprovalStatusDto, bool) {
 	if o == nil || IsNil(o.ApprovalDetails) {
 		return nil, false
 	}
@@ -331,15 +331,15 @@ func (o *AccessRequestAdminItemStatus) HasApprovalDetails() bool {
 	return false
 }
 
-// SetApprovalDetails gets a reference to the given []ApprovalStatusDto1 and assigns it to the ApprovalDetails field.
-func (o *AccessRequestAdminItemStatus) SetApprovalDetails(v []ApprovalStatusDto1) {
+// SetApprovalDetails gets a reference to the given []ApprovalStatusDto and assigns it to the ApprovalDetails field.
+func (o *AccessRequestAdminItemStatus) SetApprovalDetails(v []ApprovalStatusDto) {
 	o.ApprovalDetails = v
 }
 
 // GetManualWorkItemDetails returns the ManualWorkItemDetails field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetails() []ManualWorkItemDetails1 {
+func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetails() []ManualWorkItemDetails {
 	if o == nil {
-		var ret []ManualWorkItemDetails1
+		var ret []ManualWorkItemDetails
 		return ret
 	}
 	return o.ManualWorkItemDetails
@@ -348,7 +348,7 @@ func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetails() []ManualWorkIt
 // GetManualWorkItemDetailsOk returns a tuple with the ManualWorkItemDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetailsOk() ([]ManualWorkItemDetails1, bool) {
+func (o *AccessRequestAdminItemStatus) GetManualWorkItemDetailsOk() ([]ManualWorkItemDetails, bool) {
 	if o == nil || IsNil(o.ManualWorkItemDetails) {
 		return nil, false
 	}
@@ -364,8 +364,8 @@ func (o *AccessRequestAdminItemStatus) HasManualWorkItemDetails() bool {
 	return false
 }
 
-// SetManualWorkItemDetails gets a reference to the given []ManualWorkItemDetails1 and assigns it to the ManualWorkItemDetails field.
-func (o *AccessRequestAdminItemStatus) SetManualWorkItemDetails(v []ManualWorkItemDetails1) {
+// SetManualWorkItemDetails gets a reference to the given []ManualWorkItemDetails and assigns it to the ManualWorkItemDetails field.
+func (o *AccessRequestAdminItemStatus) SetManualWorkItemDetails(v []ManualWorkItemDetails) {
 	o.ManualWorkItemDetails = v
 }
 
@@ -614,9 +614,9 @@ func (o *AccessRequestAdminItemStatus) SetRequesterComment(v RequestedItemStatus
 }
 
 // GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
-func (o *AccessRequestAdminItemStatus) GetSodViolationContext() AccessRequestAdminItemStatusSodViolationContext {
+func (o *AccessRequestAdminItemStatus) GetSodViolationContext() RequestedItemStatusSodViolationContext {
 	if o == nil || IsNil(o.SodViolationContext) {
-		var ret AccessRequestAdminItemStatusSodViolationContext
+		var ret RequestedItemStatusSodViolationContext
 		return ret
 	}
 	return *o.SodViolationContext
@@ -624,7 +624,7 @@ func (o *AccessRequestAdminItemStatus) GetSodViolationContext() AccessRequestAdm
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestAdminItemStatus) GetSodViolationContextOk() (*AccessRequestAdminItemStatusSodViolationContext, bool) {
+func (o *AccessRequestAdminItemStatus) GetSodViolationContextOk() (*RequestedItemStatusSodViolationContext, bool) {
 	if o == nil || IsNil(o.SodViolationContext) {
 		return nil, false
 	}
@@ -640,8 +640,8 @@ func (o *AccessRequestAdminItemStatus) HasSodViolationContext() bool {
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given AccessRequestAdminItemStatusSodViolationContext and assigns it to the SodViolationContext field.
-func (o *AccessRequestAdminItemStatus) SetSodViolationContext(v AccessRequestAdminItemStatusSodViolationContext) {
+// SetSodViolationContext gets a reference to the given RequestedItemStatusSodViolationContext and assigns it to the SodViolationContext field.
+func (o *AccessRequestAdminItemStatus) SetSodViolationContext(v RequestedItemStatusSodViolationContext) {
 	o.SodViolationContext = &v
 }
 

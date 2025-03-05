@@ -19,7 +19,7 @@ var _ MappedNullable = &RoleTargetDto{}
 
 // RoleTargetDto struct for RoleTargetDto
 type RoleTargetDto struct {
-	Source *BaseReferenceDto1 `json:"source,omitempty"`
+	Source *BaseReferenceDto `json:"source,omitempty"`
 	AccountInfo *AccountInfoDto `json:"accountInfo,omitempty"`
 	// Specific role name for this target if using multiple accounts
 	RoleName *string `json:"roleName,omitempty"`
@@ -46,9 +46,9 @@ func NewRoleTargetDtoWithDefaults() *RoleTargetDto {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *RoleTargetDto) GetSource() BaseReferenceDto1 {
+func (o *RoleTargetDto) GetSource() BaseReferenceDto {
 	if o == nil || IsNil(o.Source) {
-		var ret BaseReferenceDto1
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.Source
@@ -56,7 +56,7 @@ func (o *RoleTargetDto) GetSource() BaseReferenceDto1 {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto1, bool) {
+func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto, bool) {
 	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *RoleTargetDto) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given BaseReferenceDto1 and assigns it to the Source field.
-func (o *RoleTargetDto) SetSource(v BaseReferenceDto1) {
+// SetSource gets a reference to the given BaseReferenceDto and assigns it to the Source field.
+func (o *RoleTargetDto) SetSource(v BaseReferenceDto) {
 	o.Source = &v
 }
 

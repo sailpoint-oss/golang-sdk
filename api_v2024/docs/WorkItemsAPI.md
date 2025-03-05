@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApproveApprovalItem**](WorkItemsAPI.md#ApproveApprovalItem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 [**ApproveApprovalItemsInBulk**](WorkItemsAPI.md#ApproveApprovalItemsInBulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 [**CompleteWorkItem**](WorkItemsAPI.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
+[**ForwardWorkItem**](WorkItemsAPI.md#ForwardWorkItem) | **Post** /work-items/{id}/forward | Forward a Work Item
 [**GetCompletedWorkItems**](WorkItemsAPI.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
 [**GetCountCompletedWorkItems**](WorkItemsAPI.md#GetCountCompletedWorkItems) | **Get** /work-items/completed/count | Count Completed Work Items
 [**GetCountWorkItems**](WorkItemsAPI.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
@@ -15,7 +16,6 @@ Method | HTTP request | Description
 [**ListWorkItems**](WorkItemsAPI.md#ListWorkItems) | **Get** /work-items | List Work Items
 [**RejectApprovalItem**](WorkItemsAPI.md#RejectApprovalItem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 [**RejectApprovalItemsInBulk**](WorkItemsAPI.md#RejectApprovalItemsInBulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
-[**SendWorkItemForward**](WorkItemsAPI.md#SendWorkItemForward) | **Post** /work-items/{id}/forward | Forward a Work Item
 [**SubmitAccountSelection**](WorkItemsAPI.md#SubmitAccountSelection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
 
 
@@ -233,6 +233,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ForwardWorkItem
+
+> ForwardWorkItem(ctx, id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
+
+Forward a Work Item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	workItemForward := *openapiclient.NewWorkItemForward("2c9180835d2e5168015d32f890ca1581", "I'm going on vacation.") // WorkItemForward | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItem``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the work item | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiForwardWorkItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **workItemForward** | [**WorkItemForward**](WorkItemForward.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetCompletedWorkItems
 
 > []WorkItems GetCompletedWorkItems(ctx).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
@@ -307,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## GetCountCompletedWorkItems
 
-> WorkItemsCount GetCountCompletedWorkItems(ctx).OwnerId(ownerId).Execute()
+> []WorkItemsCount GetCountCompletedWorkItems(ctx).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
 
 Count Completed Work Items
 
@@ -326,16 +398,17 @@ import (
 )
 
 func main() {
-	ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	ownerId := "ownerId_example" // string | ID of the work item owner. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
+	resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCountCompletedWorkItems`: WorkItemsCount
+	// response from `GetCountCompletedWorkItems`: []WorkItemsCount
 	fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountCompletedWorkItems`: %v\n", resp)
 }
 ```
@@ -351,11 +424,12 @@ Other parameters are passed through a pointer to a apiGetCountCompletedWorkItems
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **ownerId** | **string** | ID of the work item owner. | 
 
 ### Return type
 
-[**WorkItemsCount**](WorkItemsCount.md)
+[**[]WorkItemsCount**](WorkItemsCount.md)
 
 ### Authorization
 
@@ -781,76 +855,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SendWorkItemForward
-
-> SendWorkItemForward(ctx, id).WorkItemForward(workItemForward).Execute()
-
-Forward a Work Item
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
-	workItemForward := *openapiclient.NewWorkItemForward("2c9180835d2e5168015d32f890ca1581", "I'm going on vacation.") // WorkItemForward | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WorkItemsAPI.SendWorkItemForward(context.Background(), id).WorkItemForward(workItemForward).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SendWorkItemForward``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSendWorkItemForwardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **workItemForward** | [**WorkItemForward**](WorkItemForward.md) |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

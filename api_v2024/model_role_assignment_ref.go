@@ -21,7 +21,7 @@ var _ MappedNullable = &RoleAssignmentRef{}
 type RoleAssignmentRef struct {
 	// Assignment Id
 	Id *string `json:"id,omitempty"`
-	Role *BaseReferenceDto1 `json:"role,omitempty"`
+	Role *BaseReferenceDto `json:"role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *RoleAssignmentRef) SetId(v string) {
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
-func (o *RoleAssignmentRef) GetRole() BaseReferenceDto1 {
+func (o *RoleAssignmentRef) GetRole() BaseReferenceDto {
 	if o == nil || IsNil(o.Role) {
-		var ret BaseReferenceDto1
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.Role
@@ -87,7 +87,7 @@ func (o *RoleAssignmentRef) GetRole() BaseReferenceDto1 {
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto1, bool) {
+func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto, bool) {
 	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *RoleAssignmentRef) HasRole() bool {
 	return false
 }
 
-// SetRole gets a reference to the given BaseReferenceDto1 and assigns it to the Role field.
-func (o *RoleAssignmentRef) SetRole(v BaseReferenceDto1) {
+// SetRole gets a reference to the given BaseReferenceDto and assigns it to the Role field.
+func (o *RoleAssignmentRef) SetRole(v BaseReferenceDto) {
 	o.Role = &v
 }
 

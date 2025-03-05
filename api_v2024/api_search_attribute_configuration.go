@@ -26,7 +26,14 @@ type SearchAttributeConfigurationAPIService service
 type ApiCreateSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
+	xSailPointExperimental *string
 	searchAttributeConfig *SearchAttributeConfig
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateSearchAttributeConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateSearchAttributeConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateSearchAttributeConfigRequest) SearchAttributeConfig(searchAttributeConfig SearchAttributeConfig) ApiCreateSearchAttributeConfigRequest {
@@ -73,6 +80,21 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigExec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.searchAttributeConfig == nil {
 		return localVarReturnValue, nil, reportError("searchAttributeConfig is required and must be specified")
 	}
@@ -94,6 +116,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigExec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.searchAttributeConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -202,6 +225,13 @@ type ApiDeleteSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
 	name string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteSearchAttributeConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteSearchAttributeConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteSearchAttributeConfigRequest) Execute() (*http.Response, error) {
@@ -244,6 +274,15 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -262,6 +301,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -283,17 +323,6 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -358,6 +387,13 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 type ApiGetSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetSearchAttributeConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSearchAttributeConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, *http.Response, error) {
@@ -399,6 +435,15 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -417,6 +462,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -438,17 +484,6 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -512,6 +547,13 @@ type ApiGetSingleSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
 	name string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetSingleSearchAttributeConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSingleSearchAttributeConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetSingleSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, *http.Response, error) {
@@ -524,7 +566,7 @@ GetSingleSearchAttributeConfig Get Extended Search Attribute
 Get an extended attribute configuration by name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the extended search attribute configuration to retrieve.
+ @param name Name of the extended search attribute configuration to get.
  @return ApiGetSingleSearchAttributeConfigRequest
 */
 func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfig(ctx context.Context, name string) ApiGetSingleSearchAttributeConfigRequest {
@@ -556,6 +598,15 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -574,6 +625,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -595,17 +647,6 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigE
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -680,7 +721,14 @@ type ApiPatchSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
 	name string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiPatchSearchAttributeConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchSearchAttributeConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiPatchSearchAttributeConfigRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchSearchAttributeConfigRequest {
@@ -732,6 +780,21 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -753,6 +816,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigExecu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
