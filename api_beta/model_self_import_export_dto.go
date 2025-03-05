@@ -19,7 +19,7 @@ var _ MappedNullable = &SelfImportExportDto{}
 
 // SelfImportExportDto Self block for imported/exported object.
 type SelfImportExportDto struct {
-	// Imported/exported object's DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types.
+	// Imported/exported object's DTO type. Import is currently only possible with the CONNECTOR_RULE, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types.
 	Type *string `json:"type,omitempty"`
 	// Imported/exported object's ID.
 	Id *string `json:"id,omitempty"`

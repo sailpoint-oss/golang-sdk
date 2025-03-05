@@ -39982,6 +39982,7 @@ paths:
                   - ATTR_SYNC_SOURCE_CONFIG
                   - AUTH_ORG
                   - CAMPAIGN_FILTER
+                  - CONNECTOR_RULE
                   - FORM_DEFINITION
                   - GOVERNANCE_GROUP
                   - IDENTITY_OBJECT_CONFIG
@@ -40146,6 +40147,8 @@ paths:
       summary: Initiates configuration objects export job
       tags:
       - SP-Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sp-config/export/{id}:
     get:
       description: |-
@@ -76697,6 +76700,7 @@ components:
           description: Object type names to be excluded from an sp-config export command.
           items:
             enum:
+            - CONNECTOR_RULE
             - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - RULE
@@ -76711,6 +76715,7 @@ components:
             IncludeTypes takes precedence over excludeTypes.
           items:
             enum:
+            - CONNECTOR_RULE
             - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - RULE
@@ -76737,6 +76742,7 @@ components:
             on import.
           items:
             enum:
+            - CONNECTOR_RULE
             - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - RULE
@@ -84975,14 +84981,15 @@ components:
       properties:
         type:
           description: "Imported/exported object's DTO type. Import is currently only\
-            \ possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE,\
-            \ TRANSFORM, and TRIGGER_SUBSCRIPTION object types."
+            \ possible with the CONNECTOR_RULE, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE,\
+            \ RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types."
           enum:
           - ACCESS_PROFILE
           - ACCESS_REQUEST_CONFIG
           - ATTR_SYNC_SOURCE_CONFIG
           - AUTH_ORG
           - CAMPAIGN_FILTER
+          - CONNECTOR_RULE
           - FORM_DEFINITION
           - GOVERNANCE_GROUP
           - IDENTITY_OBJECT_CONFIG
@@ -85135,6 +85142,7 @@ components:
         type:
           description: DTO type of object created or updated by import.
           enum:
+          - CONNECTOR_RULE
           - IDENTITY_OBJECT_CONFIG
           - IDENTITY_PROFILE
           - RULE
@@ -86872,6 +86880,7 @@ components:
             - ATTR_SYNC_SOURCE_CONFIG
             - AUTH_ORG
             - CAMPAIGN_FILTER
+            - CONNECTOR_RULE
             - FORM_DEFINITION
             - GOVERNANCE_GROUP
             - IDENTITY_OBJECT_CONFIG
@@ -86904,6 +86913,7 @@ components:
             - ATTR_SYNC_SOURCE_CONFIG
             - AUTH_ORG
             - CAMPAIGN_FILTER
+            - CONNECTOR_RULE
             - FORM_DEFINITION
             - GOVERNANCE_GROUP
             - IDENTITY_OBJECT_CONFIG
