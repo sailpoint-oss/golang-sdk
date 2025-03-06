@@ -996,6 +996,20 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationExecute(r ApiGe
 type ApiListReassignmentConfigurationsRequest struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
+	limit *int32
+	offset *int32
+}
+
+// Max number of results to return.
+func (r ApiListReassignmentConfigurationsRequest) Limit(limit int32) ApiListReassignmentConfigurationsRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+func (r ApiListReassignmentConfigurationsRequest) Offset(offset int32) ApiListReassignmentConfigurationsRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiListReassignmentConfigurationsRequest) Execute() ([]ConfigurationResponse, *http.Response, error) {
@@ -1038,6 +1052,15 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 20
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

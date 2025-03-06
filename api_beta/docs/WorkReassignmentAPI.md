@@ -422,7 +422,7 @@ Other parameters are passed through a pointer to a apiGetTenantConfigConfigurati
 
 ## ListReassignmentConfigurations
 
-> []ConfigurationResponse ListReassignmentConfigurations(ctx).Execute()
+> []ConfigurationResponse ListReassignmentConfigurations(ctx).Limit(limit).Offset(offset).Execute()
 
 List Reassignment Configurations
 
@@ -441,10 +441,12 @@ import (
 )
 
 func main() {
+	limit := int32(20) // int32 | Max number of results to return. (optional) (default to 20)
+	offset := int32(10) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
+	resp, r, err := apiClient.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.ListReassignmentConfigurations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,12 +458,17 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListReassignmentConfigurationsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. | [default to 20]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | 
 
 ### Return type
 

@@ -31456,6 +31456,28 @@ paths:
     get:
       description: Gets all Reassignment configuration for the current org.
       operationId: listReassignmentConfigurations
+      parameters:
+      - description: Max number of results to return.
+        example: 20
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          format: int32
+          maximum: 20
+          minimum: 0
+          type: integer
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results. Defaults to 0 if not specified.
+        example: 10
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          minimum: 0
+          type: integer
       responses:
         "200":
           content:
@@ -31545,6 +31567,8 @@ paths:
       summary: List Reassignment Configurations
       tags:
       - Work Reassignment
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: Creates a new Reassignment Configuration for the specified identity.
       operationId: createReassignmentConfiguration
@@ -31623,6 +31647,8 @@ paths:
       summary: Create a Reassignment Configuration
       tags:
       - Work Reassignment
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /reassignment-configurations/{identityId}:
     get:
       description: Gets the Reassignment Configuration for an identity.
