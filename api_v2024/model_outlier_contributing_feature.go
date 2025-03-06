@@ -23,16 +23,16 @@ type OutlierContributingFeature struct {
 	Id *string `json:"id,omitempty"`
 	// The name of the feature
 	Name *string `json:"name,omitempty"`
-	// The data type of the value field
-	ValueType *string `json:"valueType,omitempty"`
-	Value *OutlierContributingFeatureValue `json:"value,omitempty"`
+	ValueType *OutlierValueType `json:"valueType,omitempty"`
+	// The feature value
+	Value *float32 `json:"value,omitempty"`
 	// The importance of the feature. This can also be a negative value
 	Importance *float32 `json:"importance,omitempty"`
 	// The (translated if header is passed) displayName for the feature
 	DisplayName *string `json:"displayName,omitempty"`
 	// The (translated if header is passed) description for the feature
 	Description *string `json:"description,omitempty"`
-	TranslationMessages *OutlierFeatureTranslation `json:"translationMessages,omitempty"`
+	TranslationMessages NullableOutlierFeatureTranslation `json:"translationMessages,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,9 +120,9 @@ func (o *OutlierContributingFeature) SetName(v string) {
 }
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
-func (o *OutlierContributingFeature) GetValueType() string {
+func (o *OutlierContributingFeature) GetValueType() OutlierValueType {
 	if o == nil || IsNil(o.ValueType) {
-		var ret string
+		var ret OutlierValueType
 		return ret
 	}
 	return *o.ValueType
@@ -130,7 +130,7 @@ func (o *OutlierContributingFeature) GetValueType() string {
 
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutlierContributingFeature) GetValueTypeOk() (*string, bool) {
+func (o *OutlierContributingFeature) GetValueTypeOk() (*OutlierValueType, bool) {
 	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
@@ -146,15 +146,15 @@ func (o *OutlierContributingFeature) HasValueType() bool {
 	return false
 }
 
-// SetValueType gets a reference to the given string and assigns it to the ValueType field.
-func (o *OutlierContributingFeature) SetValueType(v string) {
+// SetValueType gets a reference to the given OutlierValueType and assigns it to the ValueType field.
+func (o *OutlierContributingFeature) SetValueType(v OutlierValueType) {
 	o.ValueType = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *OutlierContributingFeature) GetValue() OutlierContributingFeatureValue {
+func (o *OutlierContributingFeature) GetValue() float32 {
 	if o == nil || IsNil(o.Value) {
-		var ret OutlierContributingFeatureValue
+		var ret float32
 		return ret
 	}
 	return *o.Value
@@ -162,7 +162,7 @@ func (o *OutlierContributingFeature) GetValue() OutlierContributingFeatureValue 
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutlierContributingFeature) GetValueOk() (*OutlierContributingFeatureValue, bool) {
+func (o *OutlierContributingFeature) GetValueOk() (*float32, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -178,8 +178,8 @@ func (o *OutlierContributingFeature) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given OutlierContributingFeatureValue and assigns it to the Value field.
-func (o *OutlierContributingFeature) SetValue(v OutlierContributingFeatureValue) {
+// SetValue gets a reference to the given float32 and assigns it to the Value field.
+func (o *OutlierContributingFeature) SetValue(v float32) {
 	o.Value = &v
 }
 
@@ -279,36 +279,46 @@ func (o *OutlierContributingFeature) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetTranslationMessages returns the TranslationMessages field value if set, zero value otherwise.
+// GetTranslationMessages returns the TranslationMessages field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OutlierContributingFeature) GetTranslationMessages() OutlierFeatureTranslation {
-	if o == nil || IsNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages.Get()) {
 		var ret OutlierFeatureTranslation
 		return ret
 	}
-	return *o.TranslationMessages
+	return *o.TranslationMessages.Get()
 }
 
 // GetTranslationMessagesOk returns a tuple with the TranslationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutlierContributingFeature) GetTranslationMessagesOk() (*OutlierFeatureTranslation, bool) {
-	if o == nil || IsNil(o.TranslationMessages) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TranslationMessages, true
+	return o.TranslationMessages.Get(), o.TranslationMessages.IsSet()
 }
 
 // HasTranslationMessages returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasTranslationMessages() bool {
-	if o != nil && !IsNil(o.TranslationMessages) {
+	if o != nil && o.TranslationMessages.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTranslationMessages gets a reference to the given OutlierFeatureTranslation and assigns it to the TranslationMessages field.
+// SetTranslationMessages gets a reference to the given NullableOutlierFeatureTranslation and assigns it to the TranslationMessages field.
 func (o *OutlierContributingFeature) SetTranslationMessages(v OutlierFeatureTranslation) {
-	o.TranslationMessages = &v
+	o.TranslationMessages.Set(&v)
+}
+// SetTranslationMessagesNil sets the value for TranslationMessages to be an explicit nil
+func (o *OutlierContributingFeature) SetTranslationMessagesNil() {
+	o.TranslationMessages.Set(nil)
+}
+
+// UnsetTranslationMessages ensures that no value is present for TranslationMessages, not even an explicit nil
+func (o *OutlierContributingFeature) UnsetTranslationMessages() {
+	o.TranslationMessages.Unset()
 }
 
 func (o OutlierContributingFeature) MarshalJSON() ([]byte, error) {
@@ -342,8 +352,8 @@ func (o OutlierContributingFeature) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.TranslationMessages) {
-		toSerialize["translationMessages"] = o.TranslationMessages
+	if o.TranslationMessages.IsSet() {
+		toSerialize["translationMessages"] = o.TranslationMessages.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

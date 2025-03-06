@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
 )
 
 // checks if the PasswordPolicyV3Dto type satisfies the MappedNullable interface at compile time
@@ -27,9 +26,9 @@ type PasswordPolicyV3Dto struct {
 	// The name of the password policy.
 	Name *string `json:"name,omitempty"`
 	// Date the Password Policy was created.
-	DateCreated *SailPointTime `json:"dateCreated,omitempty"`
+	DateCreated *int64 `json:"dateCreated,omitempty"`
 	// Date the Password Policy was updated.
-	LastUpdated NullableTime `json:"lastUpdated,omitempty"`
+	LastUpdated NullableInt64 `json:"lastUpdated,omitempty"`
 	// The number of days before expiration remaninder.
 	FirstExpirationReminder *int64 `json:"firstExpirationReminder,omitempty"`
 	// The minimun length of account Id. By default is equals to -1.
@@ -249,9 +248,9 @@ func (o *PasswordPolicyV3Dto) SetName(v string) {
 }
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
-func (o *PasswordPolicyV3Dto) GetDateCreated() SailPointTime {
+func (o *PasswordPolicyV3Dto) GetDateCreated() int64 {
 	if o == nil || IsNil(o.DateCreated) {
-		var ret SailPointTime
+		var ret int64
 		return ret
 	}
 	return *o.DateCreated
@@ -259,7 +258,7 @@ func (o *PasswordPolicyV3Dto) GetDateCreated() SailPointTime {
 
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*SailPointTime, bool) {
+func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*int64, bool) {
 	if o == nil || IsNil(o.DateCreated) {
 		return nil, false
 	}
@@ -275,15 +274,15 @@ func (o *PasswordPolicyV3Dto) HasDateCreated() bool {
 	return false
 }
 
-// SetDateCreated gets a reference to the given SailPointTime and assigns it to the DateCreated field.
-func (o *PasswordPolicyV3Dto) SetDateCreated(v SailPointTime) {
+// SetDateCreated gets a reference to the given int64 and assigns it to the DateCreated field.
+func (o *PasswordPolicyV3Dto) SetDateCreated(v int64) {
 	o.DateCreated = &v
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PasswordPolicyV3Dto) GetLastUpdated() SailPointTime {
+func (o *PasswordPolicyV3Dto) GetLastUpdated() int64 {
 	if o == nil || IsNil(o.LastUpdated.Get()) {
-		var ret SailPointTime
+		var ret int64
 		return ret
 	}
 	return *o.LastUpdated.Get()
@@ -292,7 +291,7 @@ func (o *PasswordPolicyV3Dto) GetLastUpdated() SailPointTime {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PasswordPolicyV3Dto) GetLastUpdatedOk() (*SailPointTime, bool) {
+func (o *PasswordPolicyV3Dto) GetLastUpdatedOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -308,8 +307,8 @@ func (o *PasswordPolicyV3Dto) HasLastUpdated() bool {
 	return false
 }
 
-// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
-func (o *PasswordPolicyV3Dto) SetLastUpdated(v SailPointTime) {
+// SetLastUpdated gets a reference to the given NullableInt64 and assigns it to the LastUpdated field.
+func (o *PasswordPolicyV3Dto) SetLastUpdated(v int64) {
 	o.LastUpdated.Set(&v)
 }
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil

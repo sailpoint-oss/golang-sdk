@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **ApplicationXml** | Pointer to **string** | The connector application xml | [optional] 
 **CorrelationConfigXml** | Pointer to **string** | The connector correlation config xml | [optional] 
 **SourceConfigXml** | Pointer to **string** | The connector source config xml | [optional] 
-**SourceConfig** | Pointer to **string** | The connector source config | [optional] 
-**SourceConfigFrom** | Pointer to **string** | The connector source config origin | [optional] 
+**SourceConfig** | Pointer to **NullableString** | The connector source config | [optional] 
+**SourceConfigFrom** | Pointer to **NullableString** | The connector source config origin | [optional] 
 **S3Location** | Pointer to **string** | storage path key for this connector | [optional] 
 **UploadedFiles** | Pointer to **[]string** | The list of uploaded files supported by the connector. If there was any executable files uploaded to thee connector. Typically this be empty as the executable be uploaded at source creation. | [optional] 
 **FileUpload** | Pointer to **bool** | true if the source is file upload | [optional] [default to false]
@@ -240,6 +240,16 @@ SetSourceConfig sets SourceConfig field to given value.
 
 HasSourceConfig returns a boolean if a field has been set.
 
+### SetSourceConfigNil
+
+`func (o *ConnectorDetail) SetSourceConfigNil(b bool)`
+
+ SetSourceConfigNil sets the value for SourceConfig to be an explicit nil
+
+### UnsetSourceConfig
+`func (o *ConnectorDetail) UnsetSourceConfig()`
+
+UnsetSourceConfig ensures that no value is present for SourceConfig, not even an explicit nil
 ### GetSourceConfigFrom
 
 `func (o *ConnectorDetail) GetSourceConfigFrom() string`
@@ -265,6 +275,16 @@ SetSourceConfigFrom sets SourceConfigFrom field to given value.
 
 HasSourceConfigFrom returns a boolean if a field has been set.
 
+### SetSourceConfigFromNil
+
+`func (o *ConnectorDetail) SetSourceConfigFromNil(b bool)`
+
+ SetSourceConfigFromNil sets the value for SourceConfigFrom to be an explicit nil
+
+### UnsetSourceConfigFrom
+`func (o *ConnectorDetail) UnsetSourceConfigFrom()`
+
+UnsetSourceConfigFrom ensures that no value is present for SourceConfigFrom, not even an explicit nil
 ### GetS3Location
 
 `func (o *ConnectorDetail) GetS3Location() string`

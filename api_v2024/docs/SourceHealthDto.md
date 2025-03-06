@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IsCluster** | Pointer to **bool** | Is the source in a cluster | [optional] 
 **Hostname** | Pointer to **string** | source&#39;s hostname | [optional] 
 **Pod** | Pointer to **string** | source&#39;s pod | [optional] 
-**IqServiceVersion** | Pointer to **string** | The version of the iqService | [optional] 
+**IqServiceVersion** | Pointer to **NullableString** | The version of the iqService | [optional] 
 **Status** | Pointer to **string** | connection test result | [optional] 
 
 ## Methods
@@ -259,6 +259,16 @@ SetIqServiceVersion sets IqServiceVersion field to given value.
 
 HasIqServiceVersion returns a boolean if a field has been set.
 
+### SetIqServiceVersionNil
+
+`func (o *SourceHealthDto) SetIqServiceVersionNil(b bool)`
+
+ SetIqServiceVersionNil sets the value for IqServiceVersion to be an explicit nil
+
+### UnsetIqServiceVersion
+`func (o *SourceHealthDto) UnsetIqServiceVersion()`
+
+UnsetIqServiceVersion ensures that no value is present for IqServiceVersion, not even an explicit nil
 ### GetStatus
 
 `func (o *SourceHealthDto) GetStatus() string`

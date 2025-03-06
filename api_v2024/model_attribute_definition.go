@@ -22,7 +22,7 @@ type AttributeDefinition struct {
 	// The name of the attribute.
 	Name *string `json:"name,omitempty"`
 	Type *AttributeDefinitionType `json:"type,omitempty"`
-	Schema *AttributeDefinitionSchema `json:"schema,omitempty"`
+	Schema NullableAttributeDefinitionSchema `json:"schema,omitempty"`
 	// A human-readable description of the attribute.
 	Description *string `json:"description,omitempty"`
 	// Flag indicating whether or not the attribute is multi-valued.
@@ -129,36 +129,46 @@ func (o *AttributeDefinition) SetType(v AttributeDefinitionType) {
 	o.Type = &v
 }
 
-// GetSchema returns the Schema field value if set, zero value otherwise.
+// GetSchema returns the Schema field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AttributeDefinition) GetSchema() AttributeDefinitionSchema {
-	if o == nil || IsNil(o.Schema) {
+	if o == nil || IsNil(o.Schema.Get()) {
 		var ret AttributeDefinitionSchema
 		return ret
 	}
-	return *o.Schema
+	return *o.Schema.Get()
 }
 
 // GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AttributeDefinition) GetSchemaOk() (*AttributeDefinitionSchema, bool) {
-	if o == nil || IsNil(o.Schema) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Schema, true
+	return o.Schema.Get(), o.Schema.IsSet()
 }
 
 // HasSchema returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasSchema() bool {
-	if o != nil && !IsNil(o.Schema) {
+	if o != nil && o.Schema.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSchema gets a reference to the given AttributeDefinitionSchema and assigns it to the Schema field.
+// SetSchema gets a reference to the given NullableAttributeDefinitionSchema and assigns it to the Schema field.
 func (o *AttributeDefinition) SetSchema(v AttributeDefinitionSchema) {
-	o.Schema = &v
+	o.Schema.Set(&v)
+}
+// SetSchemaNil sets the value for Schema to be an explicit nil
+func (o *AttributeDefinition) SetSchemaNil() {
+	o.Schema.Set(nil)
+}
+
+// UnsetSchema ensures that no value is present for Schema, not even an explicit nil
+func (o *AttributeDefinition) UnsetSchema() {
+	o.Schema.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -305,8 +315,8 @@ func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Schema) {
-		toSerialize["schema"] = o.Schema
+	if o.Schema.IsSet() {
+		toSerialize["schema"] = o.Schema.Get()
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

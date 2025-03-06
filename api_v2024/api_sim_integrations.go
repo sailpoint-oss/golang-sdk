@@ -593,7 +593,7 @@ func (r ApiGetSIMIntegrationsRequest) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiGetSIMIntegrationsRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (r ApiGetSIMIntegrationsRequest) Execute() ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetSIMIntegrationsExecute(r)
 }
 
@@ -613,13 +613,13 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrations(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return ServiceDeskIntegrationDto
-func (a *SIMIntegrationsAPIService) GetSIMIntegrationsExecute(r ApiGetSIMIntegrationsRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+//  @return []ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) GetSIMIntegrationsExecute(r ApiGetSIMIntegrationsRequest) ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceDeskIntegrationDto
+		localVarReturnValue  []ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.GetSIMIntegrations")

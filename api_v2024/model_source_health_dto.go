@@ -36,7 +36,7 @@ type SourceHealthDto struct {
 	// source's pod
 	Pod *string `json:"pod,omitempty"`
 	// The version of the iqService
-	IqServiceVersion *string `json:"iqServiceVersion,omitempty"`
+	IqServiceVersion NullableString `json:"iqServiceVersion,omitempty"`
 	// connection test result
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -317,36 +317,46 @@ func (o *SourceHealthDto) SetPod(v string) {
 	o.Pod = &v
 }
 
-// GetIqServiceVersion returns the IqServiceVersion field value if set, zero value otherwise.
+// GetIqServiceVersion returns the IqServiceVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SourceHealthDto) GetIqServiceVersion() string {
-	if o == nil || IsNil(o.IqServiceVersion) {
+	if o == nil || IsNil(o.IqServiceVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IqServiceVersion
+	return *o.IqServiceVersion.Get()
 }
 
 // GetIqServiceVersionOk returns a tuple with the IqServiceVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceHealthDto) GetIqServiceVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.IqServiceVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IqServiceVersion, true
+	return o.IqServiceVersion.Get(), o.IqServiceVersion.IsSet()
 }
 
 // HasIqServiceVersion returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasIqServiceVersion() bool {
-	if o != nil && !IsNil(o.IqServiceVersion) {
+	if o != nil && o.IqServiceVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIqServiceVersion gets a reference to the given string and assigns it to the IqServiceVersion field.
+// SetIqServiceVersion gets a reference to the given NullableString and assigns it to the IqServiceVersion field.
 func (o *SourceHealthDto) SetIqServiceVersion(v string) {
-	o.IqServiceVersion = &v
+	o.IqServiceVersion.Set(&v)
+}
+// SetIqServiceVersionNil sets the value for IqServiceVersion to be an explicit nil
+func (o *SourceHealthDto) SetIqServiceVersionNil() {
+	o.IqServiceVersion.Set(nil)
+}
+
+// UnsetIqServiceVersion ensures that no value is present for IqServiceVersion, not even an explicit nil
+func (o *SourceHealthDto) UnsetIqServiceVersion() {
+	o.IqServiceVersion.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -415,8 +425,8 @@ func (o SourceHealthDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Pod) {
 		toSerialize["pod"] = o.Pod
 	}
-	if !IsNil(o.IqServiceVersion) {
-		toSerialize["iqServiceVersion"] = o.IqServiceVersion
+	if o.IqServiceVersion.IsSet() {
+		toSerialize["iqServiceVersion"] = o.IqServiceVersion.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

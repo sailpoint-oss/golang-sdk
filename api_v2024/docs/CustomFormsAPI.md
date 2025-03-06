@@ -1104,7 +1104,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormInstancesByTenant
 
-> ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> []ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
 List form instances by tenant.
 
@@ -1132,7 +1132,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SearchFormInstancesByTenant`: ListFormInstancesByTenantResponse
+	// response from `SearchFormInstancesByTenant`: []ListFormInstancesByTenantResponse
 	fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormInstancesByTenant`: %v\n", resp)
 }
 ```
@@ -1152,7 +1152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
+[**[]ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
 
 ### Authorization
 

@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** | ID of the form | [optional] 
 **Name** | Pointer to **NullableString** | Name of the form | [optional] 
-**Title** | Pointer to **string** | The form title | [optional] 
-**Subtitle** | Pointer to **string** | The form subtitle. | [optional] 
+**Title** | Pointer to **NullableString** | The form title | [optional] 
+**Subtitle** | Pointer to **NullableString** | The form subtitle. | [optional] 
 **TargetUser** | Pointer to **string** | The name of the user that should be shown this form | [optional] 
 **Sections** | Pointer to [**[]SectionDetails**](SectionDetails.md) | Sections of the form | [optional] 
 
@@ -125,6 +125,16 @@ SetTitle sets Title field to given value.
 
 HasTitle returns a boolean if a field has been set.
 
+### SetTitleNil
+
+`func (o *WorkItemsForm) SetTitleNil(b bool)`
+
+ SetTitleNil sets the value for Title to be an explicit nil
+
+### UnsetTitle
+`func (o *WorkItemsForm) UnsetTitle()`
+
+UnsetTitle ensures that no value is present for Title, not even an explicit nil
 ### GetSubtitle
 
 `func (o *WorkItemsForm) GetSubtitle() string`
@@ -150,6 +160,16 @@ SetSubtitle sets Subtitle field to given value.
 
 HasSubtitle returns a boolean if a field has been set.
 
+### SetSubtitleNil
+
+`func (o *WorkItemsForm) SetSubtitleNil(b bool)`
+
+ SetSubtitleNil sets the value for Subtitle to be an explicit nil
+
+### UnsetSubtitle
+`func (o *WorkItemsForm) UnsetSubtitle()`
+
+UnsetSubtitle ensures that no value is present for Subtitle, not even an explicit nil
 ### GetTargetUser
 
 `func (o *WorkItemsForm) GetTargetUser() string`

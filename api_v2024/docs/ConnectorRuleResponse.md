@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | the name of the rule | 
-**Description** | Pointer to **string** | a description of the rule&#39;s purpose | [optional] 
+**Description** | Pointer to **NullableString** | a description of the rule&#39;s purpose | [optional] 
 **Type** | **string** | the type of rule | 
 **Signature** | Pointer to [**ConnectorRuleCreateRequestSignature**](ConnectorRuleCreateRequestSignature.md) |  | [optional] 
 **SourceCode** | [**SourceCode**](SourceCode.md) |  | 
@@ -78,6 +78,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ConnectorRuleResponse) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ConnectorRuleResponse) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetType
 
 `func (o *ConnectorRuleResponse) GetType() string`

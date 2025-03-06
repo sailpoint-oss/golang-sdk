@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Modified** | **NullableTime** | Modification date of Campaign Template | [readonly] 
 **Scheduled** | Pointer to **bool** | Indicates if this campaign template has been scheduled. | [optional] [readonly] [default to false]
 **OwnerRef** | Pointer to [**CampaignTemplateOwnerRef**](CampaignTemplateOwnerRef.md) |  | [optional] 
-**DeadlineDuration** | Pointer to **string** | The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign&#39;s deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \&quot;P2W\&quot; (two weeks), the resulting campaign&#39;s deadline would be 2020-01-15 (the current date plus 14 days). | [optional] 
+**DeadlineDuration** | Pointer to **NullableString** | The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign&#39;s deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \&quot;P2W\&quot; (two weeks), the resulting campaign&#39;s deadline would be 2020-01-15 (the current date plus 14 days). | [optional] 
 **Campaign** | [**Campaign**](Campaign.md) |  | 
 
 ## Methods
@@ -223,6 +223,16 @@ SetDeadlineDuration sets DeadlineDuration field to given value.
 
 HasDeadlineDuration returns a boolean if a field has been set.
 
+### SetDeadlineDurationNil
+
+`func (o *CampaignTemplate) SetDeadlineDurationNil(b bool)`
+
+ SetDeadlineDurationNil sets the value for DeadlineDuration to be an explicit nil
+
+### UnsetDeadlineDuration
+`func (o *CampaignTemplate) UnsetDeadlineDuration()`
+
+UnsetDeadlineDuration ensures that no value is present for DeadlineDuration, not even an explicit nil
 ### GetCampaign
 
 `func (o *CampaignTemplate) GetCampaign() Campaign`

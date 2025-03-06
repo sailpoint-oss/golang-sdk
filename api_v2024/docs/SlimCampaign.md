@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the campaign | [optional] [readonly] 
+**Id** | Pointer to **NullableString** | Id of the campaign | [optional] [readonly] 
 **Name** | **string** | The campaign name. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details.  | 
 **Description** | **NullableString** | The campaign description. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details.  | 
-**Deadline** | Pointer to **time.Time** | The campaign&#39;s completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response. | [optional] 
+**Deadline** | Pointer to **NullableTime** | The campaign&#39;s completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response. | [optional] 
 **Type** | **string** | The type of campaign. Could be extended in the future. | 
 **EmailNotificationEnabled** | Pointer to **bool** | Enables email notification for this campaign | [optional] [default to false]
 **AutoRevokeAllowed** | Pointer to **bool** | Allows auto revoke for this campaign | [optional] [default to false]
 **RecommendationsEnabled** | Pointer to **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to false]
-**Status** | Pointer to **string** | The campaign&#39;s current status. | [optional] [readonly] 
+**Status** | Pointer to **NullableString** | The campaign&#39;s current status. | [optional] [readonly] 
 **CorrelatedStatus** | Pointer to **string** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
-**Created** | Pointer to **time.Time** | Created time of the campaign | [optional] [readonly] 
-**TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
-**CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
+**Created** | Pointer to **NullableTime** | Created time of the campaign | [optional] [readonly] 
+**TotalCertifications** | Pointer to **NullableInt32** | The total number of certifications in this campaign. | [optional] [readonly] 
+**CompletedCertifications** | Pointer to **NullableInt32** | The number of completed certifications in this campaign. | [optional] [readonly] 
 **Alerts** | Pointer to [**[]CampaignAlert**](CampaignAlert.md) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
 
 ## Methods
@@ -63,6 +63,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *SlimCampaign) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *SlimCampaign) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *SlimCampaign) GetName() string`
@@ -138,6 +148,16 @@ SetDeadline sets Deadline field to given value.
 
 HasDeadline returns a boolean if a field has been set.
 
+### SetDeadlineNil
+
+`func (o *SlimCampaign) SetDeadlineNil(b bool)`
+
+ SetDeadlineNil sets the value for Deadline to be an explicit nil
+
+### UnsetDeadline
+`func (o *SlimCampaign) UnsetDeadline()`
+
+UnsetDeadline ensures that no value is present for Deadline, not even an explicit nil
 ### GetType
 
 `func (o *SlimCampaign) GetType() string`
@@ -258,6 +278,16 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### SetStatusNil
+
+`func (o *SlimCampaign) SetStatusNil(b bool)`
+
+ SetStatusNil sets the value for Status to be an explicit nil
+
+### UnsetStatus
+`func (o *SlimCampaign) UnsetStatus()`
+
+UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetCorrelatedStatus
 
 `func (o *SlimCampaign) GetCorrelatedStatus() string`
@@ -308,6 +338,16 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
+### SetCreatedNil
+
+`func (o *SlimCampaign) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *SlimCampaign) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetTotalCertifications
 
 `func (o *SlimCampaign) GetTotalCertifications() int32`
@@ -333,6 +373,16 @@ SetTotalCertifications sets TotalCertifications field to given value.
 
 HasTotalCertifications returns a boolean if a field has been set.
 
+### SetTotalCertificationsNil
+
+`func (o *SlimCampaign) SetTotalCertificationsNil(b bool)`
+
+ SetTotalCertificationsNil sets the value for TotalCertifications to be an explicit nil
+
+### UnsetTotalCertifications
+`func (o *SlimCampaign) UnsetTotalCertifications()`
+
+UnsetTotalCertifications ensures that no value is present for TotalCertifications, not even an explicit nil
 ### GetCompletedCertifications
 
 `func (o *SlimCampaign) GetCompletedCertifications() int32`
@@ -358,6 +408,16 @@ SetCompletedCertifications sets CompletedCertifications field to given value.
 
 HasCompletedCertifications returns a boolean if a field has been set.
 
+### SetCompletedCertificationsNil
+
+`func (o *SlimCampaign) SetCompletedCertificationsNil(b bool)`
+
+ SetCompletedCertificationsNil sets the value for CompletedCertifications to be an explicit nil
+
+### UnsetCompletedCertifications
+`func (o *SlimCampaign) UnsetCompletedCertifications()`
+
+UnsetCompletedCertifications ensures that no value is present for CompletedCertifications, not even an explicit nil
 ### GetAlerts
 
 `func (o *SlimCampaign) GetAlerts() []CampaignAlert`
@@ -383,6 +443,16 @@ SetAlerts sets Alerts field to given value.
 
 HasAlerts returns a boolean if a field has been set.
 
+### SetAlertsNil
+
+`func (o *SlimCampaign) SetAlertsNil(b bool)`
+
+ SetAlertsNil sets the value for Alerts to be an explicit nil
+
+### UnsetAlerts
+`func (o *SlimCampaign) UnsetAlerts()`
+
+UnsetAlerts ensures that no value is present for Alerts, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

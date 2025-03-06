@@ -22,13 +22,13 @@ var _ MappedNullable = &Campaign{}
 // Campaign struct for Campaign
 type Campaign struct {
 	// Id of the campaign
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
 	Name string `json:"name"`
 	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
 	Description NullableString `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
-	Deadline *SailPointTime `json:"deadline,omitempty"`
+	Deadline NullableTime `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
 	// Enables email notification for this campaign
@@ -38,26 +38,26 @@ type Campaign struct {
 	// Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.
 	RecommendationsEnabled *bool `json:"recommendationsEnabled,omitempty"`
 	// The campaign's current status.
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
 	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
-	Created *SailPointTime `json:"created,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
-	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
+	TotalCertifications NullableInt32 `json:"totalCertifications,omitempty"`
 	// The number of completed certifications in this campaign.
-	CompletedCertifications *int32 `json:"completedCertifications,omitempty"`
+	CompletedCertifications NullableInt32 `json:"completedCertifications,omitempty"`
 	// A list of errors and warnings that have accumulated.
 	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	// Modified time of the campaign
-	Modified *SailPointTime `json:"modified,omitempty"`
-	Filter *CampaignAllOfFilter `json:"filter,omitempty"`
+	Modified NullableTime `json:"modified,omitempty"`
+	Filter NullableCampaignAllOfFilter `json:"filter,omitempty"`
 	// Determines if comments on sunset date changes are required.
 	SunsetCommentsRequired *bool `json:"sunsetCommentsRequired,omitempty"`
-	SourceOwnerCampaignInfo *CampaignAllOfSourceOwnerCampaignInfo `json:"sourceOwnerCampaignInfo,omitempty"`
-	SearchCampaignInfo *CampaignAllOfSearchCampaignInfo `json:"searchCampaignInfo,omitempty"`
-	RoleCompositionCampaignInfo *CampaignAllOfRoleCompositionCampaignInfo `json:"roleCompositionCampaignInfo,omitempty"`
-	MachineAccountCampaignInfo *CampaignAllOfMachineAccountCampaignInfo `json:"machineAccountCampaignInfo,omitempty"`
+	SourceOwnerCampaignInfo NullableCampaignAllOfSourceOwnerCampaignInfo `json:"sourceOwnerCampaignInfo,omitempty"`
+	SearchCampaignInfo NullableCampaignAllOfSearchCampaignInfo `json:"searchCampaignInfo,omitempty"`
+	RoleCompositionCampaignInfo NullableCampaignAllOfRoleCompositionCampaignInfo `json:"roleCompositionCampaignInfo,omitempty"`
+	MachineAccountCampaignInfo NullableCampaignAllOfMachineAccountCampaignInfo `json:"machineAccountCampaignInfo,omitempty"`
 	// A list of sources in the campaign that contain \\\"orphan entitlements\\\" (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented).
 	SourcesWithOrphanEntitlements []CampaignAllOfSourcesWithOrphanEntitlements `json:"sourcesWithOrphanEntitlements,omitempty"`
 	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
@@ -103,36 +103,46 @@ func NewCampaignWithDefaults() *Campaign {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Campaign) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *Campaign) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *Campaign) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *Campaign) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetName returns the Name field value
@@ -185,36 +195,46 @@ func (o *Campaign) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
-// GetDeadline returns the Deadline field value if set, zero value otherwise.
+// GetDeadline returns the Deadline field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetDeadline() SailPointTime {
-	if o == nil || IsNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Deadline
+	return *o.Deadline.Get()
 }
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetDeadlineOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Deadline) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Deadline, true
+	return o.Deadline.Get(), o.Deadline.IsSet()
 }
 
 // HasDeadline returns a boolean if a field has been set.
 func (o *Campaign) HasDeadline() bool {
-	if o != nil && !IsNil(o.Deadline) {
+	if o != nil && o.Deadline.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeadline gets a reference to the given SailPointTime and assigns it to the Deadline field.
+// SetDeadline gets a reference to the given NullableTime and assigns it to the Deadline field.
 func (o *Campaign) SetDeadline(v SailPointTime) {
-	o.Deadline = &v
+	o.Deadline.Set(&v)
+}
+// SetDeadlineNil sets the value for Deadline to be an explicit nil
+func (o *Campaign) SetDeadlineNil() {
+	o.Deadline.Set(nil)
+}
+
+// UnsetDeadline ensures that no value is present for Deadline, not even an explicit nil
+func (o *Campaign) UnsetDeadline() {
+	o.Deadline.Unset()
 }
 
 // GetType returns the Type field value
@@ -337,36 +357,46 @@ func (o *Campaign) SetRecommendationsEnabled(v bool) {
 	o.RecommendationsEnabled = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Campaign) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *Campaign) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *Campaign) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *Campaign) UnsetStatus() {
+	o.Status.Unset()
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
@@ -401,105 +431,135 @@ func (o *Campaign) SetCorrelatedStatus(v string) {
 	o.CorrelatedStatus = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Created
+	return *o.Created.Get()
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Created.Get(), o.Created.IsSet()
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Campaign) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
+	if o != nil && o.Created.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *Campaign) SetCreated(v SailPointTime) {
-	o.Created = &v
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *Campaign) SetCreatedNil() {
+	o.Created.Set(nil)
 }
 
-// GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise.
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *Campaign) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetTotalCertifications() int32 {
-	if o == nil || IsNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCertifications
+	return *o.TotalCertifications.Get()
 }
 
 // GetTotalCertificationsOk returns a tuple with the TotalCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetTotalCertificationsOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCertifications) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCertifications, true
+	return o.TotalCertifications.Get(), o.TotalCertifications.IsSet()
 }
 
 // HasTotalCertifications returns a boolean if a field has been set.
 func (o *Campaign) HasTotalCertifications() bool {
-	if o != nil && !IsNil(o.TotalCertifications) {
+	if o != nil && o.TotalCertifications.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalCertifications gets a reference to the given int32 and assigns it to the TotalCertifications field.
+// SetTotalCertifications gets a reference to the given NullableInt32 and assigns it to the TotalCertifications field.
 func (o *Campaign) SetTotalCertifications(v int32) {
-	o.TotalCertifications = &v
+	o.TotalCertifications.Set(&v)
+}
+// SetTotalCertificationsNil sets the value for TotalCertifications to be an explicit nil
+func (o *Campaign) SetTotalCertificationsNil() {
+	o.TotalCertifications.Set(nil)
 }
 
-// GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise.
+// UnsetTotalCertifications ensures that no value is present for TotalCertifications, not even an explicit nil
+func (o *Campaign) UnsetTotalCertifications() {
+	o.TotalCertifications.Unset()
+}
+
+// GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetCompletedCertifications() int32 {
-	if o == nil || IsNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CompletedCertifications
+	return *o.CompletedCertifications.Get()
 }
 
 // GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetCompletedCertificationsOk() (*int32, bool) {
-	if o == nil || IsNil(o.CompletedCertifications) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CompletedCertifications, true
+	return o.CompletedCertifications.Get(), o.CompletedCertifications.IsSet()
 }
 
 // HasCompletedCertifications returns a boolean if a field has been set.
 func (o *Campaign) HasCompletedCertifications() bool {
-	if o != nil && !IsNil(o.CompletedCertifications) {
+	if o != nil && o.CompletedCertifications.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCompletedCertifications gets a reference to the given int32 and assigns it to the CompletedCertifications field.
+// SetCompletedCertifications gets a reference to the given NullableInt32 and assigns it to the CompletedCertifications field.
 func (o *Campaign) SetCompletedCertifications(v int32) {
-	o.CompletedCertifications = &v
+	o.CompletedCertifications.Set(&v)
+}
+// SetCompletedCertificationsNil sets the value for CompletedCertifications to be an explicit nil
+func (o *Campaign) SetCompletedCertificationsNil() {
+	o.CompletedCertifications.Set(nil)
 }
 
-// GetAlerts returns the Alerts field value if set, zero value otherwise.
+// UnsetCompletedCertifications ensures that no value is present for CompletedCertifications, not even an explicit nil
+func (o *Campaign) UnsetCompletedCertifications() {
+	o.CompletedCertifications.Unset()
+}
+
+// GetAlerts returns the Alerts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetAlerts() []CampaignAlert {
-	if o == nil || IsNil(o.Alerts) {
+	if o == nil {
 		var ret []CampaignAlert
 		return ret
 	}
@@ -508,6 +568,7 @@ func (o *Campaign) GetAlerts() []CampaignAlert {
 
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetAlertsOk() ([]CampaignAlert, bool) {
 	if o == nil || IsNil(o.Alerts) {
 		return nil, false
@@ -529,68 +590,88 @@ func (o *Campaign) SetAlerts(v []CampaignAlert) {
 	o.Alerts = v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *Campaign) HasModified() bool {
-	if o != nil && !IsNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *Campaign) SetModified(v SailPointTime) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *Campaign) SetModifiedNil() {
+	o.Modified.Set(nil)
 }
 
-// GetFilter returns the Filter field value if set, zero value otherwise.
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *Campaign) UnsetModified() {
+	o.Modified.Unset()
+}
+
+// GetFilter returns the Filter field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetFilter() CampaignAllOfFilter {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil || IsNil(o.Filter.Get()) {
 		var ret CampaignAllOfFilter
 		return ret
 	}
-	return *o.Filter
+	return *o.Filter.Get()
 }
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetFilterOk() (*CampaignAllOfFilter, bool) {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Filter, true
+	return o.Filter.Get(), o.Filter.IsSet()
 }
 
 // HasFilter returns a boolean if a field has been set.
 func (o *Campaign) HasFilter() bool {
-	if o != nil && !IsNil(o.Filter) {
+	if o != nil && o.Filter.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFilter gets a reference to the given CampaignAllOfFilter and assigns it to the Filter field.
+// SetFilter gets a reference to the given NullableCampaignAllOfFilter and assigns it to the Filter field.
 func (o *Campaign) SetFilter(v CampaignAllOfFilter) {
-	o.Filter = &v
+	o.Filter.Set(&v)
+}
+// SetFilterNil sets the value for Filter to be an explicit nil
+func (o *Campaign) SetFilterNil() {
+	o.Filter.Set(nil)
+}
+
+// UnsetFilter ensures that no value is present for Filter, not even an explicit nil
+func (o *Campaign) UnsetFilter() {
+	o.Filter.Unset()
 }
 
 // GetSunsetCommentsRequired returns the SunsetCommentsRequired field value if set, zero value otherwise.
@@ -625,137 +706,177 @@ func (o *Campaign) SetSunsetCommentsRequired(v bool) {
 	o.SunsetCommentsRequired = &v
 }
 
-// GetSourceOwnerCampaignInfo returns the SourceOwnerCampaignInfo field value if set, zero value otherwise.
+// GetSourceOwnerCampaignInfo returns the SourceOwnerCampaignInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetSourceOwnerCampaignInfo() CampaignAllOfSourceOwnerCampaignInfo {
-	if o == nil || IsNil(o.SourceOwnerCampaignInfo) {
+	if o == nil || IsNil(o.SourceOwnerCampaignInfo.Get()) {
 		var ret CampaignAllOfSourceOwnerCampaignInfo
 		return ret
 	}
-	return *o.SourceOwnerCampaignInfo
+	return *o.SourceOwnerCampaignInfo.Get()
 }
 
 // GetSourceOwnerCampaignInfoOk returns a tuple with the SourceOwnerCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetSourceOwnerCampaignInfoOk() (*CampaignAllOfSourceOwnerCampaignInfo, bool) {
-	if o == nil || IsNil(o.SourceOwnerCampaignInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SourceOwnerCampaignInfo, true
+	return o.SourceOwnerCampaignInfo.Get(), o.SourceOwnerCampaignInfo.IsSet()
 }
 
 // HasSourceOwnerCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasSourceOwnerCampaignInfo() bool {
-	if o != nil && !IsNil(o.SourceOwnerCampaignInfo) {
+	if o != nil && o.SourceOwnerCampaignInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceOwnerCampaignInfo gets a reference to the given CampaignAllOfSourceOwnerCampaignInfo and assigns it to the SourceOwnerCampaignInfo field.
+// SetSourceOwnerCampaignInfo gets a reference to the given NullableCampaignAllOfSourceOwnerCampaignInfo and assigns it to the SourceOwnerCampaignInfo field.
 func (o *Campaign) SetSourceOwnerCampaignInfo(v CampaignAllOfSourceOwnerCampaignInfo) {
-	o.SourceOwnerCampaignInfo = &v
+	o.SourceOwnerCampaignInfo.Set(&v)
+}
+// SetSourceOwnerCampaignInfoNil sets the value for SourceOwnerCampaignInfo to be an explicit nil
+func (o *Campaign) SetSourceOwnerCampaignInfoNil() {
+	o.SourceOwnerCampaignInfo.Set(nil)
 }
 
-// GetSearchCampaignInfo returns the SearchCampaignInfo field value if set, zero value otherwise.
+// UnsetSourceOwnerCampaignInfo ensures that no value is present for SourceOwnerCampaignInfo, not even an explicit nil
+func (o *Campaign) UnsetSourceOwnerCampaignInfo() {
+	o.SourceOwnerCampaignInfo.Unset()
+}
+
+// GetSearchCampaignInfo returns the SearchCampaignInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetSearchCampaignInfo() CampaignAllOfSearchCampaignInfo {
-	if o == nil || IsNil(o.SearchCampaignInfo) {
+	if o == nil || IsNil(o.SearchCampaignInfo.Get()) {
 		var ret CampaignAllOfSearchCampaignInfo
 		return ret
 	}
-	return *o.SearchCampaignInfo
+	return *o.SearchCampaignInfo.Get()
 }
 
 // GetSearchCampaignInfoOk returns a tuple with the SearchCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetSearchCampaignInfoOk() (*CampaignAllOfSearchCampaignInfo, bool) {
-	if o == nil || IsNil(o.SearchCampaignInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SearchCampaignInfo, true
+	return o.SearchCampaignInfo.Get(), o.SearchCampaignInfo.IsSet()
 }
 
 // HasSearchCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasSearchCampaignInfo() bool {
-	if o != nil && !IsNil(o.SearchCampaignInfo) {
+	if o != nil && o.SearchCampaignInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSearchCampaignInfo gets a reference to the given CampaignAllOfSearchCampaignInfo and assigns it to the SearchCampaignInfo field.
+// SetSearchCampaignInfo gets a reference to the given NullableCampaignAllOfSearchCampaignInfo and assigns it to the SearchCampaignInfo field.
 func (o *Campaign) SetSearchCampaignInfo(v CampaignAllOfSearchCampaignInfo) {
-	o.SearchCampaignInfo = &v
+	o.SearchCampaignInfo.Set(&v)
+}
+// SetSearchCampaignInfoNil sets the value for SearchCampaignInfo to be an explicit nil
+func (o *Campaign) SetSearchCampaignInfoNil() {
+	o.SearchCampaignInfo.Set(nil)
 }
 
-// GetRoleCompositionCampaignInfo returns the RoleCompositionCampaignInfo field value if set, zero value otherwise.
+// UnsetSearchCampaignInfo ensures that no value is present for SearchCampaignInfo, not even an explicit nil
+func (o *Campaign) UnsetSearchCampaignInfo() {
+	o.SearchCampaignInfo.Unset()
+}
+
+// GetRoleCompositionCampaignInfo returns the RoleCompositionCampaignInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetRoleCompositionCampaignInfo() CampaignAllOfRoleCompositionCampaignInfo {
-	if o == nil || IsNil(o.RoleCompositionCampaignInfo) {
+	if o == nil || IsNil(o.RoleCompositionCampaignInfo.Get()) {
 		var ret CampaignAllOfRoleCompositionCampaignInfo
 		return ret
 	}
-	return *o.RoleCompositionCampaignInfo
+	return *o.RoleCompositionCampaignInfo.Get()
 }
 
 // GetRoleCompositionCampaignInfoOk returns a tuple with the RoleCompositionCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetRoleCompositionCampaignInfoOk() (*CampaignAllOfRoleCompositionCampaignInfo, bool) {
-	if o == nil || IsNil(o.RoleCompositionCampaignInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RoleCompositionCampaignInfo, true
+	return o.RoleCompositionCampaignInfo.Get(), o.RoleCompositionCampaignInfo.IsSet()
 }
 
 // HasRoleCompositionCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasRoleCompositionCampaignInfo() bool {
-	if o != nil && !IsNil(o.RoleCompositionCampaignInfo) {
+	if o != nil && o.RoleCompositionCampaignInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRoleCompositionCampaignInfo gets a reference to the given CampaignAllOfRoleCompositionCampaignInfo and assigns it to the RoleCompositionCampaignInfo field.
+// SetRoleCompositionCampaignInfo gets a reference to the given NullableCampaignAllOfRoleCompositionCampaignInfo and assigns it to the RoleCompositionCampaignInfo field.
 func (o *Campaign) SetRoleCompositionCampaignInfo(v CampaignAllOfRoleCompositionCampaignInfo) {
-	o.RoleCompositionCampaignInfo = &v
+	o.RoleCompositionCampaignInfo.Set(&v)
+}
+// SetRoleCompositionCampaignInfoNil sets the value for RoleCompositionCampaignInfo to be an explicit nil
+func (o *Campaign) SetRoleCompositionCampaignInfoNil() {
+	o.RoleCompositionCampaignInfo.Set(nil)
 }
 
-// GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field value if set, zero value otherwise.
+// UnsetRoleCompositionCampaignInfo ensures that no value is present for RoleCompositionCampaignInfo, not even an explicit nil
+func (o *Campaign) UnsetRoleCompositionCampaignInfo() {
+	o.RoleCompositionCampaignInfo.Unset()
+}
+
+// GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetMachineAccountCampaignInfo() CampaignAllOfMachineAccountCampaignInfo {
-	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
+	if o == nil || IsNil(o.MachineAccountCampaignInfo.Get()) {
 		var ret CampaignAllOfMachineAccountCampaignInfo
 		return ret
 	}
-	return *o.MachineAccountCampaignInfo
+	return *o.MachineAccountCampaignInfo.Get()
 }
 
 // GetMachineAccountCampaignInfoOk returns a tuple with the MachineAccountCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetMachineAccountCampaignInfoOk() (*CampaignAllOfMachineAccountCampaignInfo, bool) {
-	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MachineAccountCampaignInfo, true
+	return o.MachineAccountCampaignInfo.Get(), o.MachineAccountCampaignInfo.IsSet()
 }
 
 // HasMachineAccountCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasMachineAccountCampaignInfo() bool {
-	if o != nil && !IsNil(o.MachineAccountCampaignInfo) {
+	if o != nil && o.MachineAccountCampaignInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMachineAccountCampaignInfo gets a reference to the given CampaignAllOfMachineAccountCampaignInfo and assigns it to the MachineAccountCampaignInfo field.
+// SetMachineAccountCampaignInfo gets a reference to the given NullableCampaignAllOfMachineAccountCampaignInfo and assigns it to the MachineAccountCampaignInfo field.
 func (o *Campaign) SetMachineAccountCampaignInfo(v CampaignAllOfMachineAccountCampaignInfo) {
-	o.MachineAccountCampaignInfo = &v
+	o.MachineAccountCampaignInfo.Set(&v)
+}
+// SetMachineAccountCampaignInfoNil sets the value for MachineAccountCampaignInfo to be an explicit nil
+func (o *Campaign) SetMachineAccountCampaignInfoNil() {
+	o.MachineAccountCampaignInfo.Set(nil)
 }
 
-// GetSourcesWithOrphanEntitlements returns the SourcesWithOrphanEntitlements field value if set, zero value otherwise.
+// UnsetMachineAccountCampaignInfo ensures that no value is present for MachineAccountCampaignInfo, not even an explicit nil
+func (o *Campaign) UnsetMachineAccountCampaignInfo() {
+	o.MachineAccountCampaignInfo.Unset()
+}
+
+// GetSourcesWithOrphanEntitlements returns the SourcesWithOrphanEntitlements field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Campaign) GetSourcesWithOrphanEntitlements() []CampaignAllOfSourcesWithOrphanEntitlements {
-	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
+	if o == nil {
 		var ret []CampaignAllOfSourcesWithOrphanEntitlements
 		return ret
 	}
@@ -764,6 +885,7 @@ func (o *Campaign) GetSourcesWithOrphanEntitlements() []CampaignAllOfSourcesWith
 
 // GetSourcesWithOrphanEntitlementsOk returns a tuple with the SourcesWithOrphanEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetSourcesWithOrphanEntitlementsOk() ([]CampaignAllOfSourcesWithOrphanEntitlements, bool) {
 	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
 		return nil, false
@@ -827,13 +949,13 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 
 func (o Campaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description.Get()
-	if !IsNil(o.Deadline) {
-		toSerialize["deadline"] = o.Deadline
+	if o.Deadline.IsSet() {
+		toSerialize["deadline"] = o.Deadline.Get()
 	}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.EmailNotificationEnabled) {
@@ -845,46 +967,46 @@ func (o Campaign) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	if !IsNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
 	}
-	if !IsNil(o.TotalCertifications) {
-		toSerialize["totalCertifications"] = o.TotalCertifications
+	if o.TotalCertifications.IsSet() {
+		toSerialize["totalCertifications"] = o.TotalCertifications.Get()
 	}
-	if !IsNil(o.CompletedCertifications) {
-		toSerialize["completedCertifications"] = o.CompletedCertifications
+	if o.CompletedCertifications.IsSet() {
+		toSerialize["completedCertifications"] = o.CompletedCertifications.Get()
 	}
-	if !IsNil(o.Alerts) {
+	if o.Alerts != nil {
 		toSerialize["alerts"] = o.Alerts
 	}
-	if !IsNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !IsNil(o.Filter) {
-		toSerialize["filter"] = o.Filter
+	if o.Filter.IsSet() {
+		toSerialize["filter"] = o.Filter.Get()
 	}
 	if !IsNil(o.SunsetCommentsRequired) {
 		toSerialize["sunsetCommentsRequired"] = o.SunsetCommentsRequired
 	}
-	if !IsNil(o.SourceOwnerCampaignInfo) {
-		toSerialize["sourceOwnerCampaignInfo"] = o.SourceOwnerCampaignInfo
+	if o.SourceOwnerCampaignInfo.IsSet() {
+		toSerialize["sourceOwnerCampaignInfo"] = o.SourceOwnerCampaignInfo.Get()
 	}
-	if !IsNil(o.SearchCampaignInfo) {
-		toSerialize["searchCampaignInfo"] = o.SearchCampaignInfo
+	if o.SearchCampaignInfo.IsSet() {
+		toSerialize["searchCampaignInfo"] = o.SearchCampaignInfo.Get()
 	}
-	if !IsNil(o.RoleCompositionCampaignInfo) {
-		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
+	if o.RoleCompositionCampaignInfo.IsSet() {
+		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo.Get()
 	}
-	if !IsNil(o.MachineAccountCampaignInfo) {
-		toSerialize["machineAccountCampaignInfo"] = o.MachineAccountCampaignInfo
+	if o.MachineAccountCampaignInfo.IsSet() {
+		toSerialize["machineAccountCampaignInfo"] = o.MachineAccountCampaignInfo.Get()
 	}
-	if !IsNil(o.SourcesWithOrphanEntitlements) {
+	if o.SourcesWithOrphanEntitlements != nil {
 		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
 	}
 	if !IsNil(o.MandatoryCommentRequirement) {

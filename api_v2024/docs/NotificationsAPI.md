@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 ## GetNotificationTemplate
 
-> []TemplateDto GetNotificationTemplate(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> TemplateDto GetNotificationTemplate(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get Notification Template By Id
 
@@ -527,7 +527,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetNotificationTemplate`: []TemplateDto
+	// response from `GetNotificationTemplate`: TemplateDto
 	fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplate`: %v\n", resp)
 }
 ```
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]TemplateDto**](TemplateDto.md)
+[**TemplateDto**](TemplateDto.md)
 
 ### Authorization
 
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 
 ## ListNotificationPreferences
 
-> []PreferencesDto ListNotificationPreferences(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> PreferencesDto ListNotificationPreferences(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
 List Notification Preferences for tenant.
 
@@ -740,7 +740,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationPreferences``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListNotificationPreferences`: []PreferencesDto
+	// response from `ListNotificationPreferences`: PreferencesDto
 	fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationPreferences`: %v\n", resp)
 }
 ```
@@ -760,7 +760,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]PreferencesDto**](PreferencesDto.md)
+[**PreferencesDto**](PreferencesDto.md)
 
 ### Authorization
 

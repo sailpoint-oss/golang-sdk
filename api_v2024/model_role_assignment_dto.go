@@ -23,16 +23,16 @@ type RoleAssignmentDto struct {
 	Id *string `json:"id,omitempty"`
 	Role *BaseReferenceDto `json:"role,omitempty"`
 	// Comments added by the user when the assignment was made
-	Comments *string `json:"comments,omitempty"`
+	Comments NullableString `json:"comments,omitempty"`
 	// Source describing how this assignment was made
 	AssignmentSource *string `json:"assignmentSource,omitempty"`
-	Assigner *BaseReferenceDto `json:"assigner,omitempty"`
+	Assigner *RoleAssignmentDtoAssigner `json:"assigner,omitempty"`
 	// Dimensions assigned related to this role
 	AssignedDimensions []BaseReferenceDto `json:"assignedDimensions,omitempty"`
-	AssignmentContext *AssignmentContextDto `json:"assignmentContext,omitempty"`
+	AssignmentContext *RoleAssignmentDtoAssignmentContext `json:"assignmentContext,omitempty"`
 	AccountTargets []RoleTargetDto `json:"accountTargets,omitempty"`
 	// Date that the assignment will be removed
-	RemoveDate *string `json:"removeDate,omitempty"`
+	RemoveDate NullableString `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -119,36 +119,46 @@ func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto) {
 	o.Role = &v
 }
 
-// GetComments returns the Comments field value if set, zero value otherwise.
+// GetComments returns the Comments field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleAssignmentDto) GetComments() string {
-	if o == nil || IsNil(o.Comments) {
+	if o == nil || IsNil(o.Comments.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comments
+	return *o.Comments.Get()
 }
 
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleAssignmentDto) GetCommentsOk() (*string, bool) {
-	if o == nil || IsNil(o.Comments) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comments, true
+	return o.Comments.Get(), o.Comments.IsSet()
 }
 
 // HasComments returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasComments() bool {
-	if o != nil && !IsNil(o.Comments) {
+	if o != nil && o.Comments.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComments gets a reference to the given string and assigns it to the Comments field.
+// SetComments gets a reference to the given NullableString and assigns it to the Comments field.
 func (o *RoleAssignmentDto) SetComments(v string) {
-	o.Comments = &v
+	o.Comments.Set(&v)
+}
+// SetCommentsNil sets the value for Comments to be an explicit nil
+func (o *RoleAssignmentDto) SetCommentsNil() {
+	o.Comments.Set(nil)
+}
+
+// UnsetComments ensures that no value is present for Comments, not even an explicit nil
+func (o *RoleAssignmentDto) UnsetComments() {
+	o.Comments.Unset()
 }
 
 // GetAssignmentSource returns the AssignmentSource field value if set, zero value otherwise.
@@ -184,9 +194,9 @@ func (o *RoleAssignmentDto) SetAssignmentSource(v string) {
 }
 
 // GetAssigner returns the Assigner field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
+func (o *RoleAssignmentDto) GetAssigner() RoleAssignmentDtoAssigner {
 	if o == nil || IsNil(o.Assigner) {
-		var ret BaseReferenceDto
+		var ret RoleAssignmentDtoAssigner
 		return ret
 	}
 	return *o.Assigner
@@ -194,7 +204,7 @@ func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
 
 // GetAssignerOk returns a tuple with the Assigner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto, bool) {
+func (o *RoleAssignmentDto) GetAssignerOk() (*RoleAssignmentDtoAssigner, bool) {
 	if o == nil || IsNil(o.Assigner) {
 		return nil, false
 	}
@@ -210,8 +220,8 @@ func (o *RoleAssignmentDto) HasAssigner() bool {
 	return false
 }
 
-// SetAssigner gets a reference to the given BaseReferenceDto and assigns it to the Assigner field.
-func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto) {
+// SetAssigner gets a reference to the given RoleAssignmentDtoAssigner and assigns it to the Assigner field.
+func (o *RoleAssignmentDto) SetAssigner(v RoleAssignmentDtoAssigner) {
 	o.Assigner = &v
 }
 
@@ -248,9 +258,9 @@ func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto) {
 }
 
 // GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto {
+func (o *RoleAssignmentDto) GetAssignmentContext() RoleAssignmentDtoAssignmentContext {
 	if o == nil || IsNil(o.AssignmentContext) {
-		var ret AssignmentContextDto
+		var ret RoleAssignmentDtoAssignmentContext
 		return ret
 	}
 	return *o.AssignmentContext
@@ -258,7 +268,7 @@ func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto {
 
 // GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetAssignmentContextOk() (*AssignmentContextDto, bool) {
+func (o *RoleAssignmentDto) GetAssignmentContextOk() (*RoleAssignmentDtoAssignmentContext, bool) {
 	if o == nil || IsNil(o.AssignmentContext) {
 		return nil, false
 	}
@@ -274,8 +284,8 @@ func (o *RoleAssignmentDto) HasAssignmentContext() bool {
 	return false
 }
 
-// SetAssignmentContext gets a reference to the given AssignmentContextDto and assigns it to the AssignmentContext field.
-func (o *RoleAssignmentDto) SetAssignmentContext(v AssignmentContextDto) {
+// SetAssignmentContext gets a reference to the given RoleAssignmentDtoAssignmentContext and assigns it to the AssignmentContext field.
+func (o *RoleAssignmentDto) SetAssignmentContext(v RoleAssignmentDtoAssignmentContext) {
 	o.AssignmentContext = &v
 }
 
@@ -311,36 +321,46 @@ func (o *RoleAssignmentDto) SetAccountTargets(v []RoleTargetDto) {
 	o.AccountTargets = v
 }
 
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleAssignmentDto) GetRemoveDate() string {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RemoveDate
+	return *o.RemoveDate.Get()
 }
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleAssignmentDto) GetRemoveDateOk() (*string, bool) {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoveDate, true
+	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
 }
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasRemoveDate() bool {
-	if o != nil && !IsNil(o.RemoveDate) {
+	if o != nil && o.RemoveDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoveDate gets a reference to the given string and assigns it to the RemoveDate field.
+// SetRemoveDate gets a reference to the given NullableString and assigns it to the RemoveDate field.
 func (o *RoleAssignmentDto) SetRemoveDate(v string) {
-	o.RemoveDate = &v
+	o.RemoveDate.Set(&v)
+}
+// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+func (o *RoleAssignmentDto) SetRemoveDateNil() {
+	o.RemoveDate.Set(nil)
+}
+
+// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
+func (o *RoleAssignmentDto) UnsetRemoveDate() {
+	o.RemoveDate.Unset()
 }
 
 func (o RoleAssignmentDto) MarshalJSON() ([]byte, error) {
@@ -359,8 +379,8 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !IsNil(o.Comments) {
-		toSerialize["comments"] = o.Comments
+	if o.Comments.IsSet() {
+		toSerialize["comments"] = o.Comments.Get()
 	}
 	if !IsNil(o.AssignmentSource) {
 		toSerialize["assignmentSource"] = o.AssignmentSource
@@ -377,8 +397,8 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountTargets) {
 		toSerialize["accountTargets"] = o.AccountTargets
 	}
-	if !IsNil(o.RemoveDate) {
-		toSerialize["removeDate"] = o.RemoveDate
+	if o.RemoveDate.IsSet() {
+		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

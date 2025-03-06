@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the access request. | [optional] 
+**Id** | Pointer to **NullableString** | The ID of the access request. As of 2025, this is a new property. Older access requests might not have an ID. | [optional] 
 **Name** | Pointer to **NullableString** | Human-readable display name of the item being requested. | [optional] 
 **Type** | Pointer to **NullableString** | Type of requested object. | [optional] 
 **CancelledRequestDetails** | Pointer to [**RequestedItemStatusCancelledRequestDetails**](RequestedItemStatusCancelledRequestDetails.md) |  | [optional] 
@@ -74,6 +74,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *RequestedItemStatus) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *RequestedItemStatus) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *RequestedItemStatus) GetName() string`

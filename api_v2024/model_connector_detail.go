@@ -34,9 +34,9 @@ type ConnectorDetail struct {
 	// The connector source config xml
 	SourceConfigXml *string `json:"sourceConfigXml,omitempty"`
 	// The connector source config
-	SourceConfig *string `json:"sourceConfig,omitempty"`
+	SourceConfig NullableString `json:"sourceConfig,omitempty"`
 	// The connector source config origin
-	SourceConfigFrom *string `json:"sourceConfigFrom,omitempty"`
+	SourceConfigFrom NullableString `json:"sourceConfigFrom,omitempty"`
 	// storage path key for this connector
 	S3Location *string `json:"s3Location,omitempty"`
 	// The list of uploaded files supported by the connector. If there was any executable files uploaded to thee connector. Typically this be empty as the executable be uploaded at source creation.
@@ -305,68 +305,88 @@ func (o *ConnectorDetail) SetSourceConfigXml(v string) {
 	o.SourceConfigXml = &v
 }
 
-// GetSourceConfig returns the SourceConfig field value if set, zero value otherwise.
+// GetSourceConfig returns the SourceConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorDetail) GetSourceConfig() string {
-	if o == nil || IsNil(o.SourceConfig) {
+	if o == nil || IsNil(o.SourceConfig.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SourceConfig
+	return *o.SourceConfig.Get()
 }
 
 // GetSourceConfigOk returns a tuple with the SourceConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorDetail) GetSourceConfigOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SourceConfig, true
+	return o.SourceConfig.Get(), o.SourceConfig.IsSet()
 }
 
 // HasSourceConfig returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasSourceConfig() bool {
-	if o != nil && !IsNil(o.SourceConfig) {
+	if o != nil && o.SourceConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceConfig gets a reference to the given string and assigns it to the SourceConfig field.
+// SetSourceConfig gets a reference to the given NullableString and assigns it to the SourceConfig field.
 func (o *ConnectorDetail) SetSourceConfig(v string) {
-	o.SourceConfig = &v
+	o.SourceConfig.Set(&v)
+}
+// SetSourceConfigNil sets the value for SourceConfig to be an explicit nil
+func (o *ConnectorDetail) SetSourceConfigNil() {
+	o.SourceConfig.Set(nil)
 }
 
-// GetSourceConfigFrom returns the SourceConfigFrom field value if set, zero value otherwise.
+// UnsetSourceConfig ensures that no value is present for SourceConfig, not even an explicit nil
+func (o *ConnectorDetail) UnsetSourceConfig() {
+	o.SourceConfig.Unset()
+}
+
+// GetSourceConfigFrom returns the SourceConfigFrom field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorDetail) GetSourceConfigFrom() string {
-	if o == nil || IsNil(o.SourceConfigFrom) {
+	if o == nil || IsNil(o.SourceConfigFrom.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SourceConfigFrom
+	return *o.SourceConfigFrom.Get()
 }
 
 // GetSourceConfigFromOk returns a tuple with the SourceConfigFrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorDetail) GetSourceConfigFromOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceConfigFrom) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SourceConfigFrom, true
+	return o.SourceConfigFrom.Get(), o.SourceConfigFrom.IsSet()
 }
 
 // HasSourceConfigFrom returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasSourceConfigFrom() bool {
-	if o != nil && !IsNil(o.SourceConfigFrom) {
+	if o != nil && o.SourceConfigFrom.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceConfigFrom gets a reference to the given string and assigns it to the SourceConfigFrom field.
+// SetSourceConfigFrom gets a reference to the given NullableString and assigns it to the SourceConfigFrom field.
 func (o *ConnectorDetail) SetSourceConfigFrom(v string) {
-	o.SourceConfigFrom = &v
+	o.SourceConfigFrom.Set(&v)
+}
+// SetSourceConfigFromNil sets the value for SourceConfigFrom to be an explicit nil
+func (o *ConnectorDetail) SetSourceConfigFromNil() {
+	o.SourceConfigFrom.Set(nil)
+}
+
+// UnsetSourceConfigFrom ensures that no value is present for SourceConfigFrom, not even an explicit nil
+func (o *ConnectorDetail) UnsetSourceConfigFrom() {
+	o.SourceConfigFrom.Unset()
 }
 
 // GetS3Location returns the S3Location field value if set, zero value otherwise.
@@ -625,11 +645,11 @@ func (o ConnectorDetail) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourceConfigXml) {
 		toSerialize["sourceConfigXml"] = o.SourceConfigXml
 	}
-	if !IsNil(o.SourceConfig) {
-		toSerialize["sourceConfig"] = o.SourceConfig
+	if o.SourceConfig.IsSet() {
+		toSerialize["sourceConfig"] = o.SourceConfig.Get()
 	}
-	if !IsNil(o.SourceConfigFrom) {
-		toSerialize["sourceConfigFrom"] = o.SourceConfigFrom
+	if o.SourceConfigFrom.IsSet() {
+		toSerialize["sourceConfigFrom"] = o.SourceConfigFrom.Get()
 	}
 	if !IsNil(o.S3Location) {
 		toSerialize["s3Location"] = o.S3Location

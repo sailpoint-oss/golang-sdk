@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The type of search campaign represented. | 
 **Description** | Pointer to **string** | Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available. | [optional] 
-**Reviewer** | Pointer to [**CampaignAllOfSearchCampaignInfoReviewer**](CampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
-**Query** | Pointer to **string** | The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of &#x60;query&#x60; or &#x60;identityIds&#x60; must be set. | [optional] 
+**Reviewer** | Pointer to [**NullableCampaignAllOfSearchCampaignInfoReviewer**](CampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
+**Query** | Pointer to **NullableString** | The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of &#x60;query&#x60; or &#x60;identityIds&#x60; must be set. | [optional] 
 **IdentityIds** | Pointer to **[]string** | A direct list of identities to include in this campaign. One of &#x60;identityIds&#x60; or &#x60;query&#x60; must be set. | [optional] 
 **AccessConstraints** | Pointer to [**[]AccessConstraint**](AccessConstraint.md) | Further reduces the scope of the campaign by excluding identities (from &#x60;query&#x60; or &#x60;identityIds&#x60;) that do not have this access. | [optional] 
 
@@ -100,6 +100,16 @@ SetReviewer sets Reviewer field to given value.
 
 HasReviewer returns a boolean if a field has been set.
 
+### SetReviewerNil
+
+`func (o *CampaignAllOfSearchCampaignInfo) SetReviewerNil(b bool)`
+
+ SetReviewerNil sets the value for Reviewer to be an explicit nil
+
+### UnsetReviewer
+`func (o *CampaignAllOfSearchCampaignInfo) UnsetReviewer()`
+
+UnsetReviewer ensures that no value is present for Reviewer, not even an explicit nil
 ### GetQuery
 
 `func (o *CampaignAllOfSearchCampaignInfo) GetQuery() string`
@@ -125,6 +135,16 @@ SetQuery sets Query field to given value.
 
 HasQuery returns a boolean if a field has been set.
 
+### SetQueryNil
+
+`func (o *CampaignAllOfSearchCampaignInfo) SetQueryNil(b bool)`
+
+ SetQueryNil sets the value for Query to be an explicit nil
+
+### UnsetQuery
+`func (o *CampaignAllOfSearchCampaignInfo) UnsetQuery()`
+
+UnsetQuery ensures that no value is present for Query, not even an explicit nil
 ### GetIdentityIds
 
 `func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIds() []string`
@@ -150,6 +170,16 @@ SetIdentityIds sets IdentityIds field to given value.
 
 HasIdentityIds returns a boolean if a field has been set.
 
+### SetIdentityIdsNil
+
+`func (o *CampaignAllOfSearchCampaignInfo) SetIdentityIdsNil(b bool)`
+
+ SetIdentityIdsNil sets the value for IdentityIds to be an explicit nil
+
+### UnsetIdentityIds
+`func (o *CampaignAllOfSearchCampaignInfo) UnsetIdentityIds()`
+
+UnsetIdentityIds ensures that no value is present for IdentityIds, not even an explicit nil
 ### GetAccessConstraints
 
 `func (o *CampaignAllOfSearchCampaignInfo) GetAccessConstraints() []AccessConstraint`

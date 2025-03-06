@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to false]
 **TechnicalName** | **string** | The lifecycle state&#39;s technical name. This is for internal use. | 
-**Description** | Pointer to **string** | Lifecycle state&#39;s description. | [optional] 
+**Description** | Pointer to **NullableString** | Lifecycle state&#39;s description. | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities that have the lifecycle state. | [optional] [readonly] 
 **EmailNotificationOption** | Pointer to [**EmailNotificationOption**](EmailNotificationOption.md) |  | [optional] 
 **AccountActions** | Pointer to [**[]AccountAction**](AccountAction.md) |  | [optional] 
@@ -201,6 +201,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *LifecycleState) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *LifecycleState) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetIdentityCount
 
 `func (o *LifecycleState) GetIdentityCount() int32`

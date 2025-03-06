@@ -23,7 +23,7 @@ type ConnectorRuleResponse struct {
 	// the name of the rule
 	Name string `json:"name"`
 	// a description of the rule's purpose
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// the type of rule
 	Type string `json:"type"`
 	Signature *ConnectorRuleCreateRequestSignature `json:"signature,omitempty"`
@@ -87,36 +87,46 @@ func (o *ConnectorRuleResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ConnectorRuleResponse) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *ConnectorRuleResponse) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *ConnectorRuleResponse) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *ConnectorRuleResponse) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetType returns the Type field value
@@ -333,8 +343,8 @@ func (o ConnectorRuleResponse) MarshalJSON() ([]byte, error) {
 func (o ConnectorRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Signature) {

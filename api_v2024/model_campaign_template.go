@@ -35,7 +35,7 @@ type CampaignTemplate struct {
 	Scheduled *bool `json:"scheduled,omitempty"`
 	OwnerRef *CampaignTemplateOwnerRef `json:"ownerRef,omitempty"`
 	// The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).
-	DeadlineDuration *string `json:"deadlineDuration,omitempty"`
+	DeadlineDuration NullableString `json:"deadlineDuration,omitempty"`
 	Campaign Campaign `json:"campaign"`
 	AdditionalProperties map[string]interface{}
 }
@@ -258,36 +258,46 @@ func (o *CampaignTemplate) SetOwnerRef(v CampaignTemplateOwnerRef) {
 	o.OwnerRef = &v
 }
 
-// GetDeadlineDuration returns the DeadlineDuration field value if set, zero value otherwise.
+// GetDeadlineDuration returns the DeadlineDuration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignTemplate) GetDeadlineDuration() string {
-	if o == nil || IsNil(o.DeadlineDuration) {
+	if o == nil || IsNil(o.DeadlineDuration.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DeadlineDuration
+	return *o.DeadlineDuration.Get()
 }
 
 // GetDeadlineDurationOk returns a tuple with the DeadlineDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignTemplate) GetDeadlineDurationOk() (*string, bool) {
-	if o == nil || IsNil(o.DeadlineDuration) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeadlineDuration, true
+	return o.DeadlineDuration.Get(), o.DeadlineDuration.IsSet()
 }
 
 // HasDeadlineDuration returns a boolean if a field has been set.
 func (o *CampaignTemplate) HasDeadlineDuration() bool {
-	if o != nil && !IsNil(o.DeadlineDuration) {
+	if o != nil && o.DeadlineDuration.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeadlineDuration gets a reference to the given string and assigns it to the DeadlineDuration field.
+// SetDeadlineDuration gets a reference to the given NullableString and assigns it to the DeadlineDuration field.
 func (o *CampaignTemplate) SetDeadlineDuration(v string) {
-	o.DeadlineDuration = &v
+	o.DeadlineDuration.Set(&v)
+}
+// SetDeadlineDurationNil sets the value for DeadlineDuration to be an explicit nil
+func (o *CampaignTemplate) SetDeadlineDurationNil() {
+	o.DeadlineDuration.Set(nil)
+}
+
+// UnsetDeadlineDuration ensures that no value is present for DeadlineDuration, not even an explicit nil
+func (o *CampaignTemplate) UnsetDeadlineDuration() {
+	o.DeadlineDuration.Unset()
 }
 
 // GetCampaign returns the Campaign field value
@@ -337,8 +347,8 @@ func (o CampaignTemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
-	if !IsNil(o.DeadlineDuration) {
-		toSerialize["deadlineDuration"] = o.DeadlineDuration
+	if o.DeadlineDuration.IsSet() {
+		toSerialize["deadlineDuration"] = o.DeadlineDuration.Get()
 	}
 	toSerialize["campaign"] = o.Campaign
 

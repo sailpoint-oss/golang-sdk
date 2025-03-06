@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AttributeName** | Pointer to **string** | Id of the potential role | [optional] 
-**Distribution** | Pointer to **[]map[string]string** |  | [optional] 
+**Distribution** | Pointer to **[]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAttributeName returns a boolean if a field has been set.
 
 ### GetDistribution
 
-`func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]string`
+`func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]interface{}`
 
 GetDistribution returns the Distribution field if non-nil, zero value otherwise.
 
 ### GetDistributionOk
 
-`func (o *RoleMiningIdentityDistribution) GetDistributionOk() (*[]map[string]string, bool)`
+`func (o *RoleMiningIdentityDistribution) GetDistributionOk() (*[]map[string]interface{}, bool)`
 
 GetDistributionOk returns a tuple with the Distribution field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDistribution
 
-`func (o *RoleMiningIdentityDistribution) SetDistribution(v []map[string]string)`
+`func (o *RoleMiningIdentityDistribution) SetDistribution(v []map[string]interface{})`
 
 SetDistribution sets Distribution field to given value.
 

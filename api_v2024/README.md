@@ -148,8 +148,8 @@ Class | Method | HTTP request | Description
 *AppsAPI* | [**PatchSourceApp**](docs/AppsAPI.md#patchsourceapp) | **Patch** /source-apps/{id} | Patch source app by ID
 *AppsAPI* | [**PatchUserApp**](docs/AppsAPI.md#patchuserapp) | **Patch** /user-apps/{id} | Patch user app by ID
 *AppsAPI* | [**UpdateSourceAppsInBulk**](docs/AppsAPI.md#updatesourceappsinbulk) | **Post** /source-apps/bulk-update | Bulk update source apps
-*AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
-*AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile
+*AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles
 *AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
 *AuthUsersAPI* | [**GetAuthUser**](docs/AuthUsersAPI.md#getauthuser) | **Get** /auth-users/{id} | Auth User Details
 *AuthUsersAPI* | [**PatchAuthUser**](docs/AuthUsersAPI.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
@@ -954,6 +954,7 @@ Class | Method | HTTP request | Description
  - [CampaignAllOfMachineAccountCampaignInfo](docs/CampaignAllOfMachineAccountCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfo](docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoReviewer](docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md)
  - [CampaignAllOfSearchCampaignInfo](docs/CampaignAllOfSearchCampaignInfo.md)
  - [CampaignAllOfSearchCampaignInfoReviewer](docs/CampaignAllOfSearchCampaignInfoReviewer.md)
  - [CampaignAllOfSourceOwnerCampaignInfo](docs/CampaignAllOfSourceOwnerCampaignInfo.md)
@@ -1345,11 +1346,11 @@ Class | Method | HTTP request | Description
  - [OrphanIdentitiesReportArguments](docs/OrphanIdentitiesReportArguments.md)
  - [Outlier](docs/Outlier.md)
  - [OutlierContributingFeature](docs/OutlierContributingFeature.md)
- - [OutlierContributingFeatureValue](docs/OutlierContributingFeatureValue.md)
  - [OutlierFeatureSummary](docs/OutlierFeatureSummary.md)
  - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
+ - [OutlierValueType](docs/OutlierValueType.md)
  - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
  - [OwnerDto](docs/OwnerDto.md)
  - [OwnerReference](docs/OwnerReference.md)
@@ -1470,6 +1471,8 @@ Class | Method | HTTP request | Description
  - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentDto](docs/RoleAssignmentDto.md)
+ - [RoleAssignmentDtoAssigner](docs/RoleAssignmentDtoAssigner.md)
+ - [RoleAssignmentDtoAssignmentContext](docs/RoleAssignmentDtoAssignmentContext.md)
  - [RoleAssignmentRef](docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
@@ -1775,6 +1778,7 @@ Class | Method | HTTP request | Description
  - [WorkflowTriggerAttributes](docs/WorkflowTriggerAttributes.md)
  - [WorkgroupBulkDeleteRequest](docs/WorkgroupBulkDeleteRequest.md)
  - [WorkgroupConnectionDto](docs/WorkgroupConnectionDto.md)
+ - [WorkgroupConnectionDtoObject](docs/WorkgroupConnectionDtoObject.md)
  - [WorkgroupDeleteItem](docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](docs/WorkgroupDto.md)
  - [WorkgroupDtoOwner](docs/WorkgroupDtoOwner.md)

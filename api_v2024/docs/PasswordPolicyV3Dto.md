@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The password policy Id. | [optional] 
 **Description** | Pointer to **NullableString** | Description for current password policy. | [optional] 
 **Name** | Pointer to **string** | The name of the password policy. | [optional] 
-**DateCreated** | Pointer to **time.Time** | Date the Password Policy was created. | [optional] 
-**LastUpdated** | Pointer to **NullableTime** | Date the Password Policy was updated. | [optional] 
+**DateCreated** | Pointer to **int64** | Date the Password Policy was created. | [optional] 
+**LastUpdated** | Pointer to **NullableInt64** | Date the Password Policy was updated. | [optional] 
 **FirstExpirationReminder** | Pointer to **int64** | The number of days before expiration remaninder. | [optional] 
 **AccountIdMinWordLength** | Pointer to **int64** | The minimun length of account Id. By default is equals to -1. | [optional] 
 **AccountNameMinWordLength** | Pointer to **int64** | The minimun length of account name. By default is equals to -1. | [optional] 
@@ -142,20 +142,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetDateCreated
 
-`func (o *PasswordPolicyV3Dto) GetDateCreated() time.Time`
+`func (o *PasswordPolicyV3Dto) GetDateCreated() int64`
 
 GetDateCreated returns the DateCreated field if non-nil, zero value otherwise.
 
 ### GetDateCreatedOk
 
-`func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*time.Time, bool)`
+`func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*int64, bool)`
 
 GetDateCreatedOk returns a tuple with the DateCreated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDateCreated
 
-`func (o *PasswordPolicyV3Dto) SetDateCreated(v time.Time)`
+`func (o *PasswordPolicyV3Dto) SetDateCreated(v int64)`
 
 SetDateCreated sets DateCreated field to given value.
 
@@ -167,20 +167,20 @@ HasDateCreated returns a boolean if a field has been set.
 
 ### GetLastUpdated
 
-`func (o *PasswordPolicyV3Dto) GetLastUpdated() time.Time`
+`func (o *PasswordPolicyV3Dto) GetLastUpdated() int64`
 
 GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
 
 ### GetLastUpdatedOk
 
-`func (o *PasswordPolicyV3Dto) GetLastUpdatedOk() (*time.Time, bool)`
+`func (o *PasswordPolicyV3Dto) GetLastUpdatedOk() (*int64, bool)`
 
 GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUpdated
 
-`func (o *PasswordPolicyV3Dto) SetLastUpdated(v time.Time)`
+`func (o *PasswordPolicyV3Dto) SetLastUpdated(v int64)`
 
 SetLastUpdated sets LastUpdated field to given value.
 

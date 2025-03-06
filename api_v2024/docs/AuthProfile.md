@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Authentication Profile name. | [optional] 
 **OffNetwork** | Pointer to **bool** | Use it to block access from off network. | [optional] [default to false]
 **UntrustedGeography** | Pointer to **bool** | Use it to block access from untrusted geoographies. | [optional] [default to false]
-**ApplicationId** | Pointer to **string** | Application ID. | [optional] 
-**ApplicationName** | Pointer to **string** | Application name. | [optional] 
+**ApplicationId** | Pointer to **NullableString** | Application ID. | [optional] 
+**ApplicationName** | Pointer to **NullableString** | Application name. | [optional] 
 **Type** | Pointer to **string** | Type of the Authentication Profile. | [optional] 
 **StrongAuthLogin** | Pointer to **bool** | Use it to enable strong authentication. | [optional] [default to false]
 
@@ -131,6 +131,16 @@ SetApplicationId sets ApplicationId field to given value.
 
 HasApplicationId returns a boolean if a field has been set.
 
+### SetApplicationIdNil
+
+`func (o *AuthProfile) SetApplicationIdNil(b bool)`
+
+ SetApplicationIdNil sets the value for ApplicationId to be an explicit nil
+
+### UnsetApplicationId
+`func (o *AuthProfile) UnsetApplicationId()`
+
+UnsetApplicationId ensures that no value is present for ApplicationId, not even an explicit nil
 ### GetApplicationName
 
 `func (o *AuthProfile) GetApplicationName() string`
@@ -156,6 +166,16 @@ SetApplicationName sets ApplicationName field to given value.
 
 HasApplicationName returns a boolean if a field has been set.
 
+### SetApplicationNameNil
+
+`func (o *AuthProfile) SetApplicationNameNil(b bool)`
+
+ SetApplicationNameNil sets the value for ApplicationName to be an explicit nil
+
+### UnsetApplicationName
+`func (o *AuthProfile) UnsetApplicationName()`
+
+UnsetApplicationName ensures that no value is present for ApplicationName, not even an explicit nil
 ### GetType
 
 `func (o *AuthProfile) GetType() string`

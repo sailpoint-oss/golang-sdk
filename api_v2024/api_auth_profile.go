@@ -41,7 +41,7 @@ func (r ApiGetProfileConfigRequest) Execute() (*AuthProfile, *http.Response, err
 }
 
 /*
-GetProfileConfig Get Auth Profile.
+GetProfileConfig Get Auth Profile
 
 This API returns auth profile information.
 
@@ -220,12 +220,12 @@ func (r ApiGetProfileConfigListRequest) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiGetProfileConfigListRequest) Execute() (*AuthProfileSummary, *http.Response, error) {
+func (r ApiGetProfileConfigListRequest) Execute() ([]AuthProfileSummary, *http.Response, error) {
 	return r.ApiService.GetProfileConfigListExecute(r)
 }
 
 /*
-GetProfileConfigList Get list of Auth Profiles.
+GetProfileConfigList Get list of Auth Profiles
 
 This API returns a list of auth profiles.
 
@@ -240,13 +240,13 @@ func (a *AuthProfileAPIService) GetProfileConfigList(ctx context.Context) ApiGet
 }
 
 // Execute executes the request
-//  @return AuthProfileSummary
-func (a *AuthProfileAPIService) GetProfileConfigListExecute(r ApiGetProfileConfigListRequest) (*AuthProfileSummary, *http.Response, error) {
+//  @return []AuthProfileSummary
+func (a *AuthProfileAPIService) GetProfileConfigListExecute(r ApiGetProfileConfigListRequest) ([]AuthProfileSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AuthProfileSummary
+		localVarReturnValue  []AuthProfileSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthProfileAPIService.GetProfileConfigList")

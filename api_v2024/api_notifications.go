@@ -1317,7 +1317,7 @@ func (r ApiGetNotificationTemplateRequest) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiGetNotificationTemplateRequest) Execute() ([]TemplateDto, *http.Response, error) {
+func (r ApiGetNotificationTemplateRequest) Execute() (*TemplateDto, *http.Response, error) {
 	return r.ApiService.GetNotificationTemplateExecute(r)
 }
 
@@ -1339,13 +1339,13 @@ func (a *NotificationsAPIService) GetNotificationTemplate(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return []TemplateDto
-func (a *NotificationsAPIService) GetNotificationTemplateExecute(r ApiGetNotificationTemplateRequest) ([]TemplateDto, *http.Response, error) {
+//  @return TemplateDto
+func (a *NotificationsAPIService) GetNotificationTemplateExecute(r ApiGetNotificationTemplateRequest) (*TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []TemplateDto
+		localVarReturnValue  *TemplateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationTemplate")
@@ -1879,7 +1879,7 @@ func (r ApiListNotificationPreferencesRequest) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiListNotificationPreferencesRequest) Execute() ([]PreferencesDto, *http.Response, error) {
+func (r ApiListNotificationPreferencesRequest) Execute() (*PreferencesDto, *http.Response, error) {
 	return r.ApiService.ListNotificationPreferencesExecute(r)
 }
 
@@ -1899,13 +1899,13 @@ func (a *NotificationsAPIService) ListNotificationPreferences(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []PreferencesDto
-func (a *NotificationsAPIService) ListNotificationPreferencesExecute(r ApiListNotificationPreferencesRequest) ([]PreferencesDto, *http.Response, error) {
+//  @return PreferencesDto
+func (a *NotificationsAPIService) ListNotificationPreferencesExecute(r ApiListNotificationPreferencesRequest) (*PreferencesDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []PreferencesDto
+		localVarReturnValue  *PreferencesDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListNotificationPreferences")

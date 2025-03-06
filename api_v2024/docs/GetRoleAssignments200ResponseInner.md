@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
 **Role** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**Comments** | Pointer to **string** | Comments added by the user when the assignment was made | [optional] 
+**Comments** | Pointer to **NullableString** | Comments added by the user when the assignment was made | [optional] 
 **AssignmentSource** | Pointer to **string** | Source describing how this assignment was made | [optional] 
-**Assigner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Assigner** | Pointer to [**RoleAssignmentDtoAssigner**](RoleAssignmentDtoAssigner.md) |  | [optional] 
 **AssignedDimensions** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
-**AssignmentContext** | Pointer to [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
+**AssignmentContext** | Pointer to [**RoleAssignmentDtoAssignmentContext**](RoleAssignmentDtoAssignmentContext.md) |  | [optional] 
 **AccountTargets** | Pointer to [**[]RoleTargetDto**](RoleTargetDto.md) |  | [optional] 
-**RemoveDate** | Pointer to **string** | Date that the assignment will be removed | [optional] 
+**RemoveDate** | Pointer to **NullableString** | Date that the assignment will be removed | [optional] 
 
 ## Methods
 
@@ -108,6 +108,16 @@ SetComments sets Comments field to given value.
 
 HasComments returns a boolean if a field has been set.
 
+### SetCommentsNil
+
+`func (o *GetRoleAssignments200ResponseInner) SetCommentsNil(b bool)`
+
+ SetCommentsNil sets the value for Comments to be an explicit nil
+
+### UnsetComments
+`func (o *GetRoleAssignments200ResponseInner) UnsetComments()`
+
+UnsetComments ensures that no value is present for Comments, not even an explicit nil
 ### GetAssignmentSource
 
 `func (o *GetRoleAssignments200ResponseInner) GetAssignmentSource() string`
@@ -135,20 +145,20 @@ HasAssignmentSource returns a boolean if a field has been set.
 
 ### GetAssigner
 
-`func (o *GetRoleAssignments200ResponseInner) GetAssigner() BaseReferenceDto`
+`func (o *GetRoleAssignments200ResponseInner) GetAssigner() RoleAssignmentDtoAssigner`
 
 GetAssigner returns the Assigner field if non-nil, zero value otherwise.
 
 ### GetAssignerOk
 
-`func (o *GetRoleAssignments200ResponseInner) GetAssignerOk() (*BaseReferenceDto, bool)`
+`func (o *GetRoleAssignments200ResponseInner) GetAssignerOk() (*RoleAssignmentDtoAssigner, bool)`
 
 GetAssignerOk returns a tuple with the Assigner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssigner
 
-`func (o *GetRoleAssignments200ResponseInner) SetAssigner(v BaseReferenceDto)`
+`func (o *GetRoleAssignments200ResponseInner) SetAssigner(v RoleAssignmentDtoAssigner)`
 
 SetAssigner sets Assigner field to given value.
 
@@ -185,20 +195,20 @@ HasAssignedDimensions returns a boolean if a field has been set.
 
 ### GetAssignmentContext
 
-`func (o *GetRoleAssignments200ResponseInner) GetAssignmentContext() AssignmentContextDto`
+`func (o *GetRoleAssignments200ResponseInner) GetAssignmentContext() RoleAssignmentDtoAssignmentContext`
 
 GetAssignmentContext returns the AssignmentContext field if non-nil, zero value otherwise.
 
 ### GetAssignmentContextOk
 
-`func (o *GetRoleAssignments200ResponseInner) GetAssignmentContextOk() (*AssignmentContextDto, bool)`
+`func (o *GetRoleAssignments200ResponseInner) GetAssignmentContextOk() (*RoleAssignmentDtoAssignmentContext, bool)`
 
 GetAssignmentContextOk returns a tuple with the AssignmentContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignmentContext
 
-`func (o *GetRoleAssignments200ResponseInner) SetAssignmentContext(v AssignmentContextDto)`
+`func (o *GetRoleAssignments200ResponseInner) SetAssignmentContext(v RoleAssignmentDtoAssignmentContext)`
 
 SetAssignmentContext sets AssignmentContext field to given value.
 
@@ -258,6 +268,16 @@ SetRemoveDate sets RemoveDate field to given value.
 
 HasRemoveDate returns a boolean if a field has been set.
 
+### SetRemoveDateNil
+
+`func (o *GetRoleAssignments200ResponseInner) SetRemoveDateNil(b bool)`
+
+ SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+
+### UnsetRemoveDate
+`func (o *GetRoleAssignments200ResponseInner) UnsetRemoveDate()`
+
+UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

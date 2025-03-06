@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## GetCountCompletedWorkItems
 
-> []WorkItemsCount GetCountCompletedWorkItems(ctx).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
+> WorkItemsCount GetCountCompletedWorkItems(ctx).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
 
 Count Completed Work Items
 
@@ -408,7 +408,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCountCompletedWorkItems`: []WorkItemsCount
+	// response from `GetCountCompletedWorkItems`: WorkItemsCount
 	fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountCompletedWorkItems`: %v\n", resp)
 }
 ```
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]WorkItemsCount**](WorkItemsCount.md)
+[**WorkItemsCount**](WorkItemsCount.md)
 
 ### Authorization
 

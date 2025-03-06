@@ -22,13 +22,13 @@ var _ MappedNullable = &SlimCampaign{}
 // SlimCampaign struct for SlimCampaign
 type SlimCampaign struct {
 	// Id of the campaign
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
 	Name string `json:"name"`
 	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
 	Description NullableString `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
-	Deadline *SailPointTime `json:"deadline,omitempty"`
+	Deadline NullableTime `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
 	// Enables email notification for this campaign
@@ -38,15 +38,15 @@ type SlimCampaign struct {
 	// Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.
 	RecommendationsEnabled *bool `json:"recommendationsEnabled,omitempty"`
 	// The campaign's current status.
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
 	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
-	Created *SailPointTime `json:"created,omitempty"`
+	Created NullableTime `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
-	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
+	TotalCertifications NullableInt32 `json:"totalCertifications,omitempty"`
 	// The number of completed certifications in this campaign.
-	CompletedCertifications *int32 `json:"completedCertifications,omitempty"`
+	CompletedCertifications NullableInt32 `json:"completedCertifications,omitempty"`
 	// A list of errors and warnings that have accumulated.
 	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -86,36 +86,46 @@ func NewSlimCampaignWithDefaults() *SlimCampaign {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SlimCampaign) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *SlimCampaign) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *SlimCampaign) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *SlimCampaign) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetName returns the Name field value
@@ -168,36 +178,46 @@ func (o *SlimCampaign) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
-// GetDeadline returns the Deadline field value if set, zero value otherwise.
+// GetDeadline returns the Deadline field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetDeadline() SailPointTime {
-	if o == nil || IsNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Deadline
+	return *o.Deadline.Get()
 }
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetDeadlineOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Deadline) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Deadline, true
+	return o.Deadline.Get(), o.Deadline.IsSet()
 }
 
 // HasDeadline returns a boolean if a field has been set.
 func (o *SlimCampaign) HasDeadline() bool {
-	if o != nil && !IsNil(o.Deadline) {
+	if o != nil && o.Deadline.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeadline gets a reference to the given SailPointTime and assigns it to the Deadline field.
+// SetDeadline gets a reference to the given NullableTime and assigns it to the Deadline field.
 func (o *SlimCampaign) SetDeadline(v SailPointTime) {
-	o.Deadline = &v
+	o.Deadline.Set(&v)
+}
+// SetDeadlineNil sets the value for Deadline to be an explicit nil
+func (o *SlimCampaign) SetDeadlineNil() {
+	o.Deadline.Set(nil)
+}
+
+// UnsetDeadline ensures that no value is present for Deadline, not even an explicit nil
+func (o *SlimCampaign) UnsetDeadline() {
+	o.Deadline.Unset()
 }
 
 // GetType returns the Type field value
@@ -320,36 +340,46 @@ func (o *SlimCampaign) SetRecommendationsEnabled(v bool) {
 	o.RecommendationsEnabled = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SlimCampaign) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *SlimCampaign) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *SlimCampaign) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *SlimCampaign) UnsetStatus() {
+	o.Status.Unset()
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
@@ -384,105 +414,135 @@ func (o *SlimCampaign) SetCorrelatedStatus(v string) {
 	o.CorrelatedStatus = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetCreated() SailPointTime {
-	if o == nil || IsNil(o.Created) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Created
+	return *o.Created.Get()
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetCreatedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Created.Get(), o.Created.IsSet()
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SlimCampaign) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
+	if o != nil && o.Created.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *SlimCampaign) SetCreated(v SailPointTime) {
-	o.Created = &v
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *SlimCampaign) SetCreatedNil() {
+	o.Created.Set(nil)
 }
 
-// GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise.
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *SlimCampaign) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetTotalCertifications() int32 {
-	if o == nil || IsNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCertifications
+	return *o.TotalCertifications.Get()
 }
 
 // GetTotalCertificationsOk returns a tuple with the TotalCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetTotalCertificationsOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCertifications) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCertifications, true
+	return o.TotalCertifications.Get(), o.TotalCertifications.IsSet()
 }
 
 // HasTotalCertifications returns a boolean if a field has been set.
 func (o *SlimCampaign) HasTotalCertifications() bool {
-	if o != nil && !IsNil(o.TotalCertifications) {
+	if o != nil && o.TotalCertifications.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalCertifications gets a reference to the given int32 and assigns it to the TotalCertifications field.
+// SetTotalCertifications gets a reference to the given NullableInt32 and assigns it to the TotalCertifications field.
 func (o *SlimCampaign) SetTotalCertifications(v int32) {
-	o.TotalCertifications = &v
+	o.TotalCertifications.Set(&v)
+}
+// SetTotalCertificationsNil sets the value for TotalCertifications to be an explicit nil
+func (o *SlimCampaign) SetTotalCertificationsNil() {
+	o.TotalCertifications.Set(nil)
 }
 
-// GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise.
+// UnsetTotalCertifications ensures that no value is present for TotalCertifications, not even an explicit nil
+func (o *SlimCampaign) UnsetTotalCertifications() {
+	o.TotalCertifications.Unset()
+}
+
+// GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetCompletedCertifications() int32 {
-	if o == nil || IsNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CompletedCertifications
+	return *o.CompletedCertifications.Get()
 }
 
 // GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetCompletedCertificationsOk() (*int32, bool) {
-	if o == nil || IsNil(o.CompletedCertifications) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CompletedCertifications, true
+	return o.CompletedCertifications.Get(), o.CompletedCertifications.IsSet()
 }
 
 // HasCompletedCertifications returns a boolean if a field has been set.
 func (o *SlimCampaign) HasCompletedCertifications() bool {
-	if o != nil && !IsNil(o.CompletedCertifications) {
+	if o != nil && o.CompletedCertifications.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCompletedCertifications gets a reference to the given int32 and assigns it to the CompletedCertifications field.
+// SetCompletedCertifications gets a reference to the given NullableInt32 and assigns it to the CompletedCertifications field.
 func (o *SlimCampaign) SetCompletedCertifications(v int32) {
-	o.CompletedCertifications = &v
+	o.CompletedCertifications.Set(&v)
+}
+// SetCompletedCertificationsNil sets the value for CompletedCertifications to be an explicit nil
+func (o *SlimCampaign) SetCompletedCertificationsNil() {
+	o.CompletedCertifications.Set(nil)
 }
 
-// GetAlerts returns the Alerts field value if set, zero value otherwise.
+// UnsetCompletedCertifications ensures that no value is present for CompletedCertifications, not even an explicit nil
+func (o *SlimCampaign) UnsetCompletedCertifications() {
+	o.CompletedCertifications.Unset()
+}
+
+// GetAlerts returns the Alerts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SlimCampaign) GetAlerts() []CampaignAlert {
-	if o == nil || IsNil(o.Alerts) {
+	if o == nil {
 		var ret []CampaignAlert
 		return ret
 	}
@@ -491,6 +551,7 @@ func (o *SlimCampaign) GetAlerts() []CampaignAlert {
 
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlimCampaign) GetAlertsOk() ([]CampaignAlert, bool) {
 	if o == nil || IsNil(o.Alerts) {
 		return nil, false
@@ -522,13 +583,13 @@ func (o SlimCampaign) MarshalJSON() ([]byte, error) {
 
 func (o SlimCampaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description.Get()
-	if !IsNil(o.Deadline) {
-		toSerialize["deadline"] = o.Deadline
+	if o.Deadline.IsSet() {
+		toSerialize["deadline"] = o.Deadline.Get()
 	}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.EmailNotificationEnabled) {
@@ -540,22 +601,22 @@ func (o SlimCampaign) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	if !IsNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
 	}
-	if !IsNil(o.TotalCertifications) {
-		toSerialize["totalCertifications"] = o.TotalCertifications
+	if o.TotalCertifications.IsSet() {
+		toSerialize["totalCertifications"] = o.TotalCertifications.Get()
 	}
-	if !IsNil(o.CompletedCertifications) {
-		toSerialize["completedCertifications"] = o.CompletedCertifications
+	if o.CompletedCertifications.IsSet() {
+		toSerialize["completedCertifications"] = o.CompletedCertifications.Get()
 	}
-	if !IsNil(o.Alerts) {
+	if o.Alerts != nil {
 		toSerialize["alerts"] = o.Alerts
 	}
 

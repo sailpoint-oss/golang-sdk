@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | the name of the argument | 
-**Description** | Pointer to **string** | the description of the argument | [optional] 
+**Description** | Pointer to **NullableString** | the description of the argument | [optional] 
 **Type** | Pointer to **NullableString** | the programmatic type of the argument | [optional] 
 
 ## Methods
@@ -72,6 +72,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Argument) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Argument) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetType
 
 `func (o *Argument) GetType() string`

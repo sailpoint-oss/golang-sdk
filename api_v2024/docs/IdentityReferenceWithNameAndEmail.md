@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | The type can only be IDENTITY. This is read-only. | [optional] 
 **Id** | Pointer to **string** | Identity ID. | [optional] 
 **Name** | Pointer to **string** | Identity&#39;s human-readable display name. This is read-only. | [optional] 
-**Email** | Pointer to **string** | Identity&#39;s email address. This is read-only. | [optional] 
+**Email** | Pointer to **NullableString** | Identity&#39;s email address. This is read-only. | [optional] 
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *IdentityReferenceWithNameAndEmail) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *IdentityReferenceWithNameAndEmail) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

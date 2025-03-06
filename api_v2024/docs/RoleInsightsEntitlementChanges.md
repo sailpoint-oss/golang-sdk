@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Name of the entitlement | [optional] 
 **Id** | Pointer to **string** | Id of the entitlement | [optional] 
-**Description** | Pointer to **string** | Description for the entitlement | [optional] 
+**Description** | Pointer to **NullableString** | Description for the entitlement | [optional] 
 **Attribute** | Pointer to **string** | Attribute for the entitlement | [optional] 
 **Value** | Pointer to **string** | Attribute value for the entitlement | [optional] 
 **Source** | Pointer to **string** | Source or the application for the entitlement | [optional] 
@@ -106,6 +106,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *RoleInsightsEntitlementChanges) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *RoleInsightsEntitlementChanges) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAttribute
 
 `func (o *RoleInsightsEntitlementChanges) GetAttribute() string`

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the correlation configuration. | [optional] 
-**Name** | Pointer to **string** | The name of the correlation configuration. | [optional] 
+**Id** | Pointer to **NullableString** | The ID of the correlation configuration. | [optional] 
+**Name** | Pointer to **NullableString** | The name of the correlation configuration. | [optional] 
 **AttributeAssignments** | Pointer to [**[]CorrelationConfigAttributeAssignmentsInner**](CorrelationConfigAttributeAssignmentsInner.md) | The list of attribute assignments of the correlation configuration. | [optional] 
 
 ## Methods
@@ -52,6 +52,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *CorrelationConfig) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *CorrelationConfig) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *CorrelationConfig) GetName() string`
@@ -77,6 +87,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CorrelationConfig) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CorrelationConfig) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetAttributeAssignments
 
 `func (o *CorrelationConfig) GetAttributeAssignments() []CorrelationConfigAttributeAssignmentsInner`
@@ -102,6 +122,16 @@ SetAttributeAssignments sets AttributeAssignments field to given value.
 
 HasAttributeAssignments returns a boolean if a field has been set.
 
+### SetAttributeAssignmentsNil
+
+`func (o *CorrelationConfig) SetAttributeAssignmentsNil(b bool)`
+
+ SetAttributeAssignmentsNil sets the value for AttributeAssignments to be an explicit nil
+
+### UnsetAttributeAssignments
+`func (o *CorrelationConfig) UnsetAttributeAssignments()`
+
+UnsetAttributeAssignments ensures that no value is present for AttributeAssignments, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

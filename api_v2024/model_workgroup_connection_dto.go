@@ -19,7 +19,7 @@ var _ MappedNullable = &WorkgroupConnectionDto{}
 
 // WorkgroupConnectionDto struct for WorkgroupConnectionDto
 type WorkgroupConnectionDto struct {
-	Object *ConnectedObject `json:"object,omitempty"`
+	Object *WorkgroupConnectionDtoObject `json:"object,omitempty"`
 	// Connection Type.
 	ConnectionType *string `json:"connectionType,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewWorkgroupConnectionDtoWithDefaults() *WorkgroupConnectionDto {
 }
 
 // GetObject returns the Object field value if set, zero value otherwise.
-func (o *WorkgroupConnectionDto) GetObject() ConnectedObject {
+func (o *WorkgroupConnectionDto) GetObject() WorkgroupConnectionDtoObject {
 	if o == nil || IsNil(o.Object) {
-		var ret ConnectedObject
+		var ret WorkgroupConnectionDtoObject
 		return ret
 	}
 	return *o.Object
@@ -55,7 +55,7 @@ func (o *WorkgroupConnectionDto) GetObject() ConnectedObject {
 
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupConnectionDto) GetObjectOk() (*ConnectedObject, bool) {
+func (o *WorkgroupConnectionDto) GetObjectOk() (*WorkgroupConnectionDtoObject, bool) {
 	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *WorkgroupConnectionDto) HasObject() bool {
 	return false
 }
 
-// SetObject gets a reference to the given ConnectedObject and assigns it to the Object field.
-func (o *WorkgroupConnectionDto) SetObject(v ConnectedObject) {
+// SetObject gets a reference to the given WorkgroupConnectionDtoObject and assigns it to the Object field.
+func (o *WorkgroupConnectionDto) SetObject(v WorkgroupConnectionDtoObject) {
 	o.Object = &v
 }
 

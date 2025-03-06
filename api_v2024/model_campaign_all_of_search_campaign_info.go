@@ -24,9 +24,9 @@ type CampaignAllOfSearchCampaignInfo struct {
 	Type string `json:"type"`
 	// Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available.
 	Description *string `json:"description,omitempty"`
-	Reviewer *CampaignAllOfSearchCampaignInfoReviewer `json:"reviewer,omitempty"`
+	Reviewer NullableCampaignAllOfSearchCampaignInfoReviewer `json:"reviewer,omitempty"`
 	// The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set.
-	Query *string `json:"query,omitempty"`
+	Query NullableString `json:"query,omitempty"`
 	// A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.
 	IdentityIds []string `json:"identityIds,omitempty"`
 	// Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.
@@ -110,73 +110,93 @@ func (o *CampaignAllOfSearchCampaignInfo) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetReviewer returns the Reviewer field value if set, zero value otherwise.
+// GetReviewer returns the Reviewer field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignAllOfSearchCampaignInfo) GetReviewer() CampaignAllOfSearchCampaignInfoReviewer {
-	if o == nil || IsNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer.Get()) {
 		var ret CampaignAllOfSearchCampaignInfoReviewer
 		return ret
 	}
-	return *o.Reviewer
+	return *o.Reviewer.Get()
 }
 
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignAllOfSearchCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchCampaignInfoReviewer, bool) {
-	if o == nil || IsNil(o.Reviewer) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reviewer, true
+	return o.Reviewer.Get(), o.Reviewer.IsSet()
 }
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasReviewer() bool {
-	if o != nil && !IsNil(o.Reviewer) {
+	if o != nil && o.Reviewer.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReviewer gets a reference to the given CampaignAllOfSearchCampaignInfoReviewer and assigns it to the Reviewer field.
+// SetReviewer gets a reference to the given NullableCampaignAllOfSearchCampaignInfoReviewer and assigns it to the Reviewer field.
 func (o *CampaignAllOfSearchCampaignInfo) SetReviewer(v CampaignAllOfSearchCampaignInfoReviewer) {
-	o.Reviewer = &v
+	o.Reviewer.Set(&v)
+}
+// SetReviewerNil sets the value for Reviewer to be an explicit nil
+func (o *CampaignAllOfSearchCampaignInfo) SetReviewerNil() {
+	o.Reviewer.Set(nil)
 }
 
-// GetQuery returns the Query field value if set, zero value otherwise.
+// UnsetReviewer ensures that no value is present for Reviewer, not even an explicit nil
+func (o *CampaignAllOfSearchCampaignInfo) UnsetReviewer() {
+	o.Reviewer.Unset()
+}
+
+// GetQuery returns the Query field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignAllOfSearchCampaignInfo) GetQuery() string {
-	if o == nil || IsNil(o.Query) {
+	if o == nil || IsNil(o.Query.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Query
+	return *o.Query.Get()
 }
 
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignAllOfSearchCampaignInfo) GetQueryOk() (*string, bool) {
-	if o == nil || IsNil(o.Query) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Query, true
+	return o.Query.Get(), o.Query.IsSet()
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasQuery() bool {
-	if o != nil && !IsNil(o.Query) {
+	if o != nil && o.Query.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuery gets a reference to the given string and assigns it to the Query field.
+// SetQuery gets a reference to the given NullableString and assigns it to the Query field.
 func (o *CampaignAllOfSearchCampaignInfo) SetQuery(v string) {
-	o.Query = &v
+	o.Query.Set(&v)
+}
+// SetQueryNil sets the value for Query to be an explicit nil
+func (o *CampaignAllOfSearchCampaignInfo) SetQueryNil() {
+	o.Query.Set(nil)
 }
 
-// GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
+// UnsetQuery ensures that no value is present for Query, not even an explicit nil
+func (o *CampaignAllOfSearchCampaignInfo) UnsetQuery() {
+	o.Query.Unset()
+}
+
+// GetIdentityIds returns the IdentityIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIds() []string {
-	if o == nil || IsNil(o.IdentityIds) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -185,6 +205,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIds() []string {
 
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
@@ -252,13 +273,13 @@ func (o CampaignAllOfSearchCampaignInfo) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Reviewer) {
-		toSerialize["reviewer"] = o.Reviewer
+	if o.Reviewer.IsSet() {
+		toSerialize["reviewer"] = o.Reviewer.Get()
 	}
-	if !IsNil(o.Query) {
-		toSerialize["query"] = o.Query
+	if o.Query.IsSet() {
+		toSerialize["query"] = o.Query.Get()
 	}
-	if !IsNil(o.IdentityIds) {
+	if o.IdentityIds != nil {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
 	if !IsNil(o.AccessConstraints) {

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the FormItem | [optional] 
-**Label** | Pointer to **string** | Label of the section | [optional] 
+**Name** | Pointer to **NullableString** | Name of the FormItem | [optional] 
+**Label** | Pointer to **NullableString** | Label of the section | [optional] 
 **FormItems** | Pointer to **[]map[string]interface{}** | List of FormItems. FormItems can be SectionDetails and/or FieldDetails | [optional] 
 
 ## Methods
@@ -52,6 +52,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *SectionDetails) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *SectionDetails) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetLabel
 
 `func (o *SectionDetails) GetLabel() string`
@@ -77,6 +87,16 @@ SetLabel sets Label field to given value.
 
 HasLabel returns a boolean if a field has been set.
 
+### SetLabelNil
+
+`func (o *SectionDetails) SetLabelNil(b bool)`
+
+ SetLabelNil sets the value for Label to be an explicit nil
+
+### UnsetLabel
+`func (o *SectionDetails) UnsetLabel()`
+
+UnsetLabel ensures that no value is present for Label, not even an explicit nil
 ### GetFormItems
 
 `func (o *SectionDetails) GetFormItems() []map[string]interface{}`

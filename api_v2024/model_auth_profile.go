@@ -26,9 +26,9 @@ type AuthProfile struct {
 	// Use it to block access from untrusted geoographies.
 	UntrustedGeography *bool `json:"untrustedGeography,omitempty"`
 	// Application ID.
-	ApplicationId *string `json:"applicationId,omitempty"`
+	ApplicationId NullableString `json:"applicationId,omitempty"`
 	// Application name.
-	ApplicationName *string `json:"applicationName,omitempty"`
+	ApplicationName NullableString `json:"applicationName,omitempty"`
 	// Type of the Authentication Profile.
 	Type *string `json:"type,omitempty"`
 	// Use it to enable strong authentication.
@@ -163,68 +163,88 @@ func (o *AuthProfile) SetUntrustedGeography(v bool) {
 	o.UntrustedGeography = &v
 }
 
-// GetApplicationId returns the ApplicationId field value if set, zero value otherwise.
+// GetApplicationId returns the ApplicationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthProfile) GetApplicationId() string {
-	if o == nil || IsNil(o.ApplicationId) {
+	if o == nil || IsNil(o.ApplicationId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApplicationId
+	return *o.ApplicationId.Get()
 }
 
 // GetApplicationIdOk returns a tuple with the ApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthProfile) GetApplicationIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ApplicationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApplicationId, true
+	return o.ApplicationId.Get(), o.ApplicationId.IsSet()
 }
 
 // HasApplicationId returns a boolean if a field has been set.
 func (o *AuthProfile) HasApplicationId() bool {
-	if o != nil && !IsNil(o.ApplicationId) {
+	if o != nil && o.ApplicationId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApplicationId gets a reference to the given string and assigns it to the ApplicationId field.
+// SetApplicationId gets a reference to the given NullableString and assigns it to the ApplicationId field.
 func (o *AuthProfile) SetApplicationId(v string) {
-	o.ApplicationId = &v
+	o.ApplicationId.Set(&v)
+}
+// SetApplicationIdNil sets the value for ApplicationId to be an explicit nil
+func (o *AuthProfile) SetApplicationIdNil() {
+	o.ApplicationId.Set(nil)
 }
 
-// GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
+// UnsetApplicationId ensures that no value is present for ApplicationId, not even an explicit nil
+func (o *AuthProfile) UnsetApplicationId() {
+	o.ApplicationId.Unset()
+}
+
+// GetApplicationName returns the ApplicationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthProfile) GetApplicationName() string {
-	if o == nil || IsNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApplicationName
+	return *o.ApplicationName.Get()
 }
 
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthProfile) GetApplicationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ApplicationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApplicationName, true
+	return o.ApplicationName.Get(), o.ApplicationName.IsSet()
 }
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *AuthProfile) HasApplicationName() bool {
-	if o != nil && !IsNil(o.ApplicationName) {
+	if o != nil && o.ApplicationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApplicationName gets a reference to the given string and assigns it to the ApplicationName field.
+// SetApplicationName gets a reference to the given NullableString and assigns it to the ApplicationName field.
 func (o *AuthProfile) SetApplicationName(v string) {
-	o.ApplicationName = &v
+	o.ApplicationName.Set(&v)
+}
+// SetApplicationNameNil sets the value for ApplicationName to be an explicit nil
+func (o *AuthProfile) SetApplicationNameNil() {
+	o.ApplicationName.Set(nil)
+}
+
+// UnsetApplicationName ensures that no value is present for ApplicationName, not even an explicit nil
+func (o *AuthProfile) UnsetApplicationName() {
+	o.ApplicationName.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -310,11 +330,11 @@ func (o AuthProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UntrustedGeography) {
 		toSerialize["untrustedGeography"] = o.UntrustedGeography
 	}
-	if !IsNil(o.ApplicationId) {
-		toSerialize["applicationId"] = o.ApplicationId
+	if o.ApplicationId.IsSet() {
+		toSerialize["applicationId"] = o.ApplicationId.Get()
 	}
-	if !IsNil(o.ApplicationName) {
-		toSerialize["applicationName"] = o.ApplicationName
+	if o.ApplicationName.IsSet() {
+		toSerialize["applicationName"] = o.ApplicationName.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**ConnectedObjectType**](ConnectedObjectType.md) |  | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 **Name** | Pointer to **string** | Human-readable name of Connected object | [optional] 
-**Description** | Pointer to **string** | Description of the Connected object. | [optional] 
+**Description** | Pointer to **NullableString** | Description of the Connected object. | [optional] 
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ConnectedObject) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ConnectedObject) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

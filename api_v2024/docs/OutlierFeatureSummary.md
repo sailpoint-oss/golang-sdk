@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **OutlierFeatureDisplayValues** | Pointer to [**[]OutlierFeatureSummaryOutlierFeatureDisplayValuesInner**](OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md) |  | [optional] 
 **FeatureDefinition** | Pointer to **string** | Definition of the feature | [optional] 
 **FeatureExplanation** | Pointer to **string** | Detailed explanation of the feature | [optional] 
-**PeerDisplayName** | Pointer to **string** | outlier&#39;s peer identity display name | [optional] 
-**PeerIdentityId** | Pointer to **string** | outlier&#39;s peer identity id | [optional] 
+**PeerDisplayName** | Pointer to **NullableString** | outlier&#39;s peer identity display name | [optional] 
+**PeerIdentityId** | Pointer to **NullableString** | outlier&#39;s peer identity id | [optional] 
 **AccessItemReference** | Pointer to **map[string]interface{}** | Access Item reference | [optional] 
 
 ## Methods
@@ -182,6 +182,16 @@ SetPeerDisplayName sets PeerDisplayName field to given value.
 
 HasPeerDisplayName returns a boolean if a field has been set.
 
+### SetPeerDisplayNameNil
+
+`func (o *OutlierFeatureSummary) SetPeerDisplayNameNil(b bool)`
+
+ SetPeerDisplayNameNil sets the value for PeerDisplayName to be an explicit nil
+
+### UnsetPeerDisplayName
+`func (o *OutlierFeatureSummary) UnsetPeerDisplayName()`
+
+UnsetPeerDisplayName ensures that no value is present for PeerDisplayName, not even an explicit nil
 ### GetPeerIdentityId
 
 `func (o *OutlierFeatureSummary) GetPeerIdentityId() string`
@@ -207,6 +217,16 @@ SetPeerIdentityId sets PeerIdentityId field to given value.
 
 HasPeerIdentityId returns a boolean if a field has been set.
 
+### SetPeerIdentityIdNil
+
+`func (o *OutlierFeatureSummary) SetPeerIdentityIdNil(b bool)`
+
+ SetPeerIdentityIdNil sets the value for PeerIdentityId to be an explicit nil
+
+### UnsetPeerIdentityId
+`func (o *OutlierFeatureSummary) UnsetPeerIdentityId()`
+
+UnsetPeerIdentityId ensures that no value is present for PeerIdentityId, not even an explicit nil
 ### GetAccessItemReference
 
 `func (o *OutlierFeatureSummary) GetAccessItemReference() map[string]interface{}`

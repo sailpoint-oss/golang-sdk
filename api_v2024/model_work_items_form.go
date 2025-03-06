@@ -24,9 +24,9 @@ type WorkItemsForm struct {
 	// Name of the form
 	Name NullableString `json:"name,omitempty"`
 	// The form title
-	Title *string `json:"title,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 	// The form subtitle.
-	Subtitle *string `json:"subtitle,omitempty"`
+	Subtitle NullableString `json:"subtitle,omitempty"`
 	// The name of the user that should be shown this form
 	TargetUser *string `json:"targetUser,omitempty"`
 	// Sections of the form
@@ -137,68 +137,88 @@ func (o *WorkItemsForm) UnsetName() {
 	o.Name.Unset()
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
+// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItemsForm) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || IsNil(o.Title.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Title.Get()
 }
 
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItemsForm) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Title.Get(), o.Title.IsSet()
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *WorkItemsForm) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+	if o != nil && o.Title.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
+// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
 func (o *WorkItemsForm) SetTitle(v string) {
-	o.Title = &v
+	o.Title.Set(&v)
+}
+// SetTitleNil sets the value for Title to be an explicit nil
+func (o *WorkItemsForm) SetTitleNil() {
+	o.Title.Set(nil)
 }
 
-// GetSubtitle returns the Subtitle field value if set, zero value otherwise.
+// UnsetTitle ensures that no value is present for Title, not even an explicit nil
+func (o *WorkItemsForm) UnsetTitle() {
+	o.Title.Unset()
+}
+
+// GetSubtitle returns the Subtitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItemsForm) GetSubtitle() string {
-	if o == nil || IsNil(o.Subtitle) {
+	if o == nil || IsNil(o.Subtitle.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Subtitle
+	return *o.Subtitle.Get()
 }
 
 // GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItemsForm) GetSubtitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Subtitle) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Subtitle, true
+	return o.Subtitle.Get(), o.Subtitle.IsSet()
 }
 
 // HasSubtitle returns a boolean if a field has been set.
 func (o *WorkItemsForm) HasSubtitle() bool {
-	if o != nil && !IsNil(o.Subtitle) {
+	if o != nil && o.Subtitle.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubtitle gets a reference to the given string and assigns it to the Subtitle field.
+// SetSubtitle gets a reference to the given NullableString and assigns it to the Subtitle field.
 func (o *WorkItemsForm) SetSubtitle(v string) {
-	o.Subtitle = &v
+	o.Subtitle.Set(&v)
+}
+// SetSubtitleNil sets the value for Subtitle to be an explicit nil
+func (o *WorkItemsForm) SetSubtitleNil() {
+	o.Subtitle.Set(nil)
+}
+
+// UnsetSubtitle ensures that no value is present for Subtitle, not even an explicit nil
+func (o *WorkItemsForm) UnsetSubtitle() {
+	o.Subtitle.Unset()
 }
 
 // GetTargetUser returns the TargetUser field value if set, zero value otherwise.
@@ -281,11 +301,11 @@ func (o WorkItemsForm) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if o.Title.IsSet() {
+		toSerialize["title"] = o.Title.Get()
 	}
-	if !IsNil(o.Subtitle) {
-		toSerialize["subtitle"] = o.Subtitle
+	if o.Subtitle.IsSet() {
+		toSerialize["subtitle"] = o.Subtitle.Get()
 	}
 	if !IsNil(o.TargetUser) {
 		toSerialize["targetUser"] = o.TargetUser

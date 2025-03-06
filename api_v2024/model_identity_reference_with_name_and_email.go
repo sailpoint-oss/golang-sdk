@@ -26,7 +26,7 @@ type IdentityReferenceWithNameAndEmail struct {
 	// Identity's human-readable display name. This is read-only.
 	Name *string `json:"name,omitempty"`
 	// Identity's email address. This is read-only.
-	Email *string `json:"email,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,36 +145,46 @@ func (o *IdentityReferenceWithNameAndEmail) SetName(v string) {
 	o.Name = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityReferenceWithNameAndEmail) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityReferenceWithNameAndEmail) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *IdentityReferenceWithNameAndEmail) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *IdentityReferenceWithNameAndEmail) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *IdentityReferenceWithNameAndEmail) SetEmailNil() {
+	o.Email.Set(nil)
+}
+
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *IdentityReferenceWithNameAndEmail) UnsetEmail() {
+	o.Email.Unset()
 }
 
 func (o IdentityReferenceWithNameAndEmail) MarshalJSON() ([]byte, error) {
@@ -196,8 +206,8 @@ func (o IdentityReferenceWithNameAndEmail) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

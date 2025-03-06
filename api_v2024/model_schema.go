@@ -31,7 +31,7 @@ type Schema struct {
 	// The name of the attribute used to calculate the display value for an object in the schema.
 	DisplayAttribute *string `json:"displayAttribute,omitempty"`
 	// The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas.
-	HierarchyAttribute *string `json:"hierarchyAttribute,omitempty"`
+	HierarchyAttribute NullableString `json:"hierarchyAttribute,omitempty"`
 	// Flag indicating whether or not the include permissions with the object data when aggregating the schema.
 	IncludePermissions *bool `json:"includePermissions,omitempty"`
 	// Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors. * AUTHENTICATE: The source supports pass-through authentication. * COMPOSITE: The source supports composite source creation. * DIRECT_PERMISSIONS: The source supports returning DirectPermissions. * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups. * ENABLE The source supports reading if an account is enabled or disabled. * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS. * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform. * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source. * SEARCH * TEMPLATE * UNLOCK: The source supports reading if an account is locked or unlocked. * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets. * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources. * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation. * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented. * SYNC_PROVISIONING: The source can provision accounts synchronously. * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature. * CURRENT_PASSWORD: Some source types support verification of the current password * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements. * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts. * NO_AGGREGATION: A source that does not support aggregation. * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation. * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts. * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups. * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure. * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning. * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM
@@ -43,7 +43,7 @@ type Schema struct {
 	// The date the Schema was created.
 	Created *SailPointTime `json:"created,omitempty"`
 	// The date the Schema was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -226,36 +226,46 @@ func (o *Schema) SetDisplayAttribute(v string) {
 	o.DisplayAttribute = &v
 }
 
-// GetHierarchyAttribute returns the HierarchyAttribute field value if set, zero value otherwise.
+// GetHierarchyAttribute returns the HierarchyAttribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schema) GetHierarchyAttribute() string {
-	if o == nil || IsNil(o.HierarchyAttribute) {
+	if o == nil || IsNil(o.HierarchyAttribute.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.HierarchyAttribute
+	return *o.HierarchyAttribute.Get()
 }
 
 // GetHierarchyAttributeOk returns a tuple with the HierarchyAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schema) GetHierarchyAttributeOk() (*string, bool) {
-	if o == nil || IsNil(o.HierarchyAttribute) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HierarchyAttribute, true
+	return o.HierarchyAttribute.Get(), o.HierarchyAttribute.IsSet()
 }
 
 // HasHierarchyAttribute returns a boolean if a field has been set.
 func (o *Schema) HasHierarchyAttribute() bool {
-	if o != nil && !IsNil(o.HierarchyAttribute) {
+	if o != nil && o.HierarchyAttribute.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHierarchyAttribute gets a reference to the given string and assigns it to the HierarchyAttribute field.
+// SetHierarchyAttribute gets a reference to the given NullableString and assigns it to the HierarchyAttribute field.
 func (o *Schema) SetHierarchyAttribute(v string) {
-	o.HierarchyAttribute = &v
+	o.HierarchyAttribute.Set(&v)
+}
+// SetHierarchyAttributeNil sets the value for HierarchyAttribute to be an explicit nil
+func (o *Schema) SetHierarchyAttributeNil() {
+	o.HierarchyAttribute.Set(nil)
+}
+
+// UnsetHierarchyAttribute ensures that no value is present for HierarchyAttribute, not even an explicit nil
+func (o *Schema) UnsetHierarchyAttribute() {
+	o.HierarchyAttribute.Unset()
 }
 
 // GetIncludePermissions returns the IncludePermissions field value if set, zero value otherwise.
@@ -418,36 +428,46 @@ func (o *Schema) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schema) GetModified() SailPointTime {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schema) GetModifiedOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *Schema) HasModified() bool {
-	if o != nil && !IsNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *Schema) SetModified(v SailPointTime) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *Schema) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *Schema) UnsetModified() {
+	o.Modified.Unset()
 }
 
 func (o Schema) MarshalJSON() ([]byte, error) {
@@ -475,8 +495,8 @@ func (o Schema) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayAttribute) {
 		toSerialize["displayAttribute"] = o.DisplayAttribute
 	}
-	if !IsNil(o.HierarchyAttribute) {
-		toSerialize["hierarchyAttribute"] = o.HierarchyAttribute
+	if o.HierarchyAttribute.IsSet() {
+		toSerialize["hierarchyAttribute"] = o.HierarchyAttribute.Get()
 	}
 	if !IsNil(o.IncludePermissions) {
 		toSerialize["includePermissions"] = o.IncludePermissions
@@ -493,8 +513,8 @@ func (o Schema) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !IsNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

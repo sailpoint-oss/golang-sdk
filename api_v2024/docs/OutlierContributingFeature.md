@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Contributing feature id | [optional] 
 **Name** | Pointer to **string** | The name of the feature | [optional] 
-**ValueType** | Pointer to **string** | The data type of the value field | [optional] 
-**Value** | Pointer to [**OutlierContributingFeatureValue**](OutlierContributingFeatureValue.md) |  | [optional] 
+**ValueType** | Pointer to [**OutlierValueType**](OutlierValueType.md) |  | [optional] 
+**Value** | Pointer to **float32** | The feature value | [optional] 
 **Importance** | Pointer to **float32** | The importance of the feature. This can also be a negative value | [optional] 
 **DisplayName** | Pointer to **string** | The (translated if header is passed) displayName for the feature | [optional] 
 **Description** | Pointer to **string** | The (translated if header is passed) description for the feature | [optional] 
-**TranslationMessages** | Pointer to [**OutlierFeatureTranslation**](OutlierFeatureTranslation.md) |  | [optional] 
+**TranslationMessages** | Pointer to [**NullableOutlierFeatureTranslation**](OutlierFeatureTranslation.md) |  | [optional] 
 
 ## Methods
 
@@ -84,20 +84,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetValueType
 
-`func (o *OutlierContributingFeature) GetValueType() string`
+`func (o *OutlierContributingFeature) GetValueType() OutlierValueType`
 
 GetValueType returns the ValueType field if non-nil, zero value otherwise.
 
 ### GetValueTypeOk
 
-`func (o *OutlierContributingFeature) GetValueTypeOk() (*string, bool)`
+`func (o *OutlierContributingFeature) GetValueTypeOk() (*OutlierValueType, bool)`
 
 GetValueTypeOk returns a tuple with the ValueType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValueType
 
-`func (o *OutlierContributingFeature) SetValueType(v string)`
+`func (o *OutlierContributingFeature) SetValueType(v OutlierValueType)`
 
 SetValueType sets ValueType field to given value.
 
@@ -109,20 +109,20 @@ HasValueType returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *OutlierContributingFeature) GetValue() OutlierContributingFeatureValue`
+`func (o *OutlierContributingFeature) GetValue() float32`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *OutlierContributingFeature) GetValueOk() (*OutlierContributingFeatureValue, bool)`
+`func (o *OutlierContributingFeature) GetValueOk() (*float32, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *OutlierContributingFeature) SetValue(v OutlierContributingFeatureValue)`
+`func (o *OutlierContributingFeature) SetValue(v float32)`
 
 SetValue sets Value field to given value.
 
@@ -232,6 +232,16 @@ SetTranslationMessages sets TranslationMessages field to given value.
 
 HasTranslationMessages returns a boolean if a field has been set.
 
+### SetTranslationMessagesNil
+
+`func (o *OutlierContributingFeature) SetTranslationMessagesNil(b bool)`
+
+ SetTranslationMessagesNil sets the value for TranslationMessages to be an explicit nil
+
+### UnsetTranslationMessages
+`func (o *OutlierContributingFeature) UnsetTranslationMessages()`
+
+UnsetTranslationMessages ensures that no value is present for TranslationMessages, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

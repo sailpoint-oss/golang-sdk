@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Start** | Pointer to **time.Time** | When the aggregation started. | [optional] 
+**Start** | Pointer to **NullableTime** | When the aggregation started. | [optional] 
 **Status** | Pointer to **string** | STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance.  | [optional] 
 **TotalAccounts** | Pointer to **int32** | The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.* | [optional] 
 **ProcessedAccounts** | Pointer to **int32** | The number of *NEW, CHANGED and DELETED* accounts that have been processed so far. This reflects the number of accounts that have been processed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.* | [optional] 
@@ -53,6 +53,16 @@ SetStart sets Start field to given value.
 
 HasStart returns a boolean if a field has been set.
 
+### SetStartNil
+
+`func (o *AccountAggregationStatus) SetStartNil(b bool)`
+
+ SetStartNil sets the value for Start to be an explicit nil
+
+### UnsetStart
+`func (o *AccountAggregationStatus) UnsetStart()`
+
+UnsetStart ensures that no value is present for Start, not even an explicit nil
 ### GetStatus
 
 `func (o *AccountAggregationStatus) GetStatus() string`

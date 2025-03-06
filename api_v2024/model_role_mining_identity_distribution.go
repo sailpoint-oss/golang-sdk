@@ -21,7 +21,7 @@ var _ MappedNullable = &RoleMiningIdentityDistribution{}
 type RoleMiningIdentityDistribution struct {
 	// Id of the potential role
 	AttributeName *string `json:"attributeName,omitempty"`
-	Distribution []map[string]string `json:"distribution,omitempty"`
+	Distribution []map[string]interface{} `json:"distribution,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *RoleMiningIdentityDistribution) SetAttributeName(v string) {
 }
 
 // GetDistribution returns the Distribution field value if set, zero value otherwise.
-func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]string {
+func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]interface{} {
 	if o == nil || IsNil(o.Distribution) {
-		var ret []map[string]string
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Distribution
@@ -87,7 +87,7 @@ func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]string {
 
 // GetDistributionOk returns a tuple with the Distribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]map[string]string, bool) {
+func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Distribution) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *RoleMiningIdentityDistribution) HasDistribution() bool {
 	return false
 }
 
-// SetDistribution gets a reference to the given []map[string]string and assigns it to the Distribution field.
-func (o *RoleMiningIdentityDistribution) SetDistribution(v []map[string]string) {
+// SetDistribution gets a reference to the given []map[string]interface{} and assigns it to the Distribution field.
+func (o *RoleMiningIdentityDistribution) SetDistribution(v []map[string]interface{}) {
 	o.Distribution = v
 }
 

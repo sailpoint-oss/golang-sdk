@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetSIMIntegrations
 
-> ServiceDeskIntegrationDto GetSIMIntegrations(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> []ServiceDeskIntegrationDto GetSIMIntegrations(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
 List the existing SIM integrations.
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSIMIntegrations`: ServiceDeskIntegrationDto
+	// response from `GetSIMIntegrations`: []ServiceDeskIntegrationDto
 	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrations`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**[]ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 

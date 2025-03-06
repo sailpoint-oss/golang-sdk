@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The ID of the access item | [optional] 
 **DisplayName** | Pointer to **string** | the display name of the access item | [optional] 
-**Description** | Pointer to **string** | Description of the access item. | [optional] 
+**Description** | Pointer to **NullableString** | Description of the access item. | [optional] 
 **AccessType** | Pointer to **string** | The type of the access item. | [optional] 
 **SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
 **ExtremelyRare** | Pointer to **bool** | rarest access | [optional] [default to false]
@@ -105,6 +105,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *OutliersContributingFeatureAccessItems) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *OutliersContributingFeatureAccessItems) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAccessType
 
 `func (o *OutliersContributingFeatureAccessItems) GetAccessType() string`

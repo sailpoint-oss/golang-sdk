@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reviewer** | Pointer to [**CampaignAllOfSearchCampaignInfoReviewer**](CampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
+**ReviewerId** | Pointer to **NullableString** | The ID of the identity or governance group reviewing this campaign. Deprecated in favor of the \&quot;reviewer\&quot; object. | [optional] 
+**Reviewer** | Pointer to [**NullableCampaignAllOfRoleCompositionCampaignInfoReviewer**](CampaignAllOfRoleCompositionCampaignInfoReviewer.md) |  | [optional] 
 **RoleIds** | Pointer to **[]string** | Optional list of roles to include in this campaign. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
 **RemediatorRef** | [**CampaignAllOfRoleCompositionCampaignInfoRemediatorRef**](CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md) |  | 
-**Query** | Pointer to **string** | Optional search query to scope this campaign to a set of roles. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
-**Description** | Pointer to **string** | Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available. | [optional] 
+**Query** | Pointer to **NullableString** | Optional search query to scope this campaign to a set of roles. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
+**Description** | Pointer to **NullableString** | Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available. | [optional] 
 
 ## Methods
 
@@ -29,22 +30,57 @@ NewCampaignAllOfRoleCompositionCampaignInfoWithDefaults instantiates a new Campa
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetReviewerId
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerId() string`
+
+GetReviewerId returns the ReviewerId field if non-nil, zero value otherwise.
+
+### GetReviewerIdOk
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerIdOk() (*string, bool)`
+
+GetReviewerIdOk returns a tuple with the ReviewerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReviewerId
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerId(v string)`
+
+SetReviewerId sets ReviewerId field to given value.
+
+### HasReviewerId
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) HasReviewerId() bool`
+
+HasReviewerId returns a boolean if a field has been set.
+
+### SetReviewerIdNil
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerIdNil(b bool)`
+
+ SetReviewerIdNil sets the value for ReviewerId to be an explicit nil
+
+### UnsetReviewerId
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetReviewerId()`
+
+UnsetReviewerId ensures that no value is present for ReviewerId, not even an explicit nil
 ### GetReviewer
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() CampaignAllOfSearchCampaignInfoReviewer`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() CampaignAllOfRoleCompositionCampaignInfoReviewer`
 
 GetReviewer returns the Reviewer field if non-nil, zero value otherwise.
 
 ### GetReviewerOk
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchCampaignInfoReviewer, bool)`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*CampaignAllOfRoleCompositionCampaignInfoReviewer, bool)`
 
 GetReviewerOk returns a tuple with the Reviewer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewer
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v CampaignAllOfSearchCampaignInfoReviewer)`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v CampaignAllOfRoleCompositionCampaignInfoReviewer)`
 
 SetReviewer sets Reviewer field to given value.
 
@@ -54,6 +90,16 @@ SetReviewer sets Reviewer field to given value.
 
 HasReviewer returns a boolean if a field has been set.
 
+### SetReviewerNil
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerNil(b bool)`
+
+ SetReviewerNil sets the value for Reviewer to be an explicit nil
+
+### UnsetReviewer
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetReviewer()`
+
+UnsetReviewer ensures that no value is present for Reviewer, not even an explicit nil
 ### GetRoleIds
 
 `func (o *CampaignAllOfRoleCompositionCampaignInfo) GetRoleIds() []string`
@@ -124,6 +170,16 @@ SetQuery sets Query field to given value.
 
 HasQuery returns a boolean if a field has been set.
 
+### SetQueryNil
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetQueryNil(b bool)`
+
+ SetQueryNil sets the value for Query to be an explicit nil
+
+### UnsetQuery
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetQuery()`
+
+UnsetQuery ensures that no value is present for Query, not even an explicit nil
 ### GetDescription
 
 `func (o *CampaignAllOfRoleCompositionCampaignInfo) GetDescription() string`
@@ -149,6 +205,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

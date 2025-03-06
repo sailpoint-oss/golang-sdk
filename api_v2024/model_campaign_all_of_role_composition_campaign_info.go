@@ -20,14 +20,17 @@ var _ MappedNullable = &CampaignAllOfRoleCompositionCampaignInfo{}
 
 // CampaignAllOfRoleCompositionCampaignInfo Optional configuration options for role composition campaigns.
 type CampaignAllOfRoleCompositionCampaignInfo struct {
-	Reviewer *CampaignAllOfSearchCampaignInfoReviewer `json:"reviewer,omitempty"`
+	// The ID of the identity or governance group reviewing this campaign. Deprecated in favor of the \"reviewer\" object.
+	// Deprecated
+	ReviewerId NullableString `json:"reviewerId,omitempty"`
+	Reviewer NullableCampaignAllOfRoleCompositionCampaignInfoReviewer `json:"reviewer,omitempty"`
 	// Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.
 	RoleIds []string `json:"roleIds,omitempty"`
 	RemediatorRef CampaignAllOfRoleCompositionCampaignInfoRemediatorRef `json:"remediatorRef"`
 	// Optional search query to scope this campaign to a set of roles. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.
-	Query *string `json:"query,omitempty"`
+	Query NullableString `json:"query,omitempty"`
 	// Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available.
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -51,36 +54,91 @@ func NewCampaignAllOfRoleCompositionCampaignInfoWithDefaults() *CampaignAllOfRol
 	return &this
 }
 
-// GetReviewer returns the Reviewer field value if set, zero value otherwise.
-func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() CampaignAllOfSearchCampaignInfoReviewer {
-	if o == nil || IsNil(o.Reviewer) {
-		var ret CampaignAllOfSearchCampaignInfoReviewer
+// GetReviewerId returns the ReviewerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
+func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerId() string {
+	if o == nil || IsNil(o.ReviewerId.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.Reviewer
+	return *o.ReviewerId.Get()
 }
 
-// GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
+// GetReviewerIdOk returns a tuple with the ReviewerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchCampaignInfoReviewer, bool) {
-	if o == nil || IsNil(o.Reviewer) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
+func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reviewer, true
+	return o.ReviewerId.Get(), o.ReviewerId.IsSet()
 }
 
-// HasReviewer returns a boolean if a field has been set.
-func (o *CampaignAllOfRoleCompositionCampaignInfo) HasReviewer() bool {
-	if o != nil && !IsNil(o.Reviewer) {
+// HasReviewerId returns a boolean if a field has been set.
+func (o *CampaignAllOfRoleCompositionCampaignInfo) HasReviewerId() bool {
+	if o != nil && o.ReviewerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReviewer gets a reference to the given CampaignAllOfSearchCampaignInfoReviewer and assigns it to the Reviewer field.
-func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v CampaignAllOfSearchCampaignInfoReviewer) {
-	o.Reviewer = &v
+// SetReviewerId gets a reference to the given NullableString and assigns it to the ReviewerId field.
+// Deprecated
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerId(v string) {
+	o.ReviewerId.Set(&v)
+}
+// SetReviewerIdNil sets the value for ReviewerId to be an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerIdNil() {
+	o.ReviewerId.Set(nil)
+}
+
+// UnsetReviewerId ensures that no value is present for ReviewerId, not even an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetReviewerId() {
+	o.ReviewerId.Unset()
+}
+
+// GetReviewer returns the Reviewer field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() CampaignAllOfRoleCompositionCampaignInfoReviewer {
+	if o == nil || IsNil(o.Reviewer.Get()) {
+		var ret CampaignAllOfRoleCompositionCampaignInfoReviewer
+		return ret
+	}
+	return *o.Reviewer.Get()
+}
+
+// GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*CampaignAllOfRoleCompositionCampaignInfoReviewer, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Reviewer.Get(), o.Reviewer.IsSet()
+}
+
+// HasReviewer returns a boolean if a field has been set.
+func (o *CampaignAllOfRoleCompositionCampaignInfo) HasReviewer() bool {
+	if o != nil && o.Reviewer.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReviewer gets a reference to the given NullableCampaignAllOfRoleCompositionCampaignInfoReviewer and assigns it to the Reviewer field.
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v CampaignAllOfRoleCompositionCampaignInfoReviewer) {
+	o.Reviewer.Set(&v)
+}
+// SetReviewerNil sets the value for Reviewer to be an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewerNil() {
+	o.Reviewer.Set(nil)
+}
+
+// UnsetReviewer ensures that no value is present for Reviewer, not even an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetReviewer() {
+	o.Reviewer.Unset()
 }
 
 // GetRoleIds returns the RoleIds field value if set, zero value otherwise.
@@ -139,68 +197,88 @@ func (o *CampaignAllOfRoleCompositionCampaignInfo) SetRemediatorRef(v CampaignAl
 	o.RemediatorRef = v
 }
 
-// GetQuery returns the Query field value if set, zero value otherwise.
+// GetQuery returns the Query field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignAllOfRoleCompositionCampaignInfo) GetQuery() string {
-	if o == nil || IsNil(o.Query) {
+	if o == nil || IsNil(o.Query.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Query
+	return *o.Query.Get()
 }
 
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignAllOfRoleCompositionCampaignInfo) GetQueryOk() (*string, bool) {
-	if o == nil || IsNil(o.Query) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Query, true
+	return o.Query.Get(), o.Query.IsSet()
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *CampaignAllOfRoleCompositionCampaignInfo) HasQuery() bool {
-	if o != nil && !IsNil(o.Query) {
+	if o != nil && o.Query.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuery gets a reference to the given string and assigns it to the Query field.
+// SetQuery gets a reference to the given NullableString and assigns it to the Query field.
 func (o *CampaignAllOfRoleCompositionCampaignInfo) SetQuery(v string) {
-	o.Query = &v
+	o.Query.Set(&v)
+}
+// SetQueryNil sets the value for Query to be an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetQueryNil() {
+	o.Query.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetQuery ensures that no value is present for Query, not even an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetQuery() {
+	o.Query.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignAllOfRoleCompositionCampaignInfo) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignAllOfRoleCompositionCampaignInfo) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CampaignAllOfRoleCompositionCampaignInfo) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *CampaignAllOfRoleCompositionCampaignInfo) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CampaignAllOfRoleCompositionCampaignInfo) UnsetDescription() {
+	o.Description.Unset()
 }
 
 func (o CampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, error) {
@@ -213,18 +291,21 @@ func (o CampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, error) 
 
 func (o CampaignAllOfRoleCompositionCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Reviewer) {
-		toSerialize["reviewer"] = o.Reviewer
+	if o.ReviewerId.IsSet() {
+		toSerialize["reviewerId"] = o.ReviewerId.Get()
+	}
+	if o.Reviewer.IsSet() {
+		toSerialize["reviewer"] = o.Reviewer.Get()
 	}
 	if !IsNil(o.RoleIds) {
 		toSerialize["roleIds"] = o.RoleIds
 	}
 	toSerialize["remediatorRef"] = o.RemediatorRef
-	if !IsNil(o.Query) {
-		toSerialize["query"] = o.Query
+	if o.Query.IsSet() {
+		toSerialize["query"] = o.Query.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -269,6 +350,7 @@ func (o *CampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(data []byte) (e
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "reviewerId")
 		delete(additionalProperties, "reviewer")
 		delete(additionalProperties, "roleIds")
 		delete(additionalProperties, "remediatorRef")

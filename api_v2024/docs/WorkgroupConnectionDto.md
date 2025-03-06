@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to [**ConnectedObject**](ConnectedObject.md) |  | [optional] 
+**Object** | Pointer to [**WorkgroupConnectionDtoObject**](WorkgroupConnectionDtoObject.md) |  | [optional] 
 **ConnectionType** | Pointer to **string** | Connection Type. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetObject
 
-`func (o *WorkgroupConnectionDto) GetObject() ConnectedObject`
+`func (o *WorkgroupConnectionDto) GetObject() WorkgroupConnectionDtoObject`
 
 GetObject returns the Object field if non-nil, zero value otherwise.
 
 ### GetObjectOk
 
-`func (o *WorkgroupConnectionDto) GetObjectOk() (*ConnectedObject, bool)`
+`func (o *WorkgroupConnectionDto) GetObjectOk() (*WorkgroupConnectionDtoObject, bool)`
 
 GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObject
 
-`func (o *WorkgroupConnectionDto) SetObject(v ConnectedObject)`
+`func (o *WorkgroupConnectionDto) SetObject(v WorkgroupConnectionDtoObject)`
 
 SetObject sets Object field to given value.
 

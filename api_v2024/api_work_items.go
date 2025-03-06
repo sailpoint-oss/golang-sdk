@@ -932,7 +932,7 @@ func (r ApiGetCountCompletedWorkItemsRequest) OwnerId(ownerId string) ApiGetCoun
 	return r
 }
 
-func (r ApiGetCountCompletedWorkItemsRequest) Execute() ([]WorkItemsCount, *http.Response, error) {
+func (r ApiGetCountCompletedWorkItemsRequest) Execute() (*WorkItemsCount, *http.Response, error) {
 	return r.ApiService.GetCountCompletedWorkItemsExecute(r)
 }
 
@@ -952,13 +952,13 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItems(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return []WorkItemsCount
-func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCompletedWorkItemsRequest) ([]WorkItemsCount, *http.Response, error) {
+//  @return WorkItemsCount
+func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCompletedWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []WorkItemsCount
+		localVarReturnValue  *WorkItemsCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountCompletedWorkItems")

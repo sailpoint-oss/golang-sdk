@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | DTO type of target source for attribute synchronization. | [optional] 
 **Id** | Pointer to **string** | ID of target source for attribute synchronization. | [optional] 
-**Name** | Pointer to **string** | Human-readable name of target source for attribute synchronization. | [optional] 
+**Name** | Pointer to **NullableString** | Human-readable name of target source for attribute synchronization. | [optional] 
 
 ## Methods
 
@@ -102,6 +102,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *AttrSyncSource) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *AttrSyncSource) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

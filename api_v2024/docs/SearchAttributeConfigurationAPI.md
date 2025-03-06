@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## GetSingleSearchAttributeConfig
 
-> []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).XSailPointExperimental(xSailPointExperimental).Execute()
+> SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Get Extended Search Attribute
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSingleSearchAttributeConfig`: []SearchAttributeConfig
+	// response from `GetSingleSearchAttributeConfig`: SearchAttributeConfig
 	fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig`: %v\n", resp)
 }
 ```
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]SearchAttributeConfig**](SearchAttributeConfig.md)
+[**SearchAttributeConfig**](SearchAttributeConfig.md)
 
 ### Authorization
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &AccountAggregationStatus{}
 // AccountAggregationStatus struct for AccountAggregationStatus
 type AccountAggregationStatus struct {
 	// When the aggregation started.
-	Start *SailPointTime `json:"start,omitempty"`
+	Start NullableTime `json:"start,omitempty"`
 	// STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance. 
 	Status *string `json:"status,omitempty"`
 	// The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
@@ -50,36 +50,46 @@ func NewAccountAggregationStatusWithDefaults() *AccountAggregationStatus {
 	return &this
 }
 
-// GetStart returns the Start field value if set, zero value otherwise.
+// GetStart returns the Start field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountAggregationStatus) GetStart() SailPointTime {
-	if o == nil || IsNil(o.Start) {
+	if o == nil || IsNil(o.Start.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.Start
+	return *o.Start.Get()
 }
 
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountAggregationStatus) GetStartOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.Start) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Start, true
+	return o.Start.Get(), o.Start.IsSet()
 }
 
 // HasStart returns a boolean if a field has been set.
 func (o *AccountAggregationStatus) HasStart() bool {
-	if o != nil && !IsNil(o.Start) {
+	if o != nil && o.Start.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStart gets a reference to the given SailPointTime and assigns it to the Start field.
+// SetStart gets a reference to the given NullableTime and assigns it to the Start field.
 func (o *AccountAggregationStatus) SetStart(v SailPointTime) {
-	o.Start = &v
+	o.Start.Set(&v)
+}
+// SetStartNil sets the value for Start to be an explicit nil
+func (o *AccountAggregationStatus) SetStartNil() {
+	o.Start.Set(nil)
+}
+
+// UnsetStart ensures that no value is present for Start, not even an explicit nil
+func (o *AccountAggregationStatus) UnsetStart() {
+	o.Start.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -188,8 +198,8 @@ func (o AccountAggregationStatus) MarshalJSON() ([]byte, error) {
 
 func (o AccountAggregationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Start) {
-		toSerialize["start"] = o.Start
+	if o.Start.IsSet() {
+		toSerialize["start"] = o.Start.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

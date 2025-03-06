@@ -4,8 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetProfileConfig**](AuthProfileAPI.md#GetProfileConfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
-[**GetProfileConfigList**](AuthProfileAPI.md#GetProfileConfigList) | **Get** /auth-profiles | Get list of Auth Profiles.
+[**GetProfileConfig**](AuthProfileAPI.md#GetProfileConfig) | **Get** /auth-profiles/{id} | Get Auth Profile
+[**GetProfileConfigList**](AuthProfileAPI.md#GetProfileConfigList) | **Get** /auth-profiles | Get list of Auth Profiles
 [**PatchProfileConfig**](AuthProfileAPI.md#PatchProfileConfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > AuthProfile GetProfileConfig(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
 
-Get Auth Profile.
+Get Auth Profile
 
 
 
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 
 ## GetProfileConfigList
 
-> AuthProfileSummary GetProfileConfigList(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> []AuthProfileSummary GetProfileConfigList(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
 
-Get list of Auth Profiles.
+Get list of Auth Profiles
 
 
 
@@ -112,7 +112,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfigList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetProfileConfigList`: AuthProfileSummary
+	// response from `GetProfileConfigList`: []AuthProfileSummary
 	fmt.Fprintf(os.Stdout, "Response from `AuthProfileAPI.GetProfileConfigList`: %v\n", resp)
 }
 ```
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthProfileSummary**](AuthProfileSummary.md)
+[**[]AuthProfileSummary**](AuthProfileSummary.md)
 
 ### Authorization
 

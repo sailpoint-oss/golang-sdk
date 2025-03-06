@@ -29,9 +29,9 @@ type OutlierFeatureSummary struct {
 	// Detailed explanation of the feature
 	FeatureExplanation *string `json:"featureExplanation,omitempty"`
 	// outlier's peer identity display name
-	PeerDisplayName *string `json:"peerDisplayName,omitempty"`
+	PeerDisplayName NullableString `json:"peerDisplayName,omitempty"`
 	// outlier's peer identity id
-	PeerIdentityId *string `json:"peerIdentityId,omitempty"`
+	PeerIdentityId NullableString `json:"peerIdentityId,omitempty"`
 	// Access Item reference
 	AccessItemReference map[string]interface{} `json:"accessItemReference,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -216,68 +216,88 @@ func (o *OutlierFeatureSummary) SetFeatureExplanation(v string) {
 	o.FeatureExplanation = &v
 }
 
-// GetPeerDisplayName returns the PeerDisplayName field value if set, zero value otherwise.
+// GetPeerDisplayName returns the PeerDisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OutlierFeatureSummary) GetPeerDisplayName() string {
-	if o == nil || IsNil(o.PeerDisplayName) {
+	if o == nil || IsNil(o.PeerDisplayName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PeerDisplayName
+	return *o.PeerDisplayName.Get()
 }
 
 // GetPeerDisplayNameOk returns a tuple with the PeerDisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutlierFeatureSummary) GetPeerDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PeerDisplayName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PeerDisplayName, true
+	return o.PeerDisplayName.Get(), o.PeerDisplayName.IsSet()
 }
 
 // HasPeerDisplayName returns a boolean if a field has been set.
 func (o *OutlierFeatureSummary) HasPeerDisplayName() bool {
-	if o != nil && !IsNil(o.PeerDisplayName) {
+	if o != nil && o.PeerDisplayName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPeerDisplayName gets a reference to the given string and assigns it to the PeerDisplayName field.
+// SetPeerDisplayName gets a reference to the given NullableString and assigns it to the PeerDisplayName field.
 func (o *OutlierFeatureSummary) SetPeerDisplayName(v string) {
-	o.PeerDisplayName = &v
+	o.PeerDisplayName.Set(&v)
+}
+// SetPeerDisplayNameNil sets the value for PeerDisplayName to be an explicit nil
+func (o *OutlierFeatureSummary) SetPeerDisplayNameNil() {
+	o.PeerDisplayName.Set(nil)
 }
 
-// GetPeerIdentityId returns the PeerIdentityId field value if set, zero value otherwise.
+// UnsetPeerDisplayName ensures that no value is present for PeerDisplayName, not even an explicit nil
+func (o *OutlierFeatureSummary) UnsetPeerDisplayName() {
+	o.PeerDisplayName.Unset()
+}
+
+// GetPeerIdentityId returns the PeerIdentityId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OutlierFeatureSummary) GetPeerIdentityId() string {
-	if o == nil || IsNil(o.PeerIdentityId) {
+	if o == nil || IsNil(o.PeerIdentityId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PeerIdentityId
+	return *o.PeerIdentityId.Get()
 }
 
 // GetPeerIdentityIdOk returns a tuple with the PeerIdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutlierFeatureSummary) GetPeerIdentityIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PeerIdentityId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PeerIdentityId, true
+	return o.PeerIdentityId.Get(), o.PeerIdentityId.IsSet()
 }
 
 // HasPeerIdentityId returns a boolean if a field has been set.
 func (o *OutlierFeatureSummary) HasPeerIdentityId() bool {
-	if o != nil && !IsNil(o.PeerIdentityId) {
+	if o != nil && o.PeerIdentityId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPeerIdentityId gets a reference to the given string and assigns it to the PeerIdentityId field.
+// SetPeerIdentityId gets a reference to the given NullableString and assigns it to the PeerIdentityId field.
 func (o *OutlierFeatureSummary) SetPeerIdentityId(v string) {
-	o.PeerIdentityId = &v
+	o.PeerIdentityId.Set(&v)
+}
+// SetPeerIdentityIdNil sets the value for PeerIdentityId to be an explicit nil
+func (o *OutlierFeatureSummary) SetPeerIdentityIdNil() {
+	o.PeerIdentityId.Set(nil)
+}
+
+// UnsetPeerIdentityId ensures that no value is present for PeerIdentityId, not even an explicit nil
+func (o *OutlierFeatureSummary) UnsetPeerIdentityId() {
+	o.PeerIdentityId.Unset()
 }
 
 // GetAccessItemReference returns the AccessItemReference field value if set, zero value otherwise.
@@ -337,11 +357,11 @@ func (o OutlierFeatureSummary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FeatureExplanation) {
 		toSerialize["featureExplanation"] = o.FeatureExplanation
 	}
-	if !IsNil(o.PeerDisplayName) {
-		toSerialize["peerDisplayName"] = o.PeerDisplayName
+	if o.PeerDisplayName.IsSet() {
+		toSerialize["peerDisplayName"] = o.PeerDisplayName.Get()
 	}
-	if !IsNil(o.PeerIdentityId) {
-		toSerialize["peerIdentityId"] = o.PeerIdentityId
+	if o.PeerIdentityId.IsSet() {
+		toSerialize["peerIdentityId"] = o.PeerIdentityId.Get()
 	}
 	if !IsNil(o.AccessItemReference) {
 		toSerialize["accessItemReference"] = o.AccessItemReference

@@ -556,7 +556,7 @@ func (r ApiGetSingleSearchAttributeConfigRequest) XSailPointExperimental(xSailPo
 	return r
 }
 
-func (r ApiGetSingleSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, *http.Response, error) {
+func (r ApiGetSingleSearchAttributeConfigRequest) Execute() (*SearchAttributeConfig, *http.Response, error) {
 	return r.ApiService.GetSingleSearchAttributeConfigExecute(r)
 }
 
@@ -578,13 +578,13 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfig(
 }
 
 // Execute executes the request
-//  @return []SearchAttributeConfig
-func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigExecute(r ApiGetSingleSearchAttributeConfigRequest) ([]SearchAttributeConfig, *http.Response, error) {
+//  @return SearchAttributeConfig
+func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigExecute(r ApiGetSingleSearchAttributeConfigRequest) (*SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []SearchAttributeConfig
+		localVarReturnValue  *SearchAttributeConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.GetSingleSearchAttributeConfig")

@@ -3015,7 +3015,7 @@ func (r ApiSearchFormInstancesByTenantRequest) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiSearchFormInstancesByTenantRequest) Execute() (*ListFormInstancesByTenantResponse, *http.Response, error) {
+func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]ListFormInstancesByTenantResponse, *http.Response, error) {
 	return r.ApiService.SearchFormInstancesByTenantExecute(r)
 }
 
@@ -3035,13 +3035,13 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenant(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return ListFormInstancesByTenantResponse
-func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFormInstancesByTenantRequest) (*ListFormInstancesByTenantResponse, *http.Response, error) {
+//  @return []ListFormInstancesByTenantResponse
+func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFormInstancesByTenantRequest) ([]ListFormInstancesByTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListFormInstancesByTenantResponse
+		localVarReturnValue  []ListFormInstancesByTenantResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchFormInstancesByTenant")

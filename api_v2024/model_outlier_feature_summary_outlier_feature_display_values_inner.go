@@ -23,8 +23,7 @@ type OutlierFeatureSummaryOutlierFeatureDisplayValuesInner struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// value
 	Value *string `json:"value,omitempty"`
-	// The data type of the value field
-	ValueType *string `json:"valueType,omitempty"`
+	ValueType *OutlierValueType `json:"valueType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,9 +111,9 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValue(v strin
 }
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
-func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() string {
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() OutlierValueType {
 	if o == nil || IsNil(o.ValueType) {
-		var ret string
+		var ret OutlierValueType
 		return ret
 	}
 	return *o.ValueType
@@ -122,7 +121,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() s
 
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueTypeOk() (*string, bool) {
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueTypeOk() (*OutlierValueType, bool) {
 	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
@@ -138,8 +137,8 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) HasValueType() b
 	return false
 }
 
-// SetValueType gets a reference to the given string and assigns it to the ValueType field.
-func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValueType(v string) {
+// SetValueType gets a reference to the given OutlierValueType and assigns it to the ValueType field.
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValueType(v OutlierValueType) {
 	o.ValueType = &v
 }
 

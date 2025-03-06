@@ -320,6 +320,7 @@ docs/CampaignAllOfFilter.md
 docs/CampaignAllOfMachineAccountCampaignInfo.md
 docs/CampaignAllOfRoleCompositionCampaignInfo.md
 docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
+docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md
 docs/CampaignAllOfSearchCampaignInfo.md
 docs/CampaignAllOfSearchCampaignInfoReviewer.md
 docs/CampaignAllOfSourceOwnerCampaignInfo.md
@@ -746,11 +747,11 @@ docs/OriginalRequest.md
 docs/OrphanIdentitiesReportArguments.md
 docs/Outlier.md
 docs/OutlierContributingFeature.md
-docs/OutlierContributingFeatureValue.md
 docs/OutlierFeatureSummary.md
 docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
+docs/OutlierValueType.md
 docs/OutliersContributingFeatureAccessItems.md
 docs/OwnerDto.md
 docs/OwnerReference.md
@@ -881,6 +882,8 @@ docs/Revocability.md
 docs/RevocabilityForRole.md
 docs/Role.md
 docs/RoleAssignmentDto.md
+docs/RoleAssignmentDtoAssigner.md
+docs/RoleAssignmentDtoAssignmentContext.md
 docs/RoleAssignmentRef.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
@@ -1211,6 +1214,7 @@ docs/WorkflowTriggerAttributes.md
 docs/WorkflowsAPI.md
 docs/WorkgroupBulkDeleteRequest.md
 docs/WorkgroupConnectionDto.md
+docs/WorkgroupConnectionDtoObject.md
 docs/WorkgroupDeleteItem.md
 docs/WorkgroupDto.md
 docs/WorkgroupDtoOwner.md
@@ -1434,6 +1438,7 @@ model_campaign_all_of_filter.go
 model_campaign_all_of_machine_account_campaign_info.go
 model_campaign_all_of_role_composition_campaign_info.go
 model_campaign_all_of_role_composition_campaign_info_remediator_ref.go
+model_campaign_all_of_role_composition_campaign_info_reviewer.go
 model_campaign_all_of_search_campaign_info.go
 model_campaign_all_of_search_campaign_info_reviewer.go
 model_campaign_all_of_source_owner_campaign_info.go
@@ -1825,11 +1830,11 @@ model_original_request.go
 model_orphan_identities_report_arguments.go
 model_outlier.go
 model_outlier_contributing_feature.go
-model_outlier_contributing_feature_value.go
 model_outlier_feature_summary.go
 model_outlier_feature_summary_outlier_feature_display_values_inner.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
+model_outlier_value_type.go
 model_outliers_contributing_feature_access_items.go
 model_owner_dto.go
 model_owner_reference.go
@@ -1950,6 +1955,8 @@ model_revocability.go
 model_revocability_for_role.go
 model_role.go
 model_role_assignment_dto.go
+model_role_assignment_dto_assigner.go
+model_role_assignment_dto_assignment_context.go
 model_role_assignment_ref.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go
@@ -2255,6 +2262,7 @@ model_workflow_trigger.go
 model_workflow_trigger_attributes.go
 model_workgroup_bulk_delete_request.go
 model_workgroup_connection_dto.go
+model_workgroup_connection_dto_object.go
 model_workgroup_delete_item.go
 model_workgroup_dto.go
 model_workgroup_dto_owner.go
