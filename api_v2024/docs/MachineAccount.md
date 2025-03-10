@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | A description of the machine account | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewMachineAccount
 
-`func NewMachineAccount(name string, nativeIdentity string, classificationMethod string, connectorAttributes map[string]interface{}, manuallyEdited bool, locked bool, enabled bool, hasEntitlements bool, source map[string]interface{}, ) *MachineAccount`
+`func NewMachineAccount(name NullableString, nativeIdentity string, classificationMethod string, connectorAttributes map[string]interface{}, manuallyEdited bool, locked bool, enabled bool, hasEntitlements bool, source map[string]interface{}, ) *MachineAccount`
 
 NewMachineAccount instantiates a new MachineAccount object
 This constructor will assign default values to properties that have it defined,
@@ -90,6 +90,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *MachineAccount) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *MachineAccount) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *MachineAccount) GetCreated() time.Time`

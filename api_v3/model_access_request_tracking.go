@@ -24,7 +24,7 @@ type AccessRequestTracking struct {
 	// The details of the item requested.
 	RequestedItemsDetails []RequestedItemDetails `json:"requestedItemsDetails,omitempty"`
 	// a hash representation of the access requested, useful for longer term tracking client side.
-	AttributesHash *string `json:"attributesHash,omitempty"`
+	AttributesHash *int32 `json:"attributesHash,omitempty"`
 	// a list of access request identifiers, generally only one will be populated, but high volume requested may result in multiple ids.
 	AccessRequestIds []string `json:"accessRequestIds,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -114,9 +114,9 @@ func (o *AccessRequestTracking) SetRequestedItemsDetails(v []RequestedItemDetail
 }
 
 // GetAttributesHash returns the AttributesHash field value if set, zero value otherwise.
-func (o *AccessRequestTracking) GetAttributesHash() string {
+func (o *AccessRequestTracking) GetAttributesHash() int32 {
 	if o == nil || IsNil(o.AttributesHash) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.AttributesHash
@@ -124,7 +124,7 @@ func (o *AccessRequestTracking) GetAttributesHash() string {
 
 // GetAttributesHashOk returns a tuple with the AttributesHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestTracking) GetAttributesHashOk() (*string, bool) {
+func (o *AccessRequestTracking) GetAttributesHashOk() (*int32, bool) {
 	if o == nil || IsNil(o.AttributesHash) {
 		return nil, false
 	}
@@ -140,8 +140,8 @@ func (o *AccessRequestTracking) HasAttributesHash() bool {
 	return false
 }
 
-// SetAttributesHash gets a reference to the given string and assigns it to the AttributesHash field.
-func (o *AccessRequestTracking) SetAttributesHash(v string) {
+// SetAttributesHash gets a reference to the given int32 and assigns it to the AttributesHash field.
+func (o *AccessRequestTracking) SetAttributesHash(v int32) {
 	o.AttributesHash = &v
 }
 

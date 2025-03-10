@@ -66273,6 +66273,9 @@ components:
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
         removeDate: 2020-07-11T00:00:00Z
+        clientMetadata:
+          customKey1: custom value 1
+          customKey2: custom value 2
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -66464,6 +66467,16 @@ components:
           type: string
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted_1'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: "Arbitrary key-value pairs, if any were included in the corresponding\
+            \ access request item"
+          example:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          nullable: true
+          type: object
       type: object
     CompletedApproval:
       example:
@@ -82767,6 +82780,7 @@ components:
         name:
           description: Name of the Object
           example: aName
+          nullable: true
           type: string
         created:
           description: Creation date of the Object
@@ -83508,8 +83522,9 @@ components:
         attributesHash:
           description: "a hash representation of the access requested, useful for\
             \ longer term tracking client side."
-          example: "-1928438224"
-          type: string
+          example: -1928438224
+          format: int32
+          type: integer
         accessRequestIds:
           description: "a list of access request identifiers, generally only one will\
             \ be populated, but high volume requested may result in multiple ids."
@@ -89041,6 +89056,7 @@ components:
             STRING FormDefinitionInputTypeString
           enum:
           - STRING
+          - ARRAY
           example: STRING
           type: string
           x-go-enum-desc: STRING FormDefinitionInputTypeString
@@ -89976,6 +89992,7 @@ components:
         name:
           description: Name of the Object
           example: aName
+          nullable: true
           type: string
         created:
           description: Creation date of the Object

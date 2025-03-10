@@ -24,7 +24,7 @@ type IdentityProfile1 struct {
 	// System-generated unique ID of the Object
 	Id *string `json:"id,omitempty"`
 	// Name of the Object
-	Name string `json:"name"`
+	Name NullableString `json:"name"`
 	// Creation date of the Object
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
@@ -52,7 +52,7 @@ type _IdentityProfile1 IdentityProfile1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProfile1(name string, authoritativeSource IdentityProfile1AllOfAuthoritativeSource) *IdentityProfile1 {
+func NewIdentityProfile1(name NullableString, authoritativeSource IdentityProfile1AllOfAuthoritativeSource) *IdentityProfile1 {
 	this := IdentityProfile1{}
 	this.Name = name
 	this.AuthoritativeSource = authoritativeSource
@@ -108,27 +108,29 @@ func (o *IdentityProfile1) SetId(v string) {
 }
 
 // GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *IdentityProfile1) GetName() string {
-	if o == nil {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityProfile1) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // SetName sets field value
 func (o *IdentityProfile1) SetName(v string) {
-	o.Name = v
+	o.Name.Set(&v)
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -518,7 +520,7 @@ func (o IdentityProfile1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	toSerialize["name"] = o.Name
+	toSerialize["name"] = o.Name.Get()
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}

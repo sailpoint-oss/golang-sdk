@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **BusinessApplication** | **string** | The business application that the identity represents | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewMachineIdentity
 
-`func NewMachineIdentity(name string, businessApplication string, ) *MachineIdentity`
+`func NewMachineIdentity(name NullableString, businessApplication string, ) *MachineIdentity`
 
 NewMachineIdentity instantiates a new MachineIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -77,6 +77,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *MachineIdentity) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *MachineIdentity) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *MachineIdentity) GetCreated() time.Time`

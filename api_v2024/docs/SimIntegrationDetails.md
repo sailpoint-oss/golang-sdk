@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the integration | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewSimIntegrationDetails
 
-`func NewSimIntegrationDetails(name string, ) *SimIntegrationDetails`
+`func NewSimIntegrationDetails(name NullableString, ) *SimIntegrationDetails`
 
 NewSimIntegrationDetails instantiates a new SimIntegrationDetails object
 This constructor will assign default values to properties that have it defined,
@@ -81,6 +81,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *SimIntegrationDetails) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *SimIntegrationDetails) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *SimIntegrationDetails) GetCreated() time.Time`

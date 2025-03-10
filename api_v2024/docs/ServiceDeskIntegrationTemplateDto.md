@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Type** | **string** | The &#39;type&#39; property specifies the type of the Service Desk integration template. | [default to "Web Service SDIM"]
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewServiceDeskIntegrationTemplateDto
 
-`func NewServiceDeskIntegrationTemplateDto(name string, type_ string, attributes map[string]interface{}, provisioningConfig ProvisioningConfig, ) *ServiceDeskIntegrationTemplateDto`
+`func NewServiceDeskIntegrationTemplateDto(name NullableString, type_ string, attributes map[string]interface{}, provisioningConfig ProvisioningConfig, ) *ServiceDeskIntegrationTemplateDto`
 
 NewServiceDeskIntegrationTemplateDto instantiates a new ServiceDeskIntegrationTemplateDto object
 This constructor will assign default values to properties that have it defined,
@@ -76,6 +76,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *ServiceDeskIntegrationTemplateDto) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ServiceDeskIntegrationTemplateDto) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *ServiceDeskIntegrationTemplateDto) GetCreated() time.Time`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | Identity profile&#39;s description. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityProfile1
 
-`func NewIdentityProfile1(name string, authoritativeSource IdentityProfile1AllOfAuthoritativeSource, ) *IdentityProfile1`
+`func NewIdentityProfile1(name NullableString, authoritativeSource IdentityProfile1AllOfAuthoritativeSource, ) *IdentityProfile1`
 
 NewIdentityProfile1 instantiates a new IdentityProfile1 object
 This constructor will assign default values to properties that have it defined,
@@ -82,6 +82,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *IdentityProfile1) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *IdentityProfile1) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *IdentityProfile1) GetCreated() time.Time`

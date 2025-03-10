@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to false]
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewLifecycleState
 
-`func NewLifecycleState(name string, technicalName string, ) *LifecycleState`
+`func NewLifecycleState(name NullableString, technicalName string, ) *LifecycleState`
 
 NewLifecycleState instantiates a new LifecycleState object
 This constructor will assign default values to properties that have it defined,
@@ -81,6 +81,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *LifecycleState) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *LifecycleState) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *LifecycleState) GetCreated() time.Time`

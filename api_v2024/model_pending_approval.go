@@ -52,6 +52,8 @@ type PendingApproval struct {
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate *SailPointTime `json:"currentRemoveDate,omitempty"`
 	SodViolationContext NullableSodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
+	// Arbitrary key-value pairs, if any were included in the corresponding access request item
+	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -742,6 +744,39 @@ func (o *PendingApproval) UnsetSodViolationContext() {
 	o.SodViolationContext.Unset()
 }
 
+// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PendingApproval) GetClientMetadata() map[string]string {
+	if o == nil {
+		var ret map[string]string
+		return ret
+	}
+	return o.ClientMetadata
+}
+
+// GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PendingApproval) GetClientMetadataOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ClientMetadata) {
+		return nil, false
+	}
+	return &o.ClientMetadata, true
+}
+
+// HasClientMetadata returns a boolean if a field has been set.
+func (o *PendingApproval) HasClientMetadata() bool {
+	if o != nil && !IsNil(o.ClientMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientMetadata gets a reference to the given map[string]string and assigns it to the ClientMetadata field.
+func (o *PendingApproval) SetClientMetadata(v map[string]string) {
+	o.ClientMetadata = v
+}
+
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -812,6 +847,9 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if o.SodViolationContext.IsSet() {
 		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
 	}
+	if o.ClientMetadata != nil {
+		toSerialize["clientMetadata"] = o.ClientMetadata
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -854,6 +892,7 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "removeDateUpdateRequested")
 		delete(additionalProperties, "currentRemoveDate")
 		delete(additionalProperties, "sodViolationContext")
+		delete(additionalProperties, "clientMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

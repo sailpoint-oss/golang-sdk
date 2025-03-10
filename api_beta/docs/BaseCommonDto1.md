@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
+**Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewBaseCommonDto1
 
-`func NewBaseCommonDto1(name string, ) *BaseCommonDto1`
+`func NewBaseCommonDto1(name NullableString, ) *BaseCommonDto1`
 
 NewBaseCommonDto1 instantiates a new BaseCommonDto1 object
 This constructor will assign default values to properties that have it defined,
@@ -73,6 +73,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *BaseCommonDto1) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *BaseCommonDto1) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
 `func (o *BaseCommonDto1) GetCreated() time.Time`

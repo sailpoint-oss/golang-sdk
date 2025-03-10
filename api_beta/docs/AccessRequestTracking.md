@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestedFor** | Pointer to **string** | The identity id in which the access request is for. | [optional] 
 **RequestedItemsDetails** | Pointer to [**[]RequestedItemDetails**](RequestedItemDetails.md) | The details of the item requested. | [optional] 
-**AttributesHash** | Pointer to **string** | a hash representation of the access requested, useful for longer term tracking client side. | [optional] 
+**AttributesHash** | Pointer to **int32** | a hash representation of the access requested, useful for longer term tracking client side. | [optional] 
 **AccessRequestIds** | Pointer to **[]string** | a list of access request identifiers, generally only one will be populated, but high volume requested may result in multiple ids. | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasRequestedItemsDetails returns a boolean if a field has been set.
 
 ### GetAttributesHash
 
-`func (o *AccessRequestTracking) GetAttributesHash() string`
+`func (o *AccessRequestTracking) GetAttributesHash() int32`
 
 GetAttributesHash returns the AttributesHash field if non-nil, zero value otherwise.
 
 ### GetAttributesHashOk
 
-`func (o *AccessRequestTracking) GetAttributesHashOk() (*string, bool)`
+`func (o *AccessRequestTracking) GetAttributesHashOk() (*int32, bool)`
 
 GetAttributesHashOk returns a tuple with the AttributesHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributesHash
 
-`func (o *AccessRequestTracking) SetAttributesHash(v string)`
+`func (o *AccessRequestTracking) SetAttributesHash(v int32)`
 
 SetAttributesHash sets AttributesHash field to given value.
 

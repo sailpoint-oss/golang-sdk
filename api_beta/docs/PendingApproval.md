@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **time.Time** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
+**ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
 
 ## Methods
 
@@ -538,6 +539,41 @@ HasSodViolationContext returns a boolean if a field has been set.
 `func (o *PendingApproval) UnsetSodViolationContext()`
 
 UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
+### GetClientMetadata
+
+`func (o *PendingApproval) GetClientMetadata() map[string]string`
+
+GetClientMetadata returns the ClientMetadata field if non-nil, zero value otherwise.
+
+### GetClientMetadataOk
+
+`func (o *PendingApproval) GetClientMetadataOk() (*map[string]string, bool)`
+
+GetClientMetadataOk returns a tuple with the ClientMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientMetadata
+
+`func (o *PendingApproval) SetClientMetadata(v map[string]string)`
+
+SetClientMetadata sets ClientMetadata field to given value.
+
+### HasClientMetadata
+
+`func (o *PendingApproval) HasClientMetadata() bool`
+
+HasClientMetadata returns a boolean if a field has been set.
+
+### SetClientMetadataNil
+
+`func (o *PendingApproval) SetClientMetadataNil(b bool)`
+
+ SetClientMetadataNil sets the value for ClientMetadata to be an explicit nil
+
+### UnsetClientMetadata
+`func (o *PendingApproval) UnsetClientMetadata()`
+
+UnsetClientMetadata ensures that no value is present for ClientMetadata, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
