@@ -3775,11 +3775,13 @@ paths:
           default: me
           type: string
       - description: Max number of results to return.
+        example: 15
         in: query
         name: limit
         required: false
         schema:
           default: 15
+          format: int32
           maximum: 15
           minimum: 0
           type: integer
@@ -3830,6 +3832,7 @@ paths:
         example: access.name co "admin"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -3838,8 +3841,10 @@ paths:
           Sorting is supported for the following fields: **access.name, access.type**
 
           By default the recommendations are sorted by highest confidence first.
+        example: access.name
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -3908,9 +3913,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:read
       summary: Identity Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /ai-access-request-recommendations/ignored-items:
     get:
       description: This API returns the list of ignored access request recommendations.
@@ -3967,6 +3977,7 @@ paths:
         example: identityId eq "2c9180846b0a0583016b299f210c1314"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -3976,6 +3987,7 @@ paths:
         example: access.id
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -4044,9 +4056,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List of Ignored Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: List Ignored Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
     post:
       description: "This API ignores a recommended access request item. Once an item\
         \ is ignored, it will be marked as ignored=true if it is still a recommended\
@@ -4122,9 +4139,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Notification of Ignored Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: Ignore Access Request Recommendation
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /ai-access-request-recommendations/requested-items:
     get:
       description: This API returns a list of requested access request recommendations.
@@ -4181,14 +4203,17 @@ paths:
         example: access.id eq "2c9180846b0a0583016b299f210c1314"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**
+        example: access.id
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -4257,9 +4282,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List of Requested Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: List Accepted Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
     post:
       description: "This API consumes a notification that a recommended access request\
         \ item was requested. This API does not actually make the request, it is just\
@@ -4336,9 +4366,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Notification of Requested Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: Accept Access Request Recommendation
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /ai-access-request-recommendations/viewed-items:
     get:
       description: This API returns the list of viewed access request recommendations.
@@ -4395,14 +4430,17 @@ paths:
         example: access.id eq "2c9180846b0a0583016b299f210c1314"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**
+        example: access.id
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -4471,9 +4509,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List of Viewed Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:read
+      summary: List Viewed Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
     post:
       description: This API consumes a notification that a recommended access request
         item was viewed. Future recommendations with this item will be marked with
@@ -4550,9 +4593,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Notification of Viewed Access Request Recommendations
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: Mark Viewed Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /ai-access-request-recommendations/viewed-items/bulk-create:
     post:
       description: This API consumes a notification that a set of recommended access
@@ -4634,9 +4682,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Notification of Viewed Access Request Recommendations in Bulk
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      summary: Bulk Mark Viewed Access Request Recommendations
       tags:
       - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /accounts:
     get:
       description: 'List accounts.  '

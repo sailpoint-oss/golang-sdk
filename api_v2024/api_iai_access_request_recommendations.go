@@ -46,7 +46,7 @@ func (r ApiAddAccessRequestRecommendationsIgnoredItemRequest) Execute() (*Access
 }
 
 /*
-AddAccessRequestRecommendationsIgnoredItem Notification of Ignored Access Request Recommendations
+AddAccessRequestRecommendationsIgnoredItem Ignore Access Request Recommendation
 
 This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
@@ -234,7 +234,7 @@ func (r ApiAddAccessRequestRecommendationsRequestedItemRequest) Execute() (*Acce
 }
 
 /*
-AddAccessRequestRecommendationsRequestedItem Notification of Requested Access Request Recommendations
+AddAccessRequestRecommendationsRequestedItem Accept Access Request Recommendation
 
 This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
@@ -422,7 +422,7 @@ func (r ApiAddAccessRequestRecommendationsViewedItemRequest) Execute() (*AccessR
 }
 
 /*
-AddAccessRequestRecommendationsViewedItem Notification of Viewed Access Request Recommendations
+AddAccessRequestRecommendationsViewedItem Mark Viewed Access Request Recommendations
 
 This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -610,7 +610,7 @@ func (r ApiAddAccessRequestRecommendationsViewedItemsRequest) Execute() ([]Acces
 }
 
 /*
-AddAccessRequestRecommendationsViewedItems Notification of Viewed Access Request Recommendations in Bulk
+AddAccessRequestRecommendationsViewedItems Bulk Mark Viewed Access Request Recommendations
 
 This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -1251,7 +1251,7 @@ func (r ApiGetAccessRequestRecommendationsIgnoredItemsRequest) Execute() ([]Acce
 }
 
 /*
-GetAccessRequestRecommendationsIgnoredItems List of Ignored Access Request Recommendations
+GetAccessRequestRecommendationsIgnoredItems List Ignored Access Request Recommendations
 
 This API returns the list of ignored access request recommendations.
 
@@ -1480,7 +1480,7 @@ func (r ApiGetAccessRequestRecommendationsRequestedItemsRequest) Execute() ([]Ac
 }
 
 /*
-GetAccessRequestRecommendationsRequestedItems List of Requested Access Request Recommendations
+GetAccessRequestRecommendationsRequestedItems List Accepted Access Request Recommendations
 
 This API returns a list of requested access request recommendations.
 
@@ -1709,7 +1709,7 @@ func (r ApiGetAccessRequestRecommendationsViewedItemsRequest) Execute() ([]Acces
 }
 
 /*
-GetAccessRequestRecommendationsViewedItems List of Viewed Access Request Recommendations
+GetAccessRequestRecommendationsViewedItems List Viewed Access Request Recommendations
 
 This API returns the list of viewed access request recommendations.
 
