@@ -38534,6 +38534,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkItems'
           description: The work item with the given ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -38618,6 +38624,13 @@ paths:
         schema:
           type: string
         x-sailpoint-resource-operation-id: listWorkItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              nullable: true
+              type: string
+        description: Body is the request payload to create form definition request
       responses:
         "200":
           content:

@@ -54795,12 +54795,14 @@ paths:
       operationId: getWorkItem
       parameters:
       - description: ID of the work item owner.
+        example: 2c9180835d191a86015d28455b4a2329
         in: query
         name: ownerId
         required: false
         schema:
           type: string
       - description: ID of the work item.
+        example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
         required: true
@@ -54813,8 +54815,8 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/WorkItems'
-                type: array
+                  $ref: ../schemas/WorkItems.yaml
+                type: object
           description: The work item with the given ID.
         "400":
           content:
@@ -54822,6 +54824,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -54858,6 +54867,31 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Get a Work Item
       tags:
       - Work Items
@@ -54874,6 +54908,13 @@ paths:
         schema:
           type: string
         x-sailpoint-resource-operation-id: listWorkItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              nullable: true
+              type: string
+        description: Body is the request payload to create form definition request
       responses:
         "200":
           content:
@@ -54887,6 +54928,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -54923,6 +54971,31 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Complete a Work Item
       tags:
       - Work Items

@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## CompleteWorkItem
 
-> WorkItems CompleteWorkItem(ctx, id).Execute()
+> WorkItems CompleteWorkItem(ctx, id).Body(body).Execute()
 
 Complete a Work Item
 
@@ -185,10 +185,11 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+	body := "body_example" // string | Body is the request payload to create form definition request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
+	resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,6 +215,7 @@ Other parameters are passed through a pointer to a apiCompleteWorkItemRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **body** | **string** | Body is the request payload to create form definition request | 
 
 ### Return type
 
@@ -225,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -509,7 +511,7 @@ Name | Type | Description  | Notes
 
 ## GetWorkItem
 
-> []WorkItems GetWorkItem(ctx, id).OwnerId(ownerId).Execute()
+> map[string]interface{} GetWorkItem(ctx, id).OwnerId(ownerId).Execute()
 
 Get a Work Item
 
@@ -528,8 +530,8 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | ID of the work item.
-	ownerId := "ownerId_example" // string | ID of the work item owner. (optional)
+	id := "2c9180835d191a86015d28455b4a2329" // string | ID of the work item.
+	ownerId := "2c9180835d191a86015d28455b4a2329" // string | ID of the work item owner. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -538,7 +540,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetWorkItem`: []WorkItems
+	// response from `GetWorkItem`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItem`: %v\n", resp)
 }
 ```
@@ -563,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]WorkItems**](WorkItems.md)
+**map[string]interface{}**
 
 ### Authorization
 

@@ -367,6 +367,13 @@ type ApiCompleteWorkItemRequest struct {
 	ctx context.Context
 	ApiService *WorkItemsAPIService
 	id string
+	body *string
+}
+
+// Body is the request payload to create form definition request
+func (r ApiCompleteWorkItemRequest) Body(body string) ApiCompleteWorkItemRequest {
+	r.body = &body
+	return r
 }
 
 func (r ApiCompleteWorkItemRequest) Execute() (*WorkItems, *http.Response, error) {
@@ -413,7 +420,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -429,6 +436,8 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1146,6 +1155,17 @@ func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response

@@ -301,6 +301,13 @@ type ApiCompleteWorkItemRequest struct {
 	ctx context.Context
 	ApiService *WorkItemsAPIService
 	id string
+	body *string
+}
+
+// Body is the request payload to create form definition request
+func (r ApiCompleteWorkItemRequest) Body(body string) ApiCompleteWorkItemRequest {
+	r.body = &body
+	return r
 }
 
 func (r ApiCompleteWorkItemRequest) Execute() (*WorkItems, *http.Response, error) {
@@ -347,7 +354,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -363,6 +370,8 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -396,6 +405,17 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -408,6 +428,28 @@ func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1064,7 +1106,7 @@ func (r ApiGetWorkItemRequest) OwnerId(ownerId string) ApiGetWorkItemRequest {
 	return r
 }
 
-func (r ApiGetWorkItemRequest) Execute() ([]WorkItems, *http.Response, error) {
+func (r ApiGetWorkItemRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetWorkItemExecute(r)
 }
 
@@ -1086,13 +1128,13 @@ func (a *WorkItemsAPIService) GetWorkItem(ctx context.Context, id string) ApiGet
 }
 
 // Execute executes the request
-//  @return []WorkItems
-func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) ([]WorkItems, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []WorkItems
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItem")
@@ -1160,6 +1202,17 @@ func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) ([]Wor
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1172,6 +1225,28 @@ func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) ([]Wor
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
