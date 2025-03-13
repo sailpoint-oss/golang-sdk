@@ -422,6 +422,7 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get Managed Cluster
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Get Managed Clusters
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+*ManagedClustersAPI* | [**Update**](docs/ManagedClustersAPI.md#update) | **Post** /managed-clusters/{id}/manualUpgrade | Trigger Manual Upgrade for Managed Cluster
 *ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update Managed Cluster
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
@@ -990,6 +991,14 @@ Class | Method | HTTP request | Description
  - [ClientLogConfigurationExpiration](docs/ClientLogConfigurationExpiration.md)
  - [ClientType](docs/ClientType.md)
  - [CloseAccessRequest](docs/CloseAccessRequest.md)
+ - [ClusterManualUpgrade](docs/ClusterManualUpgrade.md)
+ - [ClusterManualUpgradeJobsInner](docs/ClusterManualUpgradeJobsInner.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfiguration](docs/ClusterManualUpgradeJobsInnerManagedProcessConfiguration.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg](docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon](docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent](docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay](docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox](docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox.md)
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)

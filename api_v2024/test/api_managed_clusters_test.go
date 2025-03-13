@@ -101,6 +101,20 @@ func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ManagedClustersAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.ManagedClustersAPI.Update(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ManagedClustersAPIService UpdateManagedCluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

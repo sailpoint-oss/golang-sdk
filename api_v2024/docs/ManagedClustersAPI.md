@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get Managed Cluster
 [**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Get Managed Clusters
 [**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+[**Update**](ManagedClustersAPI.md#Update) | **Post** /managed-clusters/{id}/manualUpgrade | Trigger Manual Upgrade for Managed Cluster
 [**UpdateManagedCluster**](ManagedClustersAPI.md#UpdateManagedCluster) | **Patch** /managed-clusters/{id} | Update Managed Cluster
 
 
@@ -427,6 +428,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Update
+
+> ClusterManualUpgrade Update(ctx, id).Execute()
+
+Trigger Manual Upgrade for Managed Cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of managed cluster to trigger manual upgrade.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedClustersAPI.Update(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: ClusterManualUpgrade
+	fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.Update`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of managed cluster to trigger manual upgrade. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterManualUpgrade**](ClusterManualUpgrade.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
