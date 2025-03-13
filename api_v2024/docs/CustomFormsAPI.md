@@ -753,7 +753,7 @@ import (
 
 func main() {
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	body := []openapiclient.ExportFormDefinitionsByTenant200ResponseInner{*openapiclient.NewExportFormDefinitionsByTenant200ResponseInner()} // []ExportFormDefinitionsByTenant200ResponseInner | Body is the request payload to import form definitions (optional)
+	body := []openapiclient.ImportFormDefinitionsRequestInner{*openapiclient.NewImportFormDefinitionsRequestInner()} // []ImportFormDefinitionsRequestInner | Body is the request payload to import form definitions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -779,7 +779,7 @@ Other parameters are passed through a pointer to a apiImportFormDefinitionsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **body** | [**[]ExportFormDefinitionsByTenant200ResponseInner**](ExportFormDefinitionsByTenant200ResponseInner.md) | Body is the request payload to import form definitions | 
+ **body** | [**[]ImportFormDefinitionsRequestInner**](ImportFormDefinitionsRequestInner.md) | Body is the request payload to import form definitions | 
 
 ### Return type
 

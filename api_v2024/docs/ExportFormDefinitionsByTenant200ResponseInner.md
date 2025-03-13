@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Object** | Pointer to [**FormDefinitionResponse**](FormDefinitionResponse.md) |  | [optional] 
-**Self** | Pointer to **string** |  | [optional] 
+**Self** | Pointer to [**ExportFormDefinitionsByTenant200ResponseInnerSelf**](ExportFormDefinitionsByTenant200ResponseInnerSelf.md) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasObject returns a boolean if a field has been set.
 
 ### GetSelf
 
-`func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string`
+`func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() ExportFormDefinitionsByTenant200ResponseInnerSelf`
 
 GetSelf returns the Self field if non-nil, zero value otherwise.
 
 ### GetSelfOk
 
-`func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*string, bool)`
+`func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*ExportFormDefinitionsByTenant200ResponseInnerSelf, bool)`
 
 GetSelfOk returns a tuple with the Self field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSelf
 
-`func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v string)`
+`func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v ExportFormDefinitionsByTenant200ResponseInnerSelf)`
 
 SetSelf sets Self field to given value.
 

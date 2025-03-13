@@ -20,7 +20,7 @@ var _ MappedNullable = &ExportFormDefinitionsByTenant200ResponseInner{}
 // ExportFormDefinitionsByTenant200ResponseInner struct for ExportFormDefinitionsByTenant200ResponseInner
 type ExportFormDefinitionsByTenant200ResponseInner struct {
 	Object *FormDefinitionResponse `json:"object,omitempty"`
-	Self *string `json:"self,omitempty"`
+	Self *ExportFormDefinitionsByTenant200ResponseInnerSelf `json:"self,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -77,9 +77,9 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) SetObject(v FormDefiniti
 }
 
 // GetSelf returns the Self field value if set, zero value otherwise.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string {
+func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() ExportFormDefinitionsByTenant200ResponseInnerSelf {
 	if o == nil || IsNil(o.Self) {
-		var ret string
+		var ret ExportFormDefinitionsByTenant200ResponseInnerSelf
 		return ret
 	}
 	return *o.Self
@@ -87,7 +87,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string {
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*string, bool) {
+func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*ExportFormDefinitionsByTenant200ResponseInnerSelf, bool) {
 	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) HasSelf() bool {
 	return false
 }
 
-// SetSelf gets a reference to the given string and assigns it to the Self field.
-func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v string) {
+// SetSelf gets a reference to the given ExportFormDefinitionsByTenant200ResponseInnerSelf and assigns it to the Self field.
+func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v ExportFormDefinitionsByTenant200ResponseInnerSelf) {
 	o.Self = &v
 }
 

@@ -1989,7 +1989,7 @@ type ApiImportFormDefinitionsRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	xSailPointExperimental *string
-	body *[]ExportFormDefinitionsByTenant200ResponseInner
+	body *[]ImportFormDefinitionsRequestInner
 }
 
 // Use this header to enable this experimental API.
@@ -1999,7 +1999,7 @@ func (r ApiImportFormDefinitionsRequest) XSailPointExperimental(xSailPointExperi
 }
 
 // Body is the request payload to import form definitions
-func (r ApiImportFormDefinitionsRequest) Body(body []ExportFormDefinitionsByTenant200ResponseInner) ApiImportFormDefinitionsRequest {
+func (r ApiImportFormDefinitionsRequest) Body(body []ImportFormDefinitionsRequestInner) ApiImportFormDefinitionsRequest {
 	r.body = &body
 	return r
 }

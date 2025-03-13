@@ -32338,10 +32338,13 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
-      summary: Returns a Recommendation Based on Object
+      - userAuth:
+        - iai:decisions:manage
+      summary: Returns Recommendation Based on Object
       tags:
       - IAI Recommendations
+      x-sailpoint-userLevels:
+      - Any
   /recommendations/config:
     get:
       description: Retrieves configuration attributes used by certification recommendations.
@@ -32384,6 +32387,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -32402,10 +32413,13 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:configuration:read
       summary: Get certification recommendation config values
       tags:
       - IAI Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: Updates configuration attributes used by certification recommendations.
       operationId: updateRecommendationsConfig
@@ -32453,6 +32467,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -32471,10 +32493,13 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:configuration:manage
       summary: Update certification recommendation config values
       tags:
       - IAI Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /requestable-objects:
     get:
       description: |-
@@ -49772,10 +49797,13 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:decisions:manage
       summary: Get Message catalogs
       tags:
       - IAI Message Catalogs
+      x-sailpoint-userLevels:
+      - Any
   /triggers:
     get:
       description: Gets a list of triggers that are available in the tenant.

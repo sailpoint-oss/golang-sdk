@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRecommendations**](IAIRecommendationsAPI.md#GetRecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
+[**GetRecommendations**](IAIRecommendationsAPI.md#GetRecommendations) | **Post** /recommendations/request | Returns Recommendation Based on Object
 [**GetRecommendationsConfig**](IAIRecommendationsAPI.md#GetRecommendationsConfig) | **Get** /recommendations/config | Get certification recommendation config values
 [**UpdateRecommendationsConfig**](IAIRecommendationsAPI.md#UpdateRecommendationsConfig) | **Put** /recommendations/config | Update certification recommendation config values
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > RecommendationResponseDto GetRecommendations(ctx).XSailPointExperimental(xSailPointExperimental).RecommendationRequestDto(recommendationRequestDto).Execute()
 
-Returns a Recommendation Based on Object
+Returns Recommendation Based on Object
 
 
 

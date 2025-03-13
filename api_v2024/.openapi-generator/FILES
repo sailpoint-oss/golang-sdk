@@ -493,6 +493,7 @@ docs/ExceptionCriteriaCriteriaListInner.md
 docs/ExecutionStatus.md
 docs/ExpansionItem.md
 docs/ExportFormDefinitionsByTenant200ResponseInner.md
+docs/ExportFormDefinitionsByTenant200ResponseInnerSelf.md
 docs/ExportOptions.md
 docs/ExportOptions1.md
 docs/ExportPayload.md
@@ -511,6 +512,7 @@ docs/FormDefinitionDynamicSchemaResponse.md
 docs/FormDefinitionFileUploadResponse.md
 docs/FormDefinitionInput.md
 docs/FormDefinitionResponse.md
+docs/FormDefinitionSelfImportExportDto.md
 docs/FormDetails.md
 docs/FormElement.md
 docs/FormElementDataSourceConfigOptions.md
@@ -612,6 +614,7 @@ docs/ImportAccountsRequest.md
 docs/ImportEntitlementsBySourceRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
+docs/ImportFormDefinitionsRequestInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
@@ -1599,6 +1602,7 @@ model_exception_criteria_criteria_list_inner.go
 model_execution_status.go
 model_expansion_item.go
 model_export_form_definitions_by_tenant_200_response_inner.go
+model_export_form_definitions_by_tenant_200_response_inner_self.go
 model_export_options.go
 model_export_options_1.go
 model_export_payload.go
@@ -1617,6 +1621,7 @@ model_form_definition_dynamic_schema_response.go
 model_form_definition_file_upload_response.go
 model_form_definition_input.go
 model_form_definition_response.go
+model_form_definition_self_import_export_dto.go
 model_form_details.go
 model_form_element.go
 model_form_element_data_source_config_options.go
@@ -1705,6 +1710,7 @@ model_import_accounts_request.go
 model_import_entitlements_by_source_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
+model_import_form_definitions_request_inner.go
 model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go

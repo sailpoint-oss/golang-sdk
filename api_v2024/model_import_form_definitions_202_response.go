@@ -20,7 +20,7 @@ var _ MappedNullable = &ImportFormDefinitions202Response{}
 // ImportFormDefinitions202Response struct for ImportFormDefinitions202Response
 type ImportFormDefinitions202Response struct {
 	Errors []ImportFormDefinitions202ResponseErrorsInner `json:"errors,omitempty"`
-	ImportedObjects []ExportFormDefinitionsByTenant200ResponseInner `json:"importedObjects,omitempty"`
+	ImportedObjects []ImportFormDefinitionsRequestInner `json:"importedObjects,omitempty"`
 	Infos []ImportFormDefinitions202ResponseErrorsInner `json:"infos,omitempty"`
 	Warnings []ImportFormDefinitions202ResponseErrorsInner `json:"warnings,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -78,9 +78,9 @@ func (o *ImportFormDefinitions202Response) SetErrors(v []ImportFormDefinitions20
 }
 
 // GetImportedObjects returns the ImportedObjects field value if set, zero value otherwise.
-func (o *ImportFormDefinitions202Response) GetImportedObjects() []ExportFormDefinitionsByTenant200ResponseInner {
+func (o *ImportFormDefinitions202Response) GetImportedObjects() []ImportFormDefinitionsRequestInner {
 	if o == nil || IsNil(o.ImportedObjects) {
-		var ret []ExportFormDefinitionsByTenant200ResponseInner
+		var ret []ImportFormDefinitionsRequestInner
 		return ret
 	}
 	return o.ImportedObjects
@@ -88,7 +88,7 @@ func (o *ImportFormDefinitions202Response) GetImportedObjects() []ExportFormDefi
 
 // GetImportedObjectsOk returns a tuple with the ImportedObjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() ([]ExportFormDefinitionsByTenant200ResponseInner, bool) {
+func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() ([]ImportFormDefinitionsRequestInner, bool) {
 	if o == nil || IsNil(o.ImportedObjects) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *ImportFormDefinitions202Response) HasImportedObjects() bool {
 	return false
 }
 
-// SetImportedObjects gets a reference to the given []ExportFormDefinitionsByTenant200ResponseInner and assigns it to the ImportedObjects field.
-func (o *ImportFormDefinitions202Response) SetImportedObjects(v []ExportFormDefinitionsByTenant200ResponseInner) {
+// SetImportedObjects gets a reference to the given []ImportFormDefinitionsRequestInner and assigns it to the ImportedObjects field.
+func (o *ImportFormDefinitions202Response) SetImportedObjects(v []ImportFormDefinitionsRequestInner) {
 	o.ImportedObjects = v
 }
 

@@ -320,7 +320,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersAPI* | [**ListOutliersContributingFeatureAccessItems**](docs/IAIOutliersAPI.md#listoutlierscontributingfeatureaccessitems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 *IAIOutliersAPI* | [**UnIgnoreIdentityOutliers**](docs/IAIOutliersAPI.md#unignoreidentityoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesAPI* | [**GetPeerGroupOutliers**](docs/IAIPeerGroupStrategiesAPI.md#getpeergroupoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
-*IAIRecommendationsAPI* | [**GetRecommendations**](docs/IAIRecommendationsAPI.md#getrecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
+*IAIRecommendationsAPI* | [**GetRecommendations**](docs/IAIRecommendationsAPI.md#getrecommendations) | **Post** /recommendations/request | Returns Recommendation Based on Object
 *IAIRecommendationsAPI* | [**GetRecommendationsConfig**](docs/IAIRecommendationsAPI.md#getrecommendationsconfig) | **Get** /recommendations/config | Get certification recommendation config values
 *IAIRecommendationsAPI* | [**UpdateRecommendationsConfig**](docs/IAIRecommendationsAPI.md#updaterecommendationsconfig) | **Put** /recommendations/config | Update certification recommendation config values
 *IAIRoleMiningAPI* | [**CreatePotentialRoleProvisionRequest**](docs/IAIRoleMiningAPI.md#createpotentialroleprovisionrequest) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
@@ -1115,6 +1115,7 @@ Class | Method | HTTP request | Description
  - [ExecutionStatus](docs/ExecutionStatus.md)
  - [ExpansionItem](docs/ExpansionItem.md)
  - [ExportFormDefinitionsByTenant200ResponseInner](docs/ExportFormDefinitionsByTenant200ResponseInner.md)
+ - [ExportFormDefinitionsByTenant200ResponseInnerSelf](docs/ExportFormDefinitionsByTenant200ResponseInnerSelf.md)
  - [ExportOptions](docs/ExportOptions.md)
  - [ExportOptions1](docs/ExportOptions1.md)
  - [ExportPayload](docs/ExportPayload.md)
@@ -1133,6 +1134,7 @@ Class | Method | HTTP request | Description
  - [FormDefinitionFileUploadResponse](docs/FormDefinitionFileUploadResponse.md)
  - [FormDefinitionInput](docs/FormDefinitionInput.md)
  - [FormDefinitionResponse](docs/FormDefinitionResponse.md)
+ - [FormDefinitionSelfImportExportDto](docs/FormDefinitionSelfImportExportDto.md)
  - [FormDetails](docs/FormDetails.md)
  - [FormElement](docs/FormElement.md)
  - [FormElementDataSourceConfigOptions](docs/FormElementDataSourceConfigOptions.md)
@@ -1221,6 +1223,7 @@ Class | Method | HTTP request | Description
  - [ImportEntitlementsBySourceRequest](docs/ImportEntitlementsBySourceRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
+ - [ImportFormDefinitionsRequestInner](docs/ImportFormDefinitionsRequestInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](docs/ImportObject.md)
  - [ImportOptions](docs/ImportOptions.md)

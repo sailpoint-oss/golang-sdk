@@ -250,7 +250,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersAPI* | [**ListOutliersContributingFeatureAccessItems**](docs/IAIOutliersAPI.md#listoutlierscontributingfeatureaccessitems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 *IAIOutliersAPI* | [**UnIgnoreIdentityOutliers**](docs/IAIOutliersAPI.md#unignoreidentityoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesAPI* | [**GetPeerGroupOutliers**](docs/IAIPeerGroupStrategiesAPI.md#getpeergroupoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
-*IAIRecommendationsAPI* | [**GetRecommendations**](docs/IAIRecommendationsAPI.md#getrecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
+*IAIRecommendationsAPI* | [**GetRecommendations**](docs/IAIRecommendationsAPI.md#getrecommendations) | **Post** /recommendations/request | Returns Recommendation Based on Object
 *IAIRecommendationsAPI* | [**GetRecommendationsConfig**](docs/IAIRecommendationsAPI.md#getrecommendationsconfig) | **Get** /recommendations/config | Get certification recommendation config values
 *IAIRecommendationsAPI* | [**UpdateRecommendationsConfig**](docs/IAIRecommendationsAPI.md#updaterecommendationsconfig) | **Put** /recommendations/config | Update certification recommendation config values
 *IAIRoleMiningAPI* | [**CreatePotentialRoleProvisionRequest**](docs/IAIRoleMiningAPI.md#createpotentialroleprovisionrequest) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.

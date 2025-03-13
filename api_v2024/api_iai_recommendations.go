@@ -45,7 +45,7 @@ func (r ApiGetRecommendationsRequest) Execute() (*RecommendationResponseDto, *ht
 }
 
 /*
-GetRecommendations Returns a Recommendation Based on Object
+GetRecommendations Returns Recommendation Based on Object
 
 The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
@@ -343,6 +343,17 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsConfigExecute(r ApiGetR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -510,6 +521,17 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigExecute(r ApiU
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

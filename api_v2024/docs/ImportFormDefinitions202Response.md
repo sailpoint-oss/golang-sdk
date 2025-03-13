@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner.md) |  | [optional] 
-**ImportedObjects** | Pointer to [**[]ExportFormDefinitionsByTenant200ResponseInner**](ExportFormDefinitionsByTenant200ResponseInner.md) |  | [optional] 
+**ImportedObjects** | Pointer to [**[]ImportFormDefinitionsRequestInner**](ImportFormDefinitionsRequestInner.md) |  | [optional] 
 **Infos** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner.md) |  | [optional] 
 **Warnings** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasErrors returns a boolean if a field has been set.
 
 ### GetImportedObjects
 
-`func (o *ImportFormDefinitions202Response) GetImportedObjects() []ExportFormDefinitionsByTenant200ResponseInner`
+`func (o *ImportFormDefinitions202Response) GetImportedObjects() []ImportFormDefinitionsRequestInner`
 
 GetImportedObjects returns the ImportedObjects field if non-nil, zero value otherwise.
 
 ### GetImportedObjectsOk
 
-`func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() (*[]ExportFormDefinitionsByTenant200ResponseInner, bool)`
+`func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() (*[]ImportFormDefinitionsRequestInner, bool)`
 
 GetImportedObjectsOk returns a tuple with the ImportedObjects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImportedObjects
 
-`func (o *ImportFormDefinitions202Response) SetImportedObjects(v []ExportFormDefinitionsByTenant200ResponseInner)`
+`func (o *ImportFormDefinitions202Response) SetImportedObjects(v []ImportFormDefinitionsRequestInner)`
 
 SetImportedObjects sets ImportedObjects field to given value.
 
