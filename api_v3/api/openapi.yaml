@@ -54477,6 +54477,12 @@ components:
           type: boolean
         status:
           description: Cluster status
+          enum:
+          - CONFIGURING
+          - FAILED
+          - NO_CLIENTS
+          - NORMAL
+          - WARNING
           example: NORMAL
           type: string
         publicKeyCertificate:
