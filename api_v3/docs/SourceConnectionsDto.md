@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CredentialProfiles** | Pointer to **[]string** | Name of the CredentialProfile attached to this source | [optional] 
 **SourceAttributes** | Pointer to **[]string** | The attributes attached to this source | [optional] 
 **MappingProfiles** | Pointer to **[]string** | The profiles attached to this source | [optional] 
-**DependentCustomTransforms** | Pointer to [**[]Transform**](Transform.md) |  | [optional] 
+**DependentCustomTransforms** | Pointer to [**[]TransformRead**](TransformRead.md) | A list of custom transforms associated with this source. A transform will be considered associated with a source if any attributes of the transform specify the source as the sourceName. | [optional] 
 **DependentApps** | Pointer to [**[]DependantAppConnections**](DependantAppConnections.md) |  | [optional] 
 **MissingDependents** | Pointer to [**[]DependantConnectionsMissingDto**](DependantConnectionsMissingDto.md) |  | [optional] 
 
@@ -133,20 +133,20 @@ HasMappingProfiles returns a boolean if a field has been set.
 
 ### GetDependentCustomTransforms
 
-`func (o *SourceConnectionsDto) GetDependentCustomTransforms() []Transform`
+`func (o *SourceConnectionsDto) GetDependentCustomTransforms() []TransformRead`
 
 GetDependentCustomTransforms returns the DependentCustomTransforms field if non-nil, zero value otherwise.
 
 ### GetDependentCustomTransformsOk
 
-`func (o *SourceConnectionsDto) GetDependentCustomTransformsOk() (*[]Transform, bool)`
+`func (o *SourceConnectionsDto) GetDependentCustomTransformsOk() (*[]TransformRead, bool)`
 
 GetDependentCustomTransformsOk returns a tuple with the DependentCustomTransforms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDependentCustomTransforms
 
-`func (o *SourceConnectionsDto) SetDependentCustomTransforms(v []Transform)`
+`func (o *SourceConnectionsDto) SetDependentCustomTransforms(v []TransformRead)`
 
 SetDependentCustomTransforms sets DependentCustomTransforms field to given value.
 

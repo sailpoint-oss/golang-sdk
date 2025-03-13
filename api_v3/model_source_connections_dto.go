@@ -27,7 +27,8 @@ type SourceConnectionsDto struct {
 	SourceAttributes []string `json:"sourceAttributes,omitempty"`
 	// The profiles attached to this source
 	MappingProfiles []string `json:"mappingProfiles,omitempty"`
-	DependentCustomTransforms []Transform `json:"dependentCustomTransforms,omitempty"`
+	// A list of custom transforms associated with this source. A transform will be considered associated with a source if any attributes of the transform specify the source as the sourceName.
+	DependentCustomTransforms []TransformRead `json:"dependentCustomTransforms,omitempty"`
 	DependentApps []DependantAppConnections `json:"dependentApps,omitempty"`
 	MissingDependents []DependantConnectionsMissingDto `json:"missingDependents,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -181,9 +182,9 @@ func (o *SourceConnectionsDto) SetMappingProfiles(v []string) {
 }
 
 // GetDependentCustomTransforms returns the DependentCustomTransforms field value if set, zero value otherwise.
-func (o *SourceConnectionsDto) GetDependentCustomTransforms() []Transform {
+func (o *SourceConnectionsDto) GetDependentCustomTransforms() []TransformRead {
 	if o == nil || IsNil(o.DependentCustomTransforms) {
-		var ret []Transform
+		var ret []TransformRead
 		return ret
 	}
 	return o.DependentCustomTransforms
@@ -191,7 +192,7 @@ func (o *SourceConnectionsDto) GetDependentCustomTransforms() []Transform {
 
 // GetDependentCustomTransformsOk returns a tuple with the DependentCustomTransforms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceConnectionsDto) GetDependentCustomTransformsOk() ([]Transform, bool) {
+func (o *SourceConnectionsDto) GetDependentCustomTransformsOk() ([]TransformRead, bool) {
 	if o == nil || IsNil(o.DependentCustomTransforms) {
 		return nil, false
 	}
@@ -207,8 +208,8 @@ func (o *SourceConnectionsDto) HasDependentCustomTransforms() bool {
 	return false
 }
 
-// SetDependentCustomTransforms gets a reference to the given []Transform and assigns it to the DependentCustomTransforms field.
-func (o *SourceConnectionsDto) SetDependentCustomTransforms(v []Transform) {
+// SetDependentCustomTransforms gets a reference to the given []TransformRead and assigns it to the DependentCustomTransforms field.
+func (o *SourceConnectionsDto) SetDependentCustomTransforms(v []TransformRead) {
 	o.DependentCustomTransforms = v
 }
 

@@ -1707,7 +1707,7 @@ func (a *SourcesAPIService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *h
 type ApiGetSourceConnectionsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiGetSourceConnectionsRequest) Execute() (*SourceConnectionsDto, *http.Response, error) {
@@ -1720,14 +1720,14 @@ GetSourceConnections Get Source Connections by ID
 Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source ID.
+ @param sourceId Source ID.
  @return ApiGetSourceConnectionsRequest
 */
-func (a *SourcesAPIService) GetSourceConnections(ctx context.Context, id string) ApiGetSourceConnectionsRequest {
+func (a *SourcesAPIService) GetSourceConnections(ctx context.Context, sourceId string) ApiGetSourceConnectionsRequest {
 	return ApiGetSourceConnectionsRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -1747,7 +1747,7 @@ func (a *SourcesAPIService) GetSourceConnectionsExecute(r ApiGetSourceConnection
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/connections"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

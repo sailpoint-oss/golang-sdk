@@ -624,6 +624,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSource**](docs/SourcesAPI.md#getsource) | **Get** /sources/{id} | Get Source by ID
 *SourcesAPI* | [**GetSourceAttrSyncConfig**](docs/SourcesAPI.md#getsourceattrsyncconfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesAPI* | [**GetSourceConfig**](docs/SourcesAPI.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+*SourcesAPI* | [**GetSourceConnections**](docs/SourcesAPI.md#getsourceconnections) | **Get** /sources/{sourceId}/connections | Get Source Connections by ID
 *SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesAPI* | [**GetSourceHealth**](docs/SourcesAPI.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 *SourcesAPI* | [**GetSourceSchedule**](docs/SourcesAPI.md#getsourceschedule) | **Get** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
@@ -1068,6 +1069,10 @@ Class | Method | HTTP request | Description
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DependantAppConnections](docs/DependantAppConnections.md)
+ - [DependantAppConnectionsAccountSource](docs/DependantAppConnectionsAccountSource.md)
+ - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
+ - [DependantConnectionsMissingDto](docs/DependantConnectionsMissingDto.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeployResponse](docs/DeployResponse.md)
  - [Dimension](docs/Dimension.md)
@@ -1219,6 +1224,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileExportedObject](docs/IdentityProfileExportedObject.md)
  - [IdentityProfileExportedObjectSelf](docs/IdentityProfileExportedObjectSelf.md)
  - [IdentityProfileIdentityErrorReportArguments](docs/IdentityProfileIdentityErrorReportArguments.md)
+ - [IdentityProfilesConnections](docs/IdentityProfilesConnections.md)
  - [IdentityReference](docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySnapshotSummaryResponse](docs/IdentitySnapshotSummaryResponse.md)
@@ -1650,6 +1656,7 @@ Class | Method | HTTP request | Description
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceCode](docs/SourceCode.md)
+ - [SourceConnectionsDto](docs/SourceConnectionsDto.md)
  - [SourceCreated](docs/SourceCreated.md)
  - [SourceCreatedActor](docs/SourceCreatedActor.md)
  - [SourceDeleted](docs/SourceDeleted.md)

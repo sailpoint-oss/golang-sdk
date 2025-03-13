@@ -163,9 +163,9 @@ func Test_api_v3_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesAPI.GetSourceConnections(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceConnections(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

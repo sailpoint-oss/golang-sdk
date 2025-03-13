@@ -36427,7 +36427,7 @@ paths:
       - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
-        name: id
+        name: sourceId
         required: true
         schema:
           type: string
@@ -58703,12 +58703,18 @@ components:
           enabled: true
           matchAllAccount: true
         dependentCustomTransforms:
-        - name: Timestamp To Date
-          attributes: "{}"
-          type: dateFormat
-        - name: Timestamp To Date
-          attributes: "{}"
-          type: dateFormat
+        - id: 61190eae-290b-4335-aeb8-7335f1fd99cb
+          name: Split Transform
+          type: split
+          attributes:
+            delimiter: "-"
+            index: 1
+            input:
+              attributes:
+                sourceName: Example CSV Source
+                attributeName: last_name
+              type: accountAttribute
+          internal: false
         mappingProfiles:
         - ODS-AD-Profile
         - ODS-Profile2
@@ -58755,8 +58761,24 @@ components:
             type: string
           type: array
         dependentCustomTransforms:
+          description: A list of custom transforms associated with this source. A
+            transform will be considered associated with a source if any attributes
+            of the transform specify the source as the sourceName.
+          example:
+          - id: 61190eae-290b-4335-aeb8-7335f1fd99cb
+            name: Split Transform
+            type: split
+            attributes:
+              delimiter: "-"
+              index: 1
+              input:
+                attributes:
+                  sourceName: Example CSV Source
+                  attributeName: last_name
+                type: accountAttribute
+            internal: false
           items:
-            $ref: '#/components/schemas/Transform'
+            $ref: '#/components/schemas/TransformRead'
           type: array
         dependentApps:
           items:

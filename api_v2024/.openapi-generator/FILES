@@ -443,6 +443,10 @@ docs/DataSegmentationAPI.md
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DeleteVendorConnectorMapping200Response.md
+docs/DependantAppConnections.md
+docs/DependantAppConnectionsAccountSource.md
+docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
+docs/DependantConnectionsMissingDto.md
 docs/DeployRequest.md
 docs/DeployResponse.md
 docs/Dimension.md
@@ -609,6 +613,7 @@ docs/IdentityProfileExportedObject.md
 docs/IdentityProfileExportedObjectSelf.md
 docs/IdentityProfileIdentityErrorReportArguments.md
 docs/IdentityProfilesAPI.md
+docs/IdentityProfilesConnections.md
 docs/IdentityReference.md
 docs/IdentityReferenceWithNameAndEmail.md
 docs/IdentitySnapshotSummaryResponse.md
@@ -1072,6 +1077,7 @@ docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
 docs/SourceCode.md
+docs/SourceConnectionsDto.md
 docs/SourceCreated.md
 docs/SourceCreatedActor.md
 docs/SourceDeleted.md
@@ -1562,6 +1568,10 @@ model_data_segment.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
 model_delete_vendor_connector_mapping_200_response.go
+model_dependant_app_connections.go
+model_dependant_app_connections_account_source.go
+model_dependant_app_connections_account_source_password_policies_inner.go
+model_dependant_connections_missing_dto.go
 model_deploy_request.go
 model_deploy_response.go
 model_dimension.go
@@ -1713,6 +1723,7 @@ model_identity_profile_all_of_owner.go
 model_identity_profile_exported_object.go
 model_identity_profile_exported_object_self.go
 model_identity_profile_identity_error_report_arguments.go
+model_identity_profiles_connections.go
 model_identity_reference.go
 model_identity_reference_with_name_and_email.go
 model_identity_snapshot_summary_response.go
@@ -2144,6 +2155,7 @@ model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
 model_source_code.go
+model_source_connections_dto.go
 model_source_created.go
 model_source_created_actor.go
 model_source_deleted.go

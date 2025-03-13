@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceAttrSyncConfig**](SourcesAPI.md#GetSourceAttrSyncConfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 [**GetSourceConfig**](SourcesAPI.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+[**GetSourceConnections**](SourcesAPI.md#GetSourceConnections) | **Get** /sources/{sourceId}/connections | Get Source Connections by ID
 [**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**GetSourceHealth**](SourcesAPI.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 [**GetSourceSchedule**](SourcesAPI.md#GetSourceSchedule) | **Get** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
@@ -1315,6 +1316,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConnectorDetail**](ConnectorDetail.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSourceConnections
+
+> SourceConnectionsDto GetSourceConnections(ctx, sourceId).Execute()
+
+Get Source Connections by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.GetSourceConnections(context.Background(), sourceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConnections``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSourceConnections`: SourceConnectionsDto
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceConnections`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceConnectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SourceConnectionsDto**](SourceConnectionsDto.md)
 
 ### Authorization
 

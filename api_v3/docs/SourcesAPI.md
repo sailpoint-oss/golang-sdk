@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceConnections
 
-> SourceConnectionsDto GetSourceConnections(ctx, id).Execute()
+> SourceConnectionsDto GetSourceConnections(ctx, sourceId).Execute()
 
 Get Source Connections by ID
 
@@ -757,11 +757,11 @@ import (
 )
 
 func main() {
-	id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceConnections(context.Background(), id).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceConnections(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConnections``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -777,7 +777,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Source ID. | 
+**sourceId** | **string** | Source ID. | 
 
 ### Other Parameters
 
