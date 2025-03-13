@@ -17,7 +17,7 @@ import (
 // checks if the SavedSearchCompleteSearchResults type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SavedSearchCompleteSearchResults{}
 
-// SavedSearchCompleteSearchResults A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
+// SavedSearchCompleteSearchResults Preview of the search results for each object type. This includes a count as well as headers and the first several rows of data, per object type.
 type SavedSearchCompleteSearchResults struct {
 	Account NullableSavedSearchCompleteSearchResultsAccount `json:"Account,omitempty"`
 	Entitlement NullableSavedSearchCompleteSearchResultsEntitlement `json:"Entitlement,omitempty"`

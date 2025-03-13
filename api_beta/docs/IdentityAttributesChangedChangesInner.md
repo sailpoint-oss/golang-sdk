@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attribute** | **string** | The name of the identity attribute that changed. | 
+**Attribute** | **string** | Identity attribute&#39;s name. | 
 **OldValue** | Pointer to [**NullableIdentityAttributesChangedChangesInnerOldValue**](IdentityAttributesChangedChangesInnerOldValue.md) |  | [optional] 
 **NewValue** | Pointer to [**IdentityAttributesChangedChangesInnerNewValue**](IdentityAttributesChangedChangesInnerNewValue.md) |  | [optional] 
 

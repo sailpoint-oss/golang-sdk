@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the identity. | 
-**DisplayName** | **string** | The human friendly name of the identity. | 
-**Email** | **string** | The primary email address of the identity. | 
+**Id** | **string** | Identity&#39;s unique ID. | 
+**DisplayName** | **string** | Identity&#39;s name. | 
+**Email** | **string** | Identity&#39;s primary email address. | 
 
 ## Methods
 

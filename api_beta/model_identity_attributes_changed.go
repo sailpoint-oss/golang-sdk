@@ -21,7 +21,7 @@ var _ MappedNullable = &IdentityAttributesChanged{}
 // IdentityAttributesChanged struct for IdentityAttributesChanged
 type IdentityAttributesChanged struct {
 	Identity IdentityAttributesChangedIdentity `json:"identity"`
-	// A list of one or more identity attributes that changed on the identity.
+	// List of identity's attributes that changed.
 	Changes []IdentityAttributesChangedChangesInner `json:"changes"`
 	AdditionalProperties map[string]interface{}
 }

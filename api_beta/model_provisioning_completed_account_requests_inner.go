@@ -21,17 +21,17 @@ var _ MappedNullable = &ProvisioningCompletedAccountRequestsInner{}
 // ProvisioningCompletedAccountRequestsInner struct for ProvisioningCompletedAccountRequestsInner
 type ProvisioningCompletedAccountRequestsInner struct {
 	Source ProvisioningCompletedAccountRequestsInnerSource `json:"source"`
-	// The unique idenfier of the account being provisioned.
+	// Unique idenfier of the account being provisioned.
 	AccountId *string `json:"accountId,omitempty"`
-	// The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.
+	// Provisioning operation.
 	AccountOperation string `json:"accountOperation"`
-	// The overall result of the provisioning transaction; this could be success, pending, failed, etc.
+	// Overall result of the provisioning transaction.
 	ProvisioningResult map[string]interface{} `json:"provisioningResult"`
-	// The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).
+	// Nme of the selected provisioning channel selected. This could be the same as the source, or it could be a Service Desk Integration Module (SDIM).
 	ProvisioningTarget string `json:"provisioningTarget"`
-	// A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).
+	// Reference to a tracking number for if this is sent to a SDIM.
 	TicketId NullableString `json:"ticketId,omitempty"`
-	// A list of attributes as part of the provisioning transaction.
+	// List of attributes to include in the provisioning transaction.
 	AttributeRequests []ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner `json:"attributeRequests,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

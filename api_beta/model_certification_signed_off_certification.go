@@ -19,37 +19,37 @@ import (
 // checks if the CertificationSignedOffCertification type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CertificationSignedOffCertification{}
 
-// CertificationSignedOffCertification The certification campaign that was signed off on.
+// CertificationSignedOffCertification Certification campaign that was signed off on.
 type CertificationSignedOffCertification struct {
-	// Unique ID of the certification.
+	// Certification's unique ID.
 	Id string `json:"id"`
-	// The name of the certification.
+	// Certification's name.
 	Name string `json:"name"`
-	// The date and time the certification was created.
+	// Date and time when the certification was created.
 	Created SailPointTime `json:"created"`
-	// The date and time the certification was last modified.
+	// Date and time when the certification was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	CampaignRef CampaignReference `json:"campaignRef"`
 	Phase CertificationPhase `json:"phase"`
-	// The due date of the certification.
+	// Date and time when the certification is due.
 	Due SailPointTime `json:"due"`
-	// The date the reviewer signed off on the certification.
+	// Date and time when the reviewer signed off on the certification.
 	Signed SailPointTime `json:"signed"`
 	Reviewer Reviewer `json:"reviewer"`
 	Reassignment *Reassignment `json:"reassignment,omitempty"`
-	// Indicates it the certification has any errors.
+	// Indicates whether the certification has any errors.
 	HasErrors bool `json:"hasErrors"`
-	// A message indicating what the error is.
+	// Message indicating what the error is.
 	ErrorMessage NullableString `json:"errorMessage,omitempty"`
-	// Indicates if all certification decisions have been made.
+	// Indicates whether all certification decisions have been made.
 	Completed bool `json:"completed"`
-	// The number of approve/revoke/acknowledge decisions that have been made by the reviewer.
+	// Number of approve/revoke/acknowledge decisions the reviewer has made.
 	DecisionsMade int32 `json:"decisionsMade"`
-	// The total number of approve/revoke/acknowledge decisions for the certification.
+	// Total number of approve/revoke/acknowledge decisions for the certification.
 	DecisionsTotal int32 `json:"decisionsTotal"`
-	// The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete.
+	// Number of entities (identities, access profiles, roles, etc.) that are complete and all decisions have been made for.
 	EntitiesCompleted int32 `json:"entitiesCompleted"`
-	// The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.
+	// Total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.
 	EntitiesTotal int32 `json:"entitiesTotal"`
 	AdditionalProperties map[string]interface{}
 }

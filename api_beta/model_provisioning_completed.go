@@ -20,19 +20,19 @@ var _ MappedNullable = &ProvisioningCompleted{}
 
 // ProvisioningCompleted struct for ProvisioningCompleted
 type ProvisioningCompleted struct {
-	// The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface.
+	// Provisioning request's reference number. Useful for tracking status in the 'Account Activity' search interface.
 	TrackingNumber string `json:"trackingNumber"`
-	// One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated.
+	// Sources the provisioning transactions were performed on. Sources are comma separated.
 	Sources string `json:"sources"`
-	// Origin of where the provisioning request came from.
+	// Origin of the provisioning request.
 	Action NullableString `json:"action,omitempty"`
-	// A list of any accumulated error messages that occurred during provisioning.
+	// List of any accumulated error messages that occurred during provisioning.
 	Errors []string `json:"errors,omitempty"`
-	// A list of any accumulated warning messages that occurred during provisioning.
+	// List of any accumulated warning messages that occurred during provisioning.
 	Warnings []string `json:"warnings,omitempty"`
 	Recipient ProvisioningCompletedRecipient `json:"recipient"`
 	Requester NullableProvisioningCompletedRequester `json:"requester,omitempty"`
-	// A list of provisioning instructions to perform on an account-by-account basis.
+	// List of provisioning instructions to perform on an account-by-account basis.
 	AccountRequests []ProvisioningCompletedAccountRequestsInner `json:"accountRequests"`
 	AdditionalProperties map[string]interface{}
 }

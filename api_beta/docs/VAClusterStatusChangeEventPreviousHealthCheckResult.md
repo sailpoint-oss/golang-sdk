@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** | Detailed message of the result of the health check. | 
-**ResultType** | **string** | The type of the health check result. | 
-**Status** | **map[string]interface{}** | The status of the health check. | 
+**Message** | **string** | Detailed message of the health check result. | 
+**ResultType** | **string** | Health check result type. | 
+**Status** | **string** | Health check status. | 
 
 ## Methods
 
 ### NewVAClusterStatusChangeEventPreviousHealthCheckResult
 
-`func NewVAClusterStatusChangeEventPreviousHealthCheckResult(message string, resultType string, status map[string]interface{}, ) *VAClusterStatusChangeEventPreviousHealthCheckResult`
+`func NewVAClusterStatusChangeEventPreviousHealthCheckResult(message string, resultType string, status string, ) *VAClusterStatusChangeEventPreviousHealthCheckResult`
 
 NewVAClusterStatusChangeEventPreviousHealthCheckResult instantiates a new VAClusterStatusChangeEventPreviousHealthCheckResult object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetResultType sets ResultType field to given value.
 
 ### GetStatus
 
-`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) GetStatus() map[string]interface{}`
+`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) GetStatusOk() (*map[string]interface{}, bool)`
+`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) SetStatus(v map[string]interface{})`
+`func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 

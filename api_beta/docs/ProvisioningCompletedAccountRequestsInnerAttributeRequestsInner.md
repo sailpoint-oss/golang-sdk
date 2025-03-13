@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeName** | **string** | The name of the attribute being provisioned. | 
-**AttributeValue** | Pointer to **NullableString** | The value of the attribute being provisioned. | [optional] 
-**Operation** | **map[string]interface{}** | The operation to handle the attribute. | 
+**AttributeName** | **string** | Name of the attribute being provisioned. | 
+**AttributeValue** | Pointer to **NullableString** | Value of the attribute being provisioned. | [optional] 
+**Operation** | **string** | The operation to handle the attribute. | 
 
 ## Methods
 
 ### NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 
-`func NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(attributeName string, operation map[string]interface{}, ) *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner`
+`func NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(attributeName string, operation string, ) *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner`
 
 NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner instantiates a new ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner object
 This constructor will assign default values to properties that have it defined,
@@ -84,20 +84,20 @@ HasAttributeValue returns a boolean if a field has been set.
 UnsetAttributeValue ensures that no value is present for AttributeValue, not even an explicit nil
 ### GetOperation
 
-`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperation() map[string]interface{}`
+`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperation() string`
 
 GetOperation returns the Operation field if non-nil, zero value otherwise.
 
 ### GetOperationOk
 
-`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperationOk() (*map[string]interface{}, bool)`
+`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperationOk() (*string, bool)`
 
 GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperation
 
-`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) SetOperation(v map[string]interface{})`
+`func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
 

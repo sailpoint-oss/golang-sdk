@@ -24,7 +24,7 @@ type IdentityDeletedIdentity struct {
 	Type string `json:"type"`
 	// Deleted identity ID.
 	Id string `json:"id"`
-	// Deleted identity's display name.
+	// Deleted identity's name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

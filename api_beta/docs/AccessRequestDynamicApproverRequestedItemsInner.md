@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the access item. | 
-**Name** | **string** | Human friendly name of the access item. | 
-**Description** | Pointer to **NullableString** | Extended description of the access item. | [optional] 
-**Type** | **map[string]interface{}** | The type of access item being requested. | 
-**Operation** | **map[string]interface{}** | Grant or revoke the access item | 
-**Comment** | Pointer to **NullableString** | A comment from the requestor on why the access is needed. | [optional] 
+**Id** | **string** | Access item&#39;s unique identifier. | 
+**Name** | **string** | Access item&#39;s name. | 
+**Description** | Pointer to **NullableString** | Access item&#39;s extended description. | [optional] 
+**Type** | **map[string]interface{}** | Type of access item being requested. | 
+**Operation** | **map[string]interface{}** | Action to perform on the requested access item. | 
+**Comment** | Pointer to **NullableString** | Comment from the requester about why the access is necessary. | [optional] 
 
 ## Methods
 

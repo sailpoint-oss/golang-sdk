@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The DTO type of the source the accounts are being aggregated from. | 
-**Id** | **string** | The ID of the source the accounts are being aggregated from. | 
-**Name** | **string** | Display name of the source the accounts are being aggregated from. | 
+**Type** | **string** | Source&#39;s DTO type. | 
+**Id** | **string** | Source&#39;s unique ID. | 
+**Name** | **string** | Source&#39;s name. | 
 
 ## Methods
 

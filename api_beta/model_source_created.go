@@ -21,15 +21,15 @@ var _ MappedNullable = &SourceCreated{}
 
 // SourceCreated struct for SourceCreated
 type SourceCreated struct {
-	// The unique ID of the source.
+	// Source's unique ID.
 	Id string `json:"id"`
-	// Human friendly name of the source.
+	// Source name.
 	Name string `json:"name"`
-	// The connection type.
+	// Connection type.
 	Type string `json:"type"`
-	// The date and time the source was created.
+	// Date and time when the source was created.
 	Created SailPointTime `json:"created"`
-	// The connector type used to connect to the source.
+	// Connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceCreatedActor `json:"actor"`
 	AdditionalProperties map[string]interface{}

@@ -24,7 +24,7 @@ type ProvisioningCompletedRecipient struct {
 	Type string `json:"type"`
 	// Provisioning recipient's identity ID.
 	Id string `json:"id"`
-	// Provisioning recipient's display name.
+	// Provisioning recipient's name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

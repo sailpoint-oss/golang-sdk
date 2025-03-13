@@ -17,13 +17,13 @@ import (
 // checks if the AccessItemApproverDto type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessItemApproverDto{}
 
-// AccessItemApproverDto Identity who approved the access item request.
+// AccessItemApproverDto struct for AccessItemApproverDto
 type AccessItemApproverDto struct {
-	// DTO type of identity who approved the access item request.
+	// DTO type of the identity who approved the access item request.
 	Type *string `json:"type,omitempty"`
-	// ID of identity who approved the access item request.
+	// ID of the identity who approved the access item request.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of identity who approved the access item request.
+	// Name of the identity who approved the access item request.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

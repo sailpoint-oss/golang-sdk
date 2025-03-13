@@ -20,15 +20,15 @@ var _ MappedNullable = &AccountAggregationCompletedStats{}
 
 // AccountAggregationCompletedStats Overall statistics about the account aggregation.
 type AccountAggregationCompletedStats struct {
-	// The number of accounts which were scanned / iterated over.
+	// Number of accounts scanned/iterated over.
 	Scanned int32 `json:"scanned"`
-	// The number of accounts which existed before, but had no changes.
+	// Number of accounts that existed before but had no changes.
 	Unchanged int32 `json:"unchanged"`
-	// The number of accounts which existed before, but had changes.
+	// Number of accounts that existed before but had changes.
 	Changed int32 `json:"changed"`
-	// The number of accounts which are new - have not existed before.
+	// Number of accounts that are new and didn't previously exist.
 	Added int32 `json:"added"`
-	// The number accounts which existed before, but no longer exist (thus getting removed).
+	// Number accounts that existed before but were removed and no longer exist.
 	Removed int32 `json:"removed"`
 	AdditionalProperties map[string]interface{}
 }

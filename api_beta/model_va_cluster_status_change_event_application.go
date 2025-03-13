@@ -18,13 +18,13 @@ import (
 // checks if the VAClusterStatusChangeEventApplication type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &VAClusterStatusChangeEventApplication{}
 
-// VAClusterStatusChangeEventApplication Details about the `CLUSTER` or `SOURCE` that initiated this event.
+// VAClusterStatusChangeEventApplication Details about the `CLUSTER` or `SOURCE` that initiated the event.
 type VAClusterStatusChangeEventApplication struct {
-	// The GUID of the application
+	// Application's globally unique identifier (GUID).
 	Id string `json:"id"`
-	// The name of the application
+	// Application name.
 	Name string `json:"name"`
-	// Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy.
+	// Custom map of attributes for a source. Attributes only populate if the type is `SOURCE` and the source has a proxy.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }

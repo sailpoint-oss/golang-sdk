@@ -18,13 +18,13 @@ import (
 // checks if the AccountAggregationCompletedSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountAggregationCompletedSource{}
 
-// AccountAggregationCompletedSource The source the accounts are being aggregated from.
+// AccountAggregationCompletedSource Source ISC is aggregating accounts from.
 type AccountAggregationCompletedSource struct {
-	// The DTO type of the source the accounts are being aggregated from.
+	// Source's DTO type.
 	Type string `json:"type"`
-	// The ID of the source the accounts are being aggregated from.
+	// Source's unique ID.
 	Id string `json:"id"`
-	// Display name of the source the accounts are being aggregated from.
+	// Source's name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

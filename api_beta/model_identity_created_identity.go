@@ -20,11 +20,11 @@ var _ MappedNullable = &IdentityCreatedIdentity{}
 
 // IdentityCreatedIdentity Created identity.
 type IdentityCreatedIdentity struct {
-	// Created identity's DTO type.
+	// Identity's DTO type.
 	Type string `json:"type"`
-	// Created identity ID.
+	// Identity's unique ID.
 	Id string `json:"id"`
-	// Created identity's display name.
+	// Identity's name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

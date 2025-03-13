@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of identity who updated the source. | 
-**Id** | Pointer to **string** | ID of identity who updated the source. | [optional] 
-**Name** | **string** | Display name of identity who updated the source. | 
+**Type** | **string** | DTO type of the identity who updated the source. | 
+**Id** | **string** | ID of the identity who updated the source. | 
+**Name** | **string** | Name of the identity who updated the source. | 
 
 ## Methods
 
 ### NewSourceUpdatedActor
 
-`func NewSourceUpdatedActor(type_ string, name string, ) *SourceUpdatedActor`
+`func NewSourceUpdatedActor(type_ string, id string, name string, ) *SourceUpdatedActor`
 
 NewSourceUpdatedActor instantiates a new SourceUpdatedActor object
 This constructor will assign default values to properties that have it defined,
@@ -66,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *SourceUpdatedActor) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 

@@ -24,7 +24,7 @@ type IdentityAttributesChangedIdentity struct {
 	Type string `json:"type"`
 	// ID of identity whose attributes changed.
 	Id string `json:"id"`
-	// Display name of identity whose attributes changed.
+	// Name of identity whose attributes changed.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

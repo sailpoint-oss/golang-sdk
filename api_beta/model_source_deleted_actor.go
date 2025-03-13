@@ -20,11 +20,11 @@ var _ MappedNullable = &SourceDeletedActor{}
 
 // SourceDeletedActor Identity who deleted the source.
 type SourceDeletedActor struct {
-	// DTO type of identity who deleted the source.
+	// DTO type of the identity who deleted the source.
 	Type string `json:"type"`
-	// ID of identity who deleted the source.
+	// ID of the identity who deleted the source.
 	Id string `json:"id"`
-	// Display name of identity who deleted the source.
+	// Name of the identity who deleted the source.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Deleted identity&#39;s DTO type. | 
 **Id** | **string** | Deleted identity ID. | 
-**Name** | **string** | Deleted identity&#39;s display name. | 
+**Name** | **string** | Deleted identity&#39;s name. | 
 
 ## Methods
 

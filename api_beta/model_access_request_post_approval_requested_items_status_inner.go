@@ -20,21 +20,21 @@ var _ MappedNullable = &AccessRequestPostApprovalRequestedItemsStatusInner{}
 
 // AccessRequestPostApprovalRequestedItemsStatusInner struct for AccessRequestPostApprovalRequestedItemsStatusInner
 type AccessRequestPostApprovalRequestedItemsStatusInner struct {
-	// The unique ID of the access item being requested.
+	// Access item's unique ID.
 	Id string `json:"id"`
-	// The human friendly name of the access item.
+	// Access item's name.
 	Name string `json:"name"`
-	// Detailed description of the access item.
+	// Access item's description.
 	Description NullableString `json:"description,omitempty"`
-	// The type of access item.
+	// Access item's type.
 	Type map[string]interface{} `json:"type"`
-	// The action to perform on the access item.
+	// Action to perform on the requested access item.
 	Operation map[string]interface{} `json:"operation"`
-	// A comment from the identity requesting the access.
+	// Comment from the identity requesting access.
 	Comment NullableString `json:"comment,omitempty"`
 	// Additional customer defined metadata about the access item.
 	ClientMetadata map[string]interface{} `json:"clientMetadata,omitempty"`
-	// A list of one or more approvers for the access request.
+	// List of approvers for the access request.
 	ApprovalInfo []AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner `json:"approvalInfo"`
 	AdditionalProperties map[string]interface{}
 }

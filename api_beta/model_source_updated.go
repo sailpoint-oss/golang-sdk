@@ -21,15 +21,15 @@ var _ MappedNullable = &SourceUpdated{}
 
 // SourceUpdated struct for SourceUpdated
 type SourceUpdated struct {
-	// The unique ID of the source.
+	// Source's unique ID.
 	Id string `json:"id"`
-	// The user friendly name of the source.
+	// Source name.
 	Name string `json:"name"`
-	// The connection type of the source.
+	// Connection type.
 	Type string `json:"type"`
-	// The date and time the source was modified.
+	// Date and time when the source was modified.
 	Modified SailPointTime `json:"modified"`
-	// The connector type used to connect to the source.
+	// Connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceUpdatedActor `json:"actor"`
 	AdditionalProperties map[string]interface{}

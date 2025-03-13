@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Source** | [**ProvisioningCompletedAccountRequestsInnerSource**](ProvisioningCompletedAccountRequestsInnerSource.md) |  | 
-**AccountId** | Pointer to **string** | The unique idenfier of the account being provisioned. | [optional] 
-**AccountOperation** | **string** | The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete. | 
-**ProvisioningResult** | **map[string]interface{}** | The overall result of the provisioning transaction; this could be success, pending, failed, etc. | 
-**ProvisioningTarget** | **string** | The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM). | 
-**TicketId** | Pointer to **NullableString** | A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM). | [optional] 
-**AttributeRequests** | Pointer to [**[]ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner**](ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md) | A list of attributes as part of the provisioning transaction. | [optional] 
+**AccountId** | Pointer to **string** | Unique idenfier of the account being provisioned. | [optional] 
+**AccountOperation** | **string** | Provisioning operation. | 
+**ProvisioningResult** | **map[string]interface{}** | Overall result of the provisioning transaction. | 
+**ProvisioningTarget** | **string** | Nme of the selected provisioning channel selected. This could be the same as the source, or it could be a Service Desk Integration Module (SDIM). | 
+**TicketId** | Pointer to **NullableString** | Reference to a tracking number for if this is sent to a SDIM. | [optional] 
+**AttributeRequests** | Pointer to [**[]ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner**](ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md) | List of attributes to include in the provisioning transaction. | [optional] 
 
 ## Methods
 

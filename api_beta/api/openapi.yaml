@@ -68413,12 +68413,12 @@ components:
         phase:
           $ref: '#/components/schemas/CertificationPhase'
         due:
-          description: The due date of the certification.
+          description: Date and time when the certification is due.
           example: 2018-10-19T13:49:37.385Z
           format: date-time
           type: string
         signed:
-          description: The date the reviewer signed off on the certification.
+          description: Date and time when the reviewer signed off on the certification.
           example: 2018-10-19T13:49:37.385Z
           format: date-time
           type: string
@@ -68427,39 +68427,39 @@ components:
         reassignment:
           $ref: '#/components/schemas/Reassignment'
         hasErrors:
-          description: Indicates it the certification has any errors.
+          description: Indicates whether the certification has any errors.
           example: false
           type: boolean
         errorMessage:
-          description: A message indicating what the error is.
+          description: Message indicating what the error is.
           example: The certification has an error
           nullable: true
           type: string
         completed:
-          description: Indicates if all certification decisions have been made.
+          description: Indicates whether all certification decisions have been made.
           example: false
           type: boolean
         decisionsMade:
-          description: The number of approve/revoke/acknowledge decisions that have
-            been made by the reviewer.
+          description: Number of approve/revoke/acknowledge decisions the reviewer
+            has made.
           example: 20
           format: int32
           type: integer
         decisionsTotal:
-          description: The total number of approve/revoke/acknowledge decisions for
-            the certification.
+          description: Total number of approve/revoke/acknowledge decisions for the
+            certification.
           example: 40
           format: int32
           type: integer
         entitiesCompleted:
-          description: "The number of entities (identities, access profiles, roles,\
-            \ etc.) for which all decisions have been made and are complete."
+          description: "Number of entities (identities, access profiles, roles, etc.)\
+            \ that are complete and all decisions have been made for."
           example: 5
           format: int32
           type: integer
         entitiesTotal:
-          description: "The total number of entities (identities, access profiles,\
-            \ roles, etc.) in the certification, both complete and incomplete."
+          description: "Total number of entities (identities, access profiles, roles,\
+            \ etc.) in the certification, both complete and incomplete."
           example: 10
           format: int32
           type: integer
@@ -84662,7 +84662,7 @@ components:
       example: ACTIVE
       type: string
     Reviewer:
-      description: Details of the reviewer for certification.
+      description: Details of the reviewer for a certification.
       example:
         name: Michael Michaels
         id: 2c7180a46faadee4016fb4e018c20642
@@ -84670,22 +84670,23 @@ components:
         email: reviewer@test.com
       properties:
         type:
-          description: The reviewer's DTO type.
+          description: Reviewer's DTO type.
           enum:
           - IDENTITY
           - GOVERNANCE_GROUP
           example: IDENTITY
           type: string
         id:
-          description: The reviewer's ID.
+          description: Reviewer's ID.
           example: 2c7180a46faadee4016fb4e018c20642
           type: string
         name:
-          description: The reviewer's display name.
+          description: Reviewer's display name.
           example: Michael Michaels
           type: string
         email:
-          description: The reviewing identity's email. Only applicable to `IDENTITY`.
+          description: Reviewing identity's email. This is only applicable to reviewers
+            of the `IDENTITY` type.
           example: reviewer@test.com
           nullable: true
           type: string
@@ -87715,19 +87716,20 @@ components:
           operation: Add
       properties:
         accessRequestId:
-          description: |
-            The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.
+          description: "Unique ID of the access request object. You can use this ID\
+            \ with the [Access Request Status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status)\
+            \ to get the request's status."
           example: 4b4d982dddff4267ab12f0f1e72b5a6d
           type: string
         requestedFor:
           description: Identities access was requested for.
           items:
-            $ref: '#/components/schemas/AccessItemRequestedForDto'
+            $ref: '#/components/schemas/AccessItemRequestedForDto_1'
           maxItems: 10
           minItems: 1
           type: array
         requestedItems:
-          description: The access items that are being requested.
+          description: Requested access items.
           items:
             $ref: '#/components/schemas/AccessRequestDynamicApprover_requestedItems_inner'
           maxItems: 25
@@ -87735,7 +87737,7 @@ components:
           type: array
         requestedBy:
           allOf:
-          - $ref: '#/components/schemas/AccessItemRequesterDto'
+          - $ref: '#/components/schemas/AccessItemRequesterDto_1'
       required:
       - accessRequestId
       - requestedBy
@@ -87746,13 +87748,13 @@ components:
     AccessRequestPostApproval:
       properties:
         accessRequestId:
-          description: The unique ID of the access request.
+          description: Access request's unique ID.
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          description: Identities access was requested for.
+          description: Identities whom access was requested for.
           items:
-            $ref: '#/components/schemas/AccessItemRequestedForDto'
+            $ref: '#/components/schemas/AccessItemRequestedForDto_1'
           maxItems: 10
           minItems: 1
           required:
@@ -87761,13 +87763,13 @@ components:
           - type
           type: array
         requestedItemsStatus:
-          description: Details on the outcome of each access item.
+          description: Details about the outcome of each requested access item.
           items:
             $ref: '#/components/schemas/AccessRequestPostApproval_requestedItemsStatus_inner'
           type: array
         requestedBy:
           allOf:
-          - $ref: '#/components/schemas/AccessItemRequesterDto'
+          - $ref: '#/components/schemas/AccessItemRequesterDto_1'
           required:
           - id
           - name
@@ -87782,13 +87784,13 @@ components:
     AccessRequestPreApproval:
       properties:
         accessRequestId:
-          description: The unique ID of the access request.
+          description: Access request's unique ID.
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          description: Identities access was requested for.
+          description: Identities whom access was requested for.
           items:
-            $ref: '#/components/schemas/AccessItemRequestedForDto'
+            $ref: '#/components/schemas/AccessItemRequestedForDto_1'
           maxItems: 10
           minItems: 1
           required:
@@ -87797,7 +87799,7 @@ components:
           - type
           type: array
         requestedItems:
-          description: Details of the access items being requested.
+          description: Details about each requested access item.
           items:
             $ref: '#/components/schemas/AccessRequestPreApproval_requestedItems_inner'
           maxItems: 25
@@ -87805,7 +87807,7 @@ components:
           type: array
         requestedBy:
           allOf:
-          - $ref: '#/components/schemas/AccessItemRequesterDto'
+          - $ref: '#/components/schemas/AccessItemRequesterDto_1'
           required:
           - id
           - name
@@ -87822,7 +87824,7 @@ components:
         source:
           $ref: '#/components/schemas/AccountAggregationCompleted_source'
         status:
-          description: The overall status of the aggregation.
+          description: Aggregation's overall status.
           enum:
           - Success
           - Failed
@@ -87830,27 +87832,27 @@ components:
           example: Success
           type: object
         started:
-          description: The date and time when the account aggregation started.
+          description: Date and time when the account aggregation started.
           example: 2020-06-29T22:01:50.474Z
           format: date-time
           type: string
         completed:
-          description: The date and time when the account aggregation finished.
+          description: Date and time when the account aggregation finished.
           example: 2020-06-29T22:02:04.09Z
           format: date-time
           type: string
         errors:
-          description: A list of errors that occurred during the aggregation.
+          description: List of errors that occurred during the aggregation.
           items:
-            description: A descriptive error message.
+            description: Descriptive error message.
             example: Accounts unable to be aggregated.
             type: string
           nullable: true
           type: array
         warnings:
-          description: A list of warnings that occurred during the aggregation.
+          description: List of warnings that occurred during the aggregation.
           items:
-            description: A descriptive warning message.
+            description: Descriptive warning message.
             example: Account Skipped
             type: string
           nullable: true
@@ -88025,8 +88027,7 @@ components:
         identity:
           $ref: '#/components/schemas/IdentityAttributesChanged_identity'
         changes:
-          description: A list of one or more identity attributes that changed on the
-            identity.
+          description: List of identity's attributes that changed.
           items:
             $ref: '#/components/schemas/IdentityAttributesChanged_changes_inner'
           type: array
@@ -88041,7 +88042,7 @@ components:
           $ref: '#/components/schemas/IdentityCreated_identity'
         attributes:
           additionalProperties: true
-          description: The attributes assigned to the identity. Attributes are determined
+          description: Attributes assigned to the identity. These attributes are determined
             by the identity profile.
           example:
             firstname: John
@@ -88057,8 +88058,8 @@ components:
           $ref: '#/components/schemas/IdentityDeleted_identity'
         attributes:
           additionalProperties: true
-          description: The attributes assigned to the identity. Attributes are determined
-            by the identity profile.
+          description: Identity attributes. The attributes are determined by the identity
+            profile.
           example:
             firstname: John
           type: object
@@ -88070,22 +88071,22 @@ components:
     ProvisioningCompleted:
       properties:
         trackingNumber:
-          description: The reference number of the provisioning request. Useful for
-            tracking status in the Account Activity search interface.
+          description: Provisioning request's reference number. Useful for tracking
+            status in the 'Account Activity' search interface.
           example: 4b4d982dddff4267ab12f0f1e72b5a6d
           type: string
         sources:
-          description: One or more sources that the provisioning transaction(s) were
-            done against.  Sources are comma separated.
+          description: Sources the provisioning transactions were performed on. Sources
+            are comma separated.
           example: "Corp AD, Corp LDAP, Corp Salesforce"
           type: string
         action:
-          description: Origin of where the provisioning request came from.
+          description: Origin of the provisioning request.
           example: IdentityRefresh
           nullable: true
           type: string
         errors:
-          description: A list of any accumulated error messages that occurred during
+          description: List of any accumulated error messages that occurred during
             provisioning.
           items:
             example: Connector AD Failed
@@ -88093,7 +88094,7 @@ components:
           nullable: true
           type: array
         warnings:
-          description: A list of any accumulated warning messages that occurred during
+          description: List of any accumulated warning messages that occurred during
             provisioning.
           items:
             example: Notification Skipped due to invalid email
@@ -88105,7 +88106,7 @@ components:
         requester:
           $ref: '#/components/schemas/ProvisioningCompleted_requester'
         accountRequests:
-          description: A list of provisioning instructions to perform on an account-by-account
+          description: List of provisioning instructions to perform on an account-by-account
             basis.
           items:
             $ref: '#/components/schemas/ProvisioningCompleted_accountRequests_inner'
@@ -88120,23 +88121,23 @@ components:
     SavedSearchComplete:
       properties:
         fileName:
-          description: A name for the report file.
+          description: Report file name.
           example: Modified.zip
           type: string
         ownerEmail:
-          description: The email address of the identity that owns the saved search.
+          description: Email address of the identity who owns the saved search.
           example: test@sailpoint.com
           type: string
         ownerName:
-          description: The name of the identity that owns the saved search.
+          description: Name of the identity who owns the saved search.
           example: Cloud Support
           type: string
         query:
-          description: The search query that was used to generate the report.
+          description: Search query used to generate the report.
           example: "modified:[now-7y/d TO now]"
           type: string
         searchName:
-          description: The name of the saved search.
+          description: Saved search name.
           example: Modified Activity
           type: string
         searchResults:
@@ -88158,8 +88159,8 @@ components:
     SourceAccountCreated:
       properties:
         uuid:
-          description: Source unique identifier for the identity. UUID is generated
-            by the source system.
+          description: Identity's universal unique identifier (UUID) on the source.
+            The source system generates the UUID.
           example: b7264868-7201-415f-9118-b581d431c688
           type: string
         id:
@@ -88167,29 +88168,29 @@ components:
           example: ee769173319b41d19ccec35ba52f237b
           type: string
         nativeIdentifier:
-          description: Unique ID of the account on the source.
+          description: Account's unique ID on the source.
           example: E009
           type: string
         sourceId:
-          description: The ID of the source.
+          description: Source ID.
           example: 2c918082814e693601816e09471b29b6
           type: string
         sourceName:
-          description: The name of the source.
+          description: Source name.
           example: Active Directory
           type: string
         identityId:
-          description: The ID of the identity that is correlated with this account.
+          description: ID of the identity correlated with the account.
           example: ee769173319b41d19ccec6c235423237b
           type: string
         identityName:
-          description: The name of the identity that is correlated with this account.
+          description: Name of the identity correlated with the account.
           example: john.doe
           type: string
         attributes:
           additionalProperties: true
-          description: The attributes of the account. The contents of attributes depends
-            on the account schema for the source.
+          description: Account attributes. The attributes' contents depend on the
+            source's account schema.
           example:
             firstname: John
             lastname: Doe
@@ -88211,13 +88212,14 @@ components:
       - nativeIdentifier
       - sourceId
       - sourceName
+      - uuid
       title: Source Account Created
       type: object
     SourceAccountDeleted:
       properties:
         uuid:
-          description: Source unique identifier for the identity. UUID is generated
-            by the source system.
+          description: Identity's universal unique identifier (UUID) on the source.
+            The source system generates the UUID.
           example: b7264868-7201-415f-9118-b581d431c688
           type: string
         id:
@@ -88225,29 +88227,29 @@ components:
           example: ee769173319b41d19ccec35ba52f237b
           type: string
         nativeIdentifier:
-          description: Unique ID of the account on the source.
+          description: Account's unique ID on the source.
           example: E009
           type: string
         sourceId:
-          description: The ID of the source.
+          description: Source ID.
           example: 2c918082814e693601816e09471b29b6
           type: string
         sourceName:
-          description: The name of the source.
+          description: Source name.
           example: Active Directory
           type: string
         identityId:
-          description: The ID of the identity that is correlated with this account.
+          description: ID of the identity correlated with the account.
           example: ee769173319b41d19ccec6c235423237b
           type: string
         identityName:
-          description: The name of the identity that is correlated with this account.
+          description: Name of the identity correlated with the account.
           example: john.doe
           type: string
         attributes:
           additionalProperties: true
-          description: The attributes of the account. The contents of attributes depends
-            on the account schema for the source.
+          description: Account attributes. The attributes' contents depend on the
+            source's account schema.
           example:
             firstname: John
             lastname: Doe
@@ -88269,13 +88271,14 @@ components:
       - nativeIdentifier
       - sourceId
       - sourceName
+      - uuid
       title: Source Account Deleted
       type: object
     SourceAccountUpdated:
       properties:
         uuid:
-          description: Source unique identifier for the identity. UUID is generated
-            by the source system.
+          description: Identity's universal unique identifier (UUID) on the source.
+            The source system generates the UUID.
           example: b7264868-7201-415f-9118-b581d431c688
           type: string
         id:
@@ -88283,29 +88286,29 @@ components:
           example: ee769173319b41d19ccec35ba52f237b
           type: string
         nativeIdentifier:
-          description: Unique ID of the account on the source.
+          description: Account's unique ID on the source.
           example: E009
           type: string
         sourceId:
-          description: The ID of the source.
+          description: Source ID.
           example: 2c918082814e693601816e09471b29b6
           type: string
         sourceName:
-          description: The name of the source.
+          description: Source name.
           example: Active Directory
           type: string
         identityId:
-          description: The ID of the identity that is correlated with this account.
+          description: ID of the identity correlated with the account.
           example: ee769173319b41d19ccec6c235423237b
           type: string
         identityName:
-          description: The name of the identity that is correlated with this account.
+          description: Name of the identity correlated with the account.
           example: john.doe
           type: string
         attributes:
           additionalProperties: true
-          description: The attributes of the account. The contents of attributes depends
-            on the account schema for the source.
+          description: Account attributes. The attributes' contents depend on the
+            source's account schema.
           example:
             firstname: John
             lastname: Doe
@@ -88327,29 +88330,30 @@ components:
       - nativeIdentifier
       - sourceId
       - sourceName
+      - uuid
       title: Source Account Updated
       type: object
     SourceCreated:
       properties:
         id:
-          description: The unique ID of the source.
+          description: Source's unique ID.
           example: 2c9180866166b5b0016167c32ef31a66
           type: string
         name:
-          description: Human friendly name of the source.
+          description: Source name.
           example: Test source
           type: string
         type:
-          description: The connection type.
+          description: Connection type.
           example: DIRECT_CONNECT
           type: string
         created:
-          description: The date and time the source was created.
+          description: Date and time when the source was created.
           example: 2021-03-29T22:01:50.474Z
           format: date-time
           type: string
         connector:
-          description: The connector type used to connect to the source.
+          description: Connector type used to connect to the source.
           example: active-directory
           type: string
         actor:
@@ -88366,24 +88370,24 @@ components:
     SourceDeleted:
       properties:
         id:
-          description: The unique ID of the source.
+          description: Source's unique ID.
           example: 2c9180866166b5b0016167c32ef31a66
           type: string
         name:
-          description: Human friendly name of the source.
+          description: Source name.
           example: Test source
           type: string
         type:
-          description: The connection type.
+          description: Connection type.
           example: DIRECT_CONNECT
           type: string
         deleted:
-          description: The date and time the source was deleted.
+          description: Date and time when the source was deleted.
           example: 2021-03-29T22:01:50.474Z
           format: date-time
           type: string
         connector:
-          description: The connector type used to connect to the source.
+          description: Connector type used to connect to the source.
           example: active-directory
           type: string
         actor:
@@ -88400,24 +88404,24 @@ components:
     SourceUpdated:
       properties:
         id:
-          description: The unique ID of the source.
+          description: Source's unique ID.
           example: 2c9180866166b5b0016167c32ef31a66
           type: string
         name:
-          description: The user friendly name of the source.
-          example: Corporate Active Directory
+          description: Source name.
+          example: Test source
           type: string
         type:
-          description: The connection type of the source.
+          description: Connection type.
           example: DIRECT_CONNECT
           type: string
         modified:
-          description: The date and time the source was modified.
+          description: Date and time when the source was modified.
           example: 2021-03-29T22:01:50.474Z
           format: date-time
           type: string
         connector:
-          description: The connector type used to connect to the source.
+          description: Connector type used to connect to the source.
           example: active-directory
           type: string
         actor:
@@ -88434,12 +88438,12 @@ components:
     VAClusterStatusChangeEvent:
       properties:
         created:
-          description: The date and time the status change occurred.
+          description: Date and time when the status change occurred.
           example: 2020-06-29T22:01:50.474Z
           format: date-time
           type: string
         type:
-          description: The type of the object that initiated this event.
+          description: Type of the object that initiated the event.
           enum:
           - SOURCE
           - CLUSTER
@@ -90583,22 +90587,61 @@ components:
           example: ACCESS_REQUEST
           type: string
       type: object
-    AccessItemApproverDto:
-      description: Identity who approved the access item request.
+    AccessItemRequestedForDto_1:
+      description: Identity whom the access item is requested for.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
       properties:
         type:
-          description: DTO type of identity who approved the access item request.
+          description: DTO type of the identity whom the access item is requested
+            for.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of identity who approved the access item request.
+          description: ID of the identity whom the access item is requested for.
+          example: 2c4180a46faadee4016fb4e018c20626
+          type: string
+        name:
+          description: Name of the identity whom the access item is requested for.
+          example: Robert Robinson
+          type: string
+      type: object
+    AccessItemRequesterDto_1:
+      description: Access item requester's identity.
+      properties:
+        type:
+          description: Access item requester's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Access item requester's identity ID.
+          example: 2c7180a46faadee4016fb4e018c20648
+          type: string
+        name:
+          description: Access item requester's name.
+          example: William Wilson
+          type: string
+      type: object
+    AccessItemApproverDto:
+      properties:
+        type:
+          description: DTO type of the identity who approved the access item request.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the identity who approved the access item request.
           example: 2c3780a46faadee4016fb4e018c20652
           type: string
         name:
-          description: Human-readable display name of identity who approved the access
-            item request.
+          description: Name of the identity who approved the access item request.
           example: Allen Albertson
           type: string
       type: object
@@ -95479,20 +95522,20 @@ components:
         operation: Add
       properties:
         id:
-          description: The unique ID of the access item.
+          description: Access item's unique identifier.
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         name:
-          description: Human friendly name of the access item.
+          description: Access item's name.
           example: Engineering Access
           type: string
         description:
-          description: Extended description of the access item.
+          description: Access item's extended description.
           example: Engineering Access
           nullable: true
           type: string
         type:
-          description: The type of access item being requested.
+          description: Type of access item being requested.
           enum:
           - ACCESS_PROFILE
           - ROLE
@@ -95500,14 +95543,14 @@ components:
           example: ACCESS_PROFILE
           type: object
         operation:
-          description: Grant or revoke the access item
+          description: Action to perform on the requested access item.
           enum:
           - Add
           - Remove
           example: Add
           type: object
         comment:
-          description: A comment from the requestor on why the access is needed.
+          description: Comment from the requester about why the access is necessary.
           example: William needs this access for his day to day job activities.
           nullable: true
           type: string
@@ -95517,41 +95560,32 @@ components:
       - operation
       - type
       type: object
-    AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver:
-      allOf:
-      - $ref: '#/components/schemas/AccessItemApproverDto'
-      description: The identity of the approver.
-      properties:
-        type:
-          description: The type of object that is referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: object
-      required:
-      - id
-      - name
-      - type
     AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner:
       properties:
         approvalComment:
-          description: A comment left by the approver.
-          example: This access looks good.  Approved.
+          description: Approver's comment.
+          example: This access looks good. Approved.
           nullable: true
           type: string
         approvalDecision:
-          description: The final decision of the approver.
+          description: Approver's final decision.
           enum:
           - APPROVED
           - DENIED
           example: APPROVED
           type: object
         approverName:
-          description: The name of the approver
+          description: Approver's name.
           example: Stephen.Austin
           type: string
         approver:
-          $ref: '#/components/schemas/AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemApproverDto'
+          description: Approver's identity.
+          required:
+          - id
+          - name
+          - type
       required:
       - approvalDecision
       - approver
@@ -95560,20 +95594,20 @@ components:
     AccessRequestPostApproval_requestedItemsStatus_inner:
       properties:
         id:
-          description: The unique ID of the access item being requested.
+          description: Access item's unique ID.
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         name:
-          description: The human friendly name of the access item.
+          description: Access item's name.
           example: Engineering Access
           type: string
         description:
-          description: Detailed description of the access item.
+          description: Access item's description.
           example: Access to engineering database
           nullable: true
           type: string
         type:
-          description: The type of access item.
+          description: Access item's type.
           enum:
           - ACCESS_PROFILE
           - ROLE
@@ -95581,14 +95615,14 @@ components:
           example: ACCESS_PROFILE
           type: object
         operation:
-          description: The action to perform on the access item.
+          description: Action to perform on the requested access item.
           enum:
           - Add
           - Remove
           example: Add
           type: object
         comment:
-          description: A comment from the identity requesting the access.
+          description: Comment from the identity requesting access.
           example: William needs this access to do his job.
           nullable: true
           type: string
@@ -95600,7 +95634,7 @@ components:
           nullable: true
           type: object
         approvalInfo:
-          description: A list of one or more approvers for the access request.
+          description: List of approvers for the access request.
           items:
             $ref: '#/components/schemas/AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner'
           type: array
@@ -95614,20 +95648,20 @@ components:
     AccessRequestPreApproval_requestedItems_inner:
       properties:
         id:
-          description: The unique ID of the access item being requested.
+          description: Access item's unique ID.
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         name:
-          description: The human friendly name of the access item.
+          description: Access item's name.
           example: Engineering Access
           type: string
         description:
-          description: Detailed description of the access item.
+          description: Access item's description.
           example: Access to engineering database
           nullable: true
           type: string
         type:
-          description: The type of access item.
+          description: Access item's type.
           enum:
           - ACCESS_PROFILE
           - ROLE
@@ -95635,14 +95669,14 @@ components:
           example: ACCESS_PROFILE
           type: object
         operation:
-          description: The action to perform on the access item.
+          description: Action to perform on the access item.
           enum:
           - Add
           - Remove
           example: Add
           type: object
         comment:
-          description: A comment from the identity requesting the access.
+          description: Comment from the identity requesting access.
           example: William needs this access to do his job.
           nullable: true
           type: string
@@ -95653,22 +95687,20 @@ components:
       - type
       type: object
     AccountAggregationCompleted_source:
-      description: The source the accounts are being aggregated from.
+      description: Source ISC is aggregating accounts from.
       properties:
         type:
-          description: The DTO type of the source the accounts are being aggregated
-            from.
+          description: Source's DTO type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         id:
-          description: The ID of the source the accounts are being aggregated from.
+          description: Source's unique ID.
           example: 2c9180835d191a86015d28455b4b232a
           type: string
         name:
-          description: Display name of the source the accounts are being aggregated
-            from.
+          description: Source's name.
           example: HR Active Directory
           type: string
       required:
@@ -95680,36 +95712,36 @@ components:
       description: Overall statistics about the account aggregation.
       properties:
         scanned:
-          description: The number of accounts which were scanned / iterated over.
+          description: Number of accounts scanned/iterated over.
           example: 200
           format: int32
           maximum: 2147483647
           minimum: 0
           type: integer
         unchanged:
-          description: "The number of accounts which existed before, but had no changes."
+          description: Number of accounts that existed before but had no changes.
           example: 190
           format: int32
           maximum: 2147483647
           minimum: 0
           type: integer
         changed:
-          description: "The number of accounts which existed before, but had changes."
+          description: Number of accounts that existed before but had changes.
           example: 6
           format: int32
           maximum: 2147483647
           minimum: 0
           type: integer
         added:
-          description: The number of accounts which are new - have not existed before.
+          description: Number of accounts that are new and didn't previously exist.
           example: 4
           format: int32
           maximum: 2147483647
           minimum: 0
           type: integer
         removed:
-          description: "The number accounts which existed before, but no longer exist\
-            \ (thus getting removed)."
+          description: Number accounts that existed before but were removed and no
+            longer exist.
           example: 3
           format: int32
           maximum: 2147483647
@@ -96065,19 +96097,19 @@ components:
       - type
       type: object
     CampaignActivated_campaign_campaignOwner:
-      description: Details of the identity that owns the campaign.
+      description: Details of the identity who owns the campaign.
       properties:
         id:
-          description: The unique ID of the identity.
+          description: Identity's unique ID.
           example: 37f080867702c1910177031320c40n27
           type: string
         displayName:
-          description: The human friendly name of the identity.
-          example: John Snow
+          description: Identity's name.
+          example: Albert Albertson
           type: string
         email:
-          description: The primary email address of the identity.
-          example: john.snow@example.com
+          description: Identity's primary email address.
+          example: albert.albertson@example.com
           type: string
       required:
       - displayName
@@ -96088,35 +96120,35 @@ components:
       description: Details about the certification campaign that was activated.
       properties:
         id:
-          description: Unique ID for the campaign.
+          description: Campaign's unique ID.
           example: 2c91808576f886190176f88cac5a0010
           type: string
         name:
-          description: The human friendly name of the campaign.
+          description: Campaign's name.
           example: Manager Access Campaign
           type: string
         description:
-          description: Extended description of the campaign.
+          description: Campaign's extended description.
           example: Audit access for all employees.
           type: string
         created:
-          description: The date and time the campaign was created.
+          description: Date and time when the campaign was created.
           example: 2021-02-16T03:04:45.815Z
           format: date-time
           type: string
         modified:
-          description: The date and time the campaign was last modified.
+          description: Date and time when the campaign was last modified.
           example: 2021-02-16T03:06:45.815Z
           format: date-time
           nullable: true
           type: string
         deadline:
-          description: The date and time the campaign is due.
+          description: Date and time when the campaign is due.
           example: 2021-03-16T03:04:45.815Z
           format: date-time
           type: string
         type:
-          description: The type of campaign.
+          description: Campaign's type.
           enum:
           - MANAGER
           - SOURCE_OWNER
@@ -96127,7 +96159,7 @@ components:
         campaignOwner:
           $ref: '#/components/schemas/CampaignActivated_campaign_campaignOwner'
         status:
-          description: The current status of the campaign.
+          description: Campaign's current status.
           enum:
           - ACTIVE
           example: ACTIVE
@@ -96146,35 +96178,35 @@ components:
       description: Details about the certification campaign that ended.
       properties:
         id:
-          description: Unique ID for the campaign.
+          description: Campaign's unique ID for the campaign.
           example: 2c91808576f886190176f88cac5a0010
           type: string
         name:
-          description: The human friendly name of the campaign.
+          description: Campaign's unique ID.
           example: Manager Access Campaign
           type: string
         description:
-          description: Extended description of the campaign.
+          description: Campaign's extended description.
           example: Audit access for all employees.
           type: string
         created:
-          description: The date and time the campaign was created.
+          description: Date and time when the campaign was created.
           example: 2021-02-16T03:04:45.815Z
           format: date-time
           type: string
         modified:
-          description: The date and time the campaign was last modified.
+          description: Date and time when the campaign was last modified.
           example: 2021-03-16T03:06:45.815Z
           format: date-time
           nullable: true
           type: string
         deadline:
-          description: The date and time the campaign is due.
+          description: Date and time when the campaign is due.
           example: 2021-03-16T03:04:45.815Z
           format: date-time
           type: string
         type:
-          description: The type of campaign.
+          description: Campaign's type.
           enum:
           - MANAGER
           - SOURCE_OWNER
@@ -96185,7 +96217,7 @@ components:
         campaignOwner:
           $ref: '#/components/schemas/CampaignActivated_campaign_campaignOwner'
         status:
-          description: The current status of the campaign.
+          description: Campaign's current status.
           enum:
           - COMPLETED
           example: COMPLETED
@@ -96201,19 +96233,19 @@ components:
       - type
       type: object
     CampaignGenerated_campaign_campaignOwner:
-      description: The identity that owns the campaign.
+      description: Identity who owns the campaign.
       properties:
         id:
-          description: The unique ID of the identity.
+          description: Identity's unique ID.
           example: 37f080867702c1910177031320c40n27
           type: string
         displayName:
-          description: The display name of the identity.
-          example: John Snow
+          description: Identity's name.
+          example: Albert Albertson
           type: string
         email:
-          description: The primary email address of the identity.
-          example: john.snow@example.com
+          description: Identity's primary email address.
+          example: albert.albertson@example.com
           type: string
       required:
       - displayName
@@ -96224,34 +96256,34 @@ components:
       description: Details about the campaign that was generated.
       properties:
         id:
-          description: The unique ID of the campaign.
+          description: Campaign's unique ID.
           example: 2c91808576f886190176f88cac5a0010
           type: string
         name:
-          description: Human friendly name of the campaign.
+          description: Campaign's name.
           example: Manager Access Campaign
           type: string
         description:
-          description: Extended description of the campaign.
+          description: Campaign's extended description.
           example: Audit access for all employees.
           type: string
         created:
-          description: The date and time the campaign was created.
+          description: Date and time when the campaign was created.
           example: 2021-02-16T03:04:45.815Z
           format: date-time
           type: string
         modified:
-          description: The date and time the campaign was last modified.
+          description: Date and time when the campaign was last modified.
           example: 2021-02-17T03:04:45.815Z
           nullable: true
           type: string
         deadline:
-          description: The date and time when the campaign must be finished by.
+          description: Date and time when the campaign must be finished.
           example: 2021-02-18T03:04:45.815Z
           nullable: true
           type: string
         type:
-          description: The type of campaign that was generated.
+          description: Campaign's type.
           enum:
           - MANAGER
           - SOURCE_OWNER
@@ -96262,7 +96294,7 @@ components:
         campaignOwner:
           $ref: '#/components/schemas/CampaignGenerated_campaign_campaignOwner'
         status:
-          description: The current status of the campaign.
+          description: Campaign's current status.
           enum:
           - STAGED
           - ACTIVATING
@@ -96281,23 +96313,23 @@ components:
     CertificationSignedOff_certification:
       allOf:
       - $ref: '#/components/schemas/CertificationDto'
-      description: The certification campaign that was signed off on.
+      description: Certification campaign that was signed off on.
       properties:
         id:
-          description: Unique ID of the certification.
+          description: Certification's unique ID.
           example: 2c91808576f886190176f88caf0d0067
           type: string
         name:
-          description: The name of the certification.
+          description: Certification's name.
           example: Manager Access Review for Alice Baker
           type: string
         created:
-          description: The date and time the certification was created.
+          description: Date and time when the certification was created.
           example: 2020-02-16T03:04:45.815Z
           format: date-time
           type: string
         modified:
-          description: The date and time the certification was last modified.
+          description: Date and time when the certification was last modified.
           example: 2020-02-16T03:06:45.815Z
           format: date-time
           nullable: true
@@ -96320,7 +96352,7 @@ components:
           example: 2c7180a46faadee4016fb4e018c20642
           type: string
         name:
-          description: Display name of identity whose attributes changed.
+          description: Name of identity whose attributes changed.
           example: Michael Michaels
           type: string
       required:
@@ -96335,7 +96367,7 @@ components:
       - type: integer
       - type: boolean
     IdentityAttributesChanged_changes_inner_oldValue:
-      description: The value of the identity attribute before it changed.
+      description: Identity attribute's previous value before the change.
       example: sales
       nullable: true
       oneOf:
@@ -96349,7 +96381,7 @@ components:
         nullable: true
         type: object
     IdentityAttributesChanged_changes_inner_newValue:
-      description: The value of the identity attribute after it changed.
+      description: Identity attribute's new value after the change.
       example: marketing
       oneOf:
       - type: string
@@ -96364,7 +96396,7 @@ components:
     IdentityAttributesChanged_changes_inner:
       properties:
         attribute:
-          description: The name of the identity attribute that changed.
+          description: Identity attribute's name.
           example: department
           type: string
         oldValue:
@@ -96378,17 +96410,17 @@ components:
       description: Created identity.
       properties:
         type:
-          description: Created identity's DTO type.
+          description: Identity's DTO type.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: Created identity ID.
+          description: Identity's unique ID.
           example: 2c7180a46faadee4016fb4e018c20642
           type: string
         name:
-          description: Created identity's display name.
+          description: Identity's name.
           example: Michael Michaels
           type: string
       required:
@@ -96410,7 +96442,7 @@ components:
           example: 2c7180a46faadee4016fb4e018c20642
           type: string
         name:
-          description: Deleted identity's display name.
+          description: Deleted identity's name.
           example: Michael Michaels
           type: string
       required:
@@ -96432,7 +96464,7 @@ components:
           example: 2c7180a46faadee4016fb4e018c20642
           type: string
         name:
-          description: Provisioning recipient's display name.
+          description: Provisioning recipient's name.
           example: Michael Michaels
           type: string
       required:
@@ -96455,7 +96487,7 @@ components:
           example: 2c7180a46faadee4016fb4e018c20648
           type: string
         name:
-          description: Provisioning owner's human-readable display name.
+          description: Provisioning requester's name.
           example: William Wilson
           type: string
       required:
@@ -96464,21 +96496,20 @@ components:
       - type
       type: object
     ProvisioningCompleted_accountRequests_inner_source:
-      description: Reference to the source being provisioned against.
+      description: Source that ISC is provisioning access on.
       properties:
         id:
-          description: ID of the object to which this reference applies
+          description: Source ID.
           example: 4e4d982dddff4267ab12f0f1e72b5a6d
           type: string
         type:
-          description: The type of object that is referenced
+          description: Source DTO type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Source name.
           example: Corporate Active Directory
           type: string
       required:
@@ -96489,12 +96520,12 @@ components:
     ProvisioningCompleted_accountRequests_inner_attributeRequests_inner:
       properties:
         attributeName:
-          description: The name of the attribute being provisioned.
+          description: Name of the attribute being provisioned.
           example: memberOf
           type: string
         attributeValue:
-          description: The value of the attribute being provisioned.
-          example: "CN=jedi,DC=starwars,DC=com"
+          description: Value of the attribute being provisioned.
+          example: "CN=sales,DC=helpco,DC=com"
           nullable: true
           type: string
         operation:
@@ -96504,7 +96535,7 @@ components:
           - Set
           - Remove
           example: Add
-          type: object
+          type: string
       required:
       - attributeName
       - operation
@@ -96514,17 +96545,22 @@ components:
         source:
           $ref: '#/components/schemas/ProvisioningCompleted_accountRequests_inner_source'
         accountId:
-          description: The unique idenfier of the account being provisioned.
-          example: "CN=Chewy.Bacca,ou=hardcorefigter,ou=wookies,dc=starwars,dc=com"
+          description: Unique idenfier of the account being provisioned.
+          example: "CN=Rob.Robertson,ou=csm,ou=sales,dc=helpco,dc=com"
           type: string
         accountOperation:
-          description: "The provisioning operation; typically Create, Modify, Enable,\
-            \ Disable, Unlock, or Delete."
+          description: Provisioning operation.
+          enum:
+          - Create
+          - Modify
+          - Enable
+          - Disable
+          - Unlock
+          - Delete
           example: Modify
           type: string
         provisioningResult:
-          description: "The overall result of the provisioning transaction; this could\
-            \ be success, pending, failed, etc."
+          description: Overall result of the provisioning transaction.
           enum:
           - SUCCESS
           - PENDING
@@ -96532,19 +96568,18 @@ components:
           example: SUCCESS
           type: object
         provisioningTarget:
-          description: "The name of the provisioning channel selected; this could\
-            \ be the same as the source, or could be a Service Desk Integration Module\
-            \ (SDIM)."
+          description: "Nme of the selected provisioning channel selected. This could\
+            \ be the same as the source, or it could be a Service Desk Integration\
+            \ Module (SDIM)."
           example: Corp AD
           type: string
         ticketId:
-          description: "A reference to a tracking number, if this is sent to a Service\
-            \ Desk Integration Module (SDIM)."
+          description: Reference to a tracking number for if this is sent to a SDIM.
           example: "72619262"
           nullable: true
           type: string
         attributeRequests:
-          description: A list of attributes as part of the provisioning transaction.
+          description: List of attributes to include in the provisioning transaction.
           items:
             $ref: '#/components/schemas/ProvisioningCompleted_accountRequests_inner_attributeRequests_inner'
           nullable: true
@@ -96556,19 +96591,19 @@ components:
       - source
       type: object
     SavedSearchComplete_searchResults_Account:
-      description: A table of accounts that match the search criteria.
+      description: Table of accounts matching the search criteria.
       nullable: true
       properties:
         count:
-          description: The number of rows in the table.
+          description: Number of rows in the table.
           example: "3"
           type: string
         noun:
-          description: The type of object represented in the table.
+          description: Type of object represented in the table.
           example: accounts
           type: string
         preview:
-          description: A sample of the data in the table.
+          description: Sample of table data.
           items:
             example: []
             items:
@@ -96582,19 +96617,19 @@ components:
       - preview
       type: object
     SavedSearchComplete_searchResults_Entitlement:
-      description: A table of entitlements that match the search criteria.
+      description: Table of entitlements matching the search criteria.
       nullable: true
       properties:
         count:
-          description: The number of rows in the table.
+          description: Number of rows in the table.
           example: "2"
           type: string
         noun:
-          description: The type of object represented in the table.
+          description: Type of object represented in the table.
           example: entitlements
           type: string
         preview:
-          description: A sample of the data in the table.
+          description: Sample of table data.
           items:
             example: []
             items:
@@ -96608,19 +96643,19 @@ components:
       - preview
       type: object
     SavedSearchComplete_searchResults_Identity:
-      description: A table of identities that match the search criteria.
+      description: Table of identities matching the search criteria.
       nullable: true
       properties:
         count:
-          description: The number of rows in the table.
+          description: Number of rows in the table.
           example: "2"
           type: string
         noun:
-          description: The type of object represented in the table.
+          description: Type of object represented in the table.
           example: identities
           type: string
         preview:
-          description: A sample of the data in the table.
+          description: Sample of the table data.
           items:
             example: []
             items:
@@ -96634,8 +96669,8 @@ components:
       - preview
       type: object
     SavedSearchComplete_searchResults:
-      description: "A preview of the search results for each object type. This includes\
-        \ a count as well as headers, and the first several rows of data, per object\
+      description: "Preview of the search results for each object type. This includes\
+        \ a count as well as headers and the first several rows of data, per object\
         \ type."
       properties:
         Account:
@@ -96649,17 +96684,17 @@ components:
       description: Identity who created the source.
       properties:
         type:
-          description: DTO type of identity who created the source.
+          description: DTO type of the identity who created the source.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of identity who created the source.
+          description: ID of the identity who created the source.
           example: 2c7180a46faadee4016fb4e018c20648
           type: string
         name:
-          description: Display name of identity who created the source.
+          description: Name of the identity who created the source.
           example: William Wilson
           type: string
       required:
@@ -96671,17 +96706,17 @@ components:
       description: Identity who deleted the source.
       properties:
         type:
-          description: DTO type of identity who deleted the source.
+          description: DTO type of the identity who deleted the source.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of identity who deleted the source.
+          description: ID of the identity who deleted the source.
           example: 2c7180a46faadee4016fb4e018c20648
           type: string
         name:
-          description: Display name of identity who deleted the source.
+          description: Name of the identity who deleted the source.
           example: William Wilson
           type: string
       required:
@@ -96693,38 +96728,39 @@ components:
       description: Identity who updated the source.
       properties:
         type:
-          description: DTO type of identity who updated the source.
+          description: DTO type of the identity who updated the source.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of identity who updated the source.
+          description: ID of the identity who updated the source.
           example: 2c7180a46faadee4016fb4e018c20648
           type: string
         name:
-          description: Display name of identity who updated the source.
+          description: Name of the identity who updated the source.
           example: William Wilson
           type: string
       required:
+      - id
       - name
       - type
       type: object
     VAClusterStatusChangeEvent_application:
-      description: Details about the `CLUSTER` or `SOURCE` that initiated this event.
+      description: Details about the `CLUSTER` or `SOURCE` that initiated the event.
       properties:
         id:
-          description: The GUID of the application
+          description: Application's globally unique identifier (GUID).
           example: 2c9180866166b5b0016167c32ef31a66
           type: string
         name:
-          description: The name of the application
+          description: Application name.
           example: Production VA Cluster
           type: string
         attributes:
           additionalProperties: true
-          description: Custom map of attributes for a source.  This will only be populated
-            if type is `SOURCE` and the source has a proxy.
+          description: Custom map of attributes for a source. Attributes only populate
+            if the type is `SOURCE` and the source has a proxy.
           nullable: true
           type: object
           example: null
@@ -96734,48 +96770,48 @@ components:
       - name
       type: object
     VAClusterStatusChangeEvent_healthCheckResult:
-      description: The results of the most recent health check.
+      description: Results of the most recent health check.
       properties:
         message:
-          description: Detailed message of the result of the health check.
+          description: Detailed message of the health check result..
           example: Test Connection failed with exception. Error message - java.lang
             Exception
           type: string
         resultType:
-          description: The type of the health check result.
+          description: Health check result type.
           example: SOURCE_STATE_ERROR_CLUSTER
           type: string
         status:
-          description: The status of the health check.
+          description: Health check status.
           enum:
           - Succeeded
           - Failed
           example: Succeeded
-          type: object
+          type: string
       required:
       - message
       - resultType
       - status
       type: object
     VAClusterStatusChangeEvent_previousHealthCheckResult:
-      description: The results of the last health check.
+      description: Results of the last health check.
       properties:
         message:
-          description: Detailed message of the result of the health check.
+          description: Detailed message of the health check result.
           example: Test Connection failed with exception. Error message - java.lang
             Exception
           type: string
         resultType:
-          description: The type of the health check result.
+          description: Health check result type.
           example: SOURCE_STATE_ERROR_CLUSTER
           type: string
         status:
-          description: The status of the health check.
+          description: Health check status.
           enum:
           - Succeeded
           - Failed
           example: Failed
-          type: object
+          type: string
       required:
       - message
       - resultType
@@ -97137,3 +97173,54 @@ components:
           tokenUrl: https://tenant.api.identitynow.com/oauth/token
       type: oauth2
       x-displayName: Client Credentials
+x-webhooks:
+  AccessRequestDecision:
+    $ref: ./beta/webhooks/access-request-decision.yaml
+  AccessRequestDynamicApproval:
+    $ref: ./beta/webhooks/access-request-dynamic-approval.yaml
+  AccessRequestSubmitted:
+    $ref: ./beta/webhooks/access-request-submitted.yaml
+  AccountAggregationCompleted:
+    $ref: ./beta/webhooks/account-aggregation-completed.yaml
+  CampaignActivated:
+    $ref: ./beta/webhooks/campaign-activated.yaml
+  CampaignEnded:
+    $ref: ./beta/webhooks/campaign-ended.yaml
+  CampaignGenerated:
+    $ref: ./beta/webhooks/campaign-generated.yaml
+  CertificationSignedOff:
+    $ref: ./beta/webhooks/certification-signed-off.yaml
+  FormSubmitted:
+    $ref: ./beta/webhooks/form-submitted.yaml
+  IdentityAttributesChanged:
+    $ref: ./beta/webhooks/identity-attributes-changed.yaml
+  IdentityCreated:
+    $ref: ./beta/webhooks/identity-created.yaml
+  NativeChangeAccountCreated:
+    $ref: ./beta/webhooks/native-change-account-created.yaml
+  NativeChangeAccountDeleted:
+    $ref: ./beta/webhooks/native-change-account-deleted.yaml
+  NativeChangeAccountUpdated:
+    $ref: ./beta/webhooks/native-change-account-updated.yaml
+  OutlierDetected:
+    $ref: ./beta/webhooks/outlier-detected.yaml
+  ProvisioningCompleted:
+    $ref: ./beta/webhooks/provisioning-completed.yaml
+  ScheduledSearch:
+    $ref: ./beta/webhooks/scheduled-search.yaml
+  SourceCreated:
+    $ref: ./beta/webhooks/source-created.yaml
+  SourceDeleted:
+    $ref: ./beta/webhooks/source-deleted.yaml
+  SourceUpdated:
+    $ref: ./beta/webhooks/source-updated.yaml
+  VaClusterStatusChange:
+    $ref: ./beta/webhooks/va-cluster-status-change.yaml
+  IdentityDeleted:
+    $ref: ./beta/webhooks/identity-deleted.yaml
+  SourceAccountCreated:
+    $ref: ./beta/webhooks/source-account-created.yaml
+  SourceAccountDeleted:
+    $ref: ./beta/webhooks/source-account-deleted.yaml
+  SourceAccountUpdated:
+    $ref: ./beta/webhooks/source-account-updated.yaml

@@ -18,13 +18,13 @@ import (
 // checks if the SavedSearchCompleteSearchResultsIdentity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SavedSearchCompleteSearchResultsIdentity{}
 
-// SavedSearchCompleteSearchResultsIdentity A table of identities that match the search criteria.
+// SavedSearchCompleteSearchResultsIdentity Table of identities matching the search criteria.
 type SavedSearchCompleteSearchResultsIdentity struct {
-	// The number of rows in the table.
+	// Number of rows in the table.
 	Count string `json:"count"`
-	// The type of object represented in the table.
+	// Type of object represented in the table.
 	Noun string `json:"noun"`
-	// A sample of the data in the table.
+	// Sample of the table data.
 	Preview [][]string `json:"preview"`
 	AdditionalProperties map[string]interface{}
 }

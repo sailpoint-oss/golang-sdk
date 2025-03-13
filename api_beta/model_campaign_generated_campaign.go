@@ -21,22 +21,22 @@ var _ MappedNullable = &CampaignGeneratedCampaign{}
 
 // CampaignGeneratedCampaign Details about the campaign that was generated.
 type CampaignGeneratedCampaign struct {
-	// The unique ID of the campaign.
+	// Campaign's unique ID.
 	Id string `json:"id"`
-	// Human friendly name of the campaign.
+	// Campaign's name.
 	Name string `json:"name"`
-	// Extended description of the campaign.
+	// Campaign's extended description.
 	Description string `json:"description"`
-	// The date and time the campaign was created.
+	// Date and time when the campaign was created.
 	Created SailPointTime `json:"created"`
-	// The date and time the campaign was last modified.
+	// Date and time when the campaign was last modified.
 	Modified NullableString `json:"modified,omitempty"`
-	// The date and time when the campaign must be finished by.
+	// Date and time when the campaign must be finished.
 	Deadline NullableString `json:"deadline,omitempty"`
-	// The type of campaign that was generated.
+	// Campaign's type.
 	Type map[string]interface{} `json:"type"`
 	CampaignOwner CampaignGeneratedCampaignCampaignOwner `json:"campaignOwner"`
-	// The current status of the campaign.
+	// Campaign's current status.
 	Status map[string]interface{} `json:"status"`
 	AdditionalProperties map[string]interface{}
 }

@@ -20,13 +20,13 @@ var _ MappedNullable = &AccessRequestPostApproval{}
 
 // AccessRequestPostApproval struct for AccessRequestPostApproval
 type AccessRequestPostApproval struct {
-	// The unique ID of the access request.
+	// Access request's unique ID.
 	AccessRequestId string `json:"accessRequestId"`
-	// Identities access was requested for.
-	RequestedFor []AccessItemRequestedForDto `json:"requestedFor"`
-	// Details on the outcome of each access item.
+	// Identities whom access was requested for.
+	RequestedFor []AccessItemRequestedForDto1 `json:"requestedFor"`
+	// Details about the outcome of each requested access item.
 	RequestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner `json:"requestedItemsStatus"`
-	RequestedBy AccessItemRequesterDto `json:"requestedBy"`
+	RequestedBy AccessItemRequesterDto1 `json:"requestedBy"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _AccessRequestPostApproval AccessRequestPostApproval
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestPostApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, requestedBy AccessItemRequesterDto) *AccessRequestPostApproval {
+func NewAccessRequestPostApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto1, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, requestedBy AccessItemRequesterDto1) *AccessRequestPostApproval {
 	this := AccessRequestPostApproval{}
 	this.AccessRequestId = accessRequestId
 	this.RequestedFor = requestedFor
@@ -78,9 +78,9 @@ func (o *AccessRequestPostApproval) SetAccessRequestId(v string) {
 }
 
 // GetRequestedFor returns the RequestedFor field value
-func (o *AccessRequestPostApproval) GetRequestedFor() []AccessItemRequestedForDto {
+func (o *AccessRequestPostApproval) GetRequestedFor() []AccessItemRequestedForDto1 {
 	if o == nil {
-		var ret []AccessItemRequestedForDto
+		var ret []AccessItemRequestedForDto1
 		return ret
 	}
 
@@ -89,7 +89,7 @@ func (o *AccessRequestPostApproval) GetRequestedFor() []AccessItemRequestedForDt
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPostApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
+func (o *AccessRequestPostApproval) GetRequestedForOk() ([]AccessItemRequestedForDto1, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *AccessRequestPostApproval) GetRequestedForOk() ([]AccessItemRequestedFo
 }
 
 // SetRequestedFor sets field value
-func (o *AccessRequestPostApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
+func (o *AccessRequestPostApproval) SetRequestedFor(v []AccessItemRequestedForDto1) {
 	o.RequestedFor = v
 }
 
@@ -126,9 +126,9 @@ func (o *AccessRequestPostApproval) SetRequestedItemsStatus(v []AccessRequestPos
 }
 
 // GetRequestedBy returns the RequestedBy field value
-func (o *AccessRequestPostApproval) GetRequestedBy() AccessItemRequesterDto {
+func (o *AccessRequestPostApproval) GetRequestedBy() AccessItemRequesterDto1 {
 	if o == nil {
-		var ret AccessItemRequesterDto
+		var ret AccessItemRequesterDto1
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *AccessRequestPostApproval) GetRequestedBy() AccessItemRequesterDto {
 
 // GetRequestedByOk returns a tuple with the RequestedBy field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPostApproval) GetRequestedByOk() (*AccessItemRequesterDto, bool) {
+func (o *AccessRequestPostApproval) GetRequestedByOk() (*AccessItemRequesterDto1, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *AccessRequestPostApproval) GetRequestedByOk() (*AccessItemRequesterDto,
 }
 
 // SetRequestedBy sets field value
-func (o *AccessRequestPostApproval) SetRequestedBy(v AccessItemRequesterDto) {
+func (o *AccessRequestPostApproval) SetRequestedBy(v AccessItemRequesterDto1) {
 	o.RequestedBy = v
 }
 

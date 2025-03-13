@@ -21,9 +21,9 @@ var _ MappedNullable = &VAClusterStatusChangeEvent{}
 
 // VAClusterStatusChangeEvent struct for VAClusterStatusChangeEvent
 type VAClusterStatusChangeEvent struct {
-	// The date and time the status change occurred.
+	// Date and time when the status change occurred.
 	Created SailPointTime `json:"created"`
-	// The type of the object that initiated this event.
+	// Type of the object that initiated the event.
 	Type map[string]interface{} `json:"type"`
 	Application VAClusterStatusChangeEventApplication `json:"application"`
 	HealthCheckResult VAClusterStatusChangeEventHealthCheckResult `json:"healthCheckResult"`

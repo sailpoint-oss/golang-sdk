@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// IdentityAttributesChangedChangesInnerOldValue - The value of the identity attribute before it changed.
+// IdentityAttributesChangedChangesInnerOldValue - Identity attribute's previous value before the change.
 type IdentityAttributesChangedChangesInnerOldValue struct {
 	ArrayOfString *[]string
 	Bool *bool

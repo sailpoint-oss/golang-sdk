@@ -18,15 +18,15 @@ import (
 // checks if the Reviewer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Reviewer{}
 
-// Reviewer Details of the reviewer for certification.
+// Reviewer Details of the reviewer for a certification.
 type Reviewer struct {
-	// The reviewer's DTO type.
+	// Reviewer's DTO type.
 	Type string `json:"type"`
-	// The reviewer's ID.
+	// Reviewer's ID.
 	Id string `json:"id"`
-	// The reviewer's display name.
+	// Reviewer's display name.
 	Name string `json:"name"`
-	// The reviewing identity's email. Only applicable to `IDENTITY`.
+	// Reviewing identity's email. This is only applicable to reviewers of the `IDENTITY` type.
 	Email NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

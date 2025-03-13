@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
-**RequestedItems** | [**[]AccessRequestDynamicApproverRequestedItemsInner**](AccessRequestDynamicApproverRequestedItemsInner.md) | The access items that are being requested. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
+**AccessRequestId** | **string** | Unique ID of the access request object. You can use this ID with the [Access Request Status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the request&#39;s status. | 
+**RequestedFor** | [**[]AccessItemRequestedForDto1**](AccessItemRequestedForDto1.md) | Identities access was requested for. | 
+**RequestedItems** | [**[]AccessRequestDynamicApproverRequestedItemsInner**](AccessRequestDynamicApproverRequestedItemsInner.md) | Requested access items. | 
+**RequestedBy** | [**AccessItemRequesterDto1**](AccessItemRequesterDto1.md) |  | 
 
 ## Methods
 
 ### NewAccessRequestDynamicApprover
 
-`func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessItemRequesterDto, ) *AccessRequestDynamicApprover`
+`func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor []AccessItemRequestedForDto1, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessItemRequesterDto1, ) *AccessRequestDynamicApprover`
 
 NewAccessRequestDynamicApprover instantiates a new AccessRequestDynamicApprover object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestDynamicApprover) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *AccessRequestDynamicApprover) GetRequestedFor() []AccessItemRequestedForDto1`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*[]AccessItemRequestedForDto1, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestDynamicApprover) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *AccessRequestDynamicApprover) SetRequestedFor(v []AccessItemRequestedForDto1)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -90,20 +90,20 @@ SetRequestedItems sets RequestedItems field to given value.
 
 ### GetRequestedBy
 
-`func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessItemRequesterDto`
+`func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessItemRequesterDto1`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessItemRequesterDto, bool)`
+`func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessItemRequesterDto1, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *AccessRequestDynamicApprover) SetRequestedBy(v AccessItemRequesterDto)`
+`func (o *AccessRequestDynamicApprover) SetRequestedBy(v AccessItemRequesterDto1)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

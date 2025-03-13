@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the campaign. | 
-**Name** | **string** | Human friendly name of the campaign. | 
-**Description** | **string** | Extended description of the campaign. | 
-**Created** | **time.Time** | The date and time the campaign was created. | 
-**Modified** | Pointer to **NullableString** | The date and time the campaign was last modified. | [optional] 
-**Deadline** | Pointer to **NullableString** | The date and time when the campaign must be finished by. | [optional] 
-**Type** | **map[string]interface{}** | The type of campaign that was generated. | 
+**Id** | **string** | Campaign&#39;s unique ID. | 
+**Name** | **string** | Campaign&#39;s name. | 
+**Description** | **string** | Campaign&#39;s extended description. | 
+**Created** | **time.Time** | Date and time when the campaign was created. | 
+**Modified** | Pointer to **NullableString** | Date and time when the campaign was last modified. | [optional] 
+**Deadline** | Pointer to **NullableString** | Date and time when the campaign must be finished. | [optional] 
+**Type** | **map[string]interface{}** | Campaign&#39;s type. | 
 **CampaignOwner** | [**CampaignGeneratedCampaignCampaignOwner**](CampaignGeneratedCampaignCampaignOwner.md) |  | 
-**Status** | **map[string]interface{}** | The current status of the campaign. | 
+**Status** | **map[string]interface{}** | Campaign&#39;s current status. | 
 
 ## Methods
 

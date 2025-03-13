@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique ID of the certification. | 
-**Name** | **string** | The name of the certification. | 
-**Created** | **time.Time** | The date and time the certification was created. | 
-**Modified** | Pointer to **NullableTime** | The date and time the certification was last modified. | [optional] 
+**Id** | **string** | Certification&#39;s unique ID. | 
+**Name** | **string** | Certification&#39;s name. | 
+**Created** | **time.Time** | Date and time when the certification was created. | 
+**Modified** | Pointer to **NullableTime** | Date and time when the certification was last modified. | [optional] 
 **CampaignRef** | [**CampaignReference**](CampaignReference.md) |  | 
 **Phase** | [**CertificationPhase**](CertificationPhase.md) |  | 
-**Due** | **time.Time** | The due date of the certification. | 
-**Signed** | **time.Time** | The date the reviewer signed off on the certification. | 
+**Due** | **time.Time** | Date and time when the certification is due. | 
+**Signed** | **time.Time** | Date and time when the reviewer signed off on the certification. | 
 **Reviewer** | [**Reviewer**](Reviewer.md) |  | 
 **Reassignment** | Pointer to [**Reassignment**](Reassignment.md) |  | [optional] 
-**HasErrors** | **bool** | Indicates it the certification has any errors. | 
-**ErrorMessage** | Pointer to **NullableString** | A message indicating what the error is. | [optional] 
-**Completed** | **bool** | Indicates if all certification decisions have been made. | 
-**DecisionsMade** | **int32** | The number of approve/revoke/acknowledge decisions that have been made by the reviewer. | 
-**DecisionsTotal** | **int32** | The total number of approve/revoke/acknowledge decisions for the certification. | 
-**EntitiesCompleted** | **int32** | The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete. | 
-**EntitiesTotal** | **int32** | The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete. | 
+**HasErrors** | **bool** | Indicates whether the certification has any errors. | 
+**ErrorMessage** | Pointer to **NullableString** | Message indicating what the error is. | [optional] 
+**Completed** | **bool** | Indicates whether all certification decisions have been made. | 
+**DecisionsMade** | **int32** | Number of approve/revoke/acknowledge decisions the reviewer has made. | 
+**DecisionsTotal** | **int32** | Total number of approve/revoke/acknowledge decisions for the certification. | 
+**EntitiesCompleted** | **int32** | Number of entities (identities, access profiles, roles, etc.) that are complete and all decisions have been made for. | 
+**EntitiesTotal** | **int32** | Total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete. | 
 
 ## Methods
 

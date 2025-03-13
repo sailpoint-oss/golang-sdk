@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TrackingNumber** | **string** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | 
-**Sources** | **string** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | 
-**Action** | Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
-**Errors** | Pointer to **[]string** | A list of any accumulated error messages that occurred during provisioning. | [optional] 
-**Warnings** | Pointer to **[]string** | A list of any accumulated warning messages that occurred during provisioning. | [optional] 
+**TrackingNumber** | **string** | Provisioning request&#39;s reference number. Useful for tracking status in the &#39;Account Activity&#39; search interface. | 
+**Sources** | **string** | Sources the provisioning transactions were performed on. Sources are comma separated. | 
+**Action** | Pointer to **NullableString** | Origin of the provisioning request. | [optional] 
+**Errors** | Pointer to **[]string** | List of any accumulated error messages that occurred during provisioning. | [optional] 
+**Warnings** | Pointer to **[]string** | List of any accumulated warning messages that occurred during provisioning. | [optional] 
 **Recipient** | [**ProvisioningCompletedRecipient**](ProvisioningCompletedRecipient.md) |  | 
 **Requester** | Pointer to [**NullableProvisioningCompletedRequester**](ProvisioningCompletedRequester.md) |  | [optional] 
-**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
+**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | List of provisioning instructions to perform on an account-by-account basis. | 
 
 ## Methods
 

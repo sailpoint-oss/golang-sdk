@@ -18,14 +18,14 @@ import (
 // checks if the VAClusterStatusChangeEventHealthCheckResult type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &VAClusterStatusChangeEventHealthCheckResult{}
 
-// VAClusterStatusChangeEventHealthCheckResult The results of the most recent health check.
+// VAClusterStatusChangeEventHealthCheckResult Results of the most recent health check.
 type VAClusterStatusChangeEventHealthCheckResult struct {
-	// Detailed message of the result of the health check.
+	// Detailed message of the health check result..
 	Message string `json:"message"`
-	// The type of the health check result.
+	// Health check result type.
 	ResultType string `json:"resultType"`
-	// The status of the health check.
-	Status map[string]interface{} `json:"status"`
+	// Health check status.
+	Status string `json:"status"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +35,7 @@ type _VAClusterStatusChangeEventHealthCheckResult VAClusterStatusChangeEventHeal
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVAClusterStatusChangeEventHealthCheckResult(message string, resultType string, status map[string]interface{}) *VAClusterStatusChangeEventHealthCheckResult {
+func NewVAClusterStatusChangeEventHealthCheckResult(message string, resultType string, status string) *VAClusterStatusChangeEventHealthCheckResult {
 	this := VAClusterStatusChangeEventHealthCheckResult{}
 	this.Message = message
 	this.ResultType = resultType
@@ -100,9 +100,9 @@ func (o *VAClusterStatusChangeEventHealthCheckResult) SetResultType(v string) {
 }
 
 // GetStatus returns the Status field value
-func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatus() map[string]interface{} {
+func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatus() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -111,15 +111,15 @@ func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatus() map[string]int
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatusOk() (map[string]interface{}, bool) {
+func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatusOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
 // SetStatus sets field value
-func (o *VAClusterStatusChangeEventHealthCheckResult) SetStatus(v map[string]interface{}) {
+func (o *VAClusterStatusChangeEventHealthCheckResult) SetStatus(v string) {
 	o.Status = v
 }
 

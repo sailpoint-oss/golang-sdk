@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Created identity&#39;s DTO type. | 
-**Id** | **string** | Created identity ID. | 
-**Name** | **string** | Created identity&#39;s display name. | 
+**Type** | **string** | Identity&#39;s DTO type. | 
+**Id** | **string** | Identity&#39;s unique ID. | 
+**Name** | **string** | Identity&#39;s name. | 
 
 ## Methods
 

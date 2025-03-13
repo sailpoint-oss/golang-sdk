@@ -18,13 +18,13 @@ import (
 // checks if the ProvisioningCompletedAccountRequestsInnerSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProvisioningCompletedAccountRequestsInnerSource{}
 
-// ProvisioningCompletedAccountRequestsInnerSource Reference to the source being provisioned against.
+// ProvisioningCompletedAccountRequestsInnerSource Source that ISC is provisioning access on.
 type ProvisioningCompletedAccountRequestsInnerSource struct {
-	// ID of the object to which this reference applies
+	// Source ID.
 	Id string `json:"id"`
-	// The type of object that is referenced
+	// Source DTO type.
 	Type string `json:"type"`
-	// Human-readable display name of the object to which this reference applies
+	// Source name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

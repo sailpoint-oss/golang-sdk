@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Source** | [**AccountAggregationCompletedSource**](AccountAggregationCompletedSource.md) |  | 
-**Status** | **map[string]interface{}** | The overall status of the aggregation. | 
-**Started** | **time.Time** | The date and time when the account aggregation started. | 
-**Completed** | **time.Time** | The date and time when the account aggregation finished. | 
-**Errors** | **[]string** | A list of errors that occurred during the aggregation. | 
-**Warnings** | **[]string** | A list of warnings that occurred during the aggregation. | 
+**Status** | **map[string]interface{}** | Aggregation&#39;s overall status. | 
+**Started** | **time.Time** | Date and time when the account aggregation started. | 
+**Completed** | **time.Time** | Date and time when the account aggregation finished. | 
+**Errors** | **[]string** | List of errors that occurred during the aggregation. | 
+**Warnings** | **[]string** | List of warnings that occurred during the aggregation. | 
 **Stats** | [**AccountAggregationCompletedStats**](AccountAggregationCompletedStats.md) |  | 
 
 ## Methods

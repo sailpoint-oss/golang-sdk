@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the source. | 
-**Name** | **string** | The user friendly name of the source. | 
-**Type** | **string** | The connection type of the source. | 
-**Modified** | **time.Time** | The date and time the source was modified. | 
-**Connector** | **string** | The connector type used to connect to the source. | 
+**Id** | **string** | Source&#39;s unique ID. | 
+**Name** | **string** | Source name. | 
+**Type** | **string** | Connection type. | 
+**Modified** | **time.Time** | Date and time when the source was modified. | 
+**Connector** | **string** | Connector type used to connect to the source. | 
 **Actor** | [**SourceUpdatedActor**](SourceUpdatedActor.md) |  | 
 
 ## Methods

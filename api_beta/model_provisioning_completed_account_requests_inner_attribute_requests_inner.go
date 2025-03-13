@@ -20,12 +20,12 @@ var _ MappedNullable = &ProvisioningCompletedAccountRequestsInnerAttributeReques
 
 // ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner struct for ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 type ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner struct {
-	// The name of the attribute being provisioned.
+	// Name of the attribute being provisioned.
 	AttributeName string `json:"attributeName"`
-	// The value of the attribute being provisioned.
+	// Value of the attribute being provisioned.
 	AttributeValue NullableString `json:"attributeValue,omitempty"`
 	// The operation to handle the attribute.
-	Operation map[string]interface{} `json:"operation"`
+	Operation string `json:"operation"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +35,7 @@ type _ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner Provisioni
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(attributeName string, operation map[string]interface{}) *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner {
+func NewProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(attributeName string, operation string) *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner {
 	this := ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner{}
 	this.AttributeName = attributeName
 	this.Operation = operation
@@ -117,9 +117,9 @@ func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) UnsetA
 }
 
 // GetOperation returns the Operation field value
-func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperation() map[string]interface{} {
+func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperation() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -128,15 +128,15 @@ func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOpe
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperationOk() (map[string]interface{}, bool) {
+func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetOperationOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Operation, true
+	return &o.Operation, true
 }
 
 // SetOperation sets field value
-func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) SetOperation(v map[string]interface{}) {
+func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) SetOperation(v string) {
 	o.Operation = v
 }
 

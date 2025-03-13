@@ -18,13 +18,13 @@ import (
 // checks if the SavedSearchCompleteSearchResultsEntitlement type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SavedSearchCompleteSearchResultsEntitlement{}
 
-// SavedSearchCompleteSearchResultsEntitlement A table of entitlements that match the search criteria.
+// SavedSearchCompleteSearchResultsEntitlement Table of entitlements matching the search criteria.
 type SavedSearchCompleteSearchResultsEntitlement struct {
-	// The number of rows in the table.
+	// Number of rows in the table.
 	Count string `json:"count"`
-	// The type of object represented in the table.
+	// Type of object represented in the table.
 	Noun string `json:"noun"`
-	// A sample of the data in the table.
+	// Sample of table data.
 	Preview [][]string `json:"preview"`
 	AdditionalProperties map[string]interface{}
 }

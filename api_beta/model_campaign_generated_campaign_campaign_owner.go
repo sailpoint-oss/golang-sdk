@@ -18,13 +18,13 @@ import (
 // checks if the CampaignGeneratedCampaignCampaignOwner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CampaignGeneratedCampaignCampaignOwner{}
 
-// CampaignGeneratedCampaignCampaignOwner The identity that owns the campaign.
+// CampaignGeneratedCampaignCampaignOwner Identity who owns the campaign.
 type CampaignGeneratedCampaignCampaignOwner struct {
-	// The unique ID of the identity.
+	// Identity's unique ID.
 	Id string `json:"id"`
-	// The display name of the identity.
+	// Identity's name.
 	DisplayName string `json:"displayName"`
-	// The primary email address of the identity.
+	// Identity's primary email address.
 	Email string `json:"email"`
 	AdditionalProperties map[string]interface{}
 }

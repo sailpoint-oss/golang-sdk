@@ -20,13 +20,14 @@ var _ MappedNullable = &AccessRequestPostApprovalRequestedItemsStatusInnerApprov
 
 // AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner struct for AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 type AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner struct {
-	// A comment left by the approver.
+	// Approver's comment.
 	ApprovalComment NullableString `json:"approvalComment,omitempty"`
-	// The final decision of the approver.
+	// Approver's final decision.
 	ApprovalDecision map[string]interface{} `json:"approvalDecision"`
-	// The name of the approver
+	// Approver's name.
 	ApproverName string `json:"approverName"`
-	Approver AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover `json:"approver"`
+	// Approver's identity.
+	Approver AccessItemApproverDto `json:"approver"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +37,7 @@ type _AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner Access
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(approvalDecision map[string]interface{}, approverName string, approver AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover) *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner {
+func NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(approvalDecision map[string]interface{}, approverName string, approver AccessItemApproverDto) *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner {
 	this := AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner{}
 	this.ApprovalDecision = approvalDecision
 	this.ApproverName = approverName
@@ -143,9 +144,9 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) Se
 }
 
 // GetApprover returns the Approver field value
-func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApprover() AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover {
+func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApprover() AccessItemApproverDto {
 	if o == nil {
-		var ret AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
+		var ret AccessItemApproverDto
 		return ret
 	}
 
@@ -154,7 +155,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) Ge
 
 // GetApproverOk returns a tuple with the Approver field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApproverOk() (*AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover, bool) {
+func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApproverOk() (*AccessItemApproverDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -162,7 +163,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) Ge
 }
 
 // SetApprover sets field value
-func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) SetApprover(v AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover) {
+func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) SetApprover(v AccessItemApproverDto) {
 	o.Approver = v
 }
 

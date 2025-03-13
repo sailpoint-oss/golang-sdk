@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of identity who deleted the source. | 
-**Id** | **string** | ID of identity who deleted the source. | 
-**Name** | **string** | Display name of identity who deleted the source. | 
+**Type** | **string** | DTO type of the identity who deleted the source. | 
+**Id** | **string** | ID of the identity who deleted the source. | 
+**Name** | **string** | Name of the identity who deleted the source. | 
 
 ## Methods
 

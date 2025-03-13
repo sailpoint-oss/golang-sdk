@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of identity who approved the access item request. | [optional] 
-**Id** | Pointer to **string** | ID of identity who approved the access item request. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity who approved the access item request. | [optional] 
+**Type** | Pointer to **string** | DTO type of the identity who approved the access item request. | [optional] 
+**Id** | Pointer to **string** | ID of the identity who approved the access item request. | [optional] 
+**Name** | Pointer to **string** | Name of the identity who approved the access item request. | [optional] 
 
 ## Methods
 

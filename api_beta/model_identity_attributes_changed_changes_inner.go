@@ -20,7 +20,7 @@ var _ MappedNullable = &IdentityAttributesChangedChangesInner{}
 
 // IdentityAttributesChangedChangesInner struct for IdentityAttributesChangedChangesInner
 type IdentityAttributesChangedChangesInner struct {
-	// The name of the identity attribute that changed.
+	// Identity attribute's name.
 	Attribute string `json:"attribute"`
 	OldValue NullableIdentityAttributesChangedChangesInnerOldValue `json:"oldValue,omitempty"`
 	NewValue *IdentityAttributesChangedChangesInnerNewValue `json:"newValue,omitempty"`

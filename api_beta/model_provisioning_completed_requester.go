@@ -24,7 +24,7 @@ type ProvisioningCompletedRequester struct {
 	Type string `json:"type"`
 	// Provisioning requester's identity ID.
 	Id string `json:"id"`
-	// Provisioning owner's human-readable display name.
+	// Provisioning requester's name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

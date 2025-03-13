@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Provisioning recipient DTO type. | 
 **Id** | **string** | Provisioning recipient&#39;s identity ID. | 
-**Name** | **string** | Provisioning recipient&#39;s display name. | 
+**Name** | **string** | Provisioning recipient&#39;s name. | 
 
 ## Methods
 

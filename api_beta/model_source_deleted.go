@@ -21,15 +21,15 @@ var _ MappedNullable = &SourceDeleted{}
 
 // SourceDeleted struct for SourceDeleted
 type SourceDeleted struct {
-	// The unique ID of the source.
+	// Source's unique ID.
 	Id string `json:"id"`
-	// Human friendly name of the source.
+	// Source name.
 	Name string `json:"name"`
-	// The connection type.
+	// Connection type.
 	Type string `json:"type"`
-	// The date and time the source was deleted.
+	// Date and time when the source was deleted.
 	Deleted SailPointTime `json:"deleted"`
-	// The connector type used to connect to the source.
+	// Connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourceDeletedActor `json:"actor"`
 	AdditionalProperties map[string]interface{}

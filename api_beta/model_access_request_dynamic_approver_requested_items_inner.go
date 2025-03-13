@@ -20,17 +20,17 @@ var _ MappedNullable = &AccessRequestDynamicApproverRequestedItemsInner{}
 
 // AccessRequestDynamicApproverRequestedItemsInner struct for AccessRequestDynamicApproverRequestedItemsInner
 type AccessRequestDynamicApproverRequestedItemsInner struct {
-	// The unique ID of the access item.
+	// Access item's unique identifier.
 	Id string `json:"id"`
-	// Human friendly name of the access item.
+	// Access item's name.
 	Name string `json:"name"`
-	// Extended description of the access item.
+	// Access item's extended description.
 	Description NullableString `json:"description,omitempty"`
-	// The type of access item being requested.
+	// Type of access item being requested.
 	Type map[string]interface{} `json:"type"`
-	// Grant or revoke the access item
+	// Action to perform on the requested access item.
 	Operation map[string]interface{} `json:"operation"`
-	// A comment from the requestor on why the access is needed.
+	// Comment from the requester about why the access is necessary.
 	Comment NullableString `json:"comment,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

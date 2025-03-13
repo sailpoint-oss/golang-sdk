@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalComment** | Pointer to **NullableString** | A comment left by the approver. | [optional] 
-**ApprovalDecision** | **map[string]interface{}** | The final decision of the approver. | 
-**ApproverName** | **string** | The name of the approver | 
-**Approver** | [**AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover**](AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.md) |  | 
+**ApprovalComment** | Pointer to **NullableString** | Approver&#39;s comment. | [optional] 
+**ApprovalDecision** | **map[string]interface{}** | Approver&#39;s final decision. | 
+**ApproverName** | **string** | Approver&#39;s name. | 
+**Approver** | [**AccessItemApproverDto**](AccessItemApproverDto.md) | Approver&#39;s identity. | 
 
 ## Methods
 
 ### NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 
-`func NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(approvalDecision map[string]interface{}, approverName string, approver AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover, ) *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner`
+`func NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(approvalDecision map[string]interface{}, approverName string, approver AccessItemApproverDto, ) *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner`
 
 NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner instantiates a new AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner object
 This constructor will assign default values to properties that have it defined,
@@ -105,20 +105,20 @@ SetApproverName sets ApproverName field to given value.
 
 ### GetApprover
 
-`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApprover() AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover`
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApprover() AccessItemApproverDto`
 
 GetApprover returns the Approver field if non-nil, zero value otherwise.
 
 ### GetApproverOk
 
-`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApproverOk() (*AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover, bool)`
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApproverOk() (*AccessItemApproverDto, bool)`
 
 GetApproverOk returns a tuple with the Approver field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprover
 
-`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) SetApprover(v AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover)`
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) SetApprover(v AccessItemApproverDto)`
 
 SetApprover sets Approver field to given value.
 

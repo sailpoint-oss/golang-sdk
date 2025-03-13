@@ -4,52 +4,52 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
-**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
-**RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
+**AccessRequestId** | **string** | Access request&#39;s unique ID. | 
+**RequestedFor** | [**[]AccessItemRequestedForDto1**](AccessItemRequestedForDto1.md) | Identities whom access was requested for. | 
+**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details about each requested access item. | 
+**RequestedBy** | [**AccessItemRequesterDto1**](AccessItemRequesterDto1.md) |  | 
+**RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details about the outcome of each requested access item. | 
 **Source** | [**AccountUncorrelatedSource**](AccountUncorrelatedSource.md) |  | 
 **Status** | **map[string]interface{}** | The overall status of the collection. | 
 **Started** | **time.Time** | The date and time when the account collection started. | 
 **Completed** | **time.Time** | The date and time when the account collection finished. | 
-**Errors** | **[]string** | A list of any accumulated error messages that occurred during provisioning. | 
-**Warnings** | **[]string** | A list of any accumulated warning messages that occurred during provisioning. | 
+**Errors** | **[]string** | List of any accumulated error messages that occurred during provisioning. | 
+**Warnings** | **[]string** | List of any accumulated warning messages that occurred during provisioning. | 
 **Stats** | [**AccountsCollectedForAggregationStats**](AccountsCollectedForAggregationStats.md) |  | 
 **Identity** | [**IdentityDeletedIdentity**](IdentityDeletedIdentity.md) |  | 
 **Account** | [**AccountUncorrelatedAccount**](AccountUncorrelatedAccount.md) |  | 
-**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner.md) | A list of one or more identity attributes that changed on the identity. | 
-**Attributes** | **map[string]interface{}** | The attributes of the account. The contents of attributes depends on the account schema for the source. | 
+**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner.md) | List of identity&#39;s attributes that changed. | 
+**Attributes** | **map[string]interface{}** | Account attributes. The attributes&#39; contents depend on the source&#39;s account schema. | 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
 **Campaign** | [**CampaignGeneratedCampaign**](CampaignGeneratedCampaign.md) |  | 
 **Certification** | [**CertificationSignedOffCertification**](CertificationSignedOffCertification.md) |  | 
-**TrackingNumber** | **string** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | 
-**Sources** | **string** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | 
-**Action** | Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
+**TrackingNumber** | **string** | Provisioning request&#39;s reference number. Useful for tracking status in the &#39;Account Activity&#39; search interface. | 
+**Sources** | **string** | Sources the provisioning transactions were performed on. Sources are comma separated. | 
+**Action** | Pointer to **NullableString** | Origin of the provisioning request. | [optional] 
 **Recipient** | [**ProvisioningCompletedRecipient**](ProvisioningCompletedRecipient.md) |  | 
 **Requester** | Pointer to [**NullableProvisioningCompletedRequester**](ProvisioningCompletedRequester.md) |  | [optional] 
-**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
-**FileName** | **string** | A name for the report file. | 
-**OwnerEmail** | **string** | The email address of the identity that owns the saved search. | 
-**OwnerName** | **string** | The name of the identity that owns the saved search. | 
-**Query** | **string** | The search query that was used to generate the report. | 
-**SearchName** | **string** | The name of the saved search. | 
+**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | List of provisioning instructions to perform on an account-by-account basis. | 
+**FileName** | **string** | Report file name. | 
+**OwnerEmail** | **string** | Email address of the identity who owns the saved search. | 
+**OwnerName** | **string** | Name of the identity who owns the saved search. | 
+**Query** | **string** | Search query used to generate the report. | 
+**SearchName** | **string** | Saved search name. | 
 **SearchResults** | [**SavedSearchCompleteSearchResults**](SavedSearchCompleteSearchResults.md) |  | 
 **SignedS3Url** | **string** | The Amazon S3 URL to download the report from. | 
-**Uuid** | Pointer to **string** | Source unique identifier for the identity. UUID is generated by the source system. | [optional] 
-**Id** | **string** | The unique ID of the source. | 
-**NativeIdentifier** | **string** | Unique ID of the account on the source. | 
-**SourceId** | **string** | The ID of the source. | 
-**SourceName** | **string** | The name of the source. | 
-**IdentityId** | **string** | The ID of the identity that is correlated with this account. | 
-**IdentityName** | **string** | The name of the identity that is correlated with this account. | 
-**Name** | **string** | The user friendly name of the source. | 
-**Type** | **string** | The connection type of the source. | 
-**Created** | **time.Time** | The date and time the status change occurred. | 
-**Connector** | **string** | The connector type used to connect to the source. | 
+**Uuid** | **string** | Identity&#39;s universal unique identifier (UUID) on the source. The source system generates the UUID. | 
+**Id** | **string** | Source&#39;s unique ID. | 
+**NativeIdentifier** | **string** | Account&#39;s unique ID on the source. | 
+**SourceId** | **string** | Source ID. | 
+**SourceName** | **string** | Source name. | 
+**IdentityId** | **string** | ID of the identity correlated with the account. | 
+**IdentityName** | **string** | Name of the identity correlated with the account. | 
+**Name** | **string** | Source name. | 
+**Type** | **string** | Connection type. | 
+**Created** | **time.Time** | Date and time when the status change occurred. | 
+**Connector** | **string** | Connector type used to connect to the source. | 
 **Actor** | [**SourceUpdatedActor**](SourceUpdatedActor.md) |  | 
-**Deleted** | **time.Time** | The date and time the source was deleted. | 
-**Modified** | **time.Time** | The date and time the source was modified. | 
+**Deleted** | **time.Time** | Date and time when the source was deleted. | 
+**Modified** | **time.Time** | Date and time when the source was modified. | 
 **Application** | [**VAClusterStatusChangeEventApplication**](VAClusterStatusChangeEventApplication.md) |  | 
 **HealthCheckResult** | [**VAClusterStatusChangeEventHealthCheckResult**](VAClusterStatusChangeEventHealthCheckResult.md) |  | 
 **PreviousHealthCheckResult** | [**VAClusterStatusChangeEventPreviousHealthCheckResult**](VAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 
@@ -58,7 +58,7 @@ Name | Type | Description | Notes
 
 ### NewTriggerExampleInput
 
-`func NewTriggerExampleInput(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, source AccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats, identity IdentityDeletedIdentity, account AccountUncorrelatedAccount, changes []IdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign CampaignGeneratedCampaign, certification CertificationSignedOffCertification, trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ string, created time.Time, connector string, actor SourceUpdatedActor, deleted time.Time, modified time.Time, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
+`func NewTriggerExampleInput(accessRequestId string, requestedFor []AccessItemRequestedForDto1, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto1, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, source AccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats, identity IdentityDeletedIdentity, account AccountUncorrelatedAccount, changes []IdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign CampaignGeneratedCampaign, certification CertificationSignedOffCertification, trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, uuid string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ string, created time.Time, connector string, actor SourceUpdatedActor, deleted time.Time, modified time.Time, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
 
 NewTriggerExampleInput instantiates a new TriggerExampleInput object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *TriggerExampleInput) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *TriggerExampleInput) GetRequestedFor() []AccessItemRequestedForDto1`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *TriggerExampleInput) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *TriggerExampleInput) GetRequestedForOk() (*[]AccessItemRequestedForDto1, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *TriggerExampleInput) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *TriggerExampleInput) SetRequestedFor(v []AccessItemRequestedForDto1)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -135,20 +135,20 @@ SetRequestedItems sets RequestedItems field to given value.
 
 ### GetRequestedBy
 
-`func (o *TriggerExampleInput) GetRequestedBy() AccessItemRequesterDto`
+`func (o *TriggerExampleInput) GetRequestedBy() AccessItemRequesterDto1`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *TriggerExampleInput) GetRequestedByOk() (*AccessItemRequesterDto, bool)`
+`func (o *TriggerExampleInput) GetRequestedByOk() (*AccessItemRequesterDto1, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *TriggerExampleInput) SetRequestedBy(v AccessItemRequesterDto)`
+`func (o *TriggerExampleInput) SetRequestedBy(v AccessItemRequesterDto1)`
 
 SetRequestedBy sets RequestedBy field to given value.
 
@@ -787,11 +787,6 @@ and a boolean to check if the value has been set.
 
 SetUuid sets Uuid field to given value.
 
-### HasUuid
-
-`func (o *TriggerExampleInput) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetId
 

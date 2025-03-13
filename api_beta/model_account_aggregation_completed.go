@@ -22,15 +22,15 @@ var _ MappedNullable = &AccountAggregationCompleted{}
 // AccountAggregationCompleted struct for AccountAggregationCompleted
 type AccountAggregationCompleted struct {
 	Source AccountAggregationCompletedSource `json:"source"`
-	// The overall status of the aggregation.
+	// Aggregation's overall status.
 	Status map[string]interface{} `json:"status"`
-	// The date and time when the account aggregation started.
+	// Date and time when the account aggregation started.
 	Started SailPointTime `json:"started"`
-	// The date and time when the account aggregation finished.
+	// Date and time when the account aggregation finished.
 	Completed SailPointTime `json:"completed"`
-	// A list of errors that occurred during the aggregation.
+	// List of errors that occurred during the aggregation.
 	Errors []string `json:"errors"`
-	// A list of warnings that occurred during the aggregation.
+	// List of warnings that occurred during the aggregation.
 	Warnings []string `json:"warnings"`
 	Stats AccountAggregationCompletedStats `json:"stats"`
 	AdditionalProperties map[string]interface{}

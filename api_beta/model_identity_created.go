@@ -21,7 +21,7 @@ var _ MappedNullable = &IdentityCreated{}
 // IdentityCreated struct for IdentityCreated
 type IdentityCreated struct {
 	Identity IdentityCreatedIdentity `json:"identity"`
-	// The attributes assigned to the identity. Attributes are determined by the identity profile.
+	// Attributes assigned to the identity. These attributes are determined by the identity profile.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }

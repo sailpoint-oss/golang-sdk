@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileName** | **string** | A name for the report file. | 
-**OwnerEmail** | **string** | The email address of the identity that owns the saved search. | 
-**OwnerName** | **string** | The name of the identity that owns the saved search. | 
-**Query** | **string** | The search query that was used to generate the report. | 
-**SearchName** | **string** | The name of the saved search. | 
+**FileName** | **string** | Report file name. | 
+**OwnerEmail** | **string** | Email address of the identity who owns the saved search. | 
+**OwnerName** | **string** | Name of the identity who owns the saved search. | 
+**Query** | **string** | Search query used to generate the report. | 
+**SearchName** | **string** | Saved search name. | 
 **SearchResults** | [**SavedSearchCompleteSearchResults**](SavedSearchCompleteSearchResults.md) |  | 
 **SignedS3Url** | **string** | The Amazon S3 URL to download the report from. | 
 

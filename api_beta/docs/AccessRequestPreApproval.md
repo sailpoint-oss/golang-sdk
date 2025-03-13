@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
-**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
+**AccessRequestId** | **string** | Access request&#39;s unique ID. | 
+**RequestedFor** | [**[]AccessItemRequestedForDto1**](AccessItemRequestedForDto1.md) | Identities whom access was requested for. | 
+**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details about each requested access item. | 
+**RequestedBy** | [**AccessItemRequesterDto1**](AccessItemRequesterDto1.md) |  | 
 
 ## Methods
 
 ### NewAccessRequestPreApproval
 
-`func NewAccessRequestPreApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto, ) *AccessRequestPreApproval`
+`func NewAccessRequestPreApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto1, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto1, ) *AccessRequestPreApproval`
 
 NewAccessRequestPreApproval instantiates a new AccessRequestPreApproval object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestPreApproval) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *AccessRequestPreApproval) GetRequestedFor() []AccessItemRequestedForDto1`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestPreApproval) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *AccessRequestPreApproval) GetRequestedForOk() (*[]AccessItemRequestedForDto1, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestPreApproval) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *AccessRequestPreApproval) SetRequestedFor(v []AccessItemRequestedForDto1)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -90,20 +90,20 @@ SetRequestedItems sets RequestedItems field to given value.
 
 ### GetRequestedBy
 
-`func (o *AccessRequestPreApproval) GetRequestedBy() AccessItemRequesterDto`
+`func (o *AccessRequestPreApproval) GetRequestedBy() AccessItemRequesterDto1`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *AccessRequestPreApproval) GetRequestedByOk() (*AccessItemRequesterDto, bool)`
+`func (o *AccessRequestPreApproval) GetRequestedByOk() (*AccessItemRequesterDto1, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *AccessRequestPreApproval) SetRequestedBy(v AccessItemRequesterDto)`
+`func (o *AccessRequestPreApproval) SetRequestedBy(v AccessItemRequesterDto1)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

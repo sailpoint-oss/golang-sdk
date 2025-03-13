@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | **time.Time** | The date and time the status change occurred. | 
-**Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
+**Created** | **time.Time** | Date and time when the status change occurred. | 
+**Type** | **map[string]interface{}** | Type of the object that initiated the event. | 
 **Application** | [**VAClusterStatusChangeEventApplication**](VAClusterStatusChangeEventApplication.md) |  | 
 **HealthCheckResult** | [**VAClusterStatusChangeEventHealthCheckResult**](VAClusterStatusChangeEventHealthCheckResult.md) |  | 
 **PreviousHealthCheckResult** | [**VAClusterStatusChangeEventPreviousHealthCheckResult**](VAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 

@@ -20,11 +20,11 @@ var _ MappedNullable = &SourceCreatedActor{}
 
 // SourceCreatedActor Identity who created the source.
 type SourceCreatedActor struct {
-	// DTO type of identity who created the source.
+	// DTO type of the identity who created the source.
 	Type string `json:"type"`
-	// ID of identity who created the source.
+	// ID of the identity who created the source.
 	Id string `json:"id"`
-	// Display name of identity who created the source.
+	// Name of the identity who created the source.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

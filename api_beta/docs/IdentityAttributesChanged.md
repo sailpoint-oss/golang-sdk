@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Identity** | [**IdentityAttributesChangedIdentity**](IdentityAttributesChangedIdentity.md) |  | 
-**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner.md) | A list of one or more identity attributes that changed on the identity. | 
+**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner.md) | List of identity&#39;s attributes that changed. | 
 
 ## Methods
 

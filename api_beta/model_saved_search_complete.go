@@ -20,15 +20,15 @@ var _ MappedNullable = &SavedSearchComplete{}
 
 // SavedSearchComplete struct for SavedSearchComplete
 type SavedSearchComplete struct {
-	// A name for the report file.
+	// Report file name.
 	FileName string `json:"fileName"`
-	// The email address of the identity that owns the saved search.
+	// Email address of the identity who owns the saved search.
 	OwnerEmail string `json:"ownerEmail"`
-	// The name of the identity that owns the saved search.
+	// Name of the identity who owns the saved search.
 	OwnerName string `json:"ownerName"`
-	// The search query that was used to generate the report.
+	// Search query used to generate the report.
 	Query string `json:"query"`
-	// The name of the saved search.
+	// Saved search name.
 	SearchName string `json:"searchName"`
 	SearchResults SavedSearchCompleteSearchResults `json:"searchResults"`
 	// The Amazon S3 URL to download the report from.

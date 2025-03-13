@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** | Detailed message of the result of the health check. | 
-**ResultType** | **string** | The type of the health check result. | 
-**Status** | **map[string]interface{}** | The status of the health check. | 
+**Message** | **string** | Detailed message of the health check result.. | 
+**ResultType** | **string** | Health check result type. | 
+**Status** | **string** | Health check status. | 
 
 ## Methods
 
 ### NewVAClusterStatusChangeEventHealthCheckResult
 
-`func NewVAClusterStatusChangeEventHealthCheckResult(message string, resultType string, status map[string]interface{}, ) *VAClusterStatusChangeEventHealthCheckResult`
+`func NewVAClusterStatusChangeEventHealthCheckResult(message string, resultType string, status string, ) *VAClusterStatusChangeEventHealthCheckResult`
 
 NewVAClusterStatusChangeEventHealthCheckResult instantiates a new VAClusterStatusChangeEventHealthCheckResult object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetResultType sets ResultType field to given value.
 
 ### GetStatus
 
-`func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatus() map[string]interface{}`
+`func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatusOk() (*map[string]interface{}, bool)`
+`func (o *VAClusterStatusChangeEventHealthCheckResult) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *VAClusterStatusChangeEventHealthCheckResult) SetStatus(v map[string]interface{})`
+`func (o *VAClusterStatusChangeEventHealthCheckResult) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 

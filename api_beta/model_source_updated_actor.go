@@ -20,11 +20,11 @@ var _ MappedNullable = &SourceUpdatedActor{}
 
 // SourceUpdatedActor Identity who updated the source.
 type SourceUpdatedActor struct {
-	// DTO type of identity who updated the source.
+	// DTO type of the identity who updated the source.
 	Type string `json:"type"`
-	// ID of identity who updated the source.
-	Id *string `json:"id,omitempty"`
-	// Display name of identity who updated the source.
+	// ID of the identity who updated the source.
+	Id string `json:"id"`
+	// Name of the identity who updated the source.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -35,9 +35,10 @@ type _SourceUpdatedActor SourceUpdatedActor
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceUpdatedActor(type_ string, name string) *SourceUpdatedActor {
+func NewSourceUpdatedActor(type_ string, id string, name string) *SourceUpdatedActor {
 	this := SourceUpdatedActor{}
 	this.Type = type_
+	this.Id = id
 	this.Name = name
 	return &this
 }
@@ -74,36 +75,28 @@ func (o *SourceUpdatedActor) SetType(v string) {
 	o.Type = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *SourceUpdatedActor) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SourceUpdatedActor) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *SourceUpdatedActor) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *SourceUpdatedActor) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value
@@ -141,9 +134,7 @@ func (o SourceUpdatedActor) MarshalJSON() ([]byte, error) {
 func (o SourceUpdatedActor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
@@ -159,6 +150,7 @@ func (o *SourceUpdatedActor) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
+		"id",
 		"name",
 	}
 
