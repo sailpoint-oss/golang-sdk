@@ -25,11 +25,14 @@ type ScheduledAttributes struct {
 	Frequency string `json:"frequency"`
 	// Time zone identifier
 	TimeZone *string `json:"timeZone,omitempty"`
+	// A valid CRON expression
 	CronString *string `json:"cronString,omitempty"`
 	// Scheduled days of the week for execution
 	WeeklyDays []string `json:"weeklyDays,omitempty"`
 	// Scheduled execution times
 	WeeklyTimes []string `json:"weeklyTimes,omitempty"`
+	// Scheduled execution times
+	YearlyTimes []string `json:"yearlyTimes,omitempty"`
 }
 
 type _ScheduledAttributes ScheduledAttributes
@@ -204,6 +207,38 @@ func (o *ScheduledAttributes) SetWeeklyTimes(v []string) {
 	o.WeeklyTimes = v
 }
 
+// GetYearlyTimes returns the YearlyTimes field value if set, zero value otherwise.
+func (o *ScheduledAttributes) GetYearlyTimes() []string {
+	if o == nil || IsNil(o.YearlyTimes) {
+		var ret []string
+		return ret
+	}
+	return o.YearlyTimes
+}
+
+// GetYearlyTimesOk returns a tuple with the YearlyTimes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScheduledAttributes) GetYearlyTimesOk() ([]string, bool) {
+	if o == nil || IsNil(o.YearlyTimes) {
+		return nil, false
+	}
+	return o.YearlyTimes, true
+}
+
+// HasYearlyTimes returns a boolean if a field has been set.
+func (o *ScheduledAttributes) HasYearlyTimes() bool {
+	if o != nil && !IsNil(o.YearlyTimes) {
+		return true
+	}
+
+	return false
+}
+
+// SetYearlyTimes gets a reference to the given []string and assigns it to the YearlyTimes field.
+func (o *ScheduledAttributes) SetYearlyTimes(v []string) {
+	o.YearlyTimes = v
+}
+
 func (o ScheduledAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -226,6 +261,9 @@ func (o ScheduledAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WeeklyTimes) {
 		toSerialize["weeklyTimes"] = o.WeeklyTimes
+	}
+	if !IsNil(o.YearlyTimes) {
+		toSerialize["yearlyTimes"] = o.YearlyTimes
 	}
 	return toSerialize, nil
 }

@@ -58996,6 +58996,7 @@ components:
           displayName: displayName
           attributes:
             description: Triggered when an identity's manager attribute changes
+            formDefinitionId: Admin_Access_Request_Form
             attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
@@ -59052,6 +59053,7 @@ components:
           displayName: displayName
           attributes:
             description: Triggered when an identity's manager attribute changes
+            formDefinitionId: Admin_Access_Request_Form
             attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
@@ -64297,6 +64299,7 @@ components:
         displayName: displayName
         attributes:
           description: Triggered when an identity's manager attribute changes
+          formDefinitionId: Admin_Access_Request_Form
           attributeToFilter: LifecycleState
           id: idn:identity-attributes-changed
           filter.$: "$.changes[?(@.attribute == 'manager')]"
@@ -65868,6 +65871,7 @@ components:
       description: Attributes related to an IdentityNow ETS event
       example:
         description: Triggered when an identity's manager attribute changes
+        formDefinitionId: Admin_Access_Request_Form
         attributeToFilter: LifecycleState
         id: idn:identity-attributes-changed
         filter.$: "$.changes[?(@.attribute == 'manager')]"
@@ -65888,6 +65892,10 @@ components:
         attributeToFilter:
           description: The attribute to filter on
           example: LifecycleState
+          type: string
+        formDefinitionId:
+          description: Form definition's unique identifier.
+          example: Admin_Access_Request_Form
           type: string
       required:
       - id
@@ -65934,6 +65942,7 @@ components:
           - monthly
           - yearly
           - cronSchedule
+          example: daily
           type: string
         timeZone:
           description: Time zone identifier
@@ -65948,6 +65957,12 @@ components:
         weeklyTimes:
           description: Scheduled execution times
           example: Monday
+          items:
+            type: string
+          type: array
+        yearlyTimes:
+          description: Scheduled execution times
+          example: 1969-12-31T09:00:00.000Z
           items:
             type: string
           type: array

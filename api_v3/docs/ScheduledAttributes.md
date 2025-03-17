@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **TimeZone** | Pointer to **string** | Time zone identifier | [optional] 
 **WeeklyDays** | Pointer to **[]string** | Scheduled days of the week for execution | [optional] 
 **WeeklyTimes** | Pointer to **[]string** | Scheduled execution times | [optional] 
+**YearlyTimes** | Pointer to **[]string** | Scheduled execution times | [optional] 
 
 ## Methods
 
@@ -148,6 +149,31 @@ SetWeeklyTimes sets WeeklyTimes field to given value.
 `func (o *ScheduledAttributes) HasWeeklyTimes() bool`
 
 HasWeeklyTimes returns a boolean if a field has been set.
+
+### GetYearlyTimes
+
+`func (o *ScheduledAttributes) GetYearlyTimes() []string`
+
+GetYearlyTimes returns the YearlyTimes field if non-nil, zero value otherwise.
+
+### GetYearlyTimesOk
+
+`func (o *ScheduledAttributes) GetYearlyTimesOk() (*[]string, bool)`
+
+GetYearlyTimesOk returns a tuple with the YearlyTimes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYearlyTimes
+
+`func (o *ScheduledAttributes) SetYearlyTimes(v []string)`
+
+SetYearlyTimes sets YearlyTimes field to given value.
+
+### HasYearlyTimes
+
+`func (o *ScheduledAttributes) HasYearlyTimes() bool`
+
+HasYearlyTimes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

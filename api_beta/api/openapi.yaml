@@ -6149,7 +6149,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account:manage
+        - idn:accounts:manage
       summary: Remove Account
       tags:
       - Accounts
@@ -43878,7 +43878,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account:manage
+        - idn:accounts:manage
       summary: Remove All Accounts in a Source
       tags:
       - Sources
@@ -80377,7 +80377,9 @@ components:
         trigger:
           displayName: displayName
           attributes:
-            description: description
+            description: Triggered when an identity's manager attribute changes
+            formDefinitionId: Admin_Access_Request_Form
+            attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
@@ -80432,7 +80434,9 @@ components:
         trigger:
           displayName: displayName
           attributes:
-            description: description
+            description: Triggered when an identity's manager attribute changes
+            formDefinitionId: Admin_Access_Request_Form
+            attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
@@ -88874,7 +88878,9 @@ components:
       example:
         displayName: displayName
         attributes:
-          description: description
+          description: Triggered when an identity's manager attribute changes
+          formDefinitionId: Admin_Access_Request_Form
+          attributeToFilter: LifecycleState
           id: idn:identity-attributes-changed
           filter.$: "$.changes[?(@.attribute == 'manager')]"
         type: EVENT
@@ -90798,7 +90804,9 @@ components:
       additionalProperties: false
       description: Attributes related to an IdentityNow ETS event
       example:
-        description: description
+        description: Triggered when an identity's manager attribute changes
+        formDefinitionId: Admin_Access_Request_Form
+        attributeToFilter: LifecycleState
         id: idn:identity-attributes-changed
         filter.$: "$.changes[?(@.attribute == 'manager')]"
       properties:
@@ -90813,6 +90821,15 @@ components:
           type: string
         description:
           description: Description of the event trigger
+          example: Triggered when an identity's manager attribute changes
+          type: string
+        attributeToFilter:
+          description: The attribute to filter on
+          example: LifecycleState
+          type: string
+        formDefinitionId:
+          description: Form definition's unique identifier.
+          example: Admin_Access_Request_Form
           type: string
       required:
       - id
@@ -90852,13 +90869,18 @@ components:
           - monthly
           - yearly
           - cronSchedule
+          example: daily
           type: string
         timeZone:
           description: Time zone identifier
           example: America/Chicago
           type: string
         cronString:
+          description: A valid CRON expression
           example: 0 9 * * 1
+          externalDocs:
+            description: CRON expression editor
+            url: https://crontab.guru/
           type: string
         weeklyDays:
           description: Scheduled days of the week for execution
@@ -90869,6 +90891,12 @@ components:
         weeklyTimes:
           description: Scheduled execution times
           example: Monday
+          items:
+            type: string
+          type: array
+        yearlyTimes:
+          description: Scheduled execution times
+          example: 1969-12-31T09:00:00.000Z
           items:
             type: string
           type: array
