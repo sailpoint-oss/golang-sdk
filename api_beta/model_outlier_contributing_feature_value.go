@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // OutlierContributingFeatureValue - The feature value
@@ -112,6 +112,20 @@ func (obj *OutlierContributingFeatureValue) GetActualInstance() (interface{}) {
 
 	if obj.Int64 != nil {
 		return obj.Int64
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj OutlierContributingFeatureValue) GetActualInstanceValue() (interface{}) {
+	if obj.Float32 != nil {
+		return *obj.Float32
+	}
+
+	if obj.Int64 != nil {
+		return *obj.Int64
 	}
 
 	// all schemas are nil

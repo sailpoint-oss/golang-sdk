@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // UpdateMultiHostSourcesRequestInnerValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
@@ -214,6 +214,32 @@ func (obj *UpdateMultiHostSourcesRequestInnerValue) GetActualInstance() (interfa
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj UpdateMultiHostSourcesRequestInnerValue) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfArrayInner != nil {
+		return *obj.ArrayOfArrayInner
+	}
+
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.Int32 != nil {
+		return *obj.Int32
+	}
+
+	if obj.MapmapOfStringAny != nil {
+		return *obj.MapmapOfStringAny
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

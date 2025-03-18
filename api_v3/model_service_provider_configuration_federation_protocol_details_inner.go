@@ -12,8 +12,8 @@ package api_v3
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ServiceProviderConfigurationFederationProtocolDetailsInner - struct for ServiceProviderConfigurationFederationProtocolDetailsInner
@@ -112,6 +112,20 @@ func (obj *ServiceProviderConfigurationFederationProtocolDetailsInner) GetActual
 
 	if obj.SpDetails != nil {
 		return obj.SpDetails
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ServiceProviderConfigurationFederationProtocolDetailsInner) GetActualInstanceValue() (interface{}) {
+	if obj.IdpDetails != nil {
+		return *obj.IdpDetails
+	}
+
+	if obj.SpDetails != nil {
+		return *obj.SpDetails
 	}
 
 	// all schemas are nil

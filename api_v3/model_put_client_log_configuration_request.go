@@ -12,8 +12,8 @@ package api_v3
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // PutClientLogConfigurationRequest - struct for PutClientLogConfigurationRequest
@@ -112,6 +112,20 @@ func (obj *PutClientLogConfigurationRequest) GetActualInstance() (interface{}) {
 
 	if obj.ClientLogConfigurationExpiration != nil {
 		return obj.ClientLogConfigurationExpiration
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj PutClientLogConfigurationRequest) GetActualInstanceValue() (interface{}) {
+	if obj.ClientLogConfigurationDurationMinutes != nil {
+		return *obj.ClientLogConfigurationDurationMinutes
+	}
+
+	if obj.ClientLogConfigurationExpiration != nil {
+		return *obj.ClientLogConfigurationExpiration
 	}
 
 	// all schemas are nil

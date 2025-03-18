@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // AccountAttributesChangedChangesInnerNewValue - The new value of the attribute.
@@ -151,6 +151,24 @@ func (obj *AccountAttributesChangedChangesInnerNewValue) GetActualInstance() (in
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj AccountAttributesChangedChangesInnerNewValue) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfstring != nil {
+		return *obj.ArrayOfstring
+	}
+
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

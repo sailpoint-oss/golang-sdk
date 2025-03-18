@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // IdentityAccess - struct for IdentityAccess
@@ -146,6 +146,24 @@ func (obj *IdentityAccess) GetActualInstance() (interface{}) {
 
 	if obj.AccessProfileSummary != nil {
 		return obj.AccessProfileSummary
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj IdentityAccess) GetActualInstanceValue() (interface{}) {
+	if obj.AccessProfileEntitlement != nil {
+		return *obj.AccessProfileEntitlement
+	}
+
+	if obj.AccessProfileRole != nil {
+		return *obj.AccessProfileRole
+	}
+
+	if obj.AccessProfileSummary != nil {
+		return *obj.AccessProfileSummary
 	}
 
 	// all schemas are nil

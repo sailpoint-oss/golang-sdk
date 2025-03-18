@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // JsonPatchOperationsValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
@@ -146,6 +146,24 @@ func (obj *JsonPatchOperationsValue) GetActualInstance() (interface{}) {
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj JsonPatchOperationsValue) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfArrayInner1 != nil {
+		return *obj.ArrayOfArrayInner1
+	}
+
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

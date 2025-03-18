@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ListIdentityAccessItems200ResponseInner - struct for ListIdentityAccessItems200ResponseInner
@@ -214,6 +214,32 @@ func (obj *ListIdentityAccessItems200ResponseInner) GetActualInstance() (interfa
 
 	if obj.AccessItemRoleResponse != nil {
 		return obj.AccessItemRoleResponse
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ListIdentityAccessItems200ResponseInner) GetActualInstanceValue() (interface{}) {
+	if obj.AccessItemAccessProfileResponse != nil {
+		return *obj.AccessItemAccessProfileResponse
+	}
+
+	if obj.AccessItemAccountResponse != nil {
+		return *obj.AccessItemAccountResponse
+	}
+
+	if obj.AccessItemAppResponse != nil {
+		return *obj.AccessItemAppResponse
+	}
+
+	if obj.AccessItemEntitlementResponse != nil {
+		return *obj.AccessItemEntitlementResponse
+	}
+
+	if obj.AccessItemRoleResponse != nil {
+		return *obj.AccessItemRoleResponse
 	}
 
 	// all schemas are nil

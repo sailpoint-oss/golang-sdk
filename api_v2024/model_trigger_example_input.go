@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // TriggerExampleInput - An example of the JSON payload that will be sent by the trigger to the subscribed service.
@@ -860,6 +860,108 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 
 	if obj.VAClusterStatusChangeEvent != nil {
 		return obj.VAClusterStatusChangeEvent
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj TriggerExampleInput) GetActualInstanceValue() (interface{}) {
+	if obj.AccessRequestDynamicApprover != nil {
+		return *obj.AccessRequestDynamicApprover
+	}
+
+	if obj.AccessRequestPostApproval != nil {
+		return *obj.AccessRequestPostApproval
+	}
+
+	if obj.AccessRequestPreApproval != nil {
+		return *obj.AccessRequestPreApproval
+	}
+
+	if obj.AccountAggregationCompleted != nil {
+		return *obj.AccountAggregationCompleted
+	}
+
+	if obj.AccountAttributesChanged != nil {
+		return *obj.AccountAttributesChanged
+	}
+
+	if obj.AccountCorrelated != nil {
+		return *obj.AccountCorrelated
+	}
+
+	if obj.AccountUncorrelated != nil {
+		return *obj.AccountUncorrelated
+	}
+
+	if obj.AccountsCollectedForAggregation != nil {
+		return *obj.AccountsCollectedForAggregation
+	}
+
+	if obj.CampaignActivated != nil {
+		return *obj.CampaignActivated
+	}
+
+	if obj.CampaignEnded != nil {
+		return *obj.CampaignEnded
+	}
+
+	if obj.CampaignGenerated != nil {
+		return *obj.CampaignGenerated
+	}
+
+	if obj.CertificationSignedOff != nil {
+		return *obj.CertificationSignedOff
+	}
+
+	if obj.IdentityAttributesChanged != nil {
+		return *obj.IdentityAttributesChanged
+	}
+
+	if obj.IdentityCreated != nil {
+		return *obj.IdentityCreated
+	}
+
+	if obj.IdentityDeleted != nil {
+		return *obj.IdentityDeleted
+	}
+
+	if obj.ProvisioningCompleted != nil {
+		return *obj.ProvisioningCompleted
+	}
+
+	if obj.SavedSearchComplete != nil {
+		return *obj.SavedSearchComplete
+	}
+
+	if obj.SourceAccountCreated != nil {
+		return *obj.SourceAccountCreated
+	}
+
+	if obj.SourceAccountDeleted != nil {
+		return *obj.SourceAccountDeleted
+	}
+
+	if obj.SourceAccountUpdated != nil {
+		return *obj.SourceAccountUpdated
+	}
+
+	if obj.SourceCreated != nil {
+		return *obj.SourceCreated
+	}
+
+	if obj.SourceDeleted != nil {
+		return *obj.SourceDeleted
+	}
+
+	if obj.SourceUpdated != nil {
+		return *obj.SourceUpdated
+	}
+
+	if obj.VAClusterStatusChangeEvent != nil {
+		return *obj.VAClusterStatusChangeEvent
 	}
 
 	// all schemas are nil

@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RoleMiningPotentialRoleSummaryCreatedBy - The potential role created by details
@@ -112,6 +112,20 @@ func (obj *RoleMiningPotentialRoleSummaryCreatedBy) GetActualInstance() (interfa
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj RoleMiningPotentialRoleSummaryCreatedBy) GetActualInstanceValue() (interface{}) {
+	if obj.EntityCreatedByDTO != nil {
+		return *obj.EntityCreatedByDTO
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil
