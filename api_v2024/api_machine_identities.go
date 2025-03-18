@@ -585,6 +585,7 @@ type ApiListMachineIdentitiesRequest struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	xSailPointExperimental *string
+	filters *string
 	sorters *string
 	count *bool
 	limit *int32
@@ -594,6 +595,12 @@ type ApiListMachineIdentitiesRequest struct {
 // Use this header to enable this experimental API.
 func (r ApiListMachineIdentitiesRequest) XSailPointExperimental(xSailPointExperimental string) ApiListMachineIdentitiesRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*
+func (r ApiListMachineIdentitiesRequest) Filters(filters string) ApiListMachineIdentitiesRequest {
+	r.filters = &filters
 	return r
 }
 
@@ -670,6 +677,9 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesExecute(r ApiListMach
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
+	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
