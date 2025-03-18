@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type Fullcampaign struct {
 	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details. 
 	Description string `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
-	Deadline *time.Time `json:"deadline,omitempty"`
+	Deadline *SailPointTime `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
 	// Enables email notification for this campaign
@@ -42,7 +42,7 @@ type Fullcampaign struct {
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
 	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
 	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
 	// The number of completed certifications in this campaign.
@@ -50,7 +50,7 @@ type Fullcampaign struct {
 	// A list of errors and warnings that have accumulated.
 	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	// Modified time of the campaign
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	Filter *FullcampaignAllOfFilter `json:"filter,omitempty"`
 	// Determines if comments on sunset date changes are required.
 	SunsetCommentsRequired *bool `json:"sunsetCommentsRequired,omitempty"`
@@ -184,9 +184,9 @@ func (o *Fullcampaign) SetDescription(v string) {
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
-func (o *Fullcampaign) GetDeadline() time.Time {
+func (o *Fullcampaign) GetDeadline() SailPointTime {
 	if o == nil || IsNil(o.Deadline) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Deadline
@@ -194,7 +194,7 @@ func (o *Fullcampaign) GetDeadline() time.Time {
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fullcampaign) GetDeadlineOk() (*time.Time, bool) {
+func (o *Fullcampaign) GetDeadlineOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
@@ -210,8 +210,8 @@ func (o *Fullcampaign) HasDeadline() bool {
 	return false
 }
 
-// SetDeadline gets a reference to the given time.Time and assigns it to the Deadline field.
-func (o *Fullcampaign) SetDeadline(v time.Time) {
+// SetDeadline gets a reference to the given SailPointTime and assigns it to the Deadline field.
+func (o *Fullcampaign) SetDeadline(v SailPointTime) {
 	o.Deadline = &v
 }
 
@@ -400,9 +400,9 @@ func (o *Fullcampaign) SetCorrelatedStatus(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Fullcampaign) GetCreated() time.Time {
+func (o *Fullcampaign) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -410,7 +410,7 @@ func (o *Fullcampaign) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fullcampaign) GetCreatedOk() (*time.Time, bool) {
+func (o *Fullcampaign) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -426,8 +426,8 @@ func (o *Fullcampaign) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Fullcampaign) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Fullcampaign) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
@@ -528,9 +528,9 @@ func (o *Fullcampaign) SetAlerts(v []CampaignAlert) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Fullcampaign) GetModified() time.Time {
+func (o *Fullcampaign) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -538,7 +538,7 @@ func (o *Fullcampaign) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fullcampaign) GetModifiedOk() (*time.Time, bool) {
+func (o *Fullcampaign) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -554,8 +554,8 @@ func (o *Fullcampaign) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Fullcampaign) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Fullcampaign) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

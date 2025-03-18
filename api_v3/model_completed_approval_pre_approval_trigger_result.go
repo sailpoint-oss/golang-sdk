@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the CompletedApprovalPreApprovalTriggerResult type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type CompletedApprovalPreApprovalTriggerResult struct {
 	// The name of the approver
 	Reviewer *string `json:"reviewer,omitempty"`
 	// The date and time the trigger decided on the request
-	Date *time.Time `json:"date,omitempty"`
+	Date *SailPointTime `json:"date,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -146,9 +146,9 @@ func (o *CompletedApprovalPreApprovalTriggerResult) SetReviewer(v string) {
 }
 
 // GetDate returns the Date field value if set, zero value otherwise.
-func (o *CompletedApprovalPreApprovalTriggerResult) GetDate() time.Time {
+func (o *CompletedApprovalPreApprovalTriggerResult) GetDate() SailPointTime {
 	if o == nil || IsNil(o.Date) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Date
@@ -156,7 +156,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetDate() time.Time {
 
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApprovalPreApprovalTriggerResult) GetDateOk() (*time.Time, bool) {
+func (o *CompletedApprovalPreApprovalTriggerResult) GetDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
@@ -172,8 +172,8 @@ func (o *CompletedApprovalPreApprovalTriggerResult) HasDate() bool {
 	return false
 }
 
-// SetDate gets a reference to the given time.Time and assigns it to the Date field.
-func (o *CompletedApprovalPreApprovalTriggerResult) SetDate(v time.Time) {
+// SetDate gets a reference to the given SailPointTime and assigns it to the Date field.
+func (o *CompletedApprovalPreApprovalTriggerResult) SetDate(v SailPointTime) {
 	o.Date = &v
 }
 

@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the ReviewRecommendation type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type ReviewRecommendation struct {
 	// A list of reasons for the recommendation.
 	Reasons []string `json:"reasons,omitempty"`
 	// The time at which the recommendation was recorded.
-	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Timestamp *SailPointTime `json:"timestamp,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -123,9 +123,9 @@ func (o *ReviewRecommendation) SetReasons(v []string) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *ReviewRecommendation) GetTimestamp() time.Time {
+func (o *ReviewRecommendation) GetTimestamp() SailPointTime {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Timestamp
@@ -133,7 +133,7 @@ func (o *ReviewRecommendation) GetTimestamp() time.Time {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReviewRecommendation) GetTimestampOk() (*time.Time, bool) {
+func (o *ReviewRecommendation) GetTimestampOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -149,8 +149,8 @@ func (o *ReviewRecommendation) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
-func (o *ReviewRecommendation) SetTimestamp(v time.Time) {
+// SetTimestamp gets a reference to the given SailPointTime and assigns it to the Timestamp field.
+func (o *ReviewRecommendation) SetTimestamp(v SailPointTime) {
 	o.Timestamp = &v
 }
 

@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the AccessRequestAdminItemStatus type satisfies the MappedNullable interface at compile time
@@ -40,7 +40,7 @@ type AccessRequestAdminItemStatus struct {
 	// When the request was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
 	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
@@ -454,9 +454,9 @@ func (o *AccessRequestAdminItemStatus) UnsetRequestType() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessRequestAdminItemStatus) GetModified() time.Time {
+func (o *AccessRequestAdminItemStatus) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -465,7 +465,7 @@ func (o *AccessRequestAdminItemStatus) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessRequestAdminItemStatus) GetModifiedOk() (*time.Time, bool) {
+func (o *AccessRequestAdminItemStatus) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -482,7 +482,7 @@ func (o *AccessRequestAdminItemStatus) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *AccessRequestAdminItemStatus) SetModified(v time.Time) {
+func (o *AccessRequestAdminItemStatus) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -496,9 +496,9 @@ func (o *AccessRequestAdminItemStatus) UnsetModified() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *AccessRequestAdminItemStatus) GetCreated() time.Time {
+func (o *AccessRequestAdminItemStatus) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -506,7 +506,7 @@ func (o *AccessRequestAdminItemStatus) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestAdminItemStatus) GetCreatedOk() (*time.Time, bool) {
+func (o *AccessRequestAdminItemStatus) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -522,8 +522,8 @@ func (o *AccessRequestAdminItemStatus) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *AccessRequestAdminItemStatus) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *AccessRequestAdminItemStatus) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
@@ -795,9 +795,9 @@ func (o *AccessRequestAdminItemStatus) UnsetDescription() {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessRequestAdminItemStatus) GetRemoveDate() time.Time {
+func (o *AccessRequestAdminItemStatus) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -806,7 +806,7 @@ func (o *AccessRequestAdminItemStatus) GetRemoveDate() time.Time {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessRequestAdminItemStatus) GetRemoveDateOk() (*time.Time, bool) {
+func (o *AccessRequestAdminItemStatus) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -823,7 +823,7 @@ func (o *AccessRequestAdminItemStatus) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *AccessRequestAdminItemStatus) SetRemoveDate(v time.Time) {
+func (o *AccessRequestAdminItemStatus) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil

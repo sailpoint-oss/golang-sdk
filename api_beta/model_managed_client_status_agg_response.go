@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type ManagedClientStatusAggResponse struct {
 	Status ManagedClientStatusEnum `json:"status"`
 	Type NullableManagedClientType `json:"type"`
 	// timestamp on the Client Status update
-	Timestamp time.Time `json:"timestamp"`
+	Timestamp SailPointTime `json:"timestamp"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _ManagedClientStatusAggResponse ManagedClientStatusAggResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManagedClientStatusAggResponse(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp time.Time) *ManagedClientStatusAggResponse {
+func NewManagedClientStatusAggResponse(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp SailPointTime) *ManagedClientStatusAggResponse {
 	this := ManagedClientStatusAggResponse{}
 	this.Body = body
 	this.Status = status
@@ -128,9 +128,9 @@ func (o *ManagedClientStatusAggResponse) SetType(v ManagedClientType) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *ManagedClientStatusAggResponse) GetTimestamp() time.Time {
+func (o *ManagedClientStatusAggResponse) GetTimestamp() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *ManagedClientStatusAggResponse) GetTimestamp() time.Time {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*time.Time, bool) {
+func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *ManagedClientStatusAggResponse) GetTimestampOk() (*time.Time, bool) {
 }
 
 // SetTimestamp sets field value
-func (o *ManagedClientStatusAggResponse) SetTimestamp(v time.Time) {
+func (o *ManagedClientStatusAggResponse) SetTimestamp(v SailPointTime) {
 	o.Timestamp = v
 }
 

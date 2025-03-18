@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -122,9 +122,9 @@ func (o *AccessProfileDocument) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessProfileDocument) GetCreated() time.Time {
+func (o *AccessProfileDocument) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -133,7 +133,7 @@ func (o *AccessProfileDocument) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfileDocument) GetCreatedOk() (*time.Time, bool) {
+func (o *AccessProfileDocument) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -150,7 +150,7 @@ func (o *AccessProfileDocument) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *AccessProfileDocument) SetCreated(v time.Time) {
+func (o *AccessProfileDocument) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -164,9 +164,9 @@ func (o *AccessProfileDocument) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessProfileDocument) GetModified() time.Time {
+func (o *AccessProfileDocument) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -175,7 +175,7 @@ func (o *AccessProfileDocument) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfileDocument) GetModifiedOk() (*time.Time, bool) {
+func (o *AccessProfileDocument) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *AccessProfileDocument) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *AccessProfileDocument) SetModified(v time.Time) {
+func (o *AccessProfileDocument) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -206,9 +206,9 @@ func (o *AccessProfileDocument) UnsetModified() {
 }
 
 // GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessProfileDocument) GetSynced() time.Time {
+func (o *AccessProfileDocument) GetSynced() SailPointTime {
 	if o == nil || IsNil(o.Synced.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Synced.Get()
@@ -217,7 +217,7 @@ func (o *AccessProfileDocument) GetSynced() time.Time {
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfileDocument) GetSyncedOk() (*time.Time, bool) {
+func (o *AccessProfileDocument) GetSyncedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -234,7 +234,7 @@ func (o *AccessProfileDocument) HasSynced() bool {
 }
 
 // SetSynced gets a reference to the given NullableTime and assigns it to the Synced field.
-func (o *AccessProfileDocument) SetSynced(v time.Time) {
+func (o *AccessProfileDocument) SetSynced(v SailPointTime) {
 	o.Synced.Set(&v)
 }
 // SetSyncedNil sets the value for Synced to be an explicit nil

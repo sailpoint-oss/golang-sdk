@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Tag struct {
 	// Name of the tag.
 	Name string `json:"name"`
 	// Date the tag was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Date the tag was last modified.
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	TagCategoryRefs []TagTagCategoryRefsInner `json:"tagCategoryRefs"`
 	AdditionalProperties map[string]interface{}
 }
@@ -39,7 +39,7 @@ type _Tag Tag
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTag(id string, name string, created time.Time, modified time.Time, tagCategoryRefs []TagTagCategoryRefsInner) *Tag {
+func NewTag(id string, name string, created SailPointTime, modified SailPointTime, tagCategoryRefs []TagTagCategoryRefsInner) *Tag {
 	this := Tag{}
 	this.Id = id
 	this.Name = name
@@ -106,9 +106,9 @@ func (o *Tag) SetName(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *Tag) GetCreated() time.Time {
+func (o *Tag) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -117,7 +117,7 @@ func (o *Tag) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Tag) GetCreatedOk() (*time.Time, bool) {
+func (o *Tag) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,14 +125,14 @@ func (o *Tag) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Tag) SetCreated(v time.Time) {
+func (o *Tag) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *Tag) GetModified() time.Time {
+func (o *Tag) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -141,7 +141,7 @@ func (o *Tag) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *Tag) GetModifiedOk() (*time.Time, bool) {
+func (o *Tag) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *Tag) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Tag) SetModified(v time.Time) {
+func (o *Tag) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 

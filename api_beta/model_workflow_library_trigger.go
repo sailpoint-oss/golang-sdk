@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the WorkflowLibraryTrigger type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type WorkflowLibraryTrigger struct {
 	// Trigger type
 	Type *string `json:"type,omitempty"`
 	Deprecated *bool `json:"deprecated,omitempty"`
-	DeprecatedBy *time.Time `json:"deprecatedBy,omitempty"`
+	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
 	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
 	// Example output schema
 	OutputSchema map[string]interface{} `json:"outputSchema,omitempty"`
@@ -158,9 +158,9 @@ func (o *WorkflowLibraryTrigger) SetDeprecated(v bool) {
 }
 
 // GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
-func (o *WorkflowLibraryTrigger) GetDeprecatedBy() time.Time {
+func (o *WorkflowLibraryTrigger) GetDeprecatedBy() SailPointTime {
 	if o == nil || IsNil(o.DeprecatedBy) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DeprecatedBy
@@ -168,7 +168,7 @@ func (o *WorkflowLibraryTrigger) GetDeprecatedBy() time.Time {
 
 // GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*time.Time, bool) {
+func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DeprecatedBy) {
 		return nil, false
 	}
@@ -184,8 +184,8 @@ func (o *WorkflowLibraryTrigger) HasDeprecatedBy() bool {
 	return false
 }
 
-// SetDeprecatedBy gets a reference to the given time.Time and assigns it to the DeprecatedBy field.
-func (o *WorkflowLibraryTrigger) SetDeprecatedBy(v time.Time) {
+// SetDeprecatedBy gets a reference to the given SailPointTime and assigns it to the DeprecatedBy field.
+func (o *WorkflowLibraryTrigger) SetDeprecatedBy(v SailPointTime) {
 	o.DeprecatedBy = &v
 }
 

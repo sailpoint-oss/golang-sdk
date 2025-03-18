@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the DataSegment type satisfies the MappedNullable interface at compile time
@@ -25,9 +25,9 @@ type DataSegment struct {
 	// The segment's business name.
 	Name *string `json:"name,omitempty"`
 	// The time when the segment is created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The time when the segment is modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
 	// List of Scopes that are assigned to the segment
@@ -135,9 +135,9 @@ func (o *DataSegment) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *DataSegment) GetCreated() time.Time {
+func (o *DataSegment) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -145,7 +145,7 @@ func (o *DataSegment) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataSegment) GetCreatedOk() (*time.Time, bool) {
+func (o *DataSegment) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -161,15 +161,15 @@ func (o *DataSegment) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *DataSegment) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *DataSegment) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *DataSegment) GetModified() time.Time {
+func (o *DataSegment) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -177,7 +177,7 @@ func (o *DataSegment) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataSegment) GetModifiedOk() (*time.Time, bool) {
+func (o *DataSegment) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -193,8 +193,8 @@ func (o *DataSegment) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *DataSegment) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *DataSegment) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

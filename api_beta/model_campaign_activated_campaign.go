@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,11 +28,11 @@ type CampaignActivatedCampaign struct {
 	// Campaign's extended description.
 	Description string `json:"description"`
 	// Date and time when the campaign was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Date and time when the campaign was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	// Date and time when the campaign is due.
-	Deadline time.Time `json:"deadline"`
+	Deadline SailPointTime `json:"deadline"`
 	// Campaign's type.
 	Type map[string]interface{} `json:"type"`
 	CampaignOwner CampaignActivatedCampaignCampaignOwner `json:"campaignOwner"`
@@ -47,7 +47,7 @@ type _CampaignActivatedCampaign CampaignActivatedCampaign
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignActivatedCampaign(id string, name string, description string, created time.Time, deadline time.Time, type_ map[string]interface{}, campaignOwner CampaignActivatedCampaignCampaignOwner, status map[string]interface{}) *CampaignActivatedCampaign {
+func NewCampaignActivatedCampaign(id string, name string, description string, created SailPointTime, deadline SailPointTime, type_ map[string]interface{}, campaignOwner CampaignActivatedCampaignCampaignOwner, status map[string]interface{}) *CampaignActivatedCampaign {
 	this := CampaignActivatedCampaign{}
 	this.Id = id
 	this.Name = name
@@ -141,9 +141,9 @@ func (o *CampaignActivatedCampaign) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *CampaignActivatedCampaign) GetCreated() time.Time {
+func (o *CampaignActivatedCampaign) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -152,7 +152,7 @@ func (o *CampaignActivatedCampaign) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CampaignActivatedCampaign) GetCreatedOk() (*time.Time, bool) {
+func (o *CampaignActivatedCampaign) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -160,14 +160,14 @@ func (o *CampaignActivatedCampaign) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *CampaignActivatedCampaign) SetCreated(v time.Time) {
+func (o *CampaignActivatedCampaign) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CampaignActivatedCampaign) GetModified() time.Time {
+func (o *CampaignActivatedCampaign) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -176,7 +176,7 @@ func (o *CampaignActivatedCampaign) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CampaignActivatedCampaign) GetModifiedOk() (*time.Time, bool) {
+func (o *CampaignActivatedCampaign) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *CampaignActivatedCampaign) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *CampaignActivatedCampaign) SetModified(v time.Time) {
+func (o *CampaignActivatedCampaign) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -207,9 +207,9 @@ func (o *CampaignActivatedCampaign) UnsetModified() {
 }
 
 // GetDeadline returns the Deadline field value
-func (o *CampaignActivatedCampaign) GetDeadline() time.Time {
+func (o *CampaignActivatedCampaign) GetDeadline() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -218,7 +218,7 @@ func (o *CampaignActivatedCampaign) GetDeadline() time.Time {
 
 // GetDeadlineOk returns a tuple with the Deadline field value
 // and a boolean to check if the value has been set.
-func (o *CampaignActivatedCampaign) GetDeadlineOk() (*time.Time, bool) {
+func (o *CampaignActivatedCampaign) GetDeadlineOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -226,7 +226,7 @@ func (o *CampaignActivatedCampaign) GetDeadlineOk() (*time.Time, bool) {
 }
 
 // SetDeadline sets field value
-func (o *CampaignActivatedCampaign) SetDeadline(v time.Time) {
+func (o *CampaignActivatedCampaign) SetDeadline(v SailPointTime) {
 	o.Deadline = v
 }
 

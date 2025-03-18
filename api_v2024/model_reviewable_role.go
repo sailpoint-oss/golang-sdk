@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the ReviewableRole type satisfies the MappedNullable interface at compile time
@@ -32,7 +32,7 @@ type ReviewableRole struct {
 	// Indicates whether the Role can be revoked or requested
 	Revocable *bool `json:"revocable,omitempty"`
 	// The date when a user's access expires.
-	EndDate *time.Time `json:"endDate,omitempty"`
+	EndDate *SailPointTime `json:"endDate,omitempty"`
 	// The list of Access Profiles associated with this Role
 	AccessProfiles []ReviewableAccessProfile `json:"accessProfiles,omitempty"`
 	// The list of entitlements associated with this Role
@@ -262,9 +262,9 @@ func (o *ReviewableRole) SetRevocable(v bool) {
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *ReviewableRole) GetEndDate() time.Time {
+func (o *ReviewableRole) GetEndDate() SailPointTime {
 	if o == nil || IsNil(o.EndDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.EndDate
@@ -272,7 +272,7 @@ func (o *ReviewableRole) GetEndDate() time.Time {
 
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReviewableRole) GetEndDateOk() (*time.Time, bool) {
+func (o *ReviewableRole) GetEndDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
@@ -288,8 +288,8 @@ func (o *ReviewableRole) HasEndDate() bool {
 	return false
 }
 
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *ReviewableRole) SetEndDate(v time.Time) {
+// SetEndDate gets a reference to the given SailPointTime and assigns it to the EndDate field.
+func (o *ReviewableRole) SetEndDate(v SailPointTime) {
 	o.EndDate = &v
 }
 

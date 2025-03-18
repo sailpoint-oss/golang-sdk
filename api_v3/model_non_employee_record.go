@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the NonEmployeeRecord type satisfies the MappedNullable interface at compile time
@@ -39,13 +39,13 @@ type NonEmployeeRecord struct {
 	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
 	Data *map[string]string `json:"data,omitempty"`
 	// Non-Employee employment start date.
-	StartDate *time.Time `json:"startDate,omitempty"`
+	StartDate *SailPointTime `json:"startDate,omitempty"`
 	// Non-Employee employment end date.
-	EndDate *time.Time `json:"endDate,omitempty"`
+	EndDate *SailPointTime `json:"endDate,omitempty"`
 	// When the request was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -357,9 +357,9 @@ func (o *NonEmployeeRecord) SetData(v map[string]string) {
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *NonEmployeeRecord) GetStartDate() time.Time {
+func (o *NonEmployeeRecord) GetStartDate() SailPointTime {
 	if o == nil || IsNil(o.StartDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.StartDate
@@ -367,7 +367,7 @@ func (o *NonEmployeeRecord) GetStartDate() time.Time {
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRecord) GetStartDateOk() (*time.Time, bool) {
+func (o *NonEmployeeRecord) GetStartDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
@@ -383,15 +383,15 @@ func (o *NonEmployeeRecord) HasStartDate() bool {
 	return false
 }
 
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *NonEmployeeRecord) SetStartDate(v time.Time) {
+// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+func (o *NonEmployeeRecord) SetStartDate(v SailPointTime) {
 	o.StartDate = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *NonEmployeeRecord) GetEndDate() time.Time {
+func (o *NonEmployeeRecord) GetEndDate() SailPointTime {
 	if o == nil || IsNil(o.EndDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.EndDate
@@ -399,7 +399,7 @@ func (o *NonEmployeeRecord) GetEndDate() time.Time {
 
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRecord) GetEndDateOk() (*time.Time, bool) {
+func (o *NonEmployeeRecord) GetEndDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
@@ -415,15 +415,15 @@ func (o *NonEmployeeRecord) HasEndDate() bool {
 	return false
 }
 
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *NonEmployeeRecord) SetEndDate(v time.Time) {
+// SetEndDate gets a reference to the given SailPointTime and assigns it to the EndDate field.
+func (o *NonEmployeeRecord) SetEndDate(v SailPointTime) {
 	o.EndDate = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeRecord) GetModified() time.Time {
+func (o *NonEmployeeRecord) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -431,7 +431,7 @@ func (o *NonEmployeeRecord) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRecord) GetModifiedOk() (*time.Time, bool) {
+func (o *NonEmployeeRecord) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -447,15 +447,15 @@ func (o *NonEmployeeRecord) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *NonEmployeeRecord) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *NonEmployeeRecord) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeRecord) GetCreated() time.Time {
+func (o *NonEmployeeRecord) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -463,7 +463,7 @@ func (o *NonEmployeeRecord) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRecord) GetCreatedOk() (*time.Time, bool) {
+func (o *NonEmployeeRecord) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -479,8 +479,8 @@ func (o *NonEmployeeRecord) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *NonEmployeeRecord) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *NonEmployeeRecord) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

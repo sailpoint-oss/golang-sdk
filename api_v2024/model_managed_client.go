@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -418,9 +418,9 @@ func (o *ManagedClient) UnsetIpAddress() {
 }
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ManagedClient) GetLastSeen() time.Time {
+func (o *ManagedClient) GetLastSeen() SailPointTime {
 	if o == nil || IsNil(o.LastSeen.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastSeen.Get()
@@ -429,7 +429,7 @@ func (o *ManagedClient) GetLastSeen() time.Time {
 // GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ManagedClient) GetLastSeenOk() (*time.Time, bool) {
+func (o *ManagedClient) GetLastSeenOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -446,7 +446,7 @@ func (o *ManagedClient) HasLastSeen() bool {
 }
 
 // SetLastSeen gets a reference to the given NullableTime and assigns it to the LastSeen field.
-func (o *ManagedClient) SetLastSeen(v time.Time) {
+func (o *ManagedClient) SetLastSeen(v SailPointTime) {
 	o.LastSeen.Set(&v)
 }
 // SetLastSeenNil sets the value for LastSeen to be an explicit nil
@@ -778,9 +778,9 @@ func (o *ManagedClient) UnsetSecret() {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ManagedClient) GetCreatedAt() time.Time {
+func (o *ManagedClient) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt.Get()
@@ -789,7 +789,7 @@ func (o *ManagedClient) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ManagedClient) GetCreatedAtOk() (*time.Time, bool) {
+func (o *ManagedClient) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -806,7 +806,7 @@ func (o *ManagedClient) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
-func (o *ManagedClient) SetCreatedAt(v time.Time) {
+func (o *ManagedClient) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt.Set(&v)
 }
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
@@ -820,9 +820,9 @@ func (o *ManagedClient) UnsetCreatedAt() {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ManagedClient) GetUpdatedAt() time.Time {
+func (o *ManagedClient) GetUpdatedAt() SailPointTime {
 	if o == nil || IsNil(o.UpdatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UpdatedAt.Get()
@@ -831,7 +831,7 @@ func (o *ManagedClient) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ManagedClient) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *ManagedClient) GetUpdatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -848,7 +848,7 @@ func (o *ManagedClient) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
-func (o *ManagedClient) SetUpdatedAt(v time.Time) {
+func (o *ManagedClient) SetUpdatedAt(v SailPointTime) {
 	o.UpdatedAt.Set(&v)
 }
 // SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil

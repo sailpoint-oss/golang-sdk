@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RoleInsight type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type RoleInsight struct {
 	// Total number of updates for this role
 	NumberOfUpdates *int32 `json:"numberOfUpdates,omitempty"`
 	// The date-time insights were last created for this role.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The date-time insights were last modified for this role.
 	ModifiedDate NullableTime `json:"modifiedDate,omitempty"`
 	Role *RoleInsightsRole `json:"role,omitempty"`
@@ -117,9 +117,9 @@ func (o *RoleInsight) SetNumberOfUpdates(v int32) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *RoleInsight) GetCreatedDate() time.Time {
+func (o *RoleInsight) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -127,7 +127,7 @@ func (o *RoleInsight) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleInsight) GetCreatedDateOk() (*time.Time, bool) {
+func (o *RoleInsight) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -143,15 +143,15 @@ func (o *RoleInsight) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *RoleInsight) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *RoleInsight) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RoleInsight) GetModifiedDate() time.Time {
+func (o *RoleInsight) GetModifiedDate() SailPointTime {
 	if o == nil || IsNil(o.ModifiedDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ModifiedDate.Get()
@@ -160,7 +160,7 @@ func (o *RoleInsight) GetModifiedDate() time.Time {
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RoleInsight) GetModifiedDateOk() (*time.Time, bool) {
+func (o *RoleInsight) GetModifiedDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,7 +177,7 @@ func (o *RoleInsight) HasModifiedDate() bool {
 }
 
 // SetModifiedDate gets a reference to the given NullableTime and assigns it to the ModifiedDate field.
-func (o *RoleInsight) SetModifiedDate(v time.Time) {
+func (o *RoleInsight) SetModifiedDate(v SailPointTime) {
 	o.ModifiedDate.Set(&v)
 }
 // SetModifiedDateNil sets the value for ModifiedDate to be an explicit nil

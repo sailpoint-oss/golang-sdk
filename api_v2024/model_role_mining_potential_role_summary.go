@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RoleMiningPotentialRoleSummary type satisfies the MappedNullable interface at compile time
@@ -43,7 +43,7 @@ type RoleMiningPotentialRoleSummary struct {
 	Type *RoleMiningRoleType `json:"type,omitempty"`
 	CreatedBy *RoleMiningPotentialRoleSummaryCreatedBy `json:"createdBy,omitempty"`
 	// The date-time when this potential role was created.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The potential role's saved status
 	Saved *bool `json:"saved,omitempty"`
 	// Description of the potential role
@@ -502,9 +502,9 @@ func (o *RoleMiningPotentialRoleSummary) SetCreatedBy(v RoleMiningPotentialRoleS
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *RoleMiningPotentialRoleSummary) GetCreatedDate() time.Time {
+func (o *RoleMiningPotentialRoleSummary) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -512,7 +512,7 @@ func (o *RoleMiningPotentialRoleSummary) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningPotentialRoleSummary) GetCreatedDateOk() (*time.Time, bool) {
+func (o *RoleMiningPotentialRoleSummary) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -528,8 +528,8 @@ func (o *RoleMiningPotentialRoleSummary) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *RoleMiningPotentialRoleSummary) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *RoleMiningPotentialRoleSummary) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 

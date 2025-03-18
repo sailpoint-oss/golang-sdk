@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Comment type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type Comment struct {
 	// Content of the comment
 	Body *string `json:"body,omitempty"`
 	// Date and time comment was made
-	Date *time.Time `json:"date,omitempty"`
+	Date *SailPointTime `json:"date,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,9 +147,9 @@ func (o *Comment) SetBody(v string) {
 }
 
 // GetDate returns the Date field value if set, zero value otherwise.
-func (o *Comment) GetDate() time.Time {
+func (o *Comment) GetDate() SailPointTime {
 	if o == nil || IsNil(o.Date) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Date
@@ -157,7 +157,7 @@ func (o *Comment) GetDate() time.Time {
 
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Comment) GetDateOk() (*time.Time, bool) {
+func (o *Comment) GetDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
@@ -173,8 +173,8 @@ func (o *Comment) HasDate() bool {
 	return false
 }
 
-// SetDate gets a reference to the given time.Time and assigns it to the Date field.
-func (o *Comment) SetDate(v time.Time) {
+// SetDate gets a reference to the given SailPointTime and assigns it to the Date field.
+func (o *Comment) SetDate(v SailPointTime) {
 	o.Date = &v
 }
 
