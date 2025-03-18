@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Sed type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type Sed struct {
 	// entitlement approved type
 	ApprovedType *string `json:"approved_type,omitempty"`
 	// entitlement approved then
-	ApprovedWhen *SailPointTime `json:"approved_when,omitempty"`
+	ApprovedWhen *time.Time `json:"approved_when,omitempty"`
 	// entitlement attribute
 	Attribute *string `json:"attribute,omitempty"`
 	// description of entitlement
@@ -167,9 +167,9 @@ func (o *Sed) SetApprovedType(v string) {
 }
 
 // GetApprovedWhen returns the ApprovedWhen field value if set, zero value otherwise.
-func (o *Sed) GetApprovedWhen() SailPointTime {
+func (o *Sed) GetApprovedWhen() time.Time {
 	if o == nil || IsNil(o.ApprovedWhen) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.ApprovedWhen
@@ -177,7 +177,7 @@ func (o *Sed) GetApprovedWhen() SailPointTime {
 
 // GetApprovedWhenOk returns a tuple with the ApprovedWhen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sed) GetApprovedWhenOk() (*SailPointTime, bool) {
+func (o *Sed) GetApprovedWhenOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ApprovedWhen) {
 		return nil, false
 	}
@@ -193,8 +193,8 @@ func (o *Sed) HasApprovedWhen() bool {
 	return false
 }
 
-// SetApprovedWhen gets a reference to the given SailPointTime and assigns it to the ApprovedWhen field.
-func (o *Sed) SetApprovedWhen(v SailPointTime) {
+// SetApprovedWhen gets a reference to the given time.Time and assigns it to the ApprovedWhen field.
+func (o *Sed) SetApprovedWhen(v time.Time) {
 	o.ApprovedWhen = &v
 }
 

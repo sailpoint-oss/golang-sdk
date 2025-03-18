@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // IdentityAttributesChangedChangesInnerOldValueOneOfValue - struct for IdentityAttributesChangedChangesInnerOldValueOneOfValue
@@ -180,6 +180,28 @@ func (obj *IdentityAttributesChangedChangesInnerOldValueOneOfValue) GetActualIns
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj IdentityAttributesChangedChangesInnerOldValueOneOfValue) GetActualInstanceValue() (interface{}) {
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.Float32 != nil {
+		return *obj.Float32
+	}
+
+	if obj.Int32 != nil {
+		return *obj.Int32
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

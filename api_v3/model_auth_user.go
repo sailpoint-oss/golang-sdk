@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AuthUser type satisfies the MappedNullable interface at compile time
@@ -565,9 +565,9 @@ func (o *AuthUser) SetAlias(v string) {
 }
 
 // GetLastPasswordChangeDate returns the LastPasswordChangeDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthUser) GetLastPasswordChangeDate() SailPointTime {
+func (o *AuthUser) GetLastPasswordChangeDate() time.Time {
 	if o == nil || IsNil(o.LastPasswordChangeDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastPasswordChangeDate.Get()
@@ -576,7 +576,7 @@ func (o *AuthUser) GetLastPasswordChangeDate() SailPointTime {
 // GetLastPasswordChangeDateOk returns a tuple with the LastPasswordChangeDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthUser) GetLastPasswordChangeDateOk() (*SailPointTime, bool) {
+func (o *AuthUser) GetLastPasswordChangeDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -593,7 +593,7 @@ func (o *AuthUser) HasLastPasswordChangeDate() bool {
 }
 
 // SetLastPasswordChangeDate gets a reference to the given NullableTime and assigns it to the LastPasswordChangeDate field.
-func (o *AuthUser) SetLastPasswordChangeDate(v SailPointTime) {
+func (o *AuthUser) SetLastPasswordChangeDate(v time.Time) {
 	o.LastPasswordChangeDate.Set(&v)
 }
 // SetLastPasswordChangeDateNil sets the value for LastPasswordChangeDate to be an explicit nil
@@ -671,9 +671,9 @@ func (o *AuthUser) SetCurrentLoginTimestamp(v int64) {
 }
 
 // GetLastUnlockTimestamp returns the LastUnlockTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthUser) GetLastUnlockTimestamp() SailPointTime {
+func (o *AuthUser) GetLastUnlockTimestamp() time.Time {
 	if o == nil || IsNil(o.LastUnlockTimestamp.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUnlockTimestamp.Get()
@@ -682,7 +682,7 @@ func (o *AuthUser) GetLastUnlockTimestamp() SailPointTime {
 // GetLastUnlockTimestampOk returns a tuple with the LastUnlockTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthUser) GetLastUnlockTimestampOk() (*SailPointTime, bool) {
+func (o *AuthUser) GetLastUnlockTimestampOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -699,7 +699,7 @@ func (o *AuthUser) HasLastUnlockTimestamp() bool {
 }
 
 // SetLastUnlockTimestamp gets a reference to the given NullableTime and assigns it to the LastUnlockTimestamp field.
-func (o *AuthUser) SetLastUnlockTimestamp(v SailPointTime) {
+func (o *AuthUser) SetLastUnlockTimestamp(v time.Time) {
 	o.LastUnlockTimestamp.Set(&v)
 }
 // SetLastUnlockTimestampNil sets the value for LastUnlockTimestamp to be an explicit nil

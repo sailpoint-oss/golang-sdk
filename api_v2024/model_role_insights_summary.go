@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the RoleInsightsSummary type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type RoleInsightsSummary struct {
 	// Total number of roles with updates
 	NumberOfUpdates *int32 `json:"numberOfUpdates,omitempty"`
 	// The date-time role insights were last found.
-	LastGenerated *SailPointTime `json:"lastGenerated,omitempty"`
+	LastGenerated *time.Time `json:"lastGenerated,omitempty"`
 	// The number of entitlements included in roles (vs free radicals).
 	EntitlementsIncludedInRoles *int32 `json:"entitlementsIncludedInRoles,omitempty"`
 	// The total number of entitlements.
@@ -87,9 +87,9 @@ func (o *RoleInsightsSummary) SetNumberOfUpdates(v int32) {
 }
 
 // GetLastGenerated returns the LastGenerated field value if set, zero value otherwise.
-func (o *RoleInsightsSummary) GetLastGenerated() SailPointTime {
+func (o *RoleInsightsSummary) GetLastGenerated() time.Time {
 	if o == nil || IsNil(o.LastGenerated) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastGenerated
@@ -97,7 +97,7 @@ func (o *RoleInsightsSummary) GetLastGenerated() SailPointTime {
 
 // GetLastGeneratedOk returns a tuple with the LastGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleInsightsSummary) GetLastGeneratedOk() (*SailPointTime, bool) {
+func (o *RoleInsightsSummary) GetLastGeneratedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastGenerated) {
 		return nil, false
 	}
@@ -113,8 +113,8 @@ func (o *RoleInsightsSummary) HasLastGenerated() bool {
 	return false
 }
 
-// SetLastGenerated gets a reference to the given SailPointTime and assigns it to the LastGenerated field.
-func (o *RoleInsightsSummary) SetLastGenerated(v SailPointTime) {
+// SetLastGenerated gets a reference to the given time.Time and assigns it to the LastGenerated field.
+func (o *RoleInsightsSummary) SetLastGenerated(v time.Time) {
 	o.LastGenerated = &v
 }
 

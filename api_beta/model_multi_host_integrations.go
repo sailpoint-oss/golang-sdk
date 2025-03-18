@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -50,7 +50,7 @@ type MultiHostIntegrations struct {
 	// Status identifier that gives specific information about why a source is or isn't healthy. 
 	Status *string `json:"status,omitempty"`
 	// Timestamp that shows when a source health check was last performed.
-	Since *SailPointTime `json:"since,omitempty"`
+	Since *time.Time `json:"since,omitempty"`
 	// Connector ID
 	ConnectorId *string `json:"connectorId,omitempty"`
 	// Name of the connector that was chosen during source creation.
@@ -60,9 +60,9 @@ type MultiHostIntegrations struct {
 	// Connector implementation ID.
 	ConnectorImplementationId *string `json:"connectorImplementationId,omitempty"`
 	// Date-time when the source was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Date-time when the source was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// If this is true, it enables a credential provider for the source. If credentialProvider is turned on,  then the source can use credential provider(s) to fetch credentials.
 	CredentialProviderEnabled *bool `json:"credentialProviderEnabled,omitempty"`
 	// Source category (e.g. null, CredentialProvider).
@@ -599,9 +599,9 @@ func (o *MultiHostIntegrations) SetStatus(v string) {
 }
 
 // GetSince returns the Since field value if set, zero value otherwise.
-func (o *MultiHostIntegrations) GetSince() SailPointTime {
+func (o *MultiHostIntegrations) GetSince() time.Time {
 	if o == nil || IsNil(o.Since) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Since
@@ -609,7 +609,7 @@ func (o *MultiHostIntegrations) GetSince() SailPointTime {
 
 // GetSinceOk returns a tuple with the Since field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultiHostIntegrations) GetSinceOk() (*SailPointTime, bool) {
+func (o *MultiHostIntegrations) GetSinceOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Since) {
 		return nil, false
 	}
@@ -625,8 +625,8 @@ func (o *MultiHostIntegrations) HasSince() bool {
 	return false
 }
 
-// SetSince gets a reference to the given SailPointTime and assigns it to the Since field.
-func (o *MultiHostIntegrations) SetSince(v SailPointTime) {
+// SetSince gets a reference to the given time.Time and assigns it to the Since field.
+func (o *MultiHostIntegrations) SetSince(v time.Time) {
 	o.Since = &v
 }
 
@@ -759,9 +759,9 @@ func (o *MultiHostIntegrations) SetConnectorImplementationId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *MultiHostIntegrations) GetCreated() SailPointTime {
+func (o *MultiHostIntegrations) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -769,7 +769,7 @@ func (o *MultiHostIntegrations) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultiHostIntegrations) GetCreatedOk() (*SailPointTime, bool) {
+func (o *MultiHostIntegrations) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -785,15 +785,15 @@ func (o *MultiHostIntegrations) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *MultiHostIntegrations) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *MultiHostIntegrations) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *MultiHostIntegrations) GetModified() SailPointTime {
+func (o *MultiHostIntegrations) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -801,7 +801,7 @@ func (o *MultiHostIntegrations) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultiHostIntegrations) GetModifiedOk() (*SailPointTime, bool) {
+func (o *MultiHostIntegrations) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -817,8 +817,8 @@ func (o *MultiHostIntegrations) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *MultiHostIntegrations) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *MultiHostIntegrations) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

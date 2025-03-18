@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the WorkItems type satisfies the MappedNullable interface at compile time
@@ -30,7 +30,7 @@ type WorkItems struct {
 	OwnerId NullableString `json:"ownerId,omitempty"`
 	// The name of the owner
 	OwnerName *string `json:"ownerName,omitempty"`
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	Modified NullableTime `json:"modified,omitempty"`
 	// The description of the work item
 	Description *string `json:"description,omitempty"`
@@ -258,9 +258,9 @@ func (o *WorkItems) SetOwnerName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkItems) GetCreated() SailPointTime {
+func (o *WorkItems) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -268,7 +268,7 @@ func (o *WorkItems) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetCreatedOk() (*SailPointTime, bool) {
+func (o *WorkItems) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -284,15 +284,15 @@ func (o *WorkItems) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *WorkItems) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WorkItems) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetModified() SailPointTime {
+func (o *WorkItems) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -301,7 +301,7 @@ func (o *WorkItems) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetModifiedOk() (*SailPointTime, bool) {
+func (o *WorkItems) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +318,7 @@ func (o *WorkItems) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *WorkItems) SetModified(v SailPointTime) {
+func (o *WorkItems) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -546,9 +546,9 @@ func (o *WorkItems) UnsetName() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetCompleted() SailPointTime {
+func (o *WorkItems) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Completed.Get()
@@ -557,7 +557,7 @@ func (o *WorkItems) GetCompleted() SailPointTime {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetCompletedOk() (*SailPointTime, bool) {
+func (o *WorkItems) GetCompletedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -574,7 +574,7 @@ func (o *WorkItems) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *WorkItems) SetCompleted(v SailPointTime) {
+func (o *WorkItems) SetCompleted(v time.Time) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the CommentDto type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type CommentDto struct {
 	// Comment content.
 	Comment NullableString `json:"comment,omitempty"`
 	// Date and time comment was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	Author *CommentDtoAuthor `json:"author,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -90,9 +90,9 @@ func (o *CommentDto) UnsetComment() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *CommentDto) GetCreated() SailPointTime {
+func (o *CommentDto) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -100,7 +100,7 @@ func (o *CommentDto) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommentDto) GetCreatedOk() (*SailPointTime, bool) {
+func (o *CommentDto) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *CommentDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *CommentDto) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *CommentDto) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

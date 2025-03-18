@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Role struct {
 	// The human-readable display name of the Role
 	Name string `json:"name"`
 	// Date the Role was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Date the Role was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// A human-readable description of the Role
 	Description NullableString `json:"description,omitempty"`
 	Owner OwnerReference `json:"owner"`
@@ -143,9 +143,9 @@ func (o *Role) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Role) GetCreated() SailPointTime {
+func (o *Role) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -153,7 +153,7 @@ func (o *Role) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Role) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -169,15 +169,15 @@ func (o *Role) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Role) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Role) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Role) GetModified() SailPointTime {
+func (o *Role) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -185,7 +185,7 @@ func (o *Role) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Role) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -201,8 +201,8 @@ func (o *Role) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Role) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Role) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

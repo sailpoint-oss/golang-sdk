@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the SlimDiscoveredApplications type satisfies the MappedNullable interface at compile time
@@ -33,9 +33,9 @@ type SlimDiscoveredApplications struct {
 	// List of recommended connectors for the application.
 	RecommendedConnectors []string `json:"recommendedConnectors,omitempty"`
 	// The timestamp when the application was last received via an entitlement aggregation invocation  or a manual csv upload, in ISO 8601 format.
-	DiscoveredAt *SailPointTime `json:"discoveredAt,omitempty"`
+	DiscoveredAt *time.Time `json:"discoveredAt,omitempty"`
 	// The timestamp when the application was first discovered, in ISO 8601 format.
-	CreatedAt *SailPointTime `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The status of an application within the discovery source.  By default this field is set to \"ACTIVE\" when the application is discovered.  If an application has been deleted from within the discovery source, the status will be set to \"INACTIVE\".
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -253,9 +253,9 @@ func (o *SlimDiscoveredApplications) SetRecommendedConnectors(v []string) {
 }
 
 // GetDiscoveredAt returns the DiscoveredAt field value if set, zero value otherwise.
-func (o *SlimDiscoveredApplications) GetDiscoveredAt() SailPointTime {
+func (o *SlimDiscoveredApplications) GetDiscoveredAt() time.Time {
 	if o == nil || IsNil(o.DiscoveredAt) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.DiscoveredAt
@@ -263,7 +263,7 @@ func (o *SlimDiscoveredApplications) GetDiscoveredAt() SailPointTime {
 
 // GetDiscoveredAtOk returns a tuple with the DiscoveredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SlimDiscoveredApplications) GetDiscoveredAtOk() (*SailPointTime, bool) {
+func (o *SlimDiscoveredApplications) GetDiscoveredAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.DiscoveredAt) {
 		return nil, false
 	}
@@ -279,15 +279,15 @@ func (o *SlimDiscoveredApplications) HasDiscoveredAt() bool {
 	return false
 }
 
-// SetDiscoveredAt gets a reference to the given SailPointTime and assigns it to the DiscoveredAt field.
-func (o *SlimDiscoveredApplications) SetDiscoveredAt(v SailPointTime) {
+// SetDiscoveredAt gets a reference to the given time.Time and assigns it to the DiscoveredAt field.
+func (o *SlimDiscoveredApplications) SetDiscoveredAt(v time.Time) {
 	o.DiscoveredAt = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *SlimDiscoveredApplications) GetCreatedAt() SailPointTime {
+func (o *SlimDiscoveredApplications) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -295,7 +295,7 @@ func (o *SlimDiscoveredApplications) GetCreatedAt() SailPointTime {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SlimDiscoveredApplications) GetCreatedAtOk() (*SailPointTime, bool) {
+func (o *SlimDiscoveredApplications) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -311,8 +311,8 @@ func (o *SlimDiscoveredApplications) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given SailPointTime and assigns it to the CreatedAt field.
-func (o *SlimDiscoveredApplications) SetCreatedAt(v SailPointTime) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *SlimDiscoveredApplications) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 

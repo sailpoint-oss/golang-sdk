@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // GetDiscoveredApplications200ResponseInner - struct for GetDiscoveredApplications200ResponseInner
@@ -112,6 +112,20 @@ func (obj *GetDiscoveredApplications200ResponseInner) GetActualInstance() (inter
 
 	if obj.SlimDiscoveredApplications != nil {
 		return obj.SlimDiscoveredApplications
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj GetDiscoveredApplications200ResponseInner) GetActualInstanceValue() (interface{}) {
+	if obj.FullDiscoveredApplications != nil {
+		return *obj.FullDiscoveredApplications
+	}
+
+	if obj.SlimDiscoveredApplications != nil {
+		return *obj.SlimDiscoveredApplications
 	}
 
 	// all schemas are nil

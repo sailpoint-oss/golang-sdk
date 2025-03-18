@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the WorkflowExecutionEvent type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type WorkflowExecutionEvent struct {
 	// The type of event
 	Type map[string]interface{} `json:"type,omitempty"`
 	// The date-time when the event occurred
-	Timestamp *SailPointTime `json:"timestamp,omitempty"`
+	Timestamp *time.Time `json:"timestamp,omitempty"`
 	// Additional attributes associated with the event
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -81,9 +81,9 @@ func (o *WorkflowExecutionEvent) SetType(v map[string]interface{}) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *WorkflowExecutionEvent) GetTimestamp() SailPointTime {
+func (o *WorkflowExecutionEvent) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Timestamp
@@ -91,7 +91,7 @@ func (o *WorkflowExecutionEvent) GetTimestamp() SailPointTime {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowExecutionEvent) GetTimestampOk() (*SailPointTime, bool) {
+func (o *WorkflowExecutionEvent) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *WorkflowExecutionEvent) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given SailPointTime and assigns it to the Timestamp field.
-func (o *WorkflowExecutionEvent) SetTimestamp(v SailPointTime) {
+// SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
+func (o *WorkflowExecutionEvent) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 

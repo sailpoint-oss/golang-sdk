@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // IdentityAttributesChangedChangesInnerOldValue - Identity attribute's previous value before the change.
@@ -185,6 +185,28 @@ func (obj *IdentityAttributesChangedChangesInnerOldValue) GetActualInstance() (i
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj IdentityAttributesChangedChangesInnerOldValue) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfString != nil {
+		return *obj.ArrayOfString
+	}
+
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue != nil {
+		return *obj.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the FormDefinitionResponse type satisfies the MappedNullable interface at compile time
@@ -36,9 +36,9 @@ type FormDefinitionResponse struct {
 	// Conditional logic that can dynamically modify the form as the recipient is interacting with it.
 	FormConditions []FormCondition `json:"formConditions,omitempty"`
 	// Created is the date the form definition was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Modified is the last date the form definition was modified
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -318,9 +318,9 @@ func (o *FormDefinitionResponse) SetFormConditions(v []FormCondition) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *FormDefinitionResponse) GetCreated() SailPointTime {
+func (o *FormDefinitionResponse) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -328,7 +328,7 @@ func (o *FormDefinitionResponse) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormDefinitionResponse) GetCreatedOk() (*SailPointTime, bool) {
+func (o *FormDefinitionResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -344,15 +344,15 @@ func (o *FormDefinitionResponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *FormDefinitionResponse) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *FormDefinitionResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *FormDefinitionResponse) GetModified() SailPointTime {
+func (o *FormDefinitionResponse) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -360,7 +360,7 @@ func (o *FormDefinitionResponse) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormDefinitionResponse) GetModifiedOk() (*SailPointTime, bool) {
+func (o *FormDefinitionResponse) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -376,8 +376,8 @@ func (o *FormDefinitionResponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *FormDefinitionResponse) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *FormDefinitionResponse) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

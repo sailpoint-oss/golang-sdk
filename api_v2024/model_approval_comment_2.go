@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ApprovalComment2 type satisfies the MappedNullable interface at compile time
@@ -113,9 +113,9 @@ func (o *ApprovalComment2) SetCommenter(v string) {
 }
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalComment2) GetDate() SailPointTime {
+func (o *ApprovalComment2) GetDate() time.Time {
 	if o == nil || IsNil(o.Date.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Date.Get()
@@ -124,7 +124,7 @@ func (o *ApprovalComment2) GetDate() SailPointTime {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalComment2) GetDateOk() (*SailPointTime, bool) {
+func (o *ApprovalComment2) GetDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *ApprovalComment2) HasDate() bool {
 }
 
 // SetDate gets a reference to the given NullableTime and assigns it to the Date field.
-func (o *ApprovalComment2) SetDate(v SailPointTime) {
+func (o *ApprovalComment2) SetDate(v time.Time) {
 	o.Date.Set(&v)
 }
 // SetDateNil sets the value for Date to be an explicit nil

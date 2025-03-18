@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AccountActivityDocument type satisfies the MappedNullable interface at compile time
@@ -139,9 +139,9 @@ func (o *AccountActivityDocument) SetAction(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActivityDocument) GetCreated() SailPointTime {
+func (o *AccountActivityDocument) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -150,7 +150,7 @@ func (o *AccountActivityDocument) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActivityDocument) GetCreatedOk() (*SailPointTime, bool) {
+func (o *AccountActivityDocument) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -167,7 +167,7 @@ func (o *AccountActivityDocument) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *AccountActivityDocument) SetCreated(v SailPointTime) {
+func (o *AccountActivityDocument) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -181,9 +181,9 @@ func (o *AccountActivityDocument) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActivityDocument) GetModified() SailPointTime {
+func (o *AccountActivityDocument) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -192,7 +192,7 @@ func (o *AccountActivityDocument) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActivityDocument) GetModifiedOk() (*SailPointTime, bool) {
+func (o *AccountActivityDocument) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -209,7 +209,7 @@ func (o *AccountActivityDocument) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *AccountActivityDocument) SetModified(v SailPointTime) {
+func (o *AccountActivityDocument) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

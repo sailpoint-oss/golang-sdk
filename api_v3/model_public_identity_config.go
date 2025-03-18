@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the PublicIdentityConfig type satisfies the MappedNullable interface at compile time
@@ -80,9 +80,9 @@ func (o *PublicIdentityConfig) SetAttributes(v []PublicIdentityAttributeConfig) 
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PublicIdentityConfig) GetModified() SailPointTime {
+func (o *PublicIdentityConfig) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -91,7 +91,7 @@ func (o *PublicIdentityConfig) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PublicIdentityConfig) GetModifiedOk() (*SailPointTime, bool) {
+func (o *PublicIdentityConfig) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *PublicIdentityConfig) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *PublicIdentityConfig) SetModified(v SailPointTime) {
+func (o *PublicIdentityConfig) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

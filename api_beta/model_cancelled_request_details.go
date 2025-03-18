@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the CancelledRequestDetails type satisfies the MappedNullable interface at compile time
@@ -24,7 +24,7 @@ type CancelledRequestDetails struct {
 	Comment *string `json:"comment,omitempty"`
 	Owner *OwnerDto `json:"owner,omitempty"`
 	// Date comment was added by the owner when cancelling the associated request.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,9 +112,9 @@ func (o *CancelledRequestDetails) SetOwner(v OwnerDto) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *CancelledRequestDetails) GetModified() SailPointTime {
+func (o *CancelledRequestDetails) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -122,7 +122,7 @@ func (o *CancelledRequestDetails) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CancelledRequestDetails) GetModifiedOk() (*SailPointTime, bool) {
+func (o *CancelledRequestDetails) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -138,8 +138,8 @@ func (o *CancelledRequestDetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *CancelledRequestDetails) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *CancelledRequestDetails) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

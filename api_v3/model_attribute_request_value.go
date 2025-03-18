@@ -12,8 +12,8 @@ package api_v3
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // AttributeRequestValue - Value of attribute.
@@ -112,6 +112,20 @@ func (obj *AttributeRequestValue) GetActualInstance() (interface{}) {
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj AttributeRequestValue) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfString != nil {
+		return *obj.ArrayOfString
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

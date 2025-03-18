@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Account struct {
 	// Name of the Object
 	Name NullableString `json:"name"`
 	// Creation date of the Object
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Last modification date of the Object
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// The unique ID of the source this account belongs to
 	SourceId string `json:"sourceId"`
 	// The display name of the source this account belongs to
@@ -170,9 +170,9 @@ func (o *Account) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Account) GetCreated() SailPointTime {
+func (o *Account) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -180,7 +180,7 @@ func (o *Account) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Account) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -196,15 +196,15 @@ func (o *Account) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *Account) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Account) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Account) GetModified() SailPointTime {
+func (o *Account) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -212,7 +212,7 @@ func (o *Account) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Account) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -228,8 +228,8 @@ func (o *Account) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *Account) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Account) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

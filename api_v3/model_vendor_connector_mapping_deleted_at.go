@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the VendorConnectorMappingDeletedAt type satisfies the MappedNullable interface at compile time
@@ -21,7 +21,7 @@ var _ MappedNullable = &VendorConnectorMappingDeletedAt{}
 // VendorConnectorMappingDeletedAt An object representing the nullable timestamp of when the mapping was deleted.
 type VendorConnectorMappingDeletedAt struct {
 	// The timestamp when the mapping was deleted, represented in ISO 8601 format, if applicable.
-	Time *SailPointTime `json:"Time,omitempty"`
+	Time *time.Time `json:"Time,omitempty"`
 	// A flag indicating if the 'Time' field is set and valid, i.e., if the mapping has been deleted.
 	Valid *bool `json:"Valid,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -51,9 +51,9 @@ func NewVendorConnectorMappingDeletedAtWithDefaults() *VendorConnectorMappingDel
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *VendorConnectorMappingDeletedAt) GetTime() SailPointTime {
+func (o *VendorConnectorMappingDeletedAt) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -61,7 +61,7 @@ func (o *VendorConnectorMappingDeletedAt) GetTime() SailPointTime {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VendorConnectorMappingDeletedAt) GetTimeOk() (*SailPointTime, bool) {
+func (o *VendorConnectorMappingDeletedAt) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *VendorConnectorMappingDeletedAt) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given SailPointTime and assigns it to the Time field.
-func (o *VendorConnectorMappingDeletedAt) SetTime(v SailPointTime) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *VendorConnectorMappingDeletedAt) SetTime(v time.Time) {
 	o.Time = &v
 }
 

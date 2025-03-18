@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the VendorConnectorMappingUpdatedAt type satisfies the MappedNullable interface at compile time
@@ -21,7 +21,7 @@ var _ MappedNullable = &VendorConnectorMappingUpdatedAt{}
 // VendorConnectorMappingUpdatedAt An object representing the nullable timestamp of the last update.
 type VendorConnectorMappingUpdatedAt struct {
 	// The timestamp when the mapping was last updated, represented in ISO 8601 format.
-	Time *SailPointTime `json:"Time,omitempty"`
+	Time *time.Time `json:"Time,omitempty"`
 	// A flag indicating if the 'Time' field is set and valid.
 	Valid *bool `json:"Valid,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -51,9 +51,9 @@ func NewVendorConnectorMappingUpdatedAtWithDefaults() *VendorConnectorMappingUpd
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *VendorConnectorMappingUpdatedAt) GetTime() SailPointTime {
+func (o *VendorConnectorMappingUpdatedAt) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -61,7 +61,7 @@ func (o *VendorConnectorMappingUpdatedAt) GetTime() SailPointTime {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VendorConnectorMappingUpdatedAt) GetTimeOk() (*SailPointTime, bool) {
+func (o *VendorConnectorMappingUpdatedAt) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *VendorConnectorMappingUpdatedAt) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given SailPointTime and assigns it to the Time field.
-func (o *VendorConnectorMappingUpdatedAt) SetTime(v SailPointTime) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *VendorConnectorMappingUpdatedAt) SetTime(v time.Time) {
 	o.Time = &v
 }
 

@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the RequestableObject type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type RequestableObject struct {
 	// Human-readable display name of the requestable object
 	Name *string `json:"name,omitempty"`
 	// The time when the requestable object was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The time when the requestable object was last modified
 	Modified NullableTime `json:"modified,omitempty"`
 	// Description of the requestable object.
@@ -124,9 +124,9 @@ func (o *RequestableObject) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *RequestableObject) GetCreated() SailPointTime {
+func (o *RequestableObject) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -134,7 +134,7 @@ func (o *RequestableObject) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestableObject) GetCreatedOk() (*SailPointTime, bool) {
+func (o *RequestableObject) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -150,15 +150,15 @@ func (o *RequestableObject) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *RequestableObject) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *RequestableObject) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RequestableObject) GetModified() SailPointTime {
+func (o *RequestableObject) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified.Get()
@@ -167,7 +167,7 @@ func (o *RequestableObject) GetModified() SailPointTime {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RequestableObject) GetModifiedOk() (*SailPointTime, bool) {
+func (o *RequestableObject) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *RequestableObject) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *RequestableObject) SetModified(v SailPointTime) {
+func (o *RequestableObject) SetModified(v time.Time) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

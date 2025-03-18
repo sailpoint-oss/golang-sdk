@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type ManagedClientStatus struct {
 	Status ManagedClientStatusCode `json:"status"`
 	Type NullableManagedClientType `json:"type"`
 	// timestamp on the Client Status update
-	Timestamp SailPointTime `json:"timestamp"`
+	Timestamp time.Time `json:"timestamp"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _ManagedClientStatus ManagedClientStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusCode, type_ NullableManagedClientType, timestamp SailPointTime) *ManagedClientStatus {
+func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusCode, type_ NullableManagedClientType, timestamp time.Time) *ManagedClientStatus {
 	this := ManagedClientStatus{}
 	this.Body = body
 	this.Status = status
@@ -128,9 +128,9 @@ func (o *ManagedClientStatus) SetType(v ManagedClientType) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *ManagedClientStatus) GetTimestamp() SailPointTime {
+func (o *ManagedClientStatus) GetTimestamp() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *ManagedClientStatus) GetTimestamp() SailPointTime {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *ManagedClientStatus) GetTimestampOk() (*SailPointTime, bool) {
+func (o *ManagedClientStatus) GetTimestampOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *ManagedClientStatus) GetTimestampOk() (*SailPointTime, bool) {
 }
 
 // SetTimestamp sets field value
-func (o *ManagedClientStatus) SetTimestamp(v SailPointTime) {
+func (o *ManagedClientStatus) SetTimestamp(v time.Time) {
 	o.Timestamp = v
 }
 

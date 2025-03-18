@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ReportDetailsArguments - The string-object map(dictionary) with the arguments needed for report processing.
@@ -282,6 +282,40 @@ func (obj *ReportDetailsArguments) GetActualInstance() (interface{}) {
 
 	if obj.UncorrelatedAccountsReportArguments != nil {
 		return obj.UncorrelatedAccountsReportArguments
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ReportDetailsArguments) GetActualInstanceValue() (interface{}) {
+	if obj.AccountsExportReportArguments != nil {
+		return *obj.AccountsExportReportArguments
+	}
+
+	if obj.IdentitiesDetailsReportArguments != nil {
+		return *obj.IdentitiesDetailsReportArguments
+	}
+
+	if obj.IdentitiesReportArguments != nil {
+		return *obj.IdentitiesReportArguments
+	}
+
+	if obj.IdentityProfileIdentityErrorReportArguments != nil {
+		return *obj.IdentityProfileIdentityErrorReportArguments
+	}
+
+	if obj.OrphanIdentitiesReportArguments != nil {
+		return *obj.OrphanIdentitiesReportArguments
+	}
+
+	if obj.SearchExportReportArguments != nil {
+		return *obj.SearchExportReportArguments
+	}
+
+	if obj.UncorrelatedAccountsReportArguments != nil {
+		return *obj.UncorrelatedAccountsReportArguments
 	}
 
 	// all schemas are nil

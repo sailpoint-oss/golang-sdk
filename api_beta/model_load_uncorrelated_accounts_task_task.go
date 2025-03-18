@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the LoadUncorrelatedAccountsTaskTask type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type LoadUncorrelatedAccountsTaskTask struct {
 	// The user who initiated the task
 	Launcher *string `json:"launcher,omitempty"`
 	// The Task creation date
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// The task start date
 	Launched NullableTime `json:"launched,omitempty"`
 	// The task completion date
@@ -230,9 +230,9 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetLauncher(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *LoadUncorrelatedAccountsTaskTask) GetCreated() SailPointTime {
+func (o *LoadUncorrelatedAccountsTaskTask) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -240,7 +240,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadUncorrelatedAccountsTaskTask) GetCreatedOk() (*SailPointTime, bool) {
+func (o *LoadUncorrelatedAccountsTaskTask) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -256,15 +256,15 @@ func (o *LoadUncorrelatedAccountsTaskTask) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *LoadUncorrelatedAccountsTaskTask) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *LoadUncorrelatedAccountsTaskTask) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetLaunched returns the Launched field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoadUncorrelatedAccountsTaskTask) GetLaunched() SailPointTime {
+func (o *LoadUncorrelatedAccountsTaskTask) GetLaunched() time.Time {
 	if o == nil || IsNil(o.Launched.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Launched.Get()
@@ -273,7 +273,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetLaunched() SailPointTime {
 // GetLaunchedOk returns a tuple with the Launched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadUncorrelatedAccountsTaskTask) GetLaunchedOk() (*SailPointTime, bool) {
+func (o *LoadUncorrelatedAccountsTaskTask) GetLaunchedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -290,7 +290,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) HasLaunched() bool {
 }
 
 // SetLaunched gets a reference to the given NullableTime and assigns it to the Launched field.
-func (o *LoadUncorrelatedAccountsTaskTask) SetLaunched(v SailPointTime) {
+func (o *LoadUncorrelatedAccountsTaskTask) SetLaunched(v time.Time) {
 	o.Launched.Set(&v)
 }
 // SetLaunchedNil sets the value for Launched to be an explicit nil
@@ -304,9 +304,9 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetLaunched() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoadUncorrelatedAccountsTaskTask) GetCompleted() SailPointTime {
+func (o *LoadUncorrelatedAccountsTaskTask) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Completed.Get()
@@ -315,7 +315,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetCompleted() SailPointTime {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadUncorrelatedAccountsTaskTask) GetCompletedOk() (*SailPointTime, bool) {
+func (o *LoadUncorrelatedAccountsTaskTask) GetCompletedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -332,7 +332,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *LoadUncorrelatedAccountsTaskTask) SetCompleted(v SailPointTime) {
+func (o *LoadUncorrelatedAccountsTaskTask) SetCompleted(v time.Time) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

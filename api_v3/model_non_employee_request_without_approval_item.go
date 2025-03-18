@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the NonEmployeeRequestWithoutApprovalItem type satisfies the MappedNullable interface at compile time
@@ -42,15 +42,15 @@ type NonEmployeeRequestWithoutApprovalItem struct {
 	// Comment of requester
 	Comment *string `json:"comment,omitempty"`
 	// When the request was completely approved.
-	CompletionDate *SailPointTime `json:"completionDate,omitempty"`
+	CompletionDate *time.Time `json:"completionDate,omitempty"`
 	// Non-Employee employment start date.
 	StartDate *string `json:"startDate,omitempty"`
 	// Non-Employee employment end date.
 	EndDate *string `json:"endDate,omitempty"`
 	// When the request was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -458,9 +458,9 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetComment(v string) {
 }
 
 // GetCompletionDate returns the CompletionDate field value if set, zero value otherwise.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDate() SailPointTime {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDate() time.Time {
 	if o == nil || IsNil(o.CompletionDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.CompletionDate
@@ -468,7 +468,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDate() SailPointTim
 
 // GetCompletionDateOk returns a tuple with the CompletionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDateOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CompletionDate) {
 		return nil, false
 	}
@@ -484,8 +484,8 @@ func (o *NonEmployeeRequestWithoutApprovalItem) HasCompletionDate() bool {
 	return false
 }
 
-// SetCompletionDate gets a reference to the given SailPointTime and assigns it to the CompletionDate field.
-func (o *NonEmployeeRequestWithoutApprovalItem) SetCompletionDate(v SailPointTime) {
+// SetCompletionDate gets a reference to the given time.Time and assigns it to the CompletionDate field.
+func (o *NonEmployeeRequestWithoutApprovalItem) SetCompletionDate(v time.Time) {
 	o.CompletionDate = &v
 }
 
@@ -554,9 +554,9 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetEndDate(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetModified() SailPointTime {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -564,7 +564,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetModifiedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -580,15 +580,15 @@ func (o *NonEmployeeRequestWithoutApprovalItem) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *NonEmployeeRequestWithoutApprovalItem) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *NonEmployeeRequestWithoutApprovalItem) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetCreated() SailPointTime {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -596,7 +596,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeRequestWithoutApprovalItem) GetCreatedOk() (*SailPointTime, bool) {
+func (o *NonEmployeeRequestWithoutApprovalItem) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -612,8 +612,8 @@ func (o *NonEmployeeRequestWithoutApprovalItem) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *NonEmployeeRequestWithoutApprovalItem) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *NonEmployeeRequestWithoutApprovalItem) SetCreated(v time.Time) {
 	o.Created = &v
 }
 

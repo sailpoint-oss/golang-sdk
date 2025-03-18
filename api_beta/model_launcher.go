@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -24,9 +24,9 @@ type Launcher struct {
 	// ID of the Launcher
 	Id string `json:"id"`
 	// Date the Launcher was created
-	Created SailPointTime `json:"created"`
+	Created time.Time `json:"created"`
 	// Date the Launcher was last modified
-	Modified SailPointTime `json:"modified"`
+	Modified time.Time `json:"modified"`
 	Owner LauncherOwner `json:"owner"`
 	// Name of the Launcher, limited to 255 characters
 	Name string `json:"name"`
@@ -48,7 +48,7 @@ type _Launcher Launcher
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLauncher(id string, created SailPointTime, modified SailPointTime, owner LauncherOwner, name string, description string, type_ string, disabled bool, config string) *Launcher {
+func NewLauncher(id string, created time.Time, modified time.Time, owner LauncherOwner, name string, description string, type_ string, disabled bool, config string) *Launcher {
 	this := Launcher{}
 	this.Id = id
 	this.Created = created
@@ -95,9 +95,9 @@ func (o *Launcher) SetId(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *Launcher) GetCreated() SailPointTime {
+func (o *Launcher) GetCreated() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *Launcher) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Launcher) GetCreatedOk() (*SailPointTime, bool) {
+func (o *Launcher) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,14 +114,14 @@ func (o *Launcher) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // SetCreated sets field value
-func (o *Launcher) SetCreated(v SailPointTime) {
+func (o *Launcher) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *Launcher) GetModified() SailPointTime {
+func (o *Launcher) GetModified() time.Time {
 	if o == nil {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 
@@ -130,7 +130,7 @@ func (o *Launcher) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *Launcher) GetModifiedOk() (*SailPointTime, bool) {
+func (o *Launcher) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *Launcher) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // SetModified sets field value
-func (o *Launcher) SetModified(v SailPointTime) {
+func (o *Launcher) SetModified(v time.Time) {
 	o.Modified = v
 }
 

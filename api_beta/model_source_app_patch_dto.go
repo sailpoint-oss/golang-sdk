@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the SourceAppPatchDto type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type SourceAppPatchDto struct {
 	// The source app name
 	Name *string `json:"name,omitempty"`
 	// Time when the source app was created
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Time when the source app was last modified
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	// True if the source app is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 	// True if the source app is provision request enabled
@@ -180,9 +180,9 @@ func (o *SourceAppPatchDto) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *SourceAppPatchDto) GetCreated() SailPointTime {
+func (o *SourceAppPatchDto) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -190,7 +190,7 @@ func (o *SourceAppPatchDto) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAppPatchDto) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SourceAppPatchDto) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -206,15 +206,15 @@ func (o *SourceAppPatchDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *SourceAppPatchDto) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *SourceAppPatchDto) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *SourceAppPatchDto) GetModified() SailPointTime {
+func (o *SourceAppPatchDto) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -222,7 +222,7 @@ func (o *SourceAppPatchDto) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAppPatchDto) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SourceAppPatchDto) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -238,8 +238,8 @@ func (o *SourceAppPatchDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *SourceAppPatchDto) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *SourceAppPatchDto) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

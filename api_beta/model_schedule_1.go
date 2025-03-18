@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -166,9 +166,9 @@ func (o *Schedule1) SetHours(v Schedule1Hours) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Schedule1) GetExpiration() SailPointTime {
+func (o *Schedule1) GetExpiration() time.Time {
 	if o == nil || IsNil(o.Expiration.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Expiration.Get()
@@ -177,7 +177,7 @@ func (o *Schedule1) GetExpiration() SailPointTime {
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Schedule1) GetExpirationOk() (*SailPointTime, bool) {
+func (o *Schedule1) GetExpirationOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *Schedule1) HasExpiration() bool {
 }
 
 // SetExpiration gets a reference to the given NullableTime and assigns it to the Expiration field.
-func (o *Schedule1) SetExpiration(v SailPointTime) {
+func (o *Schedule1) SetExpiration(v time.Time) {
 	o.Expiration.Set(&v)
 }
 // SetExpirationNil sets the value for Expiration to be an explicit nil

@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -30,7 +30,7 @@ type AccessRequestItem struct {
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	// The date the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration. 
-	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
+	RemoveDate *time.Time `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -168,9 +168,9 @@ func (o *AccessRequestItem) SetClientMetadata(v map[string]string) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
-func (o *AccessRequestItem) GetRemoveDate() SailPointTime {
+func (o *AccessRequestItem) GetRemoveDate() time.Time {
 	if o == nil || IsNil(o.RemoveDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.RemoveDate
@@ -178,7 +178,7 @@ func (o *AccessRequestItem) GetRemoveDate() SailPointTime {
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestItem) GetRemoveDateOk() (*SailPointTime, bool) {
+func (o *AccessRequestItem) GetRemoveDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
@@ -194,8 +194,8 @@ func (o *AccessRequestItem) HasRemoveDate() bool {
 	return false
 }
 
-// SetRemoveDate gets a reference to the given SailPointTime and assigns it to the RemoveDate field.
-func (o *AccessRequestItem) SetRemoveDate(v SailPointTime) {
+// SetRemoveDate gets a reference to the given time.Time and assigns it to the RemoveDate field.
+func (o *AccessRequestItem) SetRemoveDate(v time.Time) {
 	o.RemoveDate = &v
 }
 

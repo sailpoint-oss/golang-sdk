@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ReviewableAccessProfile type satisfies the MappedNullable interface at compile time
@@ -36,9 +36,9 @@ type ReviewableAccessProfile struct {
 	// A list of entitlements associated with this Access Profile
 	Entitlements []ReviewableEntitlement `json:"entitlements,omitempty"`
 	// Date the Access Profile was created.
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Date the Access Profile was last modified.
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -222,9 +222,9 @@ func (o *ReviewableAccessProfile) SetCloudGoverned(v bool) {
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableAccessProfile) GetEndDate() SailPointTime {
+func (o *ReviewableAccessProfile) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.EndDate.Get()
@@ -233,7 +233,7 @@ func (o *ReviewableAccessProfile) GetEndDate() SailPointTime {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableAccessProfile) GetEndDateOk() (*SailPointTime, bool) {
+func (o *ReviewableAccessProfile) GetEndDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -250,7 +250,7 @@ func (o *ReviewableAccessProfile) HasEndDate() bool {
 }
 
 // SetEndDate gets a reference to the given NullableTime and assigns it to the EndDate field.
-func (o *ReviewableAccessProfile) SetEndDate(v SailPointTime) {
+func (o *ReviewableAccessProfile) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
 // SetEndDateNil sets the value for EndDate to be an explicit nil
@@ -338,9 +338,9 @@ func (o *ReviewableAccessProfile) SetEntitlements(v []ReviewableEntitlement) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *ReviewableAccessProfile) GetCreated() SailPointTime {
+func (o *ReviewableAccessProfile) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -348,7 +348,7 @@ func (o *ReviewableAccessProfile) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReviewableAccessProfile) GetCreatedOk() (*SailPointTime, bool) {
+func (o *ReviewableAccessProfile) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -364,15 +364,15 @@ func (o *ReviewableAccessProfile) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *ReviewableAccessProfile) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *ReviewableAccessProfile) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *ReviewableAccessProfile) GetModified() SailPointTime {
+func (o *ReviewableAccessProfile) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -380,7 +380,7 @@ func (o *ReviewableAccessProfile) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReviewableAccessProfile) GetModifiedOk() (*SailPointTime, bool) {
+func (o *ReviewableAccessProfile) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -396,8 +396,8 @@ func (o *ReviewableAccessProfile) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *ReviewableAccessProfile) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *ReviewableAccessProfile) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

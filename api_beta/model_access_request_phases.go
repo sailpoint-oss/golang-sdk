@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the AccessRequestPhases type satisfies the MappedNullable interface at compile time
@@ -21,7 +21,7 @@ var _ MappedNullable = &AccessRequestPhases{}
 // AccessRequestPhases Provides additional details about this access request phase.
 type AccessRequestPhases struct {
 	// The time that this phase started.
-	Started *SailPointTime `json:"started,omitempty"`
+	Started *time.Time `json:"started,omitempty"`
 	// The time that this phase finished.
 	Finished NullableTime `json:"finished,omitempty"`
 	// The name of this phase.
@@ -55,9 +55,9 @@ func NewAccessRequestPhasesWithDefaults() *AccessRequestPhases {
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise.
-func (o *AccessRequestPhases) GetStarted() SailPointTime {
+func (o *AccessRequestPhases) GetStarted() time.Time {
 	if o == nil || IsNil(o.Started) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Started
@@ -65,7 +65,7 @@ func (o *AccessRequestPhases) GetStarted() SailPointTime {
 
 // GetStartedOk returns a tuple with the Started field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPhases) GetStartedOk() (*SailPointTime, bool) {
+func (o *AccessRequestPhases) GetStartedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
@@ -81,15 +81,15 @@ func (o *AccessRequestPhases) HasStarted() bool {
 	return false
 }
 
-// SetStarted gets a reference to the given SailPointTime and assigns it to the Started field.
-func (o *AccessRequestPhases) SetStarted(v SailPointTime) {
+// SetStarted gets a reference to the given time.Time and assigns it to the Started field.
+func (o *AccessRequestPhases) SetStarted(v time.Time) {
 	o.Started = &v
 }
 
 // GetFinished returns the Finished field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessRequestPhases) GetFinished() SailPointTime {
+func (o *AccessRequestPhases) GetFinished() time.Time {
 	if o == nil || IsNil(o.Finished.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Finished.Get()
@@ -98,7 +98,7 @@ func (o *AccessRequestPhases) GetFinished() SailPointTime {
 // GetFinishedOk returns a tuple with the Finished field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessRequestPhases) GetFinishedOk() (*SailPointTime, bool) {
+func (o *AccessRequestPhases) GetFinishedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,7 +115,7 @@ func (o *AccessRequestPhases) HasFinished() bool {
 }
 
 // SetFinished gets a reference to the given NullableTime and assigns it to the Finished field.
-func (o *AccessRequestPhases) SetFinished(v SailPointTime) {
+func (o *AccessRequestPhases) SetFinished(v time.Time) {
 	o.Finished.Set(&v)
 }
 // SetFinishedNil sets the value for Finished to be an explicit nil

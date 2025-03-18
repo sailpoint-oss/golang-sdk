@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the Outlier type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type Outlier struct {
 	// The type of outlier summary
 	Type *string `json:"type,omitempty"`
 	// The first date the outlier was detected
-	FirstDetectionDate *SailPointTime `json:"firstDetectionDate,omitempty"`
+	FirstDetectionDate *time.Time `json:"firstDetectionDate,omitempty"`
 	// The most recent date the outlier was detected
-	LatestDetectionDate *SailPointTime `json:"latestDetectionDate,omitempty"`
+	LatestDetectionDate *time.Time `json:"latestDetectionDate,omitempty"`
 	// Flag whether or not the outlier has been ignored
 	Ignored *bool `json:"ignored,omitempty"`
 	// Object containing mapped identity attributes
@@ -161,9 +161,9 @@ func (o *Outlier) SetType(v string) {
 }
 
 // GetFirstDetectionDate returns the FirstDetectionDate field value if set, zero value otherwise.
-func (o *Outlier) GetFirstDetectionDate() SailPointTime {
+func (o *Outlier) GetFirstDetectionDate() time.Time {
 	if o == nil || IsNil(o.FirstDetectionDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.FirstDetectionDate
@@ -171,7 +171,7 @@ func (o *Outlier) GetFirstDetectionDate() SailPointTime {
 
 // GetFirstDetectionDateOk returns a tuple with the FirstDetectionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Outlier) GetFirstDetectionDateOk() (*SailPointTime, bool) {
+func (o *Outlier) GetFirstDetectionDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.FirstDetectionDate) {
 		return nil, false
 	}
@@ -187,15 +187,15 @@ func (o *Outlier) HasFirstDetectionDate() bool {
 	return false
 }
 
-// SetFirstDetectionDate gets a reference to the given SailPointTime and assigns it to the FirstDetectionDate field.
-func (o *Outlier) SetFirstDetectionDate(v SailPointTime) {
+// SetFirstDetectionDate gets a reference to the given time.Time and assigns it to the FirstDetectionDate field.
+func (o *Outlier) SetFirstDetectionDate(v time.Time) {
 	o.FirstDetectionDate = &v
 }
 
 // GetLatestDetectionDate returns the LatestDetectionDate field value if set, zero value otherwise.
-func (o *Outlier) GetLatestDetectionDate() SailPointTime {
+func (o *Outlier) GetLatestDetectionDate() time.Time {
 	if o == nil || IsNil(o.LatestDetectionDate) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LatestDetectionDate
@@ -203,7 +203,7 @@ func (o *Outlier) GetLatestDetectionDate() SailPointTime {
 
 // GetLatestDetectionDateOk returns a tuple with the LatestDetectionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Outlier) GetLatestDetectionDateOk() (*SailPointTime, bool) {
+func (o *Outlier) GetLatestDetectionDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LatestDetectionDate) {
 		return nil, false
 	}
@@ -219,8 +219,8 @@ func (o *Outlier) HasLatestDetectionDate() bool {
 	return false
 }
 
-// SetLatestDetectionDate gets a reference to the given SailPointTime and assigns it to the LatestDetectionDate field.
-func (o *Outlier) SetLatestDetectionDate(v SailPointTime) {
+// SetLatestDetectionDate gets a reference to the given time.Time and assigns it to the LatestDetectionDate field.
+func (o *Outlier) SetLatestDetectionDate(v time.Time) {
 	o.LatestDetectionDate = &v
 }
 
@@ -363,9 +363,9 @@ func (o *Outlier) UnsetUnignoreType() {
 }
 
 // GetUnignoreDate returns the UnignoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Outlier) GetUnignoreDate() SailPointTime {
+func (o *Outlier) GetUnignoreDate() time.Time {
 	if o == nil || IsNil(o.UnignoreDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.UnignoreDate.Get()
@@ -374,7 +374,7 @@ func (o *Outlier) GetUnignoreDate() SailPointTime {
 // GetUnignoreDateOk returns a tuple with the UnignoreDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Outlier) GetUnignoreDateOk() (*SailPointTime, bool) {
+func (o *Outlier) GetUnignoreDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -391,7 +391,7 @@ func (o *Outlier) HasUnignoreDate() bool {
 }
 
 // SetUnignoreDate gets a reference to the given NullableTime and assigns it to the UnignoreDate field.
-func (o *Outlier) SetUnignoreDate(v SailPointTime) {
+func (o *Outlier) SetUnignoreDate(v time.Time) {
 	o.UnignoreDate.Set(&v)
 }
 // SetUnignoreDateNil sets the value for UnignoreDate to be an explicit nil
@@ -405,9 +405,9 @@ func (o *Outlier) UnsetUnignoreDate() {
 }
 
 // GetIgnoreDate returns the IgnoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Outlier) GetIgnoreDate() SailPointTime {
+func (o *Outlier) GetIgnoreDate() time.Time {
 	if o == nil || IsNil(o.IgnoreDate.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.IgnoreDate.Get()
@@ -416,7 +416,7 @@ func (o *Outlier) GetIgnoreDate() SailPointTime {
 // GetIgnoreDateOk returns a tuple with the IgnoreDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Outlier) GetIgnoreDateOk() (*SailPointTime, bool) {
+func (o *Outlier) GetIgnoreDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -433,7 +433,7 @@ func (o *Outlier) HasIgnoreDate() bool {
 }
 
 // SetIgnoreDate gets a reference to the given NullableTime and assigns it to the IgnoreDate field.
-func (o *Outlier) SetIgnoreDate(v SailPointTime) {
+func (o *Outlier) SetIgnoreDate(v time.Time) {
 	o.IgnoreDate.Set(&v)
 }
 // SetIgnoreDateNil sets the value for IgnoreDate to be an explicit nil

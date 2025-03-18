@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RoleMiningSessionResponseCreatedBy - The session created by details
@@ -112,6 +112,20 @@ func (obj *RoleMiningSessionResponseCreatedBy) GetActualInstance() (interface{})
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj RoleMiningSessionResponseCreatedBy) GetActualInstanceValue() (interface{}) {
+	if obj.EntityCreatedByDTO != nil {
+		return *obj.EntityCreatedByDTO
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // WorkflowLibraryActionExampleOutput - struct for WorkflowLibraryActionExampleOutput
@@ -112,6 +112,20 @@ func (obj *WorkflowLibraryActionExampleOutput) GetActualInstance() (interface{})
 
 	if obj.MapmapOfStringAny != nil {
 		return obj.MapmapOfStringAny
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj WorkflowLibraryActionExampleOutput) GetActualInstanceValue() (interface{}) {
+	if obj.ArrayOfMapmapOfStringAny != nil {
+		return *obj.ArrayOfMapmapOfStringAny
+	}
+
+	if obj.MapmapOfStringAny != nil {
+		return *obj.MapmapOfStringAny
 	}
 
 	// all schemas are nil

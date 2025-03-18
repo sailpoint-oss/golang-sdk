@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // TriggerExampleOutput - An example of the JSON payload that will be sent by the subscribed service to the trigger in response to an event.
@@ -117,6 +117,20 @@ func (obj *TriggerExampleOutput) GetActualInstance() (interface{}) {
 
 	if obj.AccessRequestPreApproval1 != nil {
 		return obj.AccessRequestPreApproval1
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj TriggerExampleOutput) GetActualInstanceValue() (interface{}) {
+	if obj.AccessRequestDynamicApprover1 != nil {
+		return *obj.AccessRequestDynamicApprover1
+	}
+
+	if obj.AccessRequestPreApproval1 != nil {
+		return *obj.AccessRequestPreApproval1
 	}
 
 	// all schemas are nil

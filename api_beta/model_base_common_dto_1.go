@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type BaseCommonDto1 struct {
 	// Name of the Object
 	Name NullableString `json:"name"`
 	// Creation date of the Object
-	Created *SailPointTime `json:"created,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// Last modification date of the Object
-	Modified *SailPointTime `json:"modified,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,9 +111,9 @@ func (o *BaseCommonDto1) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *BaseCommonDto1) GetCreated() SailPointTime {
+func (o *BaseCommonDto1) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created
@@ -121,7 +121,7 @@ func (o *BaseCommonDto1) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCommonDto1) GetCreatedOk() (*SailPointTime, bool) {
+func (o *BaseCommonDto1) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -137,15 +137,15 @@ func (o *BaseCommonDto1) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *BaseCommonDto1) SetCreated(v SailPointTime) {
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *BaseCommonDto1) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *BaseCommonDto1) GetModified() SailPointTime {
+func (o *BaseCommonDto1) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Modified
@@ -153,7 +153,7 @@ func (o *BaseCommonDto1) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCommonDto1) GetModifiedOk() (*SailPointTime, bool) {
+func (o *BaseCommonDto1) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *BaseCommonDto1) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *BaseCommonDto1) SetModified(v SailPointTime) {
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *BaseCommonDto1) SetModified(v time.Time) {
 	o.Modified = &v
 }
 

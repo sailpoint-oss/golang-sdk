@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the ProcessingDetails type satisfies the MappedNullable interface at compile time
@@ -49,9 +49,9 @@ func NewProcessingDetailsWithDefaults() *ProcessingDetails {
 }
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProcessingDetails) GetDate() SailPointTime {
+func (o *ProcessingDetails) GetDate() time.Time {
 	if o == nil || IsNil(o.Date.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Date.Get()
@@ -60,7 +60,7 @@ func (o *ProcessingDetails) GetDate() SailPointTime {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProcessingDetails) GetDateOk() (*SailPointTime, bool) {
+func (o *ProcessingDetails) GetDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -77,7 +77,7 @@ func (o *ProcessingDetails) HasDate() bool {
 }
 
 // SetDate gets a reference to the given NullableTime and assigns it to the Date field.
-func (o *ProcessingDetails) SetDate(v SailPointTime) {
+func (o *ProcessingDetails) SetDate(v time.Time) {
 	o.Date.Set(&v)
 }
 // SetDateNil sets the value for Date to be an explicit nil

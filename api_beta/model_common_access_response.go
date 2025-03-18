@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the CommonAccessResponse type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type CommonAccessResponse struct {
 	// CONFIRMED or DENIED
 	Status *string `json:"status,omitempty"`
 	CommonAccessType *string `json:"commonAccessType,omitempty"`
-	LastUpdated *SailPointTime `json:"lastUpdated,omitempty"`
+	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 	// true if user has confirmed or denied status
 	ReviewedByUser *bool `json:"reviewedByUser,omitempty"`
 	LastReviewed NullableTime `json:"lastReviewed,omitempty"`
@@ -186,9 +186,9 @@ func (o *CommonAccessResponse) SetCommonAccessType(v string) {
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
-func (o *CommonAccessResponse) GetLastUpdated() SailPointTime {
+func (o *CommonAccessResponse) GetLastUpdated() time.Time {
 	if o == nil || IsNil(o.LastUpdated) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUpdated
@@ -196,7 +196,7 @@ func (o *CommonAccessResponse) GetLastUpdated() SailPointTime {
 
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommonAccessResponse) GetLastUpdatedOk() (*SailPointTime, bool) {
+func (o *CommonAccessResponse) GetLastUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastUpdated) {
 		return nil, false
 	}
@@ -212,8 +212,8 @@ func (o *CommonAccessResponse) HasLastUpdated() bool {
 	return false
 }
 
-// SetLastUpdated gets a reference to the given SailPointTime and assigns it to the LastUpdated field.
-func (o *CommonAccessResponse) SetLastUpdated(v SailPointTime) {
+// SetLastUpdated gets a reference to the given time.Time and assigns it to the LastUpdated field.
+func (o *CommonAccessResponse) SetLastUpdated(v time.Time) {
 	o.LastUpdated = &v
 }
 
@@ -250,9 +250,9 @@ func (o *CommonAccessResponse) SetReviewedByUser(v bool) {
 }
 
 // GetLastReviewed returns the LastReviewed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CommonAccessResponse) GetLastReviewed() SailPointTime {
+func (o *CommonAccessResponse) GetLastReviewed() time.Time {
 	if o == nil || IsNil(o.LastReviewed.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.LastReviewed.Get()
@@ -261,7 +261,7 @@ func (o *CommonAccessResponse) GetLastReviewed() SailPointTime {
 // GetLastReviewedOk returns a tuple with the LastReviewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CommonAccessResponse) GetLastReviewedOk() (*SailPointTime, bool) {
+func (o *CommonAccessResponse) GetLastReviewedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -278,7 +278,7 @@ func (o *CommonAccessResponse) HasLastReviewed() bool {
 }
 
 // SetLastReviewed gets a reference to the given NullableTime and assigns it to the LastReviewed field.
-func (o *CommonAccessResponse) SetLastReviewed(v SailPointTime) {
+func (o *CommonAccessResponse) SetLastReviewed(v time.Time) {
 	o.LastReviewed.Set(&v)
 }
 // SetLastReviewedNil sets the value for LastReviewed to be an explicit nil

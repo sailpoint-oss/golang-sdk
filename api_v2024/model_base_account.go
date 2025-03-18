@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	
+	"time"
 )
 
 // checks if the BaseAccount type satisfies the MappedNullable interface at compile time
@@ -344,9 +344,9 @@ func (o *BaseAccount) SetManuallyCorrelated(v bool) {
 }
 
 // GetPasswordLastSet returns the PasswordLastSet field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BaseAccount) GetPasswordLastSet() SailPointTime {
+func (o *BaseAccount) GetPasswordLastSet() time.Time {
 	if o == nil || IsNil(o.PasswordLastSet.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.PasswordLastSet.Get()
@@ -355,7 +355,7 @@ func (o *BaseAccount) GetPasswordLastSet() SailPointTime {
 // GetPasswordLastSetOk returns a tuple with the PasswordLastSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BaseAccount) GetPasswordLastSetOk() (*SailPointTime, bool) {
+func (o *BaseAccount) GetPasswordLastSetOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -372,7 +372,7 @@ func (o *BaseAccount) HasPasswordLastSet() bool {
 }
 
 // SetPasswordLastSet gets a reference to the given NullableTime and assigns it to the PasswordLastSet field.
-func (o *BaseAccount) SetPasswordLastSet(v SailPointTime) {
+func (o *BaseAccount) SetPasswordLastSet(v time.Time) {
 	o.PasswordLastSet.Set(&v)
 }
 // SetPasswordLastSetNil sets the value for PasswordLastSet to be an explicit nil
@@ -419,9 +419,9 @@ func (o *BaseAccount) SetEntitlementAttributes(v map[string]interface{}) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BaseAccount) GetCreated() SailPointTime {
+func (o *BaseAccount) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret SailPointTime
+		var ret time.Time
 		return ret
 	}
 	return *o.Created.Get()
@@ -430,7 +430,7 @@ func (o *BaseAccount) GetCreated() SailPointTime {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BaseAccount) GetCreatedOk() (*SailPointTime, bool) {
+func (o *BaseAccount) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -447,7 +447,7 @@ func (o *BaseAccount) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *BaseAccount) SetCreated(v SailPointTime) {
+func (o *BaseAccount) SetCreated(v time.Time) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
