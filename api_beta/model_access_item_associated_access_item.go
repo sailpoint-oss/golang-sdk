@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // AccessItemAssociatedAccessItem - struct for AccessItemAssociatedAccessItem

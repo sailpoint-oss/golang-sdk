@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // PutClientLogConfigurationRequest - struct for PutClientLogConfigurationRequest

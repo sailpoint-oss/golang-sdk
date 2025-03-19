@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // JsonPatchOperationsValue - The value to be used for the operation, required for \"add\" and \"replace\" operations

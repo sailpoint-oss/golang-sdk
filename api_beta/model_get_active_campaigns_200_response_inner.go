@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // GetActiveCampaigns200ResponseInner - struct for GetActiveCampaigns200ResponseInner

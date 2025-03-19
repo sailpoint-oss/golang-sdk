@@ -12,8 +12,8 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ReportDetailsArguments - The string-object map(dictionary) with the arguments needed for report processing.

@@ -3805,6 +3805,14 @@ func (r ApiGetSourceSchedulesRequest) Execute() ([]Schedule1, *http.Response, er
 GetSourceSchedules List Schedules on Source
 
 Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+:::info
+This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.
+
+For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.
+
+**Days of the week are represented as 1-7 (Sunday-Saturday).**
+:::
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source ID.
