@@ -1053,13 +1053,11 @@ tags:
     \ in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
     \ for more information about tagging objects in Identity Security Cloud. \n"
   name: Tagged Objects
-- description: |
-    The purpose of this API is to expose functionality for the manipulation of Transform objects.
-    Transforms are a form of configurable objects which define an easy way to manipulate attribute data without having
-    to write code. These endpoints don't require API calls to other resources, audit service is used for keeping track
-    of which users have made changes to the Transforms.
-
-    Refer to [Transforms](https://developer.sailpoint.com/docs/extensibility/transforms/) for more information about transforms.
+- description: "The purpose of this API is to expose functionality for the manipulation\
+    \ of Transform objects.\nTransforms are a form of configurable objects which define\
+    \ an easy way to manipulate attribute data without having\nto write code. \n\n\
+    Refer to [Transforms](https://developer.sailpoint.com/docs/extensibility/transforms/)\
+    \ for more information about transforms.\n"
   name: Transforms
 - description: "Use this API to implement work item functionality. \nWith this functionality\
     \ in place, users can manage their work items (tasks). \n\nWork items refer to\
@@ -4646,9 +4644,35 @@ paths:
       - HELPDESK
   /accounts/search-attribute-config:
     get:
-      description: Get a list of attribute/application associates currently configured
+      description: Get a list of attribute/application attributes currently configured
         in Identity Security Cloud (ISC).
       operationId: getSearchAttributeConfig
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
       responses:
         "200":
           content:
@@ -4723,11 +4747,9 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: "Create and configure extended search attributes. This API accepts\
-        \ an attribute name, an attribute display name and a list of name/value pair\
-        \ associates of application IDs to attribute names. It will then validate\
-        \ the inputs and configure/create and attribute promotion configuration in\
-        \ the Link ObjectConfig."
+      description: |-
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
+        >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
       operationId: createSearchAttributeConfig
       requestBody:
         content:

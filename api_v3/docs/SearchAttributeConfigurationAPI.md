@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## GetSearchAttributeConfig
 
-> []SearchAttributeConfig GetSearchAttributeConfig(ctx).Execute()
+> []SearchAttributeConfig GetSearchAttributeConfig(ctx).Limit(limit).Offset(offset).Execute()
 
 List Extended Search Attributes
 
@@ -167,10 +167,12 @@ import (
 )
 
 func main() {
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
+	resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,12 +184,17 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 
