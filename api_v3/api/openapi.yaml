@@ -1082,15 +1082,15 @@ tags:
 paths:
   /access-profiles:
     get:
-      description: "Use this API to get a list of access profiles.\n>**Note:** When\
-        \ you filter for access profiles that have the '+' symbol in their names,\
-        \ the response is blank. "
+      description: "Get a list of access profiles.\n>**Note:** When you filter for\
+        \ access profiles that have the '+' symbol in their names, the response is\
+        \ blank. "
       operationId: listAccessProfiles
       parameters:
       - description: |-
-          If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity's ID.
+          Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.
 
-          A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
+          If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: query
         name: for-subadmin
@@ -1098,16 +1098,16 @@ paths:
         schema:
           type: string
       - description: |-
-          Note that for this API the maximum value for limit is 50.
+          Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 50
+        example: 250
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int32
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
       - description: |-
@@ -1140,8 +1140,8 @@ paths:
           \nFiltering is supported for the following fields and operators:\n\n**id**:\
           \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**:\
           \ *gt, lt, ge, le*\n\n**owner.id**: *eq, in*\n\n**requestable**: *eq*\n\n\
-          **source.id**: *eq, in*\n\nComposite operators supported: *and, or*\n\n\
-          Filtering is not supported for access profiles and entitlements that have\
+          **source.id**: *eq, in*\n\nSupported composite operators are *and, or*\n\
+          \nFiltering is not supported for access profiles and entitlements that have\
           \ the '+' symbol in their names. "
         example: name eq "SailPoint Support"
         in: query
@@ -1161,8 +1161,7 @@ paths:
           format: comma-separated
           type: string
       - description: |-
-          If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.
-
+          Filters access profiles to only those assigned to the segment(s) with the specified IDs.
           If segmentation is currently unavailable, specifying this parameter results in an error.
         example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
         in: query
@@ -1172,8 +1171,8 @@ paths:
           format: comma-separated
           type: string
       - description: "Indicates whether the response list should contain unsegmented\
-          \ access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
-          \ as false results in an error."
+          \ access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented*\
+          \ as `false` results in an error."
         example: false
         in: query
         name: include-unsegmented
@@ -1262,9 +1261,9 @@ paths:
       - SOURCE_SUBADMIN
     post:
       description: |-
-        Use this API to create an access profile.
-        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
-        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        Create an access profile.
+        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's source.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
         content:
@@ -45762,18 +45761,18 @@ components:
         status: ACTIVE
         associatedSources: []
   parameters:
-    limit50:
+    limit:
       description: |-
-        Note that for this API the maximum value for limit is 50.
+        Max number of results to return.
         See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 50
+      example: 250
       in: query
       name: limit
       required: false
       schema:
-        default: 50
+        default: 250
         format: int32
-        maximum: 50
+        maximum: 250
         minimum: 0
         type: integer
     offset:
@@ -45803,18 +45802,18 @@ components:
       schema:
         default: false
         type: boolean
-    limit:
+    limit50:
       description: |-
-        Max number of results to return.
+        Note that for this API the maximum value for limit is 50.
         See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 250
+      example: 50
       in: query
       name: limit
       required: false
       schema:
-        default: 250
+        default: 50
         format: int32
-        maximum: 250
+        maximum: 50
         minimum: 0
         type: integer
     id:
