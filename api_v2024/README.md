@@ -527,7 +527,7 @@ Class | Method | HTTP request | Description
 *RolesAPI* | [**GetBulkUpdateStatusById**](docs/RolesAPI.md#getbulkupdatestatusbyid) | **Get** /roles/access-model-metadata/bulk-update/id | Get Bulk-Update Status by ID
 *RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
-*RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
+*RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List Role&#39;s Entitlements
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
 *RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
 *RolesAPI* | [**SearchRolesByFilter**](docs/RolesAPI.md#searchrolesbyfilter) | **Post** /roles/filter | Filter Roles by Metadata

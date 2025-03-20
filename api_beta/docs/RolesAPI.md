@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
 [**GetRole**](RolesAPI.md#GetRole) | **Get** /roles/{id} | Get a Role
 [**GetRoleAssignedIdentities**](RolesAPI.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | Identities assigned a Role
-[**GetRoleEntitlements**](RolesAPI.md#GetRoleEntitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
+[**GetRoleEntitlements**](RolesAPI.md#GetRoleEntitlements) | **Get** /roles/{id}/entitlements | List Role&#39;s Entitlements
 [**ListRoles**](RolesAPI.md#ListRoles) | **Get** /roles | List Roles
 [**PatchRole**](RolesAPI.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 > []Entitlement GetRoleEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-List role's Entitlements
+List Role's Entitlements
 
 
 
@@ -384,8 +384,8 @@ import (
 )
 
 func main() {
-	id := "2c91808a7813090a017814121919ecca" // string | ID of the containing role
-	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	id := "2c91808a7813090a017814121919ecca" // string | Containing role's ID.
+	limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 	filters := "attribute eq "memberOf"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
@@ -409,7 +409,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the containing role | 
+**id** | **string** | Containing role&#39;s ID. | 
 
 ### Other Parameters
 
@@ -419,7 +419,7 @@ Other parameters are passed through a pointer to a apiGetRoleEntitlementsRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* | 
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 

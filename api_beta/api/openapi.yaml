@@ -37540,13 +37540,10 @@ paths:
       - Roles
   /roles/{id}/entitlements:
     get:
-      description: |-
-        This API lists the Entitlements associated with a given role.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+      description: Get a list of entitlements associated with a specified role.
       operationId: getRoleEntitlements
       parameters:
-      - description: ID of the containing role
+      - description: Containing role's ID.
         in: path
         name: id
         required: true
@@ -37555,16 +37552,16 @@ paths:
           type: string
         x-sailpoint-resource-operation-id: listRoles
       - description: |-
-          Max number of results to return.
+          Note that for this API the maximum value for limit is 50.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 250
+        example: 50
         in: query
         name: limit
         required: false
         schema:
-          default: 250
+          default: 50
           format: int32
-          maximum: 250
+          maximum: 50
           minimum: 0
           type: integer
       - description: |-
@@ -37700,9 +37697,18 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      summary: List role's Entitlements
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      summary: List Role's Entitlements
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /segments:
     get:
       description: |-
