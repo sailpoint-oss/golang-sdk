@@ -43,9 +43,8 @@ tags:
     \ with the 'Developers' entitlement.\n\nWhen users only need Active Directory\
     \ employee access, they can request access to the 'Employees' entitlement.\n\n\
     When users need both Active Directory employee and developer access, they can\
-    \ request access to the 'AD Developers' access profile.\n\nAccess profiles are\
-    \ the most important units of access in Identity Security Cloud. Identity Security\
-    \ Cloud uses access profiles in many features, including the following:\n\n- Provisioning:\
+    \ request access to the 'AD Developers' access profile.\n\nIdentity Security Cloud\
+    \ uses access profiles in many features, including the following:\n\n- Provisioning:\
     \ When you use the Provisioning Service, lifecycle states and roles both grant\
     \ access to users in the form of access profiles.\n\n- Certifications: You can\
     \ approve or revoke access profiles in certification campaigns, just like entitlements.\

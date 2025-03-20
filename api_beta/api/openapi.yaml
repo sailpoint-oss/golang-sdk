@@ -57,7 +57,7 @@ tags:
 
     When users need both Active Directory employee and developer access, they can request access to the 'AD Developers' access profile.
 
-    Access profiles are the most important units of access in Identity Security Cloud. Identity Security Cloud uses access profiles in many features, including the following:
+    Identity Security Cloud uses access profiles in many features, including the following:
 
     - Provisioning: When you use the Provisioning Service, lifecycle states and roles both grant access to users in the form of access profiles.
 
@@ -1014,7 +1014,11 @@ tags:
 - name: Task Management
 - description: API for reading tenant details.
   name: Tenant
-- description: "Operations for creating, managing, and deleting transforms."
+- description: "The purpose of this API is to expose functionality for the manipulation\
+    \ of Transform objects.\nTransforms are a form of configurable objects which define\
+    \ an easy way to manipulate attribute data without having\nto write code. \n\n\
+    Refer to [Transforms](https://developer.sailpoint.com/docs/extensibility/transforms/)\
+    \ for more information about transforms.\n"
   name: Transforms
 - description: |
     Event Triggers provide real-time updates to changes in Identity Security Cloud so you can take action as soon as an event occurs, rather than poll an API endpoint for updates. Identity Security Cloud provides a user interface within the admin console to create and manage trigger subscriptions.  These endpoints allow for programatically creating and managing trigger subscriptions.
@@ -6550,9 +6554,35 @@ paths:
   /accounts/search-attribute-config:
     get:
       description: |-
-        Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
+        Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
         A token with ORG_ADMIN authority is required to call this API.
       operationId: getSearchAttributeConfig
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
       responses:
         "200":
           content:
@@ -6562,6 +6592,12 @@ paths:
                   $ref: '#/components/schemas/SearchAttributeConfig'
                 type: array
           description: List of attribute configurations in ISC.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -6612,13 +6648,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:account-config:read
       summary: List Extended Search Attributes
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
-        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
-        A token with ORG_ADMIN authority is required to call this API.
+        Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
+        >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
       operationId: createSearchAttributeConfig
       requestBody:
         content:
@@ -6714,9 +6755,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:account-config:create
       summary: Create Extended Search Attributes
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /accounts/search-attribute-config/{name}:
     delete:
       description: Delete an extended attribute configuration by name.
