@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | Type of the job or task underlying in the report processing. It could be a quartz task, QPOC or MENTOS jobs or a refresh/sync task. | [optional] 
 **Id** | Pointer to **string** | Unique task definition identifier. | [optional] 
-**ReportType** | Pointer to **map[string]interface{}** | Use this property to define what report should be processed in the RDE service. | [optional] 
+**ReportType** | Pointer to **string** | Use this property to define what report should be processed in the RDE service. | [optional] 
 **Description** | Pointer to **string** | Description of the report purpose and/or contents. | [optional] 
 **ParentName** | Pointer to **NullableString** | Name of the parent task/report if exists. | [optional] 
 **Launcher** | Pointer to **string** | Name of the report processing initiator. | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **CompletionStatus** | Pointer to **NullableString** | Report completion status. | [optional] 
 **Messages** | Pointer to [**[]TaskResultDetailsMessagesInner**](TaskResultDetailsMessagesInner.md) | List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors. | [optional] 
 **Returns** | Pointer to [**[]TaskResultDetailsReturnsInner**](TaskResultDetailsReturnsInner.md) | Task definition results, if necessary. | [optional] 
-**Attributes** | Pointer to **map[string]map[string]interface{}** | Extra attributes map(dictionary) needed for the report. | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** | Extra attributes map(dictionary) needed for the report. | [optional] 
 **Progress** | Pointer to **NullableString** | Current report state. | [optional] 
 
 ## Methods
@@ -90,20 +90,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetReportType
 
-`func (o *TaskResultDetails) GetReportType() map[string]interface{}`
+`func (o *TaskResultDetails) GetReportType() string`
 
 GetReportType returns the ReportType field if non-nil, zero value otherwise.
 
 ### GetReportTypeOk
 
-`func (o *TaskResultDetails) GetReportTypeOk() (*map[string]interface{}, bool)`
+`func (o *TaskResultDetails) GetReportTypeOk() (*string, bool)`
 
 GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReportType
 
-`func (o *TaskResultDetails) SetReportType(v map[string]interface{})`
+`func (o *TaskResultDetails) SetReportType(v string)`
 
 SetReportType sets ReportType field to given value.
 
@@ -380,20 +380,20 @@ HasReturns returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *TaskResultDetails) GetAttributes() map[string]map[string]interface{}`
+`func (o *TaskResultDetails) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *TaskResultDetails) GetAttributesOk() (*map[string]map[string]interface{}, bool)`
+`func (o *TaskResultDetails) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *TaskResultDetails) SetAttributes(v map[string]map[string]interface{})`
+`func (o *TaskResultDetails) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 

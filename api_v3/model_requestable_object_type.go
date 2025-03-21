@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// RequestableObjectType The currently supported requestable object types. 
+// RequestableObjectType Currently supported requestable object types.
 type RequestableObjectType string
 
 // List of RequestableObjectType

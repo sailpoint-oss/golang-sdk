@@ -25047,7 +25047,7 @@ paths:
   /requestable-objects:
     get:
       description: |-
-        This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
+        Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v3/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
         Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjects
       parameters:
@@ -25063,8 +25063,8 @@ paths:
         schema:
           type: string
       - description: "Filters the results to the specified type/types, where each\
-          \ type is one of ROLE or ACCESS_PROFILE. If absent, all types are returned.\
-          \ Support for additional types may be added in the future without notice."
+          \ type is one of `ROLE` or `ACCESS_PROFILE`. If absent, all types are returned.\
+          \ SailPoint may add support for additional types in the future without notice."
         example: "ROLE,ACCESS_PROFILE"
         explode: false
         in: query
@@ -25074,9 +25074,9 @@ paths:
           items:
             $ref: '#/components/schemas/RequestableObjectType'
           type: array
-      - description: "It allows searching requestable access items with a partial\
-          \ match on the name or description. If term is provided, then the *filter*\
-          \ query parameter will be ignored."
+      - description: "Allows searching requestable access items with a partial match\
+          \ on the name or description. If `term` is provided, then the API will ignore\
+          \ the `filter` query parameter."
         example: Finance Role
         in: query
         name: term
@@ -25084,9 +25084,10 @@ paths:
         schema:
           type: string
       - description: "Filters the result to the specified status/statuses, where each\
-          \ status is one of AVAILABLE, ASSIGNED, or PENDING. It is an error to specify\
-          \ this parameter without also specifying an *identity-id* parameter. Additional\
-          \ statuses may be added in the future without notice."
+          \ status is one of `AVAILABLE`, `ASSIGNED`, or `PENDING`. Specifying this\
+          \ parameter without also specifying an `identity-id` parameter results in\
+          \ an error.  SailPoint may add additional statuses in the future without\
+          \ notice."
         example:
         - ASSIGNED
         - PENDING
@@ -25227,7 +25228,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:requestable-objects:read
       summary: Requestable Objects List
       tags:
       - Requestable Objects
@@ -47818,7 +47820,7 @@ components:
           type: boolean
       type: object
     RequestableObjectType:
-      description: 'The currently supported requestable object types. '
+      description: Currently supported requestable object types.
       enum:
       - ACCESS_PROFILE
       - ROLE
@@ -57942,7 +57944,7 @@ components:
           - SEARCH_EXPORT
           - UNCORRELATED_ACCOUNTS
           example: IDENTITIES_DETAILS
-          type: object
+          type: string
         description:
           description: Description of the report purpose and/or contents.
           example: A detailed view of the identities in the system.
@@ -57995,8 +57997,6 @@ components:
             $ref: '#/components/schemas/TaskResultDetails_returns_inner'
           type: array
         attributes:
-          additionalProperties:
-            type: object
           description: Extra attributes map(dictionary) needed for the report.
           example:
             org: an-org
@@ -68403,12 +68403,7 @@ components:
             value: Austin
           operator: EQUALS
     ReportDetails_arguments:
-      description: The string-object map(dictionary) with the arguments needed for
-        report processing.
-      example:
-        application: 2c9180897e7742b2017e781782f705b9
-        sourceName: Active Directory
-      oneOf:
+      anyOf:
       - $ref: '#/components/schemas/accounts-export-report-arguments'
       - $ref: '#/components/schemas/identities-details-report-arguments'
       - $ref: '#/components/schemas/identities-report-arguments'
@@ -68416,6 +68411,11 @@ components:
       - $ref: '#/components/schemas/orphan-identities-report-arguments'
       - $ref: '#/components/schemas/search-export-report-arguments'
       - $ref: '#/components/schemas/uncorrelated-accounts-report-arguments'
+      description: The string-object map(dictionary) with the arguments needed for
+        report processing.
+      example:
+        application: 2c9180897e7742b2017e781782f705b9
+        sourceName: Active Directory
     TaskResultDetails_messages_inner:
       properties:
         type:

@@ -25,7 +25,7 @@ type TaskResultDetails struct {
 	// Unique task definition identifier.
 	Id *string `json:"id,omitempty"`
 	// Use this property to define what report should be processed in the RDE service.
-	ReportType map[string]interface{} `json:"reportType,omitempty"`
+	ReportType *string `json:"reportType,omitempty"`
 	// Description of the report purpose and/or contents.
 	Description *string `json:"description,omitempty"`
 	// Name of the parent task/report if exists.
@@ -45,7 +45,7 @@ type TaskResultDetails struct {
 	// Task definition results, if necessary.
 	Returns []TaskResultDetailsReturnsInner `json:"returns,omitempty"`
 	// Extra attributes map(dictionary) needed for the report.
-	Attributes map[string]map[string]interface{} `json:"attributes,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// Current report state.
 	Progress NullableString `json:"progress,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -135,19 +135,19 @@ func (o *TaskResultDetails) SetId(v string) {
 }
 
 // GetReportType returns the ReportType field value if set, zero value otherwise.
-func (o *TaskResultDetails) GetReportType() map[string]interface{} {
+func (o *TaskResultDetails) GetReportType() string {
 	if o == nil || IsNil(o.ReportType) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.ReportType
+	return *o.ReportType
 }
 
 // GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskResultDetails) GetReportTypeOk() (map[string]interface{}, bool) {
+func (o *TaskResultDetails) GetReportTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ReportType) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.ReportType, true
 }
@@ -161,9 +161,9 @@ func (o *TaskResultDetails) HasReportType() bool {
 	return false
 }
 
-// SetReportType gets a reference to the given map[string]interface{} and assigns it to the ReportType field.
-func (o *TaskResultDetails) SetReportType(v map[string]interface{}) {
-	o.ReportType = v
+// SetReportType gets a reference to the given string and assigns it to the ReportType field.
+func (o *TaskResultDetails) SetReportType(v string) {
+	o.ReportType = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -495,9 +495,9 @@ func (o *TaskResultDetails) SetReturns(v []TaskResultDetailsReturnsInner) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *TaskResultDetails) GetAttributes() map[string]map[string]interface{} {
+func (o *TaskResultDetails) GetAttributes() map[string]interface{} {
 	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Attributes
@@ -505,9 +505,9 @@ func (o *TaskResultDetails) GetAttributes() map[string]map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaskResultDetails) GetAttributesOk() (map[string]map[string]interface{}, bool) {
+func (o *TaskResultDetails) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
@@ -521,8 +521,8 @@ func (o *TaskResultDetails) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]map[string]interface{} and assigns it to the Attributes field.
-func (o *TaskResultDetails) SetAttributes(v map[string]map[string]interface{}) {
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *TaskResultDetails) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 

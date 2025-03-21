@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | System-generated unique ID of the TaskDefinition | 
 **UniqueName** | **string** | Name of the TaskDefinition | 
-**Description** | **string** | Description of the TaskDefinition | 
+**Description** | **NullableString** | Description of the TaskDefinition | 
 **ParentName** | **string** | Name of the parent of the TaskDefinition | 
 **Executor** | **NullableString** | Executor of the TaskDefinition | 
 **Arguments** | **map[string]interface{}** | Formal parameters of the TaskDefinition, without values | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewTaskDefinitionSummary
 
-`func NewTaskDefinitionSummary(id string, uniqueName string, description string, parentName string, executor NullableString, arguments map[string]interface{}, ) *TaskDefinitionSummary`
+`func NewTaskDefinitionSummary(id string, uniqueName string, description NullableString, parentName string, executor NullableString, arguments map[string]interface{}, ) *TaskDefinitionSummary`
 
 NewTaskDefinitionSummary instantiates a new TaskDefinitionSummary object
 This constructor will assign default values to properties that have it defined,
@@ -90,6 +90,16 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
+### SetDescriptionNil
+
+`func (o *TaskDefinitionSummary) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *TaskDefinitionSummary) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetParentName
 
 `func (o *TaskDefinitionSummary) GetParentName() string`
