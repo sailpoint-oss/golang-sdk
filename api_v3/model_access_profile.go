@@ -56,7 +56,7 @@ type _AccessProfile AccessProfile
 func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef) *AccessProfile {
 	this := AccessProfile{}
 	this.Name = name
-	var enabled bool = true
+	var enabled bool = false
 	this.Enabled = &enabled
 	this.Owner = owner
 	this.Source = source
@@ -70,7 +70,7 @@ func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSou
 // but it doesn't guarantee that properties required by API are set
 func NewAccessProfileWithDefaults() *AccessProfile {
 	this := AccessProfile{}
-	var enabled bool = true
+	var enabled bool = false
 	this.Enabled = &enabled
 	var requestable bool = true
 	this.Requestable = &requestable

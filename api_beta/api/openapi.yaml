@@ -65583,7 +65583,7 @@ components:
           readOnly: true
           type: string
         enabled:
-          default: true
+          default: false
           description: Whether the Access Profile is enabled. If the Access Profile
             is enabled then you must include at least one Entitlement.
           example: true

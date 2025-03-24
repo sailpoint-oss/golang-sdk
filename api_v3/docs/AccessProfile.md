@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | Information about the Access Profile | [optional] 
 **Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
+**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to false]
 **Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
 **Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
