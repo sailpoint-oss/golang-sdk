@@ -1241,6 +1241,7 @@ Class | Method | HTTP request | Description
  - [RequestableObjectReference](docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
+ - [RequestedAccountRef](docs/RequestedAccountRef.md)
  - [RequestedItemDetails](docs/RequestedItemDetails.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)

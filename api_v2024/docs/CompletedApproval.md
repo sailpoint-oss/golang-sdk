@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
+**RequestedAccounts** | Pointer to [**[]RequestedAccountRef**](RequestedAccountRef.md) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
 
 ## Methods
 
@@ -672,6 +673,41 @@ SetClientMetadata sets ClientMetadata field to given value.
 
 HasClientMetadata returns a boolean if a field has been set.
 
+### GetRequestedAccounts
+
+`func (o *CompletedApproval) GetRequestedAccounts() []RequestedAccountRef`
+
+GetRequestedAccounts returns the RequestedAccounts field if non-nil, zero value otherwise.
+
+### GetRequestedAccountsOk
+
+`func (o *CompletedApproval) GetRequestedAccountsOk() (*[]RequestedAccountRef, bool)`
+
+GetRequestedAccountsOk returns a tuple with the RequestedAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedAccounts
+
+`func (o *CompletedApproval) SetRequestedAccounts(v []RequestedAccountRef)`
+
+SetRequestedAccounts sets RequestedAccounts field to given value.
+
+### HasRequestedAccounts
+
+`func (o *CompletedApproval) HasRequestedAccounts() bool`
+
+HasRequestedAccounts returns a boolean if a field has been set.
+
+### SetRequestedAccountsNil
+
+`func (o *CompletedApproval) SetRequestedAccountsNil(b bool)`
+
+ SetRequestedAccountsNil sets the value for RequestedAccounts to be an explicit nil
+
+### UnsetRequestedAccounts
+`func (o *CompletedApproval) UnsetRequestedAccounts()`
+
+UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

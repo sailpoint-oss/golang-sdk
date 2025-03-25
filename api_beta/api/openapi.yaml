@@ -66123,6 +66123,17 @@ components:
           name: William Wilson
           id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         cancelable: true
         requesterComment:
           created: 2017-07-11T18:45:37.098Z
@@ -66480,6 +66491,13 @@ components:
             key2: value2
           nullable: true
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     PendingApproval:
       example:
@@ -66499,6 +66517,17 @@ components:
         clientMetadata:
           customKey1: custom value 1
           customKey2: custom value 2
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -66700,6 +66729,13 @@ components:
             customKey2: custom value 2
           nullable: true
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     CompletedApproval:
       example:
@@ -66720,6 +66756,17 @@ components:
         clientMetadata:
           requestedAppName: test-app
           requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -66940,6 +66987,13 @@ components:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     CommentDto:
       example:
@@ -84163,6 +84217,36 @@ components:
             \ phase, this will be empty if there are no manual work items."
           example: approvalDetails
           nullable: true
+          type: string
+      type: object
+    RequestedAccountRef:
+      example:
+        accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        name: Glen.067da3248e914
+        accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+        sourceName: Multi Account AD source name
+        type: IDENTITY
+      properties:
+        name:
+          description: Display name of the account for the user
+          example: Glen.067da3248e914
+          type: string
+        type:
+          $ref: '#/components/schemas/DtoType'
+        accountUuid:
+          description: The uuid for the account
+          example: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nullable: true
+          type: string
+        accountId:
+          description: The native identity for the account
+          example: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          nullable: true
+          type: string
+        sourceName:
+          description: Display name of the source for the account
+          example: Multi Account AD source name
+          nullable: false
           type: string
       type: object
     AccessItemRequesterDto:

@@ -52,6 +52,8 @@ type PendingApproval struct {
 	SodViolationContext NullableSodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
+	// The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.
+	RequestedAccounts []RequestedAccountRef `json:"requestedAccounts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -743,6 +745,39 @@ func (o *PendingApproval) SetClientMetadata(v map[string]string) {
 	o.ClientMetadata = v
 }
 
+// GetRequestedAccounts returns the RequestedAccounts field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PendingApproval) GetRequestedAccounts() []RequestedAccountRef {
+	if o == nil {
+		var ret []RequestedAccountRef
+		return ret
+	}
+	return o.RequestedAccounts
+}
+
+// GetRequestedAccountsOk returns a tuple with the RequestedAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PendingApproval) GetRequestedAccountsOk() ([]RequestedAccountRef, bool) {
+	if o == nil || IsNil(o.RequestedAccounts) {
+		return nil, false
+	}
+	return o.RequestedAccounts, true
+}
+
+// HasRequestedAccounts returns a boolean if a field has been set.
+func (o *PendingApproval) HasRequestedAccounts() bool {
+	if o != nil && !IsNil(o.RequestedAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedAccounts gets a reference to the given []RequestedAccountRef and assigns it to the RequestedAccounts field.
+func (o *PendingApproval) SetRequestedAccounts(v []RequestedAccountRef) {
+	o.RequestedAccounts = v
+}
+
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -813,6 +848,9 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if o.ClientMetadata != nil {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
+	if o.RequestedAccounts != nil {
+		toSerialize["requestedAccounts"] = o.RequestedAccounts
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -855,6 +893,7 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "currentRemoveDate")
 		delete(additionalProperties, "sodViolationContext")
 		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "requestedAccounts")
 		o.AdditionalProperties = additionalProperties
 	}
 
