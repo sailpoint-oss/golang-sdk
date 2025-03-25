@@ -81,6 +81,7 @@ api_suggested_entitlement_description.go
 api_tagged_objects.go
 api_task_management.go
 api_tenant.go
+api_tenant_context.go
 api_transforms.go
 api_triggers.go
 api_ui_metadata.go
@@ -547,6 +548,7 @@ docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GetRoleAssignments200ResponseInner.md
+docs/GetTenantContext200ResponseInner.md
 docs/GlobalTenantSecuritySettingsAPI.md
 docs/GovernanceGroupsAPI.md
 docs/GrantType.md
@@ -1152,6 +1154,7 @@ docs/TenantAPI.md
 docs/TenantConfigurationDetails.md
 docs/TenantConfigurationRequest.md
 docs/TenantConfigurationResponse.md
+docs/TenantContextAPI.md
 docs/TenantUiMetadataItemResponse.md
 docs/TenantUiMetadataItemUpdateRequest.md
 docs/TestExternalExecuteWorkflow200Response.md
@@ -1671,6 +1674,7 @@ model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
+model_get_tenant_context_200_response_inner.go
 model_grant_type.go
 model_http_authentication_type.go
 model_http_config.go
@@ -2382,6 +2386,7 @@ test/api_sp_config_test.go
 test/api_suggested_entitlement_description_test.go
 test/api_tagged_objects_test.go
 test/api_task_management_test.go
+test/api_tenant_context_test.go
 test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go

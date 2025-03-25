@@ -677,6 +677,8 @@ Class | Method | HTTP request | Description
 *TaskManagementAPI* | [**GetTaskStatusList**](docs/TaskManagementAPI.md#gettaskstatuslist) | **Get** /task-status | Retrieve Task Status List
 *TaskManagementAPI* | [**UpdateTaskStatus**](docs/TaskManagementAPI.md#updatetaskstatus) | **Patch** /task-status/{id} | Update Task Status by ID
 *TenantAPI* | [**GetTenant**](docs/TenantAPI.md#gettenant) | **Get** /tenant | Get Tenant Information.
+*TenantContextAPI* | [**GetTenantContext**](docs/TenantContextAPI.md#gettenantcontext) | **Get** /tenant-context | Retrieve tenant context
+*TenantContextAPI* | [**PatchTenantContext**](docs/TenantContextAPI.md#patchtenantcontext) | **Patch** /tenant-context | Update tenant context
 *TransformsAPI* | [**CreateTransform**](docs/TransformsAPI.md#createtransform) | **Post** /transforms | Create transform
 *TransformsAPI* | [**DeleteTransform**](docs/TransformsAPI.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
 *TransformsAPI* | [**GetTransform**](docs/TransformsAPI.md#gettransform) | **Get** /transforms/{id} | Transform by ID
@@ -1171,6 +1173,7 @@ Class | Method | HTTP request | Description
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
  - [GetRoleAssignments200ResponseInner](docs/GetRoleAssignments200ResponseInner.md)
+ - [GetTenantContext200ResponseInner](docs/GetTenantContext200ResponseInner.md)
  - [GrantType](docs/GrantType.md)
  - [HttpAuthenticationType](docs/HttpAuthenticationType.md)
  - [HttpConfig](docs/HttpConfig.md)

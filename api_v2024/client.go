@@ -208,6 +208,8 @@ type APIClient struct {
 
 	TenantAPI *TenantAPIService
 
+	TenantContextAPI *TenantContextAPIService
+
 	TransformsAPI *TransformsAPIService
 
 	TriggersAPI *TriggersAPIService
@@ -317,6 +319,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 	c.TenantAPI = (*TenantAPIService)(&c.common)
+	c.TenantContextAPI = (*TenantContextAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
 	c.UIMetadataAPI = (*UIMetadataAPIService)(&c.common)
