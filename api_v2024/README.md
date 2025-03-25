@@ -203,10 +203,12 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**CreateDeploy**](docs/ConfigurationHubAPI.md#createdeploy) | **Post** /configuration-hub/deploys | Create a Deploy
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubAPI* | [**CreateScheduledAction**](docs/ConfigurationHubAPI.md#createscheduledaction) | **Post** /configuration-hub/scheduled-actions | Create Scheduled Action
 *ConfigurationHubAPI* | [**CreateUploadedConfiguration**](docs/ConfigurationHubAPI.md#createuploadedconfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
 *ConfigurationHubAPI* | [**DeleteBackup**](docs/ConfigurationHubAPI.md#deletebackup) | **Delete** /configuration-hub/backups/{id} | Delete a Backup
 *ConfigurationHubAPI* | [**DeleteDraft**](docs/ConfigurationHubAPI.md#deletedraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubAPI* | [**DeleteScheduledAction**](docs/ConfigurationHubAPI.md#deletescheduledaction) | **Delete** /configuration-hub/scheduled-actions/{id} | Delete Scheduled Action
 *ConfigurationHubAPI* | [**DeleteUploadedConfiguration**](docs/ConfigurationHubAPI.md#deleteuploadedconfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 *ConfigurationHubAPI* | [**GetDeploy**](docs/ConfigurationHubAPI.md#getdeploy) | **Get** /configuration-hub/deploys/{id} | Get a Deploy
 *ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
@@ -214,8 +216,10 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**ListBackups**](docs/ConfigurationHubAPI.md#listbackups) | **Get** /configuration-hub/backups | List Backups
 *ConfigurationHubAPI* | [**ListDeploys**](docs/ConfigurationHubAPI.md#listdeploys) | **Get** /configuration-hub/deploys | List Deploys
 *ConfigurationHubAPI* | [**ListDrafts**](docs/ConfigurationHubAPI.md#listdrafts) | **Get** /configuration-hub/drafts | List Drafts
+*ConfigurationHubAPI* | [**ListScheduledActions**](docs/ConfigurationHubAPI.md#listscheduledactions) | **Get** /configuration-hub/scheduled-actions | List Scheduled Actions
 *ConfigurationHubAPI* | [**ListUploadedConfigurations**](docs/ConfigurationHubAPI.md#listuploadedconfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
+*ConfigurationHubAPI* | [**UpdateScheduledAction**](docs/ConfigurationHubAPI.md#updatescheduledaction) | **Patch** /configuration-hub/scheduled-actions/{id} | Update Scheduled Action
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete Connector Rule
 *ConnectorRuleManagementAPI* | [**GetConnectorRule**](docs/ConnectorRuleManagementAPI.md#getconnectorrule) | **Get** /connector-rules/{id} | Get Connector Rule
@@ -1580,6 +1584,13 @@ Class | Method | HTTP request | Description
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
+ - [ScheduledActionPayload](docs/ScheduledActionPayload.md)
+ - [ScheduledActionPayloadContent](docs/ScheduledActionPayloadContent.md)
+ - [ScheduledActionPayloadContentBackupOptions](docs/ScheduledActionPayloadContentBackupOptions.md)
+ - [ScheduledActionResponse](docs/ScheduledActionResponse.md)
+ - [ScheduledActionResponseContent](docs/ScheduledActionResponseContent.md)
+ - [ScheduledActionResponseContentBackupOptions](docs/ScheduledActionResponseContentBackupOptions.md)
+ - [ScheduledActionResponseContentBackupOptionsObjectOptionsValue](docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md)
  - [ScheduledAttributes](docs/ScheduledAttributes.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)

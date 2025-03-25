@@ -995,6 +995,13 @@ docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
 docs/ScheduleType.md
+docs/ScheduledActionPayload.md
+docs/ScheduledActionPayloadContent.md
+docs/ScheduledActionPayloadContentBackupOptions.md
+docs/ScheduledActionResponse.md
+docs/ScheduledActionResponseContent.md
+docs/ScheduledActionResponseContentBackupOptions.md
+docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md
 docs/ScheduledAttributes.md
 docs/ScheduledSearch.md
 docs/ScheduledSearchAPI.md
@@ -2081,6 +2088,13 @@ model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
 model_schedule_type.go
+model_scheduled_action_payload.go
+model_scheduled_action_payload_content.go
+model_scheduled_action_payload_content_backup_options.go
+model_scheduled_action_response.go
+model_scheduled_action_response_content.go
+model_scheduled_action_response_content_backup_options.go
+model_scheduled_action_response_content_backup_options_object_options_value.go
 model_scheduled_attributes.go
 model_scheduled_search.go
 model_scheduled_search_all_of_owner.go

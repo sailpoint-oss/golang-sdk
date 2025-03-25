@@ -7,10 +7,12 @@ Method | HTTP request | Description
 [**CreateDeploy**](ConfigurationHubAPI.md#CreateDeploy) | **Post** /configuration-hub/deploys | Create a Deploy
 [**CreateObjectMapping**](ConfigurationHubAPI.md#CreateObjectMapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 [**CreateObjectMappings**](ConfigurationHubAPI.md#CreateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+[**CreateScheduledAction**](ConfigurationHubAPI.md#CreateScheduledAction) | **Post** /configuration-hub/scheduled-actions | Create Scheduled Action
 [**CreateUploadedConfiguration**](ConfigurationHubAPI.md#CreateUploadedConfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
 [**DeleteBackup**](ConfigurationHubAPI.md#DeleteBackup) | **Delete** /configuration-hub/backups/{id} | Delete a Backup
 [**DeleteDraft**](ConfigurationHubAPI.md#DeleteDraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 [**DeleteObjectMapping**](ConfigurationHubAPI.md#DeleteObjectMapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+[**DeleteScheduledAction**](ConfigurationHubAPI.md#DeleteScheduledAction) | **Delete** /configuration-hub/scheduled-actions/{id} | Delete Scheduled Action
 [**DeleteUploadedConfiguration**](ConfigurationHubAPI.md#DeleteUploadedConfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 [**GetDeploy**](ConfigurationHubAPI.md#GetDeploy) | **Get** /configuration-hub/deploys/{id} | Get a Deploy
 [**GetObjectMappings**](ConfigurationHubAPI.md#GetObjectMappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
@@ -18,8 +20,10 @@ Method | HTTP request | Description
 [**ListBackups**](ConfigurationHubAPI.md#ListBackups) | **Get** /configuration-hub/backups | List Backups
 [**ListDeploys**](ConfigurationHubAPI.md#ListDeploys) | **Get** /configuration-hub/deploys | List Deploys
 [**ListDrafts**](ConfigurationHubAPI.md#ListDrafts) | **Get** /configuration-hub/drafts | List Drafts
+[**ListScheduledActions**](ConfigurationHubAPI.md#ListScheduledActions) | **Get** /configuration-hub/scheduled-actions | List Scheduled Actions
 [**ListUploadedConfigurations**](ConfigurationHubAPI.md#ListUploadedConfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 [**UpdateObjectMappings**](ConfigurationHubAPI.md#UpdateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
+[**UpdateScheduledAction**](ConfigurationHubAPI.md#UpdateScheduledAction) | **Patch** /configuration-hub/scheduled-actions/{id} | Update Scheduled Action
 
 
 
@@ -218,6 +222,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ObjectMappingBulkCreateResponse**](ObjectMappingBulkCreateResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateScheduledAction
+
+> ScheduledActionResponse CreateScheduledAction(ctx).ScheduledActionPayload(scheduledActionPayload).Execute()
+
+Create Scheduled Action
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	scheduledActionPayload := *openapiclient.NewScheduledActionPayload("BACKUP", *openapiclient.NewScheduledActionPayloadContent("Daily Backup")) // ScheduledActionPayload | The scheduled action creation request body.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledAction(context.Background()).ScheduledActionPayload(scheduledActionPayload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateScheduledAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateScheduledAction`: ScheduledActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateScheduledAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateScheduledActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scheduledActionPayload** | [**ScheduledActionPayload**](ScheduledActionPayload.md) | The scheduled action creation request body. | 
+
+### Return type
+
+[**ScheduledActionResponse**](ScheduledActionResponse.md)
 
 ### Authorization
 
@@ -488,6 +558,74 @@ Other parameters are passed through a pointer to a apiDeleteObjectMappingRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteScheduledAction
+
+> DeleteScheduledAction(ctx, scheduledActionId).Execute()
+
+Delete Scheduled Action
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	scheduledActionId := "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde" // string | The ID of the scheduled action.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationHubAPI.DeleteScheduledAction(context.Background(), scheduledActionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteScheduledAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scheduledActionId** | **string** | The ID of the scheduled action. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteScheduledActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -979,6 +1117,67 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListScheduledActions
+
+> []ScheduledActionResponse ListScheduledActions(ctx).Execute()
+
+List Scheduled Actions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.ListScheduledActions(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListScheduledActions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListScheduledActions`: []ScheduledActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListScheduledActions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListScheduledActionsRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]ScheduledActionResponse**](ScheduledActionResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListUploadedConfigurations
 
 > []BackupResponse ListUploadedConfigurations(ctx).Filters(filters).Execute()
@@ -1110,6 +1309,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateScheduledAction
+
+> ScheduledActionResponse UpdateScheduledAction(ctx, scheduledActionId).JsonPatch(jsonPatch).Execute()
+
+Update Scheduled Action
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	scheduledActionId := "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde" // string | The ID of the scheduled action.
+	jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JSON Patch document containing the changes to apply to the scheduled action.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledAction(context.Background(), scheduledActionId).JsonPatch(jsonPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateScheduledAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateScheduledAction`: ScheduledActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.UpdateScheduledAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scheduledActionId** | **string** | The ID of the scheduled action. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateScheduledActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jsonPatch** | [**JsonPatch**](JsonPatch.md) | The JSON Patch document containing the changes to apply to the scheduled action. | 
+
+### Return type
+
+[**ScheduledActionResponse**](ScheduledActionResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
