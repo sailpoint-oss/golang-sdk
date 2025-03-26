@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## CreateFormDefinition
 
-> FormDefinitionResponse CreateFormDefinition(ctx).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> FormDefinitionResponse CreateFormDefinition(ctx).Body(body).Execute()
 
 Creates a form definition.
 
@@ -44,12 +44,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinition``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,7 +69,6 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
 
 ### Return type
@@ -93,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CreateFormDefinitionDynamicSchema
 
-> FormDefinitionDynamicSchemaResponse CreateFormDefinitionDynamicSchema(ctx).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> FormDefinitionDynamicSchemaResponse CreateFormDefinitionDynamicSchema(ctx).Body(body).Execute()
 
 Generate JSON Schema dynamically.
 
@@ -110,12 +108,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := *openapiclient.NewFormDefinitionDynamicSchemaRequest() // FormDefinitionDynamicSchemaRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionDynamicSchema(context.Background()).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionDynamicSchema(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionDynamicSchema``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionDynami
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | [**FormDefinitionDynamicSchemaRequest**](FormDefinitionDynamicSchemaRequest.md) | Body is the request payload to create a form definition dynamic schema | 
 
 ### Return type
@@ -159,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## CreateFormDefinitionFileRequest
 
-> FormDefinitionFileUploadResponse CreateFormDefinitionFileRequest(ctx, formDefinitionID).XSailPointExperimental(xSailPointExperimental).File(file).Execute()
+> FormDefinitionFileUploadResponse CreateFormDefinitionFileRequest(ctx, formDefinitionID).File(file).Execute()
 
 Upload new form definition file.
 
@@ -179,12 +175,11 @@ import (
 
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | FormDefinitionID  String specifying FormDefinitionID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	file := os.NewFile(1234, "some_file") // *os.File | File specifying the multipart
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).XSailPointExperimental(xSailPointExperimental).File(file).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionFileRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -210,7 +205,6 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionFileRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **file** | ***os.File** | File specifying the multipart | 
 
 ### Return type
@@ -233,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## CreateFormInstance
 
-> FormInstanceResponse CreateFormInstance(ctx).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> FormInstanceResponse CreateFormInstance(ctx).Body(body).Execute()
 
 Creates a form instance.
 
@@ -250,12 +244,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := *openapiclient.NewCreateFormInstanceRequest(*openapiclient.NewFormInstanceCreatedBy(), "2023-08-12T20:14:57.74486Z", "00000000-0000-0000-0000-000000000000", []openapiclient.FormInstanceRecipient{*openapiclient.NewFormInstanceRecipient()}) // CreateFormInstanceRequest | Body is the request payload to create a form instance (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.CreateFormInstance(context.Background()).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.CreateFormInstance(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormInstance``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +269,6 @@ Other parameters are passed through a pointer to a apiCreateFormInstanceRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | [**CreateFormInstanceRequest**](CreateFormInstanceRequest.md) | Body is the request payload to create a form instance | 
 
 ### Return type
@@ -299,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFormDefinition
 
-> map[string]interface{} DeleteFormDefinition(ctx, formDefinitionID).XSailPointExperimental(xSailPointExperimental).Execute()
+> map[string]interface{} DeleteFormDefinition(ctx, formDefinitionID).Execute()
 
 Deletes a form definition.
 
@@ -319,11 +311,10 @@ import (
 
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | Form definition ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.DeleteFormDefinition(context.Background(), formDefinitionID).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.DeleteFormDefinition(context.Background(), formDefinitionID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.DeleteFormDefinition``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,7 +340,6 @@ Other parameters are passed through a pointer to a apiDeleteFormDefinitionReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -371,7 +361,7 @@ Name | Type | Description  | Notes
 
 ## ExportFormDefinitionsByTenant
 
-> []ExportFormDefinitionsByTenant200ResponseInner ExportFormDefinitionsByTenant(ctx).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+> []ExportFormDefinitionsByTenant200ResponseInner ExportFormDefinitionsByTenant(ctx).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
 
 List form definitions by tenant.
 
@@ -390,7 +380,6 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	offset := int64(0) // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
 	limit := int64(250) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
 	filters := "name sw "my form"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* (optional)
@@ -398,7 +387,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.ExportFormDefinitionsByTenant(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.ExportFormDefinitionsByTenant(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ExportFormDefinitionsByTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -419,7 +408,6 @@ Other parameters are passed through a pointer to a apiExportFormDefinitionsByTen
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **offset** | **int64** | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. | [default to 0]
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 250]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* | 
@@ -445,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## GetFileFromS3
 
-> *os.File GetFileFromS3(ctx, formDefinitionID, fileID).XSailPointExperimental(xSailPointExperimental).Execute()
+> *os.File GetFileFromS3(ctx, formDefinitionID, fileID).Execute()
 
 Download definition file by fileId.
 
@@ -464,11 +452,10 @@ import (
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | FormDefinitionID  Form definition ID
 	fileID := "00000031N0J7R2B57M8YG73J7M.png" // string | FileID  String specifying the hashed name of the uploaded file we are retrieving.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.GetFileFromS3(context.Background(), formDefinitionID, fileID).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.GetFileFromS3(context.Background(), formDefinitionID, fileID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFileFromS3``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -496,7 +483,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -518,7 +504,7 @@ Name | Type | Description  | Notes
 
 ## GetFormDefinitionByKey
 
-> FormDefinitionResponse GetFormDefinitionByKey(ctx, formDefinitionID).XSailPointExperimental(xSailPointExperimental).Execute()
+> FormDefinitionResponse GetFormDefinitionByKey(ctx, formDefinitionID).Execute()
 
 Return a form definition.
 
@@ -538,11 +524,10 @@ import (
 
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | Form definition ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.GetFormDefinitionByKey(context.Background(), formDefinitionID).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.GetFormDefinitionByKey(context.Background(), formDefinitionID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormDefinitionByKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -568,7 +553,6 @@ Other parameters are passed through a pointer to a apiGetFormDefinitionByKeyRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -590,7 +574,7 @@ Name | Type | Description  | Notes
 
 ## GetFormInstanceByKey
 
-> FormInstanceResponse GetFormInstanceByKey(ctx, formInstanceID).XSailPointExperimental(xSailPointExperimental).Execute()
+> FormInstanceResponse GetFormInstanceByKey(ctx, formInstanceID).Execute()
 
 Returns a form instance.
 
@@ -610,11 +594,10 @@ import (
 
 func main() {
 	formInstanceID := "00000000-0000-0000-0000-000000000000" // string | Form instance ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceByKey(context.Background(), formInstanceID).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceByKey(context.Background(), formInstanceID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormInstanceByKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -640,7 +623,6 @@ Other parameters are passed through a pointer to a apiGetFormInstanceByKeyReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -662,7 +644,7 @@ Name | Type | Description  | Notes
 
 ## GetFormInstanceFile
 
-> *os.File GetFormInstanceFile(ctx, formInstanceID, fileID).XSailPointExperimental(xSailPointExperimental).Execute()
+> *os.File GetFormInstanceFile(ctx, formInstanceID, fileID).Execute()
 
 Download instance file by fileId.
 
@@ -681,11 +663,10 @@ import (
 func main() {
 	formInstanceID := "00000000-0000-0000-0000-000000000000" // string | FormInstanceID  Form instance ID
 	fileID := "00000031N0J7R2B57M8YG73J7M.png" // string | FileID  String specifying the hashed name of the uploaded file we are retrieving.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceFile(context.Background(), formInstanceID, fileID).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceFile(context.Background(), formInstanceID, fileID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormInstanceFile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -713,7 +694,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -735,7 +715,7 @@ Name | Type | Description  | Notes
 
 ## ImportFormDefinitions
 
-> ImportFormDefinitions202Response ImportFormDefinitions(ctx).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> ImportFormDefinitions202Response ImportFormDefinitions(ctx).Body(body).Execute()
 
 Import form definitions from export.
 
@@ -752,12 +732,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := []openapiclient.ImportFormDefinitionsRequestInner{*openapiclient.NewImportFormDefinitionsRequestInner()} // []ImportFormDefinitionsRequestInner | Body is the request payload to import form definitions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.ImportFormDefinitions(context.Background()).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.ImportFormDefinitions(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ImportFormDefinitions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -778,7 +757,6 @@ Other parameters are passed through a pointer to a apiImportFormDefinitionsReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | [**[]ImportFormDefinitionsRequestInner**](ImportFormDefinitionsRequestInner.md) | Body is the request payload to import form definitions | 
 
 ### Return type
@@ -801,7 +779,7 @@ Name | Type | Description  | Notes
 
 ## PatchFormDefinition
 
-> FormDefinitionResponse PatchFormDefinition(ctx, formDefinitionID).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> FormDefinitionResponse PatchFormDefinition(ctx, formDefinitionID).Body(body).Execute()
 
 Patch a form definition.
 
@@ -821,12 +799,11 @@ import (
 
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | Form definition ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := []map[string]map[string]interface{}{map[string]map[string]interface{}{"key": map[string]interface{}(123)}} // []map[string]map[string]interface{} | Body is the request payload to patch a form definition, check: https://jsonpatch.com (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.PatchFormDefinition(context.Background(), formDefinitionID).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.PatchFormDefinition(context.Background(), formDefinitionID).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormDefinition``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -852,7 +829,6 @@ Other parameters are passed through a pointer to a apiPatchFormDefinitionRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | **[]map[string]map[string]interface{}** | Body is the request payload to patch a form definition, check: https://jsonpatch.com | 
 
 ### Return type
@@ -875,7 +851,7 @@ Name | Type | Description  | Notes
 
 ## PatchFormInstance
 
-> FormInstanceResponse PatchFormInstance(ctx, formInstanceID).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+> FormInstanceResponse PatchFormInstance(ctx, formInstanceID).Body(body).Execute()
 
 Patch a form instance.
 
@@ -895,12 +871,11 @@ import (
 
 func main() {
 	formInstanceID := "00000000-0000-0000-0000-000000000000" // string | Form instance ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	body := []map[string]map[string]interface{}{map[string]map[string]interface{}{"key": map[string]interface{}(123)}} // []map[string]map[string]interface{} | Body is the request payload to patch a form instance, check: https://jsonpatch.com (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.PatchFormInstance(context.Background(), formInstanceID).XSailPointExperimental(xSailPointExperimental).Body(body).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.PatchFormInstance(context.Background(), formInstanceID).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormInstance``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -926,7 +901,6 @@ Other parameters are passed through a pointer to a apiPatchFormInstanceRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **body** | **[]map[string]map[string]interface{}** | Body is the request payload to patch a form instance, check: https://jsonpatch.com | 
 
 ### Return type
@@ -949,7 +923,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormDefinitionsByTenant
 
-> ListFormDefinitionsByTenantResponse SearchFormDefinitionsByTenant(ctx).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+> ListFormDefinitionsByTenantResponse SearchFormDefinitionsByTenant(ctx).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
 
 Export form definitions by tenant.
 
@@ -968,7 +942,6 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	offset := int64(250) // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
 	limit := int64(250) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
 	filters := "name sw "my form"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* (optional)
@@ -976,7 +949,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.SearchFormDefinitionsByTenant(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.SearchFormDefinitionsByTenant(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormDefinitionsByTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -997,7 +970,6 @@ Other parameters are passed through a pointer to a apiSearchFormDefinitionsByTen
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **offset** | **int64** | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. | [default to 0]
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 250]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* | 
@@ -1023,7 +995,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormElementDataByElementID
 
-> ListFormElementDataByElementIDResponse SearchFormElementDataByElementID(ctx, formInstanceID, formElementID).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Query(query).Execute()
+> ListFormElementDataByElementIDResponse SearchFormElementDataByElementID(ctx, formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
 
 Retrieves dynamic data by element.
 
@@ -1044,14 +1016,13 @@ import (
 func main() {
 	formInstanceID := "00000000-0000-0000-0000-000000000000" // string | Form instance ID
 	formElementID := "1" // string | Form element ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	limit := int64(250) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
 	filters := "value eq "ID01"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
 	query := "support" // string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Query(query).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormElementDataByElementID``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1079,7 +1050,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 250]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60; | 
  **query** | **string** | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields. | 
@@ -1104,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormInstancesByTenant
 
-> []ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> []ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).Execute()
 
 List form instances by tenant.
 
@@ -1123,11 +1093,10 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.SearchFormInstancesByTenant(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.SearchFormInstancesByTenant(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1139,16 +1108,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSearchFormInstancesByTenantRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -1170,7 +1135,7 @@ Name | Type | Description  | Notes
 
 ## SearchPreDefinedSelectOptions
 
-> ListPredefinedSelectOptionsResponse SearchPreDefinedSelectOptions(ctx).XSailPointExperimental(xSailPointExperimental).Execute()
+> ListPredefinedSelectOptionsResponse SearchPreDefinedSelectOptions(ctx).Execute()
 
 List predefined select options.
 
@@ -1189,11 +1154,10 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.SearchPreDefinedSelectOptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.SearchPreDefinedSelectOptions(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchPreDefinedSelectOptions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1205,16 +1169,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSearchPreDefinedSelectOptionsRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -1236,7 +1196,7 @@ Name | Type | Description  | Notes
 
 ## ShowPreviewDataSource
 
-> PreviewDataSourceResponse ShowPreviewDataSource(ctx, formDefinitionID).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Query(query).FormElementPreviewRequest(formElementPreviewRequest).Execute()
+> PreviewDataSourceResponse ShowPreviewDataSource(ctx, formDefinitionID).Limit(limit).Filters(filters).Query(query).FormElementPreviewRequest(formElementPreviewRequest).Execute()
 
 Preview form definition data source.
 
@@ -1254,7 +1214,6 @@ import (
 
 func main() {
 	formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | Form definition ID
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	limit := int64(10) // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
 	filters := "value eq "ID01"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
 	query := "ac" // string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
@@ -1262,7 +1221,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSource(context.Background(), formDefinitionID).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Query(query).FormElementPreviewRequest(formElementPreviewRequest).Execute()
+	resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSource(context.Background(), formDefinitionID).Limit(limit).Filters(filters).Query(query).FormElementPreviewRequest(formElementPreviewRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ShowPreviewDataSource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1288,7 +1247,6 @@ Other parameters are passed through a pointer to a apiShowPreviewDataSourceReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 10]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60; | 
  **query** | **string** | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields. | 
