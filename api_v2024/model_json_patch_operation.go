@@ -24,7 +24,7 @@ type JsonPatchOperation struct {
 	Op string `json:"op"`
 	// A string JSON Pointer representing the target path to an element to be affected by the operation
 	Path string `json:"path"`
-	Value *JsonPatchOperationValue `json:"value,omitempty"`
+	Value *UpdateMultiHostSourcesRequestInnerValue `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,9 +98,9 @@ func (o *JsonPatchOperation) SetPath(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *JsonPatchOperation) GetValue() JsonPatchOperationValue {
+func (o *JsonPatchOperation) GetValue() UpdateMultiHostSourcesRequestInnerValue {
 	if o == nil || IsNil(o.Value) {
-		var ret JsonPatchOperationValue
+		var ret UpdateMultiHostSourcesRequestInnerValue
 		return ret
 	}
 	return *o.Value
@@ -108,7 +108,7 @@ func (o *JsonPatchOperation) GetValue() JsonPatchOperationValue {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JsonPatchOperation) GetValueOk() (*JsonPatchOperationValue, bool) {
+func (o *JsonPatchOperation) GetValueOk() (*UpdateMultiHostSourcesRequestInnerValue, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -124,8 +124,8 @@ func (o *JsonPatchOperation) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given JsonPatchOperationValue and assigns it to the Value field.
-func (o *JsonPatchOperation) SetValue(v JsonPatchOperationValue) {
+// SetValue gets a reference to the given UpdateMultiHostSourcesRequestInnerValue and assigns it to the Value field.
+func (o *JsonPatchOperation) SetValue(v UpdateMultiHostSourcesRequestInnerValue) {
 	o.Value = &v
 }
 

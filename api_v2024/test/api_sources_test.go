@@ -464,20 +464,6 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesAPIService PeekResourceObjects", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-
-		resp, httpRes, err := apiClient.SourcesAPI.PeekResourceObjects(context.Background(), sourceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesAPIService PingCluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -571,6 +557,20 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var schemaId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService SearchResourceObjects", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.SearchResourceObjects(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

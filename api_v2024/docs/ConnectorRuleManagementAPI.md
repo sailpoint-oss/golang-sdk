@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateConnectorRule
 
-> ConnectorRuleResponse CreateConnectorRule(ctx).XSailPointExperimental(xSailPointExperimental).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
+> ConnectorRuleResponse CreateConnectorRule(ctx).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
 
 Create Connector Rule
 
@@ -34,12 +34,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	connectorRuleCreateRequest := *openapiclient.NewConnectorRuleCreateRequest("WebServiceBeforeOperationRule", "BuildMap", *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;")) // ConnectorRuleCreateRequest | Connector rule to create.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).XSailPointExperimental(xSailPointExperimental).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
+	resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.CreateConnectorRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +59,6 @@ Other parameters are passed through a pointer to a apiCreateConnectorRuleRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **connectorRuleCreateRequest** | [**ConnectorRuleCreateRequest**](ConnectorRuleCreateRequest.md) | Connector rule to create. | 
 
 ### Return type
@@ -83,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteConnectorRule
 
-> DeleteConnectorRule(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> DeleteConnectorRule(ctx, id).Execute()
 
 Delete Connector Rule
 
@@ -103,11 +101,10 @@ import (
 
 func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to delete.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ConnectorRuleManagementAPI.DeleteConnectorRule(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	r, err := apiClient.ConnectorRuleManagementAPI.DeleteConnectorRule(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.DeleteConnectorRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +128,6 @@ Other parameters are passed through a pointer to a apiDeleteConnectorRuleRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -153,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## GetConnectorRule
 
-> ConnectorRuleResponse GetConnectorRule(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
+> ConnectorRuleResponse GetConnectorRule(ctx, id).Execute()
 
 Get Connector Rule
 
@@ -173,11 +169,10 @@ import (
 
 func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to get.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRule(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRule(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,7 +198,6 @@ Other parameters are passed through a pointer to a apiGetConnectorRuleRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -225,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## GetConnectorRuleList
 
-> []ConnectorRuleResponse GetConnectorRuleList(ctx).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+> []ConnectorRuleResponse GetConnectorRuleList(ctx).Limit(limit).Offset(offset).Count(count).Execute()
 
 List Connector Rules
 
@@ -244,14 +238,13 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+	resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -272,7 +265,6 @@ Other parameters are passed through a pointer to a apiGetConnectorRuleListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -297,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## PutConnectorRule
 
-> ConnectorRuleResponse PutConnectorRule(ctx, id).XSailPointExperimental(xSailPointExperimental).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
+> ConnectorRuleResponse PutConnectorRule(ctx, id).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
 
 Update Connector Rule
 
@@ -317,12 +309,11 @@ import (
 
 func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to update.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	connectorRuleUpdateRequest := *openapiclient.NewConnectorRuleUpdateRequest("WebServiceBeforeOperationRule", "BuildMap", *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;"), "8113d48c0b914f17b4c6072d4dcb9dfe") // ConnectorRuleUpdateRequest | Connector rule with updated data. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRule(context.Background(), id).XSailPointExperimental(xSailPointExperimental).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
+	resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRule(context.Background(), id).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.PutConnectorRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +339,6 @@ Other parameters are passed through a pointer to a apiPutConnectorRuleRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **connectorRuleUpdateRequest** | [**ConnectorRuleUpdateRequest**](ConnectorRuleUpdateRequest.md) | Connector rule with updated data. | 
 
 ### Return type
@@ -371,7 +361,7 @@ Name | Type | Description  | Notes
 
 ## TestConnectorRule
 
-> ConnectorRuleValidationResponse TestConnectorRule(ctx).XSailPointExperimental(xSailPointExperimental).SourceCode(sourceCode).Execute()
+> ConnectorRuleValidationResponse TestConnectorRule(ctx).SourceCode(sourceCode).Execute()
 
 Validate Connector Rule
 
@@ -390,12 +380,11 @@ import (
 )
 
 func main() {
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	sourceCode := *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;") // SourceCode | Code to validate.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRule(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceCode(sourceCode).Execute()
+	resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRule(context.Background()).SourceCode(sourceCode).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.TestConnectorRule``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,7 +405,6 @@ Other parameters are passed through a pointer to a apiTestConnectorRuleRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **sourceCode** | [**SourceCode**](SourceCode.md) | Code to validate. | 
 
 ### Return type

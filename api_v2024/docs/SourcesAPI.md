@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**GetProvisioningPolicy**](SourcesAPI.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceAttrSyncConfig**](SourcesAPI.md#GetSourceAttrSyncConfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
-[**GetSourceConfig**](SourcesAPI.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+[**GetSourceConfig**](SourcesAPI.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language-translations
 [**GetSourceConnections**](SourcesAPI.md#GetSourceConnections) | **Get** /sources/{sourceId}/connections | Get Source Connections by ID
 [**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**GetSourceHealth**](SourcesAPI.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
@@ -36,7 +36,6 @@ Method | HTTP request | Description
 [**ImportUncorrelatedAccounts**](SourcesAPI.md#ImportUncorrelatedAccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 [**ListProvisioningPolicies**](SourcesAPI.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**ListSources**](SourcesAPI.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
-[**PeekResourceObjects**](SourcesAPI.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**PingCluster**](SourcesAPI.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 [**PutCorrelationConfig**](SourcesAPI.md#PutCorrelationConfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
 [**PutNativeChangeDetectionConfig**](SourcesAPI.md#PutNativeChangeDetectionConfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
@@ -44,6 +43,7 @@ Method | HTTP request | Description
 [**PutSource**](SourcesAPI.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
 [**PutSourceAttrSyncConfig**](SourcesAPI.md#PutSourceAttrSyncConfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 [**PutSourceSchema**](SourcesAPI.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
+[**SearchResourceObjects**](SourcesAPI.md#SearchResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**SyncAttributesForSource**](SourcesAPI.md#SyncAttributesForSource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 [**TestSourceConfiguration**](SourcesAPI.md#TestSourceConfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 [**TestSourceConnection**](SourcesAPI.md#TestSourceConnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
@@ -1259,9 +1259,9 @@ Name | Type | Description  | Notes
 
 ## GetSourceConfig
 
-> ConnectorDetail GetSourceConfig(ctx, id).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
+> ConnectorDetail GetSourceConfig(ctx, id).Locale(locale).Execute()
 
-Gets source config with language translations
+Gets source config with language-translations
 
 
 
@@ -1278,13 +1278,12 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | The Source id
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	locale := "locale_example" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
+	id := "cef3ee201db947c5912551015ba0c679" // string | The Source id
+	locale := "en" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceConfig(context.Background(), id).Locale(locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1310,7 +1309,6 @@ Other parameters are passed through a pointer to a apiGetSourceConfigRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **locale** | **string** | The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot; | 
 
 ### Return type
@@ -2343,83 +2341,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PeekResourceObjects
-
-> ResourceObjectsResponse PeekResourceObjects(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).ResourceObjectsRequest(resourceObjectsRequest).Execute()
-
-Peek source connector's resource objects
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	sourceId := "cef3ee201db947c5912551015ba0c679" // string | The ID of the Source
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	resourceObjectsRequest := *openapiclient.NewResourceObjectsRequest() // ResourceObjectsRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.PeekResourceObjects(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).ResourceObjectsRequest(resourceObjectsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PeekResourceObjects``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PeekResourceObjects`: ResourceObjectsResponse
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PeekResourceObjects`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The ID of the Source | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPeekResourceObjectsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **resourceObjectsRequest** | [**ResourceObjectsRequest**](ResourceObjectsRequest.md) |  | 
-
-### Return type
-
-[**ResourceObjectsResponse**](ResourceObjectsResponse.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PingCluster
 
-> StatusResponse PingCluster(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+> StatusResponse PingCluster(ctx, sourceId).Execute()
 
 Ping cluster for source connector
 
@@ -2439,11 +2363,10 @@ import (
 
 func main() {
 	sourceId := "cef3ee201db947c5912551015ba0c679" // string | The ID of the Source
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.PingCluster(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SourcesAPI.PingCluster(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PingCluster``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2469,7 +2392,6 @@ Other parameters are passed through a pointer to a apiPingClusterRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -2931,6 +2853,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SearchResourceObjects
+
+> ResourceObjectsResponse SearchResourceObjects(ctx, sourceId).ResourceObjectsRequest(resourceObjectsRequest).Execute()
+
+Peek source connector's resource objects
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "cef3ee201db947c5912551015ba0c679" // string | The ID of the Source
+	resourceObjectsRequest := *openapiclient.NewResourceObjectsRequest() // ResourceObjectsRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.SearchResourceObjects(context.Background(), sourceId).ResourceObjectsRequest(resourceObjectsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SearchResourceObjects``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchResourceObjects`: ResourceObjectsResponse
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SearchResourceObjects`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The ID of the Source | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchResourceObjectsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **resourceObjectsRequest** | [**ResourceObjectsRequest**](ResourceObjectsRequest.md) |  | 
+
+### Return type
+
+[**ResourceObjectsResponse**](ResourceObjectsResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SyncAttributesForSource
 
 > SourceSyncJob SyncAttributesForSource(ctx, id).XSailPointExperimental(xSailPointExperimental).Execute()
@@ -3005,7 +2999,7 @@ Name | Type | Description  | Notes
 
 ## TestSourceConfiguration
 
-> StatusResponse TestSourceConfiguration(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+> StatusResponse TestSourceConfiguration(ctx, sourceId).Execute()
 
 Test configuration for source connector
 
@@ -3025,11 +3019,10 @@ import (
 
 func main() {
 	sourceId := "cef3ee201db947c5912551015ba0c679" // string | The ID of the Source
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.TestSourceConfiguration(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SourcesAPI.TestSourceConfiguration(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3055,7 +3048,6 @@ Other parameters are passed through a pointer to a apiTestSourceConfigurationReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -3077,7 +3069,7 @@ Name | Type | Description  | Notes
 
 ## TestSourceConnection
 
-> StatusResponse TestSourceConnection(ctx, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+> StatusResponse TestSourceConnection(ctx, sourceId).Execute()
 
 Check connection for source connector.
 
@@ -3097,11 +3089,10 @@ import (
 
 func main() {
 	sourceId := "cef3ee201db947c5912551015ba0c679" // string | The ID of the Source.
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.TestSourceConnection(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	resp, r, err := apiClient.SourcesAPI.TestSourceConnection(context.Background(), sourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3127,7 +3118,6 @@ Other parameters are passed through a pointer to a apiTestSourceConnectionReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 

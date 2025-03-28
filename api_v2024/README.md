@@ -220,6 +220,12 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**ListUploadedConfigurations**](docs/ConfigurationHubAPI.md#listuploadedconfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConfigurationHubAPI* | [**UpdateScheduledAction**](docs/ConfigurationHubAPI.md#updatescheduledaction) | **Patch** /configuration-hub/scheduled-actions/{id} | Update Scheduled Action
+*ConnectorCustomizersAPI* | [**CreateConnectorCustomizer**](docs/ConnectorCustomizersAPI.md#createconnectorcustomizer) | **Post** /connector-customizers | Create Connector Customizer
+*ConnectorCustomizersAPI* | [**CreateConnectorCustomizerVersion**](docs/ConnectorCustomizersAPI.md#createconnectorcustomizerversion) | **Post** /connector-customizers/{id}/versions | Creates a connector customizer version
+*ConnectorCustomizersAPI* | [**DeleteConnectorCustomizer**](docs/ConnectorCustomizersAPI.md#deleteconnectorcustomizer) | **Delete** /connector-customizers/{id} | Delete Connector Customizer
+*ConnectorCustomizersAPI* | [**GetConnectorCustomizer**](docs/ConnectorCustomizersAPI.md#getconnectorcustomizer) | **Get** /connector-customizers/{id} | Get connector customizer
+*ConnectorCustomizersAPI* | [**ListConnectorCustomizers**](docs/ConnectorCustomizersAPI.md#listconnectorcustomizers) | **Get** /connector-customizers | List All Connector Customizers
+*ConnectorCustomizersAPI* | [**PutConnectorCustomizer**](docs/ConnectorCustomizersAPI.md#putconnectorcustomizer) | **Put** /connector-customizers/{id} | Update Connector Customizer
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete Connector Rule
 *ConnectorRuleManagementAPI* | [**GetConnectorRule**](docs/ConnectorRuleManagementAPI.md#getconnectorrule) | **Get** /connector-rules/{id} | Get Connector Rule
@@ -420,6 +426,11 @@ Class | Method | HTTP request | Description
 *ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsAPI* | [**GetManagedClients**](docs/ManagedClientsAPI.md#getmanagedclients) | **Get** /managed-clients | Get Managed Clients
 *ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update Managed Client
+*ManagedClusterTypesAPI* | [**CreateManagedClusterType**](docs/ManagedClusterTypesAPI.md#createmanagedclustertype) | **Post** /managed-cluster-types | Create new Managed Cluster Type
+*ManagedClusterTypesAPI* | [**DeleteManagedClusterType**](docs/ManagedClusterTypesAPI.md#deletemanagedclustertype) | **Delete** /managed-cluster-types/{id} | Delete a Managed Cluster Type
+*ManagedClusterTypesAPI* | [**GetManagedClusterType**](docs/ManagedClusterTypesAPI.md#getmanagedclustertype) | **Get** /managed-cluster-types/{id} | Get a Managed Cluster Type
+*ManagedClusterTypesAPI* | [**GetManagedClusterTypes**](docs/ManagedClusterTypesAPI.md#getmanagedclustertypes) | **Get** /managed-cluster-types | Get Managed Cluster Types
+*ManagedClusterTypesAPI* | [**UpdateManagedClusterType**](docs/ManagedClusterTypesAPI.md#updatemanagedclustertype) | **Patch** /managed-cluster-types/{id} | Update a Managed Cluster Type
 *ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create Create Managed Cluster
 *ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete Managed Cluster
 *ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
@@ -428,6 +439,19 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
 *ManagedClustersAPI* | [**Update**](docs/ManagedClustersAPI.md#update) | **Post** /managed-clusters/{id}/manualUpgrade | Trigger Manual Upgrade for Managed Cluster
 *ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update Managed Cluster
+*MultiHostIntegrationAPI* | [**CreateMultiHostIntegration**](docs/MultiHostIntegrationAPI.md#createmultihostintegration) | **Post** /multihosts | Create Multi-Host Integration
+*MultiHostIntegrationAPI* | [**CreateSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#createsourceswithinmultihost) | **Post** /multihosts/{multihostId} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**DeleteMultiHost**](docs/MultiHostIntegrationAPI.md#deletemultihost) | **Delete** /multihosts/{multihostId} | Delete Multi-Host Integration
+*MultiHostIntegrationAPI* | [**GetAcctAggregationGroups**](docs/MultiHostIntegrationAPI.md#getacctaggregationgroups) | **Get** /multihosts/{multihostId}/acctAggregationGroups | List Account-Aggregation-Groups by Multi-Host ID
+*MultiHostIntegrationAPI* | [**GetEntitlementAggregationGroups**](docs/MultiHostIntegrationAPI.md#getentitlementaggregationgroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | List Entitlement-Aggregation-Groups by Integration ID
+*MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{multihostId} | Get Multi-Host Integration By ID
+*MultiHostIntegrationAPI* | [**GetMultiHostIntegrationsList**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationslist) | **Get** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationAPI* | [**GetMultiHostSourceCreationErrors**](docs/MultiHostIntegrationAPI.md#getmultihostsourcecreationerrors) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
+*MultiHostIntegrationAPI* | [**GetMultihostIntegrationTypes**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationtypes) | **Get** /multihosts/types | List Multi-Host Integration Types
+*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost) | **Get** /multihosts/{multihostId}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**TestConnectionMultiHostSources**](docs/MultiHostIntegrationAPI.md#testconnectionmultihostsources) | **Post** /multihosts/{multihostId}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationAPI* | [**TestSourceConnectionMultihost**](docs/MultiHostIntegrationAPI.md#testsourceconnectionmultihost) | **Get** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationAPI* | [**UpdateMultiHostSources**](docs/MultiHostIntegrationAPI.md#updatemultihostsources) | **Patch** /multihosts/{multihostId} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -627,7 +651,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetProvisioningPolicy**](docs/SourcesAPI.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesAPI* | [**GetSource**](docs/SourcesAPI.md#getsource) | **Get** /sources/{id} | Get Source by ID
 *SourcesAPI* | [**GetSourceAttrSyncConfig**](docs/SourcesAPI.md#getsourceattrsyncconfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
-*SourcesAPI* | [**GetSourceConfig**](docs/SourcesAPI.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+*SourcesAPI* | [**GetSourceConfig**](docs/SourcesAPI.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language-translations
 *SourcesAPI* | [**GetSourceConnections**](docs/SourcesAPI.md#getsourceconnections) | **Get** /sources/{sourceId}/connections | Get Source Connections by ID
 *SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesAPI* | [**GetSourceHealth**](docs/SourcesAPI.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
@@ -642,7 +666,6 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesAPI.md#importuncorrelatedaccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 *SourcesAPI* | [**ListProvisioningPolicies**](docs/SourcesAPI.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesAPI* | [**ListSources**](docs/SourcesAPI.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
-*SourcesAPI* | [**PeekResourceObjects**](docs/SourcesAPI.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesAPI* | [**PingCluster**](docs/SourcesAPI.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesAPI* | [**PutCorrelationConfig**](docs/SourcesAPI.md#putcorrelationconfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfig**](docs/SourcesAPI.md#putnativechangedetectionconfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
@@ -650,6 +673,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**PutSource**](docs/SourcesAPI.md#putsource) | **Put** /sources/{id} | Update Source (Full)
 *SourcesAPI* | [**PutSourceAttrSyncConfig**](docs/SourcesAPI.md#putsourceattrsyncconfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 *SourcesAPI* | [**PutSourceSchema**](docs/SourcesAPI.md#putsourceschema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
+*SourcesAPI* | [**SearchResourceObjects**](docs/SourcesAPI.md#searchresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesAPI* | [**SyncAttributesForSource**](docs/SourcesAPI.md#syncattributesforsource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 *SourcesAPI* | [**TestSourceConfiguration**](docs/SourcesAPI.md#testsourceconfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesAPI* | [**TestSourceConnection**](docs/SourcesAPI.md#testsourceconnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
@@ -1039,6 +1063,12 @@ Class | Method | HTTP request | Description
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
  - [ConnectedObject](docs/ConnectedObject.md)
  - [ConnectedObjectType](docs/ConnectedObjectType.md)
+ - [ConnectorCustomizerCreateRequest](docs/ConnectorCustomizerCreateRequest.md)
+ - [ConnectorCustomizerCreateResponse](docs/ConnectorCustomizerCreateResponse.md)
+ - [ConnectorCustomizerUpdateRequest](docs/ConnectorCustomizerUpdateRequest.md)
+ - [ConnectorCustomizerUpdateResponse](docs/ConnectorCustomizerUpdateResponse.md)
+ - [ConnectorCustomizerVersionCreateResponse](docs/ConnectorCustomizerVersionCreateResponse.md)
+ - [ConnectorCustomizersResponse](docs/ConnectorCustomizersResponse.md)
  - [ConnectorDetail](docs/ConnectorDetail.md)
  - [ConnectorRuleCreateRequest](docs/ConnectorRuleCreateRequest.md)
  - [ConnectorRuleCreateRequestSignature](docs/ConnectorRuleCreateRequestSignature.md)
@@ -1258,7 +1288,6 @@ Class | Method | HTTP request | Description
  - [InvocationStatusType](docs/InvocationStatusType.md)
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
- - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
  - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](docs/KbaQuestion.md)
@@ -1307,6 +1336,7 @@ Class | Method | HTTP request | Description
  - [ManagedClusterQueue](docs/ManagedClusterQueue.md)
  - [ManagedClusterRedis](docs/ManagedClusterRedis.md)
  - [ManagedClusterRequest](docs/ManagedClusterRequest.md)
+ - [ManagedClusterType](docs/ManagedClusterType.md)
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
@@ -1324,6 +1354,17 @@ Class | Method | HTTP request | Description
  - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
  - [MfaDuoConfig](docs/MfaDuoConfig.md)
  - [MfaOktaConfig](docs/MfaOktaConfig.md)
+ - [MultiHostIntegrationTemplateType](docs/MultiHostIntegrationTemplateType.md)
+ - [MultiHostIntegrations](docs/MultiHostIntegrations.md)
+ - [MultiHostIntegrationsAccountsFile](docs/MultiHostIntegrationsAccountsFile.md)
+ - [MultiHostIntegrationsAggScheduleUpdate](docs/MultiHostIntegrationsAggScheduleUpdate.md)
+ - [MultiHostIntegrationsBeforeProvisioningRule](docs/MultiHostIntegrationsBeforeProvisioningRule.md)
+ - [MultiHostIntegrationsConnectorAttributes](docs/MultiHostIntegrationsConnectorAttributes.md)
+ - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
+ - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
+ - [MultiHostIntegrationsCreate](docs/MultiHostIntegrationsCreate.md)
+ - [MultiHostIntegrationsCreateSources](docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostSources](docs/MultiHostSources.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)
  - [NestedAggregation](docs/NestedAggregation.md)
@@ -1674,6 +1715,7 @@ Class | Method | HTTP request | Description
  - [SourceConnectionsDto](docs/SourceConnectionsDto.md)
  - [SourceCreated](docs/SourceCreated.md)
  - [SourceCreatedActor](docs/SourceCreatedActor.md)
+ - [SourceCreationErrors](docs/SourceCreationErrors.md)
  - [SourceDeleted](docs/SourceDeleted.md)
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
@@ -1744,6 +1786,7 @@ Class | Method | HTTP request | Description
  - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](docs/TestInvocation.md)
+ - [TestSourceConnectionMultihost200Response](docs/TestSourceConnectionMultihost200Response.md)
  - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
  - [TextQuery](docs/TextQuery.md)
@@ -1760,6 +1803,8 @@ Class | Method | HTTP request | Description
  - [UncorrelatedAccountsReportArguments](docs/UncorrelatedAccountsReportArguments.md)
  - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
  - [UpdateDetail](docs/UpdateDetail.md)
+ - [UpdateMultiHostSourcesRequestInner](docs/UpdateMultiHostSourcesRequestInner.md)
+ - [UpdateMultiHostSourcesRequestInnerValue](docs/UpdateMultiHostSourcesRequestInnerValue.md)
  - [UsageType](docs/UsageType.md)
  - [UserApp](docs/UserApp.md)
  - [UserAppAccount](docs/UserAppAccount.md)
