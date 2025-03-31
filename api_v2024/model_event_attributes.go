@@ -22,15 +22,15 @@ var _ MappedNullable = &EventAttributes{}
 // EventAttributes Attributes related to an IdentityNow ETS event
 type EventAttributes struct {
 	// The unique ID of the trigger
-	Id string `json:"id"`
+	Id NullableString `json:"id"`
 	// JSON path expression that will limit which events the trigger will fire on
-	Filter *string `json:"filter.$,omitempty"`
+	Filter NullableString `json:"filter.$,omitempty"`
 	// Description of the event trigger
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// The attribute to filter on
-	AttributeToFilter *string `json:"attributeToFilter,omitempty"`
+	AttributeToFilter NullableString `json:"attributeToFilter,omitempty"`
 	// Form definition's unique identifier.
-	FormDefinitionId *string `json:"formDefinitionId,omitempty"`
+	FormDefinitionId NullableString `json:"formDefinitionId,omitempty"`
 }
 
 type _EventAttributes EventAttributes
@@ -39,7 +39,7 @@ type _EventAttributes EventAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEventAttributes(id string) *EventAttributes {
+func NewEventAttributes(id NullableString) *EventAttributes {
 	this := EventAttributes{}
 	this.Id = id
 	return &this
@@ -54,155 +54,197 @@ func NewEventAttributesWithDefaults() *EventAttributes {
 }
 
 // GetId returns the Id field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *EventAttributes) GetId() string {
-	if o == nil {
+	if o == nil || o.Id.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventAttributes) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // SetId sets field value
 func (o *EventAttributes) SetId(v string) {
-	o.Id = v
+	o.Id.Set(&v)
 }
 
-// GetFilter returns the Filter field value if set, zero value otherwise.
+// GetFilter returns the Filter field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventAttributes) GetFilter() string {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil || IsNil(o.Filter.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Filter
+	return *o.Filter.Get()
 }
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventAttributes) GetFilterOk() (*string, bool) {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Filter, true
+	return o.Filter.Get(), o.Filter.IsSet()
 }
 
 // HasFilter returns a boolean if a field has been set.
 func (o *EventAttributes) HasFilter() bool {
-	if o != nil && !IsNil(o.Filter) {
+	if o != nil && o.Filter.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFilter gets a reference to the given string and assigns it to the Filter field.
+// SetFilter gets a reference to the given NullableString and assigns it to the Filter field.
 func (o *EventAttributes) SetFilter(v string) {
-	o.Filter = &v
+	o.Filter.Set(&v)
+}
+// SetFilterNil sets the value for Filter to be an explicit nil
+func (o *EventAttributes) SetFilterNil() {
+	o.Filter.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetFilter ensures that no value is present for Filter, not even an explicit nil
+func (o *EventAttributes) UnsetFilter() {
+	o.Filter.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventAttributes) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventAttributes) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EventAttributes) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *EventAttributes) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *EventAttributes) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetAttributeToFilter returns the AttributeToFilter field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *EventAttributes) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetAttributeToFilter returns the AttributeToFilter field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventAttributes) GetAttributeToFilter() string {
-	if o == nil || IsNil(o.AttributeToFilter) {
+	if o == nil || IsNil(o.AttributeToFilter.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeToFilter
+	return *o.AttributeToFilter.Get()
 }
 
 // GetAttributeToFilterOk returns a tuple with the AttributeToFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventAttributes) GetAttributeToFilterOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeToFilter) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributeToFilter, true
+	return o.AttributeToFilter.Get(), o.AttributeToFilter.IsSet()
 }
 
 // HasAttributeToFilter returns a boolean if a field has been set.
 func (o *EventAttributes) HasAttributeToFilter() bool {
-	if o != nil && !IsNil(o.AttributeToFilter) {
+	if o != nil && o.AttributeToFilter.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeToFilter gets a reference to the given string and assigns it to the AttributeToFilter field.
+// SetAttributeToFilter gets a reference to the given NullableString and assigns it to the AttributeToFilter field.
 func (o *EventAttributes) SetAttributeToFilter(v string) {
-	o.AttributeToFilter = &v
+	o.AttributeToFilter.Set(&v)
+}
+// SetAttributeToFilterNil sets the value for AttributeToFilter to be an explicit nil
+func (o *EventAttributes) SetAttributeToFilterNil() {
+	o.AttributeToFilter.Set(nil)
 }
 
-// GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise.
+// UnsetAttributeToFilter ensures that no value is present for AttributeToFilter, not even an explicit nil
+func (o *EventAttributes) UnsetAttributeToFilter() {
+	o.AttributeToFilter.Unset()
+}
+
+// GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventAttributes) GetFormDefinitionId() string {
-	if o == nil || IsNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FormDefinitionId
+	return *o.FormDefinitionId.Get()
 }
 
 // GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventAttributes) GetFormDefinitionIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FormDefinitionId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FormDefinitionId, true
+	return o.FormDefinitionId.Get(), o.FormDefinitionId.IsSet()
 }
 
 // HasFormDefinitionId returns a boolean if a field has been set.
 func (o *EventAttributes) HasFormDefinitionId() bool {
-	if o != nil && !IsNil(o.FormDefinitionId) {
+	if o != nil && o.FormDefinitionId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFormDefinitionId gets a reference to the given string and assigns it to the FormDefinitionId field.
+// SetFormDefinitionId gets a reference to the given NullableString and assigns it to the FormDefinitionId field.
 func (o *EventAttributes) SetFormDefinitionId(v string) {
-	o.FormDefinitionId = &v
+	o.FormDefinitionId.Set(&v)
+}
+// SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+func (o *EventAttributes) SetFormDefinitionIdNil() {
+	o.FormDefinitionId.Set(nil)
+}
+
+// UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
+func (o *EventAttributes) UnsetFormDefinitionId() {
+	o.FormDefinitionId.Unset()
 }
 
 func (o EventAttributes) MarshalJSON() ([]byte, error) {
@@ -215,18 +257,18 @@ func (o EventAttributes) MarshalJSON() ([]byte, error) {
 
 func (o EventAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	if !IsNil(o.Filter) {
-		toSerialize["filter.$"] = o.Filter
+	toSerialize["id"] = o.Id.Get()
+	if o.Filter.IsSet() {
+		toSerialize["filter.$"] = o.Filter.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.AttributeToFilter) {
-		toSerialize["attributeToFilter"] = o.AttributeToFilter
+	if o.AttributeToFilter.IsSet() {
+		toSerialize["attributeToFilter"] = o.AttributeToFilter.Get()
 	}
-	if !IsNil(o.FormDefinitionId) {
-		toSerialize["formDefinitionId"] = o.FormDefinitionId
+	if o.FormDefinitionId.IsSet() {
+		toSerialize["formDefinitionId"] = o.FormDefinitionId.Get()
 	}
 	return toSerialize, nil
 }

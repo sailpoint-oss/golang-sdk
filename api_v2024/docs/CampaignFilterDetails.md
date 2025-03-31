@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Campaign filter name. | 
 **Description** | Pointer to **string** | Campaign filter description. | [optional] 
 **Owner** | **NullableString** | Owner of the filter. This field automatically populates at creation time with the current user. | 
-**Mode** | **map[string]interface{}** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
+**Mode** | **string** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
 **CriteriaList** | Pointer to [**[]CampaignFilterDetailsCriteriaListInner**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
 **IsSystemFilter** | **bool** | If true, the filter is created by the system. If false, the filter is created by a user. | [default to false]
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewCampaignFilterDetails
 
-`func NewCampaignFilterDetails(id string, name string, owner NullableString, mode map[string]interface{}, isSystemFilter bool, ) *CampaignFilterDetails`
+`func NewCampaignFilterDetails(id string, name string, owner NullableString, mode string, isSystemFilter bool, ) *CampaignFilterDetails`
 
 NewCampaignFilterDetails instantiates a new CampaignFilterDetails object
 This constructor will assign default values to properties that have it defined,
@@ -128,20 +128,20 @@ SetOwner sets Owner field to given value.
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetMode
 
-`func (o *CampaignFilterDetails) GetMode() map[string]interface{}`
+`func (o *CampaignFilterDetails) GetMode() string`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *CampaignFilterDetails) GetModeOk() (*map[string]interface{}, bool)`
+`func (o *CampaignFilterDetails) GetModeOk() (*string, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *CampaignFilterDetails) SetMode(v map[string]interface{})`
+`func (o *CampaignFilterDetails) SetMode(v string)`
 
 SetMode sets Mode field to given value.
 

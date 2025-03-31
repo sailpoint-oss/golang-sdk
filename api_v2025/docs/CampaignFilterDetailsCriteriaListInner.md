@@ -5,15 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**CriteriaType**](CriteriaType.md) |  | 
-**Operation** | [**Operation**](Operation.md) |  | 
+**Operation** | Pointer to [**NullableOperation**](Operation.md) |  | [optional] 
 **Property** | **NullableString** | Specified key from the type of criteria. | 
 **Value** | **NullableString** | Value for the specified key from the type of criteria. | 
+**NegateResult** | Pointer to **bool** | If true, the filter will negate the result of the criteria. | [optional] [default to false]
+**ShortCircuit** | Pointer to **bool** | If true, the filter will short circuit the evaluation of the criteria. | [optional] [default to false]
+**RecordChildMatches** | Pointer to **bool** | If true, the filter will record child matches for the criteria. | [optional] [default to false]
+**Id** | Pointer to **NullableString** | The unique ID of the criteria. | [optional] 
+**SuppressMatchedItems** | Pointer to **bool** | If this value is true, then matched items will not only be excluded from the campaign, they will also not have archived certification items created.  Such items will not appear in the exclusion report.  | [optional] [default to false]
+**Children** | Pointer to **[]map[string]interface{}** | List of child criteria. | [optional] 
 
 ## Methods
 
 ### NewCampaignFilterDetailsCriteriaListInner
 
-`func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property NullableString, value NullableString, ) *CampaignFilterDetailsCriteriaListInner`
+`func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, property NullableString, value NullableString, ) *CampaignFilterDetailsCriteriaListInner`
 
 NewCampaignFilterDetailsCriteriaListInner instantiates a new CampaignFilterDetailsCriteriaListInner object
 This constructor will assign default values to properties that have it defined,
@@ -67,7 +73,22 @@ and a boolean to check if the value has been set.
 
 SetOperation sets Operation field to given value.
 
+### HasOperation
 
+`func (o *CampaignFilterDetailsCriteriaListInner) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
+
+### SetOperationNil
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetOperationNil(b bool)`
+
+ SetOperationNil sets the value for Operation to be an explicit nil
+
+### UnsetOperation
+`func (o *CampaignFilterDetailsCriteriaListInner) UnsetOperation()`
+
+UnsetOperation ensures that no value is present for Operation, not even an explicit nil
 ### GetProperty
 
 `func (o *CampaignFilterDetailsCriteriaListInner) GetProperty() string`
@@ -128,6 +149,166 @@ SetValue sets Value field to given value.
 `func (o *CampaignFilterDetailsCriteriaListInner) UnsetValue()`
 
 UnsetValue ensures that no value is present for Value, not even an explicit nil
+### GetNegateResult
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetNegateResult() bool`
+
+GetNegateResult returns the NegateResult field if non-nil, zero value otherwise.
+
+### GetNegateResultOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetNegateResultOk() (*bool, bool)`
+
+GetNegateResultOk returns a tuple with the NegateResult field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNegateResult
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetNegateResult(v bool)`
+
+SetNegateResult sets NegateResult field to given value.
+
+### HasNegateResult
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasNegateResult() bool`
+
+HasNegateResult returns a boolean if a field has been set.
+
+### GetShortCircuit
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetShortCircuit() bool`
+
+GetShortCircuit returns the ShortCircuit field if non-nil, zero value otherwise.
+
+### GetShortCircuitOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetShortCircuitOk() (*bool, bool)`
+
+GetShortCircuitOk returns a tuple with the ShortCircuit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShortCircuit
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetShortCircuit(v bool)`
+
+SetShortCircuit sets ShortCircuit field to given value.
+
+### HasShortCircuit
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasShortCircuit() bool`
+
+HasShortCircuit returns a boolean if a field has been set.
+
+### GetRecordChildMatches
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetRecordChildMatches() bool`
+
+GetRecordChildMatches returns the RecordChildMatches field if non-nil, zero value otherwise.
+
+### GetRecordChildMatchesOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetRecordChildMatchesOk() (*bool, bool)`
+
+GetRecordChildMatchesOk returns a tuple with the RecordChildMatches field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordChildMatches
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetRecordChildMatches(v bool)`
+
+SetRecordChildMatches sets RecordChildMatches field to given value.
+
+### HasRecordChildMatches
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasRecordChildMatches() bool`
+
+HasRecordChildMatches returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *CampaignFilterDetailsCriteriaListInner) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
+### GetSuppressMatchedItems
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetSuppressMatchedItems() bool`
+
+GetSuppressMatchedItems returns the SuppressMatchedItems field if non-nil, zero value otherwise.
+
+### GetSuppressMatchedItemsOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetSuppressMatchedItemsOk() (*bool, bool)`
+
+GetSuppressMatchedItemsOk returns a tuple with the SuppressMatchedItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuppressMatchedItems
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetSuppressMatchedItems(v bool)`
+
+SetSuppressMatchedItems sets SuppressMatchedItems field to given value.
+
+### HasSuppressMatchedItems
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasSuppressMatchedItems() bool`
+
+HasSuppressMatchedItems returns a boolean if a field has been set.
+
+### GetChildren
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetChildren() []map[string]interface{}`
+
+GetChildren returns the Children field if non-nil, zero value otherwise.
+
+### GetChildrenOk
+
+`func (o *CampaignFilterDetailsCriteriaListInner) GetChildrenOk() (*[]map[string]interface{}, bool)`
+
+GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildren
+
+`func (o *CampaignFilterDetailsCriteriaListInner) SetChildren(v []map[string]interface{})`
+
+SetChildren sets Children field to given value.
+
+### HasChildren
+
+`func (o *CampaignFilterDetailsCriteriaListInner) HasChildren() bool`
+
+HasChildren returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the trigger | 
-**Filter** | Pointer to **string** | JSON path expression that will limit which events the trigger will fire on | [optional] 
-**Description** | Pointer to **string** | Additonal context about the external trigger | [optional] 
-**AttributeToFilter** | Pointer to **string** | The attribute to filter on | [optional] 
-**FormDefinitionId** | Pointer to **string** | Form definition&#39;s unique identifier. | [optional] 
-**Name** | Pointer to **string** | A unique name for the external trigger | [optional] 
-**ClientId** | Pointer to **string** | OAuth Client ID to authenticate with this trigger | [optional] 
-**Url** | Pointer to **string** | URL to invoke this workflow | [optional] 
-**CronString** | Pointer to **string** | A valid CRON expression | [optional] 
-**Frequency** | **string** | Frequency of execution | 
-**TimeZone** | Pointer to **string** | Time zone identifier | [optional] 
+**Id** | **NullableString** | The unique ID of the trigger | 
+**Filter** | Pointer to **NullableString** | JSON path expression that will limit which events the trigger will fire on | [optional] 
+**Description** | Pointer to **NullableString** | Additional context about the external trigger | [optional] 
+**AttributeToFilter** | Pointer to **NullableString** | The attribute to filter on | [optional] 
+**FormDefinitionId** | Pointer to **NullableString** | Form definition&#39;s unique identifier. | [optional] 
+**Name** | Pointer to **NullableString** | A unique name for the external trigger | [optional] 
+**ClientId** | Pointer to **NullableString** | OAuth Client ID to authenticate with this trigger | [optional] 
+**Url** | Pointer to **NullableString** | URL to invoke this workflow | [optional] 
+**Frequency** | **NullableString** | Frequency of execution | 
+**TimeZone** | Pointer to **NullableString** | Time zone identifier | [optional] 
+**CronString** | Pointer to **NullableString** | A valid CRON expression | [optional] 
 **WeeklyDays** | Pointer to **[]string** | Scheduled days of the week for execution | [optional] 
 **WeeklyTimes** | Pointer to **[]string** | Scheduled execution times | [optional] 
 **YearlyTimes** | Pointer to **[]string** | Scheduled execution times | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewWorkflowTriggerAttributes
 
-`func NewWorkflowTriggerAttributes(id string, frequency string, ) *WorkflowTriggerAttributes`
+`func NewWorkflowTriggerAttributes(id NullableString, frequency NullableString, ) *WorkflowTriggerAttributes`
 
 NewWorkflowTriggerAttributes instantiates a new WorkflowTriggerAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -58,6 +58,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *WorkflowTriggerAttributes) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *WorkflowTriggerAttributes) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetFilter
 
 `func (o *WorkflowTriggerAttributes) GetFilter() string`
@@ -83,6 +93,16 @@ SetFilter sets Filter field to given value.
 
 HasFilter returns a boolean if a field has been set.
 
+### SetFilterNil
+
+`func (o *WorkflowTriggerAttributes) SetFilterNil(b bool)`
+
+ SetFilterNil sets the value for Filter to be an explicit nil
+
+### UnsetFilter
+`func (o *WorkflowTriggerAttributes) UnsetFilter()`
+
+UnsetFilter ensures that no value is present for Filter, not even an explicit nil
 ### GetDescription
 
 `func (o *WorkflowTriggerAttributes) GetDescription() string`
@@ -108,6 +128,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *WorkflowTriggerAttributes) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *WorkflowTriggerAttributes) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAttributeToFilter
 
 `func (o *WorkflowTriggerAttributes) GetAttributeToFilter() string`
@@ -133,6 +163,16 @@ SetAttributeToFilter sets AttributeToFilter field to given value.
 
 HasAttributeToFilter returns a boolean if a field has been set.
 
+### SetAttributeToFilterNil
+
+`func (o *WorkflowTriggerAttributes) SetAttributeToFilterNil(b bool)`
+
+ SetAttributeToFilterNil sets the value for AttributeToFilter to be an explicit nil
+
+### UnsetAttributeToFilter
+`func (o *WorkflowTriggerAttributes) UnsetAttributeToFilter()`
+
+UnsetAttributeToFilter ensures that no value is present for AttributeToFilter, not even an explicit nil
 ### GetFormDefinitionId
 
 `func (o *WorkflowTriggerAttributes) GetFormDefinitionId() string`
@@ -158,6 +198,16 @@ SetFormDefinitionId sets FormDefinitionId field to given value.
 
 HasFormDefinitionId returns a boolean if a field has been set.
 
+### SetFormDefinitionIdNil
+
+`func (o *WorkflowTriggerAttributes) SetFormDefinitionIdNil(b bool)`
+
+ SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+
+### UnsetFormDefinitionId
+`func (o *WorkflowTriggerAttributes) UnsetFormDefinitionId()`
+
+UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
 ### GetName
 
 `func (o *WorkflowTriggerAttributes) GetName() string`
@@ -183,6 +233,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *WorkflowTriggerAttributes) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *WorkflowTriggerAttributes) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetClientId
 
 `func (o *WorkflowTriggerAttributes) GetClientId() string`
@@ -208,6 +268,16 @@ SetClientId sets ClientId field to given value.
 
 HasClientId returns a boolean if a field has been set.
 
+### SetClientIdNil
+
+`func (o *WorkflowTriggerAttributes) SetClientIdNil(b bool)`
+
+ SetClientIdNil sets the value for ClientId to be an explicit nil
+
+### UnsetClientId
+`func (o *WorkflowTriggerAttributes) UnsetClientId()`
+
+UnsetClientId ensures that no value is present for ClientId, not even an explicit nil
 ### GetUrl
 
 `func (o *WorkflowTriggerAttributes) GetUrl() string`
@@ -233,31 +303,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
-### GetCronString
+### SetUrlNil
 
-`func (o *WorkflowTriggerAttributes) GetCronString() string`
+`func (o *WorkflowTriggerAttributes) SetUrlNil(b bool)`
 
-GetCronString returns the CronString field if non-nil, zero value otherwise.
+ SetUrlNil sets the value for Url to be an explicit nil
 
-### GetCronStringOk
+### UnsetUrl
+`func (o *WorkflowTriggerAttributes) UnsetUrl()`
 
-`func (o *WorkflowTriggerAttributes) GetCronStringOk() (*string, bool)`
-
-GetCronStringOk returns a tuple with the CronString field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCronString
-
-`func (o *WorkflowTriggerAttributes) SetCronString(v string)`
-
-SetCronString sets CronString field to given value.
-
-### HasCronString
-
-`func (o *WorkflowTriggerAttributes) HasCronString() bool`
-
-HasCronString returns a boolean if a field has been set.
-
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetFrequency
 
 `func (o *WorkflowTriggerAttributes) GetFrequency() string`
@@ -278,6 +333,16 @@ and a boolean to check if the value has been set.
 SetFrequency sets Frequency field to given value.
 
 
+### SetFrequencyNil
+
+`func (o *WorkflowTriggerAttributes) SetFrequencyNil(b bool)`
+
+ SetFrequencyNil sets the value for Frequency to be an explicit nil
+
+### UnsetFrequency
+`func (o *WorkflowTriggerAttributes) UnsetFrequency()`
+
+UnsetFrequency ensures that no value is present for Frequency, not even an explicit nil
 ### GetTimeZone
 
 `func (o *WorkflowTriggerAttributes) GetTimeZone() string`
@@ -303,6 +368,51 @@ SetTimeZone sets TimeZone field to given value.
 
 HasTimeZone returns a boolean if a field has been set.
 
+### SetTimeZoneNil
+
+`func (o *WorkflowTriggerAttributes) SetTimeZoneNil(b bool)`
+
+ SetTimeZoneNil sets the value for TimeZone to be an explicit nil
+
+### UnsetTimeZone
+`func (o *WorkflowTriggerAttributes) UnsetTimeZone()`
+
+UnsetTimeZone ensures that no value is present for TimeZone, not even an explicit nil
+### GetCronString
+
+`func (o *WorkflowTriggerAttributes) GetCronString() string`
+
+GetCronString returns the CronString field if non-nil, zero value otherwise.
+
+### GetCronStringOk
+
+`func (o *WorkflowTriggerAttributes) GetCronStringOk() (*string, bool)`
+
+GetCronStringOk returns a tuple with the CronString field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCronString
+
+`func (o *WorkflowTriggerAttributes) SetCronString(v string)`
+
+SetCronString sets CronString field to given value.
+
+### HasCronString
+
+`func (o *WorkflowTriggerAttributes) HasCronString() bool`
+
+HasCronString returns a boolean if a field has been set.
+
+### SetCronStringNil
+
+`func (o *WorkflowTriggerAttributes) SetCronStringNil(b bool)`
+
+ SetCronStringNil sets the value for CronString to be an explicit nil
+
+### UnsetCronString
+`func (o *WorkflowTriggerAttributes) UnsetCronString()`
+
+UnsetCronString ensures that no value is present for CronString, not even an explicit nil
 ### GetWeeklyDays
 
 `func (o *WorkflowTriggerAttributes) GetWeeklyDays() []string`
@@ -328,6 +438,16 @@ SetWeeklyDays sets WeeklyDays field to given value.
 
 HasWeeklyDays returns a boolean if a field has been set.
 
+### SetWeeklyDaysNil
+
+`func (o *WorkflowTriggerAttributes) SetWeeklyDaysNil(b bool)`
+
+ SetWeeklyDaysNil sets the value for WeeklyDays to be an explicit nil
+
+### UnsetWeeklyDays
+`func (o *WorkflowTriggerAttributes) UnsetWeeklyDays()`
+
+UnsetWeeklyDays ensures that no value is present for WeeklyDays, not even an explicit nil
 ### GetWeeklyTimes
 
 `func (o *WorkflowTriggerAttributes) GetWeeklyTimes() []string`
@@ -353,6 +473,16 @@ SetWeeklyTimes sets WeeklyTimes field to given value.
 
 HasWeeklyTimes returns a boolean if a field has been set.
 
+### SetWeeklyTimesNil
+
+`func (o *WorkflowTriggerAttributes) SetWeeklyTimesNil(b bool)`
+
+ SetWeeklyTimesNil sets the value for WeeklyTimes to be an explicit nil
+
+### UnsetWeeklyTimes
+`func (o *WorkflowTriggerAttributes) UnsetWeeklyTimes()`
+
+UnsetWeeklyTimes ensures that no value is present for WeeklyTimes, not even an explicit nil
 ### GetYearlyTimes
 
 `func (o *WorkflowTriggerAttributes) GetYearlyTimes() []string`
@@ -378,6 +508,16 @@ SetYearlyTimes sets YearlyTimes field to given value.
 
 HasYearlyTimes returns a boolean if a field has been set.
 
+### SetYearlyTimesNil
+
+`func (o *WorkflowTriggerAttributes) SetYearlyTimesNil(b bool)`
+
+ SetYearlyTimesNil sets the value for YearlyTimes to be an explicit nil
+
+### UnsetYearlyTimes
+`func (o *WorkflowTriggerAttributes) UnsetYearlyTimes()`
+
+UnsetYearlyTimes ensures that no value is present for YearlyTimes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

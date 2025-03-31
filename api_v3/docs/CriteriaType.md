@@ -23,6 +23,8 @@
 
 * `INVALID_CERTIFIABLE_ENTITY` (value: `"INVALID_CERTIFIABLE_ENTITY"`)
 
+* `INVALID_CERTIFIABLE_BUNDLE` (value: `"INVALID_CERTIFIABLE_BUNDLE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

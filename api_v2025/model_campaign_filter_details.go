@@ -29,7 +29,7 @@ type CampaignFilterDetails struct {
 	// Owner of the filter. This field automatically populates at creation time with the current user.
 	Owner NullableString `json:"owner"`
 	// Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.
-	Mode map[string]interface{} `json:"mode"`
+	Mode string `json:"mode"`
 	// List of criteria.
 	CriteriaList []CampaignFilterDetailsCriteriaListInner `json:"criteriaList,omitempty"`
 	// If true, the filter is created by the system. If false, the filter is created by a user.
@@ -43,7 +43,7 @@ type _CampaignFilterDetails CampaignFilterDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetails(id string, name string, owner NullableString, mode map[string]interface{}, isSystemFilter bool) *CampaignFilterDetails {
+func NewCampaignFilterDetails(id string, name string, owner NullableString, mode string, isSystemFilter bool) *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
 	this.Id = id
 	this.Name = name
@@ -170,9 +170,9 @@ func (o *CampaignFilterDetails) SetOwner(v string) {
 }
 
 // GetMode returns the Mode field value
-func (o *CampaignFilterDetails) GetMode() map[string]interface{} {
+func (o *CampaignFilterDetails) GetMode() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -181,15 +181,15 @@ func (o *CampaignFilterDetails) GetMode() map[string]interface{} {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *CampaignFilterDetails) GetModeOk() (map[string]interface{}, bool) {
+func (o *CampaignFilterDetails) GetModeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Mode, true
+	return &o.Mode, true
 }
 
 // SetMode sets field value
-func (o *CampaignFilterDetails) SetMode(v map[string]interface{}) {
+func (o *CampaignFilterDetails) SetMode(v string) {
 	o.Mode = v
 }
 

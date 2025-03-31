@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | A unique name for the external trigger | [optional] 
-**Description** | Pointer to **string** | Additonal context about the external trigger | [optional] 
-**ClientId** | Pointer to **string** | OAuth Client ID to authenticate with this trigger | [optional] 
-**Url** | Pointer to **string** | URL to invoke this workflow | [optional] 
+**Name** | Pointer to **NullableString** | A unique name for the external trigger | [optional] 
+**Description** | Pointer to **NullableString** | Additional context about the external trigger | [optional] 
+**ClientId** | Pointer to **NullableString** | OAuth Client ID to authenticate with this trigger | [optional] 
+**Url** | Pointer to **NullableString** | URL to invoke this workflow | [optional] 
 
 ## Methods
 
@@ -53,6 +53,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *ExternalAttributes) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ExternalAttributes) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *ExternalAttributes) GetDescription() string`
@@ -78,6 +88,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ExternalAttributes) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ExternalAttributes) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetClientId
 
 `func (o *ExternalAttributes) GetClientId() string`
@@ -103,6 +123,16 @@ SetClientId sets ClientId field to given value.
 
 HasClientId returns a boolean if a field has been set.
 
+### SetClientIdNil
+
+`func (o *ExternalAttributes) SetClientIdNil(b bool)`
+
+ SetClientIdNil sets the value for ClientId to be an explicit nil
+
+### UnsetClientId
+`func (o *ExternalAttributes) UnsetClientId()`
+
+UnsetClientId ensures that no value is present for ClientId, not even an explicit nil
 ### GetUrl
 
 `func (o *ExternalAttributes) GetUrl() string`
@@ -128,6 +158,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
+### SetUrlNil
+
+`func (o *ExternalAttributes) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *ExternalAttributes) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

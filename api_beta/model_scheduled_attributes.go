@@ -22,11 +22,11 @@ var _ MappedNullable = &ScheduledAttributes{}
 // ScheduledAttributes Attributes related to a scheduled trigger
 type ScheduledAttributes struct {
 	// Frequency of execution
-	Frequency string `json:"frequency"`
+	Frequency NullableString `json:"frequency"`
 	// Time zone identifier
-	TimeZone *string `json:"timeZone,omitempty"`
+	TimeZone NullableString `json:"timeZone,omitempty"`
 	// A valid CRON expression
-	CronString *string `json:"cronString,omitempty"`
+	CronString NullableString `json:"cronString,omitempty"`
 	// Scheduled days of the week for execution
 	WeeklyDays []string `json:"weeklyDays,omitempty"`
 	// Scheduled execution times
@@ -41,7 +41,7 @@ type _ScheduledAttributes ScheduledAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduledAttributes(frequency string) *ScheduledAttributes {
+func NewScheduledAttributes(frequency NullableString) *ScheduledAttributes {
 	this := ScheduledAttributes{}
 	this.Frequency = frequency
 	return &this
@@ -56,96 +56,118 @@ func NewScheduledAttributesWithDefaults() *ScheduledAttributes {
 }
 
 // GetFrequency returns the Frequency field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ScheduledAttributes) GetFrequency() string {
-	if o == nil {
+	if o == nil || o.Frequency.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Frequency
+	return *o.Frequency.Get()
 }
 
 // GetFrequencyOk returns a tuple with the Frequency field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetFrequencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Frequency, true
+	return o.Frequency.Get(), o.Frequency.IsSet()
 }
 
 // SetFrequency sets field value
 func (o *ScheduledAttributes) SetFrequency(v string) {
-	o.Frequency = v
+	o.Frequency.Set(&v)
 }
 
-// GetTimeZone returns the TimeZone field value if set, zero value otherwise.
+// GetTimeZone returns the TimeZone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledAttributes) GetTimeZone() string {
-	if o == nil || IsNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TimeZone
+	return *o.TimeZone.Get()
 }
 
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetTimeZoneOk() (*string, bool) {
-	if o == nil || IsNil(o.TimeZone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeZone, true
+	return o.TimeZone.Get(), o.TimeZone.IsSet()
 }
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *ScheduledAttributes) HasTimeZone() bool {
-	if o != nil && !IsNil(o.TimeZone) {
+	if o != nil && o.TimeZone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTimeZone gets a reference to the given string and assigns it to the TimeZone field.
+// SetTimeZone gets a reference to the given NullableString and assigns it to the TimeZone field.
 func (o *ScheduledAttributes) SetTimeZone(v string) {
-	o.TimeZone = &v
+	o.TimeZone.Set(&v)
+}
+// SetTimeZoneNil sets the value for TimeZone to be an explicit nil
+func (o *ScheduledAttributes) SetTimeZoneNil() {
+	o.TimeZone.Set(nil)
 }
 
-// GetCronString returns the CronString field value if set, zero value otherwise.
+// UnsetTimeZone ensures that no value is present for TimeZone, not even an explicit nil
+func (o *ScheduledAttributes) UnsetTimeZone() {
+	o.TimeZone.Unset()
+}
+
+// GetCronString returns the CronString field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledAttributes) GetCronString() string {
-	if o == nil || IsNil(o.CronString) {
+	if o == nil || IsNil(o.CronString.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CronString
+	return *o.CronString.Get()
 }
 
 // GetCronStringOk returns a tuple with the CronString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetCronStringOk() (*string, bool) {
-	if o == nil || IsNil(o.CronString) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CronString, true
+	return o.CronString.Get(), o.CronString.IsSet()
 }
 
 // HasCronString returns a boolean if a field has been set.
 func (o *ScheduledAttributes) HasCronString() bool {
-	if o != nil && !IsNil(o.CronString) {
+	if o != nil && o.CronString.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCronString gets a reference to the given string and assigns it to the CronString field.
+// SetCronString gets a reference to the given NullableString and assigns it to the CronString field.
 func (o *ScheduledAttributes) SetCronString(v string) {
-	o.CronString = &v
+	o.CronString.Set(&v)
+}
+// SetCronStringNil sets the value for CronString to be an explicit nil
+func (o *ScheduledAttributes) SetCronStringNil() {
+	o.CronString.Set(nil)
 }
 
-// GetWeeklyDays returns the WeeklyDays field value if set, zero value otherwise.
+// UnsetCronString ensures that no value is present for CronString, not even an explicit nil
+func (o *ScheduledAttributes) UnsetCronString() {
+	o.CronString.Unset()
+}
+
+// GetWeeklyDays returns the WeeklyDays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledAttributes) GetWeeklyDays() []string {
-	if o == nil || IsNil(o.WeeklyDays) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -154,6 +176,7 @@ func (o *ScheduledAttributes) GetWeeklyDays() []string {
 
 // GetWeeklyDaysOk returns a tuple with the WeeklyDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetWeeklyDaysOk() ([]string, bool) {
 	if o == nil || IsNil(o.WeeklyDays) {
 		return nil, false
@@ -175,9 +198,9 @@ func (o *ScheduledAttributes) SetWeeklyDays(v []string) {
 	o.WeeklyDays = v
 }
 
-// GetWeeklyTimes returns the WeeklyTimes field value if set, zero value otherwise.
+// GetWeeklyTimes returns the WeeklyTimes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledAttributes) GetWeeklyTimes() []string {
-	if o == nil || IsNil(o.WeeklyTimes) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -186,6 +209,7 @@ func (o *ScheduledAttributes) GetWeeklyTimes() []string {
 
 // GetWeeklyTimesOk returns a tuple with the WeeklyTimes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetWeeklyTimesOk() ([]string, bool) {
 	if o == nil || IsNil(o.WeeklyTimes) {
 		return nil, false
@@ -207,9 +231,9 @@ func (o *ScheduledAttributes) SetWeeklyTimes(v []string) {
 	o.WeeklyTimes = v
 }
 
-// GetYearlyTimes returns the YearlyTimes field value if set, zero value otherwise.
+// GetYearlyTimes returns the YearlyTimes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledAttributes) GetYearlyTimes() []string {
-	if o == nil || IsNil(o.YearlyTimes) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -218,6 +242,7 @@ func (o *ScheduledAttributes) GetYearlyTimes() []string {
 
 // GetYearlyTimesOk returns a tuple with the YearlyTimes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledAttributes) GetYearlyTimesOk() ([]string, bool) {
 	if o == nil || IsNil(o.YearlyTimes) {
 		return nil, false
@@ -249,20 +274,20 @@ func (o ScheduledAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ScheduledAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["frequency"] = o.Frequency
-	if !IsNil(o.TimeZone) {
-		toSerialize["timeZone"] = o.TimeZone
+	toSerialize["frequency"] = o.Frequency.Get()
+	if o.TimeZone.IsSet() {
+		toSerialize["timeZone"] = o.TimeZone.Get()
 	}
-	if !IsNil(o.CronString) {
-		toSerialize["cronString"] = o.CronString
+	if o.CronString.IsSet() {
+		toSerialize["cronString"] = o.CronString.Get()
 	}
-	if !IsNil(o.WeeklyDays) {
+	if o.WeeklyDays != nil {
 		toSerialize["weeklyDays"] = o.WeeklyDays
 	}
-	if !IsNil(o.WeeklyTimes) {
+	if o.WeeklyTimes != nil {
 		toSerialize["weeklyTimes"] = o.WeeklyTimes
 	}
-	if !IsNil(o.YearlyTimes) {
+	if o.YearlyTimes != nil {
 		toSerialize["yearlyTimes"] = o.YearlyTimes
 	}
 	return toSerialize, nil

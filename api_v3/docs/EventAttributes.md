@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the trigger | 
-**Filter** | Pointer to **string** | JSON path expression that will limit which events the trigger will fire on | [optional] 
-**Description** | Pointer to **string** | Description of the event trigger | [optional] 
-**AttributeToFilter** | Pointer to **string** | The attribute to filter on | [optional] 
-**FormDefinitionId** | Pointer to **string** | Form definition&#39;s unique identifier. | [optional] 
+**Id** | **NullableString** | The unique ID of the trigger | 
+**Filter** | Pointer to **NullableString** | JSON path expression that will limit which events the trigger will fire on | [optional] 
+**Description** | Pointer to **NullableString** | Description of the event trigger | [optional] 
+**AttributeToFilter** | Pointer to **NullableString** | The attribute to filter on | [optional] 
+**FormDefinitionId** | Pointer to **NullableString** | Form definition&#39;s unique identifier. | [optional] 
 
 ## Methods
 
 ### NewEventAttributes
 
-`func NewEventAttributes(id string, ) *EventAttributes`
+`func NewEventAttributes(id NullableString, ) *EventAttributes`
 
 NewEventAttributes instantiates a new EventAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,16 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### SetIdNil
+
+`func (o *EventAttributes) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *EventAttributes) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetFilter
 
 `func (o *EventAttributes) GetFilter() string`
@@ -74,6 +84,16 @@ SetFilter sets Filter field to given value.
 
 HasFilter returns a boolean if a field has been set.
 
+### SetFilterNil
+
+`func (o *EventAttributes) SetFilterNil(b bool)`
+
+ SetFilterNil sets the value for Filter to be an explicit nil
+
+### UnsetFilter
+`func (o *EventAttributes) UnsetFilter()`
+
+UnsetFilter ensures that no value is present for Filter, not even an explicit nil
 ### GetDescription
 
 `func (o *EventAttributes) GetDescription() string`
@@ -99,6 +119,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *EventAttributes) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *EventAttributes) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAttributeToFilter
 
 `func (o *EventAttributes) GetAttributeToFilter() string`
@@ -124,6 +154,16 @@ SetAttributeToFilter sets AttributeToFilter field to given value.
 
 HasAttributeToFilter returns a boolean if a field has been set.
 
+### SetAttributeToFilterNil
+
+`func (o *EventAttributes) SetAttributeToFilterNil(b bool)`
+
+ SetAttributeToFilterNil sets the value for AttributeToFilter to be an explicit nil
+
+### UnsetAttributeToFilter
+`func (o *EventAttributes) UnsetAttributeToFilter()`
+
+UnsetAttributeToFilter ensures that no value is present for AttributeToFilter, not even an explicit nil
 ### GetFormDefinitionId
 
 `func (o *EventAttributes) GetFormDefinitionId() string`
@@ -149,6 +189,16 @@ SetFormDefinitionId sets FormDefinitionId field to given value.
 
 HasFormDefinitionId returns a boolean if a field has been set.
 
+### SetFormDefinitionIdNil
+
+`func (o *EventAttributes) SetFormDefinitionIdNil(b bool)`
+
+ SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+
+### UnsetFormDefinitionId
+`func (o *EventAttributes) UnsetFormDefinitionId()`
+
+UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

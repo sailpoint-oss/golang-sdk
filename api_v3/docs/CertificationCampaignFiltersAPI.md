@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | 
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", "INCLUSION", false) // CampaignFilterDetails | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -304,7 +304,7 @@ import (
 
 func main() {
 	filterId := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter being modified.
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | A campaign filter details with updated field values.
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", "INCLUSION", false) // CampaignFilterDetails | A campaign filter details with updated field values.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

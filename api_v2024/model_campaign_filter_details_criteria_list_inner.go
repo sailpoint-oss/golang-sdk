@@ -21,11 +21,23 @@ var _ MappedNullable = &CampaignFilterDetailsCriteriaListInner{}
 // CampaignFilterDetailsCriteriaListInner struct for CampaignFilterDetailsCriteriaListInner
 type CampaignFilterDetailsCriteriaListInner struct {
 	Type CriteriaType `json:"type"`
-	Operation Operation `json:"operation"`
+	Operation NullableOperation `json:"operation,omitempty"`
 	// Specified key from the type of criteria.
 	Property NullableString `json:"property"`
 	// Value for the specified key from the type of criteria.
 	Value NullableString `json:"value"`
+	// If true, the filter will negate the result of the criteria.
+	NegateResult *bool `json:"negateResult,omitempty"`
+	// If true, the filter will short circuit the evaluation of the criteria.
+	ShortCircuit *bool `json:"shortCircuit,omitempty"`
+	// If true, the filter will record child matches for the criteria.
+	RecordChildMatches *bool `json:"recordChildMatches,omitempty"`
+	// The unique ID of the criteria.
+	Id NullableString `json:"id,omitempty"`
+	// If this value is true, then matched items will not only be excluded from the campaign, they will also not have archived certification items created.  Such items will not appear in the exclusion report. 
+	SuppressMatchedItems *bool `json:"suppressMatchedItems,omitempty"`
+	// List of child criteria.
+	Children []map[string]interface{} `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,12 +47,19 @@ type _CampaignFilterDetailsCriteriaListInner CampaignFilterDetailsCriteriaListIn
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Operation, property NullableString, value NullableString) *CampaignFilterDetailsCriteriaListInner {
+func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, property NullableString, value NullableString) *CampaignFilterDetailsCriteriaListInner {
 	this := CampaignFilterDetailsCriteriaListInner{}
 	this.Type = type_
-	this.Operation = operation
 	this.Property = property
 	this.Value = value
+	var negateResult bool = false
+	this.NegateResult = &negateResult
+	var shortCircuit bool = false
+	this.ShortCircuit = &shortCircuit
+	var recordChildMatches bool = false
+	this.RecordChildMatches = &recordChildMatches
+	var suppressMatchedItems bool = false
+	this.SuppressMatchedItems = &suppressMatchedItems
 	return &this
 }
 
@@ -49,6 +68,14 @@ func NewCampaignFilterDetailsCriteriaListInner(type_ CriteriaType, operation Ope
 // but it doesn't guarantee that properties required by API are set
 func NewCampaignFilterDetailsCriteriaListInnerWithDefaults() *CampaignFilterDetailsCriteriaListInner {
 	this := CampaignFilterDetailsCriteriaListInner{}
+	var negateResult bool = false
+	this.NegateResult = &negateResult
+	var shortCircuit bool = false
+	this.ShortCircuit = &shortCircuit
+	var recordChildMatches bool = false
+	this.RecordChildMatches = &recordChildMatches
+	var suppressMatchedItems bool = false
+	this.SuppressMatchedItems = &suppressMatchedItems
 	return &this
 }
 
@@ -76,28 +103,46 @@ func (o *CampaignFilterDetailsCriteriaListInner) SetType(v CriteriaType) {
 	o.Type = v
 }
 
-// GetOperation returns the Operation field value
+// GetOperation returns the Operation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignFilterDetailsCriteriaListInner) GetOperation() Operation {
-	if o == nil {
+	if o == nil || IsNil(o.Operation.Get()) {
 		var ret Operation
 		return ret
 	}
-
-	return o.Operation
+	return *o.Operation.Get()
 }
 
-// GetOperationOk returns a tuple with the Operation field value
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignFilterDetailsCriteriaListInner) GetOperationOk() (*Operation, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Operation, true
+	return o.Operation.Get(), o.Operation.IsSet()
 }
 
-// SetOperation sets field value
+// HasOperation returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasOperation() bool {
+	if o != nil && o.Operation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given NullableOperation and assigns it to the Operation field.
 func (o *CampaignFilterDetailsCriteriaListInner) SetOperation(v Operation) {
-	o.Operation = v
+	o.Operation.Set(&v)
+}
+// SetOperationNil sets the value for Operation to be an explicit nil
+func (o *CampaignFilterDetailsCriteriaListInner) SetOperationNil() {
+	o.Operation.Set(nil)
+}
+
+// UnsetOperation ensures that no value is present for Operation, not even an explicit nil
+func (o *CampaignFilterDetailsCriteriaListInner) UnsetOperation() {
+	o.Operation.Unset()
 }
 
 // GetProperty returns the Property field value
@@ -152,6 +197,208 @@ func (o *CampaignFilterDetailsCriteriaListInner) SetValue(v string) {
 	o.Value.Set(&v)
 }
 
+// GetNegateResult returns the NegateResult field value if set, zero value otherwise.
+func (o *CampaignFilterDetailsCriteriaListInner) GetNegateResult() bool {
+	if o == nil || IsNil(o.NegateResult) {
+		var ret bool
+		return ret
+	}
+	return *o.NegateResult
+}
+
+// GetNegateResultOk returns a tuple with the NegateResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) GetNegateResultOk() (*bool, bool) {
+	if o == nil || IsNil(o.NegateResult) {
+		return nil, false
+	}
+	return o.NegateResult, true
+}
+
+// HasNegateResult returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasNegateResult() bool {
+	if o != nil && !IsNil(o.NegateResult) {
+		return true
+	}
+
+	return false
+}
+
+// SetNegateResult gets a reference to the given bool and assigns it to the NegateResult field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetNegateResult(v bool) {
+	o.NegateResult = &v
+}
+
+// GetShortCircuit returns the ShortCircuit field value if set, zero value otherwise.
+func (o *CampaignFilterDetailsCriteriaListInner) GetShortCircuit() bool {
+	if o == nil || IsNil(o.ShortCircuit) {
+		var ret bool
+		return ret
+	}
+	return *o.ShortCircuit
+}
+
+// GetShortCircuitOk returns a tuple with the ShortCircuit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) GetShortCircuitOk() (*bool, bool) {
+	if o == nil || IsNil(o.ShortCircuit) {
+		return nil, false
+	}
+	return o.ShortCircuit, true
+}
+
+// HasShortCircuit returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasShortCircuit() bool {
+	if o != nil && !IsNil(o.ShortCircuit) {
+		return true
+	}
+
+	return false
+}
+
+// SetShortCircuit gets a reference to the given bool and assigns it to the ShortCircuit field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetShortCircuit(v bool) {
+	o.ShortCircuit = &v
+}
+
+// GetRecordChildMatches returns the RecordChildMatches field value if set, zero value otherwise.
+func (o *CampaignFilterDetailsCriteriaListInner) GetRecordChildMatches() bool {
+	if o == nil || IsNil(o.RecordChildMatches) {
+		var ret bool
+		return ret
+	}
+	return *o.RecordChildMatches
+}
+
+// GetRecordChildMatchesOk returns a tuple with the RecordChildMatches field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) GetRecordChildMatchesOk() (*bool, bool) {
+	if o == nil || IsNil(o.RecordChildMatches) {
+		return nil, false
+	}
+	return o.RecordChildMatches, true
+}
+
+// HasRecordChildMatches returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasRecordChildMatches() bool {
+	if o != nil && !IsNil(o.RecordChildMatches) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecordChildMatches gets a reference to the given bool and assigns it to the RecordChildMatches field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetRecordChildMatches(v bool) {
+	o.RecordChildMatches = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignFilterDetailsCriteriaListInner) GetId() string {
+	if o == nil || IsNil(o.Id.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Id.Get()
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignFilterDetailsCriteriaListInner) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Id.Get(), o.Id.IsSet()
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasId() bool {
+	if o != nil && o.Id.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetId(v string) {
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *CampaignFilterDetailsCriteriaListInner) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *CampaignFilterDetailsCriteriaListInner) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetSuppressMatchedItems returns the SuppressMatchedItems field value if set, zero value otherwise.
+func (o *CampaignFilterDetailsCriteriaListInner) GetSuppressMatchedItems() bool {
+	if o == nil || IsNil(o.SuppressMatchedItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SuppressMatchedItems
+}
+
+// GetSuppressMatchedItemsOk returns a tuple with the SuppressMatchedItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) GetSuppressMatchedItemsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SuppressMatchedItems) {
+		return nil, false
+	}
+	return o.SuppressMatchedItems, true
+}
+
+// HasSuppressMatchedItems returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasSuppressMatchedItems() bool {
+	if o != nil && !IsNil(o.SuppressMatchedItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuppressMatchedItems gets a reference to the given bool and assigns it to the SuppressMatchedItems field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetSuppressMatchedItems(v bool) {
+	o.SuppressMatchedItems = &v
+}
+
+// GetChildren returns the Children field value if set, zero value otherwise.
+func (o *CampaignFilterDetailsCriteriaListInner) GetChildren() []map[string]interface{} {
+	if o == nil || IsNil(o.Children) {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.Children
+}
+
+// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) GetChildrenOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Children) {
+		return nil, false
+	}
+	return o.Children, true
+}
+
+// HasChildren returns a boolean if a field has been set.
+func (o *CampaignFilterDetailsCriteriaListInner) HasChildren() bool {
+	if o != nil && !IsNil(o.Children) {
+		return true
+	}
+
+	return false
+}
+
+// SetChildren gets a reference to the given []map[string]interface{} and assigns it to the Children field.
+func (o *CampaignFilterDetailsCriteriaListInner) SetChildren(v []map[string]interface{}) {
+	o.Children = v
+}
+
 func (o CampaignFilterDetailsCriteriaListInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -163,9 +410,29 @@ func (o CampaignFilterDetailsCriteriaListInner) MarshalJSON() ([]byte, error) {
 func (o CampaignFilterDetailsCriteriaListInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["operation"] = o.Operation
+	if o.Operation.IsSet() {
+		toSerialize["operation"] = o.Operation.Get()
+	}
 	toSerialize["property"] = o.Property.Get()
 	toSerialize["value"] = o.Value.Get()
+	if !IsNil(o.NegateResult) {
+		toSerialize["negateResult"] = o.NegateResult
+	}
+	if !IsNil(o.ShortCircuit) {
+		toSerialize["shortCircuit"] = o.ShortCircuit
+	}
+	if !IsNil(o.RecordChildMatches) {
+		toSerialize["recordChildMatches"] = o.RecordChildMatches
+	}
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
+	}
+	if !IsNil(o.SuppressMatchedItems) {
+		toSerialize["suppressMatchedItems"] = o.SuppressMatchedItems
+	}
+	if !IsNil(o.Children) {
+		toSerialize["children"] = o.Children
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -180,7 +447,6 @@ func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(data []byte) (err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
-		"operation",
 		"property",
 		"value",
 	}
@@ -216,6 +482,12 @@ func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(data []byte) (err
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "property")
 		delete(additionalProperties, "value")
+		delete(additionalProperties, "negateResult")
+		delete(additionalProperties, "shortCircuit")
+		delete(additionalProperties, "recordChildMatches")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "suppressMatchedItems")
+		delete(additionalProperties, "children")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -68703,6 +68703,7 @@ components:
           - SuccessFactorsOperationProvisioning
           - WebServiceAfterOperationRule
           - WebServiceBeforeOperationRule
+          - ResourceObjectCustomization
           example: BuildMap
           type: string
         signature:
@@ -71238,6 +71239,7 @@ components:
             - ARM_UTILIZATION_EXTRACT
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
+            - APPLICATION_DISCOVERY
             example: AUTHENTICATE
             type: string
           type: array
@@ -77495,6 +77497,7 @@ components:
             - ARM_UTILIZATION_EXTRACT
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
+            - APPLICATION_DISCOVERY
             example: AUTHENTICATE
             type: string
           type: array
@@ -78169,6 +78172,7 @@ components:
             - ARM_UTILIZATION_EXTRACT
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
+            - APPLICATION_DISCOVERY
             example: AUTHENTICATE
             type: string
           type: array
@@ -85731,6 +85735,7 @@ components:
         - ARM_UTILIZATION_EXTRACT
         - ARM_CHANGELOG_EXTRACT
         - USES_UUID
+        - APPLICATION_DISCOVERY
         example: AUTHENTICATE
         type: string
       type: array
@@ -90978,23 +90983,28 @@ components:
         id:
           description: The unique ID of the trigger
           example: idn:identity-attributes-changed
+          nullable: true
           type: string
         filter.$:
           description: JSON path expression that will limit which events the trigger
             will fire on
           example: "$.changes[?(@.attribute == 'manager')]"
+          nullable: true
           type: string
         description:
           description: Description of the event trigger
           example: Triggered when an identity's manager attribute changes
+          nullable: true
           type: string
         attributeToFilter:
           description: The attribute to filter on
           example: LifecycleState
+          nullable: true
           type: string
         formDefinitionId:
           description: Form definition's unique identifier.
           example: Admin_Access_Request_Form
+          nullable: true
           type: string
       required:
       - id
@@ -91007,18 +91017,22 @@ components:
         name:
           description: A unique name for the external trigger
           example: search-and-notify
+          nullable: true
           type: string
         description:
           description: Additional context about the external trigger
           example: Run a search and notify the results
+          nullable: true
           type: string
         clientId:
           description: OAuth Client ID to authenticate with this trigger
           example: 87e239b2-b85b-4bde-b9a7-55bf304ddcdc
+          nullable: true
           type: string
         url:
           description: URL to invoke this workflow
           example: https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d
+          nullable: true
           type: string
       title: External Trigger Attributes
       type: object
@@ -91034,11 +91048,14 @@ components:
           - monthly
           - yearly
           - cronSchedule
+          - null
           example: daily
+          nullable: true
           type: string
         timeZone:
           description: Time zone identifier
           example: America/Chicago
+          nullable: true
           type: string
         cronString:
           description: A valid CRON expression
@@ -91046,24 +91063,28 @@ components:
           externalDocs:
             description: CRON expression editor
             url: https://crontab.guru/
+          nullable: true
           type: string
         weeklyDays:
           description: Scheduled days of the week for execution
           example: Monday
           items:
             type: string
+          nullable: true
           type: array
         weeklyTimes:
           description: Scheduled execution times
           example: Monday
           items:
             type: string
+          nullable: true
           type: array
         yearlyTimes:
           description: Scheduled execution times
           example: 1969-12-31T09:00:00.000Z
           items:
             type: string
+          nullable: true
           type: array
       required:
       - frequency
