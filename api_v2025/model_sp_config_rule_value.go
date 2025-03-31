@@ -16,7 +16,7 @@ import (
 )
 
 
-// SpConfigRuleValue Value to be assigned at the jsonPath location within the object
+// SpConfigRuleValue Value to be assigned at the jsonPath location within the object.
 type SpConfigRuleValue struct {
 	ArrayOfString *[]string
 	Bool *bool

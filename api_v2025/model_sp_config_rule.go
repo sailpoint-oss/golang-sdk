@@ -17,12 +17,12 @@ import (
 // checks if the SpConfigRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SpConfigRule{}
 
-// SpConfigRule Format of Config Hub Object Rules
+// SpConfigRule Format of Config Hub object rules.
 type SpConfigRule struct {
-	// JSONPath expression denoting the path within the object where a value substitution should be applied
+	// JSONPath expression denoting the path within the object where a value substitution should be applied.
 	Path *string `json:"path,omitempty"`
 	Value NullableSpConfigRuleValue `json:"value,omitempty"`
-	// Draft modes to which this rule will apply
+	// Draft modes the rule will apply to.
 	Modes []string `json:"modes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

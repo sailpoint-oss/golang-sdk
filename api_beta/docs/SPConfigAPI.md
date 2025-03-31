@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetSpConfigImport**](SPConfigAPI.md#GetSpConfigImport) | **Get** /sp-config/import/{id}/download | Download import job result
 [**GetSpConfigImportStatus**](SPConfigAPI.md#GetSpConfigImportStatus) | **Get** /sp-config/import/{id} | Get import job status
 [**ImportSpConfig**](SPConfigAPI.md#ImportSpConfig) | **Post** /sp-config/import | Initiates configuration objects import job
-[**ListSpConfigObjects**](SPConfigAPI.md#ListSpConfigObjects) | **Get** /sp-config/config-objects | Get config object details
+[**ListSpConfigObjects**](SPConfigAPI.md#ListSpConfigObjects) | **Get** /sp-config/config-objects | List Config Objects
 
 
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 > []SpConfigObject ListSpConfigObjects(ctx).Execute()
 
-Get config object details
+List Config Objects
 
 
 

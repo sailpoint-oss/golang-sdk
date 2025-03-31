@@ -17,11 +17,11 @@ import (
 // checks if the SpConfigRules type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SpConfigRules{}
 
-// SpConfigRules Rules to be applied to the config object during draft process
+// SpConfigRules Rules to be applied to the config object during the draft process.
 type SpConfigRules struct {
 	TakeFromTargetRules []SpConfigRule `json:"takeFromTargetRules,omitempty"`
 	DefaultRules []SpConfigRule `json:"defaultRules,omitempty"`
-	// Whether this object can be edited
+	// Indicates whether the object can be edited.
 	Editable *bool `json:"editable,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

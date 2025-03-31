@@ -595,7 +595,7 @@ Class | Method | HTTP request | Description
 *SPConfigAPI* | [**GetSpConfigImport**](docs/SPConfigAPI.md#getspconfigimport) | **Get** /sp-config/import/{id}/download | Download import job result
 *SPConfigAPI* | [**GetSpConfigImportStatus**](docs/SPConfigAPI.md#getspconfigimportstatus) | **Get** /sp-config/import/{id} | Get import job status
 *SPConfigAPI* | [**ImportSpConfig**](docs/SPConfigAPI.md#importspconfig) | **Post** /sp-config/import | Initiates configuration objects import job
-*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | Get config object details
+*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | List Config Objects
 *SavedSearchAPI* | [**CreateSavedSearch**](docs/SavedSearchAPI.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchAPI* | [**DeleteSavedSearch**](docs/SavedSearchAPI.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete document by ID
 *SavedSearchAPI* | [**ExecuteSavedSearch**](docs/SavedSearchAPI.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID

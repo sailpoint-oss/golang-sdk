@@ -1118,9 +1118,9 @@ func (r ApiListSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Respon
 }
 
 /*
-ListSpConfigObjects Get config object details
+ListSpConfigObjects List Config Objects
 
-This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain "importUrl" and "exportUrl" are available for export/import.
+Get a list of object configurations that the tenant export/import service knows.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSpConfigObjectsRequest

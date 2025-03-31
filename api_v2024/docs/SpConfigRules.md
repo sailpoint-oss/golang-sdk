@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TakeFromTargetRules** | Pointer to [**[]SpConfigRule**](SpConfigRule.md) |  | [optional] 
 **DefaultRules** | Pointer to [**[]SpConfigRule**](SpConfigRule.md) |  | [optional] 
-**Editable** | Pointer to **bool** | Whether this object can be edited | [optional] [default to false]
+**Editable** | Pointer to **bool** | Indicates whether the object can be edited. | [optional] [default to false]
 
 ## Methods
 

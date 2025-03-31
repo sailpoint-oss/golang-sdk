@@ -488,7 +488,7 @@ Class | Method | HTTP request | Description
 *SPConfigAPI* | [**GetSpConfigImport**](docs/SPConfigAPI.md#getspconfigimport) | **Get** /sp-config/import/{id}/download | Download import job result
 *SPConfigAPI* | [**GetSpConfigImportStatus**](docs/SPConfigAPI.md#getspconfigimportstatus) | **Get** /sp-config/import/{id} | Get import job status
 *SPConfigAPI* | [**ImportSpConfig**](docs/SPConfigAPI.md#importspconfig) | **Post** /sp-config/import | Initiates configuration objects import job
-*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | Get config object details
+*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | List Config Objects
 *SearchAttributeConfigurationAPI* | [**CreateSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#createsearchattributeconfig) | **Post** /accounts/search-attribute-config | Create Extended Search Attributes
 *SearchAttributeConfigurationAPI* | [**DeleteSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#deletesearchattributeconfig) | **Delete** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
 *SearchAttributeConfigurationAPI* | [**GetSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsearchattributeconfig) | **Get** /accounts/search-attribute-config | List Extended Search Attributes

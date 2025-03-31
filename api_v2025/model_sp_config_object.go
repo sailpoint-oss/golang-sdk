@@ -17,21 +17,21 @@ import (
 // checks if the SpConfigObject type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SpConfigObject{}
 
-// SpConfigObject Response model for get object configuration.
+// SpConfigObject Response model for object configuration.
 type SpConfigObject struct {
-	// The object type this configuration is for.
+	// Object type the configuration is for.
 	ObjectType *string `json:"objectType,omitempty"`
-	// List of json paths within an exported object of this type that represent references that need to be resolved.
+	// List of JSON paths within an exported object of this type, representing references that must be resolved.
 	ReferenceExtractors []string `json:"referenceExtractors,omitempty"`
-	// If true, this type of object will be JWS signed and cannot be modified before import.
+	// Indicates whether this type of object will be JWS signed and cannot be modified before import.
 	SignatureRequired *bool `json:"signatureRequired,omitempty"`
-	// Whether this object type has to be resolved always by ID
+	// Indicates whether this object type must be always be resolved by ID.
 	AlwaysResolveById *bool `json:"alwaysResolveById,omitempty"`
-	// Whether this is a legacy object
+	// Indicates whether this is a legacy object.
 	LegacyObject *bool `json:"legacyObject,omitempty"`
-	// Whether there is only one object of this type
+	// Indicates whether there is only one object of this type.
 	OnePerTenant *bool `json:"onePerTenant,omitempty"`
-	// Whether this object can be exported or it is just a reference object
+	// Indicates whether the object can be exported or is just a reference object.
 	Exportable *bool `json:"exportable,omitempty"`
 	Rules *SpConfigRules `json:"rules,omitempty"`
 	AdditionalProperties map[string]interface{}

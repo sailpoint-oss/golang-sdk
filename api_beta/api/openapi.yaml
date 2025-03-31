@@ -40921,9 +40921,8 @@ paths:
       - SP-Config
   /sp-config/config-objects:
     get:
-      description: This gets the list of object configurations which are known to
-        the tenant export/import service. Object configurations that contain "importUrl"
-        and "exportUrl" are available for export/import.
+      description: Get a list of object configurations that the tenant export/import
+        service knows.
       operationId: listSpConfigObjects
       responses:
         "200":
@@ -41012,9 +41011,11 @@ paths:
       - userAuth:
         - sp:config:read
         - sp:config:manage
-      summary: Get config object details
+      summary: List Config Objects
       tags:
       - SP-Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources:
     get:
       description: |-
@@ -77218,7 +77219,7 @@ components:
       title: Config Import Response Body
       type: object
     SpConfigObject:
-      description: Response model for get object configuration.
+      description: Response model for object configuration.
       example:
         exportable: true
         signatureRequired: false
@@ -77254,12 +77255,12 @@ components:
         onePerTenant: false
       properties:
         objectType:
-          description: The object type this configuration is for.
+          description: Object type the configuration is for.
           example: TRIGGER_SUBSCRIPTION
           type: string
         referenceExtractors:
-          description: List of json paths within an exported object of this type that
-            represent references that need to be resolved.
+          description: "List of JSON paths within an exported object of this type,\
+            \ representing references that must be resolved."
           example:
           - $.owner
           items:
@@ -77268,29 +77269,30 @@ components:
           type: array
         signatureRequired:
           default: false
-          description: "If true, this type of object will be JWS signed and cannot\
-            \ be modified before import."
+          description: Indicates whether this type of object will be JWS signed and
+            cannot be modified before import.
           example: false
           type: boolean
         alwaysResolveById:
           default: false
-          description: Whether this object type has to be resolved always by ID
+          description: Indicates whether this object type must be always be resolved
+            by ID.
           example: true
           type: boolean
         legacyObject:
           default: false
-          description: Whether this is a legacy object
+          description: Indicates whether this is a legacy object.
           example: false
           type: boolean
         onePerTenant:
           default: false
-          description: Whether there is only one object of this type
+          description: Indicates whether there is only one object of this type.
           example: false
           type: boolean
         exportable:
           default: false
-          description: Whether this object can be exported or it is just a reference
-            object
+          description: Indicates whether the object can be exported or is just a reference
+            object.
           example: true
           type: boolean
         rules:
@@ -87363,7 +87365,7 @@ components:
           type: array
       type: object
     SpConfigRules:
-      description: Rules to be applied to the config object during draft process
+      description: Rules to be applied to the config object during the draft process.
       example:
         defaultRules:
         - path: $.enabled
@@ -87399,7 +87401,7 @@ components:
           type: array
         editable:
           default: false
-          description: Whether this object can be edited
+          description: Indicates whether the object can be edited.
           example: true
           type: boolean
       title: Config Object Rules
@@ -90672,7 +90674,7 @@ components:
           type: string
       type: object
     SpConfigRule:
-      description: Format of Config Hub Object Rules
+      description: Format of Config Hub object rules.
       example:
         path: $.enabled
         modes:
@@ -90682,13 +90684,13 @@ components:
       properties:
         path:
           description: JSONPath expression denoting the path within the object where
-            a value substitution should be applied
+            a value substitution should be applied.
           example: $.enabled
           type: string
         value:
           $ref: '#/components/schemas/SpConfigRule_value'
         modes:
-          description: Draft modes to which this rule will apply
+          description: Draft modes the rule will apply to.
           example:
           - RESTORE
           - PROMOTE
@@ -97198,7 +97200,7 @@ components:
       - type: string
       - type: number
       - type: boolean
-      description: Value to be assigned at the jsonPath location within the object
+      description: Value to be assigned at the jsonPath location within the object.
       nullable: true
     AccessCriteria_criteriaList_inner:
       properties:
