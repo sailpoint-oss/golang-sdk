@@ -1515,7 +1515,7 @@ paths:
       - description: "Filter results using the standard syntax described in [V3 API\
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
           \nFiltering is supported for the following fields and operators:\n\n**id**:\
-          \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**:\
+          \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, ge, le*\n\n**modified**:\
           \ *gt, lt, ge, le*\n\n**owner.id**: *eq, in*\n\n**requestable**: *eq*\n\n\
           **source.id**: *eq, in*\n\nFiltering is not supported for access profiles\
           \ and entitlements that have the '+' symbol in their names. "
@@ -1638,7 +1638,7 @@ paths:
     post:
       description: |-
         Create an access profile.
-        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
+        A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
         The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
@@ -1713,8 +1713,14 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+        - idn:entitlement:read
+        - idn:identity:read
+        - idn:sources:read
       - applicationAuth:
         - idn:access-profile:manage
+        - idn:entitlement:read
+        - idn:identity:read
+        - idn:sources:read
       summary: Create Access Profile
       tags:
       - Access Profiles
@@ -36670,13 +36676,15 @@ paths:
 
           **name**: *eq, sw*
 
-          **created**: *gt, lt, ge, le*
+          **created**: *gt, ge, le*
 
-          **modified**: *gt, lt, ge, le*
+          **modified**: *lt, ge, le*
 
           **owner.id**: *eq, in*
 
           **requestable**: *eq*
+
+          **dimensional**: *eq*
         example: requestable eq false
         in: query
         name: filters
@@ -56478,10 +56486,9 @@ paths:
       - Workflows
   /workflow-executions/{id}:
     get:
-      description: "Use this API to get a single workflow execution. Workflow executions\
-        \ are available for up to 90 days before being archived. If you attempt to\
-        \ access a workflow execution that has been archived, you will receive a \"\
-        404 Not Found\" response."
+      description: "Get a single workflow execution. Workflow executions are available\
+        \ for up to 90 days before being archived. If you attempt to access a workflow\
+        \ execution that has been archived, you will receive a \"404 Not Found\" response."
       operationId: getWorkflowExecution
       parameters:
       - description: Workflow execution ID.
@@ -56583,6 +56590,8 @@ paths:
       summary: Get Workflow Execution
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflow-executions/{id}/history:
     get:
       description: "Get a detailed history of a single workflow execution.  Workflow\
@@ -80633,6 +80642,7 @@ components:
           - Completed
           - Failed
           - Canceled
+          - Queued
           - Running
           example: Completed
           type: string

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Operation** | Pointer to [**ProvisioningCriteriaOperation**](ProvisioningCriteriaOperation.md) |  | [optional] 
-**Attribute** | Pointer to **NullableString** | Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error. | [optional] 
-**Value** | Pointer to **string** | String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type. | [optional] 
-**Children** | Pointer to **NullableString** | Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. | [optional] 
+**Attribute** | Pointer to **NullableString** | Name of the account attribute to be tested. If **operation** is one of &#x60;EQUALS&#x60;, &#x60;NOT_EQUALS&#x60;, &#x60;CONTAINS&#x60;, or &#x60;HAS&#x60;, this field is required. Otherwise, specifying it results in an error. | [optional] 
+**Value** | Pointer to **NullableString** | String value to test the account attribute w/r/t the specified operation. If the operation is one of &#x60;EQUALS&#x60;, &#x60;NOT_EQUALS&#x60;, or &#x60;CONTAINS&#x60;, this field is required. Otherwise, specifying it results in an error. If the attribute is not string-typed, the API will convert it to the appropriate type. | [optional] 
+**Children** | Pointer to **NullableString** | Array of child criteria. This field is required if the operation is &#x60;AND&#x60; or &#x60;OR&#x60;. Otherwise, it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. | [optional] 
 
 ## Methods
 
@@ -113,6 +113,16 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### SetValueNil
+
+`func (o *ProvisioningCriteriaLevel3) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *ProvisioningCriteriaLevel3) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetChildren
 
 `func (o *ProvisioningCriteriaLevel3) GetChildren() string`

@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the Access Profile | [optional] [readonly] 
-**Name** | **string** | Name of the Access Profile | 
-**Description** | Pointer to **NullableString** | Information about the Access Profile | [optional] 
-**Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
+**Id** | Pointer to **string** | Access profile ID. | [optional] [readonly] 
+**Name** | **string** | Access profile name. | 
+**Description** | Pointer to **NullableString** | Access profile description. | [optional] 
+**Created** | Pointer to **time.Time** | Date and time when the access profile was created. | [optional] [readonly] 
+**Modified** | Pointer to **time.Time** | Date and time when the access profile was last modified. | [optional] [readonly] 
+**Enabled** | Pointer to **bool** | Indicates whether the access profile is enabled. If it&#39;s enabled, you must include at least one entitlement. | [optional] [default to false]
 **Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
-**Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
-**Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
+**Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | List of entitlements associated with the access profile. If &#x60;enabled&#x60; is false, this can be empty. Otherwise, it must contain at least one entitlement. | [optional] 
+**Requestable** | Pointer to **bool** | Indicates whether the access profile is requestable by access request. Currently, making an access profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an access profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
 **AccessRequestConfig** | Pointer to [**NullableRequestability**](Requestability.md) |  | [optional] 
 **RevocationRequestConfig** | Pointer to [**NullableRevocability**](Revocability.md) |  | [optional] 
-**Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 
+**Segments** | Pointer to **[]string** | List of segment IDs, if any, that the access profile is assigned to. | [optional] 
 **ProvisioningCriteria** | Pointer to [**NullableProvisioningCriteriaLevel1**](ProvisioningCriteriaLevel1.md) |  | [optional] 
 
 ## Methods

@@ -19,7 +19,7 @@ var _ MappedNullable = &Revocability{}
 
 // Revocability struct for Revocability
 type Revocability struct {
-	// List describing the steps in approving the revocation request
+	// List describing the steps involved in approving the revocation request.
 	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
