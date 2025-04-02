@@ -1,0 +1,123 @@
+- path: /{path}
+  method: Delete
+  xCodeSample:
+    - lang: Golang
+      label: SDK_tools/sdk/go//methods/default#generic-delete
+      source: |
+        from api_generic.api.default_api import DefaultAPI
+        from api_generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          path = path_example # string |  # string | 
+          try:
+              # Generic DELETE request
+              
+              results = DefaultAPI(api_client).GenericDelete(path=path)
+              # Below is a request that includes all optional parameters
+              # results = DefaultAPI(api_client).GenericDelete(path)
+              print("The response of DefaultAPI->GenericDelete:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DefaultAPI->GenericDelete: %s\n" % e)
+- path: /{path}
+  method: Get
+  xCodeSample:
+    - lang: Golang
+      label: SDK_tools/sdk/go//methods/default#generic-get
+      source: |
+        from api_generic.api.default_api import DefaultAPI
+        from api_generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          path = path_example # string |  # string | 
+          try:
+              # Generic GET request
+              
+              results = DefaultAPI(api_client).GenericGet(path=path)
+              # Below is a request that includes all optional parameters
+              # results = DefaultAPI(api_client).GenericGet(path)
+              print("The response of DefaultAPI->GenericGet:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DefaultAPI->GenericGet: %s\n" % e)
+- path: /{path}
+  method: Patch
+  xCodeSample:
+    - lang: Golang
+      label: SDK_tools/sdk/go//methods/default#generic-patch
+      source: |
+        from api_generic.api.default_api import DefaultAPI
+        from api_generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          path = path_example # string |  # string | 
+          requestBody = Object # map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          try:
+              # Generic PATCH request
+              
+              results = DefaultAPI(api_client).GenericPatch(path=path)
+              # Below is a request that includes all optional parameters
+              # results = DefaultAPI(api_client).GenericPatch(path, new_requestBody)
+              print("The response of DefaultAPI->GenericPatch:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DefaultAPI->GenericPatch: %s\n" % e)
+- path: /{path}
+  method: Post
+  xCodeSample:
+    - lang: Golang
+      label: SDK_tools/sdk/go//methods/default#generic-post
+      source: |
+        from api_generic.api.default_api import DefaultAPI
+        from api_generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          path = path_example # string |  # string | 
+          requestBody = Object # map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          try:
+              # Generic POST request
+              
+              results = DefaultAPI(api_client).GenericPost(path=path)
+              # Below is a request that includes all optional parameters
+              # results = DefaultAPI(api_client).GenericPost(path, new_requestBody)
+              print("The response of DefaultAPI->GenericPost:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DefaultAPI->GenericPost: %s\n" % e)
+- path: /{path}
+  method: Put
+  xCodeSample:
+    - lang: Golang
+      label: SDK_tools/sdk/go//methods/default#generic-put
+      source: |
+        from api_generic.api.default_api import DefaultAPI
+        from api_generic.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          path = path_example # string |  # string | 
+          requestBody = Object # map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
+          try:
+              # Generic PUT request
+              
+              results = DefaultAPI(api_client).GenericPut(path=path)
+              # Below is a request that includes all optional parameters
+              # results = DefaultAPI(api_client).GenericPut(path, new_requestBody)
+              print("The response of DefaultAPI->GenericPut:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DefaultAPI->GenericPut: %s\n" % e)

@@ -1,13 +1,16 @@
 .gitignore
 .openapi-generator-ignore
 .travis.yml
+Index.md
 README.md
 api/openapi.yaml
 api_default.go
 client.go
 configuration.go
 docs/DefaultAPI.md
+docs/DefaultAPIdeveloperSite_code_examples.yaml
 docs/GenericResponse.md
+docs/Methods/Index.md
 git_push.sh
 go.mod
 go.sum
