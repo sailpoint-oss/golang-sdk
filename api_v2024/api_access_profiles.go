@@ -41,8 +41,8 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 /*
 CreateAccessProfile Create Access Profile
 
-Use this API to create an access profile.
-A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
+Create an access profile.
+A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -895,13 +895,13 @@ type ApiListAccessProfilesRequest struct {
 	includeUnsegmented *bool
 }
 
-// If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity&#39;s ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
+// Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity&#39;s ID.  If you specify an identity that isn&#39;t a subadmin, the API returns a 400 Bad Request error.
 func (r ApiListAccessProfilesRequest) ForSubadmin(forSubadmin string) ApiListAccessProfilesRequest {
 	r.forSubadmin = &forSubadmin
 	return r
 }
 
-// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAccessProfilesRequest) Limit(limit int32) ApiListAccessProfilesRequest {
 	r.limit = &limit
 	return r
@@ -919,7 +919,7 @@ func (r ApiListAccessProfilesRequest) Count(count bool) ApiListAccessProfilesReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
 func (r ApiListAccessProfilesRequest) Filters(filters string) ApiListAccessProfilesRequest {
 	r.filters = &filters
 	return r
@@ -931,13 +931,13 @@ func (r ApiListAccessProfilesRequest) Sorters(sorters string) ApiListAccessProfi
 	return r
 }
 
-// If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+// Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error.
 func (r ApiListAccessProfilesRequest) ForSegmentIds(forSegmentIds string) ApiListAccessProfilesRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
 }
 
-// Indicates whether the response list should contain unsegmented access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+// Indicates whether the response list should contain unsegmented access profiles. If &#x60;for-segment-ids&#x60; is absent or empty, specifying *include-unsegmented* as &#x60;false&#x60; results in an error.
 func (r ApiListAccessProfilesRequest) IncludeUnsegmented(includeUnsegmented bool) ApiListAccessProfilesRequest {
 	r.includeUnsegmented = &includeUnsegmented
 	return r
@@ -950,7 +950,7 @@ func (r ApiListAccessProfilesRequest) Execute() ([]AccessProfile, *http.Response
 /*
 ListAccessProfiles List Access Profiles
 
-Use this API to get a list of access profiles.
+Get a list of access profiles.
 >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -990,7 +990,7 @@ func (a *AccessProfilesAPIService) ListAccessProfilesExecute(r ApiListAccessProf
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
-		var defaultValue int32 = 50
+		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {

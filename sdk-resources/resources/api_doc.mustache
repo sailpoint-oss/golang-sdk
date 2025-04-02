@@ -1,24 +1,72 @@
-# {{invokerPackage}}\{{classname}}{{#description}}
+---
+id: {{#lambda.kebabcase}}{{#lambda.titlecase}}{{funtionPrefix}}{{baseName}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+title: {{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}
+pagination_label: {{baseName}}
+sidebar_label: {{baseName}}
+sidebar_class_name: gosdk
+keywords: ['go', 'Golang', 'sdk', '{{baseName}}', '{{funtionPrefix}}{{baseName}}'] 
+slug: /tools/sdk/go/{{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}}/methods/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+tags: ['SDK', 'Software Development Kit', '{{baseName}}', '{{funtionPrefix}}{{baseName}}']
+---
 
-{{.}}{{/description}}
-
+# {{classname}}
+  {{#operations}}{{#operation}}{{#-first}}{{#tags}}{{description}} {{/tags}}{{/-first}}{{/operation}}{{/operations}}
 All URIs are relative to *{{basePath}}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-{{#operations}}{{#operation}}[**{{operationId}}**]({{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{summary}}
+{{#operations}}{{#operation}}[**{{#lambda.kebabcase}}{{operationId}}{{/lambda.kebabcase}}**](#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}) | **{{httpMethod}}** `{{{path}}}` | {{summary}}
 {{/operation}}{{/operations}}
 
 {{#operations}}
 {{#operation}}
+## {{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+{{#isDeprecated}}:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
+{{/isDeprecated}}
+{{#headerParams}}:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+{{/headerParams}}
+{{{summary}}}
+{{#notes}}{{{unescapedNotes}}}{{/notes}}
+{{{description}}}
+[API Spec](https://developer.sailpoint.com/docs/api/{{apiVersion}}/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}})
 
-## {{{operationId}}}
+### Path Parameters
 
-> {{#returnType}}{{{.}}} {{/returnType}}{{{operationId}}}(ctx{{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+{{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#pathParams}}{{#-last}}
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.{{/-last}}{{/pathParams}}{{#pathParams}}
+**{{paramName}}** | {{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}](../models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}} | {{description}} | {{#defaultValue}}[default to {{.}}]{{/defaultValue}}{{/pathParams}}
 
-{{{summary}}}{{#notes}}
+### Other Parameters
 
-{{{unespacedNotes}}}{{/notes}}
+Other parameters are passed through a pointer to a api{{{nickname}}}Request struct via the builder pattern
+{{#allParams}}{{#-last}}
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------{{/-last}}{{/allParams}}{{#allParams}}
+{{^isPathParam}} **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**[]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}](../models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{^baseType}}{{dataType}}{{/baseType}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**map[string]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}](../models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{^baseType}}{{dataType}}{{/baseType}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}](../models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{^baseType}}{{dataType}}{{/baseType}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}}{{/isContainer}} | {{description}} | {{#defaultValue}}[default to {{.}}]{{/defaultValue}}{{/isPathParam}}{{/allParams}}
+
+### Return type
+
+{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**](../models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{returnBaseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}} (empty response body){{/returnType}}
+
+### HTTP request headers
+
+- **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
+- **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
 
 ### Example
 
@@ -32,17 +80,33 @@ import (
 {{#vendorExtensions.x-go-import}}
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
+  {{apiVersion}} "{{moduleImportPath}}"
 	{{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
 )
 
 func main() {
 	{{#allParams}}
-	{{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-	{{/allParams}}
+    {{^isArray}}
+    {{#isModel}}
+    {{paramName}} := fmt.Sprintf(`{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
+    {{/isModel}}
+    {{^isModel}}
+    {{paramName}} := {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/isModel}}
+    {{/isArray}}
+    {{#isArray}}
+    {{#items.isModel}}
+    {{paramName}} := fmt.Sprintf(`{{{example}}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/items.isModel}}
+    {{^items.isModel}}
+    {{paramName}} := fmt.Sprintf(`{{{example}}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/items.isModel}}
+    {{/isArray}}
+    {{/allParams}}
 
-	configuration := {{goImportAlias}}.NewConfiguration()
-	apiClient := {{goImportAlias}}.NewAPIClient(configuration)
-	{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+	configuration := NewDefaultConfiguration()
+	apiClient := NewAPIClient(configuration)
+	{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,39 +118,7 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-{{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#pathParams}}{{#-last}}
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.{{/-last}}{{/pathParams}}{{#pathParams}}
-**{{paramName}}** | {{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{baseType}}.md){{/isFile}}{{/isPrimitiveType}} | {{description}} | {{#defaultValue}}[default to {{.}}]{{/defaultValue}}{{/pathParams}}
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a api{{{nickname}}}Request struct via the builder pattern
-{{#allParams}}{{#-last}}
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------{{/-last}}{{/allParams}}{{#allParams}}
-{{^isPathParam}} **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**[]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**map[string]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/isContainer}} | {{description}} | {{#defaultValue}}[default to {{.}}]{{/defaultValue}}{{/isPathParam}}{{/allParams}}
-
-### Return type
-
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}} (empty response body){{/returnType}}
-
-### Authorization
-
-{{^authMethods}}No authorization required{{/authMethods}}{{#authMethods}}[{{{name}}}](../README.md#{{{name}}}){{^-last}}, {{/-last}}{{/authMethods}}
-
-### HTTP request headers
-
-- **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
-- **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#)
 
 {{/operation}}
 {{/operations}}

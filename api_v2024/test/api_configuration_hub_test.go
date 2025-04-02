@@ -62,6 +62,18 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationHubAPIService CreateScheduledAction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.CreateScheduledAction(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService CreateUploadedConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -108,6 +120,19 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 		var objectMappingId string
 
 		httpRes, err := apiClient.ConfigurationHubAPI.DeleteObjectMapping(context.Background(), sourceOrg, objectMappingId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationHubAPIService DeleteScheduledAction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var scheduledActionId string
+
+		httpRes, err := apiClient.ConfigurationHubAPI.DeleteScheduledAction(context.Background(), scheduledActionId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -205,6 +230,18 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationHubAPIService ListScheduledActions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.ListScheduledActions(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService ListUploadedConfigurations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -224,6 +261,20 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 		var sourceOrg string
 
 		resp, httpRes, err := apiClient.ConfigurationHubAPI.UpdateObjectMappings(context.Background(), sourceOrg).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationHubAPIService UpdateScheduledAction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var scheduledActionId string
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.UpdateScheduledAction(context.Background(), scheduledActionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

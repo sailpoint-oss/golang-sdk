@@ -43,9 +43,8 @@ tags:
     \ with the 'Developers' entitlement.\n\nWhen users only need Active Directory\
     \ employee access, they can request access to the 'Employees' entitlement.\n\n\
     When users need both Active Directory employee and developer access, they can\
-    \ request access to the 'AD Developers' access profile.\n\nAccess profiles are\
-    \ the most important units of access in Identity Security Cloud. Identity Security\
-    \ Cloud uses access profiles in many features, including the following:\n\n- Provisioning:\
+    \ request access to the 'AD Developers' access profile.\n\nIdentity Security Cloud\
+    \ uses access profiles in many features, including the following:\n\n- Provisioning:\
     \ When you use the Provisioning Service, lifecycle states and roles both grant\
     \ access to users in the form of access profiles.\n\n- Certifications: You can\
     \ approve or revoke access profiles in certification campaigns, just like entitlements.\
@@ -1053,13 +1052,11 @@ tags:
     \ in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
     \ for more information about tagging objects in Identity Security Cloud. \n"
   name: Tagged Objects
-- description: |
-    The purpose of this API is to expose functionality for the manipulation of Transform objects.
-    Transforms are a form of configurable objects which define an easy way to manipulate attribute data without having
-    to write code. These endpoints don't require API calls to other resources, audit service is used for keeping track
-    of which users have made changes to the Transforms.
-
-    Refer to [Transforms](https://developer.sailpoint.com/docs/extensibility/transforms/) for more information about transforms.
+- description: "The purpose of this API is to expose functionality for the manipulation\
+    \ of Transform objects.\nTransforms are a form of configurable objects which define\
+    \ an easy way to manipulate attribute data without having\nto write code. \n\n\
+    Refer to [Transforms](https://developer.sailpoint.com/docs/extensibility/transforms/)\
+    \ for more information about transforms.\n"
   name: Transforms
 - description: "Use this API to implement work item functionality. \nWith this functionality\
     \ in place, users can manage their work items (tasks). \n\nWork items refer to\
@@ -1085,15 +1082,15 @@ tags:
 paths:
   /access-profiles:
     get:
-      description: "Use this API to get a list of access profiles.\n>**Note:** When\
-        \ you filter for access profiles that have the '+' symbol in their names,\
-        \ the response is blank. "
+      description: "Get a list of access profiles.\n>**Note:** When you filter for\
+        \ access profiles that have the '+' symbol in their names, the response is\
+        \ blank. "
       operationId: listAccessProfiles
       parameters:
       - description: |-
-          If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity's ID.
+          Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.
 
-          A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
+          If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: query
         name: for-subadmin
@@ -1101,16 +1098,16 @@ paths:
         schema:
           type: string
       - description: |-
-          Note that for this API the maximum value for limit is 50.
+          Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 50
+        example: 250
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int32
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
       - description: |-
@@ -1143,8 +1140,8 @@ paths:
           \nFiltering is supported for the following fields and operators:\n\n**id**:\
           \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**:\
           \ *gt, lt, ge, le*\n\n**owner.id**: *eq, in*\n\n**requestable**: *eq*\n\n\
-          **source.id**: *eq, in*\n\nComposite operators supported: *and, or*\n\n\
-          Filtering is not supported for access profiles and entitlements that have\
+          **source.id**: *eq, in*\n\nSupported composite operators are *and, or*\n\
+          \nFiltering is not supported for access profiles and entitlements that have\
           \ the '+' symbol in their names. "
         example: name eq "SailPoint Support"
         in: query
@@ -1164,8 +1161,7 @@ paths:
           format: comma-separated
           type: string
       - description: |-
-          If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.
-
+          Filters access profiles to only those assigned to the segment(s) with the specified IDs.
           If segmentation is currently unavailable, specifying this parameter results in an error.
         example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
         in: query
@@ -1175,8 +1171,8 @@ paths:
           format: comma-separated
           type: string
       - description: "Indicates whether the response list should contain unsegmented\
-          \ access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
-          \ as false results in an error."
+          \ access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented*\
+          \ as `false` results in an error."
         example: false
         in: query
         name: include-unsegmented
@@ -1265,9 +1261,9 @@ paths:
       - SOURCE_SUBADMIN
     post:
       description: |-
-        Use this API to create an access profile.
-        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
-        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        Create an access profile.
+        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's source.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
         content:
@@ -4646,9 +4642,35 @@ paths:
       - HELPDESK
   /accounts/search-attribute-config:
     get:
-      description: Get a list of attribute/application associates currently configured
+      description: Get a list of attribute/application attributes currently configured
         in Identity Security Cloud (ISC).
       operationId: getSearchAttributeConfig
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
       responses:
         "200":
           content:
@@ -4723,11 +4745,9 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: "Create and configure extended search attributes. This API accepts\
-        \ an attribute name, an attribute display name and a list of name/value pair\
-        \ associates of application IDs to attribute names. It will then validate\
-        \ the inputs and configure/create and attribute promotion configuration in\
-        \ the Link ObjectConfig."
+      description: |-
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
+        >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
       operationId: createSearchAttributeConfig
       requestBody:
         content:
@@ -25027,7 +25047,7 @@ paths:
   /requestable-objects:
     get:
       description: |-
-        This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
+        Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v3/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
         Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjects
       parameters:
@@ -25043,8 +25063,8 @@ paths:
         schema:
           type: string
       - description: "Filters the results to the specified type/types, where each\
-          \ type is one of ROLE or ACCESS_PROFILE. If absent, all types are returned.\
-          \ Support for additional types may be added in the future without notice."
+          \ type is one of `ROLE` or `ACCESS_PROFILE`. If absent, all types are returned.\
+          \ SailPoint may add support for additional types in the future without notice."
         example: "ROLE,ACCESS_PROFILE"
         explode: false
         in: query
@@ -25054,9 +25074,9 @@ paths:
           items:
             $ref: '#/components/schemas/RequestableObjectType'
           type: array
-      - description: "It allows searching requestable access items with a partial\
-          \ match on the name or description. If term is provided, then the *filter*\
-          \ query parameter will be ignored."
+      - description: "Allows searching requestable access items with a partial match\
+          \ on the name or description. If `term` is provided, then the API will ignore\
+          \ the `filter` query parameter."
         example: Finance Role
         in: query
         name: term
@@ -25064,9 +25084,10 @@ paths:
         schema:
           type: string
       - description: "Filters the result to the specified status/statuses, where each\
-          \ status is one of AVAILABLE, ASSIGNED, or PENDING. It is an error to specify\
-          \ this parameter without also specifying an *identity-id* parameter. Additional\
-          \ statuses may be added in the future without notice."
+          \ status is one of `AVAILABLE`, `ASSIGNED`, or `PENDING`. Specifying this\
+          \ parameter without also specifying an `identity-id` parameter results in\
+          \ an error.  SailPoint may add additional statuses in the future without\
+          \ notice."
         example:
         - ASSIGNED
         - PENDING
@@ -25207,7 +25228,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:requestable-objects:read
       summary: Requestable Objects List
       tags:
       - Requestable Objects
@@ -45741,18 +45763,18 @@ components:
         status: ACTIVE
         associatedSources: []
   parameters:
-    limit50:
+    limit:
       description: |-
-        Note that for this API the maximum value for limit is 50.
+        Max number of results to return.
         See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 50
+      example: 250
       in: query
       name: limit
       required: false
       schema:
-        default: 50
+        default: 250
         format: int32
-        maximum: 50
+        maximum: 250
         minimum: 0
         type: integer
     offset:
@@ -45782,18 +45804,18 @@ components:
       schema:
         default: false
         type: boolean
-    limit:
+    limit50:
       description: |-
-        Max number of results to return.
+        Note that for this API the maximum value for limit is 50.
         See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 250
+      example: 50
       in: query
       name: limit
       required: false
       schema:
-        default: 250
+        default: 50
         format: int32
-        maximum: 250
+        maximum: 50
         minimum: 0
         type: integer
     id:
@@ -47798,7 +47820,7 @@ components:
           type: boolean
       type: object
     RequestableObjectType:
-      description: 'The currently supported requestable object types. '
+      description: Currently supported requestable object types.
       enum:
       - ACCESS_PROFILE
       - ROLE
@@ -48527,6 +48549,7 @@ components:
             - ARM_UTILIZATION_EXTRACT
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
+            - APPLICATION_DISCOVERY
             example: AUTHENTICATE
             type: string
           type: array
@@ -49188,7 +49211,7 @@ components:
           readOnly: true
           type: string
         enabled:
-          default: true
+          default: false
           description: Whether the Access Profile is enabled. If the Access Profile
             is enabled then you must include at least one Entitlement.
           example: true
@@ -49657,6 +49680,17 @@ components:
           name: William Wilson
           id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         cancelable: true
         requesterComment:
           created: 2017-07-11T18:45:37.098Z
@@ -50014,6 +50048,13 @@ components:
             key2: value2
           nullable: true
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     PendingApproval:
       example:
@@ -50033,6 +50074,17 @@ components:
         clientMetadata:
           customKey1: custom value 1
           customKey2: custom value 2
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -50239,6 +50291,13 @@ components:
             customKey2: custom value 2
           nullable: true
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     CompletedApproval:
       example:
@@ -50265,6 +50324,17 @@ components:
         clientMetadata:
           requestedAppName: test-app
           requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -50481,6 +50551,13 @@ components:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
           type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/RequestedAccountRef'
+          nullable: true
+          type: array
       type: object
     CommentDto:
       example:
@@ -51286,7 +51363,7 @@ components:
           - INCLUSION
           - EXCLUSION
           example: INCLUSION
-          type: object
+          type: string
         criteriaList:
           description: List of criteria.
           example:
@@ -53793,6 +53870,7 @@ components:
           description: Deleted lifecycle state's DTO type.
           enum:
           - LIFECYCLE_STATE
+          - TASK_RESULT
           example: LIFECYCLE_STATE
           type: string
         id:
@@ -57922,7 +58000,7 @@ components:
           - SEARCH_EXPORT
           - UNCORRELATED_ACCOUNTS
           example: IDENTITIES_DETAILS
-          type: object
+          type: string
         description:
           description: Description of the report purpose and/or contents.
           example: A detailed view of the identities in the system.
@@ -57975,8 +58053,6 @@ components:
             $ref: '#/components/schemas/TaskResultDetails_returns_inner'
           type: array
         attributes:
-          additionalProperties:
-            type: object
           description: Extra attributes map(dictionary) needed for the report.
           example:
             org: an-org
@@ -58606,6 +58682,7 @@ components:
             - ARM_UTILIZATION_EXTRACT
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
+            - APPLICATION_DISCOVERY
             example: AUTHENTICATE
             type: string
           type: array
@@ -60606,6 +60683,7 @@ components:
         - ARM_UTILIZATION_EXTRACT
         - ARM_CHANGELOG_EXTRACT
         - USES_UUID
+        - APPLICATION_DISCOVERY
         example: AUTHENTICATE
         type: string
       type: array
@@ -61427,6 +61505,36 @@ components:
           nullable: true
           type: string
       type: object
+    RequestedAccountRef:
+      example:
+        accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        name: Glen.067da3248e914
+        accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+        sourceName: Multi Account AD source name
+        type: IDENTITY
+      properties:
+        name:
+          description: Display name of the account for the user
+          example: Glen.067da3248e914
+          type: string
+        type:
+          $ref: '#/components/schemas/DtoType'
+        accountUuid:
+          description: The uuid for the account
+          example: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nullable: true
+          type: string
+        accountId:
+          description: The native identity for the account
+          example: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          nullable: true
+          type: string
+        sourceName:
+          description: Display name of the source for the account
+          example: Multi Account AD source name
+          nullable: false
+          type: string
+      type: object
     AccessItemRequestedFor:
       description: Identity the access item is requested for.
       example:
@@ -61688,6 +61796,7 @@ components:
       - ACCOUNT
       - AGGREGATED_ENTITLEMENT
       - INVALID_CERTIFIABLE_ENTITY
+      - INVALID_CERTIFIABLE_BUNDLE
       example: IDENTITY_ATTRIBUTE
       type: string
     Operation:
@@ -61702,6 +61811,7 @@ components:
       - OR
       - null
       example: EQUALS
+      nullable: true
       type: string
     CertificationPhase:
       description: |
@@ -65879,23 +65989,28 @@ components:
         id:
           description: The unique ID of the trigger
           example: idn:identity-attributes-changed
+          nullable: true
           type: string
         filter.$:
           description: JSON path expression that will limit which events the trigger
             will fire on
           example: "$.changes[?(@.attribute == 'manager')]"
+          nullable: true
           type: string
         description:
           description: Description of the event trigger
           example: Triggered when an identity's manager attribute changes
+          nullable: true
           type: string
         attributeToFilter:
           description: The attribute to filter on
           example: LifecycleState
+          nullable: true
           type: string
         formDefinitionId:
           description: Form definition's unique identifier.
           example: Admin_Access_Request_Form
+          nullable: true
           type: string
       required:
       - id
@@ -65908,18 +66023,22 @@ components:
         name:
           description: A unique name for the external trigger
           example: search-and-notify
+          nullable: true
           type: string
         description:
-          description: Additonal context about the external trigger
+          description: Additional context about the external trigger
           example: Run a search and notify the results
+          nullable: true
           type: string
         clientId:
           description: OAuth Client ID to authenticate with this trigger
           example: 87e239b2-b85b-4bde-b9a7-55bf304ddcdc
+          nullable: true
           type: string
         url:
           description: URL to invoke this workflow
           example: https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d
+          nullable: true
           type: string
       title: External Trigger Attributes
       type: object
@@ -65927,13 +66046,6 @@ components:
       additionalProperties: false
       description: Attributes related to a scheduled trigger
       properties:
-        cronString:
-          description: A valid CRON expression
-          example: 0 9 * * 1
-          externalDocs:
-            description: CRON expression editor
-            url: https://crontab.guru/
-          type: string
         frequency:
           description: Frequency of execution
           enum:
@@ -65942,29 +66054,43 @@ components:
           - monthly
           - yearly
           - cronSchedule
+          - null
           example: daily
+          nullable: true
           type: string
         timeZone:
           description: Time zone identifier
           example: America/Chicago
+          nullable: true
+          type: string
+        cronString:
+          description: A valid CRON expression
+          example: 0 9 * * 1
+          externalDocs:
+            description: CRON expression editor
+            url: https://crontab.guru/
+          nullable: true
           type: string
         weeklyDays:
           description: Scheduled days of the week for execution
           example: Monday
           items:
             type: string
+          nullable: true
           type: array
         weeklyTimes:
           description: Scheduled execution times
           example: Monday
           items:
             type: string
+          nullable: true
           type: array
         yearlyTimes:
           description: Scheduled execution times
           example: 1969-12-31T09:00:00.000Z
           items:
             type: string
+          nullable: true
           type: array
       required:
       - frequency
@@ -68150,10 +68276,7 @@ components:
         type:
           $ref: '#/components/schemas/CriteriaType'
         operation:
-          allOf:
-          - $ref: '#/components/schemas/Operation'
-          - nullable: true
-            type: object
+          $ref: '#/components/schemas/Operation'
         property:
           description: Specified key from the type of criteria.
           example: displayName
@@ -68164,8 +68287,40 @@ components:
           example: Allie
           nullable: true
           type: string
+        negateResult:
+          default: false
+          description: "If true, the filter will negate the result of the criteria."
+          example: false
+          type: boolean
+        shortCircuit:
+          default: false
+          description: "If true, the filter will short circuit the evaluation of the\
+            \ criteria."
+          example: false
+          type: boolean
+        recordChildMatches:
+          default: false
+          description: "If true, the filter will record child matches for the criteria."
+          example: false
+          type: boolean
+        id:
+          description: The unique ID of the criteria.
+          example: 5ec18cef39020d6fd7a60ad3970aba61
+          nullable: true
+          type: string
+        suppressMatchedItems:
+          default: false
+          description: "If this value is true, then matched items will not only be\
+            \ excluded from the campaign, they will also not have archived certification\
+            \ items created. \nSuch items will not appear in the exclusion report.\n"
+          example: false
+          type: boolean
+        children:
+          description: List of child criteria.
+          items:
+            type: object
+          type: array
       required:
-      - operation
       - property
       - type
       - value
@@ -68383,12 +68538,7 @@ components:
             value: Austin
           operator: EQUALS
     ReportDetails_arguments:
-      description: The string-object map(dictionary) with the arguments needed for
-        report processing.
-      example:
-        application: 2c9180897e7742b2017e781782f705b9
-        sourceName: Active Directory
-      oneOf:
+      anyOf:
       - $ref: '#/components/schemas/accounts-export-report-arguments'
       - $ref: '#/components/schemas/identities-details-report-arguments'
       - $ref: '#/components/schemas/identities-report-arguments'
@@ -68396,6 +68546,11 @@ components:
       - $ref: '#/components/schemas/orphan-identities-report-arguments'
       - $ref: '#/components/schemas/search-export-report-arguments'
       - $ref: '#/components/schemas/uncorrelated-accounts-report-arguments'
+      description: The string-object map(dictionary) with the arguments needed for
+        report processing.
+      example:
+        application: 2c9180897e7742b2017e781782f705b9
+        sourceName: Active Directory
     TaskResultDetails_messages_inner:
       properties:
         type:

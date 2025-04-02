@@ -25,7 +25,7 @@ type TaskDefinitionSummary struct {
 	// Name of the TaskDefinition
 	UniqueName string `json:"uniqueName"`
 	// Description of the TaskDefinition
-	Description string `json:"description"`
+	Description NullableString `json:"description"`
 	// Name of the parent of the TaskDefinition
 	ParentName string `json:"parentName"`
 	// Executor of the TaskDefinition
@@ -41,7 +41,7 @@ type _TaskDefinitionSummary TaskDefinitionSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskDefinitionSummary(id string, uniqueName string, description string, parentName string, executor NullableString, arguments map[string]interface{}) *TaskDefinitionSummary {
+func NewTaskDefinitionSummary(id string, uniqueName string, description NullableString, parentName string, executor NullableString, arguments map[string]interface{}) *TaskDefinitionSummary {
 	this := TaskDefinitionSummary{}
 	this.Id = id
 	this.UniqueName = uniqueName
@@ -109,27 +109,29 @@ func (o *TaskDefinitionSummary) SetUniqueName(v string) {
 }
 
 // GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TaskDefinitionSummary) GetDescription() string {
-	if o == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskDefinitionSummary) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // SetDescription sets field value
 func (o *TaskDefinitionSummary) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
 }
 
 // GetParentName returns the ParentName field value
@@ -218,7 +220,7 @@ func (o TaskDefinitionSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["uniqueName"] = o.UniqueName
-	toSerialize["description"] = o.Description
+	toSerialize["description"] = o.Description.Get()
 	toSerialize["parentName"] = o.ParentName
 	toSerialize["executor"] = o.Executor.Get()
 	toSerialize["arguments"] = o.Arguments

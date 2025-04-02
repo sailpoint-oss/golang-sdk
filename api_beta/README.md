@@ -455,7 +455,7 @@ Class | Method | HTTP request | Description
 *RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete a Role
 *RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | Identities assigned a Role
-*RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
+*RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List Role&#39;s Entitlements
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
 *RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
 *SIMIntegrationsAPI* | [**CreateSIMIntegration**](docs/SIMIntegrationsAPI.md#createsimintegration) | **Post** /sim-integrations | Create new SIM integration
@@ -488,7 +488,7 @@ Class | Method | HTTP request | Description
 *SPConfigAPI* | [**GetSpConfigImport**](docs/SPConfigAPI.md#getspconfigimport) | **Get** /sp-config/import/{id}/download | Download import job result
 *SPConfigAPI* | [**GetSpConfigImportStatus**](docs/SPConfigAPI.md#getspconfigimportstatus) | **Get** /sp-config/import/{id} | Get import job status
 *SPConfigAPI* | [**ImportSpConfig**](docs/SPConfigAPI.md#importspconfig) | **Post** /sp-config/import | Initiates configuration objects import job
-*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | Get config object details
+*SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | List Config Objects
 *SearchAttributeConfigurationAPI* | [**CreateSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#createsearchattributeconfig) | **Post** /accounts/search-attribute-config | Create Extended Search Attributes
 *SearchAttributeConfigurationAPI* | [**DeleteSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#deletesearchattributeconfig) | **Delete** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
 *SearchAttributeConfigurationAPI* | [**GetSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsearchattributeconfig) | **Get** /accounts/search-attribute-config | List Extended Search Attributes
@@ -1241,6 +1241,7 @@ Class | Method | HTTP request | Description
  - [RequestableObjectReference](docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
+ - [RequestedAccountRef](docs/RequestedAccountRef.md)
  - [RequestedItemDetails](docs/RequestedItemDetails.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)

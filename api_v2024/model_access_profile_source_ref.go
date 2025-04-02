@@ -19,11 +19,11 @@ var _ MappedNullable = &AccessProfileSourceRef{}
 
 // AccessProfileSourceRef struct for AccessProfileSourceRef
 type AccessProfileSourceRef struct {
-	// The ID of the Source with with which the Access Profile is associated
+	// ID of the source the access profile is associated with.
 	Id *string `json:"id,omitempty"`
-	// The type of the Source, will always be SOURCE
+	// Source's DTO type.
 	Type *string `json:"type,omitempty"`
-	// The display name of the associated Source
+	// Source name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

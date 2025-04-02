@@ -13,10 +13,10 @@ package api_v3
 import (
 	"encoding/json"
 	"fmt"
-	"gopkg.in/validator.v2"
 )
 
-// ReportDetailsArguments - The string-object map(dictionary) with the arguments needed for report processing.
+
+// ReportDetailsArguments The string-object map(dictionary) with the arguments needed for report processing.
 type ReportDetailsArguments struct {
 	AccountsExportReportArguments *AccountsExportReportArguments
 	IdentitiesDetailsReportArguments *IdentitiesDetailsReportArguments
@@ -27,199 +27,105 @@ type ReportDetailsArguments struct {
 	UncorrelatedAccountsReportArguments *UncorrelatedAccountsReportArguments
 }
 
-// AccountsExportReportArgumentsAsReportDetailsArguments is a convenience function that returns AccountsExportReportArguments wrapped in ReportDetailsArguments
-func AccountsExportReportArgumentsAsReportDetailsArguments(v *AccountsExportReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		AccountsExportReportArguments: v,
-	}
-}
-
-// IdentitiesDetailsReportArgumentsAsReportDetailsArguments is a convenience function that returns IdentitiesDetailsReportArguments wrapped in ReportDetailsArguments
-func IdentitiesDetailsReportArgumentsAsReportDetailsArguments(v *IdentitiesDetailsReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		IdentitiesDetailsReportArguments: v,
-	}
-}
-
-// IdentitiesReportArgumentsAsReportDetailsArguments is a convenience function that returns IdentitiesReportArguments wrapped in ReportDetailsArguments
-func IdentitiesReportArgumentsAsReportDetailsArguments(v *IdentitiesReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		IdentitiesReportArguments: v,
-	}
-}
-
-// IdentityProfileIdentityErrorReportArgumentsAsReportDetailsArguments is a convenience function that returns IdentityProfileIdentityErrorReportArguments wrapped in ReportDetailsArguments
-func IdentityProfileIdentityErrorReportArgumentsAsReportDetailsArguments(v *IdentityProfileIdentityErrorReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		IdentityProfileIdentityErrorReportArguments: v,
-	}
-}
-
-// OrphanIdentitiesReportArgumentsAsReportDetailsArguments is a convenience function that returns OrphanIdentitiesReportArguments wrapped in ReportDetailsArguments
-func OrphanIdentitiesReportArgumentsAsReportDetailsArguments(v *OrphanIdentitiesReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		OrphanIdentitiesReportArguments: v,
-	}
-}
-
-// SearchExportReportArgumentsAsReportDetailsArguments is a convenience function that returns SearchExportReportArguments wrapped in ReportDetailsArguments
-func SearchExportReportArgumentsAsReportDetailsArguments(v *SearchExportReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		SearchExportReportArguments: v,
-	}
-}
-
-// UncorrelatedAccountsReportArgumentsAsReportDetailsArguments is a convenience function that returns UncorrelatedAccountsReportArguments wrapped in ReportDetailsArguments
-func UncorrelatedAccountsReportArgumentsAsReportDetailsArguments(v *UncorrelatedAccountsReportArguments) ReportDetailsArguments {
-	return ReportDetailsArguments{
-		UncorrelatedAccountsReportArguments: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into AccountsExportReportArguments
-	err = newStrictDecoder(data).Decode(&dst.AccountsExportReportArguments)
+	// try to unmarshal JSON data into AccountsExportReportArguments
+	err = json.Unmarshal(data, &dst.AccountsExportReportArguments);
 	if err == nil {
 		jsonAccountsExportReportArguments, _ := json.Marshal(dst.AccountsExportReportArguments)
 		if string(jsonAccountsExportReportArguments) == "{}" { // empty struct
 			dst.AccountsExportReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.AccountsExportReportArguments); err != nil {
-				dst.AccountsExportReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccountsExportReportArguments, return on the first match
 		}
 	} else {
 		dst.AccountsExportReportArguments = nil
 	}
 
-	// try to unmarshal data into IdentitiesDetailsReportArguments
-	err = newStrictDecoder(data).Decode(&dst.IdentitiesDetailsReportArguments)
+	// try to unmarshal JSON data into IdentitiesDetailsReportArguments
+	err = json.Unmarshal(data, &dst.IdentitiesDetailsReportArguments);
 	if err == nil {
 		jsonIdentitiesDetailsReportArguments, _ := json.Marshal(dst.IdentitiesDetailsReportArguments)
 		if string(jsonIdentitiesDetailsReportArguments) == "{}" { // empty struct
 			dst.IdentitiesDetailsReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.IdentitiesDetailsReportArguments); err != nil {
-				dst.IdentitiesDetailsReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.IdentitiesDetailsReportArguments, return on the first match
 		}
 	} else {
 		dst.IdentitiesDetailsReportArguments = nil
 	}
 
-	// try to unmarshal data into IdentitiesReportArguments
-	err = newStrictDecoder(data).Decode(&dst.IdentitiesReportArguments)
+	// try to unmarshal JSON data into IdentitiesReportArguments
+	err = json.Unmarshal(data, &dst.IdentitiesReportArguments);
 	if err == nil {
 		jsonIdentitiesReportArguments, _ := json.Marshal(dst.IdentitiesReportArguments)
 		if string(jsonIdentitiesReportArguments) == "{}" { // empty struct
 			dst.IdentitiesReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.IdentitiesReportArguments); err != nil {
-				dst.IdentitiesReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.IdentitiesReportArguments, return on the first match
 		}
 	} else {
 		dst.IdentitiesReportArguments = nil
 	}
 
-	// try to unmarshal data into IdentityProfileIdentityErrorReportArguments
-	err = newStrictDecoder(data).Decode(&dst.IdentityProfileIdentityErrorReportArguments)
+	// try to unmarshal JSON data into IdentityProfileIdentityErrorReportArguments
+	err = json.Unmarshal(data, &dst.IdentityProfileIdentityErrorReportArguments);
 	if err == nil {
 		jsonIdentityProfileIdentityErrorReportArguments, _ := json.Marshal(dst.IdentityProfileIdentityErrorReportArguments)
 		if string(jsonIdentityProfileIdentityErrorReportArguments) == "{}" { // empty struct
 			dst.IdentityProfileIdentityErrorReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.IdentityProfileIdentityErrorReportArguments); err != nil {
-				dst.IdentityProfileIdentityErrorReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.IdentityProfileIdentityErrorReportArguments, return on the first match
 		}
 	} else {
 		dst.IdentityProfileIdentityErrorReportArguments = nil
 	}
 
-	// try to unmarshal data into OrphanIdentitiesReportArguments
-	err = newStrictDecoder(data).Decode(&dst.OrphanIdentitiesReportArguments)
+	// try to unmarshal JSON data into OrphanIdentitiesReportArguments
+	err = json.Unmarshal(data, &dst.OrphanIdentitiesReportArguments);
 	if err == nil {
 		jsonOrphanIdentitiesReportArguments, _ := json.Marshal(dst.OrphanIdentitiesReportArguments)
 		if string(jsonOrphanIdentitiesReportArguments) == "{}" { // empty struct
 			dst.OrphanIdentitiesReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.OrphanIdentitiesReportArguments); err != nil {
-				dst.OrphanIdentitiesReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.OrphanIdentitiesReportArguments, return on the first match
 		}
 	} else {
 		dst.OrphanIdentitiesReportArguments = nil
 	}
 
-	// try to unmarshal data into SearchExportReportArguments
-	err = newStrictDecoder(data).Decode(&dst.SearchExportReportArguments)
+	// try to unmarshal JSON data into SearchExportReportArguments
+	err = json.Unmarshal(data, &dst.SearchExportReportArguments);
 	if err == nil {
 		jsonSearchExportReportArguments, _ := json.Marshal(dst.SearchExportReportArguments)
 		if string(jsonSearchExportReportArguments) == "{}" { // empty struct
 			dst.SearchExportReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.SearchExportReportArguments); err != nil {
-				dst.SearchExportReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.SearchExportReportArguments, return on the first match
 		}
 	} else {
 		dst.SearchExportReportArguments = nil
 	}
 
-	// try to unmarshal data into UncorrelatedAccountsReportArguments
-	err = newStrictDecoder(data).Decode(&dst.UncorrelatedAccountsReportArguments)
+	// try to unmarshal JSON data into UncorrelatedAccountsReportArguments
+	err = json.Unmarshal(data, &dst.UncorrelatedAccountsReportArguments);
 	if err == nil {
 		jsonUncorrelatedAccountsReportArguments, _ := json.Marshal(dst.UncorrelatedAccountsReportArguments)
 		if string(jsonUncorrelatedAccountsReportArguments) == "{}" { // empty struct
 			dst.UncorrelatedAccountsReportArguments = nil
 		} else {
-			if err = validator.Validate(dst.UncorrelatedAccountsReportArguments); err != nil {
-				dst.UncorrelatedAccountsReportArguments = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.UncorrelatedAccountsReportArguments, return on the first match
 		}
 	} else {
 		dst.UncorrelatedAccountsReportArguments = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AccountsExportReportArguments = nil
-		dst.IdentitiesDetailsReportArguments = nil
-		dst.IdentitiesReportArguments = nil
-		dst.IdentityProfileIdentityErrorReportArguments = nil
-		dst.OrphanIdentitiesReportArguments = nil
-		dst.SearchExportReportArguments = nil
-		dst.UncorrelatedAccountsReportArguments = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(ReportDetailsArguments)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ReportDetailsArguments)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(ReportDetailsArguments)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src ReportDetailsArguments) MarshalJSON() ([]byte, error) {
+func (src *ReportDetailsArguments) MarshalJSON() ([]byte, error) {
 	if src.AccountsExportReportArguments != nil {
 		return json.Marshal(&src.AccountsExportReportArguments)
 	}
@@ -248,79 +154,9 @@ func (src ReportDetailsArguments) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.UncorrelatedAccountsReportArguments)
 	}
 
-	return nil, nil // no data in oneOf schemas
+	return nil, nil // no data in anyOf schemas
 }
 
-// Get the actual instance
-func (obj *ReportDetailsArguments) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.AccountsExportReportArguments != nil {
-		return obj.AccountsExportReportArguments
-	}
-
-	if obj.IdentitiesDetailsReportArguments != nil {
-		return obj.IdentitiesDetailsReportArguments
-	}
-
-	if obj.IdentitiesReportArguments != nil {
-		return obj.IdentitiesReportArguments
-	}
-
-	if obj.IdentityProfileIdentityErrorReportArguments != nil {
-		return obj.IdentityProfileIdentityErrorReportArguments
-	}
-
-	if obj.OrphanIdentitiesReportArguments != nil {
-		return obj.OrphanIdentitiesReportArguments
-	}
-
-	if obj.SearchExportReportArguments != nil {
-		return obj.SearchExportReportArguments
-	}
-
-	if obj.UncorrelatedAccountsReportArguments != nil {
-		return obj.UncorrelatedAccountsReportArguments
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj ReportDetailsArguments) GetActualInstanceValue() (interface{}) {
-	if obj.AccountsExportReportArguments != nil {
-		return *obj.AccountsExportReportArguments
-	}
-
-	if obj.IdentitiesDetailsReportArguments != nil {
-		return *obj.IdentitiesDetailsReportArguments
-	}
-
-	if obj.IdentitiesReportArguments != nil {
-		return *obj.IdentitiesReportArguments
-	}
-
-	if obj.IdentityProfileIdentityErrorReportArguments != nil {
-		return *obj.IdentityProfileIdentityErrorReportArguments
-	}
-
-	if obj.OrphanIdentitiesReportArguments != nil {
-		return *obj.OrphanIdentitiesReportArguments
-	}
-
-	if obj.SearchExportReportArguments != nil {
-		return *obj.SearchExportReportArguments
-	}
-
-	if obj.UncorrelatedAccountsReportArguments != nil {
-		return *obj.UncorrelatedAccountsReportArguments
-	}
-
-	// all schemas are nil
-	return nil
-}
 
 type NullableReportDetailsArguments struct {
 	value *ReportDetailsArguments

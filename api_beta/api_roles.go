@@ -891,7 +891,7 @@ type ApiGetRoleEntitlementsRequest struct {
 	sorters *string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiGetRoleEntitlementsRequest) Limit(limit int32) ApiGetRoleEntitlementsRequest {
 	r.limit = &limit
 	return r
@@ -926,14 +926,12 @@ func (r ApiGetRoleEntitlementsRequest) Execute() ([]Entitlement, *http.Response,
 }
 
 /*
-GetRoleEntitlements List role's Entitlements
+GetRoleEntitlements List Role's Entitlements
 
-This API lists the Entitlements associated with a given role.
-
-A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+Get a list of entitlements associated with a specified role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the containing role
+ @param id Containing role's ID.
  @return ApiGetRoleEntitlementsRequest
 */
 func (a *RolesAPIService) GetRoleEntitlements(ctx context.Context, id string) ApiGetRoleEntitlementsRequest {
@@ -969,7 +967,7 @@ func (a *RolesAPIService) GetRoleEntitlementsExecute(r ApiGetRoleEntitlementsReq
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
-		var defaultValue int32 = 250
+		var defaultValue int32 = 50
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
@@ -1135,7 +1133,7 @@ func (r ApiListRolesRequest) Count(count bool) ApiListRolesRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*
 func (r ApiListRolesRequest) Filters(filters string) ApiListRolesRequest {
 	r.filters = &filters
 	return r

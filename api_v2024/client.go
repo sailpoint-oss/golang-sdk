@@ -92,6 +92,8 @@ type APIClient struct {
 
 	ConfigurationHubAPI *ConfigurationHubAPIService
 
+	ConnectorCustomizersAPI *ConnectorCustomizersAPIService
+
 	ConnectorRuleManagementAPI *ConnectorRuleManagementAPIService
 
 	ConnectorsAPI *ConnectorsAPIService
@@ -142,7 +144,11 @@ type APIClient struct {
 
 	ManagedClientsAPI *ManagedClientsAPIService
 
+	ManagedClusterTypesAPI *ManagedClusterTypesAPIService
+
 	ManagedClustersAPI *ManagedClustersAPIService
+
+	MultiHostIntegrationAPI *MultiHostIntegrationAPIService
 
 	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
@@ -208,6 +214,8 @@ type APIClient struct {
 
 	TenantAPI *TenantAPIService
 
+	TenantContextAPI *TenantContextAPIService
+
 	TransformsAPI *TransformsAPIService
 
 	TriggersAPI *TriggersAPIService
@@ -259,6 +267,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CertificationSummariesAPI = (*CertificationSummariesAPIService)(&c.common)
 	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
 	c.ConfigurationHubAPI = (*ConfigurationHubAPIService)(&c.common)
+	c.ConnectorCustomizersAPI = (*ConnectorCustomizersAPIService)(&c.common)
 	c.ConnectorRuleManagementAPI = (*ConnectorRuleManagementAPIService)(&c.common)
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
@@ -284,7 +293,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MachineAccountsAPI = (*MachineAccountsAPIService)(&c.common)
 	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
+	c.ManagedClusterTypesAPI = (*ManagedClusterTypesAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.MultiHostIntegrationAPI = (*MultiHostIntegrationAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
@@ -317,6 +328,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 	c.TenantAPI = (*TenantAPIService)(&c.common)
+	c.TenantContextAPI = (*TenantContextAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
 	c.UIMetadataAPI = (*UIMetadataAPIService)(&c.common)

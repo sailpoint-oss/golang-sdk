@@ -2928,14 +2928,7 @@ type ApiGetSourceConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
 	locale *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSourceConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetSourceConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot;
@@ -2949,7 +2942,7 @@ func (r ApiGetSourceConfigRequest) Execute() (*ConnectorDetail, *http.Response, 
 }
 
 /*
-GetSourceConfig Gets source config with language translations
+GetSourceConfig Gets source config with language-translations
 
 Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
 
@@ -2986,15 +2979,6 @@ func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.locale != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "locale", r.locale, "", "")
@@ -3016,7 +3000,6 @@ func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3038,6 +3021,17 @@ func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -3805,6 +3799,14 @@ func (r ApiGetSourceSchedulesRequest) Execute() ([]Schedule1, *http.Response, er
 GetSourceSchedules List Schedules on Source
 
 Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+:::info
+This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.
+
+For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.
+
+**Days of the week are represented as 1-7 (Sunday-Saturday).**
+:::
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source ID.
@@ -5693,219 +5695,10 @@ func (a *SourcesAPIService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPeekResourceObjectsRequest struct {
-	ctx context.Context
-	ApiService *SourcesAPIService
-	sourceId string
-	xSailPointExperimental *string
-	resourceObjectsRequest *ResourceObjectsRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPeekResourceObjectsRequest) XSailPointExperimental(xSailPointExperimental string) ApiPeekResourceObjectsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
-}
-
-func (r ApiPeekResourceObjectsRequest) ResourceObjectsRequest(resourceObjectsRequest ResourceObjectsRequest) ApiPeekResourceObjectsRequest {
-	r.resourceObjectsRequest = &resourceObjectsRequest
-	return r
-}
-
-func (r ApiPeekResourceObjectsRequest) Execute() (*ResourceObjectsResponse, *http.Response, error) {
-	return r.ApiService.PeekResourceObjectsExecute(r)
-}
-
-/*
-PeekResourceObjects Peek source connector's resource objects
-
-Retrieves a sample of data returned from account and group aggregation requests.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sourceId The ID of the Source
- @return ApiPeekResourceObjectsRequest
-*/
-func (a *SourcesAPIService) PeekResourceObjects(ctx context.Context, sourceId string) ApiPeekResourceObjectsRequest {
-	return ApiPeekResourceObjectsRequest{
-		ApiService: a,
-		ctx: ctx,
-		sourceId: sourceId,
-	}
-}
-
-// Execute executes the request
-//  @return ResourceObjectsResponse
-func (a *SourcesAPIService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsRequest) (*ResourceObjectsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceObjectsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PeekResourceObjects")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/{sourceId}/connector/peek-resource-objects"
-	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.resourceObjectsRequest == nil {
-		return localVarReturnValue, nil, reportError("resourceObjectsRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
-	// body params
-	localVarPostBody = r.resourceObjectsRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiPingClusterRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPingClusterRequest) XSailPointExperimental(xSailPointExperimental string) ApiPingClusterRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPingClusterRequest) Execute() (*StatusResponse, *http.Response, error) {
@@ -5950,15 +5743,6 @@ func (a *SourcesAPIService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5977,7 +5761,6 @@ func (a *SourcesAPIService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7233,6 +7016,185 @@ func (a *SourcesAPIService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSearchResourceObjectsRequest struct {
+	ctx context.Context
+	ApiService *SourcesAPIService
+	sourceId string
+	resourceObjectsRequest *ResourceObjectsRequest
+}
+
+func (r ApiSearchResourceObjectsRequest) ResourceObjectsRequest(resourceObjectsRequest ResourceObjectsRequest) ApiSearchResourceObjectsRequest {
+	r.resourceObjectsRequest = &resourceObjectsRequest
+	return r
+}
+
+func (r ApiSearchResourceObjectsRequest) Execute() (*ResourceObjectsResponse, *http.Response, error) {
+	return r.ApiService.SearchResourceObjectsExecute(r)
+}
+
+/*
+SearchResourceObjects Peek source connector's resource objects
+
+Retrieves a sample of data returned from account and group aggregation requests.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId The ID of the Source
+ @return ApiSearchResourceObjectsRequest
+*/
+func (a *SourcesAPIService) SearchResourceObjects(ctx context.Context, sourceId string) ApiSearchResourceObjectsRequest {
+	return ApiSearchResourceObjectsRequest{
+		ApiService: a,
+		ctx: ctx,
+		sourceId: sourceId,
+	}
+}
+
+// Execute executes the request
+//  @return ResourceObjectsResponse
+func (a *SourcesAPIService) SearchResourceObjectsExecute(r ApiSearchResourceObjectsRequest) (*ResourceObjectsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResourceObjectsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SearchResourceObjects")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/{sourceId}/connector/peek-resource-objects"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.resourceObjectsRequest == nil {
+		return localVarReturnValue, nil, reportError("resourceObjectsRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.resourceObjectsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSyncAttributesForSourceRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
@@ -7422,13 +7384,6 @@ type ApiTestSourceConfigurationRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiTestSourceConfigurationRequest) XSailPointExperimental(xSailPointExperimental string) ApiTestSourceConfigurationRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiTestSourceConfigurationRequest) Execute() (*StatusResponse, *http.Response, error) {
@@ -7473,15 +7428,6 @@ func (a *SourcesAPIService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7500,7 +7446,6 @@ func (a *SourcesAPIService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7607,13 +7552,6 @@ type ApiTestSourceConnectionRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiTestSourceConnectionRequest) XSailPointExperimental(xSailPointExperimental string) ApiTestSourceConnectionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiTestSourceConnectionRequest) Execute() (*StatusResponse, *http.Response, error) {
@@ -7658,15 +7596,6 @@ func (a *SourcesAPIService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7685,7 +7614,6 @@ func (a *SourcesAPIService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -41,8 +41,8 @@ func (r ApiCreateSearchAttributeConfigRequest) Execute() (map[string]interface{}
 /*
 CreateSearchAttributeConfig Create Extended Search Attributes
 
-Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
-A token with ORG_ADMIN authority is required to call this API.
+Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
+>**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSearchAttributeConfigRequest
@@ -348,6 +348,20 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExec
 type ApiGetSearchAttributeConfigRequest struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
+	limit *int32
+	offset *int32
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetSearchAttributeConfigRequest) Limit(limit int32) ApiGetSearchAttributeConfigRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetSearchAttributeConfigRequest) Offset(offset int32) ApiGetSearchAttributeConfigRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, *http.Response, error) {
@@ -357,7 +371,7 @@ func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, 
 /*
 GetSearchAttributeConfig List Extended Search Attributes
 
-Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
+Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -391,6 +405,18 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -429,6 +455,17 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessModelMetadataAttribute401Response

@@ -42,19 +42,19 @@ func (r ApiListRequestableObjectsRequest) IdentityId(identityId string) ApiListR
 	return r
 }
 
-// Filters the results to the specified type/types, where each type is one of ROLE or ACCESS_PROFILE. If absent, all types are returned. Support for additional types may be added in the future without notice.
+// Filters the results to the specified type/types, where each type is one of &#x60;ROLE&#x60; or &#x60;ACCESS_PROFILE&#x60;. If absent, all types are returned. SailPoint may add support for additional types in the future without notice.
 func (r ApiListRequestableObjectsRequest) Types(types []RequestableObjectType) ApiListRequestableObjectsRequest {
 	r.types = &types
 	return r
 }
 
-// It allows searching requestable access items with a partial match on the name or description. If term is provided, then the *filter* query parameter will be ignored.
+// Allows searching requestable access items with a partial match on the name or description. If &#x60;term&#x60; is provided, then the API will ignore the &#x60;filter&#x60; query parameter.
 func (r ApiListRequestableObjectsRequest) Term(term string) ApiListRequestableObjectsRequest {
 	r.term = &term
 	return r
 }
 
-// Filters the result to the specified status/statuses, where each status is one of AVAILABLE, ASSIGNED, or PENDING. It is an error to specify this parameter without also specifying an *identity-id* parameter. Additional statuses may be added in the future without notice.
+// Filters the result to the specified status/statuses, where each status is one of &#x60;AVAILABLE&#x60;, &#x60;ASSIGNED&#x60;, or &#x60;PENDING&#x60;. Specifying this parameter without also specifying an &#x60;identity-id&#x60; parameter results in an error.  SailPoint may add additional statuses in the future without notice.
 func (r ApiListRequestableObjectsRequest) Statuses(statuses []RequestableObjectRequestStatus) ApiListRequestableObjectsRequest {
 	r.statuses = &statuses
 	return r
@@ -97,7 +97,7 @@ func (r ApiListRequestableObjectsRequest) Execute() ([]RequestableObject, *http.
 /*
 ListRequestableObjects Requestable Objects List
 
-This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
+Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v2024/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
 Any authenticated token can call this endpoint to see their requestable access items.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

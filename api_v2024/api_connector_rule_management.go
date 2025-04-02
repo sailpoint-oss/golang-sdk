@@ -26,14 +26,7 @@ type ConnectorRuleManagementAPIService service
 type ApiCreateConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
-	xSailPointExperimental *string
 	connectorRuleCreateRequest *ConnectorRuleCreateRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateConnectorRuleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Connector rule to create.
@@ -81,21 +74,6 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleExecute(r ApiCrea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.connectorRuleCreateRequest == nil {
 		return localVarReturnValue, nil, reportError("connectorRuleCreateRequest is required and must be specified")
 	}
@@ -117,7 +95,6 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleExecute(r ApiCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.connectorRuleCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -215,13 +192,6 @@ type ApiDeleteConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteConnectorRuleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteConnectorRuleRequest) Execute() (*http.Response, error) {
@@ -264,15 +234,6 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleExecute(r ApiDele
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -291,7 +252,6 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleExecute(r ApiDele
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -389,13 +349,6 @@ type ApiGetConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetConnectorRuleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Response, error) {
@@ -440,15 +393,6 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleExecute(r ApiGetConn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -467,7 +411,6 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleExecute(r ApiGetConn
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -573,16 +516,9 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleExecute(r ApiGetConn
 type ApiGetConnectorRuleListRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetConnectorRuleListRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetConnectorRuleListRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -642,15 +578,6 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListExecute(r ApiGet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -687,7 +614,6 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListExecute(r ApiGet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -783,14 +709,7 @@ type ApiPutConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	id string
-	xSailPointExperimental *string
 	connectorRuleUpdateRequest *ConnectorRuleUpdateRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPutConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiPutConnectorRuleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Connector rule with updated data.
@@ -841,15 +760,6 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleExecute(r ApiPutConn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -868,7 +778,6 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleExecute(r ApiPutConn
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.connectorRuleUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -976,14 +885,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleExecute(r ApiPutConn
 type ApiTestConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
-	xSailPointExperimental *string
 	sourceCode *SourceCode
-}
-
-// Use this header to enable this experimental API.
-func (r ApiTestConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiTestConnectorRuleRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Code to validate.
@@ -1031,21 +933,6 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleExecute(r ApiTestCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.sourceCode == nil {
 		return localVarReturnValue, nil, reportError("sourceCode is required and must be specified")
 	}
@@ -1067,7 +954,6 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleExecute(r ApiTestCo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.sourceCode
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

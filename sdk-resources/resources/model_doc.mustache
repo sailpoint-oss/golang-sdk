@@ -1,3 +1,14 @@
+---
+id: {{#lambda.kebabcase}}{{#lambda.titlecase}}{{funtionPrefix}}{{classname}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+title: {{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}
+pagination_label: {{classname}}
+sidebar_label: {{classname}}
+sidebar_class_name: gosdk
+keywords: ['go', 'Golang', 'sdk', '{{classname}}', '{{funtionPrefix}}{{classname}}'] 
+slug: /tools/sdk/go/{{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}}/models/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+tags: ['SDK', 'Software Development Kit', '{{classname}}', '{{funtionPrefix}}{{classname}}']
+---
+
 {{#models}}{{#model}}# {{classname}}
 
 {{^isEnum}}
@@ -9,7 +20,7 @@ Name | Type | Description | Notes
 **{{classname}}Interface** | **interface { {{#discriminator}}{{propertyGetter}}() {{propertyType}}{{/discriminator}} }** | An interface that can hold any of the proper implementing types |
 {{/vendorExtensions.x-is-one-of-interface}}
 {{^vendorExtensions.x-is-one-of-interface}}
-{{#vars}}**{{name}}** | {{^required}}Pointer to {{/required}}{{#isContainer}}{{#isArray}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**[]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{dataType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**map[string]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{^isPrimitiveType}}{{^isFile}}{{^isDateTime}}[{{/isDateTime}}{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}{{^isDateTime}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isDateTime}}{{/isFile}}{{/isPrimitiveType}}{{/isContainer}} | {{description}} | {{^required}}[optional] {{/required}}{{#isReadOnly}}[readonly] {{/isReadOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
+{{#vars}}**{{name}}** | {{^required}}Pointer to {{/required}}{{#isContainer}}{{#isArray}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**[]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{#lambda.kebabcase}}{{#lambda.titlecase}}{{dataType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**map[string]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{#lambda.kebabcase}}{{#lambda.titlecase}}{{^baseType}}{{dataType}}{{/baseType}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{^isPrimitiveType}}{{^isFile}}{{^isDateTime}}[{{/isDateTime}}{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}{{^isDateTime}}]({{#lambda.kebabcase}}{{#lambda.titlecase}}{{^baseType}}{{dataType}}{{/baseType}}{{baseType}}{{/lambda.titlecase}}{{/lambda.kebabcase}}){{/isDateTime}}{{/isFile}}{{/isPrimitiveType}}{{/isContainer}} | {{{description}}} | {{^required}}[optional] {{/required}}{{#isReadOnly}}[readonly] {{/isReadOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
 {{/vars}}
 {{/vendorExtensions.x-is-one-of-interface}}
 
@@ -91,7 +102,4 @@ Convenience method to wrap this instance of {{classname}} in {{{.}}}
 * `{{name}}` (value: `{{{value}}}`)
 {{/enumVars}}{{/allowableValues}}
 {{/isEnum}}
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 {{/model}}{{/models}}

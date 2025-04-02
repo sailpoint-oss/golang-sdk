@@ -25,7 +25,9 @@ type ManagedClient struct {
 	Id NullableString `json:"id,omitempty"`
 	// ManagedClient alert key
 	AlertKey NullableString `json:"alertKey,omitempty"`
+	// apiGatewayBaseUrl for the Managed client
 	ApiGatewayBaseUrl NullableString `json:"apiGatewayBaseUrl,omitempty"`
+	// cookbook id for the Managed client
 	Cookbook NullableString `json:"cookbook,omitempty"`
 	// Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)
 	CcId NullableInt64 `json:"ccId,omitempty"`
@@ -61,6 +63,8 @@ type ManagedClient struct {
 	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
 	// The provisioning status of the ManagedClient
 	ProvisionStatus NullableString `json:"provisionStatus,omitempty"`
+	// The health indicators of the ManagedClient
+	HealthIndicators map[string]interface{} `json:"healthIndicators,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -903,6 +907,39 @@ func (o *ManagedClient) UnsetProvisionStatus() {
 	o.ProvisionStatus.Unset()
 }
 
+// GetHealthIndicators returns the HealthIndicators field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedClient) GetHealthIndicators() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.HealthIndicators
+}
+
+// GetHealthIndicatorsOk returns a tuple with the HealthIndicators field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedClient) GetHealthIndicatorsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.HealthIndicators) {
+		return map[string]interface{}{}, false
+	}
+	return o.HealthIndicators, true
+}
+
+// HasHealthIndicators returns a boolean if a field has been set.
+func (o *ManagedClient) HasHealthIndicators() bool {
+	if o != nil && !IsNil(o.HealthIndicators) {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthIndicators gets a reference to the given map[string]interface{} and assigns it to the HealthIndicators field.
+func (o *ManagedClient) SetHealthIndicators(v map[string]interface{}) {
+	o.HealthIndicators = v
+}
+
 func (o ManagedClient) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -967,6 +1004,9 @@ func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProvisionStatus.IsSet() {
 		toSerialize["provisionStatus"] = o.ProvisionStatus.Get()
+	}
+	if o.HealthIndicators != nil {
+		toSerialize["healthIndicators"] = o.HealthIndicators
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1035,6 +1075,7 @@ func (o *ManagedClient) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "updatedAt")
 		delete(additionalProperties, "provisionStatus")
+		delete(additionalProperties, "healthIndicators")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -27,14 +27,7 @@ type CustomFormsAPIService service
 type ApiCreateFormDefinitionRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	body *CreateFormDefinitionRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateFormDefinitionRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateFormDefinitionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to create form definition request
@@ -80,15 +73,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionExecute(r ApiCreateFormDefin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -107,7 +91,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionExecute(r ApiCreateFormDefin
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -204,14 +187,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionExecute(r ApiCreateFormDefin
 type ApiCreateFormDefinitionDynamicSchemaRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	body *FormDefinitionDynamicSchemaRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateFormDefinitionDynamicSchemaRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateFormDefinitionDynamicSchemaRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to create a form definition dynamic schema
@@ -257,15 +233,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -284,7 +251,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaExecute(r ApiCr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -393,14 +359,7 @@ type ApiCreateFormDefinitionFileRequestRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
-	xSailPointExperimental *string
 	file *os.File
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateFormDefinitionFileRequestRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateFormDefinitionFileRequestRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // File specifying the multipart
@@ -451,21 +410,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.file == nil {
 		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
@@ -487,7 +431,6 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte
@@ -641,14 +584,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestExecute(r ApiCrea
 type ApiCreateFormInstanceRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	body *CreateFormInstanceRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateFormInstanceRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateFormInstanceRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to create a form instance
@@ -694,15 +630,6 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -721,7 +648,6 @@ func (a *CustomFormsAPIService) CreateFormInstanceExecute(r ApiCreateFormInstanc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -819,13 +745,6 @@ type ApiDeleteFormDefinitionRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteFormDefinitionRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteFormDefinitionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteFormDefinitionRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -870,15 +789,6 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -897,7 +807,6 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1003,17 +912,10 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionExecute(r ApiDeleteFormDefin
 type ApiExportFormDefinitionsByTenantRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	offset *int64
 	limit *int64
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiExportFormDefinitionsByTenantRequest) XSailPointExperimental(xSailPointExperimental string) ApiExportFormDefinitionsByTenantRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
@@ -1079,15 +981,6 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -1127,7 +1020,6 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1224,13 +1116,6 @@ type ApiGetFileFromS3Request struct {
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
 	fileID string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetFileFromS3Request) XSailPointExperimental(xSailPointExperimental string) ApiGetFileFromS3Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetFileFromS3Request) Execute() (*os.File, *http.Response, error) {
@@ -1276,15 +1161,6 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1303,7 +1179,6 @@ func (a *CustomFormsAPIService) GetFileFromS3Execute(r ApiGetFileFromS3Request) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1421,13 +1296,6 @@ type ApiGetFormDefinitionByKeyRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetFormDefinitionByKeyRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetFormDefinitionByKeyRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetFormDefinitionByKeyRequest) Execute() (*FormDefinitionResponse, *http.Response, error) {
@@ -1472,15 +1340,6 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1499,7 +1358,6 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyExecute(r ApiGetFormDefini
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1606,13 +1464,6 @@ type ApiGetFormInstanceByKeyRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formInstanceID string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetFormInstanceByKeyRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetFormInstanceByKeyRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetFormInstanceByKeyRequest) Execute() (*FormInstanceResponse, *http.Response, error) {
@@ -1657,15 +1508,6 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1684,7 +1526,6 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyExecute(r ApiGetFormInstance
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1792,13 +1633,6 @@ type ApiGetFormInstanceFileRequest struct {
 	ApiService *CustomFormsAPIService
 	formInstanceID string
 	fileID string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetFormInstanceFileRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetFormInstanceFileRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetFormInstanceFileRequest) Execute() (*os.File, *http.Response, error) {
@@ -1844,15 +1678,6 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1871,7 +1696,6 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1988,14 +1812,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileExecute(r ApiGetFormInstanceF
 type ApiImportFormDefinitionsRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	body *[]ImportFormDefinitionsRequestInner
-}
-
-// Use this header to enable this experimental API.
-func (r ApiImportFormDefinitionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiImportFormDefinitionsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to import form definitions
@@ -2041,15 +1858,6 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2068,7 +1876,6 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsExecute(r ApiImportFormDefi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2166,14 +1973,7 @@ type ApiPatchFormDefinitionRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
-	xSailPointExperimental *string
 	body *[]map[string]map[string]interface{}
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchFormDefinitionRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchFormDefinitionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to patch a form definition, check: https://jsonpatch.com
@@ -2224,15 +2024,6 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2251,7 +2042,6 @@ func (a *CustomFormsAPIService) PatchFormDefinitionExecute(r ApiPatchFormDefinit
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2360,14 +2150,7 @@ type ApiPatchFormInstanceRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formInstanceID string
-	xSailPointExperimental *string
 	body *[]map[string]map[string]interface{}
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchFormInstanceRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchFormInstanceRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Body is the request payload to patch a form instance, check: https://jsonpatch.com
@@ -2418,15 +2201,6 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2445,7 +2219,6 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2564,17 +2337,10 @@ func (a *CustomFormsAPIService) PatchFormInstanceExecute(r ApiPatchFormInstanceR
 type ApiSearchFormDefinitionsByTenantRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
 	offset *int64
 	limit *int64
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSearchFormDefinitionsByTenantRequest) XSailPointExperimental(xSailPointExperimental string) ApiSearchFormDefinitionsByTenantRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
@@ -2640,15 +2406,6 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantExecute(r ApiSearch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -2688,7 +2445,6 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantExecute(r ApiSearch
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2785,16 +2541,9 @@ type ApiSearchFormElementDataByElementIDRequest struct {
 	ApiService *CustomFormsAPIService
 	formInstanceID string
 	formElementID string
-	xSailPointExperimental *string
 	limit *int64
 	filters *string
 	query *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSearchFormElementDataByElementIDRequest) XSailPointExperimental(xSailPointExperimental string) ApiSearchFormElementDataByElementIDRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -2861,15 +2610,6 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -2900,7 +2640,6 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3006,13 +2745,6 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 type ApiSearchFormInstancesByTenantRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSearchFormInstancesByTenantRequest) XSailPointExperimental(xSailPointExperimental string) ApiSearchFormInstancesByTenantRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]ListFormInstancesByTenantResponse, *http.Response, error) {
@@ -3054,15 +2786,6 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3081,7 +2804,6 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3176,13 +2898,6 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 type ApiSearchPreDefinedSelectOptionsRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiSearchPreDefinedSelectOptionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiSearchPreDefinedSelectOptionsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiSearchPreDefinedSelectOptionsRequest) Execute() (*ListPredefinedSelectOptionsResponse, *http.Response, error) {
@@ -3224,15 +2939,6 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3251,7 +2957,6 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3347,17 +3052,10 @@ type ApiShowPreviewDataSourceRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
 	formDefinitionID string
-	xSailPointExperimental *string
 	limit *int64
 	filters *string
 	query *string
 	formElementPreviewRequest *FormElementPreviewRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiShowPreviewDataSourceRequest) XSailPointExperimental(xSailPointExperimental string) ApiShowPreviewDataSourceRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -3424,15 +3122,6 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -3463,7 +3152,6 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.formElementPreviewRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
