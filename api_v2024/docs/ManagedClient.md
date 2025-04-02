@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** | ManagedClient ID | [optional] [readonly] 
 **AlertKey** | Pointer to **NullableString** | ManagedClient alert key | [optional] [readonly] 
-**ApiGatewayBaseUrl** | Pointer to **NullableString** |  | [optional] 
-**Cookbook** | Pointer to **NullableString** |  | [optional] 
+**ApiGatewayBaseUrl** | Pointer to **NullableString** | apiGatewayBaseUrl for the Managed client | [optional] 
+**Cookbook** | Pointer to **NullableString** | cookbook id for the Managed client | [optional] 
 **CcId** | Pointer to **NullableInt64** | Previous CC ID to be used in data migration. (This field will be deleted after CC migration!) | [optional] 
 **ClientId** | **string** | The client ID used in API management | 
 **ClusterId** | **string** | Cluster ID that the ManagedClient is linked to | 
@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **NullableTime** | The date/time this ManagedClient was created | [optional] 
 **UpdatedAt** | Pointer to **NullableTime** | The date/time this ManagedClient was last updated | [optional] 
 **ProvisionStatus** | Pointer to **NullableString** | The provisioning status of the ManagedClient | [optional] [readonly] 
+**HealthIndicators** | Pointer to **map[string]interface{}** | The health indicators of the ManagedClient | [optional] 
 
 ## Methods
 
@@ -720,6 +721,41 @@ HasProvisionStatus returns a boolean if a field has been set.
 `func (o *ManagedClient) UnsetProvisionStatus()`
 
 UnsetProvisionStatus ensures that no value is present for ProvisionStatus, not even an explicit nil
+### GetHealthIndicators
+
+`func (o *ManagedClient) GetHealthIndicators() map[string]interface{}`
+
+GetHealthIndicators returns the HealthIndicators field if non-nil, zero value otherwise.
+
+### GetHealthIndicatorsOk
+
+`func (o *ManagedClient) GetHealthIndicatorsOk() (*map[string]interface{}, bool)`
+
+GetHealthIndicatorsOk returns a tuple with the HealthIndicators field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthIndicators
+
+`func (o *ManagedClient) SetHealthIndicators(v map[string]interface{})`
+
+SetHealthIndicators sets HealthIndicators field to given value.
+
+### HasHealthIndicators
+
+`func (o *ManagedClient) HasHealthIndicators() bool`
+
+HasHealthIndicators returns a boolean if a field has been set.
+
+### SetHealthIndicatorsNil
+
+`func (o *ManagedClient) SetHealthIndicatorsNil(b bool)`
+
+ SetHealthIndicatorsNil sets the value for HealthIndicators to be an explicit nil
+
+### UnsetHealthIndicators
+`func (o *ManagedClient) UnsetHealthIndicators()`
+
+UnsetHealthIndicators ensures that no value is present for HealthIndicators, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
