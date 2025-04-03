@@ -12,84 +12,50 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// GetActiveCampaigns200ResponseInner - struct for GetActiveCampaigns200ResponseInner
+
+// GetActiveCampaigns200ResponseInner struct for GetActiveCampaigns200ResponseInner
 type GetActiveCampaigns200ResponseInner struct {
 	Campaign *Campaign
 	Slimcampaign *Slimcampaign
 }
 
-// CampaignAsGetActiveCampaigns200ResponseInner is a convenience function that returns Campaign wrapped in GetActiveCampaigns200ResponseInner
-func CampaignAsGetActiveCampaigns200ResponseInner(v *Campaign) GetActiveCampaigns200ResponseInner {
-	return GetActiveCampaigns200ResponseInner{
-		Campaign: v,
-	}
-}
-
-// SlimcampaignAsGetActiveCampaigns200ResponseInner is a convenience function that returns Slimcampaign wrapped in GetActiveCampaigns200ResponseInner
-func SlimcampaignAsGetActiveCampaigns200ResponseInner(v *Slimcampaign) GetActiveCampaigns200ResponseInner {
-	return GetActiveCampaigns200ResponseInner{
-		Slimcampaign: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *GetActiveCampaigns200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into Campaign
-	err = newStrictDecoder(data).Decode(&dst.Campaign)
+	// try to unmarshal JSON data into Campaign
+	err = json.Unmarshal(data, &dst.Campaign);
 	if err == nil {
 		jsonCampaign, _ := json.Marshal(dst.Campaign)
 		if string(jsonCampaign) == "{}" { // empty struct
 			dst.Campaign = nil
 		} else {
-			if err = validator.Validate(dst.Campaign); err != nil {
-				dst.Campaign = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.Campaign, return on the first match
 		}
 	} else {
 		dst.Campaign = nil
 	}
 
-	// try to unmarshal data into Slimcampaign
-	err = newStrictDecoder(data).Decode(&dst.Slimcampaign)
+	// try to unmarshal JSON data into Slimcampaign
+	err = json.Unmarshal(data, &dst.Slimcampaign);
 	if err == nil {
 		jsonSlimcampaign, _ := json.Marshal(dst.Slimcampaign)
 		if string(jsonSlimcampaign) == "{}" { // empty struct
 			dst.Slimcampaign = nil
 		} else {
-			if err = validator.Validate(dst.Slimcampaign); err != nil {
-				dst.Slimcampaign = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.Slimcampaign, return on the first match
 		}
 	} else {
 		dst.Slimcampaign = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.Campaign = nil
-		dst.Slimcampaign = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(GetActiveCampaigns200ResponseInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(GetActiveCampaigns200ResponseInner)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(GetActiveCampaigns200ResponseInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
+func (src *GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
 	if src.Campaign != nil {
 		return json.Marshal(&src.Campaign)
 	}
@@ -98,39 +64,9 @@ func (src GetActiveCampaigns200ResponseInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Slimcampaign)
 	}
 
-	return nil, nil // no data in oneOf schemas
+	return nil, nil // no data in anyOf schemas
 }
 
-// Get the actual instance
-func (obj *GetActiveCampaigns200ResponseInner) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.Campaign != nil {
-		return obj.Campaign
-	}
-
-	if obj.Slimcampaign != nil {
-		return obj.Slimcampaign
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj GetActiveCampaigns200ResponseInner) GetActualInstanceValue() (interface{}) {
-	if obj.Campaign != nil {
-		return *obj.Campaign
-	}
-
-	if obj.Slimcampaign != nil {
-		return *obj.Slimcampaign
-	}
-
-	// all schemas are nil
-	return nil
-}
 
 type NullableGetActiveCampaigns200ResponseInner struct {
 	value *GetActiveCampaigns200ResponseInner

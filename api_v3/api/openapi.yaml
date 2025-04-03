@@ -7409,7 +7409,7 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
               schema:
-                $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
+                $ref: '#/components/schemas/getCampaign_200_response'
           description: Requested campaign object.
         "400":
           content:
@@ -66626,6 +66626,10 @@ components:
           type: object
       type: object
     getActiveCampaigns_200_response_inner:
+      anyOf:
+      - $ref: '#/components/schemas/Campaign'
+      - $ref: '#/components/schemas/SlimCampaign'
+    getCampaign_200_response:
       anyOf:
       - $ref: '#/components/schemas/SlimCampaign'
       - $ref: '#/components/schemas/Campaign'

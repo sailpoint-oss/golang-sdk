@@ -1202,6 +1202,7 @@ Class | Method | HTTP request | Description
  - [ForwardApprovalDto](docs/ForwardApprovalDto.md)
  - [FullDiscoveredApplications](docs/FullDiscoveredApplications.md)
  - [GetActiveCampaigns200ResponseInner](docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetHistoricalIdentityEvents200ResponseInner](docs/GetHistoricalIdentityEvents200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)

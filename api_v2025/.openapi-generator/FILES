@@ -557,6 +557,7 @@ docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
 docs/FullDiscoveredApplications.md
 docs/GetActiveCampaigns200ResponseInner.md
+docs/GetCampaign200Response.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
@@ -1717,6 +1718,7 @@ model_form_used_by.go
 model_forward_approval_dto.go
 model_full_discovered_applications.go
 model_get_active_campaigns_200_response_inner.go
+model_get_campaign_200_response.go
 model_get_discovered_applications_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go

@@ -7889,6 +7889,10 @@ paths:
       summary: List Campaigns
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
     post:
       deprecated: true
       description: |
@@ -7994,6 +7998,9 @@ paths:
       summary: Create Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/delete:
     post:
       deprecated: true
@@ -91837,9 +91844,9 @@ components:
           type: object
       type: object
     getActiveCampaigns_200_response_inner:
-      oneOf:
-      - $ref: '#/components/schemas/slimcampaign'
+      anyOf:
       - $ref: '#/components/schemas/Campaign'
+      - $ref: '#/components/schemas/slimcampaign'
     importEntitlementsBySource_request:
       properties:
         csvFile:

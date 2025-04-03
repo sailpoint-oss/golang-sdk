@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ## GetCampaign
 
-> GetActiveCampaigns200ResponseInner GetCampaign(ctx, id).Detail(detail).Execute()
+> GetCampaign200Response GetCampaign(ctx, id).Detail(detail).Execute()
 
 Get Campaign
 
@@ -543,7 +543,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCampaign`: GetActiveCampaigns200ResponseInner
+	// response from `GetCampaign`: GetCampaign200Response
 	fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaign`: %v\n", resp)
 }
 ```
@@ -568,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetActiveCampaigns200ResponseInner**](GetActiveCampaigns200ResponseInner.md)
+[**GetCampaign200Response**](GetCampaign200Response.md)
 
 ### Authorization
 
