@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
 *AccessRequestsAPI* | [**ListAccessRequestStatus**](docs/AccessRequestsAPI.md#listaccessrequeststatus) | **Get** /access-request-status | Access Request Status
 *AccessRequestsAPI* | [**ListAdministratorsAccessRequestStatus**](docs/AccessRequestsAPI.md#listadministratorsaccessrequeststatus) | **Get** /access-request-administration | Access Request Status for Administrators
+*AccessRequestsAPI* | [**LoadAccountSelections**](docs/AccessRequestsAPI.md#loadaccountselections) | **Post** /access-requests/accounts-selection | Get accounts selections for identity
 *AccessRequestsAPI* | [**SetAccessRequestConfig**](docs/AccessRequestsAPI.md#setaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
 *AccountActivitiesAPI* | [**GetAccountActivity**](docs/AccountActivitiesAPI.md#getaccountactivity) | **Get** /account-activities/{id} | Get an Account Activity
 *AccountActivitiesAPI* | [**ListAccountActivities**](docs/AccountActivitiesAPI.md#listaccountactivities) | **Get** /account-activities | List Account Activities
@@ -295,8 +296,14 @@ Class | Method | HTTP request | Description
 *EntitlementsAPI* | [**ResetSourceEntitlements**](docs/EntitlementsAPI.md#resetsourceentitlements) | **Post** /entitlements/reset/sources/{id} | Reset Source Entitlements
 *EntitlementsAPI* | [**UpdateEntitlementsInBulk**](docs/EntitlementsAPI.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GlobalTenantSecuritySettingsAPI* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgLockoutConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorglockoutconfig) | **Get** /auth-org/lockout-config | Get Auth Org Lockout Configuration.
 *GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgServiceProviderConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgserviceproviderconfig) | **Get** /auth-org/service-provider-config | Get Service Provider Configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgSessionConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgsessionconfig) | **Get** /auth-org/session-config | Get Auth Org Session Configuration.
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgLockoutConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorglockoutconfig) | **Patch** /auth-org/lockout-config | Update Auth Org Lockout Configuration
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgServiceProviderConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgserviceproviderconfig) | **Patch** /auth-org/service-provider-config | Update Service Provider Configuration
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgSessionConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgsessionconfig) | **Patch** /auth-org/session-config | Update Auth Org Session Configuration
 *GovernanceGroupsAPI* | [**CreateWorkgroup**](docs/GovernanceGroupsAPI.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
 *GovernanceGroupsAPI* | [**DeleteWorkgroup**](docs/GovernanceGroupsAPI.md#deleteworkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
 *GovernanceGroupsAPI* | [**DeleteWorkgroupMembers**](docs/GovernanceGroupsAPI.md#deleteworkgroupmembers) | **Post** /workgroups/{workgroupId}/members/bulk-delete | Remove members from Governance Group
@@ -879,6 +886,8 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedIdentity](docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](docs/AccountCorrelatedSource.md)
  - [AccountInfoDto](docs/AccountInfoDto.md)
+ - [AccountInfoRef](docs/AccountInfoRef.md)
+ - [AccountItemRef](docs/AccountItemRef.md)
  - [AccountRequest](docs/AccountRequest.md)
  - [AccountRequestInfo](docs/AccountRequestInfo.md)
  - [AccountRequestResult](docs/AccountRequestResult.md)
@@ -898,6 +907,8 @@ Class | Method | HTTP request | Description
  - [AccountsCollectedForAggregationSource](docs/AccountsCollectedForAggregationSource.md)
  - [AccountsCollectedForAggregationStats](docs/AccountsCollectedForAggregationStats.md)
  - [AccountsExportReportArguments](docs/AccountsExportReportArguments.md)
+ - [AccountsSelectionRequest](docs/AccountsSelectionRequest.md)
+ - [AccountsSelectionResponse](docs/AccountsSelectionResponse.md)
  - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
  - [ActivityIdentity](docs/ActivityIdentity.md)
  - [ActivityInsights](docs/ActivityInsights.md)
@@ -1173,6 +1184,7 @@ Class | Method | HTTP request | Description
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
  - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FeatureValueDto](docs/FeatureValueDto.md)
+ - [FederationProtocolDetails](docs/FederationProtocolDetails.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
  - [FilterAggregation](docs/FilterAggregation.md)
@@ -1219,6 +1231,7 @@ Class | Method | HTTP request | Description
  - [Identity](docs/Identity.md)
  - [Identity1](docs/Identity1.md)
  - [IdentityAccess](docs/IdentityAccess.md)
+ - [IdentityAccountSelections](docs/IdentityAccountSelections.md)
  - [IdentityAssociationDetails](docs/IdentityAssociationDetails.md)
  - [IdentityAssociationDetailsAssociationDetailsInner](docs/IdentityAssociationDetailsAssociationDetailsInner.md)
  - [IdentityAttribute](docs/IdentityAttribute.md)
@@ -1272,6 +1285,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccess1](docs/IdentityWithNewAccess1.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [IdpDetails](docs/IdpDetails.md)
  - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
  - [ImportEntitlementsBySourceRequest](docs/ImportEntitlementsBySourceRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
@@ -1287,6 +1301,7 @@ Class | Method | HTTP request | Description
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
  - [InvocationStatusType](docs/InvocationStatusType.md)
+ - [JITConfiguration](docs/JITConfiguration.md)
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
@@ -1321,6 +1336,7 @@ Class | Method | HTTP request | Description
  - [LoadUncorrelatedAccountsTaskTaskMessagesInner](docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
+ - [LockoutConfiguration](docs/LockoutConfiguration.md)
  - [LookupStep](docs/LookupStep.md)
  - [MachineAccount](docs/MachineAccount.md)
  - [MachineIdentity](docs/MachineIdentity.md)
@@ -1514,7 +1530,10 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
  - [RequestedAccountRef](docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](docs/RequestedForDtoRef.md)
+ - [RequestedItemAccountSelections](docs/RequestedItemAccountSelections.md)
  - [RequestedItemDetails](docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](docs/RequestedItemDtoRef.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)
@@ -1675,6 +1694,9 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
+ - [ServiceProviderConfiguration](docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](docs/SessionConfiguration.md)
  - [SetIcon200Response](docs/SetIcon200Response.md)
  - [SetIconRequest](docs/SetIconRequest.md)
  - [SetLifecycleState200Response](docs/SetLifecycleState200Response.md)
@@ -1703,6 +1725,7 @@ Class | Method | HTTP request | Description
  - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)
  - [SourceAccountCreated](docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](docs/SourceAccountDeleted.md)
+ - [SourceAccountSelections](docs/SourceAccountSelections.md)
  - [SourceAccountUpdated](docs/SourceAccountUpdated.md)
  - [SourceApp](docs/SourceApp.md)
  - [SourceAppAccountSource](docs/SourceAppAccountSource.md)
@@ -1722,6 +1745,7 @@ Class | Method | HTTP request | Description
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
+ - [SourceItemRef](docs/SourceItemRef.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](docs/SourceManagerCorrelationMapping.md)
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
@@ -1747,6 +1771,7 @@ Class | Method | HTTP request | Description
  - [SpConfigRule](docs/SpConfigRule.md)
  - [SpConfigRuleValue](docs/SpConfigRuleValue.md)
  - [SpConfigRules](docs/SpConfigRules.md)
+ - [SpDetails](docs/SpDetails.md)
  - [StandardLevel](docs/StandardLevel.md)
  - [StartInvocationInput](docs/StartInvocationInput.md)
  - [StatusResponse](docs/StatusResponse.md)

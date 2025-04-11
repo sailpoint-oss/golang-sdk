@@ -12,84 +12,50 @@ package api_v3
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// ServiceProviderConfigurationFederationProtocolDetailsInner - struct for ServiceProviderConfigurationFederationProtocolDetailsInner
+
+// ServiceProviderConfigurationFederationProtocolDetailsInner struct for ServiceProviderConfigurationFederationProtocolDetailsInner
 type ServiceProviderConfigurationFederationProtocolDetailsInner struct {
 	IdpDetails *IdpDetails
 	SpDetails *SpDetails
 }
 
-// IdpDetailsAsServiceProviderConfigurationFederationProtocolDetailsInner is a convenience function that returns IdpDetails wrapped in ServiceProviderConfigurationFederationProtocolDetailsInner
-func IdpDetailsAsServiceProviderConfigurationFederationProtocolDetailsInner(v *IdpDetails) ServiceProviderConfigurationFederationProtocolDetailsInner {
-	return ServiceProviderConfigurationFederationProtocolDetailsInner{
-		IdpDetails: v,
-	}
-}
-
-// SpDetailsAsServiceProviderConfigurationFederationProtocolDetailsInner is a convenience function that returns SpDetails wrapped in ServiceProviderConfigurationFederationProtocolDetailsInner
-func SpDetailsAsServiceProviderConfigurationFederationProtocolDetailsInner(v *SpDetails) ServiceProviderConfigurationFederationProtocolDetailsInner {
-	return ServiceProviderConfigurationFederationProtocolDetailsInner{
-		SpDetails: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *ServiceProviderConfigurationFederationProtocolDetailsInner) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into IdpDetails
-	err = newStrictDecoder(data).Decode(&dst.IdpDetails)
+	// try to unmarshal JSON data into IdpDetails
+	err = json.Unmarshal(data, &dst.IdpDetails);
 	if err == nil {
 		jsonIdpDetails, _ := json.Marshal(dst.IdpDetails)
 		if string(jsonIdpDetails) == "{}" { // empty struct
 			dst.IdpDetails = nil
 		} else {
-			if err = validator.Validate(dst.IdpDetails); err != nil {
-				dst.IdpDetails = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.IdpDetails, return on the first match
 		}
 	} else {
 		dst.IdpDetails = nil
 	}
 
-	// try to unmarshal data into SpDetails
-	err = newStrictDecoder(data).Decode(&dst.SpDetails)
+	// try to unmarshal JSON data into SpDetails
+	err = json.Unmarshal(data, &dst.SpDetails);
 	if err == nil {
 		jsonSpDetails, _ := json.Marshal(dst.SpDetails)
 		if string(jsonSpDetails) == "{}" { // empty struct
 			dst.SpDetails = nil
 		} else {
-			if err = validator.Validate(dst.SpDetails); err != nil {
-				dst.SpDetails = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.SpDetails, return on the first match
 		}
 	} else {
 		dst.SpDetails = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.IdpDetails = nil
-		dst.SpDetails = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(ServiceProviderConfigurationFederationProtocolDetailsInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ServiceProviderConfigurationFederationProtocolDetailsInner)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(ServiceProviderConfigurationFederationProtocolDetailsInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src ServiceProviderConfigurationFederationProtocolDetailsInner) MarshalJSON() ([]byte, error) {
+func (src *ServiceProviderConfigurationFederationProtocolDetailsInner) MarshalJSON() ([]byte, error) {
 	if src.IdpDetails != nil {
 		return json.Marshal(&src.IdpDetails)
 	}
@@ -98,39 +64,9 @@ func (src ServiceProviderConfigurationFederationProtocolDetailsInner) MarshalJSO
 		return json.Marshal(&src.SpDetails)
 	}
 
-	return nil, nil // no data in oneOf schemas
+	return nil, nil // no data in anyOf schemas
 }
 
-// Get the actual instance
-func (obj *ServiceProviderConfigurationFederationProtocolDetailsInner) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.IdpDetails != nil {
-		return obj.IdpDetails
-	}
-
-	if obj.SpDetails != nil {
-		return obj.SpDetails
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj ServiceProviderConfigurationFederationProtocolDetailsInner) GetActualInstanceValue() (interface{}) {
-	if obj.IdpDetails != nil {
-		return *obj.IdpDetails
-	}
-
-	if obj.SpDetails != nil {
-		return *obj.SpDetails
-	}
-
-	// all schemas are nil
-	return nil
-}
 
 type NullableServiceProviderConfigurationFederationProtocolDetailsInner struct {
 	value *ServiceProviderConfigurationFederationProtocolDetailsInner

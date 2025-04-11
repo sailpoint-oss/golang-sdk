@@ -166,7 +166,7 @@ import (
 )
 
 func main() {
-	accessRequest := *openapiclient.NewAccessRequest([]string{"2c918084660f45d6016617daa9210584"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
+	accessRequest := *openapiclient.NewAccessRequest([]string{"RequestedFor_example"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

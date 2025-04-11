@@ -110,6 +110,7 @@ docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesCreate.md
 docs/AccountAttributesCreateAttributes.md
+docs/AccountItemRef.md
 docs/AccountRequest.md
 docs/AccountRequestInfo.md
 docs/AccountRequestResult.md
@@ -497,7 +498,9 @@ docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestedAccountRef.md
+docs/RequestedForDtoRef.md
 docs/RequestedItemDetails.md
+docs/RequestedItemDtoRef.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -612,6 +615,7 @@ docs/SourceCluster.md
 docs/SourceClusterDto.md
 docs/SourceConnectionsDto.md
 docs/SourceHealthDto.md
+docs/SourceItemRef.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
 docs/SourceManagerCorrelationRule.md
@@ -747,6 +751,7 @@ model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_create.go
 model_account_attributes_create_attributes.go
+model_account_item_ref.go
 model_account_request.go
 model_account_request_info.go
 model_account_request_result.go
@@ -1104,7 +1109,9 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_account_ref.go
+model_requested_for_dto_ref.go
 model_requested_item_details.go
+model_requested_item_dto_ref.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go
@@ -1210,6 +1217,7 @@ model_source_cluster.go
 model_source_cluster_dto.go
 model_source_connections_dto.go
 model_source_health_dto.go
+model_source_item_ref.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go
 model_source_manager_correlation_rule.go

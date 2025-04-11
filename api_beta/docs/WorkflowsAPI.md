@@ -19,9 +19,9 @@ Method | HTTP request | Description
 [**PatchWorkflow**](WorkflowsAPI.md#PatchWorkflow) | **Patch** /workflows/{id} | Patch Workflow
 [**PostExternalExecuteWorkflow**](WorkflowsAPI.md#PostExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
 [**PostWorkflowExternalTrigger**](WorkflowsAPI.md#PostWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+[**PutWorkflow**](WorkflowsAPI.md#PutWorkflow) | **Put** /workflows/{id} | Update Workflow
 [**TestExternalExecuteWorkflow**](WorkflowsAPI.md#TestExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
 [**TestWorkflow**](WorkflowsAPI.md#TestWorkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
-[**UpdateWorkflow**](WorkflowsAPI.md#UpdateWorkflow) | **Put** /workflows/{id} | Update Workflow
 
 
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## GetWorkflow
 
-> Workflow GetWorkflow(ctx, id).Execute()
+> Workflow GetWorkflow(ctx, id).WorkflowMetrics(workflowMetrics).Execute()
 
 Get Workflow By Id
 
@@ -249,10 +249,11 @@ import (
 
 func main() {
 	id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
+	workflowMetrics := false // bool | disable workflow metrics (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).WorkflowMetrics(workflowMetrics).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,6 +279,7 @@ Other parameters are passed through a pointer to a apiGetWorkflowRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **workflowMetrics** | **bool** | disable workflow metrics | [default to true]
 
 ### Return type
 
@@ -786,7 +788,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkflows
 
-> []Workflow ListWorkflows(ctx).Execute()
+> []Workflow ListWorkflows(ctx).Limit(limit).Offset(offset).TriggerId(triggerId).ConnectorInstanceId(connectorInstanceId).Execute()
 
 List Workflows
 
@@ -805,10 +807,14 @@ import (
 )
 
 func main() {
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	triggerId := "idn:identity-created" // string | Trigger ID (optional)
+	connectorInstanceId := "28541fec-bb81-4ad4-88ef-0f7d213adcad" // string | Connector Instance ID (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Limit(limit).Offset(offset).TriggerId(triggerId).ConnectorInstanceId(connectorInstanceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflows``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -820,12 +826,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListWorkflowsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **triggerId** | **string** | Trigger ID | 
+ **connectorInstanceId** | **string** | Connector Instance ID | 
 
 ### Return type
 
@@ -1059,6 +1072,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PutWorkflow
+
+> Workflow PutWorkflow(ctx, id).WorkflowBody(workflowBody).Execute()
+
+Update Workflow
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the Workflow
+	workflowBody := *openapiclient.NewWorkflowBody() // WorkflowBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WorkflowsAPI.PutWorkflow(context.Background(), id).WorkflowBody(workflowBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PutWorkflow``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutWorkflow`: Workflow
+	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PutWorkflow`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Id of the Workflow | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutWorkflowRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **workflowBody** | [**WorkflowBody**](WorkflowBody.md) |  | 
+
+### Return type
+
+[**Workflow**](Workflow.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TestExternalExecuteWorkflow
 
 > TestExternalExecuteWorkflow200Response TestExternalExecuteWorkflow(ctx, id).TestExternalExecuteWorkflowRequest(testExternalExecuteWorkflowRequest).Execute()
@@ -1188,78 +1273,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TestWorkflow200Response**](TestWorkflow200Response.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateWorkflow
-
-> Workflow UpdateWorkflow(ctx, id).WorkflowBody(workflowBody).Execute()
-
-Update Workflow
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the Workflow
-	workflowBody := *openapiclient.NewWorkflowBody() // WorkflowBody | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.UpdateWorkflow(context.Background(), id).WorkflowBody(workflowBody).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.UpdateWorkflow``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateWorkflow`: Workflow
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.UpdateWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the Workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **workflowBody** | [**WorkflowBody**](WorkflowBody.md) |  | 
-
-### Return type
-
-[**Workflow**](Workflow.md)
 
 ### Authorization
 

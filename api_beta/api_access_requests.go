@@ -411,6 +411,7 @@ __GRANT_ACCESS__
 * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others.
 * Roles, access profiles and entitlements can be requested.
 * While requesting entitlements, maximum of 25 entitlements and 10 recipients are allowed in a request.
+* Now supports an alternate field 'requestedForWithRequestedItems' for users to specify account selections while requesting items where they have more than one account on the source.
  
 __REVOKE_ACCESS__
 * Can only be requested for a single identity at a time.
@@ -421,6 +422,7 @@ __REVOKE_ACCESS__
 * Revoke requests for entitlements are limited to 1 entitlement per access request currently.
 * You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
 * Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone.
+* Now supports REVOKE_ACCESS requests for identities with multiple accounts on a single source, with the help of 'assignmentId' and 'nativeIdentity' fields.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

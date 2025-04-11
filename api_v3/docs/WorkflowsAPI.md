@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## GetWorkflow
 
-> Workflow GetWorkflow(ctx, id).Execute()
+> Workflow GetWorkflow(ctx, id).WorkflowMetrics(workflowMetrics).Execute()
 
 Get Workflow By Id
 
@@ -391,10 +391,11 @@ import (
 
 func main() {
 	id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
+	workflowMetrics := false // bool | disable workflow metrics (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).WorkflowMetrics(workflowMetrics).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,6 +421,7 @@ Other parameters are passed through a pointer to a apiGetWorkflowRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **workflowMetrics** | **bool** | disable workflow metrics | [default to true]
 
 ### Return type
 
@@ -928,7 +930,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkflows
 
-> []Workflow ListWorkflows(ctx).Execute()
+> []Workflow ListWorkflows(ctx).TriggerId(triggerId).ConnectorInstanceId(connectorInstanceId).Limit(limit).Offset(offset).Execute()
 
 List Workflows
 
@@ -947,10 +949,14 @@ import (
 )
 
 func main() {
+	triggerId := "idn:identity-created" // string | Trigger ID (optional)
+	connectorInstanceId := "28541fec-bb81-4ad4-88ef-0f7d213adcad" // string | Connector Instance ID (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
+	resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).TriggerId(triggerId).ConnectorInstanceId(connectorInstanceId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflows``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -962,12 +968,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListWorkflowsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **triggerId** | **string** | Trigger ID | 
+ **connectorInstanceId** | **string** | Connector Instance ID | 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 

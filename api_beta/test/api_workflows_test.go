@@ -218,6 +218,20 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test WorkflowsAPIService PutWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.WorkflowsAPI.PutWorkflow(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test WorkflowsAPIService TestExternalExecuteWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -239,20 +253,6 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsAPIService UpdateWorkflow", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.WorkflowsAPI.UpdateWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

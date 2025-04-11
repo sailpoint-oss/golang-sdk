@@ -173,6 +173,7 @@ docs/AccountCorrelatedAccount.md
 docs/AccountCorrelatedIdentity.md
 docs/AccountCorrelatedSource.md
 docs/AccountInfoDto.md
+docs/AccountItemRef.md
 docs/AccountRequestInfo.md
 docs/AccountStatusChanged.md
 docs/AccountStatusChangedAccount.md
@@ -731,7 +732,9 @@ docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestedAccountRef.md
+docs/RequestedForDtoRef.md
 docs/RequestedItemDetails.md
+docs/RequestedItemDtoRef.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -897,6 +900,7 @@ docs/SourceCreationErrors.md
 docs/SourceDeleted.md
 docs/SourceDeletedActor.md
 docs/SourceEntitlementRequestConfig.md
+docs/SourceItemRef.md
 docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
 docs/SourceUpdated.md
@@ -1131,6 +1135,7 @@ model_account_correlated_account.go
 model_account_correlated_identity.go
 model_account_correlated_source.go
 model_account_info_dto.go
+model_account_item_ref.go
 model_account_request_info.go
 model_account_status_changed.go
 model_account_status_changed_account.go
@@ -1644,7 +1649,9 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_account_ref.go
+model_requested_for_dto_ref.go
 model_requested_item_details.go
+model_requested_item_dto_ref.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go
@@ -1801,6 +1808,7 @@ model_source_creation_errors.go
 model_source_deleted.go
 model_source_deleted_actor.go
 model_source_entitlement_request_config.go
+model_source_item_ref.go
 model_source_sync_job.go
 model_source_sync_payload.go
 model_source_updated.go

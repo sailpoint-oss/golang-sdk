@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | the provisioning policy name | 
+**Name** | **NullableString** | the provisioning policy name | 
 **Description** | Pointer to **string** | the description of the provisioning policy | [optional] 
 **UsageType** | Pointer to [**UsageType**](UsageType.md) |  | [optional] 
 **Fields** | Pointer to [**[]FieldDetailsDto**](FieldDetailsDto.md) |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewProvisioningPolicy
 
-`func NewProvisioningPolicy(name string, ) *ProvisioningPolicy`
+`func NewProvisioningPolicy(name NullableString, ) *ProvisioningPolicy`
 
 NewProvisioningPolicy instantiates a new ProvisioningPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,16 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### SetNameNil
+
+`func (o *ProvisioningPolicy) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ProvisioningPolicy) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *ProvisioningPolicy) GetDescription() string`

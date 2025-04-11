@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**GetAccessRequestConfig**](AccessRequestsAPI.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
 [**ListAccessRequestStatus**](AccessRequestsAPI.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
 [**ListAdministratorsAccessRequestStatus**](AccessRequestsAPI.md#ListAdministratorsAccessRequestStatus) | **Get** /access-request-administration | Access Request Status for Administrators
+[**LoadAccountSelections**](AccessRequestsAPI.md#LoadAccountSelections) | **Post** /access-requests/accounts-selection | Get accounts selections for identity
 [**SetAccessRequestConfig**](AccessRequestsAPI.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
 
 
@@ -303,7 +304,7 @@ import (
 )
 
 func main() {
-	accessRequest := *openapiclient.NewAccessRequest([]string{"2c918084660f45d6016617daa9210584"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
+	accessRequest := *openapiclient.NewAccessRequest([]string{"RequestedFor_example"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -570,6 +571,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## LoadAccountSelections
+
+> AccountsSelectionResponse LoadAccountSelections(ctx).AccountsSelectionRequest(accountsSelectionRequest).Execute()
+
+Get accounts selections for identity
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	accountsSelectionRequest := *openapiclient.NewAccountsSelectionRequest([]string{"RequestedFor_example"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccountsSelectionRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelections(context.Background()).AccountsSelectionRequest(accountsSelectionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.LoadAccountSelections``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LoadAccountSelections`: AccountsSelectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.LoadAccountSelections`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLoadAccountSelectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountsSelectionRequest** | [**AccountsSelectionRequest**](AccountsSelectionRequest.md) |  | 
+
+### Return type
+
+[**AccountsSelectionResponse**](AccountsSelectionResponse.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
