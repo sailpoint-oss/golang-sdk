@@ -509,7 +509,6 @@ docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
 docs/Event.md
 docs/EventActor.md
-docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/EventDocument.md
 docs/EventTarget.md
@@ -526,7 +525,6 @@ docs/ExportOptions1.md
 docs/ExportPayload.md
 docs/Expression.md
 docs/ExpressionChildrenInner.md
-docs/ExternalAttributes.md
 docs/FeatureValueDto.md
 docs/FederationProtocolDetails.md
 docs/FieldDetailsDto.md
@@ -1039,7 +1037,6 @@ docs/ScheduledActionResponse.md
 docs/ScheduledActionResponseContent.md
 docs/ScheduledActionResponseContentBackupOptions.md
 docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md
-docs/ScheduledAttributes.md
 docs/ScheduledSearch.md
 docs/ScheduledSearchAPI.md
 docs/ScheduledSearchAllOfOwner.md
@@ -1285,7 +1282,6 @@ docs/WorkflowLibraryTrigger.md
 docs/WorkflowModifiedBy.md
 docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
-docs/WorkflowTriggerAttributes.md
 docs/WorkflowsAPI.md
 docs/WorkgroupBulkDeleteRequest.md
 docs/WorkgroupConnectionDto.md
@@ -1685,7 +1681,6 @@ model_error_response_dto.go
 model_evaluate_response.go
 model_event.go
 model_event_actor.go
-model_event_attributes.go
 model_event_bridge_config.go
 model_event_document.go
 model_event_target.go
@@ -1702,7 +1697,6 @@ model_export_options_1.go
 model_export_payload.go
 model_expression.go
 model_expression_children_inner.go
-model_external_attributes.go
 model_feature_value_dto.go
 model_federation_protocol_details.go
 model_field_details_dto.go
@@ -2173,7 +2167,6 @@ model_scheduled_action_response.go
 model_scheduled_action_response_content.go
 model_scheduled_action_response_content_backup_options.go
 model_scheduled_action_response_content_backup_options_object_options_value.go
-model_scheduled_attributes.go
 model_scheduled_search.go
 model_scheduled_search_all_of_owner.go
 model_scheduled_search_name.go
@@ -2401,7 +2394,6 @@ model_workflow_library_trigger.go
 model_workflow_modified_by.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
-model_workflow_trigger_attributes.go
 model_workgroup_bulk_delete_request.go
 model_workgroup_connection_dto.go
 model_workgroup_connection_dto_object.go
