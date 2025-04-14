@@ -1,12 +1,12 @@
 ---
-id: branding
+id: v2025-branding
 title: Branding
 pagination_label: Branding
 sidebar_label: Branding
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'Branding', 'Branding'] 
-slug: /tools/sdk/go//methods/branding
-tags: ['SDK', 'Software Development Kit', 'Branding', 'Branding']
+keywords: ['go', 'Golang', 'sdk', 'Branding', 'V2025Branding'] 
+slug: /tools/sdk/go/v2025/methods/branding
+tags: ['SDK', 'Software Development Kit', 'Branding', 'V2025Branding']
 ---
 
 # BrandingAPI
@@ -31,7 +31,7 @@ Method | HTTP request | Description
 Create a branding item
 This API endpoint creates a branding item.
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-branding-item)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-branding-item)
 
 ### Path Parameters
 
@@ -71,23 +71,24 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := name_example # string | name of branding item # string | name of branding item
-    productName := productName_example # string | product name # string | product name
-    actionButtonColor := actionButtonColor_example # string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
-    activeLinkColor := activeLinkColor_example # string | hex value of color for link (optional) # string | hex value of color for link (optional)
-    navigationColor := navigationColor_example # string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
-    emailFromAddress := emailFromAddress_example # string | email from address (optional) # string | email from address (optional)
-    loginInformationalMessage := loginInformationalMessage_example # string | login information message (optional) # string | login information message (optional)
-    fileStandard := BINARY_DATA_HERE # *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
+    name := `name_example` // string | name of branding item # string | name of branding item
+    productName := `productName_example` // string | product name # string | product name
+    actionButtonColor := `actionButtonColor_example` // string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
+    activeLinkColor := `activeLinkColor_example` // string | hex value of color for link (optional) # string | hex value of color for link (optional)
+    navigationColor := `navigationColor_example` // string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
+    emailFromAddress := `emailFromAddress_example` // string | email from address (optional) # string | email from address (optional)
+    loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
+    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).Execute()
+	//resp, r, err := apiClient.V2025.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,7 +104,7 @@ func main() {
 Delete a branding item
 This API endpoint delete information for an existing branding item by name.    
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-branding)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-branding)
 
 ### Path Parameters
 
@@ -140,16 +141,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := default # string | The name of the branding item to be deleted # string | The name of the branding item to be deleted
+    name := `default` // string | The name of the branding item to be deleted # string | The name of the branding item to be deleted
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	r, err := apiClient..BrandingAPI.DeleteBranding(context.Background(), name).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  r, err := apiClient.V2025.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
+	//r, err := apiClient.V2025.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBranding``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,7 +165,7 @@ func main() {
 Get a branding item
 This API endpoint retrieves information for an existing branding item by name.    
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-branding)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-branding)
 
 ### Path Parameters
 
@@ -200,16 +202,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := default # string | The name of the branding item to be retrieved # string | The name of the branding item to be retrieved
+    name := `default` // string | The name of the branding item to be retrieved # string | The name of the branding item to be retrieved
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..BrandingAPI.GetBranding(context.Background(), name).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.BrandingAPI.GetBranding(context.Background(), name).Execute()
+	//resp, r, err := apiClient.V2025.BrandingAPI.GetBranding(context.Background(), name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBranding``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,7 +228,7 @@ func main() {
 List of branding items
 This API endpoint returns a list of branding items.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-branding-list)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-branding-list)
 
 ### Path Parameters
 
@@ -254,15 +257,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..BrandingAPI.GetBrandingList(context.Background()).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.BrandingAPI.GetBrandingList(context.Background()).Execute()
+	//resp, r, err := apiClient.V2025.BrandingAPI.GetBrandingList(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,7 +282,7 @@ func main() {
 Update a branding item
 This API endpoint updates information for an existing branding item.
 
-[API Spec](https://developer.sailpoint.com/docs/api//set-branding-item)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/set-branding-item)
 
 ### Path Parameters
 
@@ -323,24 +327,25 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := default # string | The name of the branding item to be retrieved # string | The name of the branding item to be retrieved
-    name2 := name_example # string | name of branding item # string | name of branding item
-    productName := productName_example # string | product name # string | product name
-    actionButtonColor := actionButtonColor_example # string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
-    activeLinkColor := activeLinkColor_example # string | hex value of color for link (optional) # string | hex value of color for link (optional)
-    navigationColor := navigationColor_example # string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
-    emailFromAddress := emailFromAddress_example # string | email from address (optional) # string | email from address (optional)
-    loginInformationalMessage := loginInformationalMessage_example # string | login information message (optional) # string | login information message (optional)
-    fileStandard := BINARY_DATA_HERE # *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
+    name := `default` // string | The name of the branding item to be retrieved # string | The name of the branding item to be retrieved
+    name2 := `name_example` // string | name of branding item # string | name of branding item
+    productName := `productName_example` // string | product name # string | product name
+    actionButtonColor := `actionButtonColor_example` // string | hex value of color for action button (optional) # string | hex value of color for action button (optional)
+    activeLinkColor := `activeLinkColor_example` // string | hex value of color for link (optional) # string | hex value of color for link (optional)
+    navigationColor := `navigationColor_example` // string | hex value of color for navigation bar (optional) # string | hex value of color for navigation bar (optional)
+    emailFromAddress := `emailFromAddress_example` // string | email from address (optional) # string | email from address (optional)
+    loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
+    fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).Execute()
+	//resp, r, err := apiClient.V2025.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItem``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -73,15 +73,16 @@ import (
 	"fmt"
 	"os"
   beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    key := iscPrivacy # string | Technical name of the Attribute. # string | Technical name of the Attribute.
+    key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttribute(context.Background(), key).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttribute(context.Background(), key).Execute()
+	//resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttribute(context.Background(), key).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttribute``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,16 +138,17 @@ import (
 	"fmt"
 	"os"
   beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    key := iscPrivacy # string | Technical name of the Attribute. # string | Technical name of the Attribute.
-    value := public # string | Technical name of the Attribute value. # string | Technical name of the Attribute value.
+    key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+    value := `public` // string | Technical name of the Attribute value. # string | Technical name of the Attribute value.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue(context.Background(), key, value).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue(context.Background(), key, value).Execute()
+	//resp, r, err := apiClient.Beta.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue(context.Background(), key, value).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,15 +198,16 @@ import (
 	"fmt"
 	"os"
   beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    filters := name eq "Privacy" # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators: *and* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators: *and* (optional)
+    filters := `name eq "Privacy"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators: *and* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators: *and* (optional)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.Background()).Filters(filters).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.Background()).Execute()
+	//resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.Background()).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttribute``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -258,15 +261,16 @@ import (
 	"fmt"
 	"os"
   beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    key := iscPrivacy # string | Technical name of the Attribute. # string | Technical name of the Attribute.
+    key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue(context.Background(), key).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue(context.Background(), key).Execute()
+	//resp, r, err := apiClient.Beta.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue(context.Background(), key).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

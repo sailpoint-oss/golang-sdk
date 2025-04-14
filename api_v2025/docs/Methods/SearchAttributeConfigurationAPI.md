@@ -1,12 +1,12 @@
 ---
-id: search-attribute-configuration
+id: v2025-search-attribute-configuration
 title: SearchAttributeConfiguration
 pagination_label: SearchAttributeConfiguration
 sidebar_label: SearchAttributeConfiguration
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'SearchAttributeConfiguration', 'SearchAttributeConfiguration'] 
-slug: /tools/sdk/go//methods/search-attribute-configuration
-tags: ['SDK', 'Software Development Kit', 'SearchAttributeConfiguration', 'SearchAttributeConfiguration']
+keywords: ['go', 'Golang', 'sdk', 'SearchAttributeConfiguration', 'V2025SearchAttributeConfiguration'] 
+slug: /tools/sdk/go/v2025/methods/search-attribute-configuration
+tags: ['SDK', 'Software Development Kit', 'SearchAttributeConfiguration', 'V2025SearchAttributeConfiguration']
 ---
 
 # SearchAttributeConfigurationAPI
@@ -56,7 +56,7 @@ Create Extended Search Attributes
 Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
 >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-search-attribute-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-search-attribute-config)
 
 ### Path Parameters
 
@@ -90,12 +90,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     searchAttributeConfig := fmt.Sprintf(`{
           "displayName" : "New Mail Attribute",
           "name" : "newMailAttribute",
@@ -106,8 +106,9 @@ func main() {
         }`) # SearchAttributeConfig | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
+	//resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +135,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Delete Extended Search Attribute
 Delete an extended attribute configuration by name.
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-search-attribute-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-search-attribute-config)
 
 ### Path Parameters
 
@@ -172,17 +173,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := newMailAttribute # string | Name of the extended search attribute configuration to delete. # string | Name of the extended search attribute configuration to delete.
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    name := `newMailAttribute` // string | Name of the extended search attribute configuration to delete. # string | Name of the extended search attribute configuration to delete.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	r, err := apiClient..SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  r, err := apiClient.V2025.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+	//r, err := apiClient.V2025.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,7 +209,7 @@ This API is currently in an experimental state. The API is subject to change bas
 List Extended Search Attributes
 Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-search-attribute-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-search-attribute-config)
 
 ### Path Parameters
 
@@ -242,18 +244,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    limit := 250 # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := 0 # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -280,7 +283,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get Extended Search Attribute
 Get an extended attribute configuration by name.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-single-search-attribute-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-single-search-attribute-config)
 
 ### Path Parameters
 
@@ -318,17 +321,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := newMailAttribute # string | Name of the extended search attribute configuration to get. # string | Name of the extended search attribute configuration to get.
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    name := `newMailAttribute` // string | Name of the extended search attribute configuration to get. # string | Name of the extended search attribute configuration to get.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,7 +361,7 @@ Update an existing search attribute configuration.
 You can patch these fields:
 * name  * displayName * applicationAttributes
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-search-attribute-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/patch-search-attribute-config)
 
 ### Path Parameters
 
@@ -396,18 +400,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := promotedMailAttribute # string | Name of the search attribute configuration to patch. # string | Name of the search attribute configuration to patch.
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonPatchOperation := fmt.Sprintf(`[{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}]`) # []JsonPatchOperation | 
+    name := `promotedMailAttribute` // string | Name of the search attribute configuration to patch. # string | Name of the search attribute configuration to patch.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    jsonPatchOperation := fmt.Sprintf(`[{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}]`) // []JsonPatchOperation | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	//resp, r, err := apiClient.V2025.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

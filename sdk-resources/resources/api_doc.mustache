@@ -81,7 +81,7 @@ import (
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
   {{apiVersion}} "{{moduleImportPath}}"
-	{{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+	sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
 )
 
 func main() {
@@ -91,22 +91,23 @@ func main() {
     {{paramName}} := fmt.Sprintf(`{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
     {{/isModel}}
     {{^isModel}}
-    {{paramName}} := {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{paramName}} := {{#isString}}`{{/isString}}{{{example}}}{{#isString}}`{{/isString}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/isModel}}
     {{/isArray}}
     {{#isArray}}
     {{#items.isModel}}
-    {{paramName}} := fmt.Sprintf(`{{{example}}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{paramName}} := fmt.Sprintf(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/items.isModel}}
     {{^items.isModel}}
-    {{paramName}} := fmt.Sprintf(`{{{example}}}`) # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{paramName}} := fmt.Sprintf(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/items.isModel}}
     {{/isArray}}
     {{/allParams}}
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#requiredParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/requiredParams}}.Execute()
+	//{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

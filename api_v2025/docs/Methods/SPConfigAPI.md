@@ -1,12 +1,12 @@
 ---
-id: sp-config
+id: v2025-sp-config
 title: SPConfig
 pagination_label: SPConfig
 sidebar_label: SPConfig
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'SPConfig', 'SPConfig'] 
-slug: /tools/sdk/go//methods/sp-config
-tags: ['SDK', 'Software Development Kit', 'SPConfig', 'SPConfig']
+keywords: ['go', 'Golang', 'sdk', 'SPConfig', 'V2025SPConfig'] 
+slug: /tools/sdk/go/v2025/methods/sp-config
+tags: ['SDK', 'Software Development Kit', 'SPConfig', 'V2025SPConfig']
 ---
 
 # SPConfigAPI
@@ -29,7 +29,7 @@ Initiates configuration objects export job
 This post will export objects from the tenant to a JSON configuration file.
 For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
 
-[API Spec](https://developer.sailpoint.com/docs/api//export-sp-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/export-sp-config)
 
 ### Path Parameters
 
@@ -62,8 +62,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -72,8 +72,9 @@ func main() {
         }`) # ExportPayload | Export options control what will be included in the export.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.ExportSpConfig(context.Background()).ExportPayload(exportPayload).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.ExportSpConfig(context.Background()).ExportPayload(exportPayload).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.ExportSpConfig(context.Background()).ExportPayload(exportPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ExportSpConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -91,7 +92,7 @@ This endpoint gets the export file resulting from the export job with the reques
 The request will need one of the following security scopes:
 - sp:config:read - sp:config:manage
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-sp-config-export)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-sp-config-export)
 
 ### Path Parameters
 
@@ -128,16 +129,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := ef38f94347e94562b5bb8424a56397d8 # string | The ID of the export job whose results will be downloaded. # string | The ID of the export job whose results will be downloaded.
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the export job whose results will be downloaded. # string | The ID of the export job whose results will be downloaded.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,7 +157,7 @@ This gets the status of the export job identified by the `id` parameter.
 The request will need one of the following security scopes:
 - sp:config:read - sp:config:manage
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-sp-config-export-status)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-sp-config-export-status)
 
 ### Path Parameters
 
@@ -192,16 +194,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := ef38f94347e94562b5bb8424a56397d8 # string | The ID of the export job whose status will be returned. # string | The ID of the export job whose status will be returned.
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the export job whose status will be returned. # string | The ID of the export job whose status will be returned.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,7 +222,7 @@ This gets import file resulting from the import job with the requested id and do
 The request will need the following security scope:
 - sp:config:manage
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-sp-config-import)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-sp-config-import)
 
 ### Path Parameters
 
@@ -256,16 +259,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := ef38f94347e94562b5bb8424a56397d8 # string | The ID of the import job whose results will be downloaded. # string | The ID of the import job whose results will be downloaded.
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the import job whose results will be downloaded. # string | The ID of the import job whose results will be downloaded.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,7 +289,7 @@ Get import job status
  refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).'
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-sp-config-import-status)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-sp-config-import-status)
 
 ### Path Parameters
 
@@ -322,16 +326,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := ef38f94347e94562b5bb8424a56397d8 # string | The ID of the import job whose status will be returned. # string | The ID of the import job whose status will be returned.
+    id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the import job whose status will be returned. # string | The ID of the import job whose status will be returned.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,7 +362,7 @@ You cannot currently import from the Non-Employee Lifecycle Management (NELM) so
 For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//import-sp-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/import-sp-config)
 
 ### Path Parameters
 
@@ -392,18 +397,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    data := BINARY_DATA_HERE # *os.File | JSON file containing the objects to be imported. # *os.File | JSON file containing the objects to be imported.
-    preview := true # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false) # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false)
+    data := BINARY_DATA_HERE // *os.File | JSON file containing the objects to be imported. # *os.File | JSON file containing the objects to be imported.
+    preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false) # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false)
     options := fmt.Sprintf(``) # ImportOptions |  (optional)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.ImportSpConfig(context.Background()).Data(data).Preview(preview).Options(options).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.ImportSpConfig(context.Background()).Data(data).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.ImportSpConfig(context.Background()).Data(data).Preview(preview).Options(options).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ImportSpConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -419,7 +425,7 @@ func main() {
 List Config Objects
 Get a list of object configurations that the tenant export/import service knows.
 
-[API Spec](https://developer.sailpoint.com/docs/api//list-sp-config-objects)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/list-sp-config-objects)
 
 ### Path Parameters
 
@@ -448,15 +454,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
+	//resp, r, err := apiClient.V2025.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ListSpConfigObjects``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,12 +1,12 @@
 ---
-id: ui-metadata
+id: v2025-ui-metadata
 title: UIMetadata
 pagination_label: UIMetadata
 sidebar_label: UIMetadata
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'UIMetadata', 'UIMetadata'] 
-slug: /tools/sdk/go//methods/ui-metadata
-tags: ['SDK', 'Software Development Kit', 'UIMetadata', 'UIMetadata']
+keywords: ['go', 'Golang', 'sdk', 'UIMetadata', 'V2025UIMetadata'] 
+slug: /tools/sdk/go/v2025/methods/ui-metadata
+tags: ['SDK', 'Software Development Kit', 'UIMetadata', 'V2025UIMetadata']
 ---
 
 # UIMetadataAPI
@@ -35,7 +35,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get a tenant UI metadata
 This API endpoint retrieves UI metadata configured for your tenant.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-tenant-ui-metadata)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-tenant-ui-metadata)
 
 ### Path Parameters
 
@@ -68,16 +68,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..UIMetadataAPI.GetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.UIMetadataAPI.GetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.UIMetadataAPI.GetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.GetTenantUiMetadata``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,7 +105,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Update tenant UI metadata
 This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
-[API Spec](https://developer.sailpoint.com/docs/api//set-tenant-ui-metadata)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/set-tenant-ui-metadata)
 
 ### Path Parameters
 
@@ -138,12 +139,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     tenantUiMetadataItemUpdateRequest := fmt.Sprintf(`{
           "usernameEmptyText" : "Please provide your work email address...",
           "usernameLabel" : "Email",
@@ -151,8 +152,9 @@ func main() {
         }`) # TenantUiMetadataItemUpdateRequest | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..UIMetadataAPI.SetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.UIMetadataAPI.SetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
+	//resp, r, err := apiClient.V2025.UIMetadataAPI.SetTenantUiMetadata(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.SetTenantUiMetadata``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,12 +1,12 @@
 ---
-id: password-configuration
+id: v2025-password-configuration
 title: PasswordConfiguration
 pagination_label: PasswordConfiguration
 sidebar_label: PasswordConfiguration
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'PasswordConfiguration', 'PasswordConfiguration'] 
-slug: /tools/sdk/go//methods/password-configuration
-tags: ['SDK', 'Software Development Kit', 'PasswordConfiguration', 'PasswordConfiguration']
+keywords: ['go', 'Golang', 'sdk', 'PasswordConfiguration', 'V2025PasswordConfiguration'] 
+slug: /tools/sdk/go/v2025/methods/password-configuration
+tags: ['SDK', 'Software Development Kit', 'PasswordConfiguration', 'V2025PasswordConfiguration']
 ---
 
 # PasswordConfigurationAPI
@@ -32,7 +32,7 @@ This API creates the password org config. Unspecified fields will use default va
 To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
 Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-password-org-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-password-org-config)
 
 ### Path Parameters
 
@@ -65,8 +65,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -78,8 +78,9 @@ func main() {
         }`) # PasswordOrgConfig | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	//resp, r, err := apiClient.V2025.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -95,7 +96,7 @@ func main() {
 Get Password Org Config
 This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-password-org-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-password-org-config)
 
 ### Path Parameters
 
@@ -124,15 +125,16 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
+	//resp, r, err := apiClient.V2025.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,7 +152,7 @@ This API updates the password org config for specified fields. Other fields will
 You must set the `customInstructionsEnabled` field to "true" to be able to use custom password instructions. 
 Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-[API Spec](https://developer.sailpoint.com/docs/api//put-password-org-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/put-password-org-config)
 
 ### Path Parameters
 
@@ -183,8 +185,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -196,8 +198,9 @@ func main() {
         }`) # PasswordOrgConfig | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	//resp, r, err := apiClient.V2025.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

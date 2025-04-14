@@ -1,12 +1,12 @@
 ---
-id: access-request-identity-metrics
+id: v2025-access-request-identity-metrics
 title: AccessRequestIdentityMetrics
 pagination_label: AccessRequestIdentityMetrics
 sidebar_label: AccessRequestIdentityMetrics
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'AccessRequestIdentityMetrics', 'AccessRequestIdentityMetrics'] 
-slug: /tools/sdk/go//methods/access-request-identity-metrics
-tags: ['SDK', 'Software Development Kit', 'AccessRequestIdentityMetrics', 'AccessRequestIdentityMetrics']
+keywords: ['go', 'Golang', 'sdk', 'AccessRequestIdentityMetrics', 'V2025AccessRequestIdentityMetrics'] 
+slug: /tools/sdk/go/v2025/methods/access-request-identity-metrics
+tags: ['SDK', 'Software Development Kit', 'AccessRequestIdentityMetrics', 'V2025AccessRequestIdentityMetrics']
 ---
 
 # AccessRequestIdentityMetricsAPI
@@ -26,7 +26,7 @@ Method | HTTP request | Description
 Return access request identity metrics
 Use this API to return information access metrics.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-access-request-identity-metrics)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-access-request-identity-metrics)
 
 ### Path Parameters
 
@@ -67,18 +67,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := 7025c863-c270-4ba6-beea-edf3cb091573 # string | Manager's identity ID. # string | Manager's identity ID.
-    requestedObjectId := 2db501be-f0fb-4cc5-a695-334133c52891 # string | Requested access item's ID. # string | Requested access item's ID.
-    type_ := ENTITLEMENT # string | Requested access item's type. # string | Requested access item's type.
+    identityId := `7025c863-c270-4ba6-beea-edf3cb091573` // string | Manager's identity ID. # string | Manager's identity ID.
+    requestedObjectId := `2db501be-f0fb-4cc5-a695-334133c52891` // string | Requested access item's ID. # string | Requested access item's ID.
+    type_ := `ENTITLEMENT` // string | Requested access item's type. # string | Requested access item's type.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
+	//resp, r, err := apiClient.V2025.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

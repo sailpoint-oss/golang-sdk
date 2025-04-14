@@ -7,3 +7,17 @@ useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
 gitRepoId: golang-sdk/v2
 gitUserId: sailpoint-oss
+apiVersion: v2025
+funtionPrefix: V2025
+subModuleName: V2025
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v2/api_v2025
+files:
+  developerSite_code_examples.mustache:
+    templateType: APIDocs
+    destinationFilename: developerSite_code_examples.yaml 
+  docs_methods_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: docs/Methods/Index.md
+  docs_models_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: Index.md

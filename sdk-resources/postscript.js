@@ -358,7 +358,7 @@ const fixFiles = async function (myArray) {
         ["(../models/os-file)", "(https://pkg.go.dev/os)"],
         ["(list-error-message-dto1)", "(error-message-dto)"],
         ["(list-error-message-dto)", "(error-message-dto)"],
-        ["(list)", "(https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)"]
+        ["(array)", "(https://go.dev/tour/moretypes/6)"]
       ]);
     }
 

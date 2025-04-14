@@ -1,12 +1,12 @@
 ---
-id: password-sync-groups
+id: v2025-password-sync-groups
 title: PasswordSyncGroups
 pagination_label: PasswordSyncGroups
 sidebar_label: PasswordSyncGroups
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'PasswordSyncGroups', 'PasswordSyncGroups'] 
-slug: /tools/sdk/go//methods/password-sync-groups
-tags: ['SDK', 'Software Development Kit', 'PasswordSyncGroups', 'PasswordSyncGroups']
+keywords: ['go', 'Golang', 'sdk', 'PasswordSyncGroups', 'V2025PasswordSyncGroups'] 
+slug: /tools/sdk/go/v2025/methods/password-sync-groups
+tags: ['SDK', 'Software Development Kit', 'PasswordSyncGroups', 'V2025PasswordSyncGroups']
 ---
 
 # PasswordSyncGroupsAPI
@@ -58,7 +58,7 @@ Method | HTTP request | Description
 Create Password Sync Group
 This API creates a password sync group based on the specifications provided.
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-password-sync-group)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-password-sync-group)
 
 ### Path Parameters
 
@@ -91,8 +91,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -106,8 +106,9 @@ func main() {
         }`) # PasswordSyncGroup | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
+	//resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,7 +124,7 @@ func main() {
 Delete Password Sync Group by ID
 This API deletes the specified password sync group.
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-password-sync-group)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-password-sync-group)
 
 ### Path Parameters
 
@@ -160,16 +161,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := 6881f631-3bd5-4213-9c75-8e05cc3e35dd # string | The ID of password sync group to delete. # string | The ID of password sync group to delete.
+    id := `6881f631-3bd5-4213-9c75-8e05cc3e35dd` // string | The ID of password sync group to delete. # string | The ID of password sync group to delete.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	r, err := apiClient..PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  r, err := apiClient.V2025.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
+	//r, err := apiClient.V2025.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.DeletePasswordSyncGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,7 +185,7 @@ func main() {
 Get Password Sync Group by ID
 This API returns the sync group for the specified ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-password-sync-group)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-password-sync-group)
 
 ### Path Parameters
 
@@ -220,16 +222,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := 6881f631-3bd5-4213-9c75-8e05cc3e35dd # string | The ID of password sync group to retrieve. # string | The ID of password sync group to retrieve.
+    id := `6881f631-3bd5-4213-9c75-8e05cc3e35dd` // string | The ID of password sync group to retrieve. # string | The ID of password sync group to retrieve.
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,7 +248,7 @@ func main() {
 Get Password Sync Group List
 This API returns a list of password sync groups.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-password-sync-groups)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-password-sync-groups)
 
 ### Path Parameters
 
@@ -280,18 +283,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    limit := 250 # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := 0 # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
+	//resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -307,7 +311,7 @@ func main() {
 Update Password Sync Group by ID
 This API updates the specified password sync group.
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-password-sync-group)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/update-password-sync-group)
 
 ### Path Parameters
 
@@ -345,12 +349,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := 6881f631-3bd5-4213-9c75-8e05cc3e35dd # string | The ID of password sync group to update. # string | The ID of password sync group to update.
+    id := `6881f631-3bd5-4213-9c75-8e05cc3e35dd` // string | The ID of password sync group to update. # string | The ID of password sync group to update.
     passwordSyncGroup := fmt.Sprintf(`{
           "created" : "2023-03-16T04:00:00Z",
           "name" : "Password Sync Group 1",
@@ -361,8 +365,9 @@ func main() {
         }`) # PasswordSyncGroup | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+	//resp, r, err := apiClient.V2025.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

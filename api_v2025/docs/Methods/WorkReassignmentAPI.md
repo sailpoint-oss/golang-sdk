@@ -1,12 +1,12 @@
 ---
-id: work-reassignment
+id: v2025-work-reassignment
 title: WorkReassignment
 pagination_label: WorkReassignment
 sidebar_label: WorkReassignment
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'WorkReassignment', 'WorkReassignment'] 
-slug: /tools/sdk/go//methods/work-reassignment
-tags: ['SDK', 'Software Development Kit', 'WorkReassignment', 'WorkReassignment']
+keywords: ['go', 'Golang', 'sdk', 'WorkReassignment', 'V2025WorkReassignment'] 
+slug: /tools/sdk/go/v2025/methods/work-reassignment
+tags: ['SDK', 'Software Development Kit', 'WorkReassignment', 'V2025WorkReassignment']
 ---
 
 # WorkReassignmentAPI
@@ -51,7 +51,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Create a Reassignment Configuration
 Creates a new Reassignment Configuration for the specified identity.
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-reassignment-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-reassignment-configuration)
 
 ### Path Parameters
 
@@ -85,12 +85,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     configurationItemRequest := fmt.Sprintf(`{
           "endDate" : "2022-07-30T17:00:00Z",
           "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
@@ -100,8 +100,9 @@ func main() {
         }`) # ConfigurationItemRequest | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.CreateReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,7 +129,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Delete Reassignment Configuration
 Deletes a single reassignment configuration for the specified identity
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-reassignment-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-reassignment-configuration)
 
 ### Path Parameters
 
@@ -168,18 +169,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := 2c91808781a71ddb0181b9090b5c504e # string | unique identity id # string | unique identity id
-    configType :=  # ConfigTypeEnum |  # ConfigTypeEnum | 
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
+    configType :=  // ConfigTypeEnum |  # ConfigTypeEnum | 
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	r, err := apiClient..WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  r, err := apiClient.V2025.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	//r, err := apiClient.V2025.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.DeleteReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +206,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Evaluate Reassignment Configuration
 Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-evaluate-reassignment-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-evaluate-reassignment-configuration)
 
 ### Path Parameters
 
@@ -245,19 +247,20 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := 2c91808781a71ddb0181b9090b5c504e # string | unique identity id # string | unique identity id
-    configType := accessRequests # ConfigTypeEnum | Reassignment work type # ConfigTypeEnum | Reassignment work type
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    exclusionFilters := fmt.Sprintf(`SELF_REVIEW_DELEGATION`) # []string | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
+    identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
+    configType := accessRequests // ConfigTypeEnum | Reassignment work type # ConfigTypeEnum | Reassignment work type
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    exclusionFilters := fmt.Sprintf(`SELF_REVIEW_DELEGATION`) // []string | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).ExclusionFilters(exclusionFilters).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).ExclusionFilters(exclusionFilters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetEvaluateReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -284,7 +287,7 @@ This API is currently in an experimental state. The API is subject to change bas
 List Reassignment Config Types
 Gets a collection of types which are available in the Reassignment Configuration UI.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-reassignment-config-types)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-reassignment-config-types)
 
 ### Path Parameters
 
@@ -317,16 +320,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigTypes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,7 +357,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get Reassignment Configuration
 Gets the Reassignment Configuration for an identity.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-reassignment-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-reassignment-configuration)
 
 ### Path Parameters
 
@@ -391,17 +395,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := 2c91808781a71ddb0181b9090b5c504f # string | unique identity id # string | unique identity id
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    identityId := `2c91808781a71ddb0181b9090b5c504f` // string | unique identity id # string | unique identity id
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -428,7 +433,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get Tenant-wide Reassignment Configuration settings
 Gets the global Reassignment Configuration settings for the requestor's tenant.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-tenant-config-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-tenant-config-configuration)
 
 ### Path Parameters
 
@@ -461,16 +466,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetTenantConfigConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -497,7 +503,7 @@ This API is currently in an experimental state. The API is subject to change bas
 List Reassignment Configurations
 Gets all Reassignment configuration for the current org.
 
-[API Spec](https://developer.sailpoint.com/docs/api//list-reassignment-configurations)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/list-reassignment-configurations)
 
 ### Path Parameters
 
@@ -530,16 +536,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.ListReassignmentConfigurations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -566,7 +573,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Update Reassignment Configuration
 Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api//put-reassignment-config)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/put-reassignment-config)
 
 ### Path Parameters
 
@@ -605,13 +612,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := 2c91808781a71ddb0181b9090b5c504e # string | unique identity id # string | unique identity id
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     configurationItemRequest := fmt.Sprintf(`{
           "endDate" : "2022-07-30T17:00:00Z",
           "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
@@ -621,8 +628,9 @@ func main() {
         }`) # ConfigurationItemRequest | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutReassignmentConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -649,7 +657,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Update Tenant-wide Reassignment Configuration settings
 Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
-[API Spec](https://developer.sailpoint.com/docs/api//put-tenant-configuration)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/put-tenant-configuration)
 
 ### Path Parameters
 
@@ -683,12 +691,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     tenantConfigurationRequest := fmt.Sprintf(`{
           "configDetails" : {
             "disabled" : true
@@ -696,8 +704,9 @@ func main() {
         }`) # TenantConfigurationRequest | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..WorkReassignmentAPI.PutTenantConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
+	//resp, r, err := apiClient.V2025.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutTenantConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

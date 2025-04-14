@@ -1,12 +1,12 @@
 ---
-id: reports-data-extraction
+id: v2025-reports-data-extraction
 title: ReportsDataExtraction
 pagination_label: ReportsDataExtraction
 sidebar_label: ReportsDataExtraction
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'ReportsDataExtraction', 'ReportsDataExtraction'] 
-slug: /tools/sdk/go//methods/reports-data-extraction
-tags: ['SDK', 'Software Development Kit', 'ReportsDataExtraction', 'ReportsDataExtraction']
+keywords: ['go', 'Golang', 'sdk', 'ReportsDataExtraction', 'V2025ReportsDataExtraction'] 
+slug: /tools/sdk/go/v2025/methods/reports-data-extraction
+tags: ['SDK', 'Software Development Kit', 'ReportsDataExtraction', 'V2025ReportsDataExtraction']
 ---
 
 # ReportsDataExtractionAPI
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Cancel Report
 Cancels a running report.
 
-[API Spec](https://developer.sailpoint.com/docs/api//cancel-report)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/cancel-report)
 
 ### Path Parameters
 
@@ -65,16 +65,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := a1ed223247144cc29d23c632624b4767 # string | ID of the running Report to cancel # string | ID of the running Report to cancel
+    id := `a1ed223247144cc29d23c632624b4767` // string | ID of the running Report to cancel # string | ID of the running Report to cancel
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	r, err := apiClient..ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  r, err := apiClient.V2025.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
+	//r, err := apiClient.V2025.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.CancelReport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -88,7 +89,7 @@ func main() {
 Get Report File
 Gets a report in file format.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-report)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-report)
 
 ### Path Parameters
 
@@ -128,19 +129,20 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    taskResultId := ef38f94347e94562b5bb8424a56397d8 # string | Unique identifier of the task result which handled report # string | Unique identifier of the task result which handled report
-    fileFormat := csv # string | Output format of the requested report file # string | Output format of the requested report file
-    name := Identities Details Report # string | preferred Report file name, by default will be used report name from task result. (optional) # string | preferred Report file name, by default will be used report name from task result. (optional)
-    auditable := true # bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false) # bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false)
+    taskResultId := `ef38f94347e94562b5bb8424a56397d8` // string | Unique identifier of the task result which handled report # string | Unique identifier of the task result which handled report
+    fileFormat := `csv` // string | Output format of the requested report file # string | Output format of the requested report file
+    name := `Identities Details Report` // string | preferred Report file name, by default will be used report name from task result. (optional) # string | preferred Report file name, by default will be used report name from task result. (optional)
+    auditable := true // bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false) # bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
+	//resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -156,7 +158,7 @@ func main() {
 Get Report Result
 Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-report-result)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-report-result)
 
 ### Path Parameters
 
@@ -194,17 +196,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    taskResultId := ef38f94347e94562b5bb8424a56397d8 # string | Unique identifier of the task result which handled report # string | Unique identifier of the task result which handled report
-    completed := true # bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false) # bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false)
+    taskResultId := `ef38f94347e94562b5bb8424a56397d8` // string | Unique identifier of the task result which handled report # string | Unique identifier of the task result which handled report
+    completed := true // bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false) # bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false)
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Completed(completed).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
+	//resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Completed(completed).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResult``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +223,7 @@ func main() {
 Run Report
 Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
-[API Spec](https://developer.sailpoint.com/docs/api//start-report)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/start-report)
 
 ### Path Parameters
 
@@ -253,8 +256,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -267,8 +270,9 @@ func main() {
         }`) # ReportDetails | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
+	//resp, r, err := apiClient.V2025.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

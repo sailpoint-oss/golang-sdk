@@ -1,12 +1,12 @@
 ---
-id: password-management
+id: v2025-password-management
 title: PasswordManagement
 pagination_label: PasswordManagement
 sidebar_label: PasswordManagement
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'PasswordManagement', 'PasswordManagement'] 
-slug: /tools/sdk/go//methods/password-management
-tags: ['SDK', 'Software Development Kit', 'PasswordManagement', 'PasswordManagement']
+keywords: ['go', 'Golang', 'sdk', 'PasswordManagement', 'V2025PasswordManagement'] 
+slug: /tools/sdk/go/v2025/methods/password-management
+tags: ['SDK', 'Software Development Kit', 'PasswordManagement', 'V2025PasswordManagement']
 ---
 
 # PasswordManagementAPI
@@ -60,7 +60,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Generate a digit token
 This API is used to generate a digit token for password management. Requires authorization scope of "idn:password-digit-token:create".
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-digit-token)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/create-digit-token)
 
 ### Path Parameters
 
@@ -94,12 +94,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := true # string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     passwordDigitTokenReset := fmt.Sprintf(`{
           "durationMinutes" : 5,
           "length" : 8,
@@ -107,8 +107,9 @@ func main() {
         }`) # PasswordDigitTokenReset | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordManagementAPI.CreateDigitToken(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordManagementAPI.CreateDigitToken(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+	//resp, r, err := apiClient.V2025.PasswordManagementAPI.CreateDigitToken(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.CreateDigitToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,7 +125,7 @@ func main() {
 Get Password Change Request Status
 This API returns the status of a password change request.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-password-change-status)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-password-change-status)
 
 ### Path Parameters
 
@@ -161,16 +162,17 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := 089899f13a8f4da7824996191587bab9 # string | Password change request ID # string | Password change request ID
+    id := `089899f13a8f4da7824996191587bab9` // string | Password change request ID # string | Password change request ID
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
+	//resp, r, err := apiClient.V2025.PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetPasswordChangeStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -187,7 +189,7 @@ Query Password Info
 This API is used to query password related information. 
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//query-password-info)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/query-password-info)
 
 ### Path Parameters
 
@@ -220,8 +222,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -231,8 +233,9 @@ func main() {
         }`) # PasswordInfoQueryDTO | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
+	//resp, r, err := apiClient.V2025.PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -267,7 +270,7 @@ If you are using a Windows machine, refer to this [guide](https://tecadmin.net/i
 You can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status) to check the password change request status. To do so, you must provide the `requestId` from your earlier request to set the password. 
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//set-password)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/set-password)
 
 ### Path Parameters
 
@@ -300,8 +303,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-   ""
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+  v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -314,8 +317,9 @@ func main() {
         }`) # PasswordChangeRequest | 
 
 	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-	resp, r, err := apiClient..PasswordManagementAPI.SetPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
+	apiClient := sailpoint.NewAPIClient(configuration)
+  resp, r, err := apiClient.V2025.PasswordManagementAPI.SetPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
+	//resp, r, err := apiClient.V2025.PasswordManagementAPI.SetPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetPassword``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
