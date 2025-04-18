@@ -63,6 +63,10 @@ type _Entitlement Entitlement
 // will change when the set of required properties is changed
 func NewEntitlement() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
 	this.Requestable = &requestable
 	return &this
@@ -73,6 +77,10 @@ func NewEntitlement() *Entitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementWithDefaults() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
 	this.Requestable = &requestable
 	return &this
