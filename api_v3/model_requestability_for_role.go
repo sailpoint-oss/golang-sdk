@@ -23,6 +23,8 @@ type RequestabilityForRole struct {
 	CommentsRequired NullableBool `json:"commentsRequired,omitempty"`
 	// Whether an approver must provide comments when denying the request
 	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
+	// Indicates whether reauthorization is required for the request.
+	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
 	// List describing the steps in approving the request
 	ApprovalSchemes []ApprovalSchemeForRole `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -40,6 +42,8 @@ func NewRequestabilityForRole() *RequestabilityForRole {
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	return &this
 }
 
@@ -52,6 +56,8 @@ func NewRequestabilityForRoleWithDefaults() *RequestabilityForRole {
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	return &this
 }
 
@@ -139,6 +145,48 @@ func (o *RequestabilityForRole) UnsetDenialCommentsRequired() {
 	o.DenialCommentsRequired.Unset()
 }
 
+// GetReauthorizationRequired returns the ReauthorizationRequired field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestabilityForRole) GetReauthorizationRequired() bool {
+	if o == nil || IsNil(o.ReauthorizationRequired.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.ReauthorizationRequired.Get()
+}
+
+// GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestabilityForRole) GetReauthorizationRequiredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ReauthorizationRequired.Get(), o.ReauthorizationRequired.IsSet()
+}
+
+// HasReauthorizationRequired returns a boolean if a field has been set.
+func (o *RequestabilityForRole) HasReauthorizationRequired() bool {
+	if o != nil && o.ReauthorizationRequired.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReauthorizationRequired gets a reference to the given NullableBool and assigns it to the ReauthorizationRequired field.
+func (o *RequestabilityForRole) SetReauthorizationRequired(v bool) {
+	o.ReauthorizationRequired.Set(&v)
+}
+// SetReauthorizationRequiredNil sets the value for ReauthorizationRequired to be an explicit nil
+func (o *RequestabilityForRole) SetReauthorizationRequiredNil() {
+	o.ReauthorizationRequired.Set(nil)
+}
+
+// UnsetReauthorizationRequired ensures that no value is present for ReauthorizationRequired, not even an explicit nil
+func (o *RequestabilityForRole) UnsetReauthorizationRequired() {
+	o.ReauthorizationRequired.Unset()
+}
+
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
 func (o *RequestabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole {
 	if o == nil || IsNil(o.ApprovalSchemes) {
@@ -187,6 +235,9 @@ func (o RequestabilityForRole) ToMap() (map[string]interface{}, error) {
 	if o.DenialCommentsRequired.IsSet() {
 		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
 	}
+	if o.ReauthorizationRequired.IsSet() {
+		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired.Get()
+	}
 	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
@@ -214,6 +265,7 @@ func (o *RequestabilityForRole) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commentsRequired")
 		delete(additionalProperties, "denialCommentsRequired")
+		delete(additionalProperties, "reauthorizationRequired")
 		delete(additionalProperties, "approvalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}

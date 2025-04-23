@@ -65567,7 +65567,7 @@ components:
           type: string
       type: object
     AccessProfile:
-      description: Access Profile
+      description: Access profile.
       example:
         owner:
           name: support
@@ -65598,6 +65598,7 @@ components:
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
         accessRequestConfig:
           commentsRequired: true
+          reauthorizationRequired: true
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
@@ -65639,35 +65640,35 @@ components:
         requestable: true
       properties:
         id:
-          description: The ID of the Access Profile
+          description: Access profile ID.
           example: 2c91808a7190d06e01719938fcd20792
           readOnly: true
           type: string
         name:
-          description: Name of the Access Profile
+          description: Access profile name.
           example: Employee-database-read-write
           type: string
         description:
-          description: Information about the Access Profile
+          description: Access profile description.
           example: Collection of entitlements to read/write the employee database
           nullable: true
           type: string
         created:
-          description: Date the Access Profile was created
+          description: Date and time when the access profile was created.
           example: 2021-03-01T22:32:58.104Z
           format: date-time
           readOnly: true
           type: string
         modified:
-          description: Date the Access Profile was last modified.
+          description: Date and time when the access profile was last modified.
           example: 2021-03-02T20:22:28.104Z
           format: date-time
           readOnly: true
           type: string
         enabled:
           default: false
-          description: Whether the Access Profile is enabled. If the Access Profile
-            is enabled then you must include at least one Entitlement.
+          description: "Indicates whether the access profile is enabled. If it's enabled,\
+            \ you must include at least one entitlement."
           example: true
           type: boolean
         owner:
@@ -65675,20 +65676,20 @@ components:
         source:
           $ref: '#/components/schemas/AccessProfileSourceRef'
         entitlements:
-          description: A list of entitlements associated with the Access Profile.
-            If enabled is false this is allowed to be empty otherwise it needs to
-            contain at least one Entitlement.
+          description: "List of entitlements associated with the access profile. If\
+            \ `enabled` is false, this can be empty. Otherwise, it must contain at\
+            \ least one entitlement."
           items:
             $ref: '#/components/schemas/EntitlementRef'
           nullable: true
           type: array
         requestable:
           default: true
-          description: "Whether the Access Profile is requestable via access request.\
-            \ Currently, making an Access Profile non-requestable is only supported\
-            \  for customers enabled with the new Request Center. Otherwise, attempting\
-            \ to create an Access Profile with a value  **false** in this field results\
-            \ in a 400 error."
+          description: "Indicates whether the access profile is requestable by access\
+            \ request. Currently, making an access profile non-requestable is only\
+            \ supported  for customers enabled with the new Request Center. Otherwise,\
+            \ attempting to create an access profile with a value  **false** in this\
+            \ field results in a 400 error."
           example: true
           type: boolean
         accessRequestConfig:
@@ -65696,8 +65697,8 @@ components:
         revocationRequestConfig:
           $ref: '#/components/schemas/Revocability'
         segments:
-          description: "List of IDs of segments, if any, to which this Access Profile\
-            \ is assigned."
+          description: "List of segment IDs, if any, that the access profile is assigned\
+            \ to."
           example:
           - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
           - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -76600,6 +76601,7 @@ components:
           type: IDENTITY_LIST
         accessRequestConfig:
           commentsRequired: true
+          reauthorizationRequired: true
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
@@ -83614,7 +83616,7 @@ components:
           type: string
       type: object
     OwnerReference:
-      description: The owner of this object.
+      description: Owner of the object.
       example:
         name: support
         id: 2c9180a46faadee4016fb4e018c20639
@@ -83629,14 +83631,13 @@ components:
           example: IDENTITY
           type: string
         id:
-          description: Identity id
+          description: Owner's identity ID.
           example: 2c9180a46faadee4016fb4e018c20639
           type: string
         name:
-          description: "Human-readable display name of the owner. It may be left null\
-            \ or omitted in a POST or PATCH. If set, it must match the current value\
-            \ of the owner's display name, otherwise a 400 Bad Request error will\
-            \ result."
+          description: "Owner's name. It may be left null or omitted in a POST or\
+            \ PATCH. If set, it must match the current value of the owner's display\
+            \ name, otherwise a 400 Bad Request error will result."
           example: support
           type: string
       type: object
@@ -83647,18 +83648,17 @@ components:
         type: SOURCE
       properties:
         id:
-          description: The ID of the Source with with which the Access Profile is
-            associated
+          description: ID of the source the access profile is associated with.
           example: 2c91809773dee3610173fdb0b6061ef4
           type: string
         type:
-          description: "The type of the Source, will always be SOURCE"
+          description: Source's DTO type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         name:
-          description: The display name of the associated Source
+          description: Source name.
           example: ODS-AD-SOURCE
           type: string
       type: object
@@ -83688,6 +83688,7 @@ components:
     Requestability:
       example:
         commentsRequired: true
+        reauthorizationRequired: true
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
@@ -83698,20 +83699,26 @@ components:
       properties:
         commentsRequired:
           default: false
-          description: Whether the requester of the containing object must provide
-            comments justifying the request
+          description: Indicates whether the requester of the containing object must
+            provide comments justifying the request.
           example: true
           nullable: true
           type: boolean
         denialCommentsRequired:
           default: false
-          description: Whether an approver must provide comments when denying the
-            request
+          description: Indicates whether an approver must provide comments when denying
+            the request.
+          example: true
+          nullable: true
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Indicates whether reauthorization is required for the request.
           example: true
           nullable: true
           type: boolean
         approvalSchemes:
-          description: List describing the steps in approving the request
+          description: List describing the steps involved in approving the request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
@@ -83727,15 +83734,16 @@ components:
       nullable: true
       properties:
         approvalSchemes:
-          description: List describing the steps in approving the revocation request
+          description: List describing the steps involved in approving the revocation
+            request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
           type: array
       type: object
     ProvisioningCriteriaLevel1:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children:
         - children:
@@ -83770,25 +83778,25 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
           nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           items:
             $ref: '#/components/schemas/ProvisioningCriteriaLevel2'
           nullable: true
@@ -87227,6 +87235,7 @@ components:
     RequestabilityForRole:
       example:
         commentsRequired: true
+        reauthorizationRequired: true
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
@@ -87245,6 +87254,12 @@ components:
           default: false
           description: Whether an approver must provide comments when denying the
             request
+          example: true
+          nullable: true
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Indicates whether reauthorization is required for the request.
           example: true
           nullable: true
           type: boolean
@@ -89995,7 +90010,7 @@ components:
       properties:
         approverType:
           description: |-
-            Describes the individual or group that is responsible for an approval step. Values are as follows.
+            Describes the individual or group that is responsible for an approval step. These are the possible values:
             **APP_OWNER**: The owner of the Application
 
             **OWNER**: Owner of the associated Access Profile or Role
@@ -90014,14 +90029,14 @@ components:
           example: GOVERNANCE_GROUP
           type: string
         approverId:
-          description: "Id of the specific approver, used only when approverType is\
-            \ GOVERNANCE_GROUP"
+          description: Specific approver ID. Only use this when the `approverType`
+            is `GOVERNANCE_GROUP`.
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
           nullable: true
           type: string
       type: object
     ProvisioningCriteriaOperation:
-      description: Supported operations on ProvisioningCriteria
+      description: Supported operations on `ProvisioningCriteria`.
       enum:
       - EQUALS
       - NOT_EQUALS
@@ -90032,8 +90047,8 @@ components:
       example: EQUALS
       type: string
     ProvisioningCriteriaLevel2:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children:
         - children: children
@@ -90051,25 +90066,25 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
           nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           items:
             $ref: '#/components/schemas/ProvisioningCriteriaLevel3'
           nullable: true
@@ -91606,8 +91621,8 @@ components:
           type: integer
       type: object
     ProvisioningCriteriaLevel3:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children: children
         attribute: email
@@ -91617,24 +91632,25 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           nullable: true
           type: string
           example: null

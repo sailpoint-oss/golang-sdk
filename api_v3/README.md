@@ -306,11 +306,11 @@ Class | Method | HTTP request | Description
 *RequestableObjectsAPI* | [**ListRequestableObjects**](docs/RequestableObjectsAPI.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
 *RolesAPI* | [**CreateRole**](docs/RolesAPI.md#createrole) | **Post** /roles | Create a Role
 *RolesAPI* | [**DeleteBulkRoles**](docs/RolesAPI.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete Role(s)
-*RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete a Role
-*RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
+*RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete Role
+*RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
-*RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch Role
 *SODPoliciesAPI* | [**CreateSodPolicy**](docs/SODPoliciesAPI.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPoliciesAPI* | [**DeleteSodPolicy**](docs/SODPoliciesAPI.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPoliciesAPI* | [**DeleteSodPolicySchedule**](docs/SODPoliciesAPI.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule

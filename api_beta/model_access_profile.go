@@ -19,29 +19,29 @@ import (
 // checks if the AccessProfile type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessProfile{}
 
-// AccessProfile Access Profile
+// AccessProfile Access profile.
 type AccessProfile struct {
-	// The ID of the Access Profile
+	// Access profile ID.
 	Id *string `json:"id,omitempty"`
-	// Name of the Access Profile
+	// Access profile name.
 	Name string `json:"name"`
-	// Information about the Access Profile
+	// Access profile description.
 	Description NullableString `json:"description,omitempty"`
-	// Date the Access Profile was created
+	// Date and time when the access profile was created.
 	Created *SailPointTime `json:"created,omitempty"`
-	// Date the Access Profile was last modified.
+	// Date and time when the access profile was last modified.
 	Modified *SailPointTime `json:"modified,omitempty"`
-	// Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.
+	// Indicates whether the access profile is enabled. If it's enabled, you must include at least one entitlement.
 	Enabled *bool `json:"enabled,omitempty"`
 	Owner OwnerReference `json:"owner"`
 	Source AccessProfileSourceRef `json:"source"`
-	// A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.
+	// List of entitlements associated with the access profile. If `enabled` is false, this can be empty. Otherwise, it must contain at least one entitlement.
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
-	// Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error.
+	// Indicates whether the access profile is requestable by access request. Currently, making an access profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an access profile with a value  **false** in this field results in a 400 error.
 	Requestable *bool `json:"requestable,omitempty"`
 	AccessRequestConfig NullableRequestability `json:"accessRequestConfig,omitempty"`
 	RevocationRequestConfig NullableRevocability `json:"revocationRequestConfig,omitempty"`
-	// List of IDs of segments, if any, to which this Access Profile is assigned.
+	// List of segment IDs, if any, that the access profile is assigned to.
 	Segments []string `json:"segments,omitempty"`
 	ProvisioningCriteria NullableProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}

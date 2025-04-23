@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateRole**](RolesAPI.md#CreateRole) | **Post** /roles | Create a Role
 [**DeleteBulkRoles**](RolesAPI.md#DeleteBulkRoles) | **Post** /roles/bulk-delete | Delete Role(s)
-[**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
-[**GetRole**](RolesAPI.md#GetRole) | **Get** /roles/{id} | Get a Role
+[**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /roles/{id} | Delete Role
+[**GetRole**](RolesAPI.md#GetRole) | **Get** /roles/{id} | Get Role
 [**GetRoleAssignedIdentities**](RolesAPI.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 [**ListRoles**](RolesAPI.md#ListRoles) | **Get** /roles | List Roles
-[**PatchRole**](RolesAPI.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
+[**PatchRole**](RolesAPI.md#PatchRole) | **Patch** /roles/{id} | Patch Role
 
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > DeleteRole(ctx, id).Execute()
 
-Delete a Role
+Delete Role
 
 
 
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-	id := "2c91808a7813090a017814121e121518" // string | ID of the Role
+	id := "2c91808a7813090a017814121e121518" // string | Role ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Role | 
+**id** | **string** | Role ID. | 
 
 ### Other Parameters
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 > Role GetRole(ctx, id).Execute()
 
-Get a Role
+Get Role
 
 
 
@@ -235,7 +235,7 @@ import (
 )
 
 func main() {
-	id := "2c91808a7813090a017814121e121518" // string | ID of the Role
+	id := "2c91808a7813090a017814121e121518" // string | Role ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -255,7 +255,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Role | 
+**id** | **string** | Role ID. | 
 
 ### Other Parameters
 
@@ -387,7 +387,7 @@ func main() {
 	limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
 	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-	filters := "requestable eq false" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq* (optional)
+	filters := "requestable eq false" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq* (optional)
 	sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
 	forSegmentIds := "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d" // string | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
 	includeUnsegmented := false // bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to true)
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq* | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | 
  **forSegmentIds** | **string** | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. | 
  **includeUnsegmented** | **bool** | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. | [default to true]
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 > Role PatchRole(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch a specified Role
+Patch Role
 
 
 
@@ -463,7 +463,7 @@ import (
 )
 
 func main() {
-	id := "2c91808a7813090a017814121e121518" // string | ID of the Role to patch
+	id := "2c91808a7813090a017814121e121518" // string | Role ID to patch
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -484,7 +484,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Role to patch | 
+**id** | **string** | Role ID to patch | 
 
 ### Other Parameters
 

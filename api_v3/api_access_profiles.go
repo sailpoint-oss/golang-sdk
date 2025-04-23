@@ -42,7 +42,7 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 CreateAccessProfile Create Access Profile
 
 Create an access profile.
-A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's source.
+A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -919,7 +919,7 @@ func (r ApiListAccessProfilesRequest) Count(count bool) ApiListAccessProfilesReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
 func (r ApiListAccessProfilesRequest) Filters(filters string) ApiListAccessProfilesRequest {
 	r.filters = &filters
 	return r

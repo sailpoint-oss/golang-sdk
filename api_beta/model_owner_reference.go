@@ -17,13 +17,13 @@ import (
 // checks if the OwnerReference type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OwnerReference{}
 
-// OwnerReference The owner of this object.
+// OwnerReference Owner of the object.
 type OwnerReference struct {
 	// Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result.
 	Type *string `json:"type,omitempty"`
-	// Identity id
+	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.
+	// Owner's name. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

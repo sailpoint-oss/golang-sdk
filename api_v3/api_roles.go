@@ -368,14 +368,14 @@ func (r ApiDeleteRoleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteRole Delete a Role
+DeleteRole Delete Role
 
-This API deletes a Role by its ID.
+Delete a role by ID.
 
-A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to sources with management workgroups the ROLE_SUBADMIN is a member of.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Role
+ @param id Role ID.
  @return ApiDeleteRoleRequest
 */
 func (a *RolesAPIService) DeleteRole(ctx context.Context, id string) ApiDeleteRoleRequest {
@@ -516,13 +516,13 @@ func (r ApiGetRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-GetRole Get a Role
+GetRole Get Role
 
-This API returns a Role by its ID.
-A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+Get a role by ID.
+A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to sources with management workgroups of the ROLE_SUBADMIN is a member of.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Role
+ @param id Role ID.
  @return ApiGetRoleRequest
 */
 func (a *RolesAPIService) GetRole(ctx context.Context, id string) ApiGetRoleRequest {
@@ -914,7 +914,7 @@ func (r ApiListRolesRequest) Count(count bool) ApiListRolesRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq*
 func (r ApiListRolesRequest) Filters(filters string) ApiListRolesRequest {
 	r.filters = &filters
 	return r
@@ -1139,9 +1139,9 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-PatchRole Patch a specified Role
+PatchRole Patch Role
 
-This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+Update an existing role, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 The following fields are patchable:
 * name
 * description
@@ -1156,14 +1156,14 @@ The following fields are patchable:
 * segments
 * accessModelMetadata
 
-A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to sources with management workgroups of the ROLE_SUBADMIN is a member of.
 
-The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+The maximum supported length for the description field is 2000 characters. ISC preserves longer descriptions for existing roles. However, any new roles as well as any updates to existing descriptions are limited to 2000 characters.
 
 When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Role to patch
+ @param id Role ID to patch
  @return ApiPatchRoleRequest
 */
 func (a *RolesAPIService) PatchRole(ctx context.Context, id string) ApiPatchRoleRequest {

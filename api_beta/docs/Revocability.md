@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](AccessProfileApprovalScheme.md) | List describing the steps in approving the revocation request | [optional] 
+**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](AccessProfileApprovalScheme.md) | List describing the steps involved in approving the revocation request. | [optional] 
 
 ## Methods
 

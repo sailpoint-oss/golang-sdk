@@ -19,11 +19,13 @@ var _ MappedNullable = &Requestability{}
 
 // Requestability struct for Requestability
 type Requestability struct {
-	// Whether the requester of the containing object must provide comments justifying the request
+	// Indicates whether the requester of the containing object must provide comments justifying the request.
 	CommentsRequired NullableBool `json:"commentsRequired,omitempty"`
-	// Whether an approver must provide comments when denying the request
+	// Indicates whether an approver must provide comments when denying the request.
 	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
-	// List describing the steps in approving the request
+	// Indicates whether reauthorization is required for the request.
+	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
+	// List describing the steps involved in approving the request.
 	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -40,6 +42,8 @@ func NewRequestability() *Requestability {
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	return &this
 }
 
@@ -52,6 +56,8 @@ func NewRequestabilityWithDefaults() *Requestability {
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	return &this
 }
 
@@ -139,6 +145,48 @@ func (o *Requestability) UnsetDenialCommentsRequired() {
 	o.DenialCommentsRequired.Unset()
 }
 
+// GetReauthorizationRequired returns the ReauthorizationRequired field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Requestability) GetReauthorizationRequired() bool {
+	if o == nil || IsNil(o.ReauthorizationRequired.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.ReauthorizationRequired.Get()
+}
+
+// GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Requestability) GetReauthorizationRequiredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ReauthorizationRequired.Get(), o.ReauthorizationRequired.IsSet()
+}
+
+// HasReauthorizationRequired returns a boolean if a field has been set.
+func (o *Requestability) HasReauthorizationRequired() bool {
+	if o != nil && o.ReauthorizationRequired.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReauthorizationRequired gets a reference to the given NullableBool and assigns it to the ReauthorizationRequired field.
+func (o *Requestability) SetReauthorizationRequired(v bool) {
+	o.ReauthorizationRequired.Set(&v)
+}
+// SetReauthorizationRequiredNil sets the value for ReauthorizationRequired to be an explicit nil
+func (o *Requestability) SetReauthorizationRequiredNil() {
+	o.ReauthorizationRequired.Set(nil)
+}
+
+// UnsetReauthorizationRequired ensures that no value is present for ReauthorizationRequired, not even an explicit nil
+func (o *Requestability) UnsetReauthorizationRequired() {
+	o.ReauthorizationRequired.Unset()
+}
+
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 	if o == nil {
@@ -188,6 +236,9 @@ func (o Requestability) ToMap() (map[string]interface{}, error) {
 	if o.DenialCommentsRequired.IsSet() {
 		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
 	}
+	if o.ReauthorizationRequired.IsSet() {
+		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired.Get()
+	}
 	if o.ApprovalSchemes != nil {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
@@ -215,6 +266,7 @@ func (o *Requestability) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commentsRequired")
 		delete(additionalProperties, "denialCommentsRequired")
+		delete(additionalProperties, "reauthorizationRequired")
 		delete(additionalProperties, "approvalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -995,7 +995,7 @@ func (r ApiGetWorkflowExecutionRequest) Execute() (map[string]interface{}, *http
 /*
 GetWorkflowExecution Get Workflow Execution
 
-Use this API to get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a "404 Not Found" response.
+Get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a "404 Not Found" response.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Workflow execution ID.
