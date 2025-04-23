@@ -18,14 +18,20 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 	var offset int32 = initialOffset
 	var returnObject []T
 	var latestResponse *http.Response
-	incrementResp := Invoke(f, "Limit", increment)
-	for offset < limit {
-		// first invoke the Offset command to set the new offset
+
+	// Ensure we don't request more than the remaining limit
+	effectiveIncrement := increment
+	if limit > 0 && limit < increment {
+		effectiveIncrement = limit
+	}
+
+	incrementResp := Invoke(f, "Limit", effectiveIncrement)
+
+	for offset < limit || limit == 0 {
 		offsetResp := Invoke(incrementResp[0].Interface(), "Offset", offset)
-		// invoke the Execute function to get the response
+
 		resp := Invoke(offsetResp[0].Interface(), "Execute")
 
-		// convert the expected return values to their respective types
 		actualValue := resp[0].Interface().([]T)
 		latestResponse = resp[1].Interface().(*http.Response)
 		err := resp[2].Interface()
@@ -34,16 +40,20 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 			return returnObject, latestResponse, err.(error)
 		}
 
-		// append the results to the main return object
 		returnObject = append(returnObject, actualValue...)
 
-		// check if this is the last set in the response. This could be enhanced by inspecting the header for the max results
-		if int32(len(actualValue)) < increment {
+		if int32(len(actualValue)) < effectiveIncrement {
 			break
 		}
 
-		offset += increment
+		offset += effectiveIncrement
+
+		if limit > 0 && offset+effectiveIncrement > limit {
+			effectiveIncrement = limit - offset
+			incrementResp = Invoke(f, "Limit", effectiveIncrement)
+		}
 	}
+
 	return returnObject, latestResponse, nil
 }
 
