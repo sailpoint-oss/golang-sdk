@@ -1827,7 +1827,7 @@ Name | Type | Description  | Notes
 
 ## ImportAccounts
 
-> LoadAccountsTask ImportAccounts(ctx, id).XSailPointExperimental(xSailPointExperimental).File(file).DisableOptimization(disableOptimization).Execute()
+> LoadAccountsTask ImportAccounts(ctx, id).File(file).DisableOptimization(disableOptimization).Execute()
 
 Account Aggregation
 
@@ -1847,13 +1847,12 @@ import (
 
 func main() {
 	id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
-	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	file := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source accounts to aggregate. (optional)
 	disableOptimization := "disableOptimization_example" // string | Use this flag to reprocess every account whether or not the data has changed. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).XSailPointExperimental(xSailPointExperimental).File(file).DisableOptimization(disableOptimization).Execute()
+	resp, r, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).File(file).DisableOptimization(disableOptimization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccounts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1879,7 +1878,6 @@ Other parameters are passed through a pointer to a apiImportAccountsRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **file** | ***os.File** | The CSV file containing the source accounts to aggregate. | 
  **disableOptimization** | **string** | Use this flag to reprocess every account whether or not the data has changed. | 
 
