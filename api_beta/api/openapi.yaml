@@ -38839,7 +38839,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
+              example:
+              - op: replace
+                path: /ownerRef
+                value:
+                  id: 2c9180867d05b227017d09921a205b4d
+                  type: IDENTITY
+                  name: Angelo Medici
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -92278,23 +92287,6 @@ components:
           - replace
           example: replace
           type: string
-    patchServiceDeskIntegration_request:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
-        \  Only `replace` operations are accepted by this endpoint."
-      example:
-      - op: replace
-        path: /ownerRef
-        value:
-          id: 2c9180867d05b227017d09921a205b4d
-          type: IDENTITY
-          name: Angelo Medici
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
-      type: object
     importSpConfig_request:
       properties:
         data:

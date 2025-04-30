@@ -800,7 +800,6 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
- - [PatchServiceDeskIntegrationRequest](docs/PatchServiceDeskIntegrationRequest.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](docs/PendingApprovalOwner.md)

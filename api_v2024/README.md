@@ -1454,7 +1454,6 @@ Class | Method | HTTP request | Description
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
  - [PatchPotentialRoleRequestInner](docs/PatchPotentialRoleRequestInner.md)
- - [PatchServiceDeskIntegrationRequest](docs/PatchServiceDeskIntegrationRequest.md)
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)

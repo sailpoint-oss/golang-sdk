@@ -439,7 +439,6 @@ docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PatOwner.md
-docs/PatchServiceDeskIntegrationRequest.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
 docs/PendingApprovalOwner.md
@@ -1051,7 +1050,6 @@ model_password_policy_v3_dto.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
-model_patch_service_desk_integration_request.go
 model_pending_approval.go
 model_pending_approval_action.go
 model_pending_approval_owner.go

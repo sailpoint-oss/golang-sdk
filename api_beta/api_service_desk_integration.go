@@ -1247,12 +1247,12 @@ type ApiPatchServiceDeskIntegrationRequest struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationAPIService
 	id string
-	patchServiceDeskIntegrationRequest *PatchServiceDeskIntegrationRequest
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
-func (r ApiPatchServiceDeskIntegrationRequest) PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest PatchServiceDeskIntegrationRequest) ApiPatchServiceDeskIntegrationRequest {
-	r.patchServiceDeskIntegrationRequest = &patchServiceDeskIntegrationRequest
+func (r ApiPatchServiceDeskIntegrationRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchServiceDeskIntegrationRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -1298,8 +1298,8 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.patchServiceDeskIntegrationRequest == nil {
-		return localVarReturnValue, nil, reportError("patchServiceDeskIntegrationRequest is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1320,7 +1320,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchServiceDeskIntegrationRequest
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
