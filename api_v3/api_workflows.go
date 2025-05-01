@@ -816,6 +816,13 @@ type ApiGetWorkflowRequest struct {
 	ctx context.Context
 	ApiService *WorkflowsAPIService
 	id string
+	workflowMetrics *bool
+}
+
+// disable workflow metrics
+func (r ApiGetWorkflowRequest) WorkflowMetrics(workflowMetrics bool) ApiGetWorkflowRequest {
+	r.workflowMetrics = &workflowMetrics
+	return r
 }
 
 func (r ApiGetWorkflowRequest) Execute() (*Workflow, *http.Response, error) {
@@ -861,6 +868,12 @@ func (a *WorkflowsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Work
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.workflowMetrics != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "workflowMetrics", r.workflowMetrics, "", "")
+	} else {
+		var defaultValue bool = true
+		r.workflowMetrics = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -982,7 +995,7 @@ func (r ApiGetWorkflowExecutionRequest) Execute() (map[string]interface{}, *http
 /*
 GetWorkflowExecution Get Workflow Execution
 
-Use this API to get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a "404 Not Found" response.
+Get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a "404 Not Found" response.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Workflow execution ID.
@@ -2245,6 +2258,34 @@ func (a *WorkflowsAPIService) ListWorkflowLibraryTriggersExecute(r ApiListWorkfl
 type ApiListWorkflowsRequest struct {
 	ctx context.Context
 	ApiService *WorkflowsAPIService
+	triggerId *string
+	connectorInstanceId *string
+	limit *int32
+	offset *int32
+}
+
+// Trigger ID
+func (r ApiListWorkflowsRequest) TriggerId(triggerId string) ApiListWorkflowsRequest {
+	r.triggerId = &triggerId
+	return r
+}
+
+// Connector Instance ID
+func (r ApiListWorkflowsRequest) ConnectorInstanceId(connectorInstanceId string) ApiListWorkflowsRequest {
+	r.connectorInstanceId = &connectorInstanceId
+	return r
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListWorkflowsRequest) Limit(limit int32) ApiListWorkflowsRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListWorkflowsRequest) Offset(offset int32) ApiListWorkflowsRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiListWorkflowsRequest) Execute() ([]Workflow, *http.Response, error) {
@@ -2287,6 +2328,24 @@ func (a *WorkflowsAPIService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.triggerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "triggerId", r.triggerId, "", "")
+	}
+	if r.connectorInstanceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "connectorInstanceId", r.connectorInstanceId, "", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

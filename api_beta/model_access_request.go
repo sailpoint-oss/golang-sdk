@@ -26,6 +26,8 @@ type AccessRequest struct {
 	RequestedItems []AccessRequestItem `json:"requestedItems"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	// Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request 
+	RequestedForWithRequestedItems []RequestedForDtoRef `json:"requestedForWithRequestedItems,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -172,6 +174,39 @@ func (o *AccessRequest) SetClientMetadata(v map[string]string) {
 	o.ClientMetadata = &v
 }
 
+// GetRequestedForWithRequestedItems returns the RequestedForWithRequestedItems field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequest) GetRequestedForWithRequestedItems() []RequestedForDtoRef {
+	if o == nil {
+		var ret []RequestedForDtoRef
+		return ret
+	}
+	return o.RequestedForWithRequestedItems
+}
+
+// GetRequestedForWithRequestedItemsOk returns a tuple with the RequestedForWithRequestedItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequest) GetRequestedForWithRequestedItemsOk() ([]RequestedForDtoRef, bool) {
+	if o == nil || IsNil(o.RequestedForWithRequestedItems) {
+		return nil, false
+	}
+	return o.RequestedForWithRequestedItems, true
+}
+
+// HasRequestedForWithRequestedItems returns a boolean if a field has been set.
+func (o *AccessRequest) HasRequestedForWithRequestedItems() bool {
+	if o != nil && !IsNil(o.RequestedForWithRequestedItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedForWithRequestedItems gets a reference to the given []RequestedForDtoRef and assigns it to the RequestedForWithRequestedItems field.
+func (o *AccessRequest) SetRequestedForWithRequestedItems(v []RequestedForDtoRef) {
+	o.RequestedForWithRequestedItems = v
+}
+
 func (o AccessRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -189,6 +224,9 @@ func (o AccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["requestedItems"] = o.RequestedItems
 	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
+	}
+	if o.RequestedForWithRequestedItems != nil {
+		toSerialize["requestedForWithRequestedItems"] = o.RequestedForWithRequestedItems
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -238,6 +276,7 @@ func (o *AccessRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestType")
 		delete(additionalProperties, "requestedItems")
 		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "requestedForWithRequestedItems")
 		o.AdditionalProperties = additionalProperties
 	}
 

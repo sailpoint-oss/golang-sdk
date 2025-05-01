@@ -65,14 +65,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.V2024.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2024.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
@@ -133,7 +133,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -141,7 +141,7 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
     jsonPatchOperation := fmt.Sprintf(`[{op=replace, path=/capabilities, value=[ORG_ADMIN]}]`) // []JsonPatchOperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.V2024.AuthUsersAPI.PatchAuthUser(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
 	//resp, r, err := apiClient.V2024.AuthUsersAPI.PatchAuthUser(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()

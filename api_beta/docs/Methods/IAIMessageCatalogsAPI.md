@@ -59,14 +59,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     catalogId := `recommender` // string | The ID of the message catalog. # string | The ID of the message catalog.
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
 	//resp, r, err := apiClient.Beta.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()

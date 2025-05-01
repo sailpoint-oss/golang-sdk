@@ -636,9 +636,9 @@ Class | Method | HTTP request | Description
 *WorkflowsAPI* | [**PatchWorkflow**](docs/WorkflowsAPI.md#patchworkflow) | **Patch** /workflows/{id} | Patch Workflow
 *WorkflowsAPI* | [**PostExternalExecuteWorkflow**](docs/WorkflowsAPI.md#postexternalexecuteworkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
 *WorkflowsAPI* | [**PostWorkflowExternalTrigger**](docs/WorkflowsAPI.md#postworkflowexternaltrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+*WorkflowsAPI* | [**PutWorkflow**](docs/WorkflowsAPI.md#putworkflow) | **Put** /workflows/{id} | Update Workflow
 *WorkflowsAPI* | [**TestExternalExecuteWorkflow**](docs/WorkflowsAPI.md#testexternalexecuteworkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
 *WorkflowsAPI* | [**TestWorkflow**](docs/WorkflowsAPI.md#testworkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
-*WorkflowsAPI* | [**UpdateWorkflow**](docs/WorkflowsAPI.md#updateworkflow) | **Put** /workflows/{id} | Update Workflow
 
 
 ## Documentation For Models
@@ -729,6 +729,7 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedIdentity](docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](docs/AccountCorrelatedSource.md)
  - [AccountInfoDto](docs/AccountInfoDto.md)
+ - [AccountItemRef](docs/AccountItemRef.md)
  - [AccountRequestInfo](docs/AccountRequestInfo.md)
  - [AccountStatusChanged](docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](docs/AccountStatusChangedAccount.md)
@@ -1185,7 +1186,6 @@ Class | Method | HTTP request | Description
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
  - [PatchPotentialRoleRequestInner](docs/PatchPotentialRoleRequestInner.md)
- - [PatchServiceDeskIntegrationRequest](docs/PatchServiceDeskIntegrationRequest.md)
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
@@ -1242,7 +1242,9 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
  - [RequestedAccountRef](docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](docs/RequestedForDtoRef.md)
  - [RequestedItemDetails](docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](docs/RequestedItemDtoRef.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)
@@ -1399,6 +1401,7 @@ Class | Method | HTTP request | Description
  - [SourceDeleted](docs/SourceDeleted.md)
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
+ - [SourceItemRef](docs/SourceItemRef.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [SourceUpdated](docs/SourceUpdated.md)

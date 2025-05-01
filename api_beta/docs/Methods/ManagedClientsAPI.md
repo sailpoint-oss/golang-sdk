@@ -66,7 +66,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -74,7 +74,7 @@ func main() {
     id := `aClientId` // string | ID of the Managed Client Status to get # string | ID of the Managed Client Status to get
     type_ :=  // ManagedClientType | Type of the Managed Client Status to get # ManagedClientType | Type of the Managed Client Status to get
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
@@ -135,7 +135,7 @@ import (
 	"fmt"
 	"os"
     
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -168,7 +168,7 @@ func main() {
           "timestamp" : "2020-01-01T00:00:00Z"
         }`) # ManagedClientStatus | 
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.ManagedClientsAPI.UpdateManagedClientStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClientsAPI.UpdateManagedClientStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()

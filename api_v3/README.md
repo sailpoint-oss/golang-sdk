@@ -306,11 +306,11 @@ Class | Method | HTTP request | Description
 *RequestableObjectsAPI* | [**ListRequestableObjects**](docs/RequestableObjectsAPI.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
 *RolesAPI* | [**CreateRole**](docs/RolesAPI.md#createrole) | **Post** /roles | Create a Role
 *RolesAPI* | [**DeleteBulkRoles**](docs/RolesAPI.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete Role(s)
-*RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete a Role
-*RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
+*RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete Role
+*RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
-*RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch Role
 *SODPoliciesAPI* | [**CreateSodPolicy**](docs/SODPoliciesAPI.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPoliciesAPI* | [**DeleteSodPolicy**](docs/SODPoliciesAPI.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPoliciesAPI* | [**DeleteSodPolicySchedule**](docs/SODPoliciesAPI.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
@@ -496,6 +496,7 @@ Class | Method | HTTP request | Description
  - [AccountAttributes](docs/AccountAttributes.md)
  - [AccountAttributesCreate](docs/AccountAttributesCreate.md)
  - [AccountAttributesCreateAttributes](docs/AccountAttributesCreateAttributes.md)
+ - [AccountItemRef](docs/AccountItemRef.md)
  - [AccountRequest](docs/AccountRequest.md)
  - [AccountRequestInfo](docs/AccountRequestInfo.md)
  - [AccountRequestResult](docs/AccountRequestResult.md)
@@ -666,6 +667,7 @@ Class | Method | HTTP request | Description
  - [ForwardApprovalDto](docs/ForwardApprovalDto.md)
  - [FullDiscoveredApplications](docs/FullDiscoveredApplications.md)
  - [GetActiveCampaigns200ResponseInner](docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
@@ -800,7 +802,6 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
- - [PatchServiceDeskIntegrationRequest](docs/PatchServiceDeskIntegrationRequest.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](docs/PendingApprovalOwner.md)
@@ -852,7 +853,9 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
  - [RequestedAccountRef](docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](docs/RequestedForDtoRef.md)
  - [RequestedItemDetails](docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](docs/RequestedItemDtoRef.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)
@@ -958,6 +961,7 @@ Class | Method | HTTP request | Description
  - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceConnectionsDto](docs/SourceConnectionsDto.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
+ - [SourceItemRef](docs/SourceItemRef.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](docs/SourceManagerCorrelationMapping.md)
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)

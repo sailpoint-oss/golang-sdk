@@ -127,13 +127,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-  v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.V2024.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
 	//resp, r, err := apiClient.V2024.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
@@ -213,14 +213,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     file := BINARY_DATA_HERE // *os.File |  (optional) # *os.File |  (optional)
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   r, err := apiClient.V2024.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
 	//r, err := apiClient.V2024.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()

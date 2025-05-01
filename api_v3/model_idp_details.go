@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdpDetails type satisfies the MappedNullable interface at compile time
@@ -26,11 +27,11 @@ type IdpDetails struct {
 	// Defines the binding used for the SAML flow. Used with IDP configurations.
 	Binding *string `json:"binding,omitempty"`
 	// Specifies the SAML authentication method to use. Used with IDP configurations.
-	AuthContext *string `json:"authContext,omitempty"`
+	AuthnContext *string `json:"authnContext,omitempty"`
 	// The IDP logout URL. Used with IDP configurations.
 	LogoutUrl *string `json:"logoutUrl,omitempty"`
 	// Determines if the configured AuthnContext should be used or the default. Used with IDP configurations.
-	IncludeAuthContext *bool `json:"includeAuthContext,omitempty"`
+	IncludeAuthnContext *bool `json:"includeAuthnContext,omitempty"`
 	// The name id format to use. Used with IDP configurations.
 	NameId *string `json:"nameId,omitempty"`
 	JitConfiguration *JITConfiguration `json:"jitConfiguration,omitempty"`
@@ -41,7 +42,7 @@ type IdpDetails struct {
 	// The IDP Redirect URL. Used with IDP configurations.
 	LoginUrlRedirect *string `json:"loginUrlRedirect,omitempty"`
 	// Return the saml Id for the given user, based on the IDN as SP settings of the org. Used with IDP configurations.
-	MappingAttribute *string `json:"mappingAttribute,omitempty"`
+	MappingAttribute string `json:"mappingAttribute"`
 	// The expiration date extracted from the certificate.
 	CertificateExpirationDate *string `json:"certificateExpirationDate,omitempty"`
 	// The name extracted from the certificate.
@@ -55,10 +56,11 @@ type _IdpDetails IdpDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdpDetails() *IdpDetails {
+func NewIdpDetails(mappingAttribute string) *IdpDetails {
 	this := IdpDetails{}
-	var includeAuthContext bool = false
-	this.IncludeAuthContext = &includeAuthContext
+	var includeAuthnContext bool = false
+	this.IncludeAuthnContext = &includeAuthnContext
+	this.MappingAttribute = mappingAttribute
 	return &this
 }
 
@@ -67,8 +69,8 @@ func NewIdpDetails() *IdpDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewIdpDetailsWithDefaults() *IdpDetails {
 	this := IdpDetails{}
-	var includeAuthContext bool = false
-	this.IncludeAuthContext = &includeAuthContext
+	var includeAuthnContext bool = false
+	this.IncludeAuthnContext = &includeAuthnContext
 	return &this
 }
 
@@ -168,36 +170,36 @@ func (o *IdpDetails) SetBinding(v string) {
 	o.Binding = &v
 }
 
-// GetAuthContext returns the AuthContext field value if set, zero value otherwise.
-func (o *IdpDetails) GetAuthContext() string {
-	if o == nil || IsNil(o.AuthContext) {
+// GetAuthnContext returns the AuthnContext field value if set, zero value otherwise.
+func (o *IdpDetails) GetAuthnContext() string {
+	if o == nil || IsNil(o.AuthnContext) {
 		var ret string
 		return ret
 	}
-	return *o.AuthContext
+	return *o.AuthnContext
 }
 
-// GetAuthContextOk returns a tuple with the AuthContext field value if set, nil otherwise
+// GetAuthnContextOk returns a tuple with the AuthnContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdpDetails) GetAuthContextOk() (*string, bool) {
-	if o == nil || IsNil(o.AuthContext) {
+func (o *IdpDetails) GetAuthnContextOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthnContext) {
 		return nil, false
 	}
-	return o.AuthContext, true
+	return o.AuthnContext, true
 }
 
-// HasAuthContext returns a boolean if a field has been set.
-func (o *IdpDetails) HasAuthContext() bool {
-	if o != nil && !IsNil(o.AuthContext) {
+// HasAuthnContext returns a boolean if a field has been set.
+func (o *IdpDetails) HasAuthnContext() bool {
+	if o != nil && !IsNil(o.AuthnContext) {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthContext gets a reference to the given string and assigns it to the AuthContext field.
-func (o *IdpDetails) SetAuthContext(v string) {
-	o.AuthContext = &v
+// SetAuthnContext gets a reference to the given string and assigns it to the AuthnContext field.
+func (o *IdpDetails) SetAuthnContext(v string) {
+	o.AuthnContext = &v
 }
 
 // GetLogoutUrl returns the LogoutUrl field value if set, zero value otherwise.
@@ -232,36 +234,36 @@ func (o *IdpDetails) SetLogoutUrl(v string) {
 	o.LogoutUrl = &v
 }
 
-// GetIncludeAuthContext returns the IncludeAuthContext field value if set, zero value otherwise.
-func (o *IdpDetails) GetIncludeAuthContext() bool {
-	if o == nil || IsNil(o.IncludeAuthContext) {
+// GetIncludeAuthnContext returns the IncludeAuthnContext field value if set, zero value otherwise.
+func (o *IdpDetails) GetIncludeAuthnContext() bool {
+	if o == nil || IsNil(o.IncludeAuthnContext) {
 		var ret bool
 		return ret
 	}
-	return *o.IncludeAuthContext
+	return *o.IncludeAuthnContext
 }
 
-// GetIncludeAuthContextOk returns a tuple with the IncludeAuthContext field value if set, nil otherwise
+// GetIncludeAuthnContextOk returns a tuple with the IncludeAuthnContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdpDetails) GetIncludeAuthContextOk() (*bool, bool) {
-	if o == nil || IsNil(o.IncludeAuthContext) {
+func (o *IdpDetails) GetIncludeAuthnContextOk() (*bool, bool) {
+	if o == nil || IsNil(o.IncludeAuthnContext) {
 		return nil, false
 	}
-	return o.IncludeAuthContext, true
+	return o.IncludeAuthnContext, true
 }
 
-// HasIncludeAuthContext returns a boolean if a field has been set.
-func (o *IdpDetails) HasIncludeAuthContext() bool {
-	if o != nil && !IsNil(o.IncludeAuthContext) {
+// HasIncludeAuthnContext returns a boolean if a field has been set.
+func (o *IdpDetails) HasIncludeAuthnContext() bool {
+	if o != nil && !IsNil(o.IncludeAuthnContext) {
 		return true
 	}
 
 	return false
 }
 
-// SetIncludeAuthContext gets a reference to the given bool and assigns it to the IncludeAuthContext field.
-func (o *IdpDetails) SetIncludeAuthContext(v bool) {
-	o.IncludeAuthContext = &v
+// SetIncludeAuthnContext gets a reference to the given bool and assigns it to the IncludeAuthnContext field.
+func (o *IdpDetails) SetIncludeAuthnContext(v bool) {
+	o.IncludeAuthnContext = &v
 }
 
 // GetNameId returns the NameId field value if set, zero value otherwise.
@@ -424,36 +426,28 @@ func (o *IdpDetails) SetLoginUrlRedirect(v string) {
 	o.LoginUrlRedirect = &v
 }
 
-// GetMappingAttribute returns the MappingAttribute field value if set, zero value otherwise.
+// GetMappingAttribute returns the MappingAttribute field value
 func (o *IdpDetails) GetMappingAttribute() string {
-	if o == nil || IsNil(o.MappingAttribute) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MappingAttribute
+
+	return o.MappingAttribute
 }
 
-// GetMappingAttributeOk returns a tuple with the MappingAttribute field value if set, nil otherwise
+// GetMappingAttributeOk returns a tuple with the MappingAttribute field value
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetMappingAttributeOk() (*string, bool) {
-	if o == nil || IsNil(o.MappingAttribute) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MappingAttribute, true
+	return &o.MappingAttribute, true
 }
 
-// HasMappingAttribute returns a boolean if a field has been set.
-func (o *IdpDetails) HasMappingAttribute() bool {
-	if o != nil && !IsNil(o.MappingAttribute) {
-		return true
-	}
-
-	return false
-}
-
-// SetMappingAttribute gets a reference to the given string and assigns it to the MappingAttribute field.
+// SetMappingAttribute sets field value
 func (o *IdpDetails) SetMappingAttribute(v string) {
-	o.MappingAttribute = &v
+	o.MappingAttribute = v
 }
 
 // GetCertificateExpirationDate returns the CertificateExpirationDate field value if set, zero value otherwise.
@@ -539,14 +533,14 @@ func (o IdpDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Binding) {
 		toSerialize["binding"] = o.Binding
 	}
-	if !IsNil(o.AuthContext) {
-		toSerialize["authContext"] = o.AuthContext
+	if !IsNil(o.AuthnContext) {
+		toSerialize["authnContext"] = o.AuthnContext
 	}
 	if !IsNil(o.LogoutUrl) {
 		toSerialize["logoutUrl"] = o.LogoutUrl
 	}
-	if !IsNil(o.IncludeAuthContext) {
-		toSerialize["includeAuthContext"] = o.IncludeAuthContext
+	if !IsNil(o.IncludeAuthnContext) {
+		toSerialize["includeAuthnContext"] = o.IncludeAuthnContext
 	}
 	if !IsNil(o.NameId) {
 		toSerialize["nameId"] = o.NameId
@@ -563,9 +557,7 @@ func (o IdpDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LoginUrlRedirect) {
 		toSerialize["loginUrlRedirect"] = o.LoginUrlRedirect
 	}
-	if !IsNil(o.MappingAttribute) {
-		toSerialize["mappingAttribute"] = o.MappingAttribute
-	}
+	toSerialize["mappingAttribute"] = o.MappingAttribute
 	if !IsNil(o.CertificateExpirationDate) {
 		toSerialize["certificateExpirationDate"] = o.CertificateExpirationDate
 	}
@@ -581,6 +573,27 @@ func (o IdpDetails) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdpDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"mappingAttribute",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varIdpDetails := _IdpDetails{}
 
 	err = json.Unmarshal(data, &varIdpDetails)
@@ -597,9 +610,9 @@ func (o *IdpDetails) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "entityId")
 		delete(additionalProperties, "binding")
-		delete(additionalProperties, "authContext")
+		delete(additionalProperties, "authnContext")
 		delete(additionalProperties, "logoutUrl")
-		delete(additionalProperties, "includeAuthContext")
+		delete(additionalProperties, "includeAuthnContext")
 		delete(additionalProperties, "nameId")
 		delete(additionalProperties, "jitConfiguration")
 		delete(additionalProperties, "cert")

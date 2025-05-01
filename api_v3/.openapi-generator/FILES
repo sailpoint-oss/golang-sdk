@@ -115,6 +115,7 @@ docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesCreate.md
 docs/AccountAttributesCreateAttributes.md
+docs/AccountItemRef.md
 docs/AccountRequest.md
 docs/AccountRequestInfo.md
 docs/AccountRequestResult.md
@@ -307,6 +308,7 @@ docs/FormItemDetails.md
 docs/ForwardApprovalDto.md
 docs/FullDiscoveredApplications.md
 docs/GetActiveCampaigns200ResponseInner.md
+docs/GetCampaign200Response.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
@@ -470,7 +472,6 @@ docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PasswordSyncGroupsAPIdeveloperSite_code_examples.yaml
 docs/PatOwner.md
-docs/PatchServiceDeskIntegrationRequest.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
 docs/PendingApprovalOwner.md
@@ -532,7 +533,9 @@ docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestableObjectsAPIdeveloperSite_code_examples.yaml
 docs/RequestedAccountRef.md
+docs/RequestedForDtoRef.md
 docs/RequestedItemDetails.md
+docs/RequestedItemDtoRef.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -656,6 +659,7 @@ docs/SourceCluster.md
 docs/SourceClusterDto.md
 docs/SourceConnectionsDto.md
 docs/SourceHealthDto.md
+docs/SourceItemRef.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
 docs/SourceManagerCorrelationRule.md
@@ -798,6 +802,7 @@ model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_create.go
 model_account_attributes_create_attributes.go
+model_account_item_ref.go
 model_account_request.go
 model_account_request_info.go
 model_account_request_result.go
@@ -968,6 +973,7 @@ model_form_item_details.go
 model_forward_approval_dto.go
 model_full_discovered_applications.go
 model_get_active_campaigns_200_response_inner.go
+model_get_campaign_200_response.go
 model_get_discovered_applications_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
@@ -1102,7 +1108,6 @@ model_password_policy_v3_dto.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
-model_patch_service_desk_integration_request.go
 model_pending_approval.go
 model_pending_approval_action.go
 model_pending_approval_owner.go
@@ -1154,7 +1159,9 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_account_ref.go
+model_requested_for_dto_ref.go
 model_requested_item_details.go
+model_requested_item_dto_ref.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go
@@ -1260,6 +1267,7 @@ model_source_cluster.go
 model_source_cluster_dto.go
 model_source_connections_dto.go
 model_source_health_dto.go
+model_source_item_ref.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go
 model_source_manager_correlation_rule.go

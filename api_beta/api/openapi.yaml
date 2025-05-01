@@ -1640,6 +1640,7 @@ paths:
         Create an access profile.
         A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
         The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        >**Note:** To use this endpoint, you need all the listed scopes.
       operationId: createAccessProfile
       requestBody:
         content:
@@ -2464,19 +2465,24 @@ paths:
         \ Depending on the configuration, a user can request access for others.\n\
         * Roles, access profiles and entitlements can be requested.\n* While requesting\
         \ entitlements, maximum of 25 entitlements and 10 recipients are allowed in\
-        \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
-        \ at a time.\n* You cannot use an access request to revoke access from an\
-        \ identity if that access has been granted by role membership or by birthright\
-        \ provisioning. \n* Does not support self request. Only manager can request\
-        \ to revoke access for their directly managed employees.\n* If a `removeDate`\
-        \ is specified, then the access will be removed on that date and time only\
-        \ for roles, access profiles and entitlements.\n* Roles, access profiles,\
-        \ and entitlements can be requested for revocation.\n* Revoke requests for\
-        \ entitlements are limited to 1 entitlement per access request currently.\n\
-        * You can specify a `removeDate` if the access doesn't already have a sunset\
-        \ date. The `removeDate` must be a future date, in the UTC timezone. \n* Allows\
-        \ a manager to request to revoke access for direct employees. A user with\
-        \ ORG_ADMIN authority can also request to revoke access from anyone.\n"
+        \ a request.\n* Now supports an alternate field 'requestedForWithRequestedItems'\
+        \ for users to specify account selections while requesting items where they\
+        \ have more than one account on the source.\n \n__REVOKE_ACCESS__\n* Can only\
+        \ be requested for a single identity at a time.\n* You cannot use an access\
+        \ request to revoke access from an identity if that access has been granted\
+        \ by role membership or by birthright provisioning. \n* Does not support self\
+        \ request. Only manager can request to revoke access for their directly managed\
+        \ employees.\n* If a `removeDate` is specified, then the access will be removed\
+        \ on that date and time only for roles, access profiles and entitlements.\n\
+        * Roles, access profiles, and entitlements can be requested for revocation.\n\
+        * Revoke requests for entitlements are limited to 1 entitlement per access\
+        \ request currently.\n* You can specify a `removeDate` if the access doesn't\
+        \ already have a sunset date. The `removeDate` must be a future date, in the\
+        \ UTC timezone. \n* Allows a manager to request to revoke access for direct\
+        \ employees. A user with ORG_ADMIN authority can also request to revoke access\
+        \ from anyone.\n* Now supports REVOKE_ACCESS requests for identities with\
+        \ multiple accounts on a single source, with the help of 'assignmentId' and\
+        \ 'nativeIdentity' fields.\n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -7889,6 +7895,10 @@ paths:
       summary: List Campaigns
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
     post:
       deprecated: true
       description: |
@@ -7994,6 +8004,9 @@ paths:
       summary: Create Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/delete:
     post:
       deprecated: true
@@ -38826,7 +38839,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
+              example:
+              - op: replace
+                path: /ownerRef
+                value:
+                  id: 2c9180867d05b227017d09921a205b4d
+                  type: IDENTITY
+                  name: Angelo Medici
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -55598,6 +55620,46 @@ paths:
     get:
       description: List all workflows in the tenant.
       operationId: listWorkflows
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: Trigger ID
+        in: query
+        name: triggerId
+        required: false
+        schema:
+          example: idn:identity-created
+          type: string
+      - description: Connector Instance ID
+        in: query
+        name: connectorInstanceId
+        required: false
+        schema:
+          example: 28541fec-bb81-4ad4-88ef-0f7d213adcad
+          type: string
       responses:
         "200":
           content:
@@ -55669,6 +55731,8 @@ paths:
       summary: List Workflows
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: Create a new workflow with the desired trigger and steps specified
         in the request body.
@@ -55808,6 +55872,8 @@ paths:
       summary: Create Workflow
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflows/{id}:
     delete:
       description: Delete a workflow.  **Enabled workflows cannot be deleted**.  They
@@ -55890,6 +55956,8 @@ paths:
       summary: Delete Workflow By Id
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
       description: Get a single workflow by id.
       operationId: getWorkflow
@@ -55904,6 +55972,14 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listWorkflows
+      - description: disable workflow metrics
+        example: false
+        in: query
+        name: workflowMetrics
+        required: false
+        schema:
+          default: true
+          type: boolean
       responses:
         "200":
           content:
@@ -55973,6 +56049,8 @@ paths:
       summary: Get Workflow By Id
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: "Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
         \ syntax."
@@ -56108,10 +56186,12 @@ paths:
       summary: Patch Workflow
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: Perform a full update of a workflow.  The updated workflow object
         is returned in the response.
-      operationId: updateWorkflow
+      operationId: putWorkflow
       parameters:
       - description: Id of the Workflow
         explode: false
@@ -56198,6 +56278,8 @@ paths:
       summary: Update Workflow
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflows/{id}/test:
     post:
       description: |-
@@ -65495,7 +65577,7 @@ components:
           type: string
       type: object
     AccessProfile:
-      description: Access Profile
+      description: Access profile.
       example:
         owner:
           name: support
@@ -65526,6 +65608,7 @@ components:
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
         accessRequestConfig:
           commentsRequired: true
+          reauthorizationRequired: true
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
@@ -65567,35 +65650,35 @@ components:
         requestable: true
       properties:
         id:
-          description: The ID of the Access Profile
+          description: Access profile ID.
           example: 2c91808a7190d06e01719938fcd20792
           readOnly: true
           type: string
         name:
-          description: Name of the Access Profile
+          description: Access profile name.
           example: Employee-database-read-write
           type: string
         description:
-          description: Information about the Access Profile
+          description: Access profile description.
           example: Collection of entitlements to read/write the employee database
           nullable: true
           type: string
         created:
-          description: Date the Access Profile was created
+          description: Date and time when the access profile was created.
           example: 2021-03-01T22:32:58.104Z
           format: date-time
           readOnly: true
           type: string
         modified:
-          description: Date the Access Profile was last modified.
+          description: Date and time when the access profile was last modified.
           example: 2021-03-02T20:22:28.104Z
           format: date-time
           readOnly: true
           type: string
         enabled:
           default: false
-          description: Whether the Access Profile is enabled. If the Access Profile
-            is enabled then you must include at least one Entitlement.
+          description: "Indicates whether the access profile is enabled. If it's enabled,\
+            \ you must include at least one entitlement."
           example: true
           type: boolean
         owner:
@@ -65603,20 +65686,20 @@ components:
         source:
           $ref: '#/components/schemas/AccessProfileSourceRef'
         entitlements:
-          description: A list of entitlements associated with the Access Profile.
-            If enabled is false this is allowed to be empty otherwise it needs to
-            contain at least one Entitlement.
+          description: "List of entitlements associated with the access profile. If\
+            \ `enabled` is false, this can be empty. Otherwise, it must contain at\
+            \ least one entitlement."
           items:
             $ref: '#/components/schemas/EntitlementRef'
           nullable: true
           type: array
         requestable:
           default: true
-          description: "Whether the Access Profile is requestable via access request.\
-            \ Currently, making an Access Profile non-requestable is only supported\
-            \  for customers enabled with the new Request Center. Otherwise, attempting\
-            \ to create an Access Profile with a value  **false** in this field results\
-            \ in a 400 error."
+          description: "Indicates whether the access profile is requestable by access\
+            \ request. Currently, making an access profile non-requestable is only\
+            \ supported  for customers enabled with the new Request Center. Otherwise,\
+            \ attempting to create an access profile with a value  **false** in this\
+            \ field results in a 400 error."
           example: true
           type: boolean
         accessRequestConfig:
@@ -65624,8 +65707,8 @@ components:
         revocationRequestConfig:
           $ref: '#/components/schemas/Revocability'
         segments:
-          description: "List of IDs of segments, if any, to which this Access Profile\
-            \ is assigned."
+          description: "List of segment IDs, if any, that the access profile is assigned\
+            \ to."
           example:
           - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
           - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -65892,9 +65975,7 @@ components:
       type: object
     AccessRequest:
       example:
-        requestedFor:
-        - 2c918084660f45d6016617daa9210584
-        - 2c918084660f45d6016617daa9210584
+        requestedFor: 2c918084660f45d6016617daa9210584
         clientMetadata:
           requestedAppId: 2c91808f7892918f0178b78da4a305a1
           requestedAppName: test-app
@@ -65907,6 +65988,8 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         - clientMetadata:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -65914,6 +65997,8 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         - clientMetadata:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -65921,6 +66006,8 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         - clientMetadata:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -65928,6 +66015,8 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         - clientMetadata:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -65935,12 +66024,107 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        requestedForWithRequestedItems:
+        - identityId: cb89bc2f1ee6445fbea12224c526ba3a
+          requestedItems:
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        - identityId: cb89bc2f1ee6445fbea12224c526ba3a
+          requestedItems:
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         requestedFor:
           description: "A list of Identity IDs for whom the Access is requested. If\
             \ it's a Revoke request, there can only be one Identity ID."
+          example: 2c918084660f45d6016617daa9210584
           items:
-            example: 2c918084660f45d6016617daa9210584
             type: string
           type: array
         requestType:
@@ -65962,6 +66146,17 @@ components:
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
             requestedAppName: test-app
           type: object
+        requestedForWithRequestedItems:
+          description: |
+            Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity.
+            * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided
+            * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source
+            * Allows the ability to request items with different remove dates
+            * Also allows different combinations of request items and identities in the same request
+          items:
+            $ref: '#/components/schemas/RequestedForDtoRef'
+          nullable: true
+          type: array
       required:
       - requestedFor
       - requestedItems
@@ -76416,6 +76611,7 @@ components:
           type: IDENTITY_LIST
         accessRequestConfig:
           commentsRequired: true
+          reauthorizationRequired: true
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
@@ -77992,6 +78188,7 @@ components:
         name:
           description: the provisioning policy name
           example: example provisioning policy for inactive identities
+          nullable: true
           type: string
         description:
           description: the description of the provisioning policy
@@ -78106,8 +78303,10 @@ components:
           description: The name of the attribute whose values represent other objects
             in a hierarchy. Only relevant to group schemas.
           example: memberOf
+          nullable: true
           type: string
         includePermissions:
+          default: false
           description: Flag indicating whether or not the include permissions with
             the object data when aggregating the schema.
           example: false
@@ -78222,6 +78421,7 @@ components:
           description: The date the Schema was last modified.
           example: 2019-12-31T20:22:28.104Z
           format: date-time
+          nullable: true
           type: string
       type: object
     SourceSyncJob:
@@ -83436,7 +83636,7 @@ components:
           type: string
       type: object
     OwnerReference:
-      description: The owner of this object.
+      description: Owner of the object.
       example:
         name: support
         id: 2c9180a46faadee4016fb4e018c20639
@@ -83451,14 +83651,13 @@ components:
           example: IDENTITY
           type: string
         id:
-          description: Identity id
+          description: Owner's identity ID.
           example: 2c9180a46faadee4016fb4e018c20639
           type: string
         name:
-          description: "Human-readable display name of the owner. It may be left null\
-            \ or omitted in a POST or PATCH. If set, it must match the current value\
-            \ of the owner's display name, otherwise a 400 Bad Request error will\
-            \ result."
+          description: "Owner's name. It may be left null or omitted in a POST or\
+            \ PATCH. If set, it must match the current value of the owner's display\
+            \ name, otherwise a 400 Bad Request error will result."
           example: support
           type: string
       type: object
@@ -83469,18 +83668,17 @@ components:
         type: SOURCE
       properties:
         id:
-          description: The ID of the Source with with which the Access Profile is
-            associated
+          description: ID of the source the access profile is associated with.
           example: 2c91809773dee3610173fdb0b6061ef4
           type: string
         type:
-          description: "The type of the Source, will always be SOURCE"
+          description: Source's DTO type.
           enum:
           - SOURCE
           example: SOURCE
           type: string
         name:
-          description: The display name of the associated Source
+          description: Source name.
           example: ODS-AD-SOURCE
           type: string
       type: object
@@ -83510,6 +83708,7 @@ components:
     Requestability:
       example:
         commentsRequired: true
+        reauthorizationRequired: true
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
@@ -83520,20 +83719,26 @@ components:
       properties:
         commentsRequired:
           default: false
-          description: Whether the requester of the containing object must provide
-            comments justifying the request
+          description: Indicates whether the requester of the containing object must
+            provide comments justifying the request.
           example: true
           nullable: true
           type: boolean
         denialCommentsRequired:
           default: false
-          description: Whether an approver must provide comments when denying the
-            request
+          description: Indicates whether an approver must provide comments when denying
+            the request.
+          example: true
+          nullable: true
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Indicates whether reauthorization is required for the request.
           example: true
           nullable: true
           type: boolean
         approvalSchemes:
-          description: List describing the steps in approving the request
+          description: List describing the steps involved in approving the request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
@@ -83549,15 +83754,16 @@ components:
       nullable: true
       properties:
         approvalSchemes:
-          description: List describing the steps in approving the revocation request
+          description: List describing the steps involved in approving the revocation
+            request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
           type: array
       type: object
     ProvisioningCriteriaLevel1:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children:
         - children:
@@ -83592,25 +83798,25 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
           nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           items:
             $ref: '#/components/schemas/ProvisioningCriteriaLevel2'
           nullable: true
@@ -83763,6 +83969,8 @@ components:
         comment: Requesting access profile for John Doe
         id: 2c9180835d2e5168015d32f890ca1581
         type: ACCESS_PROFILE
+        assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+        nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         type:
           description: The type of the item being requested.
@@ -83802,9 +84010,88 @@ components:
           example: 2020-07-11T21:23:15Z
           format: date-time
           type: string
+        assignmentId:
+          description: |
+            The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity.
+            * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source.
+          example: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nullable: true
+          type: string
+        nativeIdentity:
+          description: |
+            The 'distinguishedName' field for an account on the identity, also called nativeIdentity. This nativeIdentity is used to revoke a specific attributeAssignment on the identity.
+            * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source.
+          example: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          nullable: true
+          type: string
       required:
       - id
       - type
+      type: object
+    RequestedForDtoRef:
+      example:
+        identityId: cb89bc2f1ee6445fbea12224c526ba3a
+        requestedItems:
+        - clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          removeDate: 2020-07-11T21:23:15Z
+          accountSelection:
+          - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+            accounts:
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+            accounts:
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          comment: Requesting access profile for John Doe
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        - clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          removeDate: 2020-07-11T21:23:15Z
+          accountSelection:
+          - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+            accounts:
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+            accounts:
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+              nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          comment: Requesting access profile for John Doe
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+      properties:
+        identityId:
+          description: The identity id for which the access is requested
+          example: cb89bc2f1ee6445fbea12224c526ba3a
+          nullable: false
+          type: string
+        requestedItems:
+          description: the details for the access items that are requested for the
+            identity
+          items:
+            $ref: '#/components/schemas/RequestedItemDtoRef'
+          nullable: false
+          type: array
+      required:
+      - identityId
+      - requestedItems
       type: object
     AccessRequestTracking:
       properties:
@@ -86968,6 +87255,7 @@ components:
     RequestabilityForRole:
       example:
         commentsRequired: true
+        reauthorizationRequired: true
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
@@ -86986,6 +87274,12 @@ components:
           default: false
           description: Whether an approver must provide comments when denying the
             request
+          example: true
+          nullable: true
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Indicates whether reauthorization is required for the request.
           example: true
           nullable: true
           type: boolean
@@ -89739,7 +90033,7 @@ components:
       properties:
         approverType:
           description: |-
-            Describes the individual or group that is responsible for an approval step. Values are as follows.
+            Describes the individual or group that is responsible for an approval step. These are the possible values:
             **APP_OWNER**: The owner of the Application
 
             **OWNER**: Owner of the associated Access Profile or Role
@@ -89758,14 +90052,14 @@ components:
           example: GOVERNANCE_GROUP
           type: string
         approverId:
-          description: "Id of the specific approver, used only when approverType is\
-            \ GOVERNANCE_GROUP"
+          description: Specific approver ID. Only use this when the `approverType`
+            is `GOVERNANCE_GROUP`.
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
           nullable: true
           type: string
       type: object
     ProvisioningCriteriaOperation:
-      description: Supported operations on ProvisioningCriteria
+      description: Supported operations on `ProvisioningCriteria`.
       enum:
       - EQUALS
       - NOT_EQUALS
@@ -89776,8 +90070,8 @@ components:
       example: EQUALS
       type: string
     ProvisioningCriteriaLevel2:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children:
         - children: children
@@ -89795,30 +90089,120 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
           nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           items:
             $ref: '#/components/schemas/ProvisioningCriteriaLevel3'
           nullable: true
           type: array
           example: null
+      type: object
+    RequestedItemDtoRef:
+      example:
+        clientMetadata:
+          requestedAppName: test-app
+          requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        removeDate: 2020-07-11T21:23:15Z
+        accountSelection:
+        - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+          accounts:
+          - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+            nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+            nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+          accounts:
+          - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+            nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+            nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        comment: Requesting access profile for John Doe
+        id: 2c9180835d2e5168015d32f890ca1581
+        type: ACCESS_PROFILE
+        assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
+        nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+      properties:
+        type:
+          description: The type of the item being requested.
+          enum:
+          - ACCESS_PROFILE
+          - ROLE
+          - ENTITLEMENT
+          example: ACCESS_PROFILE
+          type: string
+        id:
+          description: "ID of Role, Access Profile or Entitlement being requested."
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        comment:
+          description: |
+            Comment provided by requester.
+            * Comment is required when the request is of type Revoke Access.
+          example: Requesting access profile for John Doe
+          type: string
+        clientMetadata:
+          additionalProperties:
+            example: "{requestedAppId=2c91808f7892918f0178b78da4a305a1, requestedAppName=test-app}"
+            type: string
+          description: Arbitrary key-value pairs. They will never be processed by
+            the IdentityNow system but will be returned on associated APIs such as
+            /account-activities and /access-request-status.
+          example:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          type: object
+        removeDate:
+          description: |
+            The date the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date.
+            * Specify a date in the future.
+            * The current SLA for the deprovisioning is 24 hours.
+            * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration.
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        assignmentId:
+          description: |
+            The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity.
+            * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source.
+          example: ee48a191c00d49bf9264eb0a4fc3a9fc
+          nullable: true
+          type: string
+        nativeIdentity:
+          description: |
+            The 'distinguishedName' field for an account on the identity, also called nativeIdentity. This nativeIdentity is used to revoke a specific attributeAssignment on the identity.
+            * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source.
+          example: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          nullable: true
+          type: string
+        accountSelection:
+          description: |
+            The accounts where the access item will be provisioned to
+            * Includes selections performed by the user in the event of multiple accounts existing on the same source
+            * Also includes details for sources where user only has one account
+          items:
+            $ref: '#/components/schemas/SourceItemRef'
+          nullable: true
+          type: array
+      required:
+      - id
+      - type
       type: object
     RequestedItemDetails:
       properties:
@@ -90720,6 +91104,7 @@ components:
       - LONG
       - INT
       - BOOLEAN
+      - DATE
       example: STRING
       type: string
     matchTerm:
@@ -91379,8 +91764,8 @@ components:
           type: integer
       type: object
     ProvisioningCriteriaLevel3:
-      description: Defines matching criteria for an Account to be provisioned with
-        a specific Access Profile
+      description: Defines matching criteria for an account to be provisioned with
+        a specific access profile.
       example:
         children: children
         attribute: email
@@ -91390,27 +91775,50 @@ components:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
-          description: "Name of the Account attribute to be tested. If **operation**\
-            \ is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required.\
-            \ Otherwise, specifying it is an error."
+          description: "Name of the account attribute to be tested. If **operation**\
+            \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
+            \ required. Otherwise, specifying it results in an error."
           example: email
           nullable: true
           type: string
         value:
-          description: "String value to test the Account attribute w/r/t the specified\
-            \ operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS,\
-            \ this field is required. Otherwise, specifying it is an error. If the\
-            \ Attribute is not String-typed, it will be converted to the appropriate\
-            \ type."
+          description: "String value to test the account attribute w/r/t the specified\
+            \ operation. If the operation is one of `EQUALS`, `NOT_EQUALS`, or `CONTAINS`,\
+            \ this field is required. Otherwise, specifying it results in an error.\
+            \ If the attribute is not string-typed, the API will convert it to the\
+            \ appropriate type."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
-          description: "Array of child criteria. Required if the operation is AND\
-            \ or OR, otherwise it must be left null. A maximum of three levels of\
-            \ criteria are supported, including leaf nodes."
+          description: "Array of child criteria. This field is required if the operation\
+            \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
+            \ levels of criteria are supported, including leaf nodes."
           nullable: true
           type: string
           example: null
+      type: object
+    SourceItemRef:
+      example:
+        sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+        accounts:
+        - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+      properties:
+        sourceId:
+          description: The id for the source on which account selections are made
+          example: cb89bc2f1ee6445fbea12224c526ba3a
+          nullable: true
+          type: string
+        accounts:
+          description: "A list of account selections on the source. Currently, only\
+            \ one selection per source is supported."
+          items:
+            $ref: '#/components/schemas/AccountItemRef'
+          nullable: true
+          type: array
       type: object
     SodViolationContext:
       description: The contextual information of the violated criteria
@@ -91688,6 +92096,23 @@ components:
             $ref: '#/components/schemas/ExceptionCriteria_criteriaList_inner'
           type: array
       type: object
+    AccountItemRef:
+      example:
+        accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+        nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+      properties:
+        accountUuid:
+          description: "The uuid for the account, available under the 'objectguid'\
+            \ attribute"
+          example: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nullable: true
+          type: string
+        nativeIdentity:
+          description: The 'distinguishedName' attribute for the account
+          example: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          nullable: false
+          type: string
+      type: object
     SodExemptCriteria:
       description: Details of the Entitlement criteria
       example:
@@ -91837,9 +92262,9 @@ components:
           type: object
       type: object
     getActiveCampaigns_200_response_inner:
-      oneOf:
-      - $ref: '#/components/schemas/slimcampaign'
+      anyOf:
       - $ref: '#/components/schemas/Campaign'
+      - $ref: '#/components/schemas/slimcampaign'
     importEntitlementsBySource_request:
       properties:
         csvFile:
@@ -91995,23 +92420,6 @@ components:
           - replace
           example: replace
           type: string
-    patchServiceDeskIntegration_request:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
-        \  Only `replace` operations are accepted by this endpoint."
-      example:
-      - op: replace
-        path: /ownerRef
-        value:
-          id: 2c9180867d05b227017d09921a205b4d
-          type: IDENTITY
-          name: Angelo Medici
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
-      type: object
     importSpConfig_request:
       properties:
         data:
@@ -95661,6 +96069,7 @@ components:
     AttributeDefinition_schema:
       description: A reference to the schema on the source to the attribute values
         map to.
+      nullable: true
       properties:
         type:
           description: The type of object being referenced

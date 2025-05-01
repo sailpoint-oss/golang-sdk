@@ -88,7 +88,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -96,7 +96,7 @@ func main() {
     id := `2c91808477a6b0c60177a81146b8110b` // string | The account aggregation id # string | The account aggregation id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.V2024.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()

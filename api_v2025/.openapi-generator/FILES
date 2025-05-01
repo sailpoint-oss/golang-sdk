@@ -154,6 +154,7 @@ docs/AccessRequestDynamicApproverRequestedItemsInner.md
 docs/AccessRequestIdentityMetricsAPI.md
 docs/AccessRequestIdentityMetricsAPIdeveloperSite_code_examples.yaml
 docs/AccessRequestItem.md
+docs/AccessRequestItem1.md
 docs/AccessRequestItemResponse.md
 docs/AccessRequestPhases.md
 docs/AccessRequestPostApproval.md
@@ -217,6 +218,8 @@ docs/AccountCorrelatedAccount.md
 docs/AccountCorrelatedIdentity.md
 docs/AccountCorrelatedSource.md
 docs/AccountInfoDto.md
+docs/AccountInfoRef.md
+docs/AccountItemRef.md
 docs/AccountRequest.md
 docs/AccountRequestInfo.md
 docs/AccountRequestResult.md
@@ -240,6 +243,8 @@ docs/AccountsCollectedForAggregation.md
 docs/AccountsCollectedForAggregationSource.md
 docs/AccountsCollectedForAggregationStats.md
 docs/AccountsExportReportArguments.md
+docs/AccountsSelectionRequest.md
+docs/AccountsSelectionResponse.md
 docs/ActivateCampaignOptions.md
 docs/ActivityIdentity.md
 docs/ActivityInsights.md
@@ -557,6 +562,7 @@ docs/Expression.md
 docs/ExpressionChildrenInner.md
 docs/ExternalAttributes.md
 docs/FeatureValueDto.md
+docs/FederationProtocolDetails.md
 docs/FieldDetailsDto.md
 docs/Filter.md
 docs/FilterAggregation.md
@@ -586,6 +592,7 @@ docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
 docs/FullDiscoveredApplications.md
 docs/GetActiveCampaigns200ResponseInner.md
+docs/GetCampaign200Response.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
@@ -622,6 +629,7 @@ docs/IdentitiesReportArguments.md
 docs/Identity.md
 docs/Identity1.md
 docs/IdentityAccess.md
+docs/IdentityAccountSelections.md
 docs/IdentityAssociationDetails.md
 docs/IdentityAssociationDetailsAssociationDetailsInner.md
 docs/IdentityAttribute.md
@@ -651,6 +659,9 @@ docs/IdentityDocumentAllOfManager.md
 docs/IdentityDocumentAllOfSource.md
 docs/IdentityEntities.md
 docs/IdentityEntitiesIdentityEntity.md
+docs/IdentityEntitlementDetails.md
+docs/IdentityEntitlementDetailsAccountTarget.md
+docs/IdentityEntitlementDetailsEntitlementDto.md
 docs/IdentityExceptionReportReference.md
 docs/IdentityHistoryAPI.md
 docs/IdentityHistoryAPIdeveloperSite_code_examples.yaml
@@ -681,6 +692,7 @@ docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccess1.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/IdpDetails.md
 docs/ImportAccountsRequest.md
 docs/ImportEntitlementsBySourceRequest.md
 docs/ImportFormDefinitions202Response.md
@@ -696,6 +708,7 @@ docs/InviteIdentitiesRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
+docs/JITConfiguration.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/KbaAnswerRequestItem.md
@@ -732,6 +745,7 @@ docs/LoadUncorrelatedAccountsTaskTaskAttributes.md
 docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
+docs/LockoutConfiguration.md
 docs/LookupStep.md
 docs/MFAConfigurationAPI.md
 docs/MFAConfigurationAPIdeveloperSite_code_examples.yaml
@@ -883,7 +897,6 @@ docs/PasswordSyncGroupsAPI.md
 docs/PasswordSyncGroupsAPIdeveloperSite_code_examples.yaml
 docs/PatOwner.md
 docs/PatchPotentialRoleRequestInner.md
-docs/PatchServiceDeskIntegrationRequest.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
@@ -967,7 +980,10 @@ docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestableObjectsAPIdeveloperSite_code_examples.yaml
 docs/RequestedAccountRef.md
+docs/RequestedForDtoRef.md
+docs/RequestedItemAccountSelections.md
 docs/RequestedItemDetails.md
+docs/RequestedItemDtoRef.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -1152,6 +1168,9 @@ docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
+docs/ServiceProviderConfiguration.md
+docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md
+docs/SessionConfiguration.md
 docs/SetIcon200Response.md
 docs/SetIconRequest.md
 docs/SetLifecycleState200Response.md
@@ -1180,6 +1199,7 @@ docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
 docs/SourceAccountCreated.md
 docs/SourceAccountDeleted.md
+docs/SourceAccountSelections.md
 docs/SourceAccountUpdated.md
 docs/SourceApp.md
 docs/SourceAppAccountSource.md
@@ -1199,6 +1219,7 @@ docs/SourceDeleted.md
 docs/SourceDeletedActor.md
 docs/SourceEntitlementRequestConfig.md
 docs/SourceHealthDto.md
+docs/SourceItemRef.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
 docs/SourceManagerCorrelationRule.md
@@ -1228,6 +1249,7 @@ docs/SpConfigObject.md
 docs/SpConfigRule.md
 docs/SpConfigRuleValue.md
 docs/SpConfigRules.md
+docs/SpDetails.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
 docs/StatusResponse.md
@@ -1424,6 +1446,7 @@ model_access_request_dynamic_approver.go
 model_access_request_dynamic_approver_1.go
 model_access_request_dynamic_approver_requested_items_inner.go
 model_access_request_item.go
+model_access_request_item_1.go
 model_access_request_item_response.go
 model_access_request_phases.go
 model_access_request_post_approval.go
@@ -1481,6 +1504,8 @@ model_account_correlated_account.go
 model_account_correlated_identity.go
 model_account_correlated_source.go
 model_account_info_dto.go
+model_account_info_ref.go
+model_account_item_ref.go
 model_account_request.go
 model_account_request_info.go
 model_account_request_result.go
@@ -1500,6 +1525,8 @@ model_accounts_collected_for_aggregation.go
 model_accounts_collected_for_aggregation_source.go
 model_accounts_collected_for_aggregation_stats.go
 model_accounts_export_report_arguments.go
+model_accounts_selection_request.go
+model_accounts_selection_response.go
 model_activate_campaign_options.go
 model_activity_identity.go
 model_activity_insights.go
@@ -1779,6 +1806,7 @@ model_expression.go
 model_expression_children_inner.go
 model_external_attributes.go
 model_feature_value_dto.go
+model_federation_protocol_details.go
 model_field_details_dto.go
 model_filter.go
 model_filter_aggregation.go
@@ -1808,6 +1836,7 @@ model_form_used_by.go
 model_forward_approval_dto.go
 model_full_discovered_applications.go
 model_get_active_campaigns_200_response_inner.go
+model_get_campaign_200_response.go
 model_get_discovered_applications_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
@@ -1824,6 +1853,7 @@ model_identities_report_arguments.go
 model_identity.go
 model_identity_1.go
 model_identity_access.go
+model_identity_account_selections.go
 model_identity_association_details.go
 model_identity_association_details_association_details_inner.go
 model_identity_attribute.go
@@ -1851,6 +1881,9 @@ model_identity_document_all_of_manager.go
 model_identity_document_all_of_source.go
 model_identity_entities.go
 model_identity_entities_identity_entity.go
+model_identity_entitlement_details.go
+model_identity_entitlement_details_account_target.go
+model_identity_entitlement_details_entitlement_dto.go
 model_identity_exception_report_reference.go
 model_identity_history_response.go
 model_identity_lifecycle_state.go
@@ -1877,6 +1910,7 @@ model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_1.go
 model_identity_with_new_access_access_refs_inner.go
+model_idp_details.go
 model_import_accounts_request.go
 model_import_entitlements_by_source_request.go
 model_import_form_definitions_202_response.go
@@ -1892,6 +1926,7 @@ model_invite_identities_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
+model_jit_configuration.go
 model_json_patch.go
 model_json_patch_operation.go
 model_kba_answer_request_item.go
@@ -1926,6 +1961,7 @@ model_load_uncorrelated_accounts_task_task_attributes.go
 model_load_uncorrelated_accounts_task_task_messages_inner.go
 model_locale_origin.go
 model_localized_message.go
+model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
 model_machine_identity.go
@@ -2044,7 +2080,6 @@ model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
 model_patch_potential_role_request_inner.go
-model_patch_service_desk_integration_request.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
@@ -2118,7 +2153,10 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_account_ref.go
+model_requested_for_dto_ref.go
+model_requested_item_account_selections.go
 model_requested_item_details.go
+model_requested_item_dto_ref.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go
@@ -2279,6 +2317,9 @@ model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
+model_service_provider_configuration.go
+model_service_provider_configuration_federation_protocol_details_inner.go
+model_session_configuration.go
 model_set_icon_200_response.go
 model_set_icon_request.go
 model_set_lifecycle_state_200_response.go
@@ -2307,6 +2348,7 @@ model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
 model_source_account_created.go
 model_source_account_deleted.go
+model_source_account_selections.go
 model_source_account_updated.go
 model_source_app.go
 model_source_app_account_source.go
@@ -2326,6 +2368,7 @@ model_source_deleted.go
 model_source_deleted_actor.go
 model_source_entitlement_request_config.go
 model_source_health_dto.go
+model_source_item_ref.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go
 model_source_manager_correlation_rule.go
@@ -2351,6 +2394,7 @@ model_sp_config_object.go
 model_sp_config_rule.go
 model_sp_config_rule_value.go
 model_sp_config_rules.go
+model_sp_details.go
 model_standard_level.go
 model_start_invocation_input.go
 model_status_response.go

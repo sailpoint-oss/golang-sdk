@@ -54,13 +54,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
@@ -113,7 +113,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -124,7 +124,7 @@ func main() {
           "iframeWhiteList" : "http://example.com http://example2.com"
         }`) # TenantUiMetadataItemUpdateRequest | 
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.UIMetadataAPI.SetTenantUiMetadata(context.Background()).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
 	//resp, r, err := apiClient.Beta.UIMetadataAPI.SetTenantUiMetadata(context.Background()).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()

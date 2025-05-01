@@ -21,7 +21,7 @@ var _ MappedNullable = &ProvisioningPolicy{}
 // ProvisioningPolicy struct for ProvisioningPolicy
 type ProvisioningPolicy struct {
 	// the provisioning policy name
-	Name string `json:"name"`
+	Name NullableString `json:"name"`
 	// the description of the provisioning policy
 	Description *string `json:"description,omitempty"`
 	UsageType *UsageType `json:"usageType,omitempty"`
@@ -35,7 +35,7 @@ type _ProvisioningPolicy ProvisioningPolicy
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProvisioningPolicy(name string) *ProvisioningPolicy {
+func NewProvisioningPolicy(name NullableString) *ProvisioningPolicy {
 	this := ProvisioningPolicy{}
 	this.Name = name
 	return &this
@@ -50,27 +50,29 @@ func NewProvisioningPolicyWithDefaults() *ProvisioningPolicy {
 }
 
 // GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProvisioningPolicy) GetName() string {
-	if o == nil {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningPolicy) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // SetName sets field value
 func (o *ProvisioningPolicy) SetName(v string) {
-	o.Name = v
+	o.Name.Set(&v)
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -179,7 +181,7 @@ func (o ProvisioningPolicy) MarshalJSON() ([]byte, error) {
 
 func (o ProvisioningPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	toSerialize["name"] = o.Name.Get()
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

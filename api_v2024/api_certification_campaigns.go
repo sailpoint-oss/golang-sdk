@@ -1269,7 +1269,7 @@ func (r ApiGetCampaignRequest) Detail(detail string) ApiGetCampaignRequest {
 	return r
 }
 
-func (r ApiGetCampaignRequest) Execute() (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
+func (r ApiGetCampaignRequest) Execute() (*GetCampaign200Response, *http.Response, error) {
 	return r.ApiService.GetCampaignExecute(r)
 }
 
@@ -1292,13 +1292,13 @@ func (a *CertificationCampaignsAPIService) GetCampaign(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return GetActiveCampaigns200ResponseInner
-func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
+//  @return GetCampaign200Response
+func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*GetCampaign200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetActiveCampaigns200ResponseInner
+		localVarReturnValue  *GetCampaign200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaign")

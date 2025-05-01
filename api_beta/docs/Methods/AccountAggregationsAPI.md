@@ -77,14 +77,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `2c91808477a6b0c60177a81146b8110b` // string | The account aggregation id # string | The account aggregation id
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).Execute()

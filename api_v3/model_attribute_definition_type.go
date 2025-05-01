@@ -24,6 +24,7 @@ const (
 	ATTRIBUTEDEFINITIONTYPE_LONG AttributeDefinitionType = "LONG"
 	ATTRIBUTEDEFINITIONTYPE_INT AttributeDefinitionType = "INT"
 	ATTRIBUTEDEFINITIONTYPE_BOOLEAN AttributeDefinitionType = "BOOLEAN"
+	ATTRIBUTEDEFINITIONTYPE_DATE AttributeDefinitionType = "DATE"
 )
 
 // All allowed values of AttributeDefinitionType enum
@@ -32,6 +33,7 @@ var AllowedAttributeDefinitionTypeEnumValues = []AttributeDefinitionType{
 	"LONG",
 	"INT",
 	"BOOLEAN",
+	"DATE",
 }
 
 func (v *AttributeDefinitionType) UnmarshalJSON(src []byte) error {

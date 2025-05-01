@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SpDetails type satisfies the MappedNullable interface at compile time
@@ -26,7 +27,9 @@ type SpDetails struct {
 	// Unique alias used to identify the selected local service provider based on used URL. Used with SP configurations.
 	Alias *string `json:"alias,omitempty"`
 	// The allowed callback URL where users will be redirected to after authentication. Used with SP configurations.
-	CallbackUrl *string `json:"callbackUrl,omitempty"`
+	CallbackUrl string `json:"callbackUrl"`
+	// The legacy ACS URL used for SAML authentication. Used with SP configurations.
+	LegacyAcsUrl *string `json:"legacyAcsUrl,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,8 +39,9 @@ type _SpDetails SpDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpDetails() *SpDetails {
+func NewSpDetails(callbackUrl string) *SpDetails {
 	this := SpDetails{}
+	this.CallbackUrl = callbackUrl
 	return &this
 }
 
@@ -145,36 +149,60 @@ func (o *SpDetails) SetAlias(v string) {
 	o.Alias = &v
 }
 
-// GetCallbackUrl returns the CallbackUrl field value if set, zero value otherwise.
+// GetCallbackUrl returns the CallbackUrl field value
 func (o *SpDetails) GetCallbackUrl() string {
-	if o == nil || IsNil(o.CallbackUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CallbackUrl
+
+	return o.CallbackUrl
 }
 
-// GetCallbackUrlOk returns a tuple with the CallbackUrl field value if set, nil otherwise
+// GetCallbackUrlOk returns a tuple with the CallbackUrl field value
 // and a boolean to check if the value has been set.
 func (o *SpDetails) GetCallbackUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.CallbackUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CallbackUrl, true
+	return &o.CallbackUrl, true
 }
 
-// HasCallbackUrl returns a boolean if a field has been set.
-func (o *SpDetails) HasCallbackUrl() bool {
-	if o != nil && !IsNil(o.CallbackUrl) {
+// SetCallbackUrl sets field value
+func (o *SpDetails) SetCallbackUrl(v string) {
+	o.CallbackUrl = v
+}
+
+// GetLegacyAcsUrl returns the LegacyAcsUrl field value if set, zero value otherwise.
+func (o *SpDetails) GetLegacyAcsUrl() string {
+	if o == nil || IsNil(o.LegacyAcsUrl) {
+		var ret string
+		return ret
+	}
+	return *o.LegacyAcsUrl
+}
+
+// GetLegacyAcsUrlOk returns a tuple with the LegacyAcsUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpDetails) GetLegacyAcsUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.LegacyAcsUrl) {
+		return nil, false
+	}
+	return o.LegacyAcsUrl, true
+}
+
+// HasLegacyAcsUrl returns a boolean if a field has been set.
+func (o *SpDetails) HasLegacyAcsUrl() bool {
+	if o != nil && !IsNil(o.LegacyAcsUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetCallbackUrl gets a reference to the given string and assigns it to the CallbackUrl field.
-func (o *SpDetails) SetCallbackUrl(v string) {
-	o.CallbackUrl = &v
+// SetLegacyAcsUrl gets a reference to the given string and assigns it to the LegacyAcsUrl field.
+func (o *SpDetails) SetLegacyAcsUrl(v string) {
+	o.LegacyAcsUrl = &v
 }
 
 func (o SpDetails) MarshalJSON() ([]byte, error) {
@@ -196,8 +224,9 @@ func (o SpDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if !IsNil(o.CallbackUrl) {
-		toSerialize["callbackUrl"] = o.CallbackUrl
+	toSerialize["callbackUrl"] = o.CallbackUrl
+	if !IsNil(o.LegacyAcsUrl) {
+		toSerialize["legacyAcsUrl"] = o.LegacyAcsUrl
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -208,6 +237,27 @@ func (o SpDetails) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SpDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"callbackUrl",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSpDetails := _SpDetails{}
 
 	err = json.Unmarshal(data, &varSpDetails)
@@ -225,6 +275,7 @@ func (o *SpDetails) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "entityId")
 		delete(additionalProperties, "alias")
 		delete(additionalProperties, "callbackUrl")
+		delete(additionalProperties, "legacyAcsUrl")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// ProvisioningCriteriaOperation Supported operations on ProvisioningCriteria
+// ProvisioningCriteriaOperation Supported operations on `ProvisioningCriteria`.
 type ProvisioningCriteriaOperation string
 
 // List of ProvisioningCriteriaOperation

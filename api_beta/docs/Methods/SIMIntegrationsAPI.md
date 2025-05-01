@@ -68,7 +68,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -92,7 +92,7 @@ func main() {
           }
         }`) # SimIntegrationDetails | DTO containing the details of the SIM integration
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).SimIntegrationDetails(simIntegrationDetails).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).SimIntegrationDetails(simIntegrationDetails).Execute()
@@ -148,14 +148,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | The id of the integration to delete. # string | The id of the integration to delete.
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   r, err := apiClient.Beta.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
 	//r, err := apiClient.Beta.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
@@ -209,14 +209,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | The id of the integration. # string | The id of the integration.
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
@@ -264,13 +264,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
@@ -327,7 +327,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -335,7 +335,7 @@ func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     jsonPatch := fmt.Sprintf(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) # JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).JsonPatch(jsonPatch).Execute()
@@ -392,7 +392,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -400,7 +400,7 @@ func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     jsonPatch := fmt.Sprintf(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) # JsonPatch | The JsonPatch object that describes the changes of SIM
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).JsonPatch(jsonPatch).Execute()
@@ -457,7 +457,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-  beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -482,7 +482,7 @@ func main() {
           }
         }`) # SimIntegrationDetails | The full DTO of the integration containing the updated model
 
-	configuration := NewDefaultConfiguration()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
   resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).SimIntegrationDetails(simIntegrationDetails).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).SimIntegrationDetails(simIntegrationDetails).Execute()
