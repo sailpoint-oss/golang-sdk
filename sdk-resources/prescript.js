@@ -43,8 +43,8 @@ const fixFiles = function (myArray) {
 
     if (file.includes(path.join("schemas","WorkflowTrigger.yaml")) || file.includes(path.join("schemas","workflows","WorkflowTrigger.yaml"))) {
       for (let line of rawDataArra) {
-        if (line.includes('oneOf')) {
-          line = line.replaceAll("oneOf:", "type: object")
+        if (line.includes('anyOf')) {
+          line = line.replaceAll("anyOf:", "type: object")
           madeChange = true;
         }
         if (line.includes('- $ref:')) {

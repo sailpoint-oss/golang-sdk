@@ -644,7 +644,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.2.0")
+localVarRequest.Header.Add("X-SailPoint-SDK", "2.2.1")
 
 	if ctx != nil {
 		// add context to the request
@@ -677,7 +677,7 @@ if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cf
 	if _, exists := headerParams["X-SailPoint-Experimental"]; exists && !c.cfg.Experimental {
 		panic("You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.")
 	} else if _, exists := headerParams["X-SailPoint-Experimental"]; exists && c.cfg.Experimental {
-		fmt.Fprintf(os.Stdout, "Warning: You are using Experimental APIs\n")
+		//fmt.Fprintf(os.Stdout, "Warning: You are using Experimental APIs\n")
 	}
 
 	for header, value := range c.cfg.DefaultHeader {

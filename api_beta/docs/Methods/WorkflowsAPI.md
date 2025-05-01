@@ -1065,13 +1065,7 @@ func main() {
           },
           "trigger" : {
             "displayName" : "displayName",
-            "attributes" : {
-              "description" : "Triggered when an identity's manager attribute changes",
-              "formDefinitionId" : "Admin_Access_Request_Form",
-              "attributeToFilter" : "LifecycleState",
-              "id" : "idn:identity-attributes-changed",
-              "filter.$" : "$.changes[?(@.attribute == 'manager')]"
-            },
+            "attributes" : "{}",
             "type" : "EVENT"
           },
           "enabled" : false
