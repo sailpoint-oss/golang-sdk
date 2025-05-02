@@ -1,5 +1,9 @@
 name: "Push Go SDK Docs to Developer Portal"
 
+permissions:
+  contents: write
+  actions: read
+
 on:
   push:
     branches:
