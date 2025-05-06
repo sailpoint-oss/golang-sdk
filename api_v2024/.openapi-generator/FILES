@@ -45,7 +45,10 @@ api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
 api_lifecycle_states.go
+api_machine_account_classify.go
+api_machine_account_mappings.go
 api_machine_accounts.go
+api_machine_classification_config.go
 api_machine_identities.go
 api_managed_clients.go
 api_managed_cluster_types.go
@@ -283,6 +286,12 @@ docs/AttributeDTOList.md
 docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
+docs/AttributeMappings.md
+docs/AttributeMappingsAllOfTarget.md
+docs/AttributeMappingsAllOfTransformDefinition.md
+docs/AttributeMappingsAllOfTransformDefinitionAttributes.md
+docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md
+docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md
 docs/AttributeRequest.md
 docs/AttributeRequestValue.md
 docs/AttributeValueDTO.md
@@ -696,7 +705,11 @@ docs/LockoutConfiguration.md
 docs/LookupStep.md
 docs/MFAConfigurationAPI.md
 docs/MachineAccount.md
+docs/MachineAccountClassifyAPI.md
+docs/MachineAccountMappingsAPI.md
 docs/MachineAccountsAPI.md
+docs/MachineClassificationConfig.md
+docs/MachineClassificationConfigAPI.md
 docs/MachineIdentitiesAPI.md
 docs/MachineIdentity.md
 docs/MailFromAttributes.md
@@ -1075,6 +1088,7 @@ docs/SelectorAccountMatchConfig.md
 docs/SelectorAccountMatchConfigMatchExpression.md
 docs/SelfImportExportDto.md
 docs/SendAccountVerificationRequest.md
+docs/SendClassifyMachineAccount200Response.md
 docs/SendTestNotificationRequestDto.md
 docs/ServiceDeskIntegrationAPI.md
 docs/ServiceDeskIntegrationDto.md
@@ -1470,6 +1484,12 @@ model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attribute_dto.go
 model_attribute_dto_list.go
+model_attribute_mappings.go
+model_attribute_mappings_all_of_target.go
+model_attribute_mappings_all_of_transform_definition.go
+model_attribute_mappings_all_of_transform_definition_attributes.go
+model_attribute_mappings_all_of_transform_definition_attributes_input.go
+model_attribute_mappings_all_of_transform_definition_attributes_input_attributes.go
 model_attribute_request.go
 model_attribute_request_value.go
 model_attribute_value_dto.go
@@ -1852,6 +1872,7 @@ model_localized_message.go
 model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
+model_machine_classification_config.go
 model_machine_identity.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
@@ -2200,6 +2221,7 @@ model_selector_account_match_config.go
 model_selector_account_match_config_match_expression.go
 model_self_import_export_dto.go
 model_send_account_verification_request.go
+model_send_classify_machine_account_200_response.go
 model_send_test_notification_request_dto.go
 model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
@@ -2443,7 +2465,10 @@ test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
+test/api_machine_account_classify_test.go
+test/api_machine_account_mappings_test.go
 test/api_machine_accounts_test.go
+test/api_machine_classification_config_test.go
 test/api_machine_identities_test.go
 test/api_managed_clients_test.go
 test/api_managed_cluster_types_test.go

@@ -138,7 +138,13 @@ type APIClient struct {
 
 	MFAConfigurationAPI *MFAConfigurationAPIService
 
+	MachineAccountClassifyAPI *MachineAccountClassifyAPIService
+
+	MachineAccountMappingsAPI *MachineAccountMappingsAPIService
+
 	MachineAccountsAPI *MachineAccountsAPIService
+
+	MachineClassificationConfigAPI *MachineClassificationConfigAPIService
 
 	MachineIdentitiesAPI *MachineIdentitiesAPIService
 
@@ -290,7 +296,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
+	c.MachineAccountClassifyAPI = (*MachineAccountClassifyAPIService)(&c.common)
+	c.MachineAccountMappingsAPI = (*MachineAccountMappingsAPIService)(&c.common)
 	c.MachineAccountsAPI = (*MachineAccountsAPIService)(&c.common)
+	c.MachineClassificationConfigAPI = (*MachineClassificationConfigAPIService)(&c.common)
 	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClusterTypesAPI = (*ManagedClusterTypesAPIService)(&c.common)

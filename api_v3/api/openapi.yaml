@@ -40060,7 +40060,7 @@ paths:
   /workflows/{id}/test:
     post:
       description: |
-        ::: info
+        :::info
 
         Workflow must be disabled in order to use this endpoint.
 
@@ -40183,6 +40183,8 @@ paths:
       summary: Test Workflow By Id
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflows/{id}/executions:
     get:
       description: |-
