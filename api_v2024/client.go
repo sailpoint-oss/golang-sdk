@@ -138,7 +138,13 @@ type APIClient struct {
 
 	MFAConfigurationAPI *MFAConfigurationAPIService
 
+	MachineAccountClassifyAPI *MachineAccountClassifyAPIService
+
+	MachineAccountMappingsAPI *MachineAccountMappingsAPIService
+
 	MachineAccountsAPI *MachineAccountsAPIService
+
+	MachineClassificationConfigAPI *MachineClassificationConfigAPIService
 
 	MachineIdentitiesAPI *MachineIdentitiesAPIService
 
@@ -290,7 +296,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
+	c.MachineAccountClassifyAPI = (*MachineAccountClassifyAPIService)(&c.common)
+	c.MachineAccountMappingsAPI = (*MachineAccountMappingsAPIService)(&c.common)
 	c.MachineAccountsAPI = (*MachineAccountsAPIService)(&c.common)
+	c.MachineClassificationConfigAPI = (*MachineClassificationConfigAPIService)(&c.common)
 	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClusterTypesAPI = (*ManagedClusterTypesAPIService)(&c.common)
@@ -686,7 +695,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.2.1")
+localVarRequest.Header.Add("X-SailPoint-SDK", "2.3.0")
 
 	if ctx != nil {
 		// add context to the request

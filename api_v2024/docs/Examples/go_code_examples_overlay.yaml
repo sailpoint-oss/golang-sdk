@@ -1331,10 +1331,17 @@
           },
           "autoApprovalEnabled" : true,
           "entitlementRequestConfig" : {
-            "requestCommentsRequired" : false,
-            "deniedCommentsRequired" : false,
-            "allowEntitlementRequest" : true,
-            "grantRequestApprovalSchemes" : "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+            "accessRequestConfig" : {
+              "denialCommentRequired" : false,
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ],
+              "requestCommentRequired" : true
+            }
           },
           "reauthorizationEnabled" : true,
           "approvalsMustBeExternal" : true
@@ -7808,10 +7815,17 @@
           id := `2c91808a7813090a017814121e121518` // string | Entitlement ID # string | Entitlement ID
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           entitlementRequestConfig := fmt.Sprintf(`{
-          "requestCommentsRequired" : false,
-          "deniedCommentsRequired" : false,
-          "allowEntitlementRequest" : true,
-          "grantRequestApprovalSchemes" : "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "requestCommentRequired" : true
+          }
         }`) # EntitlementRequestConfig | 
 
          	configuration := sailpoint.NewDefaultConfiguration()
@@ -11953,6 +11967,199 @@
           // response from `UpdateLifecycleStates`: LifecycleState
           fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.UpdateLifecycleStates`: %v\n", resp)
         }
+- path: /accounts/{id}/classify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-account-classify#send-classify-machine-account
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Account ID. # string | Account ID.
+          classificationMode := `forceMachine` // string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default") # string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default")
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineAccountClassifyAPI.SendClassifyMachineAccount(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2024.MachineAccountClassifyAPI.SendClassifyMachineAccount(context.Background(), id).ClassificationMode(classificationMode).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountClassifyAPI.SendClassifyMachineAccount``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SendClassifyMachineAccount`: SendClassifyMachineAccount200Response
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountClassifyAPI.SendClassifyMachineAccount`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/machine-account-mappings
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-account-mappings#create-machine-account-mappings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          attributeMappings := fmt.Sprintf(`{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }`) # AttributeMappings | 
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.CreateMachineAccountMappings(context.Background(), id).AttributeMappings(attributeMappings).Execute()
+          //resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.CreateMachineAccountMappings(context.Background(), id).AttributeMappings(attributeMappings).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineAccountMappings`: []AttributeMappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.CreateMachineAccountMappings`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/machine-account-mappings
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-account-mappings#delete-machine-account-mappings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | source ID. # string | source ID.
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2024.MachineAccountMappingsAPI.DeleteMachineAccountMappings(context.Background(), id).Execute()
+          //r, err := apiClient.V2024.MachineAccountMappingsAPI.DeleteMachineAccountMappings(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.DeleteMachineAccountMappings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/{sourceId}/machine-account-mappings
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-account-mappings#list-machine-account-mappings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.ListMachineAccountMappings(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.ListMachineAccountMappings(context.Background(), id).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineAccountMappings`: []AttributeMappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.ListMachineAccountMappings`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/machine-mappings
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-account-mappings#set-machine-account-mappings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          attributeMappings := fmt.Sprintf(`{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }`) # AttributeMappings | 
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.SetMachineAccountMappings(context.Background(), id).AttributeMappings(attributeMappings).Execute()
+          //resp, r, err := apiClient.V2024.MachineAccountMappingsAPI.SetMachineAccountMappings(context.Background(), id).AttributeMappings(attributeMappings).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.SetMachineAccountMappings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMachineAccountMappings`: []AttributeMappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.SetMachineAccountMappings`: %v\n", resp)
+        }
 - path: /machine-accounts/{id}
   method: Get
   xCodeSample:
@@ -12050,6 +12257,101 @@
           }
           // response from `UpdateMachineAccount`: MachineAccount
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UpdateMachineAccount`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/machine-classification-config
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-classification-config#delete-machine-classification-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2024.MachineClassificationConfigAPI.DeleteMachineClassificationConfig(context.Background(), id).Execute()
+          //r, err := apiClient.V2024.MachineClassificationConfigAPI.DeleteMachineClassificationConfig(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.DeleteMachineClassificationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/{sourceId}/machine-classification-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-classification-config#get-machine-classification-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.GetMachineClassificationConfig(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.GetMachineClassificationConfig(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineClassificationConfig`: MachineClassificationConfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.GetMachineClassificationConfig`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/machine-classification-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2024/methods/machine-classification-config#set-machine-classification-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          machineClassificationConfig := fmt.Sprintf(`{
+          "criteria" : "criteria",
+          "created" : "2017-07-11T18:45:37.098Z",
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "classificationMethod" : "SOURCE",
+          "enabled" : true
+        }`) # MachineClassificationConfig | 
+
+         	configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.SetMachineClassificationConfig(context.Background(), id).MachineClassificationConfig(machineClassificationConfig).Execute()
+          //resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.SetMachineClassificationConfig(context.Background(), id).MachineClassificationConfig(machineClassificationConfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMachineClassificationConfig`: MachineClassificationConfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.SetMachineClassificationConfig`: %v\n", resp)
         }
 - path: /machine-identities
   method: Post

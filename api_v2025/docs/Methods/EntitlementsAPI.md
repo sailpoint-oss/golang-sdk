@@ -885,10 +885,17 @@ func main() {
     id := `2c91808a7813090a017814121e121518` // string | Entitlement ID # string | Entitlement ID
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     entitlementRequestConfig := fmt.Sprintf(`{
-          "requestCommentsRequired" : false,
-          "deniedCommentsRequired" : false,
-          "allowEntitlementRequest" : true,
-          "grantRequestApprovalSchemes" : "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "requestCommentRequired" : true
+          }
         }`) # EntitlementRequestConfig | 
 
 	configuration := sailpoint.NewDefaultConfiguration()

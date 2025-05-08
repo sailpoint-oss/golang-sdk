@@ -2974,9 +2974,18 @@ func (r ApiTestWorkflowRequest) Execute() (*TestWorkflow200Response, *http.Respo
 /*
 TestWorkflow Test Workflow By Id
 
+:::info
+
+Workflow must be disabled in order to use this endpoint.
+
+:::
+
 Test a workflow with the provided input data.  The input data should resemble the input that the trigger will send the workflow.  See the [event trigger documentation](https://developer.sailpoint.com/idn/docs/event-triggers/available) for an example input for the trigger that initiates this workflow.
+
 This endpoint will return an execution ID, which can be used to lookup more information about the execution using the `Get a Workflow Execution` endpoint.
+
 **This will cause a live run of the workflow, which could result in unintended modifications to your IDN tenant.**
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow
