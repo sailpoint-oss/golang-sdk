@@ -12,8 +12,8 @@ package api_v3
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // AttributeRequestValue - Value of attribute.
