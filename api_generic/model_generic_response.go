@@ -12,8 +12,8 @@ package api_generic
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // GenericResponse - struct for GenericResponse

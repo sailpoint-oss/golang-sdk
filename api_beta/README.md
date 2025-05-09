@@ -602,7 +602,6 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
-*WorkItemsAPI* | [**ForwardWorkItem**](docs/WorkItemsAPI.md#forwardworkitem) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**GetCompletedWorkItems**](docs/WorkItemsAPI.md#getcompletedworkitems) | **Get** /work-items/completed | Completed Work Items
 *WorkItemsAPI* | [**GetCountCompletedWorkItems**](docs/WorkItemsAPI.md#getcountcompletedworkitems) | **Get** /work-items/completed/count | Count Completed Work Items
 *WorkItemsAPI* | [**GetCountWorkItems**](docs/WorkItemsAPI.md#getcountworkitems) | **Get** /work-items/count | Count Work Items
@@ -612,6 +611,7 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**RejectApprovalItem**](docs/WorkItemsAPI.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsAPI* | [**RejectApprovalItemsInBulk**](docs/WorkItemsAPI.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
+*WorkItemsAPI* | [**SubmitForwardWorkItem**](docs/WorkItemsAPI.md#submitforwardworkitem) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkReassignmentAPI* | [**CreateReassignmentConfiguration**](docs/WorkReassignmentAPI.md#createreassignmentconfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
 *WorkReassignmentAPI* | [**DeleteReassignmentConfiguration**](docs/WorkReassignmentAPI.md#deletereassignmentconfiguration) | **Delete** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 *WorkReassignmentAPI* | [**GetEvaluateReassignmentConfiguration**](docs/WorkReassignmentAPI.md#getevaluatereassignmentconfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration

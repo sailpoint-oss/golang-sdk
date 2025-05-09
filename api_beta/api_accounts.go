@@ -56,6 +56,8 @@ By providing the account ID of an existing account in the request body, this API
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) CreateAccount(ctx context.Context) ApiCreateAccountRequest {
 	return ApiCreateAccountRequest{
@@ -66,6 +68,7 @@ func (a *AccountsAPIService) CreateAccount(ctx context.Context) ApiCreateAccount
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) CreateAccountExecute(r ApiCreateAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -220,6 +223,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID.
  @return ApiDeleteAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) DeleteAccount(ctx context.Context, id string) ApiDeleteAccountRequest {
 	return ApiDeleteAccountRequest{
@@ -231,6 +236,7 @@ func (a *AccountsAPIService) DeleteAccount(ctx context.Context, id string) ApiDe
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -558,6 +564,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account id
  @return ApiDisableAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) DisableAccount(ctx context.Context, id string) ApiDisableAccountRequest {
 	return ApiDisableAccountRequest{
@@ -569,6 +577,7 @@ func (a *AccountsAPIService) DisableAccount(ctx context.Context, id string) ApiD
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) DisableAccountExecute(r ApiDisableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -731,6 +740,8 @@ This API submits a task to disable IDN account for a single identity.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity id.
  @return ApiDisableAccountForIdentityRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) DisableAccountForIdentity(ctx context.Context, id string) ApiDisableAccountForIdentityRequest {
 	return ApiDisableAccountForIdentityRequest{
@@ -742,6 +753,7 @@ func (a *AccountsAPIService) DisableAccountForIdentity(ctx context.Context, id s
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *AccountsAPIService) DisableAccountForIdentityExecute(r ApiDisableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -903,6 +915,8 @@ This API submits tasks to disable IDN account for each identity provided in the 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDisableAccountsForIdentitiesRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) DisableAccountsForIdentities(ctx context.Context) ApiDisableAccountsForIdentitiesRequest {
 	return ApiDisableAccountsForIdentitiesRequest{
@@ -913,6 +927,7 @@ func (a *AccountsAPIService) DisableAccountsForIdentities(ctx context.Context) A
 
 // Execute executes the request
 //  @return []BulkIdentitiesAccountsResponse
+// Deprecated
 func (a *AccountsAPIService) DisableAccountsForIdentitiesExecute(r ApiDisableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1070,6 +1085,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account id
  @return ApiEnableAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) EnableAccount(ctx context.Context, id string) ApiEnableAccountRequest {
 	return ApiEnableAccountRequest{
@@ -1081,6 +1098,7 @@ func (a *AccountsAPIService) EnableAccount(ctx context.Context, id string) ApiEn
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) EnableAccountExecute(r ApiEnableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1243,6 +1261,8 @@ This API submits a task to enable IDN account for a single identity.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity id.
  @return ApiEnableAccountForIdentityRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) EnableAccountForIdentity(ctx context.Context, id string) ApiEnableAccountForIdentityRequest {
 	return ApiEnableAccountForIdentityRequest{
@@ -1254,6 +1274,7 @@ func (a *AccountsAPIService) EnableAccountForIdentity(ctx context.Context, id st
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *AccountsAPIService) EnableAccountForIdentityExecute(r ApiEnableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1415,6 +1436,8 @@ This API submits tasks to enable IDN account for each identity provided in the r
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEnableAccountsForIdentitiesRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) EnableAccountsForIdentities(ctx context.Context) ApiEnableAccountsForIdentitiesRequest {
 	return ApiEnableAccountsForIdentitiesRequest{
@@ -1425,6 +1448,7 @@ func (a *AccountsAPIService) EnableAccountsForIdentities(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []BulkIdentitiesAccountsResponse
+// Deprecated
 func (a *AccountsAPIService) EnableAccountsForIdentitiesExecute(r ApiEnableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1576,6 +1600,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID.
  @return ApiGetAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) GetAccount(ctx context.Context, id string) ApiGetAccountRequest {
 	return ApiGetAccountRequest{
@@ -1587,6 +1613,7 @@ func (a *AccountsAPIService) GetAccount(ctx context.Context, id string) ApiGetAc
 
 // Execute executes the request
 //  @return Account
+// Deprecated
 func (a *AccountsAPIService) GetAccountExecute(r ApiGetAccountRequest) (*Account, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1766,6 +1793,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account id
  @return ApiGetAccountEntitlementsRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) GetAccountEntitlements(ctx context.Context, id string) ApiGetAccountEntitlementsRequest {
 	return ApiGetAccountEntitlementsRequest{
@@ -1777,6 +1806,7 @@ func (a *AccountsAPIService) GetAccountEntitlements(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return []Entitlement
+// Deprecated
 func (a *AccountsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1988,10 +2018,12 @@ func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 /*
 ListAccounts Accounts List
 
-List accounts.  
+List accounts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountsRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) ListAccounts(ctx context.Context) ApiListAccountsRequest {
 	return ApiListAccountsRequest{
@@ -2002,6 +2034,7 @@ func (a *AccountsAPIService) ListAccounts(ctx context.Context) ApiListAccountsRe
 
 // Execute executes the request
 //  @return []Account
+// Deprecated
 func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]Account, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2187,6 +2220,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID.
  @return ApiPutAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) PutAccount(ctx context.Context, id string) ApiPutAccountRequest {
 	return ApiPutAccountRequest{
@@ -2198,6 +2233,7 @@ func (a *AccountsAPIService) PutAccount(ctx context.Context, id string) ApiPutAc
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) PutAccountExecute(r ApiPutAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -2361,6 +2397,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account id
  @return ApiSubmitReloadAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) SubmitReloadAccount(ctx context.Context, id string) ApiSubmitReloadAccountRequest {
 	return ApiSubmitReloadAccountRequest{
@@ -2372,6 +2410,7 @@ func (a *AccountsAPIService) SubmitReloadAccount(ctx context.Context, id string)
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) SubmitReloadAccountExecute(r ApiSubmitReloadAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2537,6 +2576,8 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account ID.
  @return ApiUnlockAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) UnlockAccount(ctx context.Context, id string) ApiUnlockAccountRequest {
 	return ApiUnlockAccountRequest{
@@ -2548,6 +2589,7 @@ func (a *AccountsAPIService) UnlockAccount(ctx context.Context, id string) ApiUn
 
 // Execute executes the request
 //  @return AccountsAsyncResult
+// Deprecated
 func (a *AccountsAPIService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2728,6 +2770,8 @@ All accounts that are reassigned will be set to `manuallyCorrelated: true` unles
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Account ID.
  @return ApiUpdateAccountRequest
+
+Deprecated
 */
 func (a *AccountsAPIService) UpdateAccount(ctx context.Context, id string) ApiUpdateAccountRequest {
 	return ApiUpdateAccountRequest{
@@ -2739,6 +2783,7 @@ func (a *AccountsAPIService) UpdateAccount(ctx context.Context, id string) ApiUp
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *AccountsAPIService) UpdateAccountExecute(r ApiUpdateAccountRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
