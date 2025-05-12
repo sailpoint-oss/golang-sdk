@@ -61,6 +61,9 @@ Method | HTTP request | Description
 
 
 ## create-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Create Account
 Submits an account creation task - the API then returns the task ID.  
 
@@ -140,6 +143,9 @@ func main() {
 [[Back to top]](#)
 
 ## delete-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Delete Account
 Use this API to delete an account. 
 This endpoint submits an account delete task and returns the task ID. 
@@ -276,6 +282,9 @@ func main() {
 [[Back to top]](#)
 
 ## disable-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Disable Account
 This API submits a task to disable the account and returns the task ID.  
 A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
@@ -345,6 +354,9 @@ func main() {
 [[Back to top]](#)
 
 ## disable-account-for-identity
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Disable IDN Account for Identity
 This API submits a task to disable IDN account for a single identity.
 
@@ -408,6 +420,9 @@ func main() {
 [[Back to top]](#)
 
 ## disable-accounts-for-identities
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Disable IDN Accounts for Identities
 This API submits tasks to disable IDN account for each identity provided in the request body.
 
@@ -469,6 +484,9 @@ func main() {
 [[Back to top]](#)
 
 ## enable-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Enable Account
 This API submits a task to enable account and returns the task ID.  
 A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
@@ -538,6 +556,9 @@ func main() {
 [[Back to top]](#)
 
 ## enable-account-for-identity
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Enable IDN Account for Identity
 This API submits a task to enable IDN account for a single identity.
 
@@ -601,6 +622,9 @@ func main() {
 [[Back to top]](#)
 
 ## enable-accounts-for-identities
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Enable IDN Accounts for Identities
 This API submits tasks to enable IDN account for each identity provided in the request body.
 
@@ -662,6 +686,9 @@ func main() {
 [[Back to top]](#)
 
 ## get-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Account Details
 Use this API to return the details for a single account by its ID.  
 A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
@@ -726,6 +753,9 @@ func main() {
 [[Back to top]](#)
 
 ## get-account-entitlements
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Account Entitlements
 This API returns entitlements of the account.  
 A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
@@ -796,8 +826,11 @@ func main() {
 [[Back to top]](#)
 
 ## list-accounts
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Accounts List
-List accounts.  
+List accounts.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/list-accounts)
 
@@ -865,6 +898,9 @@ func main() {
 [[Back to top]](#)
 
 ## put-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Update Account
 Use this API to update an account with a PUT request. 
 
@@ -945,6 +981,9 @@ func main() {
 [[Back to top]](#)
 
 ## submit-reload-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Reload Account
 This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.  
 A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
@@ -1009,6 +1048,9 @@ func main() {
 [[Back to top]](#)
 
 ## unlock-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Unlock Account
 This API submits a task to unlock an account and returns the task ID.  
 To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
@@ -1080,6 +1122,9 @@ func main() {
 [[Back to top]](#)
 
 ## update-account
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Update Account
 Use this API to update account details. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.

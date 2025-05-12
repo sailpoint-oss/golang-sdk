@@ -38,6 +38,8 @@ This gets details of public identity config.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentityConfigRequest
+
+Deprecated
 */
 func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfig(ctx context.Context) ApiGetPublicIdentityConfigRequest {
 	return ApiGetPublicIdentityConfigRequest{
@@ -48,6 +50,7 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfig(ctx context.C
 
 // Execute executes the request
 //  @return PublicIdentityConfig
+// Deprecated
 func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigExecute(r ApiGetPublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -197,6 +200,8 @@ This updates the details of public identity config.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePublicIdentityConfigRequest
+
+Deprecated
 */
 func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfig(ctx context.Context) ApiUpdatePublicIdentityConfigRequest {
 	return ApiUpdatePublicIdentityConfigRequest{
@@ -207,6 +212,7 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfig(ctx contex
 
 // Execute executes the request
 //  @return PublicIdentityConfig
+// Deprecated
 func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigExecute(r ApiUpdatePublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
