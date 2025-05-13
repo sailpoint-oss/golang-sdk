@@ -675,7 +675,7 @@ import (
 )
 
 func main() {
-	accountsSelectionRequest := *openapiclient.NewAccountsSelectionRequest([]string{"RequestedFor_example"}, []openapiclient.AccessRequestItem1{*openapiclient.NewAccessRequestItem1("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccountsSelectionRequest | 
+	accountsSelectionRequest := *openapiclient.NewAccountsSelectionRequest([]string{"RequestedFor_example"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccountsSelectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

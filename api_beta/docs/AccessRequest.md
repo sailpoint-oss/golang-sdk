@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **RequestedItems** | [**[]AccessRequestItem**](AccessRequestItem.md) |  | 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
-**RequestedForWithRequestedItems** | Pointer to [**[]RequestedForDtoRef**](RequestedForDtoRef.md) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when &#39;requestedFor&#39; and &#39;requestedItems&#39; are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request  | [optional] 
+**RequestedForWithRequestedItems** | Pointer to [**[]RequestedForDtoRef**](RequestedForDtoRef.md) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when &#39;requestedFor&#39; and &#39;requestedItems&#39; are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests  | [optional] 
 
 ## Methods
 
