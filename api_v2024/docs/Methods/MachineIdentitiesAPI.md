@@ -72,13 +72,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineIdentity := fmt.Sprintf(`{
+    machineidentity := []byte(`{
           "created" : "2015-05-28T14:07:17Z",
           "businessApplication" : "ADService",
           "name" : "aName",
@@ -87,11 +88,19 @@ func main() {
           "attributes" : "{\"Region\":\"EU\"}",
           "id" : "id12345",
           "manuallyEdited" : true
-        }`) # MachineIdentity | 
+        }`) // MachineIdentity | 
+
+  
+   var machineIdentity v2024.MachineIdentity
+   if err := json.Unmarshal(machineidentity, &machineIdentity); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
+    resp, r, err := apiClient.V2024.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
 	//resp, r, err := apiClient.V2024.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentity``: %v\n", err)
@@ -157,7 +166,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -165,9 +175,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID # string | Machine Identity ID
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.MachineIdentitiesAPI.DeleteMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2024.MachineIdentitiesAPI.DeleteMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	//r, err := apiClient.V2024.MachineIdentitiesAPI.DeleteMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentity``: %v\n", err)
@@ -231,7 +243,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -239,9 +252,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID # string | Machine Identity ID
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineIdentitiesAPI.GetMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.MachineIdentitiesAPI.GetMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.MachineIdentitiesAPI.GetMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentity``: %v\n", err)
@@ -307,7 +322,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -319,9 +335,11 @@ func main() {
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineIdentitiesAPI.ListMachineIdentities(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.MachineIdentitiesAPI.ListMachineIdentities(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.MachineIdentitiesAPI.ListMachineIdentities(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentities``: %v\n", err)
@@ -389,6 +407,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -396,11 +415,19 @@ import (
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    requestBody := fmt.Sprintf(`[{op=add, path=/attributes/securityRisk, value=medium}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    requestbody := []byte(`[{op=add, path=/attributes/securityRisk, value=medium}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+  
+   var requestBody v2024.[]RequestBody
+   if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineIdentitiesAPI.UpdateMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.V2024.MachineIdentitiesAPI.UpdateMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
 	//resp, r, err := apiClient.V2024.MachineIdentitiesAPI.UpdateMachineIdentity(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentity``: %v\n", err)

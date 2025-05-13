@@ -122,6 +122,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -129,17 +130,25 @@ import (
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    completeInvocation := fmt.Sprintf(`{
+    completeinvocation := []byte(`{
           "output" : {
             "approved" : false
           },
           "secret" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
           "error" : "Access request is denied."
-        }`) # CompleteInvocation | 
+        }`) // CompleteInvocation | 
+
+  
+   var completeInvocation v2024.CompleteInvocation
+   if err := json.Unmarshal(completeinvocation, &completeInvocation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
+    r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
 	//r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocation``: %v\n", err)
@@ -201,13 +210,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    subscriptionPostRequest := fmt.Sprintf(`{
+    subscriptionpostrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
             "bearerTokenAuthConfig" : {
@@ -231,11 +241,19 @@ func main() {
           "responseDeadline" : "PT1H",
           "type" : "HTTP",
           "enabled" : true
-        }`) # SubscriptionPostRequest | 
+        }`) // SubscriptionPostRequest | 
+
+  
+   var subscriptionPostRequest v2024.SubscriptionPostRequest
+   if err := json.Unmarshal(subscriptionpostrequest, &subscriptionPostRequest); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscription``: %v\n", err)
@@ -301,7 +319,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -309,9 +328,11 @@ func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	//r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscription``: %v\n", err)
@@ -375,7 +396,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -387,9 +409,11 @@ func main() {
     filters := `id eq "12cff757-c0c0-413b-8ad7-2a47956d1e89"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le* (optional)
     sorters := `triggerName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptions``: %v\n", err)
@@ -457,7 +481,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -469,9 +494,11 @@ func main() {
     filters := `triggerId eq "idn:access-request-dynamic-approver"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq* (optional)
     sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatus``: %v\n", err)
@@ -537,7 +564,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -549,9 +577,11 @@ func main() {
     filters := `id eq "idn:access-request-post-approval"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le* (optional)
     sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggers``: %v\n", err)
@@ -620,6 +650,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -627,11 +658,19 @@ import (
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    subscriptionPatchRequestInner := fmt.Sprintf(``) // []SubscriptionPatchRequestInner | 
+    subscriptionpatchrequestinner := []byte(``) // []SubscriptionPatchRequestInner | 
+
+  
+   var subscriptionPatchRequestInner v2024.[]SubscriptionPatchRequestInner
+   if err := json.Unmarshal(subscriptionpatchrequestinner, &subscriptionPatchRequestInner); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscription``: %v\n", err)
@@ -693,13 +732,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    testInvocation := fmt.Sprintf(`{
+    testinvocation := []byte(`{
           "input" : {
             "identityId" : "201327fda1c44704ac01181e963d463c"
           },
@@ -708,11 +748,19 @@ func main() {
           "contentJson" : {
             "workflowId" : 1234
           }
-        }`) # TestInvocation | 
+        }`) // TestInvocation | 
+
+  
+   var testInvocation v2024.TestInvocation
+   if err := json.Unmarshal(testinvocation, &testInvocation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocation``: %v\n", err)
@@ -775,22 +823,31 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    validateFilterInputDto := fmt.Sprintf(`{
+    validatefilterinputdto := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "input" : {
             "identityId" : "201327fda1c44704ac01181e963d463c"
           }
-        }`) # ValidateFilterInputDto | 
+        }`) // ValidateFilterInputDto | 
+
+  
+   var validateFilterInputDto v2024.ValidateFilterInputDto
+   if err := json.Unmarshal(validatefilterinputdto, &validateFilterInputDto); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilter``: %v\n", err)
@@ -866,6 +923,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -873,7 +931,7 @@ import (
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    subscriptionPutRequest := fmt.Sprintf(`{
+    subscriptionputrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
             "bearerTokenAuthConfig" : {
@@ -896,11 +954,19 @@ func main() {
           "responseDeadline" : "PT1H",
           "type" : "HTTP",
           "enabled" : true
-        }`) # SubscriptionPutRequest | 
+        }`) // SubscriptionPutRequest | 
+
+  
+   var subscriptionPutRequest v2024.SubscriptionPutRequest
+   if err := json.Unmarshal(subscriptionputrequest, &subscriptionPutRequest); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
 	//resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscription``: %v\n", err)

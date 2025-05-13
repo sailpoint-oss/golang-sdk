@@ -64,20 +64,29 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    transform := fmt.Sprintf(`{
+    transform := []byte(`{
           "name" : "Timestamp To Date",
           "attributes" : "{}",
           "type" : "dateFormat"
-        }`) # Transform | The transform to be created.
+        }`) // Transform | The transform to be created.
+
+  
+   var transform v2025.Transform
+   if err := json.Unmarshal(transform, &transform); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.TransformsAPI.CreateTransform(context.Background()).Transform(transform).Execute()
+    resp, r, err := apiClient.V2025.TransformsAPI.CreateTransform(context.Background()).Transform(transform).Execute()
 	//resp, r, err := apiClient.V2025.TransformsAPI.CreateTransform(context.Background()).Transform(transform).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.CreateTransform``: %v\n", err)
@@ -131,16 +140,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `2cd78adghjkja34jh2b1hkjhasuecd` // string | ID of the transform to delete # string | ID of the transform to delete
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2025.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
+    r, err := apiClient.V2025.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
 	//r, err := apiClient.V2025.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.DeleteTransform``: %v\n", err)
@@ -192,16 +204,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `2cd78adghjkja34jh2b1hkjhasuecd` // string | ID of the transform to retrieve # string | ID of the transform to retrieve
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.TransformsAPI.GetTransform(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.TransformsAPI.GetTransform(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.TransformsAPI.GetTransform(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.GetTransform``: %v\n", err)
@@ -255,7 +270,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -266,9 +282,11 @@ func main() {
     name := `ExampleTransformName123` // string | Name of the transform to retrieve from the list. (optional) # string | Name of the transform to retrieve from the list. (optional)
     filters := `name eq "Uppercase"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw* (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.TransformsAPI.ListTransforms(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.TransformsAPI.ListTransforms(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.TransformsAPI.ListTransforms(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.ListTransforms``: %v\n", err)
@@ -323,21 +341,24 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `2cd78adghjkja34jh2b1hkjhasuecd` // string | ID of the transform to update # string | ID of the transform to update
-    transform := fmt.Sprintf(`{
+    transform := []byte(`{
           "name" : "Timestamp To Date",
           "attributes" : "{}",
           "type" : "dateFormat"
-        }`) # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+        }`) // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.TransformsAPI.UpdateTransform(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.TransformsAPI.UpdateTransform(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.TransformsAPI.UpdateTransform(context.Background(), id).Transform(transform).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.UpdateTransform``: %v\n", err)

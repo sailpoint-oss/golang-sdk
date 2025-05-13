@@ -127,15 +127,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionary``: %v\n", err)
@@ -213,16 +216,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     file := BINARY_DATA_HERE // *os.File |  (optional) # *os.File |  (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.Beta.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
+    r, err := apiClient.Beta.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
 	//r, err := apiClient.Beta.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionary``: %v\n", err)

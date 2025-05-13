@@ -84,12 +84,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    search := fmt.Sprintf(`{
+    search := []byte(`{
           "queryDsl" : {
             "match" : {
               "name" : "john.doe"
@@ -205,14 +206,22 @@ func main() {
               "type" : "access"
             }
           }
-        }`) # Search | 
+        }`) // Search | 
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
+  
+   var search v2024.Search
+   if err := json.Unmarshal(search, &search); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.SearchAPI.SearchAggregate(context.Background()).Search(search).Execute()
+    resp, r, err := apiClient.V2024.SearchAPI.SearchAggregate(context.Background()).Search(search).Execute()
 	//resp, r, err := apiClient.V2024.SearchAPI.SearchAggregate(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAggregate``: %v\n", err)
@@ -262,12 +271,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    search := fmt.Sprintf(`{
+    search := []byte(`{
           "queryDsl" : {
             "match" : {
               "name" : "john.doe"
@@ -383,11 +393,19 @@ func main() {
               "type" : "access"
             }
           }
-        }`) # Search | 
+        }`) // Search | 
+
+  
+   var search v2024.Search
+   if err := json.Unmarshal(search, &search); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.SearchAPI.SearchCount(context.Background()).Search(search).Execute()
+    r, err := apiClient.V2024.SearchAPI.SearchCount(context.Background()).Search(search).Execute()
 	//r, err := apiClient.V2024.SearchAPI.SearchCount(context.Background()).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchCount``: %v\n", err)
@@ -441,7 +459,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -449,9 +468,11 @@ func main() {
     index := `identities` // string | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  # string | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.SearchAPI.SearchGet(context.Background(), index, id).Execute()
+    resp, r, err := apiClient.V2024.SearchAPI.SearchGet(context.Background(), index, id).Execute()
 	//resp, r, err := apiClient.V2024.SearchAPI.SearchGet(context.Background(), index, id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchGet``: %v\n", err)
@@ -504,12 +525,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    search := fmt.Sprintf(`{
+    search := []byte(`{
           "queryDsl" : {
             "match" : {
               "name" : "john.doe"
@@ -625,14 +647,22 @@ func main() {
               "type" : "access"
             }
           }
-        }`) # Search | 
+        }`) // Search | 
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 10000 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
+  
+   var search v2024.Search
+   if err := json.Unmarshal(search, &search); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.SearchAPI.SearchPost(context.Background()).Search(search).Execute()
+    resp, r, err := apiClient.V2024.SearchAPI.SearchPost(context.Background()).Search(search).Execute()
 	//resp, r, err := apiClient.V2024.SearchAPI.SearchPost(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchPost``: %v\n", err)

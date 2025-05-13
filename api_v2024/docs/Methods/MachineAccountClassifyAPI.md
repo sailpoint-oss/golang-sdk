@@ -61,7 +61,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -69,9 +70,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Account ID. # string | Account ID.
     classificationMode := `forceMachine` // string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default") # string | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to "default")
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineAccountClassifyAPI.SendClassifyMachineAccount(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2024.MachineAccountClassifyAPI.SendClassifyMachineAccount(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2024.MachineAccountClassifyAPI.SendClassifyMachineAccount(context.Background(), id).ClassificationMode(classificationMode).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountClassifyAPI.SendClassifyMachineAccount``: %v\n", err)

@@ -68,12 +68,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    simIntegrationDetails := fmt.Sprintf(`{
+    simintegrationdetails := []byte(`{
           "cluster" : "xyzzy999",
           "statusMap" : "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed, closed_rejected=Failed, in_process=Queued, requested=Queued}",
           "request" : "{description=SailPoint Access Request,, req_description=The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,, req_short_description=SailPoint New Access Request Created from IdentityNow,, short_description=SailPoint Access Request $!plan.arguments.identityRequestId}",
@@ -90,11 +91,19 @@ func main() {
             "id" : "2c918085708c274401708c2a8a760001",
             "type" : "IDENTITY"
           }
-        }`) # SimIntegrationDetails | DTO containing the details of the SIM integration
+        }`) // SimIntegrationDetails | DTO containing the details of the SIM integration
+
+  
+   var simIntegrationDetails beta.SimIntegrationDetails
+   if err := json.Unmarshal(simintegrationdetails, &simIntegrationDetails); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).SimIntegrationDetails(simIntegrationDetails).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).SimIntegrationDetails(simIntegrationDetails).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).SimIntegrationDetails(simIntegrationDetails).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegration``: %v\n", err)
@@ -148,16 +157,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | The id of the integration to delete. # string | The id of the integration to delete.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.Beta.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
+    r, err := apiClient.Beta.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
 	//r, err := apiClient.Beta.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.DeleteSIMIntegration``: %v\n", err)
@@ -209,16 +221,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | The id of the integration. # string | The id of the integration.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegration``: %v\n", err)
@@ -264,15 +279,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrations``: %v\n", err)
@@ -327,17 +345,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
-    jsonPatch := fmt.Sprintf(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) # JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+    jsonpatch := []byte(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) // JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+
+  
+   var jsonPatch beta.JsonPatch
+   if err := json.Unmarshal(jsonpatch, &jsonPatch); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRule``: %v\n", err)
@@ -392,17 +419,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
-    jsonPatch := fmt.Sprintf(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) # JsonPatch | The JsonPatch object that describes the changes of SIM
+    jsonpatch := []byte(`"[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]"`) // JsonPatch | The JsonPatch object that describes the changes of SIM
+
+  
+   var jsonPatch beta.JsonPatch
+   if err := json.Unmarshal(jsonpatch, &jsonPatch); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).JsonPatch(jsonPatch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributes``: %v\n", err)
@@ -457,13 +493,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `12345` // string | The id of the integration. # string | The id of the integration.
-    simIntegrationDetails := fmt.Sprintf(`{
+    simintegrationdetails := []byte(`{
           "cluster" : "xyzzy999",
           "statusMap" : "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed, closed_rejected=Failed, in_process=Queued, requested=Queued}",
           "request" : "{description=SailPoint Access Request,, req_description=The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,, req_short_description=SailPoint New Access Request Created from IdentityNow,, short_description=SailPoint Access Request $!plan.arguments.identityRequestId}",
@@ -480,11 +517,19 @@ func main() {
             "id" : "2c918085708c274401708c2a8a760001",
             "type" : "IDENTITY"
           }
-        }`) # SimIntegrationDetails | The full DTO of the integration containing the updated model
+        }`) // SimIntegrationDetails | The full DTO of the integration containing the updated model
+
+  
+   var simIntegrationDetails beta.SimIntegrationDetails
+   if err := json.Unmarshal(simintegrationdetails, &simIntegrationDetails); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).SimIntegrationDetails(simIntegrationDetails).Execute()
+    resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).SimIntegrationDetails(simIntegrationDetails).Execute()
 	//resp, r, err := apiClient.Beta.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).SimIntegrationDetails(simIntegrationDetails).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegration``: %v\n", err)

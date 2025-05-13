@@ -71,13 +71,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
-    dimension := fmt.Sprintf(`{
+    dimension := []byte(`{
           "owner" : {
             "name" : "support",
             "id" : "2c9180a46faadee4016fb4e018c20639",
@@ -163,11 +164,19 @@ func main() {
             "type" : "STANDARD"
           },
           "parentId" : "2c918086749d78830174a1a40e121518"
-        }`) # Dimension | 
+        }`) // Dimension | 
+
+  
+   var dimension v2024.Dimension
+   if err := json.Unmarshal(dimension, &dimension); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.CreateDimension(context.Background(), roleId).Dimension(dimension).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.CreateDimension(context.Background(), roleId).Dimension(dimension).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.CreateDimension(context.Background(), roleId).Dimension(dimension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.CreateDimension``: %v\n", err)
@@ -225,19 +234,28 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimensions. # string | Parent Role Id of the dimensions.
-    dimensionBulkDeleteRequest := fmt.Sprintf(`{
+    dimensionbulkdeleterequest := []byte(`{
           "dimensionIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
-        }`) # DimensionBulkDeleteRequest | 
+        }`) // DimensionBulkDeleteRequest | 
+
+  
+   var dimensionBulkDeleteRequest v2024.DimensionBulkDeleteRequest
+   if err := json.Unmarshal(dimensionbulkdeleterequest, &dimensionBulkDeleteRequest); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.DeleteBulkDimensions(context.Background(), roleId).DimensionBulkDeleteRequest(dimensionBulkDeleteRequest).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.DeleteBulkDimensions(context.Background(), roleId).DimensionBulkDeleteRequest(dimensionBulkDeleteRequest).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.DeleteBulkDimensions(context.Background(), roleId).DimensionBulkDeleteRequest(dimensionBulkDeleteRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.DeleteBulkDimensions``: %v\n", err)
@@ -294,7 +312,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -302,9 +321,11 @@ func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
     dimensionId := `2c9180835d191a86015d28455b4a2329` // string | Id of the Dimension # string | Id of the Dimension
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.DimensionsAPI.DeleteDimension(context.Background(), roleId, dimensionId).Execute()
+    r, err := apiClient.V2024.DimensionsAPI.DeleteDimension(context.Background(), roleId, dimensionId).Execute()
 	//r, err := apiClient.V2024.DimensionsAPI.DeleteDimension(context.Background(), roleId, dimensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.DeleteDimension``: %v\n", err)
@@ -360,7 +381,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -368,9 +390,11 @@ func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
     dimensionId := `2c9180835d191a86015d28455b4a2329` // string | Id of the Dimension # string | Id of the Dimension
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.GetDimension(context.Background(), roleId, dimensionId).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.GetDimension(context.Background(), roleId, dimensionId).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.GetDimension(context.Background(), roleId, dimensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.GetDimension``: %v\n", err)
@@ -433,7 +457,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -446,9 +471,11 @@ func main() {
     filters := `attribute eq "memberOf"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
     sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.GetDimensionEntitlements(context.Background(), roleId, dimensionId).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.GetDimensionEntitlements(context.Background(), roleId, dimensionId).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.GetDimensionEntitlements(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.GetDimensionEntitlements``: %v\n", err)
@@ -511,7 +538,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -524,9 +552,11 @@ func main() {
     filters := `source.id eq "2c91808982f979270182f99e386d00fa"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
     sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensionAccessProfiles(context.Background(), roleId, dimensionId).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensionAccessProfiles(context.Background(), roleId, dimensionId).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensionAccessProfiles(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.ListDimensionAccessProfiles``: %v\n", err)
@@ -588,7 +618,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -601,9 +632,11 @@ func main() {
     filters := `id eq '2c918086749d78830174a1a40e121518'` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional)
     sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensions(context.Background(), roleId).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensions(context.Background(), roleId).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.ListDimensions(context.Background(), roleId).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.ListDimensions``: %v\n", err)
@@ -664,6 +697,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -671,11 +705,19 @@ import (
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
     dimensionId := `2c9180835d191a86015d28455b4a2329` // string | Id of the Dimension # string | Id of the Dimension
-    jsonPatchOperation := fmt.Sprintf(`[{op=replace, path=/description, value=Test Description}, {op=replace, path=/name, value=new name}]`) // []JsonPatchOperation | 
+    jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Test Description}, {op=replace, path=/name, value=new name}]`) // []JsonPatchOperation | 
+
+  
+   var jsonPatchOperation v2024.[]JsonPatchOperation
+   if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.DimensionsAPI.PatchDimension(context.Background(), roleId, dimensionId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.V2024.DimensionsAPI.PatchDimension(context.Background(), roleId, dimensionId).JsonPatchOperation(jsonPatchOperation).Execute()
 	//resp, r, err := apiClient.V2024.DimensionsAPI.PatchDimension(context.Background(), roleId, dimensionId).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.PatchDimension``: %v\n", err)

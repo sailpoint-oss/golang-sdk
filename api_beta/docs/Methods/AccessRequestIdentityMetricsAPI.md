@@ -67,7 +67,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -76,9 +77,11 @@ func main() {
     requestedObjectId := `2db501be-f0fb-4cc5-a695-334133c52891` // string | Requested access item's ID. # string | Requested access item's ID.
     type_ := `ENTITLEMENT` // string | Requested access item's type. # string | Requested access item's type.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
+    resp, r, err := apiClient.Beta.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
 	//resp, r, err := apiClient.Beta.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics``: %v\n", err)

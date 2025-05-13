@@ -88,12 +88,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    serviceDeskIntegrationDto := fmt.Sprintf(`{
+    servicedeskintegrationdto := []byte(`{
           "ownerRef" : "",
           "cluster" : "xyzzy999",
           "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
@@ -123,11 +124,19 @@ func main() {
           "clusterRef" : "",
           "type" : "ServiceNowSDIM",
           "beforeProvisioningRule" : ""
-        }`) # ServiceDeskIntegrationDto | The specifics of a new integration to create
+        }`) // ServiceDeskIntegrationDto | The specifics of a new integration to create
+
+  
+   var serviceDeskIntegrationDto beta.ServiceDeskIntegrationDto
+   if err := json.Unmarshal(servicedeskintegrationdto, &serviceDeskIntegrationDto); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.CreateServiceDeskIntegration``: %v\n", err)
@@ -181,16 +190,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `anId` // string | ID of Service Desk integration to delete # string | ID of Service Desk integration to delete
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.Beta.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
+    r, err := apiClient.Beta.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
 	//r, err := apiClient.Beta.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration``: %v\n", err)
@@ -242,16 +254,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to get # string | ID of the Service Desk integration to get
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegration``: %v\n", err)
@@ -305,7 +320,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -316,9 +332,11 @@ func main() {
     filters := `id eq 2c91808b6ef1d43e016efba0ce470904` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList``: %v\n", err)
@@ -372,16 +390,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the Service Desk integration template to get # string | The scriptName value of the Service Desk integration template to get
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate``: %v\n", err)
@@ -427,15 +448,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes``: %v\n", err)
@@ -481,15 +505,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetStatusCheckDetails``: %v\n", err)
@@ -544,17 +571,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    jsonPatchOperation := fmt.Sprintf(``) // []JsonPatchOperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+    jsonpatchoperation := []byte(``) // []JsonPatchOperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+
+  
+   var jsonPatchOperation beta.[]JsonPatchOperation
+   if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegration``: %v\n", err)
@@ -609,13 +645,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    serviceDeskIntegrationDto := fmt.Sprintf(`{
+    servicedeskintegrationdto := []byte(`{
           "ownerRef" : "",
           "cluster" : "xyzzy999",
           "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
@@ -645,11 +682,19 @@ func main() {
           "clusterRef" : "",
           "type" : "ServiceNowSDIM",
           "beforeProvisioningRule" : ""
-        }`) # ServiceDeskIntegrationDto | The specifics of the integration to update
+        }`) // ServiceDeskIntegrationDto | The specifics of the integration to update
+
+  
+   var serviceDeskIntegrationDto beta.ServiceDeskIntegrationDto
+   if err := json.Unmarshal(servicedeskintegrationdto, &serviceDeskIntegrationDto); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PutServiceDeskIntegration``: %v\n", err)
@@ -699,19 +744,28 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    queuedCheckConfigDetails := fmt.Sprintf(`{
+    queuedcheckconfigdetails := []byte(`{
           "provisioningStatusCheckIntervalMinutes" : "30",
           "provisioningMaxStatusCheckDays" : "2"
-        }`) # QueuedCheckConfigDetails | The modified time check configuration
+        }`) // QueuedCheckConfigDetails | The modified time check configuration
+
+  
+   var queuedCheckConfigDetails beta.QueuedCheckConfigDetails
+   if err := json.Unmarshal(queuedcheckconfigdetails, &queuedCheckConfigDetails); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
+    resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
 	//resp, r, err := apiClient.Beta.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.UpdateStatusCheckDetails``: %v\n", err)

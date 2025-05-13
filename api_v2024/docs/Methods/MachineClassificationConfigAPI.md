@@ -62,16 +62,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.MachineClassificationConfigAPI.DeleteMachineClassificationConfig(context.Background(), id).Execute()
+    r, err := apiClient.V2024.MachineClassificationConfigAPI.DeleteMachineClassificationConfig(context.Background(), id).Execute()
 	//r, err := apiClient.V2024.MachineClassificationConfigAPI.DeleteMachineClassificationConfig(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.DeleteMachineClassificationConfig``: %v\n", err)
@@ -123,16 +126,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.GetMachineClassificationConfig(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.GetMachineClassificationConfig(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.GetMachineClassificationConfig(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfig``: %v\n", err)
@@ -187,23 +193,32 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    machineClassificationConfig := fmt.Sprintf(`{
+    machineclassificationconfig := []byte(`{
           "criteria" : "criteria",
           "created" : "2017-07-11T18:45:37.098Z",
           "modified" : "2018-06-25T20:22:28.104Z",
           "classificationMethod" : "SOURCE",
           "enabled" : true
-        }`) # MachineClassificationConfig | 
+        }`) // MachineClassificationConfig | 
+
+  
+   var machineClassificationConfig v2024.MachineClassificationConfig
+   if err := json.Unmarshal(machineclassificationconfig, &machineClassificationConfig); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.SetMachineClassificationConfig(context.Background(), id).MachineClassificationConfig(machineClassificationConfig).Execute()
+    resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.SetMachineClassificationConfig(context.Background(), id).MachineClassificationConfig(machineClassificationConfig).Execute()
 	//resp, r, err := apiClient.V2024.MachineClassificationConfigAPI.SetMachineClassificationConfig(context.Background(), id).MachineClassificationConfig(machineClassificationConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfig``: %v\n", err)

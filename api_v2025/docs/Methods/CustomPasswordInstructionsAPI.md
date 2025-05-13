@@ -80,21 +80,30 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    customPasswordInstruction := fmt.Sprintf(`{
+    custompasswordinstruction := []byte(`{
           "pageContent" : "Please enter a new password. Your password must be at least 8 characters long and contain at least one number and one letter.",
           "pageId" : "change-password:enter-password",
           "locale" : "en"
-        }`) # CustomPasswordInstruction | 
+        }`) // CustomPasswordInstruction | 
+
+  
+   var customPasswordInstruction v2025.CustomPasswordInstruction
+   if err := json.Unmarshal(custompasswordinstruction, &customPasswordInstruction); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).XSailPointExperimental(xSailPointExperimental).CustomPasswordInstruction(customPasswordInstruction).Execute()
+    resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).XSailPointExperimental(xSailPointExperimental).CustomPasswordInstruction(customPasswordInstruction).Execute()
 	//resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).XSailPointExperimental(xSailPointExperimental).CustomPasswordInstruction(customPasswordInstruction).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions``: %v\n", err)
@@ -161,7 +170,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -170,9 +180,11 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     locale := `locale_example` // string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional) # string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2025.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2025.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
 	//r, err := apiClient.V2025.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions``: %v\n", err)
@@ -237,7 +249,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -246,9 +259,11 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     locale := `locale_example` // string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional) # string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2025.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.GetCustomPasswordInstructions``: %v\n", err)

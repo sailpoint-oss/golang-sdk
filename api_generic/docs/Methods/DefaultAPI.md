@@ -63,16 +63,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-     ""
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     path := `path_example` // string |  # string | 
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient..DefaultAPI.GenericDelete(context.Background(), path).Execute()
+    resp, r, err := apiClient..DefaultAPI.GenericDelete(context.Background(), path).Execute()
 	//resp, r, err := apiClient..DefaultAPI.GenericDelete(context.Background(), path).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericDelete``: %v\n", err)
@@ -126,16 +129,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-     ""
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     path := `path_example` // string |  # string | 
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient..DefaultAPI.GenericGet(context.Background(), path).Execute()
+    resp, r, err := apiClient..DefaultAPI.GenericGet(context.Background(), path).Execute()
 	//resp, r, err := apiClient..DefaultAPI.GenericGet(context.Background(), path).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericGet``: %v\n", err)
@@ -190,7 +196,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-     ""
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -198,9 +205,11 @@ func main() {
     path := `path_example` // string |  # string | 
     requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient..DefaultAPI.GenericPatch(context.Background(), path).Execute()
+    resp, r, err := apiClient..DefaultAPI.GenericPatch(context.Background(), path).Execute()
 	//resp, r, err := apiClient..DefaultAPI.GenericPatch(context.Background(), path).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPatch``: %v\n", err)
@@ -255,7 +264,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-     ""
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -263,9 +273,11 @@ func main() {
     path := `path_example` // string |  # string | 
     requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient..DefaultAPI.GenericPost(context.Background(), path).Execute()
+    resp, r, err := apiClient..DefaultAPI.GenericPost(context.Background(), path).Execute()
 	//resp, r, err := apiClient..DefaultAPI.GenericPost(context.Background(), path).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPost``: %v\n", err)
@@ -320,7 +332,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-     ""
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -328,9 +341,11 @@ func main() {
     path := `path_example` // string |  # string | 
     requestBody := Object // map[string]interface{} |  (optional) # map[string]interface{} |  (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient..DefaultAPI.GenericPut(context.Background(), path).Execute()
+    resp, r, err := apiClient..DefaultAPI.GenericPut(context.Background(), path).Execute()
 	//resp, r, err := apiClient..DefaultAPI.GenericPut(context.Background(), path).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPut``: %v\n", err)

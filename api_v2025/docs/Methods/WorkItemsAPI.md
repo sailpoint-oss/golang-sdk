@@ -87,7 +87,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -95,9 +96,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     approvalItemId := `1211bcaa32112bcef6122adb21cef1ac` // string | The ID of the approval item. # string | The ID of the approval item.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItem``: %v\n", err)
@@ -151,16 +154,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemsInBulk``: %v\n", err)
@@ -215,7 +221,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -223,9 +230,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     body := `body_example` // string | Body is the request payload to create form definition request (optional) # string | Body is the request payload to create form definition request (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItem``: %v\n", err)
@@ -292,6 +301,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -299,15 +309,23 @@ import (
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    workItemForward := fmt.Sprintf(`{
+    workitemforward := []byte(`{
           "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
           "comment" : "I'm going on vacation.",
           "sendNotifications" : true
-        }`) # WorkItemForward | 
+        }`) // WorkItemForward | 
+
+  
+   var workItemForward v2025.WorkItemForward
+   if err := json.Unmarshal(workitemforward, &workItemForward); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
+    r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
 	//r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItem``: %v\n", err)
@@ -358,7 +376,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -368,9 +387,11 @@ func main() {
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItems``: %v\n", err)
@@ -432,7 +453,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -440,9 +462,11 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     ownerId := `ownerId_example` // string | ID of the work item owner. (optional) # string | ID of the work item owner. (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
@@ -492,16 +516,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := `ef38f94347e94562b5bb8424a56397d8` // string | ID of the work item owner. (optional) # string | ID of the work item owner. (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItems``: %v\n", err)
@@ -555,16 +582,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | ID of the work item. # string | ID of the work item.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItem``: %v\n", err)
@@ -614,16 +644,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := `1211bcaa32112bcef6122adb21cef1ac` // string | ID of the work item owner. (optional) # string | ID of the work item owner. (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummary``: %v\n", err)
@@ -676,7 +709,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -686,9 +720,11 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     ownerId := `1211bcaa32112bcef6122adb21cef1ac` // string | ID of the work item owner. (optional) # string | ID of the work item owner. (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItems``: %v\n", err)
@@ -744,7 +780,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -752,9 +789,11 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     approvalItemId := `1211bcaa32112bcef6122adb21cef1ac` // string | The ID of the approval item. # string | The ID of the approval item.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItem``: %v\n", err)
@@ -808,16 +847,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemsInBulk``: %v\n", err)
@@ -872,6 +914,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -880,9 +923,17 @@ func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     requestBody := {fieldName=fieldValue} // map[string]interface{} | Account Selection Data map, keyed on fieldName # map[string]interface{} | Account Selection Data map, keyed on fieldName
 
+  
+   var requestBody v2025.RequestBody
+   if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.V2025.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
 	//resp, r, err := apiClient.V2025.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SubmitAccountSelection``: %v\n", err)

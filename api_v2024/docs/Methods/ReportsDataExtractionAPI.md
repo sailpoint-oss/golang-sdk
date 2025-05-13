@@ -65,16 +65,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `a1ed223247144cc29d23c632624b4767` // string | ID of the running Report to cancel # string | ID of the running Report to cancel
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
+    r, err := apiClient.V2024.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
 	//r, err := apiClient.V2024.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.CancelReport``: %v\n", err)
@@ -129,7 +132,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -139,9 +143,11 @@ func main() {
     name := `Identities Details Report` // string | preferred Report file name, by default will be used report name from task result. (optional) # string | preferred Report file name, by default will be used report name from task result. (optional)
     auditable := true // bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false) # bool | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId. (optional) (default to false)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
+    resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
 	//resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReport``: %v\n", err)
@@ -196,7 +202,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -204,9 +211,11 @@ func main() {
     taskResultId := `ef38f94347e94562b5bb8424a56397d8` // string | Unique identifier of the task result which handled report # string | Unique identifier of the task result which handled report
     completed := true // bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false) # bool | state of task result to apply ordering when results are fetching from the DB (optional) (default to false)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
+    resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
 	//resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Completed(completed).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResult``: %v\n", err)
@@ -256,22 +265,31 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    reportDetails := fmt.Sprintf(`{
+    reportdetails := []byte(`{
           "reportType" : "ACCOUNTS",
           "arguments" : {
             "application" : "2c9180897e7742b2017e781782f705b9",
             "sourceName" : "Active Directory"
           }
-        }`) # ReportDetails | 
+        }`) // ReportDetails | 
+
+  
+   var reportDetails v2024.ReportDetails
+   if err := json.Unmarshal(reportdetails, &reportDetails); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
+    resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
 	//resp, r, err := apiClient.V2024.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReport``: %v\n", err)

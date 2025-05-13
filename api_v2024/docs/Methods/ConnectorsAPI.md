@@ -81,22 +81,31 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    v3CreateConnectorDto := fmt.Sprintf(`{
+    v3createconnectordto := []byte(`{
           "name" : "custom connector",
           "directConnect" : true,
           "className" : "sailpoint.connector.OpenConnectorAdapter",
           "type" : "custom connector type",
           "status" : "RELEASED"
-        }`) # V3CreateConnectorDto | 
+        }`) // V3CreateConnectorDto | 
+
+  
+   var v3CreateConnectorDto v2024.V3CreateConnectorDto
+   if err := json.Unmarshal(v3createconnectordto, &v3CreateConnectorDto); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.CreateCustomConnector(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.CreateCustomConnector(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.CreateCustomConnector(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateCustomConnector``: %v\n", err)
@@ -150,16 +159,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2024.ConnectorsAPI.DeleteCustomConnector(context.Background(), scriptName).Execute()
+    r, err := apiClient.V2024.ConnectorsAPI.DeleteCustomConnector(context.Background(), scriptName).Execute()
 	//r, err := apiClient.V2024.ConnectorsAPI.DeleteCustomConnector(context.Background(), scriptName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteCustomConnector``: %v\n", err)
@@ -212,7 +224,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -220,9 +233,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     locale := `de` // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional) # string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnector(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnector(context.Background(), scriptName).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnector(context.Background(), scriptName).Locale(locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnector``: %v\n", err)
@@ -276,16 +291,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. # string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorCorrelationConfig(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorCorrelationConfig(context.Background(), scriptName).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorCorrelationConfig(context.Background(), scriptName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorCorrelationConfig``: %v\n", err)
@@ -339,7 +357,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -350,9 +369,11 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     locale := `de` // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional) # string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorList(context.Background()).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorList(context.Background()).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorList(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorList``: %v\n", err)
@@ -406,16 +427,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceConfig(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceConfig(context.Background(), scriptName).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceConfig(context.Background(), scriptName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceConfig``: %v\n", err)
@@ -469,16 +493,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceTemplate(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceTemplate(context.Background(), scriptName).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorSourceTemplate(context.Background(), scriptName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceTemplate``: %v\n", err)
@@ -534,7 +561,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -542,9 +570,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. # string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
     locale := `de` // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" # string | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorTranslations(context.Background(), scriptName, locale).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorTranslations(context.Background(), scriptName, locale).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.GetConnectorTranslations(context.Background(), scriptName, locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorTranslations``: %v\n", err)
@@ -599,7 +629,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -607,9 +638,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. # string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
     file := BINARY_DATA_HERE // *os.File | connector correlation config xml file # *os.File | connector correlation config xml file
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorCorrelationConfig(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorCorrelationConfig(context.Background(), scriptName).File(file).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorCorrelationConfig(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorCorrelationConfig``: %v\n", err)
@@ -664,7 +697,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -672,9 +706,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     file := BINARY_DATA_HERE // *os.File | connector source config xml file # *os.File | connector source config xml file
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceConfig(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceConfig(context.Background(), scriptName).File(file).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceConfig(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceConfig``: %v\n", err)
@@ -729,7 +765,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -737,9 +774,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     file := BINARY_DATA_HERE // *os.File | connector source template xml file # *os.File | connector source template xml file
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceTemplate(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceTemplate(context.Background(), scriptName).File(file).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorSourceTemplate(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceTemplate``: %v\n", err)
@@ -795,7 +834,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -803,9 +843,11 @@ func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. # string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
     locale := `de` // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" # string | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorTranslations(context.Background(), scriptName, locale).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorTranslations(context.Background(), scriptName, locale).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.PutConnectorTranslations(context.Background(), scriptName, locale).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorTranslations``: %v\n", err)
@@ -872,17 +914,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
-    jsonPatchOperation := fmt.Sprintf(``) // []JsonPatchOperation | A list of connector detail update operations 
+    jsonpatchoperation := []byte(``) // []JsonPatchOperation | A list of connector detail update operations 
+
+  
+   var jsonPatchOperation v2024.[]JsonPatchOperation
+   if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2024.ConnectorsAPI.UpdateConnector(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.V2024.ConnectorsAPI.UpdateConnector(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
 	//resp, r, err := apiClient.V2024.ConnectorsAPI.UpdateConnector(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnector``: %v\n", err)

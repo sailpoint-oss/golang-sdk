@@ -92,16 +92,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `63b32151-26c0-42f4-9299-8898dc1c9daa` // string | The task ID # string | The task ID
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetCertificationTask``: %v\n", err)
@@ -155,16 +158,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The certification id # string | The certification id
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertification``: %v\n", err)
@@ -224,7 +230,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -236,9 +243,11 @@ func main() {
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationItemPermissions``: %v\n", err)
@@ -292,7 +301,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -303,9 +313,11 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := `type eq "ADMIN_REASSIGN"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.GetPendingCertificationTasks(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetPendingCertificationTasks``: %v\n", err)
@@ -364,7 +376,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -376,9 +389,11 @@ func main() {
     filters := `name eq "Bob"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* (optional)
     sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListCertificationReviewers``: %v\n", err)
@@ -440,7 +455,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -455,9 +471,11 @@ func main() {
     accessProfiles := `accessProfile1` // string | Filter results to view access review items that pertain to any of the specified comma-separated access-profle IDs.  An error will occur if this param is used with **entitlements** or **roles** as only one of these query params can be used at a time. (optional) # string | Filter results to view access review items that pertain to any of the specified comma-separated access-profle IDs.  An error will occur if this param is used with **entitlements** or **roles** as only one of these query params can be used at a time. (optional)
     roles := `userRole` // string | Filter results to view access review items that pertain to any of the specified comma-separated role IDs.  An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time. (optional) # string | Filter results to view access review items that pertain to any of the specified comma-separated role IDs.  An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time. (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Entitlements(entitlements).AccessProfiles(accessProfiles).Roles(roles).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityAccessReviewItems``: %v\n", err)
@@ -512,7 +530,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -524,9 +543,11 @@ func main() {
     filters := `id eq "ef38f94347e94562b5bb8424a56397d8"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq* (optional)
     sorters := `name,due` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed** (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.ListIdentityCertifications(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityCertifications``: %v\n", err)
@@ -581,17 +602,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the identity campaign certification on which to make decisions # string | The ID of the identity campaign certification on which to make decisions
-    reviewDecision := fmt.Sprintf(`[{id=ef38f94347e94562b5bb8424a56396b5, decision=APPROVE, bulk=true, comments=This user still needs access to this source.}, {id=ef38f94347e94562b5bb8424a56397d8, decision=APPROVE, bulk=true, comments=This user still needs access to this source too.}]`) // []ReviewDecision | A non-empty array of decisions to be made.
+    reviewdecision := []byte(`[{id=ef38f94347e94562b5bb8424a56396b5, decision=APPROVE, bulk=true, comments=This user still needs access to this source.}, {id=ef38f94347e94562b5bb8424a56397d8, decision=APPROVE, bulk=true, comments=This user still needs access to this source too.}]`) // []ReviewDecision | A non-empty array of decisions to be made.
+
+  
+   var reviewDecision v3.[]ReviewDecision
+   if err := json.Unmarshal(reviewdecision, &reviewDecision); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.MakeIdentityDecision(context.Background(), id).ReviewDecision(reviewDecision).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.MakeIdentityDecision(context.Background(), id).ReviewDecision(reviewDecision).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.MakeIdentityDecision(context.Background(), id).ReviewDecision(reviewDecision).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.MakeIdentityDecision``: %v\n", err)
@@ -646,13 +676,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewReassign := fmt.Sprintf(`{
+    reviewreassign := []byte(`{
           "reason" : "reassigned for some reason",
           "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
           "reassign" : [ {
@@ -662,11 +693,19 @@ func main() {
             "id" : "ef38f94347e94562b5bb8424a56397d8",
             "type" : "ITEM"
           } ]
-        }`) # ReviewReassign | 
+        }`) // ReviewReassign | 
+
+  
+   var reviewReassign v3.ReviewReassign
+   if err := json.Unmarshal(reviewreassign, &reviewReassign); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).ReviewReassign(reviewReassign).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).ReviewReassign(reviewReassign).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ReassignIdentityCertifications``: %v\n", err)
@@ -720,16 +759,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SignOffIdentityCertification``: %v\n", err)
@@ -789,13 +831,14 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewReassign := fmt.Sprintf(`{
+    reviewreassign := []byte(`{
           "reason" : "reassigned for some reason",
           "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
           "reassign" : [ {
@@ -805,11 +848,19 @@ func main() {
             "id" : "ef38f94347e94562b5bb8424a56397d8",
             "type" : "ITEM"
           } ]
-        }`) # ReviewReassign | 
+        }`) // ReviewReassign | 
+
+  
+   var reviewReassign v3.ReviewReassign
+   if err := json.Unmarshal(reviewreassign, &reviewReassign); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.V3.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
 	//resp, r, err := apiClient.V3.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SubmitReassignCertsAsync``: %v\n", err)

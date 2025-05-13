@@ -65,15 +65,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfig``: %v\n", err)
@@ -126,12 +129,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    publicIdentityConfig := fmt.Sprintf(`{
+    publicidentityconfig := []byte(`{
           "modified" : "2018-06-25T20:22:28.104Z",
           "attributes" : [ {
             "name" : "Country",
@@ -145,11 +149,19 @@ func main() {
             "id" : "2c9180a46faadee4016fb4e018c20639",
             "type" : "IDENTITY"
           }
-        }`) # PublicIdentityConfig | 
+        }`) // PublicIdentityConfig | 
+
+  
+   var publicIdentityConfig beta.PublicIdentityConfig
+   if err := json.Unmarshal(publicidentityconfig, &publicIdentityConfig); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
+    resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
 	//resp, r, err := apiClient.Beta.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig``: %v\n", err)

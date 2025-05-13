@@ -54,15 +54,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.GetTenantUiMetadata``: %v\n", err)
@@ -113,20 +116,29 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    tenantUiMetadataItemUpdateRequest := fmt.Sprintf(`{
+    tenantuimetadataitemupdaterequest := []byte(`{
           "usernameEmptyText" : "Please provide your work email address...",
           "usernameLabel" : "Email",
           "iframeWhiteList" : "http://example.com http://example2.com"
-        }`) # TenantUiMetadataItemUpdateRequest | 
+        }`) // TenantUiMetadataItemUpdateRequest | 
+
+  
+   var tenantUiMetadataItemUpdateRequest beta.TenantUiMetadataItemUpdateRequest
+   if err := json.Unmarshal(tenantuimetadataitemupdaterequest, &tenantUiMetadataItemUpdateRequest); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.UIMetadataAPI.SetTenantUiMetadata(context.Background()).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
+    resp, r, err := apiClient.Beta.UIMetadataAPI.SetTenantUiMetadata(context.Background()).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
 	//resp, r, err := apiClient.Beta.UIMetadataAPI.SetTenantUiMetadata(context.Background()).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.SetTenantUiMetadata``: %v\n", err)

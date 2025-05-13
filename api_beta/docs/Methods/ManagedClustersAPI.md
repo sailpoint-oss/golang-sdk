@@ -67,16 +67,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `aClusterId` // string | ID of ManagedCluster to get log configuration for # string | ID of ManagedCluster to get log configuration for
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
+    resp, r, err := apiClient.Beta.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfiguration``: %v\n", err)
@@ -133,16 +136,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `aClusterId` // string | ID of the ManagedCluster to get # string | ID of the ManagedCluster to get
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
+    resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedCluster``: %v\n", err)
@@ -198,7 +204,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -208,9 +215,11 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := `operational eq operation` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq* (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
+    resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClustersAPI.GetManagedClusters(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClusters``: %v\n", err)
@@ -268,23 +277,26 @@ import (
 	"context"
 	"fmt"
 	"os"
-    beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `aClusterId` // string | ID of ManagedCluster to update log configuration for # string | ID of ManagedCluster to update log configuration for
-    clientLogConfiguration := fmt.Sprintf(`{
+    clientlogconfiguration := []byte(`{
           "durationMinutes" : 120,
           "rootLevel" : "INFO",
           "clientId" : "aClientId",
           "expiration" : "2020-12-15T19:13:36.079Z",
           "logLevels" : "INFO"
-        }`) # ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+        }`) // ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.Beta.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
+    resp, r, err := apiClient.Beta.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
 	//resp, r, err := apiClient.Beta.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfiguration``: %v\n", err)

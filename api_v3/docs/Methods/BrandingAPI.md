@@ -71,7 +71,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -85,9 +86,11 @@ func main() {
     loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
     fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).Execute()
+    resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).Execute()
 	//resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
@@ -141,16 +144,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     name := `default` // string | The name of the branding item to be deleted # string | The name of the branding item to be deleted
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
+    r, err := apiClient.V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
 	//r, err := apiClient.V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBranding``: %v\n", err)
@@ -202,16 +208,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     name := `default` // string | The name of the branding item to be retrieved # string | The name of the branding item to be retrieved
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
+    resp, r, err := apiClient.V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
 	//resp, r, err := apiClient.V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBranding``: %v\n", err)
@@ -257,15 +266,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
+    resp, r, err := apiClient.V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
 	//resp, r, err := apiClient.V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingList``: %v\n", err)
@@ -327,7 +339,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -342,9 +355,11 @@ func main() {
     loginInformationalMessage := `loginInformationalMessage_example` // string | login information message (optional) # string | login information message (optional)
     fileStandard := BINARY_DATA_HERE // *os.File | png file with logo (optional) # *os.File | png file with logo (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).Execute()
+    resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).Execute()
 	//resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItem``: %v\n", err)

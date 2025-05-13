@@ -63,21 +63,30 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    managedClientRequest := fmt.Sprintf(`{
+    managedclientrequest := []byte(`{
           "name" : "aName",
           "description" : "A short description of the ManagedClient",
           "clusterId" : "aClusterId",
           "type" : "VA"
-        }`) # ManagedClientRequest | 
+        }`) // ManagedClientRequest | 
+
+  
+   var managedClientRequest v2025.ManagedClientRequest
+   if err := json.Unmarshal(managedclientrequest, &managedClientRequest); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.ManagedClientsAPI.CreateManagedClient(context.Background()).ManagedClientRequest(managedClientRequest).Execute()
+    resp, r, err := apiClient.V2025.ManagedClientsAPI.CreateManagedClient(context.Background()).ManagedClientRequest(managedClientRequest).Execute()
 	//resp, r, err := apiClient.V2025.ManagedClientsAPI.CreateManagedClient(context.Background()).ManagedClientRequest(managedClientRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.CreateManagedClient``: %v\n", err)
@@ -131,16 +140,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  r, err := apiClient.V2025.ManagedClientsAPI.DeleteManagedClient(context.Background(), id).Execute()
+    r, err := apiClient.V2025.ManagedClientsAPI.DeleteManagedClient(context.Background(), id).Execute()
 	//r, err := apiClient.V2025.ManagedClientsAPI.DeleteManagedClient(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.DeleteManagedClient``: %v\n", err)
@@ -192,16 +204,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClient(context.Background(), id).Execute()
+    resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClient(context.Background(), id).Execute()
 	//resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClient(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClient``: %v\n", err)
@@ -256,7 +271,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -264,9 +280,11 @@ func main() {
     id := `aClientId` // string | Managed client ID to get status for. # string | Managed client ID to get status for.
     type_ :=  // ManagedClientType | Managed client type to get status for. # ManagedClientType | Managed client type to get status for.
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
+    resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
 	//resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientStatus``: %v\n", err)
@@ -319,7 +337,8 @@ import (
 	"context"
 	"fmt"
 	"os"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+   
+    
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
@@ -329,9 +348,11 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := `name eq "client name"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **clientId**: *eq*  **clusterId**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **clientId**: *eq*  **clusterId**: *eq* (optional)
 
+  
+
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClients(context.Background()).Execute()
+    resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClients(context.Background()).Execute()
 	//resp, r, err := apiClient.V2025.ManagedClientsAPI.GetManagedClients(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClients``: %v\n", err)
@@ -386,17 +407,26 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
-    jsonPatchOperation := fmt.Sprintf(``) // []JsonPatchOperation | JSONPatch payload used to update the object.
+    jsonpatchoperation := []byte(``) // []JsonPatchOperation | JSONPatch payload used to update the object.
+
+  
+   var jsonPatchOperation v2025.[]JsonPatchOperation
+   if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+    fmt.Println("Error:", err)
+    return
+   }
+  
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-  resp, r, err := apiClient.V2025.ManagedClientsAPI.UpdateManagedClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.V2025.ManagedClientsAPI.UpdateManagedClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
 	//resp, r, err := apiClient.V2025.ManagedClientsAPI.UpdateManagedClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClient``: %v\n", err)
