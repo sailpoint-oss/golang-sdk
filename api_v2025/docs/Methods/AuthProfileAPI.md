@@ -244,7 +244,7 @@ func main() {
     jsonpatchoperation := []byte(``) // []JsonPatchOperation | 
 
   
-   var jsonPatchOperation v2025.[]JsonPatchOperation
+   var jsonPatchOperation []v2025.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

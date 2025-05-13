@@ -708,7 +708,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Test Description}, {op=replace, path=/name, value=new name}]`) // []JsonPatchOperation | 
 
   
-   var jsonPatchOperation v2024.[]JsonPatchOperation
+   var jsonPatchOperation []v2024.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

@@ -347,7 +347,7 @@ func main() {
     accessrequestrecommendationactionitemdto := []byte(``) // []AccessRequestRecommendationActionItemDto | The recommended access items that were viewed for an identity.
 
   
-   var accessRequestRecommendationActionItemDto v2025.[]AccessRequestRecommendationActionItemDto
+   var accessRequestRecommendationActionItemDto []v2025.AccessRequestRecommendationActionItemDto
    if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessRequestRecommendationActionItemDto); err != nil {
     fmt.Println("Error:", err)
     return

@@ -214,7 +214,7 @@ func main() {
     commonaccessidstatus := []byte(``) // []CommonAccessIDStatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
 
   
-   var commonAccessIDStatus beta.[]CommonAccessIDStatus
+   var commonAccessIDStatus []beta.CommonAccessIDStatus
    if err := json.Unmarshal(commonaccessidstatus, &commonAccessIDStatus); err != nil {
     fmt.Println("Error:", err)
     return

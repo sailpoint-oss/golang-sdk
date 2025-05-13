@@ -182,7 +182,7 @@ func main() {
     multihostintegrationscreatesources := []byte(``) // []MultiHostIntegrationsCreateSources | The specifics of the sources to create within Multi-Host Integration.
 
   
-   var multiHostIntegrationsCreateSources v2025.[]MultiHostIntegrationsCreateSources
+   var multiHostIntegrationsCreateSources []v2025.MultiHostIntegrationsCreateSources
    if err := json.Unmarshal(multihostintegrationscreatesources, &multiHostIntegrationsCreateSources); err != nil {
     fmt.Println("Error:", err)
     return
@@ -949,7 +949,7 @@ func main() {
     updatemultihostsourcesrequestinner := []byte(`[{op=add, path=/description, value=MDK Multi-Host Integration 222 description}]`) // []UpdateMultiHostSourcesRequestInner | This endpoint allows you to update a Multi-Host Integration. 
 
   
-   var updateMultiHostSourcesRequestInner v2025.[]UpdateMultiHostSourcesRequestInner
+   var updateMultiHostSourcesRequestInner []v2025.UpdateMultiHostSourcesRequestInner
    if err := json.Unmarshal(updatemultihostsourcesrequestinner, &updateMultiHostSourcesRequestInner); err != nil {
     fmt.Println("Error:", err)
     return

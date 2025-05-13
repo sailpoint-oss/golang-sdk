@@ -106,7 +106,7 @@ func main() {
     {{/allParams}}
 
   {{#requiredAndNotNullableParams}}{{#isBodyParam}}
-   var {{paramName}} {{apiVersion}}.{{#isArray}}[]{{/isArray}}{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
+   var {{paramName}} {{#isArray}}[]{{/isArray}}{{apiVersion}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
    if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}, &{{paramName}}); err != nil {
     fmt.Println("Error:", err)
     return

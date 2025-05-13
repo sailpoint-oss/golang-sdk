@@ -406,7 +406,7 @@ func main() {
     jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
   
-   var jsonPatchOperation v2024.[]JsonPatchOperation
+   var jsonPatchOperation []v2024.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

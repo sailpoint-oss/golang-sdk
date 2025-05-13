@@ -1668,7 +1668,7 @@ func main() {
     patchpotentialrolerequestinner := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []PatchPotentialRoleRequestInner | 
 
   
-   var patchPotentialRoleRequestInner beta.[]PatchPotentialRoleRequestInner
+   var patchPotentialRoleRequestInner []beta.PatchPotentialRoleRequestInner
    if err := json.Unmarshal(patchpotentialrolerequestinner, &patchPotentialRoleRequestInner); err != nil {
     fmt.Println("Error:", err)
     return
@@ -1754,7 +1754,7 @@ func main() {
     patchpotentialrolerequestinner := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []PatchPotentialRoleRequestInner | 
 
   
-   var patchPotentialRoleRequestInner beta.[]PatchPotentialRoleRequestInner
+   var patchPotentialRoleRequestInner []beta.PatchPotentialRoleRequestInner
    if err := json.Unmarshal(patchpotentialrolerequestinner, &patchPotentialRoleRequestInner); err != nil {
     fmt.Println("Error:", err)
     return
@@ -1828,7 +1828,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=replace, path=/pruneThreshold, value=83}, {op=replace, path=/minNumIdentitiesInPotentialRole, value=10}, {op=replace, path=/saved, value=false}, {op=replace, path=/name, value=RM Session - 07/10/22}, {op=add, path=/name, value=RM Session - 07/10/22}]`) // []JsonPatchOperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
 
   
-   var jsonPatchOperation beta.[]JsonPatchOperation
+   var jsonPatchOperation []beta.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

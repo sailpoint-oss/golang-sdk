@@ -235,7 +235,7 @@ func main() {
     bulkworkgroupmembersrequestinner := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be removed from  a Governance Group members list.
 
   
-   var bulkWorkgroupMembersRequestInner beta.[]BulkWorkgroupMembersRequestInner
+   var bulkWorkgroupMembersRequestInner []beta.BulkWorkgroupMembersRequestInner
    if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkWorkgroupMembersRequestInner); err != nil {
     fmt.Println("Error:", err)
     return
@@ -752,7 +752,7 @@ func main() {
     bulkworkgroupmembersrequestinner := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be added to a Governance Group members list.
 
   
-   var bulkWorkgroupMembersRequestInner beta.[]BulkWorkgroupMembersRequestInner
+   var bulkWorkgroupMembersRequestInner []beta.BulkWorkgroupMembersRequestInner
    if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkWorkgroupMembersRequestInner); err != nil {
     fmt.Println("Error:", err)
     return

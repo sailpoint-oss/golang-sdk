@@ -273,7 +273,7 @@ func main() {
     identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be removed from  a Governance Group members list.
 
   
-   var identityPreviewResponseIdentity v2025.[]IdentityPreviewResponseIdentity
+   var identityPreviewResponseIdentity []v2025.IdentityPreviewResponseIdentity
    if err := json.Unmarshal(identitypreviewresponseidentity, &identityPreviewResponseIdentity); err != nil {
     fmt.Println("Error:", err)
     return
@@ -878,7 +878,7 @@ func main() {
     identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be added to a Governance Group members list.
 
   
-   var identityPreviewResponseIdentity v2025.[]IdentityPreviewResponseIdentity
+   var identityPreviewResponseIdentity []v2025.IdentityPreviewResponseIdentity
    if err := json.Unmarshal(identitypreviewresponseidentity, &identityPreviewResponseIdentity); err != nil {
     fmt.Println("Error:", err)
     return

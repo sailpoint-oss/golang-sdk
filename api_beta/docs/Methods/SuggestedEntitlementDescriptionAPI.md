@@ -295,7 +295,7 @@ func main() {
     sedpatch := []byte(``) // []SedPatch | Sed Patch Request
 
   
-   var sedPatch beta.[]SedPatch
+   var sedPatch []beta.SedPatch
    if err := json.Unmarshal(sedpatch, &sedPatch); err != nil {
     fmt.Println("Error:", err)
     return
@@ -364,7 +364,7 @@ func main() {
     sedapproval := []byte(``) // []SedApproval | Sed Approval
 
   
-   var sedApproval beta.[]SedApproval
+   var sedApproval []beta.SedApproval
    if err := json.Unmarshal(sedapproval, &sedApproval); err != nil {
     fmt.Println("Error:", err)
     return

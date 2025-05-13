@@ -276,7 +276,7 @@ func main() {
     requestbody := []byte(``) // []string | Identity Profile bulk delete request body.
 
   
-   var requestBody beta.[]RequestBody
+   var requestBody []beta.RequestBody
    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
     fmt.Println("Error:", err)
     return
@@ -548,7 +548,7 @@ func main() {
     identityprofileexportedobject := []byte(``) // []IdentityProfileExportedObject | Previously exported Identity Profiles.
 
   
-   var identityProfileExportedObject beta.[]IdentityProfileExportedObject
+   var identityProfileExportedObject []beta.IdentityProfileExportedObject
    if err := json.Unmarshal(identityprofileexportedobject, &identityProfileExportedObject); err != nil {
     fmt.Println("Error:", err)
     return
@@ -868,7 +868,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/identityAttributeConfig/attributeTransforms/0, value={identityAttributeName=location, transformDefinition={type=accountAttribute, attributes={sourceName=Employees, attributeName=location, sourceId=2c91808878b7d63b0178c66ffcdc4ce4}}}}]`) // []JsonPatchOperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
   
-   var jsonPatchOperation beta.[]JsonPatchOperation
+   var jsonPatchOperation []beta.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

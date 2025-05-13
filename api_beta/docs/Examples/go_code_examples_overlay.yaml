@@ -471,7 +471,7 @@
           jsonpatchoperation := []byte(`[{op=add, path=/entitlements, value=[{id=2c9180857725c14301772a93bb77242d, type=ENTITLEMENT, name=AD User Group}]}]`) // []JsonPatchOperation | 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -511,7 +511,7 @@
           accessprofilebulkupdaterequestinner := []byte(`[{id=464ae7bf-791e-49fd-b746-06a2e4a89635, requestable=false}]`) // []AccessProfileBulkUpdateRequestInner | 
 
           
-          var accessProfileBulkUpdateRequestInner beta.[]AccessProfileBulkUpdateRequestInner
+          var accessProfileBulkUpdateRequestInner []beta.AccessProfileBulkUpdateRequestInner
           if err := json.Unmarshal(accessprofilebulkupdaterequestinner, &accessProfileBulkUpdateRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -1999,7 +1999,7 @@
           requestbody := []byte(`{Uncorrelate account={description=Remove account from Identity, value=[{op=remove, path=/identityId}]}, Reassign account={description=Move account from one Identity to another Identity, value=[{op=replace, path=/identityId, value=2c9180857725c14301772a93bb77242d}]}, Add account attribute={description=Add flat file account's attribute, value=[{op=add, path=/attributes/familyName, value=Smith}]}, Replace account attribute={description=Replace flat file account's attribute, value=[{op=replace, path=/attributes/familyName, value=Smith}]}, Remove account attribute={description=Remove flat file account's attribute, value=[{op=remove, path=/attributes/familyName}]}}`) // []map[string]interface{} | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -2366,7 +2366,7 @@
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -2917,7 +2917,7 @@
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -3707,7 +3707,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Updated description!}, {op=replace, path=/campaign/filter/id, value=ff80818155fe8c080155fe8d925b0316}]`) // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -3982,7 +3982,7 @@
           requestbody := []byte(`[{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}]`) // []map[string]interface{} | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -6150,7 +6150,7 @@
           bulkworkgroupmembersrequestinner := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be removed from  a Governance Group members list.
 
           
-          var bulkWorkgroupMembersRequestInner beta.[]BulkWorkgroupMembersRequestInner
+          var bulkWorkgroupMembersRequestInner []beta.BulkWorkgroupMembersRequestInner
           if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkWorkgroupMembersRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -6416,7 +6416,7 @@
           bulkworkgroupmembersrequestinner := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be added to a Governance Group members list.
 
           
-          var bulkWorkgroupMembersRequestInner beta.[]BulkWorkgroupMembersRequestInner
+          var bulkWorkgroupMembersRequestInner []beta.BulkWorkgroupMembersRequestInner
           if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkWorkgroupMembersRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -6594,7 +6594,7 @@
           accessrequestrecommendationactionitemdto := []byte(``) // []AccessRequestRecommendationActionItemDto | The recommended access items that were viewed for an identity.
 
           
-          var accessRequestRecommendationActionItemDto beta.[]AccessRequestRecommendationActionItemDto
+          var accessRequestRecommendationActionItemDto []beta.AccessRequestRecommendationActionItemDto
           if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessRequestRecommendationActionItemDto); err != nil {
             fmt.Println("Error:", err)
             return
@@ -6876,7 +6876,7 @@
           commonaccessidstatus := []byte(``) // []CommonAccessIDStatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
 
           
-          var commonAccessIDStatus beta.[]CommonAccessIDStatus
+          var commonAccessIDStatus []beta.CommonAccessIDStatus
           if err := json.Unmarshal(commonaccessidstatus, &commonAccessIDStatus); err != nil {
             fmt.Println("Error:", err)
             return
@@ -7168,7 +7168,7 @@
           requestbody := []byte(``) // []string | 
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -7246,7 +7246,7 @@
           requestbody := []byte(``) // []string | 
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -8283,7 +8283,7 @@
           patchpotentialrolerequestinner := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []PatchPotentialRoleRequestInner | 
 
           
-          var patchPotentialRoleRequestInner beta.[]PatchPotentialRoleRequestInner
+          var patchPotentialRoleRequestInner []beta.PatchPotentialRoleRequestInner
           if err := json.Unmarshal(patchpotentialrolerequestinner, &patchPotentialRoleRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -8324,7 +8324,7 @@
           patchpotentialrolerequestinner := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []PatchPotentialRoleRequestInner | 
 
           
-          var patchPotentialRoleRequestInner beta.[]PatchPotentialRoleRequestInner
+          var patchPotentialRoleRequestInner []beta.PatchPotentialRoleRequestInner
           if err := json.Unmarshal(patchpotentialrolerequestinner, &patchPotentialRoleRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -8365,7 +8365,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/pruneThreshold, value=83}, {op=replace, path=/minNumIdentitiesInPotentialRole, value=10}, {op=replace, path=/saved, value=false}, {op=replace, path=/name, value=RM Session - 07/10/22}, {op=add, path=/name, value=RM Session - 07/10/22}]`) // []JsonPatchOperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -9728,7 +9728,7 @@
           requestbody := []byte(``) // []string | Identity Profile bulk delete request body.
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -9874,7 +9874,7 @@
           identityprofileexportedobject := []byte(``) // []IdentityProfileExportedObject | Previously exported Identity Profiles.
 
           
-          var identityProfileExportedObject beta.[]IdentityProfileExportedObject
+          var identityProfileExportedObject []beta.IdentityProfileExportedObject
           if err := json.Unmarshal(identityprofileexportedobject, &identityProfileExportedObject); err != nil {
             fmt.Println("Error:", err)
             return
@@ -10053,7 +10053,7 @@
           jsonpatchoperation := []byte(`[{op=add, path=/identityAttributeConfig/attributeTransforms/0, value={identityAttributeName=location, transformDefinition={type=accountAttribute, attributes={sourceName=Employees, attributeName=location, sourceId=2c91808878b7d63b0178c66ffcdc4ce4}}}}]`) // []JsonPatchOperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -10367,7 +10367,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Updated description!}, {op=replace, path=/accessProfileIds, value=[2c918087742bab150174407a80f3125e, 2c918087742bab150174407a80f3124f]}, {op=replace, path=/accountActions, value=[{action=ENABLE, sourceIds=[2c9180846a2f82fb016a481c1b1560c5, 2c9180846a2f82fb016a481c1b1560cc]}, {action=DISABLE, sourceIds=[2c91808869a0c9980169a207258513fb]}]}, {op=replace, path=/emailNotificationOption, value={notifyManagers=true, notifyAllAdmins=false, notifySpecificUsers=false, emailAddressList=[]}}]`) // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -10839,7 +10839,7 @@
           kbaanswerrequestitem := []byte(`[{id=173423, answer=822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34}, {id=c54fee53-2d63-4fc5-9259-3e93b9994135, answer=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08}]`) // []KbaAnswerRequestItem | 
 
           
-          var kbaAnswerRequestItem beta.[]KbaAnswerRequestItem
+          var kbaAnswerRequestItem []beta.KbaAnswerRequestItem
           if err := json.Unmarshal(kbaanswerrequestitem, &kbaAnswerRequestItem); err != nil {
             fmt.Println("Error:", err)
             return
@@ -11088,7 +11088,7 @@
           kbaanswerrequestitem := []byte(`[{id=173423, answer=822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34}, {id=c54fee53-2d63-4fc5-9259-3e93b9994135, answer=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08}]`) // []KbaAnswerRequestItem | 
 
           
-          var kbaAnswerRequestItem beta.[]KbaAnswerRequestItem
+          var kbaAnswerRequestItem []beta.KbaAnswerRequestItem
           if err := json.Unmarshal(kbaanswerrequestitem, &kbaAnswerRequestItem); err != nil {
             fmt.Println("Error:", err)
             return
@@ -11280,7 +11280,7 @@
           multihostintegrationscreatesources := []byte(``) // []MultiHostIntegrationsCreateSources | The specifics of the sources to create within Multi-Host Integration.
 
           
-          var multiHostIntegrationsCreateSources beta.[]MultiHostIntegrationsCreateSources
+          var multiHostIntegrationsCreateSources []beta.MultiHostIntegrationsCreateSources
           if err := json.Unmarshal(multihostintegrationscreatesources, &multiHostIntegrationsCreateSources); err != nil {
             fmt.Println("Error:", err)
             return
@@ -11665,7 +11665,7 @@
           updatemultihostsourcesrequestinner := []byte(`[{op=add, path=/description, value=MDK Multi-Host Integration 222 description}]`) // []UpdateMultiHostSourcesRequestInner | This endpoint allows you to update a Multi-Host Integration. 
 
           
-          var updateMultiHostSourcesRequestInner beta.[]UpdateMultiHostSourcesRequestInner
+          var updateMultiHostSourcesRequestInner []beta.UpdateMultiHostSourcesRequestInner
           if err := json.Unmarshal(updatemultihostsourcesrequestinner, &updateMultiHostSourcesRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -12729,7 +12729,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/endDate, value={2019-08-23T18:40:35.772Z=null}}]`) // []JsonPatchOperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -12771,7 +12771,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/label, value={new attribute label=null}}]`) // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -12812,7 +12812,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/name, value={new name=null}}, {op=replace, path=/approvers, value=[2c91809f703bb37a017040a2fe8748c7, 48b1f463c9e8427db5a5071bd81914b8]}]`) // []JsonPatchOperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -13094,7 +13094,7 @@
           templatebulkdeletedto := []byte(``) // []TemplateBulkDeleteDto | 
 
           
-          var templateBulkDeleteDto beta.[]TemplateBulkDeleteDto
+          var templateBulkDeleteDto []beta.TemplateBulkDeleteDto
           if err := json.Unmarshal(templatebulkdeletedto, &templateBulkDeleteDto); err != nil {
             fmt.Println("Error:", err)
             return
@@ -13684,7 +13684,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/strongAuthSupported, value=true}, {op=replace, path=/businessName, value=acme-solar}]`) // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -13790,7 +13790,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/timeZone, value=America/Toronto}]`) // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -14741,7 +14741,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}]`) // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -15656,7 +15656,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/requestable, value=true}, {op=replace, path=/enabled, value=true}]`) // []JsonPatchOperation | 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -15845,7 +15845,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}]`) // []JsonPatchOperation | 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -16051,7 +16051,7 @@
           requestbody := []byte(`[{op=replace, path=/visibilityCriteria, value={expression={operator=AND, children=[{operator=EQUALS, attribute=location, value={type=STRING, value=Philadelphia}}, {operator=EQUALS, attribute=department, value={type=STRING, value=HR}}]}}}]`) // []map[string]interface{} | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -16366,7 +16366,7 @@
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -17253,7 +17253,7 @@
           requestbody := []byte(`[{op=replace, path=/description, value=Modified description}, {op=replace, path=/conflictingAccessCriteria/leftCriteria/name, value=money-in-modified}, {op=replace, path=/conflictingAccessCriteria/rightCriteria, value={name=money-out-modified, criteriaList=[{type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}]}}]`) // []map[string]interface{} | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
           
-          var requestBody beta.[]RequestBody
+          var requestBody []beta.RequestBody
           if err := json.Unmarshal(requestbody, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
@@ -19368,7 +19368,7 @@
           provisioningpolicydto := []byte(``) // []ProvisioningPolicyDto | 
 
           
-          var provisioningPolicyDto beta.[]ProvisioningPolicyDto
+          var provisioningPolicyDto []beta.ProvisioningPolicyDto
           if err := json.Unmarshal(provisioningpolicydto, &provisioningPolicyDto); err != nil {
             fmt.Println("Error:", err)
             return
@@ -19410,7 +19410,7 @@
           jsonpatchoperation := []byte(`[{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -19451,7 +19451,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/description, value=new description}]`) // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -19546,7 +19546,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/displayAttribute, value={new-display-attribute=null}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -20013,7 +20013,7 @@
           sedpatch := []byte(``) // []SedPatch | Sed Patch Request
 
           
-          var sedPatch beta.[]SedPatch
+          var sedPatch []beta.SedPatch
           if err := json.Unmarshal(sedpatch, &sedPatch); err != nil {
             fmt.Println("Error:", err)
             return
@@ -20053,7 +20053,7 @@
           sedapproval := []byte(``) // []SedApproval | Sed Approval
 
           
-          var sedApproval beta.[]SedApproval
+          var sedApproval []beta.SedApproval
           if err := json.Unmarshal(sedapproval, &sedApproval); err != nil {
             fmt.Println("Error:", err)
             return
@@ -20817,7 +20817,7 @@
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
@@ -21333,7 +21333,7 @@
           subscriptionpatchrequestinner := []byte(``) // []SubscriptionPatchRequestInner | 
 
           
-          var subscriptionPatchRequestInner beta.[]SubscriptionPatchRequestInner
+          var subscriptionPatchRequestInner []beta.SubscriptionPatchRequestInner
           if err := json.Unmarshal(subscriptionpatchrequestinner, &subscriptionPatchRequestInner); err != nil {
             fmt.Println("Error:", err)
             return
@@ -22188,7 +22188,7 @@
           jsonpatchoperation := []byte(`[{op=replace, path=/name, value=Send Email}, {op=replace, path=/owner, value={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=William Wilson}}, {op=replace, path=/description, value=Send an email to the identity who's attributes changed.}, {op=replace, path=/enabled, value=false}, {op=replace, path=/definition, value={start=Send Email Test, steps={Send Email={actionId=sp:send-email, attributes={body=This is a test, from=sailpoint@sailpoint.com, recipientId.$=$.identity.id, subject=test}, nextStep=success, selectResult=null, type=action}, success={type=success}}}}, {op=replace, path=/trigger, value={type=EVENT, attributes={id=idn:identity-attributes-changed}}}]`) // []JsonPatchOperation | 
 
           
-          var jsonPatchOperation beta.[]JsonPatchOperation
+          var jsonPatchOperation []beta.JsonPatchOperation
           if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return

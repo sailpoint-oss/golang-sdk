@@ -612,7 +612,7 @@ func main() {
     reviewdecision := []byte(`[{id=ef38f94347e94562b5bb8424a56396b5, decision=APPROVE, bulk=true, comments=This user still needs access to this source.}, {id=ef38f94347e94562b5bb8424a56397d8, decision=APPROVE, bulk=true, comments=This user still needs access to this source too.}]`) // []ReviewDecision | A non-empty array of decisions to be made.
 
   
-   var reviewDecision v2025.[]ReviewDecision
+   var reviewDecision []v2025.ReviewDecision
    if err := json.Unmarshal(reviewdecision, &reviewDecision); err != nil {
     fmt.Println("Error:", err)
     return

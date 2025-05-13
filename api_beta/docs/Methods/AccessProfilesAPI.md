@@ -634,7 +634,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/entitlements, value=[{id=2c9180857725c14301772a93bb77242d, type=ENTITLEMENT, name=AD User Group}]}]`) // []JsonPatchOperation | 
 
   
-   var jsonPatchOperation beta.[]JsonPatchOperation
+   var jsonPatchOperation []beta.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -708,7 +708,7 @@ func main() {
     accessprofilebulkupdaterequestinner := []byte(`[{id=464ae7bf-791e-49fd-b746-06a2e4a89635, requestable=false}]`) // []AccessProfileBulkUpdateRequestInner | 
 
   
-   var accessProfileBulkUpdateRequestInner beta.[]AccessProfileBulkUpdateRequestInner
+   var accessProfileBulkUpdateRequestInner []beta.AccessProfileBulkUpdateRequestInner
    if err := json.Unmarshal(accessprofilebulkupdaterequestinner, &accessProfileBulkUpdateRequestInner); err != nil {
     fmt.Println("Error:", err)
     return

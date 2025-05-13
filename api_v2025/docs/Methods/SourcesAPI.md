@@ -3675,7 +3675,7 @@ func main() {
     passwordpolicyholdersdtoinner := []byte(``) // []PasswordPolicyHoldersDtoInner | 
 
   
-   var passwordPolicyHoldersDtoInner v2025.[]PasswordPolicyHoldersDtoInner
+   var passwordPolicyHoldersDtoInner []v2025.PasswordPolicyHoldersDtoInner
    if err := json.Unmarshal(passwordpolicyholdersdtoinner, &passwordPolicyHoldersDtoInner); err != nil {
     fmt.Println("Error:", err)
     return
@@ -3749,7 +3749,7 @@ func main() {
     provisioningpolicydto := []byte(``) // []ProvisioningPolicyDto | 
 
   
-   var provisioningPolicyDto v2025.[]ProvisioningPolicyDto
+   var provisioningPolicyDto []v2025.ProvisioningPolicyDto
    if err := json.Unmarshal(provisioningpolicydto, &provisioningPolicyDto); err != nil {
     fmt.Println("Error:", err)
     return
@@ -3828,7 +3828,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
   
-   var jsonPatchOperation v2025.[]JsonPatchOperation
+   var jsonPatchOperation []v2025.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -3917,7 +3917,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=replace, path=/description, value=new description}]`) // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
   
-   var jsonPatchOperation v2025.[]JsonPatchOperation
+   var jsonPatchOperation []v2025.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -4096,7 +4096,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=replace, path=/cronExpression, value=0 0 6 * * ?}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schedule.
 
   
-   var jsonPatchOperation v2025.[]JsonPatchOperation
+   var jsonPatchOperation []v2025.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -4202,7 +4202,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/attributes/-, value={name=location, type=STRING, schema=null, description=Employee location, isMulti=false, isEntitlement=false, isGroup=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
   
-   var jsonPatchOperation v2025.[]JsonPatchOperation
+   var jsonPatchOperation []v2025.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

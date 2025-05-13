@@ -360,7 +360,7 @@ func main() {
     templatebulkdeletedto := []byte(``) // []TemplateBulkDeleteDto | 
 
   
-   var templateBulkDeleteDto v2024.[]TemplateBulkDeleteDto
+   var templateBulkDeleteDto []v2024.TemplateBulkDeleteDto
    if err := json.Unmarshal(templatebulkdeletedto, &templateBulkDeleteDto); err != nil {
     fmt.Println("Error:", err)
     return

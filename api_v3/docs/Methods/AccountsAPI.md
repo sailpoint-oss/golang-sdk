@@ -870,7 +870,7 @@ func main() {
     requestbody := []byte(`[{op=remove, path=/identityId}]`) // []map[string]interface{} | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
   
-   var requestBody v3.[]RequestBody
+   var requestBody []v3.RequestBody
    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
     fmt.Println("Error:", err)
     return

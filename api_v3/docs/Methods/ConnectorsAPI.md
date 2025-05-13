@@ -788,7 +788,7 @@ func main() {
     jsonpatchoperation := []byte(``) // []JsonPatchOperation | A list of connector detail update operations 
 
   
-   var jsonPatchOperation v3.[]JsonPatchOperation
+   var jsonPatchOperation []v3.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

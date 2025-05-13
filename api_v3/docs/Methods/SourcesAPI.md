@@ -2032,7 +2032,7 @@ func main() {
     provisioningpolicydto := []byte(``) // []ProvisioningPolicyDto | 
 
   
-   var provisioningPolicyDto v3.[]ProvisioningPolicyDto
+   var provisioningPolicyDto []v3.ProvisioningPolicyDto
    if err := json.Unmarshal(provisioningpolicydto, &provisioningPolicyDto); err != nil {
     fmt.Println("Error:", err)
     return
@@ -2111,7 +2111,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
   
-   var jsonPatchOperation v3.[]JsonPatchOperation
+   var jsonPatchOperation []v3.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -2200,7 +2200,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=replace, path=/description, value=new description}]`) // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
   
-   var jsonPatchOperation v3.[]JsonPatchOperation
+   var jsonPatchOperation []v3.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return
@@ -2306,7 +2306,7 @@ func main() {
     jsonpatchoperation := []byte(`[{op=add, path=/attributes/-, value={name=location, type=STRING, schema=null, description=Employee location, isMulti=false, isEntitlement=false, isGroup=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
   
-   var jsonPatchOperation v3.[]JsonPatchOperation
+   var jsonPatchOperation []v3.JsonPatchOperation
    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
     fmt.Println("Error:", err)
     return

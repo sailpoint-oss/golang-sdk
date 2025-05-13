@@ -489,7 +489,7 @@ func main() {
     requestbody := []byte(``) // []string | 
 
   
-   var requestBody beta.[]RequestBody
+   var requestBody []beta.RequestBody
    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
     fmt.Println("Error:", err)
     return
@@ -637,7 +637,7 @@ func main() {
     requestbody := []byte(``) // []string | 
 
   
-   var requestBody beta.[]RequestBody
+   var requestBody []beta.RequestBody
    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
     fmt.Println("Error:", err)
     return

@@ -180,7 +180,7 @@ func main() {
     requestbody := []byte(``) // []string | A json list of IDs of campaign filters to delete.
 
   
-   var requestBody v2025.[]RequestBody
+   var requestBody []v2025.RequestBody
    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
     fmt.Println("Error:", err)
     return

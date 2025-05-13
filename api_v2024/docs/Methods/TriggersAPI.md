@@ -661,7 +661,7 @@ func main() {
     subscriptionpatchrequestinner := []byte(``) // []SubscriptionPatchRequestInner | 
 
   
-   var subscriptionPatchRequestInner v2024.[]SubscriptionPatchRequestInner
+   var subscriptionPatchRequestInner []v2024.SubscriptionPatchRequestInner
    if err := json.Unmarshal(subscriptionpatchrequestinner, &subscriptionPatchRequestInner); err != nil {
     fmt.Println("Error:", err)
     return
