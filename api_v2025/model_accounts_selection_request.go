@@ -23,7 +23,7 @@ type AccountsSelectionRequest struct {
 	// A list of Identity IDs for whom the Access is requested.
 	RequestedFor []string `json:"requestedFor"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
-	RequestedItems []AccessRequestItem1 `json:"requestedItems"`
+	RequestedItems []AccessRequestItem `json:"requestedItems"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.  
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _AccountsSelectionRequest AccountsSelectionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountsSelectionRequest(requestedFor []string, requestedItems []AccessRequestItem1) *AccountsSelectionRequest {
+func NewAccountsSelectionRequest(requestedFor []string, requestedItems []AccessRequestItem) *AccountsSelectionRequest {
 	this := AccountsSelectionRequest{}
 	this.RequestedFor = requestedFor
 	this.RequestedItems = requestedItems
@@ -117,9 +117,9 @@ func (o *AccountsSelectionRequest) UnsetRequestType() {
 }
 
 // GetRequestedItems returns the RequestedItems field value
-func (o *AccountsSelectionRequest) GetRequestedItems() []AccessRequestItem1 {
+func (o *AccountsSelectionRequest) GetRequestedItems() []AccessRequestItem {
 	if o == nil {
-		var ret []AccessRequestItem1
+		var ret []AccessRequestItem
 		return ret
 	}
 
@@ -128,7 +128,7 @@ func (o *AccountsSelectionRequest) GetRequestedItems() []AccessRequestItem1 {
 
 // GetRequestedItemsOk returns a tuple with the RequestedItems field value
 // and a boolean to check if the value has been set.
-func (o *AccountsSelectionRequest) GetRequestedItemsOk() ([]AccessRequestItem1, bool) {
+func (o *AccountsSelectionRequest) GetRequestedItemsOk() ([]AccessRequestItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -136,7 +136,7 @@ func (o *AccountsSelectionRequest) GetRequestedItemsOk() ([]AccessRequestItem1, 
 }
 
 // SetRequestedItems sets field value
-func (o *AccountsSelectionRequest) SetRequestedItems(v []AccessRequestItem1) {
+func (o *AccountsSelectionRequest) SetRequestedItems(v []AccessRequestItem) {
 	o.RequestedItems = v
 }
 

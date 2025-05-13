@@ -830,7 +830,6 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover1](docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](docs/AccessRequestDynamicApproverRequestedItemsInner.md)
  - [AccessRequestItem](docs/AccessRequestItem.md)
- - [AccessRequestItem1](docs/AccessRequestItem1.md)
  - [AccessRequestItemResponse](docs/AccessRequestItemResponse.md)
  - [AccessRequestPhases](docs/AccessRequestPhases.md)
  - [AccessRequestPostApproval](docs/AccessRequestPostApproval.md)

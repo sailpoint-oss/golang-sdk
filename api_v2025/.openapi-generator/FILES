@@ -154,7 +154,6 @@ docs/AccessRequestDynamicApproverRequestedItemsInner.md
 docs/AccessRequestIdentityMetricsAPI.md
 docs/AccessRequestIdentityMetricsAPIdeveloperSite_code_examples.yaml
 docs/AccessRequestItem.md
-docs/AccessRequestItem1.md
 docs/AccessRequestItemResponse.md
 docs/AccessRequestPhases.md
 docs/AccessRequestPostApproval.md
@@ -1442,7 +1441,6 @@ model_access_request_dynamic_approver.go
 model_access_request_dynamic_approver_1.go
 model_access_request_dynamic_approver_requested_items_inner.go
 model_access_request_item.go
-model_access_request_item_1.go
 model_access_request_item_response.go
 model_access_request_phases.go
 model_access_request_post_approval.go

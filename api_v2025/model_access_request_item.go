@@ -31,6 +31,10 @@ type AccessRequestItem struct {
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	// The date the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration. 
 	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
+	// The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity. * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source. 
+	AssignmentId NullableString `json:"assignmentId,omitempty"`
+	// The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source. 
+	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -199,6 +203,90 @@ func (o *AccessRequestItem) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate = &v
 }
 
+// GetAssignmentId returns the AssignmentId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequestItem) GetAssignmentId() string {
+	if o == nil || IsNil(o.AssignmentId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AssignmentId.Get()
+}
+
+// GetAssignmentIdOk returns a tuple with the AssignmentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequestItem) GetAssignmentIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AssignmentId.Get(), o.AssignmentId.IsSet()
+}
+
+// HasAssignmentId returns a boolean if a field has been set.
+func (o *AccessRequestItem) HasAssignmentId() bool {
+	if o != nil && o.AssignmentId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignmentId gets a reference to the given NullableString and assigns it to the AssignmentId field.
+func (o *AccessRequestItem) SetAssignmentId(v string) {
+	o.AssignmentId.Set(&v)
+}
+// SetAssignmentIdNil sets the value for AssignmentId to be an explicit nil
+func (o *AccessRequestItem) SetAssignmentIdNil() {
+	o.AssignmentId.Set(nil)
+}
+
+// UnsetAssignmentId ensures that no value is present for AssignmentId, not even an explicit nil
+func (o *AccessRequestItem) UnsetAssignmentId() {
+	o.AssignmentId.Unset()
+}
+
+// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequestItem) GetNativeIdentity() string {
+	if o == nil || IsNil(o.NativeIdentity.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NativeIdentity.Get()
+}
+
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequestItem) GetNativeIdentityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NativeIdentity.Get(), o.NativeIdentity.IsSet()
+}
+
+// HasNativeIdentity returns a boolean if a field has been set.
+func (o *AccessRequestItem) HasNativeIdentity() bool {
+	if o != nil && o.NativeIdentity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNativeIdentity gets a reference to the given NullableString and assigns it to the NativeIdentity field.
+func (o *AccessRequestItem) SetNativeIdentity(v string) {
+	o.NativeIdentity.Set(&v)
+}
+// SetNativeIdentityNil sets the value for NativeIdentity to be an explicit nil
+func (o *AccessRequestItem) SetNativeIdentityNil() {
+	o.NativeIdentity.Set(nil)
+}
+
+// UnsetNativeIdentity ensures that no value is present for NativeIdentity, not even an explicit nil
+func (o *AccessRequestItem) UnsetNativeIdentity() {
+	o.NativeIdentity.Unset()
+}
+
 func (o AccessRequestItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -219,6 +307,12 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
+	}
+	if o.AssignmentId.IsSet() {
+		toSerialize["assignmentId"] = o.AssignmentId.Get()
+	}
+	if o.NativeIdentity.IsSet() {
+		toSerialize["nativeIdentity"] = o.NativeIdentity.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -269,6 +363,8 @@ func (o *AccessRequestItem) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "removeDate")
+		delete(additionalProperties, "assignmentId")
+		delete(additionalProperties, "nativeIdentity")
 		o.AdditionalProperties = additionalProperties
 	}
 
