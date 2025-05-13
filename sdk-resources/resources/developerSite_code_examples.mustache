@@ -12,7 +12,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            {{#requiredAndNotNullableParams}}{{#isBodyParam}} "encoding/json"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
         {{#vendorExtensions.x-go-import}}
         {{{vendorExtensions.x-go-import}}}
         {{/vendorExtensions.x-go-import}}
@@ -49,7 +49,7 @@
           {{/isBodyParam}}{{/requiredAndNotNullableParams}}
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#requiredParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/requiredParams}}.Execute()
           //{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()

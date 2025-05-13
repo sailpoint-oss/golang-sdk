@@ -77,7 +77,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-   {{#requiredAndNotNullableParams}}{{#isBodyParam}} "encoding/json"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
+  {{#requiredAndNotNullableParams}}{{#isBodyParam}}"encoding/json"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
 {{#vendorExtensions.x-go-import}}
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
@@ -105,26 +105,23 @@ func main() {
     {{/isArray}}
     {{/allParams}}
 
-  {{#requiredAndNotNullableParams}}{{#isBodyParam}}
-   var {{paramName}} {{#isArray}}[]{{/isArray}}{{apiVersion}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
-   if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}, &{{paramName}}); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  {{/isBodyParam}}{{/requiredAndNotNullableParams}}
+    {{#requiredAndNotNullableParams}}{{#isBodyParam}}var {{paramName}} {{#isArray}}[]{{/isArray}}{{apiVersion}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
+    if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}, &{{paramName}}); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    {{/isBodyParam}}{{/requiredAndNotNullableParams}}
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#requiredParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/requiredParams}}.Execute()
-	//{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	{{#returnType}}
-	// response from `{{operationId}}`: {{{.}}}
-	fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
-	{{/returnType}}
+	  //{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    {{#returnType}}// response from `{{operationId}}`: {{{.}}}
+    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp){{/returnType}}
 }
 ```
 

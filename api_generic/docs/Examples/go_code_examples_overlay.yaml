@@ -10,7 +10,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            
              ""
           sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
         )
@@ -21,7 +21,7 @@
           
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient..DefaultAPI.GenericDelete(context.Background(), path).Execute()
           //resp, r, err := apiClient..DefaultAPI.GenericDelete(context.Background(), path).Execute()
@@ -44,7 +44,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            
              ""
           sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
         )
@@ -55,7 +55,7 @@
           
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient..DefaultAPI.GenericGet(context.Background(), path).Execute()
           //resp, r, err := apiClient..DefaultAPI.GenericGet(context.Background(), path).Execute()
@@ -78,7 +78,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            
              ""
           sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
         )
@@ -90,7 +90,7 @@
           
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient..DefaultAPI.GenericPatch(context.Background(), path).Execute()
           //resp, r, err := apiClient..DefaultAPI.GenericPatch(context.Background(), path).RequestBody(requestBody).Execute()
@@ -113,7 +113,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            
              ""
           sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
         )
@@ -125,7 +125,7 @@
           
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient..DefaultAPI.GenericPost(context.Background(), path).Execute()
           //resp, r, err := apiClient..DefaultAPI.GenericPost(context.Background(), path).RequestBody(requestBody).Execute()
@@ -148,7 +148,7 @@
           "context"
           "fmt"
           "os"
-            "encoding/json"
+            
              ""
           sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
         )
@@ -160,7 +160,7 @@
           
 
 
-         	configuration := sailpoint.NewDefaultConfiguration()
+          configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient..DefaultAPI.GenericPut(context.Background(), path).Execute()
           //resp, r, err := apiClient..DefaultAPI.GenericPut(context.Background(), path).RequestBody(requestBody).Execute()

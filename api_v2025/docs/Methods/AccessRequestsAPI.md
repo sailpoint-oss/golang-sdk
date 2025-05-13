@@ -80,7 +80,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -91,24 +91,23 @@ func main() {
           "approvalIds" : [ "2c9180835d2e5168015d32f890ca1581", "2c9180835d2e5168015d32f890ca1582" ]
         }`) // BulkApproveAccessRequest | 
 
-  
-   var bulkApproveAccessRequest v2025.BulkApproveAccessRequest
-   if err := json.Unmarshal(bulkapproveaccessrequest, &bulkApproveAccessRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var bulkApproveAccessRequest v2025.BulkApproveAccessRequest
+    if err := json.Unmarshal(bulkapproveaccessrequest, &bulkApproveAccessRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.ApproveBulkAccessRequest(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.ApproveBulkAccessRequest(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ApproveBulkAccessRequest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ApproveBulkAccessRequest`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ApproveBulkAccessRequest`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.ApproveBulkAccessRequest(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ApproveBulkAccessRequest``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApproveBulkAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ApproveBulkAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -152,7 +151,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -163,24 +162,23 @@ func main() {
           "comment" : "I requested this role by mistake."
         }`) // CancelAccessRequest | 
 
-  
-   var cancelAccessRequest v2025.CancelAccessRequest
-   if err := json.Unmarshal(cancelaccessrequest, &cancelAccessRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var cancelAccessRequest v2025.CancelAccessRequest
+    if err := json.Unmarshal(cancelaccessrequest, &cancelAccessRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CancelAccessRequest`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequest`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequest``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CancelAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -224,7 +222,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -235,24 +233,23 @@ func main() {
           "comment" : "I requested this role by mistake."
         }`) // BulkCancelAccessRequest | 
 
-  
-   var bulkCancelAccessRequest v2025.BulkCancelAccessRequest
-   if err := json.Unmarshal(bulkcancelaccessrequest, &bulkCancelAccessRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var bulkCancelAccessRequest v2025.BulkCancelAccessRequest
+    if err := json.Unmarshal(bulkcancelaccessrequest, &bulkCancelAccessRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequestInBulk(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequestInBulk(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestInBulk``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CancelAccessRequestInBulk`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequestInBulk`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.CancelAccessRequestInBulk(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestInBulk``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CancelAccessRequestInBulk`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequestInBulk`: %v\n", resp)
 }
 ```
 
@@ -318,7 +315,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -332,24 +329,23 @@ func main() {
           "message" : "The IdentityNow Administrator manually closed this request."
         }`) // CloseAccessRequest | 
 
-  
-   var closeAccessRequest v2025.CloseAccessRequest
-   if err := json.Unmarshal(closeaccessrequest, &closeAccessRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var closeAccessRequest v2025.CloseAccessRequest
+    if err := json.Unmarshal(closeaccessrequest, &closeAccessRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.CloseAccessRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).CloseAccessRequest(closeAccessRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.CloseAccessRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).CloseAccessRequest(closeAccessRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CloseAccessRequest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CloseAccessRequest`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CloseAccessRequest`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.CloseAccessRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).CloseAccessRequest(closeAccessRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CloseAccessRequest``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloseAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CloseAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -425,7 +421,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -615,24 +611,23 @@ func main() {
           } ]
         }`) // AccessRequest | 
 
-  
-   var accessRequest v2025.AccessRequest
-   if err := json.Unmarshal(accessrequest, &accessRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var accessRequest v2025.AccessRequest
+    if err := json.Unmarshal(accessrequest, &accessRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateAccessRequest`: AccessRequestResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequest`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAccessRequest`: AccessRequestResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -671,25 +666,25 @@ import (
 	"context"
 	"fmt"
 	"os"
-   
+  
     
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-  
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAccessRequestConfig`: AccessRequestConfig
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfig`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccessRequestConfig`: AccessRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfig`: %v\n", resp)
 }
 ```
 
@@ -750,7 +745,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-   
+  
     
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -760,18 +755,18 @@ func main() {
     identityId := `7025c863c2704ba6beeaedf3cb091573` // string | The identity ID. # string | The identity ID.
     entitlementId := `ef38f94347e94562b5bb8424a56397d8` // string | The entitlement ID # string | The entitlement ID
 
-  
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.GetEntitlementDetailsForIdentity(context.Background(), identityId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.GetEntitlementDetailsForIdentity(context.Background(), identityId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetEntitlementDetailsForIdentity``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEntitlementDetailsForIdentity`: IdentityEntitlementDetails
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetEntitlementDetailsForIdentity`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.GetEntitlementDetailsForIdentity(context.Background(), identityId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetEntitlementDetailsForIdentity``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEntitlementDetailsForIdentity`: IdentityEntitlementDetails
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetEntitlementDetailsForIdentity`: %v\n", resp)
 }
 ```
 
@@ -825,7 +820,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-   
+  
     
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -842,18 +837,18 @@ func main() {
     sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional)
     requestState := `request-state=EXECUTING` // string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
 
-  
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAccessRequestStatus`: []RequestedItemStatus
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAccessRequestStatus`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatus``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAccessRequestStatus`: []RequestedItemStatus
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAccessRequestStatus`: %v\n", resp)
 }
 ```
 
@@ -906,7 +901,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-   
+  
     
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -923,18 +918,18 @@ func main() {
     sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional)
     requestState := `request-state=EXECUTING` // string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
 
-  
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAdministratorsAccessRequestStatus(context.Background()).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAdministratorsAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAdministratorsAccessRequestStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAdministratorsAccessRequestStatus`: []AccessRequestAdminItemStatus
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAdministratorsAccessRequestStatus`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.ListAdministratorsAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAdministratorsAccessRequestStatus``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAdministratorsAccessRequestStatus`: []AccessRequestAdminItemStatus
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAdministratorsAccessRequestStatus`: %v\n", resp)
 }
 ```
 
@@ -980,7 +975,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -1051,24 +1046,23 @@ func main() {
           } ]
         }`) // AccountsSelectionRequest | 
 
-  
-   var accountsSelectionRequest v2025.AccountsSelectionRequest
-   if err := json.Unmarshal(accountsselectionrequest, &accountsSelectionRequest); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var accountsSelectionRequest v2025.AccountsSelectionRequest
+    if err := json.Unmarshal(accountsselectionrequest, &accountsSelectionRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.LoadAccountSelections(context.Background()).AccountsSelectionRequest(accountsSelectionRequest).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.LoadAccountSelections(context.Background()).AccountsSelectionRequest(accountsSelectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.LoadAccountSelections``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `LoadAccountSelections`: AccountsSelectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.LoadAccountSelections`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.LoadAccountSelections(context.Background()).AccountsSelectionRequest(accountsSelectionRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.LoadAccountSelections``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `LoadAccountSelections`: AccountsSelectionResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.LoadAccountSelections`: %v\n", resp)
 }
 ```
 
@@ -1111,7 +1105,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "encoding/json"
+  "encoding/json"
     v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
@@ -1151,24 +1145,23 @@ func main() {
           "approvalsMustBeExternal" : true
         }`) // AccessRequestConfig | 
 
-  
-   var accessRequestConfig v2025.AccessRequestConfig
-   if err := json.Unmarshal(accessrequestconfig, &accessRequestConfig); err != nil {
-    fmt.Println("Error:", err)
-    return
-   }
-  
+    var accessRequestConfig v2025.AccessRequestConfig
+    if err := json.Unmarshal(accessrequestconfig, &accessRequestConfig); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
 
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.V2025.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
-	//resp, r, err := apiClient.V2025.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SetAccessRequestConfig`: AccessRequestConfig
-	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfig`: %v\n", resp)
+	  //resp, r, err := apiClient.V2025.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetAccessRequestConfig`: AccessRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfig`: %v\n", resp)
 }
 ```
 
