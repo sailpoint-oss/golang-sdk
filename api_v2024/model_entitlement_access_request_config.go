@@ -25,6 +25,8 @@ type EntitlementAccessRequestConfig struct {
 	RequestCommentRequired *bool `json:"requestCommentRequired,omitempty"`
 	// If the reviewer must provide a comment when denying the access request.
 	DenialCommentRequired *bool `json:"denialCommentRequired,omitempty"`
+	// Is Reauthorization Required
+	ReauthorizationRequired *bool `json:"reauthorizationRequired,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,6 +42,8 @@ func NewEntitlementAccessRequestConfig() *EntitlementAccessRequestConfig {
 	this.RequestCommentRequired = &requestCommentRequired
 	var denialCommentRequired bool = false
 	this.DenialCommentRequired = &denialCommentRequired
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = &reauthorizationRequired
 	return &this
 }
 
@@ -52,6 +56,8 @@ func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestCo
 	this.RequestCommentRequired = &requestCommentRequired
 	var denialCommentRequired bool = false
 	this.DenialCommentRequired = &denialCommentRequired
+	var reauthorizationRequired bool = false
+	this.ReauthorizationRequired = &reauthorizationRequired
 	return &this
 }
 
@@ -151,6 +157,38 @@ func (o *EntitlementAccessRequestConfig) SetDenialCommentRequired(v bool) {
 	o.DenialCommentRequired = &v
 }
 
+// GetReauthorizationRequired returns the ReauthorizationRequired field value if set, zero value otherwise.
+func (o *EntitlementAccessRequestConfig) GetReauthorizationRequired() bool {
+	if o == nil || IsNil(o.ReauthorizationRequired) {
+		var ret bool
+		return ret
+	}
+	return *o.ReauthorizationRequired
+}
+
+// GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReauthorizationRequired) {
+		return nil, false
+	}
+	return o.ReauthorizationRequired, true
+}
+
+// HasReauthorizationRequired returns a boolean if a field has been set.
+func (o *EntitlementAccessRequestConfig) HasReauthorizationRequired() bool {
+	if o != nil && !IsNil(o.ReauthorizationRequired) {
+		return true
+	}
+
+	return false
+}
+
+// SetReauthorizationRequired gets a reference to the given bool and assigns it to the ReauthorizationRequired field.
+func (o *EntitlementAccessRequestConfig) SetReauthorizationRequired(v bool) {
+	o.ReauthorizationRequired = &v
+}
+
 func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -169,6 +207,9 @@ func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.DenialCommentRequired) {
 		toSerialize["denialCommentRequired"] = o.DenialCommentRequired
+	}
+	if !IsNil(o.ReauthorizationRequired) {
+		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -195,6 +236,7 @@ func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "approvalSchemes")
 		delete(additionalProperties, "requestCommentRequired")
 		delete(additionalProperties, "denialCommentRequired")
+		delete(additionalProperties, "reauthorizationRequired")
 		o.AdditionalProperties = additionalProperties
 	}
 

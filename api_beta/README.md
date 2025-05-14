@@ -905,6 +905,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
+ - [EntitlementRevocationRequestConfig](docs/EntitlementRevocationRequestConfig.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntityCreatedByDTO](docs/EntityCreatedByDTO.md)
