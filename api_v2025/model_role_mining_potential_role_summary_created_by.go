@@ -12,8 +12,8 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // RoleMiningPotentialRoleSummaryCreatedBy - The potential role created by details

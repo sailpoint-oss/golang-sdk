@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // GetDiscoveredApplications200ResponseInner - struct for GetDiscoveredApplications200ResponseInner
