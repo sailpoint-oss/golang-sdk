@@ -1,0 +1,66 @@
+{{#operations}}
+{{#operation}}
+- path: {{path}}
+  method: {{httpMethod}}
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/{{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}}/methods/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}{{/lambda.kebabcase}}#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            {{#requiredAndNotNullableParams}}{{#isBodyParam}} "encoding/json"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
+        {{#vendorExtensions.x-go-import}}
+        {{{vendorExtensions.x-go-import}}}
+        {{/vendorExtensions.x-go-import}}
+            {{apiVersion}} "{{moduleImportPath}}"
+          sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+        )
+
+        func main() {
+          {{#allParams}}
+          {{^isArray}}
+          {{#isModel}}
+           {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
+          {{/isModel}}
+          {{^isModel}}
+          {{paramName}} := {{#isString}}`{{/isString}}{{{example}}}{{#isString}}`{{/isString}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+          {{/isModel}}
+          {{/isArray}}
+          {{#isArray}}
+          {{#items.isModel}}
+          {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+          {{/items.isModel}}
+          {{^items.isModel}}
+          {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+          {{/items.isModel}}
+          {{/isArray}}
+          {{/allParams}}
+
+          {{#requiredAndNotNullableParams}}{{#isBodyParam}}
+          var {{paramName}} {{#isArray}}[]{{/isArray}}{{apiVersion}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
+          if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}, &{{paramName}}); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          {{/isBodyParam}}{{/requiredAndNotNullableParams}}
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#requiredParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/requiredParams}}.Execute()
+          //{{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          {{#returnType}}
+          // response from `{{operationId}}`: {{{.}}}
+          fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
+          {{/returnType}}
+        }
+  {{/operation}}
+{{/operations}}
