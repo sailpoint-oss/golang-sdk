@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestConfig** | Pointer to [**EntitlementAccessRequestConfig**](EntitlementAccessRequestConfig.md) |  | [optional] 
+**RevocationRequestConfig** | Pointer to [**EntitlementRevocationRequestConfig**](EntitlementRevocationRequestConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetAccessRequestConfig sets AccessRequestConfig field to given value.
 `func (o *EntitlementRequestConfig) HasAccessRequestConfig() bool`
 
 HasAccessRequestConfig returns a boolean if a field has been set.
+
+### GetRevocationRequestConfig
+
+`func (o *EntitlementRequestConfig) GetRevocationRequestConfig() EntitlementRevocationRequestConfig`
+
+GetRevocationRequestConfig returns the RevocationRequestConfig field if non-nil, zero value otherwise.
+
+### GetRevocationRequestConfigOk
+
+`func (o *EntitlementRequestConfig) GetRevocationRequestConfigOk() (*EntitlementRevocationRequestConfig, bool)`
+
+GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevocationRequestConfig
+
+`func (o *EntitlementRequestConfig) SetRevocationRequestConfig(v EntitlementRevocationRequestConfig)`
+
+SetRevocationRequestConfig sets RevocationRequestConfig field to given value.
+
+### HasRevocationRequestConfig
+
+`func (o *EntitlementRequestConfig) HasRevocationRequestConfig() bool`
+
+HasRevocationRequestConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

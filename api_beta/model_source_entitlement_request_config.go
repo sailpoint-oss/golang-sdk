@@ -20,6 +20,7 @@ var _ MappedNullable = &SourceEntitlementRequestConfig{}
 // SourceEntitlementRequestConfig Entitlement Request Configuration
 type SourceEntitlementRequestConfig struct {
 	AccessRequestConfig *EntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
+	RevocationRequestConfig *EntitlementRevocationRequestConfig `json:"revocationRequestConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,6 +75,38 @@ func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAcc
 	o.AccessRequestConfig = &v
 }
 
+// GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise.
+func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() EntitlementRevocationRequestConfig {
+	if o == nil || IsNil(o.RevocationRequestConfig) {
+		var ret EntitlementRevocationRequestConfig
+		return ret
+	}
+	return *o.RevocationRequestConfig
+}
+
+// GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfigOk() (*EntitlementRevocationRequestConfig, bool) {
+	if o == nil || IsNil(o.RevocationRequestConfig) {
+		return nil, false
+	}
+	return o.RevocationRequestConfig, true
+}
+
+// HasRevocationRequestConfig returns a boolean if a field has been set.
+func (o *SourceEntitlementRequestConfig) HasRevocationRequestConfig() bool {
+	if o != nil && !IsNil(o.RevocationRequestConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetRevocationRequestConfig gets a reference to the given EntitlementRevocationRequestConfig and assigns it to the RevocationRequestConfig field.
+func (o *SourceEntitlementRequestConfig) SetRevocationRequestConfig(v EntitlementRevocationRequestConfig) {
+	o.RevocationRequestConfig = &v
+}
+
 func (o SourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -86,6 +119,9 @@ func (o SourceEntitlementRequestConfig) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AccessRequestConfig) {
 		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
+	}
+	if !IsNil(o.RevocationRequestConfig) {
+		toSerialize["revocationRequestConfig"] = o.RevocationRequestConfig
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -110,6 +146,7 @@ func (o *SourceEntitlementRequestConfig) UnmarshalJSON(data []byte) (err error) 
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessRequestConfig")
+		delete(additionalProperties, "revocationRequestConfig")
 		o.AdditionalProperties = additionalProperties
 	}
 

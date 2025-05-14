@@ -13268,6 +13268,17 @@ paths:
                 accessRequestConfig:
                   requestCommentRequired: true
                   denialCommentRequired: true
+                  reauthorizationRequired: false
+                  approvalSchemes:
+                  - approverType: ENTITLEMENT_OWNER
+                    approverId: null
+                  - approverType: SOURCE_OWNER
+                    approverId: null
+                  - approverType: MANAGER
+                    approverId: null
+                  - approverType: GOVERNANCE_GROUP
+                    approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+                revocationRequestConfig:
                   approvalSchemes:
                   - approverType: ENTITLEMENT_OWNER
                     approverId: null
@@ -13361,6 +13372,10 @@ paths:
       summary: Get Entitlement Request Config
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_SUBADMIN
+      - SOURCE_ADMIN
     put:
       description: This API replaces the entitlement request config for a specified
         entitlement.
@@ -13388,6 +13403,16 @@ paths:
                 accessRequestConfig:
                   requestCommentRequired: true
                   denialCommentRequired: true
+                  approvalSchemes:
+                  - approverType: ENTITLEMENT_OWNER
+                    approverId: null
+                  - approverType: SOURCE_OWNER
+                    approverId: null
+                  - approverType: MANAGER
+                    approverId: null
+                  - approverType: GOVERNANCE_GROUP
+                    approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+                revocationRequestConfig:
                   approvalSchemes:
                   - approverType: ENTITLEMENT_OWNER
                     approverId: null
@@ -13480,6 +13505,10 @@ paths:
       summary: Replace Entitlement Request Config
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_SUBADMIN
+      - SOURCE_ADMIN
   /entitlements/reset/sources/{sourceId}:
     post:
       description: "Remove all entitlements from a specific source.\nTo reload the\
@@ -69722,10 +69751,19 @@ components:
             approverType: GOVERNANCE_GROUP
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
             approverType: GOVERNANCE_GROUP
+          reauthorizationRequired: false
           requestCommentRequired: true
+        revocationRequestConfig:
+          approvalSchemes:
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
       properties:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
+        revocationRequestConfig:
+          $ref: '#/components/schemas/EntitlementRevocationRequestConfig'
       type: object
     EntitlementSourceResetBaseReferenceDto:
       example:
@@ -79032,10 +79070,19 @@ components:
             approverType: GOVERNANCE_GROUP
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
             approverType: GOVERNANCE_GROUP
+          reauthorizationRequired: false
           requestCommentRequired: true
+        revocationRequestConfig:
+          approvalSchemes:
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
       properties:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
+        revocationRequestConfig:
+          $ref: '#/components/schemas/EntitlementRevocationRequestConfig'
       type: object
     LoadAccountsTask:
       example:
@@ -85765,6 +85812,7 @@ components:
           approverType: GOVERNANCE_GROUP
         - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
           approverType: GOVERNANCE_GROUP
+        reauthorizationRequired: false
         requestCommentRequired: true
       properties:
         approvalSchemes:
@@ -85784,6 +85832,26 @@ components:
             request.
           example: false
           type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Is Reauthorization Required
+          example: false
+          type: boolean
+      type: object
+    EntitlementRevocationRequestConfig:
+      example:
+        approvalSchemes:
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+      properties:
+        approvalSchemes:
+          description: Ordered list of approval steps for the access request. Empty
+            when no approval is required.
+          items:
+            $ref: '#/components/schemas/EntitlementApprovalScheme'
+          type: array
       type: object
     CommonAccessItemAccess:
       example:

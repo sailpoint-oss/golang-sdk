@@ -361,6 +361,7 @@ docs/EntitlementOwner.md
 docs/EntitlementRef.md
 docs/EntitlementRequestConfig.md
 docs/EntitlementRequestConfig1.md
+docs/EntitlementRevocationRequestConfig.md
 docs/EntitlementSource.md
 docs/EntitlementSourceResetBaseReferenceDto.md
 docs/EntitlementsAPI.md
@@ -1306,6 +1307,7 @@ model_entitlement_owner.go
 model_entitlement_ref.go
 model_entitlement_request_config.go
 model_entitlement_request_config_1.go
+model_entitlement_revocation_request_config.go
 model_entitlement_source.go
 model_entitlement_source_reset_base_reference_dto.go
 model_entity_created_by_dto.go

@@ -1157,6 +1157,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRef1](docs/EntitlementRef1.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
+ - [EntitlementRevocationRequestConfig](docs/EntitlementRevocationRequestConfig.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntitlementSummary](docs/EntitlementSummary.md)

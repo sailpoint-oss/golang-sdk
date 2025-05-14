@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ApprovalSchemes** | Pointer to [**[]EntitlementApprovalScheme**](EntitlementApprovalScheme.md) | Ordered list of approval steps for the access request. Empty when no approval is required. | [optional] 
 **RequestCommentRequired** | Pointer to **bool** | If the requester must provide a comment during access request. | [optional] [default to false]
 **DenialCommentRequired** | Pointer to **bool** | If the reviewer must provide a comment when denying the access request. | [optional] [default to false]
+**ReauthorizationRequired** | Pointer to **bool** | Is Reauthorization Required | [optional] [default to false]
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetDenialCommentRequired sets DenialCommentRequired field to given value.
 `func (o *EntitlementAccessRequestConfig) HasDenialCommentRequired() bool`
 
 HasDenialCommentRequired returns a boolean if a field has been set.
+
+### GetReauthorizationRequired
+
+`func (o *EntitlementAccessRequestConfig) GetReauthorizationRequired() bool`
+
+GetReauthorizationRequired returns the ReauthorizationRequired field if non-nil, zero value otherwise.
+
+### GetReauthorizationRequiredOk
+
+`func (o *EntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool)`
+
+GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReauthorizationRequired
+
+`func (o *EntitlementAccessRequestConfig) SetReauthorizationRequired(v bool)`
+
+SetReauthorizationRequired sets ReauthorizationRequired field to given value.
+
+### HasReauthorizationRequired
+
+`func (o *EntitlementAccessRequestConfig) HasReauthorizationRequired() bool`
+
+HasReauthorizationRequired returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
