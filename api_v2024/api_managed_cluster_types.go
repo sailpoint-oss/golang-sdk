@@ -39,7 +39,7 @@ func (r ApiCreateManagedClusterTypeRequest) Execute() (*ManagedClusterType, *htt
 }
 
 /*
-CreateManagedClusterType Create new Managed Cluster Type
+CreateManagedClusterType Create new managed cluster type
 
 Create a new Managed Cluster Type.
 AMS Security: Devops, Internal A token with SaaS Platform Internal or DevOps is required to access this endpoint.
@@ -211,7 +211,7 @@ func (r ApiDeleteManagedClusterTypeRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedClusterType Delete a Managed Cluster Type
+DeleteManagedClusterType Delete a managed cluster type
 
 Delete an existing Managed Cluster Type.
 AMS Security: Devops, Internal A token with SaaS Platform Internal or DevOps is required to access this endpoint.
@@ -358,7 +358,7 @@ func (r ApiGetManagedClusterTypeRequest) Execute() (*ManagedClusterType, *http.R
 }
 
 /*
-GetManagedClusterType Get a Managed Cluster Type
+GetManagedClusterType Get a managed cluster type
 
 Get a Managed Cluster Type.
 AMS Security: Devops, Internal A token with SaaS Platform Internal or DevOps is required to access this endpoint.
@@ -561,7 +561,7 @@ func (r ApiGetManagedClusterTypesRequest) Execute() ([]ManagedClusterType, *http
 }
 
 /*
-GetManagedClusterTypes Get Managed Cluster Types
+GetManagedClusterTypes Get managed cluster types
 
 Get a list of Managed Cluster Types.
 AMS Security: Devops, Internal A token with SaaS Platform Internal or DevOps is required to access this endpoint.
@@ -755,7 +755,7 @@ func (r ApiUpdateManagedClusterTypeRequest) Execute() (*ManagedClusterType, *htt
 }
 
 /*
-UpdateManagedClusterType Update a Managed Cluster Type
+UpdateManagedClusterType Update a managed cluster type
 
 Update an existing Managed Cluster Type.
 AMS Security: Devops, Internal A token with SaaS Platform Internal or DevOps is required to access this endpoint.

@@ -40,7 +40,7 @@ func (r ApiCreateSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *
 }
 
 /*
-CreateSIMIntegration Create new SIM integration
+CreateSIMIntegration Create new sim integration
 
 Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -210,7 +210,7 @@ func (r ApiDeleteSIMIntegrationRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSIMIntegration Delete a SIM integration
+DeleteSIMIntegration Delete a sim integration
 
 Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -367,7 +367,7 @@ func (r ApiGetSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *htt
 }
 
 /*
-GetSIMIntegration Get a SIM integration details.
+GetSIMIntegration Get a sim integration details.
 
 Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -534,7 +534,7 @@ func (r ApiGetSIMIntegrationsRequest) Execute() (*ServiceDeskIntegrationDto, *ht
 }
 
 /*
-GetSIMIntegrations List the existing SIM integrations.
+GetSIMIntegrations List the existing sim integrations.
 
 List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -706,7 +706,7 @@ func (r ApiPatchBeforeProvisioningRuleRequest) Execute() (*ServiceDeskIntegratio
 }
 
 /*
-PatchBeforeProvisioningRule Patch a SIM beforeProvisioningRule attribute.
+PatchBeforeProvisioningRule Patch a sim beforeprovisioningrule attribute.
 
 Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -886,7 +886,7 @@ func (r ApiPatchSIMAttributesRequest) Execute() (*ServiceDeskIntegrationDto, *ht
 }
 
 /*
-PatchSIMAttributes Patch a SIM attribute.
+PatchSIMAttributes Patch a sim attribute.
 
 Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1066,7 +1066,7 @@ func (r ApiPutSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *htt
 }
 
 /*
-PutSIMIntegration Update an existing SIM integration
+PutSIMIntegration Update an existing sim integration
 
 Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 

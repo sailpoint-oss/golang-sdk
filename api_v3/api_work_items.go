@@ -35,7 +35,7 @@ func (r ApiApproveApprovalItemRequest) Execute() (*WorkItems, *http.Response, er
 }
 
 /*
-ApproveApprovalItem Approve an Approval Item
+ApproveApprovalItem Approve an approval item
 
 This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -206,7 +206,7 @@ func (r ApiApproveApprovalItemsInBulkRequest) Execute() (*WorkItems, *http.Respo
 }
 
 /*
-ApproveApprovalItemsInBulk Bulk approve Approval Items
+ApproveApprovalItemsInBulk Bulk approve approval items
 
 This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -381,7 +381,7 @@ func (r ApiCompleteWorkItemRequest) Execute() (*WorkItems, *http.Response, error
 }
 
 /*
-CompleteWorkItem Complete a Work Item
+CompleteWorkItem Complete a work item
 
 This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -578,7 +578,7 @@ func (r ApiGetCompletedWorkItemsRequest) Execute() ([]WorkItems, *http.Response,
 }
 
 /*
-GetCompletedWorkItems Completed Work Items
+GetCompletedWorkItems Completed work items
 
 This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -759,7 +759,7 @@ func (r ApiGetCountCompletedWorkItemsRequest) Execute() (*WorkItemsCount, *http.
 }
 
 /*
-GetCountCompletedWorkItems Count Completed Work Items
+GetCountCompletedWorkItems Count completed work items
 
 This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -922,7 +922,7 @@ func (r ApiGetCountWorkItemsRequest) Execute() (*WorkItemsCount, *http.Response,
 }
 
 /*
-GetCountWorkItems Count Work Items
+GetCountWorkItems Count work items
 
 This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1079,7 +1079,7 @@ func (r ApiGetWorkItemRequest) Execute() (*WorkItems, *http.Response, error) {
 }
 
 /*
-GetWorkItem Get a Work Item
+GetWorkItem Get a work item
 
 This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -1253,7 +1253,7 @@ func (r ApiGetWorkItemsSummaryRequest) Execute() (*WorkItemsSummary, *http.Respo
 }
 
 /*
-GetWorkItemsSummary Work Items Summary
+GetWorkItemsSummary Work items summary
 
 This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1437,7 +1437,7 @@ func (r ApiListWorkItemsRequest) Execute() ([]WorkItems, *http.Response, error) 
 }
 
 /*
-ListWorkItems List Work Items
+ListWorkItems List work items
 
 This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1613,7 +1613,7 @@ func (r ApiRejectApprovalItemRequest) Execute() (*WorkItems, *http.Response, err
 }
 
 /*
-RejectApprovalItem Reject an Approval Item
+RejectApprovalItem Reject an approval item
 
 This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -1784,7 +1784,7 @@ func (r ApiRejectApprovalItemsInBulkRequest) Execute() (*WorkItems, *http.Respon
 }
 
 /*
-RejectApprovalItemsInBulk Bulk reject Approval Items
+RejectApprovalItemsInBulk Bulk reject approval items
 
 This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -1958,7 +1958,7 @@ func (r ApiSendWorkItemForwardRequest) Execute() (*http.Response, error) {
 }
 
 /*
-SendWorkItemForward Forward a Work Item
+SendWorkItemForward Forward a work item
 
 This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request. Accessible to work-item Owner, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN.
 
@@ -2116,7 +2116,7 @@ func (r ApiSubmitAccountSelectionRequest) Execute() (*WorkItems, *http.Response,
 }
 
 /*
-SubmitAccountSelection Submit Account Selections
+SubmitAccountSelection Submit account selections
 
 This API submits account selections. Either an admin, or the owning/current user must make this request.
 

@@ -32,7 +32,7 @@ func (r ApiGetOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) {
 }
 
 /*
-GetOrgConfig Get Org configuration settings
+GetOrgConfig Get org configuration settings
 
 Get org configuration with only external (org admin) accessible properties for the current org.
 
@@ -356,7 +356,7 @@ func (r ApiPatchOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) 
 }
 
 /*
-PatchOrgConfig Patch an Org configuration property
+PatchOrgConfig Patch an org configuration property
 
 Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
 

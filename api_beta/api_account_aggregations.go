@@ -34,7 +34,7 @@ func (r ApiGetAccountAggregationStatusRequest) Execute() (*AccountAggregationSta
 }
 
 /*
-GetAccountAggregationStatus In-progress Account Aggregation status
+GetAccountAggregationStatus In-progress account aggregation status
 
 This API returns the status of an *in-progress* account aggregation, along with the total number of **NEW**, **CHANGED** and **DELETED** accounts found since the previous aggregation, and the number of those accounts that have been processed so far.
 

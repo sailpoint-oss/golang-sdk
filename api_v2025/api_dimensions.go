@@ -40,7 +40,7 @@ func (r ApiCreateDimensionRequest) Execute() (*Dimension, *http.Response, error)
 }
 
 /*
-CreateDimension Create a Dimension
+CreateDimension Create a dimension
 
 This API creates a dimension.
 You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. 
@@ -211,7 +211,7 @@ func (r ApiDeleteBulkDimensionsRequest) Execute() (*TaskResultDto, *http.Respons
 }
 
 /*
-DeleteBulkDimensions Delete Dimension(s)
+DeleteBulkDimensions Delete dimension(s)
 
 This endpoint initiates a bulk deletion of one or more dimensions.
 When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
@@ -377,7 +377,7 @@ func (r ApiDeleteDimensionRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteDimension Delete a Dimension
+DeleteDimension Delete a dimension
 
 This API deletes a Dimension by its ID.
 A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles/Entitlements included in the Dimension are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
@@ -528,7 +528,7 @@ func (r ApiGetDimensionRequest) Execute() (*Dimension, *http.Response, error) {
 }
 
 /*
-GetDimension Get a Dimension under Role.
+GetDimension Get a dimension under role.
 
 This API returns a Dimension by its ID.
 
@@ -726,7 +726,7 @@ func (r ApiGetDimensionEntitlementsRequest) Execute() ([]Entitlement, *http.Resp
 }
 
 /*
-GetDimensionEntitlements List Dimension's Entitlements
+GetDimensionEntitlements List dimension's entitlements
 
 This API lists the Entitlements associated with a given dimension.
 
@@ -948,7 +948,7 @@ func (r ApiListDimensionAccessProfilesRequest) Execute() ([]AccessProfile, *http
 }
 
 /*
-ListDimensionAccessProfiles List Dimension's Access Profiles
+ListDimensionAccessProfiles List dimension's access profiles
 
 This API lists the Access Profiles associated with a given Dimension
 
@@ -1187,7 +1187,7 @@ func (r ApiListDimensionsRequest) Execute() ([]Dimension, *http.Response, error)
 }
 
 /*
-ListDimensions List Dimensions
+ListDimensions List dimensions
 
 This API returns a list of dimensions under a specified role.
 
@@ -1380,7 +1380,7 @@ func (r ApiPatchDimensionRequest) Execute() (*Dimension, *http.Response, error) 
 }
 
 /*
-PatchDimension Patch a specified Dimension
+PatchDimension Patch a specified dimension
 
 This API updates an existing dimension using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 The following fields are patchable: **name** **description** **owner** **accessProfiles** **entitlements** **membership**

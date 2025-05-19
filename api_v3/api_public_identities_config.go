@@ -32,7 +32,7 @@ func (r ApiGetPublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, *ht
 }
 
 /*
-GetPublicIdentityConfig Get the Public Identities Configuration
+GetPublicIdentityConfig Get the public identities configuration
 
 Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -191,7 +191,7 @@ func (r ApiUpdatePublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, 
 }
 
 /*
-UpdatePublicIdentityConfig Update the Public Identities Configuration
+UpdatePublicIdentityConfig Update the public identities configuration
 
 Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 

@@ -38,7 +38,7 @@ func (r ApiCreatePasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.
 }
 
 /*
-CreatePasswordOrgConfig Create Password Org Config
+CreatePasswordOrgConfig Create password org config
 
 This API creates the password org config. Unspecified fields will use default value.
 To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
@@ -198,7 +198,7 @@ func (r ApiGetPasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.Res
 }
 
 /*
-GetPasswordOrgConfig Get Password Org Config
+GetPasswordOrgConfig Get password org config
 
 This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
 
@@ -357,7 +357,7 @@ func (r ApiPutPasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.Res
 }
 
 /*
-PutPasswordOrgConfig Update Password Org Config
+PutPasswordOrgConfig Update password org config
 
 This API updates the password org config for specified fields. Other fields will keep original value.
 You must set the `customInstructionsEnabled` field to "true" to be able to use custom password instructions. 

@@ -208,7 +208,7 @@ func (r ApiGetAuthOrgLockoutConfigRequest) Execute() (*LockoutConfiguration, *ht
 }
 
 /*
-GetAuthOrgLockoutConfig Get Auth Org Lockout Configuration.
+GetAuthOrgLockoutConfig Get auth org lockout configuration.
 
 This API returns the details of an org's lockout auth configuration.
 
@@ -536,7 +536,7 @@ func (r ApiGetAuthOrgServiceProviderConfigRequest) Execute() (*ServiceProviderCo
 }
 
 /*
-GetAuthOrgServiceProviderConfig Get Service Provider Configuration.
+GetAuthOrgServiceProviderConfig Get service provider configuration.
 
 This API returns the details of an org's service provider auth configuration.
 
@@ -700,7 +700,7 @@ func (r ApiGetAuthOrgSessionConfigRequest) Execute() (*SessionConfiguration, *ht
 }
 
 /*
-GetAuthOrgSessionConfig Get Auth Org Session Configuration.
+GetAuthOrgSessionConfig Get auth org session configuration.
 
 This API returns the details of an org's session auth configuration.
 
@@ -871,7 +871,7 @@ func (r ApiPatchAuthOrgLockoutConfigRequest) Execute() (*LockoutConfiguration, *
 }
 
 /*
-PatchAuthOrgLockoutConfig Update Auth Org Lockout Configuration
+PatchAuthOrgLockoutConfig Update auth org lockout configuration
 
 This API updates an existing lockout configuration for an org using PATCH
 
@@ -1225,7 +1225,7 @@ func (r ApiPatchAuthOrgServiceProviderConfigRequest) Execute() (*ServiceProvider
 }
 
 /*
-PatchAuthOrgServiceProviderConfig Update Service Provider Configuration
+PatchAuthOrgServiceProviderConfig Update service provider configuration
 
 This API updates an existing service provider configuration for an org using PATCH.
 
@@ -1401,7 +1401,7 @@ func (r ApiPatchAuthOrgSessionConfigRequest) Execute() (*SessionConfiguration, *
 }
 
 /*
-PatchAuthOrgSessionConfig Update Auth Org Session Configuration
+PatchAuthOrgSessionConfig Update auth org session configuration
 
 This API updates an existing session configuration for an org using PATCH.
 

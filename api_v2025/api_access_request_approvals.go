@@ -41,7 +41,7 @@ func (r ApiApproveAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ApproveAccessRequest Approve Access Request Approval
+ApproveAccessRequest Approve access request approval
 
 Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -218,7 +218,7 @@ func (r ApiForwardAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ForwardAccessRequest Forward Access Request Approval
+ForwardAccessRequest Forward access request approval
 
 Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -404,7 +404,7 @@ func (r ApiGetAccessRequestApprovalSummaryRequest) Execute() (*ApprovalSummary, 
 }
 
 /*
-GetAccessRequestApprovalSummary Get Access Requests Approvals Number
+GetAccessRequestApprovalSummary Get access requests approvals number
 
 Use this API to return the number of pending, approved and rejected access requests approvals. See the "owner-id" query parameter for authorization information. info.
 
@@ -585,7 +585,7 @@ func (r ApiListAccessRequestApproversRequest) Execute() ([]AccessRequestApprover
 }
 
 /*
-ListAccessRequestApprovers Access Request Approvers
+ListAccessRequestApprovers Access request approvers
 
 This API endpoint returns the list of approvers for the given access request id.
 
@@ -810,7 +810,7 @@ func (r ApiListCompletedApprovalsRequest) Execute() ([]CompletedApproval, *http.
 }
 
 /*
-ListCompletedApprovals Completed Access Request Approvals List
+ListCompletedApprovals Completed access request approvals list
 
 This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
 
@@ -1032,7 +1032,7 @@ func (r ApiListPendingApprovalsRequest) Execute() ([]PendingApproval, *http.Resp
 }
 
 /*
-ListPendingApprovals Pending Access Request Approvals List
+ListPendingApprovals Pending access request approvals list
 
 This endpoint returns a list of pending approvals. See "owner-id" query parameter below for authorization info.
 
@@ -1220,7 +1220,7 @@ func (r ApiRejectAccessRequestRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-RejectAccessRequest Reject Access Request Approval
+RejectAccessRequest Reject access request approval
 
 Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 

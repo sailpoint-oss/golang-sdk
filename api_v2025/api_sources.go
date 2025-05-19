@@ -41,7 +41,7 @@ func (r ApiCreateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 }
 
 /*
-CreateProvisioningPolicy Create Provisioning Policy
+CreateProvisioningPolicy Create provisioning policy
 
 This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
@@ -228,7 +228,7 @@ func (r ApiCreateSourceRequest) Execute() (*Source, *http.Response, error) {
 }
 
 /*
-CreateSource Creates a source in IdentityNow.
+CreateSource Creates a source in identitynow.
 
 This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -396,7 +396,7 @@ func (r ApiCreateSourceScheduleRequest) Execute() (*Schedule1, *http.Response, e
 }
 
 /*
-CreateSourceSchedule Create Schedule on Source
+CreateSourceSchedule Create schedule on source
 
 Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC).
 
@@ -565,7 +565,7 @@ func (r ApiCreateSourceSchemaRequest) Execute() (*Schema, *http.Response, error)
 }
 
 /*
-CreateSourceSchema Create Schema on Source
+CreateSourceSchema Create schema on source
 
 Use this API to create a new schema on the specified source in Identity Security Cloud (ISC).
 
@@ -735,7 +735,7 @@ func (r ApiDeleteAccountsAsyncRequest) Execute() (*TaskResultDto, *http.Response
 }
 
 /*
-DeleteAccountsAsync Remove All Accounts in a Source
+DeleteAccountsAsync Remove all accounts in a source
 
 Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
 
@@ -915,7 +915,7 @@ func (r ApiDeleteNativeChangeDetectionConfigRequest) Execute() (*http.Response, 
 }
 
 /*
-DeleteNativeChangeDetectionConfig Delete Native Change Detection Configuration
+DeleteNativeChangeDetectionConfig Delete native change detection configuration
 
 Deletes the native change detection configuration for the source specified by the given ID.
 
@@ -1083,7 +1083,7 @@ func (r ApiDeleteProvisioningPolicyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteProvisioningPolicy Delete Provisioning Policy by UsageType
+DeleteProvisioningPolicy Delete provisioning policy by usagetype
 
 Deletes the provisioning policy with the specified usage on an application.
 
@@ -1243,7 +1243,7 @@ func (r ApiDeleteSourceRequest) Execute() (*DeleteSource202Response, *http.Respo
 }
 
 /*
-DeleteSource Delete Source by ID
+DeleteSource Delete source by id
 
 Use this API to delete a specific source in Identity Security Cloud (ISC).
 The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
@@ -1413,7 +1413,7 @@ func (r ApiDeleteSourceScheduleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSourceSchedule Delete Source Schedule by type.
+DeleteSourceSchedule Delete source schedule by type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -1572,7 +1572,7 @@ func (r ApiDeleteSourceSchemaRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSourceSchema Delete Source Schema by ID
+DeleteSourceSchema Delete source schema by id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -1888,7 +1888,7 @@ func (r ApiGetCorrelationConfigRequest) Execute() (*CorrelationConfig, *http.Res
 }
 
 /*
-GetCorrelationConfig Get Source Correlation Configuration
+GetCorrelationConfig Get source correlation configuration
 
 This API returns the existing correlation configuration for a source specified by the given ID.
 
@@ -2232,7 +2232,7 @@ func (r ApiGetNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetect
 }
 
 /*
-GetNativeChangeDetectionConfig Native Change Detection Configuration
+GetNativeChangeDetectionConfig Native change detection configuration
 
 This API returns the existing native change detection configuration for a source specified by the given ID.
 
@@ -2411,7 +2411,7 @@ func (r ApiGetProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 }
 
 /*
-GetProvisioningPolicy Get Provisioning Policy by UsageType
+GetProvisioningPolicy Get provisioning policy by usagetype
 
 This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
@@ -2582,7 +2582,7 @@ func (r ApiGetSourceRequest) Execute() (*Source, *http.Response, error) {
 }
 
 /*
-GetSource Get Source by ID
+GetSource Get source by id
 
 Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -2757,7 +2757,7 @@ func (r ApiGetSourceAttrSyncConfigRequest) Execute() (*AttrSyncSourceConfig, *ht
 }
 
 /*
-GetSourceAttrSyncConfig Attribute Sync Config
+GetSourceAttrSyncConfig Attribute sync config
 
 This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
@@ -3113,7 +3113,7 @@ func (r ApiGetSourceConnectionsRequest) Execute() (*SourceConnectionsDto, *http.
 }
 
 /*
-GetSourceConnections Get Source Connections by ID
+GetSourceConnections Get source connections by id
 
 Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -3287,7 +3287,7 @@ func (r ApiGetSourceEntitlementRequestConfigRequest) Execute() (*SourceEntitleme
 }
 
 /*
-GetSourceEntitlementRequestConfig Get Source Entitlement Request Configuration
+GetSourceEntitlementRequestConfig Get source entitlement request configuration
 
 This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
 
@@ -3624,7 +3624,7 @@ func (r ApiGetSourceScheduleRequest) Execute() (*Schedule1, *http.Response, erro
 }
 
 /*
-GetSourceSchedule Get Source Schedule by Type
+GetSourceSchedule Get source schedule by type
 
 Get the source schedule by type in Identity Security Cloud (ISC).
 
@@ -3796,7 +3796,7 @@ func (r ApiGetSourceSchedulesRequest) Execute() ([]Schedule1, *http.Response, er
 }
 
 /*
-GetSourceSchedules List Schedules on Source
+GetSourceSchedules List schedules on source
 
 Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
 :::info
@@ -3973,7 +3973,7 @@ func (r ApiGetSourceSchemaRequest) Execute() (*Schema, *http.Response, error) {
 }
 
 /*
-GetSourceSchema Get Source Schema by ID
+GetSourceSchema Get source schema by id
 
 Get the Source Schema by ID in IdentityNow.
 
@@ -4159,7 +4159,7 @@ func (r ApiGetSourceSchemasRequest) Execute() ([]Schema, *http.Response, error) 
 }
 
 /*
-GetSourceSchemas List Schemas on Source
+GetSourceSchemas List schemas on source
 
 Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
@@ -4347,7 +4347,7 @@ func (r ApiImportAccountsRequest) Execute() (*LoadAccountsTask, *http.Response, 
 }
 
 /*
-ImportAccounts Account Aggregation
+ImportAccounts Account aggregation
 
 Starts an account aggregation on the specified source. 
 If the target source is a delimited file source, then the CSV file needs to be included in the request body.
@@ -5093,7 +5093,7 @@ func (r ApiImportUncorrelatedAccountsRequest) Execute() (*LoadUncorrelatedAccoun
 }
 
 /*
-ImportUncorrelatedAccounts Process Uncorrelated Accounts
+ImportUncorrelatedAccounts Process uncorrelated accounts
 
 File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
@@ -5275,7 +5275,7 @@ func (r ApiListProvisioningPoliciesRequest) Execute() ([]ProvisioningPolicyDto, 
 }
 
 /*
-ListProvisioningPolicies Lists ProvisioningPolicies
+ListProvisioningPolicies Lists provisioningpolicies
 
 This end-point lists all the ProvisioningPolicies in IdentityNow.
 
@@ -5491,7 +5491,7 @@ func (r ApiListSourcesRequest) Execute() ([]Source, *http.Response, error) {
 }
 
 /*
-ListSources Lists all sources in IdentityNow.
+ListSources Lists all sources in identitynow.
 
 This end-point lists all the sources in IdentityNow.
 
@@ -5863,7 +5863,7 @@ func (r ApiPutCorrelationConfigRequest) Execute() (*CorrelationConfig, *http.Res
 }
 
 /*
-PutCorrelationConfig Update Source Correlation Configuration
+PutCorrelationConfig Update source correlation configuration
 
 Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -6049,7 +6049,7 @@ func (r ApiPutNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetect
 }
 
 /*
-PutNativeChangeDetectionConfig Update Native Change Detection Configuration
+PutNativeChangeDetectionConfig Update native change detection configuration
 
 Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -6245,7 +6245,7 @@ func (r ApiPutProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 }
 
 /*
-PutProvisioningPolicy Update Provisioning Policy by UsageType
+PutProvisioningPolicy Update provisioning policy by usagetype
 
 This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
@@ -6429,7 +6429,7 @@ func (r ApiPutSourceRequest) Execute() (*Source, *http.Response, error) {
 }
 
 /*
-PutSource Update Source (Full)
+PutSource Update source (full)
 
 Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
 
@@ -6627,7 +6627,7 @@ func (r ApiPutSourceAttrSyncConfigRequest) Execute() (*AttrSyncSourceConfig, *ht
 }
 
 /*
-PutSourceAttrSyncConfig Update Attribute Sync Config
+PutSourceAttrSyncConfig Update attribute sync config
 
 Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the "enabled" field of the values in the "attributes" array is mutable. Attempting to change other attributes or add new values to the "attributes" array will result in an error.
 
@@ -6824,7 +6824,7 @@ func (r ApiPutSourceSchemaRequest) Execute() (*Schema, *http.Response, error) {
 }
 
 /*
-PutSourceSchema Update Source Schema (Full)
+PutSourceSchema Update source schema (full)
 
 This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.
 
@@ -7716,7 +7716,7 @@ func (r ApiUpdatePasswordPolicyHoldersRequest) Execute() ([]PasswordPolicyHolder
 }
 
 /*
-UpdatePasswordPolicyHolders Update Password Policy
+UpdatePasswordPolicyHolders Update password policy
 
 This API can be used to set up or update Password Policy in IdentityNow for the specified Source.
 Source must support PASSWORD feature.
@@ -7897,7 +7897,7 @@ func (r ApiUpdateProvisioningPoliciesInBulkRequest) Execute() ([]ProvisioningPol
 }
 
 /*
-UpdateProvisioningPoliciesInBulk Bulk Update Provisioning Policies
+UpdateProvisioningPoliciesInBulk Bulk update provisioning policies
 
 This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
@@ -8078,7 +8078,7 @@ func (r ApiUpdateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 }
 
 /*
-UpdateProvisioningPolicy Partial update of Provisioning Policy
+UpdateProvisioningPolicy Partial update of provisioning policy
 
 This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
@@ -8263,7 +8263,7 @@ func (r ApiUpdateSourceRequest) Execute() (*Source, *http.Response, error) {
 }
 
 /*
-UpdateSource Update Source (Partial)
+UpdateSource Update source (partial)
 
 Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the
 [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -8463,7 +8463,7 @@ func (r ApiUpdateSourceEntitlementRequestConfigRequest) Execute() (*SourceEntitl
 }
 
 /*
-UpdateSourceEntitlementRequestConfig Update Source Entitlement Request Configuration
+UpdateSourceEntitlementRequestConfig Update source entitlement request configuration
 
 This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
 
@@ -8650,7 +8650,7 @@ func (r ApiUpdateSourceScheduleRequest) Execute() (*Schedule1, *http.Response, e
 }
 
 /*
-UpdateSourceSchedule Update Source Schedule (Partial)
+UpdateSourceSchedule Update source schedule (partial)
 
 Use this API to selectively update an existing Schedule using a JSONPatch payload. 
 
@@ -8839,7 +8839,7 @@ func (r ApiUpdateSourceSchemaRequest) Execute() (*Schema, *http.Response, error)
 }
 
 /*
-UpdateSourceSchema Update Source Schema (Partial)
+UpdateSourceSchema Update source schema (partial)
 
 Use this API to selectively update an existing Schema using a JSONPatch payload. 
 

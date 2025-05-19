@@ -39,7 +39,7 @@ func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-CreateRole Create a Role
+CreateRole Create a role
 
 This API creates a role.
 
@@ -209,7 +209,7 @@ func (r ApiDeleteBulkRolesRequest) Execute() (*TaskResultDto, *http.Response, er
 }
 
 /*
-DeleteBulkRoles Delete Role(s)
+DeleteBulkRoles Delete role(s)
 
 This endpoint initiates a bulk deletion of one or more roles.
 When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
@@ -373,7 +373,7 @@ func (r ApiDeleteMetadataFromRoleByKeyAndValueRequest) Execute() (*http.Response
 }
 
 /*
-DeleteMetadataFromRoleByKeyAndValue Remove a Metadata From Role.
+DeleteMetadataFromRoleByKeyAndValue Remove a metadata from role.
 
 This API initialize a request to remove a single Access Model Metadata from a role by attribute key and value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.
 
@@ -525,7 +525,7 @@ func (r ApiDeleteRoleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteRole Delete a Role
+DeleteRole Delete a role
 
 This API deletes a Role by its ID.
 
@@ -672,7 +672,7 @@ func (r ApiGetBulkUpdateStatusRequest) Execute() ([]RoleGetAllBulkUpdateResponse
 }
 
 /*
-GetBulkUpdateStatus Get Bulk-Update Statuses
+GetBulkUpdateStatus Get bulk-update statuses
 
 This API returns a list of all unfinished bulk update process status of the tenant.
 
@@ -826,7 +826,7 @@ func (r ApiGetBulkUpdateStatusByIdRequest) Execute() (*RoleBulkUpdateResponse, *
 }
 
 /*
-GetBulkUpdateStatusById Get Bulk-Update Status by ID
+GetBulkUpdateStatusById Get bulk-update status by id
 
 
 This API initial a request for one bulk update's status by bulk update Id returns the status of the bulk update process.
@@ -985,7 +985,7 @@ func (r ApiGetRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-GetRole Get a Role
+GetRole Get a role
 
 This API returns a Role by its ID.
 A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
@@ -1178,7 +1178,7 @@ func (r ApiGetRoleAssignedIdentitiesRequest) Execute() ([]RoleIdentity, *http.Re
 }
 
 /*
-GetRoleAssignedIdentities List Identities assigned a Role
+GetRoleAssignedIdentities List identities assigned a role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role for which the assigned Identities are to be listed
@@ -1399,7 +1399,7 @@ func (r ApiGetRoleEntitlementsRequest) Execute() ([]Entitlement, *http.Response,
 }
 
 /*
-GetRoleEntitlements List Role's Entitlements
+GetRoleEntitlements List role's entitlements
 
 Get a list of entitlements associated with a specified role.
 
@@ -1645,7 +1645,7 @@ func (r ApiListRolesRequest) Execute() ([]Role, *http.Response, error) {
 }
 
 /*
-ListRoles List Roles
+ListRoles List roles
 
 This API returns a list of Roles.
 
@@ -1843,7 +1843,7 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-PatchRole Patch a specified Role
+PatchRole Patch a specified role
 
 This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
@@ -2079,7 +2079,7 @@ func (r ApiSearchRolesByFilterRequest) Execute() (Role, *http.Response, error) {
 }
 
 /*
-SearchRolesByFilter Filter Roles by Metadata
+SearchRolesByFilter Filter roles by metadata
 
 This API returns a list of Role that filter by metadata and filter, it support filter by  both path parameter and attribute key and values.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, HELPDESK, CERT_ADMIN, REPORT_ADMIN or SOURCE_ADMIN  authority is required to call this API. 
@@ -2271,7 +2271,7 @@ func (r ApiUpdateAttributeKeyAndValueToRoleRequest) Execute() (*Role, *http.Resp
 }
 
 /*
-UpdateAttributeKeyAndValueToRole Add a Metadata to Role.
+UpdateAttributeKeyAndValueToRole Add a metadata to role.
 
 This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
@@ -2439,7 +2439,7 @@ func (r ApiUpdateRolesMetadataByFilterRequest) Execute() (*RoleBulkUpdateRespons
 }
 
 /*
-UpdateRolesMetadataByFilter Bulk-Update Roles' Metadata by Filters
+UpdateRolesMetadataByFilter Bulk-update roles' metadata by filters
 
 This API initiates a bulk update of metadata for one or more Roles by filter.
 A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.
@@ -2606,7 +2606,7 @@ func (r ApiUpdateRolesMetadataByIdsRequest) Execute() (*RoleBulkUpdateResponse, 
 }
 
 /*
-UpdateRolesMetadataByIds Bulk-Update Roles' Metadata by ID
+UpdateRolesMetadataByIds Bulk-update roles' metadata by id
 
 This API initiates a bulk update of metadata for one or more Roles by a list of Role Ids.
 A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.
@@ -2773,7 +2773,7 @@ func (r ApiUpdateRolesMetadataByQueryRequest) Execute() (*RoleBulkUpdateResponse
 }
 
 /*
-UpdateRolesMetadataByQuery Bulk-Update Roles' Metadata by Query
+UpdateRolesMetadataByQuery Bulk-update roles' metadata by query
 
 This API initiates a bulk update of metadata for one or more Roles by query.
 A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.

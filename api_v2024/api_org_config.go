@@ -39,7 +39,7 @@ func (r ApiGetOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) {
 }
 
 /*
-GetOrgConfig Get Org Config Settings
+GetOrgConfig Get org config settings
 
 Get the current organization's configuration settings, only external accessible properties.
 
@@ -241,7 +241,7 @@ func (r ApiGetValidTimeZonesRequest) Execute() ([]string, *http.Response, error)
 }
 
 /*
-GetValidTimeZones Get Valid Time Zones
+GetValidTimeZones Get valid time zones
 
 List the valid time zones that can be set in organization configurations.
 
@@ -436,7 +436,7 @@ func (r ApiPatchOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) 
 }
 
 /*
-PatchOrgConfig Patch Org Config
+PatchOrgConfig Patch org config
 
 Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 

@@ -40,7 +40,7 @@ func (r ApiCreateConnectorCustomizerRequest) Execute() (*ConnectorCustomizerCrea
 }
 
 /*
-CreateConnectorCustomizer Create Connector Customizer
+CreateConnectorCustomizer Create connector customizer
 
 Create a connector customizer.
 
@@ -367,7 +367,7 @@ func (r ApiDeleteConnectorCustomizerRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteConnectorCustomizer Delete Connector Customizer
+DeleteConnectorCustomizer Delete connector customizer
 
 Delete the connector customizer for the given ID.
 
@@ -705,7 +705,7 @@ func (r ApiListConnectorCustomizersRequest) Execute() ([]ConnectorCustomizersRes
 }
 
 /*
-ListConnectorCustomizers List All Connector Customizers
+ListConnectorCustomizers List all connector customizers
 
 List all connector customizers.
 
@@ -878,7 +878,7 @@ func (r ApiPutConnectorCustomizerRequest) Execute() (*ConnectorCustomizerUpdateR
 }
 
 /*
-PutConnectorCustomizer Update Connector Customizer
+PutConnectorCustomizer Update connector customizer
 
 Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 

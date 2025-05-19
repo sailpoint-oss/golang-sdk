@@ -39,7 +39,7 @@ func (r ApiCreateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-CreateIdentityProfile Create Identity Profile
+CreateIdentityProfile Create identity profile
 
 Create an identity profile.
 A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
@@ -199,7 +199,7 @@ func (r ApiDeleteIdentityProfileRequest) Execute() (*TaskResultSimplified, *http
 }
 
 /*
-DeleteIdentityProfile Delete Identity Profile
+DeleteIdentityProfile Delete identity profile
 
 Delete an identity profile by ID.
 On success, this endpoint will return a reference to the bulk delete task result.
@@ -375,7 +375,7 @@ func (r ApiDeleteIdentityProfilesRequest) Execute() (*TaskResultSimplified, *htt
 }
 
 /*
-DeleteIdentityProfiles Delete Identity Profiles
+DeleteIdentityProfiles Delete identity profiles
 
 This deletes multiple Identity Profiles via a list of supplied IDs.
 
@@ -574,7 +574,7 @@ func (r ApiExportIdentityProfilesRequest) Execute() ([]IdentityProfileExportedOb
 }
 
 /*
-ExportIdentityProfiles Export Identity Profiles
+ExportIdentityProfiles Export identity profiles
 
 This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -932,7 +932,7 @@ func (r ApiGetIdentityProfileRequest) Execute() (*IdentityProfile, *http.Respons
 }
 
 /*
-GetIdentityProfile Get Identity Profile
+GetIdentityProfile Get identity profile
 
 Get a single identity profile by ID.
 A token with ORG_ADMIN or API authority is required to call this API.
@@ -1107,7 +1107,7 @@ func (r ApiImportIdentityProfilesRequest) Execute() (*ObjectImportResult, *http.
 }
 
 /*
-ImportIdentityProfiles Import Identity Profiles
+ImportIdentityProfiles Import identity profiles
 
 This imports previously exported identity profiles.
 
@@ -1300,7 +1300,7 @@ func (r ApiListIdentityProfilesRequest) Execute() ([]IdentityProfile, *http.Resp
 }
 
 /*
-ListIdentityProfiles List Identity Profiles
+ListIdentityProfiles List identity profiles
 
 Get a list of identity profiles, based on the specified query parameters.
 A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
@@ -1485,7 +1485,7 @@ func (r ApiShowGenerateIdentityPreviewRequest) Execute() (*IdentityPreviewRespon
 }
 
 /*
-ShowGenerateIdentityPreview Generate Identity Profile Preview
+ShowGenerateIdentityPreview Generate identity profile preview
 
 Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
 This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
@@ -1826,7 +1826,7 @@ func (r ApiUpdateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-UpdateIdentityProfile Update Identity Profile
+UpdateIdentityProfile Update identity profile
 
 Update the specified identity profile with this PATCH request. 
 A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.

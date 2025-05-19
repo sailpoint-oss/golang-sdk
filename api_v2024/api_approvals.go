@@ -235,7 +235,7 @@ func (r ApiGetApprovalsRequest) Execute() ([]Approval, *http.Response, error) {
 }
 
 /*
-GetApprovals Get Approvals
+GetApprovals Get approvals
 
 Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. "Mine" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals. 
 Absence of all query parameters will will default to mine=true.

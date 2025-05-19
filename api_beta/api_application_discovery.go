@@ -35,7 +35,7 @@ func (r ApiGetDiscoveredApplicationByIDRequest) Execute() (*http.Response, error
 }
 
 /*
-GetDiscoveredApplicationByID Get Discovered Application by ID
+GetDiscoveredApplicationByID Get discovered application by id
 
 Get the discovered application, along with with its associated sources, based on the provided ID.
 
@@ -391,7 +391,7 @@ func (r ApiGetManualDiscoverApplicationsCsvTemplateRequest) Execute() (*ManualDi
 }
 
 /*
-GetManualDiscoverApplicationsCsvTemplate Download CSV Template for Discovery
+GetManualDiscoverApplicationsCsvTemplate Download csv template for discovery
 
 Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
 
@@ -554,7 +554,7 @@ func (r ApiPatchDiscoveredApplicationByIDRequest) Execute() (*http.Response, err
 }
 
 /*
-PatchDiscoveredApplicationByID Patch Discovered Application by ID
+PatchDiscoveredApplicationByID Patch discovered application by id
 
 Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 You can patch these fields: - **associatedSources** - **dismissed**
@@ -709,7 +709,7 @@ func (r ApiSendManualDiscoverApplicationsCsvTemplateRequest) Execute() (*http.Re
 }
 
 /*
-SendManualDiscoverApplicationsCsvTemplate Upload CSV to Discover Applications
+SendManualDiscoverApplicationsCsvTemplate Upload csv to discover applications
 
 Upload a CSV file with application data for manual correlation to specific ISC connectors. 
 If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.

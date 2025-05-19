@@ -39,7 +39,7 @@ func (r ApiCreateReassignmentConfigurationRequest) Execute() (*ConfigurationItem
 }
 
 /*
-CreateReassignmentConfiguration Create a Reassignment Configuration
+CreateReassignmentConfiguration Create a reassignment configuration
 
 Creates a new Reassignment Configuration for the specified identity.
 
@@ -199,7 +199,7 @@ func (r ApiDeleteReassignmentConfigurationRequest) Execute() (*http.Response, er
 }
 
 /*
-DeleteReassignmentConfiguration Delete Reassignment Configuration
+DeleteReassignmentConfiguration Delete reassignment configuration
 
 Deletes a single reassignment configuration for the specified identity
 
@@ -356,7 +356,7 @@ func (r ApiGetEvaluateReassignmentConfigurationRequest) Execute() ([]EvaluateRes
 }
 
 /*
-GetEvaluateReassignmentConfiguration Evaluate Reassignment Configuration
+GetEvaluateReassignmentConfiguration Evaluate reassignment configuration
 
 Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
@@ -518,7 +518,7 @@ func (r ApiGetReassignmentConfigTypesRequest) Execute() ([]ConfigType, *http.Res
 }
 
 /*
-GetReassignmentConfigTypes List Reassignment Config Types
+GetReassignmentConfigTypes List reassignment config types
 
 Gets a collection of types which are available in the Reassignment Configuration UI.
 
@@ -672,7 +672,7 @@ func (r ApiGetReassignmentConfigurationRequest) Execute() (*ConfigurationRespons
 }
 
 /*
-GetReassignmentConfiguration Get Reassignment Configuration
+GetReassignmentConfiguration Get reassignment configuration
 
 Gets the Reassignment Configuration for an identity.
 
@@ -839,7 +839,7 @@ func (r ApiGetTenantConfigConfigurationRequest) Execute() (*TenantConfigurationR
 }
 
 /*
-GetTenantConfigConfiguration Get Tenant-wide Reassignment Configuration settings
+GetTenantConfigConfiguration Get tenant-wide reassignment configuration settings
 
 Gets the global Reassignment Configuration settings for the requestor's tenant.
 
@@ -1017,7 +1017,7 @@ func (r ApiListReassignmentConfigurationsRequest) Execute() ([]ConfigurationResp
 }
 
 /*
-ListReassignmentConfigurations List Reassignment Configurations
+ListReassignmentConfigurations List reassignment configurations
 
 Gets all Reassignment configuration for the current org.
 
@@ -1197,7 +1197,7 @@ func (r ApiPutReassignmentConfigRequest) Execute() (*ConfigurationItemResponse, 
 }
 
 /*
-PutReassignmentConfig Update Reassignment Configuration
+PutReassignmentConfig Update reassignment configuration
 
 Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
@@ -1364,7 +1364,7 @@ func (r ApiPutTenantConfigurationRequest) Execute() (*TenantConfigurationRespons
 }
 
 /*
-PutTenantConfiguration Update Tenant-wide Reassignment Configuration settings
+PutTenantConfiguration Update tenant-wide reassignment configuration settings
 
 Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 

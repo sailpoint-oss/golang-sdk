@@ -34,7 +34,7 @@ func (r ApiGetAccountActivityRequest) Execute() (*CancelableAccountActivity, *ht
 }
 
 /*
-GetAccountActivity Get Account Activity
+GetAccountActivity Get account activity
 
 This gets a single account activity by its id.
 
@@ -264,7 +264,7 @@ func (r ApiListAccountActivitiesRequest) Execute() ([]CancelableAccountActivity,
 }
 
 /*
-ListAccountActivities List Account Activities
+ListAccountActivities List account activities
 
 This gets a collection of account activities that satisfy the given query parameters.
 

@@ -35,7 +35,7 @@ func (r ApiGetLifecycleStatesRequest) Execute() (*LifecycleState, *http.Response
 }
 
 /*
-GetLifecycleStates Get Lifecycle State
+GetLifecycleStates Get lifecycle state
 
 Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
@@ -206,7 +206,7 @@ func (r ApiUpdateLifecycleStatesRequest) Execute() (*LifecycleState, *http.Respo
 }
 
 /*
-UpdateLifecycleStates Update Lifecycle State
+UpdateLifecycleStates Update lifecycle state
 
 Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

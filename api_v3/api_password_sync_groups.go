@@ -39,7 +39,7 @@ func (r ApiCreatePasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.
 }
 
 /*
-CreatePasswordSyncGroup Create Password Sync Group
+CreatePasswordSyncGroup Create password sync group
 
 This API creates a password sync group based on the specifications provided.
 
@@ -198,7 +198,7 @@ func (r ApiDeletePasswordSyncGroupRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeletePasswordSyncGroup Delete Password Sync Group by ID
+DeletePasswordSyncGroup Delete password sync group by id
 
 This API deletes the specified password sync group.
 
@@ -344,7 +344,7 @@ func (r ApiGetPasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.Res
 }
 
 /*
-GetPasswordSyncGroup Get Password Sync Group by ID
+GetPasswordSyncGroup Get password sync group by id
 
 This API returns the sync group for the specified ID.
 
@@ -532,7 +532,7 @@ func (r ApiGetPasswordSyncGroupsRequest) Execute() ([]PasswordSyncGroup, *http.R
 }
 
 /*
-GetPasswordSyncGroups Get Password Sync Group List
+GetPasswordSyncGroups Get password sync group list
 
 This API returns a list of password sync groups.
 
@@ -710,7 +710,7 @@ func (r ApiUpdatePasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.
 }
 
 /*
-UpdatePasswordSyncGroup Update Password Sync Group by ID
+UpdatePasswordSyncGroup Update password sync group by id
 
 This API updates the specified password sync group.
 

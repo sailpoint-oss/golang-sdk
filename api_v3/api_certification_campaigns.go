@@ -41,7 +41,7 @@ func (r ApiCompleteCampaignRequest) Execute() (map[string]interface{}, *http.Res
 }
 
 /*
-CompleteCampaign Complete a Campaign
+CompleteCampaign Complete a campaign
 
 :::caution
 
@@ -391,7 +391,7 @@ func (r ApiCreateCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Re
 }
 
 /*
-CreateCampaignTemplate Create a Campaign Template
+CreateCampaignTemplate Create a campaign template
 
 Use this API to create a certification campaign template based on campaign.
 
@@ -551,7 +551,7 @@ func (r ApiDeleteCampaignTemplateRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCampaignTemplate Delete a Campaign Template
+DeleteCampaignTemplate Delete a campaign template
 
 Use this API to delete a certification campaign template by ID.
 
@@ -709,7 +709,7 @@ func (r ApiDeleteCampaignTemplateScheduleRequest) Execute() (*http.Response, err
 }
 
 /*
-DeleteCampaignTemplateSchedule Delete Campaign Template Schedule
+DeleteCampaignTemplateSchedule Delete campaign template schedule
 
 Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
@@ -873,7 +873,7 @@ func (r ApiDeleteCampaignsRequest) Execute() (map[string]interface{}, *http.Resp
 }
 
 /*
-DeleteCampaigns Delete Campaigns
+DeleteCampaigns Delete campaigns
 
 Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.
 
@@ -1085,7 +1085,7 @@ func (r ApiGetActiveCampaignsRequest) Execute() ([]GetActiveCampaigns200Response
 }
 
 /*
-GetActiveCampaigns List Campaigns
+GetActiveCampaigns List campaigns
 
 Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query.
 
@@ -1274,7 +1274,7 @@ func (r ApiGetCampaignRequest) Execute() (*GetCampaign200Response, *http.Respons
 }
 
 /*
-GetCampaign Get Campaign
+GetCampaign Get campaign
 
 Use this API to get information for an existing certification campaign by the campaign's ID.
 
@@ -1446,7 +1446,7 @@ func (r ApiGetCampaignReportsRequest) Execute() ([]CampaignReport, *http.Respons
 }
 
 /*
-GetCampaignReports Get Campaign Reports
+GetCampaignReports Get campaign reports
 
 Use this API to fetch all reports for a certification campaign by campaign ID.
 
@@ -1614,7 +1614,7 @@ func (r ApiGetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 }
 
 /*
-GetCampaignReportsConfig Get Campaign Reports Configuration
+GetCampaignReportsConfig Get campaign reports configuration
 
 Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. 
 
@@ -1769,7 +1769,7 @@ func (r ApiGetCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Respo
 }
 
 /*
-GetCampaignTemplate Get a Campaign Template
+GetCampaignTemplate Get a campaign template
 
 Use this API to fetch a certification campaign template by ID.
 
@@ -1938,7 +1938,7 @@ func (r ApiGetCampaignTemplateScheduleRequest) Execute() (*Schedule, *http.Respo
 }
 
 /*
-GetCampaignTemplateSchedule Get Campaign Template Schedule
+GetCampaignTemplateSchedule Get campaign template schedule
 
 Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
@@ -2141,7 +2141,7 @@ func (r ApiGetCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Res
 }
 
 /*
-GetCampaignTemplates List Campaign Templates
+GetCampaignTemplates List campaign templates
 
 Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.
 
@@ -2328,7 +2328,7 @@ func (r ApiMoveRequest) Execute() (*CertificationTask, *http.Response, error) {
 }
 
 /*
-Move Reassign Certifications
+Move Reassign certifications
 
 This API reassigns the specified certifications from one identity to another.    
 
@@ -2509,7 +2509,7 @@ func (r ApiPatchCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Res
 }
 
 /*
-PatchCampaignTemplate Update a Campaign Template
+PatchCampaignTemplate Update a campaign template
 
 Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -2689,7 +2689,7 @@ func (r ApiSetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 }
 
 /*
-SetCampaignReportsConfig Set Campaign Reports Configuration
+SetCampaignReportsConfig Set campaign reports configuration
 
 Use this API to overwrite the configuration for campaign reports. 
 
@@ -2855,7 +2855,7 @@ func (r ApiSetCampaignTemplateScheduleRequest) Execute() (*http.Response, error)
 }
 
 /*
-SetCampaignTemplateSchedule Set Campaign Template Schedule
+SetCampaignTemplateSchedule Set campaign template schedule
 
 Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.
 
@@ -3022,7 +3022,7 @@ func (r ApiStartCampaignRequest) Execute() (map[string]interface{}, *http.Respon
 }
 
 /*
-StartCampaign Activate a Campaign
+StartCampaign Activate a campaign
 
 Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.
 
@@ -3193,7 +3193,7 @@ func (r ApiStartCampaignRemediationScanRequest) Execute() (map[string]interface{
 }
 
 /*
-StartCampaignRemediationScan Run Campaign Remediation Scan
+StartCampaignRemediationScan Run campaign remediation scan
 
 Use this API to run a remediation scan task for a certification campaign.
 
@@ -3363,7 +3363,7 @@ func (r ApiStartCampaignReportRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-StartCampaignReport Run Campaign Report
+StartCampaignReport Run campaign report
 
 Use this API to run a report for a certification campaign.
 
@@ -3535,7 +3535,7 @@ func (r ApiStartGenerateCampaignTemplateRequest) Execute() (*CampaignReference, 
 }
 
 /*
-StartGenerateCampaignTemplate Generate a Campaign from Template
+StartGenerateCampaignTemplate Generate a campaign from template
 
 Use this API to generate a new certification campaign from a campaign template.
 
@@ -3710,7 +3710,7 @@ func (r ApiUpdateCampaignRequest) Execute() (*SlimCampaign, *http.Response, erro
 }
 
 /*
-UpdateCampaign Update a Campaign
+UpdateCampaign Update a campaign
 
 Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

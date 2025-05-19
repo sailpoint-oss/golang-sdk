@@ -204,7 +204,7 @@ func (r ApiPingVerificationStatusRequest) Execute() (*VerificationResponse, *htt
 }
 
 /*
-PingVerificationStatus Polling MFA method by VerificationPollRequest
+PingVerificationStatus Polling mfa method by verificationpollrequest
 
 This API poll the VerificationPollRequest for the specified MFA method.
 
@@ -371,7 +371,7 @@ func (r ApiSendDuoVerifyRequestRequest) Execute() (*VerificationResponse, *http.
 }
 
 /*
-SendDuoVerifyRequest Verifying authentication via Duo method
+SendDuoVerifyRequest Verifying authentication via duo method
 
 This API Authenticates the user via Duo-Web MFA method.
 
@@ -535,7 +535,7 @@ func (r ApiSendKbaAnswersRequest) Execute() (*KbaAuthResponse, *http.Response, e
 }
 
 /*
-SendKbaAnswers Authenticate KBA provided MFA method
+SendKbaAnswers Authenticate kba provided mfa method
 
 This API Authenticate user in KBA MFA method.
 
@@ -699,7 +699,7 @@ func (r ApiSendOktaVerifyRequestRequest) Execute() (*VerificationResponse, *http
 }
 
 /*
-SendOktaVerifyRequest Verifying authentication via Okta method
+SendOktaVerifyRequest Verifying authentication via okta method
 
 This API Authenticates the user via Okta-Verify MFA method. Request requires a header called 'slpt-forwarding', and it must contain a remote IP Address of caller.
 
@@ -863,7 +863,7 @@ func (r ApiSendTokenAuthRequestRequest) Execute() (*TokenAuthResponse, *http.Res
 }
 
 /*
-SendTokenAuthRequest Authenticate Token provided MFA method
+SendTokenAuthRequest Authenticate token provided mfa method
 
 This API Authenticate user in Token MFA method.
 

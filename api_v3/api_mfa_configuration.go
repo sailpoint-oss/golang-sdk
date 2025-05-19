@@ -34,7 +34,7 @@ func (r ApiDeleteMFAConfigRequest) Execute() (*MfaOktaConfig, *http.Response, er
 }
 
 /*
-DeleteMFAConfig Delete MFA method configuration
+DeleteMFAConfig Delete mfa method configuration
 
 This API removes the configuration for the specified MFA method.
 
@@ -190,7 +190,7 @@ func (r ApiGetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, err
 }
 
 /*
-GetMFADuoConfig Configuration of Duo MFA method
+GetMFADuoConfig Configuration of duo mfa method
 
 This API returns the configuration of an Duo MFA method.
 
@@ -350,7 +350,7 @@ func (r ApiGetMFAKbaConfigRequest) Execute() ([]KbaQuestion, *http.Response, err
 }
 
 /*
-GetMFAKbaConfig Configuration of KBA MFA method
+GetMFAKbaConfig Configuration of kba mfa method
 
 This API returns the KBA configuration for MFA.
 
@@ -506,7 +506,7 @@ func (r ApiGetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, e
 }
 
 /*
-GetMFAOktaConfig Configuration of Okta MFA method
+GetMFAOktaConfig Configuration of okta mfa method
 
 This API returns the configuration of an Okta MFA method.
 
@@ -665,7 +665,7 @@ func (r ApiSetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, err
 }
 
 /*
-SetMFADuoConfig Set Duo MFA configuration
+SetMFADuoConfig Set duo mfa configuration
 
 This API sets the configuration of an Duo MFA method.
 
@@ -829,7 +829,7 @@ func (r ApiSetMFAKBAConfigRequest) Execute() ([]KbaAnswerResponseItem, *http.Res
 }
 
 /*
-SetMFAKBAConfig Set MFA KBA configuration
+SetMFAKBAConfig Set mfa kba configuration
 
 This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
@@ -993,7 +993,7 @@ func (r ApiSetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, e
 }
 
 /*
-SetMFAOktaConfig Set Okta MFA configuration
+SetMFAOktaConfig Set okta mfa configuration
 
 This API sets the configuration of an Okta MFA method.
 
@@ -1152,7 +1152,7 @@ func (r ApiTestMFAConfigRequest) Execute() (*MfaConfigTestResponse, *http.Respon
 }
 
 /*
-TestMFAConfig MFA method's test configuration
+TestMFAConfig Mfa method's test configuration
 
 This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 

@@ -39,7 +39,7 @@ func (r ApiCreateSearchAttributeConfigRequest) Execute() (map[string]interface{}
 }
 
 /*
-CreateSearchAttributeConfig Create Extended Search Attributes
+CreateSearchAttributeConfig Create extended search attributes
 
 Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
 >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
@@ -210,7 +210,7 @@ func (r ApiDeleteSearchAttributeConfigRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteSearchAttributeConfig Delete Extended Search Attribute
+DeleteSearchAttributeConfig Delete extended search attribute
 
 Delete an extended attribute configuration by name.
 
@@ -369,7 +369,7 @@ func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, 
 }
 
 /*
-GetSearchAttributeConfig List Extended Search Attributes
+GetSearchAttributeConfig List extended search attributes
 
 Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 A token with ORG_ADMIN authority is required to call this API.
@@ -536,7 +536,7 @@ func (r ApiGetSingleSearchAttributeConfigRequest) Execute() ([]SearchAttributeCo
 }
 
 /*
-GetSingleSearchAttributeConfig Get Extended Search Attribute
+GetSingleSearchAttributeConfig Get extended search attribute
 
 Get an extended attribute configuration by name.
 
@@ -699,7 +699,7 @@ func (r ApiPatchSearchAttributeConfigRequest) Execute() (*SearchAttributeConfig,
 }
 
 /*
-PatchSearchAttributeConfig Update Extended Search Attribute
+PatchSearchAttributeConfig Update extended search attribute
 
 Update an existing search attribute configuration. 
 You can patch these fields:

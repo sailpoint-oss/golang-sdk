@@ -39,7 +39,7 @@ func (r ApiCreateOauthClientRequest) Execute() (*CreateOAuthClientResponse, *htt
 }
 
 /*
-CreateOauthClient Create OAuth Client
+CreateOauthClient Create oauth client
 
 This creates an OAuth client.
 
@@ -198,7 +198,7 @@ func (r ApiDeleteOauthClientRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteOauthClient Delete OAuth Client
+DeleteOauthClient Delete oauth client
 
 This deletes an OAuth client.
 
@@ -355,7 +355,7 @@ func (r ApiGetOauthClientRequest) Execute() (*GetOAuthClientResponse, *http.Resp
 }
 
 /*
-GetOauthClient Get OAuth Client
+GetOauthClient Get oauth client
 
 This gets details of an OAuth client.
 
@@ -529,7 +529,7 @@ func (r ApiListOauthClientsRequest) Execute() ([]GetOAuthClientResponse, *http.R
 }
 
 /*
-ListOauthClients List OAuth Clients
+ListOauthClients List oauth clients
 
 This gets a list of OAuth clients.
 
@@ -693,7 +693,7 @@ func (r ApiPatchOauthClientRequest) Execute() (*GetOAuthClientResponse, *http.Re
 }
 
 /*
-PatchOauthClient Patch OAuth Client
+PatchOauthClient Patch oauth client
 
 This performs a targeted update to the field(s) of an OAuth client.
 

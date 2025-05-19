@@ -38,7 +38,7 @@ func (r ApiCancelAccessRequestRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-CancelAccessRequest Cancel Access Request
+CancelAccessRequest Cancel access request
 
 This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
 In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
@@ -214,7 +214,7 @@ func (r ApiCloseAccessRequestRequest) Execute() (map[string]interface{}, *http.R
 }
 
 /*
-CloseAccessRequest Close Access Request
+CloseAccessRequest Close access request
 
 This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).
 
@@ -389,7 +389,7 @@ func (r ApiCreateAccessRequestRequest) Execute() (*AccessRequestResponse, *http.
 }
 
 /*
-CreateAccessRequest Submit Access Request
+CreateAccessRequest Submit access request
 
 Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
 
@@ -580,7 +580,7 @@ func (r ApiGetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http
 }
 
 /*
-GetAccessRequestConfig Get Access Request Configuration
+GetAccessRequestConfig Get access request configuration
 
 This endpoint returns the current access-request configuration.
 
@@ -803,7 +803,7 @@ func (r ApiListAccessRequestStatusRequest) Execute() ([]RequestedItemStatus, *ht
 }
 
 /*
-ListAccessRequestStatus Access Request Status
+ListAccessRequestStatus Access request status
 
 Use this API to return a list of access request statuses based on the specified query parameters.
 If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
@@ -1000,7 +1000,7 @@ func (r ApiSetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http
 }
 
 /*
-SetAccessRequestConfig Update Access Request Configuration
+SetAccessRequestConfig Update access request configuration
 
 This endpoint replaces the current access-request configuration.
 

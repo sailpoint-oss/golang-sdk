@@ -60,7 +60,7 @@ func (r ApiSearchAggregateRequest) Execute() (*AggregationResult, *http.Response
 }
 
 /*
-SearchAggregate Perform a Search Query Aggregation
+SearchAggregate Perform a search query aggregation
 
 Performs a search query aggregation and returns the aggregation result. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
 
@@ -242,7 +242,7 @@ func (r ApiSearchCountRequest) Execute() (*http.Response, error) {
 }
 
 /*
-SearchCount Count Documents Satisfying a Query
+SearchCount Count documents satisfying a query
 
 Performs a search with a provided query and returns the count of results in the X-Total-Count header.
 
@@ -391,7 +391,7 @@ func (r ApiSearchGetRequest) Execute() (map[string]interface{}, *http.Response, 
 }
 
 /*
-SearchGet Get a Document by ID
+SearchGet Get a document by id
 
 Fetches a single document from the specified index, using the specified document ID.
 
@@ -588,7 +588,7 @@ func (r ApiSearchPostRequest) Execute() ([]map[string]interface{}, *http.Respons
 }
 
 /*
-SearchPost Perform Search
+SearchPost Perform search
 
 Perform a search with the provided query and return a matching result collection. To page past 10,000 records, you can use `searchAfter` paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. 
 

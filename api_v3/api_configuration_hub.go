@@ -414,7 +414,7 @@ func (r ApiCreateUploadedConfigurationRequest) Execute() (*BackupResponse, *http
 }
 
 /*
-CreateUploadedConfiguration Upload a Configuration
+CreateUploadedConfiguration Upload a configuration
 
 This API uploads a JSON configuration file into a tenant.
 
@@ -758,7 +758,7 @@ func (r ApiDeleteUploadedConfigurationRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteUploadedConfiguration Delete an Uploaded Configuration
+DeleteUploadedConfiguration Delete an uploaded configuration
 
 This API deletes an uploaded configuration based on Id.
 
@@ -1090,7 +1090,7 @@ func (r ApiGetUploadedConfigurationRequest) Execute() (*BackupResponse, *http.Re
 }
 
 /*
-GetUploadedConfiguration Get an Uploaded Configuration
+GetUploadedConfiguration Get an uploaded configuration
 
 This API gets an existing uploaded configuration for the current tenant.
 
@@ -1264,7 +1264,7 @@ func (r ApiListUploadedConfigurationsRequest) Execute() ([]BackupResponse, *http
 }
 
 /*
-ListUploadedConfigurations List Uploaded Configurations
+ListUploadedConfigurations List uploaded configurations
 
 This API gets a list of existing uploaded configurations for the current tenant.
 

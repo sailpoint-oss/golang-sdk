@@ -40,7 +40,7 @@ func (r ApiCreatePersonalAccessTokenRequest) Execute() (*CreatePersonalAccessTok
 }
 
 /*
-CreatePersonalAccessToken Create Personal Access Token
+CreatePersonalAccessToken Create personal access token
 
 This creates a personal access token.
 
@@ -199,7 +199,7 @@ func (r ApiDeletePersonalAccessTokenRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeletePersonalAccessToken Delete Personal Access Token
+DeletePersonalAccessToken Delete personal access token
 
 This deletes a personal access token.
 
@@ -369,7 +369,7 @@ func (r ApiListPersonalAccessTokensRequest) Execute() ([]GetPersonalAccessTokenR
 }
 
 /*
-ListPersonalAccessTokens List Personal Access Tokens
+ListPersonalAccessTokens List personal access tokens
 
 This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.
 
@@ -536,7 +536,7 @@ func (r ApiPatchPersonalAccessTokenRequest) Execute() (*GetPersonalAccessTokenRe
 }
 
 /*
-PatchPersonalAccessToken Patch Personal Access Token
+PatchPersonalAccessToken Patch personal access token
 
 This performs a targeted update to the field(s) of a Personal Access Token.
 Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens.

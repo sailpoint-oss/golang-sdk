@@ -63,7 +63,7 @@ func (r ApiGetIdentityCertificationItemPermissionsRequest) Execute() ([]Permissi
 }
 
 /*
-GetIdentityCertificationItemPermissions Permissions for Entitlement Certification Item
+GetIdentityCertificationItemPermissions Permissions for entitlement certification item
 
 This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -258,7 +258,7 @@ func (r ApiGetIdentityCertificationPendingTasksRequest) Execute() ([]IdentityCer
 }
 
 /*
-GetIdentityCertificationPendingTasks Pending Certification Tasks
+GetIdentityCertificationPendingTasks Pending certification tasks
 
 This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -427,7 +427,7 @@ func (r ApiGetIdentityCertificationTaskStatusRequest) Execute() (*IdentityCertif
 }
 
 /*
-GetIdentityCertificationTaskStatus Certification Task Status
+GetIdentityCertificationTaskStatus Certification task status
 
 This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -633,7 +633,7 @@ func (r ApiListCertificationReviewersRequest) Execute() ([]IdentityReferenceWith
 }
 
 /*
-ListCertificationReviewers List of Reviewers for certification
+ListCertificationReviewers List of reviewers for certification
 
 This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -869,7 +869,7 @@ func (r ApiListCertificationsRequest) Execute() ([]CertificationDto, *http.Respo
 }
 
 /*
-ListCertifications Certifications by IDs
+ListCertifications Certifications by ids
 
 This API returns a list of certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned.
 
@@ -1056,7 +1056,7 @@ func (r ApiSubmitReassignCertsAsyncRequest) Execute() (*IdentityCertificationTas
 }
 
 /*
-SubmitReassignCertsAsync Reassign Certifications Asynchronously
+SubmitReassignCertsAsync Reassign certifications asynchronously
 
 This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 

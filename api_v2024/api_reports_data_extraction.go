@@ -35,7 +35,7 @@ func (r ApiCancelReportRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CancelReport Cancel Report
+CancelReport Cancel report
 
 Cancels a running report.
 
@@ -202,7 +202,7 @@ func (r ApiGetReportRequest) Execute() (*os.File, *http.Response, error) {
 }
 
 /*
-GetReport Get Report File
+GetReport Get report file
 
 Gets a report in file format.
 
@@ -390,7 +390,7 @@ func (r ApiGetReportResultRequest) Execute() (*ReportResults, *http.Response, er
 }
 
 /*
-GetReportResult Get Report Result
+GetReportResult Get report result
 
 Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
 
@@ -558,7 +558,7 @@ func (r ApiStartReportRequest) Execute() (*TaskResultDetails, *http.Response, er
 }
 
 /*
-StartReport Run Report
+StartReport Run report
 
 Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 

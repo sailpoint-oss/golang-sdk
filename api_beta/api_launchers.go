@@ -210,7 +210,7 @@ func (r ApiDeleteLauncherRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteLauncher Delete Launcher
+DeleteLauncher Delete launcher
 
 Delete the given Launcher ID
 
@@ -367,7 +367,7 @@ func (r ApiGetLauncherRequest) Execute() (*Launcher, *http.Response, error) {
 }
 
 /*
-GetLauncher Get Launcher by ID
+GetLauncher Get launcher by id
 
 Get details for the given Launcher ID
 
@@ -555,7 +555,7 @@ func (r ApiGetLaunchersRequest) Execute() (*GetLaunchers200Response, *http.Respo
 }
 
 /*
-GetLaunchers List all Launchers for tenant
+GetLaunchers List all launchers for tenant
 
 Return a list of Launchers for the authenticated tenant
 
@@ -739,7 +739,7 @@ func (r ApiPutLauncherRequest) Execute() (*Launcher, *http.Response, error) {
 }
 
 /*
-PutLauncher Replace Launcher
+PutLauncher Replace launcher
 
 Replace the given Launcher ID with given payload
 
@@ -912,7 +912,7 @@ func (r ApiStartLauncherRequest) Execute() (*StartLauncher200Response, *http.Res
 }
 
 /*
-StartLauncher Launch a Launcher
+StartLauncher Launch a launcher
 
 Launch the given Launcher ID
 

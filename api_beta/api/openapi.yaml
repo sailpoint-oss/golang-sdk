@@ -1198,7 +1198,7 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
-      summary: List Access Model Metadata Attributes
+      summary: List access model metadata attributes
       tags:
       - Access Model Metadata
   /access-model-metadata/attributes/{key}:
@@ -1280,7 +1280,7 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
-      summary: Get Access Model Metadata Attribute
+      summary: Get access model metadata attribute
       tags:
       - Access Model Metadata
   /access-model-metadata/attributes/{key}/values:
@@ -1364,7 +1364,7 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
-      summary: List Access Model Metadata Values
+      summary: List access model metadata values
       tags:
       - Access Model Metadata
   /access-model-metadata/attributes/{key}/values/{value}:
@@ -1454,7 +1454,7 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
-      summary: Get Access Model Metadata Value
+      summary: Get access model metadata value
       tags:
       - Access Model Metadata
   /access-profiles:
@@ -1626,7 +1626,7 @@ paths:
         - idn:access-profile:read
       - applicationAuth:
         - idn:access-profile:read
-      summary: List Access Profiles
+      summary: List access profiles
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -1722,7 +1722,7 @@ paths:
         - idn:entitlement:read
         - idn:identity:read
         - idn:sources:read
-      summary: Create Access Profile
+      summary: Create access profile
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -1825,7 +1825,7 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
-      summary: Delete the specified Access Profile
+      summary: Delete the specified access profile
       tags:
       - Access Profiles
     get:
@@ -1910,7 +1910,7 @@ paths:
       - applicationAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
-      summary: Get an Access Profile
+      summary: Get an access profile
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -2045,7 +2045,7 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
-      summary: Patch a specified Access Profile
+      summary: Patch a specified access profile
       tags:
       - Access Profiles
   /access-profiles/bulk-delete:
@@ -2164,7 +2164,7 @@ paths:
         - idn:access-profile:manage
       - applicationAuth:
         - idn:access-profile:manage
-      summary: Delete Access Profile(s)
+      summary: Delete access profile(s)
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -2273,7 +2273,7 @@ paths:
         - idn:access-profile:manage
       - applicationAuth:
         - idn:access-profile:manage
-      summary: Update Access Profile(s) requestable field.
+      summary: Update access profile(s) requestable field.
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -2430,7 +2430,7 @@ paths:
       - applicationAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
-      summary: List Access Profile's Entitlements
+      summary: List access profile's entitlements
       tags:
       - Access Profiles
       x-sailpoint-userLevels:
@@ -2558,7 +2558,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request:manage
-      summary: Submit Access Request
+      summary: Submit access request
       tags:
       - Access Requests
       x-sailpoint-userLevels:
@@ -2664,7 +2664,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request:cancel
-      summary: Cancel Access Request
+      summary: Cancel access request
       tags:
       - Access Requests
       x-sailpoint-userLevels:
@@ -2763,7 +2763,7 @@ paths:
       security:
       - userAuth:
         - sp:scopes:all
-      summary: Close Access Request
+      summary: Close access request
       tags:
       - Access Requests
       x-sailpoint-userLevels:
@@ -2838,7 +2838,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request-config:read
-      summary: Get Access Request Configuration
+      summary: Get access request configuration
       tags:
       - Access Requests
     put:
@@ -2916,7 +2916,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request-config:update
-      summary: Update Access Request Configuration
+      summary: Update access request configuration
       tags:
       - Access Requests
       x-sailpoint-userLevels:
@@ -3096,7 +3096,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request-status:read
-      summary: Access Request Status
+      summary: Access request status
       tags:
       - Access Requests
       x-sailpoint-userLevels:
@@ -3237,7 +3237,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Pending Access Request Approvals List
+      summary: Pending access request approvals list
       tags:
       - Access Request Approvals
   /access-request-approvals/completed:
@@ -3375,7 +3375,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Completed Access Request Approvals List
+      summary: Completed access request approvals list
       tags:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/approve:
@@ -3481,7 +3481,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Approve Access Request Approval
+      summary: Approve access request approval
       tags:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/reject:
@@ -3587,7 +3587,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Reject Access Request Approval
+      summary: Reject access request approval
       tags:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/forward:
@@ -3694,7 +3694,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Forward Access Request Approval
+      summary: Forward access request approval
       tags:
       - Access Request Approvals
   /access-request-approvals/approval-summary:
@@ -3789,7 +3789,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request-approvals-summary:read
-      summary: Get Access Requests Approvals Number
+      summary: Get access requests approvals number
       tags:
       - Access Request Approvals
   /ai-access-request-recommendations:
@@ -3949,7 +3949,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:read
-      summary: Identity Access Request Recommendations
+      summary: Identity access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4092,7 +4092,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: List Ignored Access Request Recommendations
+      summary: List ignored access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4175,7 +4175,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: Ignore Access Request Recommendation
+      summary: Ignore access request recommendation
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4318,7 +4318,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: List Accepted Access Request Recommendations
+      summary: List accepted access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4402,7 +4402,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: Accept Access Request Recommendation
+      summary: Accept access request recommendation
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4545,7 +4545,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:read
-      summary: List Viewed Access Request Recommendations
+      summary: List viewed access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4629,7 +4629,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: Mark Viewed Access Request Recommendations
+      summary: Mark viewed access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4718,7 +4718,7 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
-      summary: Bulk Mark Viewed Access Request Recommendations
+      summary: Bulk mark viewed access request recommendations
       tags:
       - IAI Access Request Recommendations
       x-sailpoint-userLevels:
@@ -4951,7 +4951,7 @@ paths:
       - userAuth:
         - idn:accounts:read
         - idn:accounts:manage
-      summary: Accounts List
+      summary: Accounts list
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5049,7 +5049,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Create Account
+      summary: Create account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5165,7 +5165,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Delete Account
+      summary: Delete account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5274,7 +5274,7 @@ paths:
       - userAuth:
         - idn:accounts:read
         - idn:accounts:manage
-      summary: Account Details
+      summary: Account details
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5432,7 +5432,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Update Account
+      summary: Update account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5548,7 +5548,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Update Account
+      summary: Update account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5697,7 +5697,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:read
-      summary: Account Entitlements
+      summary: Account entitlements
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5808,7 +5808,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Reload Account
+      summary: Reload account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -5924,7 +5924,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Enable Account
+      summary: Enable account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6040,7 +6040,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Disable Account
+      summary: Disable account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6159,7 +6159,7 @@ paths:
       - userAuth:
         - idn:accounts-state:manage
         - idn:accounts-provisioning:manage
-      summary: Unlock Account
+      summary: Unlock account
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6258,7 +6258,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Remove Account
+      summary: Remove account
       tags:
       - Accounts
   /identities-accounts/{id}/enable:
@@ -6363,7 +6363,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Enable IDN Account for Identity
+      summary: Enable idn account for identity
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6474,7 +6474,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Disable IDN Account for Identity
+      summary: Disable idn account for identity
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6574,7 +6574,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Enable IDN Accounts for Identities
+      summary: Enable idn accounts for identities
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6674,7 +6674,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-      summary: Disable IDN Accounts for Identities
+      summary: Disable idn accounts for identities
       tags:
       - Accounts
       x-deprecated-description: |
@@ -6783,7 +6783,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
-      summary: List Extended Search Attributes
+      summary: List extended search attributes
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -6890,7 +6890,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:create
-      summary: Create Extended Search Attributes
+      summary: Create extended search attributes
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -6983,7 +6983,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:delete
-      summary: Delete Extended Search Attribute
+      summary: Delete extended search attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -7083,7 +7083,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
-      summary: Get Extended Search Attribute
+      summary: Get extended search attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -7204,7 +7204,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:create
-      summary: Update Extended Search Attribute
+      summary: Update extended search attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -7369,7 +7369,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List Account Activities
+      summary: List account activities
       tags:
       - Account Activities
   /account-activities/{id}:
@@ -7466,7 +7466,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Account Activity
+      summary: Get account activity
       tags:
       - Account Activities
   /account-aggregations/{id}/status:
@@ -7566,7 +7566,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: In-progress Account Aggregation status
+      summary: In-progress account aggregation status
       tags:
       - Account Aggregations
   /auth-profiles:
@@ -7641,7 +7641,7 @@ paths:
       security:
       - userAuth:
         - sp:auth-profile:read
-      summary: Get list of Auth Profiles.
+      summary: Get list of auth profiles.
       tags:
       - Auth Profile
   /auth-profiles/{id}:
@@ -7741,7 +7741,7 @@ paths:
       security:
       - userAuth:
         - sp:auth-profile:read
-      summary: Get Auth Profile.
+      summary: Get auth profile.
       tags:
       - Auth Profile
     patch:
@@ -7832,7 +7832,7 @@ paths:
       security:
       - userAuth:
         - sp:auth-profile:update
-      summary: Patch a specified Auth Profile
+      summary: Patch a specified auth profile
       tags:
       - Auth Profile
   /campaigns:
@@ -7997,7 +7997,7 @@ paths:
         - idn:campaign:manage
         - idn:campaign-report:read
         - idn:campaign-report:manage
-      summary: List Campaigns
+      summary: List campaigns
       tags:
       - Certification Campaigns
       x-sailpoint-userLevels:
@@ -8106,7 +8106,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Create Campaign
+      summary: Create campaign
       tags:
       - Certification Campaigns
       x-sailpoint-userLevels:
@@ -8212,7 +8212,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Delete Campaigns
+      summary: Delete campaigns
       tags:
       - Certification Campaigns
   /campaigns/{id}:
@@ -8326,7 +8326,7 @@ paths:
       - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
-      summary: Get Campaign
+      summary: Get campaign
       tags:
       - Certification Campaigns
     patch:
@@ -8469,7 +8469,7 @@ paths:
       - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
-      summary: Update a Campaign
+      summary: Update a campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/activate:
@@ -8586,7 +8586,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Activate a Campaign
+      summary: Activate a campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/complete:
@@ -8708,7 +8708,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Complete a Campaign
+      summary: Complete a campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-remediation-scan:
@@ -8813,7 +8813,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-report:manage
-      summary: Run Campaign Remediation Scan
+      summary: Run campaign remediation scan
       tags:
       - Certification Campaigns
   /campaigns/{id}/reassign:
@@ -8931,7 +8931,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Reassign Certifications
+      summary: Reassign certifications
       tags:
       - Certification Campaigns
   /campaigns/{id}/reports:
@@ -9038,7 +9038,7 @@ paths:
       - userAuth:
         - idn:campaign-report:read
         - idn:campaign-report:manage
-      summary: Get Campaign Reports
+      summary: Get campaign reports
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-report/{type}:
@@ -9149,7 +9149,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-report:manage
-      summary: Run Campaign Report
+      summary: Run campaign report
       tags:
       - Certification Campaigns
   /campaigns/reports-configuration:
@@ -9227,7 +9227,7 @@ paths:
       - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
-      summary: Get Campaign Reports Configuration
+      summary: Get campaign reports configuration
       tags:
       - Certification Campaigns
     put:
@@ -9310,7 +9310,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
-      summary: Set Campaign Reports Configuration
+      summary: Set campaign reports configuration
       tags:
       - Certification Campaigns
   /campaign-templates:
@@ -9457,7 +9457,7 @@ paths:
       - userAuth:
         - idn:campaign-template:read
         - idn:campaign-template:manage
-      summary: List Campaign Templates
+      summary: List campaign templates
       tags:
       - Certification Campaigns
     post:
@@ -9557,7 +9557,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-template:manage
-      summary: Create a Campaign Template
+      summary: Create a campaign template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}:
@@ -9658,7 +9658,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-template:manage
-      summary: Delete a Campaign Template
+      summary: Delete a campaign template
       tags:
       - Certification Campaigns
     get:
@@ -9771,7 +9771,7 @@ paths:
       - userAuth:
         - idn:campaign-template:read
         - idn:campaign-template:manage
-      summary: Get a Campaign Template
+      summary: Get a campaign template
       tags:
       - Certification Campaigns
     patch:
@@ -9907,7 +9907,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-template:manage
-      summary: Update a Campaign Template
+      summary: Update a campaign template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/generate:
@@ -10006,7 +10006,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-template:manage
-      summary: Generate a Campaign from Template
+      summary: Generate a campaign from template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/schedule:
@@ -10106,7 +10106,7 @@ paths:
             error.
       security:
       - userAuth: []
-      summary: Delete Campaign Template Schedule
+      summary: Delete campaign template schedule
       tags:
       - Certification Campaigns
     get:
@@ -10210,7 +10210,7 @@ paths:
             error.
       security:
       - userAuth: []
-      summary: Get Campaign Template Schedule
+      summary: Get campaign template schedule
       tags:
       - Certification Campaigns
     put:
@@ -10384,7 +10384,7 @@ paths:
             error.
       security:
       - userAuth: []
-      summary: Set Campaign Template Schedule
+      summary: Set campaign template schedule
       tags:
       - Certification Campaigns
   /certifications/{id}/reassign-async:
@@ -10497,7 +10497,7 @@ paths:
       security:
       - userAuth:
         - idn:certification:write
-      summary: Reassign Certifications Asynchronously
+      summary: Reassign certifications asynchronously
       tags:
       - Certifications
   /certifications/{id}/tasks/{taskId}:
@@ -10602,7 +10602,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Certification Task Status
+      summary: Certification task status
       tags:
       - Certifications
   /certifications/{id}/tasks-pending:
@@ -10704,7 +10704,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Pending Certification Tasks
+      summary: Pending certification tasks
       tags:
       - Certifications
   /certifications/{certificationId}/access-review-items/{itemId}/permissions:
@@ -10877,7 +10877,7 @@ paths:
       security:
       - userAuth:
         - idn:certification:read
-      summary: Permissions for Entitlement Certification Item
+      summary: Permissions for entitlement certification item
       tags:
       - Certifications
   /certifications/{id}/reviewers:
@@ -11045,7 +11045,7 @@ paths:
       security:
       - userAuth:
         - idn:certification:read
-      summary: List of Reviewers for certification
+      summary: List of reviewers for certification
       tags:
       - Certifications
   /certifications:
@@ -11191,7 +11191,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Certifications by IDs
+      summary: Certifications by ids
       tags:
       - Certifications
   /connector-rules:
@@ -11269,7 +11269,7 @@ paths:
       - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
-      summary: List Connector Rules
+      summary: List connector rules
       tags:
       - Connector Rule Management
     post:
@@ -11350,7 +11350,7 @@ paths:
       security:
       - userAuth:
         - idn:rule-management-connector:manage
-      summary: Create Connector Rule
+      summary: Create connector rule
       tags:
       - Connector Rule Management
   /connector-rules/{id}:
@@ -11451,7 +11451,7 @@ paths:
       security:
       - userAuth:
         - idn:rule-management-connector:manage
-      summary: Delete a Connector-Rule
+      summary: Delete a connector-rule
       tags:
       - Connector Rule Management
     get:
@@ -11555,7 +11555,7 @@ paths:
       - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
-      summary: Connector-Rule by ID
+      summary: Connector-rule by id
       tags:
       - Connector Rule Management
     put:
@@ -11664,7 +11664,7 @@ paths:
       security:
       - userAuth:
         - idn:rule-management-connector:manage
-      summary: Update a Connector Rule
+      summary: Update a connector rule
       tags:
       - Connector Rule Management
   /connector-rules/validate:
@@ -11747,7 +11747,7 @@ paths:
       - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
-      summary: Validate Connector Rule
+      summary: Validate connector rule
       tags:
       - Connector Rule Management
   /connectors:
@@ -11929,7 +11929,7 @@ paths:
       - userAuth:
         - idn:connector-config:read
         - idn:connector-config:manage
-      summary: Get Connector List
+      summary: Get connector list
       tags:
       - Connectors
       x-sailpoint-userLevels:
@@ -12004,7 +12004,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Create Custom Password Instructions
+      summary: Create custom password instructions
       tags:
       - Custom Password Instructions
   /custom-password-instructions/{pageId}:
@@ -12102,7 +12102,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete Custom Password Instructions by page ID
+      summary: Delete custom password instructions by page id
       tags:
       - Custom Password Instructions
     get:
@@ -12207,7 +12207,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Custom Password Instructions by Page ID
+      summary: Get custom password instructions by page id
       tags:
       - Custom Password Instructions
   /entitlements:
@@ -13369,7 +13369,7 @@ paths:
       - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
-      summary: Get Entitlement Request Config
+      summary: Get entitlement request config
       tags:
       - Entitlements
       x-sailpoint-userLevels:
@@ -13502,7 +13502,7 @@ paths:
       security:
       - userAuth:
         - idn:entitlement:manage
-      summary: Replace Entitlement Request Config
+      summary: Replace entitlement request config
       tags:
       - Entitlements
       x-sailpoint-userLevels:
@@ -13591,7 +13591,7 @@ paths:
       security:
       - userAuth:
         - idn:entitlement:update
-      summary: Reset Source Entitlements
+      summary: Reset source entitlements
       tags:
       - Entitlements
   /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}:
@@ -13875,7 +13875,7 @@ paths:
       security:
       - userAuth:
         - idn:entitlements:manage
-      summary: Aggregate Entitlements
+      summary: Aggregate entitlements
       tags:
       - Entitlements
   /generate-password-reset-token/digit:
@@ -14427,7 +14427,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
-      summary: List Access Items by Identity
+      summary: List access items by identity
       tags:
       - Identity History
       x-sailpoint-userLevels:
@@ -14994,7 +14994,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
-      summary: Get Identity Access Items Snapshot
+      summary: Get identity access items snapshot
       tags:
       - Identity History
   /common-access:
@@ -15988,7 +15988,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Gets a list of differences of specific accessType for the given identity
+      summary: Gets a list of differences of specific accesstype for the given identity
         between 2 snapshots
       tags:
       - Identity History
@@ -16378,7 +16378,7 @@ paths:
       - userAuth:
         - idn:identity:read
         - idn:identity:manage
-      summary: List Identities
+      summary: List identities
       tags:
       - Identities
   /identities/{id}:
@@ -16585,7 +16585,7 @@ paths:
       - userAuth:
         - idn:identity:read
         - idn:identity:manage
-      summary: Identity Details
+      summary: Identity details
       tags:
       - Identities
   /identities/invite:
@@ -16908,7 +16908,7 @@ paths:
       security:
       - userAuth:
         - idn:identity:manage
-      summary: Process a list of identityIds
+      summary: Process a list of identityids
       tags:
       - Identities
   /identities/{identityId}/reset:
@@ -17346,7 +17346,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:read
-      summary: List Identity Attributes
+      summary: List identity attributes
       tags:
       - Identity Attributes
     post:
@@ -17443,7 +17443,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:manage
-      summary: Create Identity Attribute
+      summary: Create identity attribute
       tags:
       - Identity Attributes
   /identity-attributes/{name}:
@@ -17542,7 +17542,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:manage
-      summary: Delete Identity Attribute
+      summary: Delete identity attribute
       tags:
       - Identity Attributes
     get:
@@ -17641,7 +17641,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:read
-      summary: Get Identity Attribute
+      summary: Get identity attribute
       tags:
       - Identity Attributes
     put:
@@ -17749,7 +17749,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:manage
-      summary: Update Identity Attribute
+      summary: Update identity attribute
       tags:
       - Identity Attributes
   /identity-attributes/bulk-delete:
@@ -17847,7 +17847,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:manage
-      summary: Bulk delete Identity Attributes
+      summary: Bulk delete identity attributes
       tags:
       - Identity Attributes
   /identity-profiles:
@@ -17990,7 +17990,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:read
-      summary: List Identity Profiles
+      summary: List identity profiles
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
@@ -18072,7 +18072,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Create Identity Profile
+      summary: Create identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
@@ -18162,7 +18162,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:delete
-      summary: Delete Identity Profiles
+      summary: Delete identity profiles
       tags:
       - Identity Profiles
   /identity-profiles/export:
@@ -18321,7 +18321,7 @@ paths:
       - userAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
-      summary: Export Identity Profiles
+      summary: Export identity profiles
       tags:
       - Identity Profiles
   /identity-profiles/import:
@@ -18403,7 +18403,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Import Identity Profiles
+      summary: Import identity profiles
       tags:
       - Identity Profiles
   /identity-profiles/identity-preview:
@@ -18487,7 +18487,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Generate Identity Profile Preview
+      summary: Generate identity profile preview
       tags:
       - Identity Profiles
   /identity-profiles/{identity-profile-id}:
@@ -18592,7 +18592,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:delete
-      summary: Delete Identity Profile
+      summary: Delete identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
@@ -18697,7 +18697,7 @@ paths:
       - userAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
-      summary: Get Identity Profile
+      summary: Get identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
@@ -18827,7 +18827,7 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      summary: Update Identity Profile
+      summary: Update identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
@@ -19142,7 +19142,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Lifecycle State
+      summary: Get lifecycle state
       tags:
       - Lifecycle States
     patch:
@@ -19274,7 +19274,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Update Lifecycle State
+      summary: Update lifecycle state
       tags:
       - Lifecycle States
   /multihosts:
@@ -19449,7 +19449,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: List All Existing Multi-Host Integrations
+      summary: List all existing multi-host integrations
       tags:
       - Multi-Host Integration
     post:
@@ -19551,7 +19551,7 @@ paths:
       - userAuth:
         - idn:multihosts:create
         - idn:sources:create
-      summary: Create Multi-Host Integration
+      summary: Create multi-host integration
       tags:
       - Multi-Host Integration
   /multihosts/types:
@@ -19648,7 +19648,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: List Multi-Host Integration Types
+      summary: List multi-host integration types
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}:
@@ -19750,7 +19750,7 @@ paths:
       - userAuth:
         - idn:multihosts:delete
         - idn:sources:delete
-      summary: Delete Multi-Host Integration
+      summary: Delete multi-host integration
       tags:
       - Multi-Host Integration
     get:
@@ -19854,7 +19854,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: Get Multi-Host Integration By ID
+      summary: Get multi-host integration by id
       tags:
       - Multi-Host Integration
     patch:
@@ -19970,7 +19970,7 @@ paths:
       security:
       - userAuth:
         - idn:multihosts:update
-      summary: Update Multi-Host Integration
+      summary: Update multi-host integration
       tags:
       - Multi-Host Integration
     post:
@@ -20081,7 +20081,7 @@ paths:
       - userAuth:
         - idn:multihosts:create
         - idn:sources:create
-      summary: Create Sources Within Multi-Host Integration
+      summary: Create sources within multi-host integration
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}/sources/testConnection:
@@ -20184,7 +20184,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: Test Configuration For Multi-Host Integration
+      summary: Test configuration for multi-host integration
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}/sources/{sourceId}/testConnection:
@@ -20300,7 +20300,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: Test Configuration For Multi-Host Integration's Single Source
+      summary: Test configuration for multi-host integration's single source
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}/sources:
@@ -20473,7 +20473,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: List Sources Within Multi-Host Integration
+      summary: List sources within multi-host integration
       tags:
       - Multi-Host Integration
   /multihosts/{multiHostId}/sources/errors:
@@ -20581,7 +20581,7 @@ paths:
       - userAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: List Multi-Host Source Creation Errors
+      summary: List multi-host source creation errors
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}/acctAggregationGroups:
@@ -20687,7 +20687,7 @@ paths:
       security:
       - userAuth:
         - idn:multihosts:update
-      summary: Get Account Aggregation Groups Within Multi-Host Integration ID
+      summary: Get account aggregation groups within multi-host integration id
       tags:
       - Multi-Host Integration
   /multihosts/{multiHostId}/entitlementAggregationGroups:
@@ -20792,7 +20792,7 @@ paths:
       security:
       - userAuth:
         - idn:multihosts:update
-      summary: Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+      summary: Get entitlement aggregation groups within multi-host integration id
       tags:
       - Multi-Host Integration
   /non-employee-records:
@@ -20929,7 +20929,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: List Non-Employee Records
+      summary: List non-employee records
       tags:
       - Non-Employee Lifecycle Management
     post:
@@ -21011,7 +21011,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Create Non-Employee Record
+      summary: Create non-employee record
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-records/{id}:
@@ -21090,7 +21090,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Delete Non-Employee Record
+      summary: Delete non-employee record
       tags:
       - Non-Employee Lifecycle Management
     get:
@@ -21171,7 +21171,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get a Non-Employee Record
+      summary: Get a non-employee record
       tags:
       - Non-Employee Lifecycle Management
     patch:
@@ -21287,7 +21287,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Patch Non-Employee Record
+      summary: Patch non-employee record
       tags:
       - Non-Employee Lifecycle Management
     put:
@@ -21395,7 +21395,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Update Non-Employee Record
+      summary: Update non-employee record
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-records/bulk-delete:
@@ -21475,7 +21475,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Delete Multiple Non-Employee Records
+      summary: Delete multiple non-employee records
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-requests:
@@ -21620,7 +21620,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: List Non-Employee Requests
+      summary: List non-employee requests
       tags:
       - Non-Employee Lifecycle Management
     post:
@@ -21720,7 +21720,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Create Non-Employee Request
+      summary: Create non-employee request
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-requests/{id}:
@@ -21818,7 +21818,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Delete Non-Employee Request
+      summary: Delete non-employee request
       tags:
       - Non-Employee Lifecycle Management
     get:
@@ -21917,7 +21917,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get a Non-Employee Request
+      summary: Get a non-employee request
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-requests/summary/{requested-for}:
@@ -22009,7 +22009,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get Summary of Non-Employee Requests
+      summary: Get summary of non-employee requests
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources:
@@ -22157,7 +22157,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: List Non-Employee Sources
+      summary: List non-employee sources
       tags:
       - Non-Employee Lifecycle Management
       x-sailpoint-userLevels:
@@ -22238,7 +22238,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Create Non-Employee Source
+      summary: Create non-employee source
       tags:
       - Non-Employee Lifecycle Management
       x-sailpoint-userLevels:
@@ -22319,7 +22319,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Delete Non-Employee Source
+      summary: Delete non-employee source
       tags:
       - Non-Employee Lifecycle Management
     get:
@@ -22400,7 +22400,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get a Non-Employee Source
+      summary: Get a non-employee source
       tags:
       - Non-Employee Lifecycle Management
     patch:
@@ -22502,7 +22502,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Patch a Non-Employee Source
+      summary: Patch a non-employee source
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources/{id}/non-employees/download:
@@ -22606,7 +22606,7 @@ paths:
       - userAuth:
         - idn:nelm:read
         - idn:nelm:manage
-      summary: Exports Non-Employee Records to CSV
+      summary: Exports non-employee records to csv
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources/{id}/non-employee-bulk-upload:
@@ -22717,7 +22717,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: "Imports, or Updates, Non-Employee Records"
+      summary: "Imports, or updates, non-employee records"
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources/{id}/non-employee-bulk-upload/status:
@@ -22903,7 +22903,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Exports Source Schema Template
+      summary: Exports source schema template
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-approvals:
@@ -23046,7 +23046,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get List of Non-Employee Approval Requests
+      summary: Get list of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-approvals/{id}:
@@ -23225,7 +23225,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Approve a Non-Employee Request
+      summary: Approve a non-employee request
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-approvals/{id}/reject:
@@ -23312,7 +23312,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Reject a Non-Employee Request
+      summary: Reject a non-employee request
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-approvals/summary/{requested-for}:
@@ -23402,7 +23402,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get Summary of Non-Employee Approval Requests
+      summary: Get summary of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources/{sourceId}/schema-attributes:
@@ -23594,7 +23594,7 @@ paths:
             error.
       security:
       - userAuth: []
-      summary: List Schema Attributes Non-Employee Source
+      summary: List schema attributes non-employee source
       tags:
       - Non-Employee Lifecycle Management
     post:
@@ -23685,7 +23685,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Create Non-Employee Source Schema Attribute
+      summary: Create non-employee source schema attribute
       tags:
       - Non-Employee Lifecycle Management
   /non-employee-sources/{sourceId}/schema-attributes/{attributeId}:
@@ -23773,7 +23773,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Delete Non-Employee Source's Schema Attribute
+      summary: Delete non-employee source's schema attribute
       tags:
       - Non-Employee Lifecycle Management
     get:
@@ -23865,7 +23865,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get Schema Attribute Non-Employee Source
+      summary: Get schema attribute non-employee source
       tags:
       - Non-Employee Lifecycle Management
     patch:
@@ -23990,7 +23990,7 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
-      summary: Patch Non-Employee Source's Schema Attribute
+      summary: Patch non-employee source's schema attribute
       tags:
       - Non-Employee Lifecycle Management
   /managed-clients/{id}/status:
@@ -24098,7 +24098,7 @@ paths:
       security:
       - userAuth:
         - idn:managed-client-status:read
-      summary: Specified Managed Client Status.
+      summary: Specified managed client status.
       tags:
       - Managed Clients
     post:
@@ -24308,7 +24308,7 @@ paths:
       - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
-      summary: Get a specified ManagedCluster.
+      summary: Get a specified managedcluster.
       tags:
       - Managed Clusters
   /managed-clusters/{id}/log-config:
@@ -24650,7 +24650,7 @@ paths:
       - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
-      summary: Retrieve all Managed Clusters.
+      summary: Retrieve all managed clusters.
       tags:
       - Managed Clusters
   /mail-from-attributes:
@@ -24733,7 +24733,7 @@ paths:
       security:
       - userAuth:
         - sp:notification-mail-from-attributes:write
-      summary: Change MAIL FROM domain
+      summary: Change mail from domain
       tags:
       - Notifications
   /mail-from-attributes/{identityId}:
@@ -24815,7 +24815,7 @@ paths:
       security:
       - userAuth:
         - sp:notification-mail-from-attributes:read
-      summary: Get MAIL FROM Attributes
+      summary: Get mail from attributes
       tags:
       - Notifications
   /generic-approvals:
@@ -24920,7 +24920,7 @@ paths:
       security:
       - userAuth:
         - sp:approvals:read
-      summary: Get Approvals
+      summary: Get approvals
       tags:
       - Approvals
   /generic-approvals/{id}:
@@ -25004,7 +25004,7 @@ paths:
       security:
       - userAuth:
         - sp:approvals:read
-      summary: Get Approval
+      summary: Get approval
       tags:
       - Approvals
   /mfa/okta-verify/config:
@@ -25084,7 +25084,7 @@ paths:
       - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
-      summary: Configuration of Okta MFA method
+      summary: Configuration of okta mfa method
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25176,7 +25176,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-configuration:manage
-      summary: Set Okta MFA configuration
+      summary: Set okta mfa configuration
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25261,7 +25261,7 @@ paths:
       - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
-      summary: Configuration of Duo MFA method
+      summary: Configuration of duo mfa method
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25359,7 +25359,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-configuration:manage
-      summary: Set Duo MFA configuration
+      summary: Set duo mfa configuration
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25458,7 +25458,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-kba:read
-      summary: Configuration of KBA MFA method
+      summary: Configuration of kba mfa method
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25563,7 +25563,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-kba:authenticate
-      summary: Set MFA KBA configuration
+      summary: Set mfa kba configuration
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25656,7 +25656,7 @@ paths:
       - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
-      summary: MFA method's test configuration
+      summary: Mfa method's test configuration
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25750,7 +25750,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-configuration:manage
-      summary: Delete MFA method configuration
+      summary: Delete mfa method configuration
       tags:
       - MFA Configuration
       x-sailpoint-userLevels:
@@ -25839,7 +25839,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa:verify
-      summary: Verifying authentication via Okta method
+      summary: Verifying authentication via okta method
       tags:
       - MFA Controller
   /mfa/duo-web/verify:
@@ -25925,7 +25925,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa:verify
-      summary: Verifying authentication via Duo method
+      summary: Verifying authentication via duo method
       tags:
       - MFA Controller
   /mfa/{method}/poll:
@@ -26027,7 +26027,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa:poll
-      summary: Polling MFA method by VerificationPollRequest
+      summary: Polling mfa method by verificationpollrequest
       tags:
       - MFA Controller
       x-sailpoint-userLevels:
@@ -26122,7 +26122,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa-kba:authenticate
-      summary: Authenticate KBA provided MFA method
+      summary: Authenticate kba provided mfa method
       tags:
       - MFA Controller
   /mfa/token/authenticate:
@@ -26207,7 +26207,7 @@ paths:
       security:
       - userAuth:
         - idn:mfa:verify
-      summary: Authenticate Token provided MFA method
+      summary: Authenticate token provided mfa method
       tags:
       - MFA Controller
   /mfa/token/send:
@@ -26410,7 +26410,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-template-defaults:read
-      summary: List Notification Template Defaults
+      summary: List notification template defaults
       tags:
       - Notifications
   /notification-templates:
@@ -26526,7 +26526,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-templates:read
-      summary: List Notification Templates
+      summary: List notification templates
       tags:
       - Notifications
     post:
@@ -26609,7 +26609,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-templates:create
-      summary: Create Notification Template
+      summary: Create notification template
       tags:
       - Notifications
   /notification-templates/{id}:
@@ -26692,7 +26692,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Notification Template By Id
+      summary: Get notification template by id
       tags:
       - Notifications
   /notification-templates/bulk-delete:
@@ -26772,7 +26772,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-templates:delete
-      summary: Bulk Delete Notification Templates
+      summary: Bulk delete notification templates
       tags:
       - Notifications
   /oauth-clients:
@@ -26860,7 +26860,7 @@ paths:
       security:
       - userAuth:
         - sp:oauth-client:manage
-      summary: List OAuth Clients
+      summary: List oauth clients
       tags:
       - OAuth Clients
     post:
@@ -26938,7 +26938,7 @@ paths:
       security:
       - userAuth:
         - sp:oauth-client:manage
-      summary: Create OAuth Client
+      summary: Create oauth client
       tags:
       - OAuth Clients
   /oauth-clients/{id}:
@@ -27034,7 +27034,7 @@ paths:
       security:
       - userAuth:
         - sp:oauth-client:manage
-      summary: Delete OAuth Client
+      summary: Delete oauth client
       tags:
       - OAuth Clients
     get:
@@ -27134,7 +27134,7 @@ paths:
       - userAuth:
         - sp:oauth-client:manage
         - sp:oauth-client:read
-      summary: Get OAuth Client
+      summary: Get oauth client
       tags:
       - OAuth Clients
     patch:
@@ -27267,7 +27267,7 @@ paths:
       security:
       - userAuth:
         - sp:oauth-client:manage
-      summary: Patch OAuth Client
+      summary: Patch oauth client
       tags:
       - OAuth Clients
   /org-config:
@@ -27360,7 +27360,7 @@ paths:
       - userAuth:
         - idn:org-configs:read
         - idn:org-configs:manage
-      summary: Get Org configuration settings
+      summary: Get org configuration settings
       tags:
       - Org Config
     patch:
@@ -27465,7 +27465,7 @@ paths:
       security:
       - userAuth:
         - idn:org-configs:manage
-      summary: Patch an Org configuration property
+      summary: Patch an org configuration property
       tags:
       - Org Config
   /org-config/valid-time-zones:
@@ -27702,7 +27702,7 @@ paths:
       - applicationAuth:
         - iai:outliers:read
         - iai:outliers:manage
-      summary: IAI Identity Outliers Summary
+      summary: Iai identity outliers summary
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -27805,7 +27805,7 @@ paths:
       - applicationAuth:
         - iai:outliers:read
         - iai:outliers:manage
-      summary: IAI Identity Outliers Latest Summary
+      summary: Iai identity outliers latest summary
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -27975,7 +27975,7 @@ paths:
       - applicationAuth:
         - iai:outliers:read
         - iai:outliers:manage
-      summary: IAI Get Identity Outliers
+      summary: Iai get identity outliers
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -28427,7 +28427,7 @@ paths:
         - iai:outliers:manage
       - applicationAuth:
         - iai:outliers:manage
-      summary: IAI Identity Outliers Ignore
+      summary: Iai identity outliers ignore
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -28515,7 +28515,7 @@ paths:
         - iai:outliers:manage
       - applicationAuth:
         - iai:outliers:manage
-      summary: IAI Identity Outliers Unignore
+      summary: Iai identity outliers unignore
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -28611,7 +28611,7 @@ paths:
       - applicationAuth:
         - iai:outliers:read
         - iai:outliers:manage
-      summary: IAI Identity Outliers Export
+      summary: Iai identity outliers export
       tags:
       - IAI Outliers
       x-sailpoint-userLevels:
@@ -28850,7 +28850,7 @@ paths:
       security:
       - userAuth:
         - idn:password-dictionary-management:read
-      summary: Get Password Dictionary
+      summary: Get password dictionary
       tags:
       - Password Dictionary
       x-sailpoint-userLevels:
@@ -28976,7 +28976,7 @@ paths:
       security:
       - userAuth:
         - idn:password-dictionary:manage
-      summary: Update Password Dictionary
+      summary: Update password dictionary
       tags:
       - Password Dictionary
       x-sailpoint-userLevels:
@@ -29077,7 +29077,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Query Password Info
+      summary: Query password info
       tags:
       - Password Management
   /set-password:
@@ -29201,7 +29201,7 @@ paths:
       security:
       - userAuth:
         - idn:password-change:manage
-      summary: Set Identity's Password
+      summary: Set identity's password
       tags:
       - Password Management
   /password-change-status/{id}:
@@ -29294,7 +29294,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Password Change Request Status
+      summary: Get password change request status
       tags:
       - Password Management
   /password-sync-groups:
@@ -29408,7 +29408,7 @@ paths:
       security:
       - userAuth:
         - idn:password-sync-group-management:read
-      summary: Get Password Sync Group List
+      summary: Get password sync group list
       tags:
       - Password Sync Groups
       x-sailpoint-userLevels:
@@ -29502,7 +29502,7 @@ paths:
       security:
       - userAuth:
         - idn:password-sync-group-management:write
-      summary: Create Password Sync Group
+      summary: Create password sync group
       tags:
       - Password Sync Groups
       x-sailpoint-userLevels:
@@ -29583,7 +29583,7 @@ paths:
       security:
       - userAuth:
         - idn:password-sync-group-management:write
-      summary: Delete Password Sync Group by ID
+      summary: Delete password sync group by id
       tags:
       - Password Sync Groups
       x-sailpoint-userLevels:
@@ -29691,7 +29691,7 @@ paths:
       security:
       - userAuth:
         - idn:password-sync-group-management:read
-      summary: Get Password Sync Group by ID
+      summary: Get password sync group by id
       tags:
       - Password Sync Groups
       x-sailpoint-userLevels:
@@ -29812,7 +29812,7 @@ paths:
       security:
       - userAuth:
         - idn:password-sync-group-management:write
-      summary: Update Password Sync Group by ID
+      summary: Update password sync group by id
       tags:
       - Password Sync Groups
       x-sailpoint-userLevels:
@@ -29911,7 +29911,7 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:write
-      summary: Delete Password Policy by ID
+      summary: Delete password policy by id
       tags:
       - Password Policies
       x-sailpoint-userLevels:
@@ -30044,7 +30044,7 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:read
-      summary: Get Password Policy by ID
+      summary: Get password policy by id
       tags:
       - Password Policies
       x-sailpoint-userLevels:
@@ -30215,7 +30215,7 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:write
-      summary: Update Password Policy by ID
+      summary: Update password policy by id
       tags:
       - Password Policies
       x-sailpoint-userLevels:
@@ -30394,7 +30394,7 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:read
-      summary: List Password Policies
+      summary: List password policies
       tags:
       - Password Policies
     post:
@@ -30523,7 +30523,7 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:write
-      summary: Create Password Policy
+      summary: Create password policy
       tags:
       - Password Policies
       x-sailpoint-userLevels:
@@ -30604,7 +30604,7 @@ paths:
       security:
       - userAuth:
         - idn:password-org-config:read
-      summary: Get Password Org Config
+      summary: Get password org config
       tags:
       - Password Configuration
     post:
@@ -30695,7 +30695,7 @@ paths:
       security:
       - userAuth:
         - idn:password-org-config:write
-      summary: Create Password Org Config
+      summary: Create password org config
       tags:
       - Password Configuration
     put:
@@ -30784,7 +30784,7 @@ paths:
       security:
       - userAuth:
         - idn:password-org-config:write
-      summary: Update Password Org Config
+      summary: Update password org config
       tags:
       - Password Configuration
   /peer-group-strategies/{strategy}/identity-outliers:
@@ -30911,7 +30911,7 @@ paths:
             error.
       security:
       - userAuth: []
-      summary: Identity Outliers List
+      summary: Identity outliers list
       tags:
       - IAI Peer Group Strategies
   /personal-access-tokens:
@@ -31017,7 +31017,7 @@ paths:
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:read
         - sp:all-personal-access-tokens:manage
-      summary: List Personal Access Tokens
+      summary: List personal access tokens
       tags:
       - Personal Access Tokens
     post:
@@ -31098,7 +31098,7 @@ paths:
       - userAuth:
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:manage
-      summary: Create Personal Access Token
+      summary: Create personal access token
       tags:
       - Personal Access Tokens
   /personal-access-tokens/{id}:
@@ -31195,7 +31195,7 @@ paths:
       - userAuth:
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:manage
-      summary: Delete Personal Access Token
+      summary: Delete personal access token
       tags:
       - Personal Access Tokens
     patch:
@@ -31318,7 +31318,7 @@ paths:
       security:
       - userAuth:
         - sp:my-personal-access-tokens:manage
-      summary: Patch Personal Access Token
+      summary: Patch personal access token
       tags:
       - Personal Access Tokens
   /public-identities-config:
@@ -31392,7 +31392,7 @@ paths:
       security:
       - userAuth:
         - idn:public-identity-config:read
-      summary: Get Public Identity Config
+      summary: Get public identity config
       tags:
       - Public Identities Config
       x-deprecated-description: |
@@ -31475,7 +31475,7 @@ paths:
       security:
       - userAuth:
         - idn:public-identity-config:write
-      summary: Update Public Identity Config
+      summary: Update public identity config
       tags:
       - Public Identities Config
       x-deprecated-description: |
@@ -31554,7 +31554,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-templates:read
-      summary: Get Notification Template Context
+      summary: Get notification template context
       tags:
       - Notifications
   /notification-preferences/{key}:
@@ -31656,7 +31656,7 @@ paths:
       security:
       - userAuth:
         - idn:notification-preferences:read
-      summary: List Notification Preferences for tenant.
+      summary: List notification preferences for tenant.
       tags:
       - Notifications
   /reassignment-configurations/types:
@@ -31732,7 +31732,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
-      summary: List Reassignment Config Types
+      summary: List reassignment config types
       tags:
       - Work Reassignment
   /reassignment-configurations:
@@ -31847,7 +31847,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
-      summary: List Reassignment Configurations
+      summary: List reassignment configurations
       tags:
       - Work Reassignment
       x-sailpoint-userLevels:
@@ -31927,7 +31927,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:create
-      summary: Create a Reassignment Configuration
+      summary: Create a reassignment configuration
       tags:
       - Work Reassignment
       x-sailpoint-userLevels:
@@ -32029,7 +32029,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
-      summary: Get Reassignment Configuration
+      summary: Get reassignment configuration
       tags:
       - Work Reassignment
     put:
@@ -32117,7 +32117,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:update
-      summary: Update Reassignment Configuration
+      summary: Update reassignment configuration
       tags:
       - Work Reassignment
   /reassignment-configurations/{identityId}/{configType}:
@@ -32200,7 +32200,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:delete
-      summary: Delete Reassignment Configuration
+      summary: Delete reassignment configuration
       tags:
       - Work Reassignment
   /reassignment-configurations/{identityId}/evaluate/{configType}:
@@ -32318,7 +32318,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:evaluate
-      summary: Evaluate Reassignment Configuration
+      summary: Evaluate reassignment configuration
       tags:
       - Work Reassignment
   /reassignment-configurations/tenant-config:
@@ -32410,7 +32410,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-tenant-configuration:read
-      summary: Get Tenant-wide Reassignment Configuration settings
+      summary: Get tenant-wide reassignment configuration settings
       tags:
       - Work Reassignment
     put:
@@ -32489,7 +32489,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-tenant-configuration:update
-      summary: Update Tenant-wide Reassignment Configuration settings
+      summary: Update tenant-wide reassignment configuration settings
       tags:
       - Work Reassignment
   /recommendations/request:
@@ -32570,7 +32570,7 @@ paths:
       security:
       - userAuth:
         - iai:decisions:manage
-      summary: Returns Recommendation Based on Object
+      summary: Returns recommendation based on object
       tags:
       - IAI Recommendations
       x-sailpoint-userLevels:
@@ -32916,7 +32916,7 @@ paths:
       security:
       - userAuth:
         - idn:requestable-objects:read
-      summary: Requestable Objects List
+      summary: Requestable objects list
       tags:
       - Requestable Objects
       x-sailpoint-userLevels:
@@ -35655,7 +35655,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       summary: Asynchronously export details for a potential role in a role mining
-        session and upload to S3
+        session and upload to s3
       tags:
       - IAI Role Mining
   /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}:
@@ -36957,7 +36957,7 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      summary: List Roles
+      summary: List roles
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37047,7 +37047,7 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      summary: Create a Role
+      summary: Create a role
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37134,7 +37134,7 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      summary: Delete a Role
+      summary: Delete a role
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37224,7 +37224,7 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      summary: Get a Role
+      summary: Get a role
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37426,7 +37426,7 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      summary: Patch a specified Role
+      summary: Patch a specified role
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37557,7 +37557,7 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      summary: Delete Role(s)
+      summary: Delete role(s)
       tags:
       - Roles
   /roles/{id}/assigned-identities:
@@ -37708,7 +37708,7 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      summary: Identities assigned a Role
+      summary: Identities assigned a role
       tags:
       - Roles
   /roles/{id}/entitlements:
@@ -37875,7 +37875,7 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      summary: List Role's Entitlements
+      summary: List role's entitlements
       tags:
       - Roles
       x-sailpoint-userLevels:
@@ -37992,7 +37992,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List Segments
+      summary: List segments
       tags:
       - Segments
     post:
@@ -38069,7 +38069,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Create Segment
+      summary: Create segment
       tags:
       - Segments
   /segments/{id}:
@@ -38164,7 +38164,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete Segment by ID
+      summary: Delete segment by id
       tags:
       - Segments
     get:
@@ -38262,7 +38262,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Segment by ID
+      summary: Get segment by id
       tags:
       - Segments
     patch:
@@ -38399,7 +38399,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Update Segment
+      summary: Update segment
       tags:
       - Segments
   /send-test-notification:
@@ -38496,7 +38496,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Send Test Notification
+      summary: Send test notification
       tags:
       - Notifications
   /service-desk-integrations:
@@ -38662,7 +38662,7 @@ paths:
       - userAuth:
         - idn:service-desk-integration:read
         - idn:service-desk-integration:manage
-      summary: List existing Service Desk integrations
+      summary: List existing service desk integrations
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -38761,7 +38761,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-integration:manage
-      summary: Create new Service Desk integration
+      summary: Create new service desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -38861,7 +38861,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-integration:manage
-      summary: Delete a Service Desk integration
+      summary: Delete a service desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -38965,7 +38965,7 @@ paths:
       - userAuth:
         - idn:service-desk-integration:read
         - idn:service-desk-integration:manage
-      summary: Get a Service Desk integration
+      summary: Get a service desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -39090,7 +39090,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-integration:manage
-      summary: Patch a Service Desk Integration
+      summary: Patch a service desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -39200,7 +39200,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-integration:manage
-      summary: Update a Service Desk integration
+      summary: Update a service desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -39298,7 +39298,7 @@ paths:
       - userAuth:
         - idn:service-desk-integration:read
         - idn:service-desk-integration:manage
-      summary: List Service Desk integration types
+      summary: List service desk integration types
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -39406,7 +39406,7 @@ paths:
       - userAuth:
         - idn:service-desk-integration:read
         - idn:service-desk-integration:manage
-      summary: Service Desk integration template by scriptName
+      summary: Service desk integration template by scriptname
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -39698,7 +39698,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:write
-      summary: Delete a SIM integration
+      summary: Delete a sim integration
       tags:
       - SIM Integrations
     get:
@@ -39798,7 +39798,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:read
-      summary: Get a SIM integration details.
+      summary: Get a sim integration details.
       tags:
       - SIM Integrations
     patch:
@@ -39905,7 +39905,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:write
-      summary: Patch a SIM attribute.
+      summary: Patch a sim attribute.
       tags:
       - SIM Integrations
     put:
@@ -40012,7 +40012,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:create
-      summary: Update an existing SIM integration
+      summary: Update an existing sim integration
       tags:
       - SIM Integrations
   /sim-integrations/{id}/beforeProvisioningRule:
@@ -40121,7 +40121,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:write
-      summary: Patch a SIM beforeProvisioningRule attribute.
+      summary: Patch a sim beforeprovisioningrule attribute.
       tags:
       - SIM Integrations
   /sim-integrations:
@@ -40213,7 +40213,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:read
-      summary: List the existing SIM integrations.
+      summary: List the existing sim integrations.
       tags:
       - SIM Integrations
     post:
@@ -40311,7 +40311,7 @@ paths:
       security:
       - userAuth:
         - idn:service-desk-admin:create
-      summary: Create new SIM integration
+      summary: Create new sim integration
       tags:
       - SIM Integrations
   /sp-config/export:
@@ -41191,7 +41191,7 @@ paths:
       - userAuth:
         - sp:config:read
         - sp:config:manage
-      summary: List Config Objects
+      summary: List config objects
       tags:
       - SP-Config
       x-sailpoint-userLevels:
@@ -41393,7 +41393,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
-      summary: Lists all sources in IdentityNow.
+      summary: Lists all sources in identitynow.
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -41493,7 +41493,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Creates a source in IdentityNow.
+      summary: Creates a source in identitynow.
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -41608,7 +41608,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Delete Source by ID
+      summary: Delete source by id
       tags:
       - Sources
     get:
@@ -41709,7 +41709,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
-      summary: Get Source by ID
+      summary: Get source by id
       tags:
       - Sources
     patch:
@@ -41902,7 +41902,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Update Source (Partial)
+      summary: Update source (partial)
       tags:
       - Sources
     put:
@@ -42023,7 +42023,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Update Source (Full)
+      summary: Update source (full)
       tags:
       - Sources
   /sources/{id}/attribute-sync-config:
@@ -42126,7 +42126,7 @@ paths:
       - userAuth:
         - idn:attr-sync-source-config:read
         - idn:attr-sync-source-config:manage
-      summary: Attribute Sync Config
+      summary: Attribute sync config
       tags:
       - Sources
     put:
@@ -42236,7 +42236,7 @@ paths:
       security:
       - userAuth:
         - idn:attr-sync-source-config:manage
-      summary: Update Attribute Sync Config
+      summary: Update attribute sync config
       tags:
       - Sources
   /sources/{sourceId}/connector/check-connection:
@@ -42869,7 +42869,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:update
-      summary: Delete Native Change Detection Configuration
+      summary: Delete native change detection configuration
       tags:
       - Sources
     get:
@@ -42970,7 +42970,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
-      summary: Native Change Detection Configuration
+      summary: Native change detection configuration
       tags:
       - Sources
     put:
@@ -43077,7 +43077,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:update
-      summary: Update Native Change Detection Configuration
+      summary: Update native change detection configuration
       tags:
       - Sources
   /sources/{sourceId}/provisioning-policies:
@@ -43183,7 +43183,7 @@ paths:
       - applicationAuth:
         - idn:provisioning-policy:read
         - idn:provisioning-policy:manage
-      summary: Lists ProvisioningPolicies
+      summary: Lists provisioningpolicies
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -43361,7 +43361,7 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:manage
-      summary: Create Provisioning Policy
+      summary: Create provisioning policy
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -43487,7 +43487,7 @@ paths:
         - idn:provisioning-policy:manage
       - applicationAuth:
         - idn:provisioning-policy:manage
-      summary: Delete Provisioning Policy by UsageType
+      summary: Delete provisioning policy by usagetype
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -43621,7 +43621,7 @@ paths:
         - idn:provisioning-policy-source:read
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
-      summary: Get Provisioning Policy by UsageType
+      summary: Get provisioning policy by usagetype
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -43778,7 +43778,7 @@ paths:
         - idn:provisioning-policy:update
       - applicationAuth:
         - idn:provisioning-policy:update
-      summary: Partial update of Provisioning Policy
+      summary: Partial update of provisioning policy
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -43918,7 +43918,7 @@ paths:
       - applicationAuth:
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
-      summary: Update Provisioning Policy by UsageType
+      summary: Update provisioning policy by usagetype
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -44035,7 +44035,7 @@ paths:
         - idn:provisioning-policy:manage
       - applicationAuth:
         - idn:provisioning-policy:manage
-      summary: Bulk Update Provisioning Policies
+      summary: Bulk update provisioning policies
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -44129,7 +44129,7 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
-      summary: Remove All Accounts in a Source
+      summary: Remove all accounts in a source
       tags:
       - Sources
   /sources/{sourceId}/schemas:
@@ -44253,7 +44253,7 @@ paths:
       security:
       - userAuth:
         - idn:source-schema:read
-      summary: List Schemas on Source
+      summary: List schemas on source
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -44345,7 +44345,7 @@ paths:
       security:
       - userAuth:
         - idn:source-schema:create
-      summary: Create Schema on Source
+      summary: Create schema on source
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -44449,7 +44449,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete Source Schema by ID
+      summary: Delete source schema by id
       tags:
       - Sources
     get:
@@ -44554,7 +44554,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Source Schema by ID
+      summary: Get source schema by id
       tags:
       - Sources
     patch:
@@ -44684,7 +44684,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Update Source Schema (Partial)
+      summary: Update source schema (partial)
       tags:
       - Sources
     put:
@@ -44800,7 +44800,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Update Source Schema (Full)
+      summary: Update source schema (full)
       tags:
       - Sources
   /sources/{sourceId}/schemas/accounts:
@@ -45505,7 +45505,7 @@ paths:
       - userAuth:
         - idn:sources:read
         - idn:sources:manage
-      summary: Get Source Entitlement Request Configuration
+      summary: Get source entitlement request configuration
       tags:
       - Sources
     put:
@@ -45628,7 +45628,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Update Source Entitlement Request Configuration
+      summary: Update source entitlement request configuration
       tags:
       - Sources
   /sources/{sourceId}/load-accounts:
@@ -45722,7 +45722,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Account Aggregation
+      summary: Account aggregation
       tags:
       - Sources
   /sources/{sourceId}/load-entitlements:
@@ -45813,7 +45813,7 @@ paths:
       security:
       - userAuth:
         - idn:entitlements:manage
-      summary: Entitlement Aggregation
+      summary: Entitlement aggregation
       tags:
       - Sources
   /sources/{sourceId}/load-uncorrelated-accounts:
@@ -45901,7 +45901,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Process Uncorrelated Accounts
+      summary: Process uncorrelated accounts
       tags:
       - Sources
   /sources/{sourceId}/correlation-config:
@@ -46003,7 +46003,7 @@ paths:
       - userAuth:
         - idn:sources:read
         - idn:sources:manage
-      summary: Get Source Correlation Configuration
+      summary: Get source correlation configuration
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -46113,7 +46113,7 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
-      summary: Update Source Correlation Configuration
+      summary: Update source correlation configuration
       tags:
       - Sources
       x-sailpoint-userLevels:
@@ -46200,7 +46200,7 @@ paths:
       - userAuth:
         - idn:app-roles:manage
         - idn:app-roles:delete
-      summary: Delete source app by ID
+      summary: Delete source app by id
       tags:
       - Apps
     get:
@@ -46299,7 +46299,7 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
-      summary: Get source app by ID
+      summary: Get source app by id
       tags:
       - Apps
     patch:
@@ -46465,7 +46465,7 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
-      summary: Patch source app by ID
+      summary: Patch source app by id
       tags:
       - Apps
   /source-apps/bulk-update:
@@ -47418,7 +47418,7 @@ paths:
       - applicationAuth:
         - idn:task-management:read
         - idn:task-management:write
-      summary: Get Task Status by ID
+      summary: Get task status by id
       tags:
       - Task Management
       x-sailpoint-userLevels:
@@ -47546,7 +47546,7 @@ paths:
       security:
       - userAuth:
         - idn:task-management:write
-      summary: Update Task Status by ID
+      summary: Update task status by id
       tags:
       - Task Management
       x-sailpoint-userLevels:
@@ -47721,7 +47721,7 @@ paths:
       - applicationAuth:
         - idn:task-management:read
         - idn:task-management:write
-      summary: Retrieve Task Status List
+      summary: Retrieve task status list
       tags:
       - Task Management
       x-sailpoint-userLevels:
@@ -47853,7 +47853,7 @@ paths:
       - applicationAuth:
         - idn:task-management:read
         - idn:task-management:write
-      summary: Retrieve Pending Task Status List
+      summary: Retrieve pending task status list
       tags:
       - Task Management
       x-sailpoint-userLevels:
@@ -47977,7 +47977,7 @@ paths:
       - applicationAuth:
         - idn:task-management:read
         - idn:task-management:write
-      summary: Retrieve Pending Task List Headers
+      summary: Retrieve pending task list headers
       tags:
       - Task Management
       x-sailpoint-userLevels:
@@ -48120,7 +48120,7 @@ paths:
       - userAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: List Tagged Objects
+      summary: List tagged objects
       tags:
       - Tagged Objects
     post:
@@ -48197,7 +48197,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Add Tag to Object
+      summary: Add tag to object
       tags:
       - Tagged Objects
   /tagged-objects/{type}:
@@ -48345,7 +48345,7 @@ paths:
       - userAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: List Tagged Objects by Type
+      summary: List tagged objects by type
       tags:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
@@ -48439,7 +48439,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Delete Object Tags
+      summary: Delete object tags
       tags:
       - Tagged Objects
     get:
@@ -48537,7 +48537,7 @@ paths:
       - userAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: Get Tagged Object
+      summary: Get tagged object
       tags:
       - Tagged Objects
     put:
@@ -48640,7 +48640,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Update Tagged Object
+      summary: Update tagged object
       tags:
       - Tagged Objects
   /tagged-objects/bulk-add:
@@ -48724,7 +48724,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Tag Multiple Objects
+      summary: Tag multiple objects
       tags:
       - Tagged Objects
   /tagged-objects/bulk-remove:
@@ -48805,7 +48805,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Remove Tags from Multiple Objects
+      summary: Remove tags from multiple objects
       tags:
       - Tagged Objects
   /tags:
@@ -48944,7 +48944,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List Tags
+      summary: List tags
       tags:
       - Tags
     post:
@@ -49042,7 +49042,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Create Tag
+      summary: Create tag
       tags:
       - Tags
   /tags/{id}:
@@ -49159,7 +49159,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete Tag
+      summary: Delete tag
       tags:
       - Tags
     get:
@@ -49258,7 +49258,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get Tag By Id
+      summary: Get tag by id
       tags:
       - Tags
   /tenant:
@@ -49349,7 +49349,7 @@ paths:
       security:
       - userAuth:
         - sp:tenant:read
-      summary: Get Tenant Information.
+      summary: Get tenant information.
       tags:
       - Tenant
   /transforms:
@@ -49837,7 +49837,7 @@ paths:
       - userAuth:
         - idn:transform:read
         - idn:transform:manage
-      summary: Transform by ID
+      summary: Transform by id
       tags:
       - Transforms
     put:
@@ -50049,7 +50049,7 @@ paths:
       security:
       - userAuth:
         - iai:decisions:manage
-      summary: Get Message catalogs
+      summary: Get message catalogs
       tags:
       - IAI Message Catalogs
       x-sailpoint-userLevels:
@@ -50188,7 +50188,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:read
-      summary: List Triggers
+      summary: List triggers
       tags:
       - Triggers
   /trigger-subscriptions:
@@ -50380,7 +50380,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:read
-      summary: List Subscriptions
+      summary: List subscriptions
       tags:
       - Triggers
     post:
@@ -50508,7 +50508,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
-      summary: Create a Subscription
+      summary: Create a subscription
       tags:
       - Triggers
   /trigger-subscriptions/{id}:
@@ -50605,7 +50605,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
-      summary: Delete a Subscription
+      summary: Delete a subscription
       tags:
       - Triggers
     patch:
@@ -50713,7 +50713,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
-      summary: Patch a Subscription
+      summary: Patch a subscription
       tags:
       - Triggers
     put:
@@ -50871,7 +50871,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
-      summary: Update a Subscription
+      summary: Update a subscription
       tags:
       - Triggers
   /trigger-subscriptions/validate-filter:
@@ -50960,7 +50960,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
-      summary: Validate a Subscription Filter
+      summary: Validate a subscription filter
       tags:
       - Triggers
   /trigger-invocations/status:
@@ -51103,7 +51103,7 @@ paths:
       - userAuth:
         - sp:trigger-service-invocation-status:read
         - sp:trigger-service-invocation-status:manage
-      summary: List Latest Invocation Statuses
+      summary: List latest invocation statuses
       tags:
       - Triggers
   /trigger-invocations/{id}/complete:
@@ -51189,7 +51189,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Complete Trigger Invocation
+      summary: Complete trigger invocation
       tags:
       - Triggers
   /trigger-invocations/test:
@@ -51291,7 +51291,7 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-invocation-status:manage
-      summary: Start a Test Invocation
+      summary: Start a test invocation
       tags:
       - Triggers
   /ui-metadata/tenant:
@@ -51384,7 +51384,7 @@ paths:
       security:
       - userAuth:
         - idn:ui-access-metadata-page:read
-      summary: Get a tenant UI metadata
+      summary: Get a tenant ui metadata
       tags:
       - UI Metadata
     put:
@@ -51482,7 +51482,7 @@ paths:
       security:
       - userAuth:
         - idn:ui-access-metadata-page:manage
-      summary: Update tenant UI metadata
+      summary: Update tenant ui metadata
       tags:
       - UI Metadata
   /user-apps/{id}:
@@ -51597,7 +51597,7 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
-      summary: Patch user app by ID
+      summary: Patch user app by id
       tags:
       - Apps
   /user-apps/{id}/available-accounts:
@@ -52123,7 +52123,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List From Addresses
+      summary: List from addresses
       tags:
       - Notifications
     post:
@@ -52200,7 +52200,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Create Verified From Address
+      summary: Create verified from address
       tags:
       - Notifications
   /verified-from-addresses/{id}:
@@ -52292,7 +52292,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete Verified From Address
+      summary: Delete verified from address
       tags:
       - Notifications
   /verified-domains:
@@ -52368,7 +52368,7 @@ paths:
       security:
       - userAuth:
         - sp:notification-dkim-attributes:read
-      summary: Get DKIM Attributes
+      summary: Get dkim attributes
       tags:
       - Notifications
     post:
@@ -52454,7 +52454,7 @@ paths:
       security:
       - userAuth:
         - sp:notification-verify-domain-dkim:write
-      summary: Verify domain address via DKIM
+      summary: Verify domain address via dkim
       tags:
       - Notifications
   /sod-policies:
@@ -52664,7 +52664,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
-      summary: List SOD policies
+      summary: List sod policies
       tags:
       - SOD Policies
     post:
@@ -52875,7 +52875,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Create SOD policy
+      summary: Create sod policy
       tags:
       - SOD Policies
   /sod-policies/{id}:
@@ -52983,7 +52983,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Delete SOD policy by ID
+      summary: Delete sod policy by id
       tags:
       - SOD Policies
     get:
@@ -53155,7 +53155,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
-      summary: Get SOD policy by ID
+      summary: Get sod policy by id
       tags:
       - SOD Policies
     patch:
@@ -53371,7 +53371,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Patch a SOD policy
+      summary: Patch a sod policy
       tags:
       - SOD Policies
     put:
@@ -53617,7 +53617,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Update SOD policy by ID
+      summary: Update sod policy by id
       tags:
       - SOD Policies
   /sod-policies/{id}/schedule:
@@ -53716,7 +53716,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Delete SOD policy schedule
+      summary: Delete sod policy schedule
       tags:
       - SOD Policies
     get:
@@ -53800,7 +53800,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
-      summary: Get SOD policy schedule
+      summary: Get sod policy schedule
       tags:
       - SOD Policies
     put:
@@ -53890,7 +53890,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:write
-      summary: Update SOD Policy schedule
+      summary: Update sod policy schedule
       tags:
       - SOD Policies
   /sod-policies/{id}/violation-report/run:
@@ -53998,7 +53998,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:write
-      summary: Runs SOD policy violation report
+      summary: Runs sod policy violation report
       tags:
       - SOD Policies
   /sod-policies/{id}/violation-report:
@@ -54106,7 +54106,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
-      summary: Get SOD violation report status
+      summary: Get sod violation report status
       tags:
       - SOD Policies
   /sod-violations/predict:
@@ -54216,7 +54216,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
-      summary: Predict SOD violations for identity.
+      summary: Predict sod violations for identity.
       tags:
       - SOD Violations
   /sod-policies/sod-violation-report-status/{reportResultId}:
@@ -54854,7 +54854,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: List Work Items
+      summary: List work items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55000,7 +55000,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: Completed Work Items
+      summary: Completed work items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55105,7 +55105,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: Count Work Items
+      summary: Count work items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55237,7 +55237,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: Count Completed Work Items
+      summary: Count completed work items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55342,7 +55342,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: Work Items Summary
+      summary: Work items summary
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55457,7 +55457,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:read
-      summary: Get a Work Item
+      summary: Get a work item
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55569,7 +55569,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Complete a Work Item
+      summary: Complete a work item
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55659,7 +55659,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Forward a Work Item
+      summary: Forward a work item
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55773,7 +55773,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Approve an Approval Item
+      summary: Approve an approval item
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55887,7 +55887,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Reject an Approval Item
+      summary: Reject an approval item
       tags:
       - Work Items
       x-deprecated-description: |
@@ -55993,7 +55993,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Bulk approve Approval Items
+      summary: Bulk approve approval items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -56099,7 +56099,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Bulk reject Approval Items
+      summary: Bulk reject approval items
       tags:
       - Work Items
       x-deprecated-description: |
@@ -56215,7 +56215,7 @@ paths:
       security:
       - userAuth:
         - idn:work-item:update
-      summary: Submit Account Selections
+      summary: Submit account selections
       tags:
       - Work Items
       x-deprecated-description: |
@@ -56334,7 +56334,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Workflows
+      summary: List workflows
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -56475,7 +56475,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:manage
-      summary: Create Workflow
+      summary: Create workflow
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -56559,7 +56559,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:manage
-      summary: Delete Workflow By Id
+      summary: Delete workflow by id
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -56652,7 +56652,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: Get Workflow By Id
+      summary: Get workflow by id
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -56789,7 +56789,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:manage
-      summary: Patch Workflow
+      summary: Patch workflow
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -56881,7 +56881,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:manage
-      summary: Update Workflow
+      summary: Update workflow
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -57001,7 +57001,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execute:external
-      summary: Test Workflow By Id
+      summary: Test workflow by id
       tags:
       - Workflows
   /workflows/{id}/executions:
@@ -57169,7 +57169,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Workflow Executions
+      summary: List workflow executions
       tags:
       - Workflows
   /workflow-executions/{id}:
@@ -57275,7 +57275,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: Get Workflow Execution
+      summary: Get workflow execution
       tags:
       - Workflows
       x-sailpoint-userLevels:
@@ -57384,7 +57384,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: Get Workflow Execution History
+      summary: Get workflow execution history
       tags:
       - Workflows
   /workflow-executions/{id}/cancel:
@@ -57483,7 +57483,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execute:external
-      summary: Cancel Workflow Execution by ID
+      summary: Cancel workflow execution by id
       tags:
       - Workflows
   /workflow-library:
@@ -57587,7 +57587,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Complete Workflow Library
+      summary: List complete workflow library
       tags:
       - Workflows
   /workflow-library/actions:
@@ -57703,7 +57703,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Workflow Library Actions
+      summary: List workflow library actions
       tags:
       - Workflows
   /workflow-library/triggers:
@@ -57819,7 +57819,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Workflow Library Triggers
+      summary: List workflow library triggers
       tags:
       - Workflows
   /workflow-library/operators:
@@ -57894,7 +57894,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
-      summary: List Workflow Library Operators
+      summary: List workflow library operators
       tags:
       - Workflows
   /workflows/{id}/external/oauth-clients:
@@ -57981,7 +57981,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:manage
-      summary: Generate External Trigger OAuth Client
+      summary: Generate external trigger oauth client
       tags:
       - Workflows
   /workflows/execute/external/{id}:
@@ -58074,7 +58074,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execute:external
-      summary: Execute Workflow via External Trigger
+      summary: Execute workflow via external trigger
       tags:
       - Workflows
   /workflows/execute/external/{id}/test:
@@ -58166,7 +58166,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execute:external
-      summary: Test Workflow via External Trigger
+      summary: Test workflow via external trigger
       tags:
       - Workflows
   /workgroups:
@@ -58307,7 +58307,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
-      summary: List Governance Groups
+      summary: List governance groups
       tags:
       - Governance Groups
     post:
@@ -58385,7 +58385,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Create a new Governance Group.
+      summary: Create a new governance group.
       tags:
       - Governance Groups
   /workgroups/{id}:
@@ -58463,7 +58463,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Delete a Governance Group
+      summary: Delete a governance group
       tags:
       - Governance Groups
     get:
@@ -58543,7 +58543,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
-      summary: Get Governance Group by Id
+      summary: Get governance group by id
       tags:
       - Governance Groups
     patch:
@@ -58639,7 +58639,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Patch a Governance Group
+      summary: Patch a governance group
       tags:
       - Governance Groups
   /workgroups/bulk-delete:
@@ -58738,7 +58738,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Delete Governance Group(s)
+      summary: Delete governance group(s)
       tags:
       - Governance Groups
   /workgroups/{workgroupId}/connections:
@@ -58871,7 +58871,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
-      summary: List connections for Governance Group
+      summary: List connections for governance group
       tags:
       - Governance Groups
   /workgroups/{workgroupId}/members:
@@ -59003,7 +59003,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
-      summary: List Governance Group Members
+      summary: List governance group members
       tags:
       - Governance Groups
   /workgroups/{workgroupId}/members/bulk-add:
@@ -59098,7 +59098,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Add members to Governance Group
+      summary: Add members to governance group
       tags:
       - Governance Groups
   /workgroups/{workgroupId}/members/bulk-delete:
@@ -59193,7 +59193,7 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:write
-      summary: Remove members from Governance Group
+      summary: Remove members from governance group
       tags:
       - Governance Groups
   /form-definitions:
@@ -59885,7 +59885,7 @@ paths:
       security:
       - userAuth:
         - sp:forms:manage
-      summary: Generate JSON Schema dynamically.
+      summary: Generate json schema dynamically.
       tags:
       - Custom Forms
       x-codegen-request-body-name: Body
@@ -60326,7 +60326,7 @@ paths:
       security:
       - userAuth:
         - sp:forms:manage
-      summary: Download definition file by fileId.
+      summary: Download definition file by fileid.
       tags:
       - Custom Forms
       x-codegen-request-body-name: Body
@@ -60864,7 +60864,7 @@ paths:
       security:
       - userAuth:
         - sp:forms:manage
-      summary: Download instance file by fileId.
+      summary: Download instance file by fileid.
       tags:
       - Custom Forms
       x-codegen-request-body-name: Body
@@ -61446,7 +61446,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: Download CSV Template for Discovery
+      summary: Download csv template for discovery
       tags:
       - Application Discovery
   /manual-discover-applications:
@@ -61522,7 +61522,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Upload CSV to Discover Applications
+      summary: Upload csv to discover applications
       tags:
       - Application Discovery
   /discovered-applications:
@@ -61763,7 +61763,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: Get Discovered Application by ID
+      summary: Get discovered application by id
       tags:
       - Application Discovery
     patch:
@@ -61895,7 +61895,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Patch Discovered Application by ID
+      summary: Patch discovered application by id
       tags:
       - Application Discovery
   /vendor-connector-mappings:
@@ -61993,7 +61993,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Delete Vendor Connector Mapping
+      summary: Delete vendor connector mapping
       tags:
       - Vendor Connector Mappings
     get:
@@ -62110,7 +62110,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: List Vendor Connector Mappings
+      summary: List vendor connector mappings
       tags:
       - Vendor Connector Mappings
     post:
@@ -62196,7 +62196,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Create Vendor Connector Mapping
+      summary: Create vendor connector mapping
       tags:
       - Vendor Connector Mappings
   /icons/{objectType}/{objectId}:
@@ -62523,7 +62523,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
-      summary: Submit Sed Batch Stats Request
+      summary: Submit sed batch stats request
       tags:
       - Suggested Entitlement Description
   /suggested-entitlement-description-batches:
@@ -62616,7 +62616,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
-      summary: List Sed Batch Request
+      summary: List sed batch request
       tags:
       - Suggested Entitlement Description
     post:
@@ -62717,7 +62717,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:write
-      summary: Submit Sed Batch Request
+      summary: Submit sed batch request
       tags:
       - Suggested Entitlement Description
   /suggested-entitlement-description-approvals:
@@ -62821,7 +62821,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:write
-      summary: Submit Bulk Approval Request
+      summary: Submit bulk approval request
       tags:
       - Suggested Entitlement Description
   /suggested-entitlement-description-assignments:
@@ -62921,7 +62921,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:write
-      summary: Submit Sed Assignment Request
+      summary: Submit sed assignment request
       tags:
       - Suggested Entitlement Description
   /suggested-entitlement-descriptions:
@@ -63104,7 +63104,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
-      summary: List Suggested Entitlement Descriptions
+      summary: List suggested entitlement descriptions
       tags:
       - Suggested Entitlement Description
       x-sailpoint-userLevels:
@@ -63217,7 +63217,7 @@ paths:
       security:
       - userAuth:
         - idn:sed:write
-      summary: Patch Suggested Entitlement Description
+      summary: Patch suggested entitlement description
       tags:
       - Suggested Entitlement Description
       x-sailpoint-userLevels:
@@ -63348,7 +63348,7 @@ paths:
       - userAuth:
         - sp:launcher-admin:read
         - sp:launcher-user:read
-      summary: List all Launchers for tenant
+      summary: List all launchers for tenant
       tags:
       - Launchers
       x-sailpoint-userLevels:
@@ -63546,7 +63546,7 @@ paths:
       security:
       - userAuth:
         - sp:launcher-admin:delete
-      summary: Delete Launcher
+      summary: Delete launcher
       tags:
       - Launchers
       x-sailpoint-userLevels:
@@ -63649,7 +63649,7 @@ paths:
       - userAuth:
         - sp:launcher-admin:read
         - sp:launcher-user:read
-      summary: Get Launcher by ID
+      summary: Get launcher by id
       tags:
       - Launchers
       x-sailpoint-userLevels:
@@ -63758,7 +63758,7 @@ paths:
       security:
       - userAuth:
         - sp:launcher-admin:write
-      summary: Replace Launcher
+      summary: Replace launcher
       tags:
       - Launchers
       x-sailpoint-userLevels:
@@ -63861,7 +63861,7 @@ paths:
       security:
       - userAuth:
         - sp:launcher-user:launch
-      summary: Launch a Launcher
+      summary: Launch a launcher
       tags:
       - Launchers
       x-sailpoint-userLevels:
@@ -64591,12 +64591,12 @@ components:
           correlatedStatus: CORRELATED
           mandatoryCommentRequirement: NO_DECISIONS
     evaluateEmpty:
-      summary: Evaluate response when no Reassignment Configuration is found
+      summary: Evaluate response when no reassignment configuration is found
       value:
         reassignToId: 2c9180825a6c1adc015a71c9023f0818
         lookupTrail: []
     evaluateLong:
-      summary: Evaluate response when a long Reassignment trail is found
+      summary: Evaluate response when a long reassignment trail is found
       value:
         reassignToId: 2c9180825a6c1adc015a71c9023f0818
         lookupTrail:

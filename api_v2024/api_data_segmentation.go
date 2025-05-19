@@ -39,7 +39,7 @@ func (r ApiCreateDataSegmentRequest) Execute() (*DataSegment, *http.Response, er
 }
 
 /*
-CreateDataSegment Create Segment
+CreateDataSegment Create segment
 
 This API creates a segment. 
 >**Note:** Segment definitions may take time to propagate to all identities.
@@ -213,7 +213,7 @@ func (r ApiDeleteDataSegmentRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteDataSegment Delete Segment by ID
+DeleteDataSegment Delete segment by id
 
 This API deletes the segment specified by the given ID.
 
@@ -393,7 +393,7 @@ func (r ApiGetDataSegmentRequest) Execute() (*DataSegment, *http.Response, error
 }
 
 /*
-GetDataSegment Get Segment by ID
+GetDataSegment Get segment by id
 
 This API returns the segment specified by the given ID.
 
@@ -578,7 +578,7 @@ func (r ApiGetDataSegmentIdentityMembershipRequest) Execute() (map[string]interf
 }
 
 /*
-GetDataSegmentIdentityMembership Get SegmentMembership by Identity ID
+GetDataSegmentIdentityMembership Get segmentmembership by identity id
 
 This API returns the segment membership specified by the given identity ID.
 
@@ -763,7 +763,7 @@ func (r ApiGetDataSegmentationEnabledForUserRequest) Execute() (bool, *http.Resp
 }
 
 /*
-GetDataSegmentationEnabledForUser Is Segmentation enabled by Identity
+GetDataSegmentationEnabledForUser Is segmentation enabled by identity
 
 This API returns whether or not segmentation is enabled for the identity.
 
@@ -996,7 +996,7 @@ func (r ApiListDataSegmentsRequest) Execute() ([]DataSegment, *http.Response, er
 }
 
 /*
-ListDataSegments Get Segments
+ListDataSegments Get segments
 
 This API returns the segment specified by the given ID.
 
@@ -1224,7 +1224,7 @@ func (r ApiPatchDataSegmentRequest) Execute() (*DataSegment, *http.Response, err
 }
 
 /*
-PatchDataSegment Update Segment
+PatchDataSegment Update segment
 
 Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -1433,7 +1433,7 @@ func (r ApiPublishDataSegmentRequest) Execute() (*http.Response, error) {
 }
 
 /*
-PublishDataSegment Publish segment by ID
+PublishDataSegment Publish segment by id
 
 This will publish the segment so that it starts applying the segmentation to the desired users if enabled
 

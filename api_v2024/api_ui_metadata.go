@@ -39,7 +39,7 @@ func (r ApiGetTenantUiMetadataRequest) Execute() (*TenantUiMetadataItemResponse,
 }
 
 /*
-GetTenantUiMetadata Get a tenant UI metadata
+GetTenantUiMetadata Get a tenant ui metadata
 
 This API endpoint retrieves UI metadata configured for your tenant.
 
@@ -226,7 +226,7 @@ func (r ApiSetTenantUiMetadataRequest) Execute() (*TenantUiMetadataItemResponse,
 }
 
 /*
-SetTenantUiMetadata Update tenant UI metadata
+SetTenantUiMetadata Update tenant ui metadata
 
 This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 

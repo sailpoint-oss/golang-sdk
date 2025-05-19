@@ -39,7 +39,7 @@ func (r ApiCreateCustomPasswordInstructionsRequest) Execute() (*CustomPasswordIn
 }
 
 /*
-CreateCustomPasswordInstructions Create Custom Password Instructions
+CreateCustomPasswordInstructions Create custom password instructions
 
 This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -183,7 +183,7 @@ func (r ApiDeleteCustomPasswordInstructionsRequest) Execute() (*http.Response, e
 }
 
 /*
-DeleteCustomPasswordInstructions Delete Custom Password Instructions by page ID
+DeleteCustomPasswordInstructions Delete custom password instructions by page id
 
 This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -328,7 +328,7 @@ func (r ApiGetCustomPasswordInstructionsRequest) Execute() (*CustomPasswordInstr
 }
 
 /*
-GetCustomPasswordInstructions Get Custom Password Instructions by Page ID
+GetCustomPasswordInstructions Get custom password instructions by page id
 
 This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 

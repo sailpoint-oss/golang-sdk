@@ -39,7 +39,7 @@ func (r ApiCreateTagRequest) Execute() (*Tag, *http.Response, error) {
 }
 
 /*
-CreateTag Create Tag
+CreateTag Create tag
 
 This API creates new tag.
 
@@ -200,7 +200,7 @@ func (r ApiDeleteTagByIdRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteTagById Delete Tag
+DeleteTagById Delete tag
 
 This API deletes a tag by specified id.
 
@@ -359,7 +359,7 @@ func (r ApiGetTagByIdRequest) Execute() (*Tag, *http.Response, error) {
 }
 
 /*
-GetTagById Get Tag By Id
+GetTagById Get tag by id
 
 Returns a tag by its id.
 
@@ -563,7 +563,7 @@ func (r ApiListTagsRequest) Execute() ([]Tag, *http.Response, error) {
 }
 
 /*
-ListTags List Tags
+ListTags List tags
 
 This API returns a list of tags.
 

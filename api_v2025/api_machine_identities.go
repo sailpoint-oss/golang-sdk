@@ -46,7 +46,7 @@ func (r ApiCreateMachineIdentityRequest) Execute() (*MachineIdentity, *http.Resp
 }
 
 /*
-CreateMachineIdentity Create Machine Identities
+CreateMachineIdentity Create machine identities
 
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
@@ -414,7 +414,7 @@ func (r ApiGetMachineIdentityRequest) Execute() (*MachineIdentity, *http.Respons
 }
 
 /*
-GetMachineIdentity Machine Identity Details
+GetMachineIdentity Machine identity details
 
 This API returns a single machine identity using the Machine Identity ID.
 
@@ -633,7 +633,7 @@ func (r ApiListMachineIdentitiesRequest) Execute() ([]MachineIdentity, *http.Res
 }
 
 /*
-ListMachineIdentities List Machine Identities
+ListMachineIdentities List machine identities
 
 This API returns a list of machine identities.
 
@@ -846,7 +846,7 @@ func (r ApiUpdateMachineIdentityRequest) Execute() (*MachineIdentity, *http.Resp
 }
 
 /*
-UpdateMachineIdentity Update a Machine Identity
+UpdateMachineIdentity Update a machine identity
 
 Use this API to update machine identity details.
 

@@ -40,7 +40,7 @@ func (r ApiCreateCustomConnectorRequest) Execute() (*V3ConnectorDto, *http.Respo
 }
 
 /*
-CreateCustomConnector Create Custom Connector
+CreateCustomConnector Create custom connector
 
 Create custom connector.    
 
@@ -210,7 +210,7 @@ func (r ApiDeleteCustomConnectorRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCustomConnector Delete Connector by Script Name
+DeleteCustomConnector Delete connector by script name
 
 Delete a custom connector that using its script name.
 
@@ -374,7 +374,7 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorDetail, *http.Response, err
 }
 
 /*
-GetConnector Get Connector by Script Name
+GetConnector Get connector by script name
 
 Fetches a connector that using its script name.    
 
@@ -579,7 +579,7 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 }
 
 /*
-GetConnectorList Get Connector List
+GetConnectorList Get connector list
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -768,7 +768,7 @@ func (r ApiGetConnectorSourceConfigRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorSourceConfig Get Connector Source Configuration
+GetConnectorSourceConfig Get connector source configuration
 
 Fetches a connector's source config using its script name.    
 
@@ -936,7 +936,7 @@ func (r ApiGetConnectorSourceTemplateRequest) Execute() (string, *http.Response,
 }
 
 /*
-GetConnectorSourceTemplate Get Connector Source Template
+GetConnectorSourceTemplate Get connector source template
 
 Fetches a connector's source template using its script name.    
 
@@ -1105,7 +1105,7 @@ func (r ApiGetConnectorTranslationsRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorTranslations Get Connector Translations
+GetConnectorTranslations Get connector translations
 
 Fetches a connector's translations using its script name.    
 
@@ -1283,7 +1283,7 @@ func (r ApiPutConnectorSourceConfigRequest) Execute() (*UpdateDetail, *http.Resp
 }
 
 /*
-PutConnectorSourceConfig Update Connector Source Configuration
+PutConnectorSourceConfig Update connector source configuration
 
 Update a connector's source config using its script name.    
 
@@ -1476,7 +1476,7 @@ func (r ApiPutConnectorSourceTemplateRequest) Execute() (*UpdateDetail, *http.Re
 }
 
 /*
-PutConnectorSourceTemplate Update Connector Source Template
+PutConnectorSourceTemplate Update connector source template
 
 Update a connector's source template using its script name.    
 
@@ -1663,7 +1663,7 @@ func (r ApiPutConnectorTranslationsRequest) Execute() (*UpdateDetail, *http.Resp
 }
 
 /*
-PutConnectorTranslations Update Connector Translations
+PutConnectorTranslations Update connector translations
 
 Update a connector's translations using its script name.    
 
@@ -1841,7 +1841,7 @@ func (r ApiUpdateConnectorRequest) Execute() (*ConnectorDetail, *http.Response, 
 }
 
 /*
-UpdateConnector Update Connector by Script Name
+UpdateConnector Update connector by script name
 
 This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 

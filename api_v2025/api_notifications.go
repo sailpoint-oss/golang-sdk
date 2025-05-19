@@ -46,7 +46,7 @@ func (r ApiCreateDomainDkimRequest) Execute() (*DomainStatusDto, *http.Response,
 }
 
 /*
-CreateDomainDkim Verify domain address via DKIM
+CreateDomainDkim Verify domain address via dkim
 
 Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
@@ -244,7 +244,7 @@ func (r ApiCreateNotificationTemplateRequest) Execute() (*TemplateDto, *http.Res
 }
 
 /*
-CreateNotificationTemplate Create Notification Template
+CreateNotificationTemplate Create notification template
 
 This creates a template for your site. 
 
@@ -433,7 +433,7 @@ func (r ApiCreateVerifiedFromAddressRequest) Execute() (*EmailStatusDto, *http.R
 }
 
 /*
-CreateVerifiedFromAddress Create Verified From Address
+CreateVerifiedFromAddress Create verified from address
 
 Create a new sender email address and initiate verification process.
 
@@ -620,7 +620,7 @@ func (r ApiDeleteNotificationTemplatesInBulkRequest) Execute() (*http.Response, 
 }
 
 /*
-DeleteNotificationTemplatesInBulk Bulk Delete Notification Templates
+DeleteNotificationTemplatesInBulk Bulk delete notification templates
 
 This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
@@ -791,7 +791,7 @@ func (r ApiDeleteVerifiedFromAddressRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteVerifiedFromAddress Delete Verified From Address
+DeleteVerifiedFromAddress Delete verified from address
 
 Delete a verified sender email address
 
@@ -964,7 +964,7 @@ func (r ApiGetDkimAttributesRequest) Execute() ([]DkimAttributes, *http.Response
 }
 
 /*
-GetDkimAttributes Get DKIM Attributes
+GetDkimAttributes Get dkim attributes
 
 Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
 
@@ -1141,7 +1141,7 @@ func (r ApiGetMailFromAttributesRequest) Execute() (*MailFromAttributes, *http.R
 }
 
 /*
-GetMailFromAttributes Get MAIL FROM Attributes
+GetMailFromAttributes Get mail from attributes
 
 Retrieve MAIL FROM attributes for a given AWS SES identity.
 
@@ -1322,7 +1322,7 @@ func (r ApiGetNotificationTemplateRequest) Execute() (*TemplateDto, *http.Respon
 }
 
 /*
-GetNotificationTemplate Get Notification Template By Id
+GetNotificationTemplate Get notification template by id
 
 This gets a template that you have modified for your site by Id.
 
@@ -1495,7 +1495,7 @@ func (r ApiGetNotificationsTemplateContextRequest) Execute() (*NotificationTempl
 }
 
 /*
-GetNotificationsTemplateContext Get Notification Template Context
+GetNotificationsTemplateContext Get notification template context
 
 The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called "Global Context" (a.k.a. notification template context). It defines a set of attributes
  that will be available per tenant (organization).
@@ -1701,7 +1701,7 @@ func (r ApiListFromAddressesRequest) Execute() ([]EmailStatusDto, *http.Response
 }
 
 /*
-ListFromAddresses List From Addresses
+ListFromAddresses List from addresses
 
 Retrieve a list of sender email addresses and their verification statuses
 
@@ -1884,7 +1884,7 @@ func (r ApiListNotificationPreferencesRequest) Execute() (*PreferencesDto, *http
 }
 
 /*
-ListNotificationPreferences List Notification Preferences for tenant.
+ListNotificationPreferences List notification preferences for tenant.
 
 Returns a list of notification preferences for tenant.
 
@@ -2086,7 +2086,7 @@ func (r ApiListNotificationTemplateDefaultsRequest) Execute() ([]TemplateDtoDefa
 }
 
 /*
-ListNotificationTemplateDefaults List Notification Template Defaults
+ListNotificationTemplateDefaults List notification template defaults
 
 This lists the default templates used for notifications, such as emails from IdentityNow.
 
@@ -2292,7 +2292,7 @@ func (r ApiListNotificationTemplatesRequest) Execute() ([]TemplateDto, *http.Res
 }
 
 /*
-ListNotificationTemplates List Notification Templates
+ListNotificationTemplates List notification templates
 
 This lists the templates that you have modified for your site.
 
@@ -2483,7 +2483,7 @@ func (r ApiPutMailFromAttributesRequest) Execute() (*MailFromAttributes, *http.R
 }
 
 /*
-PutMailFromAttributes Change MAIL FROM domain
+PutMailFromAttributes Change mail from domain
 
 Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
@@ -2670,7 +2670,7 @@ func (r ApiSendTestNotificationRequest) Execute() (*http.Response, error) {
 }
 
 /*
-SendTestNotification Send Test Notification
+SendTestNotification Send test notification
 
 Send a Test Notification
 

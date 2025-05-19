@@ -41,7 +41,7 @@ func (r ApiCreateLifecycleStateRequest) Execute() (*LifecycleState, *http.Respon
 }
 
 /*
-CreateLifecycleState Create Lifecycle State
+CreateLifecycleState Create lifecycle state
 
 Use this endpoint to create a lifecycle state.
 
@@ -204,7 +204,7 @@ func (r ApiDeleteLifecycleStateRequest) Execute() (*LifecyclestateDeleted, *http
 }
 
 /*
-DeleteLifecycleState Delete Lifecycle State
+DeleteLifecycleState Delete lifecycle state
 
 Use this endpoint to delete the lifecycle state by its ID. 
 
@@ -376,7 +376,7 @@ func (r ApiGetLifecycleStateRequest) Execute() (*LifecycleState, *http.Response,
 }
 
 /*
-GetLifecycleState Get Lifecycle State
+GetLifecycleState Get lifecycle state
 
 Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
@@ -575,7 +575,7 @@ func (r ApiGetLifecycleStatesRequest) Execute() ([]LifecycleState, *http.Respons
 }
 
 /*
-GetLifecycleStates Lists LifecycleStates
+GetLifecycleStates Lists lifecyclestates
 
 Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
@@ -759,7 +759,7 @@ func (r ApiSetLifecycleStateRequest) Execute() (*SetLifecycleState200Response, *
 }
 
 /*
-SetLifecycleState Set Lifecycle State
+SetLifecycleState Set lifecycle state
 
 Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
@@ -940,7 +940,7 @@ func (r ApiUpdateLifecycleStatesRequest) Execute() (*LifecycleState, *http.Respo
 }
 
 /*
-UpdateLifecycleStates Update Lifecycle State
+UpdateLifecycleStates Update lifecycle state
 
 Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

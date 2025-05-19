@@ -95,7 +95,7 @@ func (r ApiListRequestableObjectsRequest) Execute() ([]RequestableObject, *http.
 }
 
 /*
-ListRequestableObjects Requestable Objects List
+ListRequestableObjects Requestable objects list
 
 Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v2024/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
 Any authenticated token can call this endpoint to see their requestable access items.

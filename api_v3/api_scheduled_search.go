@@ -211,7 +211,7 @@ func (r ApiDeleteScheduledSearchRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteScheduledSearch Delete a Scheduled Search
+DeleteScheduledSearch Delete a scheduled search
 
 Deletes the specified scheduled search.
 
@@ -369,7 +369,7 @@ func (r ApiGetScheduledSearchRequest) Execute() (*ScheduledSearch, *http.Respons
 }
 
 /*
-GetScheduledSearch Get a Scheduled Search
+GetScheduledSearch Get a scheduled search
 
 Returns the specified scheduled search.
 
@@ -758,7 +758,7 @@ func (r ApiUnsubscribeScheduledSearchRequest) Execute() (*http.Response, error) 
 }
 
 /*
-UnsubscribeScheduledSearch Unsubscribe a recipient from Scheduled Search
+UnsubscribeScheduledSearch Unsubscribe a recipient from scheduled search
 
 Unsubscribes a recipient from the specified scheduled search.
 
@@ -895,7 +895,7 @@ func (r ApiUpdateScheduledSearchRequest) Execute() (*ScheduledSearch, *http.Resp
 }
 
 /*
-UpdateScheduledSearch Update an existing Scheduled Search
+UpdateScheduledSearch Update an existing scheduled search
 
 Updates an existing scheduled search.
 

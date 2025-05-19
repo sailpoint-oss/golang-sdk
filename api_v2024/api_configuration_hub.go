@@ -41,7 +41,7 @@ func (r ApiCreateDeployRequest) Execute() (*DeployResponse, *http.Response, erro
 }
 
 /*
-CreateDeploy Create a Deploy
+CreateDeploy Create a deploy
 
 This API performs a deploy based on an existing daft.
 
@@ -572,7 +572,7 @@ func (r ApiCreateScheduledActionRequest) Execute() (*ScheduledActionResponse, *h
 }
 
 /*
-CreateScheduledAction Create Scheduled Action
+CreateScheduledAction Create scheduled action
 
 This API creates a new scheduled action for the current tenant.
 
@@ -744,7 +744,7 @@ func (r ApiCreateUploadedConfigurationRequest) Execute() (*BackupResponse, *http
 }
 
 /*
-CreateUploadedConfiguration Upload a Configuration
+CreateUploadedConfiguration Upload a configuration
 
 This API uploads a JSON configuration file into a tenant.
 
@@ -924,7 +924,7 @@ func (r ApiDeleteBackupRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteBackup Delete a Backup
+DeleteBackup Delete a backup
 
 This API deletes an existing backup for the current tenant.
 
@@ -1410,7 +1410,7 @@ func (r ApiDeleteScheduledActionRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteScheduledAction Delete Scheduled Action
+DeleteScheduledAction Delete scheduled action
 
 This API deletes an existing scheduled action.
 
@@ -1567,7 +1567,7 @@ func (r ApiDeleteUploadedConfigurationRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteUploadedConfiguration Delete an Uploaded Configuration
+DeleteUploadedConfiguration Delete an uploaded configuration
 
 This API deletes an uploaded configuration based on Id.
 
@@ -1728,7 +1728,7 @@ func (r ApiGetDeployRequest) Execute() (*DeployResponse, *http.Response, error) 
 }
 
 /*
-GetDeploy Get a Deploy
+GetDeploy Get a deploy
 
 This API gets an existing deploy for the current tenant.
 
@@ -2067,7 +2067,7 @@ func (r ApiGetUploadedConfigurationRequest) Execute() (*BackupResponse, *http.Re
 }
 
 /*
-GetUploadedConfiguration Get an Uploaded Configuration
+GetUploadedConfiguration Get an uploaded configuration
 
 This API gets an existing uploaded configuration for the current tenant.
 
@@ -2241,7 +2241,7 @@ func (r ApiListBackupsRequest) Execute() ([]BackupResponse, *http.Response, erro
 }
 
 /*
-ListBackups List Backups
+ListBackups List backups
 
 This API gets a list of existing backups for the current tenant.
 
@@ -2397,7 +2397,7 @@ func (r ApiListDeploysRequest) Execute() (*ListDeploys200Response, *http.Respons
 }
 
 /*
-ListDeploys List Deploys
+ListDeploys List deploys
 
 This API gets a list of deploys for the current tenant.
 
@@ -2557,7 +2557,7 @@ func (r ApiListDraftsRequest) Execute() ([]DraftResponse, *http.Response, error)
 }
 
 /*
-ListDrafts List Drafts
+ListDrafts List drafts
 
 This API gets a list of existing drafts for the current tenant.
 
@@ -2713,7 +2713,7 @@ func (r ApiListScheduledActionsRequest) Execute() ([]ScheduledActionResponse, *h
 }
 
 /*
-ListScheduledActions List Scheduled Actions
+ListScheduledActions List scheduled actions
 
 This API gets a list of existing scheduled actions for the current tenant.
 
@@ -2873,7 +2873,7 @@ func (r ApiListUploadedConfigurationsRequest) Execute() ([]BackupResponse, *http
 }
 
 /*
-ListUploadedConfigurations List Uploaded Configurations
+ListUploadedConfigurations List uploaded configurations
 
 This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -3231,7 +3231,7 @@ func (r ApiUpdateScheduledActionRequest) Execute() (*ScheduledActionResponse, *h
 }
 
 /*
-UpdateScheduledAction Update Scheduled Action
+UpdateScheduledAction Update scheduled action
 
 This API updates an existing scheduled action using JSON Patch format.
 

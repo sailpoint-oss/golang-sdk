@@ -34,7 +34,7 @@ func (r ApiGetSedBatchStatsRequest) Execute() (*SedBatchStats, *http.Response, e
 }
 
 /*
-GetSedBatchStats Submit Sed Batch Stats Request
+GetSedBatchStats Submit sed batch stats request
 
 Submit Sed Batch Stats Request.
 
@@ -205,7 +205,7 @@ func (r ApiGetSedBatchesRequest) Execute() (*SedBatchStatus, *http.Response, err
 }
 
 /*
-GetSedBatches List Sed Batch Request
+GetSedBatches List sed batch request
 
 List Sed Batches.
 API responses with Sed Batch Status
@@ -419,7 +419,7 @@ func (r ApiListSedsRequest) Execute() ([]Sed, *http.Response, error) {
 }
 
 /*
-ListSeds List Suggested Entitlement Descriptions
+ListSeds List suggested entitlement descriptions
 
 List of Suggested Entitlement Descriptions (SED)
 
@@ -626,7 +626,7 @@ func (r ApiPatchSedRequest) Execute() (*Sed, *http.Response, error) {
 }
 
 /*
-PatchSed Patch Suggested Entitlement Description
+PatchSed Patch suggested entitlement description
 
 Patch Suggested Entitlement Description
 
@@ -805,7 +805,7 @@ func (r ApiSubmitSedApprovalRequest) Execute() ([]SedApprovalStatus, *http.Respo
 }
 
 /*
-SubmitSedApproval Submit Bulk Approval Request
+SubmitSedApproval Submit bulk approval request
 
 Submit Bulk Approval Request for SED.
 Request body takes list of SED Ids. API responses with list of SED Approval Status
@@ -982,7 +982,7 @@ func (r ApiSubmitSedAssignmentRequest) Execute() (*SedAssignmentResponse, *http.
 }
 
 /*
-SubmitSedAssignment Submit Sed Assignment Request
+SubmitSedAssignment Submit sed assignment request
 
 Submit Assignment Request.
 Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
@@ -1159,7 +1159,7 @@ func (r ApiSubmitSedBatchRequestRequest) Execute() (*SedBatchResponse, *http.Res
 }
 
 /*
-SubmitSedBatchRequest Submit Sed Batch Request
+SubmitSedBatchRequest Submit sed batch request
 
 Submit Sed Batch Request.
 Request body has one of the following:

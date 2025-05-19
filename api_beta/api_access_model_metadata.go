@@ -34,7 +34,7 @@ func (r ApiGetAccessModelMetadataAttributeRequest) Execute() (*AttributeDTO, *ht
 }
 
 /*
-GetAccessModelMetadataAttribute Get Access Model Metadata Attribute
+GetAccessModelMetadataAttribute Get access model metadata attribute
 
 Get single Access Model Metadata Attribute
 
@@ -192,7 +192,7 @@ func (r ApiGetAccessModelMetadataAttributeValueRequest) Execute() (*AttributeVal
 }
 
 /*
-GetAccessModelMetadataAttributeValue Get Access Model Metadata Value
+GetAccessModelMetadataAttributeValue Get access model metadata value
 
 Get single Access Model Metadata Attribute Value
 
@@ -358,7 +358,7 @@ func (r ApiListAccessModelMetadataAttributeRequest) Execute() ([]AttributeDTO, *
 }
 
 /*
-ListAccessModelMetadataAttribute List Access Model Metadata Attributes
+ListAccessModelMetadataAttribute List access model metadata attributes
 
 Get a list of Access Model Metadata Attributes
 
@@ -515,7 +515,7 @@ func (r ApiListAccessModelMetadataAttributeValueRequest) Execute() ([]AttributeV
 }
 
 /*
-ListAccessModelMetadataAttributeValue List Access Model Metadata Values
+ListAccessModelMetadataAttributeValue List access model metadata values
 
 Get a list of Access Model Metadata Attribute Values
 

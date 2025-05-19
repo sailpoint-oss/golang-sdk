@@ -67,7 +67,7 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 }
 
 /*
-GetConnectorList Get Connector List
+GetConnectorList Get connector list
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 

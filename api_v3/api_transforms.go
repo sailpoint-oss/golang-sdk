@@ -367,7 +367,7 @@ func (r ApiGetTransformRequest) Execute() (*TransformRead, *http.Response, error
 }
 
 /*
-GetTransform Transform by ID
+GetTransform Transform by id
 
 This API returns the transform specified by the given ID.
 

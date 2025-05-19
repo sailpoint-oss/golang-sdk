@@ -47,7 +47,7 @@ func (r ApiCompleteTriggerInvocationRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CompleteTriggerInvocation Complete Trigger Invocation
+CompleteTriggerInvocation Complete trigger invocation
 
 Completes an invocation to a REQUEST_RESPONSE type trigger.
 
@@ -226,7 +226,7 @@ func (r ApiCreateSubscriptionRequest) Execute() (*Subscription, *http.Response, 
 }
 
 /*
-CreateSubscription Create a Subscription
+CreateSubscription Create a subscription
 
 This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required:
 * HTTP subscriptions require httpConfig
@@ -410,7 +410,7 @@ func (r ApiDeleteSubscriptionRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSubscription Delete a Subscription
+DeleteSubscription Delete a subscription
 
 Deletes an existing subscription to a trigger.
 
@@ -618,7 +618,7 @@ func (r ApiListSubscriptionsRequest) Execute() ([]Subscription, *http.Response, 
 }
 
 /*
-ListSubscriptions List Subscriptions
+ListSubscriptions List subscriptions
 
 Gets a list of all trigger subscriptions.
 
@@ -847,7 +847,7 @@ func (r ApiListTriggerInvocationStatusRequest) Execute() ([]InvocationStatus, *h
 }
 
 /*
-ListTriggerInvocationStatus List Latest Invocation Statuses
+ListTriggerInvocationStatus List latest invocation statuses
 
 Gets a list of latest invocation statuses.
 Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours.
@@ -1078,7 +1078,7 @@ func (r ApiListTriggersRequest) Execute() ([]Trigger, *http.Response, error) {
 }
 
 /*
-ListTriggers List Triggers
+ListTriggers List triggers
 
 Gets a list of triggers that are available in the tenant.
 
@@ -1279,7 +1279,7 @@ func (r ApiPatchSubscriptionRequest) Execute() (*Subscription, *http.Response, e
 }
 
 /*
-PatchSubscription Patch a Subscription
+PatchSubscription Patch a subscription
 
 This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:
 
@@ -1482,7 +1482,7 @@ func (r ApiStartTestTriggerInvocationRequest) Execute() ([]Invocation, *http.Res
 }
 
 /*
-StartTestTriggerInvocation Start a Test Invocation
+StartTestTriggerInvocation Start a test invocation
 
 Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
@@ -1669,7 +1669,7 @@ func (r ApiTestSubscriptionFilterRequest) Execute() (*ValidateFilterOutputDto, *
 }
 
 /*
-TestSubscriptionFilter Validate a Subscription Filter
+TestSubscriptionFilter Validate a subscription filter
 
 Validates a JSONPath filter expression against a provided mock input.
 Request requires a security scope of: 
@@ -1858,7 +1858,7 @@ func (r ApiUpdateSubscriptionRequest) Execute() (*Subscription, *http.Response, 
 }
 
 /*
-UpdateSubscription Update a Subscription
+UpdateSubscription Update a subscription
 
 This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing
   Subscription is completely replaced. The following fields are immutable:

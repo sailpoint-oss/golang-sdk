@@ -198,7 +198,7 @@ func (r ApiGetIdentityPasswordChangeStatusRequest) Execute() (*PasswordStatus, *
 }
 
 /*
-GetIdentityPasswordChangeStatus Get Password Change Request Status
+GetIdentityPasswordChangeStatus Get password change request status
 
 This API returns the status of a password change request. A token with identity owner or trusted API client application authority is required to call this API.
 
@@ -360,7 +360,7 @@ func (r ApiQueryPasswordInfoRequest) Execute() (*PasswordInfo, *http.Response, e
 }
 
 /*
-QueryPasswordInfo Query Password Info
+QueryPasswordInfo Query password info
 
 This API is used to query password related information. 
 
@@ -532,7 +532,7 @@ func (r ApiSetIdentityPasswordRequest) Execute() (*PasswordChangeResponse, *http
 }
 
 /*
-SetIdentityPassword Set Identity's Password
+SetIdentityPassword Set identity's password
 
 This API is used to set a password for an identity. 
 

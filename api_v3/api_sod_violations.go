@@ -38,7 +38,7 @@ func (r ApiStartPredictSodViolationsRequest) Execute() (*ViolationPrediction, *h
 }
 
 /*
-StartPredictSodViolations Predict SOD violations for identity.
+StartPredictSodViolations Predict sod violations for identity.
 
 This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
@@ -213,7 +213,7 @@ func (r ApiStartViolationCheckRequest) Execute() (*SodViolationCheck, *http.Resp
 }
 
 /*
-StartViolationCheck Check SOD violations
+StartViolationCheck Check sod violations
 
 This API initiates a SOD policy verification asynchronously.
 

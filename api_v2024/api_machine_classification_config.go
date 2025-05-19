@@ -34,7 +34,7 @@ func (r ApiDeleteMachineClassificationConfigRequest) Execute() (*http.Response, 
 }
 
 /*
-DeleteMachineClassificationConfig Delete Source's Classification Config
+DeleteMachineClassificationConfig Delete source's classification config
 
 Use this API to remove Classification Config for a Source. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -192,7 +192,7 @@ func (r ApiGetMachineClassificationConfigRequest) Execute() (*MachineClassificat
 }
 
 /*
-GetMachineClassificationConfig Machine Classification Config for Source
+GetMachineClassificationConfig Machine classification config for source
 
 This API returns a Machine Classification Config for a Source using Source ID.
 
@@ -366,7 +366,7 @@ func (r ApiSetMachineClassificationConfigRequest) Execute() (*MachineClassificat
 }
 
 /*
-SetMachineClassificationConfig Update Source's Classification Config
+SetMachineClassificationConfig Update source's classification config
 
 Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

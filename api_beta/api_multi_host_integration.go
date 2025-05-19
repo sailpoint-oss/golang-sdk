@@ -40,7 +40,7 @@ func (r ApiCreateMultiHostIntegrationRequest) Execute() (*MultiHostIntegrations,
 }
 
 /*
-CreateMultiHostIntegration Create Multi-Host Integration
+CreateMultiHostIntegration Create multi-host integration
 
 This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.
 
@@ -219,7 +219,7 @@ func (r ApiCreateSourcesWithinMultiHostRequest) Execute() (*http.Response, error
 }
 
 /*
-CreateSourcesWithinMultiHost Create Sources Within Multi-Host Integration
+CreateSourcesWithinMultiHost Create sources within multi-host integration
 
 This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.
 
@@ -383,7 +383,7 @@ func (r ApiDeleteMultiHostRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteMultiHost Delete Multi-Host Integration
+DeleteMultiHost Delete multi-host integration
 
 Delete an existing Multi-Host Integration by ID.  
 
@@ -542,7 +542,7 @@ func (r ApiGetAcctAggregationGroupsRequest) Execute() (*MultiHostIntegrationsAgg
 }
 
 /*
-GetAcctAggregationGroups Get Account Aggregation Groups Within Multi-Host Integration ID
+GetAcctAggregationGroups Get account aggregation groups within multi-host integration id
 
 This API will return array of account aggregation groups within provided Multi-Host Integration ID.
 
@@ -712,7 +712,7 @@ func (r ApiGetEntitlementAggregationGroupsRequest) Execute() (*MultiHostIntegrat
 }
 
 /*
-GetEntitlementAggregationGroups Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+GetEntitlementAggregationGroups Get entitlement aggregation groups within multi-host integration id
 
 This API will return array of aggregation groups within provided Multi-Host Integration ID.  
 
@@ -882,7 +882,7 @@ func (r ApiGetMultiHostIntegrationsRequest) Execute() (*MultiHostIntegrations, *
 }
 
 /*
-GetMultiHostIntegrations Get Multi-Host Integration By ID
+GetMultiHostIntegrations Get multi-host integration by id
 
 Get an existing Multi-Host Integration. 
 
@@ -1093,7 +1093,7 @@ func (r ApiGetMultiHostIntegrationsListRequest) Execute() ([]MultiHostIntegratio
 }
 
 /*
-GetMultiHostIntegrationsList List All Existing Multi-Host Integrations
+GetMultiHostIntegrationsList List all existing multi-host integrations
 
 Get a list of Multi-Host Integrations.  
 
@@ -1287,7 +1287,7 @@ func (r ApiGetMultiHostSourceCreationErrorsRequest) Execute() ([]SourceCreationE
 }
 
 /*
-GetMultiHostSourceCreationErrors List Multi-Host Source Creation Errors
+GetMultiHostSourceCreationErrors List multi-host source creation errors
 
 Get a list of sources creation errors within Multi-Host Integration ID.  
 
@@ -1456,7 +1456,7 @@ func (r ApiGetMultihostIntegrationTypesRequest) Execute() ([]MultiHostIntegratio
 }
 
 /*
-GetMultihostIntegrationTypes List Multi-Host Integration Types
+GetMultihostIntegrationTypes List multi-host integration types
 
 This API endpoint returns the current list of supported Multi-Host Integration types.  
 
@@ -1658,7 +1658,7 @@ func (r ApiGetSourcesWithinMultiHostRequest) Execute() ([]MultiHostSources, *htt
 }
 
 /*
-GetSourcesWithinMultiHost List Sources Within Multi-Host Integration
+GetSourcesWithinMultiHost List sources within multi-host integration
 
 Get a list of sources within Multi-Host Integration ID.  
 
@@ -1852,7 +1852,7 @@ func (r ApiTestConnectionMultiHostSourcesRequest) Execute() (*http.Response, err
 }
 
 /*
-TestConnectionMultiHostSources Test Configuration For Multi-Host Integration
+TestConnectionMultiHostSources Test configuration for multi-host integration
 
 This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.
 
@@ -2012,7 +2012,7 @@ func (r ApiTestSourceConnectionMultihostRequest) Execute() (*TestSourceConnectio
 }
 
 /*
-TestSourceConnectionMultihost Test Configuration For Multi-Host Integration's Single Source
+TestSourceConnectionMultihost Test configuration for multi-host integration's single source
 
 This endpoint performs a more detailed validation of the source's configuration.  
 
@@ -2192,7 +2192,7 @@ func (r ApiUpdateMultiHostSourcesRequest) Execute() (*http.Response, error) {
 }
 
 /*
-UpdateMultiHostSources Update Multi-Host Integration
+UpdateMultiHostSources Update multi-host integration
 
 Update existing sources within Multi-Host Integration.
 

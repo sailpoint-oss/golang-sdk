@@ -68,7 +68,7 @@ func (r ApiGetDiscoveredApplicationsRequest) Execute() ([]GetDiscoveredApplicati
 }
 
 /*
-GetDiscoveredApplications Get Discovered Applications for Tenant
+GetDiscoveredApplications Get discovered applications for tenant
 
 Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
 
@@ -243,7 +243,7 @@ func (r ApiGetManualDiscoverApplicationsCsvTemplateRequest) Execute() (*ManualDi
 }
 
 /*
-GetManualDiscoverApplicationsCsvTemplate Download CSV Template for Discovery
+GetManualDiscoverApplicationsCsvTemplate Download csv template for discovery
 
 Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
 
@@ -406,7 +406,7 @@ func (r ApiSendManualDiscoverApplicationsCsvTemplateRequest) Execute() (*http.Re
 }
 
 /*
-SendManualDiscoverApplicationsCsvTemplate Upload CSV to Discover Applications
+SendManualDiscoverApplicationsCsvTemplate Upload csv to discover applications
 
 Uploading a CSV file with application data for manual correlation to specific ISC connectors. 
 If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.

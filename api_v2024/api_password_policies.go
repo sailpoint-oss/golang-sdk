@@ -39,7 +39,7 @@ func (r ApiCreatePasswordPolicyRequest) Execute() (*PasswordPolicyV3Dto, *http.R
 }
 
 /*
-CreatePasswordPolicy Create Password Policy
+CreatePasswordPolicy Create password policy
 
 This API creates the specified password policy.
 
@@ -209,7 +209,7 @@ func (r ApiDeletePasswordPolicyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeletePasswordPolicy Delete Password Policy by ID
+DeletePasswordPolicy Delete password policy by id
 
 This API deletes the specified password policy.
 
@@ -366,7 +366,7 @@ func (r ApiGetPasswordPolicyByIdRequest) Execute() (*PasswordPolicyV3Dto, *http.
 }
 
 /*
-GetPasswordPolicyById Get Password Policy by ID
+GetPasswordPolicyById Get password policy by id
 
 This API returns the password policy for the specified ID.
 
@@ -554,7 +554,7 @@ func (r ApiListPasswordPoliciesRequest) Execute() ([]PasswordPolicyV3Dto, *http.
 }
 
 /*
-ListPasswordPolicies List Password Policies
+ListPasswordPolicies List password policies
 
 This gets list of all Password Policies.
 Requires role of ORG_ADMIN
@@ -733,7 +733,7 @@ func (r ApiSetPasswordPolicyRequest) Execute() (*PasswordPolicyV3Dto, *http.Resp
 }
 
 /*
-SetPasswordPolicy Update Password Policy by ID
+SetPasswordPolicy Update password policy by id
 
 This API updates the specified password policy.
 

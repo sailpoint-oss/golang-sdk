@@ -215,7 +215,7 @@ func (r ApiGetIdentityRequest) Execute() (*Identity, *http.Response, error) {
 }
 
 /*
-GetIdentity Identity Details
+GetIdentity Identity details
 
 This API returns a single identity using the Identity ID.
 
@@ -1020,7 +1020,7 @@ func (r ApiListIdentitiesRequest) Execute() ([]Identity, *http.Response, error) 
 }
 
 /*
-ListIdentities List Identities
+ListIdentities List identities
 
 This API returns a list of identities.
 
@@ -1795,7 +1795,7 @@ func (r ApiStartIdentityProcessingRequest) Execute() (*TaskResultResponse, *http
 }
 
 /*
-StartIdentityProcessing Process a list of identityIds
+StartIdentityProcessing Process a list of identityids
 
 This operation should not be used to schedule your own identity processing or to perform system wide identity refreshes. The system will use a combination of [event-based processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#event-based-processing) and [scheduled processing](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html?h=process#scheduled-processing) that runs every day at 8:00 AM and 8:00 PM in the tenant's timezone to keep your identities synchronized. 
 

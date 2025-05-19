@@ -39,7 +39,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-CreateAccount Create Account
+CreateAccount Create account
 
 Submit an account creation task - the API then returns the task ID.  
 
@@ -209,7 +209,7 @@ func (r ApiDeleteAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-DeleteAccount Delete Account
+DeleteAccount Delete account
 
 Use this API to delete an account. 
 This endpoint submits an account delete task and returns the task ID. 
@@ -386,7 +386,7 @@ func (r ApiDisableAccountRequest) Execute() (*AccountsAsyncResult, *http.Respons
 }
 
 /*
-DisableAccount Disable Account
+DisableAccount Disable account
 
 This API submits a task to disable the account and returns the task ID.      
 
@@ -565,7 +565,7 @@ func (r ApiEnableAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-EnableAccount Enable Account
+EnableAccount Enable account
 
 This API submits a task to enable account and returns the task ID.      
 
@@ -738,7 +738,7 @@ func (r ApiGetAccountRequest) Execute() (*Account, *http.Response, error) {
 }
 
 /*
-GetAccount Account Details
+GetAccount Account details
 
 Use this API to return the details for a single account by its ID.  
 
@@ -927,7 +927,7 @@ func (r ApiGetAccountEntitlementsRequest) Execute() ([]Entitlement, *http.Respon
 }
 
 /*
-GetAccountEntitlements Account Entitlements
+GetAccountEntitlements Account entitlements
 
 This API returns entitlements of the account.      
 
@@ -1154,7 +1154,7 @@ func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 }
 
 /*
-ListAccounts Accounts List
+ListAccounts Accounts list
 
 List accounts. 
 
@@ -1341,7 +1341,7 @@ func (r ApiPutAccountRequest) Execute() (*AccountsAsyncResult, *http.Response, e
 }
 
 /*
-PutAccount Update Account
+PutAccount Update account
 
 Use this API to update an account with a PUT request. 
 
@@ -1519,7 +1519,7 @@ func (r ApiSubmitReloadAccountRequest) Execute() (*AccountsAsyncResult, *http.Re
 }
 
 /*
-SubmitReloadAccount Reload Account
+SubmitReloadAccount Reload account
 
 This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.      
 
@@ -1693,7 +1693,7 @@ func (r ApiUnlockAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-UnlockAccount Unlock Account
+UnlockAccount Unlock account
 
 This API submits a task to unlock an account and returns the task ID.  
 To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
@@ -1874,7 +1874,7 @@ func (r ApiUpdateAccountRequest) Execute() (map[string]interface{}, *http.Respon
 }
 
 /*
-UpdateAccount Update Account
+UpdateAccount Update account
 
 Use this API to update account details. 
 

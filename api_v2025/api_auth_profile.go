@@ -41,7 +41,7 @@ func (r ApiGetProfileConfigRequest) Execute() (*AuthProfile, *http.Response, err
 }
 
 /*
-GetProfileConfig Get Auth Profile
+GetProfileConfig Get auth profile
 
 This API returns auth profile information.
 
@@ -225,7 +225,7 @@ func (r ApiGetProfileConfigListRequest) Execute() ([]AuthProfileSummary, *http.R
 }
 
 /*
-GetProfileConfigList Get list of Auth Profiles
+GetProfileConfigList Get list of auth profiles
 
 This API returns a list of auth profiles.
 
@@ -402,7 +402,7 @@ func (r ApiPatchProfileConfigRequest) Execute() (*AuthProfile, *http.Response, e
 }
 
 /*
-PatchProfileConfig Patch a specified Auth Profile
+PatchProfileConfig Patch a specified auth profile
 
 This API updates an existing Auth Profile. The following fields are patchable:
 **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**

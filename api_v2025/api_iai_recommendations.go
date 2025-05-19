@@ -45,7 +45,7 @@ func (r ApiGetRecommendationsRequest) Execute() (*RecommendationResponseDto, *ht
 }
 
 /*
-GetRecommendations Returns Recommendation Based on Object
+GetRecommendations Returns recommendation based on object
 
 The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 

@@ -39,7 +39,7 @@ func (r ApiCreateManagedClientRequest) Execute() (*ManagedClient, *http.Response
 }
 
 /*
-CreateManagedClient Create Managed Client
+CreateManagedClient Create managed client
 
 Create a new managed client.
 The API returns a result that includes the managed client ID.
@@ -199,7 +199,7 @@ func (r ApiDeleteManagedClientRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedClient Delete Managed Client
+DeleteManagedClient Delete managed client
 
 Delete an existing managed client.
 
@@ -345,7 +345,7 @@ func (r ApiGetManagedClientRequest) Execute() (*ManagedClient, *http.Response, e
 }
 
 /*
-GetManagedClient Get Managed Client
+GetManagedClient Get managed client
 
 Get managed client by ID. 
 
@@ -520,7 +520,7 @@ func (r ApiGetManagedClientStatusRequest) Execute() (*ManagedClientStatus, *http
 }
 
 /*
-GetManagedClientStatus Get Managed Client Status
+GetManagedClientStatus Get managed client status
 
 Get a managed client's status, using its ID.
 
@@ -719,7 +719,7 @@ func (r ApiGetManagedClientsRequest) Execute() ([]ManagedClient, *http.Response,
 }
 
 /*
-GetManagedClients Get Managed Clients
+GetManagedClients Get managed clients
 
 List managed clients.
 
@@ -901,7 +901,7 @@ func (r ApiUpdateManagedClientRequest) Execute() (*ManagedClient, *http.Response
 }
 
 /*
-UpdateManagedClient Update Managed Client
+UpdateManagedClient Update managed client
 
 Update an existing managed client.
 

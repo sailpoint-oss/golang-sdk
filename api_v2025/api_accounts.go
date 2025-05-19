@@ -39,7 +39,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-CreateAccount Create Account
+CreateAccount Create account
 
 Submit an account creation task - the API then returns the task ID.  
 
@@ -209,7 +209,7 @@ func (r ApiDeleteAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-DeleteAccount Delete Account
+DeleteAccount Delete account
 
 Use this API to delete an account. 
 This endpoint submits an account delete task and returns the task ID. 
@@ -387,7 +387,7 @@ func (r ApiDeleteAccountAsyncRequest) Execute() (*TaskResultDto, *http.Response,
 }
 
 /*
-DeleteAccountAsync Remove Account
+DeleteAccountAsync Remove account
 
 Use this endpoint to remove accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
 
@@ -566,7 +566,7 @@ func (r ApiDisableAccountRequest) Execute() (*AccountsAsyncResult, *http.Respons
 }
 
 /*
-DisableAccount Disable Account
+DisableAccount Disable account
 
 This API submits a task to disable the account and returns the task ID.      
 
@@ -746,7 +746,7 @@ func (r ApiDisableAccountForIdentityRequest) Execute() (map[string]interface{}, 
 }
 
 /*
-DisableAccountForIdentity Disable IDN Account for Identity
+DisableAccountForIdentity Disable idn account for identity
 
 This API submits a task to disable IDN account for a single identity.
 
@@ -936,7 +936,7 @@ func (r ApiDisableAccountsForIdentitiesRequest) Execute() ([]BulkIdentitiesAccou
 }
 
 /*
-DisableAccountsForIdentities Disable IDN Accounts for Identities
+DisableAccountsForIdentities Disable idn accounts for identities
 
 This API submits tasks to disable IDN account for each identity provided in the request body.
 
@@ -1117,7 +1117,7 @@ func (r ApiEnableAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-EnableAccount Enable Account
+EnableAccount Enable account
 
 This API submits a task to enable account and returns the task ID.      
 
@@ -1297,7 +1297,7 @@ func (r ApiEnableAccountForIdentityRequest) Execute() (map[string]interface{}, *
 }
 
 /*
-EnableAccountForIdentity Enable IDN Account for Identity
+EnableAccountForIdentity Enable idn account for identity
 
 This API submits a task to enable IDN account for a single identity.
 
@@ -1487,7 +1487,7 @@ func (r ApiEnableAccountsForIdentitiesRequest) Execute() ([]BulkIdentitiesAccoun
 }
 
 /*
-EnableAccountsForIdentities Enable IDN Accounts for Identities
+EnableAccountsForIdentities Enable idn accounts for identities
 
 This API submits tasks to enable IDN account for each identity provided in the request body.
 
@@ -1662,7 +1662,7 @@ func (r ApiGetAccountRequest) Execute() (*Account, *http.Response, error) {
 }
 
 /*
-GetAccount Account Details
+GetAccount Account details
 
 Use this API to return the details for a single account by its ID.  
 
@@ -1851,7 +1851,7 @@ func (r ApiGetAccountEntitlementsRequest) Execute() ([]Entitlement, *http.Respon
 }
 
 /*
-GetAccountEntitlements Account Entitlements
+GetAccountEntitlements Account entitlements
 
 This API returns entitlements of the account.      
 
@@ -2078,7 +2078,7 @@ func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 }
 
 /*
-ListAccounts Accounts List
+ListAccounts Accounts list
 
 List accounts. 
 
@@ -2265,7 +2265,7 @@ func (r ApiPutAccountRequest) Execute() (*AccountsAsyncResult, *http.Response, e
 }
 
 /*
-PutAccount Update Account
+PutAccount Update account
 
 Use this API to update an account with a PUT request. 
 
@@ -2443,7 +2443,7 @@ func (r ApiSubmitReloadAccountRequest) Execute() (*AccountsAsyncResult, *http.Re
 }
 
 /*
-SubmitReloadAccount Reload Account
+SubmitReloadAccount Reload account
 
 This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.      
 
@@ -2617,7 +2617,7 @@ func (r ApiUnlockAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 }
 
 /*
-UnlockAccount Unlock Account
+UnlockAccount Unlock account
 
 This API submits a task to unlock an account and returns the task ID.  
 To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
@@ -2798,7 +2798,7 @@ func (r ApiUpdateAccountRequest) Execute() (map[string]interface{}, *http.Respon
 }
 
 /*
-UpdateAccount Update Account
+UpdateAccount Update account
 
 Use this API to update account details. 
 

@@ -39,7 +39,7 @@ func (r ApiCreateCampaignFilterRequest) Execute() (*CampaignFilterDetails, *http
 }
 
 /*
-CreateCampaignFilter Create Campaign Filter
+CreateCampaignFilter Create campaign filter
 
 Use this API to create a campaign filter based on filter details and criteria.
 
@@ -204,7 +204,7 @@ func (r ApiDeleteCampaignFiltersRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCampaignFilters Deletes Campaign Filters
+DeleteCampaignFilters Deletes campaign filters
 
 Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
 
@@ -363,7 +363,7 @@ func (r ApiGetCampaignFilterByIdRequest) Execute() (*CampaignFilterDetails, *htt
 }
 
 /*
-GetCampaignFilterById Get Campaign Filter by ID
+GetCampaignFilterById Get campaign filter by id
 
 Retrieves information for an existing campaign filter using the filter's ID.
 
@@ -551,7 +551,7 @@ func (r ApiListCampaignFiltersRequest) Execute() (*ListCampaignFilters200Respons
 }
 
 /*
-ListCampaignFilters List Campaign Filters
+ListCampaignFilters List campaign filters
 
 Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
@@ -730,7 +730,7 @@ func (r ApiUpdateCampaignFilterRequest) Execute() (*CampaignFilterDetails, *http
 }
 
 /*
-UpdateCampaignFilter Updates a Campaign Filter
+UpdateCampaignFilter Updates a campaign filter
 
 Updates an existing campaign filter using the filter's ID.
 

@@ -32,7 +32,7 @@ func (r ApiGetPublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, *ht
 }
 
 /*
-GetPublicIdentityConfig Get Public Identity Config
+GetPublicIdentityConfig Get public identity config
 
 This gets details of public identity config.
 
@@ -194,7 +194,7 @@ func (r ApiUpdatePublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, 
 }
 
 /*
-UpdatePublicIdentityConfig Update Public Identity Config
+UpdatePublicIdentityConfig Update public identity config
 
 This updates the details of public identity config.
 

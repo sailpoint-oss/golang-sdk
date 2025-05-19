@@ -580,7 +580,7 @@ func (r ApiGetEntitlementRequestConfigRequest) Execute() (*EntitlementRequestCon
 }
 
 /*
-GetEntitlementRequestConfig Get Entitlement Request Config
+GetEntitlementRequestConfig Get entitlement request config
 
 This API returns the entitlement request config for a specified entitlement.
 
@@ -772,7 +772,7 @@ func (r ApiImportEntitlementsBySourceRequest) Execute() (*LoadEntitlementTask, *
 }
 
 /*
-ImportEntitlementsBySource Aggregate Entitlements
+ImportEntitlementsBySource Aggregate entitlements
 
 Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).
 
@@ -1935,7 +1935,7 @@ func (r ApiPutEntitlementRequestConfigRequest) Execute() (*EntitlementRequestCon
 }
 
 /*
-PutEntitlementRequestConfig Replace Entitlement Request Config
+PutEntitlementRequestConfig Replace entitlement request config
 
 This API replaces the entitlement request config for a specified entitlement.
 
@@ -2131,7 +2131,7 @@ func (r ApiResetSourceEntitlementsRequest) Execute() (*EntitlementSourceResetBas
 }
 
 /*
-ResetSourceEntitlements Reset Source Entitlements
+ResetSourceEntitlements Reset source entitlements
 
 Remove all entitlements from a specific source.
 To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 

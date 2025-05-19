@@ -38,7 +38,7 @@ func (r ApiCreateVendorConnectorMappingRequest) Execute() (*VendorConnectorMappi
 }
 
 /*
-CreateVendorConnectorMapping Create Vendor Connector Mapping
+CreateVendorConnectorMapping Create vendor connector mapping
 
 Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths.
 
@@ -214,7 +214,7 @@ func (r ApiDeleteVendorConnectorMappingRequest) Execute() (*DeleteVendorConnecto
 }
 
 /*
-DeleteVendorConnectorMapping Delete Vendor Connector Mapping
+DeleteVendorConnectorMapping Delete vendor connector mapping
 
 Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation.
 
@@ -384,7 +384,7 @@ func (r ApiGetVendorConnectorMappingsRequest) Execute() ([]VendorConnectorMappin
 }
 
 /*
-GetVendorConnectorMappings List Vendor Connector Mappings
+GetVendorConnectorMappings List vendor connector mappings
 
 Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation.
 

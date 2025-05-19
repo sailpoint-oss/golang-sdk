@@ -39,7 +39,7 @@ func (r ApiCreateWorkgroupRequest) Execute() (*WorkgroupDto, *http.Response, err
 }
 
 /*
-CreateWorkgroup Create a new Governance Group.
+CreateWorkgroup Create a new governance group.
 
 This API creates a new Governance Group.
 
@@ -198,7 +198,7 @@ func (r ApiDeleteWorkgroupRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteWorkgroup Delete a Governance Group
+DeleteWorkgroup Delete a governance group
 
 This API deletes a Governance Group by its ID.
 
@@ -351,7 +351,7 @@ func (r ApiDeleteWorkgroupMembersRequest) Execute() ([]WorkgroupMemberDeleteItem
 }
 
 /*
-DeleteWorkgroupMembers Remove members from Governance Group
+DeleteWorkgroupMembers Remove members from governance group
 
 This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
 
@@ -522,7 +522,7 @@ func (r ApiDeleteWorkgroupsInBulkRequest) Execute() ([]WorkgroupDeleteItem, *htt
 }
 
 /*
-DeleteWorkgroupsInBulk Delete Governance Group(s)
+DeleteWorkgroupsInBulk Delete governance group(s)
 
 
 This API initiates a bulk deletion of one or more Governance Groups.
@@ -692,7 +692,7 @@ func (r ApiGetWorkgroupRequest) Execute() (*WorkgroupDto, *http.Response, error)
 }
 
 /*
-GetWorkgroup Get Governance Group by Id
+GetWorkgroup Get governance group by id
 
 This API returns a Governance Groups by its ID.
 
@@ -877,7 +877,7 @@ func (r ApiListConnectionsRequest) Execute() ([]WorkgroupConnectionDto, *http.Re
 }
 
 /*
-ListConnections List connections for Governance Group
+ListConnections List connections for governance group
 
 This API returns list of connections associated with a Governance Group.
 
@@ -1083,7 +1083,7 @@ func (r ApiListWorkgroupMembersRequest) Execute() ([]ListWorkgroupMembers200Resp
 }
 
 /*
-ListWorkgroupMembers List Governance Group Members
+ListWorkgroupMembers List governance group members
 
 This API returns list of members associated with a Governance Group.
 
@@ -1295,7 +1295,7 @@ func (r ApiListWorkgroupsRequest) Execute() ([]WorkgroupDto, *http.Response, err
 }
 
 /*
-ListWorkgroups List Governance Groups
+ListWorkgroups List governance groups
 
 This API returns list of Governance Groups
 
@@ -1479,7 +1479,7 @@ func (r ApiPatchWorkgroupRequest) Execute() (*WorkgroupDto, *http.Response, erro
 }
 
 /*
-PatchWorkgroup Patch a Governance Group
+PatchWorkgroup Patch a governance group
 
 This API updates an existing governance group by ID. 
 The following fields and objects are patchable:
@@ -1651,7 +1651,7 @@ func (r ApiUpdateWorkgroupMembersRequest) Execute() ([]WorkgroupMemberAddItem, *
 }
 
 /*
-UpdateWorkgroupMembers Add members to Governance Group
+UpdateWorkgroupMembers Add members to governance group
 
 This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
 

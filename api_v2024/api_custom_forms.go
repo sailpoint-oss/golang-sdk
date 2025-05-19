@@ -201,7 +201,7 @@ func (r ApiCreateFormDefinitionDynamicSchemaRequest) Execute() (*FormDefinitionD
 }
 
 /*
-CreateFormDefinitionDynamicSchema Generate JSON Schema dynamically.
+CreateFormDefinitionDynamicSchema Generate json schema dynamically.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateFormDefinitionDynamicSchemaRequest
@@ -1123,7 +1123,7 @@ func (r ApiGetFileFromS3Request) Execute() (*os.File, *http.Response, error) {
 }
 
 /*
-GetFileFromS3 Download definition file by fileId.
+GetFileFromS3 Download definition file by fileid.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param formDefinitionID FormDefinitionID  Form definition ID
@@ -1640,7 +1640,7 @@ func (r ApiGetFormInstanceFileRequest) Execute() (*os.File, *http.Response, erro
 }
 
 /*
-GetFormInstanceFile Download instance file by fileId.
+GetFormInstanceFile Download instance file by fileid.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param formInstanceID FormInstanceID  Form instance ID

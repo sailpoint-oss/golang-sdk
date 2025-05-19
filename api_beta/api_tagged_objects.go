@@ -35,7 +35,7 @@ func (r ApiDeleteTaggedObjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteTaggedObject Delete Object Tags
+DeleteTaggedObject Delete object tags
 
 Delete all tags from a tagged object.
 
@@ -190,7 +190,7 @@ func (r ApiDeleteTagsToManyObjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteTagsToManyObject Remove Tags from Multiple Objects
+DeleteTagsToManyObject Remove tags from multiple objects
 
 This API removes tags from multiple objects.
 
@@ -341,7 +341,7 @@ func (r ApiGetTaggedObjectRequest) Execute() (*TaggedObject, *http.Response, err
 }
 
 /*
-GetTaggedObject Get Tagged Object
+GetTaggedObject Get tagged object
 
 This gets a tagged object for the specified type.
 
@@ -528,7 +528,7 @@ func (r ApiListTaggedObjectsRequest) Execute() ([]TaggedObject, *http.Response, 
 }
 
 /*
-ListTaggedObjects List Tagged Objects
+ListTaggedObjects List tagged objects
 
 This API returns a list of all tagged objects.
 
@@ -733,7 +733,7 @@ func (r ApiListTaggedObjectsByTypeRequest) Execute() ([]TaggedObject, *http.Resp
 }
 
 /*
-ListTaggedObjectsByType List Tagged Objects by Type
+ListTaggedObjectsByType List tagged objects by type
 
 This API returns a list of all tagged objects by type.
 
@@ -920,7 +920,7 @@ func (r ApiPutTaggedObjectRequest) Execute() (*TaggedObject, *http.Response, err
 }
 
 /*
-PutTaggedObject Update Tagged Object
+PutTaggedObject Update tagged object
 
 This updates a tagged object for the specified type.
 
@@ -1090,7 +1090,7 @@ func (r ApiSetTagToObjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-SetTagToObject Add Tag to Object
+SetTagToObject Add tag to object
 
 This adds a tag to an object.
 
@@ -1246,7 +1246,7 @@ func (r ApiSetTagsToManyObjectsRequest) Execute() (*BulkTaggedObject, *http.Resp
 }
 
 /*
-SetTagsToManyObjects Tag Multiple Objects
+SetTagsToManyObjects Tag multiple objects
 
 This API adds tags to multiple objects.
 

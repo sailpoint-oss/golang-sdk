@@ -41,7 +41,7 @@ func (r ApiApproveNonEmployeeRequestRequest) Execute() (*NonEmployeeApprovalItem
 }
 
 /*
-ApproveNonEmployeeRequest Approve a Non-Employee Request
+ApproveNonEmployeeRequest Approve a non-employee request
 
 Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
@@ -209,7 +209,7 @@ func (r ApiCreateNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.
 }
 
 /*
-CreateNonEmployeeRecord Create Non-Employee Record
+CreateNonEmployeeRecord Create non-employee record
 
 This request will create a non-employee record.
 Requires role context of `idn:nesr:create`
@@ -375,7 +375,7 @@ func (r ApiCreateNonEmployeeRequestRequest) Execute() (*NonEmployeeRequest, *htt
 }
 
 /*
-CreateNonEmployeeRequest Create Non-Employee Request
+CreateNonEmployeeRequest Create non-employee request
 
 This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
@@ -540,7 +540,7 @@ func (r ApiCreateNonEmployeeSourceRequest) Execute() (*NonEmployeeSourceWithClou
 }
 
 /*
-CreateNonEmployeeSource Create Non-Employee Source
+CreateNonEmployeeSource Create non-employee source
 
 Create a non-employee source. 
 
@@ -705,7 +705,7 @@ func (r ApiCreateNonEmployeeSourceSchemaAttributesRequest) Execute() (*NonEmploy
 }
 
 /*
-CreateNonEmployeeSourceSchemaAttributes Create a new Schema Attribute for Non-Employee Source
+CreateNonEmployeeSourceSchemaAttributes Create a new schema attribute for non-employee source
 
 This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.
 Requires role context of `idn:nesr:create`
@@ -868,7 +868,7 @@ func (r ApiDeleteNonEmployeeRecordRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteNonEmployeeRecord Delete Non-Employee Record
+DeleteNonEmployeeRecord Delete non-employee record
 
 This request will delete a non-employee record.
 Requires role context of `idn:nesr:delete`
@@ -1021,7 +1021,7 @@ func (r ApiDeleteNonEmployeeRecordsInBulkRequest) Execute() (*http.Response, err
 }
 
 /*
-DeleteNonEmployeeRecordsInBulk Delete Multiple Non-Employee Records
+DeleteNonEmployeeRecordsInBulk Delete multiple non-employee records
 
 This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
@@ -1169,7 +1169,7 @@ func (r ApiDeleteNonEmployeeRequestRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteNonEmployeeRequest Delete Non-Employee Request
+DeleteNonEmployeeRequest Delete non-employee request
 
 This request will delete a non-employee request. 
 Requires role context of `idn:nesr:delete`
@@ -1328,7 +1328,7 @@ func (r ApiDeleteNonEmployeeSchemaAttributeRequest) Execute() (*http.Response, e
 }
 
 /*
-DeleteNonEmployeeSchemaAttribute Delete a Schema Attribute for Non-Employee Source
+DeleteNonEmployeeSchemaAttribute Delete a schema attribute for non-employee source
 
 This end-point deletes a specific schema attribute for a non-employee source.
 Requires role context of `idn:nesr:delete`
@@ -1479,7 +1479,7 @@ func (r ApiDeleteNonEmployeeSourceRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteNonEmployeeSource Delete Non-Employee Source
+DeleteNonEmployeeSource Delete non-employee source
 
 This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
@@ -1625,7 +1625,7 @@ func (r ApiDeleteNonEmployeeSourceSchemaAttributesRequest) Execute() (*http.Resp
 }
 
 /*
-DeleteNonEmployeeSourceSchemaAttributes Delete all custom schema attributes for Non-Employee Source
+DeleteNonEmployeeSourceSchemaAttributes Delete all custom schema attributes for non-employee source
 
 This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
@@ -1771,7 +1771,7 @@ func (r ApiExportNonEmployeeRecordsRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ExportNonEmployeeRecords Exports Non-Employee Records to CSV
+ExportNonEmployeeRecords Exports non-employee records to csv
 
 This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
@@ -1928,7 +1928,7 @@ func (r ApiExportNonEmployeeSourceSchemaTemplateRequest) Execute() (*http.Respon
 }
 
 /*
-ExportNonEmployeeSourceSchemaTemplate Exports Source Schema Template
+ExportNonEmployeeSourceSchemaTemplate Exports source schema template
 
 This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
@@ -2255,7 +2255,7 @@ func (r ApiGetNonEmployeeApprovalSummaryRequest) Execute() (*NonEmployeeApproval
 }
 
 /*
-GetNonEmployeeApprovalSummary Get Summary of Non-Employee Approval Requests
+GetNonEmployeeApprovalSummary Get summary of non-employee approval requests
 
 This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
@@ -2575,7 +2575,7 @@ func (r ApiGetNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.Res
 }
 
 /*
-GetNonEmployeeRecord Get a Non-Employee Record
+GetNonEmployeeRecord Get a non-employee record
 
 This gets a non-employee record.
 Requires role context of `idn:nesr:read`
@@ -2733,7 +2733,7 @@ func (r ApiGetNonEmployeeRequestRequest) Execute() (*NonEmployeeRequest, *http.R
 }
 
 /*
-GetNonEmployeeRequest Get a Non-Employee Request
+GetNonEmployeeRequest Get a non-employee request
 
 This gets a non-employee request.
 There are two contextual uses for this endpoint:
@@ -2905,7 +2905,7 @@ func (r ApiGetNonEmployeeRequestSummaryRequest) Execute() (*NonEmployeeRequestSu
 }
 
 /*
-GetNonEmployeeRequestSummary Get Summary of Non-Employee Requests
+GetNonEmployeeRequestSummary Get summary of non-employee requests
 
 This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
@@ -3067,7 +3067,7 @@ func (r ApiGetNonEmployeeSchemaAttributeRequest) Execute() (*NonEmployeeSchemaAt
 }
 
 /*
-GetNonEmployeeSchemaAttribute Get Schema Attribute Non-Employee Source
+GetNonEmployeeSchemaAttribute Get schema attribute non-employee source
 
 This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -3227,7 +3227,7 @@ func (r ApiGetNonEmployeeSourceRequest) Execute() (*NonEmployeeSource, *http.Res
 }
 
 /*
-GetNonEmployeeSource Get a Non-Employee Source
+GetNonEmployeeSource Get a non-employee source
 
 This gets a non-employee source. There are two contextual uses for the requested-for path parameter: 
   1. The user has the role context of `idn:nesr:read`, in which case he or
@@ -3388,7 +3388,7 @@ func (r ApiGetNonEmployeeSourceSchemaAttributesRequest) Execute() ([]NonEmployee
 }
 
 /*
-GetNonEmployeeSourceSchemaAttributes List Schema Attributes Non-Employee Source
+GetNonEmployeeSourceSchemaAttributes List schema attributes non-employee source
 
 This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
 Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
@@ -3563,7 +3563,7 @@ func (r ApiImportNonEmployeeRecordsInBulkRequest) Execute() (*NonEmployeeBulkUpl
 }
 
 /*
-ImportNonEmployeeRecordsInBulk Imports, or Updates, Non-Employee Records
+ImportNonEmployeeRecordsInBulk Imports, or updates, non-employee records
 
 This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
@@ -3790,7 +3790,7 @@ func (r ApiListNonEmployeeApprovalsRequest) Execute() ([]NonEmployeeApprovalItem
 }
 
 /*
-ListNonEmployeeApprovals Get List of Non-Employee Approval Requests
+ListNonEmployeeApprovals Get list of non-employee approval requests
 
 This gets a list of non-employee approval requests.
 There are two contextual uses for this endpoint:
@@ -4009,7 +4009,7 @@ func (r ApiListNonEmployeeRecordsRequest) Execute() ([]NonEmployeeRecord, *http.
 }
 
 /*
-ListNonEmployeeRecords List Non-Employee Records
+ListNonEmployeeRecords List non-employee records
 
 This gets a list of non-employee records. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.
@@ -4230,7 +4230,7 @@ func (r ApiListNonEmployeeRequestsRequest) Execute() ([]NonEmployeeRequest, *htt
 }
 
 /*
-ListNonEmployeeRequests List Non-Employee Requests
+ListNonEmployeeRequests List non-employee requests
 
 This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
@@ -4457,7 +4457,7 @@ func (r ApiListNonEmployeeSourcesRequest) Execute() ([]NonEmployeeSourceWithNECo
 }
 
 /*
-ListNonEmployeeSources List Non-Employee Sources
+ListNonEmployeeSources List non-employee sources
 
 Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter: 
   1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.
@@ -4650,7 +4650,7 @@ func (r ApiPatchNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.R
 }
 
 /*
-PatchNonEmployeeRecord Patch Non-Employee Record
+PatchNonEmployeeRecord Patch non-employee record
 
 This request will patch a non-employee record. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:update`, in which case they
@@ -4835,7 +4835,7 @@ func (r ApiPatchNonEmployeeSchemaAttributeRequest) Execute() (*NonEmployeeSchema
 }
 
 /*
-PatchNonEmployeeSchemaAttribute Patch a Schema Attribute for Non-Employee Source
+PatchNonEmployeeSchemaAttribute Patch a schema attribute for non-employee source
 
 This end-point patches a specific schema attribute for a non-employee SourceId.
 Requires role context of `idn:nesr:update`
@@ -5020,7 +5020,7 @@ func (r ApiPatchNonEmployeeSourceRequest) Execute() (*NonEmployeeSource, *http.R
 }
 
 /*
-PatchNonEmployeeSource Patch a Non-Employee Source
+PatchNonEmployeeSource Patch a non-employee source
 
 patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
@@ -5188,7 +5188,7 @@ func (r ApiRejectNonEmployeeRequestRequest) Execute() (*NonEmployeeApprovalItem,
 }
 
 /*
-RejectNonEmployeeRequest Reject a Non-Employee Request
+RejectNonEmployeeRequest Reject a non-employee request
 
 This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
@@ -5357,7 +5357,7 @@ func (r ApiUpdateNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.
 }
 
 /*
-UpdateNonEmployeeRecord Update Non-Employee Record
+UpdateNonEmployeeRecord Update non-employee record
 
 This request will update a non-employee record. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:update`, in which case they

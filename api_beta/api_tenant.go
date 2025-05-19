@@ -32,7 +32,7 @@ func (r ApiGetTenantRequest) Execute() (*Tenant, *http.Response, error) {
 }
 
 /*
-GetTenant Get Tenant Information.
+GetTenant Get tenant information.
 
 This rest endpoint can be used to retrieve tenant details.
 

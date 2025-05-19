@@ -40,7 +40,7 @@ func (r ApiCreateServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrati
 }
 
 /*
-CreateServiceDeskIntegration Create new Service Desk integration
+CreateServiceDeskIntegration Create new service desk integration
 
 Create a new Service Desk integration.
 
@@ -210,7 +210,7 @@ func (r ApiDeleteServiceDeskIntegrationRequest) Execute() (*http.Response, error
 }
 
 /*
-DeleteServiceDeskIntegration Delete a Service Desk integration
+DeleteServiceDeskIntegration Delete a service desk integration
 
 Delete an existing Service Desk integration by ID.
 
@@ -367,7 +367,7 @@ func (r ApiGetServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationD
 }
 
 /*
-GetServiceDeskIntegration Get a Service Desk integration
+GetServiceDeskIntegration Get a service desk integration
 
 Get an existing Service Desk integration by ID.
 
@@ -569,7 +569,7 @@ func (r ApiGetServiceDeskIntegrationListRequest) Execute() ([]ServiceDeskIntegra
 }
 
 /*
-GetServiceDeskIntegrationList List existing Service Desk integrations
+GetServiceDeskIntegrationList List existing service desk integrations
 
 Get a list of Service Desk integration objects.
 
@@ -758,7 +758,7 @@ func (r ApiGetServiceDeskIntegrationTemplateRequest) Execute() (*ServiceDeskInte
 }
 
 /*
-GetServiceDeskIntegrationTemplate Service Desk integration template by scriptName
+GetServiceDeskIntegrationTemplate Service desk integration template by scriptname
 
 This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -925,7 +925,7 @@ func (r ApiGetServiceDeskIntegrationTypesRequest) Execute() ([]ServiceDeskIntegr
 }
 
 /*
-GetServiceDeskIntegrationTypes List Service Desk integration types
+GetServiceDeskIntegrationTypes List service desk integration types
 
 This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1261,7 +1261,7 @@ func (r ApiPatchServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegratio
 }
 
 /*
-PatchServiceDeskIntegration Patch a Service Desk Integration
+PatchServiceDeskIntegration Patch a service desk integration
 
 Update an existing Service Desk integration by ID with a PATCH request.
 
@@ -1441,7 +1441,7 @@ func (r ApiPutServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationD
 }
 
 /*
-PutServiceDeskIntegration Update a Service Desk integration
+PutServiceDeskIntegration Update a service desk integration
 
 Update an existing Service Desk integration by ID.
 

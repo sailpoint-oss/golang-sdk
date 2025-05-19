@@ -40,7 +40,7 @@ func (r ApiCreateConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.
 }
 
 /*
-CreateConnectorRule Create Connector Rule
+CreateConnectorRule Create connector rule
 
 Create a connector rule from the available types.
 
@@ -199,7 +199,7 @@ func (r ApiDeleteConnectorRuleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteConnectorRule Delete Connector Rule
+DeleteConnectorRule Delete connector rule
 
 Delete the connector rule for the given ID.
 
@@ -356,7 +356,7 @@ func (r ApiGetConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Res
 }
 
 /*
-GetConnectorRule Get Connector Rule
+GetConnectorRule Get connector rule
 
 Get a connector rule by ID.
 
@@ -544,7 +544,7 @@ func (r ApiGetConnectorRuleListRequest) Execute() ([]ConnectorRuleResponse, *htt
 }
 
 /*
-GetConnectorRuleList List Connector Rules
+GetConnectorRuleList List connector rules
 
 List existing connector rules.
 
@@ -723,7 +723,7 @@ func (r ApiPutConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Res
 }
 
 /*
-PutConnectorRule Update Connector Rule
+PutConnectorRule Update connector rule
 
 Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
@@ -899,7 +899,7 @@ func (r ApiTestConnectorRuleRequest) Execute() (*ConnectorRuleValidationResponse
 }
 
 /*
-TestConnectorRule Validate Connector Rule
+TestConnectorRule Validate connector rule
 
 Detect issues within the connector rule's code to fix and list them.
 

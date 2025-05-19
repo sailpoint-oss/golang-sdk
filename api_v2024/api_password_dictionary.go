@@ -33,7 +33,7 @@ func (r ApiGetPasswordDictionaryRequest) Execute() (string, *http.Response, erro
 }
 
 /*
-GetPasswordDictionary Get Password Dictionary
+GetPasswordDictionary Get password dictionary
 
 This gets password dictionary for the organization.
 The password dictionary file can contain lines that are:
@@ -231,7 +231,7 @@ func (r ApiPutPasswordDictionaryRequest) Execute() (*http.Response, error) {
 }
 
 /*
-PutPasswordDictionary Update Password Dictionary
+PutPasswordDictionary Update password dictionary
 
 This updates password dictionary for the organization.
 The password dictionary file can contain lines that are:

@@ -41,7 +41,7 @@ func (r ApiExportOutliersZipRequest) Execute() (*os.File, *http.Response, error)
 }
 
 /*
-ExportOutliersZip IAI Identity Outliers Export
+ExportOutliersZip Iai identity outliers export
 
 This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.
 
@@ -235,7 +235,7 @@ func (r ApiGetIdentityOutlierSnapshotsRequest) Execute() ([]OutlierSummary, *htt
 }
 
 /*
-GetIdentityOutlierSnapshots IAI Identity Outliers Summary
+GetIdentityOutlierSnapshots Iai identity outliers summary
 
 This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -451,7 +451,7 @@ func (r ApiGetIdentityOutliersRequest) Execute() ([]Outlier, *http.Response, err
 }
 
 /*
-GetIdentityOutliers IAI Get Identity Outliers
+GetIdentityOutliers Iai get identity outliers
 
 This API returns a list of outliers, containing data such as identity ID, outlier type, detection dates, identity attributes, if identity is ignored, and certification information.
 
@@ -638,7 +638,7 @@ func (r ApiGetLatestIdentityOutlierSnapshotsRequest) Execute() ([]LatestOutlierS
 }
 
 /*
-GetLatestIdentityOutlierSnapshots IAI Identity Outliers Latest Summary
+GetLatestIdentityOutlierSnapshots Iai identity outliers latest summary
 
 This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -1201,7 +1201,7 @@ func (r ApiIgnoreIdentityOutliersRequest) Execute() (*http.Response, error) {
 }
 
 /*
-IgnoreIdentityOutliers IAI Identity Outliers Ignore
+IgnoreIdentityOutliers Iai identity outliers ignore
 
 This API receives a list of identity IDs in the request, changes the outliers to be ignored.
 
@@ -1588,7 +1588,7 @@ func (r ApiUnIgnoreIdentityOutliersRequest) Execute() (*http.Response, error) {
 }
 
 /*
-UnIgnoreIdentityOutliers IAI Identity Outliers Unignore
+UnIgnoreIdentityOutliers Iai identity outliers unignore
 
 This API receives a list of identity IDs in the request, changes the outliers to be un-ignored.
 

@@ -1115,7 +1115,7 @@ func (r ApiListSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Respon
 }
 
 /*
-ListSpConfigObjects List Config Objects
+ListSpConfigObjects List config objects
 
 Get a list of object configurations that the tenant export/import service knows.
 

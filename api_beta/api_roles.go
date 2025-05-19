@@ -39,7 +39,7 @@ func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-CreateRole Create a Role
+CreateRole Create a role
 
 This API creates a role.
 
@@ -209,7 +209,7 @@ func (r ApiDeleteBulkRolesRequest) Execute() (*TaskResultDto, *http.Response, er
 }
 
 /*
-DeleteBulkRoles Delete Role(s)
+DeleteBulkRoles Delete role(s)
 
 This endpoint initiates a bulk deletion of one or more roles.
 When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
@@ -371,7 +371,7 @@ func (r ApiDeleteRoleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteRole Delete a Role
+DeleteRole Delete a role
 
 This API deletes a Role by its ID.
 
@@ -519,7 +519,7 @@ func (r ApiGetRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-GetRole Get a Role
+GetRole Get a role
 
 This API returns a Role by its ID.
 A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
@@ -712,7 +712,7 @@ func (r ApiGetRoleAssignedIdentitiesRequest) Execute() ([]RoleIdentity, *http.Re
 }
 
 /*
-GetRoleAssignedIdentities Identities assigned a Role
+GetRoleAssignedIdentities Identities assigned a role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role for which the assigned Identities are to be listed
@@ -926,7 +926,7 @@ func (r ApiGetRoleEntitlementsRequest) Execute() ([]Entitlement, *http.Response,
 }
 
 /*
-GetRoleEntitlements List Role's Entitlements
+GetRoleEntitlements List role's entitlements
 
 Get a list of entitlements associated with a specified role.
 
@@ -1162,7 +1162,7 @@ func (r ApiListRolesRequest) Execute() ([]Role, *http.Response, error) {
 }
 
 /*
-ListRoles List Roles
+ListRoles List roles
 
 This API returns a list of Roles.
 
@@ -1360,7 +1360,7 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 }
 
 /*
-PatchRole Patch a specified Role
+PatchRole Patch a specified role
 
 This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 

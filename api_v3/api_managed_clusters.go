@@ -39,7 +39,7 @@ func (r ApiCreateManagedClusterRequest) Execute() (*ManagedCluster, *http.Respon
 }
 
 /*
-CreateManagedCluster Create Create Managed Cluster
+CreateManagedCluster Create create managed cluster
 
 Create a new Managed Cluster.
 The API returns a result that includes the managed cluster ID.
@@ -206,7 +206,7 @@ func (r ApiDeleteManagedClusterRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedCluster Delete Managed Cluster
+DeleteManagedCluster Delete managed cluster
 
 Delete an existing managed cluster.
 
@@ -358,7 +358,7 @@ func (r ApiGetClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-GetClientLogConfiguration Get Managed Cluster Log Configuration
+GetClientLogConfiguration Get managed cluster log configuration
 
 Get a managed cluster's log configuration.
 
@@ -526,7 +526,7 @@ func (r ApiGetManagedClusterRequest) Execute() (*ManagedCluster, *http.Response,
 }
 
 /*
-GetManagedCluster Get Managed Cluster
+GetManagedCluster Get managed cluster
 
 Get a managed cluster by ID.
 
@@ -721,7 +721,7 @@ func (r ApiGetManagedClustersRequest) Execute() ([]ManagedCluster, *http.Respons
 }
 
 /*
-GetManagedClusters Get Managed Clusters
+GetManagedClusters Get managed clusters
 
 List current organization's managed clusters, based on request context.
 
@@ -903,7 +903,7 @@ func (r ApiPutClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-PutClientLogConfiguration Update Managed Cluster Log Configuration
+PutClientLogConfiguration Update managed cluster log configuration
 
 Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
@@ -1083,7 +1083,7 @@ func (r ApiUpdateManagedClusterRequest) Execute() (*ManagedCluster, *http.Respon
 }
 
 /*
-UpdateManagedCluster Update Managed Cluster
+UpdateManagedCluster Update managed cluster
 
 Update an existing managed cluster.
 

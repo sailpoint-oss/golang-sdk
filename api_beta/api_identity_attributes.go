@@ -39,7 +39,7 @@ func (r ApiCreateIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.
 }
 
 /*
-CreateIdentityAttribute Create Identity Attribute
+CreateIdentityAttribute Create identity attribute
 
 Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
@@ -209,7 +209,7 @@ func (r ApiDeleteIdentityAttributeRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteIdentityAttribute Delete Identity Attribute
+DeleteIdentityAttribute Delete identity attribute
 
 This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
@@ -371,7 +371,7 @@ func (r ApiDeleteIdentityAttributesInBulkRequest) Execute() (*http.Response, err
 }
 
 /*
-DeleteIdentityAttributesInBulk Bulk delete Identity Attributes
+DeleteIdentityAttributesInBulk Bulk delete identity attributes
 
 Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
@@ -530,7 +530,7 @@ func (r ApiGetIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Res
 }
 
 /*
-GetIdentityAttribute Get Identity Attribute
+GetIdentityAttribute Get identity attribute
 
 This gets an identity attribute for a given technical name.
 
@@ -725,7 +725,7 @@ func (r ApiListIdentityAttributesRequest) Execute() ([]IdentityAttribute, *http.
 }
 
 /*
-ListIdentityAttributes List Identity Attributes
+ListIdentityAttributes List identity attributes
 
 Use this API to get a collection of identity attributes.
 
@@ -909,7 +909,7 @@ func (r ApiPutIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Res
 }
 
 /*
-PutIdentityAttribute Update Identity Attribute
+PutIdentityAttribute Update identity attribute
 
 This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 

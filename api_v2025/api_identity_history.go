@@ -327,7 +327,7 @@ func (r ApiCompareIdentitySnapshotsAccessTypeRequest) Execute() ([]AccessItemDif
 }
 
 /*
-CompareIdentitySnapshotsAccessType Gets a list of differences of specific accessType for the given identity between 2 snapshots
+CompareIdentitySnapshotsAccessType Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
 This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1808,7 +1808,7 @@ func (r ApiListIdentityAccessItemsRequest) Execute() ([]ListIdentityAccessItems2
 }
 
 /*
-ListIdentityAccessItems List Access Items by Identity
+ListIdentityAccessItems List access items by identity
 
 This method retrieves a list of access item for the identity filtered by the access item type
 

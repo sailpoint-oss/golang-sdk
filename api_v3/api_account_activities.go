@@ -34,7 +34,7 @@ func (r ApiGetAccountActivityRequest) Execute() (*AccountActivity, *http.Respons
 }
 
 /*
-GetAccountActivity Get an Account Activity
+GetAccountActivity Get an account activity
 
 This gets a single account activity by its id.
 
@@ -257,7 +257,7 @@ func (r ApiListAccountActivitiesRequest) Execute() ([]AccountActivity, *http.Res
 }
 
 /*
-ListAccountActivities List Account Activities
+ListAccountActivities List account activities
 
 This gets a collection of account activities that satisfy the given query parameters.
 

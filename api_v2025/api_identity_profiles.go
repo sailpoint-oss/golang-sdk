@@ -39,7 +39,7 @@ func (r ApiCreateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-CreateIdentityProfile Create Identity Profile
+CreateIdentityProfile Create identity profile
 
 Creates an identity profile.    
 
@@ -198,7 +198,7 @@ func (r ApiDeleteIdentityProfileRequest) Execute() (*TaskResultSimplified, *http
 }
 
 /*
-DeleteIdentityProfile Delete Identity Profile
+DeleteIdentityProfile Delete identity profile
 
 Delete an identity profile by ID.
 On success, this endpoint will return a reference to the bulk delete task result.
@@ -373,7 +373,7 @@ func (r ApiDeleteIdentityProfilesRequest) Execute() (*TaskResultSimplified, *htt
 }
 
 /*
-DeleteIdentityProfiles Delete Identity Profiles
+DeleteIdentityProfiles Delete identity profiles
 
 This deletes multiple Identity Profiles via a list of supplied IDs.
 
@@ -570,7 +570,7 @@ func (r ApiExportIdentityProfilesRequest) Execute() ([]IdentityProfileExportedOb
 }
 
 /*
-ExportIdentityProfiles Export Identity Profiles
+ExportIdentityProfiles Export identity profiles
 
 This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -761,7 +761,7 @@ func (r ApiGenerateIdentityPreviewRequest) Execute() (*IdentityPreviewResponse, 
 }
 
 /*
-GenerateIdentityPreview Generate Identity Profile Preview
+GenerateIdentityPreview Generate identity profile preview
 
 This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
@@ -936,7 +936,7 @@ func (r ApiGetDefaultIdentityAttributeConfigRequest) Execute() (*IdentityAttribu
 }
 
 /*
-GetDefaultIdentityAttributeConfig Get default Identity Attribute Config
+GetDefaultIdentityAttributeConfig Get default identity attribute config
 
 This returns the default identity attribute config.
 
@@ -1104,7 +1104,7 @@ func (r ApiGetIdentityProfileRequest) Execute() (*IdentityProfile, *http.Respons
 }
 
 /*
-GetIdentityProfile Get Identity Profile
+GetIdentityProfile Get identity profile
 
 Get a single identity profile by ID.
 
@@ -1278,7 +1278,7 @@ func (r ApiImportIdentityProfilesRequest) Execute() (*ObjectImportResult, *http.
 }
 
 /*
-ImportIdentityProfiles Import Identity Profiles
+ImportIdentityProfiles Import identity profiles
 
 This imports previously exported identity profiles.
 
@@ -1471,7 +1471,7 @@ func (r ApiListIdentityProfilesRequest) Execute() ([]IdentityProfile, *http.Resp
 }
 
 /*
-ListIdentityProfiles List Identity Profiles
+ListIdentityProfiles List identity profiles
 
 Get a list of identity profiles, based on the specified query parameters.
 
@@ -1828,7 +1828,7 @@ func (r ApiUpdateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 }
 
 /*
-UpdateIdentityProfile Update Identity Profile
+UpdateIdentityProfile Update identity profile
 
 Update a specified identity profile with this PATCH request.
   

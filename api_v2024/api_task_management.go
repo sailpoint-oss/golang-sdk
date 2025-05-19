@@ -61,7 +61,7 @@ func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
 }
 
 /*
-GetPendingTaskHeaders Retrieve Pending Task List Headers
+GetPendingTaskHeaders Retrieve pending task list headers
 
 Responds with headers only for list of task statuses for pending tasks.
 
@@ -259,7 +259,7 @@ func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, erro
 }
 
 /*
-GetPendingTasks Retrieve Pending Task Status List
+GetPendingTasks Retrieve pending task status list
 
 Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
@@ -448,7 +448,7 @@ func (r ApiGetTaskStatusRequest) Execute() (*TaskStatus, *http.Response, error) 
 }
 
 /*
-GetTaskStatus Get Task Status by ID
+GetTaskStatus Get task status by id
 
 Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
@@ -645,7 +645,7 @@ func (r ApiGetTaskStatusListRequest) Execute() ([]TaskStatus, *http.Response, er
 }
 
 /*
-GetTaskStatusList Retrieve Task Status List
+GetTaskStatusList Retrieve task status list
 
 Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2024/get-pending-tasks) endpoint.
 
@@ -859,7 +859,7 @@ func (r ApiUpdateTaskStatusRequest) Execute() (*TaskStatus, *http.Response, erro
 }
 
 /*
-UpdateTaskStatus Update Task Status by ID
+UpdateTaskStatus Update task status by id
 
 Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 

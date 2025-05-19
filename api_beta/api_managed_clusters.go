@@ -205,7 +205,7 @@ func (r ApiGetManagedClusterRequest) Execute() (*ManagedCluster, *http.Response,
 }
 
 /*
-GetManagedCluster Get a specified ManagedCluster.
+GetManagedCluster Get a specified managedcluster.
 
 Retrieve a ManagedCluster by ID.
 
@@ -403,7 +403,7 @@ func (r ApiGetManagedClustersRequest) Execute() ([]ManagedCluster, *http.Respons
 }
 
 /*
-GetManagedClusters Retrieve all Managed Clusters.
+GetManagedClusters Retrieve all managed clusters.
 
 Retrieve all Managed Clusters for the current Org, based on request context.
 

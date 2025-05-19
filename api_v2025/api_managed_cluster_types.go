@@ -39,7 +39,7 @@ func (r ApiCreateManagedClusterTypeRequest) Execute() (*ManagedClusterType, *htt
 }
 
 /*
-CreateManagedClusterType Create new Managed Cluster Type
+CreateManagedClusterType Create new managed cluster type
 
 Create a new Managed Cluster Type.
 
@@ -211,7 +211,7 @@ func (r ApiDeleteManagedClusterTypeRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedClusterType Delete a Managed Cluster Type
+DeleteManagedClusterType Delete a managed cluster type
 
 Delete an existing Managed Cluster Type.
 
@@ -357,7 +357,7 @@ func (r ApiGetManagedClusterTypeRequest) Execute() (*ManagedClusterType, *http.R
 }
 
 /*
-GetManagedClusterType Get a Managed Cluster Type
+GetManagedClusterType Get a managed cluster type
 
 Get a Managed Cluster Type.
 
@@ -559,7 +559,7 @@ func (r ApiGetManagedClusterTypesRequest) Execute() ([]ManagedClusterType, *http
 }
 
 /*
-GetManagedClusterTypes List Managed Cluster Types
+GetManagedClusterTypes List managed cluster types
 
 Get a list of Managed Cluster Types.
 
@@ -752,7 +752,7 @@ func (r ApiUpdateManagedClusterTypeRequest) Execute() (*ManagedClusterType, *htt
 }
 
 /*
-UpdateManagedClusterType Update a Managed Cluster Type
+UpdateManagedClusterType Update a managed cluster type
 
 Update an existing Managed Cluster Type.
 

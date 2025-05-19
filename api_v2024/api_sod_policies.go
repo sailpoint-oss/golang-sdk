@@ -40,7 +40,7 @@ func (r ApiCreateSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error)
 }
 
 /*
-CreateSodPolicy Create SOD policy
+CreateSodPolicy Create sod policy
 
 This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy.
 Requires role of ORG_ADMIN.
@@ -207,7 +207,7 @@ func (r ApiDeleteSodPolicyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSodPolicy Delete SOD policy by ID
+DeleteSodPolicy Delete sod policy by id
 
 This deletes a specified SOD policy.
 Requires role of ORG_ADMIN.
@@ -371,7 +371,7 @@ func (r ApiDeleteSodPolicyScheduleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSodPolicySchedule Delete SOD policy schedule
+DeleteSodPolicySchedule Delete sod policy schedule
 
 This deletes schedule for a specified SOD policy by ID.
 
@@ -1021,7 +1021,7 @@ func (r ApiGetSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
 }
 
 /*
-GetSodPolicy Get SOD policy by ID
+GetSodPolicy Get sod policy by id
 
 This gets specified SOD policy.
 Requires role of ORG_ADMIN.
@@ -1190,7 +1190,7 @@ func (r ApiGetSodPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Res
 }
 
 /*
-GetSodPolicySchedule Get SOD policy schedule
+GetSodPolicySchedule Get sod policy schedule
 
 This endpoint gets a specified SOD policy's schedule.
 
@@ -1515,7 +1515,7 @@ func (r ApiGetSodViolationReportStatusRequest) Execute() (*ReportResultReference
 }
 
 /*
-GetSodViolationReportStatus Get SOD violation report status
+GetSodViolationReportStatus Get sod violation report status
 
 This gets the status for a violation report run task that has already been invoked.
 
@@ -1717,7 +1717,7 @@ func (r ApiListSodPoliciesRequest) Execute() ([]SodPolicy, *http.Response, error
 }
 
 /*
-ListSodPolicies List SOD policies
+ListSodPolicies List sod policies
 
 This gets list of all SOD policies.
 Requires role of ORG_ADMIN
@@ -1903,7 +1903,7 @@ func (r ApiPatchSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) 
 }
 
 /*
-PatchSodPolicy Patch SOD policy by ID
+PatchSodPolicy Patch sod policy by id
 
 Allows updating SOD Policy fields other than ["id","created","creatorId","policyQuery","type"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 Requires role of ORG_ADMIN.
@@ -2084,7 +2084,7 @@ func (r ApiPutPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Respon
 }
 
 /*
-PutPolicySchedule Update SOD Policy schedule
+PutPolicySchedule Update sod policy schedule
 
 This updates schedule for a specified SOD policy.
 
@@ -2252,7 +2252,7 @@ func (r ApiPutSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
 }
 
 /*
-PutSodPolicy Update SOD policy by ID
+PutSodPolicy Update sod policy by id
 
 This updates a specified SOD policy.
 Requires role of ORG_ADMIN.
@@ -2426,7 +2426,7 @@ func (r ApiStartEvaluateSodPolicyRequest) Execute() (*ReportResultReference, *ht
 }
 
 /*
-StartEvaluateSodPolicy Evaluate one policy by ID
+StartEvaluateSodPolicy Evaluate one policy by id
 
 Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.
 
@@ -2744,7 +2744,7 @@ func (r ApiStartSodPolicyRequest) Execute() (*ReportResultReference, *http.Respo
 }
 
 /*
-StartSodPolicy Runs SOD policy violation report
+StartSodPolicy Runs sod policy violation report
 
 This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
 

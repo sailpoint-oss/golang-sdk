@@ -34,7 +34,7 @@ func (r ApiGetMessageCatalogsRequest) Execute() ([]MessageCatalogDto, *http.Resp
 }
 
 /*
-GetMessageCatalogs Get Message catalogs
+GetMessageCatalogs Get message catalogs
 
 The getMessageCatalogs API returns message catalog based on the language headers in the requested object.
 

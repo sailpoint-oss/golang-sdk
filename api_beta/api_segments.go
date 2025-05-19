@@ -39,7 +39,7 @@ func (r ApiCreateSegmentRequest) Execute() (*Segment, *http.Response, error) {
 }
 
 /*
-CreateSegment Create Segment
+CreateSegment Create segment
 
 This API creates a segment. 
 >**Note:** Segment definitions may take time to propagate to all identities.
@@ -200,7 +200,7 @@ func (r ApiDeleteSegmentRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSegment Delete Segment by ID
+DeleteSegment Delete segment by id
 
 This API deletes the segment specified by the given ID.
 >**Note:** Segment deletion may take some time to go into effect. 
@@ -359,7 +359,7 @@ func (r ApiGetSegmentRequest) Execute() (*Segment, *http.Response, error) {
 }
 
 /*
-GetSegment Get Segment by ID
+GetSegment Get segment by id
 
 This API returns the segment specified by the given ID.
 A token with ORG_ADMIN or API authority is required to call this API.
@@ -548,7 +548,7 @@ func (r ApiListSegmentsRequest) Execute() ([]Segment, *http.Response, error) {
 }
 
 /*
-ListSegments List Segments
+ListSegments List segments
 
 This API returns a list of all segments.
 A token with ORG_ADMIN or API authority is required to call this API.
@@ -728,7 +728,7 @@ func (r ApiPatchSegmentRequest) Execute() (*Segment, *http.Response, error) {
 }
 
 /*
-PatchSegment Update Segment
+PatchSegment Update segment
 
 Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 >**Note:** Changes to a segment may take some time to propagate to all identities.

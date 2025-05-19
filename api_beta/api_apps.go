@@ -379,7 +379,7 @@ func (r ApiDeleteSourceAppRequest) Execute() (*SourceApp, *http.Response, error)
 }
 
 /*
-DeleteSourceApp Delete source app by ID
+DeleteSourceApp Delete source app by id
 
 Use this API to delete a specific source app
 
@@ -536,7 +536,7 @@ func (r ApiGetSourceAppRequest) Execute() (*SourceApp, *http.Response, error) {
 }
 
 /*
-GetSourceApp Get source app by ID
+GetSourceApp Get source app by id
 
 This API returns a source app by its ID.
 
@@ -2143,7 +2143,7 @@ func (r ApiPatchSourceAppRequest) Execute() (*SourceAppPatchDto, *http.Response,
 }
 
 /*
-PatchSourceApp Patch source app by ID
+PatchSourceApp Patch source app by id
 
 This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**.
@@ -2321,7 +2321,7 @@ func (r ApiPatchUserAppRequest) Execute() (*UserApp, *http.Response, error) {
 }
 
 /*
-PatchUserApp Patch user app by ID
+PatchUserApp Patch user app by id
 
 This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 The following fields are patchable: **account**

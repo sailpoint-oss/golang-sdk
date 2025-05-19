@@ -39,7 +39,7 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 }
 
 /*
-CreateAccessProfile Create Access Profile
+CreateAccessProfile Create access profile
 
 Create an access profile.
 A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source.
@@ -201,7 +201,7 @@ func (r ApiDeleteAccessProfileRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteAccessProfile Delete the specified Access Profile
+DeleteAccessProfile Delete the specified access profile
 
 This API deletes an existing Access Profile.
 
@@ -356,7 +356,7 @@ func (r ApiDeleteAccessProfilesInBulkRequest) Execute() (*AccessProfileBulkDelet
 }
 
 /*
-DeleteAccessProfilesInBulk Delete Access Profile(s)
+DeleteAccessProfilesInBulk Delete access profile(s)
 
 This endpoint initiates a bulk deletion of one or more access profiles.
 When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
@@ -519,7 +519,7 @@ func (r ApiGetAccessProfileRequest) Execute() (*AccessProfile, *http.Response, e
 }
 
 /*
-GetAccessProfile Get an Access Profile
+GetAccessProfile Get an access profile
 
 This API returns an Access Profile by its ID.
 
@@ -711,7 +711,7 @@ func (r ApiGetAccessProfileEntitlementsRequest) Execute() ([]Entitlement, *http.
 }
 
 /*
-GetAccessProfileEntitlements List Access Profile's Entitlements
+GetAccessProfileEntitlements List access profile's entitlements
 
 Use this API to get a list of an access profile's entitlements. 
 A SOURCE_SUBADMIN user must have access to the source associated with the specified access profile.
@@ -949,7 +949,7 @@ func (r ApiListAccessProfilesRequest) Execute() ([]AccessProfile, *http.Response
 }
 
 /*
-ListAccessProfiles List Access Profiles
+ListAccessProfiles List access profiles
 
 Get a list of access profiles. 
 >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
@@ -1146,7 +1146,7 @@ func (r ApiPatchAccessProfileRequest) Execute() (*AccessProfile, *http.Response,
 }
 
 /*
-PatchAccessProfile Patch a specified Access Profile
+PatchAccessProfile Patch a specified access profile
 
 This API updates an existing Access Profile. The following fields are patchable:
 

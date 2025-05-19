@@ -34,7 +34,7 @@ func (r ApiGetAuthUserRequest) Execute() (*AuthUser, *http.Response, error) {
 }
 
 /*
-GetAuthUser Auth User Details
+GetAuthUser Auth user details
 
 Return the specified user's authentication system details.
 
@@ -209,7 +209,7 @@ func (r ApiPatchAuthUserRequest) Execute() (*AuthUser, *http.Response, error) {
 }
 
 /*
-PatchAuthUser Auth User Update
+PatchAuthUser Auth user update
 
 Use a PATCH request to update an existing user in the authentication system.
 Use this endpoint to modify these fields: 

@@ -34,7 +34,7 @@ func (r ApiCancelWorkflowExecutionRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CancelWorkflowExecution Cancel Workflow Execution by ID
+CancelWorkflowExecution Cancel workflow execution by id
 
 Use this API to cancel a running workflow execution.
 
@@ -196,7 +196,7 @@ func (r ApiCreateWorkflowRequest) Execute() (*Workflow, *http.Response, error) {
 }
 
 /*
-CreateWorkflow Create Workflow
+CreateWorkflow Create workflow
 
 Create a new workflow with the desired trigger and steps specified in the request body.
 
@@ -355,7 +355,7 @@ func (r ApiDeleteWorkflowRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteWorkflow Delete Workflow By Id
+DeleteWorkflow Delete workflow by id
 
 Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be disabled.
 
@@ -508,7 +508,7 @@ func (r ApiGetWorkflowRequest) Execute() (*Workflow, *http.Response, error) {
 }
 
 /*
-GetWorkflow Get Workflow By Id
+GetWorkflow Get workflow by id
 
 Get a single workflow by id.
 
@@ -671,7 +671,7 @@ func (r ApiGetWorkflowExecutionRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-GetWorkflowExecution Get Workflow Execution
+GetWorkflowExecution Get workflow execution
 
 Get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a "404 Not Found" response.
 
@@ -839,7 +839,7 @@ func (r ApiGetWorkflowExecutionHistoryRequest) Execute() ([]WorkflowExecutionEve
 }
 
 /*
-GetWorkflowExecutionHistory Get Workflow Execution History
+GetWorkflowExecutionHistory Get workflow execution history
 
 Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
@@ -1035,7 +1035,7 @@ func (r ApiGetWorkflowExecutionsRequest) Execute() ([]WorkflowExecution, *http.R
 }
 
 /*
-GetWorkflowExecutions List Workflow Executions
+GetWorkflowExecutions List workflow executions
 
 Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions.  To get executions past the first 250 records, you can do the following: 
 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 
@@ -1247,7 +1247,7 @@ func (r ApiListCompleteWorkflowLibraryRequest) Execute() ([]ListCompleteWorkflow
 }
 
 /*
-ListCompleteWorkflowLibrary List Complete Workflow Library
+ListCompleteWorkflowLibrary List complete workflow library
 
 This lists all triggers, actions, and operators in the library
 
@@ -1433,7 +1433,7 @@ func (r ApiListWorkflowLibraryActionsRequest) Execute() ([]WorkflowLibraryAction
 }
 
 /*
-ListWorkflowLibraryActions List Workflow Library Actions
+ListWorkflowLibraryActions List workflow library actions
 
 This lists the workflow actions available to you.
 
@@ -1601,7 +1601,7 @@ func (r ApiListWorkflowLibraryOperatorsRequest) Execute() ([]WorkflowLibraryOper
 }
 
 /*
-ListWorkflowLibraryOperators List Workflow Library Operators
+ListWorkflowLibraryOperators List workflow library operators
 
 This lists the workflow operators available to you
 
@@ -1775,7 +1775,7 @@ func (r ApiListWorkflowLibraryTriggersRequest) Execute() ([]WorkflowLibraryTrigg
 }
 
 /*
-ListWorkflowLibraryTriggers List Workflow Library Triggers
+ListWorkflowLibraryTriggers List workflow library triggers
 
 This lists the workflow triggers available to you
 
@@ -1971,7 +1971,7 @@ func (r ApiListWorkflowsRequest) Execute() ([]Workflow, *http.Response, error) {
 }
 
 /*
-ListWorkflows List Workflows
+ListWorkflows List workflows
 
 List all workflows in the tenant.
 
@@ -2149,7 +2149,7 @@ func (r ApiPatchWorkflowRequest) Execute() (*Workflow, *http.Response, error) {
 }
 
 /*
-PatchWorkflow Patch Workflow
+PatchWorkflow Patch workflow
 
 Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
@@ -2317,7 +2317,7 @@ func (r ApiPostExternalExecuteWorkflowRequest) Execute() (*PostExternalExecuteWo
 }
 
 /*
-PostExternalExecuteWorkflow Execute Workflow via External Trigger
+PostExternalExecuteWorkflow Execute workflow via external trigger
 
 This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the "External Trigger" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
@@ -2476,7 +2476,7 @@ func (r ApiPostWorkflowExternalTriggerRequest) Execute() (*WorkflowOAuthClient, 
 }
 
 /*
-PostWorkflowExternalTrigger Generate External Trigger OAuth Client
+PostWorkflowExternalTrigger Generate external trigger oauth client
 
 Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.
 
@@ -2639,7 +2639,7 @@ func (r ApiPutWorkflowRequest) Execute() (*Workflow, *http.Response, error) {
 }
 
 /*
-PutWorkflow Update Workflow
+PutWorkflow Update workflow
 
 Perform a full update of a workflow.  The updated workflow object is returned in the response.
 
@@ -2807,7 +2807,7 @@ func (r ApiTestExternalExecuteWorkflowRequest) Execute() (*TestExternalExecuteWo
 }
 
 /*
-TestExternalExecuteWorkflow Test Workflow via External Trigger
+TestExternalExecuteWorkflow Test workflow via external trigger
 
 Validate a workflow with an "External Trigger" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 
@@ -2972,7 +2972,7 @@ func (r ApiTestWorkflowRequest) Execute() (*TestWorkflow200Response, *http.Respo
 }
 
 /*
-TestWorkflow Test Workflow By Id
+TestWorkflow Test workflow by id
 
 Test a workflow with the provided input data.  The input data should resemble the input that the trigger will send the workflow.  See the [event trigger documentation](https://developer.sailpoint.com/idn/docs/event-triggers/available) for an example input for the trigger that initiates this workflow.
 This endpoint will return an execution ID, which can be used to lookup more information about the execution using the `Get a Workflow Execution` endpoint.

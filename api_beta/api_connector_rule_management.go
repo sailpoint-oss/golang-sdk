@@ -40,7 +40,7 @@ func (r ApiCreateConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.
 }
 
 /*
-CreateConnectorRule Create Connector Rule
+CreateConnectorRule Create connector rule
 
 Creates a new connector rule.
 A token with ORG_ADMIN authority is required to call this API.
@@ -200,7 +200,7 @@ func (r ApiDeleteConnectorRuleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteConnectorRule Delete a Connector-Rule
+DeleteConnectorRule Delete a connector-rule
 
 Deletes the connector rule specified by the given ID.
 A token with ORG_ADMIN authority is required to call this API.
@@ -358,7 +358,7 @@ func (r ApiGetConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Res
 }
 
 /*
-GetConnectorRule Connector-Rule by ID
+GetConnectorRule Connector-rule by id
 
 Returns the connector rule specified by ID.
 A token with ORG_ADMIN authority is required to call this API.
@@ -526,7 +526,7 @@ func (r ApiGetConnectorRuleListRequest) Execute() ([]ConnectorRuleResponse, *htt
 }
 
 /*
-GetConnectorRuleList List Connector Rules
+GetConnectorRuleList List connector rules
 
 Returns the list of connector rules.
 A token with ORG_ADMIN authority is required to call this API.
@@ -688,7 +688,7 @@ func (r ApiUpdateConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.
 }
 
 /*
-UpdateConnectorRule Update a Connector Rule
+UpdateConnectorRule Update a connector rule
 
 Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
 A token with ORG_ADMIN authority is required to call this API.
@@ -865,7 +865,7 @@ func (r ApiValidateConnectorRuleRequest) Execute() (*ConnectorRuleValidationResp
 }
 
 /*
-ValidateConnectorRule Validate Connector Rule
+ValidateConnectorRule Validate connector rule
 
 Returns a list of issues within the code to fix, if any.
 A token with ORG_ADMIN authority is required to call this API.

@@ -200,7 +200,7 @@ func (r ApiDeleteSavedSearchRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSavedSearch Delete document by ID
+DeleteSavedSearch Delete document by id
 
 Deletes the specified saved search.
 
@@ -365,7 +365,7 @@ func (r ApiExecuteSavedSearchRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ExecuteSavedSearch Execute a saved search by ID
+ExecuteSavedSearch Execute a saved search by id
 
 Executes the specified saved search.
 
@@ -528,7 +528,7 @@ func (r ApiGetSavedSearchRequest) Execute() (*SavedSearch, *http.Response, error
 }
 
 /*
-GetSavedSearch Return saved search by ID
+GetSavedSearch Return saved search by id
 
 Returns the specified saved search.
 
@@ -724,7 +724,7 @@ func (r ApiListSavedSearchesRequest) Execute() ([]SavedSearch, *http.Response, e
 }
 
 /*
-ListSavedSearches A list of Saved Searches
+ListSavedSearches A list of saved searches
 
 Returns a list of saved searches.
 
