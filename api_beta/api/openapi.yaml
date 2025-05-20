@@ -62526,19 +62526,87 @@ paths:
       summary: Submit sed batch stats request
       tags:
       - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
   /suggested-entitlement-description-batches:
     get:
       description: |-
         List Sed Batches.
-        API responses with Sed Batch Status
+        API responses with Sed Batch Records
       operationId: getSedBatches
+      parameters:
+      - description: |-
+          Offset
+
+          Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          The offset value is record-based, not page-based, and the index starts at 0.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int64
+          type: integer
+          x-go-name: Offset
+        x-go-name: Offset
+      - description: |-
+          Limit
+
+          Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          If it is not specified, a default limit is used.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int64
+          maxLength: 250
+          minLength: 0
+          type: integer
+          x-go-name: Limit
+        x-go-name: Limit
+      - description: "If `true` it will populate the `X-Total-Count` response header\
+          \ with the number of results that would be returned if `limit` and `offset`\
+          \ were ignored. \nThe standard syntax described in [V3 API Standard Collection\
+          \ Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).\n\
+          Since requesting a total count can have a performance impact, it is recommended\
+          \ not to send `count=true` if that value will not be used."
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.
+          This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        example: true
+        in: query
+        name: count-only
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Batch Status
+        example: "completed, failed, submitted, materialized, failed"
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SedBatchStatus'
-          description: Status of batch
+                items:
+                  $ref: '#/components/schemas/Sed'
+                type: array
+          description: List of Sed Batch Records
         "400":
           content:
             application/json:
@@ -62616,9 +62684,12 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
-      summary: List sed batch request
+      summary: List Sed Batch Record
       tags:
       - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
     post:
       description: |-
         Submit Sed Batch Request.
@@ -62720,6 +62791,9 @@ paths:
       summary: Submit sed batch request
       tags:
       - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
   /suggested-entitlement-description-approvals:
     post:
       description: |-
@@ -83484,118 +83558,6 @@ components:
           format: int64
           type: integer
       type: object
-    SedBatchStatus:
-      description: Sed Batch Status
-      example:
-        status: OK
-      properties:
-        status:
-          description: status of batch
-          example: OK
-          type: string
-      type: object
-    SedBatchRequest:
-      description: Sed Batch Request
-      example:
-        entitlements:
-        - 016629d1-1d25-463f-97f3-c6686846650
-        - 016629d1-1d25-463f-97f3-c6686846650
-        seds:
-        - 016629d1-1d25-463f-97f3-c6686846650
-        - 016629d1-1d25-463f-97f3-c6686846650
-      minProperties: 1
-      properties:
-        entitlements:
-          description: list of entitlement ids
-          items:
-            example: 016629d1-1d25-463f-97f3-c6686846650
-            type: string
-          minItems: 1
-          type: array
-        seds:
-          description: list of sed ids
-          items:
-            example: 016629d1-1d25-463f-97f3-c6686846650
-            type: string
-          minItems: 1
-          type: array
-      type: object
-    SedBatchResponse:
-      description: Sed Batch Response
-      example:
-        batchId: 016629d1-1d25-463f-97f3-0c6686846650
-      properties:
-        batchId:
-          description: BatchId that groups all the ids together
-          example: 016629d1-1d25-463f-97f3-0c6686846650
-          format: uuid
-          type: string
-      type: object
-    SedApproval:
-      description: Sed Approval Request Body
-      example:
-        items: 016629d1-1d25-463f-97f3-c6686846650
-      properties:
-        items:
-          description: List of SED id's
-          example: 016629d1-1d25-463f-97f3-c6686846650
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
-    SedApprovalStatus:
-      description: SED Approval Status
-      example:
-        id: 016629d1-1d25-463f-97f3-0c6686846650
-        failedReason: invalid status
-        status: SUCCESS
-      properties:
-        failedReason:
-          description: failed reason will be display if status is failed
-          example: invalid status
-          type: string
-        id:
-          description: Sed id
-          example: 016629d1-1d25-463f-97f3-0c6686846650
-          format: uuid
-          type: string
-        status:
-          description: SUCCESS | FAILED
-          example: SUCCESS
-          type: string
-      type: object
-    SedAssignment:
-      description: Sed Assignment
-      example:
-        assignee:
-          type: SOURCE_OWNER
-          value: 016629d1-1d25-463f-97f3-c6686846650
-        items:
-        - 016629d1-1d25-463f-97f3-0c6686846650
-        - 016629d1-1d25-463f-97f3-0c6686846650
-      properties:
-        assignee:
-          $ref: '#/components/schemas/SedAssignee'
-        items:
-          description: List of SED id's
-          items:
-            example: 016629d1-1d25-463f-97f3-0c6686846650
-            format: uuid
-            type: string
-          type: array
-      type: object
-    SedAssignmentResponse:
-      description: Sed Assignment Response
-      example:
-        batchId: 016629d1-1d25-463f-97f3-0c6686846650
-      properties:
-        batchId:
-          description: BatchId that groups all the ids together
-          example: 016629d1-1d25-463f-97f3-0c6686846650
-          format: uuid
-          type: string
-      type: object
     Sed:
       description: Suggested Entitlement Description
       example:
@@ -83674,6 +83636,144 @@ components:
         value:
           description: entitlement value
           example: group
+          type: string
+      type: object
+    SedBatchRequest:
+      description: Sed Batch Request
+      example:
+        entitlements:
+        - 016629d1-1d25-463f-97f3-c6686846650
+        - 016629d1-1d25-463f-97f3-c6686846650
+        seds:
+        - 016629d1-1d25-463f-97f3-c6686846650
+        - 016629d1-1d25-463f-97f3-c6686846650
+        searchCriteria:
+          key:
+            indices:
+            - entitlements
+            query:
+              query: status:active
+            textQuery:
+              terms:
+              - admin
+              - user
+              matchAny: true
+              fields:
+              - role
+              - name
+            searchAfter:
+            - "12345"
+            - "67890"
+            filters:
+              status:
+                type: TERMS
+                terms:
+                - active
+                - inactive
+            sort:
+            - name:asc
+            - createdAt:desc
+            queryType: TEXT
+            includeNested: true
+      minProperties: 1
+      properties:
+        entitlements:
+          description: list of entitlement ids
+          items:
+            example: 016629d1-1d25-463f-97f3-c6686846650
+            type: string
+          minItems: 1
+          nullable: true
+          type: array
+        seds:
+          description: list of sed ids
+          items:
+            example: 016629d1-1d25-463f-97f3-c6686846650
+            type: string
+          minItems: 1
+          nullable: true
+          type: array
+        searchCriteria:
+          additionalProperties:
+            $ref: '#/components/schemas/SearchCriteria'
+          description: Search criteria for the batch request.
+          nullable: true
+          type: object
+      type: object
+    SedBatchResponse:
+      description: Sed Batch Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+      type: object
+    SedApproval:
+      description: Sed Approval Request Body
+      example:
+        items: 016629d1-1d25-463f-97f3-c6686846650
+      properties:
+        items:
+          description: List of SED id's
+          example: 016629d1-1d25-463f-97f3-c6686846650
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    SedApprovalStatus:
+      description: SED Approval Status
+      example:
+        id: 016629d1-1d25-463f-97f3-0c6686846650
+        failedReason: invalid status
+        status: SUCCESS
+      properties:
+        failedReason:
+          description: failed reason will be display if status is failed
+          example: invalid status
+          type: string
+        id:
+          description: Sed id
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        status:
+          description: SUCCESS | FAILED
+          example: SUCCESS
+          type: string
+      type: object
+    SedAssignment:
+      description: Sed Assignment
+      example:
+        assignee:
+          type: SOURCE_OWNER
+          value: 016629d1-1d25-463f-97f3-c6686846650
+        items:
+        - 016629d1-1d25-463f-97f3-0c6686846650
+        - 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        assignee:
+          $ref: '#/components/schemas/SedAssignee'
+        items:
+          description: List of SED id's
+          items:
+            example: 016629d1-1d25-463f-97f3-0c6686846650
+            format: uuid
+            type: string
+          type: array
+      type: object
+    SedAssignmentResponse:
+      description: Sed Assignment Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
           type: string
       type: object
     SedPatch:
@@ -90538,6 +90638,89 @@ components:
       example: IDENTITY
       type: string
       x-go-package: github.com/sailpoint/sp-forms/domain
+    SearchCriteria:
+      description: Represents the search criteria for querying entitlements.
+      example:
+        indices:
+        - entitlements
+        query:
+          query: status:active
+        textQuery:
+          terms:
+          - admin
+          - user
+          matchAny: true
+          fields:
+          - role
+          - name
+        searchAfter:
+        - "12345"
+        - "67890"
+        filters:
+          status:
+            type: TERMS
+            terms:
+            - active
+            - inactive
+        sort:
+        - name:asc
+        - createdAt:desc
+        queryType: TEXT
+        includeNested: true
+      properties:
+        indices:
+          description: "A list of indices to search within. Must contain exactly one\
+            \ item, typically \"entitlements\"."
+          example:
+          - entitlements
+          items:
+            type: string
+          type: array
+        filters:
+          additionalProperties:
+            $ref: '#/components/schemas/SearchCriteria_filters_value'
+          description: "A map of filters applied to the search. Keys are filter names,\
+            \ and values are filter definitions."
+          example:
+            status:
+              type: TERMS
+              terms:
+              - active
+              - inactive
+          type: object
+        query:
+          $ref: '#/components/schemas/SearchCriteria_query'
+        queryType:
+          description: Specifies the type of query. Must be "TEXT" if `textQuery`
+            is used.
+          example: TEXT
+          type: string
+        textQuery:
+          $ref: '#/components/schemas/SearchCriteria_textQuery'
+        includeNested:
+          default: false
+          description: Whether to include nested objects in the search results.
+          example: true
+          type: boolean
+        sort:
+          description: Specifies the sorting order for the results.
+          example:
+          - name:asc
+          - createdAt:desc
+          items:
+            type: string
+          type: array
+        searchAfter:
+          description: Used for pagination to fetch results after a specific point.
+          example:
+          - "12345"
+          - "67890"
+          items:
+            type: string
+          type: array
+      required:
+      - indices
+      type: object
     SedAssignee:
       description: Sed Assignee
       example:
@@ -98080,6 +98263,95 @@ components:
           - ENTITLEMENT
           example: ENTITLEMENT
           type: object
+    SearchCriteria_filters_value_range_lower:
+      properties:
+        value:
+          description: The lower bound value.
+          example: "10"
+          type: string
+        inclusive:
+          default: false
+          description: Whether the lower bound is inclusive.
+          example: true
+          type: boolean
+      type: object
+    SearchCriteria_filters_value_range_upper:
+      properties:
+        value:
+          description: The upper bound value.
+          example: "20"
+          type: string
+        inclusive:
+          default: false
+          description: Whether the upper bound is inclusive.
+          example: false
+          type: boolean
+      type: object
+    SearchCriteria_filters_value_range:
+      properties:
+        lower:
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range_lower'
+        upper:
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range_upper'
+      type: object
+    SearchCriteria_filters_value:
+      properties:
+        type:
+          description: "The type of filter, e.g., \"TERMS\" or \"RANGE\"."
+          example: TERMS
+          type: string
+        terms:
+          description: Terms to filter by (for "TERMS" type).
+          example:
+          - active
+          - inactive
+          items:
+            type: string
+          type: array
+        range:
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range'
+      type: object
+    SearchCriteria_query:
+      example:
+        query: status:active
+      properties:
+        query:
+          description: A structured query for advanced search.
+          example: status:active
+          type: string
+      type: object
+    SearchCriteria_textQuery:
+      example:
+        terms:
+        - admin
+        - user
+        matchAny: true
+        fields:
+        - role
+        - name
+      properties:
+        terms:
+          description: Terms to search for.
+          example:
+          - admin
+          - user
+          items:
+            type: string
+          type: array
+        fields:
+          description: Fields to search within.
+          example:
+          - role
+          - name
+          items:
+            type: string
+          type: array
+        matchAny:
+          default: false
+          description: Whether to match any of the terms.
+          example: true
+          type: boolean
+      type: object
     RecommenderCalculations_identityAttributes_value:
       example:
         value: value

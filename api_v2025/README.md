@@ -693,7 +693,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSourceSchedule**](docs/SourcesAPI.md#updatesourceschedule) | **Patch** /sources/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update source schema (partial)
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit sed batch stats request
-*SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List sed batch request
+*SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Record
 *SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List suggested entitlement descriptions
 *SuggestedEntitlementDescriptionAPI* | [**PatchSed**](docs/SuggestedEntitlementDescriptionAPI.md#patchsed) | **Patch** /suggested-entitlement-descriptions | Patch suggested entitlement description
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedApproval**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedapproval) | **Post** /suggested-entitlement-description-approvals | Submit bulk approval request
@@ -1669,6 +1669,13 @@ Class | Method | HTTP request | Description
  - [SearchAggregationSpecification](docs/SearchAggregationSpecification.md)
  - [SearchArguments](docs/SearchArguments.md)
  - [SearchAttributeConfig](docs/SearchAttributeConfig.md)
+ - [SearchCriteria](docs/SearchCriteria.md)
+ - [SearchCriteriaFiltersValue](docs/SearchCriteriaFiltersValue.md)
+ - [SearchCriteriaFiltersValueRange](docs/SearchCriteriaFiltersValueRange.md)
+ - [SearchCriteriaFiltersValueRangeLower](docs/SearchCriteriaFiltersValueRangeLower.md)
+ - [SearchCriteriaFiltersValueRangeUpper](docs/SearchCriteriaFiltersValueRangeUpper.md)
+ - [SearchCriteriaQuery](docs/SearchCriteriaQuery.md)
+ - [SearchCriteriaTextQuery](docs/SearchCriteriaTextQuery.md)
  - [SearchExportReportArguments](docs/SearchExportReportArguments.md)
  - [SearchFilterType](docs/SearchFilterType.md)
  - [SearchFormDefinitionsByTenant400Response](docs/SearchFormDefinitionsByTenant400Response.md)
@@ -1681,10 +1688,10 @@ Class | Method | HTTP request | Description
  - [SedAssignee](docs/SedAssignee.md)
  - [SedAssignment](docs/SedAssignment.md)
  - [SedAssignmentResponse](docs/SedAssignmentResponse.md)
+ - [SedBatchRecord](docs/SedBatchRecord.md)
  - [SedBatchRequest](docs/SedBatchRequest.md)
  - [SedBatchResponse](docs/SedBatchResponse.md)
  - [SedBatchStats](docs/SedBatchStats.md)
- - [SedBatchStatus](docs/SedBatchStatus.md)
  - [SedPatch](docs/SedPatch.md)
  - [Segment](docs/Segment.md)
  - [SegmentVisibilityCriteria](docs/SegmentVisibilityCriteria.md)

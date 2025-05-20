@@ -23,6 +23,8 @@ type SedBatchRequest struct {
 	Entitlements []string `json:"entitlements,omitempty"`
 	// list of sed ids
 	Seds []string `json:"seds,omitempty"`
+	// Search criteria for the batch request.
+	SearchCriteria map[string]SearchCriteria `json:"searchCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,9 +47,9 @@ func NewSedBatchRequestWithDefaults() *SedBatchRequest {
 	return &this
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SedBatchRequest) GetEntitlements() []string {
-	if o == nil || IsNil(o.Entitlements) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -56,6 +58,7 @@ func (o *SedBatchRequest) GetEntitlements() []string {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SedBatchRequest) GetEntitlementsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
@@ -77,9 +80,9 @@ func (o *SedBatchRequest) SetEntitlements(v []string) {
 	o.Entitlements = v
 }
 
-// GetSeds returns the Seds field value if set, zero value otherwise.
+// GetSeds returns the Seds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SedBatchRequest) GetSeds() []string {
-	if o == nil || IsNil(o.Seds) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -88,6 +91,7 @@ func (o *SedBatchRequest) GetSeds() []string {
 
 // GetSedsOk returns a tuple with the Seds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SedBatchRequest) GetSedsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Seds) {
 		return nil, false
@@ -109,6 +113,39 @@ func (o *SedBatchRequest) SetSeds(v []string) {
 	o.Seds = v
 }
 
+// GetSearchCriteria returns the SearchCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SedBatchRequest) GetSearchCriteria() map[string]SearchCriteria {
+	if o == nil {
+		var ret map[string]SearchCriteria
+		return ret
+	}
+	return o.SearchCriteria
+}
+
+// GetSearchCriteriaOk returns a tuple with the SearchCriteria field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SedBatchRequest) GetSearchCriteriaOk() (*map[string]SearchCriteria, bool) {
+	if o == nil || IsNil(o.SearchCriteria) {
+		return nil, false
+	}
+	return &o.SearchCriteria, true
+}
+
+// HasSearchCriteria returns a boolean if a field has been set.
+func (o *SedBatchRequest) HasSearchCriteria() bool {
+	if o != nil && !IsNil(o.SearchCriteria) {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchCriteria gets a reference to the given map[string]SearchCriteria and assigns it to the SearchCriteria field.
+func (o *SedBatchRequest) SetSearchCriteria(v map[string]SearchCriteria) {
+	o.SearchCriteria = v
+}
+
 func (o SedBatchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,11 +156,14 @@ func (o SedBatchRequest) MarshalJSON() ([]byte, error) {
 
 func (o SedBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Entitlements) {
+	if o.Entitlements != nil {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !IsNil(o.Seds) {
+	if o.Seds != nil {
 		toSerialize["seds"] = o.Seds
+	}
+	if o.SearchCriteria != nil {
+		toSerialize["searchCriteria"] = o.SearchCriteria
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +189,7 @@ func (o *SedBatchRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "seds")
+		delete(additionalProperties, "searchCriteria")
 		o.AdditionalProperties = additionalProperties
 	}
 

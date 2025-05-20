@@ -198,17 +198,52 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 type ApiGetSedBatchesRequest struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
+	offset *int64
+	limit *int64
+	count *bool
+	countOnly *bool
+	status *string
 }
 
-func (r ApiGetSedBatchesRequest) Execute() (*SedBatchStatus, *http.Response, error) {
+// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+func (r ApiGetSedBatchesRequest) Offset(offset int64) ApiGetSedBatchesRequest {
+	r.offset = &offset
+	return r
+}
+
+// Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+func (r ApiGetSedBatchesRequest) Limit(limit int64) ApiGetSedBatchesRequest {
+	r.limit = &limit
+	return r
+}
+
+// If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send &#x60;count&#x3D;true&#x60; if that value will not be used.
+func (r ApiGetSedBatchesRequest) Count(count bool) ApiGetSedBatchesRequest {
+	r.count = &count
+	return r
+}
+
+// If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the &#x60;count&#x60; parameter in that this one skips executing the actual query and always return an empty array.
+func (r ApiGetSedBatchesRequest) CountOnly(countOnly bool) ApiGetSedBatchesRequest {
+	r.countOnly = &countOnly
+	return r
+}
+
+// Batch Status
+func (r ApiGetSedBatchesRequest) Status(status string) ApiGetSedBatchesRequest {
+	r.status = &status
+	return r
+}
+
+func (r ApiGetSedBatchesRequest) Execute() ([]SedBatchRecord, *http.Response, error) {
 	return r.ApiService.GetSedBatchesExecute(r)
 }
 
 /*
-GetSedBatches List sed batch request
+GetSedBatches List Sed Batch Record
 
 List Sed Batches.
-API responses with Sed Batch Status
+API responses with Sed Batch Records
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSedBatchesRequest
@@ -221,13 +256,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatches(ctx context.Co
 }
 
 // Execute executes the request
-//  @return SedBatchStatus
-func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGetSedBatchesRequest) (*SedBatchStatus, *http.Response, error) {
+//  @return []SedBatchRecord
+func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGetSedBatchesRequest) ([]SedBatchRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SedBatchStatus
+		localVarReturnValue  []SedBatchRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.GetSedBatches")
@@ -241,6 +276,33 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int64 = 0
+		r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int64 = 250
+		r.limit = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.countOnly != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count-only", r.countOnly, "", "")
+	} else {
+		var defaultValue bool = false
+		r.countOnly = &defaultValue
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
