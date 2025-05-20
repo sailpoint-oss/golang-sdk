@@ -16,17 +16,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
           path: golang-sdk
 
       - name: Checkout API Specs Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: sailpoint-oss/developer.sailpoint.com
           path: developer-community
           ref: main
+          token: ${{ secrets.DEVREL_SERVICE_TOKEN }}
+          fetch-depth: 0
+
+      - name: Sync local to remote main
+        working-directory: developer-community
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Install rsync
         run: sudo apt update && sudo apt install -y rsync grsync
@@ -54,8 +62,8 @@ jobs:
           rsync -av  golang-sdk/api_v2025/docs/Examples/go_code_examples_overlay.yaml developer-community/static/code-examples/v2025/
 
       - name: Check for changes and commit if any
+        working-directory: developer-community
         run: |
-          cd developer-community
           if git diff --quiet; then
             echo "No changes to commit."
             exit 0
@@ -65,8 +73,7 @@ jobs:
           git config --local user.name "developer-relations-sp"
           git add .
           git commit -m "Update Go SDK docs: ${{ github.run_id }}"
-          git remote set-url origin https://${{ secrets.DEVREL_SERVICE_TOKEN }}@github.com/sailpoint-oss/developer.sailpoint.com.git
-          git push
+          git push origin main
 
   publish-failure:
     name: Notify on failure
