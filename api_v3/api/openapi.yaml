@@ -2876,6 +2876,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
       summary: Completed access request approvals list
       tags:
       - Access Request Approvals

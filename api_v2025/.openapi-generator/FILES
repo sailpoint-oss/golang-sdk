@@ -693,6 +693,7 @@ docs/IdentityWithNewAccessAccessRefsInner.md
 docs/IdpDetails.md
 docs/ImportAccountsRequest.md
 docs/ImportEntitlementsBySourceRequest.md
+docs/ImportEntitlementsRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
 docs/ImportFormDefinitionsRequestInner.md
@@ -1914,6 +1915,7 @@ model_identity_with_new_access_access_refs_inner.go
 model_idp_details.go
 model_import_accounts_request.go
 model_import_entitlements_by_source_request.go
+model_import_entitlements_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
 model_import_form_definitions_request_inner.go

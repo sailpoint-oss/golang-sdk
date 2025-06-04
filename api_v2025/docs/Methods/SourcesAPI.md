@@ -100,6 +100,7 @@ Method | HTTP request | Description
 [**import-accounts**](#import-accounts) | **Post** `/sources/{id}/load-accounts` | Account aggregation
 [**import-accounts-schema**](#import-accounts-schema) | **Post** `/sources/{id}/schemas/accounts` | Uploads source accounts schema template
 [**import-connector-file**](#import-connector-file) | **Post** `/sources/{sourceId}/upload-connector-file` | Upload connector file to source
+[**import-entitlements**](#import-entitlements) | **Post** `/sources/{sourceId}/load-entitlements` | Entitlement aggregation
 [**import-entitlements-schema**](#import-entitlements-schema) | **Post** `/sources/{id}/schemas/entitlements` | Uploads source entitlements schema template
 [**import-uncorrelated-accounts**](#import-uncorrelated-accounts) | **Post** `/sources/{id}/load-uncorrelated-accounts` | Process uncorrelated accounts
 [**list-provisioning-policies**](#list-provisioning-policies) | **Get** `/sources/{sourceId}/provisioning-policies` | Lists provisioningpolicies
@@ -2268,6 +2269,90 @@ func main() {
     }
     // response from `ImportConnectorFile`: Source
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportConnectorFile`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## import-entitlements
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Entitlement aggregation
+Starts an entitlement aggregation on the specified source. 
+If the target source is a delimited file source, then the CSV file needs to be included in the request body. 
+You will also need to set the Content-Type header to `multipart/form-data`.
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/import-entitlements)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportEntitlementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **file** | ***os.File** | The CSV file containing the source entitlements to aggregate. | 
+
+### Return type
+
+[**LoadEntitlementTask**](../models/load-entitlement-task)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source Id # string | Source Id
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    file := BINARY_DATA_HERE // *os.File | The CSV file containing the source entitlements to aggregate. (optional) # *os.File | The CSV file containing the source entitlements to aggregate. (optional)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2025.SourcesAPI.ImportEntitlements(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.V2025.SourcesAPI.ImportEntitlements(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).File(file).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlements``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEntitlements`: LoadEntitlementTask
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportEntitlements`: %v\n", resp)
 }
 ```
 

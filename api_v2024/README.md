@@ -677,6 +677,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account aggregation
 *SourcesAPI* | [**ImportAccountsSchema**](docs/SourcesAPI.md#importaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesAPI* | [**ImportConnectorFile**](docs/SourcesAPI.md#importconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+*SourcesAPI* | [**ImportEntitlements**](docs/SourcesAPI.md#importentitlements) | **Post** /sources/{sourceId}/load-entitlements | Entitlement aggregation
 *SourcesAPI* | [**ImportEntitlementsSchema**](docs/SourcesAPI.md#importentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesAPI.md#importuncorrelatedaccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
 *SourcesAPI* | [**ListProvisioningPolicies**](docs/SourcesAPI.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists provisioningpolicies
@@ -1301,6 +1302,7 @@ Class | Method | HTTP request | Description
  - [IdpDetails](docs/IdpDetails.md)
  - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
  - [ImportEntitlementsBySourceRequest](docs/ImportEntitlementsBySourceRequest.md)
+ - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
  - [ImportFormDefinitionsRequestInner](docs/ImportFormDefinitionsRequestInner.md)
