@@ -202,6 +202,9 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**ReassignIdentityCertifications**](docs/CertificationsAPI.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign identities or items
 *CertificationsAPI* | [**SignOffIdentityCertification**](docs/CertificationsAPI.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize identity certification decisions
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign certifications asynchronously
+*ClassifySourceAPI* | [**DeleteClassifyMachineAccountFromSource**](docs/ClassifySourceAPI.md#deleteclassifymachineaccountfromsource) | **Delete** /sources/{sourceId}/classify | Cancel classify source&#39;s accounts process
+*ClassifySourceAPI* | [**GetClassifyMachineAccountFromSourceStatus**](docs/ClassifySourceAPI.md#getclassifymachineaccountfromsourcestatus) | **Get** /sources/{sourceId}/classify | Source accounts classification status
+*ClassifySourceAPI* | [**SendClassifyMachineAccountFromSource**](docs/ClassifySourceAPI.md#sendclassifymachineaccountfromsource) | **Post** /sources/{sourceId}/classify | Classify source&#39;s all accounts
 *ConfigurationHubAPI* | [**CreateDeploy**](docs/ConfigurationHubAPI.md#createdeploy) | **Post** /configuration-hub/deploys | Create a deploy
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
@@ -420,9 +423,17 @@ Class | Method | HTTP request | Description
 *MFAConfigurationAPI* | [**SetMFAKBAConfig**](docs/MFAConfigurationAPI.md#setmfakbaconfig) | **Post** /mfa/kba/config/answers | Set mfa kba configuration
 *MFAConfigurationAPI* | [**SetMFAOktaConfig**](docs/MFAConfigurationAPI.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set okta mfa configuration
 *MFAConfigurationAPI* | [**TestMFAConfig**](docs/MFAConfigurationAPI.md#testmfaconfig) | **Get** /mfa/{method}/test | Mfa method&#39;s test configuration
+*MachineAccountClassifyAPI* | [**SendClassifyMachineAccount**](docs/MachineAccountClassifyAPI.md#sendclassifymachineaccount) | **Post** /accounts/{id}/classify | Classify a Single Machine Account
+*MachineAccountMappingsAPI* | [**CreateMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#createmachineaccountmappings) | **Post** /sources/{sourceId}/machine-account-mappings | Create machine account mappings
+*MachineAccountMappingsAPI* | [**DeleteMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#deletemachineaccountmappings) | **Delete** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
+*MachineAccountMappingsAPI* | [**ListMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#listmachineaccountmappings) | **Get** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
+*MachineAccountMappingsAPI* | [**SetMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappings) | **Put** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
 *MachineAccountsAPI* | [**GetMachineAccount**](docs/MachineAccountsAPI.md#getmachineaccount) | **Get** /machine-accounts/{id} | Machine account details
 *MachineAccountsAPI* | [**ListMachineAccounts**](docs/MachineAccountsAPI.md#listmachineaccounts) | **Get** /machine-accounts | Machine accounts list
 *MachineAccountsAPI* | [**UpdateMachineAccount**](docs/MachineAccountsAPI.md#updatemachineaccount) | **Patch** /machine-accounts/{id} | Update a machine account
+*MachineClassificationConfigAPI* | [**DeleteMachineClassificationConfig**](docs/MachineClassificationConfigAPI.md#deletemachineclassificationconfig) | **Delete** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
+*MachineClassificationConfigAPI* | [**GetMachineClassificationConfig**](docs/MachineClassificationConfigAPI.md#getmachineclassificationconfig) | **Get** /sources/{sourceId}/machine-classification-config | Machine classification config for source
+*MachineClassificationConfigAPI* | [**SetMachineClassificationConfig**](docs/MachineClassificationConfigAPI.md#setmachineclassificationconfig) | **Put** /sources/{sourceId}/machine-classification-config | Update source&#39;s classification config
 *MachineIdentitiesAPI* | [**CreateMachineIdentity**](docs/MachineIdentitiesAPI.md#createmachineidentity) | **Post** /machine-identities | Create machine identities
 *MachineIdentitiesAPI* | [**DeleteMachineIdentity**](docs/MachineIdentitiesAPI.md#deletemachineidentity) | **Delete** /machine-identities/{id} | Delete machine identity
 *MachineIdentitiesAPI* | [**GetMachineIdentity**](docs/MachineIdentitiesAPI.md#getmachineidentity) | **Get** /machine-identities/{id} | Machine identity details
@@ -957,6 +968,12 @@ Class | Method | HTTP request | Description
  - [AttributeDefinition](docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
+ - [AttributeMappings](docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
  - [AttributeRequest](docs/AttributeRequest.md)
  - [AttributeRequestValue](docs/AttributeRequestValue.md)
  - [AttributeValueDTO](docs/AttributeValueDTO.md)
@@ -1348,6 +1365,7 @@ Class | Method | HTTP request | Description
  - [LockoutConfiguration](docs/LockoutConfiguration.md)
  - [LookupStep](docs/LookupStep.md)
  - [MachineAccount](docs/MachineAccount.md)
+ - [MachineClassificationConfig](docs/MachineClassificationConfig.md)
  - [MachineIdentity](docs/MachineIdentity.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
@@ -1702,6 +1720,8 @@ Class | Method | HTTP request | Description
  - [SelectorAccountMatchConfigMatchExpression](docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
+ - [SendClassifyMachineAccount200Response](docs/SendClassifyMachineAccount200Response.md)
+ - [SendClassifyMachineAccountFromSource200Response](docs/SendClassifyMachineAccountFromSource200Response.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
@@ -1747,6 +1767,8 @@ Class | Method | HTTP request | Description
  - [SourceAppCreateDtoAccountSource](docs/SourceAppCreateDtoAccountSource.md)
  - [SourceAppPatchDto](docs/SourceAppPatchDto.md)
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
+ - [SourceClassificationStatus](docs/SourceClassificationStatus.md)
+ - [SourceClassificationStatusAllOfCounts](docs/SourceClassificationStatusAllOfCounts.md)
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceCode](docs/SourceCode.md)

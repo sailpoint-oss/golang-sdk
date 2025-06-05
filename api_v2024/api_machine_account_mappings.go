@@ -561,7 +561,7 @@ func (r ApiSetMachineAccountMappingsRequest) Execute() ([]AttributeMappings, *ht
 }
 
 /*
-SetMachineAccountMappings Update source's machine account mappings
+SetMachineAccountMappings Update Source's Machine Account Mappings
 
 Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

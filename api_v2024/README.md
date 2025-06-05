@@ -423,7 +423,7 @@ Class | Method | HTTP request | Description
 *MachineAccountMappingsAPI* | [**CreateMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#createmachineaccountmappings) | **Post** /sources/{sourceId}/machine-account-mappings | Create machine account mappings
 *MachineAccountMappingsAPI* | [**DeleteMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#deletemachineaccountmappings) | **Delete** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
 *MachineAccountMappingsAPI* | [**ListMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#listmachineaccountmappings) | **Get** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
-*MachineAccountMappingsAPI* | [**SetMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappings) | **Put** /sources/{sourceId}/machine-mappings | Update source&#39;s machine account mappings
+*MachineAccountMappingsAPI* | [**SetMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappings) | **Put** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
 *MachineAccountsAPI* | [**GetMachineAccount**](docs/MachineAccountsAPI.md#getmachineaccount) | **Get** /machine-accounts/{id} | Machine account details
 *MachineAccountsAPI* | [**ListMachineAccounts**](docs/MachineAccountsAPI.md#listmachineaccounts) | **Get** /machine-accounts | Machine accounts list
 *MachineAccountsAPI* | [**UpdateMachineAccount**](docs/MachineAccountsAPI.md#updatemachineaccount) | **Patch** /machine-accounts/{id} | Update a machine account
