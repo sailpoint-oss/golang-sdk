@@ -773,6 +773,7 @@ docs/MachineClassificationConfigAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentitiesAPI.md
 docs/MachineIdentitiesAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentity.md
+docs/MachineIdentityDtoOwners.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -1998,6 +1999,7 @@ model_lookup_step.go
 model_machine_account.go
 model_machine_classification_config.go
 model_machine_identity.go
+model_machine_identity_dto_owners.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go

@@ -37,6 +37,9 @@ type MachineIdentity struct {
 	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 	// A map of custom machine identity attributes
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	// The subtype value associated to the machine identity
+	Subtype string `json:"subtype"`
+	Owners *MachineIdentityDtoOwners `json:"owners,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,12 +49,13 @@ type _MachineIdentity MachineIdentity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineIdentity(name NullableString, businessApplication string) *MachineIdentity {
+func NewMachineIdentity(name NullableString, businessApplication string, subtype string) *MachineIdentity {
 	this := MachineIdentity{}
 	this.Name = name
 	this.BusinessApplication = businessApplication
 	var manuallyEdited bool = false
 	this.ManuallyEdited = &manuallyEdited
+	this.Subtype = subtype
 	return &this
 }
 
@@ -307,6 +311,62 @@ func (o *MachineIdentity) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetSubtype returns the Subtype field value
+func (o *MachineIdentity) GetSubtype() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Subtype
+}
+
+// GetSubtypeOk returns a tuple with the Subtype field value
+// and a boolean to check if the value has been set.
+func (o *MachineIdentity) GetSubtypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Subtype, true
+}
+
+// SetSubtype sets field value
+func (o *MachineIdentity) SetSubtype(v string) {
+	o.Subtype = v
+}
+
+// GetOwners returns the Owners field value if set, zero value otherwise.
+func (o *MachineIdentity) GetOwners() MachineIdentityDtoOwners {
+	if o == nil || IsNil(o.Owners) {
+		var ret MachineIdentityDtoOwners
+		return ret
+	}
+	return *o.Owners
+}
+
+// GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MachineIdentity) GetOwnersOk() (*MachineIdentityDtoOwners, bool) {
+	if o == nil || IsNil(o.Owners) {
+		return nil, false
+	}
+	return o.Owners, true
+}
+
+// HasOwners returns a boolean if a field has been set.
+func (o *MachineIdentity) HasOwners() bool {
+	if o != nil && !IsNil(o.Owners) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwners gets a reference to the given MachineIdentityDtoOwners and assigns it to the Owners field.
+func (o *MachineIdentity) SetOwners(v MachineIdentityDtoOwners) {
+	o.Owners = &v
+}
+
 func (o MachineIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -337,6 +397,10 @@ func (o MachineIdentity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+	toSerialize["subtype"] = o.Subtype
+	if !IsNil(o.Owners) {
+		toSerialize["owners"] = o.Owners
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -352,6 +416,7 @@ func (o *MachineIdentity) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"name",
 		"businessApplication",
+		"subtype",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -389,6 +454,8 @@ func (o *MachineIdentity) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "manuallyEdited")
 		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "subtype")
+		delete(additionalProperties, "owners")
 		o.AdditionalProperties = additionalProperties
 	}
 

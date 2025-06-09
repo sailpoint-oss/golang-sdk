@@ -1367,6 +1367,7 @@ Class | Method | HTTP request | Description
  - [MachineAccount](docs/MachineAccount.md)
  - [MachineClassificationConfig](docs/MachineClassificationConfig.md)
  - [MachineIdentity](docs/MachineIdentity.md)
+ - [MachineIdentityDtoOwners](docs/MachineIdentityDtoOwners.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)
