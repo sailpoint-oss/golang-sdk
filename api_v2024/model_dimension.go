@@ -31,7 +31,7 @@ type Dimension struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// A human-readable description of the Dimension
 	Description NullableString `json:"description,omitempty"`
-	Owner OwnerReference `json:"owner"`
+	Owner NullableOwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
 	Membership NullableDimensionMembershipSelector `json:"membership,omitempty"`
@@ -46,7 +46,7 @@ type _Dimension Dimension
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDimension(name string, owner OwnerReference) *Dimension {
+func NewDimension(name string, owner NullableOwnerReference) *Dimension {
 	this := Dimension{}
 	this.Name = name
 	this.Owner = owner
@@ -224,27 +224,29 @@ func (o *Dimension) UnsetDescription() {
 }
 
 // GetOwner returns the Owner field value
+// If the value is explicit nil, the zero value for OwnerReference will be returned
 func (o *Dimension) GetOwner() OwnerReference {
-	if o == nil {
+	if o == nil || o.Owner.Get() == nil {
 		var ret OwnerReference
 		return ret
 	}
 
-	return o.Owner
+	return *o.Owner.Get()
 }
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dimension) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Owner, true
+	return o.Owner.Get(), o.Owner.IsSet()
 }
 
 // SetOwner sets field value
 func (o *Dimension) SetOwner(v OwnerReference) {
-	o.Owner = v
+	o.Owner.Set(&v)
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -419,7 +421,7 @@ func (o Dimension) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	toSerialize["owner"] = o.Owner
+	toSerialize["owner"] = o.Owner.Get()
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
