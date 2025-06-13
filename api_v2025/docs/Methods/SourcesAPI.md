@@ -657,17 +657,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-native-change-detection-config
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete native change detection configuration
 Deletes the native change detection configuration for the source specified by the given ID.
 
@@ -689,7 +678,6 @@ Other parameters are passed through a pointer to a apiDeleteNativeChangeDetectio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -716,14 +704,13 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V2025.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.V2025.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2025.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+	  //r, err := apiClient.V2025.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteNativeChangeDetectionConfig``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1207,17 +1194,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-native-change-detection-config
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Native change detection configuration
 This API returns the existing native change detection configuration for a source specified by the given ID.
 
@@ -1239,7 +1215,6 @@ Other parameters are passed through a pointer to a apiGetNativeChangeDetectionCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -1266,14 +1241,13 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2025.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2025.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.V2025.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetNativeChangeDetectionConfig``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2815,17 +2789,6 @@ func main() {
 [[Back to top]](#)
 
 ## put-native-change-detection-config
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Update native change detection configuration
 Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -2847,7 +2810,6 @@ Other parameters are passed through a pointer to a apiPutNativeChangeDetectionCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **nativeChangeDetectionConfig** | [**NativeChangeDetectionConfig**](../models/native-change-detection-config) |  | 
 
 ### Return type
@@ -2875,7 +2837,6 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     nativechangedetectionconfig := []byte(`{
           "selectedEntitlements" : [ "memberOf", "memberOfSharedMailbox" ],
           "operations" : [ "ACCOUNT_UPDATED", "ACCOUNT_DELETED" ],
@@ -2894,8 +2855,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
-	  //resp, r, err := apiClient.V2025.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).XSailPointExperimental(xSailPointExperimental).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+    resp, r, err := apiClient.V2025.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+	  //resp, r, err := apiClient.V2025.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutNativeChangeDetectionConfig``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -26,14 +26,7 @@ type IdentityAttributesAPIService service
 type ApiCreateIdentityAttributeRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
-	xSailPointExperimental *string
 	identityAttribute *IdentityAttribute
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateIdentityAttributeRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateIdentityAttributeRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiCreateIdentityAttributeRequest) IdentityAttribute(identityAttribute IdentityAttribute) ApiCreateIdentityAttributeRequest {
@@ -80,21 +73,6 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeExecute(r ApiCreat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityAttribute == nil {
 		return localVarReturnValue, nil, reportError("identityAttribute is required and must be specified")
 	}
@@ -116,7 +94,6 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeExecute(r ApiCreat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -225,13 +202,6 @@ type ApiDeleteIdentityAttributeRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
 	name string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteIdentityAttributeRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteIdentityAttributeRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteIdentityAttributeRequest) Execute() (*http.Response, error) {
@@ -274,15 +244,6 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDelet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -301,7 +262,6 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDelet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -398,14 +358,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDelet
 type ApiDeleteIdentityAttributesInBulkRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
-	xSailPointExperimental *string
 	identityAttributeNames *IdentityAttributeNames
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteIdentityAttributesInBulkRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteIdentityAttributesInBulkRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteIdentityAttributesInBulkRequest) IdentityAttributeNames(identityAttributeNames IdentityAttributeNames) ApiDeleteIdentityAttributesInBulkRequest {
@@ -450,21 +403,6 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityAttributeNames == nil {
 		return nil, reportError("identityAttributeNames is required and must be specified")
 	}
@@ -486,7 +424,6 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityAttributeNames
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -586,13 +523,6 @@ type ApiGetIdentityAttributeRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
 	name string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetIdentityAttributeRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetIdentityAttributeRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Response, error) {
@@ -637,15 +567,6 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -664,7 +585,6 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdent
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -770,17 +690,10 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdent
 type ApiListIdentityAttributesRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
-	xSailPointExperimental *string
 	includeSystem *bool
 	includeSilent *bool
 	searchableOnly *bool
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListIdentityAttributesRequest) XSailPointExperimental(xSailPointExperimental string) ApiListIdentityAttributesRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Include &#39;system&#39; attributes in the response.
@@ -846,15 +759,6 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListId
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.includeSystem != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystem", r.includeSystem, "", "")
@@ -897,7 +801,6 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListId
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -993,14 +896,7 @@ type ApiPutIdentityAttributeRequest struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
 	name string
-	xSailPointExperimental *string
 	identityAttribute *IdentityAttribute
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPutIdentityAttributeRequest) XSailPointExperimental(xSailPointExperimental string) ApiPutIdentityAttributeRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPutIdentityAttributeRequest) IdentityAttribute(identityAttribute IdentityAttribute) ApiPutIdentityAttributeRequest {
@@ -1050,21 +946,6 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeExecute(r ApiPutIdent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityAttribute == nil {
 		return localVarReturnValue, nil, reportError("identityAttribute is required and must be specified")
 	}
@@ -1086,7 +967,6 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeExecute(r ApiPutIdent
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

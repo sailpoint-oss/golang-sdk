@@ -901,13 +901,6 @@ type ApiDeleteNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteNativeChangeDetectionConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteNativeChangeDetectionConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteNativeChangeDetectionConfigRequest) Execute() (*http.Response, error) {
@@ -950,15 +943,6 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -977,7 +961,6 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2218,13 +2201,6 @@ type ApiGetNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetNativeChangeDetectionConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetNativeChangeDetectionConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetectionConfig, *http.Response, error) {
@@ -2269,15 +2245,6 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2296,7 +2263,6 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -6245,14 +6211,7 @@ type ApiPutNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
 	nativeChangeDetectionConfig *NativeChangeDetectionConfig
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPutNativeChangeDetectionConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiPutNativeChangeDetectionConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPutNativeChangeDetectionConfigRequest) NativeChangeDetectionConfig(nativeChangeDetectionConfig NativeChangeDetectionConfig) ApiPutNativeChangeDetectionConfigRequest {
@@ -6302,21 +6261,6 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.nativeChangeDetectionConfig == nil {
 		return localVarReturnValue, nil, reportError("nativeChangeDetectionConfig is required and must be specified")
 	}
@@ -6338,7 +6282,6 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.nativeChangeDetectionConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
