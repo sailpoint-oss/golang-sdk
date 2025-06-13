@@ -26,7 +26,7 @@ type ApiListRequestableObjectsRequest struct {
 	ctx context.Context
 	ApiService *RequestableObjectsAPIService
 	identityId *string
-	types *[]RequestableObjectType
+	types *[]string
 	term *string
 	statuses *[]RequestableObjectRequestStatus
 	limit *int32
@@ -43,7 +43,7 @@ func (r ApiListRequestableObjectsRequest) IdentityId(identityId string) ApiListR
 }
 
 // Filters the results to the specified type/types, where each type is one of &#x60;ROLE&#x60; or &#x60;ACCESS_PROFILE&#x60;. If absent, all types are returned. SailPoint may add support for additional types in the future without notice.
-func (r ApiListRequestableObjectsRequest) Types(types []RequestableObjectType) ApiListRequestableObjectsRequest {
+func (r ApiListRequestableObjectsRequest) Types(types []string) ApiListRequestableObjectsRequest {
 	r.types = &types
 	return r
 }

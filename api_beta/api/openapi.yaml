@@ -32758,14 +32758,18 @@ paths:
       - description: "Filters the results to the specified type/types, where each\
           \ type is one of `ROLE` or `ACCESS_PROFILE`. If absent, all types are returned.\
           \ SailPoint may add support for additional types in the future without notice."
-        example: "ROLE,ACCESS_PROFILE"
+        example: "ACCESS_PROFILE,ROLE"
         explode: false
         in: query
         name: types
         required: false
         schema:
           items:
-            $ref: '#/components/schemas/RequestableObjectType'
+            description: Currently supported requestable object types.
+            enum:
+            - ACCESS_PROFILE
+            - ROLE
+            type: string
           type: array
       - description: "Allows searching requestable access items with a partial match\
           \ on the name or description. If `term` is provided, then the API will ignore\
@@ -76162,14 +76166,6 @@ components:
           example: false
           type: boolean
       type: object
-    RequestableObjectType:
-      description: Currently supported requestable object types.
-      enum:
-      - ACCESS_PROFILE
-      - ROLE
-      - ENTITLEMENT
-      example: ACCESS_PROFILE
-      type: string
     RequestableObjectRequestStatus:
       description: "Status indicating the ability of an access request for the object\
         \ to be made by or on behalf of the identity specified by *identity-id*. *AVAILABLE*\
@@ -87598,6 +87594,14 @@ components:
           nullable: true
           type: boolean
       type: object
+    RequestableObjectType:
+      description: Currently supported requestable object types.
+      enum:
+      - ACCESS_PROFILE
+      - ROLE
+      - ENTITLEMENT
+      example: ACCESS_PROFILE
+      type: string
     RoleInsightsRole:
       example:
         ownerName: Bob
