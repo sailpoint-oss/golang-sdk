@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the SodPolicyConflictingAccessCriteria type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SodPolicyConflictingAccessCriteria{}
+// checks if the SodPolicyReadAllOfConflictingAccessCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodPolicyReadAllOfConflictingAccessCriteria{}
 
-// SodPolicyConflictingAccessCriteria struct for SodPolicyConflictingAccessCriteria
-type SodPolicyConflictingAccessCriteria struct {
+// SodPolicyReadAllOfConflictingAccessCriteria struct for SodPolicyReadAllOfConflictingAccessCriteria
+type SodPolicyReadAllOfConflictingAccessCriteria struct {
 	LeftCriteria *AccessCriteria `json:"leftCriteria,omitempty"`
 	RightCriteria *AccessCriteria `json:"rightCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SodPolicyConflictingAccessCriteria SodPolicyConflictingAccessCriteria
+type _SodPolicyReadAllOfConflictingAccessCriteria SodPolicyReadAllOfConflictingAccessCriteria
 
-// NewSodPolicyConflictingAccessCriteria instantiates a new SodPolicyConflictingAccessCriteria object
+// NewSodPolicyReadAllOfConflictingAccessCriteria instantiates a new SodPolicyReadAllOfConflictingAccessCriteria object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSodPolicyConflictingAccessCriteria() *SodPolicyConflictingAccessCriteria {
-	this := SodPolicyConflictingAccessCriteria{}
+func NewSodPolicyReadAllOfConflictingAccessCriteria() *SodPolicyReadAllOfConflictingAccessCriteria {
+	this := SodPolicyReadAllOfConflictingAccessCriteria{}
 	return &this
 }
 
-// NewSodPolicyConflictingAccessCriteriaWithDefaults instantiates a new SodPolicyConflictingAccessCriteria object
+// NewSodPolicyReadAllOfConflictingAccessCriteriaWithDefaults instantiates a new SodPolicyReadAllOfConflictingAccessCriteria object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSodPolicyConflictingAccessCriteriaWithDefaults() *SodPolicyConflictingAccessCriteria {
-	this := SodPolicyConflictingAccessCriteria{}
+func NewSodPolicyReadAllOfConflictingAccessCriteriaWithDefaults() *SodPolicyReadAllOfConflictingAccessCriteria {
+	this := SodPolicyReadAllOfConflictingAccessCriteria{}
 	return &this
 }
 
 // GetLeftCriteria returns the LeftCriteria field value if set, zero value otherwise.
-func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteria() AccessCriteria {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) GetLeftCriteria() AccessCriteria {
 	if o == nil || IsNil(o.LeftCriteria) {
 		var ret AccessCriteria
 		return ret
@@ -54,7 +54,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteria() AccessCriteria {
 
 // GetLeftCriteriaOk returns a tuple with the LeftCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteriaOk() (*AccessCriteria, bool) {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) GetLeftCriteriaOk() (*AccessCriteria, bool) {
 	if o == nil || IsNil(o.LeftCriteria) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteriaOk() (*AccessCriteri
 }
 
 // HasLeftCriteria returns a boolean if a field has been set.
-func (o *SodPolicyConflictingAccessCriteria) HasLeftCriteria() bool {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) HasLeftCriteria() bool {
 	if o != nil && !IsNil(o.LeftCriteria) {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *SodPolicyConflictingAccessCriteria) HasLeftCriteria() bool {
 }
 
 // SetLeftCriteria gets a reference to the given AccessCriteria and assigns it to the LeftCriteria field.
-func (o *SodPolicyConflictingAccessCriteria) SetLeftCriteria(v AccessCriteria) {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) SetLeftCriteria(v AccessCriteria) {
 	o.LeftCriteria = &v
 }
 
 // GetRightCriteria returns the RightCriteria field value if set, zero value otherwise.
-func (o *SodPolicyConflictingAccessCriteria) GetRightCriteria() AccessCriteria {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) GetRightCriteria() AccessCriteria {
 	if o == nil || IsNil(o.RightCriteria) {
 		var ret AccessCriteria
 		return ret
@@ -86,7 +86,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetRightCriteria() AccessCriteria {
 
 // GetRightCriteriaOk returns a tuple with the RightCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicyConflictingAccessCriteria) GetRightCriteriaOk() (*AccessCriteria, bool) {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) GetRightCriteriaOk() (*AccessCriteria, bool) {
 	if o == nil || IsNil(o.RightCriteria) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetRightCriteriaOk() (*AccessCriter
 }
 
 // HasRightCriteria returns a boolean if a field has been set.
-func (o *SodPolicyConflictingAccessCriteria) HasRightCriteria() bool {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) HasRightCriteria() bool {
 	if o != nil && !IsNil(o.RightCriteria) {
 		return true
 	}
@@ -103,11 +103,11 @@ func (o *SodPolicyConflictingAccessCriteria) HasRightCriteria() bool {
 }
 
 // SetRightCriteria gets a reference to the given AccessCriteria and assigns it to the RightCriteria field.
-func (o *SodPolicyConflictingAccessCriteria) SetRightCriteria(v AccessCriteria) {
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) SetRightCriteria(v AccessCriteria) {
 	o.RightCriteria = &v
 }
 
-func (o SodPolicyConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
+func (o SodPolicyReadAllOfConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o SodPolicyConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SodPolicyConflictingAccessCriteria) ToMap() (map[string]interface{}, error) {
+func (o SodPolicyReadAllOfConflictingAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
@@ -131,16 +131,16 @@ func (o SodPolicyConflictingAccessCriteria) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *SodPolicyConflictingAccessCriteria) UnmarshalJSON(data []byte) (err error) {
-	varSodPolicyConflictingAccessCriteria := _SodPolicyConflictingAccessCriteria{}
+func (o *SodPolicyReadAllOfConflictingAccessCriteria) UnmarshalJSON(data []byte) (err error) {
+	varSodPolicyReadAllOfConflictingAccessCriteria := _SodPolicyReadAllOfConflictingAccessCriteria{}
 
-	err = json.Unmarshal(data, &varSodPolicyConflictingAccessCriteria)
+	err = json.Unmarshal(data, &varSodPolicyReadAllOfConflictingAccessCriteria)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SodPolicyConflictingAccessCriteria(varSodPolicyConflictingAccessCriteria)
+	*o = SodPolicyReadAllOfConflictingAccessCriteria(varSodPolicyReadAllOfConflictingAccessCriteria)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *SodPolicyConflictingAccessCriteria) UnmarshalJSON(data []byte) (err err
 	return err
 }
 
-type NullableSodPolicyConflictingAccessCriteria struct {
-	value *SodPolicyConflictingAccessCriteria
+type NullableSodPolicyReadAllOfConflictingAccessCriteria struct {
+	value *SodPolicyReadAllOfConflictingAccessCriteria
 	isSet bool
 }
 
-func (v NullableSodPolicyConflictingAccessCriteria) Get() *SodPolicyConflictingAccessCriteria {
+func (v NullableSodPolicyReadAllOfConflictingAccessCriteria) Get() *SodPolicyReadAllOfConflictingAccessCriteria {
 	return v.value
 }
 
-func (v *NullableSodPolicyConflictingAccessCriteria) Set(val *SodPolicyConflictingAccessCriteria) {
+func (v *NullableSodPolicyReadAllOfConflictingAccessCriteria) Set(val *SodPolicyReadAllOfConflictingAccessCriteria) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSodPolicyConflictingAccessCriteria) IsSet() bool {
+func (v NullableSodPolicyReadAllOfConflictingAccessCriteria) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSodPolicyConflictingAccessCriteria) Unset() {
+func (v *NullableSodPolicyReadAllOfConflictingAccessCriteria) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSodPolicyConflictingAccessCriteria(val *SodPolicyConflictingAccessCriteria) *NullableSodPolicyConflictingAccessCriteria {
-	return &NullableSodPolicyConflictingAccessCriteria{value: val, isSet: true}
+func NewNullableSodPolicyReadAllOfConflictingAccessCriteria(val *SodPolicyReadAllOfConflictingAccessCriteria) *NullableSodPolicyReadAllOfConflictingAccessCriteria {
+	return &NullableSodPolicyReadAllOfConflictingAccessCriteria{value: val, isSet: true}
 }
 
-func (v NullableSodPolicyConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
+func (v NullableSodPolicyReadAllOfConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSodPolicyConflictingAccessCriteria) UnmarshalJSON(src []byte) error {
+func (v *NullableSodPolicyReadAllOfConflictingAccessCriteria) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

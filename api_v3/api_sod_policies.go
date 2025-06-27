@@ -27,15 +27,15 @@ type SODPoliciesAPIService service
 type ApiCreateSodPolicyRequest struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
-	sodPolicy *SodPolicy
+	sodPolicyRequest *SodPolicyRequest
 }
 
-func (r ApiCreateSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiCreateSodPolicyRequest {
-	r.sodPolicy = &sodPolicy
+func (r ApiCreateSodPolicyRequest) SodPolicyRequest(sodPolicyRequest SodPolicyRequest) ApiCreateSodPolicyRequest {
+	r.sodPolicyRequest = &sodPolicyRequest
 	return r
 }
 
-func (r ApiCreateSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+func (r ApiCreateSodPolicyRequest) Execute() (*SodPolicyRead, *http.Response, error) {
 	return r.ApiService.CreateSodPolicyExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *SODPoliciesAPIService) CreateSodPolicy(ctx context.Context) ApiCreateSo
 }
 
 // Execute executes the request
-//  @return SodPolicy
-func (a *SODPoliciesAPIService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+//  @return SodPolicyRead
+func (a *SODPoliciesAPIService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest) (*SodPolicyRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SodPolicy
+		localVarReturnValue  *SodPolicyRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.CreateSodPolicy")
@@ -75,8 +75,8 @@ func (a *SODPoliciesAPIService) CreateSodPolicyExecute(r ApiCreateSodPolicyReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sodPolicy == nil {
-		return localVarReturnValue, nil, reportError("sodPolicy is required and must be specified")
+	if r.sodPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("sodPolicyRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *SODPoliciesAPIService) CreateSodPolicyExecute(r ApiCreateSodPolicyReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sodPolicy
+	localVarPostBody = r.sodPolicyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1016,7 +1016,7 @@ type ApiGetSodPolicyRequest struct {
 	id string
 }
 
-func (r ApiGetSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+func (r ApiGetSodPolicyRequest) Execute() (*SodPolicyRead, *http.Response, error) {
 	return r.ApiService.GetSodPolicyExecute(r)
 }
 
@@ -1039,13 +1039,13 @@ func (a *SODPoliciesAPIService) GetSodPolicy(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return SodPolicy
-func (a *SODPoliciesAPIService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+//  @return SodPolicyRead
+func (a *SODPoliciesAPIService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*SodPolicyRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SodPolicy
+		localVarReturnValue  *SodPolicyRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodPolicy")
@@ -1712,7 +1712,7 @@ func (r ApiListSodPoliciesRequest) Sorters(sorters string) ApiListSodPoliciesReq
 	return r
 }
 
-func (r ApiListSodPoliciesRequest) Execute() ([]SodPolicy, *http.Response, error) {
+func (r ApiListSodPoliciesRequest) Execute() ([]SodPolicyRead, *http.Response, error) {
 	return r.ApiService.ListSodPoliciesExecute(r)
 }
 
@@ -1733,13 +1733,13 @@ func (a *SODPoliciesAPIService) ListSodPolicies(ctx context.Context) ApiListSodP
 }
 
 // Execute executes the request
-//  @return []SodPolicy
-func (a *SODPoliciesAPIService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest) ([]SodPolicy, *http.Response, error) {
+//  @return []SodPolicyRead
+func (a *SODPoliciesAPIService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest) ([]SodPolicyRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []SodPolicy
+		localVarReturnValue  []SodPolicyRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.ListSodPolicies")
@@ -1898,7 +1898,7 @@ func (r ApiPatchSodPolicyRequest) JsonPatchOperation(jsonPatchOperation []JsonPa
 	return r
 }
 
-func (r ApiPatchSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+func (r ApiPatchSodPolicyRequest) Execute() (*SodPolicyRead, *http.Response, error) {
 	return r.ApiService.PatchSodPolicyExecute(r)
 }
 
@@ -1922,13 +1922,13 @@ func (a *SODPoliciesAPIService) PatchSodPolicy(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return SodPolicy
-func (a *SODPoliciesAPIService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+//  @return SodPolicyRead
+func (a *SODPoliciesAPIService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) (*SodPolicyRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SodPolicy
+		localVarReturnValue  *SodPolicyRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.PatchSodPolicy")
@@ -2239,15 +2239,15 @@ type ApiPutSodPolicyRequest struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
 	id string
-	sodPolicy *SodPolicy
+	sodPolicyRead *SodPolicyRead
 }
 
-func (r ApiPutSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiPutSodPolicyRequest {
-	r.sodPolicy = &sodPolicy
+func (r ApiPutSodPolicyRequest) SodPolicyRead(sodPolicyRead SodPolicyRead) ApiPutSodPolicyRequest {
+	r.sodPolicyRead = &sodPolicyRead
 	return r
 }
 
-func (r ApiPutSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+func (r ApiPutSodPolicyRequest) Execute() (*SodPolicyRead, *http.Response, error) {
 	return r.ApiService.PutSodPolicyExecute(r)
 }
 
@@ -2270,13 +2270,13 @@ func (a *SODPoliciesAPIService) PutSodPolicy(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return SodPolicy
-func (a *SODPoliciesAPIService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+//  @return SodPolicyRead
+func (a *SODPoliciesAPIService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicyRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SodPolicy
+		localVarReturnValue  *SodPolicyRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.PutSodPolicy")
@@ -2290,8 +2290,8 @@ func (a *SODPoliciesAPIService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sodPolicy == nil {
-		return localVarReturnValue, nil, reportError("sodPolicy is required and must be specified")
+	if r.sodPolicyRead == nil {
+		return localVarReturnValue, nil, reportError("sodPolicyRead is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2312,7 +2312,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sodPolicy
+	localVarPostBody = r.sodPolicyRead
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

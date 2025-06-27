@@ -31124,7 +31124,7 @@ paths:
                 modified: 2020-05-12T19:47:38Z
               schema:
                 items:
-                  $ref: '#/components/schemas/SodPolicy'
+                  $ref: '#/components/schemas/SodPolicyRead'
                 type: array
           description: List of all SOD policies.
         "400":
@@ -31258,7 +31258,7 @@ paths:
                   violationOwnerAssignmentConfig: null
                   name: General-Policy-Name
             schema:
-              $ref: '#/components/schemas/SodPolicy'
+              $ref: '#/components/schemas/SodPolicyRequest'
         required: true
       responses:
         "201":
@@ -31335,7 +31335,7 @@ paths:
                     created: 2020-05-12T19:47:38Z
                     modified: 2020-05-12T19:47:38Z
               schema:
-                $ref: '#/components/schemas/SodPolicy'
+                $ref: '#/components/schemas/SodPolicyRead'
           description: SOD policy created
         "400":
           content:
@@ -31597,7 +31597,7 @@ paths:
                     created: 2020-05-12T19:47:38Z
                     modified: 2020-05-12T19:47:38Z
               schema:
-                $ref: '#/components/schemas/SodPolicy'
+                $ref: '#/components/schemas/SodPolicyRead'
           description: SOD policy ID.
         "400":
           content:
@@ -31812,7 +31812,7 @@ paths:
                     created: 2020-05-12T19:47:38Z
                     modified: 2020-05-12T19:47:38Z
               schema:
-                $ref: '#/components/schemas/SodPolicy'
+                $ref: '#/components/schemas/SodPolicyRead'
           description: "Indicates the PATCH operation succeeded, and returns the SOD\
             \ policy's new representation."
         "400":
@@ -31972,7 +31972,7 @@ paths:
                   created: 2020-05-12T19:47:38Z
                   modified: 2020-05-12T19:47:38Z
             schema:
-              $ref: '#/components/schemas/SodPolicy'
+              $ref: '#/components/schemas/SodPolicyRead'
         required: true
       responses:
         "200":
@@ -32049,7 +32049,7 @@ paths:
                     created: 2020-05-12T19:47:38Z
                     modified: 2020-05-12T19:47:38Z
               schema:
-                $ref: '#/components/schemas/SodPolicy'
+                $ref: '#/components/schemas/SodPolicyRead'
           description: SOD Policy by ID
         "400":
           content:
@@ -58325,7 +58325,13 @@ components:
           nullable: true
           type: string
       type: object
-    SodPolicy:
+    SodPolicyRead:
+      allOf:
+      - $ref: '#/components/schemas/SodPolicy'
+      - properties:
+          conflictingAccessCriteria:
+            $ref: '#/components/schemas/SodPolicyRead_allOf_conflictingAccessCriteria'
+        type: object
       example:
         conflictingAccessCriteria:
           leftCriteria:
@@ -58375,100 +58381,62 @@ components:
         id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
         state: ENFORCED
         externalPolicyReference: XYZ policy
-      properties:
-        id:
-          description: Policy id
-          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          readOnly: true
-          type: string
-        name:
-          description: Policy Business Name
-          example: policy-xyz
-          type: string
-        created:
-          description: The time when this SOD policy is created.
-          example: 2020-01-01T00:00:00Z
-          format: date-time
-          readOnly: true
-          type: string
-        modified:
-          description: The time when this SOD policy is modified.
-          example: 2020-01-01T00:00:00Z
-          format: date-time
-          readOnly: true
-          type: string
-        description:
-          description: Optional description of the SOD policy
-          example: This policy ensures compliance of xyz
-          nullable: true
-          type: string
-        ownerRef:
-          $ref: '#/components/schemas/SodPolicy_ownerRef'
-        externalPolicyReference:
-          description: Optional External Policy Reference
-          example: XYZ policy
-          nullable: true
-          type: string
-        policyQuery:
-          description: Search query of the SOD policy
-          example: '@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)'
-          type: string
-        compensatingControls:
-          description: Optional compensating controls(Mitigating Controls)
-          example: Have a manager review the transaction decisions for their "out
-            of compliance" employee
-          nullable: true
-          type: string
-        correctionAdvice:
-          description: Optional correction advice
-          example: "Based on the role of the employee, managers should remove access\
-            \ that is not required for their job function."
-          nullable: true
-          type: string
-        state:
-          description: whether the policy is enforced or not
-          enum:
-          - ENFORCED
-          - NOT_ENFORCED
-          example: ENFORCED
-          type: string
-        tags:
-          description: tags for this policy object
-          example:
-          - TAG1
-          - TAG2
-          items:
-            type: string
-          type: array
-        creatorId:
-          description: Policy's creator ID
-          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          readOnly: true
-          type: string
-        modifierId:
-          description: Policy's modifier ID
-          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          nullable: true
-          readOnly: true
-          type: string
-        violationOwnerAssignmentConfig:
-          $ref: '#/components/schemas/ViolationOwnerAssignmentConfig'
-        scheduled:
-          default: false
-          description: defines whether a policy has been scheduled or not
-          example: true
-          type: boolean
-        type:
-          default: GENERAL
-          description: whether a policy is query based or conflicting access based
-          enum:
-          - GENERAL
-          - CONFLICTING_ACCESS_BASED
-          example: GENERAL
-          type: string
+    SodPolicyRequest:
+      allOf:
+      - $ref: '#/components/schemas/SodPolicy'
+      - properties:
+          conflictingAccessCriteria:
+            $ref: '#/components/schemas/SodPolicyRequest_allOf_conflictingAccessCriteria'
+        type: object
+      example:
         conflictingAccessCriteria:
-          $ref: '#/components/schemas/SodPolicy_conflictingAccessCriteria'
-      type: object
+          leftCriteria:
+            name: money-in
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              name: Administrator
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              name: Administrator
+          rightCriteria:
+            name: money-in
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              name: Administrator
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              name: Administrator
+        ownerRef:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        created: 2020-01-01T00:00:00Z
+        scheduled: true
+        creatorId: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        modifierId: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        description: This policy ensures compliance of xyz
+        violationOwnerAssignmentConfig:
+          assignmentRule: MANAGER
+          ownerRef:
+            name: Support
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
+        correctionAdvice: "Based on the role of the employee, managers should remove\
+          \ access that is not required for their job function."
+        type: GENERAL
+        tags:
+        - TAG1
+        - TAG2
+        name: policy-xyz
+        modified: 2020-01-01T00:00:00Z
+        policyQuery: '@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)'
+        compensatingControls: Have a manager review the transaction decisions for
+          their "out of compliance" employee
+        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        state: ENFORCED
+        externalPolicyReference: XYZ policy
     ReportResultReference:
       allOf:
       - $ref: '#/components/schemas/SodReportResultDto'
@@ -64327,28 +64295,98 @@ components:
           type: array
       title: UNCORRELATED_ACCOUNTS
       type: object
-    ViolationOwnerAssignmentConfig:
-      example:
-        assignmentRule: MANAGER
-        ownerRef:
-          name: Support
-          id: 2c9180a46faadee4016fb4e018c20639
-          type: IDENTITY
+    SodPolicy:
       properties:
-        assignmentRule:
-          description: |-
-            Details about the violations owner.
-            MANAGER - identity's manager
-            STATIC - Governance Group or Identity
-          enum:
-          - MANAGER
-          - STATIC
-          - null
-          example: MANAGER
+        id:
+          description: Policy id
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          readOnly: true
+          type: string
+        name:
+          description: Policy Business Name
+          example: policy-xyz
+          type: string
+        created:
+          description: The time when this SOD policy is created.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: The time when this SOD policy is modified.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: Optional description of the SOD policy
+          example: This policy ensures compliance of xyz
           nullable: true
           type: string
         ownerRef:
-          $ref: '#/components/schemas/ViolationOwnerAssignmentConfig_ownerRef'
+          $ref: '#/components/schemas/SodPolicy_ownerRef'
+        externalPolicyReference:
+          description: Optional External Policy Reference
+          example: XYZ policy
+          nullable: true
+          type: string
+        policyQuery:
+          description: Search query of the SOD policy
+          example: '@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)'
+          type: string
+        compensatingControls:
+          description: Optional compensating controls(Mitigating Controls)
+          example: Have a manager review the transaction decisions for their "out
+            of compliance" employee
+          nullable: true
+          type: string
+        correctionAdvice:
+          description: Optional correction advice
+          example: "Based on the role of the employee, managers should remove access\
+            \ that is not required for their job function."
+          nullable: true
+          type: string
+        state:
+          description: whether the policy is enforced or not
+          enum:
+          - ENFORCED
+          - NOT_ENFORCED
+          example: ENFORCED
+          type: string
+        tags:
+          description: tags for this policy object
+          example:
+          - TAG1
+          - TAG2
+          items:
+            type: string
+          type: array
+        creatorId:
+          description: Policy's creator ID
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          readOnly: true
+          type: string
+        modifierId:
+          description: Policy's modifier ID
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          nullable: true
+          readOnly: true
+          type: string
+        violationOwnerAssignmentConfig:
+          $ref: '#/components/schemas/ViolationOwnerAssignmentConfig'
+        scheduled:
+          default: false
+          description: defines whether a policy has been scheduled or not
+          example: true
+          type: boolean
+        type:
+          default: GENERAL
+          description: whether a policy is query based or conflicting access based
+          enum:
+          - GENERAL
+          - CONFLICTING_ACCESS_BASED
+          example: GENERAL
+          type: string
       type: object
     ConflictingAccessCriteria:
       properties:
@@ -64356,6 +64394,13 @@ components:
           $ref: '#/components/schemas/AccessCriteria'
         rightCriteria:
           $ref: '#/components/schemas/AccessCriteria'
+      type: object
+    ConflictingAccessCriteriaRequest:
+      properties:
+        leftCriteria:
+          $ref: '#/components/schemas/AccessCriteriaRequest'
+        rightCriteria:
+          $ref: '#/components/schemas/AccessCriteriaRequest'
       type: object
     SodReportResultDto:
       description: SOD policy violation report result.
@@ -66286,6 +66331,29 @@ components:
           nullable: true
           type: array
       type: object
+    ViolationOwnerAssignmentConfig:
+      example:
+        assignmentRule: MANAGER
+        ownerRef:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+      properties:
+        assignmentRule:
+          description: |-
+            Details about the violations owner.
+            MANAGER - identity's manager
+            STATIC - Governance Group or Identity
+          enum:
+          - MANAGER
+          - STATIC
+          - null
+          example: MANAGER
+          nullable: true
+          type: string
+        ownerRef:
+          $ref: '#/components/schemas/ViolationOwnerAssignmentConfig_ownerRef'
+      type: object
     AccessCriteria:
       example:
         name: money-in
@@ -66313,6 +66381,37 @@ components:
             name: Administrator
           items:
             $ref: '#/components/schemas/AccessCriteria_criteriaList_inner'
+          maxItems: 50
+          minItems: 1
+          type: array
+      type: object
+    AccessCriteriaRequest:
+      example:
+        name: money-in
+        criteriaList:
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a66
+          name: Administrator
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a67
+          name: Administrator
+      properties:
+        name:
+          description: Business name for the access construct list
+          example: money-in
+          type: string
+        criteriaList:
+          description: List of criteria. There is a min of 1 and max of 50 items in
+            the list.
+          example:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            name: Administrator
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            name: Administrator
+          items:
+            $ref: '#/components/schemas/AccessCriteriaRequest_criteriaList_inner'
           maxItems: 50
           minItems: 1
           type: array
@@ -68895,32 +68994,33 @@ components:
           example: ' '
           type: string
       type: object
-    SodPolicy_ownerRef:
-      description: The owner of the SOD policy.
-      example:
-        name: Support
-        id: 2c9180a46faadee4016fb4e018c20639
-        type: IDENTITY
-      properties:
-        type:
-          description: Owner type.
-          enum:
-          - IDENTITY
-          - GOVERNANCE_GROUP
-          example: IDENTITY
-          type: string
-        id:
-          description: Owner's ID.
-          example: 2c9180a46faadee4016fb4e018c20639
-          type: string
-        name:
-          description: Owner's name.
-          example: Support
-          type: string
-      type: object
-    SodPolicy_conflictingAccessCriteria:
+    SodPolicyRead_allOf_conflictingAccessCriteria:
       allOf:
       - $ref: '#/components/schemas/ConflictingAccessCriteria'
+      - nullable: true
+        type: object
+      example:
+        leftCriteria:
+          name: money-in
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            name: Administrator
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            name: Administrator
+        rightCriteria:
+          name: money-in
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            name: Administrator
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            name: Administrator
+    SodPolicyRequest_allOf_conflictingAccessCriteria:
+      allOf:
+      - $ref: '#/components/schemas/ConflictingAccessCriteriaRequest'
       - nullable: true
         type: object
       example:
@@ -69376,21 +69476,18 @@ components:
         - WED
         interval: 3
         type: LIST
-    ViolationOwnerAssignmentConfig_ownerRef:
-      description: The owner of the violation assignment config.
+    SodPolicy_ownerRef:
+      description: The owner of the SOD policy.
       example:
         name: Support
         id: 2c9180a46faadee4016fb4e018c20639
         type: IDENTITY
-      nullable: true
       properties:
         type:
           description: Owner type.
           enum:
           - IDENTITY
           - GOVERNANCE_GROUP
-          - MANAGER
-          - null
           example: IDENTITY
           type: string
         id:
@@ -69623,10 +69720,36 @@ components:
           type: string
           example: null
       type: object
+    ViolationOwnerAssignmentConfig_ownerRef:
+      description: The owner of the violation assignment config.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      nullable: true
+      properties:
+        type:
+          description: Owner type.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          - MANAGER
+          - null
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's name.
+          example: Support
+          type: string
+      type: object
     AccessCriteria_criteriaList_inner:
       properties:
         type:
-          description: Type of the propery to which this reference applies to
+          description: Type of the property to which this reference applies to
           enum:
           - ENTITLEMENT
           example: ENTITLEMENT
@@ -69639,6 +69762,19 @@ components:
           description: Human-readable display name of the object to which this reference
             applies to
           example: Administrator
+          type: string
+      type: object
+    AccessCriteriaRequest_criteriaList_inner:
+      properties:
+        type:
+          description: Type of the property to which this reference applies to
+          enum:
+          - ENTITLEMENT
+          example: ENTITLEMENT
+          type: string
+        id:
+          description: ID of the object to which this reference applies to
+          example: 2c91808568c529c60168cca6f90c1313
           type: string
       type: object
     AttributeRequest_value:

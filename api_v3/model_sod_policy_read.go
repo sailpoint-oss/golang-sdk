@@ -15,11 +15,11 @@ import (
 	
 )
 
-// checks if the SodPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SodPolicy{}
+// checks if the SodPolicyRead type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodPolicyRead{}
 
-// SodPolicy struct for SodPolicy
-type SodPolicy struct {
+// SodPolicyRead struct for SodPolicyRead
+type SodPolicyRead struct {
 	// Policy id
 	Id *string `json:"id,omitempty"`
 	// Policy Business Name
@@ -52,17 +52,18 @@ type SodPolicy struct {
 	Scheduled *bool `json:"scheduled,omitempty"`
 	// whether a policy is query based or conflicting access based
 	Type *string `json:"type,omitempty"`
+	ConflictingAccessCriteria *SodPolicyReadAllOfConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SodPolicy SodPolicy
+type _SodPolicyRead SodPolicyRead
 
-// NewSodPolicy instantiates a new SodPolicy object
+// NewSodPolicyRead instantiates a new SodPolicyRead object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSodPolicy() *SodPolicy {
-	this := SodPolicy{}
+func NewSodPolicyRead() *SodPolicyRead {
+	this := SodPolicyRead{}
 	var scheduled bool = false
 	this.Scheduled = &scheduled
 	var type_ string = "GENERAL"
@@ -70,11 +71,11 @@ func NewSodPolicy() *SodPolicy {
 	return &this
 }
 
-// NewSodPolicyWithDefaults instantiates a new SodPolicy object
+// NewSodPolicyReadWithDefaults instantiates a new SodPolicyRead object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSodPolicyWithDefaults() *SodPolicy {
-	this := SodPolicy{}
+func NewSodPolicyReadWithDefaults() *SodPolicyRead {
+	this := SodPolicyRead{}
 	var scheduled bool = false
 	this.Scheduled = &scheduled
 	var type_ string = "GENERAL"
@@ -83,7 +84,7 @@ func NewSodPolicyWithDefaults() *SodPolicy {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SodPolicy) GetId() string {
+func (o *SodPolicyRead) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -93,7 +94,7 @@ func (o *SodPolicy) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetIdOk() (*string, bool) {
+func (o *SodPolicyRead) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -101,7 +102,7 @@ func (o *SodPolicy) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SodPolicy) HasId() bool {
+func (o *SodPolicyRead) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -110,12 +111,12 @@ func (o *SodPolicy) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SodPolicy) SetId(v string) {
+func (o *SodPolicyRead) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SodPolicy) GetName() string {
+func (o *SodPolicyRead) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -125,7 +126,7 @@ func (o *SodPolicy) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetNameOk() (*string, bool) {
+func (o *SodPolicyRead) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -133,7 +134,7 @@ func (o *SodPolicy) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SodPolicy) HasName() bool {
+func (o *SodPolicyRead) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -142,12 +143,12 @@ func (o *SodPolicy) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SodPolicy) SetName(v string) {
+func (o *SodPolicyRead) SetName(v string) {
 	o.Name = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *SodPolicy) GetCreated() SailPointTime {
+func (o *SodPolicyRead) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
 		var ret SailPointTime
 		return ret
@@ -157,7 +158,7 @@ func (o *SodPolicy) GetCreated() SailPointTime {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetCreatedOk() (*SailPointTime, bool) {
+func (o *SodPolicyRead) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -165,7 +166,7 @@ func (o *SodPolicy) GetCreatedOk() (*SailPointTime, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *SodPolicy) HasCreated() bool {
+func (o *SodPolicyRead) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -174,12 +175,12 @@ func (o *SodPolicy) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
-func (o *SodPolicy) SetCreated(v SailPointTime) {
+func (o *SodPolicyRead) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *SodPolicy) GetModified() SailPointTime {
+func (o *SodPolicyRead) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
 		var ret SailPointTime
 		return ret
@@ -189,7 +190,7 @@ func (o *SodPolicy) GetModified() SailPointTime {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetModifiedOk() (*SailPointTime, bool) {
+func (o *SodPolicyRead) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -197,7 +198,7 @@ func (o *SodPolicy) GetModifiedOk() (*SailPointTime, bool) {
 }
 
 // HasModified returns a boolean if a field has been set.
-func (o *SodPolicy) HasModified() bool {
+func (o *SodPolicyRead) HasModified() bool {
 	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
@@ -206,12 +207,12 @@ func (o *SodPolicy) HasModified() bool {
 }
 
 // SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
-func (o *SodPolicy) SetModified(v SailPointTime) {
+func (o *SodPolicyRead) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodPolicy) GetDescription() string {
+func (o *SodPolicyRead) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
@@ -222,7 +223,7 @@ func (o *SodPolicy) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodPolicy) GetDescriptionOk() (*string, bool) {
+func (o *SodPolicyRead) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -230,7 +231,7 @@ func (o *SodPolicy) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *SodPolicy) HasDescription() bool {
+func (o *SodPolicyRead) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -239,21 +240,21 @@ func (o *SodPolicy) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *SodPolicy) SetDescription(v string) {
+func (o *SodPolicyRead) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *SodPolicy) SetDescriptionNil() {
+func (o *SodPolicyRead) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *SodPolicy) UnsetDescription() {
+func (o *SodPolicyRead) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *SodPolicy) GetOwnerRef() SodPolicyOwnerRef {
+func (o *SodPolicyRead) GetOwnerRef() SodPolicyOwnerRef {
 	if o == nil || IsNil(o.OwnerRef) {
 		var ret SodPolicyOwnerRef
 		return ret
@@ -263,7 +264,7 @@ func (o *SodPolicy) GetOwnerRef() SodPolicyOwnerRef {
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetOwnerRefOk() (*SodPolicyOwnerRef, bool) {
+func (o *SodPolicyRead) GetOwnerRefOk() (*SodPolicyOwnerRef, bool) {
 	if o == nil || IsNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -271,7 +272,7 @@ func (o *SodPolicy) GetOwnerRefOk() (*SodPolicyOwnerRef, bool) {
 }
 
 // HasOwnerRef returns a boolean if a field has been set.
-func (o *SodPolicy) HasOwnerRef() bool {
+func (o *SodPolicyRead) HasOwnerRef() bool {
 	if o != nil && !IsNil(o.OwnerRef) {
 		return true
 	}
@@ -280,12 +281,12 @@ func (o *SodPolicy) HasOwnerRef() bool {
 }
 
 // SetOwnerRef gets a reference to the given SodPolicyOwnerRef and assigns it to the OwnerRef field.
-func (o *SodPolicy) SetOwnerRef(v SodPolicyOwnerRef) {
+func (o *SodPolicyRead) SetOwnerRef(v SodPolicyOwnerRef) {
 	o.OwnerRef = &v
 }
 
 // GetExternalPolicyReference returns the ExternalPolicyReference field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodPolicy) GetExternalPolicyReference() string {
+func (o *SodPolicyRead) GetExternalPolicyReference() string {
 	if o == nil || IsNil(o.ExternalPolicyReference.Get()) {
 		var ret string
 		return ret
@@ -296,7 +297,7 @@ func (o *SodPolicy) GetExternalPolicyReference() string {
 // GetExternalPolicyReferenceOk returns a tuple with the ExternalPolicyReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodPolicy) GetExternalPolicyReferenceOk() (*string, bool) {
+func (o *SodPolicyRead) GetExternalPolicyReferenceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -304,7 +305,7 @@ func (o *SodPolicy) GetExternalPolicyReferenceOk() (*string, bool) {
 }
 
 // HasExternalPolicyReference returns a boolean if a field has been set.
-func (o *SodPolicy) HasExternalPolicyReference() bool {
+func (o *SodPolicyRead) HasExternalPolicyReference() bool {
 	if o != nil && o.ExternalPolicyReference.IsSet() {
 		return true
 	}
@@ -313,21 +314,21 @@ func (o *SodPolicy) HasExternalPolicyReference() bool {
 }
 
 // SetExternalPolicyReference gets a reference to the given NullableString and assigns it to the ExternalPolicyReference field.
-func (o *SodPolicy) SetExternalPolicyReference(v string) {
+func (o *SodPolicyRead) SetExternalPolicyReference(v string) {
 	o.ExternalPolicyReference.Set(&v)
 }
 // SetExternalPolicyReferenceNil sets the value for ExternalPolicyReference to be an explicit nil
-func (o *SodPolicy) SetExternalPolicyReferenceNil() {
+func (o *SodPolicyRead) SetExternalPolicyReferenceNil() {
 	o.ExternalPolicyReference.Set(nil)
 }
 
 // UnsetExternalPolicyReference ensures that no value is present for ExternalPolicyReference, not even an explicit nil
-func (o *SodPolicy) UnsetExternalPolicyReference() {
+func (o *SodPolicyRead) UnsetExternalPolicyReference() {
 	o.ExternalPolicyReference.Unset()
 }
 
 // GetPolicyQuery returns the PolicyQuery field value if set, zero value otherwise.
-func (o *SodPolicy) GetPolicyQuery() string {
+func (o *SodPolicyRead) GetPolicyQuery() string {
 	if o == nil || IsNil(o.PolicyQuery) {
 		var ret string
 		return ret
@@ -337,7 +338,7 @@ func (o *SodPolicy) GetPolicyQuery() string {
 
 // GetPolicyQueryOk returns a tuple with the PolicyQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetPolicyQueryOk() (*string, bool) {
+func (o *SodPolicyRead) GetPolicyQueryOk() (*string, bool) {
 	if o == nil || IsNil(o.PolicyQuery) {
 		return nil, false
 	}
@@ -345,7 +346,7 @@ func (o *SodPolicy) GetPolicyQueryOk() (*string, bool) {
 }
 
 // HasPolicyQuery returns a boolean if a field has been set.
-func (o *SodPolicy) HasPolicyQuery() bool {
+func (o *SodPolicyRead) HasPolicyQuery() bool {
 	if o != nil && !IsNil(o.PolicyQuery) {
 		return true
 	}
@@ -354,12 +355,12 @@ func (o *SodPolicy) HasPolicyQuery() bool {
 }
 
 // SetPolicyQuery gets a reference to the given string and assigns it to the PolicyQuery field.
-func (o *SodPolicy) SetPolicyQuery(v string) {
+func (o *SodPolicyRead) SetPolicyQuery(v string) {
 	o.PolicyQuery = &v
 }
 
 // GetCompensatingControls returns the CompensatingControls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodPolicy) GetCompensatingControls() string {
+func (o *SodPolicyRead) GetCompensatingControls() string {
 	if o == nil || IsNil(o.CompensatingControls.Get()) {
 		var ret string
 		return ret
@@ -370,7 +371,7 @@ func (o *SodPolicy) GetCompensatingControls() string {
 // GetCompensatingControlsOk returns a tuple with the CompensatingControls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodPolicy) GetCompensatingControlsOk() (*string, bool) {
+func (o *SodPolicyRead) GetCompensatingControlsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -378,7 +379,7 @@ func (o *SodPolicy) GetCompensatingControlsOk() (*string, bool) {
 }
 
 // HasCompensatingControls returns a boolean if a field has been set.
-func (o *SodPolicy) HasCompensatingControls() bool {
+func (o *SodPolicyRead) HasCompensatingControls() bool {
 	if o != nil && o.CompensatingControls.IsSet() {
 		return true
 	}
@@ -387,21 +388,21 @@ func (o *SodPolicy) HasCompensatingControls() bool {
 }
 
 // SetCompensatingControls gets a reference to the given NullableString and assigns it to the CompensatingControls field.
-func (o *SodPolicy) SetCompensatingControls(v string) {
+func (o *SodPolicyRead) SetCompensatingControls(v string) {
 	o.CompensatingControls.Set(&v)
 }
 // SetCompensatingControlsNil sets the value for CompensatingControls to be an explicit nil
-func (o *SodPolicy) SetCompensatingControlsNil() {
+func (o *SodPolicyRead) SetCompensatingControlsNil() {
 	o.CompensatingControls.Set(nil)
 }
 
 // UnsetCompensatingControls ensures that no value is present for CompensatingControls, not even an explicit nil
-func (o *SodPolicy) UnsetCompensatingControls() {
+func (o *SodPolicyRead) UnsetCompensatingControls() {
 	o.CompensatingControls.Unset()
 }
 
 // GetCorrectionAdvice returns the CorrectionAdvice field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodPolicy) GetCorrectionAdvice() string {
+func (o *SodPolicyRead) GetCorrectionAdvice() string {
 	if o == nil || IsNil(o.CorrectionAdvice.Get()) {
 		var ret string
 		return ret
@@ -412,7 +413,7 @@ func (o *SodPolicy) GetCorrectionAdvice() string {
 // GetCorrectionAdviceOk returns a tuple with the CorrectionAdvice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodPolicy) GetCorrectionAdviceOk() (*string, bool) {
+func (o *SodPolicyRead) GetCorrectionAdviceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -420,7 +421,7 @@ func (o *SodPolicy) GetCorrectionAdviceOk() (*string, bool) {
 }
 
 // HasCorrectionAdvice returns a boolean if a field has been set.
-func (o *SodPolicy) HasCorrectionAdvice() bool {
+func (o *SodPolicyRead) HasCorrectionAdvice() bool {
 	if o != nil && o.CorrectionAdvice.IsSet() {
 		return true
 	}
@@ -429,21 +430,21 @@ func (o *SodPolicy) HasCorrectionAdvice() bool {
 }
 
 // SetCorrectionAdvice gets a reference to the given NullableString and assigns it to the CorrectionAdvice field.
-func (o *SodPolicy) SetCorrectionAdvice(v string) {
+func (o *SodPolicyRead) SetCorrectionAdvice(v string) {
 	o.CorrectionAdvice.Set(&v)
 }
 // SetCorrectionAdviceNil sets the value for CorrectionAdvice to be an explicit nil
-func (o *SodPolicy) SetCorrectionAdviceNil() {
+func (o *SodPolicyRead) SetCorrectionAdviceNil() {
 	o.CorrectionAdvice.Set(nil)
 }
 
 // UnsetCorrectionAdvice ensures that no value is present for CorrectionAdvice, not even an explicit nil
-func (o *SodPolicy) UnsetCorrectionAdvice() {
+func (o *SodPolicyRead) UnsetCorrectionAdvice() {
 	o.CorrectionAdvice.Unset()
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *SodPolicy) GetState() string {
+func (o *SodPolicyRead) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
@@ -453,7 +454,7 @@ func (o *SodPolicy) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetStateOk() (*string, bool) {
+func (o *SodPolicyRead) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
@@ -461,7 +462,7 @@ func (o *SodPolicy) GetStateOk() (*string, bool) {
 }
 
 // HasState returns a boolean if a field has been set.
-func (o *SodPolicy) HasState() bool {
+func (o *SodPolicyRead) HasState() bool {
 	if o != nil && !IsNil(o.State) {
 		return true
 	}
@@ -470,12 +471,12 @@ func (o *SodPolicy) HasState() bool {
 }
 
 // SetState gets a reference to the given string and assigns it to the State field.
-func (o *SodPolicy) SetState(v string) {
+func (o *SodPolicyRead) SetState(v string) {
 	o.State = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *SodPolicy) GetTags() []string {
+func (o *SodPolicyRead) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
@@ -485,7 +486,7 @@ func (o *SodPolicy) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetTagsOk() ([]string, bool) {
+func (o *SodPolicyRead) GetTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -493,7 +494,7 @@ func (o *SodPolicy) GetTagsOk() ([]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *SodPolicy) HasTags() bool {
+func (o *SodPolicyRead) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -502,12 +503,12 @@ func (o *SodPolicy) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *SodPolicy) SetTags(v []string) {
+func (o *SodPolicyRead) SetTags(v []string) {
 	o.Tags = v
 }
 
 // GetCreatorId returns the CreatorId field value if set, zero value otherwise.
-func (o *SodPolicy) GetCreatorId() string {
+func (o *SodPolicyRead) GetCreatorId() string {
 	if o == nil || IsNil(o.CreatorId) {
 		var ret string
 		return ret
@@ -517,7 +518,7 @@ func (o *SodPolicy) GetCreatorId() string {
 
 // GetCreatorIdOk returns a tuple with the CreatorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetCreatorIdOk() (*string, bool) {
+func (o *SodPolicyRead) GetCreatorIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CreatorId) {
 		return nil, false
 	}
@@ -525,7 +526,7 @@ func (o *SodPolicy) GetCreatorIdOk() (*string, bool) {
 }
 
 // HasCreatorId returns a boolean if a field has been set.
-func (o *SodPolicy) HasCreatorId() bool {
+func (o *SodPolicyRead) HasCreatorId() bool {
 	if o != nil && !IsNil(o.CreatorId) {
 		return true
 	}
@@ -534,12 +535,12 @@ func (o *SodPolicy) HasCreatorId() bool {
 }
 
 // SetCreatorId gets a reference to the given string and assigns it to the CreatorId field.
-func (o *SodPolicy) SetCreatorId(v string) {
+func (o *SodPolicyRead) SetCreatorId(v string) {
 	o.CreatorId = &v
 }
 
 // GetModifierId returns the ModifierId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodPolicy) GetModifierId() string {
+func (o *SodPolicyRead) GetModifierId() string {
 	if o == nil || IsNil(o.ModifierId.Get()) {
 		var ret string
 		return ret
@@ -550,7 +551,7 @@ func (o *SodPolicy) GetModifierId() string {
 // GetModifierIdOk returns a tuple with the ModifierId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodPolicy) GetModifierIdOk() (*string, bool) {
+func (o *SodPolicyRead) GetModifierIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -558,7 +559,7 @@ func (o *SodPolicy) GetModifierIdOk() (*string, bool) {
 }
 
 // HasModifierId returns a boolean if a field has been set.
-func (o *SodPolicy) HasModifierId() bool {
+func (o *SodPolicyRead) HasModifierId() bool {
 	if o != nil && o.ModifierId.IsSet() {
 		return true
 	}
@@ -567,21 +568,21 @@ func (o *SodPolicy) HasModifierId() bool {
 }
 
 // SetModifierId gets a reference to the given NullableString and assigns it to the ModifierId field.
-func (o *SodPolicy) SetModifierId(v string) {
+func (o *SodPolicyRead) SetModifierId(v string) {
 	o.ModifierId.Set(&v)
 }
 // SetModifierIdNil sets the value for ModifierId to be an explicit nil
-func (o *SodPolicy) SetModifierIdNil() {
+func (o *SodPolicyRead) SetModifierIdNil() {
 	o.ModifierId.Set(nil)
 }
 
 // UnsetModifierId ensures that no value is present for ModifierId, not even an explicit nil
-func (o *SodPolicy) UnsetModifierId() {
+func (o *SodPolicyRead) UnsetModifierId() {
 	o.ModifierId.Unset()
 }
 
 // GetViolationOwnerAssignmentConfig returns the ViolationOwnerAssignmentConfig field value if set, zero value otherwise.
-func (o *SodPolicy) GetViolationOwnerAssignmentConfig() ViolationOwnerAssignmentConfig {
+func (o *SodPolicyRead) GetViolationOwnerAssignmentConfig() ViolationOwnerAssignmentConfig {
 	if o == nil || IsNil(o.ViolationOwnerAssignmentConfig) {
 		var ret ViolationOwnerAssignmentConfig
 		return ret
@@ -591,7 +592,7 @@ func (o *SodPolicy) GetViolationOwnerAssignmentConfig() ViolationOwnerAssignment
 
 // GetViolationOwnerAssignmentConfigOk returns a tuple with the ViolationOwnerAssignmentConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetViolationOwnerAssignmentConfigOk() (*ViolationOwnerAssignmentConfig, bool) {
+func (o *SodPolicyRead) GetViolationOwnerAssignmentConfigOk() (*ViolationOwnerAssignmentConfig, bool) {
 	if o == nil || IsNil(o.ViolationOwnerAssignmentConfig) {
 		return nil, false
 	}
@@ -599,7 +600,7 @@ func (o *SodPolicy) GetViolationOwnerAssignmentConfigOk() (*ViolationOwnerAssign
 }
 
 // HasViolationOwnerAssignmentConfig returns a boolean if a field has been set.
-func (o *SodPolicy) HasViolationOwnerAssignmentConfig() bool {
+func (o *SodPolicyRead) HasViolationOwnerAssignmentConfig() bool {
 	if o != nil && !IsNil(o.ViolationOwnerAssignmentConfig) {
 		return true
 	}
@@ -608,12 +609,12 @@ func (o *SodPolicy) HasViolationOwnerAssignmentConfig() bool {
 }
 
 // SetViolationOwnerAssignmentConfig gets a reference to the given ViolationOwnerAssignmentConfig and assigns it to the ViolationOwnerAssignmentConfig field.
-func (o *SodPolicy) SetViolationOwnerAssignmentConfig(v ViolationOwnerAssignmentConfig) {
+func (o *SodPolicyRead) SetViolationOwnerAssignmentConfig(v ViolationOwnerAssignmentConfig) {
 	o.ViolationOwnerAssignmentConfig = &v
 }
 
 // GetScheduled returns the Scheduled field value if set, zero value otherwise.
-func (o *SodPolicy) GetScheduled() bool {
+func (o *SodPolicyRead) GetScheduled() bool {
 	if o == nil || IsNil(o.Scheduled) {
 		var ret bool
 		return ret
@@ -623,7 +624,7 @@ func (o *SodPolicy) GetScheduled() bool {
 
 // GetScheduledOk returns a tuple with the Scheduled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetScheduledOk() (*bool, bool) {
+func (o *SodPolicyRead) GetScheduledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Scheduled) {
 		return nil, false
 	}
@@ -631,7 +632,7 @@ func (o *SodPolicy) GetScheduledOk() (*bool, bool) {
 }
 
 // HasScheduled returns a boolean if a field has been set.
-func (o *SodPolicy) HasScheduled() bool {
+func (o *SodPolicyRead) HasScheduled() bool {
 	if o != nil && !IsNil(o.Scheduled) {
 		return true
 	}
@@ -640,12 +641,12 @@ func (o *SodPolicy) HasScheduled() bool {
 }
 
 // SetScheduled gets a reference to the given bool and assigns it to the Scheduled field.
-func (o *SodPolicy) SetScheduled(v bool) {
+func (o *SodPolicyRead) SetScheduled(v bool) {
 	o.Scheduled = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SodPolicy) GetType() string {
+func (o *SodPolicyRead) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -655,7 +656,7 @@ func (o *SodPolicy) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetTypeOk() (*string, bool) {
+func (o *SodPolicyRead) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -663,7 +664,7 @@ func (o *SodPolicy) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SodPolicy) HasType() bool {
+func (o *SodPolicyRead) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -672,11 +673,43 @@ func (o *SodPolicy) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SodPolicy) SetType(v string) {
+func (o *SodPolicyRead) SetType(v string) {
 	o.Type = &v
 }
 
-func (o SodPolicy) MarshalJSON() ([]byte, error) {
+// GetConflictingAccessCriteria returns the ConflictingAccessCriteria field value if set, zero value otherwise.
+func (o *SodPolicyRead) GetConflictingAccessCriteria() SodPolicyReadAllOfConflictingAccessCriteria {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
+		var ret SodPolicyReadAllOfConflictingAccessCriteria
+		return ret
+	}
+	return *o.ConflictingAccessCriteria
+}
+
+// GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SodPolicyRead) GetConflictingAccessCriteriaOk() (*SodPolicyReadAllOfConflictingAccessCriteria, bool) {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
+		return nil, false
+	}
+	return o.ConflictingAccessCriteria, true
+}
+
+// HasConflictingAccessCriteria returns a boolean if a field has been set.
+func (o *SodPolicyRead) HasConflictingAccessCriteria() bool {
+	if o != nil && !IsNil(o.ConflictingAccessCriteria) {
+		return true
+	}
+
+	return false
+}
+
+// SetConflictingAccessCriteria gets a reference to the given SodPolicyReadAllOfConflictingAccessCriteria and assigns it to the ConflictingAccessCriteria field.
+func (o *SodPolicyRead) SetConflictingAccessCriteria(v SodPolicyReadAllOfConflictingAccessCriteria) {
+	o.ConflictingAccessCriteria = &v
+}
+
+func (o SodPolicyRead) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -684,7 +717,7 @@ func (o SodPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SodPolicy) ToMap() (map[string]interface{}, error) {
+func (o SodPolicyRead) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -737,6 +770,9 @@ func (o SodPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.ConflictingAccessCriteria) {
+		toSerialize["conflictingAccessCriteria"] = o.ConflictingAccessCriteria
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -745,16 +781,16 @@ func (o SodPolicy) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodPolicy) UnmarshalJSON(data []byte) (err error) {
-	varSodPolicy := _SodPolicy{}
+func (o *SodPolicyRead) UnmarshalJSON(data []byte) (err error) {
+	varSodPolicyRead := _SodPolicyRead{}
 
-	err = json.Unmarshal(data, &varSodPolicy)
+	err = json.Unmarshal(data, &varSodPolicyRead)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SodPolicy(varSodPolicy)
+	*o = SodPolicyRead(varSodPolicyRead)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -776,44 +812,45 @@ func (o *SodPolicy) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "violationOwnerAssignmentConfig")
 		delete(additionalProperties, "scheduled")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "conflictingAccessCriteria")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableSodPolicy struct {
-	value *SodPolicy
+type NullableSodPolicyRead struct {
+	value *SodPolicyRead
 	isSet bool
 }
 
-func (v NullableSodPolicy) Get() *SodPolicy {
+func (v NullableSodPolicyRead) Get() *SodPolicyRead {
 	return v.value
 }
 
-func (v *NullableSodPolicy) Set(val *SodPolicy) {
+func (v *NullableSodPolicyRead) Set(val *SodPolicyRead) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSodPolicy) IsSet() bool {
+func (v NullableSodPolicyRead) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSodPolicy) Unset() {
+func (v *NullableSodPolicyRead) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSodPolicy(val *SodPolicy) *NullableSodPolicy {
-	return &NullableSodPolicy{value: val, isSet: true}
+func NewNullableSodPolicyRead(val *SodPolicyRead) *NullableSodPolicyRead {
+	return &NullableSodPolicyRead{value: val, isSet: true}
 }
 
-func (v NullableSodPolicy) MarshalJSON() ([]byte, error) {
+func (v NullableSodPolicyRead) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSodPolicy) UnmarshalJSON(src []byte) error {
+func (v *NullableSodPolicyRead) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

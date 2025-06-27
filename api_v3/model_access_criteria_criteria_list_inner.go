@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessCriteriaCriteriaListInner{}
 
 // AccessCriteriaCriteriaListInner struct for AccessCriteriaCriteriaListInner
 type AccessCriteriaCriteriaListInner struct {
-	// Type of the propery to which this reference applies to
+	// Type of the property to which this reference applies to
 	Type *string `json:"type,omitempty"`
 	// ID of the object to which this reference applies to
 	Id *string `json:"id,omitempty"`

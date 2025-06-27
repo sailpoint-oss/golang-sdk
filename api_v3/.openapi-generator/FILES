@@ -62,6 +62,8 @@ docs/AccessAppsOwner.md
 docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
+docs/AccessCriteriaRequest.md
+docs/AccessCriteriaRequestCriteriaListInner.md
 docs/AccessItemRequestedFor.md
 docs/AccessItemRequester.md
 docs/AccessItemReviewedBy.md
@@ -240,6 +242,7 @@ docs/CompletionStatus.md
 docs/ConfigurationHubAPI.md
 docs/ConfigurationHubAPIdeveloperSite_code_examples.yaml
 docs/ConflictingAccessCriteria.md
+docs/ConflictingAccessCriteriaRequest.md
 docs/ConnectorDetail.md
 docs/ConnectorsAPI.md
 docs/ConnectorsAPIdeveloperSite_code_examples.yaml
@@ -636,9 +639,12 @@ docs/SlimCampaign.md
 docs/SlimDiscoveredApplications.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
-docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyDto.md
 docs/SodPolicyOwnerRef.md
+docs/SodPolicyRead.md
+docs/SodPolicyReadAllOfConflictingAccessCriteria.md
+docs/SodPolicyRequest.md
+docs/SodPolicyRequestAllOfConflictingAccessCriteria.md
 docs/SodPolicySchedule.md
 docs/SodRecipient.md
 docs/SodReportResultDto.md
@@ -753,6 +759,8 @@ model_access_apps_owner.go
 model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
+model_access_criteria_request.go
+model_access_criteria_request_criteria_list_inner.go
 model_access_item_requested_for.go
 model_access_item_requester.go
 model_access_item_reviewed_by.go
@@ -903,6 +911,7 @@ model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
 model_conflicting_access_criteria.go
+model_conflicting_access_criteria_request.go
 model_connector_detail.go
 model_create_external_execute_workflow_200_response.go
 model_create_external_execute_workflow_request.go
@@ -1240,9 +1249,12 @@ model_slim_campaign.go
 model_slim_discovered_applications.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
-model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_dto.go
 model_sod_policy_owner_ref.go
+model_sod_policy_read.go
+model_sod_policy_read_all_of_conflicting_access_criteria.go
+model_sod_policy_request.go
+model_sod_policy_request_all_of_conflicting_access_criteria.go
 model_sod_policy_schedule.go
 model_sod_recipient.go
 model_sod_report_result_dto.go
