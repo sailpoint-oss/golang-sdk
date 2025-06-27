@@ -2006,7 +2006,9 @@ paths:
   /access-requests:
     post:
       description: "Use this API to submit an access request in Identity Security\
-        \ Cloud (ISC), where it follows any ISC approval processes.\n\nAccess requests\
+        \ Cloud (ISC), where it follows any ISC approval processes.\n\n:::info\nThe\
+        \ ability to request access using this API is constrained by the Access Request\
+        \ Segments defined in the API token’s user context.\n:::\n\nAccess requests\
         \ are processed asynchronously by ISC. A successful response from this endpoint\
         \ means that the request\nhas been submitted to ISC and is queued for processing.\
         \ Because this endpoint is asynchronous, it doesn't return an error\nif you\
