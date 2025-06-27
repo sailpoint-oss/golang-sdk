@@ -2037,29 +2037,33 @@ paths:
         \ also submit a request without a `removeDate` to request removal of the sunset\
         \ date and time.\n* If a `removeDate` is specified, then the requested role,\
         \ access profile, or entitlement will be removed on that date and time.\n\
-        * While requesting entitlements, maximum of 25 entitlements and 10 recipients\
-        \ are allowed in a request.\n* Now supports an alternate field 'requestedForWithRequestedItems'\
-        \ for users to specify account selections while requesting items where they\
-        \ have more than one account on the source.\n \n__REVOKE_ACCESS__\n* Can only\
-        \ be requested for a single identity at a time.\n* You cannot use an access\
-        \ request to revoke access from an identity if that access has been granted\
-        \ by role membership or by birthright provisioning. \n* Does not support self\
-        \ request. Only manager can request to revoke access for their directly managed\
-        \ employees.\n* If a `removeDate` is specified, then the requested role, access\
-        \ profile, or entitlement will be removed on that date and time.\n* Roles,\
-        \ access profiles, and entitlements can be requested for revocation.\n* Revoke\
-        \ requests for entitlements are limited to 1 entitlement per access request\
-        \ currently.\n* You can specify a `removeDate` to add or alter a sunset date\
-        \ and time on an assignment. The `removeDate` must be a future date-time,\
-        \ in the UTC timezone. If the user already has the access assigned with a\
-        \ sunset date and time, the removeDate must be a date-time earlier than the\
-        \ existing sunset date and time. \n* Allows a manager to request to revoke\
-        \ access for direct employees. A user with ORG_ADMIN authority can also request\
-        \ to revoke access from anyone.\n* Now supports REVOKE_ACCESS requests for\
-        \ identities with multiple accounts on a single source, with the help of 'assignmentId'\
-        \ and 'nativeIdentity' fields. These fields should be used within the 'requestedItems'\
-        \ section for the revoke requests. \n* Usage of 'requestedForWithRequestedItems'\
-        \ field is not supported for revoke requests.\n"
+        * Now supports an alternate field 'requestedForWithRequestedItems' for users\
+        \ to specify account selections while requesting items where they have more\
+        \ than one account on the source.\n\n:::caution\n\nIf any entitlements are\
+        \ being requested, then the maximum number of entitlements that can be requested\
+        \ is 25, and the maximum number of identities that can be requested for is\
+        \ 10. If you exceed these limits, the request will fail with a 400 error.\
+        \ If you are not requesting any entitlements, then there are no limits.\n\n\
+        :::\n\n__REVOKE_ACCESS__\n* Can only be requested for a single identity at\
+        \ a time.\n* You cannot use an access request to revoke access from an identity\
+        \ if that access has been granted by role membership or by birthright provisioning.\
+        \ \n* Does not support self request. Only manager can request to revoke access\
+        \ for their directly managed employees.\n* If a `removeDate` is specified,\
+        \ then the requested role, access profile, or entitlement will be removed\
+        \ on that date and time.\n* Roles, access profiles, and entitlements can be\
+        \ requested for revocation.\n* Revoke requests for entitlements are limited\
+        \ to 1 entitlement per access request currently.\n* You can specify a `removeDate`\
+        \ to add or alter a sunset date and time on an assignment. The `removeDate`\
+        \ must be a future date-time, in the UTC timezone. If the user already has\
+        \ the access assigned with a sunset date and time, the removeDate must be\
+        \ a date-time earlier than the existing sunset date and time. \n* Allows a\
+        \ manager to request to revoke access for direct employees. A user with ORG_ADMIN\
+        \ authority can also request to revoke access from anyone.\n* Now supports\
+        \ REVOKE_ACCESS requests for identities with multiple accounts on a single\
+        \ source, with the help of 'assignmentId' and 'nativeIdentity' fields. These\
+        \ fields should be used within the 'requestedItems' section for the revoke\
+        \ requests. \n* Usage of 'requestedForWithRequestedItems' field is not supported\
+        \ for revoke requests.\n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -46120,33 +46124,6 @@ components:
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
-        - clientMetadata:
-            requestedAppName: test-app
-            requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          removeDate: 2020-07-11T21:23:15Z
-          comment: Requesting access profile for John Doe
-          id: 2c9180835d2e5168015d32f890ca1581
-          type: ACCESS_PROFILE
-          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
-          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
-        - clientMetadata:
-            requestedAppName: test-app
-            requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          removeDate: 2020-07-11T21:23:15Z
-          comment: Requesting access profile for John Doe
-          id: 2c9180835d2e5168015d32f890ca1581
-          type: ACCESS_PROFILE
-          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
-          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
-        - clientMetadata:
-            requestedAppName: test-app
-            requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          removeDate: 2020-07-11T21:23:15Z
-          comment: Requesting access profile for John Doe
-          id: 2c9180835d2e5168015d32f890ca1581
-          type: ACCESS_PROFILE
-          assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
-          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         requestedForWithRequestedItems:
         - identityId: cb89bc2f1ee6445fbea12224c526ba3a
           requestedItems:
@@ -46245,7 +46222,6 @@ components:
         requestedItems:
           items:
             $ref: '#/components/schemas/AccessRequestItem'
-          maxItems: 25
           minItems: 1
           type: array
         clientMetadata:
