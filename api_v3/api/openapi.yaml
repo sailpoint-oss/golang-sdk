@@ -67392,7 +67392,6 @@ components:
           description: Type of the filter
           enum:
           - CAMPAIGN_FILTER
-          - RULE
           example: CAMPAIGN_FILTER
           type: string
         name:
