@@ -246,9 +246,10 @@ func (r ApiCreateNotificationTemplateRequest) Execute() (*TemplateDto, *http.Res
 /*
 CreateNotificationTemplate Create notification template
 
-This creates a template for your site. 
+This will update notification templates that are available in your tenant. 
+Note that you cannot create new templates in your tenant, but you can use this to create custom notifications from existing templates.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.  
+Modify the fields you want to change and submit the POST request when ready.
 
-You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNotificationTemplateRequest
@@ -2272,6 +2273,7 @@ type ApiListNotificationTemplatesRequest struct {
 	limit *int32
 	offset *int32
 	filters *string
+	sorters *string
 }
 
 // Use this header to enable this experimental API.
@@ -2295,6 +2297,12 @@ func (r ApiListNotificationTemplatesRequest) Offset(offset int32) ApiListNotific
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw*
 func (r ApiListNotificationTemplatesRequest) Filters(filters string) ApiListNotificationTemplatesRequest {
 	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, medium**
+func (r ApiListNotificationTemplatesRequest) Sorters(sorters string) ApiListNotificationTemplatesRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -2361,6 +2369,9 @@ func (a *NotificationsAPIService) ListNotificationTemplatesExecute(r ApiListNoti
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
