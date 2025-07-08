@@ -206,7 +206,7 @@ func (r ApiDeleteLifecycleStateRequest) Execute() (*LifecyclestateDeleted, *http
 /*
 DeleteLifecycleState Delete lifecycle state
 
-Use this endpoint to delete the lifecycle state by its ID. 
+Use this endpoint to delete the lifecycle state by its ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId Identity profile ID.
@@ -378,7 +378,7 @@ func (r ApiGetLifecycleStateRequest) Execute() (*LifecycleState, *http.Response,
 /*
 GetLifecycleState Get lifecycle state
 
-Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
+Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId Identity profile ID.
@@ -929,7 +929,7 @@ type ApiUpdateLifecycleStatesRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
+// A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
 func (r ApiUpdateLifecycleStatesRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateLifecycleStatesRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r

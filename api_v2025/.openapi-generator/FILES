@@ -100,6 +100,7 @@ api_workflows.go
 client.go
 configuration.go
 docs/Access.md
+docs/AccessActionConfiguration.md
 docs/AccessApps.md
 docs/AccessAppsOwner.md
 docs/AccessConstraint.md
@@ -1424,6 +1425,7 @@ git_push.sh
 go.mod
 go.sum
 model_access.go
+model_access_action_configuration.go
 model_access_apps.go
 model_access_apps_owner.go
 model_access_constraint.go

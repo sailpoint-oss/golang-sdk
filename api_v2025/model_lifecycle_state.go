@@ -43,6 +43,9 @@ type LifecycleState struct {
 	AccessProfileIds []string `json:"accessProfileIds,omitempty"`
 	// The lifecycle state's associated identity state. This field is generally 'null'.
 	IdentityState NullableString `json:"identityState,omitempty"`
+	AccessActionConfiguration *AccessActionConfiguration `json:"accessActionConfiguration,omitempty"`
+	// Priority level used to determine which profile to assign when a user exists in multiple profiles. Lower numeric values have higher priority.  By default, new profiles are assigned the lowest priority. The assigned profile also controls access granted or removed during provisioning based on lifecycle state changes.
+	Priority NullableInt32 `json:"priority,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -461,6 +464,80 @@ func (o *LifecycleState) UnsetIdentityState() {
 	o.IdentityState.Unset()
 }
 
+// GetAccessActionConfiguration returns the AccessActionConfiguration field value if set, zero value otherwise.
+func (o *LifecycleState) GetAccessActionConfiguration() AccessActionConfiguration {
+	if o == nil || IsNil(o.AccessActionConfiguration) {
+		var ret AccessActionConfiguration
+		return ret
+	}
+	return *o.AccessActionConfiguration
+}
+
+// GetAccessActionConfigurationOk returns a tuple with the AccessActionConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LifecycleState) GetAccessActionConfigurationOk() (*AccessActionConfiguration, bool) {
+	if o == nil || IsNil(o.AccessActionConfiguration) {
+		return nil, false
+	}
+	return o.AccessActionConfiguration, true
+}
+
+// HasAccessActionConfiguration returns a boolean if a field has been set.
+func (o *LifecycleState) HasAccessActionConfiguration() bool {
+	if o != nil && !IsNil(o.AccessActionConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessActionConfiguration gets a reference to the given AccessActionConfiguration and assigns it to the AccessActionConfiguration field.
+func (o *LifecycleState) SetAccessActionConfiguration(v AccessActionConfiguration) {
+	o.AccessActionConfiguration = &v
+}
+
+// GetPriority returns the Priority field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LifecycleState) GetPriority() int32 {
+	if o == nil || IsNil(o.Priority.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Priority.Get()
+}
+
+// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LifecycleState) GetPriorityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Priority.Get(), o.Priority.IsSet()
+}
+
+// HasPriority returns a boolean if a field has been set.
+func (o *LifecycleState) HasPriority() bool {
+	if o != nil && o.Priority.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPriority gets a reference to the given NullableInt32 and assigns it to the Priority field.
+func (o *LifecycleState) SetPriority(v int32) {
+	o.Priority.Set(&v)
+}
+// SetPriorityNil sets the value for Priority to be an explicit nil
+func (o *LifecycleState) SetPriorityNil() {
+	o.Priority.Set(nil)
+}
+
+// UnsetPriority ensures that no value is present for Priority, not even an explicit nil
+func (o *LifecycleState) UnsetPriority() {
+	o.Priority.Unset()
+}
+
 func (o LifecycleState) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -502,6 +579,12 @@ func (o LifecycleState) ToMap() (map[string]interface{}, error) {
 	}
 	if o.IdentityState.IsSet() {
 		toSerialize["identityState"] = o.IdentityState.Get()
+	}
+	if !IsNil(o.AccessActionConfiguration) {
+		toSerialize["accessActionConfiguration"] = o.AccessActionConfiguration
+	}
+	if o.Priority.IsSet() {
+		toSerialize["priority"] = o.Priority.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -559,6 +642,8 @@ func (o *LifecycleState) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accountActions")
 		delete(additionalProperties, "accessProfileIds")
 		delete(additionalProperties, "identityState")
+		delete(additionalProperties, "accessActionConfiguration")
+		delete(additionalProperties, "priority")
 		o.AdditionalProperties = additionalProperties
 	}
 
