@@ -106,7 +106,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsAPI* | [**CloseAccessRequest**](docs/AccessRequestsAPI.md#closeaccessrequest) | **Post** /access-requests/close | Close access request
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit access request
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get access request configuration
-*AccessRequestsAPI* | [**GetEntitlementDetailsForIdentity**](docs/AccessRequestsAPI.md#getentitlementdetailsforidentity) | **Get** /access-requests/revocable-objects | Identity entitlement details
+*AccessRequestsAPI* | [**GetEntitlementDetailsForIdentity**](docs/AccessRequestsAPI.md#getentitlementdetailsforidentity) | **Get** /revocable-objects | Identity entitlement details
 *AccessRequestsAPI* | [**ListAccessRequestStatus**](docs/AccessRequestsAPI.md#listaccessrequeststatus) | **Get** /access-request-status | Access request status
 *AccessRequestsAPI* | [**ListAdministratorsAccessRequestStatus**](docs/AccessRequestsAPI.md#listadministratorsaccessrequeststatus) | **Get** /access-request-administration | Access request status for administrators
 *AccessRequestsAPI* | [**LoadAccountSelections**](docs/AccessRequestsAPI.md#loadaccountselections) | **Post** /access-requests/accounts-selection | Get accounts selections for identity

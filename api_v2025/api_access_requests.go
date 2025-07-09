@@ -1162,7 +1162,7 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/access-requests/revocable-objects"
+	localVarPath := localBasePath + "/revocable-objects"
 	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"entitlementId"+"}", url.PathEscape(parameterValueToString(r.entitlementId, "entitlementId")), -1)
 
