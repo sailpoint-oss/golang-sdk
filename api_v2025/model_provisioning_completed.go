@@ -32,7 +32,7 @@ type ProvisioningCompleted struct {
 	Warnings []string `json:"warnings,omitempty"`
 	Recipient ProvisioningCompletedRecipient `json:"recipient"`
 	Requester NullableProvisioningCompletedRequester `json:"requester,omitempty"`
-	// A list of provisioning instructions to perform on an account-by-account basis.
+	// A list of provisioning instructions to be executed on a per-account basis. The order in which operations are executed may not always be predictable.
 	AccountRequests []ProvisioningCompletedAccountRequestsInner `json:"accountRequests"`
 	AdditionalProperties map[string]interface{}
 }
