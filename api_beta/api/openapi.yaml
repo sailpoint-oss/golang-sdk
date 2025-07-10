@@ -20810,6 +20810,7 @@ paths:
       - Multi-Host Integration
   /non-employee-records:
     get:
+      deprecated: true
       description: This gets a list of non-employee records.
       operationId: listNonEmployeeRecords
       parameters:
@@ -20945,7 +20946,12 @@ paths:
       summary: List non-employee records
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
+      deprecated: true
       description: |-
         This request will create a non-employee record.
         Request will require the following security scope:
@@ -21027,8 +21033,13 @@ paths:
       summary: Create non-employee record
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-records/{id}:
     delete:
+      deprecated: true
       description: This request will delete a non-employee record.
       operationId: deleteNonEmployeeRecord
       parameters:
@@ -21106,7 +21117,12 @@ paths:
       summary: Delete non-employee record
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
+      deprecated: true
       description: This gets a non-employee record.
       operationId: getNonEmployeeRecord
       parameters:
@@ -21187,7 +21203,12 @@ paths:
       summary: Get a non-employee record
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
+      deprecated: true
       description: This request will patch a non-employee record.
       operationId: patchNonEmployeeRecord
       parameters:
@@ -21303,9 +21324,14 @@ paths:
       summary: Patch non-employee record
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
+      deprecated: true
       description: This request will update a non-employee record.
-      operationId: updateNonEmployeeRecord
+      operationId: putNonEmployeeRecord
       parameters:
       - description: Non-employee record id (UUID)
         example: 2c91808b6ef1d43e016efba0ce470904
@@ -21411,8 +21437,13 @@ paths:
       summary: Update non-employee record
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-records/bulk-delete:
     post:
+      deprecated: true
       description: |-
         This request will delete multiple non-employee records based on the non-employee ids provided.
         Request will require the following scope:
@@ -21491,8 +21522,13 @@ paths:
       summary: Delete multiple non-employee records
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-requests:
     get:
+      deprecated: true
       description: This gets a list of non-employee requests.
       operationId: listNonEmployeeRequests
       parameters:
@@ -21636,7 +21672,12 @@ paths:
       summary: List non-employee requests
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
+      deprecated: true
       description: This request will create a non-employee request and notify the
         approver
       operationId: createNonEmployeeRequest
@@ -21736,8 +21777,13 @@ paths:
       summary: Create non-employee request
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-requests/{id}:
     delete:
+      deprecated: true
       description: This request will delete a non-employee request.
       operationId: deleteNonEmployeeRequest
       parameters:
@@ -21834,7 +21880,12 @@ paths:
       summary: Delete non-employee request
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
+      deprecated: true
       description: This gets a non-employee request.
       operationId: getNonEmployeeRequest
       parameters:
@@ -21933,8 +21984,13 @@ paths:
       summary: Get a non-employee request
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-requests/summary/{requested-for}:
     get:
+      deprecated: true
       description: "This request will retrieve a summary of non-employee requests.\
         \ There are two contextual uses for the `requested-for` path parameter: 1.\
         \ The current user is the Org Admin, in which case he or she may request a\
@@ -22025,8 +22081,13 @@ paths:
       summary: Get summary of non-employee requests
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources:
     get:
+      deprecated: true
       description: "Get a list of non-employee sources. There are two contextual uses\
         \ for the `requested-for` path parameter: \n  1. If the user has the role\
         \ context of `idn:nesr:read`, he or she may request a list sources assigned\
@@ -22175,7 +22236,10 @@ paths:
       - Non-Employee Lifecycle Management
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
+      deprecated: true
       description: Create a non-employee source.
       operationId: createNonEmployeeSource
       requestBody:
@@ -22256,8 +22320,11 @@ paths:
       - Non-Employee Lifecycle Management
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{sourceId}:
     delete:
+      deprecated: true
       description: This request will delete a non-employee source.
       operationId: deleteNonEmployeeSource
       parameters:
@@ -22335,7 +22402,12 @@ paths:
       summary: Delete non-employee source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
+      deprecated: true
       description: This gets a non-employee source.
       operationId: getNonEmployeeSource
       parameters:
@@ -22416,7 +22488,12 @@ paths:
       summary: Get a non-employee source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
+      deprecated: true
       description: "patch a non-employee source. (Partial Update)  Patchable field:\
         \ **name, description, approvers, accountManagers**"
       operationId: patchNonEmployeeSource
@@ -22518,11 +22595,16 @@ paths:
       summary: Patch a non-employee source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{id}/non-employees/download:
     get:
+      deprecated: true
       description: This requests a CSV download for all non-employees from a provided
         source.
-      operationId: exportNonEmployeeRecords
+      operationId: getNonEmployeeExportRecords
       parameters:
       - description: Source Id (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -22622,8 +22704,13 @@ paths:
       summary: Exports non-employee records to csv
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{id}/non-employee-bulk-upload:
     post:
+      deprecated: true
       description: |-
         This post will import, or update, Non-Employee records found in the CSV.
         Request will need the following security scope:
@@ -22733,8 +22820,13 @@ paths:
       summary: "Imports, or updates, non-employee records"
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{id}/non-employee-bulk-upload/status:
     get:
+      deprecated: true
       description: |
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source.
       operationId: getNonEmployeeBulkUploadStatus
@@ -22816,13 +22908,20 @@ paths:
       summary: Bulk upload status on source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      x-deprecated-description: |
+        This API has been deprecated, please refer to [Obtain the status of bulk upload on the source](https://developer.sailpoint.com/docs/api/v2025/get-non-employee-bulk-upload-status) for latest API.
   /non-employee-sources/{id}/schema-attributes-template/download:
     get:
+      deprecated: true
       description: |-
         This requests a download for the Source Schema Template for a provided source.
         Request will require the following security scope:
         idn:nesr:read'
-      operationId: exportNonEmployeeSourceSchemaTemplate
+      operationId: getNonEmployeeExportSourceSchemaTemplate
       parameters:
       - description: Source Id (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -22919,8 +23018,13 @@ paths:
       summary: Exports source schema template
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-approvals:
     get:
+      deprecated: true
       description: This gets a list of non-employee approval requests.
       operationId: listNonEmployeeApproval
       parameters:
@@ -22979,6 +23083,7 @@ paths:
         example: approvalStatus eq "PENDING"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -22988,6 +23093,7 @@ paths:
         example: created
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -23059,11 +23165,16 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get list of non-employee approval requests
+      summary: List of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-approvals/{id}:
     get:
+      deprecated: true
       description: Approves a non-employee approval request and notifies the next
         approver.
       operationId: getNonEmployeeApproval
@@ -23150,16 +23261,22 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get a non-employee approval item detail
+      summary: A non-employee approval item detail
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-approvals/{id}/approve:
     post:
+      deprecated: true
       description: Approves a non-employee approval request and notifies the next
         approver.
       operationId: approveNonEmployeeRequest
       parameters:
       - description: Non-Employee approval item id (UUID)
+        example: 2c91808b6ef1d43e016efba0ce470904
         in: path
         name: id
         required: true
@@ -23241,12 +23358,18 @@ paths:
       summary: Approve a non-employee request
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-approvals/{id}/reject:
     post:
+      deprecated: true
       description: This endpoint will reject an approval item request and notify user.
       operationId: rejectNonEmployeeRequest
       parameters:
       - description: Non-Employee approval item id (UUID)
+        example: 2c91808b6ef1d43e016efba0ce470904
         in: path
         name: id
         required: true
@@ -23328,8 +23451,13 @@ paths:
       summary: Reject a non-employee request
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-approvals/summary/{requested-for}:
     get:
+      deprecated: true
       description: "This request will retrieve a summary of non-employee approval\
         \ requests. There are two contextual uses for the `requested-for` path parameter:\
         \ 1. The current user is the Org Admin, in which case he or she may request\
@@ -23415,11 +23543,16 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-      summary: Get summary of non-employee approval requests
+      summary: Summary of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{sourceId}/schema-attributes:
     delete:
+      deprecated: true
       description: This end-point deletes all custom schema attributes for a non-employee
         source.
       operationId: deleteNonEmployeeSourceSchemaAttributes
@@ -23498,7 +23631,12 @@ paths:
       summary: Delete all custom schema attributes
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
+      deprecated: true
       description: "This API gets the list of schema attributes for the specified\
         \ Non-Employee SourceId. There are 8 mandatory attributes added to each new\
         \ Non-Employee Source automatically. Additionaly, user can add up to 10 custom\
@@ -23506,6 +23644,31 @@ paths:
         \ by any custom attributes. At most, a total of 18 attributes will be returned."
       operationId: getNonEmployeeSourceSchemaAttributes
       parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
       - description: The Source id
         example: 2c918085842e69ae018432d22ccb212f
         in: path
@@ -23606,11 +23769,17 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
       summary: List schema attributes non-employee source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
+      deprecated: true
       description: "This API creates a new schema attribute for Non-Employee Source.\
         \ The schema technical name must be unique in the source. Attempts to create\
         \ a schema attribute with an existing name will result in a \"400.1.409 Reference\
@@ -23626,6 +23795,7 @@ paths:
         required: true
         schema:
           type: string
+        x-sailpoint-resource-operation-id: listNonEmployeeSources
       requestBody:
         content:
           application/json:
@@ -23701,8 +23871,13 @@ paths:
       summary: Create non-employee source schema attribute
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /non-employee-sources/{sourceId}/schema-attributes/{attributeId}:
     delete:
+      deprecated: true
       description: |
         This end-point deletes a specific schema attribute for a non-employee source.
       operationId: deleteNonEmployeeSchemaAttribute
@@ -23789,7 +23964,12 @@ paths:
       summary: Delete non-employee source's schema attribute
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
+      deprecated: true
       description: This API gets a schema attribute by Id for the specified Non-Employee
         SourceId.
       operationId: getNonEmployeeSchemaAttribute
@@ -23881,7 +24061,12 @@ paths:
       summary: Get schema attribute non-employee source
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
+      deprecated: true
       description: |
         This end-point patches a specific schema attribute for a non-employee SourceId.
       operationId: patchNonEmployeeSchemaAttribute
@@ -24006,6 +24191,10 @@ paths:
       summary: Patch non-employee source's schema attribute
       tags:
       - Non-Employee Lifecycle Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /managed-clients/{id}/status:
     get:
       deprecated: true
@@ -72891,7 +73080,9 @@ components:
           - IN_PROGRESS
           - COMPLETED
           - ERROR
+          - null
           example: PENDING
+          nullable: true
           type: string
       type: object
     NonEmployeeApprovalItem:
@@ -73064,10 +73255,12 @@ components:
         helpText:
           description: help text displayed by UI.
           example: The unique identifier for the account
+          nullable: true
           type: string
         placeholder:
           description: Hint text that fills UI box.
           example: Enter a unique user name for this account.
+          nullable: true
           type: string
         required:
           default: false
@@ -87027,6 +87220,8 @@ components:
       - TEXT
       - DATE
       - IDENTITY
+      - PHONE
+      - EMAIL
       example: TEXT
       type: string
     ManagedClusterTypes:

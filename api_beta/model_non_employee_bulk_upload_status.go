@@ -20,7 +20,7 @@ var _ MappedNullable = &NonEmployeeBulkUploadStatus{}
 // NonEmployeeBulkUploadStatus struct for NonEmployeeBulkUploadStatus
 type NonEmployeeBulkUploadStatus struct {
 	// Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. 
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,36 +43,46 @@ func NewNonEmployeeBulkUploadStatusWithDefaults() *NonEmployeeBulkUploadStatus {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NonEmployeeBulkUploadStatus) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NonEmployeeBulkUploadStatus) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadStatus) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *NonEmployeeBulkUploadStatus) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *NonEmployeeBulkUploadStatus) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *NonEmployeeBulkUploadStatus) UnsetStatus() {
+	o.Status.Unset()
 }
 
 func (o NonEmployeeBulkUploadStatus) MarshalJSON() ([]byte, error) {
@@ -85,8 +95,8 @@ func (o NonEmployeeBulkUploadStatus) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeBulkUploadStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

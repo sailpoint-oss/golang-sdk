@@ -23,6 +23,8 @@ const (
 	NONEMPLOYEESCHEMAATTRIBUTETYPE_TEXT NonEmployeeSchemaAttributeType = "TEXT"
 	NONEMPLOYEESCHEMAATTRIBUTETYPE_DATE NonEmployeeSchemaAttributeType = "DATE"
 	NONEMPLOYEESCHEMAATTRIBUTETYPE_IDENTITY NonEmployeeSchemaAttributeType = "IDENTITY"
+	NONEMPLOYEESCHEMAATTRIBUTETYPE_PHONE NonEmployeeSchemaAttributeType = "PHONE"
+	NONEMPLOYEESCHEMAATTRIBUTETYPE_EMAIL NonEmployeeSchemaAttributeType = "EMAIL"
 )
 
 // All allowed values of NonEmployeeSchemaAttributeType enum
@@ -30,6 +32,8 @@ var AllowedNonEmployeeSchemaAttributeTypeEnumValues = []NonEmployeeSchemaAttribu
 	"TEXT",
 	"DATE",
 	"IDENTITY",
+	"PHONE",
+	"EMAIL",
 }
 
 func (v *NonEmployeeSchemaAttributeType) UnmarshalJSON(src []byte) error {

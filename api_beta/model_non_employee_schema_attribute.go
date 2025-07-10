@@ -35,9 +35,9 @@ type NonEmployeeSchemaAttribute struct {
 	// The technical name of the attribute. Must be unique per source.
 	TechnicalName string `json:"technicalName"`
 	// help text displayed by UI.
-	HelpText *string `json:"helpText,omitempty"`
+	HelpText NullableString `json:"helpText,omitempty"`
 	// Hint text that fills UI box.
-	Placeholder *string `json:"placeholder,omitempty"`
+	Placeholder NullableString `json:"placeholder,omitempty"`
 	// If true, the schema attribute is required for all non-employees in the source
 	Required *bool `json:"required,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -273,68 +273,88 @@ func (o *NonEmployeeSchemaAttribute) SetTechnicalName(v string) {
 	o.TechnicalName = v
 }
 
-// GetHelpText returns the HelpText field value if set, zero value otherwise.
+// GetHelpText returns the HelpText field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NonEmployeeSchemaAttribute) GetHelpText() string {
-	if o == nil || IsNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.HelpText
+	return *o.HelpText.Get()
 }
 
 // GetHelpTextOk returns a tuple with the HelpText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NonEmployeeSchemaAttribute) GetHelpTextOk() (*string, bool) {
-	if o == nil || IsNil(o.HelpText) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HelpText, true
+	return o.HelpText.Get(), o.HelpText.IsSet()
 }
 
 // HasHelpText returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasHelpText() bool {
-	if o != nil && !IsNil(o.HelpText) {
+	if o != nil && o.HelpText.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHelpText gets a reference to the given string and assigns it to the HelpText field.
+// SetHelpText gets a reference to the given NullableString and assigns it to the HelpText field.
 func (o *NonEmployeeSchemaAttribute) SetHelpText(v string) {
-	o.HelpText = &v
+	o.HelpText.Set(&v)
+}
+// SetHelpTextNil sets the value for HelpText to be an explicit nil
+func (o *NonEmployeeSchemaAttribute) SetHelpTextNil() {
+	o.HelpText.Set(nil)
 }
 
-// GetPlaceholder returns the Placeholder field value if set, zero value otherwise.
+// UnsetHelpText ensures that no value is present for HelpText, not even an explicit nil
+func (o *NonEmployeeSchemaAttribute) UnsetHelpText() {
+	o.HelpText.Unset()
+}
+
+// GetPlaceholder returns the Placeholder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NonEmployeeSchemaAttribute) GetPlaceholder() string {
-	if o == nil || IsNil(o.Placeholder) {
+	if o == nil || IsNil(o.Placeholder.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Placeholder
+	return *o.Placeholder.Get()
 }
 
 // GetPlaceholderOk returns a tuple with the Placeholder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NonEmployeeSchemaAttribute) GetPlaceholderOk() (*string, bool) {
-	if o == nil || IsNil(o.Placeholder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Placeholder, true
+	return o.Placeholder.Get(), o.Placeholder.IsSet()
 }
 
 // HasPlaceholder returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasPlaceholder() bool {
-	if o != nil && !IsNil(o.Placeholder) {
+	if o != nil && o.Placeholder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPlaceholder gets a reference to the given string and assigns it to the Placeholder field.
+// SetPlaceholder gets a reference to the given NullableString and assigns it to the Placeholder field.
 func (o *NonEmployeeSchemaAttribute) SetPlaceholder(v string) {
-	o.Placeholder = &v
+	o.Placeholder.Set(&v)
+}
+// SetPlaceholderNil sets the value for Placeholder to be an explicit nil
+func (o *NonEmployeeSchemaAttribute) SetPlaceholderNil() {
+	o.Placeholder.Set(nil)
+}
+
+// UnsetPlaceholder ensures that no value is present for Placeholder, not even an explicit nil
+func (o *NonEmployeeSchemaAttribute) UnsetPlaceholder() {
+	o.Placeholder.Unset()
 }
 
 // GetRequired returns the Required field value if set, zero value otherwise.
@@ -394,11 +414,11 @@ func (o NonEmployeeSchemaAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["label"] = o.Label
 	toSerialize["technicalName"] = o.TechnicalName
-	if !IsNil(o.HelpText) {
-		toSerialize["helpText"] = o.HelpText
+	if o.HelpText.IsSet() {
+		toSerialize["helpText"] = o.HelpText.Get()
 	}
-	if !IsNil(o.Placeholder) {
-		toSerialize["placeholder"] = o.Placeholder
+	if o.Placeholder.IsSet() {
+		toSerialize["placeholder"] = o.Placeholder.Get()
 	}
 	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required

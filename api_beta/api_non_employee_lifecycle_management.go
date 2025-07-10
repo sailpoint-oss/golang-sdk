@@ -48,6 +48,8 @@ Approves a non-employee approval request and notifies the next approver.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee approval item id (UUID)
  @return ApiApproveNonEmployeeRequestRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequest(ctx context.Context, id string) ApiApproveNonEmployeeRequestRequest {
 	return ApiApproveNonEmployeeRequestRequest{
@@ -59,6 +61,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequest(ctx
 
 // Execute executes the request
 //  @return NonEmployeeApprovalItem
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestExecute(r ApiApproveNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -217,6 +220,8 @@ Request will require the following security scope:
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeRecordRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecord(ctx context.Context) ApiCreateNonEmployeeRecordRequest {
 	return ApiCreateNonEmployeeRecordRequest{
@@ -227,6 +232,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecord(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeRecord
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordExecute(r ApiCreateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -382,6 +388,8 @@ This request will create a non-employee request and notify the approver
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeRequestRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequest(ctx context.Context) ApiCreateNonEmployeeRequestRequest {
 	return ApiCreateNonEmployeeRequestRequest{
@@ -392,6 +400,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequest(ctx 
 
 // Execute executes the request
 //  @return NonEmployeeRequest
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestExecute(r ApiCreateNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -547,6 +556,8 @@ Create a non-employee source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeSourceRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSource(ctx context.Context) ApiCreateNonEmployeeSourceRequest {
 	return ApiCreateNonEmployeeSourceRequest{
@@ -557,6 +568,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSource(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeSourceWithCloudExternalId
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceExecute(r ApiCreateNonEmployeeSourceRequest) (*NonEmployeeSourceWithCloudExternalId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -713,6 +725,8 @@ This API creates a new schema attribute for Non-Employee Source. The schema tech
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
  @return ApiCreateNonEmployeeSourceSchemaAttributesRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiCreateNonEmployeeSourceSchemaAttributesRequest {
 	return ApiCreateNonEmployeeSourceSchemaAttributesRequest{
@@ -724,6 +738,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributesExecute(r ApiCreateNonEmployeeSourceSchemaAttributesRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -875,6 +890,8 @@ This request will delete a non-employee record.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee record id (UUID)
  @return ApiDeleteNonEmployeeRecordRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecord(ctx context.Context, id string) ApiDeleteNonEmployeeRecordRequest {
 	return ApiDeleteNonEmployeeRecordRequest{
@@ -885,6 +902,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecord(ctx c
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordExecute(r ApiDeleteNonEmployeeRecordRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1028,6 +1046,8 @@ Request will require the following scope:
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNonEmployeeRecordInBulkRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordInBulk(ctx context.Context) ApiDeleteNonEmployeeRecordInBulkRequest {
 	return ApiDeleteNonEmployeeRecordInBulkRequest{
@@ -1037,6 +1057,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordInBulk
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordInBulkExecute(r ApiDeleteNonEmployeeRecordInBulkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1177,6 +1198,8 @@ This request will delete a non-employee request.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee request id in the UUID format
  @return ApiDeleteNonEmployeeRequestRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequest(ctx context.Context, id string) ApiDeleteNonEmployeeRequestRequest {
 	return ApiDeleteNonEmployeeRequestRequest{
@@ -1187,6 +1210,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequest(ctx 
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestExecute(r ApiDeleteNonEmployeeRequestRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1337,6 +1361,8 @@ This end-point deletes a specific schema attribute for a non-employee source.
  @param attributeId The Schema Attribute Id (UUID)
  @param sourceId The Source id
  @return ApiDeleteNonEmployeeSchemaAttributeRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiDeleteNonEmployeeSchemaAttributeRequest {
 	return ApiDeleteNonEmployeeSchemaAttributeRequest{
@@ -1348,6 +1374,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttributeExecute(r ApiDeleteNonEmployeeSchemaAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1485,6 +1512,8 @@ This request will delete a non-employee source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
  @return ApiDeleteNonEmployeeSourceRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSource(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceRequest {
 	return ApiDeleteNonEmployeeSourceRequest{
@@ -1495,6 +1524,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSource(ctx c
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceExecute(r ApiDeleteNonEmployeeSourceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1631,6 +1661,8 @@ This end-point deletes all custom schema attributes for a non-employee source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
  @return ApiDeleteNonEmployeeSourceSchemaAttributesRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceSchemaAttributesRequest {
 	return ApiDeleteNonEmployeeSourceSchemaAttributesRequest{
@@ -1641,6 +1673,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 }
 
 // Execute executes the request
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchemaAttributesExecute(r ApiDeleteNonEmployeeSourceSchemaAttributesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1759,322 +1792,6 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 	return localVarHTTPResponse, nil
 }
 
-type ApiExportNonEmployeeRecordsRequest struct {
-	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementAPIService
-	id string
-}
-
-func (r ApiExportNonEmployeeRecordsRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ExportNonEmployeeRecordsExecute(r)
-}
-
-/*
-ExportNonEmployeeRecords Exports non-employee records to csv
-
-This requests a CSV download for all non-employees from a provided source.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source Id (UUID)
- @return ApiExportNonEmployeeRecordsRequest
-*/
-func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecords(ctx context.Context, id string) ApiExportNonEmployeeRecordsRequest {
-	return ApiExportNonEmployeeRecordsRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsExecute(r ApiExportNonEmployeeRecordsRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ExportNonEmployeeRecords")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/non-employee-sources/{id}/non-employees/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiExportNonEmployeeSourceSchemaTemplateRequest struct {
-	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementAPIService
-	id string
-}
-
-func (r ApiExportNonEmployeeSourceSchemaTemplateRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ExportNonEmployeeSourceSchemaTemplateExecute(r)
-}
-
-/*
-ExportNonEmployeeSourceSchemaTemplate Exports source schema template
-
-This requests a download for the Source Schema Template for a provided source.
-Request will require the following security scope:
-idn:nesr:read'
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source Id (UUID)
- @return ApiExportNonEmployeeSourceSchemaTemplateRequest
-*/
-func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchemaTemplate(ctx context.Context, id string) ApiExportNonEmployeeSourceSchemaTemplateRequest {
-	return ApiExportNonEmployeeSourceSchemaTemplateRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchemaTemplateExecute(r ApiExportNonEmployeeSourceSchemaTemplateRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ExportNonEmployeeSourceSchemaTemplate")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/non-employee-sources/{id}/schema-attributes-template/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiGetNonEmployeeApprovalRequest struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
@@ -2093,13 +1810,15 @@ func (r ApiGetNonEmployeeApprovalRequest) Execute() (*NonEmployeeApprovalItemDet
 }
 
 /*
-GetNonEmployeeApproval Get a non-employee approval item detail
+GetNonEmployeeApproval A non-employee approval item detail
 
 Approves a non-employee approval request and notifies the next approver.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee approval item id (UUID)
  @return ApiGetNonEmployeeApprovalRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApproval(ctx context.Context, id string) ApiGetNonEmployeeApprovalRequest {
 	return ApiGetNonEmployeeApprovalRequest{
@@ -2111,6 +1830,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApproval(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeApprovalItemDetail
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalExecute(r ApiGetNonEmployeeApprovalRequest) (*NonEmployeeApprovalItemDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2253,13 +1973,15 @@ func (r ApiGetNonEmployeeApprovalSummaryRequest) Execute() (*NonEmployeeApproval
 }
 
 /*
-GetNonEmployeeApprovalSummary Get summary of non-employee approval requests
+GetNonEmployeeApprovalSummary Summary of non-employee approval requests
 
 This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id. 2. The current user is an approver, in which case "me" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param requestedFor The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
  @return ApiGetNonEmployeeApprovalSummaryRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeApprovalSummaryRequest {
 	return ApiGetNonEmployeeApprovalSummaryRequest{
@@ -2271,6 +1993,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 
 // Execute executes the request
 //  @return NonEmployeeApprovalSummary
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummaryExecute(r ApiGetNonEmployeeApprovalSummaryRequest) (*NonEmployeeApprovalSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2418,6 +2141,8 @@ The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID (UUID)
  @return ApiGetNonEmployeeBulkUploadStatusRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatus(ctx context.Context, id string) ApiGetNonEmployeeBulkUploadStatusRequest {
 	return ApiGetNonEmployeeBulkUploadStatusRequest{
@@ -2429,6 +2154,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 
 // Execute executes the request
 //  @return NonEmployeeBulkUploadStatus
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatusExecute(r ApiGetNonEmployeeBulkUploadStatusRequest) (*NonEmployeeBulkUploadStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2557,6 +2283,328 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetNonEmployeeExportRecordsRequest struct {
+	ctx context.Context
+	ApiService *NonEmployeeLifecycleManagementAPIService
+	id string
+}
+
+func (r ApiGetNonEmployeeExportRecordsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetNonEmployeeExportRecordsExecute(r)
+}
+
+/*
+GetNonEmployeeExportRecords Exports non-employee records to csv
+
+This requests a CSV download for all non-employees from a provided source.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Source Id (UUID)
+ @return ApiGetNonEmployeeExportRecordsRequest
+
+Deprecated
+*/
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeExportRecords(ctx context.Context, id string) ApiGetNonEmployeeExportRecordsRequest {
+	return ApiGetNonEmployeeExportRecordsRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+// Deprecated
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeExportRecordsExecute(r ApiGetNonEmployeeExportRecordsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeExportRecords")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/non-employee-sources/{id}/non-employees/download"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetNonEmployeeExportSourceSchemaTemplateRequest struct {
+	ctx context.Context
+	ApiService *NonEmployeeLifecycleManagementAPIService
+	id string
+}
+
+func (r ApiGetNonEmployeeExportSourceSchemaTemplateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetNonEmployeeExportSourceSchemaTemplateExecute(r)
+}
+
+/*
+GetNonEmployeeExportSourceSchemaTemplate Exports source schema template
+
+This requests a download for the Source Schema Template for a provided source.
+Request will require the following security scope:
+idn:nesr:read'
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Source Id (UUID)
+ @return ApiGetNonEmployeeExportSourceSchemaTemplateRequest
+
+Deprecated
+*/
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeExportSourceSchemaTemplate(ctx context.Context, id string) ApiGetNonEmployeeExportSourceSchemaTemplateRequest {
+	return ApiGetNonEmployeeExportSourceSchemaTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+// Deprecated
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeExportSourceSchemaTemplateExecute(r ApiGetNonEmployeeExportSourceSchemaTemplateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeExportSourceSchemaTemplate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/non-employee-sources/{id}/schema-attributes-template/download"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetNonEmployeeRecordRequest struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
@@ -2575,6 +2623,8 @@ This gets a non-employee record.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee record id (UUID)
  @return ApiGetNonEmployeeRecordRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecord(ctx context.Context, id string) ApiGetNonEmployeeRecordRequest {
 	return ApiGetNonEmployeeRecordRequest{
@@ -2586,6 +2636,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecord(ctx cont
 
 // Execute executes the request
 //  @return NonEmployeeRecord
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordExecute(r ApiGetNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2732,6 +2783,8 @@ This gets a non-employee request.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee request id (UUID)
  @return ApiGetNonEmployeeRequestRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequest(ctx context.Context, id string) ApiGetNonEmployeeRequestRequest {
 	return ApiGetNonEmployeeRequestRequest{
@@ -2743,6 +2796,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequest(ctx con
 
 // Execute executes the request
 //  @return NonEmployeeRequest
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestExecute(r ApiGetNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2900,6 +2954,8 @@ This request will retrieve a summary of non-employee requests. There are two con
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param requestedFor The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
  @return ApiGetNonEmployeeRequestSummaryRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeRequestSummaryRequest {
 	return ApiGetNonEmployeeRequestSummaryRequest{
@@ -2911,6 +2967,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummary(
 
 // Execute executes the request
 //  @return NonEmployeeRequestSummary
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryExecute(r ApiGetNonEmployeeRequestSummaryRequest) (*NonEmployeeRequestSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3059,6 +3116,8 @@ This API gets a schema attribute by Id for the specified Non-Employee SourceId.
  @param attributeId The Schema Attribute Id (UUID)
  @param sourceId The Source id
  @return ApiGetNonEmployeeSchemaAttributeRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiGetNonEmployeeSchemaAttributeRequest {
 	return ApiGetNonEmployeeSchemaAttributeRequest{
@@ -3071,6 +3130,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttributeExecute(r ApiGetNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3218,6 +3278,8 @@ This gets a non-employee source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
  @return ApiGetNonEmployeeSourceRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSource(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceRequest {
 	return ApiGetNonEmployeeSourceRequest{
@@ -3229,6 +3291,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSource(ctx cont
 
 // Execute executes the request
 //  @return NonEmployeeSource
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceExecute(r ApiGetNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3361,6 +3424,20 @@ type ApiGetNonEmployeeSourceSchemaAttributesRequest struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
+	limit *int32
+	offset *int32
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetNonEmployeeSourceSchemaAttributesRequest) Limit(limit int32) ApiGetNonEmployeeSourceSchemaAttributesRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetNonEmployeeSourceSchemaAttributesRequest) Offset(offset int32) ApiGetNonEmployeeSourceSchemaAttributesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiGetNonEmployeeSourceSchemaAttributesRequest) Execute() ([]NonEmployeeSchemaAttribute, *http.Response, error) {
@@ -3375,6 +3452,8 @@ This API gets the list of schema attributes for the specified Non-Employee Sourc
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
  @return ApiGetNonEmployeeSourceSchemaAttributesRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceSchemaAttributesRequest {
 	return ApiGetNonEmployeeSourceSchemaAttributesRequest{
@@ -3386,6 +3465,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 
 // Execute executes the request
 //  @return []NonEmployeeSchemaAttribute
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributesExecute(r ApiGetNonEmployeeSourceSchemaAttributesRequest) ([]NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3406,6 +3486,18 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3551,6 +3643,8 @@ Request will need the following security scope:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id (UUID)
  @return ApiImportNonEmployeeRecordsInBulkRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulk(ctx context.Context, id string) ApiImportNonEmployeeRecordsInBulkRequest {
 	return ApiImportNonEmployeeRecordsInBulkRequest{
@@ -3562,6 +3656,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 
 // Execute executes the request
 //  @return NonEmployeeBulkUploadJob
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulkExecute(r ApiImportNonEmployeeRecordsInBulkRequest) (*NonEmployeeBulkUploadJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3771,12 +3866,14 @@ func (r ApiListNonEmployeeApprovalRequest) Execute() ([]NonEmployeeApprovalItem,
 }
 
 /*
-ListNonEmployeeApproval Get list of non-employee approval requests
+ListNonEmployeeApproval List of non-employee approval requests
 
 This gets a list of non-employee approval requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeApprovalRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApproval(ctx context.Context) ApiListNonEmployeeApprovalRequest {
 	return ApiListNonEmployeeApprovalRequest{
@@ -3787,6 +3884,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApproval(ctx c
 
 // Execute executes the request
 //  @return []NonEmployeeApprovalItem
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalExecute(r ApiListNonEmployeeApprovalRequest) ([]NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3992,6 +4090,8 @@ This gets a list of non-employee records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeRecordsRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecords(ctx context.Context) ApiListNonEmployeeRecordsRequest {
 	return ApiListNonEmployeeRecordsRequest{
@@ -4002,6 +4102,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecords(ctx co
 
 // Execute executes the request
 //  @return []NonEmployeeRecord
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsExecute(r ApiListNonEmployeeRecordsRequest) ([]NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -4211,6 +4312,8 @@ This gets a list of non-employee requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeRequestsRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequests(ctx context.Context) ApiListNonEmployeeRequestsRequest {
 	return ApiListNonEmployeeRequestsRequest{
@@ -4221,6 +4324,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequests(ctx c
 
 // Execute executes the request
 //  @return []NonEmployeeRequest
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsExecute(r ApiListNonEmployeeRequestsRequest) ([]NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -4436,6 +4540,8 @@ Get a list of non-employee sources. There are two contextual uses for the `reque
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeSourcesRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSources(ctx context.Context) ApiListNonEmployeeSourcesRequest {
 	return ApiListNonEmployeeSourcesRequest{
@@ -4446,6 +4552,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSources(ctx co
 
 // Execute executes the request
 //  @return []NonEmployeeSourceWithNECount
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute(r ApiListNonEmployeeSourcesRequest) ([]NonEmployeeSourceWithNECount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -4628,6 +4735,8 @@ This request will patch a non-employee record.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-employee record id (UUID)
  @return ApiPatchNonEmployeeRecordRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecord(ctx context.Context, id string) ApiPatchNonEmployeeRecordRequest {
 	return ApiPatchNonEmployeeRecordRequest{
@@ -4639,6 +4748,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecord(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeRecord
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordExecute(r ApiPatchNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -4811,6 +4921,8 @@ This end-point patches a specific schema attribute for a non-employee SourceId.
  @param attributeId The Schema Attribute Id (UUID)
  @param sourceId The Source id
  @return ApiPatchNonEmployeeSchemaAttributeRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiPatchNonEmployeeSchemaAttributeRequest {
 	return ApiPatchNonEmployeeSchemaAttributeRequest{
@@ -4823,6 +4935,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttributeExecute(r ApiPatchNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -4993,6 +5106,8 @@ patch a non-employee source. (Partial Update)  Patchable field: **name, descript
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
  @return ApiPatchNonEmployeeSourceRequest
+
+Deprecated
 */
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSource(ctx context.Context, sourceId string) ApiPatchNonEmployeeSourceRequest {
 	return ApiPatchNonEmployeeSourceRequest{
@@ -5004,6 +5119,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSource(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeSource
+// Deprecated
 func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceExecute(r ApiPatchNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -5137,175 +5253,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRejectNonEmployeeRequestRequest struct {
-	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementAPIService
-	id string
-	nonEmployeeRejectApprovalDecision *NonEmployeeRejectApprovalDecision
-}
-
-func (r ApiRejectNonEmployeeRequestRequest) NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision NonEmployeeRejectApprovalDecision) ApiRejectNonEmployeeRequestRequest {
-	r.nonEmployeeRejectApprovalDecision = &nonEmployeeRejectApprovalDecision
-	return r
-}
-
-func (r ApiRejectNonEmployeeRequestRequest) Execute() (*NonEmployeeApprovalItem, *http.Response, error) {
-	return r.ApiService.RejectNonEmployeeRequestExecute(r)
-}
-
-/*
-RejectNonEmployeeRequest Reject a non-employee request
-
-This endpoint will reject an approval item request and notify user.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Non-Employee approval item id (UUID)
- @return ApiRejectNonEmployeeRequestRequest
-*/
-func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequest(ctx context.Context, id string) ApiRejectNonEmployeeRequestRequest {
-	return ApiRejectNonEmployeeRequestRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return NonEmployeeApprovalItem
-func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestExecute(r ApiRejectNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NonEmployeeApprovalItem
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.RejectNonEmployeeRequest")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/non-employee-approvals/{id}/reject"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.nonEmployeeRejectApprovalDecision == nil {
-		return localVarReturnValue, nil, reportError("nonEmployeeRejectApprovalDecision is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.nonEmployeeRejectApprovalDecision
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateNonEmployeeRecordRequest struct {
+type ApiPutNonEmployeeRecordRequest struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
@@ -5313,26 +5261,28 @@ type ApiUpdateNonEmployeeRecordRequest struct {
 }
 
 // Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
-func (r ApiUpdateNonEmployeeRecordRequest) NonEmployeeRequestBody(nonEmployeeRequestBody NonEmployeeRequestBody) ApiUpdateNonEmployeeRecordRequest {
+func (r ApiPutNonEmployeeRecordRequest) NonEmployeeRequestBody(nonEmployeeRequestBody NonEmployeeRequestBody) ApiPutNonEmployeeRecordRequest {
 	r.nonEmployeeRequestBody = &nonEmployeeRequestBody
 	return r
 }
 
-func (r ApiUpdateNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.Response, error) {
-	return r.ApiService.UpdateNonEmployeeRecordExecute(r)
+func (r ApiPutNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.Response, error) {
+	return r.ApiService.PutNonEmployeeRecordExecute(r)
 }
 
 /*
-UpdateNonEmployeeRecord Update non-employee record
+PutNonEmployeeRecord Update non-employee record
 
 This request will update a non-employee record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-employee record id (UUID)
- @return ApiUpdateNonEmployeeRecordRequest
+ @return ApiPutNonEmployeeRecordRequest
+
+Deprecated
 */
-func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecord(ctx context.Context, id string) ApiUpdateNonEmployeeRecordRequest {
-	return ApiUpdateNonEmployeeRecordRequest{
+func (a *NonEmployeeLifecycleManagementAPIService) PutNonEmployeeRecord(ctx context.Context, id string) ApiPutNonEmployeeRecordRequest {
+	return ApiPutNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -5341,7 +5291,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecord(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecute(r ApiUpdateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
+// Deprecated
+func (a *NonEmployeeLifecycleManagementAPIService) PutNonEmployeeRecordExecute(r ApiPutNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5349,7 +5300,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecut
 		localVarReturnValue  *NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.UpdateNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PutNonEmployeeRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5439,6 +5390,177 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRejectNonEmployeeRequestRequest struct {
+	ctx context.Context
+	ApiService *NonEmployeeLifecycleManagementAPIService
+	id string
+	nonEmployeeRejectApprovalDecision *NonEmployeeRejectApprovalDecision
+}
+
+func (r ApiRejectNonEmployeeRequestRequest) NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision NonEmployeeRejectApprovalDecision) ApiRejectNonEmployeeRequestRequest {
+	r.nonEmployeeRejectApprovalDecision = &nonEmployeeRejectApprovalDecision
+	return r
+}
+
+func (r ApiRejectNonEmployeeRequestRequest) Execute() (*NonEmployeeApprovalItem, *http.Response, error) {
+	return r.ApiService.RejectNonEmployeeRequestExecute(r)
+}
+
+/*
+RejectNonEmployeeRequest Reject a non-employee request
+
+This endpoint will reject an approval item request and notify user.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Non-Employee approval item id (UUID)
+ @return ApiRejectNonEmployeeRequestRequest
+
+Deprecated
+*/
+func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequest(ctx context.Context, id string) ApiRejectNonEmployeeRequestRequest {
+	return ApiRejectNonEmployeeRequestRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return NonEmployeeApprovalItem
+// Deprecated
+func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestExecute(r ApiRejectNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NonEmployeeApprovalItem
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.RejectNonEmployeeRequest")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/non-employee-approvals/{id}/reject"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.nonEmployeeRejectApprovalDecision == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeRejectApprovalDecision is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.nonEmployeeRejectApprovalDecision
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
