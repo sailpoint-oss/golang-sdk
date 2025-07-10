@@ -721,13 +721,6 @@ type ApiDeleteAccountsAsyncRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteAccountsAsyncRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteAccountsAsyncRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteAccountsAsyncRequest) Execute() (*TaskResultDto, *http.Response, error) {
@@ -735,7 +728,7 @@ func (r ApiDeleteAccountsAsyncRequest) Execute() (*TaskResultDto, *http.Response
 }
 
 /*
-DeleteAccountsAsync Remove all accounts in a source
+DeleteAccountsAsync Remove all accounts in source
 
 Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
 
@@ -778,15 +771,6 @@ func (a *SourcesAPIService) DeleteAccountsAsyncExecute(r ApiDeleteAccountsAsyncR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -805,7 +789,6 @@ func (a *SourcesAPIService) DeleteAccountsAsyncExecute(r ApiDeleteAccountsAsyncR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4292,15 +4275,8 @@ type ApiImportAccountsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
 	file *os.File
 	disableOptimization *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiImportAccountsRequest) XSailPointExperimental(xSailPointExperimental string) ApiImportAccountsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The CSV file containing the source accounts to aggregate.
@@ -4359,15 +4335,6 @@ func (a *SourcesAPIService) ImportAccountsExecute(r ApiImportAccountsRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -4386,7 +4353,6 @@ func (a *SourcesAPIService) ImportAccountsExecute(r ApiImportAccountsRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte
@@ -5255,14 +5221,7 @@ type ApiImportUncorrelatedAccountsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
 	file *os.File
-}
-
-// Use this header to enable this experimental API.
-func (r ApiImportUncorrelatedAccountsRequest) XSailPointExperimental(xSailPointExperimental string) ApiImportUncorrelatedAccountsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiImportUncorrelatedAccountsRequest) File(file *os.File) ApiImportUncorrelatedAccountsRequest {
@@ -5312,15 +5271,6 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsExecute(r ApiImportUncorre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -5339,7 +5289,6 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsExecute(r ApiImportUncorre
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte

@@ -657,7 +657,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**CreateSource**](docs/SourcesAPI.md#createsource) | **Post** /sources | Creates a source in identitynow.
 *SourcesAPI* | [**CreateSourceSchedule**](docs/SourcesAPI.md#createsourceschedule) | **Post** /sources/{sourceId}/schedules | Create schedule on source
 *SourcesAPI* | [**CreateSourceSchema**](docs/SourcesAPI.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Create schema on source
-*SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove all accounts in a source
+*SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove all accounts in source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesAPI.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesAPI* | [**DeleteProvisioningPolicy**](docs/SourcesAPI.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
 *SourcesAPI* | [**DeleteSource**](docs/SourcesAPI.md#deletesource) | **Delete** /sources/{id} | Delete source by id

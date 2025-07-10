@@ -373,13 +373,6 @@ type ApiDeleteAccountAsyncRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteAccountAsyncRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteAccountAsyncRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteAccountAsyncRequest) Execute() (*TaskResultDto, *http.Response, error) {
@@ -430,15 +423,6 @@ func (a *AccountsAPIService) DeleteAccountAsyncExecute(r ApiDeleteAccountAsyncRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -457,7 +441,6 @@ func (a *AccountsAPIService) DeleteAccountAsyncExecute(r ApiDeleteAccountAsyncRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -732,13 +715,6 @@ type ApiDisableAccountForIdentityRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDisableAccountForIdentityRequest) XSailPointExperimental(xSailPointExperimental string) ApiDisableAccountForIdentityRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDisableAccountForIdentityRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -783,15 +759,6 @@ func (a *AccountsAPIService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -810,7 +777,6 @@ func (a *AccountsAPIService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -916,14 +882,7 @@ func (a *AccountsAPIService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 type ApiDisableAccountsForIdentitiesRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
-	xSailPointExperimental *string
 	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDisableAccountsForIdentitiesRequest) XSailPointExperimental(xSailPointExperimental string) ApiDisableAccountsForIdentitiesRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDisableAccountsForIdentitiesRequest) IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest IdentitiesAccountsBulkRequest) ApiDisableAccountsForIdentitiesRequest {
@@ -970,21 +929,6 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesExecute(r ApiDisableAcc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identitiesAccountsBulkRequest == nil {
 		return localVarReturnValue, nil, reportError("identitiesAccountsBulkRequest is required and must be specified")
 	}
@@ -1006,7 +950,6 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesExecute(r ApiDisableAcc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identitiesAccountsBulkRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1283,13 +1226,6 @@ type ApiEnableAccountForIdentityRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiEnableAccountForIdentityRequest) XSailPointExperimental(xSailPointExperimental string) ApiEnableAccountForIdentityRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiEnableAccountForIdentityRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1334,15 +1270,6 @@ func (a *AccountsAPIService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1361,7 +1288,6 @@ func (a *AccountsAPIService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1467,14 +1393,7 @@ func (a *AccountsAPIService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 type ApiEnableAccountsForIdentitiesRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
-	xSailPointExperimental *string
 	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiEnableAccountsForIdentitiesRequest) XSailPointExperimental(xSailPointExperimental string) ApiEnableAccountsForIdentitiesRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiEnableAccountsForIdentitiesRequest) IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest IdentitiesAccountsBulkRequest) ApiEnableAccountsForIdentitiesRequest {
@@ -1521,21 +1440,6 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesExecute(r ApiEnableAccou
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identitiesAccountsBulkRequest == nil {
 		return localVarReturnValue, nil, reportError("identitiesAccountsBulkRequest is required and must be specified")
 	}
@@ -1557,7 +1461,6 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesExecute(r ApiEnableAccou
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identitiesAccountsBulkRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

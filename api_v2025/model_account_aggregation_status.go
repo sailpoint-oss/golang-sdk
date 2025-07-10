@@ -28,6 +28,14 @@ type AccountAggregationStatus struct {
 	TotalAccounts *int32 `json:"totalAccounts,omitempty"`
 	// The number of *NEW, CHANGED and DELETED* accounts that have been processed so far. This reflects the number of accounts that have been processed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
 	ProcessedAccounts *int32 `json:"processedAccounts,omitempty"`
+	// The total number of accounts that have been marked for deletion during the aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+	TotalAccountsMarkedForDeletion *int32 `json:"totalAccountsMarkedForDeletion,omitempty"`
+	// The number of accounts that have been deleted during the aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+	DeletedAccounts *int32 `json:"deletedAccounts,omitempty"`
+	// The total number of unique identities that have been marked for refresh. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+	TotalIdentities *int32 `json:"totalIdentities,omitempty"`
+	// The number of unique identities that have been refreshed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+	ProcessedIdentities *int32 `json:"processedIdentities,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -188,6 +196,134 @@ func (o *AccountAggregationStatus) SetProcessedAccounts(v int32) {
 	o.ProcessedAccounts = &v
 }
 
+// GetTotalAccountsMarkedForDeletion returns the TotalAccountsMarkedForDeletion field value if set, zero value otherwise.
+func (o *AccountAggregationStatus) GetTotalAccountsMarkedForDeletion() int32 {
+	if o == nil || IsNil(o.TotalAccountsMarkedForDeletion) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalAccountsMarkedForDeletion
+}
+
+// GetTotalAccountsMarkedForDeletionOk returns a tuple with the TotalAccountsMarkedForDeletion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAggregationStatus) GetTotalAccountsMarkedForDeletionOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalAccountsMarkedForDeletion) {
+		return nil, false
+	}
+	return o.TotalAccountsMarkedForDeletion, true
+}
+
+// HasTotalAccountsMarkedForDeletion returns a boolean if a field has been set.
+func (o *AccountAggregationStatus) HasTotalAccountsMarkedForDeletion() bool {
+	if o != nil && !IsNil(o.TotalAccountsMarkedForDeletion) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalAccountsMarkedForDeletion gets a reference to the given int32 and assigns it to the TotalAccountsMarkedForDeletion field.
+func (o *AccountAggregationStatus) SetTotalAccountsMarkedForDeletion(v int32) {
+	o.TotalAccountsMarkedForDeletion = &v
+}
+
+// GetDeletedAccounts returns the DeletedAccounts field value if set, zero value otherwise.
+func (o *AccountAggregationStatus) GetDeletedAccounts() int32 {
+	if o == nil || IsNil(o.DeletedAccounts) {
+		var ret int32
+		return ret
+	}
+	return *o.DeletedAccounts
+}
+
+// GetDeletedAccountsOk returns a tuple with the DeletedAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAggregationStatus) GetDeletedAccountsOk() (*int32, bool) {
+	if o == nil || IsNil(o.DeletedAccounts) {
+		return nil, false
+	}
+	return o.DeletedAccounts, true
+}
+
+// HasDeletedAccounts returns a boolean if a field has been set.
+func (o *AccountAggregationStatus) HasDeletedAccounts() bool {
+	if o != nil && !IsNil(o.DeletedAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletedAccounts gets a reference to the given int32 and assigns it to the DeletedAccounts field.
+func (o *AccountAggregationStatus) SetDeletedAccounts(v int32) {
+	o.DeletedAccounts = &v
+}
+
+// GetTotalIdentities returns the TotalIdentities field value if set, zero value otherwise.
+func (o *AccountAggregationStatus) GetTotalIdentities() int32 {
+	if o == nil || IsNil(o.TotalIdentities) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalIdentities
+}
+
+// GetTotalIdentitiesOk returns a tuple with the TotalIdentities field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAggregationStatus) GetTotalIdentitiesOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalIdentities) {
+		return nil, false
+	}
+	return o.TotalIdentities, true
+}
+
+// HasTotalIdentities returns a boolean if a field has been set.
+func (o *AccountAggregationStatus) HasTotalIdentities() bool {
+	if o != nil && !IsNil(o.TotalIdentities) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalIdentities gets a reference to the given int32 and assigns it to the TotalIdentities field.
+func (o *AccountAggregationStatus) SetTotalIdentities(v int32) {
+	o.TotalIdentities = &v
+}
+
+// GetProcessedIdentities returns the ProcessedIdentities field value if set, zero value otherwise.
+func (o *AccountAggregationStatus) GetProcessedIdentities() int32 {
+	if o == nil || IsNil(o.ProcessedIdentities) {
+		var ret int32
+		return ret
+	}
+	return *o.ProcessedIdentities
+}
+
+// GetProcessedIdentitiesOk returns a tuple with the ProcessedIdentities field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAggregationStatus) GetProcessedIdentitiesOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProcessedIdentities) {
+		return nil, false
+	}
+	return o.ProcessedIdentities, true
+}
+
+// HasProcessedIdentities returns a boolean if a field has been set.
+func (o *AccountAggregationStatus) HasProcessedIdentities() bool {
+	if o != nil && !IsNil(o.ProcessedIdentities) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessedIdentities gets a reference to the given int32 and assigns it to the ProcessedIdentities field.
+func (o *AccountAggregationStatus) SetProcessedIdentities(v int32) {
+	o.ProcessedIdentities = &v
+}
+
 func (o AccountAggregationStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -209,6 +345,18 @@ func (o AccountAggregationStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProcessedAccounts) {
 		toSerialize["processedAccounts"] = o.ProcessedAccounts
+	}
+	if !IsNil(o.TotalAccountsMarkedForDeletion) {
+		toSerialize["totalAccountsMarkedForDeletion"] = o.TotalAccountsMarkedForDeletion
+	}
+	if !IsNil(o.DeletedAccounts) {
+		toSerialize["deletedAccounts"] = o.DeletedAccounts
+	}
+	if !IsNil(o.TotalIdentities) {
+		toSerialize["totalIdentities"] = o.TotalIdentities
+	}
+	if !IsNil(o.ProcessedIdentities) {
+		toSerialize["processedIdentities"] = o.ProcessedIdentities
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -236,6 +384,10 @@ func (o *AccountAggregationStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "totalAccounts")
 		delete(additionalProperties, "processedAccounts")
+		delete(additionalProperties, "totalAccountsMarkedForDeletion")
+		delete(additionalProperties, "deletedAccounts")
+		delete(additionalProperties, "totalIdentities")
+		delete(additionalProperties, "processedIdentities")
 		o.AdditionalProperties = additionalProperties
 	}
 
