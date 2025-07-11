@@ -79603,14 +79603,16 @@ components:
       description: Source configuration information that is used by correlation process.
       example:
         attributeAssignments:
-        - filterString: first_name == "John"
+        - sequence: 1
+          filterString: first_name == "John"
           ignoreCase: false
           complex: false
           property: first_name
           value: firstName
           operation: EQ
           matchMode: ANYWHERE
-        - filterString: first_name == "John"
+        - sequence: 1
+          filterString: first_name == "John"
           ignoreCase: false
           complex: false
           property: first_name
@@ -95997,6 +95999,7 @@ components:
     CorrelationConfig_attributeAssignments_inner:
       description: The attribute assignment of the correlation configuration.
       example:
+        sequence: 1
         filterString: first_name == "John"
         ignoreCase: false
         complex: false
@@ -96005,6 +96008,10 @@ components:
         operation: EQ
         matchMode: ANYWHERE
       properties:
+        sequence:
+          description: The sequence of the attribute assignment.
+          example: 1
+          type: integer
         property:
           description: The property of the attribute assignment.
           example: first_name

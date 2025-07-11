@@ -19,6 +19,8 @@ var _ MappedNullable = &CorrelationConfigAttributeAssignmentsInner{}
 
 // CorrelationConfigAttributeAssignmentsInner The attribute assignment of the correlation configuration.
 type CorrelationConfigAttributeAssignmentsInner struct {
+	// The sequence of the attribute assignment.
+	Sequence *int32 `json:"sequence,omitempty"`
 	// The property of the attribute assignment.
 	Property *string `json:"property,omitempty"`
 	// The value of the attribute assignment.
@@ -61,6 +63,38 @@ func NewCorrelationConfigAttributeAssignmentsInnerWithDefaults() *CorrelationCon
 	var ignoreCase bool = false
 	this.IgnoreCase = &ignoreCase
 	return &this
+}
+
+// GetSequence returns the Sequence field value if set, zero value otherwise.
+func (o *CorrelationConfigAttributeAssignmentsInner) GetSequence() int32 {
+	if o == nil || IsNil(o.Sequence) {
+		var ret int32
+		return ret
+	}
+	return *o.Sequence
+}
+
+// GetSequenceOk returns a tuple with the Sequence field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CorrelationConfigAttributeAssignmentsInner) GetSequenceOk() (*int32, bool) {
+	if o == nil || IsNil(o.Sequence) {
+		return nil, false
+	}
+	return o.Sequence, true
+}
+
+// HasSequence returns a boolean if a field has been set.
+func (o *CorrelationConfigAttributeAssignmentsInner) HasSequence() bool {
+	if o != nil && !IsNil(o.Sequence) {
+		return true
+	}
+
+	return false
+}
+
+// SetSequence gets a reference to the given int32 and assigns it to the Sequence field.
+func (o *CorrelationConfigAttributeAssignmentsInner) SetSequence(v int32) {
+	o.Sequence = &v
 }
 
 // GetProperty returns the Property field value if set, zero value otherwise.
@@ -297,6 +331,9 @@ func (o CorrelationConfigAttributeAssignmentsInner) MarshalJSON() ([]byte, error
 
 func (o CorrelationConfigAttributeAssignmentsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Sequence) {
+		toSerialize["sequence"] = o.Sequence
+	}
 	if !IsNil(o.Property) {
 		toSerialize["property"] = o.Property
 	}
@@ -340,6 +377,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) UnmarshalJSON(data []byte) 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "sequence")
 		delete(additionalProperties, "property")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "operation")
