@@ -77,7 +77,7 @@ type Configuration struct {
 func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "OpenAPI-Generator/2.3.3/go",
+		UserAgent:           "OpenAPI-Generator/2.3.4/go",
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}
@@ -88,7 +88,7 @@ func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 func NewCLIConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "SailPoint-CLI/2.3.3/go",
+		UserAgent:           "SailPoint-CLI/2.3.4/go",
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}
