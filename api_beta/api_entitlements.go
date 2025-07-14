@@ -1340,7 +1340,7 @@ func (r ApiListEntitlementsRequest) AccountId(accountId string) ApiListEntitleme
 	return r
 }
 
-// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user&#39;s Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
+// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.  Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
 func (r ApiListEntitlementsRequest) SegmentedForIdentity(segmentedForIdentity string) ApiListEntitlementsRequest {
 	r.segmentedForIdentity = &segmentedForIdentity
 	return r

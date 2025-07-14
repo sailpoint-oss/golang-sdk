@@ -12245,10 +12245,12 @@ paths:
         required: false
         schema:
           type: string
-      - description: |-
-          If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID.
-          Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
-        example: me
+      - description: "If present and not empty, additionally filters Entitlements\
+          \ to those which are assigned to the Segment(s) which are visible to the\
+          \ Identity with the specified ID. \nCannot be specified with the **account-id**\
+          \ or **for-segment-ids** param(s). It is also illegal to specify a value\
+          \ that refers to a different user's Identity."
+        example: e554098913544630b5985e9042f5e44b
         in: query
         name: segmented-for-identity
         required: false
@@ -12430,6 +12432,8 @@ paths:
       summary: Gets a list of entitlements.
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - Any
   /entitlements/{id}:
     get:
       description: This API returns an entitlement by its ID.
@@ -32959,6 +32963,7 @@ paths:
     get:
       description: |-
         Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v3/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
+        This endpoint only lists roles and access profiles. For gathering requestable entitlements, the [Entitlements List API](https://developer.sailpoint.com/docs/api/v2025/list-entitlements) can be used with the segmented-for-identity parameter.
         Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjects
       parameters:
