@@ -415,14 +415,7 @@ func (a *OrgConfigAPIService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesReq
 type ApiPatchOrgConfigRequest struct {
 	ctx context.Context
 	ApiService *OrgConfigAPIService
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchOrgConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchOrgConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -470,21 +463,6 @@ func (a *OrgConfigAPIService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -506,7 +484,6 @@ func (a *OrgConfigAPIService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
