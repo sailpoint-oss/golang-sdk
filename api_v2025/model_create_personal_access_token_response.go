@@ -34,6 +34,8 @@ type CreatePersonalAccessTokenResponse struct {
 	Created SailPointTime `json:"created"`
 	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
 	AccessTokenValiditySeconds int32 `json:"accessTokenValiditySeconds"`
+	// Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.
+	ExpirationDate SailPointTime `json:"expirationDate"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,7 +45,7 @@ type _CreatePersonalAccessTokenResponse CreatePersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created SailPointTime, accessTokenValiditySeconds int32) *CreatePersonalAccessTokenResponse {
+func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created SailPointTime, accessTokenValiditySeconds int32, expirationDate SailPointTime) *CreatePersonalAccessTokenResponse {
 	this := CreatePersonalAccessTokenResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -52,6 +54,7 @@ func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []stri
 	this.Owner = owner
 	this.Created = created
 	this.AccessTokenValiditySeconds = accessTokenValiditySeconds
+	this.ExpirationDate = expirationDate
 	return &this
 }
 
@@ -233,6 +236,30 @@ func (o *CreatePersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int3
 	o.AccessTokenValiditySeconds = v
 }
 
+// GetExpirationDate returns the ExpirationDate field value
+func (o *CreatePersonalAccessTokenResponse) GetExpirationDate() SailPointTime {
+	if o == nil {
+		var ret SailPointTime
+		return ret
+	}
+
+	return o.ExpirationDate
+}
+
+// GetExpirationDateOk returns a tuple with the ExpirationDate field value
+// and a boolean to check if the value has been set.
+func (o *CreatePersonalAccessTokenResponse) GetExpirationDateOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpirationDate, true
+}
+
+// SetExpirationDate sets field value
+func (o *CreatePersonalAccessTokenResponse) SetExpirationDate(v SailPointTime) {
+	o.ExpirationDate = v
+}
+
 func (o CreatePersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -252,6 +279,7 @@ func (o CreatePersonalAccessTokenResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["owner"] = o.Owner
 	toSerialize["created"] = o.Created
 	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
+	toSerialize["expirationDate"] = o.ExpirationDate
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -272,6 +300,7 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		"owner",
 		"created",
 		"accessTokenValiditySeconds",
+		"expirationDate",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -308,6 +337,7 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "accessTokenValiditySeconds")
+		delete(additionalProperties, "expirationDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

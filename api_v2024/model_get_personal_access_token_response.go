@@ -34,6 +34,10 @@ type GetPersonalAccessTokenResponse struct {
 	LastUsed NullableTime `json:"lastUsed,omitempty"`
 	// If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.
 	Managed *bool `json:"managed,omitempty"`
+	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
+	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
+	// Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.
+	ExpirationDate *SailPointTime `json:"expirationDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -52,6 +56,8 @@ func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, o
 	this.Created = created
 	var managed bool = false
 	this.Managed = &managed
+	var accessTokenValiditySeconds int32 = 43200
+	this.AccessTokenValiditySeconds = &accessTokenValiditySeconds
 	return &this
 }
 
@@ -62,6 +68,8 @@ func NewGetPersonalAccessTokenResponseWithDefaults() *GetPersonalAccessTokenResp
 	this := GetPersonalAccessTokenResponse{}
 	var managed bool = false
 	this.Managed = &managed
+	var accessTokenValiditySeconds int32 = 43200
+	this.AccessTokenValiditySeconds = &accessTokenValiditySeconds
 	return &this
 }
 
@@ -261,6 +269,70 @@ func (o *GetPersonalAccessTokenResponse) SetManaged(v bool) {
 	o.Managed = &v
 }
 
+// GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value if set, zero value otherwise.
+func (o *GetPersonalAccessTokenResponse) GetAccessTokenValiditySeconds() int32 {
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
+		var ret int32
+		return ret
+	}
+	return *o.AccessTokenValiditySeconds
+}
+
+// GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPersonalAccessTokenResponse) GetAccessTokenValiditySecondsOk() (*int32, bool) {
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
+		return nil, false
+	}
+	return o.AccessTokenValiditySeconds, true
+}
+
+// HasAccessTokenValiditySeconds returns a boolean if a field has been set.
+func (o *GetPersonalAccessTokenResponse) HasAccessTokenValiditySeconds() bool {
+	if o != nil && !IsNil(o.AccessTokenValiditySeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessTokenValiditySeconds gets a reference to the given int32 and assigns it to the AccessTokenValiditySeconds field.
+func (o *GetPersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int32) {
+	o.AccessTokenValiditySeconds = &v
+}
+
+// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
+func (o *GetPersonalAccessTokenResponse) GetExpirationDate() SailPointTime {
+	if o == nil || IsNil(o.ExpirationDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.ExpirationDate
+}
+
+// GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPersonalAccessTokenResponse) GetExpirationDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.ExpirationDate) {
+		return nil, false
+	}
+	return o.ExpirationDate, true
+}
+
+// HasExpirationDate returns a boolean if a field has been set.
+func (o *GetPersonalAccessTokenResponse) HasExpirationDate() bool {
+	if o != nil && !IsNil(o.ExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationDate gets a reference to the given SailPointTime and assigns it to the ExpirationDate field.
+func (o *GetPersonalAccessTokenResponse) SetExpirationDate(v SailPointTime) {
+	o.ExpirationDate = &v
+}
+
 func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -283,6 +355,12 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
+	}
+	if !IsNil(o.AccessTokenValiditySeconds) {
+		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
+	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expirationDate"] = o.ExpirationDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -338,6 +416,8 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "lastUsed")
 		delete(additionalProperties, "managed")
+		delete(additionalProperties, "accessTokenValiditySeconds")
+		delete(additionalProperties, "expirationDate")
 		o.AdditionalProperties = additionalProperties
 	}
 
