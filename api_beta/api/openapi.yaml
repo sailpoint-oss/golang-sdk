@@ -57309,19 +57309,6 @@ paths:
           minimum: 0
           type: integer
       - description: |-
-          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: true
-        in: query
-        name: count
-        required: false
-        schema:
-          default: false
-          type: boolean
-      - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
@@ -57424,6 +57411,10 @@ paths:
       summary: List workflow executions
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_SUBADMIN
+      - SOURCE_ADMIN
   /workflow-executions/{id}:
     get:
       description: "Get a single workflow execution. Workflow executions are available\
