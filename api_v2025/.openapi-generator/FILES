@@ -30,6 +30,7 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
+api_custom_user_levels.go
 api_data_segmentation.go
 api_dimensions.go
 api_entitlements.go
@@ -490,6 +491,8 @@ docs/CustomFormsAPIdeveloperSite_code_examples.yaml
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsAPI.md
 docs/CustomPasswordInstructionsAPIdeveloperSite_code_examples.yaml
+docs/CustomUserLevelsAPI.md
+docs/CustomUserLevelsAPIdeveloperSite_code_examples.yaml
 docs/DataAccess.md
 docs/DataAccessCategoriesInner.md
 docs/DataAccessImpactScore.md
@@ -615,6 +618,7 @@ docs/GlobalTenantSecuritySettingsAPIdeveloperSite_code_examples.yaml
 docs/GovernanceGroupsAPI.md
 docs/GovernanceGroupsAPIdeveloperSite_code_examples.yaml
 docs/GrantType.md
+docs/HierarchicalRightSet.md
 docs/HttpAuthenticationType.md
 docs/HttpConfig.md
 docs/HttpDispatchMode.md
@@ -829,6 +833,7 @@ docs/MultiHostSources.md
 docs/MultiPolicyRequest.md
 docs/NativeChangeDetectionConfig.md
 docs/NestedAggregation.md
+docs/NestedConfig.md
 docs/NetworkConfiguration.md
 docs/NonEmployeeApprovalDecision.md
 docs/NonEmployeeApprovalItem.md
@@ -1027,6 +1032,7 @@ docs/ReviewableRole.md
 docs/Reviewer.md
 docs/Revocability.md
 docs/RevocabilityForRole.md
+docs/RightSetDTO.md
 docs/Role.md
 docs/RoleAssignmentDto.md
 docs/RoleAssignmentDtoAssigner.md
@@ -1362,6 +1368,9 @@ docs/UserAppAccount.md
 docs/UserAppOwner.md
 docs/UserAppSource.md
 docs/UserAppSourceApp.md
+docs/UserLevelPublishSummary.md
+docs/UserLevelRequest.md
+docs/UserLevelSummaryDTO.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -1878,6 +1887,7 @@ model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
 model_get_tenant_context_200_response_inner.go
 model_grant_type.go
+model_hierarchical_right_set.go
 model_http_authentication_type.go
 model_http_config.go
 model_http_dispatch_mode.go
@@ -2047,6 +2057,7 @@ model_multi_host_sources.go
 model_multi_policy_request.go
 model_native_change_detection_config.go
 model_nested_aggregation.go
+model_nested_config.go
 model_network_configuration.go
 model_non_employee_approval_decision.go
 model_non_employee_approval_item.go
@@ -2217,6 +2228,7 @@ model_reviewable_role.go
 model_reviewer.go
 model_revocability.go
 model_revocability_for_role.go
+model_right_set_dto.go
 model_role.go
 model_role_assignment_dto.go
 model_role_assignment_dto_assigner.go
@@ -2508,6 +2520,9 @@ model_user_app_account.go
 model_user_app_owner.go
 model_user_app_source.go
 model_user_app_source_app.go
+model_user_level_publish_summary.go
+model_user_level_request.go
+model_user_level_summary_dto.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go
 model_va_cluster_status_change_event.go
@@ -2586,6 +2601,7 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
+test/api_custom_user_levels_test.go
 test/api_data_segmentation_test.go
 test/api_dimensions_test.go
 test/api_entitlements_test.go

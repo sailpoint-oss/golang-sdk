@@ -271,6 +271,13 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create custom password instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete custom password instructions by page id
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get custom password instructions by page id
+*CustomUserLevelsAPI* | [**CreateCustomUserLevel**](docs/CustomUserLevelsAPI.md#createcustomuserlevel) | **Post** /authorization/custom-user-levels | Create a custom user level
+*CustomUserLevelsAPI* | [**DeleteUserLevel**](docs/CustomUserLevelsAPI.md#deleteuserlevel) | **Delete** /authorization/custom-user-levels/{id} | Delete a user level
+*CustomUserLevelsAPI* | [**GetUserLevel**](docs/CustomUserLevelsAPI.md#getuserlevel) | **Get** /authorization/custom-user-levels/{id} | Retrieve a user level
+*CustomUserLevelsAPI* | [**ListAllAuthorizationRightSets**](docs/CustomUserLevelsAPI.md#listallauthorizationrightsets) | **Get** /authorization/authorization-assignable-right-sets | List all uiAssignable right sets
+*CustomUserLevelsAPI* | [**ListUserLevels**](docs/CustomUserLevelsAPI.md#listuserlevels) | **Get** /authorization/custom-user-levels | List user levels
+*CustomUserLevelsAPI* | [**PublishCustomUserLevel**](docs/CustomUserLevelsAPI.md#publishcustomuserlevel) | **Post** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
+*CustomUserLevelsAPI* | [**UpdateUserLevel**](docs/CustomUserLevelsAPI.md#updateuserlevel) | **Patch** /authorization/custom-user-levels/{id} | Update a user level
 *DataSegmentationAPI* | [**CreateDataSegment**](docs/DataSegmentationAPI.md#createdatasegment) | **Post** /data-segments | Create segment
 *DataSegmentationAPI* | [**DeleteDataSegment**](docs/DataSegmentationAPI.md#deletedatasegment) | **Delete** /data-segments/{segmentId} | Delete segment by id
 *DataSegmentationAPI* | [**GetDataSegment**](docs/DataSegmentationAPI.md#getdatasegment) | **Get** /data-segments/{segmentId} | Get segment by id
@@ -1245,6 +1252,7 @@ Class | Method | HTTP request | Description
  - [GetRoleAssignments200ResponseInner](docs/GetRoleAssignments200ResponseInner.md)
  - [GetTenantContext200ResponseInner](docs/GetTenantContext200ResponseInner.md)
  - [GrantType](docs/GrantType.md)
+ - [HierarchicalRightSet](docs/HierarchicalRightSet.md)
  - [HttpAuthenticationType](docs/HttpAuthenticationType.md)
  - [HttpConfig](docs/HttpConfig.md)
  - [HttpDispatchMode](docs/HttpDispatchMode.md)
@@ -1414,6 +1422,7 @@ Class | Method | HTTP request | Description
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)
  - [NestedAggregation](docs/NestedAggregation.md)
+ - [NestedConfig](docs/NestedConfig.md)
  - [NetworkConfiguration](docs/NetworkConfiguration.md)
  - [NonEmployeeApprovalDecision](docs/NonEmployeeApprovalDecision.md)
  - [NonEmployeeApprovalItem](docs/NonEmployeeApprovalItem.md)
@@ -1584,6 +1593,7 @@ Class | Method | HTTP request | Description
  - [Reviewer](docs/Reviewer.md)
  - [Revocability](docs/Revocability.md)
  - [RevocabilityForRole](docs/RevocabilityForRole.md)
+ - [RightSetDTO](docs/RightSetDTO.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentDto](docs/RoleAssignmentDto.md)
  - [RoleAssignmentDtoAssigner](docs/RoleAssignmentDtoAssigner.md)
@@ -1875,6 +1885,9 @@ Class | Method | HTTP request | Description
  - [UserAppOwner](docs/UserAppOwner.md)
  - [UserAppSource](docs/UserAppSource.md)
  - [UserAppSourceApp](docs/UserAppSourceApp.md)
+ - [UserLevelPublishSummary](docs/UserLevelPublishSummary.md)
+ - [UserLevelRequest](docs/UserLevelRequest.md)
+ - [UserLevelSummaryDTO](docs/UserLevelSummaryDTO.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [VAClusterStatusChangeEvent](docs/VAClusterStatusChangeEvent.md)
