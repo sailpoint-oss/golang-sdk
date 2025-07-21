@@ -94188,7 +94188,6 @@ components:
           - 0fbe863c063c4c88a35fd7f17e8a3df5
           items:
             type: string
-          maxItems: 1000
           type: array
         accessConstraints:
           description: Further reduces the scope of the campaign by excluding identities
