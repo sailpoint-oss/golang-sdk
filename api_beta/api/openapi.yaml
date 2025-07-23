@@ -12563,15 +12563,18 @@ paths:
       security:
       - userAuth:
         - idn:entitlement:read
-        - idn:entitlement:manage
+        - idn:entitlement:update
       summary: Get an entitlement
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
     patch:
       description: |-
         This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
-        The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**, and **manuallyUpdatedFields**
+        The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**, **privilegeOverride/overrideLevel** and **manuallyUpdatedFields**
 
         When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
@@ -12651,6 +12654,13 @@ paths:
                 - op: replace
                   path: /name
                   value: entitlement new name
+              Update the privilegeOverride overrideLevel for an entitlement:
+                description: This example shows how to use patch to update an entitlement's
+                  name.
+                value:
+                - op: replace
+                  path: /privilegeOverride/overrideLevel
+                  value: HIGH
             schema:
               example:
               - op: replace
@@ -12742,10 +12752,13 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:manage
+        - idn:entitlement:update
       summary: Patch an entitlement
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
   /entitlements/{id}/parents:
     get:
       description: This API returns a list of all parent entitlements of a given entitlement.
@@ -13186,11 +13199,11 @@ paths:
         The number of entitlements to update is limited to 50 items maximum.
 
 
-        The JsonPatch update follows the [JSON
-        Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations :
-        `**{ "op": "replace", "path": "/privileged", "value": boolean }**  **{ "op":
-        "replace", "path": "/requestable","value": boolean }**`
-
+        The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        examples of allowed operations :
+        `**{ "op": "replace", "path": "/privileged", "value": boolean }**`
+        `**{ "op": "replace", "path": "/requestable","value": boolean }**`
+        `**{ "op": "replace", "path": "/privilegeOverride/overrideLevel","value": string }**`
 
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: updateEntitlementsInBulk
@@ -13260,9 +13273,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:entitlement:update
       summary: Bulk update an entitlement list
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements/{id}/entitlement-request-config:
     get:
       description: This API returns the entitlement request config for a specified
@@ -69993,6 +70011,7 @@ components:
           type: string
       type: object
     EntitlementBulkUpdateRequest:
+      description: Object for specifying the bulk update request
       example:
         entitlementIds:
         - 2c91808a7624751a01762f19d665220d
@@ -70005,6 +70024,9 @@ components:
         - op: replace
           path: /requestable
           value: false
+        - op: replace
+          path: /privilegeOverride/overrideLevel
+          value: HIGH
       properties:
         entitlementIds:
           description: List of entitlement ids to update
@@ -70017,6 +70039,7 @@ components:
           maxItems: 50
           type: array
         jsonPatch:
+          description: List of entitlement ids to update
           example:
           - op: replace
             path: /privileged
@@ -70024,6 +70047,9 @@ components:
           - op: replace
             path: /requestable
             value: false
+          - op: replace
+            path: /privilegeOverride/overrideLevel
+            value: HIGH
           items:
             $ref: '#/components/schemas/JsonPatchOperation'
           type: array
