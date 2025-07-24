@@ -20,30 +20,30 @@ var _ MappedNullable = &AccessItemEntitlementResponse{}
 
 // AccessItemEntitlementResponse struct for AccessItemEntitlementResponse
 type AccessItemEntitlementResponse struct {
-	// the access item type. entitlement in this case
-	AccessType *string `json:"accessType,omitempty"`
 	// the access item id
 	Id *string `json:"id,omitempty"`
-	// the entitlement attribute
-	Attribute *string `json:"attribute,omitempty"`
-	// the associated value
-	Value *string `json:"value,omitempty"`
-	// the type of entitlement
-	EntitlementType *string `json:"entitlementType,omitempty"`
-	// the name of the source
-	SourceName *string `json:"sourceName,omitempty"`
-	// the id of the source
-	SourceId *string `json:"sourceId,omitempty"`
-	// the description for the entitlment
-	Description *string `json:"description,omitempty"`
+	// the access item type. entitlement in this case
+	AccessType *string `json:"accessType,omitempty"`
 	// the display name of the identity
 	DisplayName *string `json:"displayName,omitempty"`
+	// the name of the source
+	SourceName *string `json:"sourceName,omitempty"`
+	// the entitlement attribute
+	Attribute string `json:"attribute"`
+	// the associated value
+	Value string `json:"value"`
+	// the type of entitlement
+	Type string `json:"type"`
+	// the description for the entitlment
+	Description NullableString `json:"description,omitempty"`
+	// the id of the source
+	SourceId *string `json:"sourceId,omitempty"`
 	// indicates whether the entitlement is standalone
-	Standalone bool `json:"standalone"`
+	Standalone NullableBool `json:"standalone"`
 	// indicates whether the entitlement is privileged
-	Privileged bool `json:"privileged"`
+	Privileged NullableBool `json:"privileged"`
 	// indicates whether the entitlement is cloud governed
-	CloudGoverned bool `json:"cloudGoverned"`
+	CloudGoverned NullableBool `json:"cloudGoverned"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,8 +53,11 @@ type _AccessItemEntitlementResponse AccessItemEntitlementResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemEntitlementResponse(standalone bool, privileged bool, cloudGoverned bool) *AccessItemEntitlementResponse {
+func NewAccessItemEntitlementResponse(attribute string, value string, type_ string, standalone NullableBool, privileged NullableBool, cloudGoverned NullableBool) *AccessItemEntitlementResponse {
 	this := AccessItemEntitlementResponse{}
+	this.Attribute = attribute
+	this.Value = value
+	this.Type = type_
 	this.Standalone = standalone
 	this.Privileged = privileged
 	this.CloudGoverned = cloudGoverned
@@ -67,38 +70,6 @@ func NewAccessItemEntitlementResponse(standalone bool, privileged bool, cloudGov
 func NewAccessItemEntitlementResponseWithDefaults() *AccessItemEntitlementResponse {
 	this := AccessItemEntitlementResponse{}
 	return &this
-}
-
-// GetAccessType returns the AccessType field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetAccessType() string {
-	if o == nil || IsNil(o.AccessType) {
-		var ret string
-		return ret
-	}
-	return *o.AccessType
-}
-
-// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessType) {
-		return nil, false
-	}
-	return o.AccessType, true
-}
-
-// HasAccessType returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasAccessType() bool {
-	if o != nil && !IsNil(o.AccessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
-func (o *AccessItemEntitlementResponse) SetAccessType(v string) {
-	o.AccessType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -133,196 +104,36 @@ func (o *AccessItemEntitlementResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetAttribute returns the Attribute field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetAttribute() string {
-	if o == nil || IsNil(o.Attribute) {
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *AccessItemEntitlementResponse) GetAccessType() string {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
-	return *o.Attribute
+	return *o.AccessType
 }
 
-// GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetAttributeOk() (*string, bool) {
-	if o == nil || IsNil(o.Attribute) {
+func (o *AccessItemEntitlementResponse) GetAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
-	return o.Attribute, true
+	return o.AccessType, true
 }
 
-// HasAttribute returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasAttribute() bool {
-	if o != nil && !IsNil(o.Attribute) {
+// HasAccessType returns a boolean if a field has been set.
+func (o *AccessItemEntitlementResponse) HasAccessType() bool {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttribute gets a reference to the given string and assigns it to the Attribute field.
-func (o *AccessItemEntitlementResponse) SetAttribute(v string) {
-	o.Attribute = &v
-}
-
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetValue() string {
-	if o == nil || IsNil(o.Value) {
-		var ret string
-		return ret
-	}
-	return *o.Value
-}
-
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
-		return nil, false
-	}
-	return o.Value, true
-}
-
-// HasValue returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *AccessItemEntitlementResponse) SetValue(v string) {
-	o.Value = &v
-}
-
-// GetEntitlementType returns the EntitlementType field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetEntitlementType() string {
-	if o == nil || IsNil(o.EntitlementType) {
-		var ret string
-		return ret
-	}
-	return *o.EntitlementType
-}
-
-// GetEntitlementTypeOk returns a tuple with the EntitlementType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetEntitlementTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.EntitlementType) {
-		return nil, false
-	}
-	return o.EntitlementType, true
-}
-
-// HasEntitlementType returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasEntitlementType() bool {
-	if o != nil && !IsNil(o.EntitlementType) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntitlementType gets a reference to the given string and assigns it to the EntitlementType field.
-func (o *AccessItemEntitlementResponse) SetEntitlementType(v string) {
-	o.EntitlementType = &v
-}
-
-// GetSourceName returns the SourceName field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetSourceName() string {
-	if o == nil || IsNil(o.SourceName) {
-		var ret string
-		return ret
-	}
-	return *o.SourceName
-}
-
-// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceName) {
-		return nil, false
-	}
-	return o.SourceName, true
-}
-
-// HasSourceName returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasSourceName() bool {
-	if o != nil && !IsNil(o.SourceName) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
-func (o *AccessItemEntitlementResponse) SetSourceName(v string) {
-	o.SourceName = &v
-}
-
-// GetSourceId returns the SourceId field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetSourceId() string {
-	if o == nil || IsNil(o.SourceId) {
-		var ret string
-		return ret
-	}
-	return *o.SourceId
-}
-
-// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetSourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceId) {
-		return nil, false
-	}
-	return o.SourceId, true
-}
-
-// HasSourceId returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasSourceId() bool {
-	if o != nil && !IsNil(o.SourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
-func (o *AccessItemEntitlementResponse) SetSourceId(v string) {
-	o.SourceId = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *AccessItemEntitlementResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemEntitlementResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *AccessItemEntitlementResponse) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *AccessItemEntitlementResponse) SetDescription(v string) {
-	o.Description = &v
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *AccessItemEntitlementResponse) SetAccessType(v string) {
+	o.AccessType = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -357,76 +168,260 @@ func (o *AccessItemEntitlementResponse) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetStandalone returns the Standalone field value
-func (o *AccessItemEntitlementResponse) GetStandalone() bool {
+// GetSourceName returns the SourceName field value if set, zero value otherwise.
+func (o *AccessItemEntitlementResponse) GetSourceName() string {
+	if o == nil || IsNil(o.SourceName) {
+		var ret string
+		return ret
+	}
+	return *o.SourceName
+}
+
+// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetSourceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceName) {
+		return nil, false
+	}
+	return o.SourceName, true
+}
+
+// HasSourceName returns a boolean if a field has been set.
+func (o *AccessItemEntitlementResponse) HasSourceName() bool {
+	if o != nil && !IsNil(o.SourceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
+func (o *AccessItemEntitlementResponse) SetSourceName(v string) {
+	o.SourceName = &v
+}
+
+// GetAttribute returns the Attribute field value
+func (o *AccessItemEntitlementResponse) GetAttribute() string {
 	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Attribute
+}
+
+// GetAttributeOk returns a tuple with the Attribute field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetAttributeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attribute, true
+}
+
+// SetAttribute sets field value
+func (o *AccessItemEntitlementResponse) SetAttribute(v string) {
+	o.Attribute = v
+}
+
+// GetValue returns the Value field value
+func (o *AccessItemEntitlementResponse) GetValue() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *AccessItemEntitlementResponse) SetValue(v string) {
+	o.Value = v
+}
+
+// GetType returns the Type field value
+func (o *AccessItemEntitlementResponse) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AccessItemEntitlementResponse) SetType(v string) {
+	o.Type = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessItemEntitlementResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessItemEntitlementResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *AccessItemEntitlementResponse) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *AccessItemEntitlementResponse) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *AccessItemEntitlementResponse) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *AccessItemEntitlementResponse) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *AccessItemEntitlementResponse) GetSourceId() string {
+	if o == nil || IsNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetSourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *AccessItemEntitlementResponse) HasSourceId() bool {
+	if o != nil && !IsNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *AccessItemEntitlementResponse) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
+// GetStandalone returns the Standalone field value
+// If the value is explicit nil, the zero value for bool will be returned
+func (o *AccessItemEntitlementResponse) GetStandalone() bool {
+	if o == nil || o.Standalone.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.Standalone
+	return *o.Standalone.Get()
 }
 
 // GetStandaloneOk returns a tuple with the Standalone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemEntitlementResponse) GetStandaloneOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Standalone, true
+	return o.Standalone.Get(), o.Standalone.IsSet()
 }
 
 // SetStandalone sets field value
 func (o *AccessItemEntitlementResponse) SetStandalone(v bool) {
-	o.Standalone = v
+	o.Standalone.Set(&v)
 }
 
 // GetPrivileged returns the Privileged field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *AccessItemEntitlementResponse) GetPrivileged() bool {
-	if o == nil {
+	if o == nil || o.Privileged.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.Privileged
+	return *o.Privileged.Get()
 }
 
 // GetPrivilegedOk returns a tuple with the Privileged field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemEntitlementResponse) GetPrivilegedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Privileged, true
+	return o.Privileged.Get(), o.Privileged.IsSet()
 }
 
 // SetPrivileged sets field value
 func (o *AccessItemEntitlementResponse) SetPrivileged(v bool) {
-	o.Privileged = v
+	o.Privileged.Set(&v)
 }
 
 // GetCloudGoverned returns the CloudGoverned field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *AccessItemEntitlementResponse) GetCloudGoverned() bool {
-	if o == nil {
+	if o == nil || o.CloudGoverned.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.CloudGoverned
+	return *o.CloudGoverned.Get()
 }
 
 // GetCloudGovernedOk returns a tuple with the CloudGoverned field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemEntitlementResponse) GetCloudGovernedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CloudGoverned, true
+	return o.CloudGoverned.Get(), o.CloudGoverned.IsSet()
 }
 
 // SetCloudGoverned sets field value
 func (o *AccessItemEntitlementResponse) SetCloudGoverned(v bool) {
-	o.CloudGoverned = v
+	o.CloudGoverned.Set(&v)
 }
 
 func (o AccessItemEntitlementResponse) MarshalJSON() ([]byte, error) {
@@ -439,36 +434,30 @@ func (o AccessItemEntitlementResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemEntitlementResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessType) {
-		toSerialize["accessType"] = o.AccessType
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Attribute) {
-		toSerialize["attribute"] = o.Attribute
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	if !IsNil(o.EntitlementType) {
-		toSerialize["entitlementType"] = o.EntitlementType
-	}
-	if !IsNil(o.SourceName) {
-		toSerialize["sourceName"] = o.SourceName
-	}
-	if !IsNil(o.SourceId) {
-		toSerialize["sourceId"] = o.SourceId
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if !IsNil(o.AccessType) {
+		toSerialize["accessType"] = o.AccessType
 	}
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	toSerialize["standalone"] = o.Standalone
-	toSerialize["privileged"] = o.Privileged
-	toSerialize["cloudGoverned"] = o.CloudGoverned
+	if !IsNil(o.SourceName) {
+		toSerialize["sourceName"] = o.SourceName
+	}
+	toSerialize["attribute"] = o.Attribute
+	toSerialize["value"] = o.Value
+	toSerialize["type"] = o.Type
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
+	}
+	toSerialize["standalone"] = o.Standalone.Get()
+	toSerialize["privileged"] = o.Privileged.Get()
+	toSerialize["cloudGoverned"] = o.CloudGoverned.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -482,6 +471,9 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"attribute",
+		"value",
+		"type",
 		"standalone",
 		"privileged",
 		"cloudGoverned",
@@ -514,15 +506,15 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "accessType")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "sourceName")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
-		delete(additionalProperties, "entitlementType")
-		delete(additionalProperties, "sourceName")
-		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "standalone")
 		delete(additionalProperties, "privileged")
 		delete(additionalProperties, "cloudGoverned")

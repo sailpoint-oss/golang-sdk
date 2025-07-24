@@ -387,7 +387,7 @@ Class | Method | HTTP request | Description
 *IdentityHistoryAPI* | [**CompareIdentitySnapshots**](docs/IdentityHistoryAPI.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryAPI* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryAPI.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 *IdentityHistoryAPI* | [**GetHistoricalIdentity**](docs/IdentityHistoryAPI.md#gethistoricalidentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
-*IdentityHistoryAPI* | [**GetHistoricalIdentityEvents**](docs/IdentityHistoryAPI.md#gethistoricalidentityevents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
+*IdentityHistoryAPI* | [**GetHistoricalIdentityEvents**](docs/IdentityHistoryAPI.md#gethistoricalidentityevents) | **Get** /historical-identities/{id}/events | List identity event history
 *IdentityHistoryAPI* | [**GetIdentitySnapshot**](docs/IdentityHistoryAPI.md#getidentitysnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 *IdentityHistoryAPI* | [**GetIdentitySnapshotSummary**](docs/IdentityHistoryAPI.md#getidentitysnapshotsummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 *IdentityHistoryAPI* | [**GetIdentityStartDate**](docs/IdentityHistoryAPI.md#getidentitystartdate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
@@ -794,6 +794,7 @@ Class | Method | HTTP request | Description
  - [AccessCriteria](docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
  - [AccessItemAccessProfileResponse](docs/AccessItemAccessProfileResponse.md)
+ - [AccessItemAccessProfileResponseAppRefsInner](docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](docs/AccessItemAccountResponse.md)
  - [AccessItemAppResponse](docs/AccessItemAppResponse.md)
  - [AccessItemApproverDto](docs/AccessItemApproverDto.md)
@@ -838,7 +839,6 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover1](docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](docs/AccessRequestDynamicApproverRequestedItemsInner.md)
  - [AccessRequestItem](docs/AccessRequestItem.md)
- - [AccessRequestItemResponse](docs/AccessRequestItemResponse.md)
  - [AccessRequestPhases](docs/AccessRequestPhases.md)
  - [AccessRequestPostApproval](docs/AccessRequestPostApproval.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInner](docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
@@ -855,10 +855,11 @@ Class | Method | HTTP request | Description
  - [AccessRequestRecommendationItemDetailAccess](docs/AccessRequestRecommendationItemDetailAccess.md)
  - [AccessRequestRecommendationItemType](docs/AccessRequestRecommendationItemType.md)
  - [AccessRequestResponse](docs/AccessRequestResponse.md)
- - [AccessRequestResponse1](docs/AccessRequestResponse1.md)
  - [AccessRequestTracking](docs/AccessRequestTracking.md)
  - [AccessRequestType](docs/AccessRequestType.md)
  - [AccessRequested](docs/AccessRequested.md)
+ - [AccessRequestedAccount](docs/AccessRequestedAccount.md)
+ - [AccessRequestedStatusChange](docs/AccessRequestedStatusChange.md)
  - [AccessReviewItem](docs/AccessReviewItem.md)
  - [AccessReviewReassignment](docs/AccessReviewReassignment.md)
  - [AccessSummary](docs/AccessSummary.md)
@@ -902,8 +903,6 @@ Class | Method | HTTP request | Description
  - [AccountRequestResult](docs/AccountRequestResult.md)
  - [AccountSource](docs/AccountSource.md)
  - [AccountStatusChanged](docs/AccountStatusChanged.md)
- - [AccountStatusChangedAccount](docs/AccountStatusChangedAccount.md)
- - [AccountStatusChangedStatusChange](docs/AccountStatusChangedStatusChange.md)
  - [AccountToggleRequest](docs/AccountToggleRequest.md)
  - [AccountUncorrelated](docs/AccountUncorrelated.md)
  - [AccountUncorrelatedAccount](docs/AccountUncorrelatedAccount.md)
@@ -939,7 +938,6 @@ Class | Method | HTTP request | Description
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](docs/ApprovalIdentity.md)
- - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](docs/ApprovalItemDetails.md)
  - [ApprovalItems](docs/ApprovalItems.md)
  - [ApprovalName](docs/ApprovalName.md)
@@ -1336,6 +1334,7 @@ Class | Method | HTTP request | Description
  - [ListFormElementDataByElementIDResponse](docs/ListFormElementDataByElementIDResponse.md)
  - [ListFormInstancesByTenantResponse](docs/ListFormInstancesByTenantResponse.md)
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
+ - [ListIdentitySnapshotAccessItems200ResponseInner](docs/ListIdentitySnapshotAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](docs/ListWorkgroupMembers200ResponseInner.md)
  - [LoadAccountsTask](docs/LoadAccountsTask.md)

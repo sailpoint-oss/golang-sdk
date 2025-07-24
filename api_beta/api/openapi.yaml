@@ -14230,6 +14230,12 @@ paths:
         name: type
         required: false
         schema:
+          enum:
+          - account
+          - entitlement
+          - app
+          - accessProfile
+          - role
           type: string
       - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
@@ -14949,7 +14955,7 @@ paths:
                     description: Role - Workday/Citizenship access
               schema:
                 items:
-                  $ref: '#/components/schemas/listIdentityAccessItems_200_response_inner'
+                  $ref: '#/components/schemas/listIdentitySnapshotAccessItems_200_response_inner'
                 type: array
           description: Identity object.
         "400":
@@ -15349,6 +15355,7 @@ paths:
         example: 2024-03-01T13:00:00Z
         in: query
         name: from
+        required: false
         schema:
           type: string
       - description: "An optional list of event types to return.  If null or empty,\
@@ -15358,6 +15365,7 @@ paths:
         - AccessRemovedEvent
         in: query
         name: eventTypes
+        required: false
         schema:
           items:
             type: string
@@ -15369,6 +15377,7 @@ paths:
         - account
         in: query
         name: accessItemTypes
+        required: false
         schema:
           items:
             type: string
@@ -15616,7 +15625,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Lists all events for the given identity
+      security:
+      - userAuth:
+        - idn:identity-history:read
+      summary: List identity event history
       tags:
       - Identity History
   /historical-identities/{id}/start-date:
@@ -70295,137 +70307,36 @@ components:
             department: HR
           type: object
       type: object
-    AccessItemAccessProfileResponse:
+    AccessItemEntitlementResponse:
       example:
-        accessType: accessProfile
+        accessType: entitlement
         sourceId: 2793o32dwd
-        entitlementCount: "12"
-        removeDate: 2024-07-01T06:00:00.00Z
+        privileged: false
         displayName: Dr. Arden Rogahn MD
-        appDisplayName: AppName
-        name: sample
-        standalone: false
-        description: AccessProfile - Workday/Citizenship access
+        standalone: true
+        description: Entitlement - Workday/Citizenship access
         id: 2c918087763e69d901763e72e97f006f
         sourceName: DataScienceDataset
-        revocable: true
+        attribute: groups
+        type: ENTITLEMENT
+        value: Upward mobility access
+        cloudGoverned: true
       properties:
-        accessType:
-          description: the access item type. accessProfile in this case
-          example: accessProfile
-          type: string
         id:
           description: the access item id
           example: 2c918087763e69d901763e72e97f006f
           type: string
-        name:
-          description: the access profile name
-          example: sample
-          type: string
-        sourceName:
-          description: the name of the source
-          example: DataScienceDataset
-          type: string
-        sourceId:
-          description: the id of the source
-          example: 2793o32dwd
-          type: string
-        description:
-          description: the description for the access profile
-          example: AccessProfile - Workday/Citizenship access
-          type: string
-        displayName:
-          description: the display name of the identity
-          example: Dr. Arden Rogahn MD
-          type: string
-        entitlementCount:
-          description: the number of entitlements the access profile will create
-          example: "12"
-          type: string
-        appDisplayName:
-          description: the name of
-          example: AppName
-          type: string
-        removeDate:
-          description: the date the access profile is no longer assigned to the specified
-            identity
-          example: 2024-07-01T06:00:00.00Z
-          type: string
-        standalone:
-          description: indicates whether the access profile is standalone
-          example: false
-          type: boolean
-        revocable:
-          description: indicates whether the access profile is
-          example: true
-          type: boolean
-      required:
-      - revocable
-      - standalone
-      type: object
-    AccessItemAccountResponse:
-      properties:
-        accessType:
-          description: the access item type. account in this case
-          example: account
-          type: string
-        id:
-          description: the access item id
-          example: 2c918087763e69d901763e72e97f006f
-          type: string
-        nativeIdentity:
-          description: the native identifier used to uniquely identify an acccount
-          example: dr.arden.ogahn.d
-          type: string
-        sourceName:
-          description: the name of the source
-          example: DataScienceDataset
-          type: string
-        sourceId:
-          description: the id of the source
-          example: 2793o32dwd
-          type: string
-        entitlementCount:
-          description: the number of entitlements the account will create
-          example: "12"
-          type: string
-        displayName:
-          description: the display name of the identity
-          example: Dr. Arden Rogahn MD
-          type: string
-      type: object
-    AccessItemAppResponse:
-      properties:
-        accessType:
-          description: the access item type. entitlement in this case
-          example: app
-          type: string
-        id:
-          description: the access item id
-          example: 2c918087763e69d901763e72e97f006f
-          type: string
-        displayName:
-          description: the access item display name
-          example: Display Name
-          type: string
-        sourceName:
-          description: the associated source name if it exists
-          example: appName
-          type: string
-        appRoleId:
-          description: the app role id
-          example: 2c918087763e69d901763e72e97f006f
-          type: string
-      type: object
-    AccessItemEntitlementResponse:
-      properties:
         accessType:
           description: the access item type. entitlement in this case
           example: entitlement
           type: string
-        id:
-          description: the access item id
-          example: 2c918087763e69d901763e72e97f006f
+        displayName:
+          description: the display name of the identity
+          example: Dr. Arden Rogahn MD
+          type: string
+        sourceName:
+          description: the name of the source
+          example: DataScienceDataset
           type: string
         attribute:
           description: the entitlement attribute
@@ -70435,64 +70346,178 @@ components:
           description: the associated value
           example: Upward mobility access
           type: string
-        entitlementType:
+        type:
           description: the type of entitlement
-          example: entitlement
+          example: ENTITLEMENT
           type: string
-        sourceName:
-          description: the name of the source
-          example: DataScienceDataset
+        description:
+          description: the description for the entitlment
+          example: Entitlement - Workday/Citizenship access
+          nullable: true
           type: string
         sourceId:
           description: the id of the source
           example: 2793o32dwd
           type: string
-        description:
-          description: the description for the entitlment
-          example: Entitlement - Workday/Citizenship access
+        standalone:
+          description: indicates whether the entitlement is standalone
+          example: true
+          nullable: true
+          type: boolean
+        privileged:
+          description: indicates whether the entitlement is privileged
+          example: false
+          nullable: true
+          type: boolean
+        cloudGoverned:
+          description: indicates whether the entitlement is cloud governed
+          example: true
+          nullable: true
+          type: boolean
+      required:
+      - attribute
+      - cloudGoverned
+      - privileged
+      - standalone
+      - type
+      - value
+      type: object
+    AccessItemAccessProfileResponse:
+      example:
+        accessType: accessProfile
+        sourceId: 2793o32dwd
+        entitlementCount: 12
+        removeDate: 2024-07-01T06:00:00.00Z
+        displayName: Dr. Arden Rogahn MD
+        standalone: false
+        description: AccessProfile - Workday/Citizenship access
+        id: 2c918087763e69d901763e72e97f006f
+        sourceName: DataScienceDataset
+        revocable: true
+        appRefs:
+        - cloudAppId: 8c190e6787aa4ed9a90bd9d5344523fb
+          cloudAppName: Sample App
+        - cloudAppId: 2c91808a77ff216301782327a50f09bf
+          cloudAppName: Another App
+      properties:
+        id:
+          description: the access item id
+          example: 2c918087763e69d901763e72e97f006f
+          type: string
+        accessType:
+          description: the access item type. accessProfile in this case
+          example: accessProfile
           type: string
         displayName:
           description: the display name of the identity
           example: Dr. Arden Rogahn MD
           type: string
+        sourceName:
+          description: the name of the source
+          example: DataScienceDataset
+          type: string
+        entitlementCount:
+          description: the number of entitlements the access profile will create
+          example: 12
+          format: int32
+          type: integer
+        description:
+          description: the description for the access profile
+          example: AccessProfile - Workday/Citizenship access
+          nullable: true
+          type: string
+        sourceId:
+          description: the id of the source
+          example: 2793o32dwd
+          type: string
+        appRefs:
+          description: the list of app ids associated with the access profile
+          example:
+          - cloudAppId: 8c190e6787aa4ed9a90bd9d5344523fb
+            cloudAppName: Sample App
+          - cloudAppId: 2c91808a77ff216301782327a50f09bf
+            cloudAppName: Another App
+          items:
+            $ref: '#/components/schemas/AccessItemAccessProfileResponse_appRefs_inner'
+          type: array
+        removeDate:
+          description: the date the access profile is no longer assigned to the specified
+            identity
+          example: 2024-07-01T06:00:00.00Z
+          nullable: true
+          type: string
         standalone:
-          description: indicates whether the entitlement is standalone
-          example: true
-          type: boolean
-        privileged:
-          description: indicates whether the entitlement is privileged
+          description: indicates whether the access profile is standalone
           example: false
+          nullable: true
           type: boolean
-        cloudGoverned:
-          description: indicates whether the entitlement is cloud governed
+        revocable:
+          description: indicates whether the access profile is revocable
           example: true
+          nullable: true
           type: boolean
       required:
-      - cloudGoverned
-      - privileged
+      - appRefs
+      - entitlementCount
+      - revocable
       - standalone
       type: object
-    AccessItemRoleResponse:
+    AccessItemAccountResponse:
       properties:
-        accessType:
-          description: the access item type. role in this case
-          example: role
-          type: string
         id:
           description: the access item id
           example: 2c918087763e69d901763e72e97f006f
+          type: string
+        accessType:
+          description: the access item type. account in this case
+          example: account
+          type: string
+        displayName:
+          description: the display name of the identity
+          example: Dr. Arden Rogahn MD
+          type: string
+        sourceName:
+          description: the name of the source
+          example: DataScienceDataset
+          type: string
+        nativeIdentity:
+          description: the native identifier used to uniquely identify an acccount
+          example: dr.arden.ogahn.d
+          type: string
+        sourceId:
+          description: the id of the source
+          example: 2793o32dwd
+          type: string
+        entitlementCount:
+          description: the number of entitlements the account will create
+          example: 12
+          format: int32
+          type: integer
+      required:
+      - nativeIdentity
+      type: object
+    AccessItemRoleResponse:
+      properties:
+        id:
+          description: the access item id
+          example: 2c918087763e69d901763e72e97f006f
+          type: string
+        accessType:
+          description: the access item type. role in this case
+          example: role
           type: string
         displayName:
           description: the role display name
           example: sample
           type: string
-        description:
-          description: the description for the role
-          example: Role - Workday/Citizenship access
-          type: string
         sourceName:
           description: the associated source name if it exists
           example: Source Name
+          nullable: true
+          type: string
+        description:
+          description: the description for the role
+          example: Role - Workday/Citizenship access
           type: string
         removeDate:
           description: the date the role is no longer assigned to the specified identity
@@ -70504,6 +70529,33 @@ components:
           type: boolean
       required:
       - revocable
+      type: object
+    AccessItemAppResponse:
+      properties:
+        id:
+          description: the access item id
+          example: 2c918087763e69d901763e72e97f006f
+          type: string
+        accessType:
+          description: the access item type. entitlement in this case
+          example: app
+          type: string
+        displayName:
+          description: the access item display name
+          example: Display Name
+          type: string
+        sourceName:
+          description: the associated source name if it exists
+          example: appName
+          nullable: true
+          type: string
+        appRoleId:
+          description: the app role id
+          example: 2c918087763e69d901763e72e97f006f
+          nullable: true
+          type: string
+      required:
+      - appRoleId
       type: object
     IdentitySnapshotSummaryResponse:
       example:
@@ -70642,111 +70694,22 @@ components:
             type: string
           type: array
       type: object
-    AccessItemAssociated:
-      example:
-        dt: 2019-03-08T22:37:33.901Z
-        governanceEvent:
-          dt: 2019-03-08T22:37:33.901Z
-          name: Manager Certification for Jon Snow
-          owners:
-          - id: 8a80828f643d484f01643e14202e206f
-            displayName: John Snow
-          decisionMaker:
-            displayName: John Snow
-            id: 8a80828f643d484f01643e14202e206f
-          type: certification
-          reviewers:
-          - id: 8a80828f643d484f01643e14202e206f
-            displayName: John Snow
-          governanceId: 2c91808a77ff216301782327a50f09bf
-        identityId: 8c190e6787aa4ed9a90bd9d5344523fb
-        eventType: AccessItemAssociated
-        accessItem:
-          id: 8c190e6787aa4ed9a90bd9d5344523fb
-          accessType: account
-          nativeIdentity: 127999
-          sourceName: JDBC Entitlements Source
-          entitlementCount: 0
-          displayName: Sample Name
-      properties:
-        accessItem:
-          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
-        identityId:
-          description: the identity id
-          example: 8c190e6787aa4ed9a90bd9d5344523fb
-          type: string
-        eventType:
-          description: the event type
-          example: AccessItemAssociated
-          type: string
-        dt:
-          description: the date of event
-          example: 2019-03-08T22:37:33.901Z
-          type: string
-        governanceEvent:
-          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
-      type: object
-    AccessItemRemoved:
-      properties:
-        accessItem:
-          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
-        identityId:
-          description: the identity id
-          example: 8c190e6787aa4ed9a90bd9d5344523fb
-          type: string
-        eventType:
-          description: the event type
-          example: AccessItemRemoved
-          type: string
-        dt:
-          description: the date of event
-          example: 2019-03-08T22:37:33.901Z
-          type: string
-        governanceEvent:
-          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
-      type: object
-    AttributesChanged:
-      example:
-        attributeChanges:
-          name: firstname
-          previousValue: adam
-          newValue: zampa
-        eventType: AttributesChanged
-        identityId: 8a80828f643d484f01643e14202e206f
-        dt: 2019-03-08T22:37:33.901Z
-      properties:
-        changes:
-          items:
-            $ref: '#/components/schemas/AttributeChange'
-          type: array
-        eventType:
-          description: the event type
-          type: string
-        identityId:
-          description: the identity id
-          type: string
-        dt:
-          description: the date of event
-          type: string
-      type: object
-    AccessRequested:
-      properties:
-        accessRequest:
-          $ref: '#/components/schemas/AccessRequestResponse_1'
-        identityId:
-          description: the identity id
-          example: 8a80828f643d484f01643e14202e206f
-          type: string
-        eventType:
-          description: the event type
-          example: AccessRequested
-          type: string
-        dt:
-          description: the date of event
-          example: 2019-03-08T22:37:33.901Z
-          type: string
-      type: object
     IdentityCertified:
+      example:
+        dateTime: 2019-03-08T22:37:33.901Z
+        certifiers:
+        - id: 8a80828f643d484f01643e14202e206f
+          displayName: John Snow
+        certificationId: 2c91808a77ff216301782327a50f09bf
+        certificationName: Cert name
+        signedDate: 2019-03-08T22:37:33.901Z
+        eventType: IdentityCertified
+        reviewers:
+        - id: 8a80828f643d484f01643e14202e206f
+          displayName: John Snow
+        signer:
+          displayName: John Snow
+          id: 8a80828f643d484f01643e14202e206f
       properties:
         certificationId:
           description: the id of the certification item
@@ -70782,41 +70745,138 @@ components:
           description: the event type
           example: IdentityCertified
           type: string
-        dt:
+        dateTime:
           description: the date of event
           example: 2019-03-08T22:37:33.901Z
           type: string
+      required:
+      - certificationId
+      - certificationName
       type: object
-    AccountStatusChanged:
-      example:
-        account:
-          id: 2c91808a77ff216301782327a50f09bf
-          nativeIdentity: 127999
-          displayName: Sample Name
-          sourceId: 8a80828f643d484f01643e14202e206f
-          sourceName: JDBC Entitlements Source
-          entitlementCount: 0
-          accessType: account
-        statusChange:
-          previousStatus: enabled
-          newStatus: disabled
-        eventType: AccountStatusChanged
-        identityId: 8a80828f643d484f01643e14202e206f
-        date: 2019-03-08T22:37:33.901Z
+    AccessItemAssociated:
       properties:
         eventType:
           description: the event type
+          example: AccessItemAssociated
+          type: string
+        dateTime:
+          description: the date of event
+          example: 2019-03-08T22:37:33.901Z
           type: string
         identityId:
           description: the identity id
+          example: 8c190e6787aa4ed9a90bd9d5344523fb
           type: string
-        dt:
+        accessItem:
+          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
+        governanceEvent:
+          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
+        accessItemType:
+          description: the access item type
+          enum:
+          - account
+          - app
+          - entitlement
+          - role
+          - accessProfile
+          example: account
+          type: string
+      required:
+      - accessItem
+      - governanceEvent
+      type: object
+    AccessItemRemoved:
+      properties:
+        accessItem:
+          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
+        identityId:
+          description: the identity id
+          example: 8c190e6787aa4ed9a90bd9d5344523fb
+          type: string
+        eventType:
+          description: the event type
+          example: AccessItemRemoved
+          type: string
+        dateTime:
           description: the date of event
+          example: 2019-03-08T22:37:33.901Z
+          type: string
+        accessItemType:
+          description: the access item type
+          enum:
+          - account
+          - app
+          - entitlement
+          - role
+          - accessProfile
+          example: account
+          type: string
+        governanceEvent:
+          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
+      required:
+      - accessItem
+      type: object
+    AttributesChanged:
+      properties:
+        attributeChanges:
+          items:
+            $ref: '#/components/schemas/AttributeChange'
+          type: array
+        eventType:
+          description: the event type
+          example: AttributesChanged
+          type: string
+        identityId:
+          description: the identity id
+          example: 8a80828f643d484f01643e14202e206f
+          type: string
+        dateTime:
+          description: the date of event
+          example: 2019-03-08T22:37:33.901Z
+          type: string
+      required:
+      - attributeChanges
+      type: object
+    AccessRequested:
+      properties:
+        accessRequest:
+          $ref: '#/components/schemas/AccessRequestResponse_1'
+        identityId:
+          description: the identity id
+          example: 8a80828f643d484f01643e14202e206f
+          type: string
+        eventType:
+          description: the event type
+          example: AccessRequested
+          type: string
+        dateTime:
+          description: the date of event
+          example: 2019-03-08T22:37:33.901Z
+          type: string
+      required:
+      - accessRequest
+      type: object
+    AccountStatusChanged:
+      properties:
+        eventType:
+          description: the event type
+          example: AccountStatusChanged
+          type: string
+        identityId:
+          description: the identity id
+          example: 8a80828f643d484f01643e14202e206f
+          type: string
+        dateTime:
+          description: the date of event
+          example: 2019-03-08T22:37:33.901Z
           type: string
         account:
           $ref: '#/components/schemas/AccountStatusChanged_account'
         statusChange:
           $ref: '#/components/schemas/AccountStatusChanged_statusChange'
+      required:
+      - account
+      - statusChange
       type: object
     IdentityCompareResponse:
       example:
@@ -86272,28 +86332,29 @@ components:
       - CONFIRMED
       - DENIED
       type: string
-    CorrelatedGovernanceEvent:
+    CertifierResponse:
       example:
-        dt: 2019-03-08T22:37:33.901Z
-        name: Manager Certification for Jon Snow
-        owners:
-        - id: 8a80828f643d484f01643e14202e206f
-          displayName: John Snow
-        decisionMaker:
-          displayName: John Snow
-          id: 8a80828f643d484f01643e14202e206f
-        type: certification
-        reviewers:
-        - id: 8a80828f643d484f01643e14202e206f
-          displayName: John Snow
-        governanceId: 2c91808a77ff216301782327a50f09bf
+        displayName: John Snow
+        id: 8a80828f643d484f01643e14202e206f
+      properties:
+        id:
+          description: the id of the certifier
+          example: 8a80828f643d484f01643e14202e206f
+          type: string
+        displayName:
+          description: the name of the certifier
+          example: John Snow
+          type: string
+      type: object
+    CorrelatedGovernanceEvent:
+      nullable: true
       properties:
         name:
           description: "The name of the governance event, such as the certification\
             \ name or access request ID."
           example: Manager Certification for Jon Snow
           type: string
-        dt:
+        dateTime:
           description: The date that the certification or access request was completed.
           example: 2019-03-08T22:37:33.901Z
           type: string
@@ -86330,19 +86391,18 @@ components:
           $ref: '#/components/schemas/CertifierResponse'
       type: object
     AttributeChange:
-      example:
-        name: firstname
-        previousValue: adam
-        newValue: zampa
       properties:
         name:
           description: the attribute name
+          example: firstname
           type: string
         previousValue:
           description: the old value of attribute
+          example: adam
           type: string
         newValue:
           description: the new value of attribute
+          example: zampa
           type: string
       type: object
     AccessRequestResponse_1:
@@ -86371,20 +86431,6 @@ components:
           items:
             $ref: '#/components/schemas/AccessRequestItemResponse'
           type: array
-      type: object
-    CertifierResponse:
-      example:
-        displayName: John Snow
-        id: 8a80828f643d484f01643e14202e206f
-      properties:
-        id:
-          description: the id of the certifier
-          example: 8a80828f643d484f01643e14202e206f
-          type: string
-        displayName:
-          description: the name of the certifier
-          example: John Snow
-          type: string
       type: object
     IdentitySyncPayload:
       example:
@@ -93236,6 +93282,13 @@ components:
           type: string
       type: object
     listIdentityAccessItems_200_response_inner:
+      anyOf:
+      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
+      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
+      - $ref: '#/components/schemas/AccessItemAccountResponse'
+      - $ref: '#/components/schemas/AccessItemRoleResponse'
+      - $ref: '#/components/schemas/AccessItemAppResponse'
+    listIdentitySnapshotAccessItems_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
       - $ref: '#/components/schemas/AccessItemAccountResponse'
@@ -93244,11 +93297,11 @@ components:
       - $ref: '#/components/schemas/AccessItemRoleResponse'
     getHistoricalIdentityEvents_200_response_inner:
       anyOf:
+      - $ref: '#/components/schemas/IdentityCertified'
       - $ref: '#/components/schemas/AccessItemAssociated'
       - $ref: '#/components/schemas/AccessItemRemoved'
       - $ref: '#/components/schemas/AttributesChanged'
       - $ref: '#/components/schemas/AccessRequested'
-      - $ref: '#/components/schemas/IdentityCertified'
       - $ref: '#/components/schemas/AccountStatusChanged'
     getRoleAssignments_200_response_inner:
       anyOf:
@@ -94977,7 +95030,24 @@ components:
           example: applications
           type: string
       type: object
+    AccessItemAccessProfileResponse_appRefs_inner:
+      properties:
+        cloudAppId:
+          description: the cloud app id associated with the access profile
+          example: 8c190e6787aa4ed9a90bd9d5344523fb
+          type: string
+        cloudAppName:
+          description: the cloud app name associated with the access profile
+          example: Sample App
+          type: string
+      type: object
     AccessItemAssociated_accessItem:
+      anyOf:
+      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
+      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
+      - $ref: '#/components/schemas/AccessItemAccountResponse'
+      - $ref: '#/components/schemas/AccessItemRoleResponse'
+      - $ref: '#/components/schemas/AccessItemAppResponse'
       example:
         id: 8c190e6787aa4ed9a90bd9d5344523fb
         accessType: account
@@ -94985,35 +95055,37 @@ components:
         sourceName: JDBC Entitlements Source
         entitlementCount: 0
         displayName: Sample Name
-      oneOf:
-      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
-      - $ref: '#/components/schemas/AccessItemAccountResponse'
-      - $ref: '#/components/schemas/AccessItemAppResponse'
-      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
-      - $ref: '#/components/schemas/AccessItemRoleResponse'
       type: object
     AccountStatusChanged_account:
       properties:
         id:
           description: the ID of the account in the database
+          example: 2c91808a77ff216301782327a50f09bf
           type: string
         nativeIdentity:
           description: the native identifier of the account
+          example: dr.arden.ogahn.d
           type: string
         displayName:
           description: the display name of the account
+          example: Adam Archer
           type: string
         sourceId:
           description: the ID of the source for this account
+          example: 8a80828f643d484f01643e14202e206f
           type: string
         sourceName:
           description: the name of the source for this account
+          example: JDBC Entitlements Source
           type: string
         entitlementCount:
           description: the number of entitlements on this account
+          example: 2
+          format: int32
           type: integer
         accessType:
           description: this value is always "account"
+          example: account
           type: string
       type: object
     AccountStatusChanged_statusChange:
@@ -95024,6 +95096,7 @@ components:
           - enabled
           - disabled
           - locked
+          example: enabled
           type: string
         newStatus:
           description: the new status of the account
@@ -95031,6 +95104,7 @@ components:
           - enabled
           - disabled
           - locked
+          example: disabled
           type: string
       type: object
     IdentityOwnershipAssociationDetails_associationDetails_inner:

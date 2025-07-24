@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccountStatusChanged type satisfies the MappedNullable interface at compile time
@@ -24,9 +25,9 @@ type AccountStatusChanged struct {
 	// the identity id
 	IdentityId *string `json:"identityId,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
-	Account *AccountStatusChangedAccount `json:"account,omitempty"`
-	StatusChange *AccountStatusChangedStatusChange `json:"statusChange,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
+	Account AccountStatusChangedAccount `json:"account"`
+	StatusChange AccountStatusChangedStatusChange `json:"statusChange"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,8 +37,10 @@ type _AccountStatusChanged AccountStatusChanged
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountStatusChanged() *AccountStatusChanged {
+func NewAccountStatusChanged(account AccountStatusChangedAccount, statusChange AccountStatusChangedStatusChange) *AccountStatusChanged {
 	this := AccountStatusChanged{}
+	this.Account = account
+	this.StatusChange = statusChange
 	return &this
 }
 
@@ -113,100 +116,84 @@ func (o *AccountStatusChanged) SetIdentityId(v string) {
 	o.IdentityId = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *AccountStatusChanged) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *AccountStatusChanged) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChanged) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *AccountStatusChanged) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *AccountStatusChanged) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *AccountStatusChanged) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *AccountStatusChanged) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *AccountStatusChanged) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
-// GetAccount returns the Account field value if set, zero value otherwise.
+// GetAccount returns the Account field value
 func (o *AccountStatusChanged) GetAccount() AccountStatusChangedAccount {
-	if o == nil || IsNil(o.Account) {
+	if o == nil {
 		var ret AccountStatusChangedAccount
 		return ret
 	}
-	return *o.Account
+
+	return o.Account
 }
 
-// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
+// GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetAccountOk() (*AccountStatusChangedAccount, bool) {
-	if o == nil || IsNil(o.Account) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Account, true
+	return &o.Account, true
 }
 
-// HasAccount returns a boolean if a field has been set.
-func (o *AccountStatusChanged) HasAccount() bool {
-	if o != nil && !IsNil(o.Account) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccount gets a reference to the given AccountStatusChangedAccount and assigns it to the Account field.
+// SetAccount sets field value
 func (o *AccountStatusChanged) SetAccount(v AccountStatusChangedAccount) {
-	o.Account = &v
+	o.Account = v
 }
 
-// GetStatusChange returns the StatusChange field value if set, zero value otherwise.
+// GetStatusChange returns the StatusChange field value
 func (o *AccountStatusChanged) GetStatusChange() AccountStatusChangedStatusChange {
-	if o == nil || IsNil(o.StatusChange) {
+	if o == nil {
 		var ret AccountStatusChangedStatusChange
 		return ret
 	}
-	return *o.StatusChange
+
+	return o.StatusChange
 }
 
-// GetStatusChangeOk returns a tuple with the StatusChange field value if set, nil otherwise
+// GetStatusChangeOk returns a tuple with the StatusChange field value
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetStatusChangeOk() (*AccountStatusChangedStatusChange, bool) {
-	if o == nil || IsNil(o.StatusChange) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StatusChange, true
+	return &o.StatusChange, true
 }
 
-// HasStatusChange returns a boolean if a field has been set.
-func (o *AccountStatusChanged) HasStatusChange() bool {
-	if o != nil && !IsNil(o.StatusChange) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusChange gets a reference to the given AccountStatusChangedStatusChange and assigns it to the StatusChange field.
+// SetStatusChange sets field value
 func (o *AccountStatusChanged) SetStatusChange(v AccountStatusChangedStatusChange) {
-	o.StatusChange = &v
+	o.StatusChange = v
 }
 
 func (o AccountStatusChanged) MarshalJSON() ([]byte, error) {
@@ -225,15 +212,11 @@ func (o AccountStatusChanged) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
-	if !IsNil(o.Account) {
-		toSerialize["account"] = o.Account
-	}
-	if !IsNil(o.StatusChange) {
-		toSerialize["statusChange"] = o.StatusChange
-	}
+	toSerialize["account"] = o.Account
+	toSerialize["statusChange"] = o.StatusChange
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -243,6 +226,28 @@ func (o AccountStatusChanged) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountStatusChanged) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"account",
+		"statusChange",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccountStatusChanged := _AccountStatusChanged{}
 
 	err = json.Unmarshal(data, &varAccountStatusChanged)
@@ -258,7 +263,7 @@ func (o *AccountStatusChanged) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "eventType")
 		delete(additionalProperties, "identityId")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "statusChange")
 		o.AdditionalProperties = additionalProperties

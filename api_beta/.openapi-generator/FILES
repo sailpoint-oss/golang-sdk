@@ -85,6 +85,7 @@ docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
 docs/AccessItemAccessProfileResponse.md
+docs/AccessItemAccessProfileResponseAppRefsInner.md
 docs/AccessItemAccountResponse.md
 docs/AccessItemAppResponse.md
 docs/AccessItemApproverDto.md
@@ -575,6 +576,7 @@ docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
 docs/ListIdentityAccessItems200ResponseInner.md
+docs/ListIdentitySnapshotAccessItems200ResponseInner.md
 docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
 docs/LoadAccountsTask.md
@@ -1132,6 +1134,7 @@ model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
 model_access_item_access_profile_response.go
+model_access_item_access_profile_response_app_refs_inner.go
 model_access_item_account_response.go
 model_access_item_app_response.go
 model_access_item_approver_dto.go
@@ -1552,6 +1555,7 @@ model_list_complete_workflow_library_200_response_inner.go
 model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
 model_list_identity_access_items_200_response_inner.go
+model_list_identity_snapshot_access_items_200_response_inner.go
 model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
 model_load_accounts_task.go

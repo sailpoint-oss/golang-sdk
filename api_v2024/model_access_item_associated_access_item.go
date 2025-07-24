@@ -12,11 +12,11 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// AccessItemAssociatedAccessItem - struct for AccessItemAssociatedAccessItem
+
+// AccessItemAssociatedAccessItem struct for AccessItemAssociatedAccessItem
 type AccessItemAssociatedAccessItem struct {
 	AccessItemAccessProfileResponse *AccessItemAccessProfileResponse
 	AccessItemAccountResponse *AccessItemAccountResponse
@@ -25,149 +25,79 @@ type AccessItemAssociatedAccessItem struct {
 	AccessItemRoleResponse *AccessItemRoleResponse
 }
 
-// AccessItemAccessProfileResponseAsAccessItemAssociatedAccessItem is a convenience function that returns AccessItemAccessProfileResponse wrapped in AccessItemAssociatedAccessItem
-func AccessItemAccessProfileResponseAsAccessItemAssociatedAccessItem(v *AccessItemAccessProfileResponse) AccessItemAssociatedAccessItem {
-	return AccessItemAssociatedAccessItem{
-		AccessItemAccessProfileResponse: v,
-	}
-}
-
-// AccessItemAccountResponseAsAccessItemAssociatedAccessItem is a convenience function that returns AccessItemAccountResponse wrapped in AccessItemAssociatedAccessItem
-func AccessItemAccountResponseAsAccessItemAssociatedAccessItem(v *AccessItemAccountResponse) AccessItemAssociatedAccessItem {
-	return AccessItemAssociatedAccessItem{
-		AccessItemAccountResponse: v,
-	}
-}
-
-// AccessItemAppResponseAsAccessItemAssociatedAccessItem is a convenience function that returns AccessItemAppResponse wrapped in AccessItemAssociatedAccessItem
-func AccessItemAppResponseAsAccessItemAssociatedAccessItem(v *AccessItemAppResponse) AccessItemAssociatedAccessItem {
-	return AccessItemAssociatedAccessItem{
-		AccessItemAppResponse: v,
-	}
-}
-
-// AccessItemEntitlementResponseAsAccessItemAssociatedAccessItem is a convenience function that returns AccessItemEntitlementResponse wrapped in AccessItemAssociatedAccessItem
-func AccessItemEntitlementResponseAsAccessItemAssociatedAccessItem(v *AccessItemEntitlementResponse) AccessItemAssociatedAccessItem {
-	return AccessItemAssociatedAccessItem{
-		AccessItemEntitlementResponse: v,
-	}
-}
-
-// AccessItemRoleResponseAsAccessItemAssociatedAccessItem is a convenience function that returns AccessItemRoleResponse wrapped in AccessItemAssociatedAccessItem
-func AccessItemRoleResponseAsAccessItemAssociatedAccessItem(v *AccessItemRoleResponse) AccessItemAssociatedAccessItem {
-	return AccessItemAssociatedAccessItem{
-		AccessItemRoleResponse: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into AccessItemAccessProfileResponse
-	err = newStrictDecoder(data).Decode(&dst.AccessItemAccessProfileResponse)
+	// try to unmarshal JSON data into AccessItemAccessProfileResponse
+	err = json.Unmarshal(data, &dst.AccessItemAccessProfileResponse);
 	if err == nil {
 		jsonAccessItemAccessProfileResponse, _ := json.Marshal(dst.AccessItemAccessProfileResponse)
 		if string(jsonAccessItemAccessProfileResponse) == "{}" { // empty struct
 			dst.AccessItemAccessProfileResponse = nil
 		} else {
-			if err = validator.Validate(dst.AccessItemAccessProfileResponse); err != nil {
-				dst.AccessItemAccessProfileResponse = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccessItemAccessProfileResponse, return on the first match
 		}
 	} else {
 		dst.AccessItemAccessProfileResponse = nil
 	}
 
-	// try to unmarshal data into AccessItemAccountResponse
-	err = newStrictDecoder(data).Decode(&dst.AccessItemAccountResponse)
+	// try to unmarshal JSON data into AccessItemAccountResponse
+	err = json.Unmarshal(data, &dst.AccessItemAccountResponse);
 	if err == nil {
 		jsonAccessItemAccountResponse, _ := json.Marshal(dst.AccessItemAccountResponse)
 		if string(jsonAccessItemAccountResponse) == "{}" { // empty struct
 			dst.AccessItemAccountResponse = nil
 		} else {
-			if err = validator.Validate(dst.AccessItemAccountResponse); err != nil {
-				dst.AccessItemAccountResponse = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccessItemAccountResponse, return on the first match
 		}
 	} else {
 		dst.AccessItemAccountResponse = nil
 	}
 
-	// try to unmarshal data into AccessItemAppResponse
-	err = newStrictDecoder(data).Decode(&dst.AccessItemAppResponse)
+	// try to unmarshal JSON data into AccessItemAppResponse
+	err = json.Unmarshal(data, &dst.AccessItemAppResponse);
 	if err == nil {
 		jsonAccessItemAppResponse, _ := json.Marshal(dst.AccessItemAppResponse)
 		if string(jsonAccessItemAppResponse) == "{}" { // empty struct
 			dst.AccessItemAppResponse = nil
 		} else {
-			if err = validator.Validate(dst.AccessItemAppResponse); err != nil {
-				dst.AccessItemAppResponse = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccessItemAppResponse, return on the first match
 		}
 	} else {
 		dst.AccessItemAppResponse = nil
 	}
 
-	// try to unmarshal data into AccessItemEntitlementResponse
-	err = newStrictDecoder(data).Decode(&dst.AccessItemEntitlementResponse)
+	// try to unmarshal JSON data into AccessItemEntitlementResponse
+	err = json.Unmarshal(data, &dst.AccessItemEntitlementResponse);
 	if err == nil {
 		jsonAccessItemEntitlementResponse, _ := json.Marshal(dst.AccessItemEntitlementResponse)
 		if string(jsonAccessItemEntitlementResponse) == "{}" { // empty struct
 			dst.AccessItemEntitlementResponse = nil
 		} else {
-			if err = validator.Validate(dst.AccessItemEntitlementResponse); err != nil {
-				dst.AccessItemEntitlementResponse = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccessItemEntitlementResponse, return on the first match
 		}
 	} else {
 		dst.AccessItemEntitlementResponse = nil
 	}
 
-	// try to unmarshal data into AccessItemRoleResponse
-	err = newStrictDecoder(data).Decode(&dst.AccessItemRoleResponse)
+	// try to unmarshal JSON data into AccessItemRoleResponse
+	err = json.Unmarshal(data, &dst.AccessItemRoleResponse);
 	if err == nil {
 		jsonAccessItemRoleResponse, _ := json.Marshal(dst.AccessItemRoleResponse)
 		if string(jsonAccessItemRoleResponse) == "{}" { // empty struct
 			dst.AccessItemRoleResponse = nil
 		} else {
-			if err = validator.Validate(dst.AccessItemRoleResponse); err != nil {
-				dst.AccessItemRoleResponse = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.AccessItemRoleResponse, return on the first match
 		}
 	} else {
 		dst.AccessItemRoleResponse = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AccessItemAccessProfileResponse = nil
-		dst.AccessItemAccountResponse = nil
-		dst.AccessItemAppResponse = nil
-		dst.AccessItemEntitlementResponse = nil
-		dst.AccessItemRoleResponse = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AccessItemAssociatedAccessItem)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AccessItemAssociatedAccessItem)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(AccessItemAssociatedAccessItem)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src AccessItemAssociatedAccessItem) MarshalJSON() ([]byte, error) {
+func (src *AccessItemAssociatedAccessItem) MarshalJSON() ([]byte, error) {
 	if src.AccessItemAccessProfileResponse != nil {
 		return json.Marshal(&src.AccessItemAccessProfileResponse)
 	}
@@ -188,63 +118,9 @@ func (src AccessItemAssociatedAccessItem) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AccessItemRoleResponse)
 	}
 
-	return nil, nil // no data in oneOf schemas
+	return nil, nil // no data in anyOf schemas
 }
 
-// Get the actual instance
-func (obj *AccessItemAssociatedAccessItem) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.AccessItemAccessProfileResponse != nil {
-		return obj.AccessItemAccessProfileResponse
-	}
-
-	if obj.AccessItemAccountResponse != nil {
-		return obj.AccessItemAccountResponse
-	}
-
-	if obj.AccessItemAppResponse != nil {
-		return obj.AccessItemAppResponse
-	}
-
-	if obj.AccessItemEntitlementResponse != nil {
-		return obj.AccessItemEntitlementResponse
-	}
-
-	if obj.AccessItemRoleResponse != nil {
-		return obj.AccessItemRoleResponse
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj AccessItemAssociatedAccessItem) GetActualInstanceValue() (interface{}) {
-	if obj.AccessItemAccessProfileResponse != nil {
-		return *obj.AccessItemAccessProfileResponse
-	}
-
-	if obj.AccessItemAccountResponse != nil {
-		return *obj.AccessItemAccountResponse
-	}
-
-	if obj.AccessItemAppResponse != nil {
-		return *obj.AccessItemAppResponse
-	}
-
-	if obj.AccessItemEntitlementResponse != nil {
-		return *obj.AccessItemEntitlementResponse
-	}
-
-	if obj.AccessItemRoleResponse != nil {
-		return *obj.AccessItemRoleResponse
-	}
-
-	// all schemas are nil
-	return nil
-}
 
 type NullableAccessItemAssociatedAccessItem struct {
 	value *AccessItemAssociatedAccessItem

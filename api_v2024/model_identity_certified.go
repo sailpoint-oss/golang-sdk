@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentityCertified type satisfies the MappedNullable interface at compile time
@@ -20,9 +21,9 @@ var _ MappedNullable = &IdentityCertified{}
 // IdentityCertified struct for IdentityCertified
 type IdentityCertified struct {
 	// the id of the certification item
-	CertificationId *string `json:"certificationId,omitempty"`
+	CertificationId string `json:"certificationId"`
 	// the certification item name
-	CertificationName *string `json:"certificationName,omitempty"`
+	CertificationName string `json:"certificationName"`
 	// the date ceritification was signed
 	SignedDate *string `json:"signedDate,omitempty"`
 	// this field is deprecated and may go away
@@ -33,7 +34,7 @@ type IdentityCertified struct {
 	// the event type
 	EventType *string `json:"eventType,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,8 +44,10 @@ type _IdentityCertified IdentityCertified
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityCertified() *IdentityCertified {
+func NewIdentityCertified(certificationId string, certificationName string) *IdentityCertified {
 	this := IdentityCertified{}
+	this.CertificationId = certificationId
+	this.CertificationName = certificationName
 	return &this
 }
 
@@ -56,68 +59,52 @@ func NewIdentityCertifiedWithDefaults() *IdentityCertified {
 	return &this
 }
 
-// GetCertificationId returns the CertificationId field value if set, zero value otherwise.
+// GetCertificationId returns the CertificationId field value
 func (o *IdentityCertified) GetCertificationId() string {
-	if o == nil || IsNil(o.CertificationId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CertificationId
+
+	return o.CertificationId
 }
 
-// GetCertificationIdOk returns a tuple with the CertificationId field value if set, nil otherwise
+// GetCertificationIdOk returns a tuple with the CertificationId field value
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetCertificationIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CertificationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CertificationId, true
+	return &o.CertificationId, true
 }
 
-// HasCertificationId returns a boolean if a field has been set.
-func (o *IdentityCertified) HasCertificationId() bool {
-	if o != nil && !IsNil(o.CertificationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCertificationId gets a reference to the given string and assigns it to the CertificationId field.
+// SetCertificationId sets field value
 func (o *IdentityCertified) SetCertificationId(v string) {
-	o.CertificationId = &v
+	o.CertificationId = v
 }
 
-// GetCertificationName returns the CertificationName field value if set, zero value otherwise.
+// GetCertificationName returns the CertificationName field value
 func (o *IdentityCertified) GetCertificationName() string {
-	if o == nil || IsNil(o.CertificationName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CertificationName
+
+	return o.CertificationName
 }
 
-// GetCertificationNameOk returns a tuple with the CertificationName field value if set, nil otherwise
+// GetCertificationNameOk returns a tuple with the CertificationName field value
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetCertificationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CertificationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CertificationName, true
+	return &o.CertificationName, true
 }
 
-// HasCertificationName returns a boolean if a field has been set.
-func (o *IdentityCertified) HasCertificationName() bool {
-	if o != nil && !IsNil(o.CertificationName) {
-		return true
-	}
-
-	return false
-}
-
-// SetCertificationName gets a reference to the given string and assigns it to the CertificationName field.
+// SetCertificationName sets field value
 func (o *IdentityCertified) SetCertificationName(v string) {
-	o.CertificationName = &v
+	o.CertificationName = v
 }
 
 // GetSignedDate returns the SignedDate field value if set, zero value otherwise.
@@ -280,36 +267,36 @@ func (o *IdentityCertified) SetEventType(v string) {
 	o.EventType = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *IdentityCertified) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *IdentityCertified) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityCertified) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *IdentityCertified) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *IdentityCertified) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *IdentityCertified) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *IdentityCertified) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *IdentityCertified) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
 func (o IdentityCertified) MarshalJSON() ([]byte, error) {
@@ -322,12 +309,8 @@ func (o IdentityCertified) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CertificationId) {
-		toSerialize["certificationId"] = o.CertificationId
-	}
-	if !IsNil(o.CertificationName) {
-		toSerialize["certificationName"] = o.CertificationName
-	}
+	toSerialize["certificationId"] = o.CertificationId
+	toSerialize["certificationName"] = o.CertificationName
 	if !IsNil(o.SignedDate) {
 		toSerialize["signedDate"] = o.SignedDate
 	}
@@ -343,8 +326,8 @@ func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -355,6 +338,28 @@ func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdentityCertified) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"certificationId",
+		"certificationName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varIdentityCertified := _IdentityCertified{}
 
 	err = json.Unmarshal(data, &varIdentityCertified)
@@ -375,7 +380,7 @@ func (o *IdentityCertified) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "reviewers")
 		delete(additionalProperties, "signer")
 		delete(additionalProperties, "eventType")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
 		o.AdditionalProperties = additionalProperties
 	}
 

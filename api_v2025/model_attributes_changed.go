@@ -12,6 +12,7 @@ package api_v2025
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AttributesChanged type satisfies the MappedNullable interface at compile time
@@ -19,13 +20,13 @@ var _ MappedNullable = &AttributesChanged{}
 
 // AttributesChanged struct for AttributesChanged
 type AttributesChanged struct {
-	Changes []AttributeChange `json:"changes,omitempty"`
+	AttributeChanges []AttributeChange `json:"attributeChanges"`
 	// the event type
 	EventType *string `json:"eventType,omitempty"`
 	// the identity id
 	IdentityId *string `json:"identityId,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +36,9 @@ type _AttributesChanged AttributesChanged
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAttributesChanged() *AttributesChanged {
+func NewAttributesChanged(attributeChanges []AttributeChange) *AttributesChanged {
 	this := AttributesChanged{}
+	this.AttributeChanges = attributeChanges
 	return &this
 }
 
@@ -48,36 +50,28 @@ func NewAttributesChangedWithDefaults() *AttributesChanged {
 	return &this
 }
 
-// GetChanges returns the Changes field value if set, zero value otherwise.
-func (o *AttributesChanged) GetChanges() []AttributeChange {
-	if o == nil || IsNil(o.Changes) {
+// GetAttributeChanges returns the AttributeChanges field value
+func (o *AttributesChanged) GetAttributeChanges() []AttributeChange {
+	if o == nil {
 		var ret []AttributeChange
 		return ret
 	}
-	return o.Changes
+
+	return o.AttributeChanges
 }
 
-// GetChangesOk returns a tuple with the Changes field value if set, nil otherwise
+// GetAttributeChangesOk returns a tuple with the AttributeChanges field value
 // and a boolean to check if the value has been set.
-func (o *AttributesChanged) GetChangesOk() ([]AttributeChange, bool) {
-	if o == nil || IsNil(o.Changes) {
+func (o *AttributesChanged) GetAttributeChangesOk() ([]AttributeChange, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Changes, true
+	return o.AttributeChanges, true
 }
 
-// HasChanges returns a boolean if a field has been set.
-func (o *AttributesChanged) HasChanges() bool {
-	if o != nil && !IsNil(o.Changes) {
-		return true
-	}
-
-	return false
-}
-
-// SetChanges gets a reference to the given []AttributeChange and assigns it to the Changes field.
-func (o *AttributesChanged) SetChanges(v []AttributeChange) {
-	o.Changes = v
+// SetAttributeChanges sets field value
+func (o *AttributesChanged) SetAttributeChanges(v []AttributeChange) {
+	o.AttributeChanges = v
 }
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
@@ -144,36 +138,36 @@ func (o *AttributesChanged) SetIdentityId(v string) {
 	o.IdentityId = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *AttributesChanged) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *AttributesChanged) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AttributesChanged) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *AttributesChanged) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *AttributesChanged) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *AttributesChanged) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *AttributesChanged) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *AttributesChanged) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
 func (o AttributesChanged) MarshalJSON() ([]byte, error) {
@@ -186,17 +180,15 @@ func (o AttributesChanged) MarshalJSON() ([]byte, error) {
 
 func (o AttributesChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Changes) {
-		toSerialize["changes"] = o.Changes
-	}
+	toSerialize["attributeChanges"] = o.AttributeChanges
 	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -207,6 +199,27 @@ func (o AttributesChanged) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AttributesChanged) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"attributeChanges",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAttributesChanged := _AttributesChanged{}
 
 	err = json.Unmarshal(data, &varAttributesChanged)
@@ -220,10 +233,10 @@ func (o *AttributesChanged) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "changes")
+		delete(additionalProperties, "attributeChanges")
 		delete(additionalProperties, "eventType")
 		delete(additionalProperties, "identityId")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
 		o.AdditionalProperties = additionalProperties
 	}
 

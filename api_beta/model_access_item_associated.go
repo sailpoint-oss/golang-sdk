@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessItemAssociated type satisfies the MappedNullable interface at compile time
@@ -19,14 +20,16 @@ var _ MappedNullable = &AccessItemAssociated{}
 
 // AccessItemAssociated struct for AccessItemAssociated
 type AccessItemAssociated struct {
-	AccessItem *AccessItemAssociatedAccessItem `json:"accessItem,omitempty"`
-	// the identity id
-	IdentityId *string `json:"identityId,omitempty"`
 	// the event type
 	EventType *string `json:"eventType,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
-	GovernanceEvent *CorrelatedGovernanceEvent `json:"governanceEvent,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
+	// the identity id
+	IdentityId *string `json:"identityId,omitempty"`
+	AccessItem AccessItemAssociatedAccessItem `json:"accessItem"`
+	GovernanceEvent NullableCorrelatedGovernanceEvent `json:"governanceEvent"`
+	// the access item type
+	AccessItemType *string `json:"accessItemType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,8 +39,10 @@ type _AccessItemAssociated AccessItemAssociated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemAssociated() *AccessItemAssociated {
+func NewAccessItemAssociated(accessItem AccessItemAssociatedAccessItem, governanceEvent NullableCorrelatedGovernanceEvent) *AccessItemAssociated {
 	this := AccessItemAssociated{}
+	this.AccessItem = accessItem
+	this.GovernanceEvent = governanceEvent
 	return &this
 }
 
@@ -47,70 +52,6 @@ func NewAccessItemAssociated() *AccessItemAssociated {
 func NewAccessItemAssociatedWithDefaults() *AccessItemAssociated {
 	this := AccessItemAssociated{}
 	return &this
-}
-
-// GetAccessItem returns the AccessItem field value if set, zero value otherwise.
-func (o *AccessItemAssociated) GetAccessItem() AccessItemAssociatedAccessItem {
-	if o == nil || IsNil(o.AccessItem) {
-		var ret AccessItemAssociatedAccessItem
-		return ret
-	}
-	return *o.AccessItem
-}
-
-// GetAccessItemOk returns a tuple with the AccessItem field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAssociated) GetAccessItemOk() (*AccessItemAssociatedAccessItem, bool) {
-	if o == nil || IsNil(o.AccessItem) {
-		return nil, false
-	}
-	return o.AccessItem, true
-}
-
-// HasAccessItem returns a boolean if a field has been set.
-func (o *AccessItemAssociated) HasAccessItem() bool {
-	if o != nil && !IsNil(o.AccessItem) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessItem gets a reference to the given AccessItemAssociatedAccessItem and assigns it to the AccessItem field.
-func (o *AccessItemAssociated) SetAccessItem(v AccessItemAssociatedAccessItem) {
-	o.AccessItem = &v
-}
-
-// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
-func (o *AccessItemAssociated) GetIdentityId() string {
-	if o == nil || IsNil(o.IdentityId) {
-		var ret string
-		return ret
-	}
-	return *o.IdentityId
-}
-
-// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAssociated) GetIdentityIdOk() (*string, bool) {
-	if o == nil || IsNil(o.IdentityId) {
-		return nil, false
-	}
-	return o.IdentityId, true
-}
-
-// HasIdentityId returns a boolean if a field has been set.
-func (o *AccessItemAssociated) HasIdentityId() bool {
-	if o != nil && !IsNil(o.IdentityId) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
-func (o *AccessItemAssociated) SetIdentityId(v string) {
-	o.IdentityId = &v
 }
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
@@ -145,68 +86,150 @@ func (o *AccessItemAssociated) SetEventType(v string) {
 	o.EventType = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *AccessItemAssociated) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *AccessItemAssociated) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAssociated) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *AccessItemAssociated) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *AccessItemAssociated) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *AccessItemAssociated) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *AccessItemAssociated) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *AccessItemAssociated) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
-// GetGovernanceEvent returns the GovernanceEvent field value if set, zero value otherwise.
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
+func (o *AccessItemAssociated) GetIdentityId() string {
+	if o == nil || IsNil(o.IdentityId) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityId
+}
+
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAssociated) GetIdentityIdOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityId) {
+		return nil, false
+	}
+	return o.IdentityId, true
+}
+
+// HasIdentityId returns a boolean if a field has been set.
+func (o *AccessItemAssociated) HasIdentityId() bool {
+	if o != nil && !IsNil(o.IdentityId) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
+func (o *AccessItemAssociated) SetIdentityId(v string) {
+	o.IdentityId = &v
+}
+
+// GetAccessItem returns the AccessItem field value
+func (o *AccessItemAssociated) GetAccessItem() AccessItemAssociatedAccessItem {
+	if o == nil {
+		var ret AccessItemAssociatedAccessItem
+		return ret
+	}
+
+	return o.AccessItem
+}
+
+// GetAccessItemOk returns a tuple with the AccessItem field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAssociated) GetAccessItemOk() (*AccessItemAssociatedAccessItem, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccessItem, true
+}
+
+// SetAccessItem sets field value
+func (o *AccessItemAssociated) SetAccessItem(v AccessItemAssociatedAccessItem) {
+	o.AccessItem = v
+}
+
+// GetGovernanceEvent returns the GovernanceEvent field value
+// If the value is explicit nil, the zero value for CorrelatedGovernanceEvent will be returned
 func (o *AccessItemAssociated) GetGovernanceEvent() CorrelatedGovernanceEvent {
-	if o == nil || IsNil(o.GovernanceEvent) {
+	if o == nil || o.GovernanceEvent.Get() == nil {
 		var ret CorrelatedGovernanceEvent
 		return ret
 	}
-	return *o.GovernanceEvent
+
+	return *o.GovernanceEvent.Get()
 }
 
-// GetGovernanceEventOk returns a tuple with the GovernanceEvent field value if set, nil otherwise
+// GetGovernanceEventOk returns a tuple with the GovernanceEvent field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemAssociated) GetGovernanceEventOk() (*CorrelatedGovernanceEvent, bool) {
-	if o == nil || IsNil(o.GovernanceEvent) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GovernanceEvent, true
+	return o.GovernanceEvent.Get(), o.GovernanceEvent.IsSet()
 }
 
-// HasGovernanceEvent returns a boolean if a field has been set.
-func (o *AccessItemAssociated) HasGovernanceEvent() bool {
-	if o != nil && !IsNil(o.GovernanceEvent) {
+// SetGovernanceEvent sets field value
+func (o *AccessItemAssociated) SetGovernanceEvent(v CorrelatedGovernanceEvent) {
+	o.GovernanceEvent.Set(&v)
+}
+
+// GetAccessItemType returns the AccessItemType field value if set, zero value otherwise.
+func (o *AccessItemAssociated) GetAccessItemType() string {
+	if o == nil || IsNil(o.AccessItemType) {
+		var ret string
+		return ret
+	}
+	return *o.AccessItemType
+}
+
+// GetAccessItemTypeOk returns a tuple with the AccessItemType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAssociated) GetAccessItemTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessItemType) {
+		return nil, false
+	}
+	return o.AccessItemType, true
+}
+
+// HasAccessItemType returns a boolean if a field has been set.
+func (o *AccessItemAssociated) HasAccessItemType() bool {
+	if o != nil && !IsNil(o.AccessItemType) {
 		return true
 	}
 
 	return false
 }
 
-// SetGovernanceEvent gets a reference to the given CorrelatedGovernanceEvent and assigns it to the GovernanceEvent field.
-func (o *AccessItemAssociated) SetGovernanceEvent(v CorrelatedGovernanceEvent) {
-	o.GovernanceEvent = &v
+// SetAccessItemType gets a reference to the given string and assigns it to the AccessItemType field.
+func (o *AccessItemAssociated) SetAccessItemType(v string) {
+	o.AccessItemType = &v
 }
 
 func (o AccessItemAssociated) MarshalJSON() ([]byte, error) {
@@ -219,20 +242,19 @@ func (o AccessItemAssociated) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemAssociated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessItem) {
-		toSerialize["accessItem"] = o.AccessItem
+	if !IsNil(o.EventType) {
+		toSerialize["eventType"] = o.EventType
+	}
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !IsNil(o.EventType) {
-		toSerialize["eventType"] = o.EventType
-	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
-	}
-	if !IsNil(o.GovernanceEvent) {
-		toSerialize["governanceEvent"] = o.GovernanceEvent
+	toSerialize["accessItem"] = o.AccessItem
+	toSerialize["governanceEvent"] = o.GovernanceEvent.Get()
+	if !IsNil(o.AccessItemType) {
+		toSerialize["accessItemType"] = o.AccessItemType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -243,6 +265,28 @@ func (o AccessItemAssociated) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessItemAssociated) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"accessItem",
+		"governanceEvent",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessItemAssociated := _AccessItemAssociated{}
 
 	err = json.Unmarshal(data, &varAccessItemAssociated)
@@ -256,11 +300,12 @@ func (o *AccessItemAssociated) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessItem")
-		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
+		delete(additionalProperties, "identityId")
+		delete(additionalProperties, "accessItem")
 		delete(additionalProperties, "governanceEvent")
+		delete(additionalProperties, "accessItemType")
 		o.AdditionalProperties = additionalProperties
 	}
 

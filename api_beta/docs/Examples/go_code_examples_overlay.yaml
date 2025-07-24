@@ -9524,7 +9524,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotAccessItems``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListIdentitySnapshotAccessItems`: []ListIdentityAccessItems200ResponseInner
+          // response from `ListIdentitySnapshotAccessItems`: []ListIdentitySnapshotAccessItems200ResponseInner
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentitySnapshotAccessItems`: %v\n", resp)
         }
 - path: /historical-identities/{id}/snapshots

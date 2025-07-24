@@ -22,7 +22,7 @@ type CorrelatedGovernanceEvent struct {
 	// The name of the governance event, such as the certification name or access request ID.
 	Name *string `json:"name,omitempty"`
 	// The date that the certification or access request was completed.
-	Dt *string `json:"dt,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
 	// The type of governance event.
 	Type *string `json:"type,omitempty"`
 	// The ID of the instance that caused the event - either the certification ID or access request ID.
@@ -86,36 +86,36 @@ func (o *CorrelatedGovernanceEvent) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *CorrelatedGovernanceEvent) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *CorrelatedGovernanceEvent) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CorrelatedGovernanceEvent) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *CorrelatedGovernanceEvent) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *CorrelatedGovernanceEvent) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *CorrelatedGovernanceEvent) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *CorrelatedGovernanceEvent) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *CorrelatedGovernanceEvent) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -291,8 +291,8 @@ func (o CorrelatedGovernanceEvent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -332,7 +332,7 @@ func (o *CorrelatedGovernanceEvent) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "governanceId")
 		delete(additionalProperties, "owners")
