@@ -383,6 +383,7 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**GetIdentityOwnershipDetails**](docs/IdentitiesAPI.md#getidentityownershipdetails) | **Get** /identities/{identityId}/ownership | Get ownership details
 *IdentitiesAPI* | [**GetRoleAssignment**](docs/IdentitiesAPI.md#getroleassignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
+*IdentitiesAPI* | [**ListEntitlementsByIdentity**](docs/IdentitiesAPI.md#listentitlementsbyidentity) | **Get** /entitlements/identities/{id}/entitlements | List of entitlements by identity.
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List identities
 *IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{id}/reset | Reset an identity
 *IdentitiesAPI* | [**SendIdentityVerificationAccountToken**](docs/IdentitiesAPI.md#sendidentityverificationaccounttoken) | **Post** /identities/{id}/verification/account/send | Send password reset email
@@ -1294,6 +1295,7 @@ Class | Method | HTTP request | Description
  - [IdentityEntitlementDetails](docs/IdentityEntitlementDetails.md)
  - [IdentityEntitlementDetailsAccountTarget](docs/IdentityEntitlementDetailsAccountTarget.md)
  - [IdentityEntitlementDetailsEntitlementDto](docs/IdentityEntitlementDetailsEntitlementDto.md)
+ - [IdentityEntitlements](docs/IdentityEntitlements.md)
  - [IdentityExceptionReportReference](docs/IdentityExceptionReportReference.md)
  - [IdentityHistoryResponse](docs/IdentityHistoryResponse.md)
  - [IdentityLifecycleState](docs/IdentityLifecycleState.md)

@@ -4828,14 +4828,7 @@ type ApiImportEntitlementsRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	xSailPointExperimental *string
 	file *os.File
-}
-
-// Use this header to enable this experimental API.
-func (r ApiImportEntitlementsRequest) XSailPointExperimental(xSailPointExperimental string) ApiImportEntitlementsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The CSV file containing the source entitlements to aggregate.
@@ -4889,15 +4882,6 @@ func (a *SourcesAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -4916,7 +4900,6 @@ func (a *SourcesAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte

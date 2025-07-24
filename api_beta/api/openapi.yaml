@@ -1116,6 +1116,8 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
+          **key**: *eq*
+
           **name**: *eq*
 
           **type**: *eq*
@@ -1124,12 +1126,62 @@ paths:
 
           **objectTypes**: *eq*
 
-          Supported composite operators: *and*
+          **Supported composite operators**: *and*
         example: name eq "Privacy"
         in: query
         name: filters
+        required: false
         schema:
           type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, key**
+        example: "name,-key"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
       responses:
         "200":
           content:
@@ -1201,6 +1253,8 @@ paths:
       summary: List access model metadata attributes
       tags:
       - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-model-metadata/attributes/{key}:
     get:
       description: Get single Access Model Metadata Attribute
@@ -1283,6 +1337,8 @@ paths:
       summary: Get access model metadata attribute
       tags:
       - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-model-metadata/attributes/{key}/values:
     get:
       description: Get a list of Access Model Metadata Attribute Values
@@ -1296,6 +1352,44 @@ paths:
         schema:
           type: string
         x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
       responses:
         "200":
           content:
@@ -1367,6 +1461,8 @@ paths:
       summary: List access model metadata values
       tags:
       - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-model-metadata/attributes/{key}/values/{value}:
     get:
       description: Get single Access Model Metadata Attribute Value
@@ -1457,6 +1553,8 @@ paths:
       summary: Get access model metadata value
       tags:
       - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-profiles:
     get:
       description: "Get a list of access profiles.\n>**Note:** When you filter for\
@@ -12975,6 +13073,8 @@ paths:
       summary: List of entitlements parents
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements/{id}/children:
     get:
       description: This API returns a list of all child entitlements of a given entitlement.
@@ -13190,6 +13290,8 @@ paths:
       summary: List of entitlements children
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements/bulk-update:
     post:
       description: |
@@ -13536,6 +13638,7 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:entitlement:update
         - idn:entitlement:manage
       summary: Replace entitlement request config
       tags:
@@ -13629,6 +13732,8 @@ paths:
       summary: Reset source entitlements
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}:
     delete:
       description: Remove single Access Model Metadata from an entitlement.
@@ -13723,6 +13828,8 @@ paths:
       summary: Remove metadata from an entitlement.
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: Add single Access Model Metadata to an entitlement.
       operationId: createAccessModelMetadataForEntitlement
@@ -13820,6 +13927,8 @@ paths:
       summary: Add metadata to an entitlement.
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements/aggregate/sources/{id}:
     post:
       deprecated: true
@@ -13913,6 +14022,8 @@ paths:
       summary: Aggregate entitlements
       tags:
       - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /generate-password-reset-token/digit:
     post:
       description: This API is used to generate a digit token for password management.
@@ -46098,6 +46209,8 @@ paths:
       summary: Entitlement aggregation
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{sourceId}/load-uncorrelated-accounts:
     post:
       description: File is required for upload. You will also need to set the Content-Type
@@ -65060,6 +65173,19 @@ components:
         - f9b7e2ce-aced-4117-a95f-4ffad8b33989
         - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
   parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
     limit:
       description: |-
         Max number of results to return.
@@ -65072,19 +65198,6 @@ components:
         default: 250
         format: int32
         maximum: 250
-        minimum: 0
-        type: integer
-    offset:
-      description: |-
-        Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 0
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        format: int32
         minimum: 0
         type: integer
     count:

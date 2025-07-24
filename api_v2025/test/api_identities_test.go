@@ -92,6 +92,20 @@ func Test_api_v2025_IdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentitiesAPIService ListEntitlementsByIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IdentitiesAPI.ListEntitlementsByIdentity(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesAPIService ListIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

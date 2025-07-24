@@ -678,6 +678,7 @@ docs/IdentityEntitiesIdentityEntity.md
 docs/IdentityEntitlementDetails.md
 docs/IdentityEntitlementDetailsAccountTarget.md
 docs/IdentityEntitlementDetailsEntitlementDto.md
+docs/IdentityEntitlements.md
 docs/IdentityExceptionReportReference.md
 docs/IdentityHistoryAPI.md
 docs/IdentityHistoryAPIdeveloperSite_code_examples.yaml
@@ -1931,6 +1932,7 @@ model_identity_entities_identity_entity.go
 model_identity_entitlement_details.go
 model_identity_entitlement_details_account_target.go
 model_identity_entitlement_details_entitlement_dto.go
+model_identity_entitlements.go
 model_identity_exception_report_reference.go
 model_identity_history_response.go
 model_identity_lifecycle_state.go
