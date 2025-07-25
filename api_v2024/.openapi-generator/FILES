@@ -759,6 +759,10 @@ docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineClassificationConfig.md
 docs/MachineClassificationConfigAPI.md
 docs/MachineClassificationConfigAPIdeveloperSite_code_examples.yaml
+docs/MachineClassificationCriteriaLevel1.md
+docs/MachineClassificationCriteriaLevel2.md
+docs/MachineClassificationCriteriaLevel3.md
+docs/MachineClassificationCriteriaOperation.md
 docs/MachineIdentitiesAPI.md
 docs/MachineIdentitiesAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentity.md
@@ -1976,6 +1980,10 @@ model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
 model_machine_classification_config.go
+model_machine_classification_criteria_level1.go
+model_machine_classification_criteria_level2.go
+model_machine_classification_criteria_level3.go
+model_machine_classification_criteria_operation.go
 model_machine_identity.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go

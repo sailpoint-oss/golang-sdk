@@ -18,7 +18,7 @@ import (
 // checks if the RoleCriteriaKey type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RoleCriteriaKey{}
 
-// RoleCriteriaKey Refers to a specific Identity attribute, Account attibute, or Entitlement used in Role membership criteria
+// RoleCriteriaKey Refers to a specific Identity attribute, Account attribute, or Entitlement used in Role membership criteria
 type RoleCriteriaKey struct {
 	Type RoleCriteriaKeyType `json:"type"`
 	// The name of the attribute or entitlement to which the associated criteria applies.

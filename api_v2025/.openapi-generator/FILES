@@ -127,6 +127,7 @@ docs/AccessItemRoleResponse.md
 docs/AccessModelMetadata.md
 docs/AccessModelMetadataAPI.md
 docs/AccessModelMetadataAPIdeveloperSite_code_examples.yaml
+docs/AccessModelMetadataBulkUpdateResponse.md
 docs/AccessModelMetadataValuesInner.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
@@ -535,6 +536,9 @@ docs/Entitlement.md
 docs/EntitlementAccessModelMetadata.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
+docs/EntitlementAttributeBulkUpdateFilterRequest.md
+docs/EntitlementAttributeBulkUpdateIdsRequest.md
+docs/EntitlementAttributeBulkUpdateQueryRequest.md
 docs/EntitlementBulkUpdateRequest.md
 docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
@@ -778,6 +782,10 @@ docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineClassificationConfig.md
 docs/MachineClassificationConfigAPI.md
 docs/MachineClassificationConfigAPIdeveloperSite_code_examples.yaml
+docs/MachineClassificationCriteriaLevel1.md
+docs/MachineClassificationCriteriaLevel2.md
+docs/MachineClassificationCriteriaLevel3.md
+docs/MachineClassificationCriteriaOperation.md
 docs/MachineIdentitiesAPI.md
 docs/MachineIdentitiesAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentity.md
@@ -1461,6 +1469,7 @@ model_access_item_requester_dto.go
 model_access_item_reviewed_by.go
 model_access_item_role_response.go
 model_access_model_metadata.go
+model_access_model_metadata_bulk_update_response.go
 model_access_model_metadata_values_inner.go
 model_access_profile.go
 model_access_profile_approval_scheme.go
@@ -1813,6 +1822,9 @@ model_entitlement.go
 model_entitlement_access_model_metadata.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
+model_entitlement_attribute_bulk_update_filter_request.go
+model_entitlement_attribute_bulk_update_ids_request.go
+model_entitlement_attribute_bulk_update_query_request.go
 model_entitlement_bulk_update_request.go
 model_entitlement_document.go
 model_entitlement_document_all_of_manually_updated_fields.go
@@ -2016,6 +2028,10 @@ model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
 model_machine_classification_config.go
+model_machine_classification_criteria_level1.go
+model_machine_classification_criteria_level2.go
+model_machine_classification_criteria_level3.go
+model_machine_classification_criteria_operation.go
 model_machine_identity.go
 model_machine_identity_dto_owners.go
 model_mail_from_attributes.go

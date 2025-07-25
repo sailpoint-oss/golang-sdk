@@ -27,7 +27,7 @@ const (
 	WORKITEMTYPEMANUALWORKITEMS_APPROVAL WorkItemTypeManualWorkItems = "Approval"
 	WORKITEMTYPEMANUALWORKITEMS_VIOLATION_REVIEW WorkItemTypeManualWorkItems = "ViolationReview"
 	WORKITEMTYPEMANUALWORKITEMS_FORM WorkItemTypeManualWorkItems = "Form"
-	WORKITEMTYPEMANUALWORKITEMS_POLICY_VIOLOATION WorkItemTypeManualWorkItems = "PolicyVioloation"
+	WORKITEMTYPEMANUALWORKITEMS_POLICY_VIOLATION WorkItemTypeManualWorkItems = "PolicyViolation"
 	WORKITEMTYPEMANUALWORKITEMS_CHALLENGE WorkItemTypeManualWorkItems = "Challenge"
 	WORKITEMTYPEMANUALWORKITEMS_IMPACT_ANALYSIS WorkItemTypeManualWorkItems = "ImpactAnalysis"
 	WORKITEMTYPEMANUALWORKITEMS_SIGNOFF WorkItemTypeManualWorkItems = "Signoff"
@@ -45,7 +45,7 @@ var AllowedWorkItemTypeManualWorkItemsEnumValues = []WorkItemTypeManualWorkItems
 	"Approval",
 	"ViolationReview",
 	"Form",
-	"PolicyVioloation",
+	"PolicyViolation",
 	"Challenge",
 	"ImpactAnalysis",
 	"Signoff",

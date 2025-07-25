@@ -84,6 +84,9 @@ Class | Method | HTTP request | Description
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes | List access model metadata attributes
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByFilter**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyfilter) | **Post** /access-model-metadata/bulk-update/filter | Metadata Attribute update by filter
+*AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByIds**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyids) | **Post** /access-model-metadata/bulk-update/ids | Metadata Attribute update by ids
+*AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByQuery**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyquery) | **Post** /access-model-metadata/bulk-update/query | Metadata Attribute update by query
 *AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create access profile
 *AccessProfilesAPI* | [**DeleteAccessProfile**](docs/AccessProfilesAPI.md#deleteaccessprofile) | **Delete** /access-profiles/{id} | Delete the specified access profile
 *AccessProfilesAPI* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete access profile(s)
@@ -824,6 +827,7 @@ Class | Method | HTTP request | Description
  - [AccessItemReviewedBy](docs/AccessItemReviewedBy.md)
  - [AccessItemRoleResponse](docs/AccessItemRoleResponse.md)
  - [AccessModelMetadata](docs/AccessModelMetadata.md)
+ - [AccessModelMetadataBulkUpdateResponse](docs/AccessModelMetadataBulkUpdateResponse.md)
  - [AccessModelMetadataValuesInner](docs/AccessModelMetadataValuesInner.md)
  - [AccessProfile](docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
@@ -1176,6 +1180,9 @@ Class | Method | HTTP request | Description
  - [EntitlementAccessModelMetadata](docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](docs/EntitlementApprovalScheme.md)
+ - [EntitlementAttributeBulkUpdateFilterRequest](docs/EntitlementAttributeBulkUpdateFilterRequest.md)
+ - [EntitlementAttributeBulkUpdateIdsRequest](docs/EntitlementAttributeBulkUpdateIdsRequest.md)
+ - [EntitlementAttributeBulkUpdateQueryRequest](docs/EntitlementAttributeBulkUpdateQueryRequest.md)
  - [EntitlementBulkUpdateRequest](docs/EntitlementBulkUpdateRequest.md)
  - [EntitlementDocument](docs/EntitlementDocument.md)
  - [EntitlementDocumentAllOfManuallyUpdatedFields](docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
@@ -1379,6 +1386,10 @@ Class | Method | HTTP request | Description
  - [LookupStep](docs/LookupStep.md)
  - [MachineAccount](docs/MachineAccount.md)
  - [MachineClassificationConfig](docs/MachineClassificationConfig.md)
+ - [MachineClassificationCriteriaLevel1](docs/MachineClassificationCriteriaLevel1.md)
+ - [MachineClassificationCriteriaLevel2](docs/MachineClassificationCriteriaLevel2.md)
+ - [MachineClassificationCriteriaLevel3](docs/MachineClassificationCriteriaLevel3.md)
+ - [MachineClassificationCriteriaOperation](docs/MachineClassificationCriteriaOperation.md)
  - [MachineIdentity](docs/MachineIdentity.md)
  - [MachineIdentityDtoOwners](docs/MachineIdentityDtoOwners.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
