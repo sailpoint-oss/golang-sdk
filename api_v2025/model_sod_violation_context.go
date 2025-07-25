@@ -19,7 +19,7 @@ var _ MappedNullable = &SodViolationContext{}
 
 // SodViolationContext The contextual information of the violated criteria
 type SodViolationContext struct {
-	Policy *SodPolicyDto `json:"policy,omitempty"`
+	Policy *SodPolicyDto1 `json:"policy,omitempty"`
 	ConflictingAccessCriteria *SodViolationContextConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewSodViolationContextWithDefaults() *SodViolationContext {
 }
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
-func (o *SodViolationContext) GetPolicy() SodPolicyDto {
+func (o *SodViolationContext) GetPolicy() SodPolicyDto1 {
 	if o == nil || IsNil(o.Policy) {
-		var ret SodPolicyDto
+		var ret SodPolicyDto1
 		return ret
 	}
 	return *o.Policy
@@ -54,7 +54,7 @@ func (o *SodViolationContext) GetPolicy() SodPolicyDto {
 
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationContext) GetPolicyOk() (*SodPolicyDto, bool) {
+func (o *SodViolationContext) GetPolicyOk() (*SodPolicyDto1, bool) {
 	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *SodViolationContext) HasPolicy() bool {
 	return false
 }
 
-// SetPolicy gets a reference to the given SodPolicyDto and assigns it to the Policy field.
-func (o *SodViolationContext) SetPolicy(v SodPolicyDto) {
+// SetPolicy gets a reference to the given SodPolicyDto1 and assigns it to the Policy field.
+func (o *SodViolationContext) SetPolicy(v SodPolicyDto1) {
 	o.Policy = &v
 }
 

@@ -942,6 +942,7 @@ Class | Method | HTTP request | Description
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyDto](docs/SodPolicyDto.md)
+ - [SodPolicyDto1](docs/SodPolicyDto1.md)
  - [SodPolicyOwnerRef](docs/SodPolicyOwnerRef.md)
  - [SodPolicyRead](docs/SodPolicyRead.md)
  - [SodPolicyReadAllOfConflictingAccessCriteria](docs/SodPolicyReadAllOfConflictingAccessCriteria.md)
