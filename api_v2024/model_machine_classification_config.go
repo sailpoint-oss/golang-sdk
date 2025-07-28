@@ -20,15 +20,14 @@ var _ MappedNullable = &MachineClassificationConfig{}
 
 // MachineClassificationConfig struct for MachineClassificationConfig
 type MachineClassificationConfig struct {
-	// Indicates if the Classification is enabled for a Source
+	// Indicates whether Classification is enabled for a Source
 	Enabled *bool `json:"enabled,omitempty"`
 	// Classification Method
 	ClassificationMethod *string `json:"classificationMethod,omitempty"`
-	// A classification criteria object
-	Criteria NullableString `json:"criteria,omitempty"`
-	// Time when the config was created
+	Criteria *MachineClassificationCriteriaLevel1 `json:"criteria,omitempty"`
+	// Date the config was created
 	Created *SailPointTime `json:"created,omitempty"`
-	// Time when the config was last updated
+	// Date the config was last updated
 	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -120,46 +119,36 @@ func (o *MachineClassificationConfig) SetClassificationMethod(v string) {
 	o.ClassificationMethod = &v
 }
 
-// GetCriteria returns the Criteria field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MachineClassificationConfig) GetCriteria() string {
-	if o == nil || IsNil(o.Criteria.Get()) {
-		var ret string
+// GetCriteria returns the Criteria field value if set, zero value otherwise.
+func (o *MachineClassificationConfig) GetCriteria() MachineClassificationCriteriaLevel1 {
+	if o == nil || IsNil(o.Criteria) {
+		var ret MachineClassificationCriteriaLevel1
 		return ret
 	}
-	return *o.Criteria.Get()
+	return *o.Criteria
 }
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MachineClassificationConfig) GetCriteriaOk() (*string, bool) {
-	if o == nil {
+func (o *MachineClassificationConfig) GetCriteriaOk() (*MachineClassificationCriteriaLevel1, bool) {
+	if o == nil || IsNil(o.Criteria) {
 		return nil, false
 	}
-	return o.Criteria.Get(), o.Criteria.IsSet()
+	return o.Criteria, true
 }
 
 // HasCriteria returns a boolean if a field has been set.
 func (o *MachineClassificationConfig) HasCriteria() bool {
-	if o != nil && o.Criteria.IsSet() {
+	if o != nil && !IsNil(o.Criteria) {
 		return true
 	}
 
 	return false
 }
 
-// SetCriteria gets a reference to the given NullableString and assigns it to the Criteria field.
-func (o *MachineClassificationConfig) SetCriteria(v string) {
-	o.Criteria.Set(&v)
-}
-// SetCriteriaNil sets the value for Criteria to be an explicit nil
-func (o *MachineClassificationConfig) SetCriteriaNil() {
-	o.Criteria.Set(nil)
-}
-
-// UnsetCriteria ensures that no value is present for Criteria, not even an explicit nil
-func (o *MachineClassificationConfig) UnsetCriteria() {
-	o.Criteria.Unset()
+// SetCriteria gets a reference to the given MachineClassificationCriteriaLevel1 and assigns it to the Criteria field.
+func (o *MachineClassificationConfig) SetCriteria(v MachineClassificationCriteriaLevel1) {
+	o.Criteria = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -252,8 +241,8 @@ func (o MachineClassificationConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClassificationMethod) {
 		toSerialize["classificationMethod"] = o.ClassificationMethod
 	}
-	if o.Criteria.IsSet() {
-		toSerialize["criteria"] = o.Criteria.Get()
+	if !IsNil(o.Criteria) {
+		toSerialize["criteria"] = o.Criteria
 	}
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created

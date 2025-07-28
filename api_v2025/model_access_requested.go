@@ -12,6 +12,7 @@ package api_v2025
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessRequested type satisfies the MappedNullable interface at compile time
@@ -19,13 +20,13 @@ var _ MappedNullable = &AccessRequested{}
 
 // AccessRequested struct for AccessRequested
 type AccessRequested struct {
-	AccessRequest *AccessRequestResponse1 `json:"accessRequest,omitempty"`
+	AccessRequest AccessRequestResponse1 `json:"accessRequest"`
 	// the identity id
 	IdentityId *string `json:"identityId,omitempty"`
 	// the event type
 	EventType *string `json:"eventType,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +36,9 @@ type _AccessRequested AccessRequested
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequested() *AccessRequested {
+func NewAccessRequested(accessRequest AccessRequestResponse1) *AccessRequested {
 	this := AccessRequested{}
+	this.AccessRequest = accessRequest
 	return &this
 }
 
@@ -48,36 +50,28 @@ func NewAccessRequestedWithDefaults() *AccessRequested {
 	return &this
 }
 
-// GetAccessRequest returns the AccessRequest field value if set, zero value otherwise.
+// GetAccessRequest returns the AccessRequest field value
 func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1 {
-	if o == nil || IsNil(o.AccessRequest) {
+	if o == nil {
 		var ret AccessRequestResponse1
 		return ret
 	}
-	return *o.AccessRequest
+
+	return o.AccessRequest
 }
 
-// GetAccessRequestOk returns a tuple with the AccessRequest field value if set, nil otherwise
+// GetAccessRequestOk returns a tuple with the AccessRequest field value
 // and a boolean to check if the value has been set.
 func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse1, bool) {
-	if o == nil || IsNil(o.AccessRequest) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessRequest, true
+	return &o.AccessRequest, true
 }
 
-// HasAccessRequest returns a boolean if a field has been set.
-func (o *AccessRequested) HasAccessRequest() bool {
-	if o != nil && !IsNil(o.AccessRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessRequest gets a reference to the given AccessRequestResponse1 and assigns it to the AccessRequest field.
+// SetAccessRequest sets field value
 func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse1) {
-	o.AccessRequest = &v
+	o.AccessRequest = v
 }
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
@@ -144,36 +138,36 @@ func (o *AccessRequested) SetEventType(v string) {
 	o.EventType = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *AccessRequested) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *AccessRequested) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.DateTime
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequested) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *AccessRequested) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.DateTime, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *AccessRequested) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *AccessRequested) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *AccessRequested) SetDt(v string) {
-	o.Dt = &v
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *AccessRequested) SetDateTime(v string) {
+	o.DateTime = &v
 }
 
 func (o AccessRequested) MarshalJSON() ([]byte, error) {
@@ -186,17 +180,15 @@ func (o AccessRequested) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessRequest) {
-		toSerialize["accessRequest"] = o.AccessRequest
-	}
+	toSerialize["accessRequest"] = o.AccessRequest
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
 	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -207,6 +199,27 @@ func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequested) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"accessRequest",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessRequested := _AccessRequested{}
 
 	err = json.Unmarshal(data, &varAccessRequested)
@@ -223,7 +236,7 @@ func (o *AccessRequested) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accessRequest")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "dateTime")
 		o.AdditionalProperties = additionalProperties
 	}
 

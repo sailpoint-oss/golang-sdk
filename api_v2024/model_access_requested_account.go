@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccountStatusChangedAccount type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountStatusChangedAccount{}
+// checks if the AccessRequestedAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestedAccount{}
 
-// AccountStatusChangedAccount struct for AccountStatusChangedAccount
-type AccountStatusChangedAccount struct {
+// AccessRequestedAccount struct for AccessRequestedAccount
+type AccessRequestedAccount struct {
 	// the ID of the account in the database
 	Id *string `json:"id,omitempty"`
 	// the native identifier of the account
@@ -36,27 +36,27 @@ type AccountStatusChangedAccount struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountStatusChangedAccount AccountStatusChangedAccount
+type _AccessRequestedAccount AccessRequestedAccount
 
-// NewAccountStatusChangedAccount instantiates a new AccountStatusChangedAccount object
+// NewAccessRequestedAccount instantiates a new AccessRequestedAccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountStatusChangedAccount() *AccountStatusChangedAccount {
-	this := AccountStatusChangedAccount{}
+func NewAccessRequestedAccount() *AccessRequestedAccount {
+	this := AccessRequestedAccount{}
 	return &this
 }
 
-// NewAccountStatusChangedAccountWithDefaults instantiates a new AccountStatusChangedAccount object
+// NewAccessRequestedAccountWithDefaults instantiates a new AccessRequestedAccount object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountStatusChangedAccountWithDefaults() *AccountStatusChangedAccount {
-	this := AccountStatusChangedAccount{}
+func NewAccessRequestedAccountWithDefaults() *AccessRequestedAccount {
+	this := AccessRequestedAccount{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetId() string {
+func (o *AccessRequestedAccount) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -66,7 +66,7 @@ func (o *AccountStatusChangedAccount) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetIdOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *AccountStatusChangedAccount) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasId() bool {
+func (o *AccessRequestedAccount) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -83,12 +83,12 @@ func (o *AccountStatusChangedAccount) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AccountStatusChangedAccount) SetId(v string) {
+func (o *AccessRequestedAccount) SetId(v string) {
 	o.Id = &v
 }
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetNativeIdentity() string {
+func (o *AccessRequestedAccount) GetNativeIdentity() string {
 	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
@@ -98,7 +98,7 @@ func (o *AccountStatusChangedAccount) GetNativeIdentity() string {
 
 // GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetNativeIdentityOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetNativeIdentityOk() (*string, bool) {
 	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *AccountStatusChangedAccount) GetNativeIdentityOk() (*string, bool) {
 }
 
 // HasNativeIdentity returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasNativeIdentity() bool {
+func (o *AccessRequestedAccount) HasNativeIdentity() bool {
 	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
@@ -115,12 +115,12 @@ func (o *AccountStatusChangedAccount) HasNativeIdentity() bool {
 }
 
 // SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
-func (o *AccountStatusChangedAccount) SetNativeIdentity(v string) {
+func (o *AccessRequestedAccount) SetNativeIdentity(v string) {
 	o.NativeIdentity = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetDisplayName() string {
+func (o *AccessRequestedAccount) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
@@ -130,7 +130,7 @@ func (o *AccountStatusChangedAccount) GetDisplayName() string {
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetDisplayNameOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetDisplayNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *AccountStatusChangedAccount) GetDisplayNameOk() (*string, bool) {
 }
 
 // HasDisplayName returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasDisplayName() bool {
+func (o *AccessRequestedAccount) HasDisplayName() bool {
 	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
@@ -147,12 +147,12 @@ func (o *AccountStatusChangedAccount) HasDisplayName() bool {
 }
 
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
-func (o *AccountStatusChangedAccount) SetDisplayName(v string) {
+func (o *AccessRequestedAccount) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetSourceId() string {
+func (o *AccessRequestedAccount) GetSourceId() string {
 	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *AccountStatusChangedAccount) GetSourceId() string {
 
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetSourceIdOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetSourceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *AccountStatusChangedAccount) GetSourceIdOk() (*string, bool) {
 }
 
 // HasSourceId returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasSourceId() bool {
+func (o *AccessRequestedAccount) HasSourceId() bool {
 	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
@@ -179,12 +179,12 @@ func (o *AccountStatusChangedAccount) HasSourceId() bool {
 }
 
 // SetSourceId gets a reference to the given string and assigns it to the SourceId field.
-func (o *AccountStatusChangedAccount) SetSourceId(v string) {
+func (o *AccessRequestedAccount) SetSourceId(v string) {
 	o.SourceId = &v
 }
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetSourceName() string {
+func (o *AccessRequestedAccount) GetSourceName() string {
 	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
@@ -194,7 +194,7 @@ func (o *AccountStatusChangedAccount) GetSourceName() string {
 
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetSourceNameOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetSourceNameOk() (*string, bool) {
 	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
@@ -202,7 +202,7 @@ func (o *AccountStatusChangedAccount) GetSourceNameOk() (*string, bool) {
 }
 
 // HasSourceName returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasSourceName() bool {
+func (o *AccessRequestedAccount) HasSourceName() bool {
 	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
@@ -211,12 +211,12 @@ func (o *AccountStatusChangedAccount) HasSourceName() bool {
 }
 
 // SetSourceName gets a reference to the given string and assigns it to the SourceName field.
-func (o *AccountStatusChangedAccount) SetSourceName(v string) {
+func (o *AccessRequestedAccount) SetSourceName(v string) {
 	o.SourceName = &v
 }
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetEntitlementCount() int32 {
+func (o *AccessRequestedAccount) GetEntitlementCount() int32 {
 	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
@@ -226,7 +226,7 @@ func (o *AccountStatusChangedAccount) GetEntitlementCount() int32 {
 
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetEntitlementCountOk() (*int32, bool) {
+func (o *AccessRequestedAccount) GetEntitlementCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
@@ -234,7 +234,7 @@ func (o *AccountStatusChangedAccount) GetEntitlementCountOk() (*int32, bool) {
 }
 
 // HasEntitlementCount returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasEntitlementCount() bool {
+func (o *AccessRequestedAccount) HasEntitlementCount() bool {
 	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
@@ -243,12 +243,12 @@ func (o *AccountStatusChangedAccount) HasEntitlementCount() bool {
 }
 
 // SetEntitlementCount gets a reference to the given int32 and assigns it to the EntitlementCount field.
-func (o *AccountStatusChangedAccount) SetEntitlementCount(v int32) {
+func (o *AccessRequestedAccount) SetEntitlementCount(v int32) {
 	o.EntitlementCount = &v
 }
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
-func (o *AccountStatusChangedAccount) GetAccessType() string {
+func (o *AccessRequestedAccount) GetAccessType() string {
 	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
@@ -258,7 +258,7 @@ func (o *AccountStatusChangedAccount) GetAccessType() string {
 
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedAccount) GetAccessTypeOk() (*string, bool) {
+func (o *AccessRequestedAccount) GetAccessTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
@@ -266,7 +266,7 @@ func (o *AccountStatusChangedAccount) GetAccessTypeOk() (*string, bool) {
 }
 
 // HasAccessType returns a boolean if a field has been set.
-func (o *AccountStatusChangedAccount) HasAccessType() bool {
+func (o *AccessRequestedAccount) HasAccessType() bool {
 	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
@@ -275,11 +275,11 @@ func (o *AccountStatusChangedAccount) HasAccessType() bool {
 }
 
 // SetAccessType gets a reference to the given string and assigns it to the AccessType field.
-func (o *AccountStatusChangedAccount) SetAccessType(v string) {
+func (o *AccessRequestedAccount) SetAccessType(v string) {
 	o.AccessType = &v
 }
 
-func (o AccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
+func (o AccessRequestedAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -287,7 +287,7 @@ func (o AccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountStatusChangedAccount) ToMap() (map[string]interface{}, error) {
+func (o AccessRequestedAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -318,16 +318,16 @@ func (o AccountStatusChangedAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountStatusChangedAccount) UnmarshalJSON(data []byte) (err error) {
-	varAccountStatusChangedAccount := _AccountStatusChangedAccount{}
+func (o *AccessRequestedAccount) UnmarshalJSON(data []byte) (err error) {
+	varAccessRequestedAccount := _AccessRequestedAccount{}
 
-	err = json.Unmarshal(data, &varAccountStatusChangedAccount)
+	err = json.Unmarshal(data, &varAccessRequestedAccount)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountStatusChangedAccount(varAccountStatusChangedAccount)
+	*o = AccessRequestedAccount(varAccessRequestedAccount)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -345,38 +345,38 @@ func (o *AccountStatusChangedAccount) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountStatusChangedAccount struct {
-	value *AccountStatusChangedAccount
+type NullableAccessRequestedAccount struct {
+	value *AccessRequestedAccount
 	isSet bool
 }
 
-func (v NullableAccountStatusChangedAccount) Get() *AccountStatusChangedAccount {
+func (v NullableAccessRequestedAccount) Get() *AccessRequestedAccount {
 	return v.value
 }
 
-func (v *NullableAccountStatusChangedAccount) Set(val *AccountStatusChangedAccount) {
+func (v *NullableAccessRequestedAccount) Set(val *AccessRequestedAccount) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountStatusChangedAccount) IsSet() bool {
+func (v NullableAccessRequestedAccount) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountStatusChangedAccount) Unset() {
+func (v *NullableAccessRequestedAccount) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountStatusChangedAccount(val *AccountStatusChangedAccount) *NullableAccountStatusChangedAccount {
-	return &NullableAccountStatusChangedAccount{value: val, isSet: true}
+func NewNullableAccessRequestedAccount(val *AccessRequestedAccount) *NullableAccessRequestedAccount {
+	return &NullableAccessRequestedAccount{value: val, isSet: true}
 }
 
-func (v NullableAccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
+func (v NullableAccessRequestedAccount) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountStatusChangedAccount) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessRequestedAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

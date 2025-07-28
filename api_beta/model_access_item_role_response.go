@@ -20,16 +20,16 @@ var _ MappedNullable = &AccessItemRoleResponse{}
 
 // AccessItemRoleResponse struct for AccessItemRoleResponse
 type AccessItemRoleResponse struct {
-	// the access item type. role in this case
-	AccessType *string `json:"accessType,omitempty"`
 	// the access item id
 	Id *string `json:"id,omitempty"`
+	// the access item type. role in this case
+	AccessType *string `json:"accessType,omitempty"`
 	// the role display name
 	DisplayName *string `json:"displayName,omitempty"`
+	// the associated source name if it exists
+	SourceName NullableString `json:"sourceName,omitempty"`
 	// the description for the role
 	Description *string `json:"description,omitempty"`
-	// the associated source name if it exists
-	SourceName *string `json:"sourceName,omitempty"`
 	// the date the role is no longer assigned to the specified identity
 	RemoveDate *string `json:"removeDate,omitempty"`
 	// indicates whether the role is revocable
@@ -55,38 +55,6 @@ func NewAccessItemRoleResponse(revocable bool) *AccessItemRoleResponse {
 func NewAccessItemRoleResponseWithDefaults() *AccessItemRoleResponse {
 	this := AccessItemRoleResponse{}
 	return &this
-}
-
-// GetAccessType returns the AccessType field value if set, zero value otherwise.
-func (o *AccessItemRoleResponse) GetAccessType() string {
-	if o == nil || IsNil(o.AccessType) {
-		var ret string
-		return ret
-	}
-	return *o.AccessType
-}
-
-// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemRoleResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessType) {
-		return nil, false
-	}
-	return o.AccessType, true
-}
-
-// HasAccessType returns a boolean if a field has been set.
-func (o *AccessItemRoleResponse) HasAccessType() bool {
-	if o != nil && !IsNil(o.AccessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
-func (o *AccessItemRoleResponse) SetAccessType(v string) {
-	o.AccessType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -121,6 +89,38 @@ func (o *AccessItemRoleResponse) SetId(v string) {
 	o.Id = &v
 }
 
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *AccessItemRoleResponse) GetAccessType() string {
+	if o == nil || IsNil(o.AccessType) {
+		var ret string
+		return ret
+	}
+	return *o.AccessType
+}
+
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemRoleResponse) GetAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessType) {
+		return nil, false
+	}
+	return o.AccessType, true
+}
+
+// HasAccessType returns a boolean if a field has been set.
+func (o *AccessItemRoleResponse) HasAccessType() bool {
+	if o != nil && !IsNil(o.AccessType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *AccessItemRoleResponse) SetAccessType(v string) {
+	o.AccessType = &v
+}
+
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
@@ -153,6 +153,48 @@ func (o *AccessItemRoleResponse) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
+// GetSourceName returns the SourceName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessItemRoleResponse) GetSourceName() string {
+	if o == nil || IsNil(o.SourceName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SourceName.Get()
+}
+
+// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessItemRoleResponse) GetSourceNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SourceName.Get(), o.SourceName.IsSet()
+}
+
+// HasSourceName returns a boolean if a field has been set.
+func (o *AccessItemRoleResponse) HasSourceName() bool {
+	if o != nil && o.SourceName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceName gets a reference to the given NullableString and assigns it to the SourceName field.
+func (o *AccessItemRoleResponse) SetSourceName(v string) {
+	o.SourceName.Set(&v)
+}
+// SetSourceNameNil sets the value for SourceName to be an explicit nil
+func (o *AccessItemRoleResponse) SetSourceNameNil() {
+	o.SourceName.Set(nil)
+}
+
+// UnsetSourceName ensures that no value is present for SourceName, not even an explicit nil
+func (o *AccessItemRoleResponse) UnsetSourceName() {
+	o.SourceName.Unset()
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -183,38 +225,6 @@ func (o *AccessItemRoleResponse) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AccessItemRoleResponse) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetSourceName returns the SourceName field value if set, zero value otherwise.
-func (o *AccessItemRoleResponse) GetSourceName() string {
-	if o == nil || IsNil(o.SourceName) {
-		var ret string
-		return ret
-	}
-	return *o.SourceName
-}
-
-// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemRoleResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceName) {
-		return nil, false
-	}
-	return o.SourceName, true
-}
-
-// HasSourceName returns a boolean if a field has been set.
-func (o *AccessItemRoleResponse) HasSourceName() bool {
-	if o != nil && !IsNil(o.SourceName) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
-func (o *AccessItemRoleResponse) SetSourceName(v string) {
-	o.SourceName = &v
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
@@ -283,20 +293,20 @@ func (o AccessItemRoleResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessType) {
-		toSerialize["accessType"] = o.AccessType
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.AccessType) {
+		toSerialize["accessType"] = o.AccessType
 	}
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
+	if o.SourceName.IsSet() {
+		toSerialize["sourceName"] = o.SourceName.Get()
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.SourceName) {
-		toSerialize["sourceName"] = o.SourceName
 	}
 	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
@@ -345,11 +355,11 @@ func (o *AccessItemRoleResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "description")
 		delete(additionalProperties, "sourceName")
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "revocable")
 		o.AdditionalProperties = additionalProperties

@@ -20,30 +20,28 @@ var _ MappedNullable = &AccessItemAccessProfileResponse{}
 
 // AccessItemAccessProfileResponse struct for AccessItemAccessProfileResponse
 type AccessItemAccessProfileResponse struct {
-	// the access item type. accessProfile in this case
-	AccessType *string `json:"accessType,omitempty"`
 	// the access item id
 	Id *string `json:"id,omitempty"`
-	// the access profile name
-	Name *string `json:"name,omitempty"`
-	// the name of the source
-	SourceName *string `json:"sourceName,omitempty"`
-	// the id of the source
-	SourceId *string `json:"sourceId,omitempty"`
-	// the description for the access profile
-	Description *string `json:"description,omitempty"`
+	// the access item type. accessProfile in this case
+	AccessType *string `json:"accessType,omitempty"`
 	// the display name of the identity
 	DisplayName *string `json:"displayName,omitempty"`
+	// the name of the source
+	SourceName *string `json:"sourceName,omitempty"`
 	// the number of entitlements the access profile will create
-	EntitlementCount *string `json:"entitlementCount,omitempty"`
-	// the name of
-	AppDisplayName *string `json:"appDisplayName,omitempty"`
+	EntitlementCount int32 `json:"entitlementCount"`
+	// the description for the access profile
+	Description NullableString `json:"description,omitempty"`
+	// the id of the source
+	SourceId *string `json:"sourceId,omitempty"`
+	// the list of app ids associated with the access profile
+	AppRefs []AccessItemAccessProfileResponseAppRefsInner `json:"appRefs"`
 	// the date the access profile is no longer assigned to the specified identity
-	RemoveDate *string `json:"removeDate,omitempty"`
+	RemoveDate NullableString `json:"removeDate,omitempty"`
 	// indicates whether the access profile is standalone
-	Standalone bool `json:"standalone"`
-	// indicates whether the access profile is
-	Revocable bool `json:"revocable"`
+	Standalone NullableBool `json:"standalone"`
+	// indicates whether the access profile is revocable
+	Revocable NullableBool `json:"revocable"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,8 +51,10 @@ type _AccessItemAccessProfileResponse AccessItemAccessProfileResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemAccessProfileResponse(standalone bool, revocable bool) *AccessItemAccessProfileResponse {
+func NewAccessItemAccessProfileResponse(entitlementCount int32, appRefs []AccessItemAccessProfileResponseAppRefsInner, standalone NullableBool, revocable NullableBool) *AccessItemAccessProfileResponse {
 	this := AccessItemAccessProfileResponse{}
+	this.EntitlementCount = entitlementCount
+	this.AppRefs = appRefs
 	this.Standalone = standalone
 	this.Revocable = revocable
 	return &this
@@ -66,38 +66,6 @@ func NewAccessItemAccessProfileResponse(standalone bool, revocable bool) *Access
 func NewAccessItemAccessProfileResponseWithDefaults() *AccessItemAccessProfileResponse {
 	this := AccessItemAccessProfileResponse{}
 	return &this
-}
-
-// GetAccessType returns the AccessType field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetAccessType() string {
-	if o == nil || IsNil(o.AccessType) {
-		var ret string
-		return ret
-	}
-	return *o.AccessType
-}
-
-// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessType) {
-		return nil, false
-	}
-	return o.AccessType, true
-}
-
-// HasAccessType returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasAccessType() bool {
-	if o != nil && !IsNil(o.AccessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
-func (o *AccessItemAccessProfileResponse) SetAccessType(v string) {
-	o.AccessType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -132,132 +100,36 @@ func (o *AccessItemAccessProfileResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *AccessItemAccessProfileResponse) GetAccessType() string {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.AccessType
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+func (o *AccessItemAccessProfileResponse) GetAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
-	return o.Name, true
+	return o.AccessType, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+// HasAccessType returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasAccessType() bool {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AccessItemAccessProfileResponse) SetName(v string) {
-	o.Name = &v
-}
-
-// GetSourceName returns the SourceName field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetSourceName() string {
-	if o == nil || IsNil(o.SourceName) {
-		var ret string
-		return ret
-	}
-	return *o.SourceName
-}
-
-// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceName) {
-		return nil, false
-	}
-	return o.SourceName, true
-}
-
-// HasSourceName returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasSourceName() bool {
-	if o != nil && !IsNil(o.SourceName) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
-func (o *AccessItemAccessProfileResponse) SetSourceName(v string) {
-	o.SourceName = &v
-}
-
-// GetSourceId returns the SourceId field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetSourceId() string {
-	if o == nil || IsNil(o.SourceId) {
-		var ret string
-		return ret
-	}
-	return *o.SourceId
-}
-
-// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetSourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceId) {
-		return nil, false
-	}
-	return o.SourceId, true
-}
-
-// HasSourceId returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasSourceId() bool {
-	if o != nil && !IsNil(o.SourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
-func (o *AccessItemAccessProfileResponse) SetSourceId(v string) {
-	o.SourceId = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *AccessItemAccessProfileResponse) SetDescription(v string) {
-	o.Description = &v
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *AccessItemAccessProfileResponse) SetAccessType(v string) {
+	o.AccessType = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -292,148 +164,252 @@ func (o *AccessItemAccessProfileResponse) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetEntitlementCount() string {
-	if o == nil || IsNil(o.EntitlementCount) {
+// GetSourceName returns the SourceName field value if set, zero value otherwise.
+func (o *AccessItemAccessProfileResponse) GetSourceName() string {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
-	return *o.EntitlementCount
+	return *o.SourceName
 }
 
-// GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
+// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetEntitlementCountOk() (*string, bool) {
-	if o == nil || IsNil(o.EntitlementCount) {
+func (o *AccessItemAccessProfileResponse) GetSourceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
-	return o.EntitlementCount, true
+	return o.SourceName, true
 }
 
-// HasEntitlementCount returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasEntitlementCount() bool {
-	if o != nil && !IsNil(o.EntitlementCount) {
+// HasSourceName returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasSourceName() bool {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
 	return false
 }
 
-// SetEntitlementCount gets a reference to the given string and assigns it to the EntitlementCount field.
-func (o *AccessItemAccessProfileResponse) SetEntitlementCount(v string) {
-	o.EntitlementCount = &v
+// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
+func (o *AccessItemAccessProfileResponse) SetSourceName(v string) {
+	o.SourceName = &v
 }
 
-// GetAppDisplayName returns the AppDisplayName field value if set, zero value otherwise.
-func (o *AccessItemAccessProfileResponse) GetAppDisplayName() string {
-	if o == nil || IsNil(o.AppDisplayName) {
+// GetEntitlementCount returns the EntitlementCount field value
+func (o *AccessItemAccessProfileResponse) GetEntitlementCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.EntitlementCount
+}
+
+// GetEntitlementCountOk returns a tuple with the EntitlementCount field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetEntitlementCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EntitlementCount, true
+}
+
+// SetEntitlementCount sets field value
+func (o *AccessItemAccessProfileResponse) SetEntitlementCount(v int32) {
+	o.EntitlementCount = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessItemAccessProfileResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AppDisplayName
+	return *o.Description.Get()
 }
 
-// GetAppDisplayNameOk returns a tuple with the AppDisplayName field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAccessProfileResponse) GetAppDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AppDisplayName) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessItemAccessProfileResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AppDisplayName, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
-// HasAppDisplayName returns a boolean if a field has been set.
-func (o *AccessItemAccessProfileResponse) HasAppDisplayName() bool {
-	if o != nil && !IsNil(o.AppDisplayName) {
+// HasDescription returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAppDisplayName gets a reference to the given string and assigns it to the AppDisplayName field.
-func (o *AccessItemAccessProfileResponse) SetAppDisplayName(v string) {
-	o.AppDisplayName = &v
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *AccessItemAccessProfileResponse) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *AccessItemAccessProfileResponse) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *AccessItemAccessProfileResponse) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *AccessItemAccessProfileResponse) GetSourceId() string {
+	if o == nil || IsNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetSourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasSourceId() bool {
+	if o != nil && !IsNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *AccessItemAccessProfileResponse) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
+// GetAppRefs returns the AppRefs field value
+func (o *AccessItemAccessProfileResponse) GetAppRefs() []AccessItemAccessProfileResponseAppRefsInner {
+	if o == nil {
+		var ret []AccessItemAccessProfileResponseAppRefsInner
+		return ret
+	}
+
+	return o.AppRefs
+}
+
+// GetAppRefsOk returns a tuple with the AppRefs field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetAppRefsOk() ([]AccessItemAccessProfileResponseAppRefsInner, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AppRefs, true
+}
+
+// SetAppRefs sets field value
+func (o *AccessItemAccessProfileResponse) SetAppRefs(v []AccessItemAccessProfileResponseAppRefsInner) {
+	o.AppRefs = v
+}
+
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessItemAccessProfileResponse) GetRemoveDate() string {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RemoveDate
+	return *o.RemoveDate.Get()
 }
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemAccessProfileResponse) GetRemoveDateOk() (*string, bool) {
-	if o == nil || IsNil(o.RemoveDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoveDate, true
+	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
 }
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *AccessItemAccessProfileResponse) HasRemoveDate() bool {
-	if o != nil && !IsNil(o.RemoveDate) {
+	if o != nil && o.RemoveDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoveDate gets a reference to the given string and assigns it to the RemoveDate field.
+// SetRemoveDate gets a reference to the given NullableString and assigns it to the RemoveDate field.
 func (o *AccessItemAccessProfileResponse) SetRemoveDate(v string) {
-	o.RemoveDate = &v
+	o.RemoveDate.Set(&v)
+}
+// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+func (o *AccessItemAccessProfileResponse) SetRemoveDateNil() {
+	o.RemoveDate.Set(nil)
+}
+
+// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
+func (o *AccessItemAccessProfileResponse) UnsetRemoveDate() {
+	o.RemoveDate.Unset()
 }
 
 // GetStandalone returns the Standalone field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *AccessItemAccessProfileResponse) GetStandalone() bool {
-	if o == nil {
+	if o == nil || o.Standalone.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.Standalone
+	return *o.Standalone.Get()
 }
 
 // GetStandaloneOk returns a tuple with the Standalone field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemAccessProfileResponse) GetStandaloneOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Standalone, true
+	return o.Standalone.Get(), o.Standalone.IsSet()
 }
 
 // SetStandalone sets field value
 func (o *AccessItemAccessProfileResponse) SetStandalone(v bool) {
-	o.Standalone = v
+	o.Standalone.Set(&v)
 }
 
 // GetRevocable returns the Revocable field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *AccessItemAccessProfileResponse) GetRevocable() bool {
-	if o == nil {
+	if o == nil || o.Revocable.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.Revocable
+	return *o.Revocable.Get()
 }
 
 // GetRevocableOk returns a tuple with the Revocable field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessItemAccessProfileResponse) GetRevocableOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Revocable, true
+	return o.Revocable.Get(), o.Revocable.IsSet()
 }
 
 // SetRevocable sets field value
 func (o *AccessItemAccessProfileResponse) SetRevocable(v bool) {
-	o.Revocable = v
+	o.Revocable.Set(&v)
 }
 
 func (o AccessItemAccessProfileResponse) MarshalJSON() ([]byte, error) {
@@ -446,38 +422,31 @@ func (o AccessItemAccessProfileResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemAccessProfileResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessType) {
-		toSerialize["accessType"] = o.AccessType
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.SourceName) {
-		toSerialize["sourceName"] = o.SourceName
-	}
-	if !IsNil(o.SourceId) {
-		toSerialize["sourceId"] = o.SourceId
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if !IsNil(o.AccessType) {
+		toSerialize["accessType"] = o.AccessType
 	}
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !IsNil(o.EntitlementCount) {
-		toSerialize["entitlementCount"] = o.EntitlementCount
+	if !IsNil(o.SourceName) {
+		toSerialize["sourceName"] = o.SourceName
 	}
-	if !IsNil(o.AppDisplayName) {
-		toSerialize["appDisplayName"] = o.AppDisplayName
+	toSerialize["entitlementCount"] = o.EntitlementCount
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.RemoveDate) {
-		toSerialize["removeDate"] = o.RemoveDate
+	if !IsNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
 	}
-	toSerialize["standalone"] = o.Standalone
-	toSerialize["revocable"] = o.Revocable
+	toSerialize["appRefs"] = o.AppRefs
+	if o.RemoveDate.IsSet() {
+		toSerialize["removeDate"] = o.RemoveDate.Get()
+	}
+	toSerialize["standalone"] = o.Standalone.Get()
+	toSerialize["revocable"] = o.Revocable.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -491,6 +460,8 @@ func (o *AccessItemAccessProfileResponse) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"entitlementCount",
+		"appRefs",
 		"standalone",
 		"revocable",
 	}
@@ -522,15 +493,14 @@ func (o *AccessItemAccessProfileResponse) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "sourceName")
-		delete(additionalProperties, "sourceId")
-		delete(additionalProperties, "description")
+		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "sourceName")
 		delete(additionalProperties, "entitlementCount")
-		delete(additionalProperties, "appDisplayName")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "appRefs")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "standalone")
 		delete(additionalProperties, "revocable")

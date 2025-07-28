@@ -12,6 +12,7 @@ package api_v2025
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessItemAccountResponse type satisfies the MappedNullable interface at compile time
@@ -19,20 +20,20 @@ var _ MappedNullable = &AccessItemAccountResponse{}
 
 // AccessItemAccountResponse struct for AccessItemAccountResponse
 type AccessItemAccountResponse struct {
-	// the access item type. account in this case
-	AccessType *string `json:"accessType,omitempty"`
 	// the access item id
 	Id *string `json:"id,omitempty"`
-	// the native identifier used to uniquely identify an acccount
-	NativeIdentity *string `json:"nativeIdentity,omitempty"`
+	// the access item type. account in this case
+	AccessType *string `json:"accessType,omitempty"`
+	// the display name of the identity
+	DisplayName *string `json:"displayName,omitempty"`
 	// the name of the source
 	SourceName *string `json:"sourceName,omitempty"`
+	// the native identifier used to uniquely identify an acccount
+	NativeIdentity string `json:"nativeIdentity"`
 	// the id of the source
 	SourceId *string `json:"sourceId,omitempty"`
 	// the number of entitlements the account will create
-	EntitlementCount *string `json:"entitlementCount,omitempty"`
-	// the display name of the identity
-	DisplayName *string `json:"displayName,omitempty"`
+	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,8 +43,9 @@ type _AccessItemAccountResponse AccessItemAccountResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemAccountResponse() *AccessItemAccountResponse {
+func NewAccessItemAccountResponse(nativeIdentity string) *AccessItemAccountResponse {
 	this := AccessItemAccountResponse{}
+	this.NativeIdentity = nativeIdentity
 	return &this
 }
 
@@ -53,38 +55,6 @@ func NewAccessItemAccountResponse() *AccessItemAccountResponse {
 func NewAccessItemAccountResponseWithDefaults() *AccessItemAccountResponse {
 	this := AccessItemAccountResponse{}
 	return &this
-}
-
-// GetAccessType returns the AccessType field value if set, zero value otherwise.
-func (o *AccessItemAccountResponse) GetAccessType() string {
-	if o == nil || IsNil(o.AccessType) {
-		var ret string
-		return ret
-	}
-	return *o.AccessType
-}
-
-// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccountResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessType) {
-		return nil, false
-	}
-	return o.AccessType, true
-}
-
-// HasAccessType returns a boolean if a field has been set.
-func (o *AccessItemAccountResponse) HasAccessType() bool {
-	if o != nil && !IsNil(o.AccessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
-func (o *AccessItemAccountResponse) SetAccessType(v string) {
-	o.AccessType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -119,36 +89,68 @@ func (o *AccessItemAccountResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
-func (o *AccessItemAccountResponse) GetNativeIdentity() string {
-	if o == nil || IsNil(o.NativeIdentity) {
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *AccessItemAccountResponse) GetAccessType() string {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
-	return *o.NativeIdentity
+	return *o.AccessType
 }
 
-// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAccountResponse) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || IsNil(o.NativeIdentity) {
+func (o *AccessItemAccountResponse) GetAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
-	return o.NativeIdentity, true
+	return o.AccessType, true
 }
 
-// HasNativeIdentity returns a boolean if a field has been set.
-func (o *AccessItemAccountResponse) HasNativeIdentity() bool {
-	if o != nil && !IsNil(o.NativeIdentity) {
+// HasAccessType returns a boolean if a field has been set.
+func (o *AccessItemAccountResponse) HasAccessType() bool {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
 	return false
 }
 
-// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
-func (o *AccessItemAccountResponse) SetNativeIdentity(v string) {
-	o.NativeIdentity = &v
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *AccessItemAccountResponse) SetAccessType(v string) {
+	o.AccessType = &v
+}
+
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+func (o *AccessItemAccountResponse) GetDisplayName() string {
+	if o == nil || IsNil(o.DisplayName) {
+		var ret string
+		return ret
+	}
+	return *o.DisplayName
+}
+
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccountResponse) GetDisplayNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DisplayName) {
+		return nil, false
+	}
+	return o.DisplayName, true
+}
+
+// HasDisplayName returns a boolean if a field has been set.
+func (o *AccessItemAccountResponse) HasDisplayName() bool {
+	if o != nil && !IsNil(o.DisplayName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+func (o *AccessItemAccountResponse) SetDisplayName(v string) {
+	o.DisplayName = &v
 }
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
@@ -181,6 +183,30 @@ func (o *AccessItemAccountResponse) HasSourceName() bool {
 // SetSourceName gets a reference to the given string and assigns it to the SourceName field.
 func (o *AccessItemAccountResponse) SetSourceName(v string) {
 	o.SourceName = &v
+}
+
+// GetNativeIdentity returns the NativeIdentity field value
+func (o *AccessItemAccountResponse) GetNativeIdentity() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NativeIdentity
+}
+
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccountResponse) GetNativeIdentityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NativeIdentity, true
+}
+
+// SetNativeIdentity sets field value
+func (o *AccessItemAccountResponse) SetNativeIdentity(v string) {
+	o.NativeIdentity = v
 }
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
@@ -216,9 +242,9 @@ func (o *AccessItemAccountResponse) SetSourceId(v string) {
 }
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
-func (o *AccessItemAccountResponse) GetEntitlementCount() string {
+func (o *AccessItemAccountResponse) GetEntitlementCount() int32 {
 	if o == nil || IsNil(o.EntitlementCount) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.EntitlementCount
@@ -226,7 +252,7 @@ func (o *AccessItemAccountResponse) GetEntitlementCount() string {
 
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemAccountResponse) GetEntitlementCountOk() (*string, bool) {
+func (o *AccessItemAccountResponse) GetEntitlementCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
@@ -242,41 +268,9 @@ func (o *AccessItemAccountResponse) HasEntitlementCount() bool {
 	return false
 }
 
-// SetEntitlementCount gets a reference to the given string and assigns it to the EntitlementCount field.
-func (o *AccessItemAccountResponse) SetEntitlementCount(v string) {
+// SetEntitlementCount gets a reference to the given int32 and assigns it to the EntitlementCount field.
+func (o *AccessItemAccountResponse) SetEntitlementCount(v int32) {
 	o.EntitlementCount = &v
-}
-
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
-func (o *AccessItemAccountResponse) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName) {
-		var ret string
-		return ret
-	}
-	return *o.DisplayName
-}
-
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessItemAccountResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DisplayName) {
-		return nil, false
-	}
-	return o.DisplayName, true
-}
-
-// HasDisplayName returns a boolean if a field has been set.
-func (o *AccessItemAccountResponse) HasDisplayName() bool {
-	if o != nil && !IsNil(o.DisplayName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
-func (o *AccessItemAccountResponse) SetDisplayName(v string) {
-	o.DisplayName = &v
 }
 
 func (o AccessItemAccountResponse) MarshalJSON() ([]byte, error) {
@@ -289,26 +283,24 @@ func (o AccessItemAccountResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemAccountResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessType) {
-		toSerialize["accessType"] = o.AccessType
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.NativeIdentity) {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
+	if !IsNil(o.AccessType) {
+		toSerialize["accessType"] = o.AccessType
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
 	}
 	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
+	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
 	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
-	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -319,6 +311,27 @@ func (o AccessItemAccountResponse) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessItemAccountResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"nativeIdentity",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessItemAccountResponse := _AccessItemAccountResponse{}
 
 	err = json.Unmarshal(data, &varAccessItemAccountResponse)
@@ -332,13 +345,13 @@ func (o *AccessItemAccountResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "nativeIdentity")
+		delete(additionalProperties, "accessType")
+		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "sourceName")
+		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "entitlementCount")
-		delete(additionalProperties, "displayName")
 		o.AdditionalProperties = additionalProperties
 	}
 

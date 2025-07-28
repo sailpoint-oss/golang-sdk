@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccountStatusChangedStatusChange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountStatusChangedStatusChange{}
+// checks if the AccessRequestedStatusChange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestedStatusChange{}
 
-// AccountStatusChangedStatusChange struct for AccountStatusChangedStatusChange
-type AccountStatusChangedStatusChange struct {
+// AccessRequestedStatusChange struct for AccessRequestedStatusChange
+type AccessRequestedStatusChange struct {
 	// the previous status of the account
 	PreviousStatus *string `json:"previousStatus,omitempty"`
 	// the new status of the account
@@ -26,27 +26,27 @@ type AccountStatusChangedStatusChange struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountStatusChangedStatusChange AccountStatusChangedStatusChange
+type _AccessRequestedStatusChange AccessRequestedStatusChange
 
-// NewAccountStatusChangedStatusChange instantiates a new AccountStatusChangedStatusChange object
+// NewAccessRequestedStatusChange instantiates a new AccessRequestedStatusChange object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountStatusChangedStatusChange() *AccountStatusChangedStatusChange {
-	this := AccountStatusChangedStatusChange{}
+func NewAccessRequestedStatusChange() *AccessRequestedStatusChange {
+	this := AccessRequestedStatusChange{}
 	return &this
 }
 
-// NewAccountStatusChangedStatusChangeWithDefaults instantiates a new AccountStatusChangedStatusChange object
+// NewAccessRequestedStatusChangeWithDefaults instantiates a new AccessRequestedStatusChange object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountStatusChangedStatusChangeWithDefaults() *AccountStatusChangedStatusChange {
-	this := AccountStatusChangedStatusChange{}
+func NewAccessRequestedStatusChangeWithDefaults() *AccessRequestedStatusChange {
+	this := AccessRequestedStatusChange{}
 	return &this
 }
 
 // GetPreviousStatus returns the PreviousStatus field value if set, zero value otherwise.
-func (o *AccountStatusChangedStatusChange) GetPreviousStatus() string {
+func (o *AccessRequestedStatusChange) GetPreviousStatus() string {
 	if o == nil || IsNil(o.PreviousStatus) {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *AccountStatusChangedStatusChange) GetPreviousStatus() string {
 
 // GetPreviousStatusOk returns a tuple with the PreviousStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedStatusChange) GetPreviousStatusOk() (*string, bool) {
+func (o *AccessRequestedStatusChange) GetPreviousStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.PreviousStatus) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *AccountStatusChangedStatusChange) GetPreviousStatusOk() (*string, bool)
 }
 
 // HasPreviousStatus returns a boolean if a field has been set.
-func (o *AccountStatusChangedStatusChange) HasPreviousStatus() bool {
+func (o *AccessRequestedStatusChange) HasPreviousStatus() bool {
 	if o != nil && !IsNil(o.PreviousStatus) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *AccountStatusChangedStatusChange) HasPreviousStatus() bool {
 }
 
 // SetPreviousStatus gets a reference to the given string and assigns it to the PreviousStatus field.
-func (o *AccountStatusChangedStatusChange) SetPreviousStatus(v string) {
+func (o *AccessRequestedStatusChange) SetPreviousStatus(v string) {
 	o.PreviousStatus = &v
 }
 
 // GetNewStatus returns the NewStatus field value if set, zero value otherwise.
-func (o *AccountStatusChangedStatusChange) GetNewStatus() string {
+func (o *AccessRequestedStatusChange) GetNewStatus() string {
 	if o == nil || IsNil(o.NewStatus) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *AccountStatusChangedStatusChange) GetNewStatus() string {
 
 // GetNewStatusOk returns a tuple with the NewStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountStatusChangedStatusChange) GetNewStatusOk() (*string, bool) {
+func (o *AccessRequestedStatusChange) GetNewStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.NewStatus) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *AccountStatusChangedStatusChange) GetNewStatusOk() (*string, bool) {
 }
 
 // HasNewStatus returns a boolean if a field has been set.
-func (o *AccountStatusChangedStatusChange) HasNewStatus() bool {
+func (o *AccessRequestedStatusChange) HasNewStatus() bool {
 	if o != nil && !IsNil(o.NewStatus) {
 		return true
 	}
@@ -105,11 +105,11 @@ func (o *AccountStatusChangedStatusChange) HasNewStatus() bool {
 }
 
 // SetNewStatus gets a reference to the given string and assigns it to the NewStatus field.
-func (o *AccountStatusChangedStatusChange) SetNewStatus(v string) {
+func (o *AccessRequestedStatusChange) SetNewStatus(v string) {
 	o.NewStatus = &v
 }
 
-func (o AccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
+func (o AccessRequestedStatusChange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -117,7 +117,7 @@ func (o AccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountStatusChangedStatusChange) ToMap() (map[string]interface{}, error) {
+func (o AccessRequestedStatusChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.PreviousStatus) {
 		toSerialize["previousStatus"] = o.PreviousStatus
@@ -133,16 +133,16 @@ func (o AccountStatusChangedStatusChange) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *AccountStatusChangedStatusChange) UnmarshalJSON(data []byte) (err error) {
-	varAccountStatusChangedStatusChange := _AccountStatusChangedStatusChange{}
+func (o *AccessRequestedStatusChange) UnmarshalJSON(data []byte) (err error) {
+	varAccessRequestedStatusChange := _AccessRequestedStatusChange{}
 
-	err = json.Unmarshal(data, &varAccountStatusChangedStatusChange)
+	err = json.Unmarshal(data, &varAccessRequestedStatusChange)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountStatusChangedStatusChange(varAccountStatusChangedStatusChange)
+	*o = AccessRequestedStatusChange(varAccessRequestedStatusChange)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -155,38 +155,38 @@ func (o *AccountStatusChangedStatusChange) UnmarshalJSON(data []byte) (err error
 	return err
 }
 
-type NullableAccountStatusChangedStatusChange struct {
-	value *AccountStatusChangedStatusChange
+type NullableAccessRequestedStatusChange struct {
+	value *AccessRequestedStatusChange
 	isSet bool
 }
 
-func (v NullableAccountStatusChangedStatusChange) Get() *AccountStatusChangedStatusChange {
+func (v NullableAccessRequestedStatusChange) Get() *AccessRequestedStatusChange {
 	return v.value
 }
 
-func (v *NullableAccountStatusChangedStatusChange) Set(val *AccountStatusChangedStatusChange) {
+func (v *NullableAccessRequestedStatusChange) Set(val *AccessRequestedStatusChange) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountStatusChangedStatusChange) IsSet() bool {
+func (v NullableAccessRequestedStatusChange) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountStatusChangedStatusChange) Unset() {
+func (v *NullableAccessRequestedStatusChange) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountStatusChangedStatusChange(val *AccountStatusChangedStatusChange) *NullableAccountStatusChangedStatusChange {
-	return &NullableAccountStatusChangedStatusChange{value: val, isSet: true}
+func NewNullableAccessRequestedStatusChange(val *AccessRequestedStatusChange) *NullableAccessRequestedStatusChange {
+	return &NullableAccessRequestedStatusChange{value: val, isSet: true}
 }
 
-func (v NullableAccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
+func (v NullableAccessRequestedStatusChange) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountStatusChangedStatusChange) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessRequestedStatusChange) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

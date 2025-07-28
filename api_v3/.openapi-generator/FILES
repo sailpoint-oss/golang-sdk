@@ -640,6 +640,7 @@ docs/SlimDiscoveredApplications.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicyDto.md
+docs/SodPolicyDto1.md
 docs/SodPolicyOwnerRef.md
 docs/SodPolicyRead.md
 docs/SodPolicyReadAllOfConflictingAccessCriteria.md
@@ -1250,6 +1251,7 @@ model_slim_discovered_applications.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_dto.go
+model_sod_policy_dto_1.go
 model_sod_policy_owner_ref.go
 model_sod_policy_read.go
 model_sod_policy_read_all_of_conflicting_access_criteria.go

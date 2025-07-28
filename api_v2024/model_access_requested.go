@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessRequested type satisfies the MappedNullable interface at compile time
@@ -19,13 +20,14 @@ var _ MappedNullable = &AccessRequested{}
 
 // AccessRequested struct for AccessRequested
 type AccessRequested struct {
-	AccessRequest *AccessRequestResponse1 `json:"accessRequest,omitempty"`
-	// the identity id
-	IdentityId *string `json:"identityId,omitempty"`
 	// the event type
 	EventType *string `json:"eventType,omitempty"`
+	// the identity id
+	IdentityId *string `json:"identityId,omitempty"`
 	// the date of event
-	Dt *string `json:"dt,omitempty"`
+	DateTime *string `json:"dateTime,omitempty"`
+	Account AccessRequestedAccount `json:"account"`
+	StatusChange AccessRequestedStatusChange `json:"statusChange"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +37,10 @@ type _AccessRequested AccessRequested
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequested() *AccessRequested {
+func NewAccessRequested(account AccessRequestedAccount, statusChange AccessRequestedStatusChange) *AccessRequested {
 	this := AccessRequested{}
+	this.Account = account
+	this.StatusChange = statusChange
 	return &this
 }
 
@@ -46,70 +50,6 @@ func NewAccessRequested() *AccessRequested {
 func NewAccessRequestedWithDefaults() *AccessRequested {
 	this := AccessRequested{}
 	return &this
-}
-
-// GetAccessRequest returns the AccessRequest field value if set, zero value otherwise.
-func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1 {
-	if o == nil || IsNil(o.AccessRequest) {
-		var ret AccessRequestResponse1
-		return ret
-	}
-	return *o.AccessRequest
-}
-
-// GetAccessRequestOk returns a tuple with the AccessRequest field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse1, bool) {
-	if o == nil || IsNil(o.AccessRequest) {
-		return nil, false
-	}
-	return o.AccessRequest, true
-}
-
-// HasAccessRequest returns a boolean if a field has been set.
-func (o *AccessRequested) HasAccessRequest() bool {
-	if o != nil && !IsNil(o.AccessRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessRequest gets a reference to the given AccessRequestResponse1 and assigns it to the AccessRequest field.
-func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse1) {
-	o.AccessRequest = &v
-}
-
-// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
-func (o *AccessRequested) GetIdentityId() string {
-	if o == nil || IsNil(o.IdentityId) {
-		var ret string
-		return ret
-	}
-	return *o.IdentityId
-}
-
-// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequested) GetIdentityIdOk() (*string, bool) {
-	if o == nil || IsNil(o.IdentityId) {
-		return nil, false
-	}
-	return o.IdentityId, true
-}
-
-// HasIdentityId returns a boolean if a field has been set.
-func (o *AccessRequested) HasIdentityId() bool {
-	if o != nil && !IsNil(o.IdentityId) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
-func (o *AccessRequested) SetIdentityId(v string) {
-	o.IdentityId = &v
 }
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
@@ -144,36 +84,116 @@ func (o *AccessRequested) SetEventType(v string) {
 	o.EventType = &v
 }
 
-// GetDt returns the Dt field value if set, zero value otherwise.
-func (o *AccessRequested) GetDt() string {
-	if o == nil || IsNil(o.Dt) {
+// GetIdentityId returns the IdentityId field value if set, zero value otherwise.
+func (o *AccessRequested) GetIdentityId() string {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
-	return *o.Dt
+	return *o.IdentityId
 }
 
-// GetDtOk returns a tuple with the Dt field value if set, nil otherwise
+// GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequested) GetDtOk() (*string, bool) {
-	if o == nil || IsNil(o.Dt) {
+func (o *AccessRequested) GetIdentityIdOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
-	return o.Dt, true
+	return o.IdentityId, true
 }
 
-// HasDt returns a boolean if a field has been set.
-func (o *AccessRequested) HasDt() bool {
-	if o != nil && !IsNil(o.Dt) {
+// HasIdentityId returns a boolean if a field has been set.
+func (o *AccessRequested) HasIdentityId() bool {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDt gets a reference to the given string and assigns it to the Dt field.
-func (o *AccessRequested) SetDt(v string) {
-	o.Dt = &v
+// SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
+func (o *AccessRequested) SetIdentityId(v string) {
+	o.IdentityId = &v
+}
+
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *AccessRequested) GetDateTime() string {
+	if o == nil || IsNil(o.DateTime) {
+		var ret string
+		return ret
+	}
+	return *o.DateTime
+}
+
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequested) GetDateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.DateTime) {
+		return nil, false
+	}
+	return o.DateTime, true
+}
+
+// HasDateTime returns a boolean if a field has been set.
+func (o *AccessRequested) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateTime gets a reference to the given string and assigns it to the DateTime field.
+func (o *AccessRequested) SetDateTime(v string) {
+	o.DateTime = &v
+}
+
+// GetAccount returns the Account field value
+func (o *AccessRequested) GetAccount() AccessRequestedAccount {
+	if o == nil {
+		var ret AccessRequestedAccount
+		return ret
+	}
+
+	return o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value
+// and a boolean to check if the value has been set.
+func (o *AccessRequested) GetAccountOk() (*AccessRequestedAccount, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Account, true
+}
+
+// SetAccount sets field value
+func (o *AccessRequested) SetAccount(v AccessRequestedAccount) {
+	o.Account = v
+}
+
+// GetStatusChange returns the StatusChange field value
+func (o *AccessRequested) GetStatusChange() AccessRequestedStatusChange {
+	if o == nil {
+		var ret AccessRequestedStatusChange
+		return ret
+	}
+
+	return o.StatusChange
+}
+
+// GetStatusChangeOk returns a tuple with the StatusChange field value
+// and a boolean to check if the value has been set.
+func (o *AccessRequested) GetStatusChangeOk() (*AccessRequestedStatusChange, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StatusChange, true
+}
+
+// SetStatusChange sets field value
+func (o *AccessRequested) SetStatusChange(v AccessRequestedStatusChange) {
+	o.StatusChange = v
 }
 
 func (o AccessRequested) MarshalJSON() ([]byte, error) {
@@ -186,18 +206,17 @@ func (o AccessRequested) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessRequest) {
-		toSerialize["accessRequest"] = o.AccessRequest
+	if !IsNil(o.EventType) {
+		toSerialize["eventType"] = o.EventType
 	}
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !IsNil(o.EventType) {
-		toSerialize["eventType"] = o.EventType
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
-	if !IsNil(o.Dt) {
-		toSerialize["dt"] = o.Dt
-	}
+	toSerialize["account"] = o.Account
+	toSerialize["statusChange"] = o.StatusChange
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -207,6 +226,28 @@ func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequested) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"account",
+		"statusChange",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessRequested := _AccessRequested{}
 
 	err = json.Unmarshal(data, &varAccessRequested)
@@ -220,10 +261,11 @@ func (o *AccessRequested) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accessRequest")
-		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")
-		delete(additionalProperties, "dt")
+		delete(additionalProperties, "identityId")
+		delete(additionalProperties, "dateTime")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "statusChange")
 		o.AdditionalProperties = additionalProperties
 	}
 

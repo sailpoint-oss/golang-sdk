@@ -718,8 +718,15 @@ localVarRequest.Header.Add("X-SailPoint-SDK", "2.3.4")
 			}
 
 			latestToken.SetAuthHeader(localVarRequest)
-		}
-if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+		} else if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
+			// Use override client credentials from context
+			auth, err := getAccessToken(clientCreds.ClientID, clientCreds.ClientSecret, c.cfg.TokenURL)
+			if err != nil {
+				return nil, err
+			}
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
+		} else if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+			// Use default client credentials from configuration
 			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
 				return nil, err
@@ -727,6 +734,7 @@ if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cf
 			c.cfg.Token = auth
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		} else {
+			// Use existing token from configuration
 			localVarRequest.Header.Add("Authorization", "Bearer "+c.cfg.Token)
 		}
 	}

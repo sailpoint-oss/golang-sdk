@@ -108,6 +108,7 @@ docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
 docs/AccessItemAccessProfileResponse.md
+docs/AccessItemAccessProfileResponseAppRefsInner.md
 docs/AccessItemAccountResponse.md
 docs/AccessItemAppResponse.md
 docs/AccessItemApproverDto.md
@@ -126,6 +127,7 @@ docs/AccessItemRoleResponse.md
 docs/AccessModelMetadata.md
 docs/AccessModelMetadataAPI.md
 docs/AccessModelMetadataAPIdeveloperSite_code_examples.yaml
+docs/AccessModelMetadataBulkUpdateResponse.md
 docs/AccessModelMetadataValuesInner.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
@@ -534,6 +536,9 @@ docs/Entitlement.md
 docs/EntitlementAccessModelMetadata.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
+docs/EntitlementAttributeBulkUpdateFilterRequest.md
+docs/EntitlementAttributeBulkUpdateIdsRequest.md
+docs/EntitlementAttributeBulkUpdateQueryRequest.md
 docs/EntitlementBulkUpdateRequest.md
 docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
@@ -677,6 +682,7 @@ docs/IdentityEntitiesIdentityEntity.md
 docs/IdentityEntitlementDetails.md
 docs/IdentityEntitlementDetailsAccountTarget.md
 docs/IdentityEntitlementDetailsEntitlementDto.md
+docs/IdentityEntitlements.md
 docs/IdentityExceptionReportReference.md
 docs/IdentityHistoryAPI.md
 docs/IdentityHistoryAPIdeveloperSite_code_examples.yaml
@@ -746,6 +752,7 @@ docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
 docs/ListFormInstancesByTenantResponse.md
 docs/ListIdentityAccessItems200ResponseInner.md
+docs/ListIdentitySnapshotAccessItems200ResponseInner.md
 docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
 docs/LoadAccountsTask.md
@@ -775,6 +782,10 @@ docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineClassificationConfig.md
 docs/MachineClassificationConfigAPI.md
 docs/MachineClassificationConfigAPIdeveloperSite_code_examples.yaml
+docs/MachineClassificationCriteriaLevel1.md
+docs/MachineClassificationCriteriaLevel2.md
+docs/MachineClassificationCriteriaLevel3.md
+docs/MachineClassificationCriteriaOperation.md
 docs/MachineIdentitiesAPI.md
 docs/MachineIdentitiesAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentity.md
@@ -1217,6 +1228,7 @@ docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyDto.md
+docs/SodPolicyDto1.md
 docs/SodPolicyOwnerRef.md
 docs/SodPolicySchedule.md
 docs/SodRecipient.md
@@ -1441,6 +1453,7 @@ model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
 model_access_item_access_profile_response.go
+model_access_item_access_profile_response_app_refs_inner.go
 model_access_item_account_response.go
 model_access_item_app_response.go
 model_access_item_approver_dto.go
@@ -1457,6 +1470,7 @@ model_access_item_requester_dto.go
 model_access_item_reviewed_by.go
 model_access_item_role_response.go
 model_access_model_metadata.go
+model_access_model_metadata_bulk_update_response.go
 model_access_model_metadata_values_inner.go
 model_access_profile.go
 model_access_profile_approval_scheme.go
@@ -1809,6 +1823,9 @@ model_entitlement.go
 model_entitlement_access_model_metadata.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
+model_entitlement_attribute_bulk_update_filter_request.go
+model_entitlement_attribute_bulk_update_ids_request.go
+model_entitlement_attribute_bulk_update_query_request.go
 model_entitlement_bulk_update_request.go
 model_entitlement_document.go
 model_entitlement_document_all_of_manually_updated_fields.go
@@ -1928,6 +1945,7 @@ model_identity_entities_identity_entity.go
 model_identity_entitlement_details.go
 model_identity_entitlement_details_account_target.go
 model_identity_entitlement_details_entitlement_dto.go
+model_identity_entitlements.go
 model_identity_exception_report_reference.go
 model_identity_history_response.go
 model_identity_lifecycle_state.go
@@ -1991,6 +2009,7 @@ model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
 model_list_form_instances_by_tenant_response.go
 model_list_identity_access_items_200_response_inner.go
+model_list_identity_snapshot_access_items_200_response_inner.go
 model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
 model_load_accounts_task.go
@@ -2010,6 +2029,10 @@ model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
 model_machine_classification_config.go
+model_machine_classification_criteria_level1.go
+model_machine_classification_criteria_level2.go
+model_machine_classification_criteria_level3.go
+model_machine_classification_criteria_operation.go
 model_machine_identity.go
 model_machine_identity_dto_owners.go
 model_mail_from_attributes.go
@@ -2389,6 +2412,7 @@ model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_dto.go
+model_sod_policy_dto_1.go
 model_sod_policy_owner_ref.go
 model_sod_policy_schedule.go
 model_sod_recipient.go

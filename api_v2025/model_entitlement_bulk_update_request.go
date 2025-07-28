@@ -18,7 +18,7 @@ import (
 // checks if the EntitlementBulkUpdateRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &EntitlementBulkUpdateRequest{}
 
-// EntitlementBulkUpdateRequest struct for EntitlementBulkUpdateRequest
+// EntitlementBulkUpdateRequest Object for specifying the bulk update request
 type EntitlementBulkUpdateRequest struct {
 	// List of entitlement ids to update
 	EntitlementIds []string `json:"entitlementIds"`

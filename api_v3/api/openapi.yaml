@@ -46243,6 +46243,7 @@ components:
       required:
       - requestedFor
       - requestedItems
+      title: Access Request
       type: object
     AccessRequestItem:
       example:
@@ -46311,6 +46312,7 @@ components:
       required:
       - id
       - type
+      title: Access Request Item
       type: object
     AccessProfileDocument:
       allOf:
@@ -46400,6 +46402,7 @@ components:
       - reason
       - reassign
       - reassignTo
+      title: Review Reassign
       type: object
     Account:
       allOf:
@@ -46762,6 +46765,7 @@ components:
             customKey2: custom value 2
           nullable: true
           type: object
+      title: Account Activity
       type: object
     AccountActivitySearchedItem:
       description: AccountActivity
@@ -46879,6 +46883,7 @@ components:
           type: object
       required:
       - attributes
+      title: Account Attributes
       type: object
     AccountsAsyncResult:
       description: Accounts async response containing details on started async process
@@ -46891,6 +46896,7 @@ components:
           type: string
       required:
       - id
+      title: Accounts Async Result
       type: object
     AccountToggleRequest:
       description: Request used for account enable/disable
@@ -46910,6 +46916,7 @@ components:
             \ add and process 'Unlock' operation by the workflow."
           example: false
           type: boolean
+      title: Account Toggle Request
       type: object
     AccountUnlockRequest:
       description: Request used for account unlock
@@ -46933,6 +46940,7 @@ components:
             \ the attribute is updated."
           example: false
           type: boolean
+      title: Account Unlock Request
       type: object
     ApprovalItems:
       example:
@@ -46976,6 +46984,7 @@ components:
           - $ref: '#/components/schemas/WorkItemState'
           - nullable: true
             type: object
+      title: Approval Item Details
       type: object
     Campaign:
       allOf:
@@ -47245,6 +47254,7 @@ components:
           type: string
         phase:
           $ref: '#/components/schemas/CertificationPhase'
+      title: Identity Certification Dto
       type: object
     CertificationReference:
       example:
@@ -47274,6 +47284,7 @@ components:
           type: string
         reviewer:
           $ref: '#/components/schemas/Reviewer'
+      title: Certification Reference
       type: object
     EntitlementDocument:
       allOf:
@@ -47765,6 +47776,7 @@ components:
           description: Identity's email address. This is read-only.
           example: alison.ferguso@identitysoon.com
           type: string
+      title: Identity Reference With Name And Email
       type: object
     ProvisioningConfig:
       description: Specification of a Service Desk integration provisioning configuration.
@@ -47820,6 +47832,7 @@ components:
           example: 7
           format: int32
           type: integer
+      title: Provisioning Config
       type: object
     ProvisioningPolicy:
       example:
@@ -47873,6 +47886,7 @@ components:
           type: array
       required:
       - name
+      title: Provisioning Policy Dto
       type: object
     QueuedCheckConfigDetails:
       description: Configuration of maximum number of days and interval for checking
@@ -47892,6 +47906,7 @@ components:
       required:
       - provisioningMaxStatusCheckDays
       - provisioningStatusCheckIntervalMinutes
+      title: Queued Check Config Details
       type: object
     Reassignment:
       example:
@@ -47915,6 +47930,7 @@ components:
           description: The comment entered when the Certification was reassigned
           example: Reassigned for a reason
           type: string
+      title: Reassignment
       type: object
     ReassignmentReference:
       example:
@@ -47936,6 +47952,7 @@ components:
       required:
       - id
       - type
+      title: Reassign Reference
       type: object
     RemediationItems:
       example:
@@ -47985,6 +48002,7 @@ components:
           description: The native identity of the target
           example: jason.smith2
           type: string
+      title: Remediation Item Details
       type: object
     RequestableObject:
       example:
@@ -48047,6 +48065,7 @@ components:
             the object.
           example: false
           type: boolean
+      title: Requestable Object
       type: object
     RequestableObjectType:
       description: Currently supported requestable object types.
@@ -48110,6 +48129,7 @@ components:
           format: date-time
           nullable: true
           type: string
+      title: Reviewer
       type: object
     RoleDocument:
       allOf:
@@ -48327,6 +48347,7 @@ components:
       required:
       - hours
       - type
+      title: Schedule
       type: object
     ScheduledSearch:
       allOf:
@@ -48577,6 +48598,7 @@ components:
       required:
       - scriptName
       - type
+      title: Service Desk Integration Template Type
       type: object
     Source:
       example:
@@ -48889,6 +48911,7 @@ components:
       - connector
       - name
       - owner
+      title: Source
       type: object
     SourceHealthDto:
       description: Dto for source health data
@@ -48958,6 +48981,7 @@ components:
           - SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS
           example: SOURCE_STATE_UNCHECKED_SOURCE
           type: string
+      title: Source Health Dto
       type: object
     Transform:
       description: The representation of an internally- or customer-defined transform.
@@ -49024,6 +49048,7 @@ components:
       - attributes
       - name
       - type
+      title: Transform
       type: object
     WorkItems:
       example:
@@ -49170,6 +49195,7 @@ components:
           items:
             type: string
           type: array
+      title: Work Items
       type: object
     WorkItemsCount:
       example:
@@ -49179,6 +49205,7 @@ components:
           description: The count of work items
           example: 29
           type: integer
+      title: Work Items Count
       type: object
     WorkItemsSummary:
       example:
@@ -49198,6 +49225,7 @@ components:
           description: The count of total work items
           example: 30
           type: integer
+      title: Work Items Summary
       type: object
     AccountUsage:
       example:
@@ -49215,6 +49243,7 @@ components:
           example: 10
           format: int64
           type: integer
+      title: Account Usage
       type: object
     SourceUsage:
       example:
@@ -49232,6 +49261,7 @@ components:
           example: 10.45
           format: float
           type: number
+      title: Source Usage
       type: object
     SourceUsageStatus:
       example:
@@ -49249,6 +49279,7 @@ components:
           - INCOMPLETE
           example: COMPLETE
           type: string
+      title: Source Usage Status
       type: object
     BrandingItem:
       example:
@@ -49300,6 +49331,7 @@ components:
           example: ""
           nullable: true
           type: string
+      title: Branding Item
       type: object
     BrandingItemCreate:
       properties:
@@ -49340,6 +49372,7 @@ components:
       required:
       - name
       - productName
+      title: Branding Item Create
       type: object
     AccessProfile:
       description: Access profile.
@@ -49530,6 +49563,7 @@ components:
           items:
             $ref: '#/components/schemas/ErrorMessageDto'
           type: array
+      title: Error Response Dto
       type: object
     JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
@@ -49559,6 +49593,7 @@ components:
       required:
       - op
       - path
+      title: Json Patch Operation
       type: object
     AccessProfileBulkDeleteRequest:
       example:
@@ -49785,6 +49820,7 @@ components:
           items:
             $ref: '#/components/schemas/PermissionDto'
           type: array
+      title: Entitlement
       type: object
     AccessRequestResponse:
       example:
@@ -49853,6 +49889,7 @@ components:
       required:
       - accountActivityId
       - comment
+      title: Cancel Access Request
       type: object
     AccessRequestConfig:
       example:
@@ -49903,6 +49940,7 @@ components:
           $ref: '#/components/schemas/ApprovalReminderAndEscalationConfig'
         entitlementRequestConfig:
           $ref: '#/components/schemas/EntitlementRequestConfig'
+      title: Access Request Config
       type: object
     RequestedItemStatus:
       example:
@@ -50285,6 +50323,7 @@ components:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
           type: array
+      title: Requested Item Status
       type: object
     PendingApproval:
       example:
@@ -50528,6 +50567,7 @@ components:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
           type: array
+      title: Pending Approval
       type: object
     CompletedApproval:
       example:
@@ -50788,6 +50828,7 @@ components:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
           type: array
+      title: Completed Approval
       type: object
     CommentDto:
       example:
@@ -50810,6 +50851,7 @@ components:
           type: string
         author:
           $ref: '#/components/schemas/CommentDto_author'
+      title: Comment Dto
       type: object
     ForwardApprovalDto:
       example:
@@ -50831,6 +50873,7 @@ components:
       required:
       - comment
       - newOwnerId
+      title: Forward Approval Dto
       type: object
     ApprovalSummary:
       example:
@@ -50853,6 +50896,7 @@ components:
           example: 0
           format: int32
           type: integer
+      title: Approval Summary
       type: object
     AccountAttributesCreate:
       example:
@@ -50868,6 +50912,7 @@ components:
           $ref: '#/components/schemas/AccountAttributesCreate_attributes'
       required:
       - attributes
+      title: Account Attributes Create
       type: object
     SearchAttributeConfig:
       example:
@@ -50891,6 +50936,7 @@ components:
             "2c91808b79fd2422017a0b35d30f3968": employeeNumber
             "2c91808b79fd2422017a0b36008f396b": employeeNumber
           type: object
+      title: Search Attribute Config
       type: object
     NetworkConfiguration:
       example:
@@ -50928,6 +50974,7 @@ components:
             for geo location.
           example: true
           type: boolean
+      title: Network Configuration
       type: object
     LockoutConfiguration:
       example:
@@ -50951,6 +50998,7 @@ components:
           example: 5
           format: int32
           type: integer
+      title: Lockout Configuration
       type: object
     ServiceProviderConfiguration:
       description: Represents the IdentityNow as Service Provider Configuration allowing
@@ -51041,6 +51089,7 @@ components:
           items:
             $ref: '#/components/schemas/ServiceProviderConfiguration_federationProtocolDetails_inner'
           type: array
+      title: Service Provider Configuration
       type: object
     SessionConfiguration:
       example:
@@ -51063,6 +51112,7 @@ components:
           example: 45
           format: int32
           type: integer
+      title: Session Configuration
       type: object
     AuthUser:
       example:
@@ -51197,6 +51247,7 @@ components:
             type: string
           nullable: true
           type: array
+      title: Auth User
       type: object
     SlimCampaign:
       example:
@@ -51372,6 +51423,7 @@ components:
           description: Comment to explain why the certification was reassigned
           example: reassigned for some reason
           type: string
+      title: Admin Review Reassign
       type: object
     CertificationTask:
       example:
@@ -51452,6 +51504,7 @@ components:
           example: 2020-09-24T18:10:47.693Z
           format: date-time
           type: string
+      title: Certification Task
       type: object
     ActivateCampaignOptions:
       example:
@@ -51464,6 +51517,7 @@ components:
             \ from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh."
           example: -05:00
           type: string
+      title: Activate Campaign Options
       type: object
     CampaignCompleteOptions:
       example:
@@ -51478,6 +51532,7 @@ components:
           - REVOKE
           example: REVOKE
           type: string
+      title: Campaign Complete Options
       type: object
     CampaignsDeleteRequest:
       example:
@@ -51493,6 +51548,7 @@ components:
           items:
             type: string
           type: array
+      title: Campaigns Delete Request
       type: object
     CampaignReport:
       allOf:
@@ -51622,6 +51678,7 @@ components:
       - mode
       - name
       - owner
+      title: Campaign Filter Details
       type: object
     CampaignTemplate:
       description: Campaign Template
@@ -51791,6 +51848,7 @@ components:
       - description
       - modified
       - name
+      title: Campaign Template
       type: object
     CampaignReference:
       example:
@@ -51859,6 +51917,7 @@ components:
       - mandatoryCommentRequirement
       - name
       - type
+      title: Campaign Reference
       type: object
     IdentityCertificationDto:
       example:
@@ -51979,6 +52038,7 @@ components:
           type: string
         phase:
           $ref: '#/components/schemas/CertificationPhase'
+      title: Identity Certification Dto
       type: object
     AccessReviewItem:
       example:
@@ -52530,6 +52590,7 @@ components:
           example: This user still needs access to this source
           nullable: true
           type: string
+      title: Access Review Item
       type: object
     ReviewDecision:
       example:
@@ -52572,6 +52633,7 @@ components:
       - bulk
       - decision
       - id
+      title: Review Decision
       type: object
     ReviewReassign:
       example:
@@ -52599,6 +52661,7 @@ components:
       - reason
       - reassign
       - reassignTo
+      title: Review Reassign
       type: object
     IdentityCertDecisionSummary:
       example:
@@ -52711,6 +52774,7 @@ components:
           example: 3
           format: int32
           type: integer
+      title: Identity Cert Decision Summary
       type: object
     CertificationIdentitySummary:
       example:
@@ -52736,6 +52800,7 @@ components:
             certification have been completed
           example: true
           type: boolean
+      title: Certification Identity Summary
       type: object
     AccessSummary:
       description: An object holding the access that is being reviewed
@@ -53262,6 +53327,7 @@ components:
           $ref: '#/components/schemas/ReviewableAccessProfile'
         role:
           $ref: '#/components/schemas/ReviewableRole'
+      title: Access Summary
       type: object
     PermissionDto:
       description: "Simplified DTO for the Permission objects stored in SailPoint's\
@@ -53286,6 +53352,7 @@ components:
           example: SYS.GV_$TRANSACTION
           readOnly: true
           type: string
+      title: Permission Dto
       type: object
     ObjectMappingResponse:
       example:
@@ -53861,6 +53928,7 @@ components:
           - RELEASED
           example: RELEASED
           type: string
+      title: Connector Detail
       type: object
     V3ConnectorDto:
       example:
@@ -54010,6 +54078,7 @@ components:
           - SKIPPED
           example: ERROR
           type: string
+      title: Update Detail
       type: object
     LifecycleState:
       allOf:
@@ -54111,6 +54180,7 @@ components:
           description: Deleted lifecycle state's display name.
           example: Contractor Lifecycle
           type: string
+      title: Lifecyclestate Deleted
       type: object
     IdentityProfileBulkDelete:
       description: List of Identity Profile IDs to delete.
@@ -54166,6 +54236,7 @@ components:
           - TempError
           example: Success
           type: string
+      title: Task Result Simplified
       type: object
     IdentityProfileExportedObject:
       description: Identity profile exported object.
@@ -54223,6 +54294,7 @@ components:
           $ref: '#/components/schemas/IdentityProfileExportedObject_self'
         object:
           $ref: '#/components/schemas/IdentityProfile'
+      title: Identity Profile Exported Object
       type: object
     ObjectImportResult:
       description: Response model for import of a single object.
@@ -54323,6 +54395,7 @@ components:
           type: string
         identityAttributeConfig:
           $ref: '#/components/schemas/IdentityAttributeConfig'
+      title: Identity Preview Request
       type: object
     IdentityPreviewResponse:
       example:
@@ -54362,6 +54435,7 @@ components:
           items:
             $ref: '#/components/schemas/IdentityAttributePreview'
           type: array
+      title: Identity Preview Response
       type: object
     IdentityAttributeConfig:
       description: Defines all the identity attribute mapping configurations. This
@@ -54395,6 +54469,7 @@ components:
           items:
             $ref: '#/components/schemas/IdentityAttributeTransform'
           type: array
+      title: Identity Attribute Config
       type: object
     ManagedClient:
       description: Managed Client
@@ -54562,6 +54637,7 @@ components:
       - clusterId
       - description
       - type
+      title: Managed Client
       type: object
     ManagedClientRequest:
       description: Managed Client Request
@@ -54592,6 +54668,7 @@ components:
           type: string
       required:
       - clusterId
+      title: Managed Client Request
       type: object
     ManagedClientType:
       description: Managed Client type
@@ -54674,6 +54751,7 @@ components:
       - status
       - timestamp
       - type
+      title: Managed Client Status
       type: object
     ManagedCluster:
       description: Managed Cluster
@@ -54850,6 +54928,7 @@ components:
       - ccgVersion
       - clientType
       - id
+      title: Managed Cluster
       type: object
     ManagedClusterRequest:
       description: Request to create Managed Cluster
@@ -54883,6 +54962,7 @@ components:
           type: string
       required:
       - name
+      title: Managed Cluster Request
       type: object
     ClientLogConfiguration:
       description: Client Runtime Logging Configuration
@@ -54920,9 +55000,11 @@ components:
             $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
+          title: Log Level Spec
           type: object
       required:
       - rootLevel
+      title: Client Log Configuration
       type: object
     ClientLogConfigurationDurationMinutes:
       description: Client Runtime Logging Configuration
@@ -54948,6 +55030,7 @@ components:
             $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
+          title: Log Level Spec
           type: object
       required:
       - rootLevel
@@ -54974,6 +55057,7 @@ components:
             $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
+          title: Log Level Spec
           type: object
       required:
       - rootLevel
@@ -55013,6 +55097,7 @@ components:
           example: email
           nullable: true
           type: string
+      title: Mfa Okta Config
       type: object
     MfaDuoConfig:
       example:
@@ -55060,6 +55145,7 @@ components:
             ikey: Q123WE45R6TY7890ZXCV
           nullable: true
           type: object
+      title: Mfa Duo Config
       type: object
     KbaQuestion:
       description: KBA Configuration
@@ -55098,6 +55184,7 @@ components:
       - id
       - numAnswers
       - text
+      title: Kba Question
       type: object
     KbaAnswerRequestItem:
       example:
@@ -55117,6 +55204,7 @@ components:
       required:
       - answer
       - id
+      title: Kba Answer Request Item
       type: object
     KbaAnswerResponseItem:
       example:
@@ -55146,6 +55234,7 @@ components:
       - hasAnswer
       - id
       - question
+      title: Kba Answer Response Item
       type: object
     MfaConfigTestResponse:
       description: Response model for configuration test of a given MFA method
@@ -55167,6 +55256,7 @@ components:
           example: MFA Method is disabled.
           readOnly: true
           type: string
+      title: Mfa Config Test Response
       type: object
     OktaVerificationRequest:
       example:
@@ -55180,6 +55270,7 @@ components:
           type: string
       required:
       - userId
+      title: Okta Verification Request
       type: object
     VerificationResponse:
       example:
@@ -55207,6 +55298,7 @@ components:
           example: Unable to connect DUO Service during verification
           nullable: true
           type: string
+      title: Verification Response
       type: object
     DuoVerificationRequest:
       example:
@@ -55226,6 +55318,7 @@ components:
       required:
       - signedResponse
       - userId
+      title: Duo Verification Request
       type: object
     VerificationPollRequest:
       example:
@@ -55238,6 +55331,7 @@ components:
           type: string
       required:
       - requestId
+      title: Verification Poll Request
       type: object
     KbaAuthResponse:
       example:
@@ -55263,6 +55357,7 @@ components:
           - NOT_ENOUGH_DATA
           example: PENDING
           type: string
+      title: Kba Auth Response
       type: object
     TokenAuthRequest:
       example:
@@ -55296,6 +55391,7 @@ components:
       - deliveryType
       - token
       - userAlias
+      title: Token Auth Request
       type: object
     TokenAuthResponse:
       example:
@@ -55311,6 +55407,7 @@ components:
           - NOT_ENOUGH_DATA
           example: PENDING
           type: string
+      title: Token Auth Response
       type: object
     SendTokenRequest:
       example:
@@ -55337,6 +55434,7 @@ components:
       required:
       - deliveryType
       - userAlias
+      title: Send Token Request
       type: object
     SendTokenResponse:
       example:
@@ -55361,6 +55459,7 @@ components:
           example: Unable to sent text message
           nullable: true
           type: string
+      title: Send Token Response
       type: object
     NonEmployeeRecord:
       example:
@@ -56279,6 +56378,7 @@ components:
       - scope
       - strongAuthSupported
       - type
+      title: Get O Auth Client Response
       type: object
     CreateOAuthClientRequest:
       example:
@@ -56399,6 +56499,7 @@ components:
       - enabled
       - grantTypes
       - name
+      title: Create O Auth Client Request
       type: object
     CreateOAuthClientResponse:
       example:
@@ -56549,6 +56650,7 @@ components:
       - secret
       - strongAuthSupported
       - type
+      title: Create O Auth Client Response
       type: object
     PasswordSyncGroup:
       example:
@@ -56593,6 +56695,7 @@ components:
           format: date-time
           nullable: true
           type: string
+      title: Password Sync Group
       type: object
     PasswordPolicyV3Dto:
       example:
@@ -56799,6 +56902,7 @@ components:
           items:
             type: string
           type: array
+      title: Password Policy V 3 Dto
       type: object
     GetPersonalAccessTokenResponse:
       example:
@@ -56884,6 +56988,7 @@ components:
       - name
       - owner
       - scope
+      title: Get Personal Access Token Response
       type: object
     CreatePersonalAccessTokenRequest:
       description: Object for specifying the name of a personal access token to create
@@ -56942,6 +57047,7 @@ components:
           type: string
       required:
       - name
+      title: Create Personal Access Token Request
       type: object
     CreatePersonalAccessTokenResponse:
       example:
@@ -57023,6 +57129,7 @@ components:
       - owner
       - scope
       - secret
+      title: Create Personal Access Token Response
       type: object
     PublicIdentity:
       description: Details about a public identity
@@ -57118,6 +57225,7 @@ components:
           type: string
         modifiedBy:
           $ref: '#/components/schemas/IdentityReference'
+      title: Public Identity Config
       type: object
     Role:
       description: A Role
@@ -57388,6 +57496,7 @@ components:
           nullable: true
           type: string
           example: null
+      title: Task Result Dto
       type: object
     RoleIdentity:
       description: A subset of the fields of an Identity which is a member of a Role.
@@ -57947,6 +58056,7 @@ components:
             Inactive segments have no effect.
           example: true
           type: boolean
+      title: Segment
       type: object
     PasswordInfoQueryDTO:
       example:
@@ -57961,6 +58071,7 @@ components:
           description: The display name of the source
           example: My-AD
           type: string
+      title: Password Info Query DTO
       type: object
     PasswordInfo:
       example:
@@ -58010,6 +58121,7 @@ components:
           items:
             type: string
           type: array
+      title: Password Info
       type: object
     PasswordChangeRequest:
       example:
@@ -58042,6 +58154,7 @@ components:
             change
           example: 8a807d4c73c545510173c545d4b60246
           type: string
+      title: Password Change Request
       type: object
     PasswordChangeResponse:
       example:
@@ -58061,6 +58174,7 @@ components:
           - FAILED
           example: IN_PROGRESS
           type: string
+      title: Password Change Response
       type: object
     PasswordStatus:
       example:
@@ -58098,6 +58212,7 @@ components:
           items:
             type: string
           type: array
+      title: Password Status
       type: object
     PasswordOrgConfig:
       example:
@@ -58135,6 +58250,7 @@ components:
           maximum: 18
           minimum: 6
           type: integer
+      title: Password Org Config
       type: object
     ReportResults:
       description: Details about report result or current state.
@@ -58552,6 +58668,7 @@ components:
           example: 0f11f2a47c944bf3a2bd742580fe3bde
           readOnly: true
           type: string
+      title: Sod Policy Schedule
       type: object
     IdentityWithNewAccess:
       description: An identity with a set of access to be added
@@ -58665,6 +58782,7 @@ components:
       required:
       - accessRefs
       - identityId
+      title: Identity With New Access
       type: object
     SodViolationCheck:
       description: An object referencing an SOD violation check
@@ -58684,6 +58802,7 @@ components:
           type: string
       required:
       - requestId
+      title: Sod Violation Check
       type: object
     MultiPolicyRequest:
       example:
@@ -58697,6 +58816,7 @@ components:
             example: "[b868cd40-ffa4-4337-9c07-1a51846cfa94, 63a07a7b-39a4-48aa-956d-50c827deba2a]"
             type: string
           type: array
+      title: Multi Policy Request
       type: object
     ProvisioningPolicyDto:
       example:
@@ -58750,6 +58870,7 @@ components:
           type: array
       required:
       - name
+      title: Provisioning Policy Dto
       type: object
     UsageType:
       description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
@@ -58967,6 +59088,7 @@ components:
           example: 2019-12-31T20:22:28.104Z
           format: date-time
           type: string
+      title: Schema
       type: object
     SourceConnectionsDto:
       example:
@@ -59110,6 +59232,7 @@ components:
           items:
             $ref: '#/components/schemas/DependantConnectionsMissingDto'
           type: array
+      title: Source Connections Dto
       type: object
     TaggedObject:
       description: Tagged object.
@@ -59132,6 +59255,7 @@ components:
           items:
             type: string
           type: array
+      title: Tagged Object
       type: object
     BulkAddTaggedObject:
       example:
@@ -59170,6 +59294,7 @@ components:
           - MERGE
           example: MERGE
           type: string
+      title: Bulk Add Tagged Object
       type: object
     BulkTaggedObjectResponse:
       example:
@@ -59196,6 +59321,7 @@ components:
           items:
             type: string
           type: array
+      title: Bulk Tagged Object Response
       type: object
     BulkRemoveTaggedObject:
       example:
@@ -59222,6 +59348,7 @@ components:
           items:
             type: string
           type: array
+      title: Bulk Remove Tagged Object
       type: object
     TransformRead:
       allOf:
@@ -59269,6 +59396,7 @@ components:
       required:
       - comment
       - targetOwnerId
+      title: Work Item Forward
       type: object
     Workflow:
       allOf:
@@ -59970,6 +60098,7 @@ components:
           description: Description of the application.
           example: Example Description
           type: string
+      title: Manual Discover Applications Template
       type: object
     ManualDiscoverApplications:
       properties:
@@ -59984,6 +60113,7 @@ components:
           type: string
       required:
       - file
+      title: Manual Discover Applications
       type: object
     SlimDiscoveredApplications:
       description: Discovered applications
@@ -60165,6 +60295,7 @@ components:
           $ref: '#/components/schemas/VendorConnectorMapping_deletedAt'
         deletedBy:
           $ref: '#/components/schemas/VendorConnectorMapping_deletedBy'
+      title: Vendor Connector Mapping
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
@@ -60263,6 +60394,7 @@ components:
           type: string
       required:
       - name
+      title: Base Common Dto
       type: object
     Recommendation:
       properties:
@@ -60286,6 +60418,7 @@ components:
       required:
       - method
       - type
+      title: Recommendation
       type: object
     BaseReferenceDto:
       example:
@@ -60304,6 +60437,7 @@ components:
             applies
           example: William Wilson
           type: string
+      title: Base Reference Dto
       type: object
     CompletionStatus:
       description: The status after completion.
@@ -60342,6 +60476,7 @@ components:
             on
           example: true
           type: boolean
+      title: Identity Summary
       type: object
     AccountActivityItem:
       example:
@@ -60445,6 +60580,7 @@ components:
           format: date-time
           nullable: true
           type: string
+      title: Account Activity Item
       type: object
     ExecutionStatus:
       description: The current state of execution.
@@ -60592,6 +60728,7 @@ components:
           - $ref: '#/components/schemas/WorkItemState'
           - nullable: true
             type: object
+      title: Approval Item Details
       type: object
     AccessConstraint:
       example:
@@ -60626,6 +60763,7 @@ components:
       required:
       - operator
       - type
+      title: Access Constraint
       type: object
     AccessProfileEntitlement:
       allOf:
@@ -60751,6 +60889,7 @@ components:
           description: Report name.
           example: My annual report
           type: string
+      title: Identity Exception Report Reference
       type: object
     ReassignReference:
       example:
@@ -60772,6 +60911,7 @@ components:
       required:
       - id
       - type
+      title: Reassign Reference
       type: object
     RemediationItemDetails:
       example:
@@ -60821,6 +60961,7 @@ components:
           description: The native identity of the target
           example: jason.smith2
           type: string
+      title: Remediation Item Details
       type: object
     AccessProfileRole:
       allOf:
@@ -60859,6 +61000,7 @@ components:
           description: Owner's name.
           example: Support
           type: string
+      title: Owner Dto
       type: object
     SourceClusterDto:
       description: Source cluster.
@@ -60877,6 +61019,7 @@ components:
           description: Source cluster display name.
           example: Training VA
           type: string
+      title: Source Cluster Dto
       type: object
     BeforeProvisioningRuleDto:
       description: Before Provisioning Rule.
@@ -60895,6 +61038,7 @@ components:
           description: Rule display name.
           example: Before Provisioning Airtable Rule
           type: string
+      title: Before Provisioning Rule Dto
       type: object
     ManagerCorrelationMapping:
       properties:
@@ -60908,6 +61052,7 @@ components:
             a manager using the value from the accountAttribute.
           example: manager
           type: string
+      title: Manager Correlation Mapping
       type: object
     SourceFeature:
       description: |-
@@ -61043,6 +61188,7 @@ components:
           items:
             $ref: '#/components/schemas/SectionDetails'
           type: array
+      title: Form Details
       type: object
     OwnerReference:
       description: Owner of the object.
@@ -61251,6 +61397,7 @@ components:
           example: The request was syntactically correct but its content is semantically
             invalid.
           type: string
+      title: Error Message Dto
       type: object
     AccessProfileUsage:
       example:
@@ -61330,6 +61477,7 @@ components:
           items:
             $ref: '#/components/schemas/AccessModelMetadata_values_inner'
           type: array
+      title: Access Model Metadata
       type: object
     AccessRequestTracking:
       properties:
@@ -61375,6 +61523,7 @@ components:
             \ direct reports."
           example: true
           type: boolean
+      title: Request On Behalf Of Config
       type: object
     ApprovalReminderAndEscalationConfig:
       example:
@@ -61410,6 +61559,7 @@ components:
           type: integer
         fallbackApproverRef:
           $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
+      title: Approval Reminder And Escalation Config
       type: object
     EntitlementRequestConfig:
       example:
@@ -61444,6 +61594,7 @@ components:
           example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           nullable: true
           type: string
+      title: Entitlement Request Config
       type: object
     CancelledRequestDetails:
       description: Provides additional details for a request that has been cancelled.
@@ -61460,6 +61611,7 @@ components:
           example: 2019-12-20T09:17:12.192Z
           format: date-time
           type: string
+      title: Cancelled Request Details
       type: object
     ErrorMessageDtoList:
       items:
@@ -61560,6 +61712,7 @@ components:
           format: date-time
           nullable: true
           type: string
+      title: Approval Status Dto
       type: object
     ManualWorkItemDetails:
       example:
@@ -61611,6 +61764,7 @@ components:
             $ref: '#/components/schemas/ApprovalForwardHistory'
           nullable: true
           type: array
+      title: Manual Work Item Details
       type: object
     AccessItemRequester:
       description: Access item requester's identity.
@@ -61633,6 +61787,7 @@ components:
           description: Access item owner's human-readable display name.
           example: William Wilson
           type: string
+      title: Access Item Requester
       type: object
     SodViolationContextCheckCompleted:
       description: An object referencing a completed SOD violation check
@@ -61724,6 +61879,7 @@ components:
           type: string
         violationCheckResult:
           $ref: '#/components/schemas/SodViolationCheckResult'
+      title: Sod Violation Context Check Completed
       type: object
     ProvisioningDetails:
       description: Provides additional details about provisioning for this request.
@@ -61735,6 +61891,7 @@ components:
             \ in that object for this phase."
           example: manualWorkItemDetails
           type: string
+      title: Provisioning Details
       type: object
     PreApprovalTriggerDetails:
       description: Provides additional details about the pre-approval trigger for
@@ -61755,6 +61912,7 @@ components:
           - REJECTED
           example: APPROVED
           type: string
+      title: Pre Approval Trigger Details
       type: object
     AccessRequestPhases:
       description: Provides additional details about this access request phase.
@@ -61807,6 +61965,7 @@ components:
           example: approvalDetails
           nullable: true
           type: string
+      title: Access Request Phases
       type: object
     RequestedAccountRef:
       example:
@@ -61837,6 +61996,7 @@ components:
           example: Multi Account AD source name
           nullable: false
           type: string
+      title: Requested Account Ref
       type: object
     AccessItemRequestedFor:
       description: Identity the access item is requested for.
@@ -61860,6 +62020,7 @@ components:
             requested for.
           example: Robert Robinson
           type: string
+      title: Access Item Requested For
       type: object
     RequestableObjectReference:
       example:
@@ -61888,6 +62049,7 @@ components:
           - ENTITLEMENT
           example: ROLE
           type: string
+      title: Requestable Object Reference
       type: object
     ApprovalForwardHistory:
       example:
@@ -61923,6 +62085,7 @@ components:
           type: string
         reassignmentType:
           $ref: '#/components/schemas/ReassignmentType'
+      title: Approval Forward History
       type: object
     PendingApprovalAction:
       description: Enum represents action that is being processed on an approval.
@@ -61954,6 +62117,7 @@ components:
             item request.
           example: Allen Albertson
           type: string
+      title: Access Item Reviewed By
       type: object
     CompletedApprovalState:
       description: Enum represents completed approval object's state.
@@ -62072,6 +62236,7 @@ components:
           items:
             $ref: '#/components/schemas/ErrorMessageDto'
           type: array
+      title: Campaign Alert
       type: object
     ReassignmentTrailDTOList:
       description: Reassignment trails that lead to self certification identity
@@ -62159,6 +62324,7 @@ components:
           example: 2020-06-01T13:49:37.385Z
           format: date-time
           type: string
+      title: Review Recommendation
       type: object
     DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
@@ -62964,6 +63130,7 @@ components:
           items:
             type: string
           type: array
+      title: Email Notification Option
       type: object
     AccountAction:
       description: Object for specifying Actions to be performed on a specified list
@@ -62991,6 +63158,7 @@ components:
             type: string
           type: array
           uniqueItems: true
+      title: Account Action
       type: object
     SpConfigMessage:
       description: Message model for Config Import/Export.
@@ -63049,6 +63217,7 @@ components:
           description: Display name of object created or updated by import.
           example: HR Active Directory
           type: string
+      title: Import Object
       type: object
     IdentityAttributePreview:
       example:
@@ -63081,6 +63250,7 @@ components:
           items:
             $ref: '#/components/schemas/ErrorMessageDto'
           type: array
+      title: Identity Attribute Preview
       type: object
     IdentityAttributeTransform:
       description: Transform definition for an identity attribute.
@@ -63099,6 +63269,7 @@ components:
           type: string
         transformDefinition:
           $ref: '#/components/schemas/TransformDefinition'
+      title: Identity Attribute Transform
       type: object
     ManagedClientStatusCode:
       description: Status of a Managed Client
@@ -63141,6 +63312,7 @@ components:
           example: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
           nullable: true
           type: string
+      title: Managed Cluster Key Pair
       type: object
     ManagedClusterAttributes:
       description: "Managed Cluster Attributes for Cluster Configuration. Supported\
@@ -63158,6 +63330,7 @@ components:
           example: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
           nullable: true
           type: string
+      title: Managed Cluster Attributes
       type: object
     ManagedClusterRedis:
       description: Managed Cluster Redis Configuration
@@ -63174,6 +63347,7 @@ components:
           example: 6379
           format: int32
           type: integer
+      title: Managed Cluster Redis
       type: object
     StandardLevel:
       description: Standard Log4j log level
@@ -63192,6 +63366,7 @@ components:
         $ref: '#/components/schemas/StandardLevel'
       description: Mapping of identifiers to Standard Log Level values
       example: INFO
+      title: Log Level Spec
       type: object
     KbaAuthResponseItem:
       properties:
@@ -63205,6 +63380,7 @@ components:
           example: true
           nullable: true
           type: boolean
+      title: Kba Auth Response Item
       type: object
     NonEmployeeSourceLite:
       example:
@@ -63494,6 +63670,7 @@ components:
           description: Personal access token owner's human-readable display name.
           example: Support
           type: string
+      title: Pat Owner
       type: object
     IdentityReference:
       description: The manager for the identity.
@@ -63513,6 +63690,7 @@ components:
           description: Human-readable display name of identity.
           example: Thomas Edison
           type: string
+      title: Identity Reference
       type: object
     PublicIdentityAttributeConfig:
       description: Used to map an attribute key for an Identity to its display name.
@@ -63528,6 +63706,7 @@ components:
           description: The attribute display name
           example: Country
           type: string
+      title: Public Identity Attribute Config
       type: object
     AccessProfileRef:
       example:
@@ -64159,6 +64338,7 @@ components:
       properties:
         expression:
           $ref: '#/components/schemas/Expression'
+      title: Visibility Criteria
       type: object
     PasswordInfoAccount:
       example:
@@ -64177,6 +64357,7 @@ components:
             account. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-Name-for/ta-p/74008
           example: Abby.Smith
           type: string
+      title: Password Info Account
       type: object
     accounts-export-report-arguments:
       description: Arguments for Account Export report (ACCOUNTS)
@@ -64401,6 +64582,7 @@ components:
           - CONFLICTING_ACCESS_BASED
           example: GENERAL
           type: string
+      title: Sod Policy
       type: object
     ConflictingAccessCriteria:
       properties:
@@ -64408,6 +64590,7 @@ components:
           $ref: '#/components/schemas/AccessCriteria'
         rightCriteria:
           $ref: '#/components/schemas/AccessCriteria'
+      title: Conflicting Access Criteria
       type: object
     ConflictingAccessCriteriaRequest:
       properties:
@@ -64415,6 +64598,7 @@ components:
           $ref: '#/components/schemas/AccessCriteriaRequest'
         rightCriteria:
           $ref: '#/components/schemas/AccessCriteriaRequest'
+      title: Conflicting Access Criteria Request
       type: object
     SodReportResultDto:
       description: SOD policy violation report result.
@@ -64433,6 +64617,7 @@ components:
           description: Human-readable name of the SOD policy violation report result.
           example: SOD Policy 1 Violation
           type: string
+      title: Sod Report Result Dto
       type: object
     SodRecipient:
       description: SOD policy recipient.
@@ -64455,6 +64640,7 @@ components:
           description: SOD policy recipient's display name.
           example: Michael Michaels
           type: string
+      title: Sod Recipient
       type: object
     ViolationContext:
       example:
@@ -64500,6 +64686,7 @@ components:
           description: Entitlement's display name.
           example: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
           type: string
+      title: Entitlement Ref
       type: object
     FieldDetailsDto:
       example:
@@ -64552,6 +64739,7 @@ components:
           description: Flag indicating whether or not the attribute is multi-valued.
           example: false
           type: boolean
+      title: Field Details Dto
       type: object
     AttributeDefinition:
       properties:
@@ -64584,6 +64772,7 @@ components:
             This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute..
           example: false
           type: boolean
+      title: Attribute Definition
       type: object
     IdentityProfilesConnections:
       example:
@@ -64605,6 +64794,7 @@ components:
           example: 100
           format: int64
           type: integer
+      title: Identity Profiles Connections
       type: object
     DependantAppConnections:
       example:
@@ -64672,6 +64862,7 @@ components:
           description: Is App Center enabled for connected Application
           example: false
           type: boolean
+      title: Dependant App Connections
       type: object
     DependantConnectionsMissingDto:
       example:
@@ -64695,6 +64886,7 @@ components:
           example: "If there was an error retrieving any dependencies, it would lbe\
             \ listed here"
           type: string
+      title: Dependant Connections Missing Dto
       type: object
     TaggedObjectDto:
       example:
@@ -64725,6 +64917,7 @@ components:
           example: William Wilson
           nullable: true
           type: string
+      title: Tagged Object Dto
       type: object
     WorkflowModifiedBy:
       example:
@@ -65310,6 +65503,7 @@ components:
             template.
           example: HR Active Directory
           type: string
+      title: Service Desk Source
       type: object
     BaseAccessProfile:
       properties:
@@ -65447,6 +65641,7 @@ components:
           example: 2017-07-11T18:45:37.098Z
           format: date-time
           type: string
+      title: Comment
       type: object
     AccountActivityItemOperation:
       description: Represents an operation in an account activity item
@@ -65484,6 +65679,7 @@ components:
           type: string
         requestedObjectType:
           $ref: '#/components/schemas/RequestableObjectType'
+      title: Account Request Info
       type: object
     SectionDetails:
       allOf:
@@ -65505,6 +65701,7 @@ components:
         formItems: []
         name: Field1
         label: Section 1
+      title: Section Details
       type: object
     AccessProfileApprovalScheme:
       example:
@@ -65743,9 +65940,10 @@ components:
         violatedPolicies:
           description: A list of the SOD policies that were violated.
           items:
-            $ref: '#/components/schemas/SodPolicyDto'
+            $ref: '#/components/schemas/SodPolicyDto_1'
           nullable: true
           type: array
+      title: Sod Violation Check Result
       type: object
     ReassignmentType:
       description: "The approval reassignment type. \n* MANUAL_REASSIGNMENT: An approval\
@@ -65786,6 +65984,7 @@ components:
             \ either an Identity Provider (IDP) or a Service Provider (SP)."
           example: http://www.okta.com/exkdaruy8Ln5Ry7C54x6
           type: string
+      title: Federation Protocol Details
       type: object
     JITConfiguration:
       properties:
@@ -65810,6 +66009,7 @@ components:
             lastName: okta.lastName
             email: okta.email
           type: object
+      title: JIT Configuration
       type: object
     ReassignmentTrailDTO:
       properties:
@@ -65825,6 +66025,7 @@ components:
           description: The type of reassignment.
           example: AUTOMATIC_REASSIGNMENT
           type: string
+      title: Reassignment Trail DTO
       type: object
     DataAccess:
       description: DAS data for the entitlement
@@ -65855,6 +66056,7 @@ components:
           type: array
         impactScore:
           $ref: '#/components/schemas/DataAccess_impactScore'
+      title: Data Access
       type: object
     ActivityInsights:
       description: Insights into account activity
@@ -65881,6 +66083,7 @@ components:
           - UNKNOWN
           example: COMPLETE
           type: string
+      title: Activity Insights
       type: object
     ObjectExportImportNames:
       properties:
@@ -65911,6 +66114,7 @@ components:
             sourceName: MySource
             sourceId: 2c9180877a826e68017a8c0b03da1a53
           type: object
+      title: Transform Definition
       type: object
     ManagedClusterQueue:
       description: Managed Cluster key pair for Cluster
@@ -65926,6 +66130,7 @@ components:
           description: ManagedCluster queue aws region
           example: us-east-1
           type: string
+      title: Managed Cluster Queue
       type: object
     NonEmployeeIdentityDtoType:
       description: Identifies if the identity is a normal identity or a governance
@@ -66344,6 +66549,7 @@ components:
             $ref: '#/components/schemas/Expression_children_inner'
           nullable: true
           type: array
+      title: Expression
       type: object
     ViolationOwnerAssignmentConfig:
       example:
@@ -66367,6 +66573,7 @@ components:
           type: string
         ownerRef:
           $ref: '#/components/schemas/ViolationOwnerAssignmentConfig_ownerRef'
+      title: Violation Owner Assignment Config
       type: object
     AccessCriteria:
       example:
@@ -66398,6 +66605,7 @@ components:
           maxItems: 50
           minItems: 1
           type: array
+      title: Access Criteria
       type: object
     AccessCriteriaRequest:
       example:
@@ -66429,13 +66637,10 @@ components:
           maxItems: 50
           minItems: 1
           type: array
+      title: Access Criteria Request
       type: object
     SodPolicyDto:
       description: SOD policy.
-      example:
-        name: Business SOD Policy
-        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-        type: SOD_POLICY
       properties:
         type:
           description: SOD policy DTO type.
@@ -66560,6 +66765,7 @@ components:
           description: Name of the FormItem
           example: Field1
           type: string
+      title: Form Item Details
       type: object
     ProvisioningCriteriaLevel3:
       description: Defines matching criteria for an account to be provisioned with
@@ -66626,9 +66832,33 @@ components:
           type: SOD_POLICY
       properties:
         policy:
-          $ref: '#/components/schemas/SodPolicyDto'
+          $ref: '#/components/schemas/SodPolicyDto_1'
         conflictingAccessCriteria:
           $ref: '#/components/schemas/SodViolationContext_conflictingAccessCriteria'
+      title: Sod Violation Context
+      type: object
+    SodPolicyDto_1:
+      description: SOD policy.
+      example:
+        name: Business SOD Policy
+        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        type: SOD_POLICY
+      properties:
+        type:
+          description: SOD policy DTO type.
+          enum:
+          - SOD_POLICY
+          example: SOD_POLICY
+          type: string
+        id:
+          description: SOD policy ID.
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: string
+        name:
+          description: SOD policy display name.
+          example: Business SOD Policy
+          type: string
+      title: Sod Policy Dto
       type: object
     RoleCriteriaOperation:
       description: An operation
@@ -66885,6 +67115,7 @@ components:
           description: The attribute value
           example: Austin
           type: string
+      title: Value
       type: object
     ExceptionCriteria:
       example:
@@ -66950,6 +67181,7 @@ components:
           description: Entitlement name
           example: My HR Entitlement
           type: string
+      title: Sod Exempt Criteria
       type: object
     RoleCriteriaKeyType:
       description: "Indicates whether the associated criteria represents an expression\
@@ -67537,7 +67769,6 @@ components:
           - 0fbe863c063c4c88a35fd7f17e8a3df5
           items:
             type: string
-          maxItems: 1000
           type: array
         accessConstraints:
           description: Further reduces the scope of the campaign by excluding identities

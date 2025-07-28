@@ -26,16 +26,9 @@ type TaskManagementAPIService service
 type ApiGetPendingTaskHeadersRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetPendingTaskHeadersRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetPendingTaskHeadersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -93,15 +86,6 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -138,7 +122,6 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -224,16 +207,9 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 type ApiGetPendingTasksRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetPendingTasksRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetPendingTasksRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -293,15 +269,6 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -338,7 +305,6 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -434,13 +400,6 @@ type ApiGetTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetTaskStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetTaskStatusRequest) Execute() (*TaskStatus, *http.Response, error) {
@@ -485,15 +444,6 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -512,7 +462,6 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -596,18 +545,11 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 type ApiGetTaskStatusListRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetTaskStatusListRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetTaskStatusListRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -680,15 +622,6 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -731,7 +664,6 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -838,14 +770,7 @@ type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateTaskStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -896,21 +821,6 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -932,7 +842,6 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -689,7 +689,7 @@ func (r ApiGetHistoricalIdentityEventsRequest) Execute() ([]GetHistoricalIdentit
 }
 
 /*
-GetHistoricalIdentityEvents Lists all events for the given identity
+GetHistoricalIdentityEvents List identity event history
 
 This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1887,7 +1887,7 @@ func (r ApiListIdentitySnapshotAccessItemsRequest) Type_(type_ string) ApiListId
 	return r
 }
 
-func (r ApiListIdentitySnapshotAccessItemsRequest) Execute() ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
+func (r ApiListIdentitySnapshotAccessItemsRequest) Execute() ([]ListIdentitySnapshotAccessItems200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListIdentitySnapshotAccessItemsExecute(r)
 }
 
@@ -1911,13 +1911,13 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItems(ctx context.
 }
 
 // Execute executes the request
-//  @return []ListIdentityAccessItems200ResponseInner
-func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r ApiListIdentitySnapshotAccessItemsRequest) ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
+//  @return []ListIdentitySnapshotAccessItems200ResponseInner
+func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r ApiListIdentitySnapshotAccessItemsRequest) ([]ListIdentitySnapshotAccessItems200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ListIdentityAccessItems200ResponseInner
+		localVarReturnValue  []ListIdentitySnapshotAccessItems200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.ListIdentitySnapshotAccessItems")
