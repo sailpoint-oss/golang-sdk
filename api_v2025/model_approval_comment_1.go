@@ -24,6 +24,8 @@ type ApprovalComment1 struct {
 	Comment *string `json:"comment,omitempty"`
 	// Date the comment was created
 	CreatedDate *string `json:"createdDate,omitempty"`
+	// ID of the comment
+	CommentId *string `json:"commentId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,6 +144,38 @@ func (o *ApprovalComment1) SetCreatedDate(v string) {
 	o.CreatedDate = &v
 }
 
+// GetCommentId returns the CommentId field value if set, zero value otherwise.
+func (o *ApprovalComment1) GetCommentId() string {
+	if o == nil || IsNil(o.CommentId) {
+		var ret string
+		return ret
+	}
+	return *o.CommentId
+}
+
+// GetCommentIdOk returns a tuple with the CommentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalComment1) GetCommentIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CommentId) {
+		return nil, false
+	}
+	return o.CommentId, true
+}
+
+// HasCommentId returns a boolean if a field has been set.
+func (o *ApprovalComment1) HasCommentId() bool {
+	if o != nil && !IsNil(o.CommentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommentId gets a reference to the given string and assigns it to the CommentId field.
+func (o *ApprovalComment1) SetCommentId(v string) {
+	o.CommentId = &v
+}
+
 func (o ApprovalComment1) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -160,6 +194,9 @@ func (o ApprovalComment1) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
+	}
+	if !IsNil(o.CommentId) {
+		toSerialize["commentId"] = o.CommentId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -186,6 +223,7 @@ func (o *ApprovalComment1) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "author")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "createdDate")
+		delete(additionalProperties, "commentId")
 		o.AdditionalProperties = additionalProperties
 	}
 

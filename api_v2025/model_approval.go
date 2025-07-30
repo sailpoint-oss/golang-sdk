@@ -12,6 +12,7 @@ package api_v2025
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the Approval type satisfies the MappedNullable interface at compile time
@@ -20,39 +21,62 @@ var _ MappedNullable = &Approval{}
 // Approval Approval Object
 type Approval struct {
 	// The Approval ID
-	ApprovalId *string `json:"approvalId,omitempty"`
+	Id *string `json:"id,omitempty"`
+	// The Tenant ID of the Approval
+	TenantId *string `json:"tenantId,omitempty"`
+	// The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL
+	Type *string `json:"type,omitempty"`
 	// Object representation of an approver of an approval
 	Approvers []ApprovalIdentity `json:"approvers,omitempty"`
 	// Date the approval was created
 	CreatedDate *string `json:"createdDate,omitempty"`
-	// Type of approval
-	Type *string `json:"type,omitempty"`
+	// Date the approval is due
+	DueDate *string `json:"dueDate,omitempty"`
+	// Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain.
+	EscalationStep *string `json:"escalationStep,omitempty"`
+	// The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0.
+	SerialStep *int64 `json:"serialStep,omitempty"`
+	// Whether or not the approval has been escalated. Will reset to false when the approval is actioned on.
+	IsEscalated *bool `json:"isEscalated,omitempty"`
 	// The name of the approval for a given locale
 	Name []ApprovalName `json:"name,omitempty"`
 	// The name of the approval for a given locale
 	BatchRequest ApprovalBatch `json:"batchRequest,omitempty"`
+	// The configuration of the approval, such as the approval criteria and whether it is a parallel or serial approval
+	ApprovalConfig ApprovalConfig `json:"approvalConfig,omitempty"`
 	// The description of the approval for a given locale
 	Description []ApprovalDescription `json:"description,omitempty"`
+	// Signifies what medium to use when sending notifications (currently only email is utilized)
+	Medium *string `json:"medium,omitempty"`
 	// The priority of the approval
 	Priority *string `json:"priority,omitempty"`
 	// Object representation of the requester of the approval
 	Requester ApprovalIdentity `json:"requester,omitempty"`
+	// Object representation of the requestee of the approval
+	Requestee ApprovalIdentity `json:"requestee,omitempty"`
 	// Object representation of a comment on the approval
 	Comments []ApprovalComment1 `json:"comments,omitempty"`
 	// Array of approvers who have approved the approval
-	ApprovedBy []ApprovalIdentity `json:"approvedBy,omitempty"`
+	ApprovedBy []ApprovalIdentityRecord `json:"approvedBy,omitempty"`
 	// Array of approvers who have rejected the approval
-	RejectedBy []ApprovalIdentity `json:"rejectedBy,omitempty"`
+	RejectedBy []ApprovalIdentityRecord `json:"rejectedBy,omitempty"`
+	// Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.
+	AssignedTo []ApprovalIdentity `json:"assignedTo,omitempty"`
 	// Date the approval was completed
 	CompletedDate *string `json:"completedDate,omitempty"`
-	// Criteria that needs to be met for an approval to be marked as approved
-	ApprovalCriteria *string `json:"approvalCriteria,omitempty"`
-	// The current status of the approval
-	Status *string `json:"status,omitempty"`
+	ApprovalCriteria *ApprovalApprovalCriteria `json:"approvalCriteria,omitempty"`
 	// Json string representing additional attributes known about the object to be approved.
 	AdditionalAttributes *string `json:"additionalAttributes,omitempty"`
 	// Reference data related to the approval
 	ReferenceData []ApprovalReference `json:"referenceData,omitempty"`
+	// History of whom the approval request was assigned to
+	ReassignmentHistory []ApprovalReassignmentHistory `json:"reassignmentHistory,omitempty"`
+	// Field that can include any static additional info that may be needed by the service that the approval request originated from
+	StaticAttributes map[string]map[string]interface{} `json:"staticAttributes,omitempty"`
+	// Date/time that the approval request was last updated
+	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
+	// RequestedTarget used to specify the actual object or target the approval request is for
+	RequestedTarget []ApprovalRequestedTarget `json:"requestedTarget,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,6 +88,8 @@ type _Approval Approval
 // will change when the set of required properties is changed
 func NewApproval() *Approval {
 	this := Approval{}
+	var isEscalated bool = false
+	this.IsEscalated = &isEscalated
 	return &this
 }
 
@@ -72,39 +98,105 @@ func NewApproval() *Approval {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalWithDefaults() *Approval {
 	this := Approval{}
+	var isEscalated bool = false
+	this.IsEscalated = &isEscalated
 	return &this
 }
 
-// GetApprovalId returns the ApprovalId field value if set, zero value otherwise.
-func (o *Approval) GetApprovalId() string {
-	if o == nil || IsNil(o.ApprovalId) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Approval) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.ApprovalId
+	return *o.Id
 }
 
-// GetApprovalIdOk returns a tuple with the ApprovalId field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetApprovalIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ApprovalId) {
+func (o *Approval) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.ApprovalId, true
+	return o.Id, true
 }
 
-// HasApprovalId returns a boolean if a field has been set.
-func (o *Approval) HasApprovalId() bool {
-	if o != nil && !IsNil(o.ApprovalId) {
+// HasId returns a boolean if a field has been set.
+func (o *Approval) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetApprovalId gets a reference to the given string and assigns it to the ApprovalId field.
-func (o *Approval) SetApprovalId(v string) {
-	o.ApprovalId = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Approval) SetId(v string) {
+	o.Id = &v
+}
+
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *Approval) GetTenantId() string {
+	if o == nil || IsNil(o.TenantId) {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *Approval) HasTenantId() bool {
+	if o != nil && !IsNil(o.TenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *Approval) SetTenantId(v string) {
+	o.TenantId = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Approval) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Approval) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Approval) SetType(v string) {
+	o.Type = &v
 }
 
 // GetApprovers returns the Approvers field value if set, zero value otherwise.
@@ -171,36 +263,132 @@ func (o *Approval) SetCreatedDate(v string) {
 	o.CreatedDate = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Approval) GetType() string {
-	if o == nil || IsNil(o.Type) {
+// GetDueDate returns the DueDate field value if set, zero value otherwise.
+func (o *Approval) GetDueDate() string {
+	if o == nil || IsNil(o.DueDate) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.DueDate
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetDueDateOk returns a tuple with the DueDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+func (o *Approval) GetDueDateOk() (*string, bool) {
+	if o == nil || IsNil(o.DueDate) {
 		return nil, false
 	}
-	return o.Type, true
+	return o.DueDate, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Approval) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+// HasDueDate returns a boolean if a field has been set.
+func (o *Approval) HasDueDate() bool {
+	if o != nil && !IsNil(o.DueDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Approval) SetType(v string) {
-	o.Type = &v
+// SetDueDate gets a reference to the given string and assigns it to the DueDate field.
+func (o *Approval) SetDueDate(v string) {
+	o.DueDate = &v
+}
+
+// GetEscalationStep returns the EscalationStep field value if set, zero value otherwise.
+func (o *Approval) GetEscalationStep() string {
+	if o == nil || IsNil(o.EscalationStep) {
+		var ret string
+		return ret
+	}
+	return *o.EscalationStep
+}
+
+// GetEscalationStepOk returns a tuple with the EscalationStep field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetEscalationStepOk() (*string, bool) {
+	if o == nil || IsNil(o.EscalationStep) {
+		return nil, false
+	}
+	return o.EscalationStep, true
+}
+
+// HasEscalationStep returns a boolean if a field has been set.
+func (o *Approval) HasEscalationStep() bool {
+	if o != nil && !IsNil(o.EscalationStep) {
+		return true
+	}
+
+	return false
+}
+
+// SetEscalationStep gets a reference to the given string and assigns it to the EscalationStep field.
+func (o *Approval) SetEscalationStep(v string) {
+	o.EscalationStep = &v
+}
+
+// GetSerialStep returns the SerialStep field value if set, zero value otherwise.
+func (o *Approval) GetSerialStep() int64 {
+	if o == nil || IsNil(o.SerialStep) {
+		var ret int64
+		return ret
+	}
+	return *o.SerialStep
+}
+
+// GetSerialStepOk returns a tuple with the SerialStep field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetSerialStepOk() (*int64, bool) {
+	if o == nil || IsNil(o.SerialStep) {
+		return nil, false
+	}
+	return o.SerialStep, true
+}
+
+// HasSerialStep returns a boolean if a field has been set.
+func (o *Approval) HasSerialStep() bool {
+	if o != nil && !IsNil(o.SerialStep) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialStep gets a reference to the given int64 and assigns it to the SerialStep field.
+func (o *Approval) SetSerialStep(v int64) {
+	o.SerialStep = &v
+}
+
+// GetIsEscalated returns the IsEscalated field value if set, zero value otherwise.
+func (o *Approval) GetIsEscalated() bool {
+	if o == nil || IsNil(o.IsEscalated) {
+		var ret bool
+		return ret
+	}
+	return *o.IsEscalated
+}
+
+// GetIsEscalatedOk returns a tuple with the IsEscalated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetIsEscalatedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsEscalated) {
+		return nil, false
+	}
+	return o.IsEscalated, true
+}
+
+// HasIsEscalated returns a boolean if a field has been set.
+func (o *Approval) HasIsEscalated() bool {
+	if o != nil && !IsNil(o.IsEscalated) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsEscalated gets a reference to the given bool and assigns it to the IsEscalated field.
+func (o *Approval) SetIsEscalated(v bool) {
+	o.IsEscalated = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -267,6 +455,38 @@ func (o *Approval) SetBatchRequest(v ApprovalBatch) {
 	o.BatchRequest = v
 }
 
+// GetApprovalConfig returns the ApprovalConfig field value if set, zero value otherwise.
+func (o *Approval) GetApprovalConfig() ApprovalConfig {
+	if o == nil || IsNil(o.ApprovalConfig) {
+		var ret ApprovalConfig
+		return ret
+	}
+	return o.ApprovalConfig
+}
+
+// GetApprovalConfigOk returns a tuple with the ApprovalConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetApprovalConfigOk() (ApprovalConfig, bool) {
+	if o == nil || IsNil(o.ApprovalConfig) {
+		return ApprovalConfig{}, false
+	}
+	return o.ApprovalConfig, true
+}
+
+// HasApprovalConfig returns a boolean if a field has been set.
+func (o *Approval) HasApprovalConfig() bool {
+	if o != nil && !IsNil(o.ApprovalConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetApprovalConfig gets a reference to the given ApprovalConfig and assigns it to the ApprovalConfig field.
+func (o *Approval) SetApprovalConfig(v ApprovalConfig) {
+	o.ApprovalConfig = v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Approval) GetDescription() []ApprovalDescription {
 	if o == nil || IsNil(o.Description) {
@@ -297,6 +517,38 @@ func (o *Approval) HasDescription() bool {
 // SetDescription gets a reference to the given []ApprovalDescription and assigns it to the Description field.
 func (o *Approval) SetDescription(v []ApprovalDescription) {
 	o.Description = v
+}
+
+// GetMedium returns the Medium field value if set, zero value otherwise.
+func (o *Approval) GetMedium() string {
+	if o == nil || IsNil(o.Medium) {
+		var ret string
+		return ret
+	}
+	return *o.Medium
+}
+
+// GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetMediumOk() (*string, bool) {
+	if o == nil || IsNil(o.Medium) {
+		return nil, false
+	}
+	return o.Medium, true
+}
+
+// HasMedium returns a boolean if a field has been set.
+func (o *Approval) HasMedium() bool {
+	if o != nil && !IsNil(o.Medium) {
+		return true
+	}
+
+	return false
+}
+
+// SetMedium gets a reference to the given string and assigns it to the Medium field.
+func (o *Approval) SetMedium(v string) {
+	o.Medium = &v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
@@ -363,6 +615,38 @@ func (o *Approval) SetRequester(v ApprovalIdentity) {
 	o.Requester = v
 }
 
+// GetRequestee returns the Requestee field value if set, zero value otherwise.
+func (o *Approval) GetRequestee() ApprovalIdentity {
+	if o == nil || IsNil(o.Requestee) {
+		var ret ApprovalIdentity
+		return ret
+	}
+	return o.Requestee
+}
+
+// GetRequesteeOk returns a tuple with the Requestee field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetRequesteeOk() (ApprovalIdentity, bool) {
+	if o == nil || IsNil(o.Requestee) {
+		return ApprovalIdentity{}, false
+	}
+	return o.Requestee, true
+}
+
+// HasRequestee returns a boolean if a field has been set.
+func (o *Approval) HasRequestee() bool {
+	if o != nil && !IsNil(o.Requestee) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestee gets a reference to the given ApprovalIdentity and assigns it to the Requestee field.
+func (o *Approval) SetRequestee(v ApprovalIdentity) {
+	o.Requestee = v
+}
+
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *Approval) GetComments() []ApprovalComment1 {
 	if o == nil || IsNil(o.Comments) {
@@ -396,9 +680,9 @@ func (o *Approval) SetComments(v []ApprovalComment1) {
 }
 
 // GetApprovedBy returns the ApprovedBy field value if set, zero value otherwise.
-func (o *Approval) GetApprovedBy() []ApprovalIdentity {
+func (o *Approval) GetApprovedBy() []ApprovalIdentityRecord {
 	if o == nil || IsNil(o.ApprovedBy) {
-		var ret []ApprovalIdentity
+		var ret []ApprovalIdentityRecord
 		return ret
 	}
 	return o.ApprovedBy
@@ -406,7 +690,7 @@ func (o *Approval) GetApprovedBy() []ApprovalIdentity {
 
 // GetApprovedByOk returns a tuple with the ApprovedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetApprovedByOk() ([]ApprovalIdentity, bool) {
+func (o *Approval) GetApprovedByOk() ([]ApprovalIdentityRecord, bool) {
 	if o == nil || IsNil(o.ApprovedBy) {
 		return nil, false
 	}
@@ -422,15 +706,15 @@ func (o *Approval) HasApprovedBy() bool {
 	return false
 }
 
-// SetApprovedBy gets a reference to the given []ApprovalIdentity and assigns it to the ApprovedBy field.
-func (o *Approval) SetApprovedBy(v []ApprovalIdentity) {
+// SetApprovedBy gets a reference to the given []ApprovalIdentityRecord and assigns it to the ApprovedBy field.
+func (o *Approval) SetApprovedBy(v []ApprovalIdentityRecord) {
 	o.ApprovedBy = v
 }
 
 // GetRejectedBy returns the RejectedBy field value if set, zero value otherwise.
-func (o *Approval) GetRejectedBy() []ApprovalIdentity {
+func (o *Approval) GetRejectedBy() []ApprovalIdentityRecord {
 	if o == nil || IsNil(o.RejectedBy) {
-		var ret []ApprovalIdentity
+		var ret []ApprovalIdentityRecord
 		return ret
 	}
 	return o.RejectedBy
@@ -438,7 +722,7 @@ func (o *Approval) GetRejectedBy() []ApprovalIdentity {
 
 // GetRejectedByOk returns a tuple with the RejectedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetRejectedByOk() ([]ApprovalIdentity, bool) {
+func (o *Approval) GetRejectedByOk() ([]ApprovalIdentityRecord, bool) {
 	if o == nil || IsNil(o.RejectedBy) {
 		return nil, false
 	}
@@ -454,9 +738,41 @@ func (o *Approval) HasRejectedBy() bool {
 	return false
 }
 
-// SetRejectedBy gets a reference to the given []ApprovalIdentity and assigns it to the RejectedBy field.
-func (o *Approval) SetRejectedBy(v []ApprovalIdentity) {
+// SetRejectedBy gets a reference to the given []ApprovalIdentityRecord and assigns it to the RejectedBy field.
+func (o *Approval) SetRejectedBy(v []ApprovalIdentityRecord) {
 	o.RejectedBy = v
+}
+
+// GetAssignedTo returns the AssignedTo field value if set, zero value otherwise.
+func (o *Approval) GetAssignedTo() []ApprovalIdentity {
+	if o == nil || IsNil(o.AssignedTo) {
+		var ret []ApprovalIdentity
+		return ret
+	}
+	return o.AssignedTo
+}
+
+// GetAssignedToOk returns a tuple with the AssignedTo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetAssignedToOk() ([]ApprovalIdentity, bool) {
+	if o == nil || IsNil(o.AssignedTo) {
+		return nil, false
+	}
+	return o.AssignedTo, true
+}
+
+// HasAssignedTo returns a boolean if a field has been set.
+func (o *Approval) HasAssignedTo() bool {
+	if o != nil && !IsNil(o.AssignedTo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignedTo gets a reference to the given []ApprovalIdentity and assigns it to the AssignedTo field.
+func (o *Approval) SetAssignedTo(v []ApprovalIdentity) {
+	o.AssignedTo = v
 }
 
 // GetCompletedDate returns the CompletedDate field value if set, zero value otherwise.
@@ -492,9 +808,9 @@ func (o *Approval) SetCompletedDate(v string) {
 }
 
 // GetApprovalCriteria returns the ApprovalCriteria field value if set, zero value otherwise.
-func (o *Approval) GetApprovalCriteria() string {
+func (o *Approval) GetApprovalCriteria() ApprovalApprovalCriteria {
 	if o == nil || IsNil(o.ApprovalCriteria) {
-		var ret string
+		var ret ApprovalApprovalCriteria
 		return ret
 	}
 	return *o.ApprovalCriteria
@@ -502,7 +818,7 @@ func (o *Approval) GetApprovalCriteria() string {
 
 // GetApprovalCriteriaOk returns a tuple with the ApprovalCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetApprovalCriteriaOk() (*string, bool) {
+func (o *Approval) GetApprovalCriteriaOk() (*ApprovalApprovalCriteria, bool) {
 	if o == nil || IsNil(o.ApprovalCriteria) {
 		return nil, false
 	}
@@ -518,41 +834,9 @@ func (o *Approval) HasApprovalCriteria() bool {
 	return false
 }
 
-// SetApprovalCriteria gets a reference to the given string and assigns it to the ApprovalCriteria field.
-func (o *Approval) SetApprovalCriteria(v string) {
+// SetApprovalCriteria gets a reference to the given ApprovalApprovalCriteria and assigns it to the ApprovalCriteria field.
+func (o *Approval) SetApprovalCriteria(v ApprovalApprovalCriteria) {
 	o.ApprovalCriteria = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Approval) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Approval) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *Approval) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Approval) SetStatus(v string) {
-	o.Status = &v
 }
 
 // GetAdditionalAttributes returns the AdditionalAttributes field value if set, zero value otherwise.
@@ -619,6 +903,134 @@ func (o *Approval) SetReferenceData(v []ApprovalReference) {
 	o.ReferenceData = v
 }
 
+// GetReassignmentHistory returns the ReassignmentHistory field value if set, zero value otherwise.
+func (o *Approval) GetReassignmentHistory() []ApprovalReassignmentHistory {
+	if o == nil || IsNil(o.ReassignmentHistory) {
+		var ret []ApprovalReassignmentHistory
+		return ret
+	}
+	return o.ReassignmentHistory
+}
+
+// GetReassignmentHistoryOk returns a tuple with the ReassignmentHistory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetReassignmentHistoryOk() ([]ApprovalReassignmentHistory, bool) {
+	if o == nil || IsNil(o.ReassignmentHistory) {
+		return nil, false
+	}
+	return o.ReassignmentHistory, true
+}
+
+// HasReassignmentHistory returns a boolean if a field has been set.
+func (o *Approval) HasReassignmentHistory() bool {
+	if o != nil && !IsNil(o.ReassignmentHistory) {
+		return true
+	}
+
+	return false
+}
+
+// SetReassignmentHistory gets a reference to the given []ApprovalReassignmentHistory and assigns it to the ReassignmentHistory field.
+func (o *Approval) SetReassignmentHistory(v []ApprovalReassignmentHistory) {
+	o.ReassignmentHistory = v
+}
+
+// GetStaticAttributes returns the StaticAttributes field value if set, zero value otherwise.
+func (o *Approval) GetStaticAttributes() map[string]map[string]interface{} {
+	if o == nil || IsNil(o.StaticAttributes) {
+		var ret map[string]map[string]interface{}
+		return ret
+	}
+	return o.StaticAttributes
+}
+
+// GetStaticAttributesOk returns a tuple with the StaticAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetStaticAttributesOk() (map[string]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.StaticAttributes) {
+		return map[string]map[string]interface{}{}, false
+	}
+	return o.StaticAttributes, true
+}
+
+// HasStaticAttributes returns a boolean if a field has been set.
+func (o *Approval) HasStaticAttributes() bool {
+	if o != nil && !IsNil(o.StaticAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetStaticAttributes gets a reference to the given map[string]map[string]interface{} and assigns it to the StaticAttributes field.
+func (o *Approval) SetStaticAttributes(v map[string]map[string]interface{}) {
+	o.StaticAttributes = v
+}
+
+// GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
+func (o *Approval) GetModifiedDate() SailPointTime {
+	if o == nil || IsNil(o.ModifiedDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.ModifiedDate
+}
+
+// GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetModifiedDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.ModifiedDate) {
+		return nil, false
+	}
+	return o.ModifiedDate, true
+}
+
+// HasModifiedDate returns a boolean if a field has been set.
+func (o *Approval) HasModifiedDate() bool {
+	if o != nil && !IsNil(o.ModifiedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
+func (o *Approval) SetModifiedDate(v SailPointTime) {
+	o.ModifiedDate = &v
+}
+
+// GetRequestedTarget returns the RequestedTarget field value if set, zero value otherwise.
+func (o *Approval) GetRequestedTarget() []ApprovalRequestedTarget {
+	if o == nil || IsNil(o.RequestedTarget) {
+		var ret []ApprovalRequestedTarget
+		return ret
+	}
+	return o.RequestedTarget
+}
+
+// GetRequestedTargetOk returns a tuple with the RequestedTarget field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approval) GetRequestedTargetOk() ([]ApprovalRequestedTarget, bool) {
+	if o == nil || IsNil(o.RequestedTarget) {
+		return nil, false
+	}
+	return o.RequestedTarget, true
+}
+
+// HasRequestedTarget returns a boolean if a field has been set.
+func (o *Approval) HasRequestedTarget() bool {
+	if o != nil && !IsNil(o.RequestedTarget) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedTarget gets a reference to the given []ApprovalRequestedTarget and assigns it to the RequestedTarget field.
+func (o *Approval) SetRequestedTarget(v []ApprovalRequestedTarget) {
+	o.RequestedTarget = v
+}
+
 func (o Approval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -629,8 +1041,14 @@ func (o Approval) MarshalJSON() ([]byte, error) {
 
 func (o Approval) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApprovalId) {
-		toSerialize["approvalId"] = o.ApprovalId
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Approvers) {
 		toSerialize["approvers"] = o.Approvers
@@ -638,8 +1056,17 @@ func (o Approval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if !IsNil(o.DueDate) {
+		toSerialize["dueDate"] = o.DueDate
+	}
+	if !IsNil(o.EscalationStep) {
+		toSerialize["escalationStep"] = o.EscalationStep
+	}
+	if !IsNil(o.SerialStep) {
+		toSerialize["serialStep"] = o.SerialStep
+	}
+	if !IsNil(o.IsEscalated) {
+		toSerialize["isEscalated"] = o.IsEscalated
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -647,14 +1074,23 @@ func (o Approval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BatchRequest) {
 		toSerialize["batchRequest"] = o.BatchRequest
 	}
+	if !IsNil(o.ApprovalConfig) {
+		toSerialize["approvalConfig"] = o.ApprovalConfig
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Medium) {
+		toSerialize["medium"] = o.Medium
 	}
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
 	if !IsNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
+	}
+	if !IsNil(o.Requestee) {
+		toSerialize["requestee"] = o.Requestee
 	}
 	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
@@ -665,20 +1101,32 @@ func (o Approval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RejectedBy) {
 		toSerialize["rejectedBy"] = o.RejectedBy
 	}
+	if !IsNil(o.AssignedTo) {
+		toSerialize["assignedTo"] = o.AssignedTo
+	}
 	if !IsNil(o.CompletedDate) {
 		toSerialize["completedDate"] = o.CompletedDate
 	}
 	if !IsNil(o.ApprovalCriteria) {
 		toSerialize["approvalCriteria"] = o.ApprovalCriteria
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.AdditionalAttributes) {
 		toSerialize["additionalAttributes"] = o.AdditionalAttributes
 	}
 	if !IsNil(o.ReferenceData) {
 		toSerialize["referenceData"] = o.ReferenceData
+	}
+	if !IsNil(o.ReassignmentHistory) {
+		toSerialize["reassignmentHistory"] = o.ReassignmentHistory
+	}
+	if !IsNil(o.StaticAttributes) {
+		toSerialize["staticAttributes"] = o.StaticAttributes
+	}
+	if !IsNil(o.ModifiedDate) {
+		toSerialize["modifiedDate"] = o.ModifiedDate
+	}
+	if !IsNil(o.RequestedTarget) {
+		toSerialize["requestedTarget"] = o.RequestedTarget
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -702,23 +1150,35 @@ func (o *Approval) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "approvalId")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "approvers")
 		delete(additionalProperties, "createdDate")
-		delete(additionalProperties, "type")
+		delete(additionalProperties, "dueDate")
+		delete(additionalProperties, "escalationStep")
+		delete(additionalProperties, "serialStep")
+		delete(additionalProperties, "isEscalated")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "batchRequest")
+		delete(additionalProperties, "approvalConfig")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "medium")
 		delete(additionalProperties, "priority")
 		delete(additionalProperties, "requester")
+		delete(additionalProperties, "requestee")
 		delete(additionalProperties, "comments")
 		delete(additionalProperties, "approvedBy")
 		delete(additionalProperties, "rejectedBy")
+		delete(additionalProperties, "assignedTo")
 		delete(additionalProperties, "completedDate")
 		delete(additionalProperties, "approvalCriteria")
-		delete(additionalProperties, "status")
 		delete(additionalProperties, "additionalAttributes")
 		delete(additionalProperties, "referenceData")
+		delete(additionalProperties, "reassignmentHistory")
+		delete(additionalProperties, "staticAttributes")
+		delete(additionalProperties, "modifiedDate")
+		delete(additionalProperties, "requestedTarget")
 		o.AdditionalProperties = additionalProperties
 	}
 

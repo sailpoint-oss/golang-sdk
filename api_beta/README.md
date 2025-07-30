@@ -130,8 +130,6 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**PatchDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#patchdiscoveredapplicationbyid) | **Patch** /discovered-applications/{id} | Patch discovered application by id
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
-*ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get approval
-*ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
 *AppsAPI* | [**CreateSourceApp**](docs/AppsAPI.md#createsourceapp) | **Post** /source-apps | Create source app
 *AppsAPI* | [**DeleteAccessProfilesFromSourceAppByBulk**](docs/AppsAPI.md#deleteaccessprofilesfromsourceappbybulk) | **Post** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsAPI* | [**DeleteSourceApp**](docs/AppsAPI.md#deletesourceapp) | **Delete** /source-apps/{id} | Delete source app by id
@@ -751,17 +749,10 @@ Class | Method | HTTP request | Description
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [AppAccountDetails](docs/AppAccountDetails.md)
  - [AppAccountDetailsSourceAccount](docs/AppAccountDetailsSourceAccount.md)
- - [Approval](docs/Approval.md)
- - [ApprovalBatch](docs/ApprovalBatch.md)
- - [ApprovalComment](docs/ApprovalComment.md)
- - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
- - [ApprovalIdentity](docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](docs/ApprovalItemDetails.md)
  - [ApprovalItems](docs/ApprovalItems.md)
- - [ApprovalName](docs/ApprovalName.md)
- - [ApprovalReference](docs/ApprovalReference.md)
  - [ApprovalReminderAndEscalationConfig](docs/ApprovalReminderAndEscalationConfig.md)
  - [ApprovalScheme](docs/ApprovalScheme.md)
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)

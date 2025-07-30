@@ -137,8 +137,13 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
+*ApprovalsAPI* | [**ApproveApproval**](docs/ApprovalsAPI.md#approveapproval) | **Post** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
+*ApprovalsAPI* | [**RejectApproval**](docs/ApprovalsAPI.md#rejectapproval) | **Post** /generic-approvals/{id}/reject | Post Approvals Reject
+*ApprovalsAPI* | [**UpdateApprovalsAttributes**](docs/ApprovalsAPI.md#updateapprovalsattributes) | **Post** /generic-approvals/{id}/attributes | Post Approvals Attributes
+*ApprovalsAPI* | [**UpdateApprovalsComments**](docs/ApprovalsAPI.md#updateapprovalscomments) | **Post** /generic-approvals/{id}/comments | Post Approvals Comments
+*ApprovalsAPI* | [**UpdateApprovalsReassign**](docs/ApprovalsAPI.md#updateapprovalsreassign) | **Post** /generic-approvals/{id}/reassign | Post Approvals Reassign
 *AppsAPI* | [**CreateSourceApp**](docs/AppsAPI.md#createsourceapp) | **Post** /source-apps | Create source app
 *AppsAPI* | [**DeleteAccessProfilesFromSourceAppByBulk**](docs/AppsAPI.md#deleteaccessprofilesfromsourceappbybulk) | **Post** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsAPI* | [**DeleteSourceApp**](docs/AppsAPI.md#deletesourceapp) | **Delete** /source-apps/{id} | Delete source app by id
@@ -956,19 +961,39 @@ Class | Method | HTTP request | Description
  - [AppAllOfAccount](docs/AppAllOfAccount.md)
  - [Approval](docs/Approval.md)
  - [Approval1](docs/Approval1.md)
+ - [ApprovalApprovalCriteria](docs/ApprovalApprovalCriteria.md)
+ - [ApprovalApprovalCriteriaApproval](docs/ApprovalApprovalCriteriaApproval.md)
+ - [ApprovalApprovalCriteriaRejection](docs/ApprovalApprovalCriteriaRejection.md)
+ - [ApprovalApproveRequest](docs/ApprovalApproveRequest.md)
+ - [ApprovalAttributesRequest](docs/ApprovalAttributesRequest.md)
  - [ApprovalBatch](docs/ApprovalBatch.md)
  - [ApprovalComment](docs/ApprovalComment.md)
  - [ApprovalComment1](docs/ApprovalComment1.md)
  - [ApprovalComment2](docs/ApprovalComment2.md)
+ - [ApprovalCommentsRequest](docs/ApprovalCommentsRequest.md)
+ - [ApprovalConfig](docs/ApprovalConfig.md)
+ - [ApprovalConfigCronTimezone](docs/ApprovalConfigCronTimezone.md)
+ - [ApprovalConfigEscalationConfig](docs/ApprovalConfigEscalationConfig.md)
+ - [ApprovalConfigEscalationConfigEscalationChainInner](docs/ApprovalConfigEscalationConfigEscalationChainInner.md)
+ - [ApprovalConfigReminderConfig](docs/ApprovalConfigReminderConfig.md)
+ - [ApprovalConfigSerialChainInner](docs/ApprovalConfigSerialChainInner.md)
+ - [ApprovalConfigTimeoutConfig](docs/ApprovalConfigTimeoutConfig.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](docs/ApprovalIdentity.md)
+ - [ApprovalIdentityMembersInner](docs/ApprovalIdentityMembersInner.md)
+ - [ApprovalIdentityOwnerOfInner](docs/ApprovalIdentityOwnerOfInner.md)
+ - [ApprovalIdentityRecord](docs/ApprovalIdentityRecord.md)
  - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](docs/ApprovalItemDetails.md)
  - [ApprovalItems](docs/ApprovalItems.md)
  - [ApprovalName](docs/ApprovalName.md)
+ - [ApprovalReassignRequest](docs/ApprovalReassignRequest.md)
+ - [ApprovalReassignmentHistory](docs/ApprovalReassignmentHistory.md)
  - [ApprovalReference](docs/ApprovalReference.md)
+ - [ApprovalRejectRequest](docs/ApprovalRejectRequest.md)
  - [ApprovalReminderAndEscalationConfig](docs/ApprovalReminderAndEscalationConfig.md)
+ - [ApprovalRequestedTarget](docs/ApprovalRequestedTarget.md)
  - [ApprovalScheme](docs/ApprovalScheme.md)
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
