@@ -439,8 +439,14 @@ Class | Method | HTTP request | Description
 *MachineAccountMappingsAPI* | [**DeleteMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#deletemachineaccountmappings) | **Delete** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
 *MachineAccountMappingsAPI* | [**ListMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#listmachineaccountmappings) | **Get** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
 *MachineAccountMappingsAPI* | [**SetMachineAccountMappings**](docs/MachineAccountMappingsAPI.md#setmachineaccountmappings) | **Put** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
+*MachineAccountsAPI* | [**CreateMachineAccountSubtype**](docs/MachineAccountsAPI.md#createmachineaccountsubtype) | **Post** /sources/{sourceId}/subtypes | Create subtype
+*MachineAccountsAPI* | [**DeleteMachineAccountSubtype**](docs/MachineAccountsAPI.md#deletemachineaccountsubtype) | **Delete** /sources/{sourceId}/subtypes/{technicalName} | Delete subtype
 *MachineAccountsAPI* | [**GetMachineAccount**](docs/MachineAccountsAPI.md#getmachineaccount) | **Get** /machine-accounts/{id} | Machine account details
+*MachineAccountsAPI* | [**GetMachineAccountSubtypeById**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebyid) | **Get** /sources/subtype/{subtypeId} | Retrieve subtype by subtype id
+*MachineAccountsAPI* | [**GetMachineAccountSubtypeByTechnicalName**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebytechnicalname) | **Get** /sources/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
+*MachineAccountsAPI* | [**ListMachineAccountSubtypes**](docs/MachineAccountsAPI.md#listmachineaccountsubtypes) | **Get** /sources/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsAPI* | [**ListMachineAccounts**](docs/MachineAccountsAPI.md#listmachineaccounts) | **Get** /machine-accounts | Machine accounts list
+*MachineAccountsAPI* | [**PatchMachineAccountSubtype**](docs/MachineAccountsAPI.md#patchmachineaccountsubtype) | **Patch** /sources/{sourceId}/subtypes/{technicalName} | Patch subtype
 *MachineAccountsAPI* | [**UpdateMachineAccount**](docs/MachineAccountsAPI.md#updatemachineaccount) | **Patch** /machine-accounts/{id} | Update a machine account
 *MachineClassificationConfigAPI* | [**DeleteMachineClassificationConfig**](docs/MachineClassificationConfigAPI.md#deletemachineclassificationconfig) | **Delete** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
 *MachineClassificationConfigAPI* | [**GetMachineClassificationConfig**](docs/MachineClassificationConfigAPI.md#getmachineclassificationconfig) | **Get** /sources/{sourceId}/machine-classification-config | Machine classification config for source
@@ -1816,6 +1822,7 @@ Class | Method | HTTP request | Description
  - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
  - [SourceSchedule](docs/SourceSchedule.md)
  - [SourceSchemasInner](docs/SourceSchemasInner.md)
+ - [SourceSubtype](docs/SourceSubtype.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [SourceUpdated](docs/SourceUpdated.md)

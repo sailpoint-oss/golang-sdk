@@ -1275,6 +1275,7 @@ docs/SourceOwner.md
 docs/SourcePasswordPoliciesInner.md
 docs/SourceSchedule.md
 docs/SourceSchemasInner.md
+docs/SourceSubtype.md
 docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
 docs/SourceUpdated.md
@@ -2459,6 +2460,7 @@ model_source_owner.go
 model_source_password_policies_inner.go
 model_source_schedule.go
 model_source_schemas_inner.go
+model_source_subtype.go
 model_source_sync_job.go
 model_source_sync_payload.go
 model_source_updated.go
