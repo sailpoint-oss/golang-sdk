@@ -32,6 +32,9 @@ var (
 	// ContextOAuth2 takes an oauth2.TokenSource as authentication for the request.
 	ContextOAuth2 = contextKey("token")
 
+	// ContextClientCredentials takes ClientCredentials as authentication for the request.
+	ContextClientCredentials = contextKey("clientCredentials")
+
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
 
@@ -55,6 +58,12 @@ type BasicAuth struct {
 type APIKey struct {
 	Key    string
 	Prefix string
+}
+
+// ClientCredentials provides client credentials authentication to a request passed via context using ContextClientCredentials
+type ClientCredentials struct {
+	ClientID     string `json:"clientId,omitempty"`
+	ClientSecret string `json:"clientSecret,omitempty"`
 }
 
 // ServerVariable stores the information about a server variable

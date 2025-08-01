@@ -24,6 +24,9 @@ var (
 	// ContextOAuth2 takes an oauth2.TokenSource as authentication for the request.
 	ContextOAuth2 = contextKey("token")
 
+	// ContextClientCredentials takes ClientCredentials as authentication for the request.
+	ContextClientCredentials = contextKey("clientCredentials")
+
 	{{/hasOAuthMethods}}
 	{{#hasHttpBasicMethods}}
 	// ContextBasicAuth takes BasicAuth as authentication for the request.
@@ -73,6 +76,12 @@ type BasicAuth struct {
 type APIKey struct {
 	Key    string
 	Prefix string
+}
+
+// ClientCredentials provides client credentials authentication to a request passed via context using ContextClientCredentials
+type ClientCredentials struct {
+	ClientID     string `json:"clientId,omitempty"`
+	ClientSecret string `json:"clientSecret,omitempty"`
 }
 
 {{#withAWSV4Signature}}
