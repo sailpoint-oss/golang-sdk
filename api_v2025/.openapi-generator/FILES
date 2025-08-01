@@ -1445,6 +1445,7 @@ docs/WorkflowBodyOwner.md
 docs/WorkflowDefinition.md
 docs/WorkflowExecution.md
 docs/WorkflowExecutionEvent.md
+docs/WorkflowExecutionHistory.md
 docs/WorkflowLibraryAction.md
 docs/WorkflowLibraryActionExampleOutput.md
 docs/WorkflowLibraryFormFields.md
@@ -2624,6 +2625,7 @@ model_workflow_body_owner.go
 model_workflow_definition.go
 model_workflow_execution.go
 model_workflow_execution_event.go
+model_workflow_execution_history.go
 model_workflow_library_action.go
 model_workflow_library_action_example_output.go
 model_workflow_library_form_fields.go

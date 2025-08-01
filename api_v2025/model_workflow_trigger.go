@@ -22,6 +22,7 @@ var _ MappedNullable = &WorkflowTrigger{}
 type WorkflowTrigger struct {
 	// The trigger type
 	Type string `json:"type"`
+	// The trigger display name
 	DisplayName NullableString `json:"displayName,omitempty"`
 	// Workflow Trigger Attributes.
 	Attributes map[string]interface{} `json:"attributes"`

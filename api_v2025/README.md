@@ -799,6 +799,7 @@ Class | Method | HTTP request | Description
 *WorkflowsAPI* | [**GetWorkflow**](docs/WorkflowsAPI.md#getworkflow) | **Get** /workflows/{id} | Get workflow by id
 *WorkflowsAPI* | [**GetWorkflowExecution**](docs/WorkflowsAPI.md#getworkflowexecution) | **Get** /workflow-executions/{id} | Get workflow execution
 *WorkflowsAPI* | [**GetWorkflowExecutionHistory**](docs/WorkflowsAPI.md#getworkflowexecutionhistory) | **Get** /workflow-executions/{id}/history | Get workflow execution history
+*WorkflowsAPI* | [**GetWorkflowExecutionHistoryV2**](docs/WorkflowsAPI.md#getworkflowexecutionhistoryv2) | **Get** /workflow-executions/{id}/history-v2 | Get updated workflow execution history
 *WorkflowsAPI* | [**GetWorkflowExecutions**](docs/WorkflowsAPI.md#getworkflowexecutions) | **Get** /workflows/{id}/executions | List workflow executions
 *WorkflowsAPI* | [**ListCompleteWorkflowLibrary**](docs/WorkflowsAPI.md#listcompleteworkflowlibrary) | **Get** /workflow-library | List complete workflow library
 *WorkflowsAPI* | [**ListWorkflowLibraryActions**](docs/WorkflowsAPI.md#listworkflowlibraryactions) | **Get** /workflow-library/actions | List workflow library actions
@@ -1971,6 +1972,7 @@ Class | Method | HTTP request | Description
  - [WorkflowDefinition](docs/WorkflowDefinition.md)
  - [WorkflowExecution](docs/WorkflowExecution.md)
  - [WorkflowExecutionEvent](docs/WorkflowExecutionEvent.md)
+ - [WorkflowExecutionHistory](docs/WorkflowExecutionHistory.md)
  - [WorkflowLibraryAction](docs/WorkflowLibraryAction.md)
  - [WorkflowLibraryActionExampleOutput](docs/WorkflowLibraryActionExampleOutput.md)
  - [WorkflowLibraryFormFields](docs/WorkflowLibraryFormFields.md)
