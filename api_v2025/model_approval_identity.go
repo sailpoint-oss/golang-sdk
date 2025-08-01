@@ -17,14 +17,22 @@ import (
 // checks if the ApprovalIdentity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalIdentity{}
 
-// ApprovalIdentity Identity Object
+// ApprovalIdentity Approval Identity Object
 type ApprovalIdentity struct {
-	// The identity ID
-	Id *string `json:"id,omitempty"`
-	// Indication of what group the identity belongs to. Ie, IDENTITY, GOVERNANCE_GROUP, etc
-	Type *string `json:"type,omitempty"`
-	// Name of the identity
+	// Email address.
+	Email *string `json:"email,omitempty"`
+	// Identity ID.
+	IdentityID *string `json:"identityID,omitempty"`
+	// List of members of a governance group. Will be omitted if the identity is not a governance group.
+	Members []ApprovalIdentityMembersInner `json:"members,omitempty"`
+	// Name of the identity.
 	Name *string `json:"name,omitempty"`
+	// List of owned items. For example, will show the items in which a ROLE_OWNER owns. Omitted if not an owner of anything.
+	OwnerOf []ApprovalIdentityOwnerOfInner `json:"ownerOf,omitempty"`
+	// The serial step of the identity in the approval. For example serialOrder 1 is the first identity to action in an approval request chain. Parallel approvals are set to 0.
+	SerialOrder *int64 `json:"serialOrder,omitempty"`
+	// Type of identity.
+	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,68 +55,100 @@ func NewApprovalIdentityWithDefaults() *ApprovalIdentity {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ApprovalIdentity) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetEmail() string {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Email
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalIdentity) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *ApprovalIdentity) GetEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Email, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ApprovalIdentity) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasEmail returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApprovalIdentity) SetId(v string) {
-	o.Id = &v
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *ApprovalIdentity) SetEmail(v string) {
+	o.Email = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ApprovalIdentity) GetType() string {
-	if o == nil || IsNil(o.Type) {
+// GetIdentityID returns the IdentityID field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetIdentityID() string {
+	if o == nil || IsNil(o.IdentityID) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.IdentityID
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetIdentityIDOk returns a tuple with the IdentityID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalIdentity) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+func (o *ApprovalIdentity) GetIdentityIDOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityID) {
 		return nil, false
 	}
-	return o.Type, true
+	return o.IdentityID, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApprovalIdentity) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+// HasIdentityID returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasIdentityID() bool {
+	if o != nil && !IsNil(o.IdentityID) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ApprovalIdentity) SetType(v string) {
-	o.Type = &v
+// SetIdentityID gets a reference to the given string and assigns it to the IdentityID field.
+func (o *ApprovalIdentity) SetIdentityID(v string) {
+	o.IdentityID = &v
+}
+
+// GetMembers returns the Members field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetMembers() []ApprovalIdentityMembersInner {
+	if o == nil || IsNil(o.Members) {
+		var ret []ApprovalIdentityMembersInner
+		return ret
+	}
+	return o.Members
+}
+
+// GetMembersOk returns a tuple with the Members field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalIdentity) GetMembersOk() ([]ApprovalIdentityMembersInner, bool) {
+	if o == nil || IsNil(o.Members) {
+		return nil, false
+	}
+	return o.Members, true
+}
+
+// HasMembers returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasMembers() bool {
+	if o != nil && !IsNil(o.Members) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembers gets a reference to the given []ApprovalIdentityMembersInner and assigns it to the Members field.
+func (o *ApprovalIdentity) SetMembers(v []ApprovalIdentityMembersInner) {
+	o.Members = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -143,6 +183,102 @@ func (o *ApprovalIdentity) SetName(v string) {
 	o.Name = &v
 }
 
+// GetOwnerOf returns the OwnerOf field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetOwnerOf() []ApprovalIdentityOwnerOfInner {
+	if o == nil || IsNil(o.OwnerOf) {
+		var ret []ApprovalIdentityOwnerOfInner
+		return ret
+	}
+	return o.OwnerOf
+}
+
+// GetOwnerOfOk returns a tuple with the OwnerOf field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalIdentity) GetOwnerOfOk() ([]ApprovalIdentityOwnerOfInner, bool) {
+	if o == nil || IsNil(o.OwnerOf) {
+		return nil, false
+	}
+	return o.OwnerOf, true
+}
+
+// HasOwnerOf returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasOwnerOf() bool {
+	if o != nil && !IsNil(o.OwnerOf) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerOf gets a reference to the given []ApprovalIdentityOwnerOfInner and assigns it to the OwnerOf field.
+func (o *ApprovalIdentity) SetOwnerOf(v []ApprovalIdentityOwnerOfInner) {
+	o.OwnerOf = v
+}
+
+// GetSerialOrder returns the SerialOrder field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetSerialOrder() int64 {
+	if o == nil || IsNil(o.SerialOrder) {
+		var ret int64
+		return ret
+	}
+	return *o.SerialOrder
+}
+
+// GetSerialOrderOk returns a tuple with the SerialOrder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalIdentity) GetSerialOrderOk() (*int64, bool) {
+	if o == nil || IsNil(o.SerialOrder) {
+		return nil, false
+	}
+	return o.SerialOrder, true
+}
+
+// HasSerialOrder returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasSerialOrder() bool {
+	if o != nil && !IsNil(o.SerialOrder) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialOrder gets a reference to the given int64 and assigns it to the SerialOrder field.
+func (o *ApprovalIdentity) SetSerialOrder(v int64) {
+	o.SerialOrder = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ApprovalIdentity) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalIdentity) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ApprovalIdentity) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ApprovalIdentity) SetType(v string) {
+	o.Type = &v
+}
+
 func (o ApprovalIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,14 +289,26 @@ func (o ApprovalIdentity) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if !IsNil(o.IdentityID) {
+		toSerialize["identityID"] = o.IdentityID
+	}
+	if !IsNil(o.Members) {
+		toSerialize["members"] = o.Members
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.OwnerOf) {
+		toSerialize["ownerOf"] = o.OwnerOf
+	}
+	if !IsNil(o.SerialOrder) {
+		toSerialize["serialOrder"] = o.SerialOrder
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -184,9 +332,13 @@ func (o *ApprovalIdentity) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "type")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "identityID")
+		delete(additionalProperties, "members")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "ownerOf")
+		delete(additionalProperties, "serialOrder")
+		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 

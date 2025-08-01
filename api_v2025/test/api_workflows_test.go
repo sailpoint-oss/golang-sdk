@@ -130,6 +130,20 @@ func Test_api_v2025_WorkflowsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test WorkflowsAPIService GetWorkflowExecutionHistoryV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test WorkflowsAPIService GetWorkflowExecutions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

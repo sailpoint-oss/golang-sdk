@@ -23,6 +23,12 @@ type ApprovalReference struct {
 	Id *string `json:"id,omitempty"`
 	// What reference object does this ID correspond to
 	Type *string `json:"type,omitempty"`
+	// Name of the reference object
+	Name *string `json:"name,omitempty"`
+	// Email associated with the reference object
+	Email *string `json:"email,omitempty"`
+	// The serial step of the identity in the approval. For example serialOrder 1 is the first identity to action in an approval request chain. Parallel approvals are set to 0.
+	SerialOrder *int64 `json:"serialOrder,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +115,102 @@ func (o *ApprovalReference) SetType(v string) {
 	o.Type = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ApprovalReference) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalReference) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ApprovalReference) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ApprovalReference) SetName(v string) {
+	o.Name = &v
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *ApprovalReference) GetEmail() string {
+	if o == nil || IsNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalReference) GetEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *ApprovalReference) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *ApprovalReference) SetEmail(v string) {
+	o.Email = &v
+}
+
+// GetSerialOrder returns the SerialOrder field value if set, zero value otherwise.
+func (o *ApprovalReference) GetSerialOrder() int64 {
+	if o == nil || IsNil(o.SerialOrder) {
+		var ret int64
+		return ret
+	}
+	return *o.SerialOrder
+}
+
+// GetSerialOrderOk returns a tuple with the SerialOrder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalReference) GetSerialOrderOk() (*int64, bool) {
+	if o == nil || IsNil(o.SerialOrder) {
+		return nil, false
+	}
+	return o.SerialOrder, true
+}
+
+// HasSerialOrder returns a boolean if a field has been set.
+func (o *ApprovalReference) HasSerialOrder() bool {
+	if o != nil && !IsNil(o.SerialOrder) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialOrder gets a reference to the given int64 and assigns it to the SerialOrder field.
+func (o *ApprovalReference) SetSerialOrder(v int64) {
+	o.SerialOrder = &v
+}
+
 func (o ApprovalReference) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -124,6 +226,15 @@ func (o ApprovalReference) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.SerialOrder) {
+		toSerialize["serialOrder"] = o.SerialOrder
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +260,9 @@ func (o *ApprovalReference) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "serialOrder")
 		o.AdditionalProperties = additionalProperties
 	}
 
