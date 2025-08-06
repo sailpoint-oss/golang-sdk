@@ -464,6 +464,7 @@ Class | Method | HTTP request | Description
 *ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create managed client
 *ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete managed client
 *ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get managed client
+*ManagedClientsAPI* | [**GetManagedClientHealthIndicators**](docs/ManagedClientsAPI.md#getmanagedclienthealthindicators) | **Get** /managed-clients/{id}/health-indicators | Get managed client health indicators
 *ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get managed client status
 *ManagedClientsAPI* | [**GetManagedClients**](docs/ManagedClientsAPI.md#getmanagedclients) | **Get** /managed-clients | Get managed clients
 *ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update managed client
@@ -1293,6 +1294,8 @@ Class | Method | HTTP request | Description
  - [GetRoleAssignments200ResponseInner](docs/GetRoleAssignments200ResponseInner.md)
  - [GetTenantContext200ResponseInner](docs/GetTenantContext200ResponseInner.md)
  - [GrantType](docs/GrantType.md)
+ - [HealthEvent](docs/HealthEvent.md)
+ - [HealthIndicatorCategory](docs/HealthIndicatorCategory.md)
  - [HierarchicalRightSet](docs/HierarchicalRightSet.md)
  - [HttpAuthenticationType](docs/HttpAuthenticationType.md)
  - [HttpConfig](docs/HttpConfig.md)
@@ -1427,6 +1430,9 @@ Class | Method | HTTP request | Description
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)
+ - [ManagedClientHealthIndicators](docs/ManagedClientHealthIndicators.md)
+ - [ManagedClientHealthIndicatorsBody](docs/ManagedClientHealthIndicatorsBody.md)
+ - [ManagedClientHealthIndicatorsBodyHealthIndicators](docs/ManagedClientHealthIndicatorsBodyHealthIndicators.md)
  - [ManagedClientRequest](docs/ManagedClientRequest.md)
  - [ManagedClientStatus](docs/ManagedClientStatus.md)
  - [ManagedClientStatusCode](docs/ManagedClientStatusCode.md)

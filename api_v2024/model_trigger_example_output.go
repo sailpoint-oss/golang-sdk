@@ -12,8 +12,8 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // TriggerExampleOutput - An example of the JSON payload that will be sent by the subscribed service to the trigger in response to an event.

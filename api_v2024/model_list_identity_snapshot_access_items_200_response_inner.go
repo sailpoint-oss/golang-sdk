@@ -19,10 +19,10 @@ import (
 // ListIdentitySnapshotAccessItems200ResponseInner - struct for ListIdentitySnapshotAccessItems200ResponseInner
 type ListIdentitySnapshotAccessItems200ResponseInner struct {
 	AccessItemAccessProfileResponse *AccessItemAccessProfileResponse
-	AccessItemAccountResponse       *AccessItemAccountResponse
-	AccessItemAppResponse           *AccessItemAppResponse
-	AccessItemEntitlementResponse   *AccessItemEntitlementResponse
-	AccessItemRoleResponse          *AccessItemRoleResponse
+	AccessItemAccountResponse *AccessItemAccountResponse
+	AccessItemAppResponse *AccessItemAppResponse
+	AccessItemEntitlementResponse *AccessItemEntitlementResponse
+	AccessItemRoleResponse *AccessItemRoleResponse
 }
 
 // AccessItemAccessProfileResponseAsListIdentitySnapshotAccessItems200ResponseInner is a convenience function that returns AccessItemAccessProfileResponse wrapped in ListIdentitySnapshotAccessItems200ResponseInner
@@ -59,6 +59,7 @@ func AccessItemRoleResponseAsListIdentitySnapshotAccessItems200ResponseInner(v *
 		AccessItemRoleResponse: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ListIdentitySnapshotAccessItems200ResponseInner) UnmarshalJSON(data []byte) error {
@@ -191,7 +192,7 @@ func (src ListIdentitySnapshotAccessItems200ResponseInner) MarshalJSON() ([]byte
 }
 
 // Get the actual instance
-func (obj *ListIdentitySnapshotAccessItems200ResponseInner) GetActualInstance() interface{} {
+func (obj *ListIdentitySnapshotAccessItems200ResponseInner) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -220,7 +221,7 @@ func (obj *ListIdentitySnapshotAccessItems200ResponseInner) GetActualInstance() 
 }
 
 // Get the actual instance value
-func (obj ListIdentitySnapshotAccessItems200ResponseInner) GetActualInstanceValue() interface{} {
+func (obj ListIdentitySnapshotAccessItems200ResponseInner) GetActualInstanceValue() (interface{}) {
 	if obj.AccessItemAccessProfileResponse != nil {
 		return *obj.AccessItemAccessProfileResponse
 	}
@@ -280,3 +281,5 @@ func (v *NullableListIdentitySnapshotAccessItems200ResponseInner) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -12,8 +12,8 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // ContextAttributeDtoValue - The value of the attribute.  This can be either a string or a multi-valued string

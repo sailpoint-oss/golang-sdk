@@ -643,6 +643,8 @@ docs/GlobalTenantSecuritySettingsAPIdeveloperSite_code_examples.yaml
 docs/GovernanceGroupsAPI.md
 docs/GovernanceGroupsAPIdeveloperSite_code_examples.yaml
 docs/GrantType.md
+docs/HealthEvent.md
+docs/HealthIndicatorCategory.md
 docs/HierarchicalRightSet.md
 docs/HttpAuthenticationType.md
 docs/HttpConfig.md
@@ -813,6 +815,9 @@ docs/MachineIdentityDtoOwners.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
+docs/ManagedClientHealthIndicators.md
+docs/ManagedClientHealthIndicatorsBody.md
+docs/ManagedClientHealthIndicatorsBodyHealthIndicators.md
 docs/ManagedClientRequest.md
 docs/ManagedClientStatus.md
 docs/ManagedClientStatusCode.md
@@ -1946,6 +1951,8 @@ model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
 model_get_tenant_context_200_response_inner.go
 model_grant_type.go
+model_health_event.go
+model_health_indicator_category.go
 model_hierarchical_right_set.go
 model_http_authentication_type.go
 model_http_config.go
@@ -2080,6 +2087,9 @@ model_machine_identity_dto_owners.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
+model_managed_client_health_indicators.go
+model_managed_client_health_indicators_body.go
+model_managed_client_health_indicators_body_health_indicators.go
 model_managed_client_request.go
 model_managed_client_status.go
 model_managed_client_status_code.go
