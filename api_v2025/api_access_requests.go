@@ -1540,6 +1540,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 type ApiListAdministratorsAccessRequestStatusRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
+	xSailPointExperimental *string
 	requestedFor *string
 	requestedBy *string
 	regardingIdentity *string
@@ -1550,6 +1551,12 @@ type ApiListAdministratorsAccessRequestStatusRequest struct {
 	filters *string
 	sorters *string
 	requestState *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListAdministratorsAccessRequestStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiListAdministratorsAccessRequestStatusRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -1652,6 +1659,15 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.requestedFor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-for", r.requestedFor, "", "")
@@ -1706,6 +1722,7 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusExecute(
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
