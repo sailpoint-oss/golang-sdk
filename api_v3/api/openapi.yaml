@@ -7319,7 +7319,7 @@ paths:
               $ref: '#/components/schemas/Campaign'
         required: true
       responses:
-        "200":
+        "202":
           content:
             application/json:
               examples:
@@ -7335,8 +7335,9 @@ paths:
                   $ref: '#/components/examples/FullCampaignMachineAccount'
               schema:
                 $ref: '#/components/schemas/Campaign'
-          description: "This response indicates that the requested campaign was successfully\
-            \ created, and the API returns its representation."
+          description: "This response indicates that the requested campaign has been\
+            \ successfully accepted into the system, and its representation is returned\
+            \ by the API."
         "400":
           content:
             application/json:
