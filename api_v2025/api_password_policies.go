@@ -26,7 +26,14 @@ type PasswordPoliciesAPIService service
 type ApiCreatePasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
+	xSailPointExperimental *string
 	passwordPolicyV3Dto *PasswordPolicyV3Dto
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreatePasswordPolicyRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreatePasswordPolicyRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreatePasswordPolicyRequest) PasswordPolicyV3Dto(passwordPolicyV3Dto PasswordPolicyV3Dto) ApiCreatePasswordPolicyRequest {
@@ -73,6 +80,21 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyExecute(r ApiCreatePass
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.passwordPolicyV3Dto == nil {
 		return localVarReturnValue, nil, reportError("passwordPolicyV3Dto is required and must be specified")
 	}
@@ -94,6 +116,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyExecute(r ApiCreatePass
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.passwordPolicyV3Dto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -202,6 +225,13 @@ type ApiDeletePasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeletePasswordPolicyRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeletePasswordPolicyRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeletePasswordPolicyRequest) Execute() (*http.Response, error) {
@@ -244,6 +274,15 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyExecute(r ApiDeletePass
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -262,6 +301,7 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyExecute(r ApiDeletePass
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -359,6 +399,13 @@ type ApiGetPasswordPolicyByIdRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetPasswordPolicyByIdRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetPasswordPolicyByIdRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetPasswordPolicyByIdRequest) Execute() (*PasswordPolicyV3Dto, *http.Response, error) {
@@ -403,6 +450,15 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdExecute(r ApiGetPasswo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -421,6 +477,7 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdExecute(r ApiGetPasswo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -526,9 +583,16 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdExecute(r ApiGetPasswo
 type ApiListPasswordPoliciesRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
+	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListPasswordPoliciesRequest) XSailPointExperimental(xSailPointExperimental string) ApiListPasswordPoliciesRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -589,6 +653,15 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesExecute(r ApiListPasswo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -625,6 +698,7 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesExecute(r ApiListPasswo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -720,7 +794,14 @@ type ApiSetPasswordPolicyRequest struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
 	id string
+	xSailPointExperimental *string
 	passwordPolicyV3Dto *PasswordPolicyV3Dto
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSetPasswordPolicyRequest) XSailPointExperimental(xSailPointExperimental string) ApiSetPasswordPolicyRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiSetPasswordPolicyRequest) PasswordPolicyV3Dto(passwordPolicyV3Dto PasswordPolicyV3Dto) ApiSetPasswordPolicyRequest {
@@ -770,6 +851,21 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyExecute(r ApiSetPasswordPo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.passwordPolicyV3Dto == nil {
 		return localVarReturnValue, nil, reportError("passwordPolicyV3Dto is required and must be specified")
 	}
@@ -791,6 +887,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyExecute(r ApiSetPasswordPo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.passwordPolicyV3Dto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

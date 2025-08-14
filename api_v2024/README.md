@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsAPI* | [**CloseAccessRequest**](docs/AccessRequestsAPI.md#closeaccessrequest) | **Post** /access-requests/close | Close access request
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit access request
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get access request configuration
+*AccessRequestsAPI* | [**GetEntitlementDetailsForIdentity**](docs/AccessRequestsAPI.md#getentitlementdetailsforidentity) | **Get** /revocable-objects | Identity entitlement details
 *AccessRequestsAPI* | [**ListAccessRequestStatus**](docs/AccessRequestsAPI.md#listaccessrequeststatus) | **Get** /access-request-status | Access request status
 *AccessRequestsAPI* | [**ListAdministratorsAccessRequestStatus**](docs/AccessRequestsAPI.md#listadministratorsaccessrequeststatus) | **Get** /access-request-administration | Access request status for administrators
 *AccessRequestsAPI* | [**LoadAccountSelections**](docs/AccessRequestsAPI.md#loadaccountselections) | **Post** /access-requests/accounts-selection | Get accounts selections for identity
@@ -372,6 +373,7 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**GetIdentityOwnershipDetails**](docs/IdentitiesAPI.md#getidentityownershipdetails) | **Get** /identities/{identityId}/ownership | Get ownership details
 *IdentitiesAPI* | [**GetRoleAssignment**](docs/IdentitiesAPI.md#getroleassignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
+*IdentitiesAPI* | [**ListEntitlementsByIdentity**](docs/IdentitiesAPI.md#listentitlementsbyidentity) | **Get** /entitlements/identities/{id}/entitlements | List of entitlements by identity.
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List identities
 *IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{id}/reset | Reset an identity
 *IdentitiesAPI* | [**SendIdentityVerificationAccountToken**](docs/IdentitiesAPI.md#sendidentityverificationaccounttoken) | **Post** /identities/{id}/verification/account/send | Send password reset email
@@ -406,6 +408,12 @@ Class | Method | HTTP request | Description
 *IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | List identity profiles
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update identity profile
+*LaunchersAPI* | [**CreateLauncher**](docs/LaunchersAPI.md#createlauncher) | **Post** /launchers | Create launcher
+*LaunchersAPI* | [**DeleteLauncher**](docs/LaunchersAPI.md#deletelauncher) | **Delete** /launchers/{launcherID} | Delete launcher
+*LaunchersAPI* | [**GetLauncher**](docs/LaunchersAPI.md#getlauncher) | **Get** /launchers/{launcherID} | Get launcher by id
+*LaunchersAPI* | [**GetLaunchers**](docs/LaunchersAPI.md#getlaunchers) | **Get** /launchers | List all launchers for tenant
+*LaunchersAPI* | [**PutLauncher**](docs/LaunchersAPI.md#putlauncher) | **Put** /launchers/{launcherID} | Replace launcher
+*LaunchersAPI* | [**StartLauncher**](docs/LaunchersAPI.md#startlauncher) | **Post** /launchers/{launcherID}/launch | Launch a launcher
 *LifecycleStatesAPI* | [**CreateLifecycleState**](docs/LifecycleStatesAPI.md#createlifecyclestate) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create lifecycle state
 *LifecycleStatesAPI* | [**DeleteLifecycleState**](docs/LifecycleStatesAPI.md#deletelifecyclestate) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete lifecycle state
 *LifecycleStatesAPI* | [**GetLifecycleState**](docs/LifecycleStatesAPI.md#getlifecyclestate) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get lifecycle state
@@ -715,6 +723,10 @@ Class | Method | HTTP request | Description
 *TaggedObjectsAPI* | [**PutTaggedObject**](docs/TaggedObjectsAPI.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update tagged object
 *TaggedObjectsAPI* | [**SetTagToObject**](docs/TaggedObjectsAPI.md#settagtoobject) | **Post** /tagged-objects | Add tag to object
 *TaggedObjectsAPI* | [**SetTagsToManyObjects**](docs/TaggedObjectsAPI.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag multiple objects
+*TagsAPI* | [**CreateTag**](docs/TagsAPI.md#createtag) | **Post** /tags | Create tag
+*TagsAPI* | [**DeleteTagById**](docs/TagsAPI.md#deletetagbyid) | **Delete** /tags/{id} | Delete tag
+*TagsAPI* | [**GetTagById**](docs/TagsAPI.md#gettagbyid) | **Get** /tags/{id} | Get tag by id
+*TagsAPI* | [**ListTags**](docs/TagsAPI.md#listtags) | **Get** /tags | List tags
 *TaskManagementAPI* | [**GetPendingTaskHeaders**](docs/TaskManagementAPI.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve pending task list headers
 *TaskManagementAPI* | [**GetPendingTasks**](docs/TaskManagementAPI.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve pending task status list
 *TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by id
@@ -1229,6 +1241,7 @@ Class | Method | HTTP request | Description
  - [GetCampaign200Response](docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetHistoricalIdentityEvents200ResponseInner](docs/GetHistoricalIdentityEvents200ResponseInner.md)
+ - [GetLaunchers200Response](docs/GetLaunchers200Response.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
  - [GetRoleAssignments200ResponseInner](docs/GetRoleAssignments200ResponseInner.md)
@@ -1271,6 +1284,10 @@ Class | Method | HTTP request | Description
  - [IdentityDocumentAllOfSource](docs/IdentityDocumentAllOfSource.md)
  - [IdentityEntities](docs/IdentityEntities.md)
  - [IdentityEntitiesIdentityEntity](docs/IdentityEntitiesIdentityEntity.md)
+ - [IdentityEntitlementDetails](docs/IdentityEntitlementDetails.md)
+ - [IdentityEntitlementDetailsAccountTarget](docs/IdentityEntitlementDetailsAccountTarget.md)
+ - [IdentityEntitlementDetailsEntitlementDto](docs/IdentityEntitlementDetailsEntitlementDto.md)
+ - [IdentityEntitlements](docs/IdentityEntitlements.md)
  - [IdentityExceptionReportReference](docs/IdentityExceptionReportReference.md)
  - [IdentityHistoryResponse](docs/IdentityHistoryResponse.md)
  - [IdentityLifecycleState](docs/IdentityLifecycleState.md)
@@ -1321,6 +1338,11 @@ Class | Method | HTTP request | Description
  - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](docs/KbaQuestion.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
+ - [Launcher](docs/Launcher.md)
+ - [LauncherOwner](docs/LauncherOwner.md)
+ - [LauncherReference](docs/LauncherReference.md)
+ - [LauncherRequest](docs/LauncherRequest.md)
+ - [LauncherRequestReference](docs/LauncherRequestReference.md)
  - [License](docs/License.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
@@ -1800,6 +1822,7 @@ Class | Method | HTTP request | Description
  - [SpDetails](docs/SpDetails.md)
  - [StandardLevel](docs/StandardLevel.md)
  - [StartInvocationInput](docs/StartInvocationInput.md)
+ - [StartLauncher200Response](docs/StartLauncher200Response.md)
  - [StatusResponse](docs/StatusResponse.md)
  - [SubSearchAggregationSpecification](docs/SubSearchAggregationSpecification.md)
  - [Subscription](docs/Subscription.md)
@@ -1809,6 +1832,8 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](docs/SubscriptionPutRequest.md)
  - [SubscriptionType](docs/SubscriptionType.md)
+ - [Tag](docs/Tag.md)
+ - [TagTagCategoryRefsInner](docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
  - [Target](docs/Target.md)

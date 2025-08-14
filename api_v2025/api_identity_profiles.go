@@ -740,14 +740,7 @@ func (a *IdentityProfilesAPIService) ExportIdentityProfilesExecute(r ApiExportId
 type ApiGenerateIdentityPreviewRequest struct {
 	ctx context.Context
 	ApiService *IdentityProfilesAPIService
-	xSailPointExperimental *string
 	identityPreviewRequest *IdentityPreviewRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGenerateIdentityPreviewRequest) XSailPointExperimental(xSailPointExperimental string) ApiGenerateIdentityPreviewRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Identity Preview request body.
@@ -795,21 +788,6 @@ func (a *IdentityProfilesAPIService) GenerateIdentityPreviewExecute(r ApiGenerat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityPreviewRequest == nil {
 		return localVarReturnValue, nil, reportError("identityPreviewRequest is required and must be specified")
 	}
@@ -831,7 +809,6 @@ func (a *IdentityProfilesAPIService) GenerateIdentityPreviewExecute(r ApiGenerat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityPreviewRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

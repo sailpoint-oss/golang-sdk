@@ -47,6 +47,7 @@ api_identities.go
 api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
+api_launchers.go
 api_lifecycle_states.go
 api_machine_account_classify.go
 api_machine_account_mappings.go
@@ -88,6 +89,7 @@ api_sources.go
 api_sp_config.go
 api_suggested_entitlement_description.go
 api_tagged_objects.go
+api_tags.go
 api_task_management.go
 api_tenant.go
 api_tenant_context.go
@@ -634,6 +636,7 @@ docs/GetActiveCampaigns200ResponseInner.md
 docs/GetCampaign200Response.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
+docs/GetLaunchers200Response.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GetRoleAssignments200ResponseInner.md
@@ -759,6 +762,13 @@ docs/KbaAnswerRequestItem.md
 docs/KbaAnswerResponseItem.md
 docs/KbaQuestion.md
 docs/LatestOutlierSummary.md
+docs/Launcher.md
+docs/LauncherOwner.md
+docs/LauncherReference.md
+docs/LauncherRequest.md
+docs/LauncherRequestReference.md
+docs/LaunchersAPI.md
+docs/LaunchersAPIdeveloperSite_code_examples.yaml
 docs/License.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
@@ -1326,6 +1336,7 @@ docs/SpConfigRules.md
 docs/SpDetails.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
+docs/StartLauncher200Response.md
 docs/StatusResponse.md
 docs/SubSearchAggregationSpecification.md
 docs/Subscription.md
@@ -1337,10 +1348,14 @@ docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
 docs/SuggestedEntitlementDescriptionAPI.md
 docs/SuggestedEntitlementDescriptionAPIdeveloperSite_code_examples.yaml
+docs/Tag.md
+docs/TagTagCategoryRefsInner.md
 docs/TaggedObject.md
 docs/TaggedObjectDto.md
 docs/TaggedObjectsAPI.md
 docs/TaggedObjectsAPIdeveloperSite_code_examples.yaml
+docs/TagsAPI.md
+docs/TagsAPIdeveloperSite_code_examples.yaml
 docs/Target.md
 docs/TaskDefinitionSummary.md
 docs/TaskManagementAPI.md
@@ -1946,6 +1961,7 @@ model_get_active_campaigns_200_response_inner.go
 model_get_campaign_200_response.go
 model_get_discovered_applications_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
+model_get_launchers_200_response.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
@@ -2045,6 +2061,11 @@ model_kba_answer_request_item.go
 model_kba_answer_response_item.go
 model_kba_question.go
 model_latest_outlier_summary.go
+model_launcher.go
+model_launcher_owner.go
+model_launcher_reference.go
+model_launcher_request.go
+model_launcher_request_reference.go
 model_license.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
@@ -2533,6 +2554,7 @@ model_sp_config_rules.go
 model_sp_details.go
 model_standard_level.go
 model_start_invocation_input.go
+model_start_launcher_200_response.go
 model_status_response.go
 model_sub_search_aggregation_specification.go
 model_subscription.go
@@ -2542,6 +2564,8 @@ model_subscription_patch_request_inner_value_any_of_inner.go
 model_subscription_post_request.go
 model_subscription_put_request.go
 model_subscription_type.go
+model_tag.go
+model_tag_tag_category_refs_inner.go
 model_tagged_object.go
 model_tagged_object_dto.go
 model_target.go
@@ -2696,6 +2720,7 @@ test/api_identities_test.go
 test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
+test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_machine_account_classify_test.go
 test/api_machine_account_mappings_test.go
@@ -2737,6 +2762,7 @@ test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_suggested_entitlement_description_test.go
 test/api_tagged_objects_test.go
+test/api_tags_test.go
 test/api_task_management_test.go
 test/api_tenant_context_test.go
 test/api_tenant_test.go

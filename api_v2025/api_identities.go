@@ -1677,7 +1677,14 @@ func (a *IdentitiesAPIService) SendIdentityVerificationAccountTokenExecute(r Api
 type ApiStartIdentitiesInviteRequest struct {
 	ctx context.Context
 	ApiService *IdentitiesAPIService
+	xSailPointExperimental *string
 	inviteIdentitiesRequest *InviteIdentitiesRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiStartIdentitiesInviteRequest) XSailPointExperimental(xSailPointExperimental string) ApiStartIdentitiesInviteRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiStartIdentitiesInviteRequest) InviteIdentitiesRequest(inviteIdentitiesRequest InviteIdentitiesRequest) ApiStartIdentitiesInviteRequest {
@@ -1729,6 +1736,21 @@ func (a *IdentitiesAPIService) StartIdentitiesInviteExecute(r ApiStartIdentities
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.inviteIdentitiesRequest == nil {
 		return localVarReturnValue, nil, reportError("inviteIdentitiesRequest is required and must be specified")
 	}
@@ -1750,6 +1772,7 @@ func (a *IdentitiesAPIService) StartIdentitiesInviteExecute(r ApiStartIdentities
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.inviteIdentitiesRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

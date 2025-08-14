@@ -1817,7 +1817,14 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusExecute(
 type ApiLoadAccountSelectionsRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
+	xSailPointExperimental *string
 	accountsSelectionRequest *AccountsSelectionRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiLoadAccountSelectionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiLoadAccountSelectionsRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiLoadAccountSelectionsRequest) AccountsSelectionRequest(accountsSelectionRequest AccountsSelectionRequest) ApiLoadAccountSelectionsRequest {
@@ -1867,6 +1874,21 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsExecute(r ApiLoadAccount
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.accountsSelectionRequest == nil {
 		return localVarReturnValue, nil, reportError("accountsSelectionRequest is required and must be specified")
 	}
@@ -1888,6 +1910,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsExecute(r ApiLoadAccount
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.accountsSelectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

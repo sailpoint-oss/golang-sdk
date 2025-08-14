@@ -16,6 +16,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
@@ -1086,6 +1087,195 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetEntitlementDetailsForIdentityRequest struct {
+	ctx context.Context
+	ApiService *AccessRequestsAPIService
+	xSailPointExperimental *string
+	identityId string
+	entitlementId string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetEntitlementDetailsForIdentityRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetEntitlementDetailsForIdentityRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiGetEntitlementDetailsForIdentityRequest) Execute() (*IdentityEntitlementDetails, *http.Response, error) {
+	return r.ApiService.GetEntitlementDetailsForIdentityExecute(r)
+}
+
+/*
+GetEntitlementDetailsForIdentity Identity entitlement details
+
+Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identityId The identity ID.
+ @param entitlementId The entitlement ID
+ @return ApiGetEntitlementDetailsForIdentityRequest
+*/
+func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentity(ctx context.Context, identityId string, entitlementId string) ApiGetEntitlementDetailsForIdentityRequest {
+	return ApiGetEntitlementDetailsForIdentityRequest{
+		ApiService: a,
+		ctx: ctx,
+		identityId: identityId,
+		entitlementId: entitlementId,
+	}
+}
+
+// Execute executes the request
+//  @return IdentityEntitlementDetails
+func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityExecute(r ApiGetEntitlementDetailsForIdentityRequest) (*IdentityEntitlementDetails, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityEntitlementDetails
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.GetEntitlementDetailsForIdentity")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/revocable-objects"
+	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entitlementId"+"}", url.PathEscape(parameterValueToString(r.entitlementId, "entitlementId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListAccessRequestStatusRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
@@ -1627,7 +1817,14 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusExecute(
 type ApiLoadAccountSelectionsRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
+	xSailPointExperimental *string
 	accountsSelectionRequest *AccountsSelectionRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiLoadAccountSelectionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiLoadAccountSelectionsRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiLoadAccountSelectionsRequest) AccountsSelectionRequest(accountsSelectionRequest AccountsSelectionRequest) ApiLoadAccountSelectionsRequest {
@@ -1677,6 +1874,21 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsExecute(r ApiLoadAccount
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.accountsSelectionRequest == nil {
 		return localVarReturnValue, nil, reportError("accountsSelectionRequest is required and must be specified")
 	}
@@ -1698,6 +1910,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsExecute(r ApiLoadAccount
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.accountsSelectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

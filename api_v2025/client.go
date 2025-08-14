@@ -138,6 +138,8 @@ type APIClient struct {
 
 	IdentityProfilesAPI *IdentityProfilesAPIService
 
+	LaunchersAPI *LaunchersAPIService
+
 	LifecycleStatesAPI *LifecycleStatesAPIService
 
 	MFAConfigurationAPI *MFAConfigurationAPIService
@@ -220,6 +222,8 @@ type APIClient struct {
 
 	TaggedObjectsAPI *TaggedObjectsAPIService
 
+	TagsAPI *TagsAPIService
+
 	TaskManagementAPI *TaskManagementAPIService
 
 	TenantAPI *TenantAPIService
@@ -300,6 +304,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityAttributesAPI = (*IdentityAttributesAPIService)(&c.common)
 	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
+	c.LaunchersAPI = (*LaunchersAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
 	c.MachineAccountClassifyAPI = (*MachineAccountClassifyAPIService)(&c.common)
@@ -341,6 +346,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
 	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
+	c.TagsAPI = (*TagsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 	c.TenantAPI = (*TenantAPIService)(&c.common)
 	c.TenantContextAPI = (*TenantContextAPIService)(&c.common)

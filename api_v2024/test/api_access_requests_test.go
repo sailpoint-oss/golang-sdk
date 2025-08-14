@@ -94,6 +94,21 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessRequestsAPIService GetEntitlementDetailsForIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+		var entitlementId string
+
+		resp, httpRes, err := apiClient.AccessRequestsAPI.GetEntitlementDetailsForIdentity(context.Background(), identityId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessRequestsAPIService ListAccessRequestStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
