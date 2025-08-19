@@ -564,7 +564,7 @@ func (r ApiGetLifecycleStatesRequest) Count(count bool) ApiGetLifecycleStatesReq
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified**
 func (r ApiGetLifecycleStatesRequest) Sorters(sorters string) ApiGetLifecycleStatesRequest {
 	r.sorters = &sorters
 	return r
