@@ -12,17 +12,43 @@ package api_v2025
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the ListFormInstancesByTenantResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ListFormInstancesByTenantResponse{}
 
-// ListFormInstancesByTenantResponse struct for ListFormInstancesByTenantResponse
+// ListFormInstancesByTenantResponse List of FormInstanceResponse items
 type ListFormInstancesByTenantResponse struct {
-	// Count number of Results
-	Count *int64 `json:"count,omitempty"`
-	// Results holds a list of FormInstanceResponse items
-	Results []FormInstanceResponse `json:"results,omitempty"`
+	// Unique guid identifying this form instance
+	Id *string `json:"id,omitempty"`
+	// Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record
+	Expire *string `json:"expire,omitempty"`
+	// State the state of the form instance ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled
+	State *string `json:"state,omitempty"`
+	// StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form
+	StandAloneForm *bool `json:"standAloneForm,omitempty"`
+	// StandAloneFormURL is the URL where this form may be completed by the designated recipients using the standalone form UI
+	StandAloneFormUrl *string `json:"standAloneFormUrl,omitempty"`
+	CreatedBy *FormInstanceCreatedBy `json:"createdBy,omitempty"`
+	// FormDefinitionID is the id of the form definition that created this form
+	FormDefinitionId *string `json:"formDefinitionId,omitempty"`
+	// FormInput is an object of form input labels to value
+	FormInput map[string]map[string]interface{} `json:"formInput,omitempty"`
+	// FormElements is the configuration of the form, this would be a repeat of the fields from the form-config
+	FormElements []FormElement `json:"formElements,omitempty"`
+	// FormData is the data provided by the form on submit. The data is in a key -> value map
+	FormData map[string]interface{} `json:"formData,omitempty"`
+	// FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors
+	FormErrors []FormError `json:"formErrors,omitempty"`
+	// FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form
+	FormConditions []FormCondition `json:"formConditions,omitempty"`
+	// Created is the date the form instance was assigned
+	Created *SailPointTime `json:"created,omitempty"`
+	// Modified is the last date the form instance was modified
+	Modified *SailPointTime `json:"modified,omitempty"`
+	// Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it
+	Recipients []FormInstanceRecipient `json:"recipients,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +60,8 @@ type _ListFormInstancesByTenantResponse ListFormInstancesByTenantResponse
 // will change when the set of required properties is changed
 func NewListFormInstancesByTenantResponse() *ListFormInstancesByTenantResponse {
 	this := ListFormInstancesByTenantResponse{}
+	var standAloneForm bool = false
+	this.StandAloneForm = &standAloneForm
 	return &this
 }
 
@@ -42,71 +70,491 @@ func NewListFormInstancesByTenantResponse() *ListFormInstancesByTenantResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewListFormInstancesByTenantResponseWithDefaults() *ListFormInstancesByTenantResponse {
 	this := ListFormInstancesByTenantResponse{}
+	var standAloneForm bool = false
+	this.StandAloneForm = &standAloneForm
 	return &this
 }
 
-// GetCount returns the Count field value if set, zero value otherwise.
-func (o *ListFormInstancesByTenantResponse) GetCount() int64 {
-	if o == nil || IsNil(o.Count) {
-		var ret int64
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
 		return ret
 	}
-	return *o.Count
+	return *o.Id
 }
 
-// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListFormInstancesByTenantResponse) GetCountOk() (*int64, bool) {
-	if o == nil || IsNil(o.Count) {
+func (o *ListFormInstancesByTenantResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Count, true
+	return o.Id, true
 }
 
-// HasCount returns a boolean if a field has been set.
-func (o *ListFormInstancesByTenantResponse) HasCount() bool {
-	if o != nil && !IsNil(o.Count) {
+// HasId returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetCount gets a reference to the given int64 and assigns it to the Count field.
-func (o *ListFormInstancesByTenantResponse) SetCount(v int64) {
-	o.Count = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ListFormInstancesByTenantResponse) SetId(v string) {
+	o.Id = &v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListFormInstancesByTenantResponse) GetResults() []FormInstanceResponse {
-	if o == nil || IsNil(o.Results) {
-		var ret []FormInstanceResponse
+// GetExpire returns the Expire field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetExpire() string {
+	if o == nil || IsNil(o.Expire) {
+		var ret string
 		return ret
 	}
-	return o.Results
+	return *o.Expire
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetExpireOk returns a tuple with the Expire field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListFormInstancesByTenantResponse) GetResultsOk() ([]FormInstanceResponse, bool) {
-	if o == nil || IsNil(o.Results) {
+func (o *ListFormInstancesByTenantResponse) GetExpireOk() (*string, bool) {
+	if o == nil || IsNil(o.Expire) {
 		return nil, false
 	}
-	return o.Results, true
+	return o.Expire, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *ListFormInstancesByTenantResponse) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
+// HasExpire returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasExpire() bool {
+	if o != nil && !IsNil(o.Expire) {
 		return true
 	}
 
 	return false
 }
 
-// SetResults gets a reference to the given []FormInstanceResponse and assigns it to the Results field.
-func (o *ListFormInstancesByTenantResponse) SetResults(v []FormInstanceResponse) {
-	o.Results = v
+// SetExpire gets a reference to the given string and assigns it to the Expire field.
+func (o *ListFormInstancesByTenantResponse) SetExpire(v string) {
+	o.Expire = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetState() string {
+	if o == nil || IsNil(o.State) {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetStateOk() (*string, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *ListFormInstancesByTenantResponse) SetState(v string) {
+	o.State = &v
+}
+
+// GetStandAloneForm returns the StandAloneForm field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetStandAloneForm() bool {
+	if o == nil || IsNil(o.StandAloneForm) {
+		var ret bool
+		return ret
+	}
+	return *o.StandAloneForm
+}
+
+// GetStandAloneFormOk returns a tuple with the StandAloneForm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetStandAloneFormOk() (*bool, bool) {
+	if o == nil || IsNil(o.StandAloneForm) {
+		return nil, false
+	}
+	return o.StandAloneForm, true
+}
+
+// HasStandAloneForm returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasStandAloneForm() bool {
+	if o != nil && !IsNil(o.StandAloneForm) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandAloneForm gets a reference to the given bool and assigns it to the StandAloneForm field.
+func (o *ListFormInstancesByTenantResponse) SetStandAloneForm(v bool) {
+	o.StandAloneForm = &v
+}
+
+// GetStandAloneFormUrl returns the StandAloneFormUrl field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetStandAloneFormUrl() string {
+	if o == nil || IsNil(o.StandAloneFormUrl) {
+		var ret string
+		return ret
+	}
+	return *o.StandAloneFormUrl
+}
+
+// GetStandAloneFormUrlOk returns a tuple with the StandAloneFormUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetStandAloneFormUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.StandAloneFormUrl) {
+		return nil, false
+	}
+	return o.StandAloneFormUrl, true
+}
+
+// HasStandAloneFormUrl returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasStandAloneFormUrl() bool {
+	if o != nil && !IsNil(o.StandAloneFormUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandAloneFormUrl gets a reference to the given string and assigns it to the StandAloneFormUrl field.
+func (o *ListFormInstancesByTenantResponse) SetStandAloneFormUrl(v string) {
+	o.StandAloneFormUrl = &v
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetCreatedBy() FormInstanceCreatedBy {
+	if o == nil || IsNil(o.CreatedBy) {
+		var ret FormInstanceCreatedBy
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetCreatedByOk() (*FormInstanceCreatedBy, bool) {
+	if o == nil || IsNil(o.CreatedBy) {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasCreatedBy() bool {
+	if o != nil && !IsNil(o.CreatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given FormInstanceCreatedBy and assigns it to the CreatedBy field.
+func (o *ListFormInstancesByTenantResponse) SetCreatedBy(v FormInstanceCreatedBy) {
+	o.CreatedBy = &v
+}
+
+// GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetFormDefinitionId() string {
+	if o == nil || IsNil(o.FormDefinitionId) {
+		var ret string
+		return ret
+	}
+	return *o.FormDefinitionId
+}
+
+// GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetFormDefinitionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.FormDefinitionId) {
+		return nil, false
+	}
+	return o.FormDefinitionId, true
+}
+
+// HasFormDefinitionId returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormDefinitionId() bool {
+	if o != nil && !IsNil(o.FormDefinitionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormDefinitionId gets a reference to the given string and assigns it to the FormDefinitionId field.
+func (o *ListFormInstancesByTenantResponse) SetFormDefinitionId(v string) {
+	o.FormDefinitionId = &v
+}
+
+// GetFormInput returns the FormInput field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListFormInstancesByTenantResponse) GetFormInput() map[string]map[string]interface{} {
+	if o == nil {
+		var ret map[string]map[string]interface{}
+		return ret
+	}
+	return o.FormInput
+}
+
+// GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListFormInstancesByTenantResponse) GetFormInputOk() (map[string]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.FormInput) {
+		return map[string]map[string]interface{}{}, false
+	}
+	return o.FormInput, true
+}
+
+// HasFormInput returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormInput() bool {
+	if o != nil && !IsNil(o.FormInput) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormInput gets a reference to the given map[string]map[string]interface{} and assigns it to the FormInput field.
+func (o *ListFormInstancesByTenantResponse) SetFormInput(v map[string]map[string]interface{}) {
+	o.FormInput = v
+}
+
+// GetFormElements returns the FormElements field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetFormElements() []FormElement {
+	if o == nil || IsNil(o.FormElements) {
+		var ret []FormElement
+		return ret
+	}
+	return o.FormElements
+}
+
+// GetFormElementsOk returns a tuple with the FormElements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetFormElementsOk() ([]FormElement, bool) {
+	if o == nil || IsNil(o.FormElements) {
+		return nil, false
+	}
+	return o.FormElements, true
+}
+
+// HasFormElements returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormElements() bool {
+	if o != nil && !IsNil(o.FormElements) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormElements gets a reference to the given []FormElement and assigns it to the FormElements field.
+func (o *ListFormInstancesByTenantResponse) SetFormElements(v []FormElement) {
+	o.FormElements = v
+}
+
+// GetFormData returns the FormData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListFormInstancesByTenantResponse) GetFormData() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.FormData
+}
+
+// GetFormDataOk returns a tuple with the FormData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListFormInstancesByTenantResponse) GetFormDataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.FormData) {
+		return map[string]interface{}{}, false
+	}
+	return o.FormData, true
+}
+
+// HasFormData returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormData() bool {
+	if o != nil && !IsNil(o.FormData) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormData gets a reference to the given map[string]interface{} and assigns it to the FormData field.
+func (o *ListFormInstancesByTenantResponse) SetFormData(v map[string]interface{}) {
+	o.FormData = v
+}
+
+// GetFormErrors returns the FormErrors field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetFormErrors() []FormError {
+	if o == nil || IsNil(o.FormErrors) {
+		var ret []FormError
+		return ret
+	}
+	return o.FormErrors
+}
+
+// GetFormErrorsOk returns a tuple with the FormErrors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetFormErrorsOk() ([]FormError, bool) {
+	if o == nil || IsNil(o.FormErrors) {
+		return nil, false
+	}
+	return o.FormErrors, true
+}
+
+// HasFormErrors returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormErrors() bool {
+	if o != nil && !IsNil(o.FormErrors) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormErrors gets a reference to the given []FormError and assigns it to the FormErrors field.
+func (o *ListFormInstancesByTenantResponse) SetFormErrors(v []FormError) {
+	o.FormErrors = v
+}
+
+// GetFormConditions returns the FormConditions field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetFormConditions() []FormCondition {
+	if o == nil || IsNil(o.FormConditions) {
+		var ret []FormCondition
+		return ret
+	}
+	return o.FormConditions
+}
+
+// GetFormConditionsOk returns a tuple with the FormConditions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetFormConditionsOk() ([]FormCondition, bool) {
+	if o == nil || IsNil(o.FormConditions) {
+		return nil, false
+	}
+	return o.FormConditions, true
+}
+
+// HasFormConditions returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasFormConditions() bool {
+	if o != nil && !IsNil(o.FormConditions) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormConditions gets a reference to the given []FormCondition and assigns it to the FormConditions field.
+func (o *ListFormInstancesByTenantResponse) SetFormConditions(v []FormCondition) {
+	o.FormConditions = v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetCreated() SailPointTime {
+	if o == nil || IsNil(o.Created) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetCreatedOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasCreated() bool {
+	if o != nil && !IsNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *ListFormInstancesByTenantResponse) SetCreated(v SailPointTime) {
+	o.Created = &v
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetModified() SailPointTime {
+	if o == nil || IsNil(o.Modified) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetModifiedOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasModified() bool {
+	if o != nil && !IsNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *ListFormInstancesByTenantResponse) SetModified(v SailPointTime) {
+	o.Modified = &v
+}
+
+// GetRecipients returns the Recipients field value if set, zero value otherwise.
+func (o *ListFormInstancesByTenantResponse) GetRecipients() []FormInstanceRecipient {
+	if o == nil || IsNil(o.Recipients) {
+		var ret []FormInstanceRecipient
+		return ret
+	}
+	return o.Recipients
+}
+
+// GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListFormInstancesByTenantResponse) GetRecipientsOk() ([]FormInstanceRecipient, bool) {
+	if o == nil || IsNil(o.Recipients) {
+		return nil, false
+	}
+	return o.Recipients, true
+}
+
+// HasRecipients returns a boolean if a field has been set.
+func (o *ListFormInstancesByTenantResponse) HasRecipients() bool {
+	if o != nil && !IsNil(o.Recipients) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipients gets a reference to the given []FormInstanceRecipient and assigns it to the Recipients field.
+func (o *ListFormInstancesByTenantResponse) SetRecipients(v []FormInstanceRecipient) {
+	o.Recipients = v
 }
 
 func (o ListFormInstancesByTenantResponse) MarshalJSON() ([]byte, error) {
@@ -119,11 +567,50 @@ func (o ListFormInstancesByTenantResponse) MarshalJSON() ([]byte, error) {
 
 func (o ListFormInstancesByTenantResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Count) {
-		toSerialize["count"] = o.Count
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Results) {
-		toSerialize["results"] = o.Results
+	if !IsNil(o.Expire) {
+		toSerialize["expire"] = o.Expire
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.StandAloneForm) {
+		toSerialize["standAloneForm"] = o.StandAloneForm
+	}
+	if !IsNil(o.StandAloneFormUrl) {
+		toSerialize["standAloneFormUrl"] = o.StandAloneFormUrl
+	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !IsNil(o.FormDefinitionId) {
+		toSerialize["formDefinitionId"] = o.FormDefinitionId
+	}
+	if o.FormInput != nil {
+		toSerialize["formInput"] = o.FormInput
+	}
+	if !IsNil(o.FormElements) {
+		toSerialize["formElements"] = o.FormElements
+	}
+	if o.FormData != nil {
+		toSerialize["formData"] = o.FormData
+	}
+	if !IsNil(o.FormErrors) {
+		toSerialize["formErrors"] = o.FormErrors
+	}
+	if !IsNil(o.FormConditions) {
+		toSerialize["formConditions"] = o.FormConditions
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Recipients) {
+		toSerialize["recipients"] = o.Recipients
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -147,8 +634,21 @@ func (o *ListFormInstancesByTenantResponse) UnmarshalJSON(data []byte) (err erro
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "count")
-		delete(additionalProperties, "results")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "expire")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "standAloneForm")
+		delete(additionalProperties, "standAloneFormUrl")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "formDefinitionId")
+		delete(additionalProperties, "formInput")
+		delete(additionalProperties, "formElements")
+		delete(additionalProperties, "formData")
+		delete(additionalProperties, "formErrors")
+		delete(additionalProperties, "formConditions")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
+		delete(additionalProperties, "recipients")
 		o.AdditionalProperties = additionalProperties
 	}
 
