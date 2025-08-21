@@ -1390,6 +1390,7 @@ Class | Method | HTTP request | Description
  - [ManagedClientType](docs/ManagedClientType.md)
  - [ManagedCluster](docs/ManagedCluster.md)
  - [ManagedClusterAttributes](docs/ManagedClusterAttributes.md)
+ - [ManagedClusterEncryptionConfig](docs/ManagedClusterEncryptionConfig.md)
  - [ManagedClusterKeyPair](docs/ManagedClusterKeyPair.md)
  - [ManagedClusterQueue](docs/ManagedClusterQueue.md)
  - [ManagedClusterRedis](docs/ManagedClusterRedis.md)

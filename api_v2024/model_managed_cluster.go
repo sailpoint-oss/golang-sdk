@@ -40,7 +40,7 @@ type ManagedCluster struct {
 	ClientType NullableManagedClientType `json:"clientType"`
 	// CCG version used by the ManagedCluster
 	CcgVersion string `json:"ccgVersion"`
-	// boolean flag indiacting whether or not the cluster configuration is pinned
+	// boolean flag indicating whether or not the cluster configuration is pinned
 	PinnedConfig *bool `json:"pinnedConfig,omitempty"`
 	LogConfiguration NullableClientLogConfiguration `json:"logConfiguration,omitempty"`
 	// Whether or not the cluster is operational or not
@@ -53,6 +53,7 @@ type ManagedCluster struct {
 	PublicKeyThumbprint NullableString `json:"publicKeyThumbprint,omitempty"`
 	// Public key
 	PublicKey NullableString `json:"publicKey,omitempty"`
+	EncryptionConfiguration *ManagedClusterEncryptionConfig `json:"encryptionConfiguration,omitempty"`
 	// Key describing any immediate cluster alerts
 	AlertKey *string `json:"alertKey,omitempty"`
 	// List of clients in a cluster
@@ -747,6 +748,38 @@ func (o *ManagedCluster) UnsetPublicKey() {
 	o.PublicKey.Unset()
 }
 
+// GetEncryptionConfiguration returns the EncryptionConfiguration field value if set, zero value otherwise.
+func (o *ManagedCluster) GetEncryptionConfiguration() ManagedClusterEncryptionConfig {
+	if o == nil || IsNil(o.EncryptionConfiguration) {
+		var ret ManagedClusterEncryptionConfig
+		return ret
+	}
+	return *o.EncryptionConfiguration
+}
+
+// GetEncryptionConfigurationOk returns a tuple with the EncryptionConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedCluster) GetEncryptionConfigurationOk() (*ManagedClusterEncryptionConfig, bool) {
+	if o == nil || IsNil(o.EncryptionConfiguration) {
+		return nil, false
+	}
+	return o.EncryptionConfiguration, true
+}
+
+// HasEncryptionConfiguration returns a boolean if a field has been set.
+func (o *ManagedCluster) HasEncryptionConfiguration() bool {
+	if o != nil && !IsNil(o.EncryptionConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionConfiguration gets a reference to the given ManagedClusterEncryptionConfig and assigns it to the EncryptionConfiguration field.
+func (o *ManagedCluster) SetEncryptionConfiguration(v ManagedClusterEncryptionConfig) {
+	o.EncryptionConfiguration = &v
+}
+
 // GetAlertKey returns the AlertKey field value if set, zero value otherwise.
 func (o *ManagedCluster) GetAlertKey() string {
 	if o == nil || IsNil(o.AlertKey) {
@@ -1262,6 +1295,9 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if o.PublicKey.IsSet() {
 		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
+	if !IsNil(o.EncryptionConfiguration) {
+		toSerialize["encryptionConfiguration"] = o.EncryptionConfiguration
+	}
 	if !IsNil(o.AlertKey) {
 		toSerialize["alertKey"] = o.AlertKey
 	}
@@ -1362,6 +1398,7 @@ func (o *ManagedCluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "publicKeyCertificate")
 		delete(additionalProperties, "publicKeyThumbprint")
 		delete(additionalProperties, "publicKey")
+		delete(additionalProperties, "encryptionConfiguration")
 		delete(additionalProperties, "alertKey")
 		delete(additionalProperties, "clientIds")
 		delete(additionalProperties, "serviceCount")

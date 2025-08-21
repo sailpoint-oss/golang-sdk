@@ -54773,6 +54773,8 @@ components:
           redisPort: 6379
         createdAt: 2023-08-04T20:48:01.865Z
         clientType: CCG
+        encryptionConfiguration:
+          format: V3
         id: e1ff7bb24c934240bbf55e1aa39e41c5
         pinnedConfig: false
         updatedAt: 2023-08-04T20:48:01.865Z
@@ -54851,7 +54853,7 @@ components:
           type: string
         pinnedConfig:
           default: false
-          description: boolean flag indiacting whether or not the cluster configuration
+          description: boolean flag indicating whether or not the cluster configuration
             is pinned
           example: false
           type: boolean
@@ -54889,6 +54891,8 @@ components:
             PUBLIC KEY-----'
           nullable: true
           type: string
+        encryptionConfiguration:
+          $ref: '#/components/schemas/ManagedClusterEncryptionConfig'
         alertKey:
           description: Key describing any immediate cluster alerts
           example: LIMITED_RESOURCES
@@ -63349,6 +63353,22 @@ components:
           format: int32
           type: integer
       title: Managed Cluster Redis
+      type: object
+    ManagedClusterEncryptionConfig:
+      description: "Defines the encryption settings for a managed cluster, including\
+        \ the format used for storing and processing encrypted data."
+      example:
+        format: V3
+      properties:
+        format:
+          description: "Specifies the format used for encrypted data, such as secrets.\
+            \ The format determines how the encrypted data is structured and processed."
+          enum:
+          - V2
+          - V3
+          example: V3
+          type: string
+      title: Managed Cluster Encryption Configuration
       type: object
     StandardLevel:
       description: Standard Log4j log level

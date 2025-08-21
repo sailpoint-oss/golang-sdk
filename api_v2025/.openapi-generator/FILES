@@ -836,6 +836,7 @@ docs/ManagedClientsAPI.md
 docs/ManagedClientsAPIdeveloperSite_code_examples.yaml
 docs/ManagedCluster.md
 docs/ManagedClusterAttributes.md
+docs/ManagedClusterEncryptionConfig.md
 docs/ManagedClusterKeyPair.md
 docs/ManagedClusterQueue.md
 docs/ManagedClusterRedis.md
@@ -2117,6 +2118,7 @@ model_managed_client_status_code.go
 model_managed_client_type.go
 model_managed_cluster.go
 model_managed_cluster_attributes.go
+model_managed_cluster_encryption_config.go
 model_managed_cluster_key_pair.go
 model_managed_cluster_queue.go
 model_managed_cluster_redis.go
