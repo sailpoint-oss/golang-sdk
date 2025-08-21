@@ -32822,10 +32822,8 @@ paths:
               accessRefs:
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c050861ab1
-                name: "CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local"
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c0509c1ab2
-                name: "CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local"
             schema:
               $ref: '#/components/schemas/IdentityWithNewAccess'
         required: true
@@ -32932,16 +32930,14 @@ paths:
               accessRefs:
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c050861ab1
-                name: "CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local"
               - type: ENTITLEMENT
                 id: 2c918087682f9a86016839c0509c1ab2
-                name: "CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local"
               clientMetadata:
                 additionalProp1: string
                 additionalProp2: string
                 additionalProp3: string
             schema:
-              $ref: '#/components/schemas/IdentityWithNewAccess_1'
+              $ref: '#/components/schemas/IdentityWithNewAccess'
         required: true
       responses:
         "202":
@@ -58682,10 +58678,8 @@ components:
         accessRefs:
         - type: ENTITLEMENT
           id: 2c918087682f9a86016839c050861ab1
-          name: "CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local"
         - type: ENTITLEMENT
           id: 2c918087682f9a86016839c0509c1ab2
-          name: "CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local"
       properties:
         identityId:
           description: Identity id to be checked.
@@ -58697,10 +58691,8 @@ components:
           example:
           - type: ENTITLEMENT
             id: 2c918087682f9a86016839c050861ab1
-            name: "CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local"
           - type: ENTITLEMENT
             id: 2c918087682f9a86016839c0509c1ab2
-            name: "CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local"
           items:
             $ref: '#/components/schemas/IdentityWithNewAccess_accessRefs_inner'
           type: array
@@ -58759,35 +58751,6 @@ components:
           type: array
       required:
       - requestId
-      type: object
-    IdentityWithNewAccess_1:
-      description: An identity with a set of access to be added
-      properties:
-        identityId:
-          description: Set of identity IDs to be checked.
-          example: 2c91809050db617d0150e0bf3215385e
-          type: string
-        accessRefs:
-          description: The bundle of access profiles to be added to the identities
-            specified. All references must be ENTITLEMENT type.
-          items:
-            allOf:
-            - $ref: '#/components/schemas/EntitlementRef_1'
-          type: array
-        clientMetadata:
-          additionalProperties:
-            type: string
-          description: Arbitrary key-value pairs. They will never be processed by
-            the IdentityNow system but will be returned on completion of the violation
-            check.
-          example:
-            clientName: client1
-            clientId: 2c91808f7892918f0178b78da4a305a1
-          type: object
-      required:
-      - accessRefs
-      - identityId
-      title: Identity With New Access
       type: object
     SodViolationCheck:
       description: An object referencing an SOD violation check
@@ -64690,25 +64653,6 @@ components:
         conflictingAccessCriteria:
           $ref: '#/components/schemas/ExceptionAccessCriteria'
       type: object
-    EntitlementRef_1:
-      description: Entitlement including a specific set of access.
-      properties:
-        type:
-          description: Entitlement's DTO type.
-          enum:
-          - ENTITLEMENT
-          example: ENTITLEMENT
-          type: string
-        id:
-          description: Entitlement's ID.
-          example: 2c91809773dee32014e13e122092014e
-          type: string
-        name:
-          description: Entitlement's display name.
-          example: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
-          type: string
-      title: Entitlement Ref
-      type: object
     FieldDetailsDto:
       example:
         isRequired: false
@@ -69315,14 +69259,12 @@ components:
           enum:
           - ENTITLEMENT
           example: ENTITLEMENT
+          nullable: false
           type: string
         id:
           description: Entitlement's ID.
           example: 2c91809773dee32014e13e122092014e
-          type: string
-        name:
-          description: Entitlement's display name.
-          example: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          nullable: false
           type: string
       type: object
     Workflow_allOf_creator:

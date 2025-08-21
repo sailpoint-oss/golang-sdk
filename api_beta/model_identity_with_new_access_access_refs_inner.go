@@ -23,8 +23,6 @@ type IdentityWithNewAccessAccessRefsInner struct {
 	Type *string `json:"type,omitempty"`
 	// Entitlement's ID.
 	Id *string `json:"id,omitempty"`
-	// Entitlement's display name.
-	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,38 +109,6 @@ func (o *IdentityWithNewAccessAccessRefsInner) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *IdentityWithNewAccessAccessRefsInner) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccessAccessRefsInner) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *IdentityWithNewAccessAccessRefsInner) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *IdentityWithNewAccessAccessRefsInner) SetName(v string) {
-	o.Name = &v
-}
-
 func (o IdentityWithNewAccessAccessRefsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,9 +124,6 @@ func (o IdentityWithNewAccessAccessRefsInner) ToMap() (map[string]interface{}, e
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -186,7 +149,6 @@ func (o *IdentityWithNewAccessAccessRefsInner) UnmarshalJSON(data []byte) (err e
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -532,7 +532,6 @@ docs/EntitlementDocumentAllOfPermissions.md
 docs/EntitlementDocumentAllOfSource.md
 docs/EntitlementOwner.md
 docs/EntitlementRef.md
-docs/EntitlementRef1.md
 docs/EntitlementRequestConfig.md
 docs/EntitlementRevocationRequestConfig.md
 docs/EntitlementSource.md
@@ -695,7 +694,6 @@ docs/IdentitySummary.md
 docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
-docs/IdentityWithNewAccess1.md
 docs/IdentityWithNewAccessAccessRefsInner.md
 docs/IdpDetails.md
 docs/ImportAccountsRequest.md
@@ -1812,7 +1810,6 @@ model_entitlement_document_all_of_permissions.go
 model_entitlement_document_all_of_source.go
 model_entitlement_owner.go
 model_entitlement_ref.go
-model_entitlement_ref_1.go
 model_entitlement_request_config.go
 model_entitlement_revocation_request_config.go
 model_entitlement_source.go
@@ -1947,7 +1944,6 @@ model_identity_summary.go
 model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
-model_identity_with_new_access_1.go
 model_identity_with_new_access_access_refs_inner.go
 model_idp_details.go
 model_import_accounts_request.go

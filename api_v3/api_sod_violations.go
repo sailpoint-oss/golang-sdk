@@ -200,11 +200,11 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsExecute(r ApiStartPre
 type ApiStartViolationCheckRequest struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	identityWithNewAccess1 *IdentityWithNewAccess1
+	identityWithNewAccess *IdentityWithNewAccess
 }
 
-func (r ApiStartViolationCheckRequest) IdentityWithNewAccess1(identityWithNewAccess1 IdentityWithNewAccess1) ApiStartViolationCheckRequest {
-	r.identityWithNewAccess1 = &identityWithNewAccess1
+func (r ApiStartViolationCheckRequest) IdentityWithNewAccess(identityWithNewAccess IdentityWithNewAccess) ApiStartViolationCheckRequest {
+	r.identityWithNewAccess = &identityWithNewAccess
 	return r
 }
 
@@ -247,8 +247,8 @@ func (a *SODViolationsAPIService) StartViolationCheckExecute(r ApiStartViolation
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identityWithNewAccess1 == nil {
-		return localVarReturnValue, nil, reportError("identityWithNewAccess1 is required and must be specified")
+	if r.identityWithNewAccess == nil {
+		return localVarReturnValue, nil, reportError("identityWithNewAccess is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -269,7 +269,7 @@ func (a *SODViolationsAPIService) StartViolationCheckExecute(r ApiStartViolation
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identityWithNewAccess1
+	localVarPostBody = r.identityWithNewAccess
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
