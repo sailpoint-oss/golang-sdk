@@ -52,11 +52,11 @@ Other parameters are passed through a pointer to a apiCreateMachineIdentityReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **machineIdentity** | [**MachineIdentity**](../models/machine-identity) |  | 
+ **machineIdentityRequest** | [**MachineIdentityRequest**](../models/machine-identity-request) |  | 
 
 ### Return type
 
-[**MachineIdentity**](../models/machine-identity)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### HTTP request headers
 
@@ -79,14 +79,10 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineidentity := []byte(`{
-          "subtype" : "Application",
+    machineidentityrequest := []byte(`{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
           "created" : "2015-05-28T14:07:17Z",
-          "businessApplication" : "ADService",
-          "name" : "aName",
-          "modified" : "2015-05-28T14:07:17Z",
           "description" : "",
-          "attributes" : "{\"Region\":\"EU\"}",
           "owners" : {
             "primaryIdentity" : "{}",
             "secondaryIdentities" : [ {
@@ -99,12 +95,25 @@ func main() {
               "type" : "IDENTITY"
             } ]
           },
-          "id" : "id12345",
-          "manuallyEdited" : true
-        }`) // MachineIdentity | 
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd",
+          "subtype" : "Application",
+          "businessApplication" : "ADService",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "attributes" : "{\"Region\":\"EU\"}",
+          "id" : "id12345"
+        }`) // MachineIdentityRequest | 
 
-    var machineIdentity v2025.MachineIdentity
-    if err := json.Unmarshal(machineidentity, &machineIdentity); err != nil {
+    var machineIdentityRequest v2025.MachineIdentityRequest
+    if err := json.Unmarshal(machineidentityrequest, &machineIdentityRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -112,13 +121,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
-	  //resp, r, err := apiClient.V2025.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentity(machineIdentity).Execute()
+    resp, r, err := apiClient.V2025.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentityRequest(machineIdentityRequest).Execute()
+	  //resp, r, err := apiClient.V2025.MachineIdentitiesAPI.CreateMachineIdentity(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentityRequest(machineIdentityRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentity``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMachineIdentity`: MachineIdentity
+    // response from `CreateMachineIdentity`: MachineIdentityResponse
     fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentity`: %v\n", resp)
 }
 ```
@@ -240,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MachineIdentity**](../models/machine-identity)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### HTTP request headers
 
@@ -275,7 +284,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentity``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineIdentity`: MachineIdentity
+    // response from `GetMachineIdentity`: MachineIdentityResponse
     fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetMachineIdentity`: %v\n", resp)
 }
 ```
@@ -311,15 +320,15 @@ Other parameters are passed through a pointer to a apiListMachineIdentitiesReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, source.name** | 
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 
-[**[]MachineIdentity**](../models/machine-identity)
+[**[]MachineIdentityResponse**](../models/machine-identity-response)
 
 ### HTTP request headers
 
@@ -342,8 +351,8 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr* (optional)
-    sorters := `businessApplication` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name** (optional)
+    filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
+    sorters := `businessApplication` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, source.name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, source.name** (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -358,7 +367,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentities``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListMachineIdentities`: []MachineIdentity
+    // response from `ListMachineIdentities`: []MachineIdentityResponse
     fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentities`: %v\n", resp)
 }
 ```
@@ -404,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MachineIdentity**](../models/machine-identity)
+[**MachineIdentityResponse**](../models/machine-identity-response)
 
 ### HTTP request headers
 
@@ -445,7 +454,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentity``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMachineIdentity`: MachineIdentity
+    // response from `UpdateMachineIdentity`: MachineIdentityResponse
     fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.UpdateMachineIdentity`: %v\n", resp)
 }
 ```

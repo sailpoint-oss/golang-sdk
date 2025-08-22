@@ -21,10 +21,12 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **SailPointTime** | Last modification date of the Object | [optional] [readonly] 
 **BusinessApplication** | **string** | The business application that the identity represents | 
 **Description** | Pointer to **string** | Description of machine identity | [optional] 
-**ManuallyEdited** | Pointer to **bool** | Indicates if the machine identity has been manually edited | [optional] [default to false]
 **Attributes** | Pointer to **map[string]interface{}** | A map of custom machine identity attributes | [optional] 
 **Subtype** | **string** | The subtype value associated to the machine identity | 
 **Owners** | Pointer to [**MachineIdentityDtoOwners**](machine-identity-dto-owners) |  | [optional] 
+**SourceId** | Pointer to **string** | The source id associated to the machine identity | [optional] 
+**Uuid** | Pointer to **string** | The UUID associated to the machine identity directly aggregated from a source | [optional] 
+**NativeIdentity** | Pointer to **string** | The native identity associated to the machine identity directly aggregated from a source | [optional] 
 
 ## Methods
 
@@ -195,31 +197,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetManuallyEdited
-
-`func (o *MachineIdentity) GetManuallyEdited() bool`
-
-GetManuallyEdited returns the ManuallyEdited field if non-nil, zero value otherwise.
-
-### GetManuallyEditedOk
-
-`func (o *MachineIdentity) GetManuallyEditedOk() (*bool, bool)`
-
-GetManuallyEditedOk returns a tuple with the ManuallyEdited field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManuallyEdited
-
-`func (o *MachineIdentity) SetManuallyEdited(v bool)`
-
-SetManuallyEdited sets ManuallyEdited field to given value.
-
-### HasManuallyEdited
-
-`func (o *MachineIdentity) HasManuallyEdited() bool`
-
-HasManuallyEdited returns a boolean if a field has been set.
-
 ### GetAttributes
 
 `func (o *MachineIdentity) GetAttributes() map[string]interface{}`
@@ -289,5 +266,80 @@ SetOwners sets Owners field to given value.
 `func (o *MachineIdentity) HasOwners() bool`
 
 HasOwners returns a boolean if a field has been set.
+
+### GetSourceId
+
+`func (o *MachineIdentity) GetSourceId() string`
+
+GetSourceId returns the SourceId field if non-nil, zero value otherwise.
+
+### GetSourceIdOk
+
+`func (o *MachineIdentity) GetSourceIdOk() (*string, bool)`
+
+GetSourceIdOk returns a tuple with the SourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceId
+
+`func (o *MachineIdentity) SetSourceId(v string)`
+
+SetSourceId sets SourceId field to given value.
+
+### HasSourceId
+
+`func (o *MachineIdentity) HasSourceId() bool`
+
+HasSourceId returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MachineIdentity) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MachineIdentity) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MachineIdentity) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MachineIdentity) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
+### GetNativeIdentity
+
+`func (o *MachineIdentity) GetNativeIdentity() string`
+
+GetNativeIdentity returns the NativeIdentity field if non-nil, zero value otherwise.
+
+### GetNativeIdentityOk
+
+`func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool)`
+
+GetNativeIdentityOk returns a tuple with the NativeIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNativeIdentity
+
+`func (o *MachineIdentity) SetNativeIdentity(v string)`
+
+SetNativeIdentity sets NativeIdentity field to given value.
+
+### HasNativeIdentity
+
+`func (o *MachineIdentity) HasNativeIdentity() bool`
+
+HasNativeIdentity returns a boolean if a field has been set.
 
 

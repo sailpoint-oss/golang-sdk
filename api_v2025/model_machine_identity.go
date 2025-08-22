@@ -33,13 +33,17 @@ type MachineIdentity struct {
 	BusinessApplication string `json:"businessApplication"`
 	// Description of machine identity
 	Description *string `json:"description,omitempty"`
-	// Indicates if the machine identity has been manually edited
-	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 	// A map of custom machine identity attributes
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// The subtype value associated to the machine identity
 	Subtype string `json:"subtype"`
 	Owners *MachineIdentityDtoOwners `json:"owners,omitempty"`
+	// The source id associated to the machine identity
+	SourceId *string `json:"sourceId,omitempty"`
+	// The UUID associated to the machine identity directly aggregated from a source
+	Uuid *string `json:"uuid,omitempty"`
+	// The native identity associated to the machine identity directly aggregated from a source
+	NativeIdentity *string `json:"nativeIdentity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,8 +57,6 @@ func NewMachineIdentity(name NullableString, businessApplication string, subtype
 	this := MachineIdentity{}
 	this.Name = name
 	this.BusinessApplication = businessApplication
-	var manuallyEdited bool = false
-	this.ManuallyEdited = &manuallyEdited
 	this.Subtype = subtype
 	return &this
 }
@@ -64,8 +66,6 @@ func NewMachineIdentity(name NullableString, businessApplication string, subtype
 // but it doesn't guarantee that properties required by API are set
 func NewMachineIdentityWithDefaults() *MachineIdentity {
 	this := MachineIdentity{}
-	var manuallyEdited bool = false
-	this.ManuallyEdited = &manuallyEdited
 	return &this
 }
 
@@ -247,38 +247,6 @@ func (o *MachineIdentity) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetManuallyEdited returns the ManuallyEdited field value if set, zero value otherwise.
-func (o *MachineIdentity) GetManuallyEdited() bool {
-	if o == nil || IsNil(o.ManuallyEdited) {
-		var ret bool
-		return ret
-	}
-	return *o.ManuallyEdited
-}
-
-// GetManuallyEditedOk returns a tuple with the ManuallyEdited field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MachineIdentity) GetManuallyEditedOk() (*bool, bool) {
-	if o == nil || IsNil(o.ManuallyEdited) {
-		return nil, false
-	}
-	return o.ManuallyEdited, true
-}
-
-// HasManuallyEdited returns a boolean if a field has been set.
-func (o *MachineIdentity) HasManuallyEdited() bool {
-	if o != nil && !IsNil(o.ManuallyEdited) {
-		return true
-	}
-
-	return false
-}
-
-// SetManuallyEdited gets a reference to the given bool and assigns it to the ManuallyEdited field.
-func (o *MachineIdentity) SetManuallyEdited(v bool) {
-	o.ManuallyEdited = &v
-}
-
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *MachineIdentity) GetAttributes() map[string]interface{} {
 	if o == nil || IsNil(o.Attributes) {
@@ -367,6 +335,102 @@ func (o *MachineIdentity) SetOwners(v MachineIdentityDtoOwners) {
 	o.Owners = &v
 }
 
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *MachineIdentity) GetSourceId() string {
+	if o == nil || IsNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MachineIdentity) GetSourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *MachineIdentity) HasSourceId() bool {
+	if o != nil && !IsNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *MachineIdentity) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *MachineIdentity) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MachineIdentity) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *MachineIdentity) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *MachineIdentity) SetUuid(v string) {
+	o.Uuid = &v
+}
+
+// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
+func (o *MachineIdentity) GetNativeIdentity() string {
+	if o == nil || IsNil(o.NativeIdentity) {
+		var ret string
+		return ret
+	}
+	return *o.NativeIdentity
+}
+
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool) {
+	if o == nil || IsNil(o.NativeIdentity) {
+		return nil, false
+	}
+	return o.NativeIdentity, true
+}
+
+// HasNativeIdentity returns a boolean if a field has been set.
+func (o *MachineIdentity) HasNativeIdentity() bool {
+	if o != nil && !IsNil(o.NativeIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
+func (o *MachineIdentity) SetNativeIdentity(v string) {
+	o.NativeIdentity = &v
+}
+
 func (o MachineIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -391,15 +455,21 @@ func (o MachineIdentity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.ManuallyEdited) {
-		toSerialize["manuallyEdited"] = o.ManuallyEdited
-	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	toSerialize["subtype"] = o.Subtype
 	if !IsNil(o.Owners) {
 		toSerialize["owners"] = o.Owners
+	}
+	if !IsNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.NativeIdentity) {
+		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -452,10 +522,12 @@ func (o *MachineIdentity) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "businessApplication")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "manuallyEdited")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "subtype")
 		delete(additionalProperties, "owners")
+		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "nativeIdentity")
 		o.AdditionalProperties = additionalProperties
 	}
 

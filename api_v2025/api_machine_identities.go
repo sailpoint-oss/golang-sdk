@@ -27,7 +27,7 @@ type ApiCreateMachineIdentityRequest struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	xSailPointExperimental *string
-	machineIdentity *MachineIdentity
+	machineIdentityRequest *MachineIdentityRequest
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateMachineIdentityRequest) XSailPointExperimental(xSailPointExperi
 	return r
 }
 
-func (r ApiCreateMachineIdentityRequest) MachineIdentity(machineIdentity MachineIdentity) ApiCreateMachineIdentityRequest {
-	r.machineIdentity = &machineIdentity
+func (r ApiCreateMachineIdentityRequest) MachineIdentityRequest(machineIdentityRequest MachineIdentityRequest) ApiCreateMachineIdentityRequest {
+	r.machineIdentityRequest = &machineIdentityRequest
 	return r
 }
 
-func (r ApiCreateMachineIdentityRequest) Execute() (*MachineIdentity, *http.Response, error) {
+func (r ApiCreateMachineIdentityRequest) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.CreateMachineIdentityExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentity(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return MachineIdentity
-func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMachineIdentityRequest) (*MachineIdentity, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMachineIdentityRequest) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MachineIdentity
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.CreateMachineIdentity")
@@ -96,8 +96,8 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMa
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.machineIdentity == nil {
-		return localVarReturnValue, nil, reportError("machineIdentity is required and must be specified")
+	if r.machineIdentityRequest == nil {
+		return localVarReturnValue, nil, reportError("machineIdentityRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityExecute(r ApiCreateMa
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.machineIdentity
+	localVarPostBody = r.machineIdentityRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -409,7 +409,7 @@ func (r ApiGetMachineIdentityRequest) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiGetMachineIdentityRequest) Execute() (*MachineIdentity, *http.Response, error) {
+func (r ApiGetMachineIdentityRequest) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.GetMachineIdentityExecute(r)
 }
 
@@ -431,13 +431,13 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentity(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return MachineIdentity
-func (a *MachineIdentitiesAPIService) GetMachineIdentityExecute(r ApiGetMachineIdentityRequest) (*MachineIdentity, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) GetMachineIdentityExecute(r ApiGetMachineIdentityRequest) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MachineIdentity
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.GetMachineIdentity")
@@ -598,13 +598,13 @@ func (r ApiListMachineIdentitiesRequest) XSailPointExperimental(xSailPointExperi
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **description**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*
 func (r ApiListMachineIdentitiesRequest) Filters(filters string) ApiListMachineIdentitiesRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, source.name**
 func (r ApiListMachineIdentitiesRequest) Sorters(sorters string) ApiListMachineIdentitiesRequest {
 	r.sorters = &sorters
 	return r
@@ -628,7 +628,7 @@ func (r ApiListMachineIdentitiesRequest) Offset(offset int32) ApiListMachineIden
 	return r
 }
 
-func (r ApiListMachineIdentitiesRequest) Execute() ([]MachineIdentity, *http.Response, error) {
+func (r ApiListMachineIdentitiesRequest) Execute() ([]MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.ListMachineIdentitiesExecute(r)
 }
 
@@ -648,13 +648,13 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentities(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return []MachineIdentity
-func (a *MachineIdentitiesAPIService) ListMachineIdentitiesExecute(r ApiListMachineIdentitiesRequest) ([]MachineIdentity, *http.Response, error) {
+//  @return []MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) ListMachineIdentitiesExecute(r ApiListMachineIdentitiesRequest) ([]MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []MachineIdentity
+		localVarReturnValue  []MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.ListMachineIdentities")
@@ -841,7 +841,7 @@ func (r ApiUpdateMachineIdentityRequest) RequestBody(requestBody []map[string]in
 	return r
 }
 
-func (r ApiUpdateMachineIdentityRequest) Execute() (*MachineIdentity, *http.Response, error) {
+func (r ApiUpdateMachineIdentityRequest) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.UpdateMachineIdentityExecute(r)
 }
 
@@ -864,13 +864,13 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentity(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return MachineIdentity
-func (a *MachineIdentitiesAPIService) UpdateMachineIdentityExecute(r ApiUpdateMachineIdentityRequest) (*MachineIdentity, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) UpdateMachineIdentityExecute(r ApiUpdateMachineIdentityRequest) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MachineIdentity
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.UpdateMachineIdentity")

@@ -820,6 +820,10 @@ docs/MachineIdentitiesAPI.md
 docs/MachineIdentitiesAPIdeveloperSite_code_examples.yaml
 docs/MachineIdentity.md
 docs/MachineIdentityDtoOwners.md
+docs/MachineIdentityRequest.md
+docs/MachineIdentityRequestUserEntitlements.md
+docs/MachineIdentityResponse.md
+docs/MachineIdentityResponseUserEntitlements.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -2102,6 +2106,10 @@ model_machine_classification_criteria_level3.go
 model_machine_classification_criteria_operation.go
 model_machine_identity.go
 model_machine_identity_dto_owners.go
+model_machine_identity_request.go
+model_machine_identity_request_user_entitlements.go
+model_machine_identity_response.go
+model_machine_identity_response_user_entitlements.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
