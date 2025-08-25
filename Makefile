@@ -12,10 +12,22 @@ build:
 	rm -rf ./api_v3
 	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g go -o api_v3 --global-property skipFormModel=false --config sdk-resources/v3-config.yaml 
 	node sdk-resources/postscript.js ./api_v3
+	
 	rm -rf ./api_beta
 	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g go -o api_beta --global-property skipFormModel=false --config sdk-resources/beta-config.yaml
 	node sdk-resources/postscript.js ./api_beta
+	
+	rm -rf ./api_v2024
+	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2024.yaml -g go -o api_v2024 --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/v2024-config.yaml
+	node sdk-resources/postscript.js ./api_v2024
 
+	rm -rf ./api_v2025
+	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2025.yaml -g go -o api_v2025 --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/v2025-config.yaml
+	node sdk-resources/postscript.js ./api_v2025
+
+	rm -rf ./api_generic
+	java -jar openapi-generator-cli.jar generate -i sdk-resources/generic-api.yaml -g go -o api_generic --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/generic-config.yaml
+	node sdk-resources/postscript.js ./api_generic
 .PHONY: test
 test:	
 	go get -d ./...
