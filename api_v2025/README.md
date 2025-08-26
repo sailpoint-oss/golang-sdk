@@ -466,6 +466,8 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesAPI* | [**DeleteMachineIdentity**](docs/MachineIdentitiesAPI.md#deletemachineidentity) | **Delete** /machine-identities/{id} | Delete machine identity
 *MachineIdentitiesAPI* | [**GetMachineIdentity**](docs/MachineIdentitiesAPI.md#getmachineidentity) | **Get** /machine-identities/{id} | Machine identity details
 *MachineIdentitiesAPI* | [**ListMachineIdentities**](docs/MachineIdentitiesAPI.md#listmachineidentities) | **Get** /machine-identities | List machine identities
+*MachineIdentitiesAPI* | [**ListMachineIdentityUserEntitlements**](docs/MachineIdentitiesAPI.md#listmachineidentityuserentitlements) | **Get** /machine-identity-user-entitlements | List machine identity&#39;s user entitlements
+*MachineIdentitiesAPI* | [**StartMachineIdentityAggregation**](docs/MachineIdentitiesAPI.md#startmachineidentityaggregation) | **Post** /sources/{sourceId}/aggregate-agents | Start Machine Identity (AI Agent) Aggregation
 *MachineIdentitiesAPI* | [**UpdateMachineIdentity**](docs/MachineIdentitiesAPI.md#updatemachineidentity) | **Patch** /machine-identities/{id} | Update a machine identity
 *ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create managed client
 *ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete managed client
@@ -1440,11 +1442,17 @@ Class | Method | HTTP request | Description
  - [MachineClassificationCriteriaLevel3](docs/MachineClassificationCriteriaLevel3.md)
  - [MachineClassificationCriteriaOperation](docs/MachineClassificationCriteriaOperation.md)
  - [MachineIdentity](docs/MachineIdentity.md)
+ - [MachineIdentityAggregationRequest](docs/MachineIdentityAggregationRequest.md)
+ - [MachineIdentityAggregationResponse](docs/MachineIdentityAggregationResponse.md)
+ - [MachineIdentityAggregationResponseTarget](docs/MachineIdentityAggregationResponseTarget.md)
  - [MachineIdentityDtoOwners](docs/MachineIdentityDtoOwners.md)
  - [MachineIdentityRequest](docs/MachineIdentityRequest.md)
  - [MachineIdentityRequestUserEntitlements](docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponse](docs/MachineIdentityResponse.md)
  - [MachineIdentityResponseUserEntitlements](docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentityUserEntitlementResponse](docs/MachineIdentityUserEntitlementResponse.md)
+ - [MachineIdentityUserEntitlementResponseEntitlement](docs/MachineIdentityUserEntitlementResponseEntitlement.md)
+ - [MachineIdentityUserEntitlementResponseSource](docs/MachineIdentityUserEntitlementResponseSource.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)

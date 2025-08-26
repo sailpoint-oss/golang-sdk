@@ -73,6 +73,30 @@ func Test_api_v2025_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityUserEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityUserEntitlements(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService StartMachineIdentityAggregation", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregation(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService UpdateMachineIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
