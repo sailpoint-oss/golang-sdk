@@ -27,7 +27,7 @@ type MultiHostSources struct {
 	Name string `json:"name"`
 	// Source's human-readable description.
 	Description *string `json:"description,omitempty"`
-	Owner SourceOwner `json:"owner"`
+	Owner MultiHostIntegrationsOwner `json:"owner"`
 	Cluster NullableSourceCluster `json:"cluster,omitempty"`
 	AccountCorrelationConfig NullableSourceAccountCorrelationConfig `json:"accountCorrelationConfig,omitempty"`
 	AccountCorrelationRule NullableSourceAccountCorrelationRule `json:"accountCorrelationRule,omitempty"`
@@ -84,7 +84,7 @@ type _MultiHostSources MultiHostSources
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMultiHostSources(id string, name string, owner SourceOwner, connector string, connectorName string) *MultiHostSources {
+func NewMultiHostSources(id string, name string, owner MultiHostIntegrationsOwner, connector string, connectorName string) *MultiHostSources {
 	this := MultiHostSources{}
 	this.Id = id
 	this.Name = name
@@ -195,9 +195,9 @@ func (o *MultiHostSources) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value
-func (o *MultiHostSources) GetOwner() SourceOwner {
+func (o *MultiHostSources) GetOwner() MultiHostIntegrationsOwner {
 	if o == nil {
-		var ret SourceOwner
+		var ret MultiHostIntegrationsOwner
 		return ret
 	}
 
@@ -206,7 +206,7 @@ func (o *MultiHostSources) GetOwner() SourceOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *MultiHostSources) GetOwnerOk() (*SourceOwner, bool) {
+func (o *MultiHostSources) GetOwnerOk() (*MultiHostIntegrationsOwner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,7 +214,7 @@ func (o *MultiHostSources) GetOwnerOk() (*SourceOwner, bool) {
 }
 
 // SetOwner sets field value
-func (o *MultiHostSources) SetOwner(v SourceOwner) {
+func (o *MultiHostSources) SetOwner(v MultiHostIntegrationsOwner) {
 	o.Owner = v
 }
 

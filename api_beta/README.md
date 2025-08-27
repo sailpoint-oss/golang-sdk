@@ -1400,6 +1400,7 @@ Class | Method | HTTP request | Description
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
  - [SourceItemRef](docs/SourceItemRef.md)
+ - [SourceOwner](docs/SourceOwner.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [SourceUpdated](docs/SourceUpdated.md)

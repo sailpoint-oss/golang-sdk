@@ -27,7 +27,7 @@ type Source struct {
 	Name string `json:"name"`
 	// Source's human-readable description.
 	Description *string `json:"description,omitempty"`
-	Owner SourceOwner `json:"owner"`
+	Owner NullableSourceOwner `json:"owner"`
 	Cluster NullableSourceCluster `json:"cluster,omitempty"`
 	AccountCorrelationConfig NullableSourceAccountCorrelationConfig `json:"accountCorrelationConfig,omitempty"`
 	AccountCorrelationRule NullableSourceAccountCorrelationRule `json:"accountCorrelationRule,omitempty"`
@@ -84,7 +84,7 @@ type _Source Source
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource(name string, owner SourceOwner, connector string) *Source {
+func NewSource(name string, owner NullableSourceOwner, connector string) *Source {
 	this := Source{}
 	this.Name = name
 	this.Owner = owner
@@ -201,27 +201,29 @@ func (o *Source) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value
+// If the value is explicit nil, the zero value for SourceOwner will be returned
 func (o *Source) GetOwner() SourceOwner {
-	if o == nil {
+	if o == nil || o.Owner.Get() == nil {
 		var ret SourceOwner
 		return ret
 	}
 
-	return o.Owner
+	return *o.Owner.Get()
 }
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Source) GetOwnerOk() (*SourceOwner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Owner, true
+	return o.Owner.Get(), o.Owner.IsSet()
 }
 
 // SetOwner sets field value
 func (o *Source) SetOwner(v SourceOwner) {
-	o.Owner = v
+	o.Owner.Set(&v)
 }
 
 // GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1168,7 +1170,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["owner"] = o.Owner
+	toSerialize["owner"] = o.Owner.Get()
 	if o.Cluster.IsSet() {
 		toSerialize["cluster"] = o.Cluster.Get()
 	}

@@ -25,7 +25,7 @@ type MultiHostIntegrationsCreate struct {
 	Name string `json:"name"`
 	// Multi-Host Integration's human-readable description.
 	Description string `json:"description"`
-	Owner SourceOwner `json:"owner"`
+	Owner MultiHostIntegrationsOwner `json:"owner"`
 	Cluster NullableSourceCluster `json:"cluster,omitempty"`
 	// Connector script name.
 	Connector string `json:"connector"`
@@ -45,7 +45,7 @@ type _MultiHostIntegrationsCreate MultiHostIntegrationsCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMultiHostIntegrationsCreate(name string, description string, owner SourceOwner, connector string) *MultiHostIntegrationsCreate {
+func NewMultiHostIntegrationsCreate(name string, description string, owner MultiHostIntegrationsOwner, connector string) *MultiHostIntegrationsCreate {
 	this := MultiHostIntegrationsCreate{}
 	this.Name = name
 	this.Description = description
@@ -111,9 +111,9 @@ func (o *MultiHostIntegrationsCreate) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value
-func (o *MultiHostIntegrationsCreate) GetOwner() SourceOwner {
+func (o *MultiHostIntegrationsCreate) GetOwner() MultiHostIntegrationsOwner {
 	if o == nil {
-		var ret SourceOwner
+		var ret MultiHostIntegrationsOwner
 		return ret
 	}
 
@@ -122,7 +122,7 @@ func (o *MultiHostIntegrationsCreate) GetOwner() SourceOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *MultiHostIntegrationsCreate) GetOwnerOk() (*SourceOwner, bool) {
+func (o *MultiHostIntegrationsCreate) GetOwnerOk() (*MultiHostIntegrationsOwner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *MultiHostIntegrationsCreate) GetOwnerOk() (*SourceOwner, bool) {
 }
 
 // SetOwner sets field value
-func (o *MultiHostIntegrationsCreate) SetOwner(v SourceOwner) {
+func (o *MultiHostIntegrationsCreate) SetOwner(v MultiHostIntegrationsOwner) {
 	o.Owner = v
 }
 

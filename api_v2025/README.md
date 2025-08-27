@@ -1498,6 +1498,7 @@ Class | Method | HTTP request | Description
  - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
  - [MultiHostIntegrationsCreate](docs/MultiHostIntegrationsCreate.md)
  - [MultiHostIntegrationsCreateSources](docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostIntegrationsOwner](docs/MultiHostIntegrationsOwner.md)
  - [MultiHostSources](docs/MultiHostSources.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)

@@ -78592,7 +78592,7 @@ components:
           example: This is the corporate directory.
           type: string
         owner:
-          $ref: '#/components/schemas/MultiHostIntegrations_owner'
+          $ref: '#/components/schemas/Source_owner'
         cluster:
           $ref: '#/components/schemas/MultiHostIntegrations_cluster'
         accountCorrelationConfig:
@@ -95665,6 +95665,29 @@ components:
         name:
           description: Human-readable display name of the rule
           example: Example Rule
+          type: string
+      type: object
+    Source_owner:
+      description: Reference to identity object who owns the source.
+      example:
+        name: MyName
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner identity's ID.
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Owner identity's human-readable display name.
+          example: MyName
           type: string
       type: object
     LoadAccountsTask_task_messages_inner:
