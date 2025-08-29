@@ -56459,19 +56459,26 @@ paths:
           format: int32
           minimum: 0
           type: integer
-      - description: Trigger ID
+      - description: "Filter results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+          \nFiltering is supported for the following fields and operators:\n\n**enabled**:\
+          \ *eq*      \n\n**connectorInstanceId**: *eq*\n\n**triggerId**: *eq*"
+        example: enabled eq true and triggerId eq "abc123"
         in: query
-        name: triggerId
+        name: filters
         required: false
         schema:
-          example: idn:identity-created
           type: string
-      - description: Connector Instance ID
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **modified, name**
+        example: modified
         in: query
-        name: connectorInstanceId
+        name: sorters
         required: false
         schema:
-          example: 28541fec-bb81-4ad4-88ef-0f7d213adcad
+          format: comma-separated
           type: string
       responses:
         "200":

@@ -1925,8 +1925,8 @@ type ApiListWorkflowsRequest struct {
 	ApiService *WorkflowsAPIService
 	limit *int32
 	offset *int32
-	triggerId *string
-	connectorInstanceId *string
+	filters *string
+	sorters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1941,15 +1941,15 @@ func (r ApiListWorkflowsRequest) Offset(offset int32) ApiListWorkflowsRequest {
 	return r
 }
 
-// Trigger ID
-func (r ApiListWorkflowsRequest) TriggerId(triggerId string) ApiListWorkflowsRequest {
-	r.triggerId = &triggerId
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*
+func (r ApiListWorkflowsRequest) Filters(filters string) ApiListWorkflowsRequest {
+	r.filters = &filters
 	return r
 }
 
-// Connector Instance ID
-func (r ApiListWorkflowsRequest) ConnectorInstanceId(connectorInstanceId string) ApiListWorkflowsRequest {
-	r.connectorInstanceId = &connectorInstanceId
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**
+func (r ApiListWorkflowsRequest) Sorters(sorters string) ApiListWorkflowsRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -2005,11 +2005,11 @@ func (a *WorkflowsAPIService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
-	if r.triggerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "triggerId", r.triggerId, "", "")
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
-	if r.connectorInstanceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "connectorInstanceId", r.connectorInstanceId, "", "")
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
