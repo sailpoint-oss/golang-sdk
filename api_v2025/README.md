@@ -492,6 +492,7 @@ Class | Method | HTTP request | Description
 *MultiHostIntegrationAPI* | [**CreateMultiHostIntegration**](docs/MultiHostIntegrationAPI.md#createmultihostintegration) | **Post** /multihosts | Create multi-host integration
 *MultiHostIntegrationAPI* | [**CreateSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#createsourceswithinmultihost) | **Post** /multihosts/{multihostId} | Create sources within multi-host integration
 *MultiHostIntegrationAPI* | [**DeleteMultiHost**](docs/MultiHostIntegrationAPI.md#deletemultihost) | **Delete** /multihosts/{multihostId} | Delete multi-host integration
+*MultiHostIntegrationAPI* | [**DeleteMultiHostSources**](docs/MultiHostIntegrationAPI.md#deletemultihostsources) | **Post** /multihosts/{multiHostId}/sources/bulk-delete | Delete sources within multi-host integration
 *MultiHostIntegrationAPI* | [**GetAcctAggregationGroups**](docs/MultiHostIntegrationAPI.md#getacctaggregationgroups) | **Get** /multihosts/{multihostId}/acctAggregationGroups | List account-aggregation-groups by multi-host id
 *MultiHostIntegrationAPI* | [**GetEntitlementAggregationGroups**](docs/MultiHostIntegrationAPI.md#getentitlementaggregationgroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | List entitlement-aggregation-groups by integration id
 *MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{multihostId} | Get multi-host integration by id

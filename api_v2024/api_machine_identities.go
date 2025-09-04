@@ -604,7 +604,7 @@ func (r ApiListMachineIdentitiesRequest) Filters(filters string) ApiListMachineI
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, owners.primaryIdentity.name, source.name, created, modified**
 func (r ApiListMachineIdentitiesRequest) Sorters(sorters string) ApiListMachineIdentitiesRequest {
 	r.sorters = &sorters
 	return r

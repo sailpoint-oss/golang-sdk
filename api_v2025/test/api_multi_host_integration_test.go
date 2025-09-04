@@ -60,6 +60,19 @@ func Test_api_v2025_MultiHostIntegrationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MultiHostIntegrationAPIService DeleteMultiHostSources", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var multiHostId string
+
+		httpRes, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHostSources(context.Background(), multiHostId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MultiHostIntegrationAPIService GetAcctAggregationGroups", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
