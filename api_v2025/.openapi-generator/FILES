@@ -534,6 +534,7 @@ docs/DependantConnectionsMissingDto.md
 docs/DeployRequest.md
 docs/DeployResponse.md
 docs/Dimension.md
+docs/DimensionAttribute.md
 docs/DimensionBulkDeleteRequest.md
 docs/DimensionCriteriaKey.md
 docs/DimensionCriteriaKeyType.md
@@ -544,6 +545,7 @@ docs/DimensionCriteriaOperation.md
 docs/DimensionMembershipSelector.md
 docs/DimensionMembershipSelectorType.md
 docs/DimensionRef.md
+docs/DimensionSchema.md
 docs/DimensionsAPI.md
 docs/DimensionsAPIdeveloperSite_code_examples.yaml
 docs/DisplayReference.md
@@ -1873,6 +1875,7 @@ model_dependant_connections_missing_dto.go
 model_deploy_request.go
 model_deploy_response.go
 model_dimension.go
+model_dimension_attribute.go
 model_dimension_bulk_delete_request.go
 model_dimension_criteria_key.go
 model_dimension_criteria_key_type.go
@@ -1883,6 +1886,7 @@ model_dimension_criteria_operation.go
 model_dimension_membership_selector.go
 model_dimension_membership_selector_type.go
 model_dimension_ref.go
+model_dimension_schema.go
 model_display_reference.go
 model_dkim_attributes.go
 model_domain_address.go

@@ -27,6 +27,7 @@ type RequestabilityForRole struct {
 	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
 	// List describing the steps in approving the request
 	ApprovalSchemes []ApprovalSchemeForRole `json:"approvalSchemes,omitempty"`
+	DimensionSchema *DimensionSchema `json:"dimensionSchema,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -219,6 +220,38 @@ func (o *RequestabilityForRole) SetApprovalSchemes(v []ApprovalSchemeForRole) {
 	o.ApprovalSchemes = v
 }
 
+// GetDimensionSchema returns the DimensionSchema field value if set, zero value otherwise.
+func (o *RequestabilityForRole) GetDimensionSchema() DimensionSchema {
+	if o == nil || IsNil(o.DimensionSchema) {
+		var ret DimensionSchema
+		return ret
+	}
+	return *o.DimensionSchema
+}
+
+// GetDimensionSchemaOk returns a tuple with the DimensionSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestabilityForRole) GetDimensionSchemaOk() (*DimensionSchema, bool) {
+	if o == nil || IsNil(o.DimensionSchema) {
+		return nil, false
+	}
+	return o.DimensionSchema, true
+}
+
+// HasDimensionSchema returns a boolean if a field has been set.
+func (o *RequestabilityForRole) HasDimensionSchema() bool {
+	if o != nil && !IsNil(o.DimensionSchema) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionSchema gets a reference to the given DimensionSchema and assigns it to the DimensionSchema field.
+func (o *RequestabilityForRole) SetDimensionSchema(v DimensionSchema) {
+	o.DimensionSchema = &v
+}
+
 func (o RequestabilityForRole) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -240,6 +273,9 @@ func (o RequestabilityForRole) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
+	}
+	if !IsNil(o.DimensionSchema) {
+		toSerialize["dimensionSchema"] = o.DimensionSchema
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -267,6 +303,7 @@ func (o *RequestabilityForRole) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "denialCommentsRequired")
 		delete(additionalProperties, "reauthorizationRequired")
 		delete(additionalProperties, "approvalSchemes")
+		delete(additionalProperties, "dimensionSchema")
 		o.AdditionalProperties = additionalProperties
 	}
 
