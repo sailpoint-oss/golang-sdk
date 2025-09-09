@@ -67209,6 +67209,7 @@ components:
           sourceName: Multi Account AD source name
           type: IDENTITY
         cancelable: true
+        privilegeLevel: High
         requesterComment:
           created: 2017-07-11T18:45:37.098Z
           author:
@@ -67572,6 +67573,11 @@ components:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
           type: array
+        privilegeLevel:
+          description: "The privilege level of the requested access item, if applicable."
+          example: High
+          nullable: true
+          type: string
       title: Requested Item Status
       type: object
     PendingApproval:
