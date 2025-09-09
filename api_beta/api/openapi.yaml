@@ -58384,16 +58384,16 @@ paths:
           minimum: 0
           type: integer
       - description: |-
-          Note that for this API the maximum value for limit is 50.
+          Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 50
+        example: 250
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int32
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
       - description: |-
