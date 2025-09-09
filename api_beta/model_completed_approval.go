@@ -58,6 +58,8 @@ type CompletedApproval struct {
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	// The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.
 	RequestedAccounts []RequestedAccountRef `json:"requestedAccounts,omitempty"`
+	// The privilege level of the requested access item, if applicable.
+	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -917,6 +919,48 @@ func (o *CompletedApproval) SetRequestedAccounts(v []RequestedAccountRef) {
 	o.RequestedAccounts = v
 }
 
+// GetPrivilegeLevel returns the PrivilegeLevel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetPrivilegeLevel() string {
+	if o == nil || IsNil(o.PrivilegeLevel.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PrivilegeLevel.Get()
+}
+
+// GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetPrivilegeLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivilegeLevel.Get(), o.PrivilegeLevel.IsSet()
+}
+
+// HasPrivilegeLevel returns a boolean if a field has been set.
+func (o *CompletedApproval) HasPrivilegeLevel() bool {
+	if o != nil && o.PrivilegeLevel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivilegeLevel gets a reference to the given NullableString and assigns it to the PrivilegeLevel field.
+func (o *CompletedApproval) SetPrivilegeLevel(v string) {
+	o.PrivilegeLevel.Set(&v)
+}
+// SetPrivilegeLevelNil sets the value for PrivilegeLevel to be an explicit nil
+func (o *CompletedApproval) SetPrivilegeLevelNil() {
+	o.PrivilegeLevel.Set(nil)
+}
+
+// UnsetPrivilegeLevel ensures that no value is present for PrivilegeLevel, not even an explicit nil
+func (o *CompletedApproval) UnsetPrivilegeLevel() {
+	o.PrivilegeLevel.Unset()
+}
+
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -999,6 +1043,9 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.RequestedAccounts != nil {
 		toSerialize["requestedAccounts"] = o.RequestedAccounts
 	}
+	if o.PrivilegeLevel.IsSet() {
+		toSerialize["privilegeLevel"] = o.PrivilegeLevel.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1045,6 +1092,7 @@ func (o *CompletedApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "preApprovalTriggerResult")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "requestedAccounts")
+		delete(additionalProperties, "privilegeLevel")
 		o.AdditionalProperties = additionalProperties
 	}
 

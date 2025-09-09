@@ -50581,13 +50581,54 @@ components:
       type: object
     CompletedApproval:
       example:
-        requester:
-          name: William Wilson
-          id: 2c7180a46faadee4016fb4e018c20648
-          type: IDENTITY
         requestedFor:
           name: William Wilson
           id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        privilegeLevel: High
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        modified: 2018-07-25T20:22:28.104Z
+        id: id12345
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         owner:
           name: Support
@@ -50604,17 +50645,6 @@ components:
         clientMetadata:
           requestedAppName: test-app
           requestedAppId: 2c91808f7892918f0178b78da4a305a1
-        requestedAccounts:
-        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
-          name: Glen.067da3248e914
-          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
-          sourceName: Multi Account AD source name
-          type: IDENTITY
-        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
-          name: Glen.067da3248e914
-          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
-          sourceName: Multi Account AD source name
-          type: IDENTITY
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -50626,13 +50656,6 @@ components:
             type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
           author:
             name: john.doe
             id: 2c9180847e25f377017e2ae8cae4650b
@@ -50720,28 +50743,6 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: aName
-        modified: 2018-07-25T20:22:28.104Z
-        id: id12345
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        state: APPROVED
-        removeDateUpdateRequested: true
-        preApprovalTriggerResult:
-          date: 2022-06-07T19:18:40.748Z
-          decision: APPROVED
-          comment: This request was autoapproved by our automated ETS subscriber
-          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -50838,6 +50839,11 @@ components:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
           type: array
+        privilegeLevel:
+          description: "The privilege level of the requested access item, if applicable."
+          example: High
+          nullable: true
+          type: string
       title: Completed Approval
       type: object
     CommentDto:
