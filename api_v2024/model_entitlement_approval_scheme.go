@@ -19,9 +19,9 @@ var _ MappedNullable = &EntitlementApprovalScheme{}
 
 // EntitlementApprovalScheme struct for EntitlementApprovalScheme
 type EntitlementApprovalScheme struct {
-	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field, Workflows are exclusive to other types of approvals and License required.     
 	ApproverType *string `json:"approverType,omitempty"`
-	// Id of the specific approver, used only when approverType is GOVERNANCE_GROUP
+	// Id of the specific approver, used only when approverType is GOVERNANCE_GROUP or WORKFLOW
 	ApproverId NullableString `json:"approverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
