@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the RoleAssignmentDto type satisfies the MappedNullable interface at compile time
@@ -32,7 +33,9 @@ type RoleAssignmentDto struct {
 	AssignmentContext *RoleAssignmentDtoAssignmentContext `json:"assignmentContext,omitempty"`
 	AccountTargets []RoleTargetDto `json:"accountTargets,omitempty"`
 	// Date that the assignment will be removed
-	RemoveDate NullableString `json:"removeDate,omitempty"`
+	RemoveDate NullableTime `json:"removeDate,omitempty"`
+	// Date that the assignment was added
+	AddedDate *SailPointTime `json:"addedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -322,9 +325,9 @@ func (o *RoleAssignmentDto) SetAccountTargets(v []RoleTargetDto) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RoleAssignmentDto) GetRemoveDate() string {
+func (o *RoleAssignmentDto) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret string
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -333,7 +336,7 @@ func (o *RoleAssignmentDto) GetRemoveDate() string {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RoleAssignmentDto) GetRemoveDateOk() (*string, bool) {
+func (o *RoleAssignmentDto) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -349,8 +352,8 @@ func (o *RoleAssignmentDto) HasRemoveDate() bool {
 	return false
 }
 
-// SetRemoveDate gets a reference to the given NullableString and assigns it to the RemoveDate field.
-func (o *RoleAssignmentDto) SetRemoveDate(v string) {
+// SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
+func (o *RoleAssignmentDto) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
@@ -361,6 +364,38 @@ func (o *RoleAssignmentDto) SetRemoveDateNil() {
 // UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 func (o *RoleAssignmentDto) UnsetRemoveDate() {
 	o.RemoveDate.Unset()
+}
+
+// GetAddedDate returns the AddedDate field value if set, zero value otherwise.
+func (o *RoleAssignmentDto) GetAddedDate() SailPointTime {
+	if o == nil || IsNil(o.AddedDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.AddedDate
+}
+
+// GetAddedDateOk returns a tuple with the AddedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAssignmentDto) GetAddedDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.AddedDate) {
+		return nil, false
+	}
+	return o.AddedDate, true
+}
+
+// HasAddedDate returns a boolean if a field has been set.
+func (o *RoleAssignmentDto) HasAddedDate() bool {
+	if o != nil && !IsNil(o.AddedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddedDate gets a reference to the given SailPointTime and assigns it to the AddedDate field.
+func (o *RoleAssignmentDto) SetAddedDate(v SailPointTime) {
+	o.AddedDate = &v
 }
 
 func (o RoleAssignmentDto) MarshalJSON() ([]byte, error) {
@@ -400,6 +435,9 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
+	if !IsNil(o.AddedDate) {
+		toSerialize["addedDate"] = o.AddedDate
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -431,6 +469,7 @@ func (o *RoleAssignmentDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "assignmentContext")
 		delete(additionalProperties, "accountTargets")
 		delete(additionalProperties, "removeDate")
+		delete(additionalProperties, "addedDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -19,9 +19,9 @@ var _ MappedNullable = &AccessProfileApprovalScheme{}
 
 // AccessProfileApprovalScheme struct for AccessProfileApprovalScheme
 type AccessProfileApprovalScheme struct {
-	// Describes the individual or group that is responsible for an approval step. These are the possible values: **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+	// Describes the individual or group that is responsible for an approval step. These are the possible values: **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field. Workflow is exclusive to other types of approvals and License required.   
 	ApproverType *string `json:"approverType,omitempty"`
-	// Specific approver ID. Only use this when the `approverType` is `GOVERNANCE_GROUP`.
+	// Id of the specific approver, used when approverType is GOVERNANCE_GROUP or WORKFLOW.
 	ApproverId NullableString `json:"approverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	
 )
 
 // checks if the RoleAssignmentRef type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type RoleAssignmentRef struct {
 	// Assignment Id
 	Id *string `json:"id,omitempty"`
 	Role *BaseReferenceDto1 `json:"role,omitempty"`
+	// Date that the assignment was added
+	AddedDate *SailPointTime `json:"addedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +111,38 @@ func (o *RoleAssignmentRef) SetRole(v BaseReferenceDto1) {
 	o.Role = &v
 }
 
+// GetAddedDate returns the AddedDate field value if set, zero value otherwise.
+func (o *RoleAssignmentRef) GetAddedDate() SailPointTime {
+	if o == nil || IsNil(o.AddedDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.AddedDate
+}
+
+// GetAddedDateOk returns a tuple with the AddedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAssignmentRef) GetAddedDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.AddedDate) {
+		return nil, false
+	}
+	return o.AddedDate, true
+}
+
+// HasAddedDate returns a boolean if a field has been set.
+func (o *RoleAssignmentRef) HasAddedDate() bool {
+	if o != nil && !IsNil(o.AddedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddedDate gets a reference to the given SailPointTime and assigns it to the AddedDate field.
+func (o *RoleAssignmentRef) SetAddedDate(v SailPointTime) {
+	o.AddedDate = &v
+}
+
 func (o RoleAssignmentRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,6 +158,9 @@ func (o RoleAssignmentRef) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.AddedDate) {
+		toSerialize["addedDate"] = o.AddedDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -148,6 +186,7 @@ func (o *RoleAssignmentRef) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "role")
+		delete(additionalProperties, "addedDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

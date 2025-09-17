@@ -246,6 +246,7 @@ docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
 docs/BaseReferenceDto.md
 docs/BaseReferenceDto1.md
+docs/BaseRoleReferenceDto.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
 docs/BeforeProvisioningRuleDto.md
@@ -797,6 +798,8 @@ docs/Revocability.md
 docs/RevocabilityForRole.md
 docs/Role.md
 docs/RoleAssignmentDto.md
+docs/RoleAssignmentDtoAssigner.md
+docs/RoleAssignmentDtoAssignmentContext.md
 docs/RoleAssignmentRef.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
@@ -1264,6 +1267,7 @@ model_base_common_dto.go
 model_base_common_dto_1.go
 model_base_reference_dto.go
 model_base_reference_dto_1.go
+model_base_role_reference_dto.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
 model_before_provisioning_rule_dto.go
@@ -1736,6 +1740,8 @@ model_revocability.go
 model_revocability_for_role.go
 model_role.go
 model_role_assignment_dto.go
+model_role_assignment_dto_assigner.go
+model_role_assignment_dto_assignment_context.go
 model_role_assignment_ref.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go

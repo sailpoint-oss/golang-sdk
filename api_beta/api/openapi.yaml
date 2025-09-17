@@ -71398,6 +71398,7 @@ components:
         role:
           name: Github
           id: ff8081814d977c21014da056804a0af3
+        addedDate: 2025-07-11T18:45:37.098Z
         id: 1cbb0705b38c4226b1334eadd8874086
       properties:
         id:
@@ -71406,6 +71407,11 @@ components:
           type: string
         role:
           $ref: '#/components/schemas/BaseReferenceDto_1'
+        addedDate:
+          description: Date that the assignment was added
+          example: 2025-07-11T18:45:37.098Z
+          format: date-time
+          type: string
       title: Role Assignment Ref
       type: object
     RoleAssignmentDto:
@@ -71413,42 +71419,25 @@ components:
         assignmentContext:
           requested:
             contextAttributes:
-            - attribute: location
-              value: Austin
+            - attribute: department
+              value: Engineering
               derived: false
-            - attribute: location
-              value: Austin
-              derived: false
-          computedDate: Wed Feb 14 10:58:42
           matched:
-          - matchedAttributes:
-            - attribute: location
-              value: Austin
-              derived: false
-            - attribute: location
-              value: Austin
-              derived: false
-            roleRef:
-              name: Github
-              id: ff8081814d977c21014da056804a0af3
-          - matchedAttributes:
-            - attribute: location
-              value: Austin
-              derived: false
-            - attribute: location
-              value: Austin
-              derived: false
-            roleRef:
-              name: Github
-              id: ff8081814d977c21014da056804a0af3
-        removeDate: Wed Feb 14 10:58:42
+          - id: e7697a1e96d04db1ac7b0f4544915d2c
+            type: DIMENSION
+            name: Engineer
+          computedDate: Wed Feb 14 10:58:42
+        removeDate: 2026-07-11T18:45:37.098Z
         role:
-          name: Github
-          id: ff8081814d977c21014da056804a0af3
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: ROLE
         comments: I'm a new Engineer and need this role to do my work
+        addedDate: 2025-07-11T18:45:37.098Z
         assigner:
-          name: Github
-          id: ff8081814d977c21014da056804a0af3
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
         assignedDimensions:
         - id: 1acc8ffe5fcf457090de28bee2af36ee
           type: DIMENSION
@@ -71478,17 +71467,18 @@ components:
           example: 1cbb0705b38c4226b1334eadd8874086
           type: string
         role:
-          $ref: '#/components/schemas/BaseReferenceDto_1'
+          $ref: '#/components/schemas/BaseRoleReferenceDto'
         comments:
           description: Comments added by the user when the assignment was made
           example: I'm a new Engineer and need this role to do my work
+          nullable: true
           type: string
         assignmentSource:
           description: Source describing how this assignment was made
           example: UI
           type: string
         assigner:
-          $ref: '#/components/schemas/BaseReferenceDto_1'
+          $ref: '#/components/schemas/RoleAssignmentDto_assigner'
         assignedDimensions:
           description: Dimensions assigned related to this role
           example:
@@ -71499,14 +71489,21 @@ components:
             $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
         assignmentContext:
-          $ref: '#/components/schemas/AssignmentContextDto'
+          $ref: '#/components/schemas/RoleAssignmentDto_assignmentContext'
         accountTargets:
           items:
             $ref: '#/components/schemas/RoleTargetDto'
           type: array
         removeDate:
           description: Date that the assignment will be removed
-          example: Wed Feb 14 10:58:42
+          example: 2026-07-11T18:45:37.098Z
+          format: date-time
+          nullable: true
+          type: string
+        addedDate:
+          description: Date that the assignment was added
+          example: 2025-07-11T18:45:37.098Z
+          format: date-time
           type: string
       title: Role Assignment Dto
       type: object
@@ -86710,38 +86707,28 @@ components:
           type: string
       title: Base Reference Dto
       type: object
-    AssignmentContextDto:
+    BaseRoleReferenceDto:
       example:
-        requested:
-          contextAttributes:
-          - attribute: location
-            value: Austin
-            derived: false
-          - attribute: location
-            value: Austin
-            derived: false
-        computedDate: Wed Feb 14 10:58:42
-        matched:
-        - matchedAttributes:
-          - attribute: location
-            value: Austin
-            derived: false
-          - attribute: location
-            value: Austin
-            derived: false
-          roleRef:
-            name: Github
-            id: ff8081814d977c21014da056804a0af3
-        - matchedAttributes:
-          - attribute: location
-            value: Austin
-            derived: false
-          - attribute: location
-            value: Austin
-            derived: false
-          roleRef:
-            name: Github
-            id: ff8081814d977c21014da056804a0af3
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: ROLE
+      properties:
+        type:
+          description: DTO type
+          example: ROLE
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      title: Base Reference Dto
+      type: object
+    AssignmentContextDto:
       properties:
         requested:
           $ref: '#/components/schemas/AccessRequestContext'
@@ -91229,28 +91216,27 @@ components:
         approverType: GOVERNANCE_GROUP
       properties:
         approverType:
-          description: |-
-            Describes the individual or group that is responsible for an approval step. These are the possible values:
-            **APP_OWNER**: The owner of the Application
-
-            **OWNER**: Owner of the associated Access Profile or Role
-
-            **SOURCE_OWNER**: Owner of the Source associated with an Access Profile
-
-            **MANAGER**: Manager of the Identity making the request
-
-            **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+          description: "Describes the individual or group that is responsible for\
+            \ an approval step. These are the possible values:\n**APP_OWNER**: The\
+            \ owner of the Application\n\n**OWNER**: Owner of the associated Access\
+            \ Profile or Role\n\n**SOURCE_OWNER**: Owner of the Source associated\
+            \ with an Access Profile\n\n**MANAGER**: Manager of the Identity making\
+            \ the request\n\n**GOVERNANCE_GROUP**: A Governance Group, the ID of which\
+            \ is specified by the **approverId** field\n\n**WORKFLOW**: A Workflow,\
+            \ the ID of which is specified by the **approverId** field. Workflow is\
+            \ exclusive to other types of approvals and License required.   "
           enum:
           - APP_OWNER
           - OWNER
           - SOURCE_OWNER
           - MANAGER
           - GOVERNANCE_GROUP
+          - WORKFLOW
           example: GOVERNANCE_GROUP
           type: string
         approverId:
-          description: Specific approver ID. Only use this when the `approverType`
-            is `GOVERNANCE_GROUP`.
+          description: "Id of the specific approver, used when approverType is GOVERNANCE_GROUP\
+            \ or WORKFLOW."
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
           nullable: true
           type: string
@@ -91847,14 +91833,6 @@ components:
       title: Localized Message
       type: object
     AccessRequestContext:
-      example:
-        contextAttributes:
-        - attribute: location
-          value: Austin
-          derived: false
-        - attribute: location
-          value: Austin
-          derived: false
       properties:
         contextAttributes:
           items:
@@ -91863,17 +91841,6 @@ components:
       title: Access Request Context
       type: object
     RoleMatchDto:
-      example:
-        matchedAttributes:
-        - attribute: location
-          value: Austin
-          derived: false
-        - attribute: location
-          value: Austin
-          derived: false
-        roleRef:
-          name: Github
-          id: ff8081814d977c21014da056804a0af3
       properties:
         roleRef:
           $ref: '#/components/schemas/BaseReferenceDto_1'
@@ -92192,23 +92159,23 @@ components:
         approverType: GOVERNANCE_GROUP
       properties:
         approverType:
-          description: |-
-            Describes the individual or group that is responsible for an approval step. Values are as follows.
-
-            **OWNER**: Owner of the associated Role
-
-            **MANAGER**: Manager of the Identity making the request
-
-            **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+          description: "Describes the individual or group that is responsible for\
+            \ an approval step. Values are as follows.\n\n**OWNER**: Owner of the\
+            \ associated Role\n\n**MANAGER**: Manager of the Identity making the request\n\
+            \n**GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified\
+            \ by the **approverId** field\n\n**WORKFLOW**: A Workflow, the ID of which\
+            \ is specified by the **approverId** field. Workflow is exclusive to other\
+            \ types of approvals and License required. "
           enum:
           - OWNER
           - MANAGER
           - GOVERNANCE_GROUP
+          - WORKFLOW
           example: GOVERNANCE_GROUP
           type: string
         approverId:
-          description: "Id of the specific approver, used only when approverType is\
-            \ GOVERNANCE_GROUP"
+          description: "Id of the specific approver, used when approverType is GOVERNANCE_GROUP\
+            \ or WORKFLOW."
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
           nullable: true
           type: string
@@ -93028,10 +92995,6 @@ components:
       title: Approval Info Response
       type: object
     ContextAttributeDto:
-      example:
-        attribute: location
-        value: Austin
-        derived: false
       properties:
         attribute:
           description: The name of the attribute
@@ -95288,6 +95251,49 @@ components:
             $ref: '#/components/schemas/IdentityEntities'
           type: array
       type: object
+    RoleAssignmentDto_assigner:
+      description: The identity that performed the assignment. This could be blank
+        or system
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          description: Object type
+          enum:
+          - IDENTITY
+          - UNKNOWN
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          nullable: true
+          type: string
+      type: object
+    RoleAssignmentDto_assignmentContext:
+      allOf:
+      - $ref: '#/components/schemas/AssignmentContextDto'
+      - description: The context around the role assignment
+        nullable: true
+        type: object
+      example:
+        requested:
+          contextAttributes:
+          - attribute: department
+            value: Engineering
+            derived: false
+        matched:
+        - id: e7697a1e96d04db1ac7b0f4544915d2c
+          type: DIMENSION
+          name: Engineer
+        computedDate: Wed Feb 14 10:58:42
     IdentityPreviewResponse_identity:
       description: Identity's manager.
       example:
