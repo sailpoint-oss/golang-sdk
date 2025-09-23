@@ -19,7 +19,7 @@ var _ MappedNullable = &AccountAction{}
 
 // AccountAction Object for specifying Actions to be performed on a specified list of sources' account.
 type AccountAction struct {
-	// Describes if action will be enabled or disabled
+	// Describes if action will be enable, disable or delete.
 	Action *string `json:"action,omitempty"`
 	// List of unique source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.
 	SourceIds []string `json:"sourceIds,omitempty"`
