@@ -1090,15 +1090,8 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessR
 type ApiGetEntitlementDetailsForIdentityRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	xSailPointExperimental *string
 	identityId string
 	entitlementId string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetEntitlementDetailsForIdentityRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetEntitlementDetailsForIdentityRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetEntitlementDetailsForIdentityRequest) Execute() (*IdentityEntitlementDetails, *http.Response, error) {
@@ -1146,15 +1139,6 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1173,7 +1157,6 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityExecute(r Api
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
