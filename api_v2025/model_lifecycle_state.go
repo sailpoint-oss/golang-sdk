@@ -44,7 +44,7 @@ type LifecycleState struct {
 	// The lifecycle state's associated identity state. This field is generally 'null'.
 	IdentityState NullableString `json:"identityState,omitempty"`
 	AccessActionConfiguration *AccessActionConfiguration `json:"accessActionConfiguration,omitempty"`
-	// Priority level used to determine which profile to assign when a user exists in multiple profiles. Lower numeric values have higher priority.  By default, new profiles are assigned the lowest priority. The assigned profile also controls access granted or removed during provisioning based on lifecycle state changes.
+	// Used to control the order of lifecycle states when listing with `?sorters=priority`. Lower numbers appear first (ascending order). Out-of-the-box lifecycle states are assigned priorities in increments of 10.
 	Priority NullableInt32 `json:"priority,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
