@@ -24,7 +24,7 @@ type UserLevelRequest struct {
 	Name string `json:"name"`
 	// A brief description of the user level.
 	Description string `json:"description"`
-	Owner BaseReferenceDto `json:"owner"`
+	Owner PublicIdentity `json:"owner"`
 	// A list of rights associated with the user level.
 	RightSets []string `json:"rightSets,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -36,7 +36,7 @@ type _UserLevelRequest UserLevelRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserLevelRequest(name string, description string, owner BaseReferenceDto) *UserLevelRequest {
+func NewUserLevelRequest(name string, description string, owner PublicIdentity) *UserLevelRequest {
 	this := UserLevelRequest{}
 	this.Name = name
 	this.Description = description
@@ -101,9 +101,9 @@ func (o *UserLevelRequest) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value
-func (o *UserLevelRequest) GetOwner() BaseReferenceDto {
+func (o *UserLevelRequest) GetOwner() PublicIdentity {
 	if o == nil {
-		var ret BaseReferenceDto
+		var ret PublicIdentity
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *UserLevelRequest) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *UserLevelRequest) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *UserLevelRequest) GetOwnerOk() (*PublicIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *UserLevelRequest) GetOwnerOk() (*BaseReferenceDto, bool) {
 }
 
 // SetOwner sets field value
-func (o *UserLevelRequest) SetOwner(v BaseReferenceDto) {
+func (o *UserLevelRequest) SetOwner(v PublicIdentity) {
 	o.Owner = v
 }
 

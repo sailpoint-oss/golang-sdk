@@ -40,7 +40,7 @@ type UserLevelSummaryDTO struct {
 	TranslatedGrant NullableString `json:"translatedGrant,omitempty"`
 	// The translated remove message for the UserLevel.
 	TranslatedRemove NullableString `json:"translatedRemove,omitempty"`
-	Owner *BaseReferenceDto `json:"owner,omitempty"`
+	Owner *PublicIdentity `json:"owner,omitempty"`
 	// The status of the UserLevel.
 	Status *string `json:"status,omitempty"`
 	// The creation timestamp of the UserLevel.
@@ -450,9 +450,9 @@ func (o *UserLevelSummaryDTO) UnsetTranslatedRemove() {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *UserLevelSummaryDTO) GetOwner() BaseReferenceDto {
+func (o *UserLevelSummaryDTO) GetOwner() PublicIdentity {
 	if o == nil || IsNil(o.Owner) {
-		var ret BaseReferenceDto
+		var ret PublicIdentity
 		return ret
 	}
 	return *o.Owner
@@ -460,7 +460,7 @@ func (o *UserLevelSummaryDTO) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserLevelSummaryDTO) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *UserLevelSummaryDTO) GetOwnerOk() (*PublicIdentity, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -476,8 +476,8 @@ func (o *UserLevelSummaryDTO) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseReferenceDto and assigns it to the Owner field.
-func (o *UserLevelSummaryDTO) SetOwner(v BaseReferenceDto) {
+// SetOwner gets a reference to the given PublicIdentity and assigns it to the Owner field.
+func (o *UserLevelSummaryDTO) SetOwner(v PublicIdentity) {
 	o.Owner = &v
 }
 
