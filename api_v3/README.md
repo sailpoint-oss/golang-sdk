@@ -407,9 +407,6 @@ Class | Method | HTTP request | Description
 *TransformsAPI* | [**GetTransform**](docs/TransformsAPI.md#gettransform) | **Get** /transforms/{id} | Transform by id
 *TransformsAPI* | [**ListTransforms**](docs/TransformsAPI.md#listtransforms) | **Get** /transforms | List transforms
 *TransformsAPI* | [**UpdateTransform**](docs/TransformsAPI.md#updatetransform) | **Put** /transforms/{id} | Update a transform
-*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve approval items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a work item
@@ -622,7 +619,6 @@ Class | Method | HTTP request | Description
  - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
- - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
  - [DependantAppConnections](docs/DependantAppConnections.md)
  - [DependantAppConnectionsAccountSource](docs/DependantAppConnectionsAccountSource.md)
  - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
@@ -671,7 +667,6 @@ Class | Method | HTTP request | Description
  - [GetDiscoveredApplications200ResponseInner](docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
- - [GetVendorConnectorMappings405Response](docs/GetVendorConnectorMappings405Response.md)
  - [GrantType](docs/GrantType.md)
  - [IdentitiesDetailsReportArguments](docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](docs/IdentitiesReportArguments.md)
@@ -1002,11 +997,6 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [Value](docs/Value.md)
- - [VendorConnectorMapping](docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](docs/VerificationPollRequest.md)
  - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)

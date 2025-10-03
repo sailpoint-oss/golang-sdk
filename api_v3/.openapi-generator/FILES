@@ -51,7 +51,6 @@ api_source_usages.go
 api_sources.go
 api_tagged_objects.go
 api_transforms.go
-api_vendor_connector_mappings.go
 api_work_items.go
 api_workflows.go
 client.go
@@ -263,7 +262,6 @@ docs/DataAccessImpactScore.md
 docs/DataAccessPoliciesInner.md
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
-docs/DeleteVendorConnectorMapping200Response.md
 docs/DependantAppConnections.md
 docs/DependantAppConnectionsAccountSource.md
 docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
@@ -312,7 +310,6 @@ docs/GetCampaign200Response.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
-docs/GetVendorConnectorMappings405Response.md
 docs/GlobalTenantSecuritySettingsAPI.md
 docs/GlobalTenantSecuritySettingsAPIdeveloperSite_code_examples.yaml
 docs/GrantType.md
@@ -708,13 +705,6 @@ docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
 docs/Value.md
-docs/VendorConnectorMapping.md
-docs/VendorConnectorMappingDeletedAt.md
-docs/VendorConnectorMappingDeletedBy.md
-docs/VendorConnectorMappingUpdatedAt.md
-docs/VendorConnectorMappingUpdatedBy.md
-docs/VendorConnectorMappingsAPI.md
-docs/VendorConnectorMappingsAPIdeveloperSite_code_examples.yaml
 docs/VerificationPollRequest.md
 docs/VerificationResponse.md
 docs/ViolationContext.md
@@ -930,7 +920,6 @@ model_data_access_impact_score.go
 model_data_access_policies_inner.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
-model_delete_vendor_connector_mapping_200_response.go
 model_dependant_app_connections.go
 model_dependant_app_connections_account_source.go
 model_dependant_app_connections_account_source_password_policies_inner.go
@@ -979,7 +968,6 @@ model_get_campaign_200_response.go
 model_get_discovered_applications_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
-model_get_vendor_connector_mappings_405_response.go
 model_grant_type.go
 model_identities_details_report_arguments.go
 model_identities_report_arguments.go
@@ -1310,11 +1298,6 @@ model_usage_type.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go
 model_value.go
-model_vendor_connector_mapping.go
-model_vendor_connector_mapping_deleted_at.go
-model_vendor_connector_mapping_deleted_by.go
-model_vendor_connector_mapping_updated_at.go
-model_vendor_connector_mapping_updated_by.go
 model_verification_poll_request.go
 model_verification_response.go
 model_violation_context.go
@@ -1394,7 +1377,6 @@ test/api_source_usages_test.go
 test/api_sources_test.go
 test/api_tagged_objects_test.go
 test/api_transforms_test.go
-test/api_vendor_connector_mappings_test.go
 test/api_work_items_test.go
 test/api_workflows_test.go
 utils.go

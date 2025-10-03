@@ -594,9 +594,6 @@ Class | Method | HTTP request | Description
 *TriggersAPI* | [**UpdateSubscription**](docs/TriggersAPI.md#updatesubscription) | **Put** /trigger-subscriptions/{id} | Update a subscription
 *UIMetadataAPI* | [**GetTenantUiMetadata**](docs/UIMetadataAPI.md#gettenantuimetadata) | **Get** /ui-metadata/tenant | Get a tenant ui metadata
 *UIMetadataAPI* | [**SetTenantUiMetadata**](docs/UIMetadataAPI.md#settenantuimetadata) | **Put** /ui-metadata/tenant | Update tenant ui metadata
-*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve approval items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a work item
@@ -879,7 +876,6 @@ Class | Method | HTTP request | Description
  - [Delete202Response](docs/Delete202Response.md)
  - [DeleteCampaignsRequest](docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](docs/DeleteNonEmployeeRecordInBulkRequest.md)
- - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
  - [DimensionRef](docs/DimensionRef.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DomainAddress](docs/DomainAddress.md)
@@ -1493,11 +1489,6 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](docs/ValidateFilterOutputDto.md)
  - [Value](docs/Value.md)
- - [VendorConnectorMapping](docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](docs/VerificationPollRequest.md)
  - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)

@@ -94,7 +94,6 @@ api_tenant_context.go
 api_transforms.go
 api_triggers.go
 api_ui_metadata.go
-api_vendor_connector_mappings.go
 api_work_items.go
 api_work_reassignment.go
 api_workflows.go
@@ -493,7 +492,6 @@ docs/DataSegmentationAPI.md
 docs/DataSegmentationAPIdeveloperSite_code_examples.yaml
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
-docs/DeleteVendorConnectorMapping200Response.md
 docs/DependantAppConnections.md
 docs/DependantAppConnectionsAccountSource.md
 docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
@@ -1380,13 +1378,6 @@ docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
-docs/VendorConnectorMapping.md
-docs/VendorConnectorMappingDeletedAt.md
-docs/VendorConnectorMappingDeletedBy.md
-docs/VendorConnectorMappingUpdatedAt.md
-docs/VendorConnectorMappingUpdatedBy.md
-docs/VendorConnectorMappingsAPI.md
-docs/VendorConnectorMappingsAPIdeveloperSite_code_examples.yaml
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -1774,7 +1765,6 @@ model_data_access_policies_inner.go
 model_data_segment.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
-model_delete_vendor_connector_mapping_200_response.go
 model_dependant_app_connections.go
 model_dependant_app_connections_account_source.go
 model_dependant_app_connections_account_source_password_policies_inner.go
@@ -2532,11 +2522,6 @@ model_va_cluster_status_change_event_previous_health_check_result.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
-model_vendor_connector_mapping.go
-model_vendor_connector_mapping_deleted_at.go
-model_vendor_connector_mapping_deleted_by.go
-model_vendor_connector_mapping_updated_at.go
-model_vendor_connector_mapping_updated_by.go
 model_violation_context.go
 model_violation_context_policy.go
 model_violation_owner_assignment_config.go
@@ -2665,7 +2650,6 @@ test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_ui_metadata_test.go
-test/api_vendor_connector_mappings_test.go
 test/api_work_items_test.go
 test/api_work_reassignment_test.go
 test/api_workflows_test.go

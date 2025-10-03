@@ -74,7 +74,6 @@ api_tenant.go
 api_transforms.go
 api_triggers.go
 api_ui_metadata.go
-api_vendor_connector_mappings.go
 api_work_items.go
 api_work_reassignment.go
 api_workflows.go
@@ -354,7 +353,6 @@ docs/CustomPasswordInstructionsAPIdeveloperSite_code_examples.yaml
 docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
-docs/DeleteVendorConnectorMapping200Response.md
 docs/DimensionRef.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
@@ -1073,13 +1071,6 @@ docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
-docs/VendorConnectorMapping.md
-docs/VendorConnectorMappingDeletedAt.md
-docs/VendorConnectorMappingDeletedBy.md
-docs/VendorConnectorMappingUpdatedAt.md
-docs/VendorConnectorMappingUpdatedBy.md
-docs/VendorConnectorMappingsAPI.md
-docs/VendorConnectorMappingsAPIdeveloperSite_code_examples.yaml
 docs/VerificationPollRequest.md
 docs/VerificationResponse.md
 docs/ViolationContext.md
@@ -1363,7 +1354,6 @@ model_custom_password_instruction.go
 model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
-model_delete_vendor_connector_mapping_200_response.go
 model_dimension_ref.go
 model_dkim_attributes.go
 model_domain_address.go
@@ -1977,11 +1967,6 @@ model_va_cluster_status_change_event_previous_health_check_result.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
-model_vendor_connector_mapping.go
-model_vendor_connector_mapping_deleted_at.go
-model_vendor_connector_mapping_deleted_by.go
-model_vendor_connector_mapping_updated_at.go
-model_vendor_connector_mapping_updated_by.go
 model_verification_poll_request.go
 model_verification_response.go
 model_violation_context.go
@@ -2089,7 +2074,6 @@ test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_ui_metadata_test.go
-test/api_vendor_connector_mappings_test.go
 test/api_work_items_test.go
 test/api_work_reassignment_test.go
 test/api_workflows_test.go
