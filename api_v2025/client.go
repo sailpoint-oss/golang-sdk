@@ -723,14 +723,14 @@ localVarRequest.Header.Add("X-SailPoint-SDK", "2.4.0")
 			latestToken.SetAuthHeader(localVarRequest)
 		} else if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
 			// Use override client credentials from context
-			auth, err := getAccessToken(clientCreds.ClientID, clientCreds.ClientSecret, c.cfg.TokenURL)
+			auth, err := getAccessToken(clientCreds.ClientID, clientCreds.ClientSecret, c.cfg.TokenURL, c.cfg.HTTPClient.StandardClient())
 			if err != nil {
 				return nil, err
 			}
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		} else if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
 			// Use default client credentials from configuration
-			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
+			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL, c.cfg.HTTPClient.StandardClient())
 			if err != nil {
 				return nil, err
 			}
@@ -769,10 +769,9 @@ type AccessToken struct {
 	Jti                 string `json:"jti"`
 }
 
-func getAccessToken(clientId string, clientSecret string, tokenURL string) (string, error) {
+func getAccessToken(clientId string, clientSecret string, tokenURL string, httpClient *http.Client) (string, error) {
 	requestUrl := tokenURL
 	method := "POST"
-	client := &http.Client{}
 	form := url.Values{
 		"grant_type": {"client_credentials"},
 		"client_id": {clientId},
@@ -785,7 +784,7 @@ func getAccessToken(clientId string, clientSecret string, tokenURL string) (stri
 		fmt.Println(err)
 		return "", err
 	}
-	res, err := client.Do(req)
+	res, err := httpClient.Do(req)
 	if err != nil {
 		fmt.Println(err)
 		return "", err
