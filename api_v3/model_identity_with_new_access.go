@@ -24,6 +24,8 @@ type IdentityWithNewAccess struct {
 	IdentityId string `json:"identityId"`
 	// The list of entitlements to consider for possible violations in a preventive check.
 	AccessRefs []IdentityWithNewAccessAccessRefsInner `json:"accessRefs"`
+	// Mappings between sourceId and nativeId to entitlement IDs for which access is requested. This is only being used for ARM analysis in case of user having multiple accounts on the same source on which entitlement is requested. Optional parameter that helps identify which account the entitlement is requested on. For scenarios where users have a single account on the source and do not provide this field, the available account is chosen.
+	SourceIdAndNativeIdToEntitlementIdsMappings []SourceIdAndNativeIdToEntitlementIdsMapping `json:"sourceIdAndNativeIdToEntitlementIdsMappings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,6 +98,38 @@ func (o *IdentityWithNewAccess) SetAccessRefs(v []IdentityWithNewAccessAccessRef
 	o.AccessRefs = v
 }
 
+// GetSourceIdAndNativeIdToEntitlementIdsMappings returns the SourceIdAndNativeIdToEntitlementIdsMappings field value if set, zero value otherwise.
+func (o *IdentityWithNewAccess) GetSourceIdAndNativeIdToEntitlementIdsMappings() []SourceIdAndNativeIdToEntitlementIdsMapping {
+	if o == nil || IsNil(o.SourceIdAndNativeIdToEntitlementIdsMappings) {
+		var ret []SourceIdAndNativeIdToEntitlementIdsMapping
+		return ret
+	}
+	return o.SourceIdAndNativeIdToEntitlementIdsMappings
+}
+
+// GetSourceIdAndNativeIdToEntitlementIdsMappingsOk returns a tuple with the SourceIdAndNativeIdToEntitlementIdsMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityWithNewAccess) GetSourceIdAndNativeIdToEntitlementIdsMappingsOk() ([]SourceIdAndNativeIdToEntitlementIdsMapping, bool) {
+	if o == nil || IsNil(o.SourceIdAndNativeIdToEntitlementIdsMappings) {
+		return nil, false
+	}
+	return o.SourceIdAndNativeIdToEntitlementIdsMappings, true
+}
+
+// HasSourceIdAndNativeIdToEntitlementIdsMappings returns a boolean if a field has been set.
+func (o *IdentityWithNewAccess) HasSourceIdAndNativeIdToEntitlementIdsMappings() bool {
+	if o != nil && !IsNil(o.SourceIdAndNativeIdToEntitlementIdsMappings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceIdAndNativeIdToEntitlementIdsMappings gets a reference to the given []SourceIdAndNativeIdToEntitlementIdsMapping and assigns it to the SourceIdAndNativeIdToEntitlementIdsMappings field.
+func (o *IdentityWithNewAccess) SetSourceIdAndNativeIdToEntitlementIdsMappings(v []SourceIdAndNativeIdToEntitlementIdsMapping) {
+	o.SourceIdAndNativeIdToEntitlementIdsMappings = v
+}
+
 func (o IdentityWithNewAccess) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -108,6 +142,9 @@ func (o IdentityWithNewAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["identityId"] = o.IdentityId
 	toSerialize["accessRefs"] = o.AccessRefs
+	if !IsNil(o.SourceIdAndNativeIdToEntitlementIdsMappings) {
+		toSerialize["sourceIdAndNativeIdToEntitlementIdsMappings"] = o.SourceIdAndNativeIdToEntitlementIdsMappings
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -154,6 +191,7 @@ func (o *IdentityWithNewAccess) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "accessRefs")
+		delete(additionalProperties, "sourceIdAndNativeIdToEntitlementIdsMappings")
 		o.AdditionalProperties = additionalProperties
 	}
 

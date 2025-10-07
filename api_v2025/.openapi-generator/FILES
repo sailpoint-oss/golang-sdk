@@ -888,6 +888,7 @@ docs/MultiHostIntegrationsOwner.md
 docs/MultiHostSources.md
 docs/MultiPolicyRequest.md
 docs/NativeChangeDetectionConfig.md
+docs/NativeIdToEntitlementIdsMapping.md
 docs/NestedAggregation.md
 docs/NestedConfig.md
 docs/NetworkConfiguration.md
@@ -1312,6 +1313,7 @@ docs/SourceDeleted.md
 docs/SourceDeletedActor.md
 docs/SourceEntitlementRequestConfig.md
 docs/SourceHealthDto.md
+docs/SourceIdAndNativeIdToEntitlementIdsMapping.md
 docs/SourceItemRef.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
@@ -2166,6 +2168,7 @@ model_multi_host_integrations_owner.go
 model_multi_host_sources.go
 model_multi_policy_request.go
 model_native_change_detection_config.go
+model_native_id_to_entitlement_ids_mapping.go
 model_nested_aggregation.go
 model_nested_config.go
 model_network_configuration.go
@@ -2538,6 +2541,7 @@ model_source_deleted.go
 model_source_deleted_actor.go
 model_source_entitlement_request_config.go
 model_source_health_dto.go
+model_source_id_and_native_id_to_entitlement_ids_mapping.go
 model_source_item_ref.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go

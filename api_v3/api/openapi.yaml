@@ -32824,12 +32824,27 @@ paths:
         content:
           application/json:
             example:
-              identityId: 2c91808568c529c60168cca6f90c1313
+              identityId: 113ffa035a904766b2baf0dda167aa68
               accessRefs:
               - type: ENTITLEMENT
-                id: 2c918087682f9a86016839c050861ab1
+                id: 47687ab86744322e9da8eb9529f416c9
               - type: ENTITLEMENT
-                id: 2c918087682f9a86016839c0509c1ab2
+                id: 651e628ac6d7347ea733c8052d53bb76
+              - type: ENTITLEMENT
+                id: a317c1270ae5345392c0dfd7a652f19c
+              - type: ENTITLEMENT
+                id: 93b39259048d3b27bbdf8fea4f88471a
+              sourceIdAndNativeIdToEntitlementIdsMappings:
+              - sourceId: 34816f63abbe43be816c7a756f18b5f1
+                nativeIdToEntitlementIdsMappings:
+                - nativeId: 15M23A11
+                  entitlementIds:
+                  - 47687ab86744322e9da8eb9529f416c9
+                  - 651e628ac6d7347ea733c8052d53bb76
+                - nativeId: AK19J23F
+                  entitlementIds:
+                  - a317c1270ae5345392c0dfd7a652f19c
+                  - 93b39259048d3b27bbdf8fea4f88471a
             schema:
               $ref: '#/components/schemas/IdentityWithNewAccess'
         required: true
@@ -32932,12 +32947,27 @@ paths:
         content:
           application/json:
             example:
-              identityId: 2c91808568c529c60168cca6f90c1313
+              identityId: 113ffa035a904766b2baf0dda167aa68
               accessRefs:
               - type: ENTITLEMENT
-                id: 2c918087682f9a86016839c050861ab1
+                id: 47687ab86744322e9da8eb9529f416c9
               - type: ENTITLEMENT
-                id: 2c918087682f9a86016839c0509c1ab2
+                id: 651e628ac6d7347ea733c8052d53bb76
+              - type: ENTITLEMENT
+                id: a317c1270ae5345392c0dfd7a652f19c
+              - type: ENTITLEMENT
+                id: 93b39259048d3b27bbdf8fea4f88471a
+              sourceIdAndNativeIdToEntitlementIdsMappings:
+              - sourceId: 34816f63abbe43be816c7a756f18b5f1
+                nativeIdToEntitlementIdsMappings:
+                - nativeId: 15M23A11
+                  entitlementIds:
+                  - 47687ab86744322e9da8eb9529f416c9
+                  - 651e628ac6d7347ea733c8052d53bb76
+                - nativeId: AK19J23F
+                  entitlementIds:
+                  - a317c1270ae5345392c0dfd7a652f19c
+                  - 93b39259048d3b27bbdf8fea4f88471a
               clientMetadata:
                 additionalProp1: string
                 additionalProp2: string
@@ -58397,6 +58427,27 @@ components:
     IdentityWithNewAccess:
       description: An identity with a set of access to be added
       example:
+        sourceIdAndNativeIdToEntitlementIdsMappings:
+        - sourceId: 2c91809773dee32014e13e122092014e
+          nativeIdToEntitlementIdsMappings:
+          - entitlementIds:
+            - 2c91809773dee32014e13e122092014e
+            - 2c91809773dee32014e13e122092014e
+            nativeId: jdoe
+          - entitlementIds:
+            - 2c91809773dee32014e13e122092014e
+            - 2c91809773dee32014e13e122092014e
+            nativeId: jdoe
+        - sourceId: 2c91809773dee32014e13e122092014e
+          nativeIdToEntitlementIdsMappings:
+          - entitlementIds:
+            - 2c91809773dee32014e13e122092014e
+            - 2c91809773dee32014e13e122092014e
+            nativeId: jdoe
+          - entitlementIds:
+            - 2c91809773dee32014e13e122092014e
+            - 2c91809773dee32014e13e122092014e
+            nativeId: jdoe
         identityId: 2c91808568c529c60168cca6f90c1313
         accessRefs:
         - type: ENTITLEMENT
@@ -58418,6 +58469,17 @@ components:
             id: 2c918087682f9a86016839c0509c1ab2
           items:
             $ref: '#/components/schemas/IdentityWithNewAccess_accessRefs_inner'
+          type: array
+        sourceIdAndNativeIdToEntitlementIdsMappings:
+          description: "Mappings between sourceId and nativeId to entitlement IDs\
+            \ for which access is requested. This is only being used for ARM analysis\
+            \ in case of user having multiple accounts on the same source on which\
+            \ entitlement is requested. Optional parameter that helps identify which\
+            \ account the entitlement is requested on. For scenarios where users have\
+            \ a single account on the source and do not provide this field, the available\
+            \ account is chosen."
+          items:
+            $ref: '#/components/schemas/SourceIdAndNativeIdToEntitlementIdsMapping'
           type: array
       required:
       - accessRefs
@@ -64299,6 +64361,33 @@ components:
           type: string
       title: Sod Recipient
       type: object
+    SourceIdAndNativeIdToEntitlementIdsMapping:
+      description: Source ID and Native ID to Entitlement IDs mapping.
+      example:
+        sourceId: 2c91809773dee32014e13e122092014e
+        nativeIdToEntitlementIdsMappings:
+        - entitlementIds:
+          - 2c91809773dee32014e13e122092014e
+          - 2c91809773dee32014e13e122092014e
+          nativeId: jdoe
+        - entitlementIds:
+          - 2c91809773dee32014e13e122092014e
+          - 2c91809773dee32014e13e122092014e
+          nativeId: jdoe
+      properties:
+        sourceId:
+          description: The ID of the source system.
+          example: 2c91809773dee32014e13e122092014e
+          type: string
+        nativeIdToEntitlementIdsMappings:
+          description: The native ID and entitlement IDs mapping in the source system.
+          items:
+            $ref: '#/components/schemas/NativeIdToEntitlementIdsMapping'
+          type: array
+      required:
+      - nativeIdToEntitlementIdsMappings
+      - sourceId
+      type: object
     ViolationContext:
       example:
         conflictingAccessCriteria:
@@ -66275,6 +66364,29 @@ components:
           minItems: 1
           type: array
       title: Access Criteria Request
+      type: object
+    NativeIdToEntitlementIdsMapping:
+      description: Native ID to Entitlement IDs mapping.
+      example:
+        entitlementIds:
+        - 2c91809773dee32014e13e122092014e
+        - 2c91809773dee32014e13e122092014e
+        nativeId: jdoe
+      properties:
+        nativeId:
+          description: The native ID in the source system.
+          example: jdoe
+          type: string
+        entitlementIds:
+          description: The list of entitlement IDs associated with the native ID in
+            the source system.
+          items:
+            example: 2c91809773dee32014e13e122092014e
+            type: string
+          type: array
+      required:
+      - entitlementIds
+      - nativeId
       type: object
     SodPolicyDto:
       description: SOD policy.

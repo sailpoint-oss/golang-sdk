@@ -401,6 +401,7 @@ docs/MfaConfigTestResponse.md
 docs/MfaDuoConfig.md
 docs/MfaOktaConfig.md
 docs/MultiPolicyRequest.md
+docs/NativeIdToEntitlementIdsMapping.md
 docs/NestedAggregation.md
 docs/NetworkConfiguration.md
 docs/NonEmployeeApprovalDecision.md
@@ -659,6 +660,7 @@ docs/SourceCluster.md
 docs/SourceClusterDto.md
 docs/SourceConnectionsDto.md
 docs/SourceHealthDto.md
+docs/SourceIdAndNativeIdToEntitlementIdsMapping.md
 docs/SourceItemRef.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
@@ -1044,6 +1046,7 @@ model_mfa_config_test_response.go
 model_mfa_duo_config.go
 model_mfa_okta_config.go
 model_multi_policy_request.go
+model_native_id_to_entitlement_ids_mapping.go
 model_nested_aggregation.go
 model_network_configuration.go
 model_non_employee_approval_decision.go
@@ -1260,6 +1263,7 @@ model_source_cluster.go
 model_source_cluster_dto.go
 model_source_connections_dto.go
 model_source_health_dto.go
+model_source_id_and_native_id_to_entitlement_ids_mapping.go
 model_source_item_ref.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go
