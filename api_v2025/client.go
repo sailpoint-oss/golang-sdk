@@ -170,6 +170,8 @@ type APIClient struct {
 
 	OrgConfigAPI *OrgConfigAPIService
 
+	ParameterStorageAPI *ParameterStorageAPIService
+
 	PasswordConfigurationAPI *PasswordConfigurationAPIService
 
 	PasswordDictionaryAPI *PasswordDictionaryAPIService
@@ -318,6 +320,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
 	c.OrgConfigAPI = (*OrgConfigAPIService)(&c.common)
+	c.ParameterStorageAPI = (*ParameterStorageAPIService)(&c.common)
 	c.PasswordConfigurationAPI = (*PasswordConfigurationAPIService)(&c.common)
 	c.PasswordDictionaryAPI = (*PasswordDictionaryAPIService)(&c.common)
 	c.PasswordManagementAPI = (*PasswordManagementAPIService)(&c.common)

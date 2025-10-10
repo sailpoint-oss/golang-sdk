@@ -63,6 +63,7 @@ api_non_employee_lifecycle_management.go
 api_notifications.go
 api_o_auth_clients.go
 api_org_config.go
+api_parameter_storage.go
 api_password_configuration.go
 api_password_dictionary.go
 api_password_management.go
@@ -952,6 +953,14 @@ docs/OwnerDto.md
 docs/OwnerReference.md
 docs/OwnerReferenceSegments.md
 docs/Owns.md
+docs/ParameterStorageAPI.md
+docs/ParameterStorageAPIdeveloperSite_code_examples.yaml
+docs/ParameterStorageAttestationDocument.md
+docs/ParameterStorageJsonPatch.md
+docs/ParameterStorageNewParameter.md
+docs/ParameterStorageParameter.md
+docs/ParameterStorageReference.md
+docs/ParameterStorageUpdateParameter.md
 docs/PasswordChangeRequest.md
 docs/PasswordChangeResponse.md
 docs/PasswordConfigurationAPI.md
@@ -2222,6 +2231,12 @@ model_owner_dto.go
 model_owner_reference.go
 model_owner_reference_segments.go
 model_owns.go
+model_parameter_storage_attestation_document.go
+model_parameter_storage_json_patch.go
+model_parameter_storage_new_parameter.go
+model_parameter_storage_parameter.go
+model_parameter_storage_reference.go
+model_parameter_storage_update_parameter.go
 model_password_change_request.go
 model_password_change_response.go
 model_password_digit_token.go
@@ -2745,6 +2760,7 @@ test/api_non_employee_lifecycle_management_test.go
 test/api_notifications_test.go
 test/api_o_auth_clients_test.go
 test/api_org_config_test.go
+test/api_parameter_storage_test.go
 test/api_password_configuration_test.go
 test/api_password_dictionary_test.go
 test/api_password_management_test.go

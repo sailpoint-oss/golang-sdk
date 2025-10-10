@@ -558,6 +558,14 @@ Class | Method | HTTP request | Description
 *OrgConfigAPI* | [**GetOrgConfig**](docs/OrgConfigAPI.md#getorgconfig) | **Get** /org-config | Get org config settings
 *OrgConfigAPI* | [**GetValidTimeZones**](docs/OrgConfigAPI.md#getvalidtimezones) | **Get** /org-config/valid-time-zones | Get valid time zones
 *OrgConfigAPI* | [**PatchOrgConfig**](docs/OrgConfigAPI.md#patchorgconfig) | **Patch** /org-config | Patch org config
+*ParameterStorageAPI* | [**CreateParameter**](docs/ParameterStorageAPI.md#createparameter) | **Post** /parameter-storage/parameters | Add a new parameter.
+*ParameterStorageAPI* | [**DeleteParameter**](docs/ParameterStorageAPI.md#deleteparameter) | **Delete** /parameter-storage/parameters/{id} | Delete a parameter.
+*ParameterStorageAPI* | [**GetAttestationDocument**](docs/ParameterStorageAPI.md#getattestationdocument) | **Get** /parameter-storage/attestation | Get an attestation document.
+*ParameterStorageAPI* | [**GetParameter**](docs/ParameterStorageAPI.md#getparameter) | **Get** /parameter-storage/parameters/{id} | Get a specific parameter.
+*ParameterStorageAPI* | [**GetParameterReferences**](docs/ParameterStorageAPI.md#getparameterreferences) | **Get** /parameter-storage/parameters/{id}/references | Get parameter references.
+*ParameterStorageAPI* | [**GetParameterStorageSpecification**](docs/ParameterStorageAPI.md#getparameterstoragespecification) | **Get** /parameter-storage/specification | Get specifications for parameter types.
+*ParameterStorageAPI* | [**SearchParameters**](docs/ParameterStorageAPI.md#searchparameters) | **Get** /parameter-storage/parameters | Query stored parameters.
+*ParameterStorageAPI* | [**UpdateParameter**](docs/ParameterStorageAPI.md#updateparameter) | **Patch** /parameter-storage/parameters/{id} | Update a parameter.
 *PasswordConfigurationAPI* | [**CreatePasswordOrgConfig**](docs/PasswordConfigurationAPI.md#createpasswordorgconfig) | **Post** /password-org-config | Create password org config
 *PasswordConfigurationAPI* | [**GetPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#getpasswordorgconfig) | **Get** /password-org-config | Get password org config
 *PasswordConfigurationAPI* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#putpasswordorgconfig) | **Put** /password-org-config | Update password org config
@@ -1557,6 +1565,12 @@ Class | Method | HTTP request | Description
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerReferenceSegments](docs/OwnerReferenceSegments.md)
  - [Owns](docs/Owns.md)
+ - [ParameterStorageAttestationDocument](docs/ParameterStorageAttestationDocument.md)
+ - [ParameterStorageJsonPatch](docs/ParameterStorageJsonPatch.md)
+ - [ParameterStorageNewParameter](docs/ParameterStorageNewParameter.md)
+ - [ParameterStorageParameter](docs/ParameterStorageParameter.md)
+ - [ParameterStorageReference](docs/ParameterStorageReference.md)
+ - [ParameterStorageUpdateParameter](docs/ParameterStorageUpdateParameter.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
  - [PasswordDigitToken](docs/PasswordDigitToken.md)
