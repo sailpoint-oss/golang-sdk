@@ -27,7 +27,7 @@ type FieldDetailsDto struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// Flag indicating whether or not the attribute is required.
 	IsRequired *bool `json:"isRequired,omitempty"`
-	// The type of the attribute.
+	// The type of the attribute.  string: For text-based data.  int: For whole numbers.  long: For larger whole numbers.  date: For date and time values.  boolean: For true/false values.  secret: For sensitive data like passwords, which will be masked and encrypted. 
 	Type *string `json:"type,omitempty"`
 	// Flag indicating whether or not the attribute is multi-valued.
 	IsMultiValued *bool `json:"isMultiValued,omitempty"`
