@@ -23,6 +23,7 @@ const (
 	CONFIGTYPEENUM_ACCESS_REQUESTS ConfigTypeEnum = "ACCESS_REQUESTS"
 	CONFIGTYPEENUM_CERTIFICATIONS ConfigTypeEnum = "CERTIFICATIONS"
 	CONFIGTYPEENUM_MANUAL_TASKS ConfigTypeEnum = "MANUAL_TASKS"
+	CONFIGTYPEENUM_GENERIC_APPROVALS ConfigTypeEnum = "GENERIC_APPROVALS"
 )
 
 // All allowed values of ConfigTypeEnum enum
@@ -30,6 +31,7 @@ var AllowedConfigTypeEnumEnumValues = []ConfigTypeEnum{
 	"ACCESS_REQUESTS",
 	"CERTIFICATIONS",
 	"MANUAL_TASKS",
+	"GENERIC_APPROVALS",
 }
 
 func (v *ConfigTypeEnum) UnmarshalJSON(src []byte) error {

@@ -140,6 +140,8 @@ Class | Method | HTTP request | Description
 *ApprovalsAPI* | [**ApproveApproval**](docs/ApprovalsAPI.md#approveapproval) | **Post** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
+*ApprovalsAPI* | [**GetApprovalsConfigIdType**](docs/ApprovalsAPI.md#getapprovalsconfigidtype) | **Get** /generic-approvals/config | Get Approval Config Type
+*ApprovalsAPI* | [**PatchApprovalsConfigType**](docs/ApprovalsAPI.md#patchapprovalsconfigtype) | **Patch** /generic-approvals/config | Patch Approval Config Type
 *ApprovalsAPI* | [**RejectApproval**](docs/ApprovalsAPI.md#rejectapproval) | **Post** /generic-approvals/{id}/reject | Post Approvals Reject
 *ApprovalsAPI* | [**UpdateApprovalsAttributes**](docs/ApprovalsAPI.md#updateapprovalsattributes) | **Post** /generic-approvals/{id}/attributes | Post Approvals Attributes
 *ApprovalsAPI* | [**UpdateApprovalsComments**](docs/ApprovalsAPI.md#updateapprovalscomments) | **Post** /generic-approvals/{id}/comments | Post Approvals Comments
