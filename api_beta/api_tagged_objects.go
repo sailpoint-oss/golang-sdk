@@ -532,8 +532,6 @@ ListTaggedObjects List tagged objects
 
 This API returns a list of all tagged objects.
 
-Any authenticated token may be used to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTaggedObjectsRequest
 */
@@ -736,8 +734,6 @@ func (r ApiListTaggedObjectsByTypeRequest) Execute() ([]TaggedObject, *http.Resp
 ListTaggedObjectsByType List tagged objects by type
 
 This API returns a list of all tagged objects by type.
-
-Any authenticated token may be used to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param type_ The type of tagged object to retrieve.
@@ -1093,8 +1089,6 @@ func (r ApiSetTagToObjectRequest) Execute() (*http.Response, error) {
 SetTagToObject Add tag to object
 
 This adds a tag to an object.
-
-Any authenticated token may be used to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTagToObjectRequest
