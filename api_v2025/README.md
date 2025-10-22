@@ -138,11 +138,15 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
 *ApprovalsAPI* | [**ApproveApproval**](docs/ApprovalsAPI.md#approveapproval) | **Post** /generic-approvals/{id}/approve | Post Approvals Approve
+*ApprovalsAPI* | [**ApproveApproval_0**](docs/ApprovalsAPI.md#approveapproval_0) | **Post** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
+*ApprovalsAPI* | [**CancelApproval**](docs/ApprovalsAPI.md#cancelapproval) | **Post** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
 *ApprovalsAPI* | [**GetApprovalsConfigIdType**](docs/ApprovalsAPI.md#getapprovalsconfigidtype) | **Get** /generic-approvals/config | Get Approval Config Type
+*ApprovalsAPI* | [**MoveApproval**](docs/ApprovalsAPI.md#moveapproval) | **Post** /generic-approvals/bulk-reassign | Post Bulk Reassign Approvals
 *ApprovalsAPI* | [**PatchApprovalsConfigType**](docs/ApprovalsAPI.md#patchapprovalsconfigtype) | **Patch** /generic-approvals/config | Patch Approval Config Type
 *ApprovalsAPI* | [**RejectApproval**](docs/ApprovalsAPI.md#rejectapproval) | **Post** /generic-approvals/{id}/reject | Post Approvals Reject
+*ApprovalsAPI* | [**RejectApproval_0**](docs/ApprovalsAPI.md#rejectapproval_0) | **Post** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
 *ApprovalsAPI* | [**UpdateApprovalsAttributes**](docs/ApprovalsAPI.md#updateapprovalsattributes) | **Post** /generic-approvals/{id}/attributes | Post Approvals Attributes
 *ApprovalsAPI* | [**UpdateApprovalsComments**](docs/ApprovalsAPI.md#updateapprovalscomments) | **Post** /generic-approvals/{id}/comments | Post Approvals Comments
 *ApprovalsAPI* | [**UpdateApprovalsReassign**](docs/ApprovalsAPI.md#updateapprovalsreassign) | **Post** /generic-approvals/{id}/reassign | Post Approvals Reassign
@@ -1076,8 +1080,12 @@ Class | Method | HTTP request | Description
  - [BucketType](docs/BucketType.md)
  - [BulkAddTaggedObject](docs/BulkAddTaggedObject.md)
  - [BulkApproveAccessRequest](docs/BulkApproveAccessRequest.md)
+ - [BulkApproveRequestDTO](docs/BulkApproveRequestDTO.md)
  - [BulkCancelAccessRequest](docs/BulkCancelAccessRequest.md)
+ - [BulkCancelRequestDTO](docs/BulkCancelRequestDTO.md)
  - [BulkIdentitiesAccountsResponse](docs/BulkIdentitiesAccountsResponse.md)
+ - [BulkReassignRequestDTO](docs/BulkReassignRequestDTO.md)
+ - [BulkRejectRequestDTO](docs/BulkRejectRequestDTO.md)
  - [BulkRemoveTaggedObject](docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](docs/BulkTaggedObjectResponse.md)
  - [Campaign](docs/Campaign.md)

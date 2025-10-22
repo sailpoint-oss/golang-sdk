@@ -36,6 +36,30 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApprovalsAPIService ApproveApproval_1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ApprovalsAPI.ApproveApproval_0(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ApprovalsAPIService CancelApproval", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ApprovalsAPI.CancelApproval(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ApprovalsAPIService GetApproval", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -76,6 +100,18 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApprovalsAPIService MoveApproval", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ApprovalsAPI.MoveApproval(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ApprovalsAPIService PatchApprovalsConfigType", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -97,6 +133,18 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 		httpRes, err := apiClient.ApprovalsAPI.RejectApproval(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ApprovalsAPIService RejectApproval_2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ApprovalsAPI.RejectApproval_0(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
