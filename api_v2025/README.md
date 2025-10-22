@@ -165,6 +165,8 @@ Class | Method | HTTP request | Description
 *AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified auth profile
 *AuthUsersAPI* | [**GetAuthUser**](docs/AuthUsersAPI.md#getauthuser) | **Get** /auth-users/{id} | Auth user details
 *AuthUsersAPI* | [**PatchAuthUser**](docs/AuthUsersAPI.md#patchauthuser) | **Patch** /auth-users/{id} | Auth user update
+*AuthorizationAPI* | [**ListUserLevelCounts**](docs/AuthorizationAPI.md#listuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
+*AuthorizationAPI* | [**ListUserLevelIdentities**](docs/AuthorizationAPI.md#listuserlevelidentities) | **Get** /authorization/user-levels/{id}/identities | List user level identities
 *BrandingAPI* | [**CreateBrandingItem**](docs/BrandingAPI.md#createbrandingitem) | **Post** /brandings | Create a branding item
 *BrandingAPI* | [**DeleteBranding**](docs/BrandingAPI.md#deletebranding) | **Delete** /brandings/{name} | Delete a branding item
 *BrandingAPI* | [**GetBranding**](docs/BrandingAPI.md#getbranding) | **Get** /brandings/{name} | Get a branding item
@@ -1049,6 +1051,8 @@ Class | Method | HTTP request | Description
  - [AuthProfile](docs/AuthProfile.md)
  - [AuthProfileSummary](docs/AuthProfileSummary.md)
  - [AuthUser](docs/AuthUser.md)
+ - [AuthUserLevelsIdentityCount](docs/AuthUserLevelsIdentityCount.md)
+ - [AuthUserSlimResponse](docs/AuthUserSlimResponse.md)
  - [BackupOptions](docs/BackupOptions.md)
  - [BackupOptions1](docs/BackupOptions1.md)
  - [BackupResponse](docs/BackupResponse.md)

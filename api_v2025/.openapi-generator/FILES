@@ -18,6 +18,7 @@ api_approvals.go
 api_apps.go
 api_auth_profile.go
 api_auth_users.go
+api_authorization.go
 api_branding.go
 api_certification_campaign_filters.go
 api_certification_campaigns.go
@@ -342,8 +343,12 @@ docs/AuthProfileAPI.md
 docs/AuthProfileAPIdeveloperSite_code_examples.yaml
 docs/AuthProfileSummary.md
 docs/AuthUser.md
+docs/AuthUserLevelsIdentityCount.md
+docs/AuthUserSlimResponse.md
 docs/AuthUsersAPI.md
 docs/AuthUsersAPIdeveloperSite_code_examples.yaml
+docs/AuthorizationAPI.md
+docs/AuthorizationAPIdeveloperSite_code_examples.yaml
 docs/BackupOptions.md
 docs/BackupOptions1.md
 docs/BackupResponse.md
@@ -1713,6 +1718,8 @@ model_audit_details.go
 model_auth_profile.go
 model_auth_profile_summary.go
 model_auth_user.go
+model_auth_user_levels_identity_count.go
+model_auth_user_slim_response.go
 model_backup_options.go
 model_backup_options_1.go
 model_backup_response.go
@@ -2715,6 +2722,7 @@ test/api_approvals_test.go
 test/api_apps_test.go
 test/api_auth_profile_test.go
 test/api_auth_users_test.go
+test/api_authorization_test.go
 test/api_branding_test.go
 test/api_certification_campaign_filters_test.go
 test/api_certification_campaigns_test.go
