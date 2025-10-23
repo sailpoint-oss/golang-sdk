@@ -144,7 +144,7 @@ Class | Method | HTTP request | Description
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
 *ApprovalsAPI* | [**GetApprovalsConfigIdType**](docs/ApprovalsAPI.md#getapprovalsconfigidtype) | **Get** /generic-approvals/config | Get Approval Config Type
 *ApprovalsAPI* | [**MoveApproval**](docs/ApprovalsAPI.md#moveapproval) | **Post** /generic-approvals/bulk-reassign | Post Bulk Reassign Approvals
-*ApprovalsAPI* | [**PatchApprovalsConfigType**](docs/ApprovalsAPI.md#patchapprovalsconfigtype) | **Patch** /generic-approvals/config | Patch Approval Config Type
+*ApprovalsAPI* | [**PutApprovalsConfigType**](docs/ApprovalsAPI.md#putapprovalsconfigtype) | **Put** /generic-approvals/config | Put Approval Config Type
 *ApprovalsAPI* | [**RejectApproval**](docs/ApprovalsAPI.md#rejectapproval) | **Post** /generic-approvals/{id}/reject | Post Approvals Reject
 *ApprovalsAPI* | [**RejectApproval_0**](docs/ApprovalsAPI.md#rejectapproval_0) | **Post** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
 *ApprovalsAPI* | [**UpdateApprovalsAttributes**](docs/ApprovalsAPI.md#updateapprovalsattributes) | **Post** /generic-approvals/{id}/attributes | Post Approvals Attributes

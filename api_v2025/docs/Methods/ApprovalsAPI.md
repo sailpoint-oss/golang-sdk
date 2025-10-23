@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**get-approvals**](#get-approvals) | **Get** `/generic-approvals` | Get approvals
 [**get-approvals-config-id-type**](#get-approvals-config-id-type) | **Get** `/generic-approvals/config` | Get Approval Config Type
 [**move-approval**](#move-approval) | **Post** `/generic-approvals/bulk-reassign` | Post Bulk Reassign Approvals
-[**patch-approvals-config-type**](#patch-approvals-config-type) | **Patch** `/generic-approvals/config` | Patch Approval Config Type
+[**put-approvals-config-type**](#put-approvals-config-type) | **Put** `/generic-approvals/config` | Put Approval Config Type
 [**reject-approval**](#reject-approval) | **Post** `/generic-approvals/{id}/reject` | Post Approvals Reject
 [**reject-approval-0**](#reject-approval-0) | **Post** `/generic-approvals/bulk-reject` | Post Bulk Reject Approvals
 [**update-approvals-attributes**](#update-approvals-attributes) | **Post** `/generic-approvals/{id}/attributes` | Post Approvals Attributes
@@ -560,11 +560,11 @@ func main() {
 
 [[Back to top]](#)
 
-## patch-approvals-config-type
-Patch Approval Config Type
-Updates a singular approval configuration that matches the given configID and configScope
+## put-approvals-config-type
+Put Approval Config Type
+Upserts a singular approval configuration that matches the given configID and configScope
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/patch-approvals-config-type)
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/put-approvals-config-type)
 
 ### Path Parameters
 
@@ -572,7 +572,7 @@ Updates a singular approval configuration that matches the given configID and co
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPatchApprovalsConfigTypeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutApprovalsConfigTypeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -693,14 +693,14 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.ApprovalsAPI.PatchApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
-	  //resp, r, err := apiClient.V2025.ApprovalsAPI.PatchApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
+    resp, r, err := apiClient.V2025.ApprovalsAPI.PutApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
+	  //resp, r, err := apiClient.V2025.ApprovalsAPI.PutApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
     if err != nil {
-	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PatchApprovalsConfigType``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PutApprovalsConfigType``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchApprovalsConfigType`: ApprovalConfig
-    fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PatchApprovalsConfigType`: %v\n", resp)
+    // response from `PutApprovalsConfigType`: ApprovalConfig
+    fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PutApprovalsConfigType`: %v\n", resp)
 }
 ```
 

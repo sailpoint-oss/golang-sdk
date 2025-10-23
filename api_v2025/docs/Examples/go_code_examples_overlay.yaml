@@ -3002,10 +3002,10 @@
           fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.MoveApproval`: %v\n", resp)
         }
 - path: /generic-approvals/config
-  method: Patch
+  method: Put
   xCodeSample:
     - lang: Go
-      label: SDK_tools/sdk/go/v2025/methods/approvals#patch-approvals-config-type
+      label: SDK_tools/sdk/go/v2025/methods/approvals#put-approvals-config-type
       source: |
         package main
 
@@ -3109,14 +3109,14 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.ApprovalsAPI.PatchApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
-          //resp, r, err := apiClient.V2025.ApprovalsAPI.PatchApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
+          resp, r, err := apiClient.V2025.ApprovalsAPI.PutApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
+          //resp, r, err := apiClient.V2025.ApprovalsAPI.PutApprovalsConfigType(context.Background()).Id(id).Scope(scope).ApprovalConfig(approvalConfig).Execute()
           if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PatchApprovalsConfigType``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PutApprovalsConfigType``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `PatchApprovalsConfigType`: ApprovalConfig
-          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PatchApprovalsConfigType`: %v\n", resp)
+          // response from `PutApprovalsConfigType`: ApprovalConfig
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PutApprovalsConfigType`: %v\n", resp)
         }
 - path: /generic-approvals/{id}/reject
   method: Post

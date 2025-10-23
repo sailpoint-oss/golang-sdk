@@ -1359,7 +1359,7 @@ func (a *ApprovalsAPIService) MoveApprovalExecute(r ApiMoveApprovalRequest) (map
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchApprovalsConfigTypeRequest struct {
+type ApiPutApprovalsConfigTypeRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id *string
@@ -1368,36 +1368,36 @@ type ApiPatchApprovalsConfigTypeRequest struct {
 }
 
 // The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT
-func (r ApiPatchApprovalsConfigTypeRequest) Id(id string) ApiPatchApprovalsConfigTypeRequest {
+func (r ApiPutApprovalsConfigTypeRequest) Id(id string) ApiPutApprovalsConfigTypeRequest {
 	r.id = &id
 	return r
 }
 
 // The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT
-func (r ApiPatchApprovalsConfigTypeRequest) Scope(scope string) ApiPatchApprovalsConfigTypeRequest {
+func (r ApiPutApprovalsConfigTypeRequest) Scope(scope string) ApiPutApprovalsConfigTypeRequest {
 	r.scope = &scope
 	return r
 }
 
-func (r ApiPatchApprovalsConfigTypeRequest) ApprovalConfig(approvalConfig ApprovalConfig) ApiPatchApprovalsConfigTypeRequest {
+func (r ApiPutApprovalsConfigTypeRequest) ApprovalConfig(approvalConfig ApprovalConfig) ApiPutApprovalsConfigTypeRequest {
 	r.approvalConfig = &approvalConfig
 	return r
 }
 
-func (r ApiPatchApprovalsConfigTypeRequest) Execute() (*ApprovalConfig, *http.Response, error) {
-	return r.ApiService.PatchApprovalsConfigTypeExecute(r)
+func (r ApiPutApprovalsConfigTypeRequest) Execute() (*ApprovalConfig, *http.Response, error) {
+	return r.ApiService.PutApprovalsConfigTypeExecute(r)
 }
 
 /*
-PatchApprovalsConfigType Patch Approval Config Type
+PutApprovalsConfigType Put Approval Config Type
 
-Updates a singular approval configuration that matches the given configID and configScope
+Upserts a singular approval configuration that matches the given configID and configScope
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPatchApprovalsConfigTypeRequest
+ @return ApiPutApprovalsConfigTypeRequest
 */
-func (a *ApprovalsAPIService) PatchApprovalsConfigType(ctx context.Context) ApiPatchApprovalsConfigTypeRequest {
-	return ApiPatchApprovalsConfigTypeRequest{
+func (a *ApprovalsAPIService) PutApprovalsConfigType(ctx context.Context) ApiPutApprovalsConfigTypeRequest {
+	return ApiPutApprovalsConfigTypeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1405,15 +1405,15 @@ func (a *ApprovalsAPIService) PatchApprovalsConfigType(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return ApprovalConfig
-func (a *ApprovalsAPIService) PatchApprovalsConfigTypeExecute(r ApiPatchApprovalsConfigTypeRequest) (*ApprovalConfig, *http.Response, error) {
+func (a *ApprovalsAPIService) PutApprovalsConfigTypeExecute(r ApiPutApprovalsConfigTypeRequest) (*ApprovalConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  *ApprovalConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.PatchApprovalsConfigType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.PutApprovalsConfigType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
