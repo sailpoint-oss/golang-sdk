@@ -134,6 +134,8 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**SubmitReloadAccount**](docs/AccountsAPI.md#submitreloadaccount) | **Post** /accounts/{id}/reload | Reload account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update account
+*ApiUsageAPI* | [**GetTotalCount**](docs/ApiUsageAPI.md#gettotalcount) | **Get** /api-usage/count | Total number of API requests
+*ApiUsageAPI* | [**ListApiSummary**](docs/ApiUsageAPI.md#listapisummary) | **Get** /api-usage/summary | Get Api Summary
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
@@ -1941,6 +1943,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](docs/SubscriptionPutRequest.md)
  - [SubscriptionType](docs/SubscriptionType.md)
+ - [SummaryResponse](docs/SummaryResponse.md)
  - [Tag](docs/Tag.md)
  - [TagTagCategoryRefsInner](docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](docs/TaggedObject.md)

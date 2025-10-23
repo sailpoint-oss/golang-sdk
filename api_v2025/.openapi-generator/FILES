@@ -13,6 +13,7 @@ api_account_activities.go
 api_account_aggregations.go
 api_account_usages.go
 api_accounts.go
+api_api_usage.go
 api_application_discovery.go
 api_approvals.go
 api_apps.go
@@ -263,6 +264,8 @@ docs/AdminReviewReassignReassignTo.md
 docs/AggregationResult.md
 docs/AggregationType.md
 docs/Aggregations.md
+docs/ApiUsageAPI.md
+docs/ApiUsageAPIdeveloperSite_code_examples.yaml
 docs/App.md
 docs/AppAccountDetails.md
 docs/AppAccountDetailsSourceAccount.md
@@ -1376,6 +1379,7 @@ docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
 docs/SuggestedEntitlementDescriptionAPI.md
 docs/SuggestedEntitlementDescriptionAPIdeveloperSite_code_examples.yaml
+docs/SummaryResponse.md
 docs/Tag.md
 docs/TagTagCategoryRefsInner.md
 docs/TaggedObject.md
@@ -2608,6 +2612,7 @@ model_subscription_patch_request_inner_value_any_of_inner.go
 model_subscription_post_request.go
 model_subscription_put_request.go
 model_subscription_type.go
+model_summary_response.go
 model_tag.go
 model_tag_tag_category_refs_inner.go
 model_tagged_object.go
@@ -2725,6 +2730,7 @@ test/api_account_activities_test.go
 test/api_account_aggregations_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
+test/api_api_usage_test.go
 test/api_application_discovery_test.go
 test/api_approvals_test.go
 test/api_apps_test.go
