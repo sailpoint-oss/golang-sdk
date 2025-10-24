@@ -55,6 +55,8 @@ type _Schema Schema
 // will change when the set of required properties is changed
 func NewSchema() *Schema {
 	this := Schema{}
+	var includePermissions bool = false
+	this.IncludePermissions = &includePermissions
 	return &this
 }
 
@@ -63,6 +65,8 @@ func NewSchema() *Schema {
 // but it doesn't guarantee that properties required by API are set
 func NewSchemaWithDefaults() *Schema {
 	this := Schema{}
+	var includePermissions bool = false
+	this.IncludePermissions = &includePermissions
 	return &this
 }
 

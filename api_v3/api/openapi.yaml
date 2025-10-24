@@ -58655,6 +58655,7 @@ components:
           example: memberOf
           type: string
         includePermissions:
+          default: false
           description: Flag indicating whether or not the include permissions with
             the object data when aggregating the schema.
           example: false
@@ -64395,6 +64396,11 @@ components:
         name:
           description: The name of the attribute.
           example: sAMAccountName
+          type: string
+        nativeName:
+          description: Attribute name in the native system.
+          example: sAMAccountName
+          nullable: true
           type: string
         type:
           $ref: '#/components/schemas/AttributeDefinitionType'

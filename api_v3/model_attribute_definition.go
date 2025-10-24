@@ -21,6 +21,8 @@ var _ MappedNullable = &AttributeDefinition{}
 type AttributeDefinition struct {
 	// The name of the attribute.
 	Name *string `json:"name,omitempty"`
+	// Attribute name in the native system.
+	NativeName NullableString `json:"nativeName,omitempty"`
 	Type *AttributeDefinitionType `json:"type,omitempty"`
 	Schema *AttributeDefinitionSchema `json:"schema,omitempty"`
 	// A human-readable description of the attribute.
@@ -95,6 +97,48 @@ func (o *AttributeDefinition) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AttributeDefinition) SetName(v string) {
 	o.Name = &v
+}
+
+// GetNativeName returns the NativeName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AttributeDefinition) GetNativeName() string {
+	if o == nil || IsNil(o.NativeName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NativeName.Get()
+}
+
+// GetNativeNameOk returns a tuple with the NativeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AttributeDefinition) GetNativeNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NativeName.Get(), o.NativeName.IsSet()
+}
+
+// HasNativeName returns a boolean if a field has been set.
+func (o *AttributeDefinition) HasNativeName() bool {
+	if o != nil && o.NativeName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNativeName gets a reference to the given NullableString and assigns it to the NativeName field.
+func (o *AttributeDefinition) SetNativeName(v string) {
+	o.NativeName.Set(&v)
+}
+// SetNativeNameNil sets the value for NativeName to be an explicit nil
+func (o *AttributeDefinition) SetNativeNameNil() {
+	o.NativeName.Set(nil)
+}
+
+// UnsetNativeName ensures that no value is present for NativeName, not even an explicit nil
+func (o *AttributeDefinition) UnsetNativeName() {
+	o.NativeName.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -302,6 +346,9 @@ func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if o.NativeName.IsSet() {
+		toSerialize["nativeName"] = o.NativeName.Get()
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -343,6 +390,7 @@ func (o *AttributeDefinition) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "nativeName")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "schema")
 		delete(additionalProperties, "description")
