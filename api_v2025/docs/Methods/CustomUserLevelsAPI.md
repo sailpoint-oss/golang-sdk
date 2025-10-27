@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateCustomUserLevelReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **userLevelRequest** | [**UserLevelRequest**](../models/user-level-request) | Payload containing the details of the user level to be created. | 
+ **userLevelRequest** | [**UserLevelRequest**](../models/user-level-request) | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
 
 ### Return type
 
@@ -112,7 +112,7 @@ func main() {
           "rightSets" : [ "idn:ui-right-set-list-read-example", "idn:ui-right-set-write-example" ],
           "name" : "Custom User Level Name",
           "description" : "This is a description of the custom user level."
-        }`) // UserLevelRequest | Payload containing the details of the user level to be created.
+        }`) // UserLevelRequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
     var userLevelRequest v2025.UserLevelRequest
     if err := json.Unmarshal(userlevelrequest, &userLevelRequest); err != nil {
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
- **jsonPatch** | [**JsonPatch**](../models/json-patch) | JSON Patch payload for updating the user level. | 
+ **jsonPatch** | [**JsonPatch**](../models/json-patch) | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
 
 ### Return type
 
@@ -608,7 +608,7 @@ func main() {
             "path" : "/description",
             "value" : "New description"
           } ]
-        }`) // JsonPatch | JSON Patch payload for updating the user level.
+        }`) // JsonPatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
     var jsonPatch v2025.JsonPatch
     if err := json.Unmarshal(jsonpatch, &jsonPatch); err != nil {
