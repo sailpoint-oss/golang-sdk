@@ -3447,7 +3447,11 @@ func (r ApiGetNonEmployeeSourceSchemaAttributesRequest) Execute() ([]NonEmployee
 /*
 GetNonEmployeeSourceSchemaAttributes List schema attributes non-employee source
 
-This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
+This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8
+mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can
+add up to 10 custom attributes. This interface returns all the mandatory attributes followed by
+any custom attributes. At most, a total of 18 attributes will be returned.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id

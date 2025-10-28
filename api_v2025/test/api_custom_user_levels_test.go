@@ -73,6 +73,32 @@ func Test_api_v2025_CustomUserLevelsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CustomUserLevelsAPIService ListUserLevelCounts", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CustomUserLevelsAPI.ListUserLevelCounts(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomUserLevelsAPIService ListUserLevelIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.CustomUserLevelsAPI.ListUserLevelIdentities(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CustomUserLevelsAPIService ListUserLevels", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

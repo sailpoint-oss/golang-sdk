@@ -171,8 +171,6 @@ Class | Method | HTTP request | Description
 *AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified auth profile
 *AuthUsersAPI* | [**GetAuthUser**](docs/AuthUsersAPI.md#getauthuser) | **Get** /auth-users/{id} | Auth user details
 *AuthUsersAPI* | [**PatchAuthUser**](docs/AuthUsersAPI.md#patchauthuser) | **Patch** /auth-users/{id} | Auth user update
-*AuthorizationAPI* | [**ListUserLevelCounts**](docs/AuthorizationAPI.md#listuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
-*AuthorizationAPI* | [**ListUserLevelIdentities**](docs/AuthorizationAPI.md#listuserlevelidentities) | **Get** /authorization/user-levels/{id}/identities | List user level identities
 *BrandingAPI* | [**CreateBrandingItem**](docs/BrandingAPI.md#createbrandingitem) | **Post** /brandings | Create a branding item
 *BrandingAPI* | [**DeleteBranding**](docs/BrandingAPI.md#deletebranding) | **Delete** /brandings/{name} | Delete a branding item
 *BrandingAPI* | [**GetBranding**](docs/BrandingAPI.md#getbranding) | **Get** /brandings/{name} | Get a branding item
@@ -293,6 +291,8 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsAPI* | [**DeleteUserLevel**](docs/CustomUserLevelsAPI.md#deleteuserlevel) | **Delete** /authorization/custom-user-levels/{id} | Delete a user level
 *CustomUserLevelsAPI* | [**GetUserLevel**](docs/CustomUserLevelsAPI.md#getuserlevel) | **Get** /authorization/custom-user-levels/{id} | Retrieve a user level
 *CustomUserLevelsAPI* | [**ListAllAuthorizationRightSets**](docs/CustomUserLevelsAPI.md#listallauthorizationrightsets) | **Get** /authorization/authorization-assignable-right-sets | List all uiAssignable right sets
+*CustomUserLevelsAPI* | [**ListUserLevelCounts**](docs/CustomUserLevelsAPI.md#listuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
+*CustomUserLevelsAPI* | [**ListUserLevelIdentities**](docs/CustomUserLevelsAPI.md#listuserlevelidentities) | **Get** /authorization/user-levels/{id}/identities | List user level identities
 *CustomUserLevelsAPI* | [**ListUserLevels**](docs/CustomUserLevelsAPI.md#listuserlevels) | **Get** /authorization/custom-user-levels | List user levels
 *CustomUserLevelsAPI* | [**PublishCustomUserLevel**](docs/CustomUserLevelsAPI.md#publishcustomuserlevel) | **Post** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
 *CustomUserLevelsAPI* | [**UpdateUserLevel**](docs/CustomUserLevelsAPI.md#updateuserlevel) | **Patch** /authorization/custom-user-levels/{id} | Update a user level
