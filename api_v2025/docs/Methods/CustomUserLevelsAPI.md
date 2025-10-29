@@ -25,10 +25,10 @@ Method | HTTP request | Description
 [**delete-user-level**](#delete-user-level) | **Delete** `/authorization/custom-user-levels/{id}` | Delete a user level
 [**get-user-level**](#get-user-level) | **Get** `/authorization/custom-user-levels/{id}` | Retrieve a user level
 [**list-all-authorization-right-sets**](#list-all-authorization-right-sets) | **Get** `/authorization/authorization-assignable-right-sets` | List all uiAssignable right sets
-[**list-user-level-counts**](#list-user-level-counts) | **Post** `/authorization/user-levels/get-identity-count` | Count user levels identities
 [**list-user-level-identities**](#list-user-level-identities) | **Get** `/authorization/user-levels/{id}/identities` | List user level identities
 [**list-user-levels**](#list-user-levels) | **Get** `/authorization/custom-user-levels` | List user levels
 [**publish-custom-user-level**](#publish-custom-user-level) | **Post** `/authorization/custom-user-levels/{id}/publish` | Publish a custom user level
+[**show-user-level-counts**](#show-user-level-counts) | **Post** `/authorization/user-levels/get-identity-count` | Count user levels identities
 [**update-user-level**](#update-user-level) | **Patch** `/authorization/custom-user-levels/{id}` | Update a user level
 
 
@@ -376,86 +376,6 @@ func main() {
 
 [[Back to top]](#)
 
-## list-user-level-counts
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
-Count user levels identities
-List of user levels along with the number of identities associated to it.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/list-user-level-counts)
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListUserLevelCountsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **requestBody** | **[]string** | List of user level ids. Max 50 identifiers can be passed in a single request. | 
-
-### Return type
-
-[**[]AuthUserLevelsIdentityCount**](../models/auth-user-levels-identity-count)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-  "encoding/json"
-    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
-
-    var requestBody []v2025.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
-      fmt.Println("Error:", err)
-      return
-    }
-    
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ListUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ListUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-    if err != nil {
-	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelCounts``: %v\n", err)
-	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListUserLevelCounts`: []AuthUserLevelsIdentityCount
-    fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelCounts`: %v\n", resp)
-}
-```
-
-[[Back to top]](#)
-
 ## list-user-level-identities
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
@@ -700,6 +620,86 @@ func main() {
     }
     // response from `PublishCustomUserLevel`: UserLevelPublishSummary
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.PublishCustomUserLevel`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## show-user-level-counts
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Count user levels identities
+List of user levels along with the number of identities associated to it.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/show-user-level-counts)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiShowUserLevelCountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **requestBody** | **[]string** | List of user level ids. Max 50 identifiers can be passed in a single request. | 
+
+### Return type
+
+[**[]AuthUserLevelsIdentityCount**](../models/auth-user-levels-identity-count)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
+
+    var requestBody []v2025.RequestBody
+    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ShowUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ShowUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ShowUserLevelCounts``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ShowUserLevelCounts`: []AuthUserLevelsIdentityCount
+    fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ShowUserLevelCounts`: %v\n", resp)
 }
 ```
 

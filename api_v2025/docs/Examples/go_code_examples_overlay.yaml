@@ -9096,47 +9096,6 @@
           // response from `ListAllAuthorizationRightSets`: []HierarchicalRightSet
           fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListAllAuthorizationRightSets`: %v\n", resp)
         }
-- path: /authorization/user-levels/get-identity-count
-  method: Post
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/v2025/methods/custom-user-levels#list-user-level-counts
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
-
-          
-          var requestBody []v2025.RequestBody
-          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ListUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          //resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ListUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelCounts``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `ListUserLevelCounts`: []AuthUserLevelsIdentityCount
-          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelCounts`: %v\n", resp)
-        }
 - path: /authorization/user-levels/{id}/identities
   method: Get
   xCodeSample:
@@ -9249,6 +9208,47 @@
           }
           // response from `PublishCustomUserLevel`: UserLevelPublishSummary
           fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.PublishCustomUserLevel`: %v\n", resp)
+        }
+- path: /authorization/user-levels/get-identity-count
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/custom-user-levels#show-user-level-counts
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
+
+          
+          var requestBody []v2025.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ShowUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.V2025.CustomUserLevelsAPI.ShowUserLevelCounts(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ShowUserLevelCounts``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ShowUserLevelCounts`: []AuthUserLevelsIdentityCount
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ShowUserLevelCounts`: %v\n", resp)
         }
 - path: /authorization/custom-user-levels/{id}
   method: Patch

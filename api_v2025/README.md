@@ -291,10 +291,10 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsAPI* | [**DeleteUserLevel**](docs/CustomUserLevelsAPI.md#deleteuserlevel) | **Delete** /authorization/custom-user-levels/{id} | Delete a user level
 *CustomUserLevelsAPI* | [**GetUserLevel**](docs/CustomUserLevelsAPI.md#getuserlevel) | **Get** /authorization/custom-user-levels/{id} | Retrieve a user level
 *CustomUserLevelsAPI* | [**ListAllAuthorizationRightSets**](docs/CustomUserLevelsAPI.md#listallauthorizationrightsets) | **Get** /authorization/authorization-assignable-right-sets | List all uiAssignable right sets
-*CustomUserLevelsAPI* | [**ListUserLevelCounts**](docs/CustomUserLevelsAPI.md#listuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsAPI* | [**ListUserLevelIdentities**](docs/CustomUserLevelsAPI.md#listuserlevelidentities) | **Get** /authorization/user-levels/{id}/identities | List user level identities
 *CustomUserLevelsAPI* | [**ListUserLevels**](docs/CustomUserLevelsAPI.md#listuserlevels) | **Get** /authorization/custom-user-levels | List user levels
 *CustomUserLevelsAPI* | [**PublishCustomUserLevel**](docs/CustomUserLevelsAPI.md#publishcustomuserlevel) | **Post** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
+*CustomUserLevelsAPI* | [**ShowUserLevelCounts**](docs/CustomUserLevelsAPI.md#showuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsAPI* | [**UpdateUserLevel**](docs/CustomUserLevelsAPI.md#updateuserlevel) | **Patch** /authorization/custom-user-levels/{id} | Update a user level
 *DataSegmentationAPI* | [**CreateDataSegment**](docs/DataSegmentationAPI.md#createdatasegment) | **Post** /data-segments | Create segment
 *DataSegmentationAPI* | [**DeleteDataSegment**](docs/DataSegmentationAPI.md#deletedatasegment) | **Delete** /data-segments/{segmentId} | Delete segment by id
