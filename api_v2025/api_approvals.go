@@ -1367,13 +1367,13 @@ type ApiPutApprovalsConfigTypeRequest struct {
 	approvalConfig *ApprovalConfig
 }
 
-// The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT
+// The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT 
 func (r ApiPutApprovalsConfigTypeRequest) Id(id string) ApiPutApprovalsConfigTypeRequest {
 	r.id = &id
 	return r
 }
 
-// The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT
+// The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT 
 func (r ApiPutApprovalsConfigTypeRequest) Scope(scope string) ApiPutApprovalsConfigTypeRequest {
 	r.scope = &scope
 	return r
