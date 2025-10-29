@@ -72135,6 +72135,7 @@ components:
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
             - APPLICATION_DISCOVERY
+            - DELETE
             example: AUTHENTICATE
             type: string
           type: array
@@ -78371,6 +78372,7 @@ components:
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
             - APPLICATION_DISCOVERY
+            - DELETE
             example: AUTHENTICATE
             type: string
           type: array
@@ -79054,6 +79056,7 @@ components:
             - ARM_CHANGELOG_EXTRACT
             - USES_UUID
             - APPLICATION_DISCOVERY
+            - DELETE
             example: AUTHENTICATE
             type: string
           type: array
@@ -86811,6 +86814,7 @@ components:
         - ARM_CHANGELOG_EXTRACT
         - USES_UUID
         - APPLICATION_DISCOVERY
+        - DELETE
         example: AUTHENTICATE
         type: string
       type: array
