@@ -86,13 +86,13 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalsAPIService GetApprovalsConfigIdType", func(t *testing.T) {
+	t.Run("Test ApprovalsAPIService GetApprovalsConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ApprovalsAPI.GetApprovalsConfigIdType(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.GetApprovalsConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -112,11 +112,11 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalsAPIService PutApprovalsConfigType", func(t *testing.T) {
+	t.Run("Test ApprovalsAPIService PutApprovalsConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalsAPI.PutApprovalsConfigType(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.PutApprovalsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

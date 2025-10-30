@@ -23,7 +23,7 @@ type ApprovalConfig struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	// ID of the approval configuration.
 	Id *string `json:"id,omitempty"`
-	// The type/scope of the configuration. Ie APPROVAL_REQUEST, DOMAIN_OBJECT, APPROVAL_TYPE, TENANT
+	// The type/scope of the configuration. Ie DOMAIN_OBJECT, APPROVAL_TYPE, TENANT
 	Scope *string `json:"scope,omitempty"`
 	ReminderConfig *ApprovalConfigReminderConfig `json:"reminderConfig,omitempty"`
 	EscalationConfig *ApprovalConfigEscalationConfig `json:"escalationConfig,omitempty"`

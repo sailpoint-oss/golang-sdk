@@ -1026,28 +1026,27 @@ func (a *ApprovalsAPIService) GetApprovalsExecute(r ApiGetApprovalsRequest) ([]A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetApprovalsConfigIdTypeRequest struct {
+type ApiGetApprovalsConfigRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
 }
 
-func (r ApiGetApprovalsConfigIdTypeRequest) Execute() (*ApprovalConfig, *http.Response, error) {
-	return r.ApiService.GetApprovalsConfigIdTypeExecute(r)
+func (r ApiGetApprovalsConfigRequest) Execute() (*ApprovalConfig, *http.Response, error) {
+	return r.ApiService.GetApprovalsConfigExecute(r)
 }
 
 /*
-GetApprovalsConfigIdType Get Approval Config Type
+GetApprovalsConfig Get Approval Config
 
-Currently this endpoint only supports Entitlement Description Approvals.
 Retrieves a singular approval configuration that matches the given ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID the ID defined by the scope field, this could the approval ID (uuid), specific domain object ID (uuid), approval type (role/application/access_request/entitlement/source), tenant ID (uuid)
- @return ApiGetApprovalsConfigIdTypeRequest
+ @param id The id of the object the config applies to, for example one of the following: [{approvalID}, {roleID}, {entitlementID}, {accessProfileID}, {sourceID}, {applicationID}, \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", {tenantID}]
+ @return ApiGetApprovalsConfigRequest
 */
-func (a *ApprovalsAPIService) GetApprovalsConfigIdType(ctx context.Context, id string) ApiGetApprovalsConfigIdTypeRequest {
-	return ApiGetApprovalsConfigIdTypeRequest{
+func (a *ApprovalsAPIService) GetApprovalsConfig(ctx context.Context, id string) ApiGetApprovalsConfigRequest {
+	return ApiGetApprovalsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1056,7 +1055,7 @@ func (a *ApprovalsAPIService) GetApprovalsConfigIdType(ctx context.Context, id s
 
 // Execute executes the request
 //  @return ApprovalConfig
-func (a *ApprovalsAPIService) GetApprovalsConfigIdTypeExecute(r ApiGetApprovalsConfigIdTypeRequest) (*ApprovalConfig, *http.Response, error) {
+func (a *ApprovalsAPIService) GetApprovalsConfigExecute(r ApiGetApprovalsConfigRequest) (*ApprovalConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1064,12 +1063,12 @@ func (a *ApprovalsAPIService) GetApprovalsConfigIdTypeExecute(r ApiGetApprovalsC
 		localVarReturnValue  *ApprovalConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.GetApprovalsConfigIdType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.GetApprovalsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/generic-approvals/config"
+	localVarPath := localBasePath + "/generic-approvals/config/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1359,45 +1358,45 @@ func (a *ApprovalsAPIService) MoveApprovalExecute(r ApiMoveApprovalRequest) (map
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutApprovalsConfigTypeRequest struct {
+type ApiPutApprovalsConfigRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
+	approvalConfig *ApprovalConfig
 	id *string
 	scope *string
-	approvalConfig *ApprovalConfig
 }
 
-// The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT 
-func (r ApiPutApprovalsConfigTypeRequest) Id(id string) ApiPutApprovalsConfigTypeRequest {
-	r.id = &id
-	return r
-}
-
-// The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT 
-func (r ApiPutApprovalsConfigTypeRequest) Scope(scope string) ApiPutApprovalsConfigTypeRequest {
-	r.scope = &scope
-	return r
-}
-
-func (r ApiPutApprovalsConfigTypeRequest) ApprovalConfig(approvalConfig ApprovalConfig) ApiPutApprovalsConfigTypeRequest {
+func (r ApiPutApprovalsConfigRequest) ApprovalConfig(approvalConfig ApprovalConfig) ApiPutApprovalsConfigRequest {
 	r.approvalConfig = &approvalConfig
 	return r
 }
 
-func (r ApiPutApprovalsConfigTypeRequest) Execute() (*ApprovalConfig, *http.Response, error) {
-	return r.ApiService.PutApprovalsConfigTypeExecute(r)
+// The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
+func (r ApiPutApprovalsConfigRequest) Id(id string) ApiPutApprovalsConfigRequest {
+	r.id = &id
+	return r
+}
+
+// The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
+func (r ApiPutApprovalsConfigRequest) Scope(scope string) ApiPutApprovalsConfigRequest {
+	r.scope = &scope
+	return r
+}
+
+func (r ApiPutApprovalsConfigRequest) Execute() (*ApprovalConfig, *http.Response, error) {
+	return r.ApiService.PutApprovalsConfigExecute(r)
 }
 
 /*
-PutApprovalsConfigType Put Approval Config Type
+PutApprovalsConfig Put Approval Config
 
-Upserts a singular approval configuration that matches the given configID and configScope
+Upserts a singular approval configuration that matches the given configID and configScope. If id and scope are not provided, it will default to setting the tenant config.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPutApprovalsConfigTypeRequest
+ @return ApiPutApprovalsConfigRequest
 */
-func (a *ApprovalsAPIService) PutApprovalsConfigType(ctx context.Context) ApiPutApprovalsConfigTypeRequest {
-	return ApiPutApprovalsConfigTypeRequest{
+func (a *ApprovalsAPIService) PutApprovalsConfig(ctx context.Context) ApiPutApprovalsConfigRequest {
+	return ApiPutApprovalsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1405,7 +1404,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigType(ctx context.Context) ApiPut
 
 // Execute executes the request
 //  @return ApprovalConfig
-func (a *ApprovalsAPIService) PutApprovalsConfigTypeExecute(r ApiPutApprovalsConfigTypeRequest) (*ApprovalConfig, *http.Response, error) {
+func (a *ApprovalsAPIService) PutApprovalsConfigExecute(r ApiPutApprovalsConfigRequest) (*ApprovalConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1413,7 +1412,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigTypeExecute(r ApiPutApprovalsCon
 		localVarReturnValue  *ApprovalConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.PutApprovalsConfigType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.PutApprovalsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1423,18 +1422,16 @@ func (a *ApprovalsAPIService) PutApprovalsConfigTypeExecute(r ApiPutApprovalsCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.id == nil {
-		return localVarReturnValue, nil, reportError("id is required and must be specified")
-	}
-	if r.scope == nil {
-		return localVarReturnValue, nil, reportError("scope is required and must be specified")
-	}
 	if r.approvalConfig == nil {
 		return localVarReturnValue, nil, reportError("approvalConfig is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "", "")
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
+	}
+	if r.scope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
