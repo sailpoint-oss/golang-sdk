@@ -936,7 +936,7 @@ func (r ApiListMachineAccountSubtypesRequest) XSailPointExperimental(xSailPointE
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
 func (r ApiListMachineAccountSubtypesRequest) Filters(filters string) ApiListMachineAccountSubtypesRequest {
 	r.filters = &filters
 	return r

@@ -1174,11 +1174,13 @@ func (r ApiGetWorkflowExecutionHistoryRequest) Execute() ([]WorkflowExecutionEve
 /*
 GetWorkflowExecutionHistory Get workflow execution history
 
-Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+[Deprecated] This endpoint will be removed in October 2027. Please use `/workflow-executions/{id}/history-v2` instead. Retrieves the detailed history of a single workflow execution. Workflow executions are available for up to 90 days before being archived; accessing an archived execution will return a 404 Not Found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow execution
  @return ApiGetWorkflowExecutionHistoryRequest
+
+Deprecated
 */
 func (a *WorkflowsAPIService) GetWorkflowExecutionHistory(ctx context.Context, id string) ApiGetWorkflowExecutionHistoryRequest {
 	return ApiGetWorkflowExecutionHistoryRequest{
@@ -1190,6 +1192,7 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionHistory(ctx context.Context, i
 
 // Execute executes the request
 //  @return []WorkflowExecutionEvent
+// Deprecated
 func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflowExecutionHistoryRequest) ([]WorkflowExecutionEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
