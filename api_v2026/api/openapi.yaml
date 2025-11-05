@@ -1,0 +1,1365 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud v2026 API
+  version: v2026
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com/v2026"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the v2026 API server.
+  url: "https://{apiUrl}/v2026"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- name: Task Management
+paths:
+  /task-status/{id}:
+    get:
+      description: Get task status by task ID. Types of tasks include account and
+        entitlement aggregation and other general background processing tasks.  Data
+        for tasks older than 90 days will not be returned.
+      operationId: getTaskStatus
+      parameters:
+      - description: Task ID.
+        example: 00eebcf881994e419d72e757fd30dc0e
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getTaskStatusList
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: Responds with a TaskStatus for the task with the given task
+            ID.
+        "403":
+          description: "Forbidden, generally due to a lack of security rights"
+        "404":
+          description: TaskStatus with the given id was not found.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      - applicationAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      summary: Get task status by id
+      tags:
+      - Task Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: Update a current task status by task ID. Use this API to clear
+        a pending task by updating the completionStatus and completed attributes.
+      operationId: updateTaskStatus
+      parameters:
+      - description: Task ID.
+        example: 00eebcf881994e419d72e757fd30dc0e
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getTaskStatusList
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              example:
+              - op: replace
+                path: /completionStatus
+                value: Error
+              - op: replace
+                path: /completed
+                value: 2024-05-17 19:33:16.470000+00:00
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: The JSONPatch payload used to update the object.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: "This response indicates the PATCH operation succeeded, and\
+            \ the API returns the updated task object."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:task-management:write
+      summary: Update task status by id
+      tags:
+      - Task Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /task-status:
+    get:
+      description: |
+        Use this endpoint to get a list of statuses for **all** tasks which include finished, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for only **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2024/get-pending-tasks) endpoint.
+        Possible tasks to be returned: Cloud Account Aggregation, Cloud Group Aggregation, Cloud Process Uncorrelated Accounts, Cloud Refresh Role, Source Application Discovery, AI Agent Aggregation, Cloud Entitlement Import, Cloud Uncorrelated Refresh, Cloud Identity Aggregation, Cloud Attribute Synchronization, Identity Refresh
+      operationId: getTaskStatusList
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **sourceId**: *eq, in*
+
+          **completionStatus**: *eq, in*
+
+          **type**: *eq, in*
+        example: type eq "Cloud Account Aggregation" and completionStatus eq "null"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created**
+        example: -created
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaskStatus'
+                type: array
+          description: Responds with a TaskStatus for the task with the given task
+            ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      - applicationAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      summary: Retrieve task status list
+      tags:
+      - Task Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /task-status/pending-tasks:
+    get:
+      description: |
+        Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
+        Possible tasks to be returned: Cloud Account Aggregation, Cloud Group Aggregation, Cloud Process Uncorrelated Accounts, Cloud Refresh Role, Source Application Discovery, AI Agent Aggregation, Cloud Entitlement Import, Cloud Uncorrelated Refresh, Cloud Identity Aggregation, Cloud Attribute Synchronization, Identity Refresh
+      operationId: getPendingTasks
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaskStatus'
+                type: array
+          description: Responds with a list of TaskStatus for pending tasks.
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      - applicationAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      summary: Retrieve pending task status list
+      tags:
+      - Task Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    head:
+      description: Responds with headers only for list of task statuses for pending
+        tasks.
+      operationId: getPendingTaskHeaders
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "200":
+          description: Retrieve headers for a list of TaskStatus for pending tasks.
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTaskStatus_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      - applicationAuth:
+        - idn:task-management:read
+        - idn:task-management:write
+      summary: Retrieve pending task list headers
+      tags:
+      - Task Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTaskStatus_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTaskStatus_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+  schemas:
+    TaskStatus:
+      description: Details and current status of a specific task
+      example:
+        taskDefinitionSummary:
+          parentName: Cloud Account Aggregation
+          uniqueName: Cloud Account Aggregation
+          executor: sailpoint.task.ServiceTaskExecutor
+          description: Aggregates from the specified application.
+          arguments:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          id: 2c91808475b4334b0175e1dff64b63c5
+        created: 2020-07-11T21:23:15Z
+        description: A Really Big Task
+        completed: 2020-07-11T21:23:15Z
+        percentComplete: 100
+        type: QUARTZ
+        launched: 2020-07-11T21:23:15Z
+        target:
+          name: "Active Directory [source]"
+          id: c6dc37bf508149b28ce5b7d90ca4bbf9
+          type: APPLICATION
+        parentName: Parent Task
+        uniqueName: Big Task
+        modified: 2020-07-11T21:23:15Z
+        messages:
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        progress: Started
+        returns:
+        - name: label
+          attributeName: identityCount
+        - name: label
+          attributeName: identityCount
+        attributes:
+          identityCount: 0
+        id: id12345
+        completionStatus: SUCCESS
+        launcher: sweep
+      properties:
+        id:
+          description: System-generated unique ID of the task this TaskStatus represents
+          example: id12345
+          type: string
+        type:
+          description: Type of task this TaskStatus represents
+          enum:
+          - QUARTZ
+          - QPOC
+          - QUEUED_TASK
+          example: QUARTZ
+          type: string
+        uniqueName:
+          description: Name of the task this TaskStatus represents
+          example: Big Task
+          type: string
+        description:
+          description: Description of the task this TaskStatus represents
+          example: A Really Big Task
+          type: string
+        parentName:
+          description: Name of the parent of the task this TaskStatus represents
+          example: Parent Task
+          nullable: true
+          type: string
+        launcher:
+          description: Service to execute the task this TaskStatus represents
+          example: sweep
+          type: string
+        target:
+          $ref: '#/components/schemas/Target'
+        created:
+          description: Creation date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        modified:
+          description: Last modification date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        launched:
+          description: Launch date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        completed:
+          description: Completion date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        completionStatus:
+          description: Completion status of the task this TaskStatus represents
+          enum:
+          - SUCCESS
+          - WARNING
+          - ERROR
+          - TERMINATED
+          - TEMPERROR
+          - null
+          example: SUCCESS
+          nullable: true
+          type: string
+        messages:
+          description: Messages associated with the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskStatusMessage'
+          type: array
+        returns:
+          description: Return values from the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskReturnDetails'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Attributes of the task this TaskStatus represents
+          example:
+            identityCount: 0
+          type: object
+        progress:
+          description: Current progress of the task this TaskStatus represents
+          example: Started
+          nullable: true
+          type: string
+        percentComplete:
+          description: Current percentage completion of the task this TaskStatus represents
+          example: 100
+          format: int32
+          type: integer
+        taskDefinitionSummary:
+          $ref: '#/components/schemas/TaskDefinitionSummary'
+      required:
+      - attributes
+      - completed
+      - completionStatus
+      - created
+      - description
+      - id
+      - launched
+      - launcher
+      - messages
+      - modified
+      - parentName
+      - percentComplete
+      - progress
+      - returns
+      - type
+      - uniqueName
+      title: Task Status
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    Target:
+      example:
+        name: "Active Directory [source]"
+        id: c6dc37bf508149b28ce5b7d90ca4bbf9
+        type: APPLICATION
+      nullable: true
+      properties:
+        id:
+          description: Target ID
+          example: c6dc37bf508149b28ce5b7d90ca4bbf9
+          type: string
+        type:
+          description: Target type
+          enum:
+          - APPLICATION
+          - IDENTITY
+          - null
+          example: APPLICATION
+          nullable: true
+          type: string
+        name:
+          description: Target name
+          example: "Active Directory [source]"
+          type: string
+      title: Target
+      type: object
+    TaskStatusMessage:
+      description: TaskStatus Message
+      example:
+        type: INFO
+        parameters:
+        - name: value
+        key: akey
+        localizedText:
+          locale: An error has occurred!
+          message: Error has occurred!
+      properties:
+        type:
+          description: Type of the message
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: INFO
+          type: string
+        localizedText:
+          $ref: '#/components/schemas/LocalizedMessage'
+        key:
+          description: Key of the message
+          example: akey
+          type: string
+        parameters:
+          description: Message parameters for internationalization
+          example:
+          - name: value
+          items:
+            $ref: '#/components/schemas/TaskStatusMessage_parameters_inner'
+          nullable: true
+          type: array
+      required:
+      - key
+      - localizedText
+      - parameters
+      - type
+      title: Task Status Message
+      type: object
+    TaskReturnDetails:
+      description: Task return details
+      example:
+        name: label
+        attributeName: identityCount
+      properties:
+        name:
+          description: Display name of the TaskReturnDetails
+          example: label
+          type: string
+        attributeName:
+          description: Attribute the TaskReturnDetails is for
+          example: identityCount
+          type: string
+      required:
+      - attributeName
+      - name
+      title: Task Return Details
+      type: object
+    TaskDefinitionSummary:
+      description: "Definition of a type of task, used to invoke tasks"
+      example:
+        parentName: Cloud Account Aggregation
+        uniqueName: Cloud Account Aggregation
+        executor: sailpoint.task.ServiceTaskExecutor
+        description: Aggregates from the specified application.
+        arguments:
+          mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+          eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+          serviceClass: sailpoint.thunderbolt.service.AggregationService
+          serviceMethod: accountAggregationTask
+        id: 2c91808475b4334b0175e1dff64b63c5
+      properties:
+        id:
+          description: System-generated unique ID of the TaskDefinition
+          example: 2c91808475b4334b0175e1dff64b63c5
+          type: string
+        uniqueName:
+          description: Name of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        description:
+          description: Description of the TaskDefinition
+          example: Aggregates from the specified application.
+          nullable: true
+          type: string
+        parentName:
+          description: Name of the parent of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        executor:
+          description: Executor of the TaskDefinition
+          example: sailpoint.task.ServiceTaskExecutor
+          nullable: true
+          type: string
+        arguments:
+          additionalProperties: true
+          description: "Formal parameters of the TaskDefinition, without values"
+          example:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          type: object
+      required:
+      - arguments
+      - description
+      - executor
+      - id
+      - parentName
+      - uniqueName
+      title: Task Definition Summary
+      type: object
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    LocalizedMessage:
+      description: Localized error message to indicate a failed invocation or error
+        if any.
+      example:
+        locale: An error has occurred!
+        message: Error has occurred!
+      nullable: true
+      properties:
+        locale:
+          description: Message locale
+          example: An error has occurred!
+          type: string
+        message:
+          description: Message text
+          example: Error has occurred!
+          type: string
+      required:
+      - locale
+      - message
+      title: Localized Message
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    getTaskStatus_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+          type: object
+      type: object
+    getTaskStatus_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+          type: object
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    JsonPatchOperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    TaskStatusMessage_parameters_inner:
+      anyOf:
+      - type: object
+      - type: string
+  securitySchemes:
+    userAuth:
+      description: |
+        OAuth2 Bearer token (JWT) generated using either a [personal access token (PAT)](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or through the [authorization code flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-authorization-code-grant-flow).
+
+        Personal access tokens are associated with a user in Identity Security Cloud and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
+
+        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example-tenant.login.sailpoint.com/oauth/authorize
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://example-tenant.api.identitynow.com/oauth/token
+        clientCredentials:
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://example-tenant.api.identitynow.com/oauth/token
+      type: oauth2
+      x-displayName: Personal Access Token
+    applicationAuth:
+      description: |
+        OAuth2 Bearer token (JWT) generated using [client credentials flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-client-credentials-grant-flow).
+
+        Client credentials refers to tokens that are not associated with a user in Identity Security Cloud.
+
+        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
+      flows:
+        clientCredentials:
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://example-tenant.api.identitynow.com/oauth/token
+      type: oauth2
+      x-displayName: Client Credentials
