@@ -61,6 +61,11 @@ jobs:
           rsync -cav --delete golang-sdk/api_v2025/docs/Models  developer-community/docs/tools/sdk/go/Reference/V2025
           rsync -av  golang-sdk/api_v2025/docs/Examples/go_code_examples_overlay.yaml developer-community/static/code-examples/v2025/
 
+          # V2026
+          rsync -cav --delete golang-sdk/api_v2026/docs/Methods developer-community/docs/tools/sdk/go/Reference/V2026
+          rsync -cav --delete golang-sdk/api_v2026/docs/Models  developer-community/docs/tools/sdk/go/Reference/V2026
+          rsync -av  golang-sdk/api_v2026/docs/Examples/go_code_examples_overlay.yaml developer-community/static/code-examples/v2026/
+
       - name: Check for changes and commit if any
         working-directory: developer-community
         run: |
