@@ -74,7 +74,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.V2024 = v2024.NewAPIClient(CV2024)
 	c.V2025 = v2025.NewAPIClient(CV2025)
 	c.Generic = generic.NewAPIClient(CVGeneric)
-
 	// API Services
 
 	return c
