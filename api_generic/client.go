@@ -461,7 +461,7 @@ localVarRequest.Header.Add("X-SailPoint-SDK", "2.1.13")
 	}
 
 	if _, exists := headerParams["X-SailPoint-Experimental"]; exists && !c.cfg.Experimental {
-		panic("You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.")
+		panic("You are using Experimental APIs. Set configuration.Experimental = true to enable these APIs in the SDK.")
 	} else if _, exists := headerParams["X-SailPoint-Experimental"]; exists && c.cfg.Experimental {
 		//fmt.Fprintf(os.Stdout, "Warning: You are using Experimental APIs\n")
 	}

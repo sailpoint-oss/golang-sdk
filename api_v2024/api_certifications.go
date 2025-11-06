@@ -204,7 +204,7 @@ func (r ApiGetIdentityCertificationRequest) Execute() (*IdentityCertificationDto
 /*
 GetIdentityCertification Identity certification by id
 
-This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification id

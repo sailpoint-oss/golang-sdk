@@ -1341,7 +1341,7 @@ func (r ApiListIdentityCertificationsRequest) Execute() ([]IdentityCertification
 /*
 ListIdentityCertifications List identity campaign certifications
 
-Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
+Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityCertificationsRequest
