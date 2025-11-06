@@ -140,7 +140,7 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
 *ApprovalsAPI* | [**ApproveApproval**](docs/ApprovalsAPI.md#approveapproval) | **Post** /generic-approvals/{id}/approve | Post Approvals Approve
-*ApprovalsAPI* | [**ApproveApproval_0**](docs/ApprovalsAPI.md#approveapproval_0) | **Post** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
+*ApprovalsAPI* | [**ApproveApprovalInBulk**](docs/ApprovalsAPI.md#approveapprovalinbulk) | **Post** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
 *ApprovalsAPI* | [**CancelApproval**](docs/ApprovalsAPI.md#cancelapproval) | **Post** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get approvals
@@ -148,7 +148,7 @@ Class | Method | HTTP request | Description
 *ApprovalsAPI* | [**MoveApproval**](docs/ApprovalsAPI.md#moveapproval) | **Post** /generic-approvals/bulk-reassign | Post Bulk Reassign Approvals
 *ApprovalsAPI* | [**PutApprovalsConfig**](docs/ApprovalsAPI.md#putapprovalsconfig) | **Put** /generic-approvals/config | Put Approval Config
 *ApprovalsAPI* | [**RejectApproval**](docs/ApprovalsAPI.md#rejectapproval) | **Post** /generic-approvals/{id}/reject | Post Approvals Reject
-*ApprovalsAPI* | [**RejectApproval_0**](docs/ApprovalsAPI.md#rejectapproval_0) | **Post** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
+*ApprovalsAPI* | [**RejectApprovalInBulk**](docs/ApprovalsAPI.md#rejectapprovalinbulk) | **Post** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
 *ApprovalsAPI* | [**UpdateApprovalsAttributes**](docs/ApprovalsAPI.md#updateapprovalsattributes) | **Post** /generic-approvals/{id}/attributes | Post Approvals Attributes
 *ApprovalsAPI* | [**UpdateApprovalsComments**](docs/ApprovalsAPI.md#updateapprovalscomments) | **Post** /generic-approvals/{id}/comments | Post Approvals Comments
 *ApprovalsAPI* | [**UpdateApprovalsReassign**](docs/ApprovalsAPI.md#updateapprovalsreassign) | **Post** /generic-approvals/{id}/reassign | Post Approvals Reassign

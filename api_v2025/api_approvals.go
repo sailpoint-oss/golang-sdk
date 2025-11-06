@@ -201,31 +201,31 @@ func (a *ApprovalsAPIService) ApproveApprovalExecute(r ApiApproveApprovalRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApproveApproval_0Request struct {
+type ApiApproveApprovalInBulkRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	bulkApproveRequestDTO *BulkApproveRequestDTO
 }
 
-func (r ApiApproveApproval_0Request) BulkApproveRequestDTO(bulkApproveRequestDTO BulkApproveRequestDTO) ApiApproveApproval_0Request {
+func (r ApiApproveApprovalInBulkRequest) BulkApproveRequestDTO(bulkApproveRequestDTO BulkApproveRequestDTO) ApiApproveApprovalInBulkRequest {
 	r.bulkApproveRequestDTO = &bulkApproveRequestDTO
 	return r
 }
 
-func (r ApiApproveApproval_0Request) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.ApproveApproval_1Execute(r)
+func (r ApiApproveApprovalInBulkRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ApproveApprovalInBulkExecute(r)
 }
 
 /*
-ApproveApproval_0 Post Bulk Approve Approvals
+ApproveApprovalInBulk Post Bulk Approve Approvals
 
 Bulk Approves specified approval requests on behalf of the caller
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApproveApproval_0Request
+ @return ApiApproveApprovalInBulkRequest
 */
-func (a *ApprovalsAPIService) ApproveApproval_1(ctx context.Context) ApiApproveApproval_0Request {
-	return ApiApproveApproval_0Request{
+func (a *ApprovalsAPIService) ApproveApprovalInBulk(ctx context.Context) ApiApproveApprovalInBulkRequest {
+	return ApiApproveApprovalInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -233,7 +233,7 @@ func (a *ApprovalsAPIService) ApproveApproval_1(ctx context.Context) ApiApproveA
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *ApprovalsAPIService) ApproveApproval_1Execute(r ApiApproveApproval_0Request) (map[string]interface{}, *http.Response, error) {
+func (a *ApprovalsAPIService) ApproveApprovalInBulkExecute(r ApiApproveApprovalInBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -241,7 +241,7 @@ func (a *ApprovalsAPIService) ApproveApproval_1Execute(r ApiApproveApproval_0Req
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.ApproveApproval_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.ApproveApprovalInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1720,31 +1720,31 @@ func (a *ApprovalsAPIService) RejectApprovalExecute(r ApiRejectApprovalRequest) 
 	return localVarHTTPResponse, nil
 }
 
-type ApiRejectApproval_0Request struct {
+type ApiRejectApprovalInBulkRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	bulkRejectRequestDTO *BulkRejectRequestDTO
 }
 
-func (r ApiRejectApproval_0Request) BulkRejectRequestDTO(bulkRejectRequestDTO BulkRejectRequestDTO) ApiRejectApproval_0Request {
+func (r ApiRejectApprovalInBulkRequest) BulkRejectRequestDTO(bulkRejectRequestDTO BulkRejectRequestDTO) ApiRejectApprovalInBulkRequest {
 	r.bulkRejectRequestDTO = &bulkRejectRequestDTO
 	return r
 }
 
-func (r ApiRejectApproval_0Request) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.RejectApproval_2Execute(r)
+func (r ApiRejectApprovalInBulkRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.RejectApprovalInBulkExecute(r)
 }
 
 /*
-RejectApproval_0 Post Bulk Reject Approvals
+RejectApprovalInBulk Post Bulk Reject Approvals
 
 Bulk reject specified approval requests on behalf of the caller
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRejectApproval_0Request
+ @return ApiRejectApprovalInBulkRequest
 */
-func (a *ApprovalsAPIService) RejectApproval_2(ctx context.Context) ApiRejectApproval_0Request {
-	return ApiRejectApproval_0Request{
+func (a *ApprovalsAPIService) RejectApprovalInBulk(ctx context.Context) ApiRejectApprovalInBulkRequest {
+	return ApiRejectApprovalInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1752,7 +1752,7 @@ func (a *ApprovalsAPIService) RejectApproval_2(ctx context.Context) ApiRejectApp
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *ApprovalsAPIService) RejectApproval_2Execute(r ApiRejectApproval_0Request) (map[string]interface{}, *http.Response, error) {
+func (a *ApprovalsAPIService) RejectApprovalInBulkExecute(r ApiRejectApprovalInBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1760,7 +1760,7 @@ func (a *ApprovalsAPIService) RejectApproval_2Execute(r ApiRejectApproval_0Reque
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.RejectApproval_2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.RejectApprovalInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

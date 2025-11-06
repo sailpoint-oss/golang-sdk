@@ -36,11 +36,11 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalsAPIService ApproveApproval_1", func(t *testing.T) {
+	t.Run("Test ApprovalsAPIService ApproveApprovalInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalsAPI.ApproveApproval_0(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.ApproveApprovalInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -137,11 +137,11 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalsAPIService RejectApproval_2", func(t *testing.T) {
+	t.Run("Test ApprovalsAPIService RejectApprovalInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalsAPI.RejectApproval_0(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.RejectApprovalInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
