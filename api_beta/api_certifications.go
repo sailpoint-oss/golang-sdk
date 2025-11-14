@@ -265,6 +265,8 @@ This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
  @return ApiGetIdentityCertificationPendingTasksRequest
+
+Deprecated
 */
 func (a *CertificationsAPIService) GetIdentityCertificationPendingTasks(ctx context.Context, id string) ApiGetIdentityCertificationPendingTasksRequest {
 	return ApiGetIdentityCertificationPendingTasksRequest{
@@ -276,6 +278,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationPendingTasks(ctx cont
 
 // Execute executes the request
 //  @return []IdentityCertificationTask
+// Deprecated
 func (a *CertificationsAPIService) GetIdentityCertificationPendingTasksExecute(r ApiGetIdentityCertificationPendingTasksRequest) ([]IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -435,6 +438,8 @@ This API returns the status of a certification task. A token with ORG_ADMIN or C
  @param id The identity campaign certification ID
  @param taskId The certification task ID
  @return ApiGetIdentityCertificationTaskStatusRequest
+
+Deprecated
 */
 func (a *CertificationsAPIService) GetIdentityCertificationTaskStatus(ctx context.Context, id string, taskId string) ApiGetIdentityCertificationTaskStatusRequest {
 	return ApiGetIdentityCertificationTaskStatusRequest{
@@ -447,6 +452,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationTaskStatus(ctx contex
 
 // Execute executes the request
 //  @return IdentityCertificationTask
+// Deprecated
 func (a *CertificationsAPIService) GetIdentityCertificationTaskStatusExecute(r ApiGetIdentityCertificationTaskStatusRequest) (*IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -875,6 +881,8 @@ This API returns a list of certifications that satisfy the given query parameter
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCertificationsRequest
+
+Deprecated
 */
 func (a *CertificationsAPIService) ListCertifications(ctx context.Context) ApiListCertificationsRequest {
 	return ApiListCertificationsRequest{
@@ -885,6 +893,7 @@ func (a *CertificationsAPIService) ListCertifications(ctx context.Context) ApiLi
 
 // Execute executes the request
 //  @return []CertificationDto
+// Deprecated
 func (a *CertificationsAPIService) ListCertificationsExecute(r ApiListCertificationsRequest) ([]CertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
