@@ -1233,6 +1233,10 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
       summary: List access model metadata attributes
       tags:
       - Access Model Metadata
@@ -1317,6 +1321,10 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
       summary: Get access model metadata attribute
       tags:
       - Access Model Metadata
@@ -1441,6 +1449,10 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
       summary: List access model metadata values
       tags:
       - Access Model Metadata
@@ -1533,6 +1545,10 @@ paths:
       security:
       - userAuth:
         - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
       summary: Get access model metadata value
       tags:
       - Access Model Metadata
@@ -2352,8 +2368,6 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
-      - applicationAuth:
-        - idn:access-profile:manage
       summary: Update access profile(s) requestable field.
       tags:
       - Access Profiles
@@ -2757,7 +2771,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request:cancel
+        - idn:access-request:manage
       summary: Cancel access request
       tags:
       - Access Requests
@@ -3009,7 +3023,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-config:update
+        - idn:access-request-config:manage
       summary: Update access request configuration
       tags:
       - Access Requests
@@ -4043,6 +4057,10 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+      - applicationAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
       summary: Identity access request recommendations
       tags:
       - IAI Access Request Recommendations
@@ -4186,6 +4204,10 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
       summary: List ignored access request recommendations
       tags:
       - IAI Access Request Recommendations
@@ -4269,6 +4291,10 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
       summary: Ignore access request recommendation
       tags:
       - IAI Access Request Recommendations
@@ -4412,6 +4438,10 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
       summary: List accepted access request recommendations
       tags:
       - IAI Access Request Recommendations
@@ -4496,6 +4526,10 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
       summary: Accept access request recommendation
       tags:
       - IAI Access Request Recommendations
@@ -4639,6 +4673,12 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
       summary: List viewed access request recommendations
       tags:
       - IAI Access Request Recommendations
@@ -5045,6 +5085,9 @@ paths:
       - userAuth:
         - idn:accounts:read
         - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
       summary: Accounts list
       tags:
       - Accounts
@@ -5142,6 +5185,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
         - idn:accounts:manage
       summary: Create account
       tags:
@@ -5366,6 +5411,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
         - idn:accounts:read
         - idn:accounts:manage
       summary: Account details
@@ -5791,6 +5839,10 @@ paths:
       security:
       - userAuth:
         - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
       summary: Account entitlements
       tags:
       - Accounts
@@ -6252,7 +6304,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Unlock account
       tags:
       - Accounts
@@ -6877,6 +6930,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
+        - idn:account-config:manage
       summary: List extended search attributes
       tags:
       - Search Attribute Configuration
@@ -6983,7 +7037,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:create
+        - idn:account-config:manage
       summary: Create extended search attributes
       tags:
       - Search Attribute Configuration
@@ -7076,7 +7130,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:delete
+        - idn:account-config:manage
       summary: Delete extended search attribute
       tags:
       - Search Attribute Configuration
@@ -7177,6 +7231,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
+        - idn:account-config:manage
       summary: Get extended search attribute
       tags:
       - Search Attribute Configuration
@@ -7297,7 +7352,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:create
+        - idn:account-config:manage
       summary: Update extended search attribute
       tags:
       - Search Attribute Configuration
@@ -12830,7 +12885,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:update
+        - idn:entitlement:manage
       summary: Patch an entitlement
       tags:
       - Entitlements
@@ -13267,6 +13322,10 @@ paths:
       security:
       - userAuth:
         - idn:entitlement:read
+        - idn:entitlement:manage
+      - applicationAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
       summary: List of entitlements children
       tags:
       - Entitlements
@@ -13356,7 +13415,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:update
+        - idn:entitlement:manage
       summary: Bulk update an entitlement list
       tags:
       - Entitlements
@@ -13617,7 +13676,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:update
         - idn:entitlement:manage
       summary: Replace entitlement request config
       tags:
@@ -13803,7 +13861,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:delete
+        - idn:entitlement:manage
       summary: Remove metadata from an entitlement.
       tags:
       - Entitlements
@@ -13902,7 +13960,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlement:update
+        - idn:entitlement:manage
       summary: Add metadata to an entitlement.
       tags:
       - Entitlements
@@ -13997,7 +14055,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlements:manage
+        - idn:entitlement:manage
       summary: Aggregate entitlements
       tags:
       - Entitlements
@@ -14211,6 +14269,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Lists all the identities
       tags:
       - Identity History
@@ -14294,6 +14356,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Get latest snapshot of identity
       tags:
       - Identity History
@@ -14432,7 +14498,7 @@ paths:
                     displayName: Dr. Arden Rogahn MD
                     entitlementCount: 12
                     appDisplayName: AppName
-                    removeDate: 2024-07-01T06:00:00.00Z
+                    removeDate: 2024-07-01T06:00:00.000Z
                     standalone: false
                     revocable: true
                 Account:
@@ -14474,7 +14540,7 @@ paths:
                     id: 2c918087763e69d901763e72e97f006f
                     name: sample
                     description: Role - Workday/Citizenship access
-                    removeDate: 2024-07-01T06:00:00.00Z
+                    removeDate: 2024-07-01T06:00:00.000Z
                     revocable: true
               schema:
                 items:
@@ -14558,6 +14624,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: List access items by identity
       tags:
       - Identity History
@@ -14707,6 +14777,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Lists all the snapshots for the identity
       tags:
       - Identity History
@@ -14858,6 +14935,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Gets the summary for the event count for a specific identity
       tags:
       - Identity History
@@ -14955,6 +15039,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Gets an identity snapshot at a given date
       tags:
       - Identity History
@@ -15125,6 +15216,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Get identity access items snapshot
       tags:
       - Identity History
@@ -15266,6 +15361,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Get a paginated list of common access
       tags:
       - IAI Common Access
@@ -15342,6 +15444,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Create common access items
       tags:
       - IAI Common Access
@@ -15424,6 +15531,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Bulk update common access status
       tags:
       - IAI Common Access
@@ -15718,6 +15830,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: List identity event history
       tags:
       - Identity History
@@ -15809,6 +15925,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Gets the start date of the identity
       tags:
       - Identity History
@@ -15961,6 +16084,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:read
+        - idn:identity-history:manage
       summary: Gets a difference of count for each access item types for the given
         identity between 2 snapshots
       tags:
@@ -16621,7 +16751,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:identity:delete
+        - idn:identity:manage
+      - applicationAuth:
+        - idn:identity:manage
       summary: Delete identity
       tags:
       - Identities
@@ -16928,6 +17060,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:password:user-invite
       summary: Send password reset email
       tags:
       - Identities
@@ -17263,6 +17398,8 @@ paths:
       security:
       - userAuth:
         - idn:identity:read
+        - idn:identity-direct-report:read
+        - idn:identity:manage
       summary: List role assignments
       tags:
       - Identities
@@ -17370,6 +17507,8 @@ paths:
       security:
       - userAuth:
         - idn:identity:read
+        - idn:identity-direct-report:read
+        - idn:identity:manage
       summary: Role assignment details
       tags:
       - Identities
@@ -17483,6 +17622,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:read
+        - idn:identity-profile-attribute:manage
+      - applicationAuth:
+        - idn:identity-profile-attribute:read
+        - idn:identity-profile-attribute:manage
       summary: List identity attributes
       tags:
       - Identity Attributes
@@ -17778,6 +17921,10 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-attribute:read
+        - idn:identity-profile-attribute:manage
+      - applicationAuth:
+        - idn:identity-profile-attribute:read
+        - idn:identity-profile-attribute:manage
       summary: Get identity attribute
       tags:
       - Identity Attributes
@@ -19584,8 +19731,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: List all existing multi-host integrations
       tags:
       - Multi-Host Integration
@@ -19686,8 +19836,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:create
-        - idn:sources:create
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
       summary: Create multi-host integration
       tags:
       - Multi-Host Integration
@@ -19783,8 +19936,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: List multi-host integration types
       tags:
       - Multi-Host Integration
@@ -19885,8 +20041,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:delete
-        - idn:sources:delete
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
       summary: Delete multi-host integration
       tags:
       - Multi-Host Integration
@@ -19989,8 +20148,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: Get multi-host integration by id
       tags:
       - Multi-Host Integration
@@ -20106,7 +20268,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:update
+        - idn:multihosts-admin:manage
       summary: Update multi-host integration
       tags:
       - Multi-Host Integration
@@ -20216,8 +20378,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:create
-        - idn:sources:create
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:manage
+        - idn:multihosts-admin:manage
       summary: Create sources within multi-host integration
       tags:
       - Multi-Host Integration
@@ -20319,8 +20484,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
-        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: Test configuration for multi-host integration
       tags:
       - Multi-Host Integration
@@ -20435,8 +20599,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: Test configuration for multi-host integration's single source
       tags:
       - Multi-Host Integration
@@ -20608,8 +20775,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: List sources within multi-host integration
       tags:
       - Multi-Host Integration
@@ -20716,8 +20886,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:read
         - idn:sources:read
+        - idn:multihosts-admin:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:multihosts-admin:manage
       summary: List multi-host source creation errors
       tags:
       - Multi-Host Integration
@@ -20823,7 +20996,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:update
+        - idn:multihosts-admin:manage
       summary: Get account aggregation groups within multi-host integration id
       tags:
       - Multi-Host Integration
@@ -20928,7 +21101,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:multihosts:update
+        - idn:multihosts-admin:manage
       summary: Get entitlement aggregation groups within multi-host integration id
       tags:
       - Multi-Host Integration
@@ -21067,6 +21240,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee records
       tags:
       - Non-Employee Lifecycle Management
@@ -21154,6 +21329,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -21237,6 +21414,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Delete non-employee record
       tags:
@@ -21323,6 +21502,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Get a non-employee record
       tags:
@@ -21643,6 +21824,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete multiple non-employee records
       tags:
       - Non-Employee Lifecycle Management
@@ -21793,6 +21976,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee requests
       tags:
       - Non-Employee Lifecycle Management
@@ -21898,6 +22083,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -22000,6 +22187,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Delete non-employee request
       tags:
@@ -22105,6 +22294,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get a non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -22201,6 +22392,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Get summary of non-employee requests
       tags:
@@ -22355,6 +22548,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee sources
       tags:
       - Non-Employee Lifecycle Management
@@ -22439,6 +22634,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22522,6 +22719,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Delete non-employee source
       tags:
@@ -22608,6 +22807,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Get a non-employee source
       tags:
@@ -22715,6 +22916,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Patch a non-employee source
       tags:
@@ -22824,7 +23027,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
-        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:read
       summary: Exports non-employee records to csv
       tags:
       - Non-Employee Lifecycle Management
@@ -22941,6 +23145,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: "Imports, or updates, non-employee records"
       tags:
       - Non-Employee Lifecycle Management
@@ -23028,6 +23234,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Bulk upload status on source
       tags:
@@ -23138,6 +23346,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Exports source schema template
       tags:
@@ -23288,6 +23498,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: List of non-employee approval requests
       tags:
@@ -23667,6 +23879,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Summary of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
@@ -23751,6 +23965,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Delete all custom schema attributes
       tags:
@@ -23895,6 +24111,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List schema attributes non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -23992,6 +24210,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee source schema attribute
       tags:
       - Non-Employee Lifecycle Management
@@ -24084,6 +24304,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Delete non-employee source's schema attribute
       tags:
@@ -24181,6 +24403,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
         - idn:nelm:read
       summary: Get schema attribute non-employee source
       tags:
@@ -24311,6 +24535,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
         - idn:nelm:manage
       summary: Patch non-employee source's schema attribute
       tags:
@@ -27019,6 +27245,7 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:oauth-client:read
         - sp:oauth-client:manage
       summary: List oauth clients
       tags:
@@ -29009,7 +29236,8 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-dictionary-management:read
+        - idn:password-dictionary:read
+        - idn:password-dictionary:manage
       summary: Get password dictionary
       tags:
       - Password Dictionary
@@ -29237,6 +29465,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:password-info:read
+      - applicationAuth:
+        - idn:password-info:read
       summary: Query password info
       tags:
       - Password Management
@@ -29361,6 +29594,8 @@ paths:
       security:
       - userAuth:
         - idn:password-change:manage
+      - applicationAuth:
+        - idn:password-change:manage
       summary: Set identity's password
       tags:
       - Password Management
@@ -29454,6 +29689,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:password-change:read
+      - applicationAuth:
+        - idn:password-change:read
       summary: Get password change request status
       tags:
       - Password Management
@@ -29567,7 +29807,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:read
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
+      - applicationAuth:
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
       summary: Get password sync group list
       tags:
       - Password Sync Groups
@@ -29661,7 +29905,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Create password sync group
       tags:
       - Password Sync Groups
@@ -29742,7 +29986,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Delete password sync group by id
       tags:
       - Password Sync Groups
@@ -29850,7 +30094,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:read
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
+      - applicationAuth:
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
       summary: Get password sync group by id
       tags:
       - Password Sync Groups
@@ -29971,7 +30219,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Update password sync group by id
       tags:
       - Password Sync Groups
@@ -30854,7 +31102,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-org-config:write
+        - idn:password-org-config:manage
+      - applicationAuth:
+        - idn:password-org-config:manage
       summary: Create password org config
       tags:
       - Password Configuration
@@ -30943,7 +31193,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-org-config:write
+        - idn:password-org-config:manage
+      - applicationAuth:
+        - idn:password-org-config:manage
       summary: Update password org config
       tags:
       - Password Configuration
@@ -31552,6 +31804,7 @@ paths:
       security:
       - userAuth:
         - idn:public-identity-config:read
+        - idn:public-identity-config:manage
       summary: Get public identity config
       tags:
       - Public Identities Config
@@ -31634,7 +31887,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:public-identity-config:write
+        - idn:public-identity-config:manage
       summary: Update public identity config
       tags:
       - Public Identities Config
@@ -31892,6 +32145,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
+        - idn:reassignment-configuration:manage
       summary: List reassignment config types
       tags:
       - Work Reassignment
@@ -32007,6 +32261,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
+        - idn:reassignment-configuration:manage
       summary: List reassignment configurations
       tags:
       - Work Reassignment
@@ -32086,7 +32341,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:reassignment-configuration:create
+        - idn:reassignment-configuration:manage
       summary: Create a reassignment configuration
       tags:
       - Work Reassignment
@@ -32171,6 +32426,7 @@ paths:
       security:
       - userAuth:
         - idn:reassignment-configuration:read
+        - idn:reassignment-configuration:manage
       summary: Get reassignment configuration
       tags:
       - Work Reassignment
@@ -32258,7 +32514,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:reassignment-configuration:update
+        - idn:reassignment-configuration:manage
       summary: Update reassignment configuration
       tags:
       - Work Reassignment
@@ -32341,7 +32597,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:reassignment-configuration:delete
+        - idn:reassignment-configuration:manage
       summary: Delete reassignment configuration
       tags:
       - Work Reassignment
@@ -32459,7 +32715,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:reassignment-configuration:evaluate
+        - idn:reassignment-configuration:manage
       summary: Evaluate reassignment configuration
       tags:
       - Work Reassignment
@@ -33138,6 +33394,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Generate insights for roles
       tags:
       - Role Insights
@@ -33218,6 +33479,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Returns metadata from prior request.
       tags:
       - Role Insights
@@ -33281,6 +33547,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get role insights summary information
       tags:
       - Role Insights
@@ -33415,6 +33686,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get role insights
       tags:
       - Role Insights
@@ -33487,6 +33763,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get a single role insight
       tags:
       - Role Insights
@@ -33588,6 +33869,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get entitlement insights for a role
       tags:
       - Role Insights
@@ -33690,6 +33976,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Download entitlement insights for a role
       tags:
       - Role Insights
@@ -33781,6 +34072,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get current entitlement for a role
       tags:
       - Role Insights
@@ -33939,6 +34235,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
       summary: Get identities for a suggested entitlement (for a role)
       tags:
       - Role Insights
@@ -34074,6 +34375,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves all role mining sessions
       tags:
       - IAI Role Mining
@@ -34151,6 +34459,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Create a role mining session
       tags:
       - IAI Role Mining
@@ -34247,6 +34560,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Get a role mining session
       tags:
       - IAI Role Mining
@@ -34373,6 +34693,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Patch a role mining session
       tags:
       - IAI Role Mining
@@ -34444,6 +34769,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Get role mining session status state
       tags:
       - IAI Role Mining
@@ -34611,6 +34943,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieve session's potential role summaries
       tags:
       - IAI Role Mining
@@ -34700,6 +35039,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieve potential role in session
       tags:
       - IAI Role Mining
@@ -34987,6 +35333,10 @@ paths:
       security:
       - userAuth:
         - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves the applications of a potential role for a role mining session
       tags:
       - IAI Role Mining
@@ -35133,6 +35483,10 @@ paths:
       security:
       - userAuth:
         - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves the entitlements of a potential role for a role mining session
       tags:
       - IAI Role Mining
@@ -35304,7 +35658,12 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves entitlements for a potential role in a role mining session
       tags:
       - IAI Role Mining
@@ -35397,6 +35756,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves entitlement popularity distribution for a potential role
         in a role mining session
       tags:
@@ -35486,6 +35852,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Edit entitlements for a potential role to exclude some entitlements
       tags:
       - IAI Role Mining
@@ -35631,6 +36002,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves identities for a potential role in a role mining session
       tags:
       - IAI Role Mining
@@ -35714,6 +36092,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Export (download) details for a potential role in a role mining session
       tags:
       - IAI Role Mining
@@ -35801,6 +36186,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Asynchronously export details for a potential role in a role mining
         session and upload to s3
       tags:
@@ -35893,6 +36283,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieve status of a potential role export job
       tags:
       - IAI Role Mining
@@ -35986,6 +36383,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Export (download) details for a potential role in a role mining session
       tags:
       - IAI Role Mining
@@ -36112,6 +36516,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Create request to provision a potential role into an actual role.
       tags:
       - IAI Role Mining
@@ -36261,6 +36670,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves excluded entitlements for a potential role in a role mining
         session
       tags:
@@ -36427,7 +36843,12 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves all potential role summaries
       tags:
       - IAI Role Mining
@@ -36509,7 +36930,12 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves a specific potential role
       tags:
       - IAI Role Mining
@@ -36646,7 +37072,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:manage
       summary: Update a potential role
       tags:
       - IAI Role Mining
@@ -36772,7 +37199,12 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves all saved potential roles
       tags:
       - IAI Role Mining
@@ -36915,7 +37347,12 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:read
+        - iai:access-modeling:manage
       summary: Retrieves potential role source usage
       tags:
       - IAI Role Mining
@@ -39862,7 +40299,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:write
+        - idn:service-desk-integration:manage
       summary: Delete a sim integration
       tags:
       - SIM Integrations
@@ -39962,7 +40399,8 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
+        - idn:service-desk-integration:read
+        - idn:service-desk-integration:manage
       summary: Get a sim integration details.
       tags:
       - SIM Integrations
@@ -40069,7 +40507,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:write
+        - idn:service-desk-integration:manage
       summary: Patch a sim attribute.
       tags:
       - SIM Integrations
@@ -40176,7 +40614,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:create
+        - idn:service-desk-integration:manage
       summary: Update an existing sim integration
       tags:
       - SIM Integrations
@@ -40285,7 +40723,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:write
+        - idn:service-desk-integration:manage
       summary: Patch a sim beforeprovisioningrule attribute.
       tags:
       - SIM Integrations
@@ -40377,7 +40815,8 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
+        - idn:service-desk-integration:read
+        - idn:service-desk-integration:manage
       summary: List the existing sim integrations.
       tags:
       - SIM Integrations
@@ -40475,7 +40914,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:create
+        - idn:service-desk-integration:manage
       summary: Create new sim integration
       tags:
       - SIM Integrations
@@ -41874,6 +42313,10 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
       summary: Get source by id
       tags:
       - Sources
@@ -42841,7 +43284,7 @@ paths:
         schema:
           enum:
           - de
-          - "false"
+          - "no"
           - fi
           - sv
           - ru
@@ -42935,6 +43378,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:connector-config:read
+        - idn:connector-config:manage
       summary: Gets source config with language translations
       tags:
       - Sources
@@ -43033,7 +43480,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:update
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:manage
       summary: Delete native change detection configuration
       tags:
       - Sources
@@ -43412,8 +43861,8 @@ paths:
                               type: identityAttribute
                               attributes:
                                 name: firstname
-                            begin: 0.0
-                            end: 1.0
+                            begin: 0
+                            end: 1
                         fti:
                           type: substring
                           attributes:
@@ -43421,8 +43870,8 @@ paths:
                               type: identityAttribute
                               attributes:
                                 name: firstname
-                            begin: 0.0
-                            end: 2.0
+                            begin: 0
+                            end: 2
                     attributes:
                       cloudMaxUniqueChecks: "5"
                       cloudMaxSize: "100"
@@ -43525,6 +43974,10 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy-source-admin-operations:manage
         - idn:provisioning-policy:manage
       summary: Create provisioning policy
       tags:
@@ -43777,15 +44230,15 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:read
         - idn:provisioning-policy-source:read
-        - idn:provisioning-policy:manage
+        - idn:provisioning-policy:read
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:read
         - idn:provisioning-policy-source:read
-        - idn:provisioning-policy:manage
+        - idn:provisioning-policy:read
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Get provisioning policy by usagetype
       tags:
       - Sources
@@ -43940,9 +44393,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:update
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:update
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Partial update of provisioning policy
       tags:
       - Sources
@@ -44078,11 +44533,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Update provisioning policy by usagetype
       tags:
       - Sources
@@ -44418,6 +44873,7 @@ paths:
       security:
       - userAuth:
         - idn:source-schema:read
+        - idn:source-schema:manage
       summary: List schemas on source
       tags:
       - Sources
@@ -44509,7 +44965,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:source-schema:create
+        - idn:source-schema:manage
       summary: Create schema on source
       tags:
       - Sources
@@ -44614,6 +45070,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Delete source schema by id
       tags:
       - Sources
@@ -44719,6 +45178,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:read
+        - idn:source-schema:manage
       summary: Get source schema by id
       tags:
       - Sources
@@ -44849,6 +45312,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Update source schema (partial)
       tags:
       - Sources
@@ -44965,6 +45431,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Update source schema (full)
       tags:
       - Sources
@@ -45977,7 +46446,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:entitlements:manage
+        - idn:entitlement:manage
       summary: Entitlement aggregation
       tags:
       - Sources
@@ -46366,7 +46835,8 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
-        - idn:app-roles:delete
+      - applicationAuth:
+        - idn:app-roles:manage
       summary: Delete source app by id
       tags:
       - Apps
@@ -46466,6 +46936,10 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
+        - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: Get source app by id
       tags:
       - Apps
@@ -46631,6 +47105,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:app-roles:manage
+      - applicationAuth:
         - idn:app-roles:manage
       summary: Patch source app by id
       tags:
@@ -46878,6 +47354,10 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
+        - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: List assigned source apps
       tags:
       - Apps
@@ -47027,6 +47507,10 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
+        - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: List available source apps
       tags:
       - Apps
@@ -49102,6 +49586,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:tag:read
+        - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:read
+        - idn:tag:manage
       summary: List tags
       tags:
       - Tags
@@ -49200,6 +49691,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:manage
       summary: Create tag
       tags:
       - Tags
@@ -49317,6 +49813,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:manage
       summary: Delete tag
       tags:
       - Tags
@@ -49416,6 +49917,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:tag:read
+        - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:read
+        - idn:tag:manage
       summary: Get tag by id
       tags:
       - Tags
@@ -50538,6 +51046,10 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:read
+        - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
+        - sp:trigger-service-subscriptions:read
+        - sp:trigger-service-subscriptions:manage
       summary: List subscriptions
       tags:
       - Triggers
@@ -50665,6 +51177,8 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Create a subscription
       tags:
@@ -51028,6 +51542,8 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Update a subscription
       tags:
@@ -51754,7 +52270,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: Patch user app by id
       tags:
       - Apps
@@ -51878,6 +52394,10 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
+        - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: List available accounts for user app
       tags:
       - Apps
@@ -52014,6 +52534,10 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:read
+        - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:read
+        - idn:app-roles:manage
       summary: List owned user apps
       tags:
       - Apps
@@ -52822,6 +53346,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: List sod policies
       tags:
       - SOD Policies
@@ -53032,7 +53557,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Create sod policy
       tags:
       - SOD Policies
@@ -53140,7 +53665,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Delete sod policy by id
       tags:
       - SOD Policies
@@ -53313,6 +53838,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: Get sod policy by id
       tags:
       - SOD Policies
@@ -53528,7 +54054,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Patch a sod policy
       tags:
       - SOD Policies
@@ -53774,7 +54300,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Update sod policy by id
       tags:
       - SOD Policies
@@ -53873,7 +54399,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Delete sod policy schedule
       tags:
       - SOD Policies
@@ -53958,6 +54484,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: Get sod policy schedule
       tags:
       - SOD Policies
@@ -54047,7 +54574,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Update sod policy schedule
       tags:
       - SOD Policies
@@ -54155,7 +54682,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-violation:write
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:manage
       summary: Runs sod policy violation report
       tags:
       - SOD Policies
@@ -54264,6 +54793,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get sod violation report status
       tags:
       - SOD Policies
@@ -54372,6 +54905,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Predict sod violations for identity.
       tags:
       - SOD Violations
@@ -54482,6 +55019,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get violation report run status
       tags:
       - SOD Policies
@@ -54572,7 +55113,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-violation:write
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:manage
       summary: Runs all policies for org
       tags:
       - SOD Policies
@@ -54654,6 +55197,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get multi-report run task status
       tags:
       - SOD Policies
@@ -54759,6 +55306,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Download violation report
       tags:
       - SOD Policies
@@ -54871,6 +55422,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Download custom violation report
       tags:
       - SOD Policies
@@ -56499,6 +57054,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflows
       tags:
       - Workflows
@@ -56817,6 +57373,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow by id
       tags:
       - Workflows
@@ -57321,6 +57878,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow executions
       tags:
       - Workflows
@@ -57431,6 +57989,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow execution
       tags:
       - Workflows
@@ -57542,6 +58101,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow execution history
       tags:
       - Workflows
@@ -57749,6 +58309,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List complete workflow library
       tags:
       - Workflows
@@ -57865,6 +58426,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library actions
       tags:
       - Workflows
@@ -57981,6 +58543,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library triggers
       tags:
       - Workflows
@@ -58056,6 +58619,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library operators
       tags:
       - Workflows
@@ -58469,6 +59033,10 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
       summary: List governance groups
       tags:
       - Governance Groups
@@ -58546,7 +59114,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
       summary: Create a new governance group.
       tags:
       - Governance Groups
@@ -58624,7 +59194,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
       summary: Delete a governance group
       tags:
       - Governance Groups
@@ -58705,6 +59277,10 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
       summary: Get governance group by id
       tags:
       - Governance Groups
@@ -58800,7 +59376,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
       summary: Patch a governance group
       tags:
       - Governance Groups
@@ -58899,7 +59477,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:workgroup:write
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
       summary: Delete governance group(s)
       tags:
       - Governance Groups
@@ -59033,6 +59613,10 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
       summary: List connections for governance group
       tags:
       - Governance Groups
@@ -59165,6 +59749,10 @@ paths:
       security:
       - userAuth:
         - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
       summary: List governance group members
       tags:
       - Governance Groups
@@ -59459,6 +60047,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: Export form definitions by tenant.
       tags:
@@ -59668,6 +60257,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: Return a form definition.
       tags:
@@ -59863,6 +60453,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: Preview form definition data source.
       tags:
@@ -59979,7 +60570,9 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:config:read
         - sp:forms:manage
+        - sp:config:manage
       summary: List form definitions by tenant.
       tags:
       - Custom Forms
@@ -60046,6 +60639,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: Generate json schema dynamically.
       tags:
@@ -60157,6 +60751,7 @@ paths:
       security:
       - userAuth:
         - sp:forms:manage
+        - sp:config:manage
       summary: Import form definitions from export.
       tags:
       - Custom Forms
@@ -60487,6 +61082,7 @@ paths:
           description: An external service is not available
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: Download definition file by fileid.
       tags:
@@ -60537,6 +61133,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: List form instances by tenant.
       tags:
@@ -61073,6 +61670,7 @@ paths:
           description: An internal server error occurred
       security:
       - userAuth:
+        - sp:forms:read
         - sp:forms:manage
       summary: List predefined select options.
       tags:
@@ -61156,7 +61754,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Finds status of source usage
       tags:
       - Source Usages
@@ -61289,7 +61889,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Returns source usage insights
       tags:
       - Source Usages
@@ -61422,7 +62024,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Returns account usage insights
       tags:
       - Account Usages
@@ -61529,6 +62133,7 @@ paths:
       security:
       - userAuth:
         - idn:access-request-approvals:read
+        - idn:access-request-approvals:manage
       summary: Return access request identity metrics
       tags:
       - Access Request Identity Metrics
@@ -93101,7 +93706,7 @@ components:
     testSourceConnectionMultihost_200_response:
       example:
         success: true
-        timing: 0
+        timing: 30437
         testConnectionDetails: testConnectionDetails
         message: Tes.
         resultType: SOURCE_STATE_HEALTHY
@@ -93116,6 +93721,7 @@ components:
           type: string
         timing:
           description: Source's test connection timing.
+          example: 30437
           type: integer
         resultType:
           description: Source's human-readable result type.

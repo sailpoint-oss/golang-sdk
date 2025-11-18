@@ -2242,7 +2242,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request:cancel
+        - idn:access-request:manage
       summary: Cancel access request
       tags:
       - Access Requests
@@ -2395,7 +2395,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-config:update
+        - idn:access-request-config:manage
       summary: Update access request configuration
       tags:
       - Access Requests
@@ -3000,7 +3000,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals:read
+        - idn:access-request-approvals:manage
       summary: Approve access request approval
       tags:
       - Access Request Approvals
@@ -3110,6 +3110,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
       summary: Reject access request approval
       tags:
       - Access Request Approvals
@@ -3218,6 +3221,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
       summary: Forward access request approval
       tags:
       - Access Request Approvals
@@ -3314,7 +3320,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-request-approvals-summary:read
+        - idn:access-request-approvals:read
       summary: Get access requests approvals number
       tags:
       - Access Request Approvals
@@ -3500,6 +3506,10 @@ paths:
       security:
       - userAuth:
         - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
       summary: Accounts list
       tags:
       - Accounts
@@ -3594,6 +3604,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
         - idn:accounts:manage
       summary: Create account
       tags:
@@ -3811,6 +3823,10 @@ paths:
       security:
       - userAuth:
         - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
       summary: Account details
       tags:
       - Accounts
@@ -4220,6 +4236,10 @@ paths:
       security:
       - userAuth:
         - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
       summary: Account entitlements
       tags:
       - Accounts
@@ -4663,7 +4683,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
-        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Unlock account
       tags:
       - Accounts
@@ -4771,6 +4792,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
+        - idn:account-config:manage
       summary: List extended search attributes
       tags:
       - Search Attribute Configuration
@@ -4877,7 +4899,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:create
+        - idn:account-config:manage
       summary: Create extended search attributes
       tags:
       - Search Attribute Configuration
@@ -4976,7 +4998,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:delete
+        - idn:account-config:manage
       summary: Delete extended search attribute
       tags:
       - Search Attribute Configuration
@@ -5083,6 +5105,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
+        - idn:account-config:manage
       summary: Get extended search attribute
       tags:
       - Search Attribute Configuration
@@ -5203,7 +5226,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:account-config:create
+        - idn:account-config:manage
       summary: Update extended search attribute
       tags:
       - Search Attribute Configuration
@@ -6074,7 +6097,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - 'sp:auth-org:read '
+      - applicationAuth:
+        - 'sp:auth-org:read '
       summary: Get service provider configuration.
       tags:
       - Global Tenant Security Settings
@@ -6224,7 +6250,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
       summary: Update service provider configuration
       tags:
       - Global Tenant Security Settings
@@ -6650,7 +6679,7 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:auth-user:update
+        - sp:auth-user:manage
       summary: Auth user update
       tags:
       - Auth Users
@@ -8763,7 +8792,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:campaign-filter-list:read
+        - idn:campaign-filter:manage
       summary: List campaign filters
       tags:
       - Certification Campaign Filters
@@ -8842,7 +8871,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:campaign-filter:create
+        - idn:campaign-filter:manage
       summary: Create campaign filter
       tags:
       - Certification Campaign Filters
@@ -9031,7 +9060,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:campaign-filter:update
+        - idn:campaign-filter:manage
       summary: Updates a campaign filter
       tags:
       - Certification Campaign Filters
@@ -9133,7 +9162,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:campaign-filter:delete
+        - idn:campaign-filter:manage
       summary: Deletes campaign filters
       tags:
       - Certification Campaign Filters
@@ -9826,7 +9855,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign-template:manage
       summary: Delete campaign template schedule
       tags:
       - Certification Campaigns
@@ -9930,7 +9960,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign-temlates:read
       summary: Get campaign template schedule
       tags:
       - Certification Campaigns
@@ -10027,6 +10058,12 @@ paths:
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -10052,12 +10089,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
         "404":
           content:
             application/json:
@@ -10102,7 +10133,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign-template:manage
       summary: Set campaign template schedule
       tags:
       - Certification Campaigns
@@ -10352,6 +10384,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:campaign:read
       summary: List identity campaign certifications
       tags:
       - Certifications
@@ -10452,7 +10487,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:read
       summary: Identity certification by id
       tags:
       - Certifications
@@ -10668,7 +10704,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:read
       summary: List of access review items
       tags:
       - Certifications
@@ -10794,7 +10831,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:manage
       summary: Decide on a certification item
       tags:
       - Certifications
@@ -10906,6 +10944,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:campaign:manage
       summary: Reassign identities or items
       tags:
       - Certifications
@@ -11007,7 +11048,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:manage
       summary: Finalize identity certification decisions
       tags:
       - Certifications
@@ -11123,7 +11165,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:read
       summary: Summary of certification decisions
       tags:
       - Certification Summaries
@@ -11303,7 +11346,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:read
       summary: Identity summaries for campaign certification
       tags:
       - Certification Summaries
@@ -11522,7 +11566,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:certification:read
+        - idn:campaign:read
       summary: Access summaries
       tags:
       - Certification Summaries
@@ -11634,7 +11678,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:campaign:read
       summary: Summary for identity
       tags:
       - Certification Summaries
@@ -11810,7 +11855,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:certification:read
+        - idn:campaign:read
       summary: Permissions for entitlement certification item
       tags:
       - Certifications
@@ -11979,7 +12024,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:certification:read
+        - idn:campaign:read
       summary: List of reviewers for certification
       tags:
       - Certifications
@@ -12197,7 +12242,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:certification:read
+        - idn:campaign:read
       summary: Certification task by id
       tags:
       - Certifications
@@ -12356,7 +12401,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:certification:read
+        - idn:campaign:read
       summary: List of pending certification tasks
       tags:
       - Certifications
@@ -15905,7 +15950,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:identity-profile:delete
+        - idn:identity-profile:manage
       summary: Delete identity profiles
       tags:
       - Identity Profiles
@@ -16320,7 +16365,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:identity-profile:delete
+        - idn:identity-profile:manage
       summary: Delete identity profile
       tags:
       - Identity Profiles
@@ -16777,7 +16822,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:identity-profile:refresh
+        - idn:identity-profile:manage
       summary: Process identities under profile
       tags:
       - Identity Profiles
@@ -19567,7 +19612,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee records
       tags:
       - Non-Employee Lifecycle Management
@@ -19646,6 +19694,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -19724,6 +19777,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -19804,6 +19862,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get a non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -19922,7 +19985,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:manage
       summary: Patch non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -20034,7 +20098,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:manage
       summary: Update non-employee record
       tags:
       - Non-Employee Lifecycle Management
@@ -20110,6 +20175,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete multiple non-employee records
       tags:
       - Non-Employee Lifecycle Management
@@ -20256,7 +20326,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee requests
       tags:
       - Non-Employee Lifecycle Management
@@ -20356,7 +20429,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -20453,6 +20529,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -20555,7 +20636,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get a non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -20644,7 +20728,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get summary of non-employee requests
       tags:
       - Non-Employee Lifecycle Management
@@ -20793,6 +20880,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List non-employee sources
       tags:
       - Non-Employee Lifecycle Management
@@ -20874,6 +20963,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -20953,6 +21044,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -21036,7 +21132,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get a non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -21137,6 +21236,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Patch a non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -21237,6 +21341,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Exports non-employee records to csv
       tags:
       - Non-Employee Lifecycle Management
@@ -21346,6 +21455,8 @@ paths:
       security:
       - userAuth:
         - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: "Imports, or updates, non-employee records"
       tags:
       - Non-Employee Lifecycle Management
@@ -21427,6 +21538,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Obtain the status of bulk upload on the source
       tags:
       - Non-Employee Lifecycle Management
@@ -21525,6 +21641,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Exports source schema template
       tags:
       - Non-Employee Lifecycle Management
@@ -21673,7 +21794,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get list of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
@@ -21766,7 +21890,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
       summary: Get a non-employee approval item detail
       tags:
       - Non-Employee Lifecycle Management
@@ -21854,7 +21979,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:manage
       summary: Approve a non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -21942,7 +22068,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:manage
       summary: Reject a non-employee request
       tags:
       - Non-Employee Lifecycle Management
@@ -22029,7 +22156,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get summary of non-employee approval requests
       tags:
       - Non-Employee Lifecycle Management
@@ -22107,6 +22237,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete all custom schema attributes for non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22209,7 +22344,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: List schema attributes non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22296,6 +22434,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Create a new schema attribute for non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22382,6 +22525,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Delete a schema attribute for non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22471,7 +22619,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:nelm:read
+      - applicationAuth:
+        - idn:nelm:read
       summary: Get schema attribute non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22595,6 +22746,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:nelm:manage
+      - applicationAuth:
+        - idn:nelm:manage
       summary: Patch a schema attribute for non-employee source
       tags:
       - Non-Employee Lifecycle Management
@@ -22682,6 +22838,7 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:oauth-client:read
         - sp:oauth-client:manage
       summary: List oauth clients
       tags:
@@ -23202,7 +23359,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:read
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
+      - applicationAuth:
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
       summary: Get password sync group list
       tags:
       - Password Sync Groups
@@ -23296,7 +23457,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Create password sync group
       tags:
       - Password Sync Groups
@@ -23377,7 +23538,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Delete password sync group by id
       tags:
       - Password Sync Groups
@@ -23485,7 +23646,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:read
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
+      - applicationAuth:
+        - idn:password-sync-group:read
+        - idn:password-sync-group:manage
       summary: Get password sync group by id
       tags:
       - Password Sync Groups
@@ -23606,7 +23771,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-sync-group-management:write
+        - idn:password-sync-group:manage
       summary: Update password sync group by id
       tags:
       - Password Sync Groups
@@ -24995,7 +25160,9 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:public-identity-config:read
+        - idn:public-identity-config:manage
       summary: Get the public identities configuration
       tags:
       - Public Identities Config
@@ -25075,7 +25242,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - idn:public-identity-config:manage
       summary: Update the public identities configuration
       tags:
       - Public Identities Config
@@ -26415,7 +26583,7 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:saved-search:create
+        - sp:saved-search:manage
       summary: Create a saved search
       tags:
       - Saved Search
@@ -26511,6 +26679,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:saved-search:manage
       summary: Delete document by id
       tags:
       - Saved Search
@@ -26608,6 +26779,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:saved-search:read
       summary: Return saved search by id
       tags:
       - Saved Search
@@ -26694,6 +26868,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:saved-search:manage
       summary: |
         Updates an existing saved search
       tags:
@@ -26736,24 +26913,6 @@ paths:
         "202":
           description: Accepted - Returned if the request was successfully accepted
             into the system.
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
         "400":
           content:
             application/json:
@@ -26785,6 +26944,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
         "429":
           content:
             application/json:
@@ -26810,6 +26987,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:saved-search:manage
       summary: Execute a saved search by id
       tags:
       - Saved Search
@@ -26960,6 +27140,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:scheduled-search:manage
       summary: List scheduled searches
       tags:
       - Scheduled Search
@@ -27157,6 +27340,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:scheduled-search:manage
       summary: Create a new scheduled search
       tags:
       - Scheduled Search
@@ -27252,6 +27438,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:scheduled-search:manage
       summary: Delete a scheduled search
       tags:
       - Scheduled Search
@@ -27452,6 +27641,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:scheduled-search:manage
       summary: Update an existing scheduled search
       tags:
       - Scheduled Search
@@ -29850,7 +30042,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - applicationAuth: []
+      - userAuth:
+        - idn:password-info:read
+      - applicationAuth:
+        - idn:password-info:read
       summary: Query password info
       tags:
       - Password Management
@@ -29950,7 +30145,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - applicationAuth: []
+      - userAuth:
+        - idn:password-change:manage
+      - applicationAuth:
+        - idn:password-change:manage
       summary: Set identity's password
       tags:
       - Password Management
@@ -30049,8 +30247,10 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
-      - applicationAuth: []
+      - userAuth:
+        - idn:password-change:read
+      - applicationAuth:
+        - idn:password-change:read
       summary: Get password change request status
       tags:
       - Password Management
@@ -30172,7 +30372,8 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-dictionary-management:read
+        - idn:password-dictionary:read
+        - idn:password-dictionary:manage
       summary: Get password dictionary
       tags:
       - Password Dictionary
@@ -30470,7 +30671,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-org-config:write
+        - idn:password-org-config:manage
+      - applicationAuth:
+        - idn:password-org-config:manage
       summary: Create password org config
       tags:
       - Password Configuration
@@ -30559,7 +30762,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:password-org-config:write
+        - idn:password-org-config:manage
+      - applicationAuth:
+        - idn:password-org-config:manage
       summary: Update password org config
       tags:
       - Password Configuration
@@ -30655,7 +30860,11 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:report-result:read
+        - sp:report:read
+        - sp:report:manage
+      - applicationAuth:
+        - sp:report:read
+        - sp:report:manage
       summary: Get report result
       tags:
       - Reports Data Extraction
@@ -30847,7 +31056,7 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:report:delete
+        - sp:report:manage
       summary: Cancel report
       tags:
       - Reports Data Extraction
@@ -30987,6 +31196,10 @@ paths:
       security:
       - userAuth:
         - sp:report:read
+        - sp:report:manage
+      - applicationAuth:
+        - sp:report:read
+        - sp:report:manage
       summary: Get report file
       tags:
       - Reports Data Extraction
@@ -31196,6 +31409,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: List sod policies
       tags:
       - SOD Policies
@@ -31405,7 +31619,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Create sod policy
       tags:
       - SOD Policies
@@ -31514,7 +31728,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Delete sod policy by id
       tags:
       - SOD Policies
@@ -31686,6 +31900,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: Get sod policy by id
       tags:
       - SOD Policies
@@ -31901,7 +32116,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Patch sod policy by id
       tags:
       - SOD Policies
@@ -32137,7 +32352,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Update sod policy by id
       tags:
       - SOD Policies
@@ -32225,7 +32440,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-violation:write
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:manage
       summary: Evaluate one policy by id
       tags:
       - SOD Policies
@@ -32321,7 +32538,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Delete sod policy schedule
       tags:
       - SOD Policies
@@ -32403,6 +32620,7 @@ paths:
       security:
       - userAuth:
         - idn:sod-policy:read
+        - idn:sod-policy:manage
       summary: Get sod policy schedule
       tags:
       - SOD Policies
@@ -32489,7 +32707,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-policy:write
+        - idn:sod-policy:manage
       summary: Update sod policy schedule
       tags:
       - SOD Policies
@@ -32596,7 +32814,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-violation:write
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:manage
       summary: Runs sod policy violation report
       tags:
       - SOD Policies
@@ -32703,6 +32923,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get sod violation report status
       tags:
       - SOD Policies
@@ -32809,6 +33033,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get violation report run status
       tags:
       - SOD Policies
@@ -32915,8 +33143,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
       - applicationAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Predict sod violations for identity.
       tags:
       - SOD Violations
@@ -33027,6 +33257,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Check sod violations
       tags:
       - SOD Violations
@@ -33119,7 +33353,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sod-violation:write
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:manage
       summary: Runs all policies for org
       tags:
       - SOD Policies
@@ -33199,6 +33435,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Get multi-report run task status
       tags:
       - SOD Policies
@@ -33301,6 +33541,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Download violation report
       tags:
       - SOD Policies
@@ -33411,6 +33655,10 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+        - idn:sod-violation:manage
+      - applicationAuth:
+        - idn:sod-violation:read
+        - idn:sod-violation:manage
       summary: Download custom violation report
       tags:
       - SOD Policies
@@ -33929,6 +34177,10 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
       summary: Get source by id
       tags:
       - Sources
@@ -34422,8 +34674,8 @@ paths:
                               type: identityAttribute
                               attributes:
                                 name: firstname
-                            begin: 0.0
-                            end: 1.0
+                            begin: 0
+                            end: 1
                         fti:
                           type: substring
                           attributes:
@@ -34431,8 +34683,8 @@ paths:
                               type: identityAttribute
                               attributes:
                                 name: firstname
-                            begin: 0.0
-                            end: 2.0
+                            begin: 0
+                            end: 2
                     attributes:
                       cloudMaxUniqueChecks: "5"
                       cloudMaxSize: "100"
@@ -34535,6 +34787,10 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy-source-admin-operations:manage
         - idn:provisioning-policy:manage
       summary: Create provisioning policy
       tags:
@@ -34787,15 +35043,15 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:read
         - idn:provisioning-policy-source:read
-        - idn:provisioning-policy:manage
+        - idn:provisioning-policy:read
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:read
         - idn:provisioning-policy-source:read
-        - idn:provisioning-policy:manage
+        - idn:provisioning-policy:read
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Get provisioning policy by usagetype
       tags:
       - Sources
@@ -34950,9 +35206,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:update
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:update
+        - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Partial update of provisioning policy
       tags:
       - Sources
@@ -35088,11 +35346,11 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       - applicationAuth:
-        - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+        - idn:provisioning-policy:manage
       summary: Update provisioning policy by usagetype
       tags:
       - Sources
@@ -35336,6 +35594,7 @@ paths:
       security:
       - userAuth:
         - idn:source-schema:read
+        - idn:source-schema:manage
       summary: List schemas on source
       tags:
       - Sources
@@ -35427,7 +35686,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:source-schema:create
+        - idn:source-schema:manage
       summary: Create schema on source
       tags:
       - Sources
@@ -35532,6 +35791,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Delete source schema by id
       tags:
       - Sources
@@ -35637,6 +35899,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:read
+        - idn:source-schema:manage
       summary: Get source schema by id
       tags:
       - Sources
@@ -35776,6 +36042,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Update source schema (partial)
       tags:
       - Sources
@@ -35896,6 +36165,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:manage
       summary: Update source schema (full)
       tags:
       - Sources
@@ -35996,6 +36268,10 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
       summary: Fetches source health by id
       tags:
       - Sources
@@ -36097,6 +36373,7 @@ paths:
       security:
       - userAuth:
         - idn:source-schema:read
+        - idn:source-schema:manage
       summary: Downloads source accounts schema template
       tags:
       - Sources
@@ -36587,6 +36864,10 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:read
+        - idn:sources:manage
       summary: Get source connections by id
       tags:
       - Sources
@@ -39497,6 +39778,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflows
       tags:
       - Workflows
@@ -39863,6 +40145,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow by id
       tags:
       - Workflows
@@ -40376,6 +40659,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow executions
       tags:
       - Workflows
@@ -40486,6 +40770,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow execution
       tags:
       - Workflows
@@ -40597,6 +40882,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: Get workflow execution history
       tags:
       - Workflows
@@ -40803,6 +41089,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List complete workflow library
       tags:
       - Workflows
@@ -40919,6 +41206,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library actions
       tags:
       - Workflows
@@ -41035,6 +41323,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library triggers
       tags:
       - Workflows
@@ -41110,6 +41399,7 @@ paths:
       security:
       - userAuth:
         - sp:workflow:read
+        - sp:workflow:manage
       summary: List workflow library operators
       tags:
       - Workflows
@@ -41461,7 +41751,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Finds status of source usage
       tags:
       - Source Usages
@@ -41594,7 +41886,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Returns source usage insights
       tags:
       - Source Usages
@@ -41727,7 +42021,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:accounts:read
+        - idn:identity-history:manage
+      - applicationAuth:
+        - idn:identity-history:manage
       summary: Returns account usage insights
       tags:
       - Account Usages
