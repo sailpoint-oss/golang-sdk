@@ -2745,6 +2745,13 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 type ApiSearchFormInstancesByTenantRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
+	filters *string
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
+func (r ApiSearchFormInstancesByTenantRequest) Filters(filters string) ApiSearchFormInstancesByTenantRequest {
+	r.filters = &filters
+	return r
 }
 
 func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]ListFormInstancesByTenantResponse, *http.Response, error) {
@@ -2754,7 +2761,7 @@ func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]ListFormInstancesByT
 /*
 SearchFormInstancesByTenant List form instances by tenant.
 
-No parameters required.
+Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchFormInstancesByTenantRequest
@@ -2787,6 +2794,9 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
