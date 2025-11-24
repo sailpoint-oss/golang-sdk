@@ -296,6 +296,16 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsAPI* | [**PublishCustomUserLevel**](docs/CustomUserLevelsAPI.md#publishcustomuserlevel) | **Post** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
 *CustomUserLevelsAPI* | [**ShowUserLevelCounts**](docs/CustomUserLevelsAPI.md#showuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsAPI* | [**UpdateUserLevel**](docs/CustomUserLevelsAPI.md#updateuserlevel) | **Patch** /authorization/custom-user-levels/{id} | Update a user level
+*DataAccessSecurityAPI* | [**CancelTask**](docs/DataAccessSecurityAPI.md#canceltask) | **Post** /das/tasks/cancel/{id} | Cancel a DAS task.
+*DataAccessSecurityAPI* | [**CreateSchedule**](docs/DataAccessSecurityAPI.md#createschedule) | **Post** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityAPI* | [**DeleteSchedule**](docs/DataAccessSecurityAPI.md#deleteschedule) | **Delete** /das/tasks/schedules/{id} | Delete a DAS schedule.
+*DataAccessSecurityAPI* | [**DeleteTask**](docs/DataAccessSecurityAPI.md#deletetask) | **Delete** /das/tasks/{id} | Delete a DAS task.
+*DataAccessSecurityAPI* | [**GetSchedule**](docs/DataAccessSecurityAPI.md#getschedule) | **Get** /das/tasks/schedules/{id} | Get a DAS schedule.
+*DataAccessSecurityAPI* | [**GetSchedules**](docs/DataAccessSecurityAPI.md#getschedules) | **Get** /das/tasks/schedules | List all schedules.
+*DataAccessSecurityAPI* | [**GetTask**](docs/DataAccessSecurityAPI.md#gettask) | **Get** /das/tasks/{id} | Get a DAS task.
+*DataAccessSecurityAPI* | [**GetTasks**](docs/DataAccessSecurityAPI.md#gettasks) | **Get** /das/tasks | Lists all DAS tasks.
+*DataAccessSecurityAPI* | [**PutSchedule**](docs/DataAccessSecurityAPI.md#putschedule) | **Put** /das/tasks/schedules/{id} | Update a schedule.
+*DataAccessSecurityAPI* | [**StartTaskRerun**](docs/DataAccessSecurityAPI.md#starttaskrerun) | **Post** /das/tasks/rerun/{id} | Rerun a DAS task.
 *DataSegmentationAPI* | [**CreateDataSegment**](docs/DataSegmentationAPI.md#createdatasegment) | **Post** /data-segments | Create segment
 *DataSegmentationAPI* | [**DeleteDataSegment**](docs/DataSegmentationAPI.md#deletedatasegment) | **Delete** /data-segments/{segmentId} | Delete segment by id
 *DataSegmentationAPI* | [**GetDataSegment**](docs/DataSegmentationAPI.md#getdatasegment) | **Get** /data-segments/{segmentId} | Get segment by id
@@ -1205,6 +1215,7 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](docs/CreateSavedSearchRequest.md)
+ - [CreateScheduleRequest](docs/CreateScheduleRequest.md)
  - [CreateScheduledSearchRequest](docs/CreateScheduledSearchRequest.md)
  - [CreateUploadedConfigurationRequest](docs/CreateUploadedConfigurationRequest.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
@@ -1791,6 +1802,7 @@ Class | Method | HTTP request | Description
  - [Schedule2Months](docs/Schedule2Months.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
+ - [ScheduleInfo](docs/ScheduleInfo.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
  - [ScheduledActionPayload](docs/ScheduledActionPayload.md)
@@ -1950,6 +1962,7 @@ Class | Method | HTTP request | Description
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
  - [Target](docs/Target.md)
  - [TaskDefinitionSummary](docs/TaskDefinitionSummary.md)
+ - [TaskInfo](docs/TaskInfo.md)
  - [TaskResultDetails](docs/TaskResultDetails.md)
  - [TaskResultDetailsMessagesInner](docs/TaskResultDetailsMessagesInner.md)
  - [TaskResultDetailsReturnsInner](docs/TaskResultDetailsReturnsInner.md)
@@ -1995,6 +2008,7 @@ Class | Method | HTTP request | Description
  - [UpdateDetail](docs/UpdateDetail.md)
  - [UpdateMultiHostSourcesRequestInner](docs/UpdateMultiHostSourcesRequestInner.md)
  - [UpdateMultiHostSourcesRequestInnerValue](docs/UpdateMultiHostSourcesRequestInnerValue.md)
+ - [UpdateScheduleRequest](docs/UpdateScheduleRequest.md)
  - [UsageType](docs/UsageType.md)
  - [UserApp](docs/UserApp.md)
  - [UserAppAccount](docs/UserAppAccount.md)

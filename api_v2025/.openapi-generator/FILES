@@ -32,6 +32,7 @@ api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
 api_custom_user_levels.go
+api_data_access_security.go
 api_data_segmentation.go
 api_dimensions.go
 api_entitlements.go
@@ -515,6 +516,7 @@ docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
 docs/CreateSavedSearchRequest.md
+docs/CreateScheduleRequest.md
 docs/CreateScheduledSearchRequest.md
 docs/CreateUploadedConfigurationRequest.md
 docs/CreateWorkflowRequest.md
@@ -530,6 +532,8 @@ docs/DataAccess.md
 docs/DataAccessCategoriesInner.md
 docs/DataAccessImpactScore.md
 docs/DataAccessPoliciesInner.md
+docs/DataAccessSecurityAPI.md
+docs/DataAccessSecurityAPIdeveloperSite_code_examples.yaml
 docs/DataSegment.md
 docs/DataSegmentationAPI.md
 docs/DataSegmentationAPIdeveloperSite_code_examples.yaml
@@ -1208,6 +1212,7 @@ docs/Schedule2Hours.md
 docs/Schedule2Months.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
+docs/ScheduleInfo.md
 docs/ScheduleMonths.md
 docs/ScheduleType.md
 docs/ScheduledActionPayload.md
@@ -1387,6 +1392,7 @@ docs/TagsAPI.md
 docs/TagsAPIdeveloperSite_code_examples.yaml
 docs/Target.md
 docs/TaskDefinitionSummary.md
+docs/TaskInfo.md
 docs/TaskManagementAPI.md
 docs/TaskManagementAPIdeveloperSite_code_examples.yaml
 docs/TaskResultDetails.md
@@ -1444,6 +1450,7 @@ docs/UpdateAccessProfilesInBulk412Response.md
 docs/UpdateDetail.md
 docs/UpdateMultiHostSourcesRequestInner.md
 docs/UpdateMultiHostSourcesRequestInnerValue.md
+docs/UpdateScheduleRequest.md
 docs/UsageType.md
 docs/UserApp.md
 docs/UserAppAccount.md
@@ -1871,6 +1878,7 @@ model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_create_saved_search_request.go
+model_create_schedule_request.go
 model_create_scheduled_search_request.go
 model_create_uploaded_configuration_request.go
 model_create_workflow_request.go
@@ -2457,6 +2465,7 @@ model_schedule_2_hours.go
 model_schedule_2_months.go
 model_schedule_days.go
 model_schedule_hours.go
+model_schedule_info.go
 model_schedule_months.go
 model_schedule_type.go
 model_scheduled_action_payload.go
@@ -2616,6 +2625,7 @@ model_tagged_object.go
 model_tagged_object_dto.go
 model_target.go
 model_task_definition_summary.go
+model_task_info.go
 model_task_result_details.go
 model_task_result_details_messages_inner.go
 model_task_result_details_returns_inner.go
@@ -2661,6 +2671,7 @@ model_update_access_profiles_in_bulk_412_response.go
 model_update_detail.go
 model_update_multi_host_sources_request_inner.go
 model_update_multi_host_sources_request_inner_value.go
+model_update_schedule_request.go
 model_usage_type.go
 model_user_app.go
 model_user_app_account.go
@@ -2746,6 +2757,7 @@ test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
 test/api_custom_user_levels_test.go
+test/api_data_access_security_test.go
 test/api_data_segmentation_test.go
 test/api_dimensions_test.go
 test/api_entitlements_test.go
