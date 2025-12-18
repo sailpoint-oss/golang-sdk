@@ -1248,8 +1248,6 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:read
-      - applicationAuth:
-        - idn:access-profile:read
       summary: List access profiles
       tags:
       - Access Profiles
@@ -1337,11 +1335,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:manage
-        - idn:entitlement:read
-        - idn:identity:read
-        - idn:sources:read
-      - applicationAuth:
         - idn:access-profile:manage
         - idn:entitlement:read
         - idn:identity:read
@@ -1449,8 +1442,6 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
-      - applicationAuth:
-        - idn:access-profile:manage
       summary: Delete the specified access profile
       tags:
       - Access Profiles
@@ -1535,8 +1526,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:read
-      - applicationAuth:
         - idn:access-profile:read
       summary: Get an access profile
       tags:
@@ -1713,8 +1702,6 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
-      - applicationAuth:
-        - idn:access-profile:manage
       summary: Patch a specified access profile
       tags:
       - Access Profiles
@@ -1837,8 +1824,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:manage
-      - applicationAuth:
         - idn:access-profile:manage
       summary: Delete access profile(s)
       tags:
@@ -1993,8 +1978,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:read
-      - applicationAuth:
         - idn:access-profile:read
       summary: List access profile's entitlements
       tags:
@@ -49390,6 +49373,13 @@ components:
           id: 2c91809773dee3610173fdb0b6061ef4
           type: SOURCE
         enabled: true
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
         revocationRequestConfig:
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
@@ -49408,6 +49398,10 @@ components:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           denialCommentsRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 6
+            timeUnit: MONTHS
         name: Employee-database-read-write
         provisioningCriteria:
           children:
@@ -49439,6 +49433,21 @@ components:
           operation: EQUALS
           value: carlee.cert1c9f9b6fd@mailinator.com
         modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
         id: 2c91808a7190d06e01719938fcd20792
         requestable: true
       properties:
@@ -49509,8 +49518,15 @@ components:
             type: string
           nullable: true
           type: array
+        accessModelMetadata:
+          $ref: '#/components/schemas/AttributeDTOList'
         provisioningCriteria:
           $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
+        additionalOwners:
+          items:
+            $ref: '#/components/schemas/OwnerReference'
+          nullable: true
+          type: array
       required:
       - name
       - owner
@@ -61206,6 +61222,10 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+        requireEndDate: true
+        maxPermittedAccessDuration:
+          value: 6
+          timeUnit: MONTHS
       nullable: true
       properties:
         commentsRequired:
@@ -61228,6 +61248,15 @@ components:
           example: true
           nullable: true
           type: boolean
+        requireEndDate:
+          default: false
+          description: Indicates whether the requester of the containing object must
+            provide access end date.
+          example: true
+          nullable: true
+          type: boolean
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/AccessDuration'
         approvalSchemes:
           description: List describing the steps involved in approving the request.
           items:
@@ -61249,6 +61278,42 @@ components:
             request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
+          type: array
+      type: object
+    AttributeDTOList:
+      example:
+        attributes:
+        - key: iscPrivacy
+          name: Privacy
+          multiselect: false
+          status: active
+          type: governance
+          objectTypes:
+          - all
+          description: Specifies the level of privacy associated with an access item.
+          values:
+          - value: public
+            name: Public
+            status: active
+      properties:
+        attributes:
+          example:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
+          items:
+            $ref: '#/components/schemas/AttributeDTO'
           nullable: true
           type: array
       type: object
@@ -63849,42 +63914,6 @@ components:
           example: Role 2
           type: string
       type: object
-    AttributeDTOList:
-      example:
-        attributes:
-        - key: iscPrivacy
-          name: Privacy
-          multiselect: false
-          status: active
-          type: governance
-          objectTypes:
-          - all
-          description: Specifies the level of privacy associated with an access item.
-          values:
-          - value: public
-            name: Public
-            status: active
-      properties:
-        attributes:
-          example:
-          - key: iscPrivacy
-            name: Privacy
-            multiselect: false
-            status: active
-            type: governance
-            objectTypes:
-            - all
-            description: Specifies the level of privacy associated with an access
-              item.
-            values:
-            - value: public
-              name: Public
-              status: active
-          items:
-            $ref: '#/components/schemas/AttributeDTO'
-          nullable: true
-          type: array
-      type: object
     RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role
@@ -65662,6 +65691,29 @@ components:
         label: Section 1
       title: Section Details
       type: object
+    AccessDuration:
+      example:
+        value: 6
+        timeUnit: MONTHS
+      nullable: true
+      properties:
+        value:
+          description: "The numeric value representing the amount of time, which is\
+            \ defined in the **timeUnit**."
+          example: 6
+          format: int32
+          type: integer
+        timeUnit:
+          description: The unit of time that corresponds to the **value**. It defines
+            the scale of the time period.
+          enum:
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+          example: MONTHS
+          type: string
+      type: object
     AccessProfileApprovalScheme:
       example:
         approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
@@ -65692,6 +65744,50 @@ components:
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
           nullable: true
           type: string
+      type: object
+    AttributeDTO:
+      properties:
+        key:
+          description: Technical name of the Attribute. This is unique and cannot
+            be changed after creation.
+          example: iscPrivacy
+          type: string
+        name:
+          description: The display name of the key.
+          example: Privacy
+          type: string
+        multiselect:
+          default: false
+          description: Indicates whether the attribute can have multiple values.
+          example: false
+          type: boolean
+        status:
+          description: The status of the Attribute.
+          example: active
+          type: string
+        type:
+          description: The type of the Attribute. This can be either "custom" or "governance".
+          example: governance
+          type: string
+        objectTypes:
+          description: An array of object types this attributes values can be applied
+            to. Possible values are "all" or "entitlement". Value "all" means this
+            attribute can be used with all object types that are supported.
+          example:
+          - entitlement
+          items:
+            type: string
+          nullable: true
+          type: array
+        description:
+          description: The description of the Attribute.
+          example: Specifies the level of privacy associated with an access item.
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/AttributeValueDTO'
+          nullable: true
+          type: array
       type: object
     ProvisioningCriteriaOperation:
       description: Supported operations on `ProvisioningCriteria`.
@@ -66273,50 +66369,6 @@ components:
           nullable: true
           type: string
       type: object
-    AttributeDTO:
-      properties:
-        key:
-          description: Technical name of the Attribute. This is unique and cannot
-            be changed after creation.
-          example: iscPrivacy
-          type: string
-        name:
-          description: The display name of the key.
-          example: Privacy
-          type: string
-        multiselect:
-          default: false
-          description: Indicates whether the attribute can have multiple values.
-          example: false
-          type: boolean
-        status:
-          description: The status of the Attribute.
-          example: active
-          type: string
-        type:
-          description: The type of the Attribute. This can be either "custom" or "governance".
-          example: governance
-          type: string
-        objectTypes:
-          description: An array of object types this attributes values can be applied
-            to. Possible values are "all" or "entitlement". Value "all" means this
-            attribute can be used with all object types that are supported.
-          example:
-          - entitlement
-          items:
-            type: string
-          nullable: true
-          type: array
-        description:
-          description: The description of the Attribute.
-          example: Specifies the level of privacy associated with an access item.
-          type: string
-        values:
-          items:
-            $ref: '#/components/schemas/AttributeValueDTO'
-          nullable: true
-          type: array
-      type: object
     FilterType:
       description: |-
         Enum representing the currently supported filter types.
@@ -66725,6 +66777,22 @@ components:
           type: string
       title: Form Item Details
       type: object
+    AttributeValueDTO:
+      properties:
+        value:
+          description: Technical name of the Attribute value. This is unique and cannot
+            be changed after creation.
+          example: public
+          type: string
+        name:
+          description: The display name of the Attribute value.
+          example: Public
+          type: string
+        status:
+          description: The status of the Attribute value.
+          example: active
+          type: string
+      type: object
     ProvisioningCriteriaLevel3:
       description: Defines matching criteria for an account to be provisioned with
         a specific access profile.
@@ -66902,22 +66970,6 @@ components:
             $ref: '#/components/schemas/RoleCriteriaLevel3'
           nullable: true
           type: array
-      type: object
-    AttributeValueDTO:
-      properties:
-        value:
-          description: Technical name of the Attribute value. This is unique and cannot
-            be changed after creation.
-          example: public
-          type: string
-        name:
-          description: The display name of the Attribute value.
-          example: Public
-          type: string
-        status:
-          description: The status of the Attribute value.
-          example: active
-          type: string
       type: object
     Bound:
       example:

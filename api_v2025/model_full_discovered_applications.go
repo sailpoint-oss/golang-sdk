@@ -40,6 +40,44 @@ type FullDiscoveredApplications struct {
 	Status *string `json:"status,omitempty"`
 	// List of associated sources related to this discovered application.
 	AssociatedSources []string `json:"associatedSources,omitempty"`
+	// The operational status of the application.
+	OperationalStatus *string `json:"operationalStatus,omitempty"`
+	// The category of the discovery source.
+	DiscoverySourceCategory *string `json:"discoverySourceCategory,omitempty"`
+	// The number of licenses associated with the application.
+	LicenseCount *int32 `json:"licenseCount,omitempty"`
+	// Indicates whether the application is sanctioned.
+	IsSanctioned *bool `json:"isSanctioned,omitempty"`
+	// URL of the application's logo.
+	Logo *string `json:"logo,omitempty"`
+	// The URL of the application.
+	AppUrl *string `json:"appUrl,omitempty"`
+	// List of groups associated with the application.
+	Groups []map[string]interface{} `json:"groups,omitempty"`
+	// The count of users associated with the application.
+	UsersCount *string `json:"usersCount,omitempty"`
+	// The owners of the application.
+	ApplicationOwner []string `json:"applicationOwner,omitempty"`
+	// The IT owners of the application.
+	ItApplicationOwner []string `json:"itApplicationOwner,omitempty"`
+	// The business criticality level of the application.
+	BusinessCriticality *string `json:"businessCriticality,omitempty"`
+	// The data classification level of the application.
+	DataClassification *string `json:"dataClassification,omitempty"`
+	// The business unit associated with the application.
+	BusinessUnit *string `json:"businessUnit,omitempty"`
+	// The installation type of the application.
+	InstallType *string `json:"installType,omitempty"`
+	// The environment in which the application operates.
+	Environment *string `json:"environment,omitempty"`
+	// The risk score of the application.
+	RiskScore *string `json:"riskScore,omitempty"`
+	// Indicates whether the application has privileged access.
+	IsPrivileged *bool `json:"isPrivileged,omitempty"`
+	// The warranty expiration date of the application.
+	WarrantyExpiration *string `json:"warrantyExpiration,omitempty"`
+	// Additional attributes of the application useful for visibility of governance posture.
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -51,6 +89,10 @@ type _FullDiscoveredApplications FullDiscoveredApplications
 // will change when the set of required properties is changed
 func NewFullDiscoveredApplications() *FullDiscoveredApplications {
 	this := FullDiscoveredApplications{}
+	var isSanctioned bool = false
+	this.IsSanctioned = &isSanctioned
+	var isPrivileged bool = false
+	this.IsPrivileged = &isPrivileged
 	return &this
 }
 
@@ -59,6 +101,10 @@ func NewFullDiscoveredApplications() *FullDiscoveredApplications {
 // but it doesn't guarantee that properties required by API are set
 func NewFullDiscoveredApplicationsWithDefaults() *FullDiscoveredApplications {
 	this := FullDiscoveredApplications{}
+	var isSanctioned bool = false
+	this.IsSanctioned = &isSanctioned
+	var isPrivileged bool = false
+	this.IsPrivileged = &isPrivileged
 	return &this
 }
 
@@ -382,6 +428,614 @@ func (o *FullDiscoveredApplications) SetAssociatedSources(v []string) {
 	o.AssociatedSources = v
 }
 
+// GetOperationalStatus returns the OperationalStatus field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetOperationalStatus() string {
+	if o == nil || IsNil(o.OperationalStatus) {
+		var ret string
+		return ret
+	}
+	return *o.OperationalStatus
+}
+
+// GetOperationalStatusOk returns a tuple with the OperationalStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetOperationalStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.OperationalStatus) {
+		return nil, false
+	}
+	return o.OperationalStatus, true
+}
+
+// HasOperationalStatus returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasOperationalStatus() bool {
+	if o != nil && !IsNil(o.OperationalStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperationalStatus gets a reference to the given string and assigns it to the OperationalStatus field.
+func (o *FullDiscoveredApplications) SetOperationalStatus(v string) {
+	o.OperationalStatus = &v
+}
+
+// GetDiscoverySourceCategory returns the DiscoverySourceCategory field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetDiscoverySourceCategory() string {
+	if o == nil || IsNil(o.DiscoverySourceCategory) {
+		var ret string
+		return ret
+	}
+	return *o.DiscoverySourceCategory
+}
+
+// GetDiscoverySourceCategoryOk returns a tuple with the DiscoverySourceCategory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetDiscoverySourceCategoryOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscoverySourceCategory) {
+		return nil, false
+	}
+	return o.DiscoverySourceCategory, true
+}
+
+// HasDiscoverySourceCategory returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasDiscoverySourceCategory() bool {
+	if o != nil && !IsNil(o.DiscoverySourceCategory) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoverySourceCategory gets a reference to the given string and assigns it to the DiscoverySourceCategory field.
+func (o *FullDiscoveredApplications) SetDiscoverySourceCategory(v string) {
+	o.DiscoverySourceCategory = &v
+}
+
+// GetLicenseCount returns the LicenseCount field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetLicenseCount() int32 {
+	if o == nil || IsNil(o.LicenseCount) {
+		var ret int32
+		return ret
+	}
+	return *o.LicenseCount
+}
+
+// GetLicenseCountOk returns a tuple with the LicenseCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetLicenseCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.LicenseCount) {
+		return nil, false
+	}
+	return o.LicenseCount, true
+}
+
+// HasLicenseCount returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasLicenseCount() bool {
+	if o != nil && !IsNil(o.LicenseCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenseCount gets a reference to the given int32 and assigns it to the LicenseCount field.
+func (o *FullDiscoveredApplications) SetLicenseCount(v int32) {
+	o.LicenseCount = &v
+}
+
+// GetIsSanctioned returns the IsSanctioned field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetIsSanctioned() bool {
+	if o == nil || IsNil(o.IsSanctioned) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSanctioned
+}
+
+// GetIsSanctionedOk returns a tuple with the IsSanctioned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetIsSanctionedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSanctioned) {
+		return nil, false
+	}
+	return o.IsSanctioned, true
+}
+
+// HasIsSanctioned returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasIsSanctioned() bool {
+	if o != nil && !IsNil(o.IsSanctioned) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSanctioned gets a reference to the given bool and assigns it to the IsSanctioned field.
+func (o *FullDiscoveredApplications) SetIsSanctioned(v bool) {
+	o.IsSanctioned = &v
+}
+
+// GetLogo returns the Logo field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetLogo() string {
+	if o == nil || IsNil(o.Logo) {
+		var ret string
+		return ret
+	}
+	return *o.Logo
+}
+
+// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetLogoOk() (*string, bool) {
+	if o == nil || IsNil(o.Logo) {
+		return nil, false
+	}
+	return o.Logo, true
+}
+
+// HasLogo returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasLogo() bool {
+	if o != nil && !IsNil(o.Logo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogo gets a reference to the given string and assigns it to the Logo field.
+func (o *FullDiscoveredApplications) SetLogo(v string) {
+	o.Logo = &v
+}
+
+// GetAppUrl returns the AppUrl field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetAppUrl() string {
+	if o == nil || IsNil(o.AppUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AppUrl
+}
+
+// GetAppUrlOk returns a tuple with the AppUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetAppUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AppUrl) {
+		return nil, false
+	}
+	return o.AppUrl, true
+}
+
+// HasAppUrl returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasAppUrl() bool {
+	if o != nil && !IsNil(o.AppUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppUrl gets a reference to the given string and assigns it to the AppUrl field.
+func (o *FullDiscoveredApplications) SetAppUrl(v string) {
+	o.AppUrl = &v
+}
+
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetGroups() []map[string]interface{} {
+	if o == nil || IsNil(o.Groups) {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetGroupsOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []map[string]interface{} and assigns it to the Groups field.
+func (o *FullDiscoveredApplications) SetGroups(v []map[string]interface{}) {
+	o.Groups = v
+}
+
+// GetUsersCount returns the UsersCount field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetUsersCount() string {
+	if o == nil || IsNil(o.UsersCount) {
+		var ret string
+		return ret
+	}
+	return *o.UsersCount
+}
+
+// GetUsersCountOk returns a tuple with the UsersCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetUsersCountOk() (*string, bool) {
+	if o == nil || IsNil(o.UsersCount) {
+		return nil, false
+	}
+	return o.UsersCount, true
+}
+
+// HasUsersCount returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasUsersCount() bool {
+	if o != nil && !IsNil(o.UsersCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsersCount gets a reference to the given string and assigns it to the UsersCount field.
+func (o *FullDiscoveredApplications) SetUsersCount(v string) {
+	o.UsersCount = &v
+}
+
+// GetApplicationOwner returns the ApplicationOwner field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetApplicationOwner() []string {
+	if o == nil || IsNil(o.ApplicationOwner) {
+		var ret []string
+		return ret
+	}
+	return o.ApplicationOwner
+}
+
+// GetApplicationOwnerOk returns a tuple with the ApplicationOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetApplicationOwnerOk() ([]string, bool) {
+	if o == nil || IsNil(o.ApplicationOwner) {
+		return nil, false
+	}
+	return o.ApplicationOwner, true
+}
+
+// HasApplicationOwner returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasApplicationOwner() bool {
+	if o != nil && !IsNil(o.ApplicationOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationOwner gets a reference to the given []string and assigns it to the ApplicationOwner field.
+func (o *FullDiscoveredApplications) SetApplicationOwner(v []string) {
+	o.ApplicationOwner = v
+}
+
+// GetItApplicationOwner returns the ItApplicationOwner field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetItApplicationOwner() []string {
+	if o == nil || IsNil(o.ItApplicationOwner) {
+		var ret []string
+		return ret
+	}
+	return o.ItApplicationOwner
+}
+
+// GetItApplicationOwnerOk returns a tuple with the ItApplicationOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetItApplicationOwnerOk() ([]string, bool) {
+	if o == nil || IsNil(o.ItApplicationOwner) {
+		return nil, false
+	}
+	return o.ItApplicationOwner, true
+}
+
+// HasItApplicationOwner returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasItApplicationOwner() bool {
+	if o != nil && !IsNil(o.ItApplicationOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetItApplicationOwner gets a reference to the given []string and assigns it to the ItApplicationOwner field.
+func (o *FullDiscoveredApplications) SetItApplicationOwner(v []string) {
+	o.ItApplicationOwner = v
+}
+
+// GetBusinessCriticality returns the BusinessCriticality field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetBusinessCriticality() string {
+	if o == nil || IsNil(o.BusinessCriticality) {
+		var ret string
+		return ret
+	}
+	return *o.BusinessCriticality
+}
+
+// GetBusinessCriticalityOk returns a tuple with the BusinessCriticality field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetBusinessCriticalityOk() (*string, bool) {
+	if o == nil || IsNil(o.BusinessCriticality) {
+		return nil, false
+	}
+	return o.BusinessCriticality, true
+}
+
+// HasBusinessCriticality returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasBusinessCriticality() bool {
+	if o != nil && !IsNil(o.BusinessCriticality) {
+		return true
+	}
+
+	return false
+}
+
+// SetBusinessCriticality gets a reference to the given string and assigns it to the BusinessCriticality field.
+func (o *FullDiscoveredApplications) SetBusinessCriticality(v string) {
+	o.BusinessCriticality = &v
+}
+
+// GetDataClassification returns the DataClassification field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetDataClassification() string {
+	if o == nil || IsNil(o.DataClassification) {
+		var ret string
+		return ret
+	}
+	return *o.DataClassification
+}
+
+// GetDataClassificationOk returns a tuple with the DataClassification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetDataClassificationOk() (*string, bool) {
+	if o == nil || IsNil(o.DataClassification) {
+		return nil, false
+	}
+	return o.DataClassification, true
+}
+
+// HasDataClassification returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasDataClassification() bool {
+	if o != nil && !IsNil(o.DataClassification) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataClassification gets a reference to the given string and assigns it to the DataClassification field.
+func (o *FullDiscoveredApplications) SetDataClassification(v string) {
+	o.DataClassification = &v
+}
+
+// GetBusinessUnit returns the BusinessUnit field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetBusinessUnit() string {
+	if o == nil || IsNil(o.BusinessUnit) {
+		var ret string
+		return ret
+	}
+	return *o.BusinessUnit
+}
+
+// GetBusinessUnitOk returns a tuple with the BusinessUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetBusinessUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.BusinessUnit) {
+		return nil, false
+	}
+	return o.BusinessUnit, true
+}
+
+// HasBusinessUnit returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasBusinessUnit() bool {
+	if o != nil && !IsNil(o.BusinessUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetBusinessUnit gets a reference to the given string and assigns it to the BusinessUnit field.
+func (o *FullDiscoveredApplications) SetBusinessUnit(v string) {
+	o.BusinessUnit = &v
+}
+
+// GetInstallType returns the InstallType field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetInstallType() string {
+	if o == nil || IsNil(o.InstallType) {
+		var ret string
+		return ret
+	}
+	return *o.InstallType
+}
+
+// GetInstallTypeOk returns a tuple with the InstallType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetInstallTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.InstallType) {
+		return nil, false
+	}
+	return o.InstallType, true
+}
+
+// HasInstallType returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasInstallType() bool {
+	if o != nil && !IsNil(o.InstallType) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallType gets a reference to the given string and assigns it to the InstallType field.
+func (o *FullDiscoveredApplications) SetInstallType(v string) {
+	o.InstallType = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetEnvironment() string {
+	if o == nil || IsNil(o.Environment) {
+		var ret string
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetEnvironmentOk() (*string, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given string and assigns it to the Environment field.
+func (o *FullDiscoveredApplications) SetEnvironment(v string) {
+	o.Environment = &v
+}
+
+// GetRiskScore returns the RiskScore field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetRiskScore() string {
+	if o == nil || IsNil(o.RiskScore) {
+		var ret string
+		return ret
+	}
+	return *o.RiskScore
+}
+
+// GetRiskScoreOk returns a tuple with the RiskScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetRiskScoreOk() (*string, bool) {
+	if o == nil || IsNil(o.RiskScore) {
+		return nil, false
+	}
+	return o.RiskScore, true
+}
+
+// HasRiskScore returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasRiskScore() bool {
+	if o != nil && !IsNil(o.RiskScore) {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskScore gets a reference to the given string and assigns it to the RiskScore field.
+func (o *FullDiscoveredApplications) SetRiskScore(v string) {
+	o.RiskScore = &v
+}
+
+// GetIsPrivileged returns the IsPrivileged field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetIsPrivileged() bool {
+	if o == nil || IsNil(o.IsPrivileged) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPrivileged
+}
+
+// GetIsPrivilegedOk returns a tuple with the IsPrivileged field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetIsPrivilegedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPrivileged) {
+		return nil, false
+	}
+	return o.IsPrivileged, true
+}
+
+// HasIsPrivileged returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasIsPrivileged() bool {
+	if o != nil && !IsNil(o.IsPrivileged) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPrivileged gets a reference to the given bool and assigns it to the IsPrivileged field.
+func (o *FullDiscoveredApplications) SetIsPrivileged(v bool) {
+	o.IsPrivileged = &v
+}
+
+// GetWarrantyExpiration returns the WarrantyExpiration field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetWarrantyExpiration() string {
+	if o == nil || IsNil(o.WarrantyExpiration) {
+		var ret string
+		return ret
+	}
+	return *o.WarrantyExpiration
+}
+
+// GetWarrantyExpirationOk returns a tuple with the WarrantyExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetWarrantyExpirationOk() (*string, bool) {
+	if o == nil || IsNil(o.WarrantyExpiration) {
+		return nil, false
+	}
+	return o.WarrantyExpiration, true
+}
+
+// HasWarrantyExpiration returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasWarrantyExpiration() bool {
+	if o != nil && !IsNil(o.WarrantyExpiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarrantyExpiration gets a reference to the given string and assigns it to the WarrantyExpiration field.
+func (o *FullDiscoveredApplications) SetWarrantyExpiration(v string) {
+	o.WarrantyExpiration = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetAttributes() map[string]interface{} {
+	if o == nil || IsNil(o.Attributes) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasAttributes() bool {
+	if o != nil && !IsNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *FullDiscoveredApplications) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
+}
+
 func (o FullDiscoveredApplications) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -422,6 +1076,63 @@ func (o FullDiscoveredApplications) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AssociatedSources) {
 		toSerialize["associatedSources"] = o.AssociatedSources
 	}
+	if !IsNil(o.OperationalStatus) {
+		toSerialize["operationalStatus"] = o.OperationalStatus
+	}
+	if !IsNil(o.DiscoverySourceCategory) {
+		toSerialize["discoverySourceCategory"] = o.DiscoverySourceCategory
+	}
+	if !IsNil(o.LicenseCount) {
+		toSerialize["licenseCount"] = o.LicenseCount
+	}
+	if !IsNil(o.IsSanctioned) {
+		toSerialize["isSanctioned"] = o.IsSanctioned
+	}
+	if !IsNil(o.Logo) {
+		toSerialize["logo"] = o.Logo
+	}
+	if !IsNil(o.AppUrl) {
+		toSerialize["appUrl"] = o.AppUrl
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
+	if !IsNil(o.UsersCount) {
+		toSerialize["usersCount"] = o.UsersCount
+	}
+	if !IsNil(o.ApplicationOwner) {
+		toSerialize["applicationOwner"] = o.ApplicationOwner
+	}
+	if !IsNil(o.ItApplicationOwner) {
+		toSerialize["itApplicationOwner"] = o.ItApplicationOwner
+	}
+	if !IsNil(o.BusinessCriticality) {
+		toSerialize["businessCriticality"] = o.BusinessCriticality
+	}
+	if !IsNil(o.DataClassification) {
+		toSerialize["dataClassification"] = o.DataClassification
+	}
+	if !IsNil(o.BusinessUnit) {
+		toSerialize["businessUnit"] = o.BusinessUnit
+	}
+	if !IsNil(o.InstallType) {
+		toSerialize["installType"] = o.InstallType
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.RiskScore) {
+		toSerialize["riskScore"] = o.RiskScore
+	}
+	if !IsNil(o.IsPrivileged) {
+		toSerialize["isPrivileged"] = o.IsPrivileged
+	}
+	if !IsNil(o.WarrantyExpiration) {
+		toSerialize["warrantyExpiration"] = o.WarrantyExpiration
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -454,6 +1165,25 @@ func (o *FullDiscoveredApplications) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "associatedSources")
+		delete(additionalProperties, "operationalStatus")
+		delete(additionalProperties, "discoverySourceCategory")
+		delete(additionalProperties, "licenseCount")
+		delete(additionalProperties, "isSanctioned")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "appUrl")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "usersCount")
+		delete(additionalProperties, "applicationOwner")
+		delete(additionalProperties, "itApplicationOwner")
+		delete(additionalProperties, "businessCriticality")
+		delete(additionalProperties, "dataClassification")
+		delete(additionalProperties, "businessUnit")
+		delete(additionalProperties, "installType")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "riskScore")
+		delete(additionalProperties, "isPrivileged")
+		delete(additionalProperties, "warrantyExpiration")
+		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}
 

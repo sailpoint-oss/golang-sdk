@@ -348,7 +348,7 @@ type ApiGetAttestationDocumentRequest struct {
 	key *string
 }
 
-// Base64Url encoded public key
+// Base64Url encoded NIST P-384 public key
 func (r ApiGetAttestationDocumentRequest) Key(key string) ApiGetAttestationDocumentRequest {
 	r.key = &key
 	return r
@@ -361,7 +361,7 @@ func (r ApiGetAttestationDocumentRequest) Execute() (*ParameterStorageAttestatio
 /*
 GetAttestationDocument Get an attestation document.
 
-Get an attestation document, and perform x25519 handshake to enabled end-to-end encrypted transport of parameter private fields.
+Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAttestationDocumentRequest

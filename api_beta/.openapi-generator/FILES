@@ -82,6 +82,7 @@ configuration.go
 docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
+docs/AccessDuration.md
 docs/AccessItemAccessProfileResponse.md
 docs/AccessItemAccessProfileResponseAppRefsInner.md
 docs/AccessItemAccountResponse.md
@@ -1119,6 +1120,7 @@ go.sum
 model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
+model_access_duration.go
 model_access_item_access_profile_response.go
 model_access_item_access_profile_response_app_refs_inner.go
 model_access_item_account_response.go

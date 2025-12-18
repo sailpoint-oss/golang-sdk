@@ -35,6 +35,17 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DataAccessSecurityAPIService CreateApplication", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DataAccessSecurityAPI.CreateApplication(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DataAccessSecurityAPIService CreateSchedule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -43,6 +54,19 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService DeleteApplication", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		httpRes, err := apiClient.DataAccessSecurityAPI.DeleteApplication(context.Background(), id).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -69,6 +93,32 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 		httpRes, err := apiClient.DataAccessSecurityAPI.DeleteTask(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService GetApplication", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetApplication(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService GetApplications", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetApplications(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -121,6 +171,19 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService PutApplication", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		httpRes, err := apiClient.DataAccessSecurityAPI.PutApplication(context.Background(), id).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

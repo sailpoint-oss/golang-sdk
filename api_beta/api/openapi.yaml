@@ -1039,7 +1039,6 @@ tags:
     | Account Attributes Changed | idn:account-attributes-changed | FIRE_AND_FORGET | After an account aggregation, and one or more account attributes have changed. |
     | Account Correlated | idn:account-correlated | FIRE_AND_FORGET | After an account is added to an identity. |
     | Accounts Collected for Aggregation |  idn:aggregation-accounts-collected | FIRE_AND_FORGET | New, changed, and deleted accounts have been gathered during an aggregation and are being processed. |
-    | Account Uncorrelated | idn:account-uncorrelated | FIRE_AND_FORGET | After an account is removed from an identity. |
     | Campaign Activated | idn:campaign-activated | FIRE_AND_FORGET | After a campaign is activated. |
     | Campaign Ended | idn:campaign-ended | FIRE_AND_FORGET | After a campaign ends. |
     | Campaign Generated | idn:campaign-generated | FIRE_AND_FORGET | After a campaign finishes generating. |
@@ -1721,8 +1720,6 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:read
-      - applicationAuth:
-        - idn:access-profile:read
       summary: List access profiles
       tags:
       - Access Profiles
@@ -1810,11 +1807,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:manage
-        - idn:entitlement:read
-        - idn:identity:read
-        - idn:sources:read
-      - applicationAuth:
         - idn:access-profile:manage
         - idn:entitlement:read
         - idn:identity:read
@@ -1925,6 +1917,10 @@ paths:
       summary: Delete the specified access profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
       description: This API returns an Access Profile by its ID.
       operationId: getAccessProfile
@@ -2002,9 +1998,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:read
-        - idn:access-profile:manage
-      - applicationAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
       summary: Get an access profile
@@ -2145,6 +2138,10 @@ paths:
       summary: Patch a specified access profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/bulk-delete:
     post:
       description: "This endpoint initiates a bulk deletion of one or more access\
@@ -2258,8 +2255,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:manage
-      - applicationAuth:
         - idn:access-profile:manage
       summary: Delete access profile(s)
       tags:
@@ -2520,9 +2515,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:access-profile:read
-        - idn:access-profile:manage
-      - applicationAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
       summary: List access profile's entitlements
@@ -48389,9 +48381,13 @@ paths:
       - SOURCE_SUBADMIN
   /task-status/pending-tasks:
     get:
-      description: Retrieve a list of statuses for pending tasks. Types of tasks include
-        account and entitlement aggregation and other general background processing
-        tasks.  Data for tasks older than 90 days will not be returned.
+      deprecated: true
+      description: "This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list)\
+        \ endpoint with isnull filtering on the completionStatus field to retrieve\
+        \ pending tasks. Example: /v2025/task-status?filters=completionStatus isnull\
+        \ \n\nRetrieve a list of statuses for pending tasks. Types of tasks include\
+        \ account and entitlement aggregation and other general background processing\
+        \ tasks.  Data for tasks older than 90 days will not be returned.\n"
       operationId: getPendingTasks
       parameters:
       - description: |-
@@ -48510,6 +48506,8 @@ paths:
       summary: Retrieve pending task status list
       tags:
       - Task Management
+      x-deprecated-description: |
+        This API has been deprecated, please refer to [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - HELPDESK
@@ -48520,8 +48518,11 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
     head:
-      description: Responds with headers only for list of task statuses for pending
-        tasks.
+      deprecated: true
+      description: |
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull
+
+        Responds with headers only for list of task statuses for pending tasks.
       operationId: getPendingTaskHeaders
       parameters:
       - description: |-
@@ -48634,6 +48635,8 @@ paths:
       summary: Retrieve pending task list headers
       tags:
       - Task Management
+      x-deprecated-description: |
+        This API has been deprecated, please refer to [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - HELPDESK
@@ -66767,6 +66770,13 @@ components:
           id: 2c91809773dee3610173fdb0b6061ef4
           type: SOURCE
         enabled: true
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
         revocationRequestConfig:
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
@@ -66785,6 +66795,10 @@ components:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           denialCommentsRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 6
+            timeUnit: MONTHS
         name: Employee-database-read-write
         provisioningCriteria:
           children:
@@ -66816,6 +66830,21 @@ components:
           operation: EQUALS
           value: carlee.cert1c9f9b6fd@mailinator.com
         modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
         id: 2c91808a7190d06e01719938fcd20792
         requestable: true
       properties:
@@ -66886,8 +66915,15 @@ components:
             type: string
           nullable: true
           type: array
+        accessModelMetadata:
+          $ref: '#/components/schemas/AttributeDTOList'
         provisioningCriteria:
           $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
+        additionalOwners:
+          items:
+            $ref: '#/components/schemas/OwnerReference'
+          nullable: true
+          type: array
       required:
       - name
       - owner
@@ -85038,6 +85074,10 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+        requireEndDate: true
+        maxPermittedAccessDuration:
+          value: 6
+          timeUnit: MONTHS
       nullable: true
       properties:
         commentsRequired:
@@ -85060,6 +85100,15 @@ components:
           example: true
           nullable: true
           type: boolean
+        requireEndDate:
+          default: false
+          description: Indicates whether the requester of the containing object must
+            provide access end date.
+          example: true
+          nullable: true
+          type: boolean
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/AccessDuration'
         approvalSchemes:
           description: List describing the steps involved in approving the request.
           items:
@@ -85081,6 +85130,42 @@ components:
             request.
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
+          type: array
+      type: object
+    AttributeDTOList:
+      example:
+        attributes:
+        - key: iscPrivacy
+          name: Privacy
+          multiselect: false
+          status: active
+          type: governance
+          objectTypes:
+          - all
+          description: Specifies the level of privacy associated with an access item.
+          values:
+          - value: public
+            name: Public
+            status: active
+      properties:
+        attributes:
+          example:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
+          items:
+            $ref: '#/components/schemas/AttributeDTO'
           nullable: true
           type: array
       type: object
@@ -85236,42 +85321,6 @@ components:
             Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.
           example: true
           type: boolean
-      type: object
-    AttributeDTOList:
-      example:
-        attributes:
-        - key: iscPrivacy
-          name: Privacy
-          multiselect: false
-          status: active
-          type: governance
-          objectTypes:
-          - all
-          description: Specifies the level of privacy associated with an access item.
-          values:
-          - value: public
-            name: Public
-            status: active
-      properties:
-        attributes:
-          example:
-          - key: iscPrivacy
-            name: Privacy
-            multiselect: false
-            status: active
-            type: governance
-            objectTypes:
-            - all
-            description: Specifies the level of privacy associated with an access
-              item.
-            values:
-            - value: public
-              name: Public
-              status: active
-          items:
-            $ref: '#/components/schemas/AttributeDTO'
-          nullable: true
-          type: array
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
@@ -91489,6 +91538,29 @@ components:
       example: DEFAULT
       nullable: true
       type: string
+    AccessDuration:
+      example:
+        value: 6
+        timeUnit: MONTHS
+      nullable: true
+      properties:
+        value:
+          description: "The numeric value representing the amount of time, which is\
+            \ defined in the **timeUnit**."
+          example: 6
+          format: int32
+          type: integer
+        timeUnit:
+          description: The unit of time that corresponds to the **value**. It defines
+            the scale of the time period.
+          enum:
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+          example: MONTHS
+          type: string
+      type: object
     AccessProfileApprovalScheme:
       example:
         approverId: 46c79819-a69f-49a2-becb-12c971ae66c6

@@ -802,6 +802,7 @@ Class | Method | HTTP request | Description
  - [AccessConstraint](docs/AccessConstraint.md)
  - [AccessCriteria](docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessDuration](docs/AccessDuration.md)
  - [AccessItemAccessProfileResponse](docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccessProfileResponseAppRefsInner](docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](docs/AccessItemAccountResponse.md)

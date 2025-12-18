@@ -40,10 +40,10 @@ func Test_api_v2025_MachineAccountsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subtypeId string
+		var sourceId string
 		var technicalName string
 
-		httpRes, err := apiClient.MachineAccountsAPI.DeleteMachineAccountSubtype(context.Background(), subtypeId, technicalName).Execute()
+		httpRes, err := apiClient.MachineAccountsAPI.DeleteMachineAccountSubtype(context.Background(), sourceId, technicalName).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -123,10 +123,10 @@ func Test_api_v2025_MachineAccountsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subtypeId string
+		var sourceId string
 		var technicalName string
 
-		resp, httpRes, err := apiClient.MachineAccountsAPI.PatchMachineAccountSubtype(context.Background(), subtypeId, technicalName).Execute()
+		resp, httpRes, err := apiClient.MachineAccountsAPI.PatchMachineAccountSubtype(context.Background(), sourceId, technicalName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

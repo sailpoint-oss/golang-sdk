@@ -28,7 +28,7 @@ type ApiCreateMachineAccountSubtypeRequest struct {
 	ApiService *MachineAccountsAPIService
 	sourceId string
 	xSailPointExperimental *string
-	sourceSubtype *SourceSubtype
+	createMachineAccountSubtypeRequest *CreateMachineAccountSubtypeRequest
 }
 
 // Use this header to enable this experimental API.
@@ -37,8 +37,8 @@ func (r ApiCreateMachineAccountSubtypeRequest) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiCreateMachineAccountSubtypeRequest) SourceSubtype(sourceSubtype SourceSubtype) ApiCreateMachineAccountSubtypeRequest {
-	r.sourceSubtype = &sourceSubtype
+func (r ApiCreateMachineAccountSubtypeRequest) CreateMachineAccountSubtypeRequest(createMachineAccountSubtypeRequest CreateMachineAccountSubtypeRequest) ApiCreateMachineAccountSubtypeRequest {
+	r.createMachineAccountSubtypeRequest = &createMachineAccountSubtypeRequest
 	return r
 }
 
@@ -99,8 +99,8 @@ func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeExecute(r ApiCrea
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.sourceSubtype == nil {
-		return localVarReturnValue, nil, reportError("sourceSubtype is required and must be specified")
+	if r.createMachineAccountSubtypeRequest == nil {
+		return localVarReturnValue, nil, reportError("createMachineAccountSubtypeRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -122,7 +122,7 @@ func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeExecute(r ApiCrea
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.sourceSubtype
+	localVarPostBody = r.createMachineAccountSubtypeRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -217,7 +217,7 @@ func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeExecute(r ApiCrea
 type ApiDeleteMachineAccountSubtypeRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
-	subtypeId string
+	sourceId string
 	technicalName string
 	xSailPointExperimental *string
 }
@@ -235,18 +235,18 @@ func (r ApiDeleteMachineAccountSubtypeRequest) Execute() (*http.Response, error)
 /*
 DeleteMachineAccountSubtype Delete subtype
 
-Delete a machine account subtype by its ID.
+Delete a machine account subtype by source ID and technical name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subtypeId The ID of the machine account subtype.
+ @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiDeleteMachineAccountSubtypeRequest
 */
-func (a *MachineAccountsAPIService) DeleteMachineAccountSubtype(ctx context.Context, subtypeId string, technicalName string) ApiDeleteMachineAccountSubtypeRequest {
+func (a *MachineAccountsAPIService) DeleteMachineAccountSubtype(ctx context.Context, sourceId string, technicalName string) ApiDeleteMachineAccountSubtypeRequest {
 	return ApiDeleteMachineAccountSubtypeRequest{
 		ApiService: a,
 		ctx: ctx,
-		subtypeId: subtypeId,
+		sourceId: sourceId,
 		technicalName: technicalName,
 	}
 }
@@ -265,7 +265,7 @@ func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeExecute(r ApiDele
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/subtypes/{technicalName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"subtypeId"+"}", url.PathEscape(parameterValueToString(r.subtypeId, "subtypeId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"technicalName"+"}", url.PathEscape(parameterValueToString(r.technicalName, "technicalName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -615,7 +615,7 @@ func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByIdExecute(r ApiGet
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/subtype/{subtypeId}"
+	localVarPath := localBasePath + "/sources/subtypes/{subtypeId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"subtypeId"+"}", url.PathEscape(parameterValueToString(r.subtypeId, "subtypeId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -936,7 +936,7 @@ func (r ApiListMachineAccountSubtypesRequest) XSailPointExperimental(xSailPointE
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
 func (r ApiListMachineAccountSubtypesRequest) Filters(filters string) ApiListMachineAccountSubtypesRequest {
 	r.filters = &filters
 	return r
@@ -1394,10 +1394,10 @@ func (a *MachineAccountsAPIService) ListMachineAccountsExecute(r ApiListMachineA
 type ApiPatchMachineAccountSubtypeRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
-	subtypeId string
+	sourceId string
 	technicalName string
 	xSailPointExperimental *string
-	sourceSubtype *SourceSubtype
+	requestBody *[]map[string]interface{}
 }
 
 // Use this header to enable this experimental API.
@@ -1406,8 +1406,9 @@ func (r ApiPatchMachineAccountSubtypeRequest) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiPatchMachineAccountSubtypeRequest) SourceSubtype(sourceSubtype SourceSubtype) ApiPatchMachineAccountSubtypeRequest {
-	r.sourceSubtype = &sourceSubtype
+// A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+func (r ApiPatchMachineAccountSubtypeRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchMachineAccountSubtypeRequest {
+	r.requestBody = &requestBody
 	return r
 }
 
@@ -1418,19 +1419,19 @@ func (r ApiPatchMachineAccountSubtypeRequest) Execute() (*SourceSubtype, *http.R
 /*
 PatchMachineAccountSubtype Patch subtype
 
-Update fields of a machine account subtype by its ID.
-Patchable fields include: `displayName`, `description`, `technicalName`.
+Update fields of a machine account subtype by source ID and technical name.
+Patchable fields include: `displayName`, `description`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subtypeId The ID of the machine account subtype.
+ @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiPatchMachineAccountSubtypeRequest
 */
-func (a *MachineAccountsAPIService) PatchMachineAccountSubtype(ctx context.Context, subtypeId string, technicalName string) ApiPatchMachineAccountSubtypeRequest {
+func (a *MachineAccountsAPIService) PatchMachineAccountSubtype(ctx context.Context, sourceId string, technicalName string) ApiPatchMachineAccountSubtypeRequest {
 	return ApiPatchMachineAccountSubtypeRequest{
 		ApiService: a,
 		ctx: ctx,
-		subtypeId: subtypeId,
+		sourceId: sourceId,
 		technicalName: technicalName,
 	}
 }
@@ -1451,7 +1452,7 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeExecute(r ApiPatch
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/subtypes/{technicalName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"subtypeId"+"}", url.PathEscape(parameterValueToString(r.subtypeId, "subtypeId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"technicalName"+"}", url.PathEscape(parameterValueToString(r.technicalName, "technicalName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1472,12 +1473,12 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeExecute(r ApiPatch
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.sourceSubtype == nil {
-		return localVarReturnValue, nil, reportError("sourceSubtype is required and must be specified")
+	if r.requestBody == nil {
+		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1495,7 +1496,7 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeExecute(r ApiPatch
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.sourceSubtype
+	localVarPostBody = r.requestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

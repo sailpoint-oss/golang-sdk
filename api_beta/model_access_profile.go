@@ -43,7 +43,9 @@ type AccessProfile struct {
 	RevocationRequestConfig NullableRevocability `json:"revocationRequestConfig,omitempty"`
 	// List of segment IDs, if any, that the access profile is assigned to.
 	Segments []string `json:"segments,omitempty"`
+	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	ProvisioningCriteria NullableProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
+	AdditionalOwners []OwnerReference `json:"additionalOwners,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -501,6 +503,38 @@ func (o *AccessProfile) SetSegments(v []string) {
 	o.Segments = v
 }
 
+// GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
+func (o *AccessProfile) GetAccessModelMetadata() AttributeDTOList {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		var ret AttributeDTOList
+		return ret
+	}
+	return *o.AccessModelMetadata
+}
+
+// GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessProfile) GetAccessModelMetadataOk() (*AttributeDTOList, bool) {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		return nil, false
+	}
+	return o.AccessModelMetadata, true
+}
+
+// HasAccessModelMetadata returns a boolean if a field has been set.
+func (o *AccessProfile) HasAccessModelMetadata() bool {
+	if o != nil && !IsNil(o.AccessModelMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessModelMetadata gets a reference to the given AttributeDTOList and assigns it to the AccessModelMetadata field.
+func (o *AccessProfile) SetAccessModelMetadata(v AttributeDTOList) {
+	o.AccessModelMetadata = &v
+}
+
 // GetProvisioningCriteria returns the ProvisioningCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetProvisioningCriteria() ProvisioningCriteriaLevel1 {
 	if o == nil || IsNil(o.ProvisioningCriteria.Get()) {
@@ -541,6 +575,39 @@ func (o *AccessProfile) SetProvisioningCriteriaNil() {
 // UnsetProvisioningCriteria ensures that no value is present for ProvisioningCriteria, not even an explicit nil
 func (o *AccessProfile) UnsetProvisioningCriteria() {
 	o.ProvisioningCriteria.Unset()
+}
+
+// GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessProfile) GetAdditionalOwners() []OwnerReference {
+	if o == nil {
+		var ret []OwnerReference
+		return ret
+	}
+	return o.AdditionalOwners
+}
+
+// GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessProfile) GetAdditionalOwnersOk() ([]OwnerReference, bool) {
+	if o == nil || IsNil(o.AdditionalOwners) {
+		return nil, false
+	}
+	return o.AdditionalOwners, true
+}
+
+// HasAdditionalOwners returns a boolean if a field has been set.
+func (o *AccessProfile) HasAdditionalOwners() bool {
+	if o != nil && !IsNil(o.AdditionalOwners) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalOwners gets a reference to the given []OwnerReference and assigns it to the AdditionalOwners field.
+func (o *AccessProfile) SetAdditionalOwners(v []OwnerReference) {
+	o.AdditionalOwners = v
 }
 
 func (o AccessProfile) MarshalJSON() ([]byte, error) {
@@ -586,8 +653,14 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments
 	}
+	if !IsNil(o.AccessModelMetadata) {
+		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
+	}
 	if o.ProvisioningCriteria.IsSet() {
 		toSerialize["provisioningCriteria"] = o.ProvisioningCriteria.Get()
+	}
+	if o.AdditionalOwners != nil {
+		toSerialize["additionalOwners"] = o.AdditionalOwners
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -647,7 +720,9 @@ func (o *AccessProfile) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accessRequestConfig")
 		delete(additionalProperties, "revocationRequestConfig")
 		delete(additionalProperties, "segments")
+		delete(additionalProperties, "accessModelMetadata")
 		delete(additionalProperties, "provisioningCriteria")
+		delete(additionalProperties, "additionalOwners")
 		o.AdditionalProperties = additionalProperties
 	}
 

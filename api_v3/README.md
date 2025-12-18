@@ -450,6 +450,7 @@ Class | Method | HTTP request | Description
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
  - [AccessCriteriaRequest](docs/AccessCriteriaRequest.md)
  - [AccessCriteriaRequestCriteriaListInner](docs/AccessCriteriaRequestCriteriaListInner.md)
+ - [AccessDuration](docs/AccessDuration.md)
  - [AccessItemRequestedFor](docs/AccessItemRequestedFor.md)
  - [AccessItemRequester](docs/AccessItemRequester.md)
  - [AccessItemReviewedBy](docs/AccessItemReviewedBy.md)

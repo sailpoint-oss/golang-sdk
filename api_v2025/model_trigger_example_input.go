@@ -24,7 +24,10 @@ type TriggerExampleInput struct {
 	AccountAggregationCompleted *AccountAggregationCompleted
 	AccountAttributesChanged *AccountAttributesChanged
 	AccountCorrelated *AccountCorrelated
+	AccountCreated *AccountCreated
+	AccountDeleted *AccountDeleted
 	AccountUncorrelated *AccountUncorrelated
+	AccountUpdated *AccountUpdated
 	AccountsCollectedForAggregation *AccountsCollectedForAggregation
 	CampaignActivated *CampaignActivated
 	CampaignEnded *CampaignEnded
@@ -33,6 +36,9 @@ type TriggerExampleInput struct {
 	IdentityAttributesChanged *IdentityAttributesChanged
 	IdentityCreated *IdentityCreated
 	IdentityDeleted *IdentityDeleted
+	MachineIdentityCreated *MachineIdentityCreated
+	MachineIdentityDeleted *MachineIdentityDeleted
+	MachineIdentityUpdated *MachineIdentityUpdated
 	ProvisioningCompleted *ProvisioningCompleted
 	SavedSearchComplete *SavedSearchComplete
 	SourceAccountCreated *SourceAccountCreated
@@ -86,10 +92,31 @@ func AccountCorrelatedAsTriggerExampleInput(v *AccountCorrelated) TriggerExample
 	}
 }
 
+// AccountCreatedAsTriggerExampleInput is a convenience function that returns AccountCreated wrapped in TriggerExampleInput
+func AccountCreatedAsTriggerExampleInput(v *AccountCreated) TriggerExampleInput {
+	return TriggerExampleInput{
+		AccountCreated: v,
+	}
+}
+
+// AccountDeletedAsTriggerExampleInput is a convenience function that returns AccountDeleted wrapped in TriggerExampleInput
+func AccountDeletedAsTriggerExampleInput(v *AccountDeleted) TriggerExampleInput {
+	return TriggerExampleInput{
+		AccountDeleted: v,
+	}
+}
+
 // AccountUncorrelatedAsTriggerExampleInput is a convenience function that returns AccountUncorrelated wrapped in TriggerExampleInput
 func AccountUncorrelatedAsTriggerExampleInput(v *AccountUncorrelated) TriggerExampleInput {
 	return TriggerExampleInput{
 		AccountUncorrelated: v,
+	}
+}
+
+// AccountUpdatedAsTriggerExampleInput is a convenience function that returns AccountUpdated wrapped in TriggerExampleInput
+func AccountUpdatedAsTriggerExampleInput(v *AccountUpdated) TriggerExampleInput {
+	return TriggerExampleInput{
+		AccountUpdated: v,
 	}
 }
 
@@ -146,6 +173,27 @@ func IdentityCreatedAsTriggerExampleInput(v *IdentityCreated) TriggerExampleInpu
 func IdentityDeletedAsTriggerExampleInput(v *IdentityDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
 		IdentityDeleted: v,
+	}
+}
+
+// MachineIdentityCreatedAsTriggerExampleInput is a convenience function that returns MachineIdentityCreated wrapped in TriggerExampleInput
+func MachineIdentityCreatedAsTriggerExampleInput(v *MachineIdentityCreated) TriggerExampleInput {
+	return TriggerExampleInput{
+		MachineIdentityCreated: v,
+	}
+}
+
+// MachineIdentityDeletedAsTriggerExampleInput is a convenience function that returns MachineIdentityDeleted wrapped in TriggerExampleInput
+func MachineIdentityDeletedAsTriggerExampleInput(v *MachineIdentityDeleted) TriggerExampleInput {
+	return TriggerExampleInput{
+		MachineIdentityDeleted: v,
+	}
+}
+
+// MachineIdentityUpdatedAsTriggerExampleInput is a convenience function that returns MachineIdentityUpdated wrapped in TriggerExampleInput
+func MachineIdentityUpdatedAsTriggerExampleInput(v *MachineIdentityUpdated) TriggerExampleInput {
+	return TriggerExampleInput{
+		MachineIdentityUpdated: v,
 	}
 }
 
@@ -319,6 +367,40 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.AccountCorrelated = nil
 	}
 
+	// try to unmarshal data into AccountCreated
+	err = newStrictDecoder(data).Decode(&dst.AccountCreated)
+	if err == nil {
+		jsonAccountCreated, _ := json.Marshal(dst.AccountCreated)
+		if string(jsonAccountCreated) == "{}" { // empty struct
+			dst.AccountCreated = nil
+		} else {
+			if err = validator.Validate(dst.AccountCreated); err != nil {
+				dst.AccountCreated = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.AccountCreated = nil
+	}
+
+	// try to unmarshal data into AccountDeleted
+	err = newStrictDecoder(data).Decode(&dst.AccountDeleted)
+	if err == nil {
+		jsonAccountDeleted, _ := json.Marshal(dst.AccountDeleted)
+		if string(jsonAccountDeleted) == "{}" { // empty struct
+			dst.AccountDeleted = nil
+		} else {
+			if err = validator.Validate(dst.AccountDeleted); err != nil {
+				dst.AccountDeleted = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.AccountDeleted = nil
+	}
+
 	// try to unmarshal data into AccountUncorrelated
 	err = newStrictDecoder(data).Decode(&dst.AccountUncorrelated)
 	if err == nil {
@@ -334,6 +416,23 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.AccountUncorrelated = nil
+	}
+
+	// try to unmarshal data into AccountUpdated
+	err = newStrictDecoder(data).Decode(&dst.AccountUpdated)
+	if err == nil {
+		jsonAccountUpdated, _ := json.Marshal(dst.AccountUpdated)
+		if string(jsonAccountUpdated) == "{}" { // empty struct
+			dst.AccountUpdated = nil
+		} else {
+			if err = validator.Validate(dst.AccountUpdated); err != nil {
+				dst.AccountUpdated = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.AccountUpdated = nil
 	}
 
 	// try to unmarshal data into AccountsCollectedForAggregation
@@ -470,6 +569,57 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.IdentityDeleted = nil
+	}
+
+	// try to unmarshal data into MachineIdentityCreated
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityCreated)
+	if err == nil {
+		jsonMachineIdentityCreated, _ := json.Marshal(dst.MachineIdentityCreated)
+		if string(jsonMachineIdentityCreated) == "{}" { // empty struct
+			dst.MachineIdentityCreated = nil
+		} else {
+			if err = validator.Validate(dst.MachineIdentityCreated); err != nil {
+				dst.MachineIdentityCreated = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.MachineIdentityCreated = nil
+	}
+
+	// try to unmarshal data into MachineIdentityDeleted
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityDeleted)
+	if err == nil {
+		jsonMachineIdentityDeleted, _ := json.Marshal(dst.MachineIdentityDeleted)
+		if string(jsonMachineIdentityDeleted) == "{}" { // empty struct
+			dst.MachineIdentityDeleted = nil
+		} else {
+			if err = validator.Validate(dst.MachineIdentityDeleted); err != nil {
+				dst.MachineIdentityDeleted = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.MachineIdentityDeleted = nil
+	}
+
+	// try to unmarshal data into MachineIdentityUpdated
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityUpdated)
+	if err == nil {
+		jsonMachineIdentityUpdated, _ := json.Marshal(dst.MachineIdentityUpdated)
+		if string(jsonMachineIdentityUpdated) == "{}" { // empty struct
+			dst.MachineIdentityUpdated = nil
+		} else {
+			if err = validator.Validate(dst.MachineIdentityUpdated); err != nil {
+				dst.MachineIdentityUpdated = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.MachineIdentityUpdated = nil
 	}
 
 	// try to unmarshal data into ProvisioningCompleted
@@ -633,7 +783,10 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.AccountAggregationCompleted = nil
 		dst.AccountAttributesChanged = nil
 		dst.AccountCorrelated = nil
+		dst.AccountCreated = nil
+		dst.AccountDeleted = nil
 		dst.AccountUncorrelated = nil
+		dst.AccountUpdated = nil
 		dst.AccountsCollectedForAggregation = nil
 		dst.CampaignActivated = nil
 		dst.CampaignEnded = nil
@@ -642,6 +795,9 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.IdentityAttributesChanged = nil
 		dst.IdentityCreated = nil
 		dst.IdentityDeleted = nil
+		dst.MachineIdentityCreated = nil
+		dst.MachineIdentityDeleted = nil
+		dst.MachineIdentityUpdated = nil
 		dst.ProvisioningCompleted = nil
 		dst.SavedSearchComplete = nil
 		dst.SourceAccountCreated = nil
@@ -686,8 +842,20 @@ func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AccountCorrelated)
 	}
 
+	if src.AccountCreated != nil {
+		return json.Marshal(&src.AccountCreated)
+	}
+
+	if src.AccountDeleted != nil {
+		return json.Marshal(&src.AccountDeleted)
+	}
+
 	if src.AccountUncorrelated != nil {
 		return json.Marshal(&src.AccountUncorrelated)
+	}
+
+	if src.AccountUpdated != nil {
+		return json.Marshal(&src.AccountUpdated)
 	}
 
 	if src.AccountsCollectedForAggregation != nil {
@@ -720,6 +888,18 @@ func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
 
 	if src.IdentityDeleted != nil {
 		return json.Marshal(&src.IdentityDeleted)
+	}
+
+	if src.MachineIdentityCreated != nil {
+		return json.Marshal(&src.MachineIdentityCreated)
+	}
+
+	if src.MachineIdentityDeleted != nil {
+		return json.Marshal(&src.MachineIdentityDeleted)
+	}
+
+	if src.MachineIdentityUpdated != nil {
+		return json.Marshal(&src.MachineIdentityUpdated)
 	}
 
 	if src.ProvisioningCompleted != nil {
@@ -790,8 +970,20 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 		return obj.AccountCorrelated
 	}
 
+	if obj.AccountCreated != nil {
+		return obj.AccountCreated
+	}
+
+	if obj.AccountDeleted != nil {
+		return obj.AccountDeleted
+	}
+
 	if obj.AccountUncorrelated != nil {
 		return obj.AccountUncorrelated
+	}
+
+	if obj.AccountUpdated != nil {
+		return obj.AccountUpdated
 	}
 
 	if obj.AccountsCollectedForAggregation != nil {
@@ -824,6 +1016,18 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 
 	if obj.IdentityDeleted != nil {
 		return obj.IdentityDeleted
+	}
+
+	if obj.MachineIdentityCreated != nil {
+		return obj.MachineIdentityCreated
+	}
+
+	if obj.MachineIdentityDeleted != nil {
+		return obj.MachineIdentityDeleted
+	}
+
+	if obj.MachineIdentityUpdated != nil {
+		return obj.MachineIdentityUpdated
 	}
 
 	if obj.ProvisioningCompleted != nil {
@@ -892,8 +1096,20 @@ func (obj TriggerExampleInput) GetActualInstanceValue() (interface{}) {
 		return *obj.AccountCorrelated
 	}
 
+	if obj.AccountCreated != nil {
+		return *obj.AccountCreated
+	}
+
+	if obj.AccountDeleted != nil {
+		return *obj.AccountDeleted
+	}
+
 	if obj.AccountUncorrelated != nil {
 		return *obj.AccountUncorrelated
+	}
+
+	if obj.AccountUpdated != nil {
+		return *obj.AccountUpdated
 	}
 
 	if obj.AccountsCollectedForAggregation != nil {
@@ -926,6 +1142,18 @@ func (obj TriggerExampleInput) GetActualInstanceValue() (interface{}) {
 
 	if obj.IdentityDeleted != nil {
 		return *obj.IdentityDeleted
+	}
+
+	if obj.MachineIdentityCreated != nil {
+		return *obj.MachineIdentityCreated
+	}
+
+	if obj.MachineIdentityDeleted != nil {
+		return *obj.MachineIdentityDeleted
+	}
+
+	if obj.MachineIdentityUpdated != nil {
+		return *obj.MachineIdentityUpdated
 	}
 
 	if obj.ProvisioningCompleted != nil {

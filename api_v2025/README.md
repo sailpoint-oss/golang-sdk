@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload csv to discover applications
+*ApplicationDiscoveryAPI* | [**StartApplicationDiscovery**](docs/ApplicationDiscoveryAPI.md#startapplicationdiscovery) | **Post** /sources/{sourceId}/discover-applications | Start Application Discovery
 *ApprovalsAPI* | [**ApproveApproval**](docs/ApprovalsAPI.md#approveapproval) | **Post** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsAPI* | [**ApproveApprovalInBulk**](docs/ApprovalsAPI.md#approveapprovalinbulk) | **Post** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
 *ApprovalsAPI* | [**CancelApproval**](docs/ApprovalsAPI.md#cancelapproval) | **Post** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
@@ -297,13 +298,18 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsAPI* | [**ShowUserLevelCounts**](docs/CustomUserLevelsAPI.md#showuserlevelcounts) | **Post** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsAPI* | [**UpdateUserLevel**](docs/CustomUserLevelsAPI.md#updateuserlevel) | **Patch** /authorization/custom-user-levels/{id} | Update a user level
 *DataAccessSecurityAPI* | [**CancelTask**](docs/DataAccessSecurityAPI.md#canceltask) | **Post** /das/tasks/cancel/{id} | Cancel a DAS task.
+*DataAccessSecurityAPI* | [**CreateApplication**](docs/DataAccessSecurityAPI.md#createapplication) | **Post** /das/applications | Create application
 *DataAccessSecurityAPI* | [**CreateSchedule**](docs/DataAccessSecurityAPI.md#createschedule) | **Post** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityAPI* | [**DeleteApplication**](docs/DataAccessSecurityAPI.md#deleteapplication) | **Delete** /das/applications/{id} | Delete an application by identifier.
 *DataAccessSecurityAPI* | [**DeleteSchedule**](docs/DataAccessSecurityAPI.md#deleteschedule) | **Delete** /das/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityAPI* | [**DeleteTask**](docs/DataAccessSecurityAPI.md#deletetask) | **Delete** /das/tasks/{id} | Delete a DAS task.
+*DataAccessSecurityAPI* | [**GetApplication**](docs/DataAccessSecurityAPI.md#getapplication) | **Get** /das/applications/{id} | Retrieve application details by identifier.
+*DataAccessSecurityAPI* | [**GetApplications**](docs/DataAccessSecurityAPI.md#getapplications) | **Get** /das/applications | Search applications in DAS.
 *DataAccessSecurityAPI* | [**GetSchedule**](docs/DataAccessSecurityAPI.md#getschedule) | **Get** /das/tasks/schedules/{id} | Get a DAS schedule.
 *DataAccessSecurityAPI* | [**GetSchedules**](docs/DataAccessSecurityAPI.md#getschedules) | **Get** /das/tasks/schedules | List all schedules.
 *DataAccessSecurityAPI* | [**GetTask**](docs/DataAccessSecurityAPI.md#gettask) | **Get** /das/tasks/{id} | Get a DAS task.
 *DataAccessSecurityAPI* | [**GetTasks**](docs/DataAccessSecurityAPI.md#gettasks) | **Get** /das/tasks | Lists all DAS tasks.
+*DataAccessSecurityAPI* | [**PutApplication**](docs/DataAccessSecurityAPI.md#putapplication) | **Put** /das/applications/{id} | Update application by identifier.
 *DataAccessSecurityAPI* | [**PutSchedule**](docs/DataAccessSecurityAPI.md#putschedule) | **Put** /das/tasks/schedules/{id} | Update a schedule.
 *DataAccessSecurityAPI* | [**StartTaskRerun**](docs/DataAccessSecurityAPI.md#starttaskrerun) | **Post** /das/tasks/rerun/{id} | Rerun a DAS task.
 *DataSegmentationAPI* | [**CreateDataSegment**](docs/DataSegmentationAPI.md#createdatasegment) | **Post** /data-segments | Create segment
@@ -473,7 +479,7 @@ Class | Method | HTTP request | Description
 *MachineAccountsAPI* | [**CreateMachineAccountSubtype**](docs/MachineAccountsAPI.md#createmachineaccountsubtype) | **Post** /sources/{sourceId}/subtypes | Create subtype
 *MachineAccountsAPI* | [**DeleteMachineAccountSubtype**](docs/MachineAccountsAPI.md#deletemachineaccountsubtype) | **Delete** /sources/{sourceId}/subtypes/{technicalName} | Delete subtype
 *MachineAccountsAPI* | [**GetMachineAccount**](docs/MachineAccountsAPI.md#getmachineaccount) | **Get** /machine-accounts/{id} | Machine account details
-*MachineAccountsAPI* | [**GetMachineAccountSubtypeById**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebyid) | **Get** /sources/subtype/{subtypeId} | Retrieve subtype by subtype id
+*MachineAccountsAPI* | [**GetMachineAccountSubtypeById**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebyid) | **Get** /sources/subtypes/{subtypeId} | Retrieve subtype by subtype id
 *MachineAccountsAPI* | [**GetMachineAccountSubtypeByTechnicalName**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebytechnicalname) | **Get** /sources/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
 *MachineAccountsAPI* | [**ListMachineAccountSubtypes**](docs/MachineAccountsAPI.md#listmachineaccountsubtypes) | **Get** /sources/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsAPI* | [**ListMachineAccounts**](docs/MachineAccountsAPI.md#listmachineaccounts) | **Get** /machine-accounts | Machine accounts list
@@ -744,6 +750,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ImportEntitlements**](docs/SourcesAPI.md#importentitlements) | **Post** /sources/{sourceId}/load-entitlements | Entitlement aggregation
 *SourcesAPI* | [**ImportEntitlementsSchema**](docs/SourcesAPI.md#importentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesAPI.md#importuncorrelatedaccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
+*SourcesAPI* | [**ListPasswordPolicyHoldersOnSource**](docs/SourcesAPI.md#listpasswordpolicyholdersonsource) | **Get** /sources/{sourceId}/password-policies | Get Password Policy for source
 *SourcesAPI* | [**ListProvisioningPolicies**](docs/SourcesAPI.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists provisioningpolicies
 *SourcesAPI* | [**ListSources**](docs/SourcesAPI.md#listsources) | **Get** /sources | Lists all sources in identitynow.
 *SourcesAPI* | [**PingCluster**](docs/SourcesAPI.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
@@ -860,6 +867,7 @@ Class | Method | HTTP request | Description
  - [AccessConstraint](docs/AccessConstraint.md)
  - [AccessCriteria](docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessDuration](docs/AccessDuration.md)
  - [AccessItemAccessProfileResponse](docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccessProfileResponseAppRefsInner](docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](docs/AccessItemAccountResponse.md)
@@ -963,6 +971,10 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedAccount](docs/AccountCorrelatedAccount.md)
  - [AccountCorrelatedIdentity](docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](docs/AccountCorrelatedSource.md)
+ - [AccountCreated](docs/AccountCreated.md)
+ - [AccountCreatedEvent](docs/AccountCreatedEvent.md)
+ - [AccountDeleted](docs/AccountDeleted.md)
+ - [AccountDeletedEvent](docs/AccountDeletedEvent.md)
  - [AccountInfoDto](docs/AccountInfoDto.md)
  - [AccountInfoRef](docs/AccountInfoRef.md)
  - [AccountItemRef](docs/AccountItemRef.md)
@@ -970,6 +982,9 @@ Class | Method | HTTP request | Description
  - [AccountRequestInfo](docs/AccountRequestInfo.md)
  - [AccountRequestResult](docs/AccountRequestResult.md)
  - [AccountSource](docs/AccountSource.md)
+ - [AccountSourceReference](docs/AccountSourceReference.md)
+ - [AccountSourceReferenceGovernanceGroup](docs/AccountSourceReferenceGovernanceGroup.md)
+ - [AccountSourceReferenceOwner](docs/AccountSourceReferenceOwner.md)
  - [AccountStatusChanged](docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](docs/AccountStatusChangedAccount.md)
  - [AccountStatusChangedStatusChange](docs/AccountStatusChangedStatusChange.md)
@@ -979,7 +994,18 @@ Class | Method | HTTP request | Description
  - [AccountUncorrelatedIdentity](docs/AccountUncorrelatedIdentity.md)
  - [AccountUncorrelatedSource](docs/AccountUncorrelatedSource.md)
  - [AccountUnlockRequest](docs/AccountUnlockRequest.md)
+ - [AccountUpdated](docs/AccountUpdated.md)
+ - [AccountUpdatedEntitlementChangesInner](docs/AccountUpdatedEntitlementChangesInner.md)
+ - [AccountUpdatedEntitlementChangesInnerAddedInner](docs/AccountUpdatedEntitlementChangesInnerAddedInner.md)
+ - [AccountUpdatedEntitlementChangesInnerAddedInnerOwner](docs/AccountUpdatedEntitlementChangesInnerAddedInnerOwner.md)
+ - [AccountUpdatedEvent](docs/AccountUpdatedEvent.md)
+ - [AccountUpdatedMultiValueAttributeChangesInner](docs/AccountUpdatedMultiValueAttributeChangesInner.md)
+ - [AccountUpdatedMultiValueAttributeChangesInnerAddedValuesInner](docs/AccountUpdatedMultiValueAttributeChangesInnerAddedValuesInner.md)
+ - [AccountUpdatedSingleValueAttributeChangesInner](docs/AccountUpdatedSingleValueAttributeChangesInner.md)
+ - [AccountUpdatedSingleValueAttributeChangesInnerNewValue](docs/AccountUpdatedSingleValueAttributeChangesInnerNewValue.md)
+ - [AccountUpdatedSingleValueAttributeChangesInnerOldValue](docs/AccountUpdatedSingleValueAttributeChangesInnerOldValue.md)
  - [AccountUsage](docs/AccountUsage.md)
+ - [AccountV2](docs/AccountV2.md)
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
  - [AccountsCollectedForAggregation](docs/AccountsCollectedForAggregation.md)
  - [AccountsCollectedForAggregationSource](docs/AccountsCollectedForAggregationSource.md)
@@ -988,6 +1014,7 @@ Class | Method | HTTP request | Description
  - [AccountsSelectionRequest](docs/AccountsSelectionRequest.md)
  - [AccountsSelectionResponse](docs/AccountsSelectionResponse.md)
  - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
+ - [ActivityConfigurationSettings](docs/ActivityConfigurationSettings.md)
  - [ActivityIdentity](docs/ActivityIdentity.md)
  - [ActivityInsights](docs/ActivityInsights.md)
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
@@ -999,6 +1026,12 @@ Class | Method | HTTP request | Description
  - [AppAccountDetails](docs/AppAccountDetails.md)
  - [AppAccountDetailsSourceAccount](docs/AppAccountDetailsSourceAccount.md)
  - [AppAllOfAccount](docs/AppAllOfAccount.md)
+ - [ApplicationCrawlerSettings](docs/ApplicationCrawlerSettings.md)
+ - [ApplicationDiscoveryRequest](docs/ApplicationDiscoveryRequest.md)
+ - [ApplicationDiscoveryResponse](docs/ApplicationDiscoveryResponse.md)
+ - [ApplicationDiscoveryResponseTarget](docs/ApplicationDiscoveryResponseTarget.md)
+ - [ApplicationItem](docs/ApplicationItem.md)
+ - [ApplicationType](docs/ApplicationType.md)
  - [Approval](docs/Approval.md)
  - [Approval1](docs/Approval1.md)
  - [ApprovalApprovalCriteria](docs/ApprovalApprovalCriteria.md)
@@ -1078,10 +1111,12 @@ Class | Method | HTTP request | Description
  - [BaseAccessProfile](docs/BaseAccessProfile.md)
  - [BaseAccount](docs/BaseAccount.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
+ - [BaseCreateApplicationRequest](docs/BaseCreateApplicationRequest.md)
  - [BaseDocument](docs/BaseDocument.md)
  - [BaseEntitlement](docs/BaseEntitlement.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
  - [BaseSegment](docs/BaseSegment.md)
+ - [BaseSettings](docs/BaseSettings.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
@@ -1204,12 +1239,14 @@ Class | Method | HTTP request | Description
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
  - [CorrelationConfig](docs/CorrelationConfig.md)
  - [CorrelationConfigAttributeAssignmentsInner](docs/CorrelationConfigAttributeAssignmentsInner.md)
+ - [CrawlResourcesSizesOptions](docs/CrawlResourcesSizesOptions.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
  - [CreateExternalExecuteWorkflow200Response](docs/CreateExternalExecuteWorkflow200Response.md)
  - [CreateExternalExecuteWorkflowRequest](docs/CreateExternalExecuteWorkflowRequest.md)
  - [CreateFormDefinitionFileRequestRequest](docs/CreateFormDefinitionFileRequestRequest.md)
  - [CreateFormDefinitionRequest](docs/CreateFormDefinitionRequest.md)
  - [CreateFormInstanceRequest](docs/CreateFormInstanceRequest.md)
+ - [CreateMachineAccountSubtypeRequest](docs/CreateMachineAccountSubtypeRequest.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -1225,6 +1262,7 @@ Class | Method | HTTP request | Description
  - [DataAccessCategoriesInner](docs/DataAccessCategoriesInner.md)
  - [DataAccessImpactScore](docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
+ - [DataClassificationSettings](docs/DataClassificationSettings.md)
  - [DataSegment](docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
@@ -1402,6 +1440,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileIdentityErrorReportArguments](docs/IdentityProfileIdentityErrorReportArguments.md)
  - [IdentityProfilesConnections](docs/IdentityProfilesConnections.md)
  - [IdentityReference](docs/IdentityReference.md)
+ - [IdentityReference1](docs/IdentityReference1.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySnapshotSummaryResponse](docs/IdentitySnapshotSummaryResponse.md)
  - [IdentitySummary](docs/IdentitySummary.md)
@@ -1422,6 +1461,7 @@ Class | Method | HTTP request | Description
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
+ - [Int64StringKeyValuePair](docs/Int64StringKeyValuePair.md)
  - [InviteIdentitiesRequest](docs/InviteIdentitiesRequest.md)
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
@@ -1479,14 +1519,28 @@ Class | Method | HTTP request | Description
  - [MachineIdentityAggregationRequest](docs/MachineIdentityAggregationRequest.md)
  - [MachineIdentityAggregationResponse](docs/MachineIdentityAggregationResponse.md)
  - [MachineIdentityAggregationResponseTarget](docs/MachineIdentityAggregationResponseTarget.md)
+ - [MachineIdentityCreated](docs/MachineIdentityCreated.md)
+ - [MachineIdentityCreatedMachineIdentity](docs/MachineIdentityCreatedMachineIdentity.md)
+ - [MachineIdentityDeleted](docs/MachineIdentityDeleted.md)
+ - [MachineIdentityDeletedMachineIdentity](docs/MachineIdentityDeletedMachineIdentity.md)
  - [MachineIdentityDtoOwners](docs/MachineIdentityDtoOwners.md)
+ - [MachineIdentityOwnerReference](docs/MachineIdentityOwnerReference.md)
  - [MachineIdentityRequest](docs/MachineIdentityRequest.md)
  - [MachineIdentityRequestUserEntitlements](docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponse](docs/MachineIdentityResponse.md)
  - [MachineIdentityResponseUserEntitlements](docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentitySourceReference](docs/MachineIdentitySourceReference.md)
+ - [MachineIdentityUpdated](docs/MachineIdentityUpdated.md)
+ - [MachineIdentityUpdatedMachineIdentity](docs/MachineIdentityUpdatedMachineIdentity.md)
+ - [MachineIdentityUpdatedOwnerChanges](docs/MachineIdentityUpdatedOwnerChanges.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInner](docs/MachineIdentityUpdatedSingleValueAttributeChangesInner.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInnerNewValue](docs/MachineIdentityUpdatedSingleValueAttributeChangesInnerNewValue.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInnerOldValue](docs/MachineIdentityUpdatedSingleValueAttributeChangesInnerOldValue.md)
+ - [MachineIdentityUpdatedUserEntitlementChanges](docs/MachineIdentityUpdatedUserEntitlementChanges.md)
  - [MachineIdentityUserEntitlementResponse](docs/MachineIdentityUserEntitlementResponse.md)
  - [MachineIdentityUserEntitlementResponseEntitlement](docs/MachineIdentityUserEntitlementResponseEntitlement.md)
  - [MachineIdentityUserEntitlementResponseSource](docs/MachineIdentityUserEntitlementResponseSource.md)
+ - [MachineIdentityUserEntitlements](docs/MachineIdentityUserEntitlements.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)
@@ -1618,6 +1672,7 @@ Class | Method | HTTP request | Description
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](docs/PendingApprovalOwner.md)
+ - [PermissionCollectorSettings](docs/PermissionCollectorSettings.md)
  - [PermissionDto](docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
  - [PreferencesDto](docs/PreferencesDto.md)
@@ -1957,6 +2012,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionType](docs/SubscriptionType.md)
  - [SummaryResponse](docs/SummaryResponse.md)
  - [Tag](docs/Tag.md)
+ - [Tag1](docs/Tag1.md)
  - [TagTagCategoryRefsInner](docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)

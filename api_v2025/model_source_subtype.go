@@ -35,6 +35,8 @@ type SourceSubtype struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modified timestamp.
 	Modified *SailPointTime `json:"modified,omitempty"`
+	// Type of the subtype. Either MACHINE OR null.
+	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -260,6 +262,38 @@ func (o *SourceSubtype) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *SourceSubtype) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SourceSubtype) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *SourceSubtype) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *SourceSubtype) SetType(v string) {
+	o.Type = &v
+}
+
 func (o SourceSubtype) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -284,6 +318,9 @@ func (o SourceSubtype) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -337,6 +374,7 @@ func (o *SourceSubtype) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 

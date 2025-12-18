@@ -56,10 +56,15 @@ func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
 /*
 GetPendingTaskHeaders Retrieve pending task list headers
 
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull
+
 Responds with headers only for list of task statuses for pending tasks.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTaskHeadersRequest
+
+Deprecated
 */
 func (a *TaskManagementAPIService) GetPendingTaskHeaders(ctx context.Context) ApiGetPendingTaskHeadersRequest {
 	return ApiGetPendingTaskHeadersRequest{
@@ -69,6 +74,7 @@ func (a *TaskManagementAPIService) GetPendingTaskHeaders(ctx context.Context) Ap
 }
 
 // Execute executes the request
+// Deprecated
 func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingTaskHeadersRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodHead
@@ -237,10 +243,15 @@ func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, erro
 /*
 GetPendingTasks Retrieve pending task status list
 
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull
+
 Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTasksRequest
+
+Deprecated
 */
 func (a *TaskManagementAPIService) GetPendingTasks(ctx context.Context) ApiGetPendingTasksRequest {
 	return ApiGetPendingTasksRequest{
@@ -251,6 +262,7 @@ func (a *TaskManagementAPIService) GetPendingTasks(ctx context.Context) ApiGetPe
 
 // Execute executes the request
 //  @return []TaskStatus
+// Deprecated
 func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRequest) ([]TaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -570,7 +582,7 @@ func (r ApiGetTaskStatusListRequest) Count(count bool) ApiGetTaskStatusListReque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
 func (r ApiGetTaskStatusListRequest) Filters(filters string) ApiGetTaskStatusListRequest {
 	r.filters = &filters
 	return r
@@ -589,7 +601,7 @@ func (r ApiGetTaskStatusListRequest) Execute() ([]TaskStatus, *http.Response, er
 /*
 GetTaskStatusList Retrieve task status list
 
-Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2024/get-pending-tasks) endpoint.
+Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

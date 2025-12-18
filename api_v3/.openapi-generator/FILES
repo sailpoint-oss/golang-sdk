@@ -63,6 +63,7 @@ docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
 docs/AccessCriteriaRequest.md
 docs/AccessCriteriaRequestCriteriaListInner.md
+docs/AccessDuration.md
 docs/AccessItemRequestedFor.md
 docs/AccessItemRequester.md
 docs/AccessItemReviewedBy.md
@@ -751,6 +752,7 @@ model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
 model_access_criteria_request.go
 model_access_criteria_request_criteria_list_inner.go
+model_access_duration.go
 model_access_item_requested_for.go
 model_access_item_requester.go
 model_access_item_reviewed_by.go

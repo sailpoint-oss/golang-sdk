@@ -772,6 +772,8 @@ Bulk update Access Model Metadata Attribute Values using a filter
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateAccessModelMetadataByFilterRequest
+
+Deprecated
 */
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilter(ctx context.Context) ApiUpdateAccessModelMetadataByFilterRequest {
 	return ApiUpdateAccessModelMetadataByFilterRequest{
@@ -782,6 +784,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilter(ctx co
 
 // Execute executes the request
 //  @return AccessModelMetadataBulkUpdateResponse
+// Deprecated
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterExecute(r ApiUpdateAccessModelMetadataByFilterRequest) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -937,6 +940,8 @@ Bulk update Access Model Metadata Attribute Values using ids.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateAccessModelMetadataByIdsRequest
+
+Deprecated
 */
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIds(ctx context.Context) ApiUpdateAccessModelMetadataByIdsRequest {
 	return ApiUpdateAccessModelMetadataByIdsRequest{
@@ -947,6 +952,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIds(ctx conte
 
 // Execute executes the request
 //  @return AccessModelMetadataBulkUpdateResponse
+// Deprecated
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsExecute(r ApiUpdateAccessModelMetadataByIdsRequest) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1102,6 +1108,8 @@ Bulk update Access Model Metadata Attribute Values using a query
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateAccessModelMetadataByQueryRequest
+
+Deprecated
 */
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQuery(ctx context.Context) ApiUpdateAccessModelMetadataByQueryRequest {
 	return ApiUpdateAccessModelMetadataByQueryRequest{
@@ -1112,6 +1120,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQuery(ctx con
 
 // Execute executes the request
 //  @return AccessModelMetadataBulkUpdateResponse
+// Deprecated
 func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryExecute(r ApiUpdateAccessModelMetadataByQueryRequest) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
