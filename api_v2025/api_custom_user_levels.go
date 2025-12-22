@@ -1077,7 +1077,7 @@ func (r ApiListUserLevelsRequest) Sorters(sorters string) ApiListUserLevelsReque
 	return r
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListUserLevelsRequest) Limit(limit int32) ApiListUserLevelsRequest {
 	r.limit = &limit
 	return r
@@ -1150,7 +1150,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsExecute(r ApiListUserLevelsRe
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
-		var defaultValue int32 = 250
+		var defaultValue int32 = 50
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
