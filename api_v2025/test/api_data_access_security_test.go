@@ -58,6 +58,73 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DataAccessSecurityAPIService DasOwnersAssignPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.DasOwnersAssignPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService DasOwnersOwnerIdentityIdResourcesGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var ownerIdentityId string
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.DasOwnersOwnerIdentityIdResourcesGet(context.Background(), ownerIdentityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService DasOwnersReelectPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.DasOwnersReelectPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService DasOwnersResourcesResourceIdGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var resourceId int64
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.DasOwnersResourcesResourceIdGet(context.Background(), resourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService DasOwnersSourceIdentityIdReassignDestinationIdentityIdPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceIdentityId string
+		var destinationIdentityId string
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.DasOwnersSourceIdentityIdReassignDestinationIdentityIdPost(context.Background(), sourceIdentityId, destinationIdentityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DataAccessSecurityAPIService DeleteApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -116,6 +183,20 @@ func Test_api_v2025_DataAccessSecurityAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetApplications(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DataAccessSecurityAPIService GetOwners", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId int64
+
+		resp, httpRes, err := apiClient.DataAccessSecurityAPI.GetOwners(context.Background(), appId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

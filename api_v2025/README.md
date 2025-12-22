@@ -300,11 +300,17 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityAPI* | [**CancelTask**](docs/DataAccessSecurityAPI.md#canceltask) | **Post** /das/tasks/cancel/{id} | Cancel a DAS task.
 *DataAccessSecurityAPI* | [**CreateApplication**](docs/DataAccessSecurityAPI.md#createapplication) | **Post** /das/applications | Create application
 *DataAccessSecurityAPI* | [**CreateSchedule**](docs/DataAccessSecurityAPI.md#createschedule) | **Post** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityAPI* | [**DasOwnersAssignPost**](docs/DataAccessSecurityAPI.md#dasownersassignpost) | **Post** /das/owners/assign | Assign owner to application resource.
+*DataAccessSecurityAPI* | [**DasOwnersOwnerIdentityIdResourcesGet**](docs/DataAccessSecurityAPI.md#dasownersowneridentityidresourcesget) | **Get** /das/owners/{ownerIdentityId}/resources | List resources for owner.
+*DataAccessSecurityAPI* | [**DasOwnersReelectPost**](docs/DataAccessSecurityAPI.md#dasownersreelectpost) | **Post** /das/owners/reelect | Re-elect resource owner.
+*DataAccessSecurityAPI* | [**DasOwnersResourcesResourceIdGet**](docs/DataAccessSecurityAPI.md#dasownersresourcesresourceidget) | **Get** /das/owners/resources/{resourceId} | List owners for resource.
+*DataAccessSecurityAPI* | [**DasOwnersSourceIdentityIdReassignDestinationIdentityIdPost**](docs/DataAccessSecurityAPI.md#dasownerssourceidentityidreassigndestinationidentityidpost) | **Post** /das/owners/{sourceIdentityId}/reassign/{destinationIdentityId} | Reassign resource owner.
 *DataAccessSecurityAPI* | [**DeleteApplication**](docs/DataAccessSecurityAPI.md#deleteapplication) | **Delete** /das/applications/{id} | Delete an application by identifier.
 *DataAccessSecurityAPI* | [**DeleteSchedule**](docs/DataAccessSecurityAPI.md#deleteschedule) | **Delete** /das/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityAPI* | [**DeleteTask**](docs/DataAccessSecurityAPI.md#deletetask) | **Delete** /das/tasks/{id} | Delete a DAS task.
 *DataAccessSecurityAPI* | [**GetApplication**](docs/DataAccessSecurityAPI.md#getapplication) | **Get** /das/applications/{id} | Retrieve application details by identifier.
 *DataAccessSecurityAPI* | [**GetApplications**](docs/DataAccessSecurityAPI.md#getapplications) | **Get** /das/applications | Search applications in DAS.
+*DataAccessSecurityAPI* | [**GetOwners**](docs/DataAccessSecurityAPI.md#getowners) | **Get** /das/owners/applications/{appId} | Retrieve owners per application.
 *DataAccessSecurityAPI* | [**GetSchedule**](docs/DataAccessSecurityAPI.md#getschedule) | **Get** /das/tasks/schedules/{id} | Get a DAS schedule.
 *DataAccessSecurityAPI* | [**GetSchedules**](docs/DataAccessSecurityAPI.md#getschedules) | **Get** /das/tasks/schedules | List all schedules.
 *DataAccessSecurityAPI* | [**GetTask**](docs/DataAccessSecurityAPI.md#gettask) | **Get** /das/tasks/{id} | Get a DAS task.
@@ -1076,6 +1082,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSummary](docs/ApprovalSummary.md)
  - [Argument](docs/Argument.md)
  - [ArrayInner](docs/ArrayInner.md)
+ - [AssignResourceOwnerRequest](docs/AssignResourceOwnerRequest.md)
  - [AssignmentContextDto](docs/AssignmentContextDto.md)
  - [AttrSyncSource](docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](docs/AttrSyncSourceAttributeConfig.md)
@@ -1135,6 +1142,7 @@ Class | Method | HTTP request | Description
  - [BulkRejectRequestDTO](docs/BulkRejectRequestDTO.md)
  - [BulkRemoveTaggedObject](docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](docs/BulkTaggedObjectResponse.md)
+ - [BusinessServiceType](docs/BusinessServiceType.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignActivated](docs/CampaignActivated.md)
  - [CampaignActivatedCampaign](docs/CampaignActivatedCampaign.md)
@@ -1263,6 +1271,7 @@ Class | Method | HTTP request | Description
  - [DataAccessImpactScore](docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
  - [DataClassificationSettings](docs/DataClassificationSettings.md)
+ - [DataOwnerModel](docs/DataOwnerModel.md)
  - [DataSegment](docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
@@ -1724,6 +1733,7 @@ Class | Method | HTTP request | Description
  - [RecommendationResponseDto](docs/RecommendationResponseDto.md)
  - [RecommenderCalculations](docs/RecommenderCalculations.md)
  - [RecommenderCalculationsIdentityAttributesValue](docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [ReelectRequest](docs/ReelectRequest.md)
  - [Ref](docs/Ref.md)
  - [Reference](docs/Reference.md)
  - [RemediationItemDetails](docs/RemediationItemDetails.md)
@@ -1754,6 +1764,7 @@ Class | Method | HTTP request | Description
  - [RequestedItemStatusRequestedFor](docs/RequestedItemStatusRequestedFor.md)
  - [RequestedItemStatusRequesterComment](docs/RequestedItemStatusRequesterComment.md)
  - [RequestedItemStatusSodViolationContext](docs/RequestedItemStatusSodViolationContext.md)
+ - [ResourceModel](docs/ResourceModel.md)
  - [ResourceObject](docs/ResourceObject.md)
  - [ResourceObjectsRequest](docs/ResourceObjectsRequest.md)
  - [ResourceObjectsResponse](docs/ResourceObjectsResponse.md)

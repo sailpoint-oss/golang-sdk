@@ -346,6 +346,7 @@ docs/AppsAPI.md
 docs/AppsAPIdeveloperSite_code_examples.yaml
 docs/Argument.md
 docs/ArrayInner.md
+docs/AssignResourceOwnerRequest.md
 docs/AssignmentContextDto.md
 docs/AttrSyncSource.md
 docs/AttrSyncSourceAttributeConfig.md
@@ -411,6 +412,7 @@ docs/BulkReassignRequestDTO.md
 docs/BulkRejectRequestDTO.md
 docs/BulkRemoveTaggedObject.md
 docs/BulkTaggedObjectResponse.md
+docs/BusinessServiceType.md
 docs/Campaign.md
 docs/CampaignActivated.md
 docs/CampaignActivatedCampaign.md
@@ -565,6 +567,7 @@ docs/DataAccessPoliciesInner.md
 docs/DataAccessSecurityAPI.md
 docs/DataAccessSecurityAPIdeveloperSite_code_examples.yaml
 docs/DataClassificationSettings.md
+docs/DataOwnerModel.md
 docs/DataSegment.md
 docs/DataSegmentationAPI.md
 docs/DataSegmentationAPIdeveloperSite_code_examples.yaml
@@ -1109,6 +1112,7 @@ docs/RecommendationResponse.md
 docs/RecommendationResponseDto.md
 docs/RecommenderCalculations.md
 docs/RecommenderCalculationsIdentityAttributesValue.md
+docs/ReelectRequest.md
 docs/Ref.md
 docs/Reference.md
 docs/RemediationItemDetails.md
@@ -1143,6 +1147,7 @@ docs/RequestedItemStatusRequestState.md
 docs/RequestedItemStatusRequestedFor.md
 docs/RequestedItemStatusRequesterComment.md
 docs/RequestedItemStatusSodViolationContext.md
+docs/ResourceModel.md
 docs/ResourceObject.md
 docs/ResourceObjectsRequest.md
 docs/ResourceObjectsResponse.md
@@ -1781,6 +1786,7 @@ model_approval_status_dto_original_owner.go
 model_approval_summary.go
 model_argument.go
 model_array_inner.go
+model_assign_resource_owner_request.go
 model_assignment_context_dto.go
 model_attr_sync_source.go
 model_attr_sync_source_attribute_config.go
@@ -1840,6 +1846,7 @@ model_bulk_reassign_request_dto.go
 model_bulk_reject_request_dto.go
 model_bulk_remove_tagged_object.go
 model_bulk_tagged_object_response.go
+model_business_service_type.go
 model_campaign.go
 model_campaign_activated.go
 model_campaign_activated_campaign.go
@@ -1968,6 +1975,7 @@ model_data_access_categories_inner.go
 model_data_access_impact_score.go
 model_data_access_policies_inner.go
 model_data_classification_settings.go
+model_data_owner_model.go
 model_data_segment.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
@@ -2429,6 +2437,7 @@ model_recommendation_response.go
 model_recommendation_response_dto.go
 model_recommender_calculations.go
 model_recommender_calculations_identity_attributes_value.go
+model_reelect_request.go
 model_ref.go
 model_reference.go
 model_remediation_item_details.go
@@ -2459,6 +2468,7 @@ model_requested_item_status_request_state.go
 model_requested_item_status_requested_for.go
 model_requested_item_status_requester_comment.go
 model_requested_item_status_sod_violation_context.go
+model_resource_model.go
 model_resource_object.go
 model_resource_objects_request.go
 model_resource_objects_response.go
