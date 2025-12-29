@@ -49,7 +49,7 @@ type PendingApproval struct {
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate *SailPointTime `json:"currentRemoveDate,omitempty"`
-	SodViolationContext NullableSodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
+	SodViolationContext NullableSodViolationContextCheckCompleted2 `json:"sodViolationContext,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
 	// The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.
@@ -673,9 +673,9 @@ func (o *PendingApproval) SetCurrentRemoveDate(v SailPointTime) {
 }
 
 // GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted1 {
+func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted2 {
 	if o == nil || IsNil(o.SodViolationContext.Get()) {
-		var ret SodViolationContextCheckCompleted1
+		var ret SodViolationContextCheckCompleted2
 		return ret
 	}
 	return *o.SodViolationContext.Get()
@@ -684,7 +684,7 @@ func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompl
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PendingApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted1, bool) {
+func (o *PendingApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted2, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -700,8 +700,8 @@ func (o *PendingApproval) HasSodViolationContext() bool {
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted1 and assigns it to the SodViolationContext field.
-func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompleted1) {
+// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted2 and assigns it to the SodViolationContext field.
+func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompleted2) {
 	o.SodViolationContext.Set(&v)
 }
 // SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil

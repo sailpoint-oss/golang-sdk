@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the SodViolationContext1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SodViolationContext1{}
+// checks if the SodViolationContext2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationContext2{}
 
-// SodViolationContext1 The contextual information of the violated criteria
-type SodViolationContext1 struct {
+// SodViolationContext2 The contextual information of the violated criteria.
+type SodViolationContext2 struct {
 	Policy *SodPolicyDto1 `json:"policy,omitempty"`
-	ConflictingAccessCriteria *SodViolationContext1ConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
+	ConflictingAccessCriteria *SodViolationContext2ConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SodViolationContext1 SodViolationContext1
+type _SodViolationContext2 SodViolationContext2
 
-// NewSodViolationContext1 instantiates a new SodViolationContext1 object
+// NewSodViolationContext2 instantiates a new SodViolationContext2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSodViolationContext1() *SodViolationContext1 {
-	this := SodViolationContext1{}
+func NewSodViolationContext2() *SodViolationContext2 {
+	this := SodViolationContext2{}
 	return &this
 }
 
-// NewSodViolationContext1WithDefaults instantiates a new SodViolationContext1 object
+// NewSodViolationContext2WithDefaults instantiates a new SodViolationContext2 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSodViolationContext1WithDefaults() *SodViolationContext1 {
-	this := SodViolationContext1{}
+func NewSodViolationContext2WithDefaults() *SodViolationContext2 {
+	this := SodViolationContext2{}
 	return &this
 }
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
-func (o *SodViolationContext1) GetPolicy() SodPolicyDto1 {
+func (o *SodViolationContext2) GetPolicy() SodPolicyDto1 {
 	if o == nil || IsNil(o.Policy) {
 		var ret SodPolicyDto1
 		return ret
@@ -54,7 +54,7 @@ func (o *SodViolationContext1) GetPolicy() SodPolicyDto1 {
 
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationContext1) GetPolicyOk() (*SodPolicyDto1, bool) {
+func (o *SodViolationContext2) GetPolicyOk() (*SodPolicyDto1, bool) {
 	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *SodViolationContext1) GetPolicyOk() (*SodPolicyDto1, bool) {
 }
 
 // HasPolicy returns a boolean if a field has been set.
-func (o *SodViolationContext1) HasPolicy() bool {
+func (o *SodViolationContext2) HasPolicy() bool {
 	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
@@ -71,14 +71,14 @@ func (o *SodViolationContext1) HasPolicy() bool {
 }
 
 // SetPolicy gets a reference to the given SodPolicyDto1 and assigns it to the Policy field.
-func (o *SodViolationContext1) SetPolicy(v SodPolicyDto1) {
+func (o *SodViolationContext2) SetPolicy(v SodPolicyDto1) {
 	o.Policy = &v
 }
 
 // GetConflictingAccessCriteria returns the ConflictingAccessCriteria field value if set, zero value otherwise.
-func (o *SodViolationContext1) GetConflictingAccessCriteria() SodViolationContext1ConflictingAccessCriteria {
+func (o *SodViolationContext2) GetConflictingAccessCriteria() SodViolationContext2ConflictingAccessCriteria {
 	if o == nil || IsNil(o.ConflictingAccessCriteria) {
-		var ret SodViolationContext1ConflictingAccessCriteria
+		var ret SodViolationContext2ConflictingAccessCriteria
 		return ret
 	}
 	return *o.ConflictingAccessCriteria
@@ -86,7 +86,7 @@ func (o *SodViolationContext1) GetConflictingAccessCriteria() SodViolationContex
 
 // GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationContext1) GetConflictingAccessCriteriaOk() (*SodViolationContext1ConflictingAccessCriteria, bool) {
+func (o *SodViolationContext2) GetConflictingAccessCriteriaOk() (*SodViolationContext2ConflictingAccessCriteria, bool) {
 	if o == nil || IsNil(o.ConflictingAccessCriteria) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *SodViolationContext1) GetConflictingAccessCriteriaOk() (*SodViolationCo
 }
 
 // HasConflictingAccessCriteria returns a boolean if a field has been set.
-func (o *SodViolationContext1) HasConflictingAccessCriteria() bool {
+func (o *SodViolationContext2) HasConflictingAccessCriteria() bool {
 	if o != nil && !IsNil(o.ConflictingAccessCriteria) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *SodViolationContext1) HasConflictingAccessCriteria() bool {
 	return false
 }
 
-// SetConflictingAccessCriteria gets a reference to the given SodViolationContext1ConflictingAccessCriteria and assigns it to the ConflictingAccessCriteria field.
-func (o *SodViolationContext1) SetConflictingAccessCriteria(v SodViolationContext1ConflictingAccessCriteria) {
+// SetConflictingAccessCriteria gets a reference to the given SodViolationContext2ConflictingAccessCriteria and assigns it to the ConflictingAccessCriteria field.
+func (o *SodViolationContext2) SetConflictingAccessCriteria(v SodViolationContext2ConflictingAccessCriteria) {
 	o.ConflictingAccessCriteria = &v
 }
 
-func (o SodViolationContext1) MarshalJSON() ([]byte, error) {
+func (o SodViolationContext2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o SodViolationContext1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SodViolationContext1) ToMap() (map[string]interface{}, error) {
+func (o SodViolationContext2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
@@ -131,16 +131,16 @@ func (o SodViolationContext1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodViolationContext1) UnmarshalJSON(data []byte) (err error) {
-	varSodViolationContext1 := _SodViolationContext1{}
+func (o *SodViolationContext2) UnmarshalJSON(data []byte) (err error) {
+	varSodViolationContext2 := _SodViolationContext2{}
 
-	err = json.Unmarshal(data, &varSodViolationContext1)
+	err = json.Unmarshal(data, &varSodViolationContext2)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SodViolationContext1(varSodViolationContext1)
+	*o = SodViolationContext2(varSodViolationContext2)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *SodViolationContext1) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSodViolationContext1 struct {
-	value *SodViolationContext1
+type NullableSodViolationContext2 struct {
+	value *SodViolationContext2
 	isSet bool
 }
 
-func (v NullableSodViolationContext1) Get() *SodViolationContext1 {
+func (v NullableSodViolationContext2) Get() *SodViolationContext2 {
 	return v.value
 }
 
-func (v *NullableSodViolationContext1) Set(val *SodViolationContext1) {
+func (v *NullableSodViolationContext2) Set(val *SodViolationContext2) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSodViolationContext1) IsSet() bool {
+func (v NullableSodViolationContext2) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSodViolationContext1) Unset() {
+func (v *NullableSodViolationContext2) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSodViolationContext1(val *SodViolationContext1) *NullableSodViolationContext1 {
-	return &NullableSodViolationContext1{value: val, isSet: true}
+func NewNullableSodViolationContext2(val *SodViolationContext2) *NullableSodViolationContext2 {
+	return &NullableSodViolationContext2{value: val, isSet: true}
 }
 
-func (v NullableSodViolationContext1) MarshalJSON() ([]byte, error) {
+func (v NullableSodViolationContext2) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSodViolationContext1) UnmarshalJSON(src []byte) error {
+func (v *NullableSodViolationContext2) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

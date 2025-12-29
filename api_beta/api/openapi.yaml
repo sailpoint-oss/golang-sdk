@@ -3201,6 +3201,196 @@ paths:
       - Access Requests
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /access-request-administration:
+    get:
+      description: |-
+        Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters.
+        Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+      operationId: listAdministratorsAccessRequestStatus
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      - description: Filter the results by the identity the requests were made for.
+          *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        example: 2c9180877b2b6ea4017b2c545f971429
+        in: query
+        name: requested-for
+        required: false
+        schema:
+          type: string
+      - description: Filter the results by the identity who made the requests. *me*
+          indicates the current user. Mutually exclusive with *regarding-identity*.
+        example: 2c9180877b2b6ea4017b2c545f971429
+        in: query
+        name: requested-by
+        required: false
+        schema:
+          type: string
+      - description: Filter the results by the specified identity who is either the
+          requester or target of the requests. *me* indicates the current user. Mutually
+          exclusive with *requested-for* and *requested-by*.
+        example: 2c9180877b2b6ea4017b2c545f971429
+        in: query
+        name: regarding-identity
+        required: false
+        schema:
+          type: string
+      - description: Filter the results by the specified identity who is the owner
+          of the Identity Request Work Item. *me* indicates the current user.
+        example: 2c9180877b2b6ea4017b2c545f971429
+        in: query
+        name: assigned-to
+        required: false
+        schema:
+          type: string
+      - description: "If this is true, the *X-Total-Count* response header populates\
+          \ with the number of results that would be returned if limit and offset\
+          \ were ignored."
+        example: false
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Max number of results to return.
+        example: 100
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results. Defaults to 0 if not specified.
+        example: 10
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+
+          **accessRequestId**: *in*
+
+          **status**: *in, eq, ne*
+
+          **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+        example: accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+        example: created
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: Filter the results by the state of the request. The only valid
+          value is *EXECUTING*.
+        example: request-state=EXECUTING
+        in: query
+        name: request-state
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessRequestAdminItemStatus'
+                type: array
+          description: List of requested item statuses.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-administration:read
+      summary: Access request status for administrators
+      tags:
+      - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - idn:access-request-administration:read
   /access-request-approvals/pending:
     get:
       description: This endpoint returns a list of pending approvals. See "owner-id"
@@ -67888,6 +68078,355 @@ components:
           type: string
       title: Requested Item Status
       type: object
+    AccessRequestAdminItemStatus:
+      example:
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        cancelable: true
+        reauthorizationRequired: true
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        description: This is the Engineering role that engineers are granted.
+        type: ACCESS_PROFILE
+        provisioningDetails:
+          orderedSubPhaseReferences: manualWorkItemDetails
+        accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
+        modified: 2019-08-23T18:52:59.162Z
+        id: 2c9180926cbfbddd016cbfc7c3b10010
+        state: EXECUTING
+        accessRequestPhases:
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        - result: SUCCESSFUL
+          phaseReference: approvalDetails
+          name: APPROVAL_PHASE
+          started: 2020-07-11T00:00:00Z
+          finished: 2020-07-12T00:00:00Z
+          state: COMPLETED
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        removeDate: 2019-10-23T00:00:00Z
+        clientMetadata:
+          key1: value1
+          key2: value2
+        approvalDetails:
+        - errorMessages:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          removeDate: 2020-07-11T00:00:00Z
+          originalOwner:
+            name: Michael Michaels
+            id: 2c7180a46faadee4016fb4e018c20642
+            type: IDENTITY
+          scheme: MANAGER
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
+          modified: 2019-08-23T18:52:57.398Z
+          comment: I approve this request
+          forwarded: false
+          status: PENDING
+        - errorMessages:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          removeDate: 2020-07-11T00:00:00Z
+          originalOwner:
+            name: Michael Michaels
+            id: 2c7180a46faadee4016fb4e018c20642
+            type: IDENTITY
+          scheme: MANAGER
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
+          modified: 2019-08-23T18:52:57.398Z
+          comment: I approve this request
+          forwarded: false
+          status: PENDING
+        requestType: GRANT_ACCESS
+        created: 2019-08-23T18:40:35.772Z
+        preApprovalTriggerDetails:
+          decision: APPROVED
+          comment: Access is Approved
+          reviewer: John Doe
+        errorMessages:
+        - locale: en-US
+          localeOrigin: DEFAULT
+          text: Error Message
+        - locale: en-US
+          localeOrigin: DEFAULT
+          text: Error Message
+        sodViolationContext:
+          violationCheckResult:
+            clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            violationContexts:
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            violatedPolicies:
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            message:
+              localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          state: SUCCESS
+          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+        cancelledRequestDetails:
+          owner:
+            name: Support
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
+          modified: 2019-12-20T09:17:12.192Z
+          comment: This request must be cancelled.
+        accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        name: AccessProfile1
+        manualWorkItemDetails:
+        - originalOwner:
+            name: Michael Michaels
+            id: 2c7180a46faadee4016fb4e018c20642
+            type: IDENTITY
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
+          modified: 2019-08-23T18:52:57.398Z
+          forwardHistory:
+          - forwarderName: William Wilson
+            reassignmentType: AUTOMATIC_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          - forwarderName: William Wilson
+            reassignmentType: AUTOMATIC_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          forwarded: true
+          status: PENDING
+        - originalOwner:
+            name: Michael Michaels
+            id: 2c7180a46faadee4016fb4e018c20642
+            type: IDENTITY
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
+          modified: 2019-08-23T18:52:57.398Z
+          forwardHistory:
+          - forwarderName: William Wilson
+            reassignmentType: AUTOMATIC_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          - forwarderName: William Wilson
+            reassignmentType: AUTOMATIC_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          forwarded: true
+          status: PENDING
+      properties:
+        id:
+          description: ID of the access request. This is a new property as of 2025.
+            Older access requests may not have an ID.
+          example: 2c9180926cbfbddd016cbfc7c3b10010
+          nullable: true
+          type: string
+        name:
+          description: Human-readable display name of the item being requested.
+          example: AccessProfile1
+          nullable: true
+          type: string
+        type:
+          description: Type of requested object.
+          enum:
+          - ACCESS_PROFILE
+          - ROLE
+          - ENTITLEMENT
+          - null
+          example: ACCESS_PROFILE
+          nullable: true
+          type: string
+        cancelledRequestDetails:
+          $ref: '#/components/schemas/AccessRequestAdminItemStatus_cancelledRequestDetails'
+        errorMessages:
+          description: "List of localized error messages, if any, encountered during\
+            \ the approval/provisioning process."
+          items:
+            $ref: '#/components/schemas/ErrorMessageDtoList_1'
+          nullable: true
+          type: array
+        state:
+          $ref: '#/components/schemas/RequestedItemStatusRequestState'
+        approvalDetails:
+          description: Approval details for each item.
+          items:
+            $ref: '#/components/schemas/ApprovalStatusDto_1'
+          type: array
+        manualWorkItemDetails:
+          description: Manual work items created for provisioning the item.
+          items:
+            $ref: '#/components/schemas/ManualWorkItemDetails_1'
+          nullable: true
+          type: array
+        accountActivityItemId:
+          description: Id of associated account activity item.
+          example: 2c9180926cbfbddd016cbfc7c3b10010
+          type: string
+        requestType:
+          $ref: '#/components/schemas/AccessRequestType'
+        modified:
+          description: When the request was last modified.
+          example: 2019-08-23T18:52:59.162Z
+          format: date-time
+          nullable: true
+          type: string
+        created:
+          description: When the request was created.
+          example: 2019-08-23T18:40:35.772Z
+          format: date-time
+          type: string
+        requester:
+          $ref: '#/components/schemas/AccessItemRequester'
+        requestedFor:
+          $ref: '#/components/schemas/RequestedItemStatus_requestedFor'
+        requesterComment:
+          $ref: '#/components/schemas/RequestedItemStatus_requesterComment'
+        sodViolationContext:
+          $ref: '#/components/schemas/AccessRequestAdminItemStatus_sodViolationContext'
+        provisioningDetails:
+          $ref: '#/components/schemas/RequestedItemStatus_provisioningDetails'
+        preApprovalTriggerDetails:
+          $ref: '#/components/schemas/RequestedItemStatus_preApprovalTriggerDetails'
+        accessRequestPhases:
+          description: "A list of Phases that the Access Request has gone through\
+            \ in order, to help determine the status of the request."
+          items:
+            $ref: '#/components/schemas/AccessRequestPhases'
+          nullable: true
+          type: array
+        description:
+          description: Description associated to the requested object.
+          example: This is the Engineering role that engineers are granted.
+          nullable: true
+          type: string
+        removeDate:
+          description: When the role access is scheduled for removal.
+          example: 2019-10-23T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        cancelable:
+          default: false
+          description: True if the request can be canceled.
+          example: true
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: True if re-auth is required.
+          example: true
+          type: boolean
+        accessRequestId:
+          description: This is the account activity id.
+          example: 2b838de9-db9b-abcf-e646-d4f274ad4238
+          type: string
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: "Arbitrary key-value pairs, if any were included in the corresponding\
+            \ access request"
+          example:
+            key1: value1
+            key2: value2
+          nullable: true
+          type: object
+      title: Access Request Admin Item Status
+      type: object
     PendingApproval:
       example:
         requester:
@@ -68108,7 +68647,7 @@ components:
           format: date-time
           type: string
         sodViolationContext:
-          $ref: '#/components/schemas/SodViolationContextCheckCompleted_1'
+          $ref: '#/components/schemas/SodViolationContextCheckCompleted_2'
         clientMetadata:
           additionalProperties:
             type: string
@@ -68373,7 +68912,7 @@ components:
           nullable: true
           type: string
         sodViolationContext:
-          $ref: '#/components/schemas/SodViolationContextCheckCompleted_1'
+          $ref: '#/components/schemas/SodViolationContextCheckCompleted_2'
         preApprovalTriggerResult:
           $ref: '#/components/schemas/CompletedApproval_preApprovalTriggerResult'
         clientMetadata:
@@ -85934,6 +86473,173 @@ components:
           type: string
       title: Requested Account Ref
       type: object
+    CancelledRequestDetails_1:
+      description: Provides additional details for a request that has been cancelled.
+      properties:
+        comment:
+          description: Comment made by the owner when cancelling the associated request.
+          example: This request must be cancelled.
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerDto'
+        modified:
+          description: Date comment was added by the owner when cancelling the associated
+            request.
+          example: 2019-12-20T09:17:12.192Z
+          format: date-time
+          type: string
+      title: Cancelled Request Details
+      type: object
+    ErrorMessageDtoList_1:
+      description: List of error messages
+      example:
+        locale: en-US
+        localeOrigin: DEFAULT
+        text: Error Message
+      items:
+        $ref: '#/components/schemas/ErrorMessageDto_1'
+      type: array
+    ApprovalStatusDto_1:
+      example:
+        errorMessages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        removeDate: 2020-07-11T00:00:00Z
+        originalOwner:
+          name: Michael Michaels
+          id: 2c7180a46faadee4016fb4e018c20642
+          type: IDENTITY
+        scheme: MANAGER
+        currentOwner:
+          name: Allen Albertson
+          id: 2c3780a46faadee4016fb4e018c20652
+          type: IDENTITY
+        modified: 2019-08-23T18:52:57.398Z
+        comment: I approve this request
+        forwarded: false
+        status: PENDING
+      properties:
+        forwarded:
+          default: false
+          description: True if the request for this item was forwarded from one owner
+            to another.
+          example: false
+          type: boolean
+        originalOwner:
+          $ref: '#/components/schemas/ApprovalStatusDto_originalOwner'
+        currentOwner:
+          $ref: '#/components/schemas/ApprovalStatusDto_currentOwner'
+        modified:
+          description: Time at which item was modified.
+          example: 2019-08-23T18:52:57.398Z
+          format: date-time
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/ManualWorkItemState'
+        scheme:
+          $ref: '#/components/schemas/ApprovalScheme'
+        errorMessages:
+          description: "If the request failed, includes any error messages that were\
+            \ generated."
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto_1'
+          nullable: true
+          type: array
+        comment:
+          description: "Comment, if any, provided by the approver."
+          example: I approve this request
+          nullable: true
+          type: string
+        removeDate:
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Approval Status Dto
+      type: object
+    ManualWorkItemDetails_1:
+      example:
+        originalOwner:
+          name: Michael Michaels
+          id: 2c7180a46faadee4016fb4e018c20642
+          type: IDENTITY
+        currentOwner:
+          name: Allen Albertson
+          id: 2c3780a46faadee4016fb4e018c20652
+          type: IDENTITY
+        modified: 2019-08-23T18:52:57.398Z
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        forwarded: true
+        status: PENDING
+      properties:
+        forwarded:
+          default: false
+          description: True if the request for this item was forwarded from one owner
+            to another.
+          example: true
+          type: boolean
+        originalOwner:
+          $ref: '#/components/schemas/ManualWorkItemDetails_originalOwner'
+        currentOwner:
+          $ref: '#/components/schemas/ManualWorkItemDetails_currentOwner'
+        modified:
+          description: Time at which item was modified.
+          example: 2019-08-23T18:52:57.398Z
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/ManualWorkItemState'
+        forwardHistory:
+          description: The history of approval forward action.
+          items:
+            $ref: '#/components/schemas/ApprovalForwardHistory_1'
+          nullable: true
+          type: array
+      title: Manual Work Item Details
+      type: object
+    SodViolationContextCheckCompleted_1:
+      description: An object referencing a completed SOD violation check
+      nullable: true
+      properties:
+        state:
+          description: The status of SOD violation check
+          enum:
+          - SUCCESS
+          - ERROR
+          - null
+          example: SUCCESS
+          nullable: true
+          type: string
+        uuid:
+          description: The id of the Violation check event
+          example: f73d16e9-a038-46c5-b217-1246e15fdbdd
+          nullable: true
+          type: string
+        violationCheckResult:
+          $ref: '#/components/schemas/SodViolationCheckResult_1'
+      title: Sod Violation Context Check Completed
+      type: object
     AccessItemRequesterDto:
       description: Access item requester's identity.
       example:
@@ -86077,7 +86783,7 @@ components:
       - FORWARDED
       example: APPROVED
       type: string
-    SodViolationContextCheckCompleted_1:
+    SodViolationContextCheckCompleted_2:
       description: An object referencing a completed SOD violation check
       example:
         violationCheckResult:
@@ -86163,7 +86869,7 @@ components:
           example: f73d16e9-a038-46c5-b217-1246e15fdbdd
           type: string
         violationCheckResult:
-          $ref: '#/components/schemas/SodViolationCheckResult_1'
+          $ref: '#/components/schemas/SodViolationCheckResult_2'
       title: Sod Violation Context Check Completed
       type: object
     CompletedApprovalState:
@@ -91884,6 +92590,159 @@ components:
           type: array
       title: Sod Violation Check Result
       type: object
+    ErrorMessageDto_1:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ApprovalForwardHistory_1:
+      example:
+        forwarderName: William Wilson
+        reassignmentType: AUTOMATIC_REASSIGNMENT
+        modified: 2019-08-23T18:52:57.398Z
+        oldApproverName: Frank Mir
+        newApproverName: Al Volta
+        comment: Forwarding from Frank to Al
+      properties:
+        oldApproverName:
+          description: Display name of approver from whom the approval was forwarded.
+          example: Frank Mir
+          type: string
+        newApproverName:
+          description: Display name of approver to whom the approval was forwarded.
+          example: Al Volta
+          type: string
+        comment:
+          description: Comment made while forwarding.
+          example: Forwarding from Frank to Al
+          nullable: true
+          type: string
+        modified:
+          description: Time at which approval was forwarded.
+          example: 2019-08-23T18:52:57.398Z
+          format: date-time
+          type: string
+        forwarderName:
+          description: Display name of forwarder who forwarded the approval.
+          example: William Wilson
+          nullable: true
+          type: string
+        reassignmentType:
+          $ref: '#/components/schemas/ReassignmentType'
+      title: Approval Forward History
+      type: object
+    SodViolationCheckResult_1:
+      description: The inner object representing the completed SOD Violation check
+      example:
+        clientMetadata:
+          requestedAppName: test-app
+          requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        violationContexts:
+        - conflictingAccessCriteria:
+            leftCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+            rightCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+          policy:
+            name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+        - conflictingAccessCriteria:
+            leftCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+            rightCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+          policy:
+            name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+        violatedPolicies:
+        - name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+        - name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+        message:
+          localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+      properties:
+        message:
+          $ref: '#/components/schemas/ErrorMessageDto_1'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: Arbitrary key-value pairs. They will never be processed by
+            the IdentityNow system but will be returned on completion of the violation
+            check.
+          example:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          nullable: true
+          type: object
+        violationContexts:
+          items:
+            $ref: '#/components/schemas/SodViolationContext_1'
+          nullable: true
+          type: array
+        violatedPolicies:
+          description: A list of the SOD policies that were violated.
+          items:
+            $ref: '#/components/schemas/SodPolicyDto_1'
+          nullable: true
+          type: array
+      title: Sod Violation Check Result
+      type: object
     ReassignmentType:
       description: "The approval reassignment type. \n* MANUAL_REASSIGNMENT: An approval\
         \ with this reassignment type has been specifically reassigned by the approval\
@@ -91909,7 +92768,7 @@ components:
       - SELF_REVIEW_DELEGATION
       example: AUTOMATIC_REASSIGNMENT
       type: string
-    SodViolationCheckResult_1:
+    SodViolationCheckResult_2:
       description: The inner object representing the completed SOD Violation check
       example:
         clientMetadata:
@@ -91993,7 +92852,7 @@ components:
           type: object
         violationContexts:
           items:
-            $ref: '#/components/schemas/SodViolationContext_1'
+            $ref: '#/components/schemas/SodViolationContext_2'
           type: array
         violatedPolicies:
           description: A list of the Policies that were violated.
@@ -93276,7 +94135,7 @@ components:
       title: Sod Policy Dto
       type: object
     SodViolationContext_1:
-      description: The contextual information of the violated criteria.
+      description: The contextual information of the violated criteria
       example:
         conflictingAccessCriteria:
           leftCriteria:
@@ -93308,6 +94167,41 @@ components:
           $ref: '#/components/schemas/SodPolicyDto_1'
         conflictingAccessCriteria:
           $ref: '#/components/schemas/SodViolationContext_1_conflictingAccessCriteria'
+      title: Sod Violation Context
+      type: object
+    SodViolationContext_2:
+      description: The contextual information of the violated criteria.
+      example:
+        conflictingAccessCriteria:
+          leftCriteria:
+            criteriaList:
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+          rightCriteria:
+            criteriaList:
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+        policy:
+          name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+      properties:
+        policy:
+          $ref: '#/components/schemas/SodPolicyDto_1'
+        conflictingAccessCriteria:
+          $ref: '#/components/schemas/SodViolationContext_2_conflictingAccessCriteria'
       title: Sod Violation Context
       type: object
     CertificationReferenceDto:
@@ -93563,6 +94457,31 @@ components:
       title: Sod Exempt Criteria
       type: object
     SodExemptCriteria_1:
+      description: Details of the Entitlement criteria
+      example:
+        existing: true
+        name: My HR Entitlement
+        id: 2c918085771e9d3301773b3cb66f6398
+        type: IDENTITY
+      properties:
+        existing:
+          default: false
+          description: If the entitlement already belonged to the user or not.
+          example: true
+          type: boolean
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: Entitlement ID
+          example: 2c918085771e9d3301773b3cb66f6398
+          type: string
+        name:
+          description: Entitlement name
+          example: My HR Entitlement
+          type: string
+      title: Sod Exempt Criteria
+      type: object
+    SodExemptCriteria_2:
       description: Details of the Entitlement criteria
       example:
         existing: true
@@ -95068,6 +95987,94 @@ components:
         decision: APPROVED
         comment: Access is Approved
         reviewer: John Doe
+    AccessRequestAdminItemStatus_cancelledRequestDetails:
+      allOf:
+      - $ref: '#/components/schemas/CancelledRequestDetails_1'
+      - nullable: true
+        type: object
+      example:
+        owner:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        modified: 2019-12-20T09:17:12.192Z
+        comment: This request must be cancelled.
+    AccessRequestAdminItemStatus_sodViolationContext:
+      allOf:
+      - $ref: '#/components/schemas/SodViolationContextCheckCompleted_1'
+      - description: The details of the SOD violations for the associated approval.
+        nullable: true
+        type: object
+      example:
+        violationCheckResult:
+          clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          violationContexts:
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          violatedPolicies:
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          message:
+            localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        state: SUCCESS
+        uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
     CompletedApproval_reviewedBy:
       description: Identity who reviewed the access item request.
       example:
@@ -99266,6 +100273,53 @@ components:
           $ref: '#/components/schemas/SodViolationContext_1_conflictingAccessCriteria_leftCriteria'
         rightCriteria:
           $ref: '#/components/schemas/SodViolationContext_1_conflictingAccessCriteria_leftCriteria'
+      type: object
+    SodViolationContext_2_conflictingAccessCriteria_leftCriteria:
+      example:
+        criteriaList:
+        - existing: true
+          name: My HR Entitlement
+          id: 2c918085771e9d3301773b3cb66f6398
+          type: IDENTITY
+        - existing: true
+          name: My HR Entitlement
+          id: 2c918085771e9d3301773b3cb66f6398
+          type: IDENTITY
+      properties:
+        criteriaList:
+          items:
+            $ref: '#/components/schemas/SodExemptCriteria_2'
+          type: array
+      type: object
+    SodViolationContext_2_conflictingAccessCriteria:
+      description: The object which contains the left and right hand side of the entitlements
+        that got violated according to the policy.
+      example:
+        leftCriteria:
+          criteriaList:
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+        rightCriteria:
+          criteriaList:
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+      properties:
+        leftCriteria:
+          $ref: '#/components/schemas/SodViolationContext_2_conflictingAccessCriteria_leftCriteria'
+        rightCriteria:
+          $ref: '#/components/schemas/SodViolationContext_2_conflictingAccessCriteria_leftCriteria'
       type: object
     ContextAttributeDto_value:
       description: The value of the attribute.  This can be either a string or a multi-valued

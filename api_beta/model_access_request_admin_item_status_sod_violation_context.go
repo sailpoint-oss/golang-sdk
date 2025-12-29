@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the SodViolationContextCheckCompleted1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SodViolationContextCheckCompleted1{}
+// checks if the AccessRequestAdminItemStatusSodViolationContext type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestAdminItemStatusSodViolationContext{}
 
-// SodViolationContextCheckCompleted1 An object referencing a completed SOD violation check
-type SodViolationContextCheckCompleted1 struct {
+// AccessRequestAdminItemStatusSodViolationContext struct for AccessRequestAdminItemStatusSodViolationContext
+type AccessRequestAdminItemStatusSodViolationContext struct {
 	// The status of SOD violation check
 	State NullableString `json:"state,omitempty"`
 	// The id of the Violation check event
@@ -27,27 +27,27 @@ type SodViolationContextCheckCompleted1 struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _SodViolationContextCheckCompleted1 SodViolationContextCheckCompleted1
+type _AccessRequestAdminItemStatusSodViolationContext AccessRequestAdminItemStatusSodViolationContext
 
-// NewSodViolationContextCheckCompleted1 instantiates a new SodViolationContextCheckCompleted1 object
+// NewAccessRequestAdminItemStatusSodViolationContext instantiates a new AccessRequestAdminItemStatusSodViolationContext object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSodViolationContextCheckCompleted1() *SodViolationContextCheckCompleted1 {
-	this := SodViolationContextCheckCompleted1{}
+func NewAccessRequestAdminItemStatusSodViolationContext() *AccessRequestAdminItemStatusSodViolationContext {
+	this := AccessRequestAdminItemStatusSodViolationContext{}
 	return &this
 }
 
-// NewSodViolationContextCheckCompleted1WithDefaults instantiates a new SodViolationContextCheckCompleted1 object
+// NewAccessRequestAdminItemStatusSodViolationContextWithDefaults instantiates a new AccessRequestAdminItemStatusSodViolationContext object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSodViolationContextCheckCompleted1WithDefaults() *SodViolationContextCheckCompleted1 {
-	this := SodViolationContextCheckCompleted1{}
+func NewAccessRequestAdminItemStatusSodViolationContextWithDefaults() *AccessRequestAdminItemStatusSodViolationContext {
+	this := AccessRequestAdminItemStatusSodViolationContext{}
 	return &this
 }
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodViolationContextCheckCompleted1) GetState() string {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetState() string {
 	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SodViolationContextCheckCompleted1) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodViolationContextCheckCompleted1) GetStateOk() (*string, bool) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetStateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SodViolationContextCheckCompleted1) GetStateOk() (*string, bool) {
 }
 
 // HasState returns a boolean if a field has been set.
-func (o *SodViolationContextCheckCompleted1) HasState() bool {
+func (o *AccessRequestAdminItemStatusSodViolationContext) HasState() bool {
 	if o != nil && o.State.IsSet() {
 		return true
 	}
@@ -75,21 +75,21 @@ func (o *SodViolationContextCheckCompleted1) HasState() bool {
 }
 
 // SetState gets a reference to the given NullableString and assigns it to the State field.
-func (o *SodViolationContextCheckCompleted1) SetState(v string) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) SetState(v string) {
 	o.State.Set(&v)
 }
 // SetStateNil sets the value for State to be an explicit nil
-func (o *SodViolationContextCheckCompleted1) SetStateNil() {
+func (o *AccessRequestAdminItemStatusSodViolationContext) SetStateNil() {
 	o.State.Set(nil)
 }
 
 // UnsetState ensures that no value is present for State, not even an explicit nil
-func (o *SodViolationContextCheckCompleted1) UnsetState() {
+func (o *AccessRequestAdminItemStatusSodViolationContext) UnsetState() {
 	o.State.Unset()
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodViolationContextCheckCompleted1) GetUuid() string {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetUuid() string {
 	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *SodViolationContextCheckCompleted1) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodViolationContextCheckCompleted1) GetUuidOk() (*string, bool) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetUuidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *SodViolationContextCheckCompleted1) GetUuidOk() (*string, bool) {
 }
 
 // HasUuid returns a boolean if a field has been set.
-func (o *SodViolationContextCheckCompleted1) HasUuid() bool {
+func (o *AccessRequestAdminItemStatusSodViolationContext) HasUuid() bool {
 	if o != nil && o.Uuid.IsSet() {
 		return true
 	}
@@ -117,21 +117,21 @@ func (o *SodViolationContextCheckCompleted1) HasUuid() bool {
 }
 
 // SetUuid gets a reference to the given NullableString and assigns it to the Uuid field.
-func (o *SodViolationContextCheckCompleted1) SetUuid(v string) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
 // SetUuidNil sets the value for Uuid to be an explicit nil
-func (o *SodViolationContextCheckCompleted1) SetUuidNil() {
+func (o *AccessRequestAdminItemStatusSodViolationContext) SetUuidNil() {
 	o.Uuid.Set(nil)
 }
 
 // UnsetUuid ensures that no value is present for Uuid, not even an explicit nil
-func (o *SodViolationContextCheckCompleted1) UnsetUuid() {
+func (o *AccessRequestAdminItemStatusSodViolationContext) UnsetUuid() {
 	o.Uuid.Unset()
 }
 
 // GetViolationCheckResult returns the ViolationCheckResult field value if set, zero value otherwise.
-func (o *SodViolationContextCheckCompleted1) GetViolationCheckResult() SodViolationCheckResult1 {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetViolationCheckResult() SodViolationCheckResult1 {
 	if o == nil || IsNil(o.ViolationCheckResult) {
 		var ret SodViolationCheckResult1
 		return ret
@@ -141,7 +141,7 @@ func (o *SodViolationContextCheckCompleted1) GetViolationCheckResult() SodViolat
 
 // GetViolationCheckResultOk returns a tuple with the ViolationCheckResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationContextCheckCompleted1) GetViolationCheckResultOk() (*SodViolationCheckResult1, bool) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) GetViolationCheckResultOk() (*SodViolationCheckResult1, bool) {
 	if o == nil || IsNil(o.ViolationCheckResult) {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *SodViolationContextCheckCompleted1) GetViolationCheckResultOk() (*SodVi
 }
 
 // HasViolationCheckResult returns a boolean if a field has been set.
-func (o *SodViolationContextCheckCompleted1) HasViolationCheckResult() bool {
+func (o *AccessRequestAdminItemStatusSodViolationContext) HasViolationCheckResult() bool {
 	if o != nil && !IsNil(o.ViolationCheckResult) {
 		return true
 	}
@@ -158,11 +158,11 @@ func (o *SodViolationContextCheckCompleted1) HasViolationCheckResult() bool {
 }
 
 // SetViolationCheckResult gets a reference to the given SodViolationCheckResult1 and assigns it to the ViolationCheckResult field.
-func (o *SodViolationContextCheckCompleted1) SetViolationCheckResult(v SodViolationCheckResult1) {
+func (o *AccessRequestAdminItemStatusSodViolationContext) SetViolationCheckResult(v SodViolationCheckResult1) {
 	o.ViolationCheckResult = &v
 }
 
-func (o SodViolationContextCheckCompleted1) MarshalJSON() ([]byte, error) {
+func (o AccessRequestAdminItemStatusSodViolationContext) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -170,7 +170,7 @@ func (o SodViolationContextCheckCompleted1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SodViolationContextCheckCompleted1) ToMap() (map[string]interface{}, error) {
+func (o AccessRequestAdminItemStatusSodViolationContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.State.IsSet() {
 		toSerialize["state"] = o.State.Get()
@@ -189,16 +189,16 @@ func (o SodViolationContextCheckCompleted1) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *SodViolationContextCheckCompleted1) UnmarshalJSON(data []byte) (err error) {
-	varSodViolationContextCheckCompleted1 := _SodViolationContextCheckCompleted1{}
+func (o *AccessRequestAdminItemStatusSodViolationContext) UnmarshalJSON(data []byte) (err error) {
+	varAccessRequestAdminItemStatusSodViolationContext := _AccessRequestAdminItemStatusSodViolationContext{}
 
-	err = json.Unmarshal(data, &varSodViolationContextCheckCompleted1)
+	err = json.Unmarshal(data, &varAccessRequestAdminItemStatusSodViolationContext)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SodViolationContextCheckCompleted1(varSodViolationContextCheckCompleted1)
+	*o = AccessRequestAdminItemStatusSodViolationContext(varAccessRequestAdminItemStatusSodViolationContext)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -212,38 +212,38 @@ func (o *SodViolationContextCheckCompleted1) UnmarshalJSON(data []byte) (err err
 	return err
 }
 
-type NullableSodViolationContextCheckCompleted1 struct {
-	value *SodViolationContextCheckCompleted1
+type NullableAccessRequestAdminItemStatusSodViolationContext struct {
+	value *AccessRequestAdminItemStatusSodViolationContext
 	isSet bool
 }
 
-func (v NullableSodViolationContextCheckCompleted1) Get() *SodViolationContextCheckCompleted1 {
+func (v NullableAccessRequestAdminItemStatusSodViolationContext) Get() *AccessRequestAdminItemStatusSodViolationContext {
 	return v.value
 }
 
-func (v *NullableSodViolationContextCheckCompleted1) Set(val *SodViolationContextCheckCompleted1) {
+func (v *NullableAccessRequestAdminItemStatusSodViolationContext) Set(val *AccessRequestAdminItemStatusSodViolationContext) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSodViolationContextCheckCompleted1) IsSet() bool {
+func (v NullableAccessRequestAdminItemStatusSodViolationContext) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSodViolationContextCheckCompleted1) Unset() {
+func (v *NullableAccessRequestAdminItemStatusSodViolationContext) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSodViolationContextCheckCompleted1(val *SodViolationContextCheckCompleted1) *NullableSodViolationContextCheckCompleted1 {
-	return &NullableSodViolationContextCheckCompleted1{value: val, isSet: true}
+func NewNullableAccessRequestAdminItemStatusSodViolationContext(val *AccessRequestAdminItemStatusSodViolationContext) *NullableAccessRequestAdminItemStatusSodViolationContext {
+	return &NullableAccessRequestAdminItemStatusSodViolationContext{value: val, isSet: true}
 }
 
-func (v NullableSodViolationContextCheckCompleted1) MarshalJSON() ([]byte, error) {
+func (v NullableAccessRequestAdminItemStatusSodViolationContext) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSodViolationContextCheckCompleted1) UnmarshalJSON(src []byte) error {
+func (v *NullableAccessRequestAdminItemStatusSodViolationContext) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

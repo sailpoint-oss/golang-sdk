@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **RemoveDate** | Pointer to **SailPointTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **SailPointTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
-**SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted1**](sod-violation-context-check-completed1) |  | [optional] 
+**SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted2**](sod-violation-context-check-completed2) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
 **RequestedAccounts** | Pointer to [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the requested access item, if applicable. | [optional] 
@@ -519,20 +519,20 @@ HasCurrentRemoveDate returns a boolean if a field has been set.
 
 ### GetSodViolationContext
 
-`func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted1`
+`func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted2`
 
 GetSodViolationContext returns the SodViolationContext field if non-nil, zero value otherwise.
 
 ### GetSodViolationContextOk
 
-`func (o *PendingApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted1, bool)`
+`func (o *PendingApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted2, bool)`
 
 GetSodViolationContextOk returns a tuple with the SodViolationContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSodViolationContext
 
-`func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompleted1)`
+`func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompleted2)`
 
 SetSodViolationContext sets SodViolationContext field to given value.
 

@@ -14,43 +14,43 @@ import (
 	"encoding/json"
 )
 
-// checks if the SodViolationCheckResult1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SodViolationCheckResult1{}
+// checks if the SodViolationCheckResult2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationCheckResult2{}
 
-// SodViolationCheckResult1 The inner object representing the completed SOD Violation check
-type SodViolationCheckResult1 struct {
-	Message *ErrorMessageDto1 `json:"message,omitempty"`
+// SodViolationCheckResult2 The inner object representing the completed SOD Violation check
+type SodViolationCheckResult2 struct {
+	Message *ErrorMessageDto `json:"message,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
-	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
-	ViolationContexts []SodViolationContext1 `json:"violationContexts,omitempty"`
-	// A list of the SOD policies that were violated.
+	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	ViolationContexts []SodViolationContext2 `json:"violationContexts,omitempty"`
+	// A list of the Policies that were violated.
 	ViolatedPolicies []SodPolicyDto1 `json:"violatedPolicies,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SodViolationCheckResult1 SodViolationCheckResult1
+type _SodViolationCheckResult2 SodViolationCheckResult2
 
-// NewSodViolationCheckResult1 instantiates a new SodViolationCheckResult1 object
+// NewSodViolationCheckResult2 instantiates a new SodViolationCheckResult2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSodViolationCheckResult1() *SodViolationCheckResult1 {
-	this := SodViolationCheckResult1{}
+func NewSodViolationCheckResult2() *SodViolationCheckResult2 {
+	this := SodViolationCheckResult2{}
 	return &this
 }
 
-// NewSodViolationCheckResult1WithDefaults instantiates a new SodViolationCheckResult1 object
+// NewSodViolationCheckResult2WithDefaults instantiates a new SodViolationCheckResult2 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSodViolationCheckResult1WithDefaults() *SodViolationCheckResult1 {
-	this := SodViolationCheckResult1{}
+func NewSodViolationCheckResult2WithDefaults() *SodViolationCheckResult2 {
+	this := SodViolationCheckResult2{}
 	return &this
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *SodViolationCheckResult1) GetMessage() ErrorMessageDto1 {
+func (o *SodViolationCheckResult2) GetMessage() ErrorMessageDto {
 	if o == nil || IsNil(o.Message) {
-		var ret ErrorMessageDto1
+		var ret ErrorMessageDto
 		return ret
 	}
 	return *o.Message
@@ -58,7 +58,7 @@ func (o *SodViolationCheckResult1) GetMessage() ErrorMessageDto1 {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationCheckResult1) GetMessageOk() (*ErrorMessageDto1, bool) {
+func (o *SodViolationCheckResult2) GetMessageOk() (*ErrorMessageDto, bool) {
 	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SodViolationCheckResult1) GetMessageOk() (*ErrorMessageDto1, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *SodViolationCheckResult1) HasMessage() bool {
+func (o *SodViolationCheckResult2) HasMessage() bool {
 	if o != nil && !IsNil(o.Message) {
 		return true
 	}
@@ -74,32 +74,31 @@ func (o *SodViolationCheckResult1) HasMessage() bool {
 	return false
 }
 
-// SetMessage gets a reference to the given ErrorMessageDto1 and assigns it to the Message field.
-func (o *SodViolationCheckResult1) SetMessage(v ErrorMessageDto1) {
+// SetMessage gets a reference to the given ErrorMessageDto and assigns it to the Message field.
+func (o *SodViolationCheckResult2) SetMessage(v ErrorMessageDto) {
 	o.Message = &v
 }
 
-// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodViolationCheckResult1) GetClientMetadata() map[string]string {
-	if o == nil {
+// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise.
+func (o *SodViolationCheckResult2) GetClientMetadata() map[string]string {
+	if o == nil || IsNil(o.ClientMetadata) {
 		var ret map[string]string
 		return ret
 	}
-	return o.ClientMetadata
+	return *o.ClientMetadata
 }
 
 // GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodViolationCheckResult1) GetClientMetadataOk() (*map[string]string, bool) {
+func (o *SodViolationCheckResult2) GetClientMetadataOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
-	return &o.ClientMetadata, true
+	return o.ClientMetadata, true
 }
 
 // HasClientMetadata returns a boolean if a field has been set.
-func (o *SodViolationCheckResult1) HasClientMetadata() bool {
+func (o *SodViolationCheckResult2) HasClientMetadata() bool {
 	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
@@ -108,14 +107,14 @@ func (o *SodViolationCheckResult1) HasClientMetadata() bool {
 }
 
 // SetClientMetadata gets a reference to the given map[string]string and assigns it to the ClientMetadata field.
-func (o *SodViolationCheckResult1) SetClientMetadata(v map[string]string) {
-	o.ClientMetadata = v
+func (o *SodViolationCheckResult2) SetClientMetadata(v map[string]string) {
+	o.ClientMetadata = &v
 }
 
-// GetViolationContexts returns the ViolationContexts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodViolationCheckResult1) GetViolationContexts() []SodViolationContext1 {
-	if o == nil {
-		var ret []SodViolationContext1
+// GetViolationContexts returns the ViolationContexts field value if set, zero value otherwise.
+func (o *SodViolationCheckResult2) GetViolationContexts() []SodViolationContext2 {
+	if o == nil || IsNil(o.ViolationContexts) {
+		var ret []SodViolationContext2
 		return ret
 	}
 	return o.ViolationContexts
@@ -123,8 +122,7 @@ func (o *SodViolationCheckResult1) GetViolationContexts() []SodViolationContext1
 
 // GetViolationContextsOk returns a tuple with the ViolationContexts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodViolationCheckResult1) GetViolationContextsOk() ([]SodViolationContext1, bool) {
+func (o *SodViolationCheckResult2) GetViolationContextsOk() ([]SodViolationContext2, bool) {
 	if o == nil || IsNil(o.ViolationContexts) {
 		return nil, false
 	}
@@ -132,7 +130,7 @@ func (o *SodViolationCheckResult1) GetViolationContextsOk() ([]SodViolationConte
 }
 
 // HasViolationContexts returns a boolean if a field has been set.
-func (o *SodViolationCheckResult1) HasViolationContexts() bool {
+func (o *SodViolationCheckResult2) HasViolationContexts() bool {
 	if o != nil && !IsNil(o.ViolationContexts) {
 		return true
 	}
@@ -140,14 +138,14 @@ func (o *SodViolationCheckResult1) HasViolationContexts() bool {
 	return false
 }
 
-// SetViolationContexts gets a reference to the given []SodViolationContext1 and assigns it to the ViolationContexts field.
-func (o *SodViolationCheckResult1) SetViolationContexts(v []SodViolationContext1) {
+// SetViolationContexts gets a reference to the given []SodViolationContext2 and assigns it to the ViolationContexts field.
+func (o *SodViolationCheckResult2) SetViolationContexts(v []SodViolationContext2) {
 	o.ViolationContexts = v
 }
 
-// GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SodViolationCheckResult1) GetViolatedPolicies() []SodPolicyDto1 {
-	if o == nil {
+// GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise.
+func (o *SodViolationCheckResult2) GetViolatedPolicies() []SodPolicyDto1 {
+	if o == nil || IsNil(o.ViolatedPolicies) {
 		var ret []SodPolicyDto1
 		return ret
 	}
@@ -156,8 +154,7 @@ func (o *SodViolationCheckResult1) GetViolatedPolicies() []SodPolicyDto1 {
 
 // GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SodViolationCheckResult1) GetViolatedPoliciesOk() ([]SodPolicyDto1, bool) {
+func (o *SodViolationCheckResult2) GetViolatedPoliciesOk() ([]SodPolicyDto1, bool) {
 	if o == nil || IsNil(o.ViolatedPolicies) {
 		return nil, false
 	}
@@ -165,7 +162,7 @@ func (o *SodViolationCheckResult1) GetViolatedPoliciesOk() ([]SodPolicyDto1, boo
 }
 
 // HasViolatedPolicies returns a boolean if a field has been set.
-func (o *SodViolationCheckResult1) HasViolatedPolicies() bool {
+func (o *SodViolationCheckResult2) HasViolatedPolicies() bool {
 	if o != nil && !IsNil(o.ViolatedPolicies) {
 		return true
 	}
@@ -174,11 +171,11 @@ func (o *SodViolationCheckResult1) HasViolatedPolicies() bool {
 }
 
 // SetViolatedPolicies gets a reference to the given []SodPolicyDto1 and assigns it to the ViolatedPolicies field.
-func (o *SodViolationCheckResult1) SetViolatedPolicies(v []SodPolicyDto1) {
+func (o *SodViolationCheckResult2) SetViolatedPolicies(v []SodPolicyDto1) {
 	o.ViolatedPolicies = v
 }
 
-func (o SodViolationCheckResult1) MarshalJSON() ([]byte, error) {
+func (o SodViolationCheckResult2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -186,18 +183,18 @@ func (o SodViolationCheckResult1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SodViolationCheckResult1) ToMap() (map[string]interface{}, error) {
+func (o SodViolationCheckResult2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if o.ClientMetadata != nil {
+	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if o.ViolationContexts != nil {
+	if !IsNil(o.ViolationContexts) {
 		toSerialize["violationContexts"] = o.ViolationContexts
 	}
-	if o.ViolatedPolicies != nil {
+	if !IsNil(o.ViolatedPolicies) {
 		toSerialize["violatedPolicies"] = o.ViolatedPolicies
 	}
 
@@ -208,16 +205,16 @@ func (o SodViolationCheckResult1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodViolationCheckResult1) UnmarshalJSON(data []byte) (err error) {
-	varSodViolationCheckResult1 := _SodViolationCheckResult1{}
+func (o *SodViolationCheckResult2) UnmarshalJSON(data []byte) (err error) {
+	varSodViolationCheckResult2 := _SodViolationCheckResult2{}
 
-	err = json.Unmarshal(data, &varSodViolationCheckResult1)
+	err = json.Unmarshal(data, &varSodViolationCheckResult2)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SodViolationCheckResult1(varSodViolationCheckResult1)
+	*o = SodViolationCheckResult2(varSodViolationCheckResult2)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -232,38 +229,38 @@ func (o *SodViolationCheckResult1) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSodViolationCheckResult1 struct {
-	value *SodViolationCheckResult1
+type NullableSodViolationCheckResult2 struct {
+	value *SodViolationCheckResult2
 	isSet bool
 }
 
-func (v NullableSodViolationCheckResult1) Get() *SodViolationCheckResult1 {
+func (v NullableSodViolationCheckResult2) Get() *SodViolationCheckResult2 {
 	return v.value
 }
 
-func (v *NullableSodViolationCheckResult1) Set(val *SodViolationCheckResult1) {
+func (v *NullableSodViolationCheckResult2) Set(val *SodViolationCheckResult2) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSodViolationCheckResult1) IsSet() bool {
+func (v NullableSodViolationCheckResult2) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSodViolationCheckResult1) Unset() {
+func (v *NullableSodViolationCheckResult2) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSodViolationCheckResult1(val *SodViolationCheckResult1) *NullableSodViolationCheckResult1 {
-	return &NullableSodViolationCheckResult1{value: val, isSet: true}
+func NewNullableSodViolationCheckResult2(val *SodViolationCheckResult2) *NullableSodViolationCheckResult2 {
+	return &NullableSodViolationCheckResult2{value: val, isSet: true}
 }
 
-func (v NullableSodViolationCheckResult1) MarshalJSON() ([]byte, error) {
+func (v NullableSodViolationCheckResult2) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSodViolationCheckResult1) UnmarshalJSON(src []byte) error {
+func (v *NullableSodViolationCheckResult2) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

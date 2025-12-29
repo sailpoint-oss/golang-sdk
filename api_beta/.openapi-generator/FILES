@@ -120,6 +120,9 @@ docs/AccessProfilesAPI.md
 docs/AccessProfilesAPIdeveloperSite_code_examples.yaml
 docs/AccessRecommendationMessage.md
 docs/AccessRequest.md
+docs/AccessRequestAdminItemStatus.md
+docs/AccessRequestAdminItemStatusCancelledRequestDetails.md
+docs/AccessRequestAdminItemStatusSodViolationContext.md
 docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestApprovalsAPIdeveloperSite_code_examples.yaml
 docs/AccessRequestConfig.md
@@ -209,6 +212,7 @@ docs/AppAccountDetailsSourceAccount.md
 docs/ApplicationDiscoveryAPI.md
 docs/ApplicationDiscoveryAPIdeveloperSite_code_examples.yaml
 docs/ApprovalForwardHistory.md
+docs/ApprovalForwardHistory1.md
 docs/ApprovalInfoResponse.md
 docs/ApprovalItemDetails.md
 docs/ApprovalItems.md
@@ -217,6 +221,7 @@ docs/ApprovalScheme.md
 docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
+docs/ApprovalStatusDto1.md
 docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
@@ -271,6 +276,7 @@ docs/CampaignTemplateOwnerRef.md
 docs/CancelAccessRequest.md
 docs/CancelableAccountActivity.md
 docs/CancelledRequestDetails.md
+docs/CancelledRequestDetails1.md
 docs/CertificationCampaignsAPI.md
 docs/CertificationCampaignsAPIdeveloperSite_code_examples.yaml
 docs/CertificationDto.md
@@ -381,6 +387,7 @@ docs/EntityCreatedByDTO.md
 docs/Error.md
 docs/ErrorMessage.md
 docs/ErrorMessageDto.md
+docs/ErrorMessageDto1.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
 docs/EventBridgeConfig.md
@@ -608,6 +615,7 @@ docs/ManagerCorrelationMapping.md
 docs/ManualDiscoverApplications.md
 docs/ManualDiscoverApplicationsTemplate.md
 docs/ManualWorkItemDetails.md
+docs/ManualWorkItemDetails1.md
 docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
 docs/ManualWorkItemState.md
@@ -924,6 +932,7 @@ docs/SlimDiscoveredApplications.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
+docs/SodExemptCriteria2.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyDto.md
@@ -934,12 +943,17 @@ docs/SodRecipient.md
 docs/SodReportResultDto.md
 docs/SodViolationCheckResult.md
 docs/SodViolationCheckResult1.md
+docs/SodViolationCheckResult2.md
 docs/SodViolationContext.md
 docs/SodViolationContext1.md
 docs/SodViolationContext1ConflictingAccessCriteria.md
 docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md
+docs/SodViolationContext2.md
+docs/SodViolationContext2ConflictingAccessCriteria.md
+docs/SodViolationContext2ConflictingAccessCriteriaLeftCriteria.md
 docs/SodViolationContextCheckCompleted.md
 docs/SodViolationContextCheckCompleted1.md
+docs/SodViolationContextCheckCompleted2.md
 docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
@@ -1154,6 +1168,9 @@ model_access_profile_usage.go
 model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
 model_access_request.go
+model_access_request_admin_item_status.go
+model_access_request_admin_item_status_cancelled_request_details.go
+model_access_request_admin_item_status_sod_violation_context.go
 model_access_request_config.go
 model_access_request_context.go
 model_access_request_dynamic_approver.go
@@ -1227,6 +1244,7 @@ model_admin_review_reassign_reassign_to.go
 model_app_account_details.go
 model_app_account_details_source_account.go
 model_approval_forward_history.go
+model_approval_forward_history_1.go
 model_approval_info_response.go
 model_approval_item_details.go
 model_approval_items.go
@@ -1235,6 +1253,7 @@ model_approval_scheme.go
 model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
+model_approval_status_dto_1.go
 model_approval_status_dto_current_owner.go
 model_approval_status_dto_original_owner.go
 model_approval_summary.go
@@ -1285,6 +1304,7 @@ model_campaign_template_owner_ref.go
 model_cancel_access_request.go
 model_cancelable_account_activity.go
 model_cancelled_request_details.go
+model_cancelled_request_details_1.go
 model_certification_dto.go
 model_certification_phase.go
 model_certification_reference.go
@@ -1381,6 +1401,7 @@ model_entity_created_by_dto.go
 model_error.go
 model_error_message.go
 model_error_message_dto.go
+model_error_message_dto_1.go
 model_error_response_dto.go
 model_evaluate_response.go
 model_event_bridge_config.go
@@ -1570,6 +1591,7 @@ model_manager_correlation_mapping.go
 model_manual_discover_applications.go
 model_manual_discover_applications_template.go
 model_manual_work_item_details.go
+model_manual_work_item_details_1.go
 model_manual_work_item_details_current_owner.go
 model_manual_work_item_details_original_owner.go
 model_manual_work_item_state.go
@@ -1841,6 +1863,7 @@ model_slim_discovered_applications.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go
+model_sod_exempt_criteria_2.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_dto.go
@@ -1851,12 +1874,17 @@ model_sod_recipient.go
 model_sod_report_result_dto.go
 model_sod_violation_check_result.go
 model_sod_violation_check_result_1.go
+model_sod_violation_check_result_2.go
 model_sod_violation_context.go
 model_sod_violation_context_1.go
 model_sod_violation_context_1_conflicting_access_criteria.go
 model_sod_violation_context_1_conflicting_access_criteria_left_criteria.go
+model_sod_violation_context_2.go
+model_sod_violation_context_2_conflicting_access_criteria.go
+model_sod_violation_context_2_conflicting_access_criteria_left_criteria.go
 model_sod_violation_context_check_completed.go
 model_sod_violation_context_check_completed_1.go
+model_sod_violation_context_check_completed_2.go
 model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go
