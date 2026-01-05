@@ -342,7 +342,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusExec
 type ApiSendClassifyMachineAccountFromSourceRequest struct {
 	ctx context.Context
 	ApiService *ClassifySourceAPIService
-	id string
+	sourceId string
 }
 
 func (r ApiSendClassifyMachineAccountFromSourceRequest) Execute() (*SendClassifyMachineAccountFromSource200Response, *http.Response, error) {
@@ -356,14 +356,14 @@ Use this API to classify all the accounts from a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Source ID.
+ @param sourceId Source ID.
  @return ApiSendClassifyMachineAccountFromSourceRequest
 */
-func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSource(ctx context.Context, id string) ApiSendClassifyMachineAccountFromSourceRequest {
+func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSource(ctx context.Context, sourceId string) ApiSendClassifyMachineAccountFromSourceRequest {
 	return ApiSendClassifyMachineAccountFromSourceRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		sourceId: sourceId,
 	}
 }
 
@@ -383,7 +383,7 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceExecute(r
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/classify"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

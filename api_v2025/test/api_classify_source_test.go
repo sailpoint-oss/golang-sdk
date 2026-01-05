@@ -53,9 +53,9 @@ func Test_api_v2025_ClassifySourceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

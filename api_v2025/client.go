@@ -112,6 +112,8 @@ type APIClient struct {
 
 	DataSegmentationAPI *DataSegmentationAPIService
 
+	DeclassifySourceAPI *DeclassifySourceAPIService
+
 	DimensionsAPI *DimensionsAPIService
 
 	EntitlementsAPI *EntitlementsAPIService
@@ -295,6 +297,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomUserLevelsAPI = (*CustomUserLevelsAPIService)(&c.common)
 	c.DataAccessSecurityAPI = (*DataAccessSecurityAPIService)(&c.common)
 	c.DataSegmentationAPI = (*DataSegmentationAPIService)(&c.common)
+	c.DeclassifySourceAPI = (*DeclassifySourceAPIService)(&c.common)
 	c.DimensionsAPI = (*DimensionsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)

@@ -6357,15 +6357,15 @@
         )
 
         func main() {
-          id := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), id).Execute()
-          //resp, r, err := apiClient.V2025.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), id).Execute()
+          resp, r, err := apiClient.V2025.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.V2025.ClassifySourceAPI.SendClassifyMachineAccountFromSource(context.Background(), sourceId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.SendClassifyMachineAccountFromSource``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10549,6 +10549,38 @@
           //r, err := apiClient.V2025.DataSegmentationAPI.PublishDataSegment(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).PublishAll(publishAll).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.PublishDataSegment``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/{sourceId}/declassify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/declassify-source#send-declassify-machine-account-from-source
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2025.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSource(context.Background(), sourceId).Execute()
+          //r, err := apiClient.V2025.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSource(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DeclassifySourceAPI.SendDeclassifyMachineAccountFromSource``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }

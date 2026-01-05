@@ -326,6 +326,7 @@ Class | Method | HTTP request | Description
 *DataSegmentationAPI* | [**ListDataSegments**](docs/DataSegmentationAPI.md#listdatasegments) | **Get** /data-segments | Get segments
 *DataSegmentationAPI* | [**PatchDataSegment**](docs/DataSegmentationAPI.md#patchdatasegment) | **Patch** /data-segments/{segmentId} | Update segment
 *DataSegmentationAPI* | [**PublishDataSegment**](docs/DataSegmentationAPI.md#publishdatasegment) | **Post** /data-segments/{segmentId} | Publish segment by id
+*DeclassifySourceAPI* | [**SendDeclassifyMachineAccountFromSource**](docs/DeclassifySourceAPI.md#senddeclassifymachineaccountfromsource) | **Post** /sources/{sourceId}/declassify | Declassify source&#39;s all accounts
 *DimensionsAPI* | [**CreateDimension**](docs/DimensionsAPI.md#createdimension) | **Post** /roles/{roleId}/dimensions | Create a dimension
 *DimensionsAPI* | [**DeleteBulkDimensions**](docs/DimensionsAPI.md#deletebulkdimensions) | **Post** /roles/{roleId}/dimensions/bulk-delete | Delete dimension(s)
 *DimensionsAPI* | [**DeleteDimension**](docs/DimensionsAPI.md#deletedimension) | **Delete** /roles/{roleId}/dimensions/{dimensionId} | Delete a dimension

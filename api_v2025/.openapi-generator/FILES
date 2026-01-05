@@ -34,6 +34,7 @@ api_custom_password_instructions.go
 api_custom_user_levels.go
 api_data_access_security.go
 api_data_segmentation.go
+api_declassify_source.go
 api_dimensions.go
 api_entitlements.go
 api_global_tenant_security_settings.go
@@ -571,6 +572,8 @@ docs/DataOwnerModel.md
 docs/DataSegment.md
 docs/DataSegmentationAPI.md
 docs/DataSegmentationAPIdeveloperSite_code_examples.yaml
+docs/DeclassifySourceAPI.md
+docs/DeclassifySourceAPIdeveloperSite_code_examples.yaml
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DependantAppConnections.md
@@ -2867,6 +2870,7 @@ test/api_custom_password_instructions_test.go
 test/api_custom_user_levels_test.go
 test/api_data_access_security_test.go
 test/api_data_segmentation_test.go
+test/api_declassify_source_test.go
 test/api_dimensions_test.go
 test/api_entitlements_test.go
 test/api_global_tenant_security_settings_test.go
