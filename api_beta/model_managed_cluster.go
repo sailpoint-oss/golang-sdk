@@ -65,6 +65,18 @@ type ManagedCluster struct {
 	CreatedAt NullableTime `json:"createdAt,omitempty"`
 	// The date/time this cluster was last updated
 	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
+	// The date/time this cluster was notified for the last release
+	LastReleaseNotifiedAt NullableTime `json:"lastReleaseNotifiedAt,omitempty"`
+	UpdatePreferences *ManagedClusterUpdatePreferences `json:"updatePreferences,omitempty"`
+	// The current installed release on the Managed cluster
+	CurrentInstalledReleaseVersion NullableString `json:"currentInstalledReleaseVersion,omitempty"`
+	// New available updates for the Managed cluster
+	UpdatePackage NullableString `json:"updatePackage,omitempty"`
+	// The time at which out of date notification was sent for the Managed cluster
+	IsOutOfDateNotifiedAt NullableTime `json:"isOutOfDateNotifiedAt,omitempty"`
+	// The consolidated Health Status for the Managed cluster
+	ConsolidatedHealthIndicatorsStatus NullableString `json:"consolidatedHealthIndicatorsStatus,omitempty"`
+	EncryptionConfiguration *ManagedClusterEncryptionConfig `json:"encryptionConfiguration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -944,6 +956,280 @@ func (o *ManagedCluster) UnsetUpdatedAt() {
 	o.UpdatedAt.Unset()
 }
 
+// GetLastReleaseNotifiedAt returns the LastReleaseNotifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedCluster) GetLastReleaseNotifiedAt() SailPointTime {
+	if o == nil || IsNil(o.LastReleaseNotifiedAt.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.LastReleaseNotifiedAt.Get()
+}
+
+// GetLastReleaseNotifiedAtOk returns a tuple with the LastReleaseNotifiedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedCluster) GetLastReleaseNotifiedAtOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastReleaseNotifiedAt.Get(), o.LastReleaseNotifiedAt.IsSet()
+}
+
+// HasLastReleaseNotifiedAt returns a boolean if a field has been set.
+func (o *ManagedCluster) HasLastReleaseNotifiedAt() bool {
+	if o != nil && o.LastReleaseNotifiedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastReleaseNotifiedAt gets a reference to the given NullableTime and assigns it to the LastReleaseNotifiedAt field.
+func (o *ManagedCluster) SetLastReleaseNotifiedAt(v SailPointTime) {
+	o.LastReleaseNotifiedAt.Set(&v)
+}
+// SetLastReleaseNotifiedAtNil sets the value for LastReleaseNotifiedAt to be an explicit nil
+func (o *ManagedCluster) SetLastReleaseNotifiedAtNil() {
+	o.LastReleaseNotifiedAt.Set(nil)
+}
+
+// UnsetLastReleaseNotifiedAt ensures that no value is present for LastReleaseNotifiedAt, not even an explicit nil
+func (o *ManagedCluster) UnsetLastReleaseNotifiedAt() {
+	o.LastReleaseNotifiedAt.Unset()
+}
+
+// GetUpdatePreferences returns the UpdatePreferences field value if set, zero value otherwise.
+func (o *ManagedCluster) GetUpdatePreferences() ManagedClusterUpdatePreferences {
+	if o == nil || IsNil(o.UpdatePreferences) {
+		var ret ManagedClusterUpdatePreferences
+		return ret
+	}
+	return *o.UpdatePreferences
+}
+
+// GetUpdatePreferencesOk returns a tuple with the UpdatePreferences field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedCluster) GetUpdatePreferencesOk() (*ManagedClusterUpdatePreferences, bool) {
+	if o == nil || IsNil(o.UpdatePreferences) {
+		return nil, false
+	}
+	return o.UpdatePreferences, true
+}
+
+// HasUpdatePreferences returns a boolean if a field has been set.
+func (o *ManagedCluster) HasUpdatePreferences() bool {
+	if o != nil && !IsNil(o.UpdatePreferences) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatePreferences gets a reference to the given ManagedClusterUpdatePreferences and assigns it to the UpdatePreferences field.
+func (o *ManagedCluster) SetUpdatePreferences(v ManagedClusterUpdatePreferences) {
+	o.UpdatePreferences = &v
+}
+
+// GetCurrentInstalledReleaseVersion returns the CurrentInstalledReleaseVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedCluster) GetCurrentInstalledReleaseVersion() string {
+	if o == nil || IsNil(o.CurrentInstalledReleaseVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CurrentInstalledReleaseVersion.Get()
+}
+
+// GetCurrentInstalledReleaseVersionOk returns a tuple with the CurrentInstalledReleaseVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedCluster) GetCurrentInstalledReleaseVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CurrentInstalledReleaseVersion.Get(), o.CurrentInstalledReleaseVersion.IsSet()
+}
+
+// HasCurrentInstalledReleaseVersion returns a boolean if a field has been set.
+func (o *ManagedCluster) HasCurrentInstalledReleaseVersion() bool {
+	if o != nil && o.CurrentInstalledReleaseVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentInstalledReleaseVersion gets a reference to the given NullableString and assigns it to the CurrentInstalledReleaseVersion field.
+func (o *ManagedCluster) SetCurrentInstalledReleaseVersion(v string) {
+	o.CurrentInstalledReleaseVersion.Set(&v)
+}
+// SetCurrentInstalledReleaseVersionNil sets the value for CurrentInstalledReleaseVersion to be an explicit nil
+func (o *ManagedCluster) SetCurrentInstalledReleaseVersionNil() {
+	o.CurrentInstalledReleaseVersion.Set(nil)
+}
+
+// UnsetCurrentInstalledReleaseVersion ensures that no value is present for CurrentInstalledReleaseVersion, not even an explicit nil
+func (o *ManagedCluster) UnsetCurrentInstalledReleaseVersion() {
+	o.CurrentInstalledReleaseVersion.Unset()
+}
+
+// GetUpdatePackage returns the UpdatePackage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedCluster) GetUpdatePackage() string {
+	if o == nil || IsNil(o.UpdatePackage.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UpdatePackage.Get()
+}
+
+// GetUpdatePackageOk returns a tuple with the UpdatePackage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedCluster) GetUpdatePackageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UpdatePackage.Get(), o.UpdatePackage.IsSet()
+}
+
+// HasUpdatePackage returns a boolean if a field has been set.
+func (o *ManagedCluster) HasUpdatePackage() bool {
+	if o != nil && o.UpdatePackage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatePackage gets a reference to the given NullableString and assigns it to the UpdatePackage field.
+func (o *ManagedCluster) SetUpdatePackage(v string) {
+	o.UpdatePackage.Set(&v)
+}
+// SetUpdatePackageNil sets the value for UpdatePackage to be an explicit nil
+func (o *ManagedCluster) SetUpdatePackageNil() {
+	o.UpdatePackage.Set(nil)
+}
+
+// UnsetUpdatePackage ensures that no value is present for UpdatePackage, not even an explicit nil
+func (o *ManagedCluster) UnsetUpdatePackage() {
+	o.UpdatePackage.Unset()
+}
+
+// GetIsOutOfDateNotifiedAt returns the IsOutOfDateNotifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedCluster) GetIsOutOfDateNotifiedAt() SailPointTime {
+	if o == nil || IsNil(o.IsOutOfDateNotifiedAt.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.IsOutOfDateNotifiedAt.Get()
+}
+
+// GetIsOutOfDateNotifiedAtOk returns a tuple with the IsOutOfDateNotifiedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedCluster) GetIsOutOfDateNotifiedAtOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsOutOfDateNotifiedAt.Get(), o.IsOutOfDateNotifiedAt.IsSet()
+}
+
+// HasIsOutOfDateNotifiedAt returns a boolean if a field has been set.
+func (o *ManagedCluster) HasIsOutOfDateNotifiedAt() bool {
+	if o != nil && o.IsOutOfDateNotifiedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsOutOfDateNotifiedAt gets a reference to the given NullableTime and assigns it to the IsOutOfDateNotifiedAt field.
+func (o *ManagedCluster) SetIsOutOfDateNotifiedAt(v SailPointTime) {
+	o.IsOutOfDateNotifiedAt.Set(&v)
+}
+// SetIsOutOfDateNotifiedAtNil sets the value for IsOutOfDateNotifiedAt to be an explicit nil
+func (o *ManagedCluster) SetIsOutOfDateNotifiedAtNil() {
+	o.IsOutOfDateNotifiedAt.Set(nil)
+}
+
+// UnsetIsOutOfDateNotifiedAt ensures that no value is present for IsOutOfDateNotifiedAt, not even an explicit nil
+func (o *ManagedCluster) UnsetIsOutOfDateNotifiedAt() {
+	o.IsOutOfDateNotifiedAt.Unset()
+}
+
+// GetConsolidatedHealthIndicatorsStatus returns the ConsolidatedHealthIndicatorsStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedCluster) GetConsolidatedHealthIndicatorsStatus() string {
+	if o == nil || IsNil(o.ConsolidatedHealthIndicatorsStatus.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ConsolidatedHealthIndicatorsStatus.Get()
+}
+
+// GetConsolidatedHealthIndicatorsStatusOk returns a tuple with the ConsolidatedHealthIndicatorsStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedCluster) GetConsolidatedHealthIndicatorsStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ConsolidatedHealthIndicatorsStatus.Get(), o.ConsolidatedHealthIndicatorsStatus.IsSet()
+}
+
+// HasConsolidatedHealthIndicatorsStatus returns a boolean if a field has been set.
+func (o *ManagedCluster) HasConsolidatedHealthIndicatorsStatus() bool {
+	if o != nil && o.ConsolidatedHealthIndicatorsStatus.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConsolidatedHealthIndicatorsStatus gets a reference to the given NullableString and assigns it to the ConsolidatedHealthIndicatorsStatus field.
+func (o *ManagedCluster) SetConsolidatedHealthIndicatorsStatus(v string) {
+	o.ConsolidatedHealthIndicatorsStatus.Set(&v)
+}
+// SetConsolidatedHealthIndicatorsStatusNil sets the value for ConsolidatedHealthIndicatorsStatus to be an explicit nil
+func (o *ManagedCluster) SetConsolidatedHealthIndicatorsStatusNil() {
+	o.ConsolidatedHealthIndicatorsStatus.Set(nil)
+}
+
+// UnsetConsolidatedHealthIndicatorsStatus ensures that no value is present for ConsolidatedHealthIndicatorsStatus, not even an explicit nil
+func (o *ManagedCluster) UnsetConsolidatedHealthIndicatorsStatus() {
+	o.ConsolidatedHealthIndicatorsStatus.Unset()
+}
+
+// GetEncryptionConfiguration returns the EncryptionConfiguration field value if set, zero value otherwise.
+func (o *ManagedCluster) GetEncryptionConfiguration() ManagedClusterEncryptionConfig {
+	if o == nil || IsNil(o.EncryptionConfiguration) {
+		var ret ManagedClusterEncryptionConfig
+		return ret
+	}
+	return *o.EncryptionConfiguration
+}
+
+// GetEncryptionConfigurationOk returns a tuple with the EncryptionConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedCluster) GetEncryptionConfigurationOk() (*ManagedClusterEncryptionConfig, bool) {
+	if o == nil || IsNil(o.EncryptionConfiguration) {
+		return nil, false
+	}
+	return o.EncryptionConfiguration, true
+}
+
+// HasEncryptionConfiguration returns a boolean if a field has been set.
+func (o *ManagedCluster) HasEncryptionConfiguration() bool {
+	if o != nil && !IsNil(o.EncryptionConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionConfiguration gets a reference to the given ManagedClusterEncryptionConfig and assigns it to the EncryptionConfiguration field.
+func (o *ManagedCluster) SetEncryptionConfiguration(v ManagedClusterEncryptionConfig) {
+	o.EncryptionConfiguration = &v
+}
+
 func (o ManagedCluster) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1023,6 +1309,27 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updatedAt"] = o.UpdatedAt.Get()
 	}
+	if o.LastReleaseNotifiedAt.IsSet() {
+		toSerialize["lastReleaseNotifiedAt"] = o.LastReleaseNotifiedAt.Get()
+	}
+	if !IsNil(o.UpdatePreferences) {
+		toSerialize["updatePreferences"] = o.UpdatePreferences
+	}
+	if o.CurrentInstalledReleaseVersion.IsSet() {
+		toSerialize["currentInstalledReleaseVersion"] = o.CurrentInstalledReleaseVersion.Get()
+	}
+	if o.UpdatePackage.IsSet() {
+		toSerialize["updatePackage"] = o.UpdatePackage.Get()
+	}
+	if o.IsOutOfDateNotifiedAt.IsSet() {
+		toSerialize["isOutOfDateNotifiedAt"] = o.IsOutOfDateNotifiedAt.Get()
+	}
+	if o.ConsolidatedHealthIndicatorsStatus.IsSet() {
+		toSerialize["consolidatedHealthIndicatorsStatus"] = o.ConsolidatedHealthIndicatorsStatus.Get()
+	}
+	if !IsNil(o.EncryptionConfiguration) {
+		toSerialize["encryptionConfiguration"] = o.EncryptionConfiguration
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1093,6 +1400,13 @@ func (o *ManagedCluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ccId")
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "updatedAt")
+		delete(additionalProperties, "lastReleaseNotifiedAt")
+		delete(additionalProperties, "updatePreferences")
+		delete(additionalProperties, "currentInstalledReleaseVersion")
+		delete(additionalProperties, "updatePackage")
+		delete(additionalProperties, "isOutOfDateNotifiedAt")
+		delete(additionalProperties, "consolidatedHealthIndicatorsStatus")
+		delete(additionalProperties, "encryptionConfiguration")
 		o.AdditionalProperties = additionalProperties
 	}
 

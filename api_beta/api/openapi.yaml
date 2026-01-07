@@ -25313,9 +25313,16 @@ paths:
           Filtering is supported for the following fields and operators:
 
           **operational**: *eq*
+
+          **name**: *eq*
+
+          **type**: *eq*
+
+          **status**: *eq*
         example: operational eq operation
         in: query
         name: filters
+        required: false
         schema:
           type: string
       responses:
@@ -25390,6 +25397,8 @@ paths:
       summary: Retrieve all managed clusters.
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mail-from-attributes:
     put:
       description: Change the MAIL FROM domain of an AWS SES email identity and provide
@@ -74544,10 +74553,15 @@ components:
     ManagedCluster:
       description: Managed Cluster
       example:
+        updatePreferences:
+          updateState: DISABLED
+          processGroups: processGroup1
+          notificationEmail: test@mail.com
         pod: megapod-useast1
         configuration:
           clusterExternalId: externalId
           ccgVersion: 77.0.0
+        updatePackage: 123.1.2
         description: A short description of the managed cluster.
         publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
           CERTIFICATE-----'
@@ -74559,11 +74573,16 @@ components:
           redisPort: 6379
         createdAt: 2023-08-04T20:48:01.865Z
         clientType: CCG
+        encryptionConfiguration:
+          format: V3
         id: aClusterId
         pinnedConfig: false
         updatedAt: 2023-08-04T20:48:01.865Z
         publicKeyThumbprint: obc6pLiulGbtZ
         org: denali
+        currentInstalledReleaseVersion: "123.1"
+        consolidatedHealthIndicatorsStatus: ERROR
+        lastReleaseNotifiedAt: 2025-03-11T07:00:13.729721Z
         logConfiguration:
           durationMinutes: 120
           rootLevel: INFO
@@ -74588,6 +74607,7 @@ components:
           queue:
             name: megapod-useast1-denali-lwt-cluster-1533
             region: us-east-1
+        isOutOfDateNotifiedAt: 2025-03-11T07:00:13.734393Z
         status: NORMAL
       properties:
         id:
@@ -74703,6 +74723,43 @@ components:
           format: date-time
           nullable: true
           type: string
+        lastReleaseNotifiedAt:
+          description: The date/time this cluster was notified for the last release
+          example: 2025-03-11T07:00:13.729721Z
+          format: date-time
+          nullable: true
+          type: string
+        updatePreferences:
+          $ref: '#/components/schemas/ManagedCluster_updatePreferences'
+        currentInstalledReleaseVersion:
+          description: The current installed release on the Managed cluster
+          example: "123.1"
+          nullable: true
+          type: string
+        updatePackage:
+          description: New available updates for the Managed cluster
+          example: 123.1.2
+          nullable: true
+          type: string
+        isOutOfDateNotifiedAt:
+          description: The time at which out of date notification was sent for the
+            Managed cluster
+          example: 2025-03-11T07:00:13.734393Z
+          format: date-time
+          nullable: true
+          type: string
+        consolidatedHealthIndicatorsStatus:
+          description: The consolidated Health Status for the Managed cluster
+          enum:
+          - null
+          - NORMAL
+          - WARNING
+          - ERROR
+          example: ERROR
+          nullable: true
+          type: string
+        encryptionConfiguration:
+          $ref: '#/components/schemas/ManagedClusterEncryptionConfig'
       required:
       - ccgVersion
       - clientType
@@ -88441,10 +88498,29 @@ components:
       example: TEXT
       type: string
     ManagedClusterTypes:
-      description: The Type of Cluster
+      description: |
+        The Type of Cluster:
+        * `idn` - IDN VA type
+        * `iai` - IAI harvester VA
+        * `spConnectCluster` - Saas 2.0 connector cluster (this should be one per org)
+        * `sqsCluster` - This should be unused
+        * `das-rc` - Data Access Security Resources Collector
+        * `das-pc` - Data Access Security Permissions Collector
+        * `das-dc` - Data Access Security Data Classification Collector
+        * `pag` - Privilege Action Gateway VA
+        * `das-am` - Data Access Security Activity Monitor
+        * `standard` - Standard Cluster type for running multiple products
       enum:
       - idn
       - iai
+      - spConnectCluster
+      - sqsCluster
+      - das-rc
+      - das-pc
+      - das-dc
+      - pag
+      - das-am
+      - standard
       example: idn
       type: string
     ManagedClusterKeyPair:
@@ -88505,6 +88581,22 @@ components:
           format: int32
           type: integer
       title: Managed Cluster Redis
+      type: object
+    ManagedClusterEncryptionConfig:
+      description: "Defines the encryption settings for a managed cluster, including\
+        \ the format used for storing and processing encrypted data."
+      example:
+        format: V3
+      properties:
+        format:
+          description: "Specifies the format used for encrypted data, such as secrets.\
+            \ The format determines how the encrypted data is structured and processed."
+          enum:
+          - V2
+          - V3
+          example: V3
+          type: string
+      title: Managed Cluster Encryption Configuration
       type: object
     StandardLevel:
       description: Standard Log4j log level
@@ -96947,6 +97039,34 @@ components:
         name:
           description: Policy's human-readable display name.
           example: My Password Policy
+          type: string
+      type: object
+    ManagedCluster_updatePreferences:
+      description: The preference for applying updates for the cluster
+      example:
+        updateState: DISABLED
+        processGroups: processGroup1
+        notificationEmail: test@mail.com
+      properties:
+        processGroups:
+          description: The processGroups for updatePreferences
+          example: processGroup1
+          nullable: true
+          type: string
+        updateState:
+          description: The current updateState for the cluster
+          enum:
+          - null
+          - AUTO
+          - DISABLED
+          example: DISABLED
+          nullable: true
+          type: string
+        notificationEmail:
+          description: The mail id to which new releases will be notified
+          example: test@mail.com
+          format: email
+          nullable: true
           type: string
       type: object
     OutlierContributingFeature_value:

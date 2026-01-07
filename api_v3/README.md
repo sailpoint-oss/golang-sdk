@@ -731,6 +731,7 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRedis](docs/ManagedClusterRedis.md)
  - [ManagedClusterRequest](docs/ManagedClusterRequest.md)
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
+ - [ManagedClusterUpdatePreferences](docs/ManagedClusterUpdatePreferences.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)

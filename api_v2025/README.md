@@ -1570,6 +1570,7 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRequest](docs/ManagedClusterRequest.md)
  - [ManagedClusterType](docs/ManagedClusterType.md)
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
+ - [ManagedClusterUpdatePreferences](docs/ManagedClusterUpdatePreferences.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)

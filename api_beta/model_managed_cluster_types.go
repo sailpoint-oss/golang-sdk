@@ -15,19 +15,35 @@ import (
 	"fmt"
 )
 
-// ManagedClusterTypes The Type of Cluster
+// ManagedClusterTypes The Type of Cluster: * `idn` - IDN VA type * `iai` - IAI harvester VA * `spConnectCluster` - Saas 2.0 connector cluster (this should be one per org) * `sqsCluster` - This should be unused * `das-rc` - Data Access Security Resources Collector * `das-pc` - Data Access Security Permissions Collector * `das-dc` - Data Access Security Data Classification Collector * `pag` - Privilege Action Gateway VA * `das-am` - Data Access Security Activity Monitor * `standard` - Standard Cluster type for running multiple products 
 type ManagedClusterTypes string
 
 // List of ManagedClusterTypes
 const (
 	MANAGEDCLUSTERTYPES_IDN ManagedClusterTypes = "idn"
 	MANAGEDCLUSTERTYPES_IAI ManagedClusterTypes = "iai"
+	MANAGEDCLUSTERTYPES_SP_CONNECT_CLUSTER ManagedClusterTypes = "spConnectCluster"
+	MANAGEDCLUSTERTYPES_SQS_CLUSTER ManagedClusterTypes = "sqsCluster"
+	MANAGEDCLUSTERTYPES_DAS_RC ManagedClusterTypes = "das-rc"
+	MANAGEDCLUSTERTYPES_DAS_PC ManagedClusterTypes = "das-pc"
+	MANAGEDCLUSTERTYPES_DAS_DC ManagedClusterTypes = "das-dc"
+	MANAGEDCLUSTERTYPES_PAG ManagedClusterTypes = "pag"
+	MANAGEDCLUSTERTYPES_DAS_AM ManagedClusterTypes = "das-am"
+	MANAGEDCLUSTERTYPES_STANDARD ManagedClusterTypes = "standard"
 )
 
 // All allowed values of ManagedClusterTypes enum
 var AllowedManagedClusterTypesEnumValues = []ManagedClusterTypes{
 	"idn",
 	"iai",
+	"spConnectCluster",
+	"sqsCluster",
+	"das-rc",
+	"das-pc",
+	"das-dc",
+	"pag",
+	"das-am",
+	"standard",
 }
 
 func (v *ManagedClusterTypes) UnmarshalJSON(src []byte) error {

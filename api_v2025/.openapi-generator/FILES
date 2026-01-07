@@ -920,6 +920,7 @@ docs/ManagedClusterType.md
 docs/ManagedClusterTypes.md
 docs/ManagedClusterTypesAPI.md
 docs/ManagedClusterTypesAPIdeveloperSite_code_examples.yaml
+docs/ManagedClusterUpdatePreferences.md
 docs/ManagedClustersAPI.md
 docs/ManagedClustersAPIdeveloperSite_code_examples.yaml
 docs/ManagerCorrelationMapping.md
@@ -2276,6 +2277,7 @@ model_managed_cluster_redis.go
 model_managed_cluster_request.go
 model_managed_cluster_type.go
 model_managed_cluster_types.go
+model_managed_cluster_update_preferences.go
 model_manager_correlation_mapping.go
 model_manual_discover_applications.go
 model_manual_discover_applications_template.go

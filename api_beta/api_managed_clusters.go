@@ -392,7 +392,7 @@ func (r ApiGetManagedClustersRequest) Count(count bool) ApiGetManagedClustersReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*
 func (r ApiGetManagedClustersRequest) Filters(filters string) ApiGetManagedClustersRequest {
 	r.filters = &filters
 	return r

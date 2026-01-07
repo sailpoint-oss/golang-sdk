@@ -17481,6 +17481,12 @@ paths:
           Filtering is supported for the following fields and operators:
 
           **operational**: *eq*
+
+          **name**: *eq*
+
+          **type**: *eq*
+
+          **status**: *eq*
         example: operational eq "operation"
         in: query
         name: filters
@@ -54785,11 +54791,16 @@ components:
     ManagedCluster:
       description: Managed Cluster
       example:
+        updatePreferences:
+          updateState: DISABLED
+          processGroups: processGroup1
+          notificationEmail: test@mail.com
         pod: megapod-useast1
         configuration:
           clusterExternalId: e1ff7bb24c934240bbf55e1aa39e41c5
           clusterType: sqsCluster
           gmtOffset: "-5"
+        updatePackage: 123.1.2
         description: A short description of the managed cluster.
         publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
           CERTIFICATE-----'
@@ -54808,6 +54819,9 @@ components:
         updatedAt: 2023-08-04T20:48:01.865Z
         publicKeyThumbprint: obc6pLiulGbtZ
         org: denali
+        currentInstalledReleaseVersion: "123.1"
+        consolidatedHealthIndicatorsStatus: ERROR
+        lastReleaseNotifiedAt: 2025-03-11T07:00:13.729721Z
         logConfiguration:
           durationMinutes: 120
           rootLevel: INFO
@@ -54832,6 +54846,7 @@ components:
           queue:
             name: megapod-useast1-denali-lwt-cluster-1533
             region: us-east-1
+        isOutOfDateNotifiedAt: 2025-03-11T07:00:13.734393Z
         status: NORMAL
       properties:
         id:
@@ -54955,6 +54970,41 @@ components:
           description: The date/time this cluster was last updated
           example: 2023-08-04T20:48:01.865Z
           format: date-time
+          nullable: true
+          type: string
+        lastReleaseNotifiedAt:
+          description: The date/time this cluster was notified for the last release
+          example: 2025-03-11T07:00:13.729721Z
+          format: date-time
+          nullable: true
+          type: string
+        updatePreferences:
+          $ref: '#/components/schemas/ManagedCluster_updatePreferences'
+        currentInstalledReleaseVersion:
+          description: The current installed release on the Managed cluster
+          example: "123.1"
+          nullable: true
+          type: string
+        updatePackage:
+          description: New available updates for the Managed cluster
+          example: 123.1.2
+          nullable: true
+          type: string
+        isOutOfDateNotifiedAt:
+          description: The time at which out of date notification was sent for the
+            Managed cluster
+          example: 2025-03-11T07:00:13.734393Z
+          format: date-time
+          nullable: true
+          type: string
+        consolidatedHealthIndicatorsStatus:
+          description: The consolidated Health Status for the Managed cluster
+          enum:
+          - null
+          - NORMAL
+          - WARNING
+          - ERROR
+          example: ERROR
           nullable: true
           type: string
       required:
@@ -63286,10 +63336,29 @@ components:
       example: NORMAL
       type: string
     ManagedClusterTypes:
-      description: The Type of Cluster
+      description: |
+        The Type of Cluster:
+        * `idn` - IDN VA type
+        * `iai` - IAI harvester VA
+        * `spConnectCluster` - Saas 2.0 connector cluster (this should be one per org)
+        * `sqsCluster` - This should be unused
+        * `das-rc` - Data Access Security Resources Collector
+        * `das-pc` - Data Access Security Permissions Collector
+        * `das-dc` - Data Access Security Data Classification Collector
+        * `pag` - Privilege Action Gateway VA
+        * `das-am` - Data Access Security Activity Monitor
+        * `standard` - Standard Cluster type for running multiple products
       enum:
       - idn
       - iai
+      - spConnectCluster
+      - sqsCluster
+      - das-rc
+      - das-pc
+      - das-dc
+      - pag
+      - das-am
+      - standard
       example: idn
       type: string
     ManagedClusterKeyPair:
@@ -69067,6 +69136,34 @@ components:
         name:
           description: Identity's display name.
           example: Michael Michaels
+          type: string
+      type: object
+    ManagedCluster_updatePreferences:
+      description: The preference for applying updates for the cluster
+      example:
+        updateState: DISABLED
+        processGroups: processGroup1
+        notificationEmail: test@mail.com
+      properties:
+        processGroups:
+          description: The processGroups for updatePreferences
+          example: processGroup1
+          nullable: true
+          type: string
+        updateState:
+          description: The current updateState for the cluster
+          enum:
+          - null
+          - AUTO
+          - DISABLED
+          example: DISABLED
+          nullable: true
+          type: string
+        notificationEmail:
+          description: The mail id to which new releases will be notified
+          example: test@mail.com
+          format: email
+          nullable: true
           type: string
       type: object
     PublicIdentity_attributes_inner:
