@@ -30,9 +30,9 @@ type UserApp struct {
 	HasMultipleAccounts *bool `json:"hasMultipleAccounts,omitempty"`
 	// True if the source has password feature
 	UseForPasswordManagement *bool `json:"useForPasswordManagement,omitempty"`
-	// True if the source app related to the user app is provision request enabled
+	// True if the app allows access request
 	ProvisionRequestEnabled *bool `json:"provisionRequestEnabled,omitempty"`
-	// True if the source app related to the user app is shown in the app center
+	// True if the app is visible in the request center
 	AppCenterEnabled *bool `json:"appCenterEnabled,omitempty"`
 	SourceApp *UserAppSourceApp `json:"sourceApp,omitempty"`
 	Source *UserAppSource `json:"source,omitempty"`

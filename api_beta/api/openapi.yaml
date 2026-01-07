@@ -80666,7 +80666,7 @@ components:
           type: boolean
         provisionRequestEnabled:
           default: false
-          description: True if the source app is provision request enabled
+          description: True if the app allows access request
           example: true
           type: boolean
         description:
@@ -80681,7 +80681,7 @@ components:
           type: boolean
         appCenterEnabled:
           default: true
-          description: True if the source app is shown in the app center
+          description: True if the app is visible in the request center
           example: true
           type: boolean
         accountSource:
@@ -80755,7 +80755,7 @@ components:
           type: boolean
         provisionRequestEnabled:
           default: false
-          description: True if the source app is provision request enabled
+          description: True if the app allows access request
           example: true
           type: boolean
         description:
@@ -80770,7 +80770,7 @@ components:
           type: boolean
         appCenterEnabled:
           default: true
-          description: True if the source app is shown in the app center
+          description: True if the app is visible in the request center
           example: true
           type: boolean
         accessProfiles:
@@ -82019,14 +82019,12 @@ components:
           type: boolean
         provisionRequestEnabled:
           default: false
-          description: True if the source app related to the user app is provision
-            request enabled
+          description: True if the app allows access request
           example: true
           type: boolean
         appCenterEnabled:
           default: true
-          description: True if the source app related to the user app is shown in
-            the app center
+          description: True if the app is visible in the request center
           example: true
           type: boolean
         sourceApp:

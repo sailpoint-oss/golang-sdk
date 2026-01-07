@@ -32,13 +32,13 @@ type SourceAppPatchDto struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// True if the source app is enabled
 	Enabled *bool `json:"enabled,omitempty"`
-	// True if the source app is provision request enabled
+	// True if the app allows access request
 	ProvisionRequestEnabled *bool `json:"provisionRequestEnabled,omitempty"`
 	// The description of the source app
 	Description *string `json:"description,omitempty"`
 	// True if the source app match all accounts
 	MatchAllAccounts *bool `json:"matchAllAccounts,omitempty"`
-	// True if the source app is shown in the app center
+	// True if the app is visible in the request center
 	AppCenterEnabled *bool `json:"appCenterEnabled,omitempty"`
 	// List of IDs of access profiles
 	AccessProfiles []string `json:"accessProfiles,omitempty"`
