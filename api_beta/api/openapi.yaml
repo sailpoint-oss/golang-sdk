@@ -4945,6 +4945,8 @@ paths:
       security:
       - userAuth:
         - iai:access-request-recommender:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
       summary: Mark viewed access request recommendations
       tags:
       - IAI Access Request Recommendations
@@ -5033,6 +5035,8 @@ paths:
             error.
       security:
       - userAuth:
+        - iai:access-request-recommender:manage
+      - applicationAuth:
         - iai:access-request-recommender:manage
       summary: Bulk mark viewed access request recommendations
       tags:
@@ -5486,6 +5490,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
       summary: Delete account
       tags:
       - Accounts
@@ -5756,6 +5762,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
       summary: Update account
       tags:
       - Accounts
@@ -5871,6 +5879,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
         - idn:accounts:manage
       summary: Update account
       tags:
@@ -6136,6 +6146,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Reload account
       tags:
       - Accounts
@@ -6252,6 +6264,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Enable account
       tags:
       - Accounts
@@ -6367,6 +6381,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
         - idn:accounts-state:manage
       summary: Disable account
       tags:
@@ -6587,6 +6603,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
       summary: Remove account
       tags:
       - Accounts
@@ -6691,6 +6709,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
         - idn:accounts-state:manage
       summary: Enable idn account for identity
       tags:
@@ -6803,6 +6823,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Disable idn account for identity
       tags:
       - Accounts
@@ -6903,6 +6925,8 @@ paths:
       security:
       - userAuth:
         - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
       summary: Enable idn accounts for identities
       tags:
       - Accounts
@@ -7002,6 +7026,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
         - idn:accounts-state:manage
       summary: Disable idn accounts for identities
       tags:
@@ -12751,6 +12777,9 @@ paths:
       - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
+      - applicationAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
       summary: Gets a list of entitlements.
       tags:
       - Entitlements
@@ -12887,6 +12916,9 @@ paths:
       - userAuth:
         - idn:entitlement:read
         - idn:entitlement:update
+      - applicationAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
       summary: Get an entitlement
       tags:
       - Entitlements
@@ -13287,6 +13319,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      - applicationAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: List of entitlements parents
@@ -13727,6 +13762,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      - applicationAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: Get entitlement request config
@@ -14329,6 +14367,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:password-digit-token:create
+      - applicationAuth:
         - idn:password-digit-token:create
       summary: Generate a digit token
       tags:
@@ -17364,6 +17404,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:identity:manage
+      - applicationAuth:
         - idn:identity:manage
       summary: Process a list of identityids
       tags:
@@ -24835,6 +24877,8 @@ paths:
       security:
       - userAuth:
         - idn:managed-client-status:read
+      - applicationAuth:
+        - idn:managed-client-status:read
       summary: Specified managed client status.
       tags:
       - Managed Clients
@@ -27715,6 +27759,9 @@ paths:
       - userAuth:
         - sp:oauth-client:manage
         - sp:oauth-client:read
+      - applicationAuth:
+        - sp:oauth-client:manage
+        - sp:oauth-client:read
       summary: Get oauth client
       tags:
       - OAuth Clients
@@ -27941,6 +27988,9 @@ paths:
       - userAuth:
         - idn:org-configs:read
         - idn:org-configs:manage
+      - applicationAuth:
+        - idn:org-configs:read
+        - idn:org-configs:manage
       summary: Get org configuration settings
       tags:
       - Org Config
@@ -28129,6 +28179,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:org-configs:read
+        - idn:org-configs-user:read
+      - applicationAuth:
         - idn:org-configs:read
         - idn:org-configs-user:read
       summary: Get list of time zones
@@ -30646,6 +30699,8 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:read
+      - applicationAuth:
+        - idn:password-policy:read
       summary: Get password policy by id
       tags:
       - Password Policies
@@ -30996,6 +31051,8 @@ paths:
       security:
       - userAuth:
         - idn:password-policy:read
+      - applicationAuth:
+        - idn:password-policy:read
       summary: List password policies
       tags:
       - Password Policies
@@ -31205,6 +31262,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:password-org-config:read
+      - applicationAuth:
         - idn:password-org-config:read
       summary: Get password org config
       tags:
@@ -35383,6 +35442,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security: []
       summary: Update a potential role in session
       tags:
       - IAI Role Mining
@@ -37735,6 +37795,11 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: List roles
       tags:
       - Roles
@@ -38016,6 +38081,11 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      - applicationAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -38500,6 +38570,11 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
+      - applicationAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -42291,6 +42366,8 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:manage
       summary: Creates a source in identitynow.
       tags:
       - Sources
@@ -42405,6 +42482,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sources:manage
+      - applicationAuth:
         - idn:sources:manage
       summary: Delete source by id
       tags:
@@ -42704,6 +42783,8 @@ paths:
       security:
       - userAuth:
         - idn:sources:manage
+      - applicationAuth:
+        - idn:sources:manage
       summary: Update source (partial)
       tags:
       - Sources
@@ -42824,6 +42905,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sources:manage
+      - applicationAuth:
         - idn:sources:manage
       summary: Update source (full)
       tags:
@@ -43141,6 +43224,8 @@ paths:
       security:
       - userAuth:
         - idn:source-connector:manage
+      - applicationAuth:
+        - idn:source-connector:manage
       summary: Check connection for source connector.
       tags:
       - Sources
@@ -43249,6 +43334,8 @@ paths:
       security:
       - userAuth:
         - idn:source-connector:manage
+      - applicationAuth:
+        - idn:source-connector:manage
       summary: Peek source connector's resource objects
       tags:
       - Sources
@@ -43350,6 +43437,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:source-connector:manage
+      - applicationAuth:
         - idn:source-connector:manage
       summary: Ping cluster for source connector
       tags:
@@ -43453,6 +43542,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:source-connector:manage
+      - applicationAuth:
         - idn:source-connector:manage
       summary: Test configuration for source connector
       tags:
@@ -43778,6 +43869,8 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+      - applicationAuth:
+        - idn:sources:read
       summary: Native change detection configuration
       tags:
       - Sources
@@ -43884,6 +43977,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sources:update
+      - applicationAuth:
         - idn:sources:update
       summary: Update native change detection configuration
       tags:
@@ -47398,6 +47493,8 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:manage
       summary: Bulk update source apps
       tags:
       - Apps
@@ -47789,6 +47886,8 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:manage
       summary: Create source app
       tags:
       - Apps
@@ -48075,6 +48174,8 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
+      - applicationAuth:
+        - idn:app-roles:manage
       summary: List access profiles for the specified source app
       tags:
       - Apps
@@ -48185,6 +48286,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:app-roles:manage
+      - applicationAuth:
         - idn:app-roles:manage
       summary: Bulk remove access profiles from the specified source app
       tags:
@@ -48973,6 +49076,9 @@ paths:
       - userAuth:
         - idn:tag:read
         - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:read
+        - idn:tag:manage
       summary: List tagged objects
       tags:
       - Tagged Objects
@@ -49046,6 +49152,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:tag:manage
+      - applicationAuth:
         - idn:tag:manage
       summary: Add tag to object
       tags:
@@ -49192,6 +49300,9 @@ paths:
       - userAuth:
         - idn:tag:read
         - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:read
+        - idn:tag:manage
       summary: List tagged objects by type
       tags:
       - Tagged Objects
@@ -49285,6 +49396,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:tag:manage
+      - applicationAuth:
         - idn:tag:manage
       summary: Delete object tags
       tags:
@@ -49382,6 +49495,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:tag:read
+        - idn:tag:manage
+      - applicationAuth:
         - idn:tag:read
         - idn:tag:manage
       summary: Get tagged object
@@ -49486,6 +49602,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:tag:manage
+      - applicationAuth:
         - idn:tag:manage
       summary: Update tagged object
       tags:
@@ -50394,6 +50512,9 @@ paths:
       - userAuth:
         - idn:transform:read
         - idn:transform:manage
+      - applicationAuth:
+        - idn:transform:read
+        - idn:transform:manage
       summary: List transforms
       tags:
       - Transforms
@@ -50503,6 +50624,8 @@ paths:
       security:
       - userAuth:
         - idn:transform:manage
+      - applicationAuth:
+        - idn:transform:manage
       summary: Create transform
       tags:
       - Transforms
@@ -50603,6 +50726,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:transform:manage
+      - applicationAuth:
         - idn:transform:manage
       summary: Delete a transform
       tags:
@@ -50706,6 +50831,9 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:transform:read
+        - idn:transform:manage
+      - applicationAuth:
         - idn:transform:read
         - idn:transform:manage
       summary: Transform by id
@@ -50832,6 +50960,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:transform:manage
+      - applicationAuth:
         - idn:transform:manage
       summary: Update a transform
       tags:
@@ -51058,6 +51188,8 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:trigger-service-subscriptions:read
+      - applicationAuth:
         - sp:trigger-service-subscriptions:read
       summary: List triggers
       tags:
@@ -51482,6 +51614,8 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
+        - sp:trigger-service-subscriptions:manage
       summary: Delete a subscription
       tags:
       - Triggers
@@ -51589,6 +51723,8 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Patch a subscription
       tags:
@@ -51839,6 +51975,8 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-subscriptions:manage
+      - applicationAuth:
+        - sp:trigger-service-subscriptions:manage
       summary: Validate a subscription filter
       tags:
       - Triggers
@@ -51980,6 +52118,9 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:trigger-service-invocation-status:read
+        - sp:trigger-service-invocation-status:manage
+      - applicationAuth:
         - sp:trigger-service-invocation-status:read
         - sp:trigger-service-invocation-status:manage
       summary: List latest invocation statuses
@@ -52170,6 +52311,8 @@ paths:
       security:
       - userAuth:
         - sp:trigger-service-invocation-status:manage
+      - applicationAuth:
+        - sp:trigger-service-invocation-status:manage
       summary: Start a test invocation
       tags:
       - Triggers
@@ -52262,6 +52405,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:ui-access-metadata-page:read
+      - applicationAuth:
         - idn:ui-access-metadata-page:read
       summary: Get a tenant ui metadata
       tags:
@@ -52882,6 +53027,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:app-roles:manage
+      - applicationAuth:
         - idn:app-roles:manage
       summary: List all user apps
       tags:
@@ -59005,6 +59152,8 @@ paths:
       security:
       - userAuth:
         - sp:workflow-execute:external
+      - applicationAuth:
+        - sp:workflow-execute:external
       summary: Execute workflow via external trigger
       tags:
       - Workflows
@@ -59096,6 +59245,8 @@ paths:
             error.
       security:
       - userAuth:
+        - sp:workflow-execute:external
+      - applicationAuth:
         - sp:workflow-execute:external
       summary: Test workflow via external trigger
       tags:
@@ -60052,6 +60203,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:workgroup:write
+      - applicationAuth:
         - idn:workgroup:write
       summary: Add members to governance group
       tags:
@@ -62494,6 +62647,8 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
+      - applicationAuth:
+        - idn:application-discovery:write
       summary: Upload csv to discover applications
       tags:
       - Application Discovery
@@ -62974,6 +63129,8 @@ paths:
       security:
       - userAuth:
         - idn:icons:manage
+      - applicationAuth:
+        - idn:icons:manage
       summary: Delete an icon
       tags:
       - Icons
@@ -63089,6 +63246,8 @@ paths:
       security:
       - userAuth:
         - idn:icons:manage
+      - applicationAuth:
+        - idn:icons:manage
       summary: Update an icon
       tags:
       - Icons
@@ -63193,6 +63352,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sed:read
+      - applicationAuth:
         - idn:sed:read
       summary: Submit sed batch stats request
       tags:
@@ -63355,6 +63516,8 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
       summary: List Sed Batch Record
       tags:
       - Suggested Entitlement Description
@@ -63458,6 +63621,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sed:write
+      - applicationAuth:
         - idn:sed:write
       summary: Submit sed batch request
       tags:
@@ -63566,6 +63731,8 @@ paths:
       security:
       - userAuth:
         - idn:sed:write
+      - applicationAuth:
+        - idn:sed:write
       summary: Submit bulk approval request
       tags:
       - Suggested Entitlement Description
@@ -63665,6 +63832,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sed:write
+      - applicationAuth:
         - idn:sed:write
       summary: Submit sed assignment request
       tags:
@@ -63849,6 +64018,8 @@ paths:
       security:
       - userAuth:
         - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
       summary: List suggested entitlement descriptions
       tags:
       - Suggested Entitlement Description
@@ -63961,6 +64132,8 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:sed:write
+      - applicationAuth:
         - idn:sed:write
       summary: Patch suggested entitlement description
       tags:
