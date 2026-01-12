@@ -473,6 +473,7 @@ docs/PasswordSyncGroupsAPIdeveloperSite_code_examples.yaml
 docs/PatOwner.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
+docs/PendingApprovalMaxPermittedAccessDuration.md
 docs/PendingApprovalOwner.md
 docs/PermissionDto.md
 docs/PersonalAccessTokensAPI.md
@@ -1104,6 +1105,7 @@ model_password_sync_group.go
 model_pat_owner.go
 model_pending_approval.go
 model_pending_approval_action.go
+model_pending_approval_max_permitted_access_duration.go
 model_pending_approval_owner.go
 model_permission_dto.go
 model_pre_approval_trigger_details.go

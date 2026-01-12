@@ -50607,6 +50607,9 @@ components:
           newApproverName: Al Volta
           comment: Forwarding from Frank to Al
         removeDateUpdateRequested: true
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
       properties:
         id:
           description: The approval id.
@@ -50706,6 +50709,8 @@ components:
           example: High
           nullable: true
           type: string
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/PendingApproval_maxPermittedAccessDuration'
       title: Pending Approval
       type: object
     CompletedApproval:
@@ -68964,6 +68969,28 @@ components:
         name:
           description: Access item owner's human-readable display name.
           example: Support
+          type: string
+      type: object
+    PendingApproval_maxPermittedAccessDuration:
+      description: The maximum duration for which the access is permitted.
+      example:
+        value: 5
+        timeUnit: DAYS
+      nullable: true
+      properties:
+        value:
+          description: The numeric value of the duration.
+          example: 5
+          format: int32
+          type: integer
+        timeUnit:
+          description: The time unit for the duration.
+          enum:
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+          example: DAYS
           type: string
       type: object
     CompletedApproval_requesterComment:

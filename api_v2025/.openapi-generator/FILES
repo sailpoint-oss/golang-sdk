@@ -1057,6 +1057,7 @@ docs/PatchPotentialRoleRequestInner.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
+docs/PendingApprovalMaxPermittedAccessDuration.md
 docs/PendingApprovalOwner.md
 docs/PermissionCollectorSettings.md
 docs/PermissionDto.md
@@ -2389,6 +2390,7 @@ model_patch_potential_role_request_inner.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
+model_pending_approval_max_permitted_access_duration.go
 model_pending_approval_owner.go
 model_permission_collector_settings.go
 model_permission_dto.go

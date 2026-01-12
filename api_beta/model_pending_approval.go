@@ -56,6 +56,7 @@ type PendingApproval struct {
 	RequestedAccounts []RequestedAccountRef `json:"requestedAccounts,omitempty"`
 	// The privilege level of the requested access item, if applicable.
 	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
+	MaxPermittedAccessDuration NullablePendingApprovalMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -822,6 +823,48 @@ func (o *PendingApproval) UnsetPrivilegeLevel() {
 	o.PrivilegeLevel.Unset()
 }
 
+// GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PendingApproval) GetMaxPermittedAccessDuration() PendingApprovalMaxPermittedAccessDuration {
+	if o == nil || IsNil(o.MaxPermittedAccessDuration.Get()) {
+		var ret PendingApprovalMaxPermittedAccessDuration
+		return ret
+	}
+	return *o.MaxPermittedAccessDuration.Get()
+}
+
+// GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PendingApproval) GetMaxPermittedAccessDurationOk() (*PendingApprovalMaxPermittedAccessDuration, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxPermittedAccessDuration.Get(), o.MaxPermittedAccessDuration.IsSet()
+}
+
+// HasMaxPermittedAccessDuration returns a boolean if a field has been set.
+func (o *PendingApproval) HasMaxPermittedAccessDuration() bool {
+	if o != nil && o.MaxPermittedAccessDuration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxPermittedAccessDuration gets a reference to the given NullablePendingApprovalMaxPermittedAccessDuration and assigns it to the MaxPermittedAccessDuration field.
+func (o *PendingApproval) SetMaxPermittedAccessDuration(v PendingApprovalMaxPermittedAccessDuration) {
+	o.MaxPermittedAccessDuration.Set(&v)
+}
+// SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
+func (o *PendingApproval) SetMaxPermittedAccessDurationNil() {
+	o.MaxPermittedAccessDuration.Set(nil)
+}
+
+// UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
+func (o *PendingApproval) UnsetMaxPermittedAccessDuration() {
+	o.MaxPermittedAccessDuration.Unset()
+}
+
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -898,6 +941,9 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if o.PrivilegeLevel.IsSet() {
 		toSerialize["privilegeLevel"] = o.PrivilegeLevel.Get()
 	}
+	if o.MaxPermittedAccessDuration.IsSet() {
+		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -942,6 +988,7 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "requestedAccounts")
 		delete(additionalProperties, "privilegeLevel")
+		delete(additionalProperties, "maxPermittedAccessDuration")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -1190,6 +1190,7 @@ Class | Method | HTTP request | Description
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
+ - [PendingApprovalMaxPermittedAccessDuration](docs/PendingApprovalMaxPermittedAccessDuration.md)
  - [PermissionDto](docs/PermissionDto.md)
  - [PostExternalExecuteWorkflow200Response](docs/PostExternalExecuteWorkflow200Response.md)
  - [PostExternalExecuteWorkflowRequest](docs/PostExternalExecuteWorkflowRequest.md)

@@ -1497,6 +1497,7 @@ Class | Method | HTTP request | Description
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
+ - [PendingApprovalMaxPermittedAccessDuration](docs/PendingApprovalMaxPermittedAccessDuration.md)
  - [PendingApprovalOwner](docs/PendingApprovalOwner.md)
  - [PermissionDto](docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
