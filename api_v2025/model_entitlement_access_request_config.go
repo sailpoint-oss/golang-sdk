@@ -27,6 +27,9 @@ type EntitlementAccessRequestConfig struct {
 	DenialCommentRequired *bool `json:"denialCommentRequired,omitempty"`
 	// Is Reauthorization Required
 	ReauthorizationRequired *bool `json:"reauthorizationRequired,omitempty"`
+	// If true, then remove date or sunset date is required in access request of the entitlement.
+	RequireEndDate *bool `json:"requireEndDate,omitempty"`
+	MaxPermittedAccessDuration NullablePendingApprovalMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,6 +47,8 @@ func NewEntitlementAccessRequestConfig() *EntitlementAccessRequestConfig {
 	this.DenialCommentRequired = &denialCommentRequired
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = &reauthorizationRequired
+	var requireEndDate bool = false
+	this.RequireEndDate = &requireEndDate
 	return &this
 }
 
@@ -58,6 +63,8 @@ func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestCo
 	this.DenialCommentRequired = &denialCommentRequired
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = &reauthorizationRequired
+	var requireEndDate bool = false
+	this.RequireEndDate = &requireEndDate
 	return &this
 }
 
@@ -189,6 +196,80 @@ func (o *EntitlementAccessRequestConfig) SetReauthorizationRequired(v bool) {
 	o.ReauthorizationRequired = &v
 }
 
+// GetRequireEndDate returns the RequireEndDate field value if set, zero value otherwise.
+func (o *EntitlementAccessRequestConfig) GetRequireEndDate() bool {
+	if o == nil || IsNil(o.RequireEndDate) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireEndDate
+}
+
+// GetRequireEndDateOk returns a tuple with the RequireEndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireEndDate) {
+		return nil, false
+	}
+	return o.RequireEndDate, true
+}
+
+// HasRequireEndDate returns a boolean if a field has been set.
+func (o *EntitlementAccessRequestConfig) HasRequireEndDate() bool {
+	if o != nil && !IsNil(o.RequireEndDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireEndDate gets a reference to the given bool and assigns it to the RequireEndDate field.
+func (o *EntitlementAccessRequestConfig) SetRequireEndDate(v bool) {
+	o.RequireEndDate = &v
+}
+
+// GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() PendingApprovalMaxPermittedAccessDuration {
+	if o == nil || IsNil(o.MaxPermittedAccessDuration.Get()) {
+		var ret PendingApprovalMaxPermittedAccessDuration
+		return ret
+	}
+	return *o.MaxPermittedAccessDuration.Get()
+}
+
+// GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*PendingApprovalMaxPermittedAccessDuration, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxPermittedAccessDuration.Get(), o.MaxPermittedAccessDuration.IsSet()
+}
+
+// HasMaxPermittedAccessDuration returns a boolean if a field has been set.
+func (o *EntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool {
+	if o != nil && o.MaxPermittedAccessDuration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxPermittedAccessDuration gets a reference to the given NullablePendingApprovalMaxPermittedAccessDuration and assigns it to the MaxPermittedAccessDuration field.
+func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDuration(v PendingApprovalMaxPermittedAccessDuration) {
+	o.MaxPermittedAccessDuration.Set(&v)
+}
+// SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
+func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDurationNil() {
+	o.MaxPermittedAccessDuration.Set(nil)
+}
+
+// UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
+func (o *EntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration() {
+	o.MaxPermittedAccessDuration.Unset()
+}
+
 func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -210,6 +291,12 @@ func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.ReauthorizationRequired) {
 		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired
+	}
+	if !IsNil(o.RequireEndDate) {
+		toSerialize["requireEndDate"] = o.RequireEndDate
+	}
+	if o.MaxPermittedAccessDuration.IsSet() {
+		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -237,6 +324,8 @@ func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "requestCommentRequired")
 		delete(additionalProperties, "denialCommentRequired")
 		delete(additionalProperties, "reauthorizationRequired")
+		delete(additionalProperties, "requireEndDate")
+		delete(additionalProperties, "maxPermittedAccessDuration")
 		o.AdditionalProperties = additionalProperties
 	}
 

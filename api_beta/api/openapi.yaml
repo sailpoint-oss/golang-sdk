@@ -71117,6 +71117,10 @@ components:
             approverType: GOVERNANCE_GROUP
           reauthorizationRequired: false
           requestCommentRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 5
+            timeUnit: DAYS
         revocationRequestConfig:
           approvalSchemes:
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
@@ -80567,6 +80571,10 @@ components:
             approverType: GOVERNANCE_GROUP
           reauthorizationRequired: false
           requestCommentRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 5
+            timeUnit: DAYS
         revocationRequestConfig:
           approvalSchemes:
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
@@ -87551,6 +87559,10 @@ components:
           approverType: GOVERNANCE_GROUP
         reauthorizationRequired: false
         requestCommentRequired: true
+        requireEndDate: true
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
       properties:
         approvalSchemes:
           description: Ordered list of approval steps for the access request. Empty
@@ -87574,6 +87586,14 @@ components:
           description: Is Reauthorization Required
           example: false
           type: boolean
+        requireEndDate:
+          default: false
+          description: "If true, then remove date or sunset date is required in access\
+            \ request of the entitlement."
+          example: true
+          type: boolean
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/PendingApproval_maxPermittedAccessDuration'
       title: Entitlement Access Request Config
       type: object
     EntitlementRevocationRequestConfig:
