@@ -50760,6 +50760,9 @@ components:
           decision: APPROVED
           comment: This request was autoapproved by our automated ETS subscriber
           reviewer: Automated AR Approval
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
         requester:
           name: William Wilson
           id: 2c7180a46faadee4016fb4e018c20648
@@ -50978,6 +50981,8 @@ components:
           example: High
           nullable: true
           type: string
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/PendingApproval_maxPermittedAccessDuration'
       title: Completed Approval
       type: object
     CommentDto:
