@@ -4349,7 +4349,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}"
+	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
 
@@ -4497,32 +4497,32 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchPotentialRole_0Request struct {
+type ApiPatchPotentialRoleSessionRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
-func (r ApiPatchPotentialRole_0Request) XSailPointExperimental(xSailPointExperimental string) ApiPatchPotentialRole_0Request {
+func (r ApiPatchPotentialRoleSessionRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchPotentialRoleSessionRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
 	return r
 }
 
-func (r ApiPatchPotentialRole_0Request) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchPotentialRole_0Request {
-	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
+func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchPotentialRoleSessionRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchPotentialRole_0Request) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.PatchPotentialRole_1Execute(r)
+func (r ApiPatchPotentialRoleSessionRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchPotentialRoleSessionExecute(r)
 }
 
 /*
-PatchPotentialRole_0 Update a potential role
+PatchPotentialRoleSession Update a potential role session
 
 The method updates an existing potential role using.
 
@@ -4541,10 +4541,10 @@ The following fields can be modified:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sessionId The role mining session id
  @param potentialRoleId The potential role summary id
- @return ApiPatchPotentialRole_0Request
+ @return ApiPatchPotentialRoleSessionRequest
 */
-func (a *IAIRoleMiningAPIService) PatchPotentialRole_1(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRole_0Request {
-	return ApiPatchPotentialRole_0Request{
+func (a *IAIRoleMiningAPIService) PatchPotentialRoleSession(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRoleSessionRequest {
+	return ApiPatchPotentialRoleSessionRequest{
 		ApiService: a,
 		ctx: ctx,
 		sessionId: sessionId,
@@ -4554,7 +4554,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole_1(ctx context.Context, sess
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentialRole_0Request) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPotentialRoleSessionRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4562,12 +4562,12 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRole_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRoleSession")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}"
+	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
 
@@ -4589,8 +4589,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.patchPotentialRoleRequestInner == nil {
-		return localVarReturnValue, nil, reportError("patchPotentialRoleRequestInner is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4612,7 +4612,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.patchPotentialRoleRequestInner
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

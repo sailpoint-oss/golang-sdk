@@ -1080,6 +1080,7 @@ docs/RoleMiningEntitlement.md
 docs/RoleMiningEntitlementRef.md
 docs/RoleMiningIdentity.md
 docs/RoleMiningIdentityDistribution.md
+docs/RoleMiningIdentityDistributionDistributionInner.md
 docs/RoleMiningPotentialRole.md
 docs/RoleMiningPotentialRoleApplication.md
 docs/RoleMiningPotentialRoleEditEntitlements.md
@@ -2270,6 +2271,7 @@ model_role_mining_entitlement.go
 model_role_mining_entitlement_ref.go
 model_role_mining_identity.go
 model_role_mining_identity_distribution.go
+model_role_mining_identity_distribution_distribution_inner.go
 model_role_mining_potential_role.go
 model_role_mining_potential_role_application.go
 model_role_mining_potential_role_edit_entitlements.go

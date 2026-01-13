@@ -35302,6 +35302,10 @@ paths:
       summary: Retrieve potential role in session
       tags:
       - IAI Role Mining
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
     patch:
       description: |
         This method updates an existing potential role using the role mining session id and the potential role summary id.
@@ -35316,7 +35320,7 @@ paths:
 
 
         >**NOTE: All other fields cannot be modified.**
-      operationId: patchPotentialRole
+      operationId: patchPotentialRoleSession
       parameters:
       - description: The role mining session id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
@@ -35355,7 +35359,7 @@ paths:
               value: Potential Role Accounting
             schema:
               items:
-                $ref: '#/components/schemas/patchPotentialRole_request_inner'
+                $ref: '#/components/schemas/Json_Patch_Operation'
               type: array
         required: true
       responses:
@@ -35442,10 +35446,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      security: []
+      security:
+      - userAuth:
+        - iai:access-modeling:manage
+      - applicationAuth:
+        - iai:access-modeling:manage
       summary: Update a potential role in session
       tags:
       - IAI Role Mining
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications:
     get:
       description: This method returns the applications of a potential role for a
@@ -37238,7 +37250,7 @@ paths:
               value: Potential Role Accounting
             schema:
               items:
-                $ref: '#/components/schemas/patchPotentialRole_request_inner'
+                $ref: '#/components/schemas/patchRoleMiningPotentialRole_request_inner'
               type: array
         required: true
       responses:
@@ -78206,8 +78218,12 @@ components:
           distribution:
           - attributeValue: NM Tier 3
             count: 6
+          - attributeValue: NM Tier 3
+            count: 6
         - attributeName: department
           distribution:
+          - attributeValue: NM Tier 3
+            count: 6
           - attributeValue: NM Tier 3
             count: 6
         createdDate: 2000-01-23T04:56:07.000+00:00
@@ -89481,19 +89497,16 @@ components:
         distribution:
         - attributeValue: NM Tier 3
           count: 6
+        - attributeValue: NM Tier 3
+          count: 6
       properties:
         attributeName:
           description: Id of the potential role
           example: department
           type: string
         distribution:
-          example:
-          - attributeValue: NM Tier 3
-            count: 6
           items:
-            additionalProperties:
-              type: string
-            type: object
+            $ref: '#/components/schemas/RoleMiningIdentityDistribution_distribution_inner'
           type: array
       title: Role Mining Identity Distribution
       type: object
@@ -95056,7 +95069,29 @@ components:
           format: binary
           type: string
       type: object
-    patchPotentialRole_request_inner:
+    Json_Patch_Operation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - remove
+          - replace
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/updateMultiHostSources_request_inner_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    patchRoleMiningPotentialRole_request_inner:
       allOf:
       - $ref: '#/components/schemas/JsonPatchOperation'
       properties:
@@ -98821,6 +98856,21 @@ components:
         campaignStatus:
           nullable: true
           type: string
+      type: object
+    RoleMiningIdentityDistribution_distribution_inner:
+      example:
+        attributeValue: NM Tier 3
+        count: 6
+      properties:
+        attributeValue:
+          description: The attribute value that identities are grouped by
+          example: NM Tier 3
+          type: string
+        count:
+          description: The number of identities that have this attribute value
+          example: 6
+          format: int32
+          type: integer
       type: object
     ProvisioningConfig_managedResourceRefs_inner:
       allOf:

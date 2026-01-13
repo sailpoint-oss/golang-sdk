@@ -3916,25 +3916,25 @@ func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesExecute(r ApiGetSavedPot
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchPotentialRoleRequest struct {
+type ApiPatchPotentialRoleSessionRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
-	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchPotentialRoleRequest) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchPotentialRoleRequest {
-	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
+func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchPotentialRoleSessionRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchPotentialRoleRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.PatchPotentialRoleExecute(r)
+func (r ApiPatchPotentialRoleSessionRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchPotentialRoleSessionExecute(r)
 }
 
 /*
-PatchPotentialRole Update a potential role in session
+PatchPotentialRoleSession Update a potential role in session
 
 This method updates an existing potential role using the role mining session id and the potential role summary id.
 
@@ -3953,10 +3953,10 @@ The following fields can be modified:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sessionId The role mining session id
  @param potentialRoleId The potential role summary id
- @return ApiPatchPotentialRoleRequest
+ @return ApiPatchPotentialRoleSessionRequest
 */
-func (a *IAIRoleMiningAPIService) PatchPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRoleRequest {
-	return ApiPatchPotentialRoleRequest{
+func (a *IAIRoleMiningAPIService) PatchPotentialRoleSession(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRoleSessionRequest {
+	return ApiPatchPotentialRoleSessionRequest{
 		ApiService: a,
 		ctx: ctx,
 		sessionId: sessionId,
@@ -3966,7 +3966,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole(ctx context.Context, sessio
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialRoleRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPotentialRoleSessionRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3974,7 +3974,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRoleSession")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3986,8 +3986,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.patchPotentialRoleRequestInner == nil {
-		return localVarReturnValue, nil, reportError("patchPotentialRoleRequestInner is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4008,7 +4008,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchPotentialRoleRequestInner
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4115,11 +4115,11 @@ type ApiPatchRoleMiningPotentialRoleRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
 	potentialRoleId string
-	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
+	patchRoleMiningPotentialRoleRequestInner *[]PatchRoleMiningPotentialRoleRequestInner
 }
 
-func (r ApiPatchRoleMiningPotentialRoleRequest) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchRoleMiningPotentialRoleRequest {
-	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
+func (r ApiPatchRoleMiningPotentialRoleRequest) PatchRoleMiningPotentialRoleRequestInner(patchRoleMiningPotentialRoleRequestInner []PatchRoleMiningPotentialRoleRequestInner) ApiPatchRoleMiningPotentialRoleRequest {
+	r.patchRoleMiningPotentialRoleRequestInner = &patchRoleMiningPotentialRoleRequestInner
 	return r
 }
 
@@ -4177,8 +4177,8 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRoleExecute(r ApiPatch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.patchPotentialRoleRequestInner == nil {
-		return localVarReturnValue, nil, reportError("patchPotentialRoleRequestInner is required and must be specified")
+	if r.patchRoleMiningPotentialRoleRequestInner == nil {
+		return localVarReturnValue, nil, reportError("patchRoleMiningPotentialRoleRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4199,7 +4199,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRoleExecute(r ApiPatch
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchPotentialRoleRequestInner
+	localVarPostBody = r.patchRoleMiningPotentialRoleRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

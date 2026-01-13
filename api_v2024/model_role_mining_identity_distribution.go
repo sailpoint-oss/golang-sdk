@@ -21,7 +21,7 @@ var _ MappedNullable = &RoleMiningIdentityDistribution{}
 type RoleMiningIdentityDistribution struct {
 	// Id of the potential role
 	AttributeName *string `json:"attributeName,omitempty"`
-	Distribution []map[string]interface{} `json:"distribution,omitempty"`
+	Distribution []RoleMiningIdentityDistributionDistributionInner `json:"distribution,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *RoleMiningIdentityDistribution) SetAttributeName(v string) {
 }
 
 // GetDistribution returns the Distribution field value if set, zero value otherwise.
-func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]interface{} {
+func (o *RoleMiningIdentityDistribution) GetDistribution() []RoleMiningIdentityDistributionDistributionInner {
 	if o == nil || IsNil(o.Distribution) {
-		var ret []map[string]interface{}
+		var ret []RoleMiningIdentityDistributionDistributionInner
 		return ret
 	}
 	return o.Distribution
@@ -87,7 +87,7 @@ func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]interfac
 
 // GetDistributionOk returns a tuple with the Distribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]map[string]interface{}, bool) {
+func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]RoleMiningIdentityDistributionDistributionInner, bool) {
 	if o == nil || IsNil(o.Distribution) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *RoleMiningIdentityDistribution) HasDistribution() bool {
 	return false
 }
 
-// SetDistribution gets a reference to the given []map[string]interface{} and assigns it to the Distribution field.
-func (o *RoleMiningIdentityDistribution) SetDistribution(v []map[string]interface{}) {
+// SetDistribution gets a reference to the given []RoleMiningIdentityDistributionDistributionInner and assigns it to the Distribution field.
+func (o *RoleMiningIdentityDistribution) SetDistribution(v []RoleMiningIdentityDistributionDistributionInner) {
 	o.Distribution = v
 }
 

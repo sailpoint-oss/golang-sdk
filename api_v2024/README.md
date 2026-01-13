@@ -362,8 +362,8 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningAPI* | [**GetRoleMiningSessionStatus**](docs/IAIRoleMiningAPI.md#getroleminingsessionstatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningAPI* | [**GetRoleMiningSessions**](docs/IAIRoleMiningAPI.md#getroleminingsessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
 *IAIRoleMiningAPI* | [**GetSavedPotentialRoles**](docs/IAIRoleMiningAPI.md#getsavedpotentialroles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-*IAIRoleMiningAPI* | [**PatchPotentialRole**](docs/IAIRoleMiningAPI.md#patchpotentialrole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-*IAIRoleMiningAPI* | [**PatchPotentialRole_0**](docs/IAIRoleMiningAPI.md#patchpotentialrole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+*IAIRoleMiningAPI* | [**PatchPotentialRole**](docs/IAIRoleMiningAPI.md#patchpotentialrole) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+*IAIRoleMiningAPI* | [**PatchPotentialRoleSession**](docs/IAIRoleMiningAPI.md#patchpotentialrolesession) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role session
 *IAIRoleMiningAPI* | [**PatchRoleMiningSession**](docs/IAIRoleMiningAPI.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningAPI* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningAPI.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IconsAPI* | [**DeleteIcon**](docs/IconsAPI.md#deleteicon) | **Delete** /icons/{objectType}/{objectId} | Delete an icon
@@ -1640,6 +1640,7 @@ Class | Method | HTTP request | Description
  - [RoleMiningEntitlementRef](docs/RoleMiningEntitlementRef.md)
  - [RoleMiningIdentity](docs/RoleMiningIdentity.md)
  - [RoleMiningIdentityDistribution](docs/RoleMiningIdentityDistribution.md)
+ - [RoleMiningIdentityDistributionDistributionInner](docs/RoleMiningIdentityDistributionDistributionInner.md)
  - [RoleMiningPotentialRole](docs/RoleMiningPotentialRole.md)
  - [RoleMiningPotentialRoleApplication](docs/RoleMiningPotentialRoleApplication.md)
  - [RoleMiningPotentialRoleEditEntitlements](docs/RoleMiningPotentialRoleEditEntitlements.md)

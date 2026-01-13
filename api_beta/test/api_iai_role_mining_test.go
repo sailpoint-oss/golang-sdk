@@ -323,14 +323,14 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIRoleMiningAPIService PatchPotentialRole", func(t *testing.T) {
+	t.Run("Test IAIRoleMiningAPIService PatchPotentialRoleSession", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSession(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

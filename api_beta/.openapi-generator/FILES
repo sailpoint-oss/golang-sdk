@@ -723,7 +723,7 @@ docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PasswordSyncGroupsAPIdeveloperSite_code_examples.yaml
 docs/PatOwner.md
-docs/PatchPotentialRoleRequestInner.md
+docs/PatchRoleMiningPotentialRoleRequestInner.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
@@ -838,6 +838,7 @@ docs/RoleMiningEntitlement.md
 docs/RoleMiningEntitlementRef.md
 docs/RoleMiningIdentity.md
 docs/RoleMiningIdentityDistribution.md
+docs/RoleMiningIdentityDistributionDistributionInner.md
 docs/RoleMiningPotentialRole.md
 docs/RoleMiningPotentialRoleApplication.md
 docs/RoleMiningPotentialRoleEditEntitlements.md
@@ -1681,7 +1682,7 @@ model_password_policy_v3_dto.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
-model_patch_potential_role_request_inner.go
+model_patch_role_mining_potential_role_request_inner.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
@@ -1788,6 +1789,7 @@ model_role_mining_entitlement.go
 model_role_mining_entitlement_ref.go
 model_role_mining_identity.go
 model_role_mining_identity_distribution.go
+model_role_mining_identity_distribution_distribution_inner.go
 model_role_mining_potential_role.go
 model_role_mining_potential_role_application.go
 model_role_mining_potential_role_edit_entitlements.go
