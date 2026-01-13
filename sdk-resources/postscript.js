@@ -269,7 +269,7 @@ const fixFiles = async function (myArray) {
     }
 
     // fix syntax error in model_patch 
-    if (file.includes("model_patch_potential_role_request_inner.go")) {
+    if (file.includes("model_patch_potential_role_request_inner.go") || file.includes("model_patch_role_mining_potential_role_request_inner.go")) {
       for (const line of rawDataArra) {
         if (line.includes("this.Op = op")) {
           fileOut.push(line.replaceAll("this.Op = op", "this.Op = &op"));
