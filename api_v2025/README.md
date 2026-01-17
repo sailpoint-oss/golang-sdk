@@ -80,10 +80,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2025*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessModelMetadataAPI* | [**CreateAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#createaccessmodelmetadataattribute) | **Post** /access-model-metadata/attributes | Create access model metadata attribute
+*AccessModelMetadataAPI* | [**CreateAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#createaccessmodelmetadataattributevalue) | **Post** /access-model-metadata/attributes/{key}/values | Create access model metadata value
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes/{key} | Get access model metadata attribute
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes | List access model metadata attributes
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessModelMetadataAPI* | [**UpdateAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadataattribute) | **Patch** /access-model-metadata/attributes/{key} | Update access model metadata attribute
+*AccessModelMetadataAPI* | [**UpdateAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadataattributevalue) | **Patch** /access-model-metadata/attributes/{key}/values/{value} | Update access model metadata value
 *AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByFilter**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyfilter) | **Post** /access-model-metadata/bulk-update/filter | Metadata Attribute update by filter
 *AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByIds**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyids) | **Post** /access-model-metadata/bulk-update/ids | Metadata Attribute update by ids
 *AccessModelMetadataAPI* | [**UpdateAccessModelMetadataByQuery**](docs/AccessModelMetadataAPI.md#updateaccessmodelmetadatabyquery) | **Post** /access-model-metadata/bulk-update/query | Metadata Attribute update by query
