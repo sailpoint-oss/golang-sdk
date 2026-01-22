@@ -25,6 +25,8 @@ type RoleAssignmentRef struct {
 	Role *BaseReferenceDto `json:"role,omitempty"`
 	// Date that the assignment was added
 	AddedDate *SailPointTime `json:"addedDate,omitempty"`
+	// Date that the assignment will be removed
+	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,6 +145,48 @@ func (o *RoleAssignmentRef) SetAddedDate(v SailPointTime) {
 	o.AddedDate = &v
 }
 
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleAssignmentRef) GetRemoveDate() SailPointTime {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.RemoveDate.Get()
+}
+
+// GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleAssignmentRef) GetRemoveDateOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
+}
+
+// HasRemoveDate returns a boolean if a field has been set.
+func (o *RoleAssignmentRef) HasRemoveDate() bool {
+	if o != nil && o.RemoveDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
+func (o *RoleAssignmentRef) SetRemoveDate(v SailPointTime) {
+	o.RemoveDate.Set(&v)
+}
+// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+func (o *RoleAssignmentRef) SetRemoveDateNil() {
+	o.RemoveDate.Set(nil)
+}
+
+// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
+func (o *RoleAssignmentRef) UnsetRemoveDate() {
+	o.RemoveDate.Unset()
+}
+
 func (o RoleAssignmentRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,6 +205,9 @@ func (o RoleAssignmentRef) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AddedDate) {
 		toSerialize["addedDate"] = o.AddedDate
+	}
+	if o.RemoveDate.IsSet() {
+		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -187,6 +234,7 @@ func (o *RoleAssignmentRef) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "addedDate")
+		delete(additionalProperties, "removeDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

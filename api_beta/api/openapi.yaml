@@ -72927,6 +72927,7 @@ components:
       type: object
     RoleAssignmentRef:
       example:
+        removeDate: 2026-01-23T19:15:00Z
         role:
           name: Github
           id: ff8081814d977c21014da056804a0af3
@@ -72943,6 +72944,12 @@ components:
           description: Date that the assignment was added
           example: 2025-07-11T18:45:37.098Z
           format: date-time
+          type: string
+        removeDate:
+          description: Date that the assignment will be removed
+          example: 2026-01-23T19:15:00Z
+          format: date-time
+          nullable: true
           type: string
       title: Role Assignment Ref
       type: object
