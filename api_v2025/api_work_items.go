@@ -544,14 +544,7 @@ type ApiForwardWorkItemRequest struct {
 	ctx context.Context
 	ApiService *WorkItemsAPIService
 	id string
-	xSailPointExperimental *string
 	workItemForward *WorkItemForward
-}
-
-// Use this header to enable this experimental API.
-func (r ApiForwardWorkItemRequest) XSailPointExperimental(xSailPointExperimental string) ApiForwardWorkItemRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiForwardWorkItemRequest) WorkItemForward(workItemForward WorkItemForward) ApiForwardWorkItemRequest {
@@ -599,21 +592,6 @@ func (a *WorkItemsAPIService) ForwardWorkItemExecute(r ApiForwardWorkItemRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.workItemForward == nil {
 		return nil, reportError("workItemForward is required and must be specified")
 	}
@@ -635,7 +613,6 @@ func (a *WorkItemsAPIService) ForwardWorkItemExecute(r ApiForwardWorkItemRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.workItemForward
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -925,14 +902,7 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 type ApiGetCountCompletedWorkItemsRequest struct {
 	ctx context.Context
 	ApiService *WorkItemsAPIService
-	xSailPointExperimental *string
 	ownerId *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetCountCompletedWorkItemsRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetCountCompletedWorkItemsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // ID of the work item owner.
@@ -980,15 +950,6 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.ownerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
@@ -1010,7 +971,6 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

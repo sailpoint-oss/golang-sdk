@@ -31864,7 +31864,6 @@
 
         func main() {
           id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            workitemforward := []byte(`{
           "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
           "comment" : "I'm going on vacation.",
@@ -31882,8 +31881,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
-          //r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).XSailPointExperimental(xSailPointExperimental).WorkItemForward(workItemForward).Execute()
+          r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).WorkItemForward(workItemForward).Execute()
+          //r, err := apiClient.V2025.WorkItemsAPI.ForwardWorkItem(context.Background(), id).WorkItemForward(workItemForward).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItem``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -31944,7 +31943,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           ownerId := `ownerId_example` // string | ID of the work item owner. (optional) # string | ID of the work item owner. (optional)
 
           
@@ -31952,8 +31950,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).XSailPointExperimental(xSailPointExperimental).OwnerId(ownerId).Execute()
+          resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
