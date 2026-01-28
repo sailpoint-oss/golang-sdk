@@ -79213,6 +79213,10 @@ components:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           denialCommentsRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 6
+            timeUnit: MONTHS
         accessProfiles:
         - name: Access Profile 2567
           id: ff808081751e6e129f1518161919ecca
@@ -90136,6 +90140,10 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+        requireEndDate: true
+        maxPermittedAccessDuration:
+          value: 6
+          timeUnit: MONTHS
       properties:
         commentsRequired:
           default: false
@@ -90157,6 +90165,14 @@ components:
           example: true
           nullable: true
           type: boolean
+        requireEndDate:
+          default: false
+          description: Indicates whether the requester of the containing object must
+            provide access end date.
+          example: true
+          type: boolean
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/AccessDuration'
         approvalSchemes:
           description: List describing the steps in approving the request
           items:

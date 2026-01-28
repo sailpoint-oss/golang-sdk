@@ -25,6 +25,9 @@ type RequestabilityForRole struct {
 	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
 	// Indicates whether reauthorization is required for the request.
 	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
+	// Indicates whether the requester of the containing object must provide access end date.
+	RequireEndDate NullableBool `json:"requireEndDate,omitempty"`
+	MaxPermittedAccessDuration NullableAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	// List describing the steps in approving the request
 	ApprovalSchemes []ApprovalSchemeForRole `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -44,6 +47,8 @@ func NewRequestabilityForRole() *RequestabilityForRole {
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
+	var requireEndDate bool = false
+	this.RequireEndDate = *NewNullableBool(&requireEndDate)
 	return &this
 }
 
@@ -58,6 +63,8 @@ func NewRequestabilityForRoleWithDefaults() *RequestabilityForRole {
 	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
+	var requireEndDate bool = false
+	this.RequireEndDate = *NewNullableBool(&requireEndDate)
 	return &this
 }
 
@@ -187,6 +194,90 @@ func (o *RequestabilityForRole) UnsetReauthorizationRequired() {
 	o.ReauthorizationRequired.Unset()
 }
 
+// GetRequireEndDate returns the RequireEndDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestabilityForRole) GetRequireEndDate() bool {
+	if o == nil || IsNil(o.RequireEndDate.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireEndDate.Get()
+}
+
+// GetRequireEndDateOk returns a tuple with the RequireEndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestabilityForRole) GetRequireEndDateOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RequireEndDate.Get(), o.RequireEndDate.IsSet()
+}
+
+// HasRequireEndDate returns a boolean if a field has been set.
+func (o *RequestabilityForRole) HasRequireEndDate() bool {
+	if o != nil && o.RequireEndDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireEndDate gets a reference to the given NullableBool and assigns it to the RequireEndDate field.
+func (o *RequestabilityForRole) SetRequireEndDate(v bool) {
+	o.RequireEndDate.Set(&v)
+}
+// SetRequireEndDateNil sets the value for RequireEndDate to be an explicit nil
+func (o *RequestabilityForRole) SetRequireEndDateNil() {
+	o.RequireEndDate.Set(nil)
+}
+
+// UnsetRequireEndDate ensures that no value is present for RequireEndDate, not even an explicit nil
+func (o *RequestabilityForRole) UnsetRequireEndDate() {
+	o.RequireEndDate.Unset()
+}
+
+// GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestabilityForRole) GetMaxPermittedAccessDuration() AccessDuration {
+	if o == nil || IsNil(o.MaxPermittedAccessDuration.Get()) {
+		var ret AccessDuration
+		return ret
+	}
+	return *o.MaxPermittedAccessDuration.Get()
+}
+
+// GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestabilityForRole) GetMaxPermittedAccessDurationOk() (*AccessDuration, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxPermittedAccessDuration.Get(), o.MaxPermittedAccessDuration.IsSet()
+}
+
+// HasMaxPermittedAccessDuration returns a boolean if a field has been set.
+func (o *RequestabilityForRole) HasMaxPermittedAccessDuration() bool {
+	if o != nil && o.MaxPermittedAccessDuration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxPermittedAccessDuration gets a reference to the given NullableAccessDuration and assigns it to the MaxPermittedAccessDuration field.
+func (o *RequestabilityForRole) SetMaxPermittedAccessDuration(v AccessDuration) {
+	o.MaxPermittedAccessDuration.Set(&v)
+}
+// SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
+func (o *RequestabilityForRole) SetMaxPermittedAccessDurationNil() {
+	o.MaxPermittedAccessDuration.Set(nil)
+}
+
+// UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
+func (o *RequestabilityForRole) UnsetMaxPermittedAccessDuration() {
+	o.MaxPermittedAccessDuration.Unset()
+}
+
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
 func (o *RequestabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole {
 	if o == nil || IsNil(o.ApprovalSchemes) {
@@ -238,6 +329,12 @@ func (o RequestabilityForRole) ToMap() (map[string]interface{}, error) {
 	if o.ReauthorizationRequired.IsSet() {
 		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired.Get()
 	}
+	if o.RequireEndDate.IsSet() {
+		toSerialize["requireEndDate"] = o.RequireEndDate.Get()
+	}
+	if o.MaxPermittedAccessDuration.IsSet() {
+		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
+	}
 	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
@@ -266,6 +363,8 @@ func (o *RequestabilityForRole) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "commentsRequired")
 		delete(additionalProperties, "denialCommentsRequired")
 		delete(additionalProperties, "reauthorizationRequired")
+		delete(additionalProperties, "requireEndDate")
+		delete(additionalProperties, "maxPermittedAccessDuration")
 		delete(additionalProperties, "approvalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}
