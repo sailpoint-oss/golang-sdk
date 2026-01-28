@@ -14596,12 +14596,12 @@ paths:
           type: string
         x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Entitlement'
-          description: OK
+          description: Created
         "400":
           content:
             application/json:
