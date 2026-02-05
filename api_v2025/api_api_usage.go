@@ -48,7 +48,7 @@ func (r ApiGetTotalCountRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 GetTotalCount Total number of API requests
 
-This API gets an aggregated number of all API calls from an org in a given timespan.
+This API gets an aggregated number of all API calls from an org in a specific timespan. Unless specified, the results are aggregated between the first day of the current month and today.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTotalCountRequest
@@ -242,7 +242,7 @@ func (r ApiListApiSummaryRequest) Execute() ([]SummaryResponse, *http.Response, 
 /*
 ListApiSummary Get Api Summary
 
-This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls.
+This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListApiSummaryRequest
