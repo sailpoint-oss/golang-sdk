@@ -48450,11 +48450,9 @@ paths:
 
           **created**: *gt, lt, ge, le*
 
-          **modified**: *gt, lt, ge, le*
+          **modified**: *gt, ge, le*
 
           **owner.id**: *eq, in*
-
-          **accountSource.id**: *eq, in*
 
           **enabled**: *eq*
         example: enabled eq true
@@ -48532,10 +48530,13 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:app-roles:read
         - idn:app-roles:manage
       summary: List all source apps
       tags:
       - Apps
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /source-apps/{id}/access-profiles:
     get:
       description: This API returns the list of access profiles for the specified
@@ -72988,7 +72989,9 @@ components:
             displayName: Abby.Smith
             uuid: "{ad9fc391-246d-40af-b248-b6556a2b7c01}"
             nativeIdentity: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
-          roleName: Marketing
+          role:
+            name: Github
+            id: ff8081814d977c21014da056804a0af3
           source:
             name: Github
             id: ff8081814d977c21014da056804a0af3
@@ -72996,7 +72999,9 @@ components:
             displayName: Abby.Smith
             uuid: "{ad9fc391-246d-40af-b248-b6556a2b7c01}"
             nativeIdentity: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
-          roleName: Marketing
+          role:
+            name: Github
+            id: ff8081814d977c21014da056804a0af3
           source:
             name: Github
             id: ff8081814d977c21014da056804a0af3
@@ -88495,7 +88500,9 @@ components:
           displayName: Abby.Smith
           uuid: "{ad9fc391-246d-40af-b248-b6556a2b7c01}"
           nativeIdentity: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
-        roleName: Marketing
+        role:
+          name: Github
+          id: ff8081814d977c21014da056804a0af3
         source:
           name: Github
           id: ff8081814d977c21014da056804a0af3
@@ -88504,10 +88511,8 @@ components:
           $ref: '#/components/schemas/BaseReferenceDto_1'
         accountInfo:
           $ref: '#/components/schemas/AccountInfoDto'
-        roleName:
-          description: Specific role name for this target if using multiple accounts
-          example: Marketing
-          type: string
+        role:
+          $ref: '#/components/schemas/BaseReferenceDto_1'
       title: Role Target Dto
       type: object
     Source_1:

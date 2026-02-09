@@ -21,8 +21,7 @@ var _ MappedNullable = &RoleTargetDto{}
 type RoleTargetDto struct {
 	Source *BaseReferenceDto1 `json:"source,omitempty"`
 	AccountInfo *AccountInfoDto `json:"accountInfo,omitempty"`
-	// Specific role name for this target if using multiple accounts
-	RoleName *string `json:"roleName,omitempty"`
+	Role *BaseReferenceDto1 `json:"role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,36 +108,36 @@ func (o *RoleTargetDto) SetAccountInfo(v AccountInfoDto) {
 	o.AccountInfo = &v
 }
 
-// GetRoleName returns the RoleName field value if set, zero value otherwise.
-func (o *RoleTargetDto) GetRoleName() string {
-	if o == nil || IsNil(o.RoleName) {
-		var ret string
+// GetRole returns the Role field value if set, zero value otherwise.
+func (o *RoleTargetDto) GetRole() BaseReferenceDto1 {
+	if o == nil || IsNil(o.Role) {
+		var ret BaseReferenceDto1
 		return ret
 	}
-	return *o.RoleName
+	return *o.Role
 }
 
-// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleTargetDto) GetRoleNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RoleName) {
+func (o *RoleTargetDto) GetRoleOk() (*BaseReferenceDto1, bool) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
-	return o.RoleName, true
+	return o.Role, true
 }
 
-// HasRoleName returns a boolean if a field has been set.
-func (o *RoleTargetDto) HasRoleName() bool {
-	if o != nil && !IsNil(o.RoleName) {
+// HasRole returns a boolean if a field has been set.
+func (o *RoleTargetDto) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
 	return false
 }
 
-// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
-func (o *RoleTargetDto) SetRoleName(v string) {
-	o.RoleName = &v
+// SetRole gets a reference to the given BaseReferenceDto1 and assigns it to the Role field.
+func (o *RoleTargetDto) SetRole(v BaseReferenceDto1) {
+	o.Role = &v
 }
 
 func (o RoleTargetDto) MarshalJSON() ([]byte, error) {
@@ -157,8 +156,8 @@ func (o RoleTargetDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountInfo) {
 		toSerialize["accountInfo"] = o.AccountInfo
 	}
-	if !IsNil(o.RoleName) {
-		toSerialize["roleName"] = o.RoleName
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -184,7 +183,7 @@ func (o *RoleTargetDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "accountInfo")
-		delete(additionalProperties, "roleName")
+		delete(additionalProperties, "role")
 		o.AdditionalProperties = additionalProperties
 	}
 
