@@ -310,3 +310,138 @@ func randString(n int) string {
 	}
 	return string(b)
 }
+
+// ============================================================================
+// DEVREL-2463: Enum Forward Compatibility Tests
+// ============================================================================
+// Tests that enum types accept unknown values for forward compatibility
+// while maintaining backward compatibility with existing code.
+
+// Test that known enum values work as before (backward compatibility)
+func TestEnumUnmarshal_KnownValue(t *testing.T) {
+	jsonData := []byte(`"ACCOUNT"`)
+
+	var dtoType v3.DtoType
+	err := json.Unmarshal(jsonData, &dtoType)
+
+	require.NoError(t, err, "Unmarshaling known enum value should succeed")
+	assert.Equal(t, v3.DTOTYPE_ACCOUNT, dtoType, "Enum should match known constant")
+	assert.True(t, dtoType.IsValid(), "Known value should be valid")
+}
+
+// Test that unknown enum values are accepted (forward compatibility)
+func TestEnumUnmarshal_UnknownValue(t *testing.T) {
+	jsonData := []byte(`"FUTURE_TYPE"`)
+
+	var dtoType v3.DtoType
+	err := json.Unmarshal(jsonData, &dtoType)
+
+	require.NoError(t, err, "Unmarshaling unknown enum value should succeed")
+	assert.Equal(t, v3.DtoType("FUTURE_TYPE"), dtoType, "Enum should store raw value")
+	assert.False(t, dtoType.IsValid(), "Unknown value should not be valid")
+}
+
+// Test that IsValid() works correctly for known values
+func TestEnumIsValid_KnownValue(t *testing.T) {
+	dtoType := v3.DTOTYPE_IDENTITY
+
+	assert.True(t, dtoType.IsValid(), "Known enum constant should be valid")
+}
+
+// Test that IsValid() returns false for unknown values
+func TestEnumIsValid_UnknownValue(t *testing.T) {
+	dtoType := v3.DtoType("UNKNOWN_TYPE")
+
+	assert.False(t, dtoType.IsValid(), "Unknown enum value should not be valid")
+}
+
+// Test round-trip marshaling preserves unknown values
+func TestEnumMarshal_UnknownValue(t *testing.T) {
+	original := []byte(`"NEW_ENUM_VALUE"`)
+
+	var dtoType v3.DtoType
+	err := json.Unmarshal(original, &dtoType)
+	require.NoError(t, err, "Unmarshal should succeed")
+
+	marshaled, err := json.Marshal(dtoType)
+	require.NoError(t, err, "Marshal should succeed")
+
+	assert.JSONEq(t, string(original), string(marshaled),
+		"Round-trip should preserve unknown enum value")
+}
+
+// Test that NewXXXFromValue accepts known values
+func TestEnumConstructor_KnownValue(t *testing.T) {
+	dtoType, err := v3.NewDtoTypeFromValue("ACCOUNT")
+
+	require.NoError(t, err, "Constructor should accept known value")
+	require.NotNil(t, dtoType, "Constructor should return non-nil pointer")
+	assert.Equal(t, v3.DTOTYPE_ACCOUNT, *dtoType, "Value should match constant")
+	assert.True(t, dtoType.IsValid(), "Known value should be valid")
+}
+
+// Test that NewXXXFromValue accepts unknown values (NEW behavior)
+func TestEnumConstructor_UnknownValue(t *testing.T) {
+	dtoType, err := v3.NewDtoTypeFromValue("MODIFY_ACCESS")
+
+	require.NoError(t, err, "Constructor should accept unknown value")
+	require.NotNil(t, dtoType, "Constructor should return non-nil pointer")
+	assert.Equal(t, v3.DtoType("MODIFY_ACCESS"), *dtoType, "Value should be stored")
+	assert.False(t, dtoType.IsValid(), "Unknown value should not be valid")
+}
+
+// Test the real-world scenario that was failing (customer example)
+func TestAccessRequestType_ModifyAccess(t *testing.T) {
+	// Simulate API response with new MODIFY_ACCESS value
+	jsonData := []byte(`"MODIFY_ACCESS"`)
+
+	var dtoType v3.DtoType // Using DtoType as proxy since this tests enum behavior
+	err := json.Unmarshal(jsonData, &dtoType)
+
+	require.NoError(t, err,
+		"Should handle MODIFY_ACCESS enum value without error (customer scenario)")
+	assert.Equal(t, v3.DtoType("MODIFY_ACCESS"), dtoType)
+}
+
+// Test struct with enum field handles unknown value
+func TestStructWithEnum_UnknownValue(t *testing.T) {
+	type TestStruct struct {
+		Type v3.DtoType `json:"type"`
+		Name string     `json:"name"`
+	}
+
+	jsonData := []byte(`{"type": "FUTURE_TYPE", "name": "test"}`)
+
+	var obj TestStruct
+	err := json.Unmarshal(jsonData, &obj)
+
+	require.NoError(t, err, "Struct unmarshal should succeed with unknown enum")
+	assert.Equal(t, v3.DtoType("FUTURE_TYPE"), obj.Type)
+	assert.Equal(t, "test", obj.Name)
+	assert.False(t, obj.Type.IsValid(), "Unknown enum in struct should not be valid")
+}
+
+// Test Ptr() method still works with unknown values
+func TestEnumPtr_UnknownValue(t *testing.T) {
+	dtoType := v3.DtoType("UNKNOWN")
+	ptr := dtoType.Ptr()
+
+	require.NotNil(t, ptr, "Ptr() should return non-nil pointer")
+	assert.Equal(t, dtoType, *ptr, "Dereferenced pointer should match original value")
+}
+
+// Test NullableXXX with unknown value
+func TestNullableEnum_UnknownValue(t *testing.T) {
+	jsonData := []byte(`"FUTURE_TYPE"`)
+
+	var nullable v3.NullableDtoType
+	err := json.Unmarshal(jsonData, &nullable)
+
+	require.NoError(t, err, "Nullable enum unmarshal should succeed")
+	assert.True(t, nullable.IsSet(), "Nullable should be set")
+
+	value := nullable.Get()
+	require.NotNil(t, value, "Nullable value should not be nil")
+	assert.Equal(t, v3.DtoType("FUTURE_TYPE"), *value)
+	assert.False(t, value.IsValid(), "Unknown value should not be valid")
+}
