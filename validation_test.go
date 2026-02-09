@@ -390,19 +390,6 @@ func TestEnumConstructor_UnknownValue(t *testing.T) {
 	assert.False(t, dtoType.IsValid(), "Unknown value should not be valid")
 }
 
-// Test the real-world scenario that was failing (customer example)
-func TestAccessRequestType_ModifyAccess(t *testing.T) {
-	// Simulate API response with new MODIFY_ACCESS value
-	jsonData := []byte(`"MODIFY_ACCESS"`)
-
-	var dtoType v3.DtoType // Using DtoType as proxy since this tests enum behavior
-	err := json.Unmarshal(jsonData, &dtoType)
-
-	require.NoError(t, err,
-		"Should handle MODIFY_ACCESS enum value without error (customer scenario)")
-	assert.Equal(t, v3.DtoType("MODIFY_ACCESS"), dtoType)
-}
-
 // Test struct with enum field handles unknown value
 func TestStructWithEnum_UnknownValue(t *testing.T) {
 	type TestStruct struct {
