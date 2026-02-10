@@ -643,6 +643,10 @@ Class | Method | HTTP request | Description
 *RoleInsightsAPI* | [**GetRoleInsightsEntitlementsChanges**](docs/RoleInsightsAPI.md#getroleinsightsentitlementschanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 *RoleInsightsAPI* | [**GetRoleInsightsRequests**](docs/RoleInsightsAPI.md#getroleinsightsrequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
 *RoleInsightsAPI* | [**GetRoleInsightsSummary**](docs/RoleInsightsAPI.md#getroleinsightssummary) | **Get** /role-insights/summary | Get role insights summary information
+*RolePropagationAPI* | [**CancelRolePropagation**](docs/RolePropagationAPI.md#cancelrolepropagation) | **Post** /role-propagation/terminate | Terminate Role Propagation process
+*RolePropagationAPI* | [**GetOngoingRolePropagation**](docs/RolePropagationAPI.md#getongoingrolepropagation) | **Get** /role-propagation/is-running | Get ongoing Role Propagation process
+*RolePropagationAPI* | [**GetRolePropagationStatus**](docs/RolePropagationAPI.md#getrolepropagationstatus) | **Get** /role-propagation/{rolePropagationId}/status | Get status of Role-Propagation process
+*RolePropagationAPI* | [**StartRolePropagation**](docs/RolePropagationAPI.md#startrolepropagation) | **Post** /role-propagation | Initiate Role Propagation process
 *RolesAPI* | [**CreateRole**](docs/RolesAPI.md#createrole) | **Post** /roles | Create a role
 *RolesAPI* | [**DeleteBulkRoles**](docs/RolesAPI.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete role(s)
 *RolesAPI* | [**DeleteMetadataFromRoleByKeyAndValue**](docs/RolesAPI.md#deletemetadatafromrolebykeyandvalue) | **Delete** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a metadata from role.
@@ -1857,6 +1861,12 @@ Class | Method | HTTP request | Description
  - [RoleMiningSessionScopingMethod](docs/RoleMiningSessionScopingMethod.md)
  - [RoleMiningSessionState](docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](docs/RoleMiningSessionStatus.md)
+ - [RolePropagationOngoingResponse](docs/RolePropagationOngoingResponse.md)
+ - [RolePropagationOngoingResponseRolePropagationDetails](docs/RolePropagationOngoingResponseRolePropagationDetails.md)
+ - [RolePropagationResponse](docs/RolePropagationResponse.md)
+ - [RolePropagationStatusResponse](docs/RolePropagationStatusResponse.md)
+ - [RolePropagationStatusResponseLaunchedBy](docs/RolePropagationStatusResponseLaunchedBy.md)
+ - [RolePropagationStatusResponseTerminatedBy](docs/RolePropagationStatusResponseTerminatedBy.md)
  - [RoleSummary](docs/RoleSummary.md)
  - [RoleTargetDto](docs/RoleTargetDto.md)
  - [SavedSearch](docs/SavedSearch.md)
