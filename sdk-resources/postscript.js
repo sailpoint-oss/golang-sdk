@@ -179,6 +179,31 @@ const fixFiles = async function (myArray) {
       continue
     }
 
+    // DEVREL-2463: Remove unused fmt import from enum files
+    // After making enums forward-compatible, fmt is no longer used
+    if (file.includes("model_") && file.endsWith(".go")) {
+      // Check if this is an enum file (contains "// All allowed values of" comment)
+      if (rawdata.includes("// All allowed values of") && rawdata.includes('"fmt"')) {
+        // Check if fmt is actually used (should not be after our changes)
+        if (!rawdata.includes("fmt.")) {
+          for (const line of rawDataArra) {
+            // Skip lines that import fmt
+            if (line.trim() === '"fmt"' || line.trim() === '"fmt",') {
+              madeChange = true;
+              console.log(`Removed unused fmt import from ${file}`);
+              continue; // Skip this line
+            }
+            fileOut.push(line);
+          }
+          
+          if (madeChange) {
+            rawDataArra = fileOut.slice();
+            fileOut = [];
+          }
+        }
+      }
+    }
+
     if (file.includes("api_default.go")) {
       let updatedData = rawdata.replace(
         /localVarPath\s*:=\s*localBasePath\s*\+\s*"\/\{path\}"\s*\n\s*localVarPath\s*=\s*strings\.Replace\(localVarPath,\s*"\{"\s*\+\s*"path"\s*\+\s*"\}",\s*url\.PathEscape\(parameterValueToString\(r\.path,\s*"path"\)\),\s*-1\)/g,
