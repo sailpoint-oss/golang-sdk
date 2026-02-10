@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ConnectedObjectType An enumeration of the types of Objects associated with a Governance Group. Supported object types are ACCESS_PROFILE, ROLE, SOD_POLICY and SOURCE.
@@ -48,18 +47,16 @@ func (v *ConnectedObjectType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectedObjectType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewConnectedObjectTypeFromValue returns a pointer to a valid ConnectedObjectType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewConnectedObjectTypeFromValue(v string) (*ConnectedObjectType, error) {
 	ev := ConnectedObjectType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ConnectedObjectType: valid values are %v", v, AllowedConnectedObjectTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // HttpAuthenticationType Defines the HTTP Authentication type. Additional values may be added in the future.  If *NO_AUTH* is selected, no extra information will be in HttpConfig.  If *BASIC_AUTH* is selected, HttpConfig will include BasicAuthConfig with Username and Password as strings.  If *BEARER_TOKEN* is selected, HttpConfig will include BearerTokenAuthConfig with Token as string.
@@ -46,18 +45,16 @@ func (v *HttpAuthenticationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid HttpAuthenticationType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewHttpAuthenticationTypeFromValue returns a pointer to a valid HttpAuthenticationType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewHttpAuthenticationTypeFromValue(v string) (*HttpAuthenticationType, error) {
 	ev := HttpAuthenticationType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for HttpAuthenticationType: valid values are %v", v, AllowedHttpAuthenticationTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

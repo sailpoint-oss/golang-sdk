@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // WorkItemStateManualWorkItems The state of a work item
@@ -52,18 +51,16 @@ func (v *WorkItemStateManualWorkItems) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid WorkItemStateManualWorkItems", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewWorkItemStateManualWorkItemsFromValue returns a pointer to a valid WorkItemStateManualWorkItems
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewWorkItemStateManualWorkItemsFromValue(v string) (*WorkItemStateManualWorkItems, error) {
 	ev := WorkItemStateManualWorkItems(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for WorkItemStateManualWorkItems: valid values are %v", v, AllowedWorkItemStateManualWorkItemsEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

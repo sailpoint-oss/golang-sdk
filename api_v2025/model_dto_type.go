@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // DtoType An enumeration of the types of DTOs supported within the IdentityNow infrastructure.
@@ -98,18 +97,16 @@ func (v *DtoType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DtoType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewDtoTypeFromValue returns a pointer to a valid DtoType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewDtoTypeFromValue(v string) (*DtoType, error) {
 	ev := DtoType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DtoType: valid values are %v", v, AllowedDtoTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ReassignmentTypeEnum Enum list containing types of Reassignment that can be found in the evaluate response.
@@ -48,18 +47,16 @@ func (v *ReassignmentTypeEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ReassignmentTypeEnum", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewReassignmentTypeEnumFromValue returns a pointer to a valid ReassignmentTypeEnum
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewReassignmentTypeEnumFromValue(v string) (*ReassignmentTypeEnum, error) {
 	ev := ReassignmentTypeEnum(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ReassignmentTypeEnum: valid values are %v", v, AllowedReassignmentTypeEnumEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

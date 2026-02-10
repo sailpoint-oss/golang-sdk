@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // LocaleOrigin An indicator of how the locale was selected. *DEFAULT* means the locale is the system default. *REQUEST* means the locale was selected from the request context (i.e., best match based on the *Accept-Language* header). Additional values may be added in the future without notice.
@@ -44,18 +43,16 @@ func (v *LocaleOrigin) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LocaleOrigin", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewLocaleOriginFromValue returns a pointer to a valid LocaleOrigin
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewLocaleOriginFromValue(v string) (*LocaleOrigin, error) {
 	ev := LocaleOrigin(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for LocaleOrigin: valid values are %v", v, AllowedLocaleOriginEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

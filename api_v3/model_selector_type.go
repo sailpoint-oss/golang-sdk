@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // SelectorType Enum representing the currently supported selector types.  LIST - the *values* array contains one or more distinct values.  RANGE - the *values* array contains two values: the start and end of the range, inclusive.  Additional values may be added in the future without notice. 
@@ -44,18 +43,16 @@ func (v *SelectorType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SelectorType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewSelectorTypeFromValue returns a pointer to a valid SelectorType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewSelectorTypeFromValue(v string) (*SelectorType, error) {
 	ev := SelectorType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SelectorType: valid values are %v", v, AllowedSelectorTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

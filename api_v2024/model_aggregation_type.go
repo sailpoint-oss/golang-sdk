@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // AggregationType Enum representing the currently available query languages for aggregations, which are used to perform calculations or groupings on search results.  Additional values may be added in the future without notice. 
@@ -44,18 +43,16 @@ func (v *AggregationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AggregationType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewAggregationTypeFromValue returns a pointer to a valid AggregationType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewAggregationTypeFromValue(v string) (*AggregationType, error) {
 	ev := AggregationType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AggregationType: valid values are %v", v, AllowedAggregationTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

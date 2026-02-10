@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RequestedItemStatusRequestState Indicates the state of an access request: * EXECUTING: The request is executing, which indicates the system is doing some processing. * REQUEST_COMPLETED: Indicates the request  has been completed. * CANCELLED: The request was cancelled with no user input. * TERMINATED: The request has been terminated before it was able to complete. * PROVISIONING_VERIFICATION_PENDING: The request has finished any approval steps and provisioning is waiting to be verified. * REJECTED: The request was rejected. * PROVISIONING_FAILED: The request has failed to complete. * NOT_ALL_ITEMS_PROVISIONED: One or more of the requested items failed to complete, but there were one or more  successes. * ERROR: An error occurred during request processing.
@@ -58,18 +57,16 @@ func (v *RequestedItemStatusRequestState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RequestedItemStatusRequestState", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRequestedItemStatusRequestStateFromValue returns a pointer to a valid RequestedItemStatusRequestState
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRequestedItemStatusRequestStateFromValue(v string) (*RequestedItemStatusRequestState, error) {
 	ev := RequestedItemStatusRequestState(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RequestedItemStatusRequestState: valid values are %v", v, AllowedRequestedItemStatusRequestStateEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

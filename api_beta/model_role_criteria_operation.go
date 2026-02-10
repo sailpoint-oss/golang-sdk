@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleCriteriaOperation An operation
@@ -54,18 +53,16 @@ func (v *RoleCriteriaOperation) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleCriteriaOperation", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleCriteriaOperationFromValue returns a pointer to a valid RoleCriteriaOperation
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleCriteriaOperationFromValue(v string) (*RoleCriteriaOperation, error) {
 	ev := RoleCriteriaOperation(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleCriteriaOperation: valid values are %v", v, AllowedRoleCriteriaOperationEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // MetricType Enum representing the currently supported metric aggregation types. Additional values may be added in the future without notice.
@@ -54,18 +53,16 @@ func (v *MetricType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MetricType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewMetricTypeFromValue returns a pointer to a valid MetricType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewMetricTypeFromValue(v string) (*MetricType, error) {
 	ev := MetricType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for MetricType: valid values are %v", v, AllowedMetricTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ManagedClientStatusEnum the model 'ManagedClientStatusEnum'
@@ -54,18 +53,16 @@ func (v *ManagedClientStatusEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ManagedClientStatusEnum", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewManagedClientStatusEnumFromValue returns a pointer to a valid ManagedClientStatusEnum
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewManagedClientStatusEnumFromValue(v string) (*ManagedClientStatusEnum, error) {
 	ev := ManagedClientStatusEnum(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ManagedClientStatusEnum: valid values are %v", v, AllowedManagedClientStatusEnumEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

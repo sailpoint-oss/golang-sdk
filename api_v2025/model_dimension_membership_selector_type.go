@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // DimensionMembershipSelectorType This enum characterizes the type of a Dimension's membership selector. Only the STANDARD type supported:  STANDARD: Indicates that Dimension membership is defined in terms of a criteria expression
@@ -42,18 +41,16 @@ func (v *DimensionMembershipSelectorType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DimensionMembershipSelectorType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewDimensionMembershipSelectorTypeFromValue returns a pointer to a valid DimensionMembershipSelectorType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewDimensionMembershipSelectorTypeFromValue(v string) (*DimensionMembershipSelectorType, error) {
 	ev := DimensionMembershipSelectorType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DimensionMembershipSelectorType: valid values are %v", v, AllowedDimensionMembershipSelectorTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

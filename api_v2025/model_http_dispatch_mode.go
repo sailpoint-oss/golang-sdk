@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // HttpDispatchMode HTTP response modes, i.e. SYNC, ASYNC, or DYNAMIC.
@@ -46,18 +45,16 @@ func (v *HttpDispatchMode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid HttpDispatchMode", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewHttpDispatchModeFromValue returns a pointer to a valid HttpDispatchMode
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewHttpDispatchModeFromValue(v string) (*HttpDispatchMode, error) {
 	ev := HttpDispatchMode(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for HttpDispatchMode: valid values are %v", v, AllowedHttpDispatchModeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

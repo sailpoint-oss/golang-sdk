@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Medium the model 'Medium'
@@ -50,18 +49,16 @@ func (v *Medium) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Medium", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewMediumFromValue returns a pointer to a valid Medium
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewMediumFromValue(v string) (*Medium, error) {
 	ev := Medium(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for Medium: valid values are %v", v, AllowedMediumEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

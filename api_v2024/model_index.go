@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Index Enum representing the currently supported indices. Additional values may be added in the future without notice.
@@ -54,18 +53,16 @@ func (v *Index) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Index", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewIndexFromValue returns a pointer to a valid Index
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewIndexFromValue(v string) (*Index, error) {
 	ev := Index(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for Index: valid values are %v", v, AllowedIndexEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

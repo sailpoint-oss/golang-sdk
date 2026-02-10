@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // SearchFilterType Enum representing the currently supported filter aggregation types. Additional values may be added in the future without notice.
@@ -42,18 +41,16 @@ func (v *SearchFilterType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SearchFilterType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewSearchFilterTypeFromValue returns a pointer to a valid SearchFilterType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewSearchFilterTypeFromValue(v string) (*SearchFilterType, error) {
 	ev := SearchFilterType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SearchFilterType: valid values are %v", v, AllowedSearchFilterTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

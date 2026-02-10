@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ProvisioningState Provisioning state of an account activity item
@@ -52,18 +51,16 @@ func (v *ProvisioningState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProvisioningState", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewProvisioningStateFromValue returns a pointer to a valid ProvisioningState
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewProvisioningStateFromValue(v string) (*ProvisioningState, error) {
 	ev := ProvisioningState(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ProvisioningState: valid values are %v", v, AllowedProvisioningStateEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

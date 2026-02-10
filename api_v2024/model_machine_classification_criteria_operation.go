@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // MachineClassificationCriteriaOperation An operation to perform on the classification criteria
@@ -54,18 +53,16 @@ func (v *MachineClassificationCriteriaOperation) UnmarshalJSON(src []byte) error
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MachineClassificationCriteriaOperation", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewMachineClassificationCriteriaOperationFromValue returns a pointer to a valid MachineClassificationCriteriaOperation
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewMachineClassificationCriteriaOperationFromValue(v string) (*MachineClassificationCriteriaOperation, error) {
 	ev := MachineClassificationCriteriaOperation(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for MachineClassificationCriteriaOperation: valid values are %v", v, AllowedMachineClassificationCriteriaOperationEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

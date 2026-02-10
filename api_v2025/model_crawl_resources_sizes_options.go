@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // CrawlResourcesSizesOptions Specifies when resource sizes should be calculated during a crawl operation. - 0: Unspecified - No specific option set. - 1: Never - Resource sizes are never calculated. - 2: Always - Resource sizes are always calculated. - 3: Secondcrawl - Resource sizes are calculated only on a second crawl.
@@ -48,18 +47,16 @@ func (v *CrawlResourcesSizesOptions) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CrawlResourcesSizesOptions", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewCrawlResourcesSizesOptionsFromValue returns a pointer to a valid CrawlResourcesSizesOptions
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewCrawlResourcesSizesOptionsFromValue(v int32) (*CrawlResourcesSizesOptions, error) {
 	ev := CrawlResourcesSizesOptions(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CrawlResourcesSizesOptions: valid values are %v", v, AllowedCrawlResourcesSizesOptionsEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

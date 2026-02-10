@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // InvocationStatusType Defines the Invocation type.  **TEST** The trigger was invocated as a test, either via the test subscription button in the UI or via the start test invocation API.  **REAL_TIME** The trigger subscription is live and was invocated by a real event in IdentityNow.
@@ -44,18 +43,16 @@ func (v *InvocationStatusType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InvocationStatusType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewInvocationStatusTypeFromValue returns a pointer to a valid InvocationStatusType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewInvocationStatusTypeFromValue(v string) (*InvocationStatusType, error) {
 	ev := InvocationStatusType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for InvocationStatusType: valid values are %v", v, AllowedInvocationStatusTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

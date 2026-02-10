@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ManagedClientType Managed Client type
@@ -48,18 +47,16 @@ func (v *ManagedClientType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ManagedClientType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewManagedClientTypeFromValue returns a pointer to a valid ManagedClientType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewManagedClientTypeFromValue(v string) (*ManagedClientType, error) {
 	ev := ManagedClientType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ManagedClientType: valid values are %v", v, AllowedManagedClientTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

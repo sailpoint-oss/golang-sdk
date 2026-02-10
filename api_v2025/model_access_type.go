@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // AccessType Access type of API Client indicating online or offline use
@@ -44,18 +43,16 @@ func (v *AccessType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccessType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewAccessTypeFromValue returns a pointer to a valid AccessType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewAccessTypeFromValue(v string) (*AccessType, error) {
 	ev := AccessType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccessType: valid values are %v", v, AllowedAccessTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

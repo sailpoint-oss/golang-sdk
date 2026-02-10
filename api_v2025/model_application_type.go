@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ApplicationType Specifies the type of application. Possible values:   1  - Sharepoint   8  - WindowsFileServer   9  - ActiveDirectory   11 - EmcCelerraCifs   15 - NetappCifs   20 - EmcIsilon   21 - GoogleDrive   24 - Box   25 - Dropbox   27 - OneDriveForBusiness   28 - SharepointOnline   29 - ExchangeOnline   33 - Cifs   35 - AwsS3   37 - Snowflake 
@@ -70,18 +69,16 @@ func (v *ApplicationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ApplicationType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewApplicationTypeFromValue returns a pointer to a valid ApplicationType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewApplicationTypeFromValue(v int32) (*ApplicationType, error) {
 	ev := ApplicationType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ApplicationType: valid values are %v", v, AllowedApplicationTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

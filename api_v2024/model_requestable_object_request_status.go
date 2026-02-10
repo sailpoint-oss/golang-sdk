@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RequestableObjectRequestStatus Status indicating the ability of an access request for the object to be made by or on behalf of the identity specified by *identity-id*. *AVAILABLE* indicates the object is available to request. *PENDING* indicates the object is unavailable because the identity has a pending request in flight. *ASSIGNED* indicates the object is unavailable because the identity already has the indicated role or access profile. If *identity-id* is not specified (allowed only for admin users), then status will be *AVAILABLE* for all results.
@@ -46,18 +45,16 @@ func (v *RequestableObjectRequestStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RequestableObjectRequestStatus", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRequestableObjectRequestStatusFromValue returns a pointer to a valid RequestableObjectRequestStatus
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRequestableObjectRequestStatusFromValue(v string) (*RequestableObjectRequestStatus, error) {
 	ev := RequestableObjectRequestStatus(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RequestableObjectRequestStatus: valid values are %v", v, AllowedRequestableObjectRequestStatusEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

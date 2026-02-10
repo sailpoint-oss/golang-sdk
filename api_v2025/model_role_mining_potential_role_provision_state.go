@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleMiningPotentialRoleProvisionState Provision state
@@ -48,18 +47,16 @@ func (v *RoleMiningPotentialRoleProvisionState) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleMiningPotentialRoleProvisionState", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleMiningPotentialRoleProvisionStateFromValue returns a pointer to a valid RoleMiningPotentialRoleProvisionState
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleMiningPotentialRoleProvisionStateFromValue(v string) (*RoleMiningPotentialRoleProvisionState, error) {
 	ev := RoleMiningPotentialRoleProvisionState(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleMiningPotentialRoleProvisionState: valid values are %v", v, AllowedRoleMiningPotentialRoleProvisionStateEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ScopeType An enumeration of the types of scope choices
@@ -48,18 +47,16 @@ func (v *ScopeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ScopeType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewScopeTypeFromValue returns a pointer to a valid ScopeType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewScopeTypeFromValue(v string) (*ScopeType, error) {
 	ev := ScopeType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ScopeType: valid values are %v", v, AllowedScopeTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

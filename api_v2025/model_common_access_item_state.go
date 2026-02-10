@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // CommonAccessItemState State of common access item.
@@ -44,18 +43,16 @@ func (v *CommonAccessItemState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CommonAccessItemState", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewCommonAccessItemStateFromValue returns a pointer to a valid CommonAccessItemState
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewCommonAccessItemStateFromValue(v string) (*CommonAccessItemState, error) {
 	ev := CommonAccessItemState(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CommonAccessItemState: valid values are %v", v, AllowedCommonAccessItemStateEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

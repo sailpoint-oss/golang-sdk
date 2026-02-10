@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // CommonAccessType The type of access item.
@@ -44,18 +43,16 @@ func (v *CommonAccessType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CommonAccessType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewCommonAccessTypeFromValue returns a pointer to a valid CommonAccessType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewCommonAccessTypeFromValue(v string) (*CommonAccessType, error) {
 	ev := CommonAccessType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CommonAccessType: valid values are %v", v, AllowedCommonAccessTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

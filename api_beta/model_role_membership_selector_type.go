@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleMembershipSelectorType This enum characterizes the type of a Role's membership selector. Only the following two are fully supported:  STANDARD: Indicates that Role membership is defined in terms of a criteria expression  IDENTITY_LIST: Indicates that Role membership is conferred on the specific identities listed
@@ -44,18 +43,16 @@ func (v *RoleMembershipSelectorType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleMembershipSelectorType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleMembershipSelectorTypeFromValue returns a pointer to a valid RoleMembershipSelectorType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleMembershipSelectorTypeFromValue(v string) (*RoleMembershipSelectorType, error) {
 	ev := RoleMembershipSelectorType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleMembershipSelectorType: valid values are %v", v, AllowedRoleMembershipSelectorTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

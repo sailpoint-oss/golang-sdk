@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // WorkItemTypeManualWorkItems The type of the work item
@@ -68,18 +67,16 @@ func (v *WorkItemTypeManualWorkItems) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid WorkItemTypeManualWorkItems", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewWorkItemTypeManualWorkItemsFromValue returns a pointer to a valid WorkItemTypeManualWorkItems
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewWorkItemTypeManualWorkItemsFromValue(v string) (*WorkItemTypeManualWorkItems, error) {
 	ev := WorkItemTypeManualWorkItems(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for WorkItemTypeManualWorkItems: valid values are %v", v, AllowedWorkItemTypeManualWorkItemsEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

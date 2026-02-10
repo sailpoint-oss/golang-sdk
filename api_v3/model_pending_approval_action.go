@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // PendingApprovalAction Enum represents action that is being processed on an approval.
@@ -46,18 +45,16 @@ func (v *PendingApprovalAction) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PendingApprovalAction", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewPendingApprovalActionFromValue returns a pointer to a valid PendingApprovalAction
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewPendingApprovalActionFromValue(v string) (*PendingApprovalAction, error) {
 	ev := PendingApprovalAction(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for PendingApprovalAction: valid values are %v", v, AllowedPendingApprovalActionEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

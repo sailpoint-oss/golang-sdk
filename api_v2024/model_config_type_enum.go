@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ConfigTypeEnum Enum list of valid work types that can be selected for a Reassignment Configuration
@@ -46,18 +45,16 @@ func (v *ConfigTypeEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConfigTypeEnum", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewConfigTypeEnumFromValue returns a pointer to a valid ConfigTypeEnum
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewConfigTypeEnumFromValue(v string) (*ConfigTypeEnum, error) {
 	ev := ConfigTypeEnum(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ConfigTypeEnum: valid values are %v", v, AllowedConfigTypeEnumEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

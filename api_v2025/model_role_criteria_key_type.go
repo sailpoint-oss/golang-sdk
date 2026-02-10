@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleCriteriaKeyType Indicates whether the associated criteria represents an expression on identity attributes, account attributes, or entitlements, respectively.
@@ -46,18 +45,16 @@ func (v *RoleCriteriaKeyType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleCriteriaKeyType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleCriteriaKeyTypeFromValue returns a pointer to a valid RoleCriteriaKeyType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleCriteriaKeyTypeFromValue(v string) (*RoleCriteriaKeyType, error) {
 	ev := RoleCriteriaKeyType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleCriteriaKeyType: valid values are %v", v, AllowedRoleCriteriaKeyTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

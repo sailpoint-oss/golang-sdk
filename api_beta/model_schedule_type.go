@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ScheduleType Enum representing the currently supported schedule types.  Additional values may be added in the future without notice. 
@@ -50,18 +49,16 @@ func (v *ScheduleType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ScheduleType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewScheduleTypeFromValue returns a pointer to a valid ScheduleType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewScheduleTypeFromValue(v string) (*ScheduleType, error) {
 	ev := ScheduleType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ScheduleType: valid values are %v", v, AllowedScheduleTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

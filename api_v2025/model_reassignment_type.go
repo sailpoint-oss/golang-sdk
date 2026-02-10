@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ReassignmentType The approval reassignment type.  * MANUAL_REASSIGNMENT: An approval with this reassignment type has been specifically reassigned by the approval task's owner, from their queue to someone else's.  * AUTOMATIC_REASSIGNMENT: An approval with this reassignment type has been automatically reassigned from another approver's queue, according to that approver's reassignment configuration. The approver's reassignment configuration may be set up to automatically reassign approval tasks for a defined (or possibly open-ended) period of time. * AUTO_ESCALATION: An approval with this reassignment type has been automatically reassigned from another approver's queue, according to the request's escalation configuration. For more information about escalation configuration, refer to [Setting Global Reminders and Escalation Policies](https://documentation.sailpoint.com/saas/help/requests/config_emails.html). * SELF_REVIEW_DELEGATION: An approval with this reassignment type has been automatically reassigned by the system to prevent self-review. This helps prevent situations like a requester being tasked with approving their own request. For more information about preventing self-review, refer to [Self-review Prevention](https://documentation.sailpoint.com/saas/help/users/work_reassignment.html#self-review-prevention) and [Preventing Self-approval](https://documentation.sailpoint.com/saas/help/requests/config_ap_roles.html#preventing-self-approval).
@@ -48,18 +47,16 @@ func (v *ReassignmentType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ReassignmentType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewReassignmentTypeFromValue returns a pointer to a valid ReassignmentType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewReassignmentTypeFromValue(v string) (*ReassignmentType, error) {
 	ev := ReassignmentType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ReassignmentType: valid values are %v", v, AllowedReassignmentTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

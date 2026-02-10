@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // NonEmployeeSchemaAttributeType Enum representing the type of data a schema attribute accepts.
@@ -50,18 +49,16 @@ func (v *NonEmployeeSchemaAttributeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NonEmployeeSchemaAttributeType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewNonEmployeeSchemaAttributeTypeFromValue returns a pointer to a valid NonEmployeeSchemaAttributeType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewNonEmployeeSchemaAttributeTypeFromValue(v string) (*NonEmployeeSchemaAttributeType, error) {
 	ev := NonEmployeeSchemaAttributeType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for NonEmployeeSchemaAttributeType: valid values are %v", v, AllowedNonEmployeeSchemaAttributeTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

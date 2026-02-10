@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // QueryType The type of query to use.  By default, the `SAILPOINT` query type is used, which requires the `query` object to be defined in the request body. To use the `queryDsl` or `typeAheadQuery` objects in the request, you must set the type to `DSL` or `TYPEAHEAD` accordingly. Additional values may be added in the future without notice.
@@ -48,18 +47,16 @@ func (v *QueryType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid QueryType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewQueryTypeFromValue returns a pointer to a valid QueryType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewQueryTypeFromValue(v string) (*QueryType, error) {
 	ev := QueryType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for QueryType: valid values are %v", v, AllowedQueryTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // AccountActivityItemOperation Represents an operation in an account activity item
@@ -60,18 +59,16 @@ func (v *AccountActivityItemOperation) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccountActivityItemOperation", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewAccountActivityItemOperationFromValue returns a pointer to a valid AccountActivityItemOperation
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewAccountActivityItemOperationFromValue(v string) (*AccountActivityItemOperation, error) {
 	ev := AccountActivityItemOperation(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccountActivityItemOperation: valid values are %v", v, AllowedAccountActivityItemOperationEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

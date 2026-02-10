@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // CertificationPhase The current phase of the campaign. * `STAGED`: The campaign is waiting to be activated. * `ACTIVE`: The campaign is active. * `SIGNED`: The reviewer has signed off on the campaign, and it is considered complete. 
@@ -46,18 +45,16 @@ func (v *CertificationPhase) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CertificationPhase", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewCertificationPhaseFromValue returns a pointer to a valid CertificationPhase
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewCertificationPhaseFromValue(v string) (*CertificationPhase, error) {
 	ev := CertificationPhase(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CertificationPhase: valid values are %v", v, AllowedCertificationPhaseEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

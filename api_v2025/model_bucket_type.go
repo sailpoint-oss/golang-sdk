@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // BucketType Enum representing the currently supported bucket aggregation types. Additional values may be added in the future without notice.
@@ -42,18 +41,16 @@ func (v *BucketType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BucketType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewBucketTypeFromValue returns a pointer to a valid BucketType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewBucketTypeFromValue(v string) (*BucketType, error) {
 	ev := BucketType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for BucketType: valid values are %v", v, AllowedBucketTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

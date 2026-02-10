@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // FilterType Enum representing the currently supported filter types. Additional values may be added in the future without notice.
@@ -46,18 +45,16 @@ func (v *FilterType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FilterType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewFilterTypeFromValue returns a pointer to a valid FilterType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewFilterTypeFromValue(v string) (*FilterType, error) {
 	ev := FilterType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for FilterType: valid values are %v", v, AllowedFilterTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

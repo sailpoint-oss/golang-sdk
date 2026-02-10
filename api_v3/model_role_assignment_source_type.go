@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleAssignmentSourceType Type which indicates how a particular Identity obtained a particular Role
@@ -44,18 +43,16 @@ func (v *RoleAssignmentSourceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleAssignmentSourceType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleAssignmentSourceTypeFromValue returns a pointer to a valid RoleAssignmentSourceType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleAssignmentSourceTypeFromValue(v string) (*RoleAssignmentSourceType, error) {
 	ev := RoleAssignmentSourceType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleAssignmentSourceType: valid values are %v", v, AllowedRoleAssignmentSourceTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

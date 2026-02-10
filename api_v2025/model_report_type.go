@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ReportType type of a Report
@@ -48,18 +47,16 @@ func (v *ReportType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ReportType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewReportTypeFromValue returns a pointer to a valid ReportType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewReportTypeFromValue(v string) (*ReportType, error) {
 	ev := ReportType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ReportType: valid values are %v", v, AllowedReportTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

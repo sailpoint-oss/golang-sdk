@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ExecutionStatus The current state of execution.
@@ -48,18 +47,16 @@ func (v *ExecutionStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ExecutionStatus", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewExecutionStatusFromValue returns a pointer to a valid ExecutionStatus
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewExecutionStatusFromValue(v string) (*ExecutionStatus, error) {
 	ev := ExecutionStatus(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ExecutionStatus: valid values are %v", v, AllowedExecutionStatusEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

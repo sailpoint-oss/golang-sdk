@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RequestableObjectType Currently supported requestable object types.
@@ -46,18 +45,16 @@ func (v *RequestableObjectType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RequestableObjectType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRequestableObjectTypeFromValue returns a pointer to a valid RequestableObjectType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRequestableObjectTypeFromValue(v string) (*RequestableObjectType, error) {
 	ev := RequestableObjectType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RequestableObjectType: valid values are %v", v, AllowedRequestableObjectTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

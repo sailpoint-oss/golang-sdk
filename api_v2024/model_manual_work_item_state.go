@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ManualWorkItemState Indicates the state of the request processing for this item: * PENDING: The request for this item is awaiting processing. * APPROVED: The request for this item has been approved. * REJECTED: The request for this item was rejected. * EXPIRED: The request for this item expired with no action taken. * CANCELLED: The request for this item was cancelled with no user action. * ARCHIVED: The request for this item has been archived after completion.
@@ -52,18 +51,16 @@ func (v *ManualWorkItemState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ManualWorkItemState", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewManualWorkItemStateFromValue returns a pointer to a valid ManualWorkItemState
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewManualWorkItemStateFromValue(v string) (*ManualWorkItemState, error) {
 	ev := ManualWorkItemState(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ManualWorkItemState: valid values are %v", v, AllowedManualWorkItemStateEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // CertificationDecision The decision to approve or revoke the review item
@@ -44,18 +43,16 @@ func (v *CertificationDecision) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CertificationDecision", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewCertificationDecisionFromValue returns a pointer to a valid CertificationDecision
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewCertificationDecisionFromValue(v string) (*CertificationDecision, error) {
 	ev := CertificationDecision(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CertificationDecision: valid values are %v", v, AllowedCertificationDecisionEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

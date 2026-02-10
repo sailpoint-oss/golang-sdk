@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // RoleMiningSessionScopingMethod The scoping method used in the current role mining session.
@@ -44,18 +43,16 @@ func (v *RoleMiningSessionScopingMethod) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoleMiningSessionScopingMethod", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewRoleMiningSessionScopingMethodFromValue returns a pointer to a valid RoleMiningSessionScopingMethod
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewRoleMiningSessionScopingMethodFromValue(v string) (*RoleMiningSessionScopingMethod, error) {
 	ev := RoleMiningSessionScopingMethod(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RoleMiningSessionScopingMethod: valid values are %v", v, AllowedRoleMiningSessionScopingMethodEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

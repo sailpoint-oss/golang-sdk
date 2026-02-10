@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // SubscriptionType Subscription type. **NOTE** If type is EVENTBRIDGE, then eventBridgeConfig is required. If type is HTTP, then httpConfig is required.
@@ -50,18 +49,16 @@ func (v *SubscriptionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SubscriptionType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewSubscriptionTypeFromValue returns a pointer to a valid SubscriptionType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewSubscriptionTypeFromValue(v string) (*SubscriptionType, error) {
 	ev := SubscriptionType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SubscriptionType: valid values are %v", v, AllowedSubscriptionTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

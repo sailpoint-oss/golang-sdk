@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ManagedClientStatusCode Status of a Managed Client
@@ -54,18 +53,16 @@ func (v *ManagedClientStatusCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ManagedClientStatusCode", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewManagedClientStatusCodeFromValue returns a pointer to a valid ManagedClientStatusCode
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewManagedClientStatusCodeFromValue(v string) (*ManagedClientStatusCode, error) {
 	ev := ManagedClientStatusCode(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ManagedClientStatusCode: valid values are %v", v, AllowedManagedClientStatusCodeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

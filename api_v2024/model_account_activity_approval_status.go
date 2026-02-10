@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // AccountActivityApprovalStatus The state of an approval status
@@ -52,18 +51,16 @@ func (v *AccountActivityApprovalStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccountActivityApprovalStatus", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewAccountActivityApprovalStatusFromValue returns a pointer to a valid AccountActivityApprovalStatus
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewAccountActivityApprovalStatusFromValue(v string) (*AccountActivityApprovalStatus, error) {
 	ev := AccountActivityApprovalStatus(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccountActivityApprovalStatus: valid values are %v", v, AllowedAccountActivityApprovalStatusEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

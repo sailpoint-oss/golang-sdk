@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ApprovalStatus Enum representing the non-employee request approval status
@@ -50,18 +49,16 @@ func (v *ApprovalStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ApprovalStatus", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewApprovalStatusFromValue returns a pointer to a valid ApprovalStatus
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewApprovalStatusFromValue(v string) (*ApprovalStatus, error) {
 	ev := ApprovalStatus(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ApprovalStatus: valid values are %v", v, AllowedApprovalStatusEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

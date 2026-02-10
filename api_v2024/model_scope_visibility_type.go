@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ScopeVisibilityType An enumeration of the types of scope visibility choices
@@ -48,18 +47,16 @@ func (v *ScopeVisibilityType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ScopeVisibilityType", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewScopeVisibilityTypeFromValue returns a pointer to a valid ScopeVisibilityType
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewScopeVisibilityTypeFromValue(v string) (*ScopeVisibilityType, error) {
 	ev := ScopeVisibilityType(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ScopeVisibilityType: valid values are %v", v, AllowedScopeVisibilityTypeEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

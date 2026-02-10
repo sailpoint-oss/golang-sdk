@@ -12,7 +12,6 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // ConfigTypeEnumCamel Enum list of valid work types that can be selected for a Reassignment Configuration
@@ -46,18 +45,16 @@ func (v *ConfigTypeEnumCamel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConfigTypeEnumCamel", value)
+	// Accept unknown values for forward compatibility
+	*v = enumTypeValue
+	return nil
 }
 
 // NewConfigTypeEnumCamelFromValue returns a pointer to a valid ConfigTypeEnumCamel
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
 func NewConfigTypeEnumCamelFromValue(v string) (*ConfigTypeEnumCamel, error) {
 	ev := ConfigTypeEnumCamel(v)
-	if ev.IsValid() {
-		return &ev, nil
-	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ConfigTypeEnumCamel: valid values are %v", v, AllowedConfigTypeEnumCamelEnumValues)
-	}
+	return &ev, nil
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
