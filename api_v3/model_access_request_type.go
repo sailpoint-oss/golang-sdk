@@ -14,19 +14,21 @@ import (
 	"encoding/json"
 )
 
-// AccessRequestType Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field.
+// AccessRequestType Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS type is used for updating access expiration dates or other access modifications.
 type AccessRequestType string
 
 // List of AccessRequestType
 const (
 	ACCESSREQUESTTYPE_GRANT_ACCESS AccessRequestType = "GRANT_ACCESS"
 	ACCESSREQUESTTYPE_REVOKE_ACCESS AccessRequestType = "REVOKE_ACCESS"
+	ACCESSREQUESTTYPE_MODIFY_ACCESS AccessRequestType = "MODIFY_ACCESS"
 )
 
 // All allowed values of AccessRequestType enum
 var AllowedAccessRequestTypeEnumValues = []AccessRequestType{
 	"GRANT_ACCESS",
 	"REVOKE_ACCESS",
+	"MODIFY_ACCESS",
 }
 
 func (v *AccessRequestType) UnmarshalJSON(src []byte) error {

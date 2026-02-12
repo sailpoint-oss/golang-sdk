@@ -3575,11 +3575,11 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **accessRequestId**: *eq, in, ge, gt, le, lt, ne, sw*
+          **accessRequestId**: *eq, ge, gt, le, lt, ne, sw*
 
-          **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **accountActivityItemId**: *eq, in, ge, gt, le, ne, sw*
 
-          **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **created**: *eq, ge, gt, le, lt, ne*
         example: accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"
         in: query
         name: filters
@@ -86618,10 +86618,12 @@ components:
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
-        can only have a single Identity ID in the requestedFor field.
+        can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS
+        type is used for updating access expiration dates or other access modifications.
       enum:
       - GRANT_ACCESS
       - REVOKE_ACCESS
+      - MODIFY_ACCESS
       - null
       example: GRANT_ACCESS
       nullable: true
