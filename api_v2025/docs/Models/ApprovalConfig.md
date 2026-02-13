@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalConfig', 'V2025ApprovalConfig
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TenantId** | Pointer to **string** | Tenant ID of the approval configuration. | [optional] 
-**Id** | Pointer to **string** | ID of the approval configuration. | [optional] 
-**Scope** | Pointer to **string** | The type/scope of the configuration. Ie DOMAIN_OBJECT, APPROVAL_TYPE, TENANT | [optional] 
+**Id** | **string** | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | 
+**Scope** | **string** | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | 
 **ReminderConfig** | Pointer to [**ApprovalConfigReminderConfig**](approval-config-reminder-config) |  | [optional] 
 **EscalationConfig** | Pointer to [**ApprovalConfigEscalationConfig**](approval-config-escalation-config) |  | [optional] 
 **TimeoutConfig** | Pointer to [**ApprovalConfigTimeoutConfig**](approval-config-timeout-config) |  | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewApprovalConfig
 
-`func NewApprovalConfig() *ApprovalConfig`
+`func NewApprovalConfig(id string, scope string, ) *ApprovalConfig`
 
 NewApprovalConfig instantiates a new ApprovalConfig object
 This constructor will assign default values to properties that have it defined,
@@ -90,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ApprovalConfig) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetScope
 
@@ -115,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
-### HasScope
-
-`func (o *ApprovalConfig) HasScope() bool`
-
-HasScope returns a boolean if a field has been set.
 
 ### GetReminderConfig
 

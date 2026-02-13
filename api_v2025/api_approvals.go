@@ -1362,24 +1362,10 @@ type ApiPutApprovalsConfigRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	approvalConfig *ApprovalConfig
-	id *string
-	scope *string
 }
 
 func (r ApiPutApprovalsConfigRequest) ApprovalConfig(approvalConfig ApprovalConfig) ApiPutApprovalsConfigRequest {
 	r.approvalConfig = &approvalConfig
-	return r
-}
-
-// The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-func (r ApiPutApprovalsConfigRequest) Id(id string) ApiPutApprovalsConfigRequest {
-	r.id = &id
-	return r
-}
-
-// The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-func (r ApiPutApprovalsConfigRequest) Scope(scope string) ApiPutApprovalsConfigRequest {
-	r.scope = &scope
 	return r
 }
 
@@ -1426,12 +1412,6 @@ func (a *ApprovalsAPIService) PutApprovalsConfigExecute(r ApiPutApprovalsConfigR
 		return localVarReturnValue, nil, reportError("approvalConfig is required and must be specified")
 	}
 
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
-	}
-	if r.scope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
