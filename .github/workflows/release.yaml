@@ -135,7 +135,8 @@ jobs:
         run: |
           LATEST="${{ steps.version.outputs.latest }}"
           NEW="${{ steps.version.outputs.new }}"
-          sed -e "s/${LATEST}/${NEW}/g" configuration.go > configuration.go.tmp && mv configuration.go.tmp configuration.go
+          LATEST_ESCAPED="${LATEST//./\\.}"
+          sed -e "s/${LATEST_ESCAPED}/${NEW}/g" configuration.go > configuration.go.tmp && mv configuration.go.tmp configuration.go
 
       - name: Build SDK
         uses: ./.github/actions/build-sdk
