@@ -12,8 +12,8 @@ package api_beta
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ListIdentitySnapshotAccessItems200ResponseInner - struct for ListIdentitySnapshotAccessItems200ResponseInner
