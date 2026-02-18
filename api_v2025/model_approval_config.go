@@ -12,7 +12,6 @@ package api_v2025
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApprovalConfig type satisfies the MappedNullable interface at compile time
@@ -23,9 +22,9 @@ type ApprovalConfig struct {
 	// Tenant ID of the approval configuration.
 	TenantId *string `json:"tenantId,omitempty"`
 	// The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	// The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-	Scope string `json:"scope"`
+	Scope *string `json:"scope,omitempty"`
 	ReminderConfig *ApprovalConfigReminderConfig `json:"reminderConfig,omitempty"`
 	EscalationConfig *ApprovalConfigEscalationConfig `json:"escalationConfig,omitempty"`
 	TimeoutConfig *ApprovalConfigTimeoutConfig `json:"timeoutConfig,omitempty"`
@@ -47,10 +46,8 @@ type _ApprovalConfig ApprovalConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApprovalConfig(id string, scope string) *ApprovalConfig {
+func NewApprovalConfig() *ApprovalConfig {
 	this := ApprovalConfig{}
-	this.Id = id
-	this.Scope = scope
 	return &this
 }
 
@@ -94,52 +91,68 @@ func (o *ApprovalConfig) SetTenantId(v string) {
 	o.TenantId = &v
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *ApprovalConfig) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalConfig) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApprovalConfig) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetScope returns the Scope field value
+// GetScope returns the Scope field value if set, zero value otherwise.
 func (o *ApprovalConfig) GetScope() string {
-	if o == nil {
+	if o == nil || IsNil(o.Scope) {
 		var ret string
 		return ret
 	}
-
-	return o.Scope
+	return *o.Scope
 }
 
-// GetScopeOk returns a tuple with the Scope field value
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalConfig) GetScopeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
-	return &o.Scope, true
+	return o.Scope, true
 }
 
-// SetScope sets field value
+// HasScope returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasScope() bool {
+	if o != nil && !IsNil(o.Scope) {
+		return true
+	}
+
+	return false
+}
+
+// SetScope gets a reference to the given string and assigns it to the Scope field.
 func (o *ApprovalConfig) SetScope(v string) {
-	o.Scope = v
+	o.Scope = &v
 }
 
 // GetReminderConfig returns the ReminderConfig field value if set, zero value otherwise.
@@ -411,8 +424,12 @@ func (o ApprovalConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	toSerialize["id"] = o.Id
-	toSerialize["scope"] = o.Scope
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Scope) {
+		toSerialize["scope"] = o.Scope
+	}
 	if !IsNil(o.ReminderConfig) {
 		toSerialize["reminderConfig"] = o.ReminderConfig
 	}
@@ -446,28 +463,6 @@ func (o ApprovalConfig) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ApprovalConfig) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"scope",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varApprovalConfig := _ApprovalConfig{}
 
 	err = json.Unmarshal(data, &varApprovalConfig)

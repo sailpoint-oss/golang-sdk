@@ -60,6 +60,20 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApprovalsAPIService DeleteApprovalConfigRequest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var scope string
+
+		httpRes, err := apiClient.ApprovalsAPI.DeleteApprovalConfigRequest(context.Background(), id, scope).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ApprovalsAPIService GetApproval", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -116,7 +130,10 @@ func Test_api_v2025_ApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalsAPI.PutApprovalsConfig(context.Background()).Execute()
+		var id string
+		var scope string
+
+		resp, httpRes, err := apiClient.ApprovalsAPI.PutApprovalsConfig(context.Background(), id, scope).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
