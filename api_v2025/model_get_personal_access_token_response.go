@@ -36,8 +36,10 @@ type GetPersonalAccessTokenResponse struct {
 	Managed *bool `json:"managed,omitempty"`
 	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
-	// Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.
-	ExpirationDate *SailPointTime `json:"expirationDate,omitempty"`
+	// Date and time, down to the millisecond, when this personal access token will expire. **Important:** When `expirationDate` is `null` or empty, the token will never expire (and `userAwareTokenNeverExpires` will be `true`). When `expirationDate` is provided, this value must be a future date. There is no upper limit on how far in the future the expiration date can be set.
+	ExpirationDate NullableTime `json:"expirationDate,omitempty"`
+	// Indicates that the user who created or updated this Personal Access Token is aware of and acknowledges the security implications of creating a token that will never expire. When `true`, this flag confirms that the user understood the security risks associated with non-expiring tokens at the time of creation or update. **Security Awareness:** This field serves as a record that the user acknowledged: * Tokens that never expire pose a greater security risk if compromised * Non-expiring tokens should be used only when necessary and with appropriate security measures * Regular rotation and monitoring of non-expiring tokens is recommended **Behavior:** * When `true`: Indicates that the user acknowledged they were creating a token that will never expire. When `expirationDate` is `null`, the token will never expire. * When `false`: The token follows normal expiration rules based on the `expirationDate` field and `accessTokenValiditySeconds` setting.
+	UserAwareTokenNeverExpires *bool `json:"userAwareTokenNeverExpires,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,6 +60,8 @@ func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, o
 	this.Managed = &managed
 	var accessTokenValiditySeconds int32 = 43200
 	this.AccessTokenValiditySeconds = &accessTokenValiditySeconds
+	var userAwareTokenNeverExpires bool = false
+	this.UserAwareTokenNeverExpires = &userAwareTokenNeverExpires
 	return &this
 }
 
@@ -70,6 +74,8 @@ func NewGetPersonalAccessTokenResponseWithDefaults() *GetPersonalAccessTokenResp
 	this.Managed = &managed
 	var accessTokenValiditySeconds int32 = 43200
 	this.AccessTokenValiditySeconds = &accessTokenValiditySeconds
+	var userAwareTokenNeverExpires bool = false
+	this.UserAwareTokenNeverExpires = &userAwareTokenNeverExpires
 	return &this
 }
 
@@ -301,36 +307,78 @@ func (o *GetPersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int32) 
 	o.AccessTokenValiditySeconds = &v
 }
 
-// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
+// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetPersonalAccessTokenResponse) GetExpirationDate() SailPointTime {
-	if o == nil || IsNil(o.ExpirationDate) {
+	if o == nil || IsNil(o.ExpirationDate.Get()) {
 		var ret SailPointTime
 		return ret
 	}
-	return *o.ExpirationDate
+	return *o.ExpirationDate.Get()
 }
 
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetPersonalAccessTokenResponse) GetExpirationDateOk() (*SailPointTime, bool) {
-	if o == nil || IsNil(o.ExpirationDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExpirationDate, true
+	return o.ExpirationDate.Get(), o.ExpirationDate.IsSet()
 }
 
 // HasExpirationDate returns a boolean if a field has been set.
 func (o *GetPersonalAccessTokenResponse) HasExpirationDate() bool {
-	if o != nil && !IsNil(o.ExpirationDate) {
+	if o != nil && o.ExpirationDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpirationDate gets a reference to the given SailPointTime and assigns it to the ExpirationDate field.
+// SetExpirationDate gets a reference to the given NullableTime and assigns it to the ExpirationDate field.
 func (o *GetPersonalAccessTokenResponse) SetExpirationDate(v SailPointTime) {
-	o.ExpirationDate = &v
+	o.ExpirationDate.Set(&v)
+}
+// SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil
+func (o *GetPersonalAccessTokenResponse) SetExpirationDateNil() {
+	o.ExpirationDate.Set(nil)
+}
+
+// UnsetExpirationDate ensures that no value is present for ExpirationDate, not even an explicit nil
+func (o *GetPersonalAccessTokenResponse) UnsetExpirationDate() {
+	o.ExpirationDate.Unset()
+}
+
+// GetUserAwareTokenNeverExpires returns the UserAwareTokenNeverExpires field value if set, zero value otherwise.
+func (o *GetPersonalAccessTokenResponse) GetUserAwareTokenNeverExpires() bool {
+	if o == nil || IsNil(o.UserAwareTokenNeverExpires) {
+		var ret bool
+		return ret
+	}
+	return *o.UserAwareTokenNeverExpires
+}
+
+// GetUserAwareTokenNeverExpiresOk returns a tuple with the UserAwareTokenNeverExpires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPersonalAccessTokenResponse) GetUserAwareTokenNeverExpiresOk() (*bool, bool) {
+	if o == nil || IsNil(o.UserAwareTokenNeverExpires) {
+		return nil, false
+	}
+	return o.UserAwareTokenNeverExpires, true
+}
+
+// HasUserAwareTokenNeverExpires returns a boolean if a field has been set.
+func (o *GetPersonalAccessTokenResponse) HasUserAwareTokenNeverExpires() bool {
+	if o != nil && !IsNil(o.UserAwareTokenNeverExpires) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAwareTokenNeverExpires gets a reference to the given bool and assigns it to the UserAwareTokenNeverExpires field.
+func (o *GetPersonalAccessTokenResponse) SetUserAwareTokenNeverExpires(v bool) {
+	o.UserAwareTokenNeverExpires = &v
 }
 
 func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
@@ -359,8 +407,11 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.AccessTokenValiditySeconds) {
 		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 	}
-	if !IsNil(o.ExpirationDate) {
-		toSerialize["expirationDate"] = o.ExpirationDate
+	if o.ExpirationDate.IsSet() {
+		toSerialize["expirationDate"] = o.ExpirationDate.Get()
+	}
+	if !IsNil(o.UserAwareTokenNeverExpires) {
+		toSerialize["userAwareTokenNeverExpires"] = o.UserAwareTokenNeverExpires
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -418,6 +469,7 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "managed")
 		delete(additionalProperties, "accessTokenValiditySeconds")
 		delete(additionalProperties, "expirationDate")
+		delete(additionalProperties, "userAwareTokenNeverExpires")
 		o.AdditionalProperties = additionalProperties
 	}
 

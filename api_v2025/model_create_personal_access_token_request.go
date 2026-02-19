@@ -27,8 +27,10 @@ type CreatePersonalAccessTokenRequest struct {
 	Scope []string `json:"scope,omitempty"`
 	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
 	AccessTokenValiditySeconds NullableInt32 `json:"accessTokenValiditySeconds,omitempty"`
-	// Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.
+	// Date and time, down to the millisecond, when this personal access token will expire. **Important:** When `expirationDate` is `null` or empty (not included in the request body), the token will never expire. **Required Validation:** If `expirationDate` is `null` or empty, `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule. **Valid Values (dependent on `userAwareTokenNeverExpires`):** * **When `userAwareTokenNeverExpires` is `true` (or required to be `true`):** `expirationDate` can be `null` or omitted from the request body. When `expirationDate` is `null` or empty, the token will never expire. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (after the current date/time). There is no upper limit on how far in the future the expiration date can be set. `expirationDate` cannot be `null` in this case. **Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). The token will never expire. * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted.
 	ExpirationDate NullableTime `json:"expirationDate,omitempty"`
+	// Indicates that the user creating this Personal Access Token is aware of and acknowledges the security implications of creating a token that will never expire. When set to `true`, this flag confirms that the user understands the security risks associated with non-expiring tokens. **Security Awareness:** Setting this field to `true` serves as an explicit acknowledgment that the user creating the token understands: * Tokens that never expire pose a greater security risk if compromised * Non-expiring tokens should be used only when necessary and with appropriate security measures * Regular rotation and monitoring of non-expiring tokens is recommended **Required Validation:** If `expirationDate` is `null` or empty (not included in the request body), `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule. **Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted. **Behavior:** * When set to `true`: Indicates that the user acknowledges they are creating a token that will never expire. When `expirationDate` is `null` or empty, the token will never expire. * When set to `false` or not specified (and `expirationDate` is provided): The token will follow normal expiration rules based on the `expirationDate` field and `accessTokenValiditySeconds` setting.
+	UserAwareTokenNeverExpires NullableBool `json:"userAwareTokenNeverExpires,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,6 +43,8 @@ type _CreatePersonalAccessTokenRequest CreatePersonalAccessTokenRequest
 func NewCreatePersonalAccessTokenRequest(name string) *CreatePersonalAccessTokenRequest {
 	this := CreatePersonalAccessTokenRequest{}
 	this.Name = name
+	var userAwareTokenNeverExpires bool = false
+	this.UserAwareTokenNeverExpires = *NewNullableBool(&userAwareTokenNeverExpires)
 	return &this
 }
 
@@ -49,6 +53,8 @@ func NewCreatePersonalAccessTokenRequest(name string) *CreatePersonalAccessToken
 // but it doesn't guarantee that properties required by API are set
 func NewCreatePersonalAccessTokenRequestWithDefaults() *CreatePersonalAccessTokenRequest {
 	this := CreatePersonalAccessTokenRequest{}
+	var userAwareTokenNeverExpires bool = false
+	this.UserAwareTokenNeverExpires = *NewNullableBool(&userAwareTokenNeverExpires)
 	return &this
 }
 
@@ -193,6 +199,48 @@ func (o *CreatePersonalAccessTokenRequest) UnsetExpirationDate() {
 	o.ExpirationDate.Unset()
 }
 
+// GetUserAwareTokenNeverExpires returns the UserAwareTokenNeverExpires field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreatePersonalAccessTokenRequest) GetUserAwareTokenNeverExpires() bool {
+	if o == nil || IsNil(o.UserAwareTokenNeverExpires.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.UserAwareTokenNeverExpires.Get()
+}
+
+// GetUserAwareTokenNeverExpiresOk returns a tuple with the UserAwareTokenNeverExpires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreatePersonalAccessTokenRequest) GetUserAwareTokenNeverExpiresOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UserAwareTokenNeverExpires.Get(), o.UserAwareTokenNeverExpires.IsSet()
+}
+
+// HasUserAwareTokenNeverExpires returns a boolean if a field has been set.
+func (o *CreatePersonalAccessTokenRequest) HasUserAwareTokenNeverExpires() bool {
+	if o != nil && o.UserAwareTokenNeverExpires.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAwareTokenNeverExpires gets a reference to the given NullableBool and assigns it to the UserAwareTokenNeverExpires field.
+func (o *CreatePersonalAccessTokenRequest) SetUserAwareTokenNeverExpires(v bool) {
+	o.UserAwareTokenNeverExpires.Set(&v)
+}
+// SetUserAwareTokenNeverExpiresNil sets the value for UserAwareTokenNeverExpires to be an explicit nil
+func (o *CreatePersonalAccessTokenRequest) SetUserAwareTokenNeverExpiresNil() {
+	o.UserAwareTokenNeverExpires.Set(nil)
+}
+
+// UnsetUserAwareTokenNeverExpires ensures that no value is present for UserAwareTokenNeverExpires, not even an explicit nil
+func (o *CreatePersonalAccessTokenRequest) UnsetUserAwareTokenNeverExpires() {
+	o.UserAwareTokenNeverExpires.Unset()
+}
+
 func (o CreatePersonalAccessTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -212,6 +260,9 @@ func (o CreatePersonalAccessTokenRequest) ToMap() (map[string]interface{}, error
 	}
 	if o.ExpirationDate.IsSet() {
 		toSerialize["expirationDate"] = o.ExpirationDate.Get()
+	}
+	if o.UserAwareTokenNeverExpires.IsSet() {
+		toSerialize["userAwareTokenNeverExpires"] = o.UserAwareTokenNeverExpires.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -260,6 +311,7 @@ func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "accessTokenValiditySeconds")
 		delete(additionalProperties, "expirationDate")
+		delete(additionalProperties, "userAwareTokenNeverExpires")
 		o.AdditionalProperties = additionalProperties
 	}
 
