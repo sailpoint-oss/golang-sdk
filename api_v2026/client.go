@@ -52,6 +52,16 @@ type APIClient struct {
 
 	// API Services
 
+	AccountDeletionRequestsAPI *AccountDeletionRequestsAPIService
+
+	DeleteAccountAPI *DeleteAccountAPIService
+
+	HumanAccountDeletionApprovalConfigAPI *HumanAccountDeletionApprovalConfigAPIService
+
+	MachineAccountDeletionApprovalConfigAPI *MachineAccountDeletionApprovalConfigAPIService
+
+	MachineSubtypeApprovalConfigAPI *MachineSubtypeApprovalConfigAPIService
+
 	TaskManagementAPI *TaskManagementAPIService
 }
 
@@ -71,6 +81,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccountDeletionRequestsAPI = (*AccountDeletionRequestsAPIService)(&c.common)
+	c.DeleteAccountAPI = (*DeleteAccountAPIService)(&c.common)
+	c.HumanAccountDeletionApprovalConfigAPI = (*HumanAccountDeletionApprovalConfigAPIService)(&c.common)
+	c.MachineAccountDeletionApprovalConfigAPI = (*MachineAccountDeletionApprovalConfigAPIService)(&c.common)
+	c.MachineSubtypeApprovalConfigAPI = (*MachineSubtypeApprovalConfigAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 
 	return c
@@ -422,7 +437,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.7")
+localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.8")
 
 	if ctx != nil {
 		// add context to the request

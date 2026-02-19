@@ -1,3 +1,310 @@
+- path: /account-requests/deletion
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/account-deletion-requests#get-account-deletion-requests
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          mine := true // bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to false) # bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Mine(mine).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.GetAccountDeletionRequests``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccountDeletionRequests`: []AccountActionRequestDto
+          fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.GetAccountDeletionRequests`: %v\n", resp)
+        }
+- path: /account-requests/account/{accountId}/delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/delete-account#delete-account-request
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          accountId := `ef38f94347e94562b5bb8424a56498d8` // string | Account ID. # string | Account ID.
+           accountdeleterequestinput := []byte(`{
+          "comments" : "Requesting account deletion request"
+        }`) // AccountDeleteRequestInput |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.DeleteAccountAPI.DeleteAccountRequest(context.Background(), accountId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.DeleteAccountAPI.DeleteAccountRequest(context.Background(), accountId).XSailPointExperimental(xSailPointExperimental).AccountDeleteRequestInput(accountDeleteRequestInput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DeleteAccountAPI.DeleteAccountRequest``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteAccountRequest`: AccountDeleteAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `DeleteAccountAPI.DeleteAccountRequest`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/approval-config/account-delete
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/human-account-deletion-approval-config#get-account-delete-approval-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sourceId := `ha38f94347e94562b5bb8424a56498d8` // string | The Source id # string | The Source id
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.HumanAccountDeletionApprovalConfigAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.HumanAccountDeletionApprovalConfigAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountDeletionApprovalConfigAPI.GetAccountDeleteApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccountDeleteApprovalConfig`: AccountDeleteConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountDeletionApprovalConfigAPI.GetAccountDeleteApprovalConfig`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/approval-config/account-delete
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/human-account-deletion-approval-config#update-account-deletion-approval-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | Human account source ID. # string | Human account source ID.
+          jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
+
+          
+          var jsonPatchOperation []v2026.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.HumanAccountDeletionApprovalConfigAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.HumanAccountDeletionApprovalConfigAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `HumanAccountDeletionApprovalConfigAPI.UpdateAccountDeletionApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAccountDeletionApprovalConfig`: AccountDeleteConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `HumanAccountDeletionApprovalConfigAPI.UpdateAccountDeletionApprovalConfig`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/approval-config/machine-account-delete
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-deletion-approval-config#get-machine-account-deletion-approval-config-by-source
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sourceId := `gt38f94347e94562b5bb8424a56498d8` // string | source id. # string | source id.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountDeletionApprovalConfigAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountDeletionApprovalConfigAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountDeletionApprovalConfigAPI.GetMachineAccountDeletionApprovalConfigBySource``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineAccountDeletionApprovalConfigBySource`: AccountDeleteConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountDeletionApprovalConfigAPI.GetMachineAccountDeletionApprovalConfigBySource`: %v\n", resp)
+        }
+- path: /sources/{sourceId}/approval-config/machine-account-delete
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-deletion-approval-config#update-machine-account-deletion-approval-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account source ID. # string | machine account source ID.
+          jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
+
+          
+          var jsonPatchOperation []v2026.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountDeletionApprovalConfigAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountDeletionApprovalConfigAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountDeletionApprovalConfigAPI.UpdateMachineAccountDeletionApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateMachineAccountDeletionApprovalConfig`: AccountDeleteConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountDeletionApprovalConfigAPI.UpdateMachineAccountDeletionApprovalConfig`: %v\n", resp)
+        }
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-subtype-approval-config#get-machine-account-deletion-sub-type-approval-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          subtypeId := `ef38f94347e94562b5bb8424a56498d8` // string | machine subtype id. # string | machine subtype id.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineSubtypeApprovalConfigAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.MachineSubtypeApprovalConfigAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineSubtypeApprovalConfigAPI.GetMachineAccountDeletionSubTypeApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineAccountDeletionSubTypeApprovalConfig`: MachineAccountSubTypeConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineSubtypeApprovalConfigAPI.GetMachineAccountDeletionSubTypeApprovalConfig`: %v\n", resp)
+        }
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-subtype-approval-config#update-machine-account-deletion-by-sub-type-approval-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
+          jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
+
+          
+          var jsonPatchOperation []v2026.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineSubtypeApprovalConfigAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.MachineSubtypeApprovalConfigAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineSubtypeApprovalConfigAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateMachineAccountDeletionBySubTypeApprovalConfig`: MachineAccountSubTypeConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineSubtypeApprovalConfigAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig`: %v\n", resp)
+        }
 - path: /task-status/pending-tasks
   method: Head
   xCodeSample:
