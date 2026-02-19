@@ -32,11 +32,1292 @@ security:
 tags:
 - name: Account Deletion Requests
 - name: Delete account
+- name: Entitlements
 - name: Human Account Deletion Approval Config
 - name: Machine Account Deletion Approval Config
 - name: Machine Subtype Approval Config
 - name: Task Management
 paths:
+  /entitlements:
+    get:
+      description: |-
+        This API returns a list of entitlements.
+
+        This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).
+
+        Any authenticated token can call this API.
+      operationId: listEntitlements
+      parameters:
+      - description: |-
+          If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+          Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
+        example: e554098913544630b5985e9042f5e44b
+        in: query
+        name: segmented-for-identity
+        required: false
+        schema:
+          type: string
+      - description: |-
+          If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+          Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
+        example: "041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649"
+        in: query
+        name: for-segment-ids
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: "Whether or not the response list should contain unsegmented\
+          \ Entitlements. If **for-segment-ids** and **segmented-for-identity** are\
+          \ both absent or empty, specifying **include-unsegmented=false** results\
+          \ in an error."
+        example: true
+        in: query
+        name: include-unsegmented
+        required: false
+        schema:
+          default: true
+          type: boolean
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw*
+
+          **type**: *eq, in*
+
+          **attribute**: *eq, in*
+
+          **value**: *eq, in, sw*
+
+          **source.id**: *eq, in*
+
+          **requestable**: *eq*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **owner.id**: *eq, in*
+
+          **tags**: *eq*
+
+          **privilegeLevel.direct**: *eq*
+        example: attribute eq "memberOf"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Entitlement'
+                type: array
+          description: List of entitlements
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      summary: Gets a list of entitlements.
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - Any
+  /entitlements/account/{accountId}/entitlements:
+    get:
+      description: "This API returns a list of all entitlements associated with the\
+        \ given account ID. The account must exist; if not found, the API returns\
+        \ 404."
+      operationId: getAccountEntitlements
+      parameters:
+      - description: The account ID to get entitlements for
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listAccounts
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - sourceSchemaObjectType: group
+                attribute: memberOf
+                attributes:
+                  GroupType: Security
+                  sAMAccountName: Account Payable
+                  GroupScope: Global
+                  objectguid: "{01a6e70b-9705-4155-a5c6-492a9bcc8c64}"
+                  objectSid: S-1-5-21-3585869415-1648031554-2909195034-1633
+                  cn: Account Payable
+                  msDS-PrincipalName: AUTOMATIONAD\Account Payable
+                value: "CN=Account Payable,OU=Finance,DC=xyz company"
+                description: "This entitlement allows users to access the accounts\
+                  \ payable module of the organization's financial management system.\
+                  \ Users can view, process, and approve invoices, manage vendor relationships,\
+                  \ and perform other accounts payable-related tasks."
+                privilegeLevel: null
+                cloudGoverned: false
+                source:
+                  type: SOURCE
+                  id: 2c9180877504c40e0175097d5ce707c8
+                  name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacca5e345f18bf7970cfbb8fec2
+                  name: identity 1
+                  type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
+                id: 2c91808c74ff913f0175097daa9d59cd
+                name: Account Payable
+                created: 2020-10-08T18:33:52.029Z
+                modified: 2021-01-19T16:53:35.707Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/Entitlement'
+                type: array
+          description: List of entitlements for the account
+          headers:
+            total-count:
+              description: Total number of results (when count is requested).
+              schema:
+                type: integer
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:read
+      summary: Get entitlements for an account
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /entitlements/bulk-update:
+    post:
+      description: |
+        This API applies an update to every entitlement of the list.
+
+
+        The number of entitlements to update is limited to 50 items maximum.
+
+
+        The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        examples of allowed operations :
+        `**{ "op": "replace", "path": "/requestable","value": boolean }**`
+        `**{ "op": "replace", "path": "/privilegeOverride/level","value": string }**`
+
+        A token with ORG_ADMIN or API authority is required to call this API.
+      operationId: updateEntitlementsInBulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntitlementBulkUpdateRequest'
+        required: true
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:update
+        - idn:source-checked:update
+      summary: Bulk update an entitlement list
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /entitlements/{id}:
+    get:
+      description: This API returns an entitlement by its ID.
+      operationId: getEntitlement
+      parameters:
+      - description: The entitlement ID
+        example: 2c91808874ff91550175097daaec161c
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listEntitlements
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                sourceSchemaObjectType: group
+                attribute: memberOf
+                attributes:
+                  GroupType: Security
+                  sAMAccountName: Account Payable
+                  GroupScope: Global
+                  objectguid: "{01a6e70b-9705-4155-a5c6-492a9bcc8c64}"
+                  objectSid: S-1-5-21-3585869415-1648031554-2909195034-1633
+                  cn: Account Payable
+                  msDS-PrincipalName: AUTOMATIONAD\Account Payable
+                value: "CN=Account Payable,OU=Finance,DC=xyz company"
+                description: "This entitlement allows users to access the accounts\
+                  \ payable module of the organization's financial management system.\
+                  \ Users can view, process, and approve invoices, manage vendor relationships,\
+                  \ and perform other accounts payable-related tasks."
+                privilegeLevel:
+                  direct: HIGH
+                  setBy: SAILPOINT_MIGRATION
+                  setByType: OVERRIDE
+                  inherited: null
+                  effective: HIGH
+                cloudGoverned: false
+                source:
+                  type: SOURCE
+                  id: 2c9180877504c40e0175097d5ce707c8
+                  name: EndToEnd-ADSource
+                owner:
+                  id: 2c9180858315595501831958427e5424
+                  name: Addie Smith
+                  type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
+                id: 2c91808c74ff913f0175097daa9d59cd
+                name: Account Payable
+                created: 2020-10-08T18:33:52.029Z
+                modified: 2021-01-19T16:53:35.707Z
+              schema:
+                $ref: '#/components/schemas/Entitlement'
+          description: An entitlement
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      summary: Get an entitlement
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: |-
+        This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+        The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**
+
+        When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+      operationId: patchEntitlement
+      parameters:
+      - description: ID of the entitlement to patch
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+        x-sailpoint-resource-operation-id: listEntitlements
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Assign an entitlement to a segment:
+                description: This example shows how to use patch to assign an entitlement
+                  to a segment by adding the segment's ID to the entitlement's segments
+                  array.
+                value:
+                - op: add
+                  path: /segments/-
+                  value: f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+              Assign an owner to an entitlement:
+                description: This example shows how to use patch to assign an owner
+                  to an entitlement by adding the owner's info to the entitlement.
+                value:
+                - op: add
+                  path: /owner
+                  value:
+                    type: IDENTITY
+                    id: 2c9180858315595501831958427e5424
+              Replace an owner for an entitlement:
+                description: This example shows how to use patch to replace an entitlement's
+                  owner by replacing the owner's info to the entitlement.
+                value:
+                - op: replace
+                  path: /owner
+                  value:
+                    type: IDENTITY
+                    id: 2c9180858315595501831958427e5424
+              Set entitlement manually updated fields:
+                description: "This example shows how to set an entitlement's manually\
+                  \ updated fields values with patch request. Values for all manually\
+                  \ updateable fields must be specified in the request. For now only\
+                  \ two entitlement fields support this: DISPLAY_NAME and DESCRIPTION."
+                value:
+                - op: replace
+                  path: /manuallyUpdatedFields
+                  value:
+                    DISPLAY_NAME: true
+                    DESCRIPTION: true
+              Add the description for an entitlement:
+                description: This example shows how to use patch to add a description
+                  for the entitlement.
+                value:
+                - op: add
+                  path: /description
+                  value: new description for the entitlement
+              Update the name for an entitlement:
+                description: This example shows how to use patch to update an entitlement's
+                  name.
+                value:
+                - op: replace
+                  path: /name
+                  value: entitlement new name
+              Override privilege level for an entitlement:
+                description: This example shows how to use patch to update an entitlement's
+                  privilege level.
+                value:
+                - op: replace
+                  path: /privilegeOverride/level
+                  value: MEDIUM
+            schema:
+              example:
+              - op: replace
+                path: /requestable
+                value: true
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entitlement'
+          description: Responds with the entitlement as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+        - idn:entitlement:update
+      summary: Patch an entitlement
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /entitlements/{id}/parents:
+    get:
+      description: This API returns a list of all parent entitlements of a given entitlement.
+      operationId: listEntitlementParents
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Entitlement Id
+        example: 2c91808c74ff913f0175097daa9d59cd
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listEntitlements
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw*
+
+          **type**: *eq, in*
+
+          **attribute**: *eq, in*
+
+          **value**: *eq, in, sw*
+
+          **source.id**: *eq, in*
+
+          **requestable**: *eq*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **owner.id**: *eq, in*
+
+          **tags**: *eq*
+
+          **privilegeLevel.direct**: *eq*
+        example: attribute eq "memberOf"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - sourceSchemaObjectType: group
+                attribute: memberOf
+                attributes:
+                  GroupType: Security
+                  sAMAccountName: Account Payable
+                  GroupScope: Global
+                  objectguid: "{01a6e70b-9705-4155-a5c6-492a9bcc8c64}"
+                  objectSid: S-1-5-21-3585869415-1648031554-2909195034-1633
+                  cn: Account Payable
+                  msDS-PrincipalName: AUTOMATIONAD\Account Payable
+                value: "CN=Account Payable,OU=Finance,DC=xyz company"
+                description: "This entitlement allows users to access the accounts\
+                  \ payable module of the organization's financial management system.\
+                  \ Users can view, process, and approve invoices, manage vendor relationships,\
+                  \ and perform other accounts payable-related tasks."
+                privilegeLevel:
+                  direct: HIGH
+                  setBy: SAILPOINT_MIGRATION
+                  setByType: OVERRIDE
+                  inherited: null
+                  effective: HIGH
+                cloudGoverned: false
+                source:
+                  type: SOURCE
+                  id: 2c9180877504c40e0175097d5ce707c8
+                  name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacca5e345f18bf7970cfbb8fec2
+                  name: identity 1
+                  type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
+                id: 2c91808c74ff913f0175097daa9d59cd
+                name: Account Payable
+                created: 2020-10-08T18:33:52.029Z
+                modified: 2021-01-19T16:53:35.707Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/Entitlement'
+                type: array
+          description: List of entitlements parents from an entitlement
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      summary: List of entitlements parents
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /entitlements/{id}/children:
+    get:
+      description: This API returns a list of all child entitlements of a given entitlement.
+      operationId: listEntitlementChildren
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Entitlement Id
+        example: 2c91808874ff91550175097daaec161c
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listEntitlements
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw*
+
+          **type**: *eq, in*
+
+          **attribute**: *eq, in*
+
+          **value**: *eq, in, sw*
+
+          **source.id**: *eq, in*
+
+          **requestable**: *eq*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **owner.id**: *eq, in*
+
+          **tags**: *eq*
+
+          **privilegeLevel.direct**: *eq*
+        example: attribute eq "memberOf"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - sourceSchemaObjectType: group
+                attribute: memberOf
+                attributes:
+                  GroupType: Security
+                  sAMAccountName: Account Payable
+                  GroupScope: Global
+                  objectguid: "{01a6e70b-9705-4155-a5c6-492a9bcc8c64}"
+                  objectSid: S-1-5-21-3585869415-1648031554-2909195034-1633
+                  cn: Account Payable
+                  msDS-PrincipalName: AUTOMATIONAD\Account Payable
+                value: "CN=Account Payable,OU=Finance,DC=xyz company"
+                description: "This entitlement allows users to access the accounts\
+                  \ payable module of the organization's financial management system.\
+                  \ Users can view, process, and approve invoices, manage vendor relationships,\
+                  \ and perform other accounts payable-related tasks."
+                privilegeLevel:
+                  direct: HIGH
+                  setBy: SAILPOINT_MIGRATION
+                  setByType: OVERRIDE
+                  inherited: null
+                  effective: HIGH
+                cloudGoverned: false
+                source:
+                  type: SOURCE
+                  id: 2c9180877504c40e0175097d5ce707c8
+                  name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacca5e345f18bf7970cfbb8fec2
+                  name: identity 1
+                  type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
+                id: 2c91808c74ff913f0175097daa9d59cd
+                name: Account Payable
+                created: 2020-10-08T18:33:52.029Z
+                modified: 2021-01-19T16:53:35.707Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/Entitlement'
+                type: array
+          description: List of entitlements children from an entitlement
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlements_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:read
+        - idn:entitlement:manage
+      summary: List of entitlements children
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /task-status/{id}:
     get:
       description: Get task status by task ID. Types of tasks include account and
@@ -84,14 +1365,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -224,14 +1505,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -371,7 +1652,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -414,7 +1695,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -534,7 +1815,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -559,7 +1840,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -671,7 +1952,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -696,7 +1977,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -830,7 +2111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -873,7 +2154,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -958,7 +2239,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1001,7 +2282,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1080,7 +2361,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1123,7 +2404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1263,14 +2544,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1346,7 +2627,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1389,7 +2670,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1517,14 +2798,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1596,7 +2877,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1639,7 +2920,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1764,14 +3045,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_401_response'
+                $ref: '#/components/schemas/listEntitlements_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTaskStatus_429_response'
+                $ref: '#/components/schemas/listEntitlements_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1805,6 +3086,19 @@ paths:
       - SOURCE_SUBADMIN
 components:
   parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
     limit:
       description: |-
         Max number of results to return.
@@ -1817,19 +3111,6 @@ components:
         default: 250
         format: int32
         maximum: 250
-        minimum: 0
-        type: integer
-    offset:
-      description: |-
-        Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 0
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        format: int32
         minimum: 0
         type: integer
     count:
@@ -1857,14 +3138,32 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/getTaskStatus_401_response'
+            $ref: '#/components/schemas/listEntitlements_401_response'
       description: "Unauthorized - Returned if there is no authorization header, or\
         \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
     "429":
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/getTaskStatus_429_response'
+            $ref: '#/components/schemas/listEntitlements_429_response'
       description: Too Many Requests - Returned in response to too many requests in
         a given period of time - rate limited. The Retry-After header in the response
         includes how long to wait before trying again.
@@ -1884,24 +3183,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
-    "403":
-      content:
-        application/json:
-          examples:
-            "403":
-              summary: An example of a 403 response object
-              value:
-                detailCode: 403 Forbidden
-                trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                messages:
-                - locale: en-US
-                  localeOrigin: DEFAULT
-                  text: The server understood the request but refuses to authorize
-                    it.
-          schema:
-            $ref: '#/components/schemas/ErrorResponseDto'
-      description: "Forbidden - Returned if the user you are running as, doesn't have\
-        \ access to this end-point."
     "404":
       content:
         application/json:
@@ -2417,6 +3698,298 @@ components:
           $ref: '#/components/schemas/ApprovalConfig'
       title: Account Delete Config
       type: object
+    Entitlement:
+      example:
+        owner:
+          name: john.doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
+        privilegeLevel:
+          effective: HIGH
+          inherited: HIGH
+          direct: HIGH
+          setByType: OVERRIDE
+          setBy: SAILPOINT_MIGRATION
+        created: 2020-10-08T18:33:52.029Z
+        description: "This entitlement allows users to access the accounts payable\
+          \ module of the organization's financial management system. Users can view,\
+          \ process, and approve invoices, manage vendor relationships, and perform\
+          \ other accounts payable-related tasks."
+        source:
+          name: ODS-AD-Source
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+        tags:
+        - tag1
+        - tag2
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        directPermissions:
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
+        name: Account Payable
+        modified: 2020-10-08T18:33:52.029Z
+        sourceSchemaObjectType: group
+        accessModelMetadata:
+          attributes:
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+        attributes:
+          fieldName: fieldValue
+        id: 2c91808874ff91550175097daaec161c
+        attribute: memberOf
+        requestable: true
+        value: "CN=Account Payable,OU=Finance,DC=xyz company"
+        cloudGoverned: true
+      properties:
+        id:
+          description: The entitlement id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        name:
+          description: The entitlement name
+          example: Account Payable
+          type: string
+        attribute:
+          description: The entitlement attribute name
+          example: memberOf
+          type: string
+        value:
+          description: The value of the entitlement
+          example: "CN=Account Payable,OU=Finance,DC=xyz company"
+          type: string
+        sourceSchemaObjectType:
+          description: The object type of the entitlement from the source schema
+          example: group
+          type: string
+        description:
+          description: The description of the entitlement
+          example: "This entitlement allows users to access the accounts payable module\
+            \ of the organization's financial management system. Users can view, process,\
+            \ and approve invoices, manage vendor relationships, and perform other\
+            \ accounts payable-related tasks."
+          nullable: true
+          type: string
+        privilegeLevel:
+          $ref: '#/components/schemas/Entitlement_privilegeLevel'
+        tags:
+          description: List of tags assigned to the entitlement
+          example:
+          - tag1
+          - tag2
+          items:
+            type: string
+          nullable: true
+          type: array
+        cloudGoverned:
+          default: false
+          description: True if the entitlement is cloud governed
+          example: true
+          type: boolean
+        requestable:
+          default: false
+          description: True if the entitlement is able to be directly requested
+          example: true
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/Entitlement_owner'
+        manuallyUpdatedFields:
+          additionalProperties: true
+          description: "A map of entitlement fields that have been manually updated.\
+            \ The key is the field name in UPPER_SNAKE_CASE format, and the value\
+            \ is true or false to indicate if the field has been updated."
+          example:
+            DISPLAY_NAME: true
+            DESCRIPTION: true
+          nullable: true
+          type: object
+        accessModelMetadata:
+          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
+        created:
+          description: Time when the entitlement was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the entitlement was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        source:
+          $ref: '#/components/schemas/Entitlement_source'
+        attributes:
+          additionalProperties: true
+          description: A map of free-form key-value pairs from the source system
+          example:
+            fieldName: fieldValue
+          type: object
+        segments:
+          description: "List of IDs of segments, if any, to which this Entitlement\
+            \ is assigned."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          nullable: true
+          type: array
+        directPermissions:
+          items:
+            $ref: '#/components/schemas/PermissionDto'
+          type: array
+      title: Entitlement
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    EntitlementBulkUpdateRequest:
+      description: Object for specifying the bulk update request
+      example:
+        entitlementIds:
+        - 2c91808a7624751a01762f19d665220d
+        - 2c91808a7624751a01762f19d67c220e
+        - 2c91808a7624751a01762f19d692220f
+        jsonPatch:
+        - op: replace
+          path: /requestable
+          value: false
+        - op: replace
+          path: /privilegeOverride/level
+          value: HIGH
+      properties:
+        entitlementIds:
+          description: List of entitlement ids to update
+          example:
+          - 2c91808a7624751a01762f19d665220d
+          - 2c91808a7624751a01762f19d67c220e
+          - 2c91808a7624751a01762f19d692220f
+          items:
+            type: string
+          maxItems: 50
+          type: array
+        jsonPatch:
+          example:
+          - op: replace
+            path: /requestable
+            value: false
+          - op: replace
+            path: /privilegeOverride/level
+            value: HIGH
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      required:
+      - entitlementIds
+      - jsonPatch
+      title: Entitlement Bulk Update Request
+      type: object
+    JsonPatchOperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
     TaskStatus:
       description: Details and current status of a specific task
       example:
@@ -2583,80 +4156,6 @@ components:
       - uniqueName
       title: Task Status
       type: object
-    ErrorResponseDto:
-      example:
-        causes:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        messages:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        detailCode: 400.1 Bad Request Content
-        trackingId: e7eab60924f64aa284175b9fa3309599
-      properties:
-        detailCode:
-          description: Fine-grained error code providing more detail of the error.
-          example: 400.1 Bad Request Content
-          type: string
-        trackingId:
-          description: Unique tracking id for the error.
-          example: e7eab60924f64aa284175b9fa3309599
-          type: string
-        messages:
-          description: Generic localized reason for error
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-        causes:
-          description: Plain-text descriptive reasons to provide additional detail
-            to the text provided in the messages field
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-      title: Error Response Dto
-      type: object
-    JsonPatchOperation:
-      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example:
-        op: replace
-        path: /description
-        value: New description
-      properties:
-        op:
-          description: The operation to be performed
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          example: replace
-          type: string
-        path:
-          description: A string JSON Pointer representing the target path to an element
-            to be affected by the operation
-          example: /description
-          type: string
-        value:
-          $ref: '#/components/schemas/JsonPatchOperation_value'
-      required:
-      - op
-      - path
-      title: Json Patch Operation
-      type: object
     IdentityReference:
       description: "Contains detailed information about an identity, including unique\
         \ identifier, name, email address, and registration status."
@@ -2730,6 +4229,156 @@ components:
           - "false"
           example: REJECTION
           type: string
+      type: object
+    EntitlementPrivilegeLevel:
+      properties:
+        direct:
+          description: Direct privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+        setBy:
+          description: User or process that set the privilege level
+          example: SAILPOINT_MIGRATION
+          type: string
+        setByType:
+          description: Method by which the privilege level was set
+          enum:
+          - OVERRIDE
+          - CUSTOM_CRITERIA
+          - CONNECTOR_CRITERIA
+          - SINGLE_LEVEL_CRITERIA
+          example: OVERRIDE
+          nullable: true
+          type: string
+        inherited:
+          description: "Inherited privilege level on the entitlement, if any"
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          nullable: true
+          type: string
+          example: null
+        effective:
+          description: Effective privilege level assigned to the entitlement
+          enum:
+          - HIGH
+          - LOW
+          - MEDIUM
+          - NONE
+          example: HIGH
+          type: string
+      title: Requested Account Ref
+      type: object
+    AccessModelMetadata:
+      description: Metadata that describes an access item
+      example:
+        multiselect: true
+        values:
+        - name: Development
+          value: development
+          status: active
+        - name: Development
+          value: development
+          status: active
+        name: CSP
+        description: Indicates the type of deployment environment of an access item.
+        type: governance
+        objectTypes:
+        - general
+        key: iscCsp
+        status: active
+      properties:
+        key:
+          description: Unique identifier for the metadata type
+          example: iscCsp
+          type: string
+        name:
+          description: Human readable name of the metadata type
+          example: CSP
+          type: string
+        multiselect:
+          default: false
+          description: Allows selecting multiple values
+          example: true
+          type: boolean
+        status:
+          description: The state of the metadata item
+          example: active
+          type: string
+        type:
+          description: The type of the metadata item
+          example: governance
+          type: string
+        objectTypes:
+          description: The types of objects
+          example:
+          - general
+          items:
+            example: general
+            type: string
+          type: array
+        description:
+          description: Describes the metadata item
+          example: Indicates the type of deployment environment of an access item.
+          type: string
+        values:
+          description: The value to assign to the metadata item
+          items:
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
+          type: array
+      title: Access Model Metadata
+      type: object
+    PermissionDto:
+      description: "Simplified DTO for the Permission objects stored in SailPoint's\
+        \ database. The data is aggregated from customer systems and is free-form,\
+        \ so its appearance can vary largely between different clients/customers."
+      example:
+        rights: HereIsRight1
+        target: SYS.GV_$TRANSACTION
+      properties:
+        rights:
+          description: All the rights (e.g. actions) that this permission allows on
+            the target
+          example: HereIsRight1
+          items:
+            example: SELECT
+            type: string
+          readOnly: true
+          type: array
+        target:
+          description: The target the permission would grants rights on.
+          example: SYS.GV_$TRANSACTION
+          readOnly: true
+          type: string
+      title: Permission DTO
+      type: object
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
       type: object
     Target:
       example:
@@ -2870,27 +4519,18 @@ components:
       - uniqueName
       title: Task Definition Summary
       type: object
-    ErrorMessageDto:
-      example:
-        localeOrigin: DEFAULT
-        text: The request was syntactically correct but its content is semantically
-          invalid.
-        locale: en-US
-      properties:
-        locale:
-          description: "The locale for the message text, a BCP 47 language tag."
-          example: en-US
-          nullable: true
-          type: string
-        localeOrigin:
-          $ref: '#/components/schemas/LocaleOrigin'
-        text:
-          description: Actual text of the error message in the indicated locale.
-          example: The request was syntactically correct but its content is semantically
-            invalid.
-          type: string
-      title: Error Message Dto
-      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
     LocalizedMessage:
       description: Localized error message to indicate a failed invocation or error
         if any.
@@ -2912,19 +4552,7 @@ components:
       - message
       title: Localized Message
       type: object
-    LocaleOrigin:
-      description: "An indicator of how the locale was selected. *DEFAULT* means the\
-        \ locale is the system default. *REQUEST* means the locale was selected from\
-        \ the request context (i.e., best match based on the *Accept-Language* header).\
-        \ Additional values may be added in the future without notice."
-      enum:
-      - DEFAULT
-      - REQUEST
-      - null
-      example: DEFAULT
-      nullable: true
-      type: string
-    getTaskStatus_401_response:
+    listEntitlements_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
       properties:
@@ -2933,7 +4561,7 @@ components:
           example: "JWT validation failed: JWT is expired"
           type: object
       type: object
-    getTaskStatus_429_response:
+    listEntitlements_429_response:
       example:
         message: ' Rate Limit Exceeded '
       properties:
@@ -3082,6 +4710,100 @@ components:
         approvalConfig:
           $ref: '#/components/schemas/ApprovalConfig'
       type: object
+    Entitlement_privilegeLevel:
+      allOf:
+      - $ref: '#/components/schemas/EntitlementPrivilegeLevel'
+      - description: Privilege level of the entitlement
+        nullable: true
+        type: object
+      example:
+        effective: HIGH
+        inherited: HIGH
+        direct: HIGH
+        setByType: OVERRIDE
+        setBy: SAILPOINT_MIGRATION
+    Entitlement_owner:
+      description: The identity that owns the entitlement
+      example:
+        name: john.doe
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The identity ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: The type of object
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: The display name of the identity
+          example: john.doe
+          type: string
+      type: object
+    Entitlement_accessModelMetadata:
+      description: Additional data to classify the entitlement
+      example:
+        attributes:
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          key: iscCsp
+          status: active
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          key: iscCsp
+          status: active
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/AccessModelMetadata'
+          type: array
+      type: object
+    Entitlement_source:
+      example:
+        name: ODS-AD-Source
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
+      properties:
+        id:
+          description: The source ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: "The source type, will always be \"SOURCE\""
+          example: SOURCE
+          type: string
+        name:
+          description: The source name
+          example: ODS-AD-Source
+          type: string
+      type: object
     array_inner:
       anyOf:
       - type: string
@@ -3114,6 +4836,26 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
+    AccessModelMetadata_values_inner:
+      description: An individual value to assign to the metadata item
+      example:
+        name: Development
+        value: development
+        status: active
+      properties:
+        value:
+          description: The value to assign to the metdata item
+          example: development
+          type: string
+        name:
+          description: Display name of the value
+          example: Development
+          type: string
+        status:
+          description: The status of the individual value
+          example: active
+          type: string
+      type: object
     TaskStatusMessage_parameters_inner:
       anyOf:
       - type: object

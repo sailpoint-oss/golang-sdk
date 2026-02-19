@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetTaskStatus429Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetTaskStatus429Response{}
+// checks if the ListEntitlements429Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListEntitlements429Response{}
 
-// GetTaskStatus429Response struct for GetTaskStatus429Response
-type GetTaskStatus429Response struct {
+// ListEntitlements429Response struct for ListEntitlements429Response
+type ListEntitlements429Response struct {
 	// A message describing the error
 	Message map[string]interface{} `json:"message,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GetTaskStatus429Response GetTaskStatus429Response
+type _ListEntitlements429Response ListEntitlements429Response
 
-// NewGetTaskStatus429Response instantiates a new GetTaskStatus429Response object
+// NewListEntitlements429Response instantiates a new ListEntitlements429Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetTaskStatus429Response() *GetTaskStatus429Response {
-	this := GetTaskStatus429Response{}
+func NewListEntitlements429Response() *ListEntitlements429Response {
+	this := ListEntitlements429Response{}
 	return &this
 }
 
-// NewGetTaskStatus429ResponseWithDefaults instantiates a new GetTaskStatus429Response object
+// NewListEntitlements429ResponseWithDefaults instantiates a new ListEntitlements429Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetTaskStatus429ResponseWithDefaults() *GetTaskStatus429Response {
-	this := GetTaskStatus429Response{}
+func NewListEntitlements429ResponseWithDefaults() *ListEntitlements429Response {
+	this := ListEntitlements429Response{}
 	return &this
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *GetTaskStatus429Response) GetMessage() map[string]interface{} {
+func (o *ListEntitlements429Response) GetMessage() map[string]interface{} {
 	if o == nil || IsNil(o.Message) {
 		var ret map[string]interface{}
 		return ret
@@ -54,7 +54,7 @@ func (o *GetTaskStatus429Response) GetMessage() map[string]interface{} {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetTaskStatus429Response) GetMessageOk() (map[string]interface{}, bool) {
+func (o *ListEntitlements429Response) GetMessageOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Message) {
 		return map[string]interface{}{}, false
 	}
@@ -62,7 +62,7 @@ func (o *GetTaskStatus429Response) GetMessageOk() (map[string]interface{}, bool)
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *GetTaskStatus429Response) HasMessage() bool {
+func (o *ListEntitlements429Response) HasMessage() bool {
 	if o != nil && !IsNil(o.Message) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *GetTaskStatus429Response) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given map[string]interface{} and assigns it to the Message field.
-func (o *GetTaskStatus429Response) SetMessage(v map[string]interface{}) {
+func (o *ListEntitlements429Response) SetMessage(v map[string]interface{}) {
 	o.Message = v
 }
 
-func (o GetTaskStatus429Response) MarshalJSON() ([]byte, error) {
+func (o ListEntitlements429Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o GetTaskStatus429Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetTaskStatus429Response) ToMap() (map[string]interface{}, error) {
+func (o ListEntitlements429Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
@@ -96,16 +96,16 @@ func (o GetTaskStatus429Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetTaskStatus429Response) UnmarshalJSON(data []byte) (err error) {
-	varGetTaskStatus429Response := _GetTaskStatus429Response{}
+func (o *ListEntitlements429Response) UnmarshalJSON(data []byte) (err error) {
+	varListEntitlements429Response := _ListEntitlements429Response{}
 
-	err = json.Unmarshal(data, &varGetTaskStatus429Response)
+	err = json.Unmarshal(data, &varListEntitlements429Response)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetTaskStatus429Response(varGetTaskStatus429Response)
+	*o = ListEntitlements429Response(varListEntitlements429Response)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -117,38 +117,38 @@ func (o *GetTaskStatus429Response) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableGetTaskStatus429Response struct {
-	value *GetTaskStatus429Response
+type NullableListEntitlements429Response struct {
+	value *ListEntitlements429Response
 	isSet bool
 }
 
-func (v NullableGetTaskStatus429Response) Get() *GetTaskStatus429Response {
+func (v NullableListEntitlements429Response) Get() *ListEntitlements429Response {
 	return v.value
 }
 
-func (v *NullableGetTaskStatus429Response) Set(val *GetTaskStatus429Response) {
+func (v *NullableListEntitlements429Response) Set(val *ListEntitlements429Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetTaskStatus429Response) IsSet() bool {
+func (v NullableListEntitlements429Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetTaskStatus429Response) Unset() {
+func (v *NullableListEntitlements429Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetTaskStatus429Response(val *GetTaskStatus429Response) *NullableGetTaskStatus429Response {
-	return &NullableGetTaskStatus429Response{value: val, isSet: true}
+func NewNullableListEntitlements429Response(val *ListEntitlements429Response) *NullableListEntitlements429Response {
+	return &NullableListEntitlements429Response{value: val, isSet: true}
 }
 
-func (v NullableGetTaskStatus429Response) MarshalJSON() ([]byte, error) {
+func (v NullableListEntitlements429Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetTaskStatus429Response) UnmarshalJSON(src []byte) error {
+func (v *NullableListEntitlements429Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

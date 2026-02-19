@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetTaskStatus401Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetTaskStatus401Response{}
+// checks if the ListEntitlements401Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListEntitlements401Response{}
 
-// GetTaskStatus401Response struct for GetTaskStatus401Response
-type GetTaskStatus401Response struct {
+// ListEntitlements401Response struct for ListEntitlements401Response
+type ListEntitlements401Response struct {
 	// A message describing the error
 	Error map[string]interface{} `json:"error,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GetTaskStatus401Response GetTaskStatus401Response
+type _ListEntitlements401Response ListEntitlements401Response
 
-// NewGetTaskStatus401Response instantiates a new GetTaskStatus401Response object
+// NewListEntitlements401Response instantiates a new ListEntitlements401Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetTaskStatus401Response() *GetTaskStatus401Response {
-	this := GetTaskStatus401Response{}
+func NewListEntitlements401Response() *ListEntitlements401Response {
+	this := ListEntitlements401Response{}
 	return &this
 }
 
-// NewGetTaskStatus401ResponseWithDefaults instantiates a new GetTaskStatus401Response object
+// NewListEntitlements401ResponseWithDefaults instantiates a new ListEntitlements401Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetTaskStatus401ResponseWithDefaults() *GetTaskStatus401Response {
-	this := GetTaskStatus401Response{}
+func NewListEntitlements401ResponseWithDefaults() *ListEntitlements401Response {
+	this := ListEntitlements401Response{}
 	return &this
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
-func (o *GetTaskStatus401Response) GetError() map[string]interface{} {
+func (o *ListEntitlements401Response) GetError() map[string]interface{} {
 	if o == nil || IsNil(o.Error) {
 		var ret map[string]interface{}
 		return ret
@@ -54,7 +54,7 @@ func (o *GetTaskStatus401Response) GetError() map[string]interface{} {
 
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetTaskStatus401Response) GetErrorOk() (map[string]interface{}, bool) {
+func (o *ListEntitlements401Response) GetErrorOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Error) {
 		return map[string]interface{}{}, false
 	}
@@ -62,7 +62,7 @@ func (o *GetTaskStatus401Response) GetErrorOk() (map[string]interface{}, bool) {
 }
 
 // HasError returns a boolean if a field has been set.
-func (o *GetTaskStatus401Response) HasError() bool {
+func (o *ListEntitlements401Response) HasError() bool {
 	if o != nil && !IsNil(o.Error) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *GetTaskStatus401Response) HasError() bool {
 }
 
 // SetError gets a reference to the given map[string]interface{} and assigns it to the Error field.
-func (o *GetTaskStatus401Response) SetError(v map[string]interface{}) {
+func (o *ListEntitlements401Response) SetError(v map[string]interface{}) {
 	o.Error = v
 }
 
-func (o GetTaskStatus401Response) MarshalJSON() ([]byte, error) {
+func (o ListEntitlements401Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o GetTaskStatus401Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetTaskStatus401Response) ToMap() (map[string]interface{}, error) {
+func (o ListEntitlements401Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
@@ -96,16 +96,16 @@ func (o GetTaskStatus401Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetTaskStatus401Response) UnmarshalJSON(data []byte) (err error) {
-	varGetTaskStatus401Response := _GetTaskStatus401Response{}
+func (o *ListEntitlements401Response) UnmarshalJSON(data []byte) (err error) {
+	varListEntitlements401Response := _ListEntitlements401Response{}
 
-	err = json.Unmarshal(data, &varGetTaskStatus401Response)
+	err = json.Unmarshal(data, &varListEntitlements401Response)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetTaskStatus401Response(varGetTaskStatus401Response)
+	*o = ListEntitlements401Response(varListEntitlements401Response)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -117,38 +117,38 @@ func (o *GetTaskStatus401Response) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableGetTaskStatus401Response struct {
-	value *GetTaskStatus401Response
+type NullableListEntitlements401Response struct {
+	value *ListEntitlements401Response
 	isSet bool
 }
 
-func (v NullableGetTaskStatus401Response) Get() *GetTaskStatus401Response {
+func (v NullableListEntitlements401Response) Get() *ListEntitlements401Response {
 	return v.value
 }
 
-func (v *NullableGetTaskStatus401Response) Set(val *GetTaskStatus401Response) {
+func (v *NullableListEntitlements401Response) Set(val *ListEntitlements401Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetTaskStatus401Response) IsSet() bool {
+func (v NullableListEntitlements401Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetTaskStatus401Response) Unset() {
+func (v *NullableListEntitlements401Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetTaskStatus401Response(val *GetTaskStatus401Response) *NullableGetTaskStatus401Response {
-	return &NullableGetTaskStatus401Response{value: val, isSet: true}
+func NewNullableListEntitlements401Response(val *ListEntitlements401Response) *NullableListEntitlements401Response {
+	return &NullableListEntitlements401Response{value: val, isSet: true}
 }
 
-func (v NullableGetTaskStatus401Response) MarshalJSON() ([]byte, error) {
+func (v NullableListEntitlements401Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetTaskStatus401Response) UnmarshalJSON(src []byte) error {
+func (v *NullableListEntitlements401Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

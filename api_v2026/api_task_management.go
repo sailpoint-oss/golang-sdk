@@ -179,7 +179,7 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetTaskStatus401Response
+			var v ListEntitlements401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,7 +201,7 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetTaskStatus429Response
+			var v ListEntitlements429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -385,7 +385,7 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetTaskStatus401Response
+			var v ListEntitlements401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -407,7 +407,7 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetTaskStatus429Response
+			var v ListEntitlements429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -559,7 +559,7 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetTaskStatus401Response
+			var v ListEntitlements401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -570,7 +570,7 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetTaskStatus429Response
+			var v ListEntitlements429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -778,7 +778,7 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetTaskStatus401Response
+			var v ListEntitlements401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -811,7 +811,7 @@ func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetTaskStatus429Response
+			var v ListEntitlements429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1003,7 +1003,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetTaskStatus401Response
+			var v ListEntitlements401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1014,7 +1014,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetTaskStatus429Response
+			var v ListEntitlements429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
