@@ -22710,6 +22710,365 @@
           // response from `PatchPersonalAccessToken`: GetPersonalAccessTokenResponse
           fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.PatchPersonalAccessToken`: %v\n", resp)
         }
+- path: /criteria/privilege
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria#create-custom-privilege-criteria
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           createprivilegecriteriarequest := []byte(`{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }`) // CreatePrivilegeCriteriaRequest | Create custom privilege criteria request body.
+
+          
+          var createPrivilegeCriteriaRequest v2025.CreatePrivilegeCriteriaRequest
+          if err := json.Unmarshal(createprivilegecriteriarequest, &createPrivilegeCriteriaRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteria(context.Background()).CreatePrivilegeCriteriaRequest(createPrivilegeCriteriaRequest).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteria(context.Background()).CreatePrivilegeCriteriaRequest(createPrivilegeCriteriaRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteria``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCustomPrivilegeCriteria`: PrivilegeCriteriaDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteria`: %v\n", resp)
+        }
+- path: /criteria/privilege/{criteriaId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria#delete-custom-privilege-criteria
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          criteriaId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the custom privilege criteria to delete. # string | The Id of the custom privilege criteria to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2025.PrivilegeCriteriaAPI.DeleteCustomPrivilegeCriteria(context.Background(), criteriaId).Execute()
+          //r, err := apiClient.V2025.PrivilegeCriteriaAPI.DeleteCustomPrivilegeCriteria(context.Background(), criteriaId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.DeleteCustomPrivilegeCriteria``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /criteria/privilege/{criteriaId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria#get-privilege-criteria
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          criteriaId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria record to return. # string | The Id of the privilege criteria record to return.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.GetPrivilegeCriteria(context.Background(), criteriaId).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.GetPrivilegeCriteria(context.Background(), criteriaId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.GetPrivilegeCriteria``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPrivilegeCriteria`: PrivilegeCriteriaDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.GetPrivilegeCriteria`: %v\n", resp)
+        }
+- path: /criteria/privilege
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria#list-privilege-criteria
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          filters := `type eq "CUSTOM" and sourceId eq "c42c45d8d7c04d2da64d215cd8c32f21"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  **sourceId**: *eq*  **privilegeLevel**: *eq*  **Supported composite operators**: *and*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=type eq \"CUSTOM\" and sourceId eq \"2c91809175e6c63f0175fb5570220569\"` # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  **sourceId**: *eq*  **privilegeLevel**: *eq*  **Supported composite operators**: *and*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=type eq \"CUSTOM\" and sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.ListPrivilegeCriteria(context.Background()).Filters(filters).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.ListPrivilegeCriteria(context.Background()).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.ListPrivilegeCriteria``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListPrivilegeCriteria`: []PrivilegeCriteriaDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.ListPrivilegeCriteria`: %v\n", resp)
+        }
+- path: /criteria/privilege/{criteriaId}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria#put-custom-privilege-criteria-value
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          criteriaId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria record to return. # string | The Id of the privilege criteria record to return.
+           privilegecriteriadto := []byte(`{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "id" : "2c9180867817ac4d017817c491119a20",
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }`) // PrivilegeCriteriaDTO | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+
+          
+          var privilegeCriteriaDTO v2025.PrivilegeCriteriaDTO
+          if err := json.Unmarshal(privilegecriteriadto, &privilegeCriteriaDTO); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValue(context.Background(), criteriaId).PrivilegeCriteriaDTO(privilegeCriteriaDTO).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValue(context.Background(), criteriaId).PrivilegeCriteriaDTO(privilegeCriteriaDTO).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValue``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutCustomPrivilegeCriteriaValue`: PrivilegeCriteriaDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValue`: %v\n", resp)
+        }
+- path: /criteria-config/privilege/{criteriaConfigId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria-configuration#get-privilege-criteria-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          criteriaConfigId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria configuration record to retrieve. # string | The Id of the privilege criteria configuration record to retrieve.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfig(context.Background(), criteriaConfigId).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfig(context.Background(), criteriaConfigId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPrivilegeCriteriaConfig`: PrivilegeCriteriaConfigDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfig`: %v\n", resp)
+        }
+- path: /criteria-config/privilege
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria-configuration#list-privilege-criteria-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          filters := `sourceId eq "c42c45d8d7c04d2da64d215cd8c32f21"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=sourceId eq \"2c91809175e6c63f0175fb5570220569\"` # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfig(context.Background()).Filters(filters).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfig(context.Background()).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListPrivilegeCriteriaConfig`: []PrivilegeCriteriaConfigDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfig`: %v\n", resp)
+        }
+- path: /criteria-config/privilege/{criteriaConfigId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/privilege-criteria-configuration#patch-privilege-criteria-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          criteriaConfigId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria configuration to update. # string | The Id of the privilege criteria configuration to update.
+          requestbody := []byte(`[{op=replace, path=/config/privilegeClassificationMode, value=SINGLE_PRIVILEGE_LEVEL}, {op=replace, path=/config/criteriaPrivilegeLevel/connectorMediumEnabled, value=true}]`) // []map[string]interface{} | A list of criteria configuration operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var requestBody []v2025.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfig(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.V2025.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfig(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchPrivilegeCriteriaConfig`: PrivilegeCriteriaConfigDTO
+          fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfig`: %v\n", resp)
+        }
 - path: /public-identities
   method: Get
   xCodeSample:

@@ -190,6 +190,10 @@ type APIClient struct {
 
 	PersonalAccessTokensAPI *PersonalAccessTokensAPIService
 
+	PrivilegeCriteriaAPI *PrivilegeCriteriaAPIService
+
+	PrivilegeCriteriaConfigurationAPI *PrivilegeCriteriaConfigurationAPIService
+
 	PublicIdentitiesAPI *PublicIdentitiesAPIService
 
 	PublicIdentitiesConfigAPI *PublicIdentitiesConfigAPIService
@@ -338,6 +342,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PasswordPoliciesAPI = (*PasswordPoliciesAPIService)(&c.common)
 	c.PasswordSyncGroupsAPI = (*PasswordSyncGroupsAPIService)(&c.common)
 	c.PersonalAccessTokensAPI = (*PersonalAccessTokensAPIService)(&c.common)
+	c.PrivilegeCriteriaAPI = (*PrivilegeCriteriaAPIService)(&c.common)
+	c.PrivilegeCriteriaConfigurationAPI = (*PrivilegeCriteriaConfigurationAPIService)(&c.common)
 	c.PublicIdentitiesAPI = (*PublicIdentitiesAPIService)(&c.common)
 	c.PublicIdentitiesConfigAPI = (*PublicIdentitiesConfigAPIService)(&c.common)
 	c.ReportsDataExtractionAPI = (*ReportsDataExtractionAPIService)(&c.common)
@@ -719,7 +725,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.11")
+localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.12")
 
 	if ctx != nil {
 		// add context to the request

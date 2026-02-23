@@ -73,6 +73,8 @@ api_password_management.go
 api_password_policies.go
 api_password_sync_groups.go
 api_personal_access_tokens.go
+api_privilege_criteria.go
+api_privilege_criteria_configuration.go
 api_public_identities.go
 api_public_identities_config.go
 api_reports_data_extraction.go
@@ -549,6 +551,9 @@ docs/CreateOAuthClientRequest.md
 docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
+docs/CreatePrivilegeCriteriaRequest.md
+docs/CreatePrivilegeCriteriaRequestGroupsInner.md
+docs/CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner.md
 docs/CreateSavedSearchRequest.md
 docs/CreateScheduleRequest.md
 docs/CreateScheduledSearchRequest.md
@@ -1067,6 +1072,14 @@ docs/PersonalAccessTokensAPIdeveloperSite_code_examples.yaml
 docs/PreApprovalTriggerDetails.md
 docs/PreferencesDto.md
 docs/PreviewDataSourceResponse.md
+docs/PrivilegeCriteriaAPI.md
+docs/PrivilegeCriteriaAPIdeveloperSite_code_examples.yaml
+docs/PrivilegeCriteriaConfigDTO.md
+docs/PrivilegeCriteriaConfigurationAPI.md
+docs/PrivilegeCriteriaConfigurationAPIdeveloperSite_code_examples.yaml
+docs/PrivilegeCriteriaDTO.md
+docs/PrivilegeCriteriaDTOGroupsInner.md
+docs/PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner.md
 docs/ProcessIdentitiesRequest.md
 docs/ProcessingDetails.md
 docs/Product.md
@@ -1978,6 +1991,9 @@ model_create_o_auth_client_request.go
 model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
+model_create_privilege_criteria_request.go
+model_create_privilege_criteria_request_groups_inner.go
+model_create_privilege_criteria_request_groups_inner_criteria_items_inner.go
 model_create_saved_search_request.go
 model_create_schedule_request.go
 model_create_scheduled_search_request.go
@@ -2407,6 +2423,10 @@ model_permission_dto.go
 model_pre_approval_trigger_details.go
 model_preferences_dto.go
 model_preview_data_source_response.go
+model_privilege_criteria_config_dto.go
+model_privilege_criteria_dto.go
+model_privilege_criteria_dto_groups_inner.go
+model_privilege_criteria_dto_groups_inner_criteria_items_inner.go
 model_process_identities_request.go
 model_processing_details.go
 model_product.go
@@ -2930,6 +2950,8 @@ test/api_password_management_test.go
 test/api_password_policies_test.go
 test/api_password_sync_groups_test.go
 test/api_personal_access_tokens_test.go
+test/api_privilege_criteria_configuration_test.go
+test/api_privilege_criteria_test.go
 test/api_public_identities_config_test.go
 test/api_public_identities_test.go
 test/api_reports_data_extraction_test.go
