@@ -30,6 +30,8 @@ type ApiGetAccountEntitlementsRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	searchAfter *string
+	sorters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -47,6 +49,18 @@ func (r ApiGetAccountEntitlementsRequest) Offset(offset int32) ApiGetAccountEnti
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiGetAccountEntitlementsRequest) Count(count bool) ApiGetAccountEntitlementsRequest {
 	r.count = &count
+	return r
+}
+
+// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
+func (r ApiGetAccountEntitlementsRequest) SearchAfter(searchAfter string) ApiGetAccountEntitlementsRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+func (r ApiGetAccountEntitlementsRequest) Sorters(sorters string) ApiGetAccountEntitlementsRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -110,6 +124,12 @@ func (a *EntitlementsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEn
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -405,6 +425,7 @@ type ApiListEntitlementChildrenRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	searchAfter *string
 	sorters *string
 	filters *string
 }
@@ -427,7 +448,13 @@ func (r ApiListEntitlementChildrenRequest) Count(count bool) ApiListEntitlementC
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
+func (r ApiListEntitlementChildrenRequest) SearchAfter(searchAfter string) ApiListEntitlementChildrenRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
 func (r ApiListEntitlementChildrenRequest) Sorters(sorters string) ApiListEntitlementChildrenRequest {
 	r.sorters = &sorters
 	return r
@@ -499,6 +526,9 @@ func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitle
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -632,6 +662,7 @@ type ApiListEntitlementParentsRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	searchAfter *string
 	sorters *string
 	filters *string
 }
@@ -654,7 +685,13 @@ func (r ApiListEntitlementParentsRequest) Count(count bool) ApiListEntitlementPa
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
+func (r ApiListEntitlementParentsRequest) SearchAfter(searchAfter string) ApiListEntitlementParentsRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
 func (r ApiListEntitlementParentsRequest) Sorters(sorters string) ApiListEntitlementParentsRequest {
 	r.sorters = &sorters
 	return r
@@ -726,6 +763,9 @@ func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlem
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -861,17 +901,18 @@ type ApiListEntitlementsRequest struct {
 	offset *int32
 	limit *int32
 	count *bool
+	searchAfter *string
 	sorters *string
 	filters *string
 }
 
-// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
+// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
 func (r ApiListEntitlementsRequest) SegmentedForIdentity(segmentedForIdentity string) ApiListEntitlementsRequest {
 	r.segmentedForIdentity = &segmentedForIdentity
 	return r
 }
 
-// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
+// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
 func (r ApiListEntitlementsRequest) ForSegmentIds(forSegmentIds string) ApiListEntitlementsRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
@@ -901,6 +942,12 @@ func (r ApiListEntitlementsRequest) Count(count bool) ApiListEntitlementsRequest
 	return r
 }
 
+// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
+func (r ApiListEntitlementsRequest) SearchAfter(searchAfter string) ApiListEntitlementsRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
 func (r ApiListEntitlementsRequest) Sorters(sorters string) ApiListEntitlementsRequest {
 	r.sorters = &sorters
@@ -920,11 +967,7 @@ func (r ApiListEntitlementsRequest) Execute() ([]Entitlement, *http.Response, er
 /*
 ListEntitlements Gets a list of entitlements.
 
-This API returns a list of entitlements.
-
-This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).
-
-Any authenticated token can call this API.
+This API returns a list of entitlements. Any authenticated token can call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListEntitlementsRequest
@@ -986,6 +1029,9 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
