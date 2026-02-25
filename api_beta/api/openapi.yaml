@@ -3003,16 +3003,18 @@ paths:
       - SOURCE_SUBADMIN
   /access-requests:
     post:
-      description: "Use this API to submit an access request in Identity Security\
+      description: ">**Required scopes:** ORG_ADMIN requires idn:access-request:manage.\
+        \ USER level requires idn:access-request-self:manage (Personal Access Token\
+        \ only).\n\nUse this API to submit an access request in Identity Security\
         \ Cloud (ISC), where it follows any ISC approval processes.\n\n:::info\nThe\
         \ ability to request access using this API is constrained by the Access Request\
-        \ Segments defined in the API token’s user context.\n:::\n\nAccess requests\
+        \ Segments defined in the API token's user context.\n:::\n\nAccess requests\
         \ are processed asynchronously by ISC. A successful response from this endpoint\
         \ means that the request\nhas been submitted to ISC and is queued for processing.\
-        \ Because this endpoint is asynchronous, it doesn't return an error\nif you\
+        \ Because this endpoint is asynchronous, it does not return an error\nif you\
         \ submit duplicate access requests in quick succession or submit an access\
         \ request for access that is already in progress, approved, or rejected.\n\
-        \nIt's best practice to check for any existing access requests that reference\
+        \nIt is best practice to check for any existing access requests that reference\
         \ the same access items before submitting a new access request. This can\n\
         be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status)\
         \ or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals)\
@@ -3135,6 +3137,8 @@ paths:
       security:
       - userAuth:
         - idn:access-request:manage
+      - userAuth:
+        - idn:access-request-self:manage
       summary: Submit access request
       tags:
       - Access Requests
