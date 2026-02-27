@@ -3003,9 +3003,7 @@ paths:
       - SOURCE_SUBADMIN
   /access-requests:
     post:
-      description: ">**Required scopes:** ORG_ADMIN requires idn:access-request:manage.\
-        \ USER level requires idn:access-request-self:manage (Personal Access Token\
-        \ only).\n\nUse this API to submit an access request in Identity Security\
+      description: "Use this API to submit an access request in Identity Security\
         \ Cloud (ISC), where it follows any ISC approval processes.\n\n:::info\nThe\
         \ ability to request access using this API is constrained by the Access Request\
         \ Segments defined in the API token's user context.\n:::\n\nAccess requests\
@@ -3137,7 +3135,6 @@ paths:
       security:
       - userAuth:
         - idn:access-request:manage
-      - userAuth:
         - idn:access-request-self:manage
       summary: Submit access request
       tags:
@@ -3145,6 +3142,9 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - USER
+      x-sailpoint-securityDescription: |
+        idn:access-request:manage is for ORG_ADMIN level.
+        idn:access-request-self:manage is for USER level.
   /access-requests/cancel:
     post:
       description: |-
