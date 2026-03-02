@@ -37,8 +37,11 @@ type RoleMiningPotentialRole struct {
 	IdentityDistribution []RoleMiningIdentityDistribution `json:"identityDistribution,omitempty"`
 	// The list of ids in a potential role.
 	IdentityIds []string `json:"identityIds,omitempty"`
+	// The status for this identity group which can be OBTAINED or COMPRESSED
+	IdentityGroupStatus NullableString `json:"identityGroupStatus,omitempty"`
 	// Name of the potential role.
 	Name *string `json:"name,omitempty"`
+	PotentialRoleRef NullableRoleMiningPotentialRolePotentialRoleRef `json:"potentialRoleRef,omitempty"`
 	ProvisionState *RoleMiningPotentialRoleProvisionState `json:"provisionState,omitempty"`
 	// The quality of a potential role.
 	Quality *int32 `json:"quality,omitempty"`
@@ -65,6 +68,8 @@ type _RoleMiningPotentialRole RoleMiningPotentialRole
 // will change when the set of required properties is changed
 func NewRoleMiningPotentialRole() *RoleMiningPotentialRole {
 	this := RoleMiningPotentialRole{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -73,6 +78,8 @@ func NewRoleMiningPotentialRole() *RoleMiningPotentialRole {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleMiningPotentialRoleWithDefaults() *RoleMiningPotentialRole {
 	this := RoleMiningPotentialRole{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -376,6 +383,48 @@ func (o *RoleMiningPotentialRole) SetIdentityIds(v []string) {
 	o.IdentityIds = v
 }
 
+// GetIdentityGroupStatus returns the IdentityGroupStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleMiningPotentialRole) GetIdentityGroupStatus() string {
+	if o == nil || IsNil(o.IdentityGroupStatus.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityGroupStatus.Get()
+}
+
+// GetIdentityGroupStatusOk returns a tuple with the IdentityGroupStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleMiningPotentialRole) GetIdentityGroupStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IdentityGroupStatus.Get(), o.IdentityGroupStatus.IsSet()
+}
+
+// HasIdentityGroupStatus returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRole) HasIdentityGroupStatus() bool {
+	if o != nil && o.IdentityGroupStatus.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityGroupStatus gets a reference to the given NullableString and assigns it to the IdentityGroupStatus field.
+func (o *RoleMiningPotentialRole) SetIdentityGroupStatus(v string) {
+	o.IdentityGroupStatus.Set(&v)
+}
+// SetIdentityGroupStatusNil sets the value for IdentityGroupStatus to be an explicit nil
+func (o *RoleMiningPotentialRole) SetIdentityGroupStatusNil() {
+	o.IdentityGroupStatus.Set(nil)
+}
+
+// UnsetIdentityGroupStatus ensures that no value is present for IdentityGroupStatus, not even an explicit nil
+func (o *RoleMiningPotentialRole) UnsetIdentityGroupStatus() {
+	o.IdentityGroupStatus.Unset()
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRole) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -406,6 +455,48 @@ func (o *RoleMiningPotentialRole) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *RoleMiningPotentialRole) SetName(v string) {
 	o.Name = &v
+}
+
+// GetPotentialRoleRef returns the PotentialRoleRef field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleMiningPotentialRole) GetPotentialRoleRef() RoleMiningPotentialRolePotentialRoleRef {
+	if o == nil || IsNil(o.PotentialRoleRef.Get()) {
+		var ret RoleMiningPotentialRolePotentialRoleRef
+		return ret
+	}
+	return *o.PotentialRoleRef.Get()
+}
+
+// GetPotentialRoleRefOk returns a tuple with the PotentialRoleRef field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleMiningPotentialRole) GetPotentialRoleRefOk() (*RoleMiningPotentialRolePotentialRoleRef, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PotentialRoleRef.Get(), o.PotentialRoleRef.IsSet()
+}
+
+// HasPotentialRoleRef returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRole) HasPotentialRoleRef() bool {
+	if o != nil && o.PotentialRoleRef.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPotentialRoleRef gets a reference to the given NullableRoleMiningPotentialRolePotentialRoleRef and assigns it to the PotentialRoleRef field.
+func (o *RoleMiningPotentialRole) SetPotentialRoleRef(v RoleMiningPotentialRolePotentialRoleRef) {
+	o.PotentialRoleRef.Set(&v)
+}
+// SetPotentialRoleRefNil sets the value for PotentialRoleRef to be an explicit nil
+func (o *RoleMiningPotentialRole) SetPotentialRoleRefNil() {
+	o.PotentialRoleRef.Set(nil)
+}
+
+// UnsetPotentialRoleRef ensures that no value is present for PotentialRoleRef, not even an explicit nil
+func (o *RoleMiningPotentialRole) UnsetPotentialRoleRef() {
+	o.PotentialRoleRef.Unset()
 }
 
 // GetProvisionState returns the ProvisionState field value if set, zero value otherwise.
@@ -743,8 +834,14 @@ func (o RoleMiningPotentialRole) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
+	if o.IdentityGroupStatus.IsSet() {
+		toSerialize["identityGroupStatus"] = o.IdentityGroupStatus.Get()
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if o.PotentialRoleRef.IsSet() {
+		toSerialize["potentialRoleRef"] = o.PotentialRoleRef.Get()
 	}
 	if !IsNil(o.ProvisionState) {
 		toSerialize["provisionState"] = o.ProvisionState
@@ -804,7 +901,9 @@ func (o *RoleMiningPotentialRole) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "identityCount")
 		delete(additionalProperties, "identityDistribution")
 		delete(additionalProperties, "identityIds")
+		delete(additionalProperties, "identityGroupStatus")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "potentialRoleRef")
 		delete(additionalProperties, "provisionState")
 		delete(additionalProperties, "quality")
 		delete(additionalProperties, "roleId")

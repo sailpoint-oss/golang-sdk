@@ -3921,11 +3921,11 @@ type ApiPatchPotentialRoleSessionRequest struct {
 	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
-	jsonPatchOperation *[]JsonPatchOperation
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
-func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchPotentialRoleSessionRequest {
-	r.jsonPatchOperation = &jsonPatchOperation
+func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchPotentialRoleSessionRequest {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -3934,7 +3934,7 @@ func (r ApiPatchPotentialRoleSessionRequest) Execute() (map[string]interface{}, 
 }
 
 /*
-PatchPotentialRoleSession Update a potential role in session
+PatchPotentialRoleSession Update potential role in session
 
 This method updates an existing potential role using the role mining session id and the potential role summary id.
 
@@ -3986,8 +3986,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPot
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatchOperation == nil {
-		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4008,7 +4008,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPot
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatchOperation
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4115,11 +4115,11 @@ type ApiPatchRoleMiningPotentialRoleRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
 	potentialRoleId string
-	patchRoleMiningPotentialRoleRequestInner *[]PatchRoleMiningPotentialRoleRequestInner
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
-func (r ApiPatchRoleMiningPotentialRoleRequest) PatchRoleMiningPotentialRoleRequestInner(patchRoleMiningPotentialRoleRequestInner []PatchRoleMiningPotentialRoleRequestInner) ApiPatchRoleMiningPotentialRoleRequest {
-	r.patchRoleMiningPotentialRoleRequestInner = &patchRoleMiningPotentialRoleRequestInner
+func (r ApiPatchRoleMiningPotentialRoleRequest) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchRoleMiningPotentialRoleRequest {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -4177,8 +4177,8 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRoleExecute(r ApiPatch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.patchRoleMiningPotentialRoleRequestInner == nil {
-		return localVarReturnValue, nil, reportError("patchRoleMiningPotentialRoleRequestInner is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4199,7 +4199,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRoleExecute(r ApiPatch
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchRoleMiningPotentialRoleRequestInner
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

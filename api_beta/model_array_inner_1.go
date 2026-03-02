@@ -18,12 +18,40 @@ import (
 
 // ArrayInner1 struct for ArrayInner1
 type ArrayInner1 struct {
+	Int32 *int32
+	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *ArrayInner1) UnmarshalJSON(data []byte) error {
 	var err error
+	// try to unmarshal JSON data into Int32
+	err = json.Unmarshal(data, &dst.Int32);
+	if err == nil {
+		jsonInt32, _ := json.Marshal(dst.Int32)
+		if string(jsonInt32) == "{}" { // empty struct
+			dst.Int32 = nil
+		} else {
+			return nil // data stored in dst.Int32, return on the first match
+		}
+	} else {
+		dst.Int32 = nil
+	}
+
+	// try to unmarshal JSON data into MapmapOfStringAny
+	err = json.Unmarshal(data, &dst.MapmapOfStringAny);
+	if err == nil {
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
+		} else {
+			return nil // data stored in dst.MapmapOfStringAny, return on the first match
+		}
+	} else {
+		dst.MapmapOfStringAny = nil
+	}
+
 	// try to unmarshal JSON data into String
 	err = json.Unmarshal(data, &dst.String);
 	if err == nil {
@@ -42,6 +70,14 @@ func (dst *ArrayInner1) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *ArrayInner1) MarshalJSON() ([]byte, error) {
+	if src.Int32 != nil {
+		return json.Marshal(&src.Int32)
+	}
+
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
+	}
+
 	if src.String != nil {
 		return json.Marshal(&src.String)
 	}

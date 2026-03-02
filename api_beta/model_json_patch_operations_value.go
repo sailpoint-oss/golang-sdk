@@ -18,15 +18,15 @@ import (
 
 // JsonPatchOperationsValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
 type JsonPatchOperationsValue struct {
-	ArrayOfArrayInner1 *[]ArrayInner1
+	ArrayOfArrayInner2 *[]ArrayInner2
 	Bool *bool
 	String *string
 }
 
-// []ArrayInner1AsJsonPatchOperationsValue is a convenience function that returns []ArrayInner1 wrapped in JsonPatchOperationsValue
-func ArrayOfArrayInner1AsJsonPatchOperationsValue(v *[]ArrayInner1) JsonPatchOperationsValue {
+// []ArrayInner2AsJsonPatchOperationsValue is a convenience function that returns []ArrayInner2 wrapped in JsonPatchOperationsValue
+func ArrayOfArrayInner2AsJsonPatchOperationsValue(v *[]ArrayInner2) JsonPatchOperationsValue {
 	return JsonPatchOperationsValue{
-		ArrayOfArrayInner1: v,
+		ArrayOfArrayInner2: v,
 	}
 }
 
@@ -49,21 +49,21 @@ func StringAsJsonPatchOperationsValue(v *string) JsonPatchOperationsValue {
 func (dst *JsonPatchOperationsValue) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into ArrayOfArrayInner1
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfArrayInner1)
+	// try to unmarshal data into ArrayOfArrayInner2
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfArrayInner2)
 	if err == nil {
-		jsonArrayOfArrayInner1, _ := json.Marshal(dst.ArrayOfArrayInner1)
-		if string(jsonArrayOfArrayInner1) == "{}" { // empty struct
-			dst.ArrayOfArrayInner1 = nil
+		jsonArrayOfArrayInner2, _ := json.Marshal(dst.ArrayOfArrayInner2)
+		if string(jsonArrayOfArrayInner2) == "{}" { // empty struct
+			dst.ArrayOfArrayInner2 = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfArrayInner1); err != nil {
-				dst.ArrayOfArrayInner1 = nil
+			if err = validator.Validate(dst.ArrayOfArrayInner2); err != nil {
+				dst.ArrayOfArrayInner2 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ArrayOfArrayInner1 = nil
+		dst.ArrayOfArrayInner2 = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -102,7 +102,7 @@ func (dst *JsonPatchOperationsValue) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOfArrayInner1 = nil
+		dst.ArrayOfArrayInner2 = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -116,8 +116,8 @@ func (dst *JsonPatchOperationsValue) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src JsonPatchOperationsValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfArrayInner1 != nil {
-		return json.Marshal(&src.ArrayOfArrayInner1)
+	if src.ArrayOfArrayInner2 != nil {
+		return json.Marshal(&src.ArrayOfArrayInner2)
 	}
 
 	if src.Bool != nil {
@@ -136,8 +136,8 @@ func (obj *JsonPatchOperationsValue) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOfArrayInner1 != nil {
-		return obj.ArrayOfArrayInner1
+	if obj.ArrayOfArrayInner2 != nil {
+		return obj.ArrayOfArrayInner2
 	}
 
 	if obj.Bool != nil {
@@ -154,8 +154,8 @@ func (obj *JsonPatchOperationsValue) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj JsonPatchOperationsValue) GetActualInstanceValue() (interface{}) {
-	if obj.ArrayOfArrayInner1 != nil {
-		return *obj.ArrayOfArrayInner1
+	if obj.ArrayOfArrayInner2 != nil {
+		return *obj.ArrayOfArrayInner2
 	}
 
 	if obj.Bool != nil {

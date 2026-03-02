@@ -230,6 +230,7 @@ docs/AppsAPIdeveloperSite_code_examples.yaml
 docs/Argument.md
 docs/ArrayInner.md
 docs/ArrayInner1.md
+docs/ArrayInner2.md
 docs/AssignmentContextDto.md
 docs/AttrSyncSource.md
 docs/AttrSyncSourceAttributeConfig.md
@@ -547,6 +548,8 @@ docs/InvocationStatus.md
 docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
+docs/JsonPatchOperationRoleMining.md
+docs/JsonPatchOperationRoleMiningValue.md
 docs/JsonPatchOperations.md
 docs/JsonPatchOperationsValue.md
 docs/KbaAnswerRequestItem.md
@@ -723,7 +726,6 @@ docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PasswordSyncGroupsAPIdeveloperSite_code_examples.yaml
 docs/PatOwner.md
-docs/PatchRoleMiningPotentialRoleRequestInner.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
@@ -846,6 +848,7 @@ docs/RoleMiningPotentialRoleEntitlements.md
 docs/RoleMiningPotentialRoleExportRequest.md
 docs/RoleMiningPotentialRoleExportResponse.md
 docs/RoleMiningPotentialRoleExportState.md
+docs/RoleMiningPotentialRolePotentialRoleRef.md
 docs/RoleMiningPotentialRoleProvisionRequest.md
 docs/RoleMiningPotentialRoleProvisionState.md
 docs/RoleMiningPotentialRoleRef.md
@@ -1009,7 +1012,6 @@ docs/StatusResponse.md
 docs/Subscription.md
 docs/SubscriptionPatchRequestInner.md
 docs/SubscriptionPatchRequestInnerValue.md
-docs/SubscriptionPatchRequestInnerValueAnyOfInner.md
 docs/SubscriptionPostRequest.md
 docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
@@ -1264,6 +1266,7 @@ model_approval_summary.go
 model_argument.go
 model_array_inner.go
 model_array_inner_1.go
+model_array_inner_2.go
 model_assignment_context_dto.go
 model_attr_sync_source.go
 model_attr_sync_source_attribute_config.go
@@ -1539,6 +1542,8 @@ model_invocation_status.go
 model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
+model_json_patch_operation_role_mining.go
+model_json_patch_operation_role_mining_value.go
 model_json_patch_operations.go
 model_json_patch_operations_value.go
 model_kba_answer_request_item.go
@@ -1682,7 +1687,6 @@ model_password_policy_v3_dto.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
-model_patch_role_mining_potential_role_request_inner.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
@@ -1797,6 +1801,7 @@ model_role_mining_potential_role_entitlements.go
 model_role_mining_potential_role_export_request.go
 model_role_mining_potential_role_export_response.go
 model_role_mining_potential_role_export_state.go
+model_role_mining_potential_role_potential_role_ref.go
 model_role_mining_potential_role_provision_request.go
 model_role_mining_potential_role_provision_state.go
 model_role_mining_potential_role_ref.go
@@ -1940,7 +1945,6 @@ model_status_response.go
 model_subscription.go
 model_subscription_patch_request_inner.go
 model_subscription_patch_request_inner_value.go
-model_subscription_patch_request_inner_value_any_of_inner.go
 model_subscription_post_request.go
 model_subscription_put_request.go
 model_subscription_type.go
