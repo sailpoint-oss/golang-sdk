@@ -88,6 +88,7 @@ api_search.go
 api_search_attribute_configuration.go
 api_segments.go
 api_service_desk_integration.go
+api_shared_signals_framework_ssf.go
 api_sim_integrations.go
 api_sod_policies.go
 api_sod_violations.go
@@ -382,6 +383,7 @@ docs/AuthUserLevelsIdentityCount.md
 docs/AuthUserSlimResponse.md
 docs/AuthUsersAPI.md
 docs/AuthUsersAPIdeveloperSite_code_examples.yaml
+docs/AuthorizationScheme.md
 docs/BackupOptions.md
 docs/BackupOptions1.md
 docs/BackupResponse.md
@@ -558,6 +560,8 @@ docs/CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner.md
 docs/CreateSavedSearchRequest.md
 docs/CreateScheduleRequest.md
 docs/CreateScheduledSearchRequest.md
+docs/CreateStreamDeliveryRequest.md
+docs/CreateStreamRequest.md
 docs/CreateUploadedConfigurationRequest.md
 docs/CreateWorkflowRequest.md
 docs/CriteriaType.md
@@ -583,6 +587,8 @@ docs/DeclassifySourceAPI.md
 docs/DeclassifySourceAPIdeveloperSite_code_examples.yaml
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
+docs/DeliveryRequest.md
+docs/DeliveryResponse.md
 docs/DependantAppConnections.md
 docs/DependantAppConnectionsAccountSource.md
 docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
@@ -697,6 +703,7 @@ docs/GetLaunchers200Response.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GetRoleAssignments200ResponseInner.md
+docs/GetStream200Response.md
 docs/GetTenantContext200ResponseInner.md
 docs/GlobalTenantSecuritySettingsAPI.md
 docs/GlobalTenantSecuritySettingsAPIdeveloperSite_code_examples.yaml
@@ -814,6 +821,8 @@ docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
 docs/JITConfiguration.md
+docs/JWK.md
+docs/JWKS.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationRoleMining.md
@@ -1138,6 +1147,8 @@ docs/Ref.md
 docs/Reference.md
 docs/RemediationItemDetails.md
 docs/RemediationItems.md
+docs/ReplaceStreamConfigurationRequest.md
+docs/ReplaceStreamConfigurationRequestDelivery.md
 docs/ReportConfigDTO.md
 docs/ReportDetails.md
 docs/ReportDetailsArguments.md
@@ -1372,6 +1383,8 @@ docs/SetIcon200Response.md
 docs/SetIconRequest.md
 docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
+docs/SharedSignalsFrameworkSSFAPI.md
+docs/SharedSignalsFrameworkSSFAPIdeveloperSite_code_examples.yaml
 docs/SimIntegrationDetails.md
 docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 docs/SlimCampaign.md
@@ -1455,6 +1468,8 @@ docs/StandardLevel.md
 docs/StartInvocationInput.md
 docs/StartLauncher200Response.md
 docs/StatusResponse.md
+docs/StreamConfigResponse.md
+docs/StreamStatusResponse.md
 docs/SubSearchAggregationSpecification.md
 docs/Subscription.md
 docs/SubscriptionPatchRequestInner.md
@@ -1519,6 +1534,7 @@ docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TransformsAPIdeveloperSite_code_examples.yaml
 docs/TranslationMessage.md
+docs/TransmitterMetadata.md
 docs/Trigger.md
 docs/TriggerExampleInput.md
 docs/TriggerExampleOutput.md
@@ -1535,6 +1551,9 @@ docs/UpdateDetail.md
 docs/UpdateMultiHostSourcesRequestInner.md
 docs/UpdateMultiHostSourcesRequestInnerValue.md
 docs/UpdateScheduleRequest.md
+docs/UpdateStreamConfigResponse.md
+docs/UpdateStreamConfigurationRequest.md
+docs/UpdateStreamStatusRequest.md
 docs/UsageType.md
 docs/UserApp.md
 docs/UserAppAccount.md
@@ -1553,6 +1572,7 @@ docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
+docs/VerificationRequest.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -1844,6 +1864,7 @@ model_auth_profile_summary.go
 model_auth_user.go
 model_auth_user_levels_identity_count.go
 model_auth_user_slim_response.go
+model_authorization_scheme.go
 model_backup_options.go
 model_backup_options_1.go
 model_backup_response.go
@@ -2000,6 +2021,8 @@ model_create_privilege_criteria_request_groups_inner_criteria_items_inner.go
 model_create_saved_search_request.go
 model_create_schedule_request.go
 model_create_scheduled_search_request.go
+model_create_stream_delivery_request.go
+model_create_stream_request.go
 model_create_uploaded_configuration_request.go
 model_create_workflow_request.go
 model_criteria_type.go
@@ -2013,6 +2036,8 @@ model_data_owner_model.go
 model_data_segment.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
+model_delivery_request.go
+model_delivery_response.go
 model_dependant_app_connections.go
 model_dependant_app_connections_account_source.go
 model_dependant_app_connections_account_source_password_policies_inner.go
@@ -2123,6 +2148,7 @@ model_get_launchers_200_response.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
+model_get_stream_200_response.go
 model_get_tenant_context_200_response_inner.go
 model_grant_type.go
 model_health_event.go
@@ -2218,6 +2244,8 @@ model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_role_mining.go
 model_json_patch_operation_role_mining_value.go
+model_jwk.go
+model_jwks.go
 model_kba_answer_request_item.go
 model_kba_answer_response_item.go
 model_kba_question.go
@@ -2483,6 +2511,8 @@ model_ref.go
 model_reference.go
 model_remediation_item_details.go
 model_remediation_items.go
+model_replace_stream_configuration_request.go
+model_replace_stream_configuration_request_delivery.go
 model_report_config_dto.go
 model_report_details.go
 model_report_details_arguments.go
@@ -2766,6 +2796,8 @@ model_standard_level.go
 model_start_invocation_input.go
 model_start_launcher_200_response.go
 model_status_response.go
+model_stream_config_response.go
+model_stream_status_response.go
 model_sub_search_aggregation_specification.go
 model_subscription.go
 model_subscription_patch_request_inner.go
@@ -2816,6 +2848,7 @@ model_transform.go
 model_transform_definition.go
 model_transform_read.go
 model_translation_message.go
+model_transmitter_metadata.go
 model_trigger.go
 model_trigger_example_input.go
 model_trigger_example_output.go
@@ -2828,6 +2861,9 @@ model_update_detail.go
 model_update_multi_host_sources_request_inner.go
 model_update_multi_host_sources_request_inner_value.go
 model_update_schedule_request.go
+model_update_stream_config_response.go
+model_update_stream_configuration_request.go
+model_update_stream_status_request.go
 model_usage_type.go
 model_user_app.go
 model_user_app_account.go
@@ -2846,6 +2882,7 @@ model_va_cluster_status_change_event_previous_health_check_result.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
+model_verification_request.go
 model_violation_context.go
 model_violation_context_policy.go
 model_violation_owner_assignment_config.go
@@ -2969,6 +3006,7 @@ test/api_search_attribute_configuration_test.go
 test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_shared_signals_framework_ssf_test.go
 test/api_sim_integrations_test.go
 test/api_sod_policies_test.go
 test/api_sod_violations_test.go
