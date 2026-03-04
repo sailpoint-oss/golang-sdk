@@ -18,7 +18,7 @@ import (
 
 // SubscriptionPatchRequestInnerValue The value to be used for the operation, required for \"add\" and \"replace\" operations
 type SubscriptionPatchRequestInnerValue struct {
-	ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner *[]SubscriptionPatchRequestInnerValueAnyOfInner
+	ArrayOfArrayInner1 *[]ArrayInner1
 	Int32 *int32
 	MapmapOfStringAny *map[string]interface{}
 	String *string
@@ -27,17 +27,17 @@ type SubscriptionPatchRequestInnerValue struct {
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *SubscriptionPatchRequestInnerValue) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner
-	err = json.Unmarshal(data, &dst.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner);
+	// try to unmarshal JSON data into ArrayOfArrayInner1
+	err = json.Unmarshal(data, &dst.ArrayOfArrayInner1);
 	if err == nil {
-		jsonArrayOfSubscriptionPatchRequestInnerValueAnyOfInner, _ := json.Marshal(dst.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner)
-		if string(jsonArrayOfSubscriptionPatchRequestInnerValueAnyOfInner) == "{}" { // empty struct
-			dst.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner = nil
+		jsonArrayOfArrayInner1, _ := json.Marshal(dst.ArrayOfArrayInner1)
+		if string(jsonArrayOfArrayInner1) == "{}" { // empty struct
+			dst.ArrayOfArrayInner1 = nil
 		} else {
-			return nil // data stored in dst.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner, return on the first match
+			return nil // data stored in dst.ArrayOfArrayInner1, return on the first match
 		}
 	} else {
-		dst.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner = nil
+		dst.ArrayOfArrayInner1 = nil
 	}
 
 	// try to unmarshal JSON data into Int32
@@ -84,8 +84,8 @@ func (dst *SubscriptionPatchRequestInnerValue) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *SubscriptionPatchRequestInnerValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner != nil {
-		return json.Marshal(&src.ArrayOfSubscriptionPatchRequestInnerValueAnyOfInner)
+	if src.ArrayOfArrayInner1 != nil {
+		return json.Marshal(&src.ArrayOfArrayInner1)
 	}
 
 	if src.Int32 != nil {

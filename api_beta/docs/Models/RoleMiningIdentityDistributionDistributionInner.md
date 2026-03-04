@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningIdentityDistributionDistrib
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeValue** | Pointer to **string** | The attribute value that identities are grouped by | [optional] 
+**AttributeValue** | Pointer to **NullableString** | The attribute value that identities are grouped by | [optional] 
 **Count** | Pointer to **int32** | The number of identities that have this attribute value | [optional] 
 
 ## Methods
@@ -62,6 +62,16 @@ SetAttributeValue sets AttributeValue field to given value.
 
 HasAttributeValue returns a boolean if a field has been set.
 
+### SetAttributeValueNil
+
+`func (o *RoleMiningIdentityDistributionDistributionInner) SetAttributeValueNil(b bool)`
+
+ SetAttributeValueNil sets the value for AttributeValue to be an explicit nil
+
+### UnsetAttributeValue
+`func (o *RoleMiningIdentityDistributionDistributionInner) UnsetAttributeValue()`
+
+UnsetAttributeValue ensures that no value is present for AttributeValue, not even an explicit nil
 ### GetCount
 
 `func (o *RoleMiningIdentityDistributionDistributionInner) GetCount() int32`

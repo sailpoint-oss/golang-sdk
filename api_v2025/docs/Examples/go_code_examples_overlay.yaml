@@ -3193,8 +3193,8 @@
         )
 
         func main() {
-          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-          scope := `DOMAIN_OBJECT` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope := `DOMAIN_OBJECT` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
 
           
 
@@ -3306,7 +3306,7 @@
         )
 
         func main() {
-          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), (sourceID), (applicationID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)] # string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), (sourceID), (applicationID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)] # string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]
 
           
 
@@ -3385,8 +3385,8 @@
         )
 
         func main() {
-          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-          scope := `DOMAIN_OBJECT` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope := `DOMAIN_OBJECT` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
            approvalconfig := []byte(`{
           "timeoutConfig" : {
             "daysUntilTimeout" : 2,
@@ -14363,11 +14363,11 @@
           sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
           potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          patchpotentialrolerequestinner := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []PatchPotentialRoleRequestInner | 
+          jsonpatchoperationrolemining := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []JsonPatchOperationRoleMining | 
 
           
-          var patchPotentialRoleRequestInner []v2025.PatchPotentialRoleRequestInner
-          if err := json.Unmarshal(patchpotentialrolerequestinner, &patchPotentialRoleRequestInner); err != nil {
+          var jsonPatchOperationRoleMining []v2025.JsonPatchOperationRoleMining
+          if err := json.Unmarshal(jsonpatchoperationrolemining, &jsonPatchOperationRoleMining); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -14376,8 +14376,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
-          //resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+          resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
+          //resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -14406,11 +14406,11 @@
           sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
           potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          jsonpatchoperation := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []JsonPatchOperation | 
+          jsonpatchoperationrolemining := []byte(`[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]`) // []JsonPatchOperationRoleMining | 
 
           
-          var jsonPatchOperation []v2025.JsonPatchOperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+          var jsonPatchOperationRoleMining []v2025.JsonPatchOperationRoleMining
+          if err := json.Unmarshal(jsonpatchoperationrolemining, &jsonPatchOperationRoleMining); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -14419,8 +14419,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRoleSession(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRoleSession(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRoleSession(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
+          //resp, r, err := apiClient.V2025.IAIRoleMiningAPI.PatchPotentialRoleSession(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRoleSession``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -28083,6 +28083,403 @@
           }
           // response from `UpdateStatusCheckDetails`: QueuedCheckConfigDetails
           fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.UpdateStatusCheckDetails`: %v\n", resp)
+        }
+- path: /ssf/streams
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#create-stream
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           createstreamrequest := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // CreateStreamRequest | 
+
+          
+          var createStreamRequest v2025.CreateStreamRequest
+          if err := json.Unmarshal(createstreamrequest, &createStreamRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.CreateStream(context.Background()).CreateStreamRequest(createStreamRequest).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.CreateStream(context.Background()).CreateStreamRequest(createStreamRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.CreateStream``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateStream`: StreamConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.CreateStream`: %v\n", resp)
+        }
+- path: /ssf/streams
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#delete-stream
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | ID of the stream to delete. Required; omitted or empty returns 400. # string | ID of the stream to delete. Required; omitted or empty returns 400.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.DeleteStream(context.Background()).StreamId(streamId).Execute()
+          //r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.DeleteStream(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.DeleteStream``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ssf/jwks
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#get-jwks-data
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetJWKSData(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetJWKSData(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetJWKSData``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetJWKSData`: JWKS
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetJWKSData`: %v\n", resp)
+        }
+- path: /.well-known/ssf-configuration
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#get-ssf-configuration
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetSSFConfiguration(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetSSFConfiguration(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetSSFConfiguration``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSSFConfiguration`: TransmitterMetadata
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetSSFConfiguration`: %v\n", resp)
+        }
+- path: /ssf/streams
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#get-stream
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | If provided, returns that stream; otherwise returns list of all streams. (optional) # string | If provided, returns that stream; otherwise returns list of all streams. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetStream(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetStream(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStream``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetStream`: GetStream200Response
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetStream`: %v\n", resp)
+        }
+- path: /ssf/streams/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#get-stream-status
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | ID of the stream whose status to retrieve. # string | ID of the stream whose status to retrieve.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetStreamStatus(context.Background()).StreamId(streamId).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.GetStreamStatus(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamStatus``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetStreamStatus`: StreamStatusResponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetStreamStatus`: %v\n", resp)
+        }
+- path: /ssf/streams/verify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#send-stream-verification
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           verificationrequest := []byte(`{
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "state" : "verification-challenge-state-123"
+        }`) // VerificationRequest | 
+
+          
+          var verificationRequest v2025.VerificationRequest
+          if err := json.Unmarshal(verificationrequest, &verificationRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.SendStreamVerification(context.Background()).VerificationRequest(verificationRequest).Execute()
+          //r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.SendStreamVerification(context.Background()).VerificationRequest(verificationRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SendStreamVerification``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ssf/streams
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#set-stream-configuration
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           replacestreamconfigurationrequest := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // ReplaceStreamConfigurationRequest | 
+
+          
+          var replaceStreamConfigurationRequest v2025.ReplaceStreamConfigurationRequest
+          if err := json.Unmarshal(replacestreamconfigurationrequest, &replaceStreamConfigurationRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.SetStreamConfiguration(context.Background()).ReplaceStreamConfigurationRequest(replaceStreamConfigurationRequest).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.SetStreamConfiguration(context.Background()).ReplaceStreamConfigurationRequest(replaceStreamConfigurationRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SetStreamConfiguration``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetStreamConfiguration`: UpdateStreamConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.SetStreamConfiguration`: %v\n", resp)
+        }
+- path: /ssf/streams
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#update-stream-configuration
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           updatestreamconfigurationrequest := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Updated production event stream configuration",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // UpdateStreamConfigurationRequest | 
+
+          
+          var updateStreamConfigurationRequest v2025.UpdateStreamConfigurationRequest
+          if err := json.Unmarshal(updatestreamconfigurationrequest, &updateStreamConfigurationRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.UpdateStreamConfiguration(context.Background()).UpdateStreamConfigurationRequest(updateStreamConfigurationRequest).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.UpdateStreamConfiguration(context.Background()).UpdateStreamConfigurationRequest(updateStreamConfigurationRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamConfiguration``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateStreamConfiguration`: UpdateStreamConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamConfiguration`: %v\n", resp)
+        }
+- path: /ssf/streams/status
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/shared-signals-framework-ssf#update-stream-status
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           updatestreamstatusrequest := []byte(`{
+          "reason" : "manually paused",
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "status" : "paused"
+        }`) // UpdateStreamStatusRequest | 
+
+          
+          var updateStreamStatusRequest v2025.UpdateStreamStatusRequest
+          if err := json.Unmarshal(updatestreamstatusrequest, &updateStreamStatusRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.UpdateStreamStatus(context.Background()).UpdateStreamStatusRequest(updateStreamStatusRequest).Execute()
+          //resp, r, err := apiClient.V2025.SharedSignalsFrameworkSSFAPI.UpdateStreamStatus(context.Background()).UpdateStreamStatusRequest(updateStreamStatusRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamStatus``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateStreamStatus`: StreamStatusResponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamStatus`: %v\n", resp)
         }
 - path: /source-usages/{sourceId}/status
   method: Get

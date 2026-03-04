@@ -16,15 +16,15 @@ import (
 )
 
 
-// SubscriptionPatchRequestInnerValueAnyOfInner struct for SubscriptionPatchRequestInnerValueAnyOfInner
-type SubscriptionPatchRequestInnerValueAnyOfInner struct {
+// ArrayInner1 struct for ArrayInner1
+type ArrayInner1 struct {
 	Int32 *int32
 	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
-func (dst *SubscriptionPatchRequestInnerValueAnyOfInner) UnmarshalJSON(data []byte) error {
+func (dst *ArrayInner1) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into Int32
 	err = json.Unmarshal(data, &dst.Int32);
@@ -65,11 +65,11 @@ func (dst *SubscriptionPatchRequestInnerValueAnyOfInner) UnmarshalJSON(data []by
 		dst.String = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(SubscriptionPatchRequestInnerValueAnyOfInner)")
+	return fmt.Errorf("data failed to match schemas in anyOf(ArrayInner1)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *SubscriptionPatchRequestInnerValueAnyOfInner) MarshalJSON() ([]byte, error) {
+func (src *ArrayInner1) MarshalJSON() ([]byte, error) {
 	if src.Int32 != nil {
 		return json.Marshal(&src.Int32)
 	}
@@ -86,38 +86,38 @@ func (src *SubscriptionPatchRequestInnerValueAnyOfInner) MarshalJSON() ([]byte, 
 }
 
 
-type NullableSubscriptionPatchRequestInnerValueAnyOfInner struct {
-	value *SubscriptionPatchRequestInnerValueAnyOfInner
+type NullableArrayInner1 struct {
+	value *ArrayInner1
 	isSet bool
 }
 
-func (v NullableSubscriptionPatchRequestInnerValueAnyOfInner) Get() *SubscriptionPatchRequestInnerValueAnyOfInner {
+func (v NullableArrayInner1) Get() *ArrayInner1 {
 	return v.value
 }
 
-func (v *NullableSubscriptionPatchRequestInnerValueAnyOfInner) Set(val *SubscriptionPatchRequestInnerValueAnyOfInner) {
+func (v *NullableArrayInner1) Set(val *ArrayInner1) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSubscriptionPatchRequestInnerValueAnyOfInner) IsSet() bool {
+func (v NullableArrayInner1) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSubscriptionPatchRequestInnerValueAnyOfInner) Unset() {
+func (v *NullableArrayInner1) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSubscriptionPatchRequestInnerValueAnyOfInner(val *SubscriptionPatchRequestInnerValueAnyOfInner) *NullableSubscriptionPatchRequestInnerValueAnyOfInner {
-	return &NullableSubscriptionPatchRequestInnerValueAnyOfInner{value: val, isSet: true}
+func NewNullableArrayInner1(val *ArrayInner1) *NullableArrayInner1 {
+	return &NullableArrayInner1{value: val, isSet: true}
 }
 
-func (v NullableSubscriptionPatchRequestInnerValueAnyOfInner) MarshalJSON() ([]byte, error) {
+func (v NullableArrayInner1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSubscriptionPatchRequestInnerValueAnyOfInner) UnmarshalJSON(src []byte) error {
+func (v *NullableArrayInner1) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

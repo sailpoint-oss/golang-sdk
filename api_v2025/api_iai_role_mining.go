@@ -4285,7 +4285,7 @@ type ApiPatchPotentialRoleRequest struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
 // Use this header to enable this experimental API.
@@ -4294,8 +4294,8 @@ func (r ApiPatchPotentialRoleRequest) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiPatchPotentialRoleRequest) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchPotentialRoleRequest {
-	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
+func (r ApiPatchPotentialRoleRequest) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchPotentialRoleRequest {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -4371,8 +4371,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.patchPotentialRoleRequestInner == nil {
-		return localVarReturnValue, nil, reportError("patchPotentialRoleRequestInner is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4394,7 +4394,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.patchPotentialRoleRequestInner
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4503,7 +4503,7 @@ type ApiPatchPotentialRoleSessionRequest struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	jsonPatchOperation *[]JsonPatchOperation
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
 // Use this header to enable this experimental API.
@@ -4512,8 +4512,8 @@ func (r ApiPatchPotentialRoleSessionRequest) XSailPointExperimental(xSailPointEx
 	return r
 }
 
-func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchPotentialRoleSessionRequest {
-	r.jsonPatchOperation = &jsonPatchOperation
+func (r ApiPatchPotentialRoleSessionRequest) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchPotentialRoleSessionRequest {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -4589,8 +4589,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPot
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonPatchOperation == nil {
-		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4612,7 +4612,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionExecute(r ApiPatchPot
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
-	localVarPostBody = r.jsonPatchOperation
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

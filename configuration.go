@@ -18,7 +18,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-const sdkVersion = "2.7.16"
+const sdkVersion = "2.7.21"
 
 type PatConfig struct {
 	ClientID     string    `mapstructure:"clientid"`

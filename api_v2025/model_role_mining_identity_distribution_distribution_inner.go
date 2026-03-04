@@ -20,7 +20,7 @@ var _ MappedNullable = &RoleMiningIdentityDistributionDistributionInner{}
 // RoleMiningIdentityDistributionDistributionInner struct for RoleMiningIdentityDistributionDistributionInner
 type RoleMiningIdentityDistributionDistributionInner struct {
 	// The attribute value that identities are grouped by
-	AttributeValue *string `json:"attributeValue,omitempty"`
+	AttributeValue NullableString `json:"attributeValue,omitempty"`
 	// The number of identities that have this attribute value
 	Count *int32 `json:"count,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,36 +45,46 @@ func NewRoleMiningIdentityDistributionDistributionInnerWithDefaults() *RoleMinin
 	return &this
 }
 
-// GetAttributeValue returns the AttributeValue field value if set, zero value otherwise.
+// GetAttributeValue returns the AttributeValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningIdentityDistributionDistributionInner) GetAttributeValue() string {
-	if o == nil || IsNil(o.AttributeValue) {
+	if o == nil || IsNil(o.AttributeValue.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeValue
+	return *o.AttributeValue.Get()
 }
 
 // GetAttributeValueOk returns a tuple with the AttributeValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningIdentityDistributionDistributionInner) GetAttributeValueOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeValue) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributeValue, true
+	return o.AttributeValue.Get(), o.AttributeValue.IsSet()
 }
 
 // HasAttributeValue returns a boolean if a field has been set.
 func (o *RoleMiningIdentityDistributionDistributionInner) HasAttributeValue() bool {
-	if o != nil && !IsNil(o.AttributeValue) {
+	if o != nil && o.AttributeValue.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeValue gets a reference to the given string and assigns it to the AttributeValue field.
+// SetAttributeValue gets a reference to the given NullableString and assigns it to the AttributeValue field.
 func (o *RoleMiningIdentityDistributionDistributionInner) SetAttributeValue(v string) {
-	o.AttributeValue = &v
+	o.AttributeValue.Set(&v)
+}
+// SetAttributeValueNil sets the value for AttributeValue to be an explicit nil
+func (o *RoleMiningIdentityDistributionDistributionInner) SetAttributeValueNil() {
+	o.AttributeValue.Set(nil)
+}
+
+// UnsetAttributeValue ensures that no value is present for AttributeValue, not even an explicit nil
+func (o *RoleMiningIdentityDistributionDistributionInner) UnsetAttributeValue() {
+	o.AttributeValue.Unset()
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
@@ -119,8 +129,8 @@ func (o RoleMiningIdentityDistributionDistributionInner) MarshalJSON() ([]byte, 
 
 func (o RoleMiningIdentityDistributionDistributionInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AttributeValue) {
-		toSerialize["attributeValue"] = o.AttributeValue
+	if o.AttributeValue.IsSet() {
+		toSerialize["attributeValue"] = o.AttributeValue.Get()
 	}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count

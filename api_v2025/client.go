@@ -228,6 +228,8 @@ type APIClient struct {
 
 	ServiceDeskIntegrationAPI *ServiceDeskIntegrationAPIService
 
+	SharedSignalsFrameworkSSFAPI *SharedSignalsFrameworkSSFAPIService
+
 	SourceUsagesAPI *SourceUsagesAPIService
 
 	SourcesAPI *SourcesAPIService
@@ -361,6 +363,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SearchAttributeConfigurationAPI = (*SearchAttributeConfigurationAPIService)(&c.common)
 	c.SegmentsAPI = (*SegmentsAPIService)(&c.common)
 	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
+	c.SharedSignalsFrameworkSSFAPI = (*SharedSignalsFrameworkSSFAPIService)(&c.common)
 	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
 	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
@@ -725,7 +728,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.16")
+localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.21")
 
 	if ctx != nil {
 		// add context to the request

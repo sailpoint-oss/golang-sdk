@@ -216,8 +216,6 @@ func (r ApiCreateAccessRequestRequest) Execute() (*AccessRequestResponse, *http.
 /*
 CreateAccessRequest Submit access request
 
->**Required scopes:** ORG_ADMIN requires idn:access-request:manage. USER level requires idn:access-request-self:manage (Personal Access Token only).
-
 Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
 
 :::info

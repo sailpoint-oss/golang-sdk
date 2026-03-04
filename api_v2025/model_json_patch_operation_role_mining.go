@@ -15,74 +15,66 @@ import (
 	"fmt"
 )
 
-// checks if the PatchPotentialRoleRequestInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchPotentialRoleRequestInner{}
+// checks if the JsonPatchOperationRoleMining type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JsonPatchOperationRoleMining{}
 
-// PatchPotentialRoleRequestInner struct for PatchPotentialRoleRequestInner
-type PatchPotentialRoleRequestInner struct {
+// JsonPatchOperationRoleMining A JSONPatch Operation for Role Mining endpoints, supporting only remove and replace operations as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
+type JsonPatchOperationRoleMining struct {
 	// The operation to be performed
-	Op *string `json:"op,omitempty"`
+	Op string `json:"op"`
 	// A string JSON Pointer representing the target path to an element to be affected by the operation
 	Path string `json:"path"`
-	Value *UpdateMultiHostSourcesRequestInnerValue `json:"value,omitempty"`
+	Value *JsonPatchOperationRoleMiningValue `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _PatchPotentialRoleRequestInner PatchPotentialRoleRequestInner
+type _JsonPatchOperationRoleMining JsonPatchOperationRoleMining
 
-// NewPatchPotentialRoleRequestInner instantiates a new PatchPotentialRoleRequestInner object
+// NewJsonPatchOperationRoleMining instantiates a new JsonPatchOperationRoleMining object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchPotentialRoleRequestInner(op string, path string) *PatchPotentialRoleRequestInner {
-	this := PatchPotentialRoleRequestInner{}
-	this.Op = &op
+func NewJsonPatchOperationRoleMining(op string, path string) *JsonPatchOperationRoleMining {
+	this := JsonPatchOperationRoleMining{}
+	this.Op = op
 	this.Path = path
 	return &this
 }
 
-// NewPatchPotentialRoleRequestInnerWithDefaults instantiates a new PatchPotentialRoleRequestInner object
+// NewJsonPatchOperationRoleMiningWithDefaults instantiates a new JsonPatchOperationRoleMining object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPatchPotentialRoleRequestInnerWithDefaults() *PatchPotentialRoleRequestInner {
-	this := PatchPotentialRoleRequestInner{}
+func NewJsonPatchOperationRoleMiningWithDefaults() *JsonPatchOperationRoleMining {
+	this := JsonPatchOperationRoleMining{}
 	return &this
 }
 
-// GetOp returns the Op field value if set, zero value otherwise.
-func (o *PatchPotentialRoleRequestInner) GetOp() string {
-	if o == nil || IsNil(o.Op) {
+// GetOp returns the Op field value
+func (o *JsonPatchOperationRoleMining) GetOp() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Op
+
+	return o.Op
 }
 
-// GetOpOk returns a tuple with the Op field value if set, nil otherwise
+// GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *PatchPotentialRoleRequestInner) GetOpOk() (*string, bool) {
-	if o == nil || IsNil(o.Op) {
+func (o *JsonPatchOperationRoleMining) GetOpOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Op, true
+	return &o.Op, true
 }
 
-// HasOp returns a boolean if a field has been set.
-func (o *PatchPotentialRoleRequestInner) HasOp() bool {
-	if o != nil && !IsNil(o.Op) {
-		return true
-	}
-
-	return false
-}
-
-// SetOp gets a reference to the given string and assigns it to the Op field.
-func (o *PatchPotentialRoleRequestInner) SetOp(v string) {
-	o.Op = &v
+// SetOp sets field value
+func (o *JsonPatchOperationRoleMining) SetOp(v string) {
+	o.Op = v
 }
 
 // GetPath returns the Path field value
-func (o *PatchPotentialRoleRequestInner) GetPath() string {
+func (o *JsonPatchOperationRoleMining) GetPath() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -93,7 +85,7 @@ func (o *PatchPotentialRoleRequestInner) GetPath() string {
 
 // GetPathOk returns a tuple with the Path field value
 // and a boolean to check if the value has been set.
-func (o *PatchPotentialRoleRequestInner) GetPathOk() (*string, bool) {
+func (o *JsonPatchOperationRoleMining) GetPathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,14 +93,14 @@ func (o *PatchPotentialRoleRequestInner) GetPathOk() (*string, bool) {
 }
 
 // SetPath sets field value
-func (o *PatchPotentialRoleRequestInner) SetPath(v string) {
+func (o *JsonPatchOperationRoleMining) SetPath(v string) {
 	o.Path = v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *PatchPotentialRoleRequestInner) GetValue() UpdateMultiHostSourcesRequestInnerValue {
+func (o *JsonPatchOperationRoleMining) GetValue() JsonPatchOperationRoleMiningValue {
 	if o == nil || IsNil(o.Value) {
-		var ret UpdateMultiHostSourcesRequestInnerValue
+		var ret JsonPatchOperationRoleMiningValue
 		return ret
 	}
 	return *o.Value
@@ -116,7 +108,7 @@ func (o *PatchPotentialRoleRequestInner) GetValue() UpdateMultiHostSourcesReques
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPotentialRoleRequestInner) GetValueOk() (*UpdateMultiHostSourcesRequestInnerValue, bool) {
+func (o *JsonPatchOperationRoleMining) GetValueOk() (*JsonPatchOperationRoleMiningValue, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -124,7 +116,7 @@ func (o *PatchPotentialRoleRequestInner) GetValueOk() (*UpdateMultiHostSourcesRe
 }
 
 // HasValue returns a boolean if a field has been set.
-func (o *PatchPotentialRoleRequestInner) HasValue() bool {
+func (o *JsonPatchOperationRoleMining) HasValue() bool {
 	if o != nil && !IsNil(o.Value) {
 		return true
 	}
@@ -132,12 +124,12 @@ func (o *PatchPotentialRoleRequestInner) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given UpdateMultiHostSourcesRequestInnerValue and assigns it to the Value field.
-func (o *PatchPotentialRoleRequestInner) SetValue(v UpdateMultiHostSourcesRequestInnerValue) {
+// SetValue gets a reference to the given JsonPatchOperationRoleMiningValue and assigns it to the Value field.
+func (o *JsonPatchOperationRoleMining) SetValue(v JsonPatchOperationRoleMiningValue) {
 	o.Value = &v
 }
 
-func (o PatchPotentialRoleRequestInner) MarshalJSON() ([]byte, error) {
+func (o JsonPatchOperationRoleMining) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -145,11 +137,9 @@ func (o PatchPotentialRoleRequestInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PatchPotentialRoleRequestInner) ToMap() (map[string]interface{}, error) {
+func (o JsonPatchOperationRoleMining) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Op) {
-		toSerialize["op"] = o.Op
-	}
+	toSerialize["op"] = o.Op
 	toSerialize["path"] = o.Path
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
@@ -162,7 +152,7 @@ func (o PatchPotentialRoleRequestInner) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(data []byte) (err error) {
+func (o *JsonPatchOperationRoleMining) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -185,15 +175,15 @@ func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(data []byte) (err error) 
 		}
 	}
 
-	varPatchPotentialRoleRequestInner := _PatchPotentialRoleRequestInner{}
+	varJsonPatchOperationRoleMining := _JsonPatchOperationRoleMining{}
 
-	err = json.Unmarshal(data, &varPatchPotentialRoleRequestInner)
+	err = json.Unmarshal(data, &varJsonPatchOperationRoleMining)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PatchPotentialRoleRequestInner(varPatchPotentialRoleRequestInner)
+	*o = JsonPatchOperationRoleMining(varJsonPatchOperationRoleMining)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -207,38 +197,38 @@ func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(data []byte) (err error) 
 	return err
 }
 
-type NullablePatchPotentialRoleRequestInner struct {
-	value *PatchPotentialRoleRequestInner
+type NullableJsonPatchOperationRoleMining struct {
+	value *JsonPatchOperationRoleMining
 	isSet bool
 }
 
-func (v NullablePatchPotentialRoleRequestInner) Get() *PatchPotentialRoleRequestInner {
+func (v NullableJsonPatchOperationRoleMining) Get() *JsonPatchOperationRoleMining {
 	return v.value
 }
 
-func (v *NullablePatchPotentialRoleRequestInner) Set(val *PatchPotentialRoleRequestInner) {
+func (v *NullableJsonPatchOperationRoleMining) Set(val *JsonPatchOperationRoleMining) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePatchPotentialRoleRequestInner) IsSet() bool {
+func (v NullableJsonPatchOperationRoleMining) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePatchPotentialRoleRequestInner) Unset() {
+func (v *NullableJsonPatchOperationRoleMining) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePatchPotentialRoleRequestInner(val *PatchPotentialRoleRequestInner) *NullablePatchPotentialRoleRequestInner {
-	return &NullablePatchPotentialRoleRequestInner{value: val, isSet: true}
+func NewNullableJsonPatchOperationRoleMining(val *JsonPatchOperationRoleMining) *NullableJsonPatchOperationRoleMining {
+	return &NullableJsonPatchOperationRoleMining{value: val, isSet: true}
 }
 
-func (v NullablePatchPotentialRoleRequestInner) MarshalJSON() ([]byte, error) {
+func (v NullableJsonPatchOperationRoleMining) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePatchPotentialRoleRequestInner) UnmarshalJSON(src []byte) error {
+func (v *NullableJsonPatchOperationRoleMining) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

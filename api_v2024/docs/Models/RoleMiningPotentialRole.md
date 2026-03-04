@@ -24,11 +24,13 @@ Name | Type | Description | Notes
 **IdentityCount** | Pointer to **int32** | The number of identities in a potential role. | [optional] 
 **IdentityDistribution** | Pointer to [**[]RoleMiningIdentityDistribution**](role-mining-identity-distribution) | Identity attribute distribution. | [optional] 
 **IdentityIds** | Pointer to **[]string** | The list of ids in a potential role. | [optional] 
+**IdentityGroupStatus** | Pointer to **NullableString** | The status for this identity group which can be OBTAINED or COMPRESSED | [optional] 
 **Name** | Pointer to **string** | Name of the potential role. | [optional] 
+**PotentialRoleRef** | Pointer to [**NullableRoleMiningPotentialRolePotentialRoleRef**](role-mining-potential-role-potential-role-ref) |  | [optional] 
 **ProvisionState** | Pointer to [**RoleMiningPotentialRoleProvisionState**](role-mining-potential-role-provision-state) |  | [optional] 
 **Quality** | Pointer to **int32** | The quality of a potential role. | [optional] 
 **RoleId** | Pointer to **NullableString** | The roleId of a potential role. | [optional] 
-**Saved** | Pointer to **bool** | The potential role's saved status. | [optional] 
+**Saved** | Pointer to **bool** | The potential role's saved status. | [optional] [default to false]
 **Session** | Pointer to [**RoleMiningSessionParametersDto**](role-mining-session-parameters-dto) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
 **Id** | Pointer to **string** | Id of the potential role | [optional] 
@@ -309,6 +311,41 @@ SetIdentityIds sets IdentityIds field to given value.
 
 HasIdentityIds returns a boolean if a field has been set.
 
+### GetIdentityGroupStatus
+
+`func (o *RoleMiningPotentialRole) GetIdentityGroupStatus() string`
+
+GetIdentityGroupStatus returns the IdentityGroupStatus field if non-nil, zero value otherwise.
+
+### GetIdentityGroupStatusOk
+
+`func (o *RoleMiningPotentialRole) GetIdentityGroupStatusOk() (*string, bool)`
+
+GetIdentityGroupStatusOk returns a tuple with the IdentityGroupStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityGroupStatus
+
+`func (o *RoleMiningPotentialRole) SetIdentityGroupStatus(v string)`
+
+SetIdentityGroupStatus sets IdentityGroupStatus field to given value.
+
+### HasIdentityGroupStatus
+
+`func (o *RoleMiningPotentialRole) HasIdentityGroupStatus() bool`
+
+HasIdentityGroupStatus returns a boolean if a field has been set.
+
+### SetIdentityGroupStatusNil
+
+`func (o *RoleMiningPotentialRole) SetIdentityGroupStatusNil(b bool)`
+
+ SetIdentityGroupStatusNil sets the value for IdentityGroupStatus to be an explicit nil
+
+### UnsetIdentityGroupStatus
+`func (o *RoleMiningPotentialRole) UnsetIdentityGroupStatus()`
+
+UnsetIdentityGroupStatus ensures that no value is present for IdentityGroupStatus, not even an explicit nil
 ### GetName
 
 `func (o *RoleMiningPotentialRole) GetName() string`
@@ -334,6 +371,41 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetPotentialRoleRef
+
+`func (o *RoleMiningPotentialRole) GetPotentialRoleRef() RoleMiningPotentialRolePotentialRoleRef`
+
+GetPotentialRoleRef returns the PotentialRoleRef field if non-nil, zero value otherwise.
+
+### GetPotentialRoleRefOk
+
+`func (o *RoleMiningPotentialRole) GetPotentialRoleRefOk() (*RoleMiningPotentialRolePotentialRoleRef, bool)`
+
+GetPotentialRoleRefOk returns a tuple with the PotentialRoleRef field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPotentialRoleRef
+
+`func (o *RoleMiningPotentialRole) SetPotentialRoleRef(v RoleMiningPotentialRolePotentialRoleRef)`
+
+SetPotentialRoleRef sets PotentialRoleRef field to given value.
+
+### HasPotentialRoleRef
+
+`func (o *RoleMiningPotentialRole) HasPotentialRoleRef() bool`
+
+HasPotentialRoleRef returns a boolean if a field has been set.
+
+### SetPotentialRoleRefNil
+
+`func (o *RoleMiningPotentialRole) SetPotentialRoleRefNil(b bool)`
+
+ SetPotentialRoleRefNil sets the value for PotentialRoleRef to be an explicit nil
+
+### UnsetPotentialRoleRef
+`func (o *RoleMiningPotentialRole) UnsetPotentialRoleRef()`
+
+UnsetPotentialRoleRef ensures that no value is present for PotentialRoleRef, not even an explicit nil
 ### GetProvisionState
 
 `func (o *RoleMiningPotentialRole) GetProvisionState() RoleMiningPotentialRoleProvisionState`
