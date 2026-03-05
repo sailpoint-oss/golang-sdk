@@ -71,9 +71,7 @@ const createDir = async (srcDir, dirName) => {
 
 const moveFiles = async (srcPath, destPath, filename = null) => {
   try {
-    if (!await fs.stat(destPath)) {
-      await fs.mkdir(destPath, { recursive: true });
-    }
+    await fs.mkdir(destPath, { recursive: true });
 
     if (filename) {
       const filePath = path.join(srcPath, filename);
@@ -175,7 +173,7 @@ const fixFiles = async function (myArray) {
     };
 
     if (file.includes("go.mod") || file.includes("go.sum")) {
-      fs.unlink(file)
+      await fs.unlink(file)
       continue
     }
 
@@ -227,7 +225,7 @@ const fixFiles = async function (myArray) {
       );
 
       if (rawdata !== updatedData) {
-        fs.writeFile(file, updatedData, 'utf8');
+        await fs.writeFile(file, updatedData, 'utf8');
         console.log(`Updated ${file}`);
       } else {
         console.log(`No changes needed in ${file}`);
