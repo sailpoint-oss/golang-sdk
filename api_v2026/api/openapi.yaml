@@ -30,6 +30,7 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
+- name: Access Requests
 - name: Account Deletion Requests
 - name: Delete account
 - name: Entitlements
@@ -38,6 +39,164 @@ tags:
 - name: Machine Subtype Approval Config
 - name: Task Management
 paths:
+  /access-request-config:
+    get:
+      description: This endpoint returns the current access-request configuration.
+      operationId: getAccessRequestConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequestConfig'
+          description: Access Request Configuration Details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-config:read
+      summary: Get access request configuration
+      tags:
+      - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - USER
+    put:
+      description: This endpoint replaces the current access-request configuration.
+      operationId: setAccessRequestConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequestConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequestConfig'
+          description: Access Request Configuration Details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-config:manage
+      summary: Update access request configuration
+      tags:
+      - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /entitlements:
     get:
       description: This API returns a list of entitlements. Any authenticated token
@@ -202,7 +361,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -227,7 +386,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -405,7 +564,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -448,7 +607,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -513,7 +672,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -556,7 +715,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -657,7 +816,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -700,7 +859,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -834,7 +993,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -877,7 +1036,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1090,7 +1249,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1133,7 +1292,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1345,7 +1504,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1388,7 +1547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1465,14 +1624,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1605,14 +1764,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1752,7 +1911,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1795,7 +1954,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -1915,7 +2074,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -1940,7 +2099,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2052,7 +2211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2077,7 +2236,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2211,7 +2370,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2254,7 +2413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2339,7 +2498,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2382,7 +2541,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2461,7 +2620,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2504,7 +2663,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2644,14 +2803,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2727,7 +2886,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -2770,7 +2929,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2898,14 +3057,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -2977,7 +3136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -3020,7 +3179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -3145,14 +3304,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_401_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "429":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listEntitlements_429_response'
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -3276,7 +3435,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/listEntitlements_401_response'
+            $ref: '#/components/schemas/getAccessRequestConfig_401_response'
       description: "Unauthorized - Returned if there is no authorization header, or\
         \ if the JWT token is expired."
     "403":
@@ -3301,7 +3460,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/listEntitlements_429_response'
+            $ref: '#/components/schemas/getAccessRequestConfig_429_response'
       description: Too Many Requests - Returned in response to too many requests in
         a given period of time - rate limited. The Retry-After header in the response
         includes how long to wait before trying again.
@@ -3343,6 +3502,70 @@ components:
       description: No content - indicates the request was successful but there is
         no content to be returned in the response.
   schemas:
+    AccessRequestConfig:
+      example:
+        govGroupVisibilityEnabled: true
+        requestOnBehalfOfConfig:
+          allowRequestOnBehalfOfEmployeeByManager: true
+          allowRequestOnBehalfOfAnyoneByAnyone: true
+        autoApprovalEnabled: true
+        entitlementRequestConfig:
+          accessRequestConfig:
+            denialCommentRequired: false
+            approvalSchemes:
+            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+              approverType: GOVERNANCE_GROUP
+            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+              approverType: GOVERNANCE_GROUP
+            reauthorizationRequired: false
+            requestCommentRequired: true
+            requireEndDate: true
+            maxPermittedAccessDuration:
+              value: 5
+              timeUnit: DAYS
+          revocationRequestConfig:
+            approvalSchemes:
+            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+              approverType: GOVERNANCE_GROUP
+            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+              approverType: GOVERNANCE_GROUP
+        reauthorizationEnabled: true
+        approvalsMustBeExternal: true
+      properties:
+        approvalsMustBeExternal:
+          default: false
+          description: "If this is true, approvals must be processed by an external\
+            \ system. Also, if this is true, it blocks Request Center access requests\
+            \ and returns an error for any user who isn't an org admin."
+          example: true
+          type: boolean
+        autoApprovalEnabled:
+          default: false
+          description: "If this is true and the requester and reviewer are the same,\
+            \ the request is automatically approved."
+          example: true
+          type: boolean
+        reauthorizationEnabled:
+          default: false
+          description: "If this is true, reauthorization will be enforced for appropriately\
+            \ configured access items. Enablement of this feature is currently in\
+            \ a limited state."
+          example: true
+          type: boolean
+        requestOnBehalfOfConfig:
+          $ref: '#/components/schemas/RequestOnBehalfOfConfig'
+        entitlementRequestConfig:
+          $ref: '#/components/schemas/EntitlementRequestConfig'
+        govGroupVisibilityEnabled:
+          default: false
+          description: "If this is true, requesters and requested-for users will be\
+            \ able to see the names of governance group members when a request is\
+            \ awaiting the group's approval. Up to the first 10 members of the group\
+            \ will be listed."
+          example: true
+          type: boolean
+      title: Access Request Config
+      type: object
     AccountActionRequestDto:
       description: "Represents a request to perform an action on an account, such\
         \ as deletion or modification."
@@ -3526,6 +3749,23 @@ components:
       required:
       - accountRequestId
       title: Account Delete Async Result
+      type: object
+    AccountDeleteConfigDto:
+      description: detailed information about account delete approval config
+      example:
+        approvalConfig:
+          comments: REJECTION
+          approvers: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
+        approvalRequired: true
+      properties:
+        approvalRequired:
+          default: false
+          description: Specifies if an account deletion request requires approval.
+          example: true
+          type: boolean
+        approvalConfig:
+          $ref: '#/components/schemas/ApprovalConfig'
+      title: Account Delete Config
       type: object
     AccountDeleteRequestInput:
       description: "Contains the required information for processing a user-initiated\
@@ -3787,6 +4027,127 @@ components:
       - UNKNOWN
       example: IDENTITY
       type: string
+    EntitlementAccessRequestConfig:
+      example:
+        denialCommentRequired: false
+        approvalSchemes:
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+        reauthorizationRequired: false
+        requestCommentRequired: true
+        requireEndDate: true
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
+      properties:
+        approvalSchemes:
+          description: Ordered list of approval steps for the access request. Empty
+            when no approval is required.
+          items:
+            $ref: '#/components/schemas/EntitlementApprovalScheme'
+          type: array
+        requestCommentRequired:
+          default: false
+          description: If the requester must provide a comment during access request.
+          example: true
+          type: boolean
+        denialCommentRequired:
+          default: false
+          description: If the reviewer must provide a comment when denying the access
+            request.
+          example: false
+          type: boolean
+        reauthorizationRequired:
+          default: false
+          description: Is Reauthorization Required
+          example: false
+          type: boolean
+        requireEndDate:
+          default: false
+          description: "If true, then remove date or sunset date is required in access\
+            \ request of the entitlement."
+          example: true
+          type: boolean
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/EntitlementAccessRequestConfig_maxPermittedAccessDuration'
+      title: Entitlement Access Request Config
+      type: object
+    EntitlementApprovalScheme:
+      example:
+        approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+        approverType: GOVERNANCE_GROUP
+      properties:
+        approverType:
+          description: "Describes the individual or group that is responsible for\
+            \ an approval step. Values are as follows.\n\n**ENTITLEMENT_OWNER**: Owner\
+            \ of the associated Entitlement\n\n**SOURCE_OWNER**: Owner of the associated\
+            \ Source\n\n**MANAGER**: Manager of the Identity for whom the request\
+            \ is being made\n\n**GOVERNANCE_GROUP**: A Governance Group, the ID of\
+            \ which is specified by the **approverId** field\n\n**WORKFLOW**: A Workflow,\
+            \ the ID of which is specified by the **approverId** field, Workflows\
+            \ are exclusive to other types of approvals and License required.     "
+          enum:
+          - ENTITLEMENT_OWNER
+          - SOURCE_OWNER
+          - MANAGER
+          - GOVERNANCE_GROUP
+          - WORKFLOW
+          example: GOVERNANCE_GROUP
+          type: string
+        approverId:
+          description: "Id of the specific approver, used only when approverType is\
+            \ GOVERNANCE_GROUP or WORKFLOW"
+          example: e3eab852-8315-467f-9de7-70eda97f63c8
+          nullable: true
+          type: string
+      title: Entitlement Approval Scheme
+      type: object
+    EntitlementRequestConfig:
+      example:
+        accessRequestConfig:
+          denialCommentRequired: false
+          approvalSchemes:
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+          reauthorizationRequired: false
+          requestCommentRequired: true
+          requireEndDate: true
+          maxPermittedAccessDuration:
+            value: 5
+            timeUnit: DAYS
+        revocationRequestConfig:
+          approvalSchemes:
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+            approverType: GOVERNANCE_GROUP
+      properties:
+        accessRequestConfig:
+          $ref: '#/components/schemas/EntitlementAccessRequestConfig'
+        revocationRequestConfig:
+          $ref: '#/components/schemas/EntitlementRevocationRequestConfig'
+      title: Entitlement Request Config
+      type: object
+    EntitlementRevocationRequestConfig:
+      example:
+        approvalSchemes:
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+        - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
+          approverType: GOVERNANCE_GROUP
+      properties:
+        approvalSchemes:
+          description: Ordered list of approval steps for the access request. Empty
+            when no approval is required.
+          items:
+            $ref: '#/components/schemas/EntitlementApprovalScheme'
+          type: array
+      title: Entitlement Revocation Request Config
+      type: object
     MachineAccountSubTypeConfigDto:
       description: "Contains comprehensive configuration details for machine account\
         \ subtype approval, including creation and deletion approval requirements,\
@@ -3819,22 +4180,67 @@ components:
           $ref: '#/components/schemas/MachineAccountSubTypeConfigDto_machineAccountDelete'
       title: Machine Account Subtype Approval Config
       type: object
-    AccountDeleteConfigDto:
-      description: detailed information about account delete approval config
+    RequestOnBehalfOfConfig:
       example:
-        approvalConfig:
-          comments: REJECTION
-          approvers: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
-        approvalRequired: true
+        allowRequestOnBehalfOfEmployeeByManager: true
+        allowRequestOnBehalfOfAnyoneByAnyone: true
       properties:
-        approvalRequired:
+        allowRequestOnBehalfOfAnyoneByAnyone:
           default: false
-          description: Specifies if an account deletion request requires approval.
+          description: "If this is true, anyone can request access for anyone."
           example: true
           type: boolean
-        approvalConfig:
-          $ref: '#/components/schemas/ApprovalConfig'
-      title: Account Delete Config
+        allowRequestOnBehalfOfEmployeeByManager:
+          default: false
+          description: "If this is true, a manager can request access for his or her\
+            \ direct reports."
+          example: true
+          type: boolean
+      title: Request On Behalf Of Config
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
       type: object
     Entitlement:
       example:
@@ -4012,50 +4418,6 @@ components:
             $ref: '#/components/schemas/PermissionDto'
           type: array
       title: Entitlement
-      type: object
-    ErrorResponseDto:
-      example:
-        causes:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        messages:
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        - localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
-        detailCode: 400.1 Bad Request Content
-        trackingId: e7eab60924f64aa284175b9fa3309599
-      properties:
-        detailCode:
-          description: Fine-grained error code providing more detail of the error.
-          example: 400.1 Bad Request Content
-          type: string
-        trackingId:
-          description: Unique tracking id for the error.
-          example: e7eab60924f64aa284175b9fa3309599
-          type: string
-        messages:
-          description: Generic localized reason for error
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-        causes:
-          description: Plain-text descriptive reasons to provide additional detail
-            to the text provided in the messages field
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-      title: Error Response Dto
       type: object
     EntitlementBulkUpdateRequest:
       description: Object for specifying the bulk update request
@@ -4318,6 +4680,28 @@ components:
           type: string
       title: Identity Reference
       type: object
+    ApprovalConfig:
+      example:
+        comments: REJECTION
+        approvers: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
+      properties:
+        approvers:
+          description: "Approvers must be listed as a comma-separated string, with\
+            \ each entry representing an individual or group authorized to approve\
+            \ account creation or deletion requests."
+          example: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
+          type: string
+        comments:
+          description: "Specifies the approval status for an account creation or deletion\
+            \ request. Allowed values are APPROVAL, REJECTION, ALL, and OFF."
+          enum:
+          - APPROVAL
+          - REJECTION
+          - ALL
+          - "false"
+          example: REJECTION
+          type: string
+      type: object
     AccountRequestPhaseState:
       description: "The current phase state of the account request, indicating its\
         \ progress or outcome in the approval workflow."
@@ -4346,27 +4730,26 @@ components:
           type: string
       title: ApproverReference
       type: object
-    ApprovalConfig:
+    ErrorMessageDto:
       example:
-        comments: REJECTION
-        approvers: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
       properties:
-        approvers:
-          description: "Approvers must be listed as a comma-separated string, with\
-            \ each entry representing an individual or group authorized to approve\
-            \ account creation or deletion requests."
-          example: "sourceOwner, accountOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
           type: string
-        comments:
-          description: "Specifies the approval status for an account creation or deletion\
-            \ request. Allowed values are APPROVAL, REJECTION, ALL, and OFF."
-          enum:
-          - APPROVAL
-          - REJECTION
-          - ALL
-          - "false"
-          example: REJECTION
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
           type: string
+      title: Error Message Dto
       type: object
     EntitlementPrivilegeLevel:
       properties:
@@ -4496,27 +4879,6 @@ components:
           readOnly: true
           type: string
       title: Permission DTO
-      type: object
-    ErrorMessageDto:
-      example:
-        localeOrigin: DEFAULT
-        text: The request was syntactically correct but its content is semantically
-          invalid.
-        locale: en-US
-      properties:
-        locale:
-          description: "The locale for the message text, a BCP 47 language tag."
-          example: en-US
-          nullable: true
-          type: string
-        localeOrigin:
-          $ref: '#/components/schemas/LocaleOrigin'
-        text:
-          description: Actual text of the error message in the indicated locale.
-          example: The request was syntactically correct but its content is semantically
-            invalid.
-          type: string
-      title: Error Message Dto
       type: object
     Target:
       example:
@@ -4690,7 +5052,7 @@ components:
       - message
       title: Localized Message
       type: object
-    listEntitlements_401_response:
+    getAccessRequestConfig_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
       properties:
@@ -4699,7 +5061,7 @@ components:
           example: "JWT validation failed: JWT is expired"
           type: object
       type: object
-    listEntitlements_429_response:
+    getAccessRequestConfig_429_response:
       example:
         message: ' Rate Limit Exceeded '
       properties:
@@ -4790,6 +5152,28 @@ components:
         id: 2c91808568c529c60168cca6f90c1313
         type: ""
       nullable: true
+    EntitlementAccessRequestConfig_maxPermittedAccessDuration:
+      description: The maximum duration for which the access is permitted.
+      example:
+        value: 5
+        timeUnit: DAYS
+      nullable: true
+      properties:
+        value:
+          description: The numeric value of the duration.
+          example: 5
+          format: int32
+          type: integer
+        timeUnit:
+          description: The time unit for the duration.
+          enum:
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+          example: DAYS
+          type: string
+      type: object
     MachineAccountSubTypeConfigDto_machineAccountCreate:
       description: "Configuration options for machine account creation, including\
         \ whether creation is enabled, if approval is required, associated form and\

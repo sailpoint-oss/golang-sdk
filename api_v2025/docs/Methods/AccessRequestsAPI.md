@@ -602,6 +602,9 @@ func main() {
 [[Back to top]](#)
 
 ## get-access-request-config
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Get access request configuration
 This endpoint returns the current access-request configuration.
 
@@ -1050,6 +1053,9 @@ func main() {
 [[Back to top]](#)
 
 ## set-access-request-config
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Update access request configuration
 This endpoint replaces the current access-request configuration.
 
