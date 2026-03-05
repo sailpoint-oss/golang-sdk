@@ -92,7 +92,7 @@ func (c *Configuration) FullUserAgent() string {
 func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "SailPoint-SDK/go/" + sdkVersion,
+		UserAgent:           "SailPoint-SDK-Go/" + sdkVersion,
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}

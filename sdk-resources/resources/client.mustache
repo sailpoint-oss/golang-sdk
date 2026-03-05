@@ -431,10 +431,8 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	localVarRequest.Header.Add("X-SailPoint-SDK", "go/{{packageVersion}}")
-	localVarRequest.Header.Add("X-SailPoint-SDK-Runtime", fmt.Sprintf("go/%s", strings.TrimPrefix(runtime.Version(), "go")))
-	localVarRequest.Header.Add("X-SailPoint-SDK-OS", fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH))
+	userAgent := fmt.Sprintf("%s (%s; %s) Go/%s (openapi-generator/{{generatorVersion}})", c.cfg.UserAgent, runtime.GOOS, runtime.GOARCH, strings.TrimPrefix(runtime.Version(), "go"))
+	localVarRequest.Header.Add("User-Agent", userAgent)
 
 	if ctx != nil {
 		// add context to the request
