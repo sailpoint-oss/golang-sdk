@@ -18,6 +18,8 @@ import (
 	"github.com/spf13/viper"
 )
 
+const sdkVersion = "2.7.22"
+
 type PatConfig struct {
 	ClientID     string    `mapstructure:"clientid"`
 	ClientSecret string    `mapstructure:"clientsecret"`
@@ -71,27 +73,38 @@ type Configuration struct {
 	Experimental        bool              `json:"experimental,omitempty"`
 	HTTPClient          *retryablehttp.Client
 	ClientConfiguration ClientConfiguration
+	// ConsumerIdentifier is an optional identifier for the application consuming this SDK (e.g. "sailpoint-cli").
+	ConsumerIdentifier string `json:"consumerIdentifier,omitempty"`
+	// ConsumerVersion is the version of the consuming application (e.g. "1.2.3").
+	ConsumerVersion string `json:"consumerVersion,omitempty"`
+}
+
+// FullUserAgent returns the User-Agent string with optional consumer suffix appended.
+func (c *Configuration) FullUserAgent() string {
+	ua := c.UserAgent
+	if c.ConsumerIdentifier != "" && c.ConsumerVersion != "" {
+		ua = fmt.Sprintf("%s (%s/%s)", ua, c.ConsumerIdentifier, c.ConsumerVersion)
+	}
+	return ua
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "OpenAPI-Generator/2.7.22/go",
+		UserAgent:           "SailPoint-SDK-Go/" + sdkVersion,
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}
 	return cfg
 }
 
-// NewCLIConfiguration returns a new Configuration object
+// Deprecated: NewCLIConfiguration is deprecated. Use NewConfiguration and set
+// ConsumerIdentifier and ConsumerVersion on the returned Configuration instead.
 func NewCLIConfiguration(clientConfiguration ClientConfiguration) *Configuration {
-	cfg := &Configuration{
-		DefaultHeader:       make(map[string]string),
-		UserAgent:           "SailPoint-CLI/2.7.22/go",
-		Debug:               false,
-		ClientConfiguration: clientConfiguration,
-	}
+	cfg := NewConfiguration(clientConfiguration)
+	cfg.ConsumerIdentifier = "sailpoint-cli"
+	cfg.ConsumerVersion = sdkVersion
 	return cfg
 }
 
