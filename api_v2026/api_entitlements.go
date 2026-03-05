@@ -182,7 +182,7 @@ func (a *EntitlementsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -215,7 +215,7 @@ func (a *EntitlementsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -350,7 +350,7 @@ func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -383,7 +383,7 @@ func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,7 +587,7 @@ func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -620,7 +620,7 @@ func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -824,7 +824,7 @@ func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlem
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,7 +857,7 @@ func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlem
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1090,7 +1090,7 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1112,7 +1112,7 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1259,7 +1259,7 @@ func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1292,7 +1292,7 @@ func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1444,7 +1444,7 @@ func (a *EntitlementsAPIService) UpdateEntitlementsInBulkExecute(r ApiUpdateEnti
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListEntitlements401Response
+			var v GetAccessRequestConfig401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1477,7 +1477,7 @@ func (a *EntitlementsAPIService) UpdateEntitlementsInBulkExecute(r ApiUpdateEnti
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListEntitlements429Response
+			var v GetAccessRequestConfig429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -1,3 +1,113 @@
+- path: /access-request-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/access-requests#get-access-request-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+          //resp, r, err := apiClient.V2026.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccessRequestConfig`: AccessRequestConfig
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfig`: %v\n", resp)
+        }
+- path: /access-request-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/access-requests#set-access-request-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           accessrequestconfig := []byte(`{
+          "govGroupVisibilityEnabled" : true,
+          "requestOnBehalfOfConfig" : {
+            "allowRequestOnBehalfOfEmployeeByManager" : true,
+            "allowRequestOnBehalfOfAnyoneByAnyone" : true
+          },
+          "autoApprovalEnabled" : true,
+          "entitlementRequestConfig" : {
+            "accessRequestConfig" : {
+              "denialCommentRequired" : false,
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ],
+              "reauthorizationRequired" : false,
+              "requestCommentRequired" : true,
+              "requireEndDate" : true,
+              "maxPermittedAccessDuration" : {
+                "value" : 5,
+                "timeUnit" : "DAYS"
+              }
+            },
+            "revocationRequestConfig" : {
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ]
+            }
+          },
+          "reauthorizationEnabled" : true,
+          "approvalsMustBeExternal" : true
+        }`) // AccessRequestConfig | 
+
+          
+          var accessRequestConfig v2026.AccessRequestConfig
+          if err := json.Unmarshal(accessrequestconfig, &accessRequestConfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+          //resp, r, err := apiClient.V2026.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetAccessRequestConfig`: AccessRequestConfig
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfig`: %v\n", resp)
+        }
 - path: /account-requests/deletion
   method: Get
   xCodeSample:

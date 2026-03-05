@@ -3351,6 +3351,7 @@ paths:
       - ORG_ADMIN
   /access-request-config:
     get:
+      deprecated: true
       description: This endpoint returns the current access-request configuration.
       operationId: getAccessRequestConfig
       responses:
@@ -3422,7 +3423,15 @@ paths:
       summary: Get access request configuration
       tags:
       - Access Requests
+      x-deprecated-description: |
+        This endpoint has been deprecated as of 2026-02-26. Please use the [v2026 get-access-request-config](https://developer.sailpoint.com/docs/api/v2026/get-access-request-config) endpoint instead.
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - USER
     put:
+      deprecated: true
       description: This endpoint replaces the current access-request configuration.
       operationId: setAccessRequestConfig
       requestBody:
@@ -3500,6 +3509,8 @@ paths:
       summary: Update access request configuration
       tags:
       - Access Requests
+      x-deprecated-description: |
+        This endpoint has been deprecated as of 2026-02-26. Please use the [v2026 set-access-request-config](https://developer.sailpoint.com/docs/api/v2026/set-access-request-config) endpoint instead.
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /access-request-status:

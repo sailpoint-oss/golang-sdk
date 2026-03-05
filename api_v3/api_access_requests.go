@@ -423,6 +423,8 @@ This endpoint returns the current access-request configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestConfigRequest
+
+Deprecated
 */
 func (a *AccessRequestsAPIService) GetAccessRequestConfig(ctx context.Context) ApiGetAccessRequestConfigRequest {
 	return ApiGetAccessRequestConfigRequest{
@@ -433,6 +435,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfig(ctx context.Context) A
 
 // Execute executes the request
 //  @return AccessRequestConfig
+// Deprecated
 func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -843,6 +846,8 @@ This endpoint replaces the current access-request configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigRequest
+
+Deprecated
 */
 func (a *AccessRequestsAPIService) SetAccessRequestConfig(ctx context.Context) ApiSetAccessRequestConfigRequest {
 	return ApiSetAccessRequestConfigRequest{
@@ -853,6 +858,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfig(ctx context.Context) A
 
 // Execute executes the request
 //  @return AccessRequestConfig
+// Deprecated
 func (a *AccessRequestsAPIService) SetAccessRequestConfigExecute(r ApiSetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
