@@ -9,8 +9,6 @@ API version: 3.0.0
 package sailpoint
 
 import (
-	"regexp"
-
 	"github.com/hashicorp/go-retryablehttp"
 	beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	generic "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
@@ -20,17 +18,9 @@ import (
 	v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 )
 
-var (
-	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
-	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
-)
-
 // APIClient manages communication with the IdentityNow V3 API API v3.0.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg    *Configuration
-	common service // Reuse a single struct instead of allocating one for each service on the heap.
-
 	// API Services
 
 	V3      *v3.APIClient
@@ -39,16 +29,6 @@ type APIClient struct {
 	V2025   *v2025.APIClient
 	V2026   *v2026.APIClient
 	Generic *generic.APIClient
-	token   string
-}
-
-type service struct {
-	client        *v3.APIClient
-	betaClient    *beta.APIClient
-	v2024Client   *v2024.APIClient
-	v2025Client   *v2025.APIClient
-	v2026Client   *v2026.APIClient
-	genericClient *generic.APIClient
 }
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.

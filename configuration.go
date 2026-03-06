@@ -101,12 +101,13 @@ func localConfig() ClientConfiguration {
 		panic(fmt.Errorf("unable to find executable directory: %s \n", err))
 	}
 
-	viper.AddConfigPath(filepath.Dir(executableDir))
-	viper.AddConfigPath(".")
-	viper.SetConfigName("config")
-	viper.SetConfigType("json")
+	v := viper.New()
+	v.AddConfigPath(filepath.Dir(executableDir))
+	v.AddConfigPath(".")
+	v.SetConfigName("config")
+	v.SetConfigType("json")
 
-	if err2 := viper.ReadInConfig(); err != nil {
+	if err2 := v.ReadInConfig(); err2 != nil {
 		if _, ok := err2.(viper.ConfigFileNotFoundError); ok {
 			// Config file not found; ignore error if desired
 			// IGNORE they may be using env vars
@@ -116,7 +117,7 @@ func localConfig() ClientConfiguration {
 		}
 	}
 	var simpleConfig ClientConfiguration
-	err3 := viper.Unmarshal(&simpleConfig)
+	err3 := v.Unmarshal(&simpleConfig)
 
 	if err3 != nil {
 		panic(fmt.Errorf("unable to decode Config: %s \n", err3))
@@ -131,11 +132,13 @@ func homeConfig() ClientConfiguration {
 	if err != nil {
 		panic(fmt.Errorf("unable to find home directory: %s \n", err))
 	}
-	viper.AddConfigPath(filepath.Join(home, ".sailpoint"))
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
 
-	if err2 := viper.ReadInConfig(); err != nil {
+	v := viper.New()
+	v.AddConfigPath(filepath.Join(home, ".sailpoint"))
+	v.SetConfigName("config")
+	v.SetConfigType("yaml")
+
+	if err2 := v.ReadInConfig(); err2 != nil {
 		if _, ok := err2.(viper.ConfigFileNotFoundError); ok {
 			// Config file not found; ignore error if desired
 			// IGNORE they may be using env vars
@@ -147,7 +150,7 @@ func homeConfig() ClientConfiguration {
 
 	var config OrgConfig
 
-	err3 := viper.Unmarshal(&config)
+	err3 := v.Unmarshal(&config)
 
 	if err3 != nil {
 		panic(fmt.Errorf("unable to decode Config: %s \n", err3))
