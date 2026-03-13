@@ -11,6 +11,7 @@ api_entitlements.go
 api_human_account_deletion_approval_config.go
 api_machine_account_deletion_approval_config.go
 api_machine_subtype_approval_config.go
+api_notifications.go
 api_task_management.go
 client.go
 configuration.go
@@ -73,6 +74,8 @@ docs/MachineAccountSubTypeConfigDtoMachineAccountDelete.md
 docs/MachineSubtypeApprovalConfigAPI.md
 docs/MachineSubtypeApprovalConfigAPIdeveloperSite_code_examples.yaml
 docs/Methods/Index.md
+docs/NotificationsAPI.md
+docs/NotificationsAPIdeveloperSite_code_examples.yaml
 docs/PermissionDto.md
 docs/RequestOnBehalfOfConfig.md
 docs/Target.md
@@ -83,6 +86,9 @@ docs/TaskReturnDetails.md
 docs/TaskStatus.md
 docs/TaskStatusMessage.md
 docs/TaskStatusMessageParametersInner.md
+docs/TemplateMediumDto.md
+docs/TemplateVariable.md
+docs/TemplateVariablesDto.md
 git_push.sh
 go.mod
 go.sum
@@ -138,6 +144,9 @@ model_task_return_details.go
 model_task_status.go
 model_task_status_message.go
 model_task_status_message_parameters_inner.go
+model_template_medium_dto.go
+model_template_variable.go
+model_template_variables_dto.go
 response.go
 test/api_access_requests_test.go
 test/api_account_deletion_requests_test.go
@@ -146,5 +155,6 @@ test/api_entitlements_test.go
 test/api_human_account_deletion_approval_config_test.go
 test/api_machine_account_deletion_approval_config_test.go
 test/api_machine_subtype_approval_config_test.go
+test/api_notifications_test.go
 test/api_task_management_test.go
 utils.go

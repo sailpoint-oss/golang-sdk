@@ -694,6 +694,42 @@
           // response from `UpdateMachineAccountDeletionBySubTypeApprovalConfig`: MachineAccountSubTypeConfigDto
           fmt.Fprintf(os.Stdout, "Response from `MachineSubtypeApprovalConfigAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig`: %v\n", resp)
         }
+- path: /notification-template-variables/{key}/{medium}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/notifications#get-notification-template-variables
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          key := `approval_request_notification` // string | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation.  # string | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation. 
+          medium := `EMAIL` // string | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation.  # string | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation. 
+          sorters := `-description` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.NotificationsAPI.GetNotificationTemplateVariables(context.Background(), key, medium).Execute()
+          //resp, r, err := apiClient.V2026.NotificationsAPI.GetNotificationTemplateVariables(context.Background(), key, medium).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateVariables``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetNotificationTemplateVariables`: TemplateVariablesDto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplateVariables`: %v\n", resp)
+        }
 - path: /task-status/pending-tasks
   method: Head
   xCodeSample:

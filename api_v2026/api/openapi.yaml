@@ -37,6 +37,7 @@ tags:
 - name: Human Account Deletion Approval Config
 - name: Machine Account Deletion Approval Config
 - name: Machine Subtype Approval Config
+- name: Notifications
 - name: Task Management
 paths:
   /access-request-config:
@@ -3343,6 +3344,171 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
+  /notification-template-variables/{key}/{medium}:
+    get:
+      description: |
+        Returns global variables and template-specific variables for a given notification template key and medium.
+        Use these variable names in template content; they are replaced at send time with the corresponding values.
+        Variable lists can be sorted by key, type, or description via the sorters query parameter (default ascending by key).
+      operationId: getNotificationTemplateVariables
+      parameters:
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **key, type, description**
+        example: -description
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |
+          The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation.
+        example: approval_request_notification
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listNotificationTemplates
+      - description: |
+          The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation.
+        example: EMAIL
+        in: path
+        name: medium
+        required: true
+        schema:
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          type: string
+        x-sailpoint-resource-operation-id: listNotificationTemplates
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                key: approval_request_notification
+                medium: EMAIL
+                globalVariables:
+                - key: __esc.html()
+                  type: function
+                  description: "Escapes the characters in a string using HTML entities\
+                    \ (e.g. &quot;, &amp;)."
+                  example: $__esc.html($value)
+                - key: __global.productName
+                  type: string
+                  description: The human-readable name of the product or application.
+                  example: SailPoint Identity Security Cloud
+                - key: __global.standardLogoURL
+                  type: string
+                  description: URL for the standard size logo displayed on various
+                    pages.
+                  example: null
+                templateVariables:
+                - key: approvalName
+                  type: string
+                  description: Display name of the approval request
+                  example: Request for Access to Sales Application
+                - key: requester
+                  type: object
+                  description: Identity who submitted the approval request
+                  example:
+                    identityID: 4701645331ee4e578ca7884da99452fc
+                    type: IDENTITY
+                    name: Rebecca Requester
+                    email: rebecca@testmail.identitysoon.com
+              schema:
+                $ref: '#/components/schemas/TemplateVariablesDto'
+          description: Global and template-specific variables for the given key and
+            medium.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: Get notification template variables
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
 components:
   parameters:
     offset:
@@ -4197,6 +4363,137 @@ components:
           example: true
           type: boolean
       title: Request On Behalf Of Config
+      type: object
+    TemplateMediumDto:
+      description: The notification delivery medium.
+      enum:
+      - EMAIL
+      - SLACK
+      - TEAMS
+      example: EMAIL
+      title: Template Medium
+      type: string
+    TemplateVariable:
+      description: |
+        A variable available for use in a notification template. Variables can be template-specific (from domain events)
+        or global (available to all templates like __recipient, __global, __util). Template variables provide
+        self-documenting metadata about what variables are available when customizing notification templates.
+      properties:
+        key:
+          description: The variable name as used when rendering context in templates.
+          example: recipientDisplayName
+          type: string
+        type:
+          description: |
+            The data type for this variable. Use JSON Schema-like names for values (string, boolean, number, object, array)
+            or "function" for template utility/helper functions (e.g. __dateTool.format(), __esc.html()).
+          enum:
+          - string
+          - boolean
+          - number
+          - object
+          - array
+          - function
+          example: string
+          type: string
+        description:
+          description: Human-readable description explaining what this variable represents.
+          example: Display name of the notification recipient
+          nullable: true
+          type: string
+        example:
+          description: |
+            Example value demonstrating the format and usage. For type "function", often a Velocity-style call (e.g. $__esc.html($value)).
+            Can be a string, number, boolean, object, array, or null when no example is defined.
+          example: John Doe
+          nullable: true
+          type: object
+      title: Template Variable
+      type: object
+    TemplateVariablesDto:
+      description: |
+        Variables available for use in a notification template. Variables can be template-specific (from domain events)
+        or global (available to all templates like __recipient, __global, __util).
+      example:
+        globalVariables:
+        - key: __global.productName
+          type: string
+          description: The human-readable name of the product or application.
+          example: SailPoint Identity Security Cloud
+        - key: __esc.html()
+          type: function
+          description: "Escapes the characters in a string using HTML entities (e.g.\
+            \ &quot;, &amp;)."
+          example: $__esc.html($value)
+        - key: __global.standardLogoURL
+          type: string
+          description: URL for the standard size logo displayed on various pages.
+          example: null
+        medium: EMAIL
+        key: approval_request_notification
+        templateVariables:
+        - key: approvalName
+          type: string
+          description: Display name of the approval request
+          example: Request for Access to Sales Application
+        - key: requester
+          type: object
+          description: Identity who submitted the approval request
+          example:
+            identityID: 4701645331ee4e578ca7884da99452fc
+            type: IDENTITY
+            name: Rebecca Requester
+            email: rebecca@testmail.identitysoon.com
+      properties:
+        key:
+          description: The notification template key.
+          example: approval_request_notification
+          type: string
+        medium:
+          $ref: '#/components/schemas/TemplateMediumDto'
+        globalVariables:
+          description: |
+            Global variables available to all templates for this tenant (e.g. __global.*, __recipient, __util.*, __dateTool.*, __esc.*).
+            Includes both data variables and function-type helpers.
+          example:
+          - key: __global.productName
+            type: string
+            description: The human-readable name of the product or application.
+            example: SailPoint Identity Security Cloud
+          - key: __esc.html()
+            type: function
+            description: "Escapes the characters in a string using HTML entities (e.g.\
+              \ &quot;, &amp;)."
+            example: $__esc.html($value)
+          - key: __global.standardLogoURL
+            type: string
+            description: URL for the standard size logo displayed on various pages.
+            example: null
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+          nullable: true
+          type: array
+        templateVariables:
+          description: "Template-specific variables for the given key and medium (e.g.\
+            \ approverPath, requester, attributes)."
+          example:
+          - key: approvalName
+            type: string
+            description: Display name of the approval request
+            example: Request for Access to Sales Application
+          - key: requester
+            type: object
+            description: Identity who submitted the approval request
+            example:
+              identityID: 4701645331ee4e578ca7884da99452fc
+              type: IDENTITY
+              name: Rebecca Requester
+              email: rebecca@testmail.identitysoon.com
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+          nullable: true
+          type: array
+      title: Template Variables DTO
       type: object
     ErrorResponseDto:
       example:
