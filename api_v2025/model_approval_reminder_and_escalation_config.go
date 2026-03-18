@@ -17,13 +17,13 @@ import (
 // checks if the ApprovalReminderAndEscalationConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalReminderAndEscalationConfig{}
 
-// ApprovalReminderAndEscalationConfig struct for ApprovalReminderAndEscalationConfig
+// ApprovalReminderAndEscalationConfig Configuration for approval reminder and escalation behavior. Important: Modifying this object will override the sp-approval service's reminderConfig and escalationConfig settings. Changes made here take precedence over any configuration set directly in the sp-approval service. 
 type ApprovalReminderAndEscalationConfig struct {
 	// Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation.
 	DaysUntilEscalation NullableInt32 `json:"daysUntilEscalation,omitempty"`
 	// Number of days to wait between reminder notifications.
 	DaysBetweenReminders NullableInt32 `json:"daysBetweenReminders,omitempty"`
-	// Maximum number of reminder notification to send to the reviewer before approval escalation.
+	// Maximum number of reminder notifications to send to the reviewer before approval escalation. The maximum allowed value is 20.
 	MaxReminders NullableInt32 `json:"maxReminders,omitempty"`
 	FallbackApproverRef NullableIdentityReferenceWithNameAndEmail `json:"fallbackApproverRef,omitempty"`
 	AdditionalProperties map[string]interface{}
