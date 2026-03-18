@@ -2987,6 +2987,8 @@ This endpoint will return an execution ID, which can be used to lookup more info
 
 **This will cause a live run of the workflow, which could result in unintended modifications to your IDN tenant.**
 
+This endpoint has a rate limit of 5 requests per 10 seconds.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow
