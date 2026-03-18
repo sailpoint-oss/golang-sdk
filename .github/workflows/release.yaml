@@ -128,14 +128,6 @@ jobs:
           yq -i ".packageVersion = \"$VERSION\"" sdk-resources/v2026-config.yaml
           yq -i ".packageVersion = \"$VERSION\"" sdk-resources/generic-config.yaml
 
-      - name: Update configuration.go user agent version
-        shell: bash
-        run: |
-          LATEST="${{ steps.version.outputs.latest }}"
-          NEW="${{ steps.version.outputs.new }}"
-          LATEST_ESCAPED="${LATEST//./\\.}"
-          sed -e "s/${LATEST_ESCAPED}/${NEW}/g" configuration.go > configuration.go.tmp && mv configuration.go.tmp configuration.go
-
       - name: Build SDK
         uses: ./.github/actions/build-sdk
 

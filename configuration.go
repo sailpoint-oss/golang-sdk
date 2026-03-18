@@ -18,8 +18,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-const sdkVersion = "2.7.22"
-
 type PatConfig struct {
 	ClientID     string    `mapstructure:"clientid"`
 	ClientSecret string    `mapstructure:"clientsecret"`
@@ -79,20 +77,19 @@ type Configuration struct {
 	ConsumerVersion string `json:"consumerVersion,omitempty"`
 }
 
-// FullUserAgent returns the User-Agent string with optional consumer suffix appended.
-func (c *Configuration) FullUserAgent() string {
-	ua := c.UserAgent
+// ConsumerSuffix returns the consumer identifier portion of the User-Agent,
+// e.g. "(sailpoint-cli/1.2.3)", or an empty string if no consumer is set.
+func (c *Configuration) ConsumerSuffix() string {
 	if c.ConsumerIdentifier != "" && c.ConsumerVersion != "" {
-		ua = fmt.Sprintf("%s (%s/%s)", ua, c.ConsumerIdentifier, c.ConsumerVersion)
+		return fmt.Sprintf("(%s/%s)", c.ConsumerIdentifier, c.ConsumerVersion)
 	}
-	return ua
+	return ""
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "SailPoint-SDK-Go/" + sdkVersion,
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}
@@ -104,7 +101,6 @@ func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 func NewCLIConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := NewConfiguration(clientConfiguration)
 	cfg.ConsumerIdentifier = "sailpoint-cli"
-	cfg.ConsumerVersion = sdkVersion
 	return cfg
 }
 

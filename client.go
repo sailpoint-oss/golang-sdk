@@ -60,13 +60,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	c := &APIClient{}
 
-	fullUA := cfg.FullUserAgent()
-	CV3 := v3.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
-	CBeta := beta.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
-	CV2024 := v2024.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2024", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
-	CV2025 := v2025.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2025", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
-	CVGeneric := generic.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
-	CV2026 := v2026.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2026", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, fullUA, cfg.Experimental)
+	consumerSuffix := cfg.ConsumerSuffix()
+	CV3 := v3.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CBeta := beta.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CV2024 := v2024.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2024", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CV2025 := v2025.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2025", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CVGeneric := generic.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CV2026 := v2026.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2026", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
 
 	CV3.HTTPClient = cfg.HTTPClient
 	CBeta.HTTPClient = cfg.HTTPClient
