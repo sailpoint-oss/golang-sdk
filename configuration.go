@@ -71,27 +71,36 @@ type Configuration struct {
 	Experimental        bool              `json:"experimental,omitempty"`
 	HTTPClient          *retryablehttp.Client
 	ClientConfiguration ClientConfiguration
+	// ConsumerIdentifier is an optional identifier for the application consuming this SDK (e.g. "sailpoint-cli").
+	ConsumerIdentifier string `json:"consumerIdentifier,omitempty"`
+	// ConsumerVersion is the version of the consuming application (e.g. "1.2.3").
+	ConsumerVersion string `json:"consumerVersion,omitempty"`
+}
+
+// ConsumerSuffix returns the consumer identifier portion of the User-Agent,
+// e.g. "(sailpoint-cli/1.2.3)", or an empty string if no consumer is set.
+func (c *Configuration) ConsumerSuffix() string {
+	if c.ConsumerIdentifier != "" && c.ConsumerVersion != "" {
+		return fmt.Sprintf("(%s/%s)", c.ConsumerIdentifier, c.ConsumerVersion)
+	}
+	return ""
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:       make(map[string]string),
-		UserAgent:           "OpenAPI-Generator/2.7.31/go",
 		Debug:               false,
 		ClientConfiguration: clientConfiguration,
 	}
 	return cfg
 }
 
-// NewCLIConfiguration returns a new Configuration object
+// Deprecated: NewCLIConfiguration is deprecated. Use NewConfiguration and set
+// ConsumerIdentifier and ConsumerVersion on the returned Configuration instead.
 func NewCLIConfiguration(clientConfiguration ClientConfiguration) *Configuration {
-	cfg := &Configuration{
-		DefaultHeader:       make(map[string]string),
-		UserAgent:           "SailPoint-CLI/2.7.31/go",
-		Debug:               false,
-		ClientConfiguration: clientConfiguration,
-	}
+	cfg := NewConfiguration(clientConfiguration)
+	cfg.ConsumerIdentifier = "sailpoint-cli"
 	return cfg
 }
 
