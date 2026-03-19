@@ -21,8 +21,6 @@ var _ MappedNullable = &AccessRequestConfig{}
 type AccessRequestConfig struct {
 	// If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
-	// If this is true and the requester and reviewer are the same, the request is automatically approved.
-	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
 	// If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.
 	ReauthorizationEnabled *bool `json:"reauthorizationEnabled,omitempty"`
 	RequestOnBehalfOfConfig *RequestOnBehalfOfConfig `json:"requestOnBehalfOfConfig,omitempty"`
@@ -42,8 +40,6 @@ func NewAccessRequestConfig() *AccessRequestConfig {
 	this := AccessRequestConfig{}
 	var approvalsMustBeExternal bool = false
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
 	var reauthorizationEnabled bool = false
 	this.ReauthorizationEnabled = &reauthorizationEnabled
 	var govGroupVisibilityEnabled bool = false
@@ -58,8 +54,6 @@ func NewAccessRequestConfigWithDefaults() *AccessRequestConfig {
 	this := AccessRequestConfig{}
 	var approvalsMustBeExternal bool = false
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
 	var reauthorizationEnabled bool = false
 	this.ReauthorizationEnabled = &reauthorizationEnabled
 	var govGroupVisibilityEnabled bool = false
@@ -97,38 +91,6 @@ func (o *AccessRequestConfig) HasApprovalsMustBeExternal() bool {
 // SetApprovalsMustBeExternal gets a reference to the given bool and assigns it to the ApprovalsMustBeExternal field.
 func (o *AccessRequestConfig) SetApprovalsMustBeExternal(v bool) {
 	o.ApprovalsMustBeExternal = &v
-}
-
-// GetAutoApprovalEnabled returns the AutoApprovalEnabled field value if set, zero value otherwise.
-func (o *AccessRequestConfig) GetAutoApprovalEnabled() bool {
-	if o == nil || IsNil(o.AutoApprovalEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.AutoApprovalEnabled
-}
-
-// GetAutoApprovalEnabledOk returns a tuple with the AutoApprovalEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequestConfig) GetAutoApprovalEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoApprovalEnabled) {
-		return nil, false
-	}
-	return o.AutoApprovalEnabled, true
-}
-
-// HasAutoApprovalEnabled returns a boolean if a field has been set.
-func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool {
-	if o != nil && !IsNil(o.AutoApprovalEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoApprovalEnabled gets a reference to the given bool and assigns it to the AutoApprovalEnabled field.
-func (o *AccessRequestConfig) SetAutoApprovalEnabled(v bool) {
-	o.AutoApprovalEnabled = &v
 }
 
 // GetReauthorizationEnabled returns the ReauthorizationEnabled field value if set, zero value otherwise.
@@ -272,9 +234,6 @@ func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApprovalsMustBeExternal) {
 		toSerialize["approvalsMustBeExternal"] = o.ApprovalsMustBeExternal
 	}
-	if !IsNil(o.AutoApprovalEnabled) {
-		toSerialize["autoApprovalEnabled"] = o.AutoApprovalEnabled
-	}
 	if !IsNil(o.ReauthorizationEnabled) {
 		toSerialize["reauthorizationEnabled"] = o.ReauthorizationEnabled
 	}
@@ -310,7 +269,6 @@ func (o *AccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalsMustBeExternal")
-		delete(additionalProperties, "autoApprovalEnabled")
 		delete(additionalProperties, "reauthorizationEnabled")
 		delete(additionalProperties, "requestOnBehalfOfConfig")
 		delete(additionalProperties, "entitlementRequestConfig")

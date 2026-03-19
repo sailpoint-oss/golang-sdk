@@ -28,6 +28,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -565,8 +566,12 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-localVarRequest.Header.Add("X-SailPoint-SDK", "2.7.31")
+	userAgent := "SailPoint-SDK-Go/2.7.32"
+	if c.cfg.UserAgent != "" {
+		userAgent += " " + c.cfg.UserAgent
+	}
+	userAgent += fmt.Sprintf(" (%s; %s) Go/%s (openapi-generator/7.12.0)", runtime.GOOS, runtime.GOARCH, strings.TrimPrefix(runtime.Version(), "go"))
+	localVarRequest.Header.Add("User-Agent", userAgent)
 
 	if ctx != nil {
 		// add context to the request

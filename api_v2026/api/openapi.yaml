@@ -3674,7 +3674,6 @@ components:
         requestOnBehalfOfConfig:
           allowRequestOnBehalfOfEmployeeByManager: true
           allowRequestOnBehalfOfAnyoneByAnyone: true
-        autoApprovalEnabled: true
         entitlementRequestConfig:
           accessRequestConfig:
             denialCommentRequired: false
@@ -3703,12 +3702,6 @@ components:
           description: "If this is true, approvals must be processed by an external\
             \ system. Also, if this is true, it blocks Request Center access requests\
             \ and returns an error for any user who isn't an org admin."
-          example: true
-          type: boolean
-        autoApprovalEnabled:
-          default: false
-          description: "If this is true and the requester and reviewer are the same,\
-            \ the request is automatically approved."
           example: true
           type: boolean
         reauthorizationEnabled:

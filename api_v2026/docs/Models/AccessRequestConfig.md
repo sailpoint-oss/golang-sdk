@@ -16,7 +16,6 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestConfig', 'V2026AccessReq
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApprovalsMustBeExternal** | Pointer to **bool** | If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin. | [optional] [default to false]
-**AutoApprovalEnabled** | Pointer to **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved. | [optional] [default to false]
 **ReauthorizationEnabled** | Pointer to **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to false]
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](request-on-behalf-of-config) |  | [optional] 
 **EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig**](entitlement-request-config) |  | [optional] 
@@ -65,31 +64,6 @@ SetApprovalsMustBeExternal sets ApprovalsMustBeExternal field to given value.
 `func (o *AccessRequestConfig) HasApprovalsMustBeExternal() bool`
 
 HasApprovalsMustBeExternal returns a boolean if a field has been set.
-
-### GetAutoApprovalEnabled
-
-`func (o *AccessRequestConfig) GetAutoApprovalEnabled() bool`
-
-GetAutoApprovalEnabled returns the AutoApprovalEnabled field if non-nil, zero value otherwise.
-
-### GetAutoApprovalEnabledOk
-
-`func (o *AccessRequestConfig) GetAutoApprovalEnabledOk() (*bool, bool)`
-
-GetAutoApprovalEnabledOk returns a tuple with the AutoApprovalEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoApprovalEnabled
-
-`func (o *AccessRequestConfig) SetAutoApprovalEnabled(v bool)`
-
-SetAutoApprovalEnabled sets AutoApprovalEnabled field to given value.
-
-### HasAutoApprovalEnabled
-
-`func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool`
-
-HasAutoApprovalEnabled returns a boolean if a field has been set.
 
 ### GetReauthorizationEnabled
 
