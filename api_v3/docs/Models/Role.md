@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **SailPointTime** | Date the Role was last modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
 **Owner** | [**OwnerReference**](owner-reference) |  | 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **AccessProfiles** | Pointer to [**[]AccessProfileRef**](access-profile-ref) |  | [optional] 
 **Entitlements** | Pointer to [**[]EntitlementRef**](entitlement-ref) |  | [optional] 
 **Membership** | Pointer to [**NullableRoleMembershipSelector**](role-membership-selector) |  | [optional] 
@@ -203,6 +204,41 @@ and a boolean to check if the value has been set.
 SetOwner sets Owner field to given value.
 
 
+### GetAdditionalOwners
+
+`func (o *Role) GetAdditionalOwners() []AdditionalOwnerRef`
+
+GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
+
+### GetAdditionalOwnersOk
+
+`func (o *Role) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
+
+GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalOwners
+
+`func (o *Role) SetAdditionalOwners(v []AdditionalOwnerRef)`
+
+SetAdditionalOwners sets AdditionalOwners field to given value.
+
+### HasAdditionalOwners
+
+`func (o *Role) HasAdditionalOwners() bool`
+
+HasAdditionalOwners returns a boolean if a field has been set.
+
+### SetAdditionalOwnersNil
+
+`func (o *Role) SetAdditionalOwnersNil(b bool)`
+
+ SetAdditionalOwnersNil sets the value for AdditionalOwners to be an explicit nil
+
+### UnsetAdditionalOwners
+`func (o *Role) UnsetAdditionalOwners()`
+
+UnsetAdditionalOwners ensures that no value is present for AdditionalOwners, not even an explicit nil
 ### GetAccessProfiles
 
 `func (o *Role) GetAccessProfiles() []AccessProfileRef`

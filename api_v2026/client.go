@@ -65,6 +65,8 @@ type APIClient struct {
 
 	MachineAccountDeletionApprovalConfigAPI *MachineAccountDeletionApprovalConfigAPIService
 
+	MachineIdentitiesAPI *MachineIdentitiesAPIService
+
 	MachineSubtypeApprovalConfigAPI *MachineSubtypeApprovalConfigAPIService
 
 	NotificationsAPI *NotificationsAPIService
@@ -94,6 +96,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.HumanAccountDeletionApprovalConfigAPI = (*HumanAccountDeletionApprovalConfigAPIService)(&c.common)
 	c.MachineAccountDeletionApprovalConfigAPI = (*MachineAccountDeletionApprovalConfigAPIService)(&c.common)
+	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
 	c.MachineSubtypeApprovalConfigAPI = (*MachineSubtypeApprovalConfigAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
@@ -446,7 +449,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.32"
+	userAgent := "SailPoint-SDK-Go/2.7.33"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

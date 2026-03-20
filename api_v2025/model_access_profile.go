@@ -45,7 +45,8 @@ type AccessProfile struct {
 	Segments []string `json:"segments,omitempty"`
 	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	ProvisioningCriteria NullableProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
-	AdditionalOwners []OwnerReference `json:"additionalOwners,omitempty"`
+	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -580,9 +581,9 @@ func (o *AccessProfile) UnsetProvisioningCriteria() {
 }
 
 // GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessProfile) GetAdditionalOwners() []OwnerReference {
+func (o *AccessProfile) GetAdditionalOwners() []AdditionalOwnerRef {
 	if o == nil {
-		var ret []OwnerReference
+		var ret []AdditionalOwnerRef
 		return ret
 	}
 	return o.AdditionalOwners
@@ -591,7 +592,7 @@ func (o *AccessProfile) GetAdditionalOwners() []OwnerReference {
 // GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfile) GetAdditionalOwnersOk() ([]OwnerReference, bool) {
+func (o *AccessProfile) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
 	if o == nil || IsNil(o.AdditionalOwners) {
 		return nil, false
 	}
@@ -607,8 +608,8 @@ func (o *AccessProfile) HasAdditionalOwners() bool {
 	return false
 }
 
-// SetAdditionalOwners gets a reference to the given []OwnerReference and assigns it to the AdditionalOwners field.
-func (o *AccessProfile) SetAdditionalOwners(v []OwnerReference) {
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *AccessProfile) SetAdditionalOwners(v []AdditionalOwnerRef) {
 	o.AdditionalOwners = v
 }
 

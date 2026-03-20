@@ -1381,6 +1381,7 @@ The following fields are patchable:
 * description
 * enabled
 * owner
+* additionalOwners
 * accessProfiles
 * entitlements
 * membership

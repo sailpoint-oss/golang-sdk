@@ -619,6 +619,8 @@ This API updates an existing Access Profile. The following fields are patchable:
 
 **owner**
 
+**additionalOwners**
+
 **requestable**
 
 **accessRequestConfig**

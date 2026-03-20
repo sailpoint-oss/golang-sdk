@@ -212,6 +212,15 @@ func main() {
             },
             "type" : "IDENTITY_LIST"
           },
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
           "enabled" : true,
           "revocationRequestConfig" : {
             "commentsRequired" : false,
@@ -744,6 +753,7 @@ The following fields are patchable:
 * description
 * enabled
 * owner
+* additionalOwners
 * accessProfiles
 * entitlements
 * membership

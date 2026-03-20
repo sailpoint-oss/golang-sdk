@@ -36,6 +36,7 @@ tags:
 - name: Entitlements
 - name: Human Account Deletion Approval Config
 - name: Machine Account Deletion Approval Config
+- name: Machine Identities
 - name: Machine Subtype Approval Config
 - name: Notifications
 - name: Task Management
@@ -2574,6 +2575,674 @@ paths:
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
       - USER
+  /machine-identities:
+    get:
+      description: This API returns a list of machine identities.
+      operationId: listMachineIdentities
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **displayName**: *eq, in, sw*
+
+          **cisIdentityId**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **attributes**: *eq*
+
+          **manuallyEdited**: *eq*
+
+          **subtype**: *eq, in*
+
+          **owners.primaryIdentity.id**: *eq, in, sw*
+
+          **owners.primaryIdentity.name**: *eq, in, isnull, pr*
+
+          **owners.secondaryIdentity.id**: *eq, in, sw*
+
+          **owners.secondaryIdentity.name**: *eq, in, isnull, pr*
+
+          **source.name**: *eq, in, sw*
+
+          **source.id**: *eq, in*
+
+          **entitlement.id**: *eq, in*
+
+          **entitlement.name**: *eq, in, sw*
+        example: identityId eq "2c9180858082150f0180893dbaf44201"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified**
+        example: nativeIdentity
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MachineIdentityResponse'
+                type: array
+          description: List of machine identities.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List machine identities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    post:
+      description: |-
+        Use this API to create a machine identity.
+        The maximum supported length for the description field is 2000 characters.
+      operationId: createMachineIdentity
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineIdentityRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityResponse'
+          description: Machine Identity created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Create machine identities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /machine-identities/{id}:
+    delete:
+      description: The API returns successful response if the requested machine identity
+        was deleted.
+      operationId: deleteMachineIdentity
+      parameters:
+      - description: Machine Identity ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listMachineIdentities
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Delete machine identity
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This API returns a single machine identity using the Machine Identity
+        ID.
+      operationId: getMachineIdentity
+      parameters:
+      - description: Machine Identity ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listMachineIdentities
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityResponse'
+          description: A machine identity object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+      summary: Machine identity details
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |
+        Use this API to update machine identity details.
+      operationId: updateMachineIdentity
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        x-sailpoint-resource-operation-id: listMachineIdentities
+      - description: Use this header to enable this experimental API.
+        example: true
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Add machine identity attribute:
+                value:
+                - op: add
+                  path: /attributes/securityRisk
+                  value: medium
+              Replace machine identity attribute:
+                value:
+                - op: replace
+                  path: /attributes/securityRisk
+                  value: medium
+              Remove machine identity attribute:
+                value:
+                - op: remove
+                  path: /attributes/securityRisk
+            schema:
+              items:
+                type: object
+              type: array
+        description: "A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineIdentityResponse'
+          description: Updated Machine Identity object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestConfig_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Update a machine identity
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /source-subtypes/{subtypeId}/machine-config:
     get:
       description: "This endpoint retrieves the approval configuration for machine\
@@ -4112,6 +4781,10 @@ components:
     BaseReferenceDto:
       description: "Base object for referencing other DTOs, containing type, id, and\
         \ name fields for identification and display purposes."
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: ""
       properties:
         type:
           allOf:
@@ -4946,6 +5619,103 @@ components:
       - uniqueName
       title: Task Status
       type: object
+    MachineIdentityResponse:
+      allOf:
+      - $ref: '#/components/schemas/MachineIdentity'
+      - properties:
+          manuallyEdited:
+            default: false
+            description: Indicates if the machine identity has been manually edited
+            example: true
+            type: boolean
+          manuallyCreated:
+            default: false
+            description: Indicates if the machine identity has been manually created
+            example: true
+            type: boolean
+          source:
+            $ref: '#/components/schemas/Machine_Identity_Response_source'
+          datasetId:
+            description: The dataset id associated to the source in which the identity
+              was retrieved from
+            example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+            type: string
+          userEntitlements:
+            description: The user entitlements associated to the machine identity
+            items:
+              $ref: '#/components/schemas/Machine_Identity_Response_userEntitlements'
+            type: array
+        title: Machine Identity Response
+        type: object
+      example:
+        sourceId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        created: 2015-05-28T14:07:17Z
+        description: ""
+        owners:
+          primaryIdentity: "{}"
+          secondaryIdentities:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: ""
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: ""
+        source: null
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
+        subtype: Application
+        userEntitlements:
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source: "{}"
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source: "{}"
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        attributes: "{\"Region\":\"EU\"}"
+        id: id12345
+        manuallyEdited: true
+        manuallyCreated: true
+    MachineIdentityRequest:
+      allOf:
+      - $ref: '#/components/schemas/MachineIdentity'
+      - properties:
+          userEntitlements:
+            description: The user entitlements associated to the machine identity
+            items:
+              $ref: '#/components/schemas/Machine_Identity_Request_userEntitlements'
+            type: array
+        title: Machine Identity Request
+        type: object
+      example:
+        sourceId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        subtype: Application
+        created: 2015-05-28T14:07:17Z
+        userEntitlements:
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        description: ""
+        attributes: "{\"Region\":\"EU\"}"
+        owners:
+          primaryIdentity: "{}"
+          secondaryIdentities:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: ""
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: ""
+        id: id12345
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
     IdentityReference:
       description: "Contains detailed information about an identity, including unique\
         \ identifier, name, email address, and registration status."
@@ -5309,6 +6079,41 @@ components:
       - uniqueName
       title: Task Definition Summary
       type: object
+    MachineIdentity:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          nativeIdentity:
+            description: The native identity associated to the machine identity directly
+              aggregated from a source
+            example: abc:123:dddd
+            type: string
+          description:
+            description: Description of machine identity
+            example: ""
+            type: string
+          attributes:
+            $ref: '#/components/schemas/MachineIdentityDto_attributes'
+          subtype:
+            description: The subtype value associated to the machine identity
+            example: Application
+            type: string
+          owners:
+            $ref: '#/components/schemas/MachineIdentityDto_owners'
+          sourceId:
+            description: The source id associated to the machine identity
+            example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+            type: string
+          uuid:
+            description: The UUID associated to the machine identity directly aggregated
+              from a source
+            example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+            type: string
+        required:
+        - nativeIdentity
+        - subtype
+        title: MachineIdentityDto
+        type: object
     LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
@@ -5341,6 +6146,34 @@ components:
       - locale
       - message
       title: Localized Message
+      type: object
+    BaseCommonDto:
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: id12345
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Object
+          example: aName
+          nullable: true
+          type: string
+        created:
+          description: Creation date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: Base Common Dto
       type: object
     getAccessRequestConfig_401_response:
       example:
@@ -5648,6 +6481,52 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
+    Machine_Identity_Response_source:
+      description: The source of the machine identity
+      type: object
+    Machine_Identity_Response_source_1:
+      description: The source of the entitlement
+      type: object
+    Machine_Identity_Response_userEntitlements:
+      example:
+        sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+        displayName: Entitlement Name
+        entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        source: "{}"
+      properties:
+        sourceId:
+          description: The source ID of the entitlement
+          example: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          type: string
+        entitlementId:
+          description: The ID of the entitlement
+          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          type: string
+        displayName:
+          description: The display name of the entitlement
+          example: Entitlement Name
+          type: string
+        source:
+          description: The source of the entitlement
+          type: object
+      type: object
+    Machine_Identity_Request_userEntitlements:
+      example:
+        sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+        entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+      properties:
+        entitlementId:
+          description: The ID of the entitlement
+          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          type: string
+        sourceId:
+          description: The source ID of the entitlement
+          example: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          type: string
+      required:
+      - entitlementId
+      - sourceId
+      type: object
     AccessModelMetadata_values_inner:
       description: An individual value to assign to the metadata item
       example:
@@ -5672,6 +6551,37 @@ components:
       anyOf:
       - type: object
       - type: string
+    MachineIdentityDto_attributes:
+      description: A map of custom machine identity attributes
+      example: "{\"Region\":\"EU\"}"
+      type: object
+    MachineIdentityDto_owners_primaryIdentity:
+      description: Defines the identity which is selected as the primary owner
+      type: object
+    MachineIdentityDto_owners:
+      description: The owner configuration associated to the machine identity
+      example:
+        primaryIdentity: "{}"
+        secondaryIdentities:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: ""
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: ""
+      properties:
+        primaryIdentity:
+          description: Defines the identity which is selected as the primary owner
+          type: object
+        secondaryIdentities:
+          description: Defines the identities which are selected as secondary owners
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          type: array
+      required:
+      - primaryIdentity
+      - secondaryIdentities
+      type: object
   securitySchemes:
     userAuth:
       description: |

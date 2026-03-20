@@ -2489,7 +2489,7 @@ paths:
     patch:
       description: |-
         This API updates an existing Access Profile. The following fields are patchable:
-        **name**, **description**, **enabled**, **owner**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**, **entitlements**, **provisioningCriteria**
+        **name**, **description**, **enabled**, **owner**, **additionalOwners**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**, **entitlements**, **provisioningCriteria**
         A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
         >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
@@ -38614,18 +38614,18 @@ paths:
     patch:
       description: "This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
         \ syntax.\n\nThe following fields are patchable:\n\n* name\n* description\n\
-        * enabled\n* owner\n* accessProfiles\n* entitlements\n* membership\n* requestable\n\
-        * accessRequestConfig\n* revokeRequestConfig\n* segments\n* accessModelMetadata\
-        \   \nA token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority\
-        \ is required to call this API. In addition, a token with ROLE_SUBADMIN authority\
-        \ may only call this API if all access profiles included in the role are associated\
-        \ to Sources with management workgroups of which the ROLE_SUBADMIN is a member.\n\
-        \nThe maximum supported length for the description field is 2000 characters.\
-        \ Longer descriptions will be preserved for existing roles, however, any new\
-        \ roles as well as any updates to existing descriptions will be limited to\
-        \ 2000 characters.\n\nWhen you use this API to modify a role's membership\
-        \ identities, you can only modify up to a limit of 500 membership identities\
-        \ at a time. "
+        * enabled\n* owner\n* additionalOwners\n* accessProfiles\n* entitlements\n\
+        * membership\n* requestable\n* accessRequestConfig\n* revokeRequestConfig\n\
+        * segments\n* accessModelMetadata   \nA token with API, ORG_ADMIN, ROLE_ADMIN,\
+        \ or ROLE_SUBADMIN authority is required to call this API. In addition, a\
+        \ token with ROLE_SUBADMIN authority may only call this API if all access\
+        \ profiles included in the role are associated to Sources with management\
+        \ workgroups of which the ROLE_SUBADMIN is a member.\n\nThe maximum supported\
+        \ length for the description field is 2000 characters. Longer descriptions\
+        \ will be preserved for existing roles, however, any new roles as well as\
+        \ any updates to existing descriptions will be limited to 2000 characters.\n\
+        \nWhen you use this API to modify a role's membership identities, you can\
+        \ only modify up to a limit of 500 membership identities at a time. "
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -67837,8 +67837,10 @@ components:
         provisioningCriteria:
           $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
         additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/OwnerReference'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
       required:
@@ -79262,6 +79264,13 @@ components:
               property: attribute.email
               type: ACCOUNT
           type: IDENTITY_LIST
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
         enabled: true
         revocationRequestConfig:
           commentsRequired: false
@@ -79348,6 +79357,13 @@ components:
           type: string
         owner:
           $ref: '#/components/schemas/OwnerReference'
+        additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+          items:
+            $ref: '#/components/schemas/AdditionalOwnerRef'
+          nullable: true
+          type: array
         accessProfiles:
           items:
             $ref: '#/components/schemas/AccessProfileRef'
@@ -86591,6 +86607,33 @@ components:
           nullable: true
           type: array
           example: null
+      type: object
+    AdditionalOwnerRef:
+      description: Reference to an additional owner (identity or governance group).
+      example:
+        name: support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: "Type of the additional owner; IDENTITY for an identity, GOVERNANCE_GROUP\
+            \ for a governance group."
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the identity or governance group.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: "Display name. It may be left null or omitted on input. If\
+            \ set, it must match the current display name of the identity or governance\
+            \ group, otherwise a 400 Bad Request error may result."
+          example: support
+          nullable: true
+          type: string
       type: object
     AccessProfileUsage:
       example:

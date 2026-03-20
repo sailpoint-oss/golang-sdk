@@ -32,6 +32,8 @@ type Role struct {
 	// A human-readable description of the Role
 	Description NullableString `json:"description,omitempty"`
 	Owner NullableOwnerReference `json:"owner"`
+	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
@@ -272,6 +274,39 @@ func (o *Role) GetOwnerOk() (*OwnerReference, bool) {
 // SetOwner sets field value
 func (o *Role) SetOwner(v OwnerReference) {
 	o.Owner.Set(&v)
+}
+
+// GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Role) GetAdditionalOwners() []AdditionalOwnerRef {
+	if o == nil {
+		var ret []AdditionalOwnerRef
+		return ret
+	}
+	return o.AdditionalOwners
+}
+
+// GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Role) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
+	if o == nil || IsNil(o.AdditionalOwners) {
+		return nil, false
+	}
+	return o.AdditionalOwners, true
+}
+
+// HasAdditionalOwners returns a boolean if a field has been set.
+func (o *Role) HasAdditionalOwners() bool {
+	if o != nil && !IsNil(o.AdditionalOwners) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Role) SetAdditionalOwners(v []AdditionalOwnerRef) {
+	o.AdditionalOwners = v
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -706,6 +741,9 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["owner"] = o.Owner.Get()
+	if o.AdditionalOwners != nil {
+		toSerialize["additionalOwners"] = o.AdditionalOwners
+	}
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
@@ -792,6 +830,7 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "additionalOwners")
 		delete(additionalProperties, "accessProfiles")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "membership")

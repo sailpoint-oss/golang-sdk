@@ -251,6 +251,7 @@ docs/AccountsSelectionResponse.md
 docs/ActivateCampaignOptions.md
 docs/ActivityIdentity.md
 docs/ActivityInsights.md
+docs/AdditionalOwnerRef.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
 docs/AggregationResult.md
@@ -1563,6 +1564,7 @@ model_accounts_selection_response.go
 model_activate_campaign_options.go
 model_activity_identity.go
 model_activity_insights.go
+model_additional_owner_ref.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
 model_aggregation_result.go

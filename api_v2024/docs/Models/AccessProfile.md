@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **Segments** | Pointer to **[]string** | List of segment IDs, if any, that the access profile is assigned to. | [optional] 
 **AccessModelMetadata** | Pointer to [**AttributeDTOList**](attribute-dto-list) |  | [optional] 
 **ProvisioningCriteria** | Pointer to [**NullableProvisioningCriteriaLevel1**](provisioning-criteria-level1) |  | [optional] 
-**AdditionalOwners** | Pointer to [**[]OwnerReference**](owner-reference) |  | [optional] 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 
 ## Methods
 
@@ -483,20 +483,20 @@ HasProvisioningCriteria returns a boolean if a field has been set.
 UnsetProvisioningCriteria ensures that no value is present for ProvisioningCriteria, not even an explicit nil
 ### GetAdditionalOwners
 
-`func (o *AccessProfile) GetAdditionalOwners() []OwnerReference`
+`func (o *AccessProfile) GetAdditionalOwners() []AdditionalOwnerRef`
 
 GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
 
 ### GetAdditionalOwnersOk
 
-`func (o *AccessProfile) GetAdditionalOwnersOk() (*[]OwnerReference, bool)`
+`func (o *AccessProfile) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
 
 GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalOwners
 
-`func (o *AccessProfile) SetAdditionalOwners(v []OwnerReference)`
+`func (o *AccessProfile) SetAdditionalOwners(v []AdditionalOwnerRef)`
 
 SetAdditionalOwners sets AdditionalOwners field to given value.
 
