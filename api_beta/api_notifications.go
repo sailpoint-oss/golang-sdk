@@ -547,7 +547,7 @@ func (r ApiDeleteNotificationTemplatesInBulkRequest) Execute() (*http.Response, 
 /*
 DeleteNotificationTemplatesInBulk Bulk delete notification templates
 
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+This lets you bulk delete templates that you previously created for your site.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNotificationTemplatesInBulkRequest

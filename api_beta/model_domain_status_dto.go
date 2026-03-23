@@ -24,11 +24,13 @@ type DomainStatusDto struct {
 	// A domain address
 	Domain *string `json:"domain,omitempty"`
 	// DKIM is enabled for this domain
-	DkimEnabled map[string]interface{} `json:"dkimEnabled,omitempty"`
+	DkimEnabled *bool `json:"dkimEnabled,omitempty"`
 	// DKIM tokens required for authentication
 	DkimTokens []string `json:"dkimTokens,omitempty"`
 	// Status of DKIM authentication
 	DkimVerificationStatus *string `json:"dkimVerificationStatus,omitempty"`
+	// The AWS SES region the domain is associated with
+	Region *string `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,6 +42,8 @@ type _DomainStatusDto DomainStatusDto
 // will change when the set of required properties is changed
 func NewDomainStatusDto() *DomainStatusDto {
 	this := DomainStatusDto{}
+	var dkimEnabled bool = false
+	this.DkimEnabled = &dkimEnabled
 	return &this
 }
 
@@ -48,6 +52,8 @@ func NewDomainStatusDto() *DomainStatusDto {
 // but it doesn't guarantee that properties required by API are set
 func NewDomainStatusDtoWithDefaults() *DomainStatusDto {
 	this := DomainStatusDto{}
+	var dkimEnabled bool = false
+	this.DkimEnabled = &dkimEnabled
 	return &this
 }
 
@@ -116,19 +122,19 @@ func (o *DomainStatusDto) SetDomain(v string) {
 }
 
 // GetDkimEnabled returns the DkimEnabled field value if set, zero value otherwise.
-func (o *DomainStatusDto) GetDkimEnabled() map[string]interface{} {
+func (o *DomainStatusDto) GetDkimEnabled() bool {
 	if o == nil || IsNil(o.DkimEnabled) {
-		var ret map[string]interface{}
+		var ret bool
 		return ret
 	}
-	return o.DkimEnabled
+	return *o.DkimEnabled
 }
 
 // GetDkimEnabledOk returns a tuple with the DkimEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainStatusDto) GetDkimEnabledOk() (map[string]interface{}, bool) {
+func (o *DomainStatusDto) GetDkimEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.DkimEnabled) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.DkimEnabled, true
 }
@@ -142,9 +148,9 @@ func (o *DomainStatusDto) HasDkimEnabled() bool {
 	return false
 }
 
-// SetDkimEnabled gets a reference to the given map[string]interface{} and assigns it to the DkimEnabled field.
-func (o *DomainStatusDto) SetDkimEnabled(v map[string]interface{}) {
-	o.DkimEnabled = v
+// SetDkimEnabled gets a reference to the given bool and assigns it to the DkimEnabled field.
+func (o *DomainStatusDto) SetDkimEnabled(v bool) {
+	o.DkimEnabled = &v
 }
 
 // GetDkimTokens returns the DkimTokens field value if set, zero value otherwise.
@@ -211,6 +217,38 @@ func (o *DomainStatusDto) SetDkimVerificationStatus(v string) {
 	o.DkimVerificationStatus = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *DomainStatusDto) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainStatusDto) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *DomainStatusDto) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *DomainStatusDto) SetRegion(v string) {
+	o.Region = &v
+}
+
 func (o DomainStatusDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -235,6 +273,9 @@ func (o DomainStatusDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DkimVerificationStatus) {
 		toSerialize["dkimVerificationStatus"] = o.DkimVerificationStatus
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -263,6 +304,7 @@ func (o *DomainStatusDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "dkimEnabled")
 		delete(additionalProperties, "dkimTokens")
 		delete(additionalProperties, "dkimVerificationStatus")
+		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}
 

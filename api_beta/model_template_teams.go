@@ -19,14 +19,23 @@ var _ MappedNullable = &TemplateTeams{}
 
 // TemplateTeams struct for TemplateTeams
 type TemplateTeams struct {
+	// The template key
 	Key NullableString `json:"key,omitempty"`
+	// The title of the Teams message
 	Title NullableString `json:"title,omitempty"`
+	// The main text content of the Teams message
 	Text *string `json:"text,omitempty"`
+	// JSON string of the Teams adaptive card
 	MessageJSON NullableString `json:"messageJSON,omitempty"`
+	// Whether this is a subscription notification
 	IsSubscription NullableBool `json:"isSubscription,omitempty"`
+	// The approval request ID
 	ApprovalId NullableString `json:"approvalId,omitempty"`
+	// The request ID
 	RequestId NullableString `json:"requestId,omitempty"`
+	// The ID of the user who made the request
 	RequestedById NullableString `json:"requestedById,omitempty"`
+	// The type of notification
 	NotificationType NullableString `json:"notificationType,omitempty"`
 	AutoApprovalData NullableTemplateSlackAutoApprovalData `json:"autoApprovalData,omitempty"`
 	CustomFields NullableTemplateSlackCustomFields `json:"customFields,omitempty"`
@@ -41,6 +50,8 @@ type _TemplateTeams TemplateTeams
 // will change when the set of required properties is changed
 func NewTemplateTeams() *TemplateTeams {
 	this := TemplateTeams{}
+	var isSubscription bool = false
+	this.IsSubscription = *NewNullableBool(&isSubscription)
 	return &this
 }
 
@@ -49,6 +60,8 @@ func NewTemplateTeams() *TemplateTeams {
 // but it doesn't guarantee that properties required by API are set
 func NewTemplateTeamsWithDefaults() *TemplateTeams {
 	this := TemplateTeams{}
+	var isSubscription bool = false
+	this.IsSubscription = *NewNullableBool(&isSubscription)
 	return &this
 }
 

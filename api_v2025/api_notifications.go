@@ -623,7 +623,7 @@ func (r ApiDeleteNotificationTemplatesInBulkRequest) Execute() (*http.Response, 
 /*
 DeleteNotificationTemplatesInBulk Bulk delete notification templates
 
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+This lets you bulk delete templates that you previously created for your site.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNotificationTemplatesInBulkRequest
@@ -1121,14 +1121,8 @@ func (a *NotificationsAPIService) GetDkimAttributesExecute(r ApiGetDkimAttribute
 type ApiGetMailFromAttributesRequest struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	id *string
+	identity string
 	xSailPointExperimental *string
-}
-
-// Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
-func (r ApiGetMailFromAttributesRequest) Id(id string) ApiGetMailFromAttributesRequest {
-	r.id = &id
-	return r
 }
 
 // Use this header to enable this experimental API.
@@ -1147,12 +1141,14 @@ GetMailFromAttributes Get mail from attributes
 Retrieve MAIL FROM attributes for a given AWS SES identity.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identity Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
  @return ApiGetMailFromAttributesRequest
 */
-func (a *NotificationsAPIService) GetMailFromAttributes(ctx context.Context) ApiGetMailFromAttributesRequest {
+func (a *NotificationsAPIService) GetMailFromAttributes(ctx context.Context, identity string) ApiGetMailFromAttributesRequest {
 	return ApiGetMailFromAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
+		identity: identity,
 	}
 }
 
@@ -1172,6 +1168,7 @@ func (a *NotificationsAPIService) GetMailFromAttributesExecute(r ApiGetMailFromA
 	}
 
 	localVarPath := localBasePath + "/mail-from-attributes/{identity}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identity"+"}", url.PathEscape(parameterValueToString(r.identity, "identity")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1182,20 +1179,10 @@ func (a *NotificationsAPIService) GetMailFromAttributesExecute(r ApiGetMailFromA
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.id == nil {
-		return localVarReturnValue, nil, reportError("id is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.xSailPointExperimental == nil {
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

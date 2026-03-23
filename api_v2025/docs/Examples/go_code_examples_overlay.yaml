@@ -20621,9 +20621,55 @@
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            templatedto := []byte(`{
-          "slackTemplate" : "slackTemplate",
+          "slackTemplate" : {
+            "isSubscription" : false,
+            "attachments" : "[]",
+            "blocks" : "blocks",
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "key" : "key"
+          },
           "footer" : "footer",
-          "teamsTemplate" : "teamsTemplate",
+          "teamsTemplate" : {
+            "isSubscription" : false,
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "title" : "title",
+            "key" : "key",
+            "messageJSON" : "messageJSON"
+          },
           "subject" : "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
           "created" : "2020-01-01T00:00:00Z",
           "description" : "Daily digest - sent if number of outstanding tasks for task owner > 0",
@@ -20680,8 +20726,9 @@
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            emailstatusdto := []byte(`{
           "isVerifiedByDomain" : false,
-          "verificationStatus" : "PENDING",
+          "verificationStatus" : "SUCCESS",
           "id" : "id",
+          "region" : "us-east-1",
           "email" : "sender@example.com"
         }`) // EmailStatusDto | 
 
@@ -20829,7 +20876,7 @@
         )
 
         func main() {
-          id := `bobsmith@sailpoint.com` // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status # string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+          identity := `bobsmith@sailpoint.com` // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status # string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
@@ -20837,8 +20884,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.NotificationsAPI.GetMailFromAttributes(context.Background()).Id(id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.NotificationsAPI.GetMailFromAttributes(context.Background()).Id(id).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2025.NotificationsAPI.GetMailFromAttributes(context.Background(), identity).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2025.NotificationsAPI.GetMailFromAttributes(context.Background(), identity).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributes``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -21127,8 +21174,15 @@
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            sendtestnotificationrequestdto := []byte(`{
-          "context" : "{}",
+          "carbonCopy" : [ "cc@example.com" ],
+          "context" : {
+            "numberOfPendingTasks" : "4",
+            "taskTasks" : "tasks"
+          },
+          "blindCarbonCopy" : [ "bcc@example.com" ],
           "medium" : "EMAIL",
+          "locale" : "en",
+          "recipientEmailList" : [ "test@example.com" ],
           "key" : "cloud_manual_work_item_summary"
         }`) // SendTestNotificationRequestDto | 
 

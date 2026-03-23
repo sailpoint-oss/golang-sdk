@@ -19,14 +19,23 @@ var _ MappedNullable = &TemplateSlack{}
 
 // TemplateSlack struct for TemplateSlack
 type TemplateSlack struct {
+	// The template key
 	Key NullableString `json:"key,omitempty"`
+	// The main text content of the Slack message
 	Text *string `json:"text,omitempty"`
+	// JSON string of Slack Block Kit blocks for rich formatting
 	Blocks NullableString `json:"blocks,omitempty"`
+	// JSON string of Slack attachments
 	Attachments *string `json:"attachments,omitempty"`
+	// The type of notification
 	NotificationType NullableString `json:"notificationType,omitempty"`
+	// The approval request ID
 	ApprovalId NullableString `json:"approvalId,omitempty"`
+	// The request ID
 	RequestId NullableString `json:"requestId,omitempty"`
+	// The ID of the user who made the request
 	RequestedById NullableString `json:"requestedById,omitempty"`
+	// Whether this is a subscription notification
 	IsSubscription NullableBool `json:"isSubscription,omitempty"`
 	AutoApprovalData NullableTemplateSlackAutoApprovalData `json:"autoApprovalData,omitempty"`
 	CustomFields NullableTemplateSlackCustomFields `json:"customFields,omitempty"`
@@ -41,6 +50,8 @@ type _TemplateSlack TemplateSlack
 // will change when the set of required properties is changed
 func NewTemplateSlack() *TemplateSlack {
 	this := TemplateSlack{}
+	var isSubscription bool = false
+	this.IsSubscription = *NewNullableBool(&isSubscription)
 	return &this
 }
 
@@ -49,6 +60,8 @@ func NewTemplateSlack() *TemplateSlack {
 // but it doesn't guarantee that properties required by API are set
 func NewTemplateSlackWithDefaults() *TemplateSlack {
 	this := TemplateSlack{}
+	var isSubscription bool = false
+	this.IsSubscription = *NewNullableBool(&isSubscription)
 	return &this
 }
 

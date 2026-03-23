@@ -19,10 +19,15 @@ var _ MappedNullable = &TemplateSlackAutoApprovalData{}
 
 // TemplateSlackAutoApprovalData struct for TemplateSlackAutoApprovalData
 type TemplateSlackAutoApprovalData struct {
+	// Whether the request was auto-approved
 	IsAutoApproved NullableString `json:"isAutoApproved,omitempty"`
+	// The item ID
 	ItemId NullableString `json:"itemId,omitempty"`
+	// The item type
 	ItemType NullableString `json:"itemType,omitempty"`
+	// JSON message for auto-approval
 	AutoApprovalMessageJSON NullableString `json:"autoApprovalMessageJSON,omitempty"`
+	// Title for auto-approval
 	AutoApprovalTitle NullableString `json:"autoApprovalTitle,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **Address** | Pointer to **string** | The identity or domain address | [optional] 
 **DkimEnabled** | Pointer to **bool** | Whether or not DKIM has been enabled for this domain / identity | [optional] [default to false]
 **DkimTokens** | Pointer to **[]string** | The tokens to be added to a DNS for verification | [optional] 
-**DkimVerificationStatus** | Pointer to **string** | The current status if the domain /identity has been verified. Ie Success, Failed, Pending | [optional] 
+**DkimVerificationStatus** | Pointer to **string** | The current status if the domain /identity has been verified. Ie SUCCESS, FAILED, PENDING | [optional] 
+**Region** | Pointer to **string** | The AWS SES region the domain is associated with | [optional] 
 
 ## Methods
 
@@ -164,5 +165,30 @@ SetDkimVerificationStatus sets DkimVerificationStatus field to given value.
 `func (o *DkimAttributes) HasDkimVerificationStatus() bool`
 
 HasDkimVerificationStatus returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *DkimAttributes) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *DkimAttributes) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *DkimAttributes) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *DkimAttributes) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 

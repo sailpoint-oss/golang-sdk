@@ -98,7 +98,9 @@ func Test_api_v2025_NotificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background()).Execute()
+		var identity string
+
+		resp, httpRes, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background(), identity).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -14,14 +14,12 @@ import (
 	"encoding/json"
 )
 
-// Medium the model 'Medium'
+// Medium The notification medium (EMAIL, SLACK, or TEAMS)
 type Medium string
 
 // List of Medium
 const (
 	MEDIUM_EMAIL Medium = "EMAIL"
-	MEDIUM_SMS Medium = "SMS"
-	MEDIUM_PHONE Medium = "PHONE"
 	MEDIUM_SLACK Medium = "SLACK"
 	MEDIUM_TEAMS Medium = "TEAMS"
 )
@@ -29,8 +27,6 @@ const (
 // All allowed values of Medium enum
 var AllowedMediumEnumValues = []Medium{
 	"EMAIL",
-	"SMS",
-	"PHONE",
 	"SLACK",
 	"TEAMS",
 }

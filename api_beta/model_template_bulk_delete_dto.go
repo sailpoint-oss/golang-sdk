@@ -20,7 +20,9 @@ var _ MappedNullable = &TemplateBulkDeleteDto{}
 
 // TemplateBulkDeleteDto struct for TemplateBulkDeleteDto
 type TemplateBulkDeleteDto struct {
+	// The template key to delete
 	Key string `json:"key"`
+	// The notification medium (EMAIL, SLACK, or TEAMS)
 	Medium *string `json:"medium,omitempty"`
 	// The locale for the message text, a BCP 47 language tag.
 	Locale *string `json:"locale,omitempty"`

@@ -23,8 +23,16 @@ type SendTestNotificationRequestDto struct {
 	Key *string `json:"key,omitempty"`
 	// The notification medium. Has to be one of the following enum values.
 	Medium *string `json:"medium,omitempty"`
+	// The locale for the message text.
+	Locale *string `json:"locale,omitempty"`
 	// A Json object that denotes the context specific to the template.
 	Context map[string]interface{} `json:"context,omitempty"`
+	// A list of override recipient email addresses for the test notification.
+	RecipientEmailList []string `json:"recipientEmailList,omitempty"`
+	// A list of CC email addresses for the test notification.
+	CarbonCopy []string `json:"carbonCopy,omitempty"`
+	// A list of BCC email addresses for the test notification.
+	BlindCarbonCopy []string `json:"blindCarbonCopy,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,6 +119,38 @@ func (o *SendTestNotificationRequestDto) SetMedium(v string) {
 	o.Medium = &v
 }
 
+// GetLocale returns the Locale field value if set, zero value otherwise.
+func (o *SendTestNotificationRequestDto) GetLocale() string {
+	if o == nil || IsNil(o.Locale) {
+		var ret string
+		return ret
+	}
+	return *o.Locale
+}
+
+// GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SendTestNotificationRequestDto) GetLocaleOk() (*string, bool) {
+	if o == nil || IsNil(o.Locale) {
+		return nil, false
+	}
+	return o.Locale, true
+}
+
+// HasLocale returns a boolean if a field has been set.
+func (o *SendTestNotificationRequestDto) HasLocale() bool {
+	if o != nil && !IsNil(o.Locale) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocale gets a reference to the given string and assigns it to the Locale field.
+func (o *SendTestNotificationRequestDto) SetLocale(v string) {
+	o.Locale = &v
+}
+
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *SendTestNotificationRequestDto) GetContext() map[string]interface{} {
 	if o == nil || IsNil(o.Context) {
@@ -143,6 +183,102 @@ func (o *SendTestNotificationRequestDto) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
 
+// GetRecipientEmailList returns the RecipientEmailList field value if set, zero value otherwise.
+func (o *SendTestNotificationRequestDto) GetRecipientEmailList() []string {
+	if o == nil || IsNil(o.RecipientEmailList) {
+		var ret []string
+		return ret
+	}
+	return o.RecipientEmailList
+}
+
+// GetRecipientEmailListOk returns a tuple with the RecipientEmailList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SendTestNotificationRequestDto) GetRecipientEmailListOk() ([]string, bool) {
+	if o == nil || IsNil(o.RecipientEmailList) {
+		return nil, false
+	}
+	return o.RecipientEmailList, true
+}
+
+// HasRecipientEmailList returns a boolean if a field has been set.
+func (o *SendTestNotificationRequestDto) HasRecipientEmailList() bool {
+	if o != nil && !IsNil(o.RecipientEmailList) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipientEmailList gets a reference to the given []string and assigns it to the RecipientEmailList field.
+func (o *SendTestNotificationRequestDto) SetRecipientEmailList(v []string) {
+	o.RecipientEmailList = v
+}
+
+// GetCarbonCopy returns the CarbonCopy field value if set, zero value otherwise.
+func (o *SendTestNotificationRequestDto) GetCarbonCopy() []string {
+	if o == nil || IsNil(o.CarbonCopy) {
+		var ret []string
+		return ret
+	}
+	return o.CarbonCopy
+}
+
+// GetCarbonCopyOk returns a tuple with the CarbonCopy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SendTestNotificationRequestDto) GetCarbonCopyOk() ([]string, bool) {
+	if o == nil || IsNil(o.CarbonCopy) {
+		return nil, false
+	}
+	return o.CarbonCopy, true
+}
+
+// HasCarbonCopy returns a boolean if a field has been set.
+func (o *SendTestNotificationRequestDto) HasCarbonCopy() bool {
+	if o != nil && !IsNil(o.CarbonCopy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCarbonCopy gets a reference to the given []string and assigns it to the CarbonCopy field.
+func (o *SendTestNotificationRequestDto) SetCarbonCopy(v []string) {
+	o.CarbonCopy = v
+}
+
+// GetBlindCarbonCopy returns the BlindCarbonCopy field value if set, zero value otherwise.
+func (o *SendTestNotificationRequestDto) GetBlindCarbonCopy() []string {
+	if o == nil || IsNil(o.BlindCarbonCopy) {
+		var ret []string
+		return ret
+	}
+	return o.BlindCarbonCopy
+}
+
+// GetBlindCarbonCopyOk returns a tuple with the BlindCarbonCopy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SendTestNotificationRequestDto) GetBlindCarbonCopyOk() ([]string, bool) {
+	if o == nil || IsNil(o.BlindCarbonCopy) {
+		return nil, false
+	}
+	return o.BlindCarbonCopy, true
+}
+
+// HasBlindCarbonCopy returns a boolean if a field has been set.
+func (o *SendTestNotificationRequestDto) HasBlindCarbonCopy() bool {
+	if o != nil && !IsNil(o.BlindCarbonCopy) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlindCarbonCopy gets a reference to the given []string and assigns it to the BlindCarbonCopy field.
+func (o *SendTestNotificationRequestDto) SetBlindCarbonCopy(v []string) {
+	o.BlindCarbonCopy = v
+}
+
 func (o SendTestNotificationRequestDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -159,8 +295,20 @@ func (o SendTestNotificationRequestDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
+	if !IsNil(o.Locale) {
+		toSerialize["locale"] = o.Locale
+	}
 	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
+	}
+	if !IsNil(o.RecipientEmailList) {
+		toSerialize["recipientEmailList"] = o.RecipientEmailList
+	}
+	if !IsNil(o.CarbonCopy) {
+		toSerialize["carbonCopy"] = o.CarbonCopy
+	}
+	if !IsNil(o.BlindCarbonCopy) {
+		toSerialize["blindCarbonCopy"] = o.BlindCarbonCopy
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -186,7 +334,11 @@ func (o *SendTestNotificationRequestDto) UnmarshalJSON(data []byte) (err error) 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "medium")
+		delete(additionalProperties, "locale")
 		delete(additionalProperties, "context")
+		delete(additionalProperties, "recipientEmailList")
+		delete(additionalProperties, "carbonCopy")
+		delete(additionalProperties, "blindCarbonCopy")
 		o.AdditionalProperties = additionalProperties
 	}
 

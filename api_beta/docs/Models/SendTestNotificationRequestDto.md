@@ -17,7 +17,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | Pointer to **string** | The template notification key. | [optional] 
 **Medium** | Pointer to **string** | The notification medium. Has to be one of the following enum values. | [optional] 
+**Locale** | Pointer to **string** | The locale for the message text. | [optional] 
 **Context** | Pointer to **map[string]interface{}** | A Json object that denotes the context specific to the template. | [optional] 
+**RecipientEmailList** | Pointer to **[]string** | A list of override recipient email addresses for the test notification. | [optional] 
+**CarbonCopy** | Pointer to **[]string** | A list of CC email addresses for the test notification. | [optional] 
+**BlindCarbonCopy** | Pointer to **[]string** | A list of BCC email addresses for the test notification. | [optional] 
 
 ## Methods
 
@@ -88,6 +92,31 @@ SetMedium sets Medium field to given value.
 
 HasMedium returns a boolean if a field has been set.
 
+### GetLocale
+
+`func (o *SendTestNotificationRequestDto) GetLocale() string`
+
+GetLocale returns the Locale field if non-nil, zero value otherwise.
+
+### GetLocaleOk
+
+`func (o *SendTestNotificationRequestDto) GetLocaleOk() (*string, bool)`
+
+GetLocaleOk returns a tuple with the Locale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocale
+
+`func (o *SendTestNotificationRequestDto) SetLocale(v string)`
+
+SetLocale sets Locale field to given value.
+
+### HasLocale
+
+`func (o *SendTestNotificationRequestDto) HasLocale() bool`
+
+HasLocale returns a boolean if a field has been set.
+
 ### GetContext
 
 `func (o *SendTestNotificationRequestDto) GetContext() map[string]interface{}`
@@ -112,5 +141,80 @@ SetContext sets Context field to given value.
 `func (o *SendTestNotificationRequestDto) HasContext() bool`
 
 HasContext returns a boolean if a field has been set.
+
+### GetRecipientEmailList
+
+`func (o *SendTestNotificationRequestDto) GetRecipientEmailList() []string`
+
+GetRecipientEmailList returns the RecipientEmailList field if non-nil, zero value otherwise.
+
+### GetRecipientEmailListOk
+
+`func (o *SendTestNotificationRequestDto) GetRecipientEmailListOk() (*[]string, bool)`
+
+GetRecipientEmailListOk returns a tuple with the RecipientEmailList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecipientEmailList
+
+`func (o *SendTestNotificationRequestDto) SetRecipientEmailList(v []string)`
+
+SetRecipientEmailList sets RecipientEmailList field to given value.
+
+### HasRecipientEmailList
+
+`func (o *SendTestNotificationRequestDto) HasRecipientEmailList() bool`
+
+HasRecipientEmailList returns a boolean if a field has been set.
+
+### GetCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) GetCarbonCopy() []string`
+
+GetCarbonCopy returns the CarbonCopy field if non-nil, zero value otherwise.
+
+### GetCarbonCopyOk
+
+`func (o *SendTestNotificationRequestDto) GetCarbonCopyOk() (*[]string, bool)`
+
+GetCarbonCopyOk returns a tuple with the CarbonCopy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) SetCarbonCopy(v []string)`
+
+SetCarbonCopy sets CarbonCopy field to given value.
+
+### HasCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) HasCarbonCopy() bool`
+
+HasCarbonCopy returns a boolean if a field has been set.
+
+### GetBlindCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) GetBlindCarbonCopy() []string`
+
+GetBlindCarbonCopy returns the BlindCarbonCopy field if non-nil, zero value otherwise.
+
+### GetBlindCarbonCopyOk
+
+`func (o *SendTestNotificationRequestDto) GetBlindCarbonCopyOk() (*[]string, bool)`
+
+GetBlindCarbonCopyOk returns a tuple with the BlindCarbonCopy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlindCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) SetBlindCarbonCopy(v []string)`
+
+SetBlindCarbonCopy sets BlindCarbonCopy field to given value.
+
+### HasBlindCarbonCopy
+
+`func (o *SendTestNotificationRequestDto) HasBlindCarbonCopy() bool`
+
+HasBlindCarbonCopy returns a boolean if a field has been set.
 
 

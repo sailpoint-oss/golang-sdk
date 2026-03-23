@@ -27813,9 +27813,8 @@ paths:
       - Notifications
   /notification-templates/bulk-delete:
     post:
-      description: "This lets you bulk delete templates that you previously created\
-        \ for your site. Since this is a beta feature, please contact support to enable\
-        \ usage."
+      description: This lets you bulk delete templates that you previously created
+        for your site.
       operationId: deleteNotificationTemplatesInBulk
       requestBody:
         content:
@@ -27891,6 +27890,8 @@ paths:
       summary: Bulk delete notification templates
       tags:
       - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /oauth-clients:
     get:
       description: This gets a list of OAuth clients.
@@ -75979,8 +75980,8 @@ components:
     TemplateDtoDefault:
       example:
         slackTemplate:
-          isSubscription: true
-          attachments: attachments
+          isSubscription: false
+          attachments: "[]"
           blocks: blocks
           requestId: requestId
           autoApprovalData:
@@ -75996,12 +75997,12 @@ components:
             containsDeny: containsDeny
           requestedById: requestedById
           approvalId: approvalId
-          text: text
+          text: You have a new approval request
           notificationType: notificationType
           key: key
         footer: footer
         teamsTemplate:
-          isSubscription: true
+          isSubscription: false
           requestId: requestId
           autoApprovalData:
             itemId: itemId
@@ -76016,7 +76017,7 @@ components:
             containsDeny: containsDeny
           requestedById: requestedById
           approvalId: approvalId
-          text: text
+          text: You have a new approval request
           notificationType: notificationType
           title: title
           key: key
@@ -76045,8 +76046,6 @@ components:
           description: The message medium. More mediums may be added in the future.
           enum:
           - EMAIL
-          - PHONE
-          - SMS
           - SLACK
           - TEAMS
           example: EMAIL
@@ -76102,9 +76101,49 @@ components:
       type: object
     TemplateDto:
       example:
-        slackTemplate: slackTemplate
+        slackTemplate:
+          isSubscription: false
+          attachments: "[]"
+          blocks: blocks
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          key: key
         footer: footer
-        teamsTemplate: teamsTemplate
+        teamsTemplate:
+          isSubscription: false
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          title: title
+          key: key
+          messageJSON: messageJSON
         subject: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
         created: 2020-01-01T00:00:00Z
         description: Daily digest - sent if number of outstanding tasks for task owner
@@ -76132,8 +76171,6 @@ components:
           description: The message medium. More mediums may be added in the future.
           enum:
           - EMAIL
-          - PHONE
-          - SMS
           - SLACK
           - TEAMS
           example: EMAIL
@@ -76192,11 +76229,9 @@ components:
           format: date-time
           type: string
         slackTemplate:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/TemplateDto_slackTemplate'
         teamsTemplate:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/TemplateDto_teamsTemplate'
       required:
       - key
       - locale
@@ -76210,13 +76245,15 @@ components:
         key: cloud_manual_work_item_summary
       properties:
         key:
+          description: The template key to delete
           example: cloud_manual_work_item_summary
           type: string
         medium:
+          description: "The notification medium (EMAIL, SLACK, or TEAMS)"
           enum:
           - EMAIL
-          - PHONE
-          - SMS
+          - SLACK
+          - TEAMS
           example: EMAIL
           type: string
         locale:
@@ -79530,8 +79567,17 @@ components:
       type: object
     SendTestNotificationRequestDto:
       example:
-        context: "{}"
+        carbonCopy:
+        - cc@example.com
+        context:
+          numberOfPendingTasks: "4"
+          taskTasks: tasks
+        blindCarbonCopy:
+        - bcc@example.com
         medium: EMAIL
+        locale: en
+        recipientEmailList:
+        - test@example.com
         key: cloud_manual_work_item_summary
       properties:
         key:
@@ -79545,10 +79591,39 @@ components:
           - EMAIL
           - SLACK
           - TEAMS
+          example: EMAIL
+          type: string
+        locale:
+          description: The locale for the message text.
+          example: en
           type: string
         context:
           description: A Json object that denotes the context specific to the template.
+          example:
+            numberOfPendingTasks: "4"
+            taskTasks: tasks
           type: object
+        recipientEmailList:
+          description: A list of override recipient email addresses for the test notification.
+          example:
+          - test@example.com
+          items:
+            type: string
+          type: array
+        carbonCopy:
+          description: A list of CC email addresses for the test notification.
+          example:
+          - cc@example.com
+          items:
+            type: string
+          type: array
+        blindCarbonCopy:
+          description: A list of BCC email addresses for the test notification.
+          example:
+          - bcc@example.com
+          items:
+            type: string
+          type: array
       title: Send Test Notification Request Dto
       type: object
     ServiceDeskIntegrationDto:
@@ -82901,24 +82976,36 @@ components:
     EmailStatusDto:
       example:
         isVerifiedByDomain: false
-        verificationStatus: PENDING
+        verificationStatus: SUCCESS
         id: id
+        region: us-east-1
         email: sender@example.com
       properties:
         id:
+          description: Unique identifier for the verified sender address
           nullable: true
           type: string
         email:
+          description: The verified sender email address
           example: sender@example.com
           type: string
         isVerifiedByDomain:
+          default: false
+          description: Whether the sender address is verified by domain
           example: false
           type: boolean
         verificationStatus:
+          description: The verification status of the sender address
           enum:
           - PENDING
           - SUCCESS
           - FAILED
+          - NA
+          example: SUCCESS
+          type: string
+        region:
+          description: The AWS SES region the sender address is associated with
+          example: us-east-1
           type: string
       title: Email Status Dto
       type: object
@@ -82932,7 +83019,8 @@ components:
         - u7pm38jky9ckdawhlsn7y4dcj6f5lpgq
         - uhpm3jjkjjckdkwhlqn7yw6cjer5tpay
         id: 123b45b0-aaaa-bbbb-a7db-123456a56abc
-        dkimVerificationStatus: Success
+        dkimVerificationStatus: SUCCESS
+        region: us-east-1
       properties:
         id:
           description: UUID associated with domain to be verified
@@ -82958,8 +83046,12 @@ components:
           type: array
         dkimVerificationStatus:
           description: "The current status if the domain /identity has been verified.\
-            \ Ie Success, Failed, Pending"
-          example: Success
+            \ Ie SUCCESS, FAILED, PENDING"
+          example: SUCCESS
+          type: string
+        region:
+          description: The AWS SES region the domain is associated with
+          example: us-east-1
           type: string
       title: Dkim Attributes
       type: object
@@ -82985,6 +83077,7 @@ components:
         - token3
         id: 123b45b0-aaaa-bbbb-a7db-123456a56abc
         dkimVerificationStatus: PENDING
+        region: us-east-1
       properties:
         id:
           description: New UUID associated with domain to be verified
@@ -82998,7 +83091,7 @@ components:
           default: false
           description: DKIM is enabled for this domain
           example: true
-          type: object
+          type: boolean
         dkimTokens:
           description: DKIM tokens required for authentication
           example:
@@ -83011,6 +83104,10 @@ components:
         dkimVerificationStatus:
           description: Status of DKIM authentication
           example: PENDING
+          type: string
+        region:
+          description: The AWS SES region the domain is associated with
+          example: us-east-1
           type: string
       title: Domain Status Dto
       type: object
@@ -89457,8 +89554,8 @@ components:
       type: object
     TemplateSlack:
       example:
-        isSubscription: true
-        attachments: attachments
+        isSubscription: false
+        attachments: "[]"
         blocks: blocks
         requestId: requestId
         autoApprovalData:
@@ -89474,34 +89571,46 @@ components:
           containsDeny: containsDeny
         requestedById: requestedById
         approvalId: approvalId
-        text: text
+        text: You have a new approval request
         notificationType: notificationType
         key: key
       nullable: true
       properties:
         key:
+          description: The template key
           nullable: true
           type: string
         text:
+          description: The main text content of the Slack message
+          example: You have a new approval request
           type: string
         blocks:
+          description: JSON string of Slack Block Kit blocks for rich formatting
           nullable: true
           type: string
         attachments:
+          description: JSON string of Slack attachments
+          example: "[]"
           type: string
         notificationType:
+          description: The type of notification
           nullable: true
           type: string
         approvalId:
+          description: The approval request ID
           nullable: true
           type: string
         requestId:
+          description: The request ID
           nullable: true
           type: string
         requestedById:
+          description: The ID of the user who made the request
           nullable: true
           type: string
         isSubscription:
+          default: false
+          description: Whether this is a subscription notification
           nullable: true
           type: boolean
         autoApprovalData:
@@ -89512,7 +89621,7 @@ components:
       type: object
     TemplateTeams:
       example:
-        isSubscription: true
+        isSubscription: false
         requestId: requestId
         autoApprovalData:
           itemId: itemId
@@ -89527,7 +89636,7 @@ components:
           containsDeny: containsDeny
         requestedById: requestedById
         approvalId: approvalId
-        text: text
+        text: You have a new approval request
         notificationType: notificationType
         title: title
         key: key
@@ -89535,29 +89644,40 @@ components:
       nullable: true
       properties:
         key:
+          description: The template key
           nullable: true
           type: string
         title:
+          description: The title of the Teams message
           nullable: true
           type: string
         text:
+          description: The main text content of the Teams message
+          example: You have a new approval request
           type: string
         messageJSON:
+          description: JSON string of the Teams adaptive card
           nullable: true
           type: string
         isSubscription:
+          default: false
+          description: Whether this is a subscription notification
           nullable: true
           type: boolean
         approvalId:
+          description: The approval request ID
           nullable: true
           type: string
         requestId:
+          description: The request ID
           nullable: true
           type: string
         requestedById:
+          description: The ID of the user who made the request
           nullable: true
           type: string
         notificationType:
+          description: The type of notification
           nullable: true
           type: string
         autoApprovalData:
@@ -89720,12 +89840,12 @@ components:
       title: Identity Reference
       type: object
     Medium:
+      description: "The notification medium (EMAIL, SLACK, or TEAMS)"
       enum:
       - EMAIL
-      - SMS
-      - PHONE
       - SLACK
       - TEAMS
+      example: EMAIL
       type: string
     ConfigTypeEnumCamel:
       description: Enum list of valid work types that can be selected for a Reassignment
@@ -97913,6 +98033,58 @@ components:
           nullable: true
           type: string
       type: object
+    TemplateDto_slackTemplate:
+      allOf:
+      - $ref: '#/components/schemas/TemplateSlack'
+      - nullable: true
+        type: object
+      example:
+        isSubscription: false
+        attachments: "[]"
+        blocks: blocks
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        key: key
+    TemplateDto_teamsTemplate:
+      allOf:
+      - $ref: '#/components/schemas/TemplateTeams'
+      - nullable: true
+        type: object
+      example:
+        isSubscription: false
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        title: title
+        key: key
+        messageJSON: messageJSON
     OutlierContributingFeature_value:
       description: The feature value
       example: 0.92
@@ -99448,18 +99620,23 @@ components:
       nullable: true
       properties:
         isAutoApproved:
+          description: Whether the request was auto-approved
           nullable: true
           type: string
         itemId:
+          description: The item ID
           nullable: true
           type: string
         itemType:
+          description: The item type
           nullable: true
           type: string
         autoApprovalMessageJSON:
+          description: JSON message for auto-approval
           nullable: true
           type: string
         autoApprovalTitle:
+          description: Title for auto-approval
           nullable: true
           type: string
       type: object
@@ -99472,15 +99649,19 @@ components:
       nullable: true
       properties:
         requestType:
+          description: The type of request
           nullable: true
           type: string
         containsDeny:
+          description: Whether the request contains a deny action
           nullable: true
           type: string
         campaignId:
+          description: The campaign ID
           nullable: true
           type: string
         campaignStatus:
+          description: The campaign status
           nullable: true
           type: string
       type: object

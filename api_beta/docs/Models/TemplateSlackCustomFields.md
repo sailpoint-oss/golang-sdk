@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'TemplateSlackCustomFields', 'BetaTemp
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestType** | Pointer to **NullableString** |  | [optional] 
-**ContainsDeny** | Pointer to **NullableString** |  | [optional] 
-**CampaignId** | Pointer to **NullableString** |  | [optional] 
-**CampaignStatus** | Pointer to **NullableString** |  | [optional] 
+**RequestType** | Pointer to **NullableString** | The type of request | [optional] 
+**ContainsDeny** | Pointer to **NullableString** | Whether the request contains a deny action | [optional] 
+**CampaignId** | Pointer to **NullableString** | The campaign ID | [optional] 
+**CampaignStatus** | Pointer to **NullableString** | The campaign status | [optional] 
 
 ## Methods
 

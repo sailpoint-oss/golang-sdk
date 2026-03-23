@@ -16,10 +16,6 @@ tags: ['SDK', 'Software Development Kit', 'Medium', 'V2025Medium']
 
 * `EMAIL` (value: `"EMAIL"`)
 
-* `SMS` (value: `"SMS"`)
-
-* `PHONE` (value: `"PHONE"`)
-
 * `SLACK` (value: `"SLACK"`)
 
 * `TEAMS` (value: `"TEAMS"`)

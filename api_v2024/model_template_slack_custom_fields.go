@@ -19,9 +19,13 @@ var _ MappedNullable = &TemplateSlackCustomFields{}
 
 // TemplateSlackCustomFields struct for TemplateSlackCustomFields
 type TemplateSlackCustomFields struct {
+	// The type of request
 	RequestType NullableString `json:"requestType,omitempty"`
+	// Whether the request contains a deny action
 	ContainsDeny NullableString `json:"containsDeny,omitempty"`
+	// The campaign ID
 	CampaignId NullableString `json:"campaignId,omitempty"`
+	// The campaign status
 	CampaignStatus NullableString `json:"campaignStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

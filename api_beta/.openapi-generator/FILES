@@ -1041,6 +1041,8 @@ docs/TaskStatusMessageParametersInner.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
+docs/TemplateDtoSlackTemplate.md
+docs/TemplateDtoTeamsTemplate.md
 docs/TemplateSlack.md
 docs/TemplateSlackAutoApprovalData.md
 docs/TemplateSlackCustomFields.md
@@ -1967,6 +1969,8 @@ model_task_status_message_parameters_inner.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go
+model_template_dto_slack_template.go
+model_template_dto_teams_template.go
 model_template_slack.go
 model_template_slack_auto_approval_data.go
 model_template_slack_custom_fields.go

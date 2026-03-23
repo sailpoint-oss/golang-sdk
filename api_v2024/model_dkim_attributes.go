@@ -27,8 +27,10 @@ type DkimAttributes struct {
 	DkimEnabled *bool `json:"dkimEnabled,omitempty"`
 	// The tokens to be added to a DNS for verification
 	DkimTokens []string `json:"dkimTokens,omitempty"`
-	// The current status if the domain /identity has been verified. Ie Success, Failed, Pending
+	// The current status if the domain /identity has been verified. Ie SUCCESS, FAILED, PENDING
 	DkimVerificationStatus *string `json:"dkimVerificationStatus,omitempty"`
+	// The AWS SES region the domain is associated with
+	Region *string `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -215,6 +217,38 @@ func (o *DkimAttributes) SetDkimVerificationStatus(v string) {
 	o.DkimVerificationStatus = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *DkimAttributes) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DkimAttributes) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *DkimAttributes) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *DkimAttributes) SetRegion(v string) {
+	o.Region = &v
+}
+
 func (o DkimAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -239,6 +273,9 @@ func (o DkimAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DkimVerificationStatus) {
 		toSerialize["dkimVerificationStatus"] = o.DkimVerificationStatus
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -267,6 +304,7 @@ func (o *DkimAttributes) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "dkimEnabled")
 		delete(additionalProperties, "dkimTokens")
 		delete(additionalProperties, "dkimVerificationStatus")
+		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}
 

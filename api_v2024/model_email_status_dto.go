@@ -19,10 +19,16 @@ var _ MappedNullable = &EmailStatusDto{}
 
 // EmailStatusDto struct for EmailStatusDto
 type EmailStatusDto struct {
+	// Unique identifier for the verified sender address
 	Id NullableString `json:"id,omitempty"`
+	// The verified sender email address
 	Email *string `json:"email,omitempty"`
+	// Whether the sender address is verified by domain
 	IsVerifiedByDomain *bool `json:"isVerifiedByDomain,omitempty"`
+	// The verification status of the sender address
 	VerificationStatus *string `json:"verificationStatus,omitempty"`
+	// The AWS SES region the sender address is associated with
+	Region *string `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +40,8 @@ type _EmailStatusDto EmailStatusDto
 // will change when the set of required properties is changed
 func NewEmailStatusDto() *EmailStatusDto {
 	this := EmailStatusDto{}
+	var isVerifiedByDomain bool = false
+	this.IsVerifiedByDomain = &isVerifiedByDomain
 	return &this
 }
 
@@ -42,6 +50,8 @@ func NewEmailStatusDto() *EmailStatusDto {
 // but it doesn't guarantee that properties required by API are set
 func NewEmailStatusDtoWithDefaults() *EmailStatusDto {
 	this := EmailStatusDto{}
+	var isVerifiedByDomain bool = false
+	this.IsVerifiedByDomain = &isVerifiedByDomain
 	return &this
 }
 
@@ -183,6 +193,38 @@ func (o *EmailStatusDto) SetVerificationStatus(v string) {
 	o.VerificationStatus = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *EmailStatusDto) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStatusDto) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *EmailStatusDto) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *EmailStatusDto) SetRegion(v string) {
+	o.Region = &v
+}
+
 func (o EmailStatusDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -204,6 +246,9 @@ func (o EmailStatusDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.VerificationStatus) {
 		toSerialize["verificationStatus"] = o.VerificationStatus
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -231,6 +276,7 @@ func (o *EmailStatusDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "isVerifiedByDomain")
 		delete(additionalProperties, "verificationStatus")
+		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}
 

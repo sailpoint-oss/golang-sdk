@@ -17,9 +17,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | New UUID associated with domain to be verified | [optional] 
 **Domain** | Pointer to **string** | A domain address | [optional] 
-**DkimEnabled** | Pointer to **map[string]interface{}** | DKIM is enabled for this domain | [optional] [default to false]
+**DkimEnabled** | Pointer to **bool** | DKIM is enabled for this domain | [optional] [default to false]
 **DkimTokens** | Pointer to **[]string** | DKIM tokens required for authentication | [optional] 
 **DkimVerificationStatus** | Pointer to **string** | Status of DKIM authentication | [optional] 
+**Region** | Pointer to **string** | The AWS SES region the domain is associated with | [optional] 
 
 ## Methods
 
@@ -92,20 +93,20 @@ HasDomain returns a boolean if a field has been set.
 
 ### GetDkimEnabled
 
-`func (o *DomainStatusDto) GetDkimEnabled() map[string]interface{}`
+`func (o *DomainStatusDto) GetDkimEnabled() bool`
 
 GetDkimEnabled returns the DkimEnabled field if non-nil, zero value otherwise.
 
 ### GetDkimEnabledOk
 
-`func (o *DomainStatusDto) GetDkimEnabledOk() (*map[string]interface{}, bool)`
+`func (o *DomainStatusDto) GetDkimEnabledOk() (*bool, bool)`
 
 GetDkimEnabledOk returns a tuple with the DkimEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDkimEnabled
 
-`func (o *DomainStatusDto) SetDkimEnabled(v map[string]interface{})`
+`func (o *DomainStatusDto) SetDkimEnabled(v bool)`
 
 SetDkimEnabled sets DkimEnabled field to given value.
 
@@ -164,5 +165,30 @@ SetDkimVerificationStatus sets DkimVerificationStatus field to given value.
 `func (o *DomainStatusDto) HasDkimVerificationStatus() bool`
 
 HasDkimVerificationStatus returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *DomainStatusDto) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *DomainStatusDto) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *DomainStatusDto) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *DomainStatusDto) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 

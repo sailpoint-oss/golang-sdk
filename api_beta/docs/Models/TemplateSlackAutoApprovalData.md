@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'TemplateSlackAutoApprovalData', 'Beta
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsAutoApproved** | Pointer to **NullableString** |  | [optional] 
-**ItemId** | Pointer to **NullableString** |  | [optional] 
-**ItemType** | Pointer to **NullableString** |  | [optional] 
-**AutoApprovalMessageJSON** | Pointer to **NullableString** |  | [optional] 
-**AutoApprovalTitle** | Pointer to **NullableString** |  | [optional] 
+**IsAutoApproved** | Pointer to **NullableString** | Whether the request was auto-approved | [optional] 
+**ItemId** | Pointer to **NullableString** | The item ID | [optional] 
+**ItemType** | Pointer to **NullableString** | The item type | [optional] 
+**AutoApprovalMessageJSON** | Pointer to **NullableString** | JSON message for auto-approval | [optional] 
+**AutoApprovalTitle** | Pointer to **NullableString** | Title for auto-approval | [optional] 
 
 ## Methods
 

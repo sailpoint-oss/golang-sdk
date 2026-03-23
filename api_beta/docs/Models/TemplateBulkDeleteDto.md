@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'TemplateBulkDeleteDto', 'BetaTemplate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Medium** | Pointer to **string** |  | [optional] 
+**Key** | **string** | The template key to delete | 
+**Medium** | Pointer to **string** | The notification medium (EMAIL, SLACK, or TEAMS) | [optional] 
 **Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
 
 ## Methods
