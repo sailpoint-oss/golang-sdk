@@ -45938,6 +45938,10 @@ components:
         discoveredAt: 2023-07-01T12:00:00Z
         createdAt: 2024-06-01T12:00:00Z
         status: ACTIVE
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
       - id: 59310a1e-0d8f-42fa-95aa-b82b263de7f6
         name: Sample Tracker
         discoverySource: Okta SaaS
@@ -45949,6 +45953,10 @@ components:
         discoveredAt: 2023-08-15T08:00:00Z
         createdAt: 2024-05-20T08:00:00Z
         status: ACTIVE
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
       - id: dfe675cb-f689-475f-99f1-49e348449867
         name: Demo Manager
         discoverySource: Okta SaaS
@@ -45960,6 +45968,10 @@ components:
         discoveredAt: 2023-09-10T15:00:00Z
         createdAt: 2024-07-03T15:00:00Z
         status: ACTIVE
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
     FullDiscoveredApplications:
       description: List of discovered applications with their respective associated
         sources
@@ -45977,6 +45989,10 @@ components:
         status: ACTIVE
         associatedSources:
         - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
       - id: b3a3a704-6a45-45ee-a501-bbc332388222
         name: Sample Tracker
         discoverySource: Okta SaaS
@@ -45991,6 +46007,10 @@ components:
         associatedSources:
         - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
         - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
       - id: 1d070458-faed-4a6c-8990-918ad70a06ee
         name: Demo Manager
         discoverySource: Okta SaaS
@@ -46006,6 +46026,10 @@ components:
         - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
         - f9b7e2ce-aced-4117-a95f-4ffad8b33989
         - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
       - id: 9be7c5a5-9f37-46ba-965a-e5b9453472c6
         name: Task Organizer
         discoverySource: Manual Entry
@@ -46019,6 +46043,10 @@ components:
         createdAt: 2024-08-01T14:00:00Z
         status: ACTIVE
         associatedSources: []
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
   parameters:
     limit:
       description: |-
@@ -49824,6 +49852,13 @@ components:
           name: ODS-AD-Source
           id: 2c9180827ca885d7017ca8ce28a000eb
           type: SOURCE
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -49913,10 +49948,12 @@ components:
           nullable: true
           type: string
         privileged:
+          default: false
           description: True if the entitlement is privileged
           example: true
           type: boolean
         cloudGoverned:
+          default: false
           description: True if the entitlement is cloud governed
           example: true
           type: boolean
@@ -49927,6 +49964,13 @@ components:
           type: boolean
         owner:
           $ref: '#/components/schemas/Entitlement_owner'
+        additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+          items:
+            $ref: '#/components/schemas/AdditionalOwnerRef'
+          nullable: true
+          type: array
         manuallyUpdatedFields:
           additionalProperties: true
           description: "A map of entitlement fields that have been manually updated.\
@@ -60332,16 +60376,20 @@ components:
     SlimDiscoveredApplications:
       description: Discovered applications
       example:
-        createdAt: 2023-01-01T12:00:00Z
         discoveredVendor: ExampleVendor
+        riskLevel: Low
         discoverySource: csv
+        description: An application for managing examples.
+        discoveredAt: 2023-01-01T12:00:00Z
+        createdAt: 2023-01-01T12:00:00Z
+        isBusiness: false
         name: ExampleApp
         recommendedConnectors:
         - ConnectorA
         - ConnectorB
-        description: An application for managing examples.
+        totalSigninsCount: 1
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        discoveredAt: 2023-01-01T12:00:00Z
+        riskScore: 1
         status: ACTIVE
       properties:
         id:
@@ -60393,6 +60441,30 @@ components:
 
             If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
           example: ACTIVE
+          type: string
+        riskScore:
+          description: "The risk score of the application ranging from 0-100, 100\
+            \ being highest risk."
+          example: 1
+          format: int32
+          type: integer
+        isBusiness:
+          default: true
+          description: Indicates whether the application is used for business purposes.
+          example: false
+          type: boolean
+        totalSigninsCount:
+          description: The total number of sign-in accounts for the application.
+          example: 1
+          format: int32
+          type: integer
+        riskLevel:
+          description: The risk level of the application.
+          enum:
+          - High
+          - Medium
+          - Low
+          example: Low
           type: string
       title: Slim Discovered Application
       type: object
@@ -60458,6 +60530,30 @@ components:
             format: uuid
             type: string
           type: array
+        riskScore:
+          description: "The risk score of the application ranging from 0-100, 100\
+            \ being highest risk."
+          example: 1
+          format: int32
+          type: integer
+        isBusiness:
+          default: true
+          description: Indicates whether the application is used for business purposes.
+          example: false
+          type: boolean
+        totalSigninsCount:
+          description: The total number of sign-in accounts for the application.
+          example: 1
+          format: int32
+          type: integer
+        riskLevel:
+          description: The risk level of the application.
+          enum:
+          - High
+          - Medium
+          - Low
+          example: Low
+          type: string
       title: Discovered Application
       type: object
     AccessRequestType:

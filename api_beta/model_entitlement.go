@@ -46,6 +46,8 @@ type Entitlement struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Source *EntitlementSource `json:"source,omitempty"`
 	Owner *EntitlementOwner `json:"owner,omitempty"`
+	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	DirectPermissions []PermissionDto `json:"directPermissions,omitempty"`
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
@@ -553,6 +555,39 @@ func (o *Entitlement) SetOwner(v EntitlementOwner) {
 	o.Owner = &v
 }
 
+// GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef {
+	if o == nil {
+		var ret []AdditionalOwnerRef
+		return ret
+	}
+	return o.AdditionalOwners
+}
+
+// GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Entitlement) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
+	if o == nil || IsNil(o.AdditionalOwners) {
+		return nil, false
+	}
+	return o.AdditionalOwners, true
+}
+
+// HasAdditionalOwners returns a boolean if a field has been set.
+func (o *Entitlement) HasAdditionalOwners() bool {
+	if o != nil && !IsNil(o.AdditionalOwners) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef) {
+	o.AdditionalOwners = v
+}
+
 // GetDirectPermissions returns the DirectPermissions field value if set, zero value otherwise.
 func (o *Entitlement) GetDirectPermissions() []PermissionDto {
 	if o == nil || IsNil(o.DirectPermissions) {
@@ -734,6 +769,9 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
+	if o.AdditionalOwners != nil {
+		toSerialize["additionalOwners"] = o.AdditionalOwners
+	}
 	if !IsNil(o.DirectPermissions) {
 		toSerialize["directPermissions"] = o.DirectPermissions
 	}
@@ -782,6 +820,7 @@ func (o *Entitlement) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "additionalOwners")
 		delete(additionalProperties, "directPermissions")
 		delete(additionalProperties, "segments")
 		delete(additionalProperties, "manuallyUpdatedFields")

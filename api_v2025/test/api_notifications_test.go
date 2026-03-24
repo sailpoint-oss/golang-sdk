@@ -108,6 +108,18 @@ func Test_api_v2025_NotificationsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test NotificationsAPIService GetNotificationPreferences", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.NotificationsAPI.GetNotificationPreferences(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test NotificationsAPIService GetNotificationTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -139,18 +151,6 @@ func Test_api_v2025_NotificationsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.NotificationsAPI.ListFromAddresses(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NotificationsAPIService ListNotificationPreferences", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

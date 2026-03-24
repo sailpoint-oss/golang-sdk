@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
 **Source** | Pointer to [**EntitlementSource**](entitlement-source) |  | [optional] 
 **Owner** | Pointer to [**EntitlementOwner**](entitlement-owner) |  | [optional] 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **DirectPermissions** | Pointer to [**[]PermissionDto**](permission-dto) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **ManuallyUpdatedFields** | Pointer to [**EntitlementManuallyUpdatedFields**](entitlement-manually-updated-fields) |  | [optional] 
@@ -423,6 +424,41 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
+### GetAdditionalOwners
+
+`func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef`
+
+GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
+
+### GetAdditionalOwnersOk
+
+`func (o *Entitlement) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
+
+GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalOwners
+
+`func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef)`
+
+SetAdditionalOwners sets AdditionalOwners field to given value.
+
+### HasAdditionalOwners
+
+`func (o *Entitlement) HasAdditionalOwners() bool`
+
+HasAdditionalOwners returns a boolean if a field has been set.
+
+### SetAdditionalOwnersNil
+
+`func (o *Entitlement) SetAdditionalOwnersNil(b bool)`
+
+ SetAdditionalOwnersNil sets the value for AdditionalOwners to be an explicit nil
+
+### UnsetAdditionalOwners
+`func (o *Entitlement) UnsetAdditionalOwners()`
+
+UnsetAdditionalOwners ensures that no value is present for AdditionalOwners, not even an explicit nil
 ### GetDirectPermissions
 
 `func (o *Entitlement) GetDirectPermissions() []PermissionDto`

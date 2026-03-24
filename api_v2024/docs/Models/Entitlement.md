@@ -21,10 +21,11 @@ Name | Type | Description | Notes
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The object type of the entitlement from the source schema | [optional] 
 **Description** | Pointer to **NullableString** | The description of the entitlement | [optional] 
-**Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] 
-**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] 
+**Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] [default to false]
+**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
 **Requestable** | Pointer to **bool** | True if the entitlement is able to be directly requested | [optional] [default to false]
 **Owner** | Pointer to [**NullableEntitlementOwner**](entitlement-owner) |  | [optional] 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
 **AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](entitlement-access-model-metadata) |  | [optional] 
 **Created** | Pointer to **SailPointTime** | Time when the entitlement was created | [optional] 
@@ -323,6 +324,41 @@ HasOwner returns a boolean if a field has been set.
 `func (o *Entitlement) UnsetOwner()`
 
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+### GetAdditionalOwners
+
+`func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef`
+
+GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
+
+### GetAdditionalOwnersOk
+
+`func (o *Entitlement) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
+
+GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalOwners
+
+`func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef)`
+
+SetAdditionalOwners sets AdditionalOwners field to given value.
+
+### HasAdditionalOwners
+
+`func (o *Entitlement) HasAdditionalOwners() bool`
+
+HasAdditionalOwners returns a boolean if a field has been set.
+
+### SetAdditionalOwnersNil
+
+`func (o *Entitlement) SetAdditionalOwnersNil(b bool)`
+
+ SetAdditionalOwnersNil sets the value for AdditionalOwners to be an explicit nil
+
+### UnsetAdditionalOwners
+`func (o *Entitlement) UnsetAdditionalOwners()`
+
+UnsetAdditionalOwners ensures that no value is present for AdditionalOwners, not even an explicit nil
 ### GetManuallyUpdatedFields
 
 `func (o *Entitlement) GetManuallyUpdatedFields() map[string]interface{}`

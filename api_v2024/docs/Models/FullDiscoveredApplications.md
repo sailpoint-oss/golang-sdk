@@ -25,6 +25,10 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **SailPointTime** | The timestamp when the application was first discovered, in ISO 8601 format. | [optional] 
 **Status** | Pointer to **string** | The status of an application within the discovery source.  By default this field is set to \"ACTIVE\" when the application is discovered.  If an application has been deleted from within the discovery source, the status will be set to \"INACTIVE\". | [optional] 
 **AssociatedSources** | Pointer to **[]string** | List of associated sources related to this discovered application. | [optional] 
+**RiskScore** | Pointer to **int32** | The risk score of the application ranging from 0-100, 100 being highest risk. | [optional] 
+**IsBusiness** | Pointer to **bool** | Indicates whether the application is used for business purposes. | [optional] [default to true]
+**TotalSigninsCount** | Pointer to **int32** | The total number of sign-in accounts for the application. | [optional] 
+**RiskLevel** | Pointer to **string** | The risk level of the application. | [optional] 
 
 ## Methods
 
@@ -294,5 +298,105 @@ SetAssociatedSources sets AssociatedSources field to given value.
 `func (o *FullDiscoveredApplications) HasAssociatedSources() bool`
 
 HasAssociatedSources returns a boolean if a field has been set.
+
+### GetRiskScore
+
+`func (o *FullDiscoveredApplications) GetRiskScore() int32`
+
+GetRiskScore returns the RiskScore field if non-nil, zero value otherwise.
+
+### GetRiskScoreOk
+
+`func (o *FullDiscoveredApplications) GetRiskScoreOk() (*int32, bool)`
+
+GetRiskScoreOk returns a tuple with the RiskScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskScore
+
+`func (o *FullDiscoveredApplications) SetRiskScore(v int32)`
+
+SetRiskScore sets RiskScore field to given value.
+
+### HasRiskScore
+
+`func (o *FullDiscoveredApplications) HasRiskScore() bool`
+
+HasRiskScore returns a boolean if a field has been set.
+
+### GetIsBusiness
+
+`func (o *FullDiscoveredApplications) GetIsBusiness() bool`
+
+GetIsBusiness returns the IsBusiness field if non-nil, zero value otherwise.
+
+### GetIsBusinessOk
+
+`func (o *FullDiscoveredApplications) GetIsBusinessOk() (*bool, bool)`
+
+GetIsBusinessOk returns a tuple with the IsBusiness field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsBusiness
+
+`func (o *FullDiscoveredApplications) SetIsBusiness(v bool)`
+
+SetIsBusiness sets IsBusiness field to given value.
+
+### HasIsBusiness
+
+`func (o *FullDiscoveredApplications) HasIsBusiness() bool`
+
+HasIsBusiness returns a boolean if a field has been set.
+
+### GetTotalSigninsCount
+
+`func (o *FullDiscoveredApplications) GetTotalSigninsCount() int32`
+
+GetTotalSigninsCount returns the TotalSigninsCount field if non-nil, zero value otherwise.
+
+### GetTotalSigninsCountOk
+
+`func (o *FullDiscoveredApplications) GetTotalSigninsCountOk() (*int32, bool)`
+
+GetTotalSigninsCountOk returns a tuple with the TotalSigninsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalSigninsCount
+
+`func (o *FullDiscoveredApplications) SetTotalSigninsCount(v int32)`
+
+SetTotalSigninsCount sets TotalSigninsCount field to given value.
+
+### HasTotalSigninsCount
+
+`func (o *FullDiscoveredApplications) HasTotalSigninsCount() bool`
+
+HasTotalSigninsCount returns a boolean if a field has been set.
+
+### GetRiskLevel
+
+`func (o *FullDiscoveredApplications) GetRiskLevel() string`
+
+GetRiskLevel returns the RiskLevel field if non-nil, zero value otherwise.
+
+### GetRiskLevelOk
+
+`func (o *FullDiscoveredApplications) GetRiskLevelOk() (*string, bool)`
+
+GetRiskLevelOk returns a tuple with the RiskLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRiskLevel
+
+`func (o *FullDiscoveredApplications) SetRiskLevel(v string)`
+
+SetRiskLevel sets RiskLevel field to given value.
+
+### HasRiskLevel
+
+`func (o *FullDiscoveredApplications) HasRiskLevel() bool`
+
+HasRiskLevel returns a boolean if a field has been set.
 
 

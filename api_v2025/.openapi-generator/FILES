@@ -1466,6 +1466,8 @@ docs/SpConfigRuleValue.md
 docs/SpConfigRules.md
 docs/SpDetails.md
 docs/StandardLevel.md
+docs/StartApplicationDiscovery403Response.md
+docs/StartApplicationDiscovery403ResponseOneOf.md
 docs/StartInvocationInput.md
 docs/StartLauncher200Response.md
 docs/StatusResponse.md
@@ -2797,6 +2799,8 @@ model_sp_config_rule_value.go
 model_sp_config_rules.go
 model_sp_details.go
 model_standard_level.go
+model_start_application_discovery_403_response.go
+model_start_application_discovery_403_response_one_of.go
 model_start_invocation_input.go
 model_start_launcher_200_response.go
 model_status_response.go

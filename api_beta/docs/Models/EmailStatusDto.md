@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** | The verified sender email address | [optional] 
 **IsVerifiedByDomain** | Pointer to **bool** | Whether the sender address is verified by domain | [optional] [default to false]
 **VerificationStatus** | Pointer to **string** | The verification status of the sender address | [optional] 
-**Region** | Pointer to **string** | The AWS SES region the sender address is associated with | [optional] 
+**Region** | Pointer to **NullableString** | The AWS SES region the sender address is associated with | [optional] 
 
 ## Methods
 
@@ -175,4 +175,14 @@ SetRegion sets Region field to given value.
 
 HasRegion returns a boolean if a field has been set.
 
+### SetRegionNil
+
+`func (o *EmailStatusDto) SetRegionNil(b bool)`
+
+ SetRegionNil sets the value for Region to be an explicit nil
+
+### UnsetRegion
+`func (o *EmailStatusDto) UnsetRegion()`
+
+UnsetRegion ensures that no value is present for Region, not even an explicit nil
 

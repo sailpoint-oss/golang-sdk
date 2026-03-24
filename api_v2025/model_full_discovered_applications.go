@@ -70,8 +70,14 @@ type FullDiscoveredApplications struct {
 	InstallType *string `json:"installType,omitempty"`
 	// The environment in which the application operates.
 	Environment *string `json:"environment,omitempty"`
-	// The risk score of the application.
-	RiskScore *string `json:"riskScore,omitempty"`
+	// The risk score of the application ranging from 0-100, 100 being highest risk.
+	RiskScore *int32 `json:"riskScore,omitempty"`
+	// Indicates whether the application is used for business purposes.
+	IsBusiness *bool `json:"isBusiness,omitempty"`
+	// The total number of sign-in accounts for the application.
+	TotalSigninsCount *int32 `json:"totalSigninsCount,omitempty"`
+	// The risk level of the application.
+	RiskLevel *string `json:"riskLevel,omitempty"`
 	// Indicates whether the application has privileged access.
 	IsPrivileged *bool `json:"isPrivileged,omitempty"`
 	// The warranty expiration date of the application.
@@ -91,6 +97,8 @@ func NewFullDiscoveredApplications() *FullDiscoveredApplications {
 	this := FullDiscoveredApplications{}
 	var isSanctioned bool = false
 	this.IsSanctioned = &isSanctioned
+	var isBusiness bool = true
+	this.IsBusiness = &isBusiness
 	var isPrivileged bool = false
 	this.IsPrivileged = &isPrivileged
 	return &this
@@ -103,6 +111,8 @@ func NewFullDiscoveredApplicationsWithDefaults() *FullDiscoveredApplications {
 	this := FullDiscoveredApplications{}
 	var isSanctioned bool = false
 	this.IsSanctioned = &isSanctioned
+	var isBusiness bool = true
+	this.IsBusiness = &isBusiness
 	var isPrivileged bool = false
 	this.IsPrivileged = &isPrivileged
 	return &this
@@ -909,9 +919,9 @@ func (o *FullDiscoveredApplications) SetEnvironment(v string) {
 }
 
 // GetRiskScore returns the RiskScore field value if set, zero value otherwise.
-func (o *FullDiscoveredApplications) GetRiskScore() string {
+func (o *FullDiscoveredApplications) GetRiskScore() int32 {
 	if o == nil || IsNil(o.RiskScore) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.RiskScore
@@ -919,7 +929,7 @@ func (o *FullDiscoveredApplications) GetRiskScore() string {
 
 // GetRiskScoreOk returns a tuple with the RiskScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FullDiscoveredApplications) GetRiskScoreOk() (*string, bool) {
+func (o *FullDiscoveredApplications) GetRiskScoreOk() (*int32, bool) {
 	if o == nil || IsNil(o.RiskScore) {
 		return nil, false
 	}
@@ -935,9 +945,105 @@ func (o *FullDiscoveredApplications) HasRiskScore() bool {
 	return false
 }
 
-// SetRiskScore gets a reference to the given string and assigns it to the RiskScore field.
-func (o *FullDiscoveredApplications) SetRiskScore(v string) {
+// SetRiskScore gets a reference to the given int32 and assigns it to the RiskScore field.
+func (o *FullDiscoveredApplications) SetRiskScore(v int32) {
 	o.RiskScore = &v
+}
+
+// GetIsBusiness returns the IsBusiness field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetIsBusiness() bool {
+	if o == nil || IsNil(o.IsBusiness) {
+		var ret bool
+		return ret
+	}
+	return *o.IsBusiness
+}
+
+// GetIsBusinessOk returns a tuple with the IsBusiness field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetIsBusinessOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsBusiness) {
+		return nil, false
+	}
+	return o.IsBusiness, true
+}
+
+// HasIsBusiness returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasIsBusiness() bool {
+	if o != nil && !IsNil(o.IsBusiness) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsBusiness gets a reference to the given bool and assigns it to the IsBusiness field.
+func (o *FullDiscoveredApplications) SetIsBusiness(v bool) {
+	o.IsBusiness = &v
+}
+
+// GetTotalSigninsCount returns the TotalSigninsCount field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetTotalSigninsCount() int32 {
+	if o == nil || IsNil(o.TotalSigninsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalSigninsCount
+}
+
+// GetTotalSigninsCountOk returns a tuple with the TotalSigninsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetTotalSigninsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalSigninsCount) {
+		return nil, false
+	}
+	return o.TotalSigninsCount, true
+}
+
+// HasTotalSigninsCount returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasTotalSigninsCount() bool {
+	if o != nil && !IsNil(o.TotalSigninsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalSigninsCount gets a reference to the given int32 and assigns it to the TotalSigninsCount field.
+func (o *FullDiscoveredApplications) SetTotalSigninsCount(v int32) {
+	o.TotalSigninsCount = &v
+}
+
+// GetRiskLevel returns the RiskLevel field value if set, zero value otherwise.
+func (o *FullDiscoveredApplications) GetRiskLevel() string {
+	if o == nil || IsNil(o.RiskLevel) {
+		var ret string
+		return ret
+	}
+	return *o.RiskLevel
+}
+
+// GetRiskLevelOk returns a tuple with the RiskLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullDiscoveredApplications) GetRiskLevelOk() (*string, bool) {
+	if o == nil || IsNil(o.RiskLevel) {
+		return nil, false
+	}
+	return o.RiskLevel, true
+}
+
+// HasRiskLevel returns a boolean if a field has been set.
+func (o *FullDiscoveredApplications) HasRiskLevel() bool {
+	if o != nil && !IsNil(o.RiskLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskLevel gets a reference to the given string and assigns it to the RiskLevel field.
+func (o *FullDiscoveredApplications) SetRiskLevel(v string) {
+	o.RiskLevel = &v
 }
 
 // GetIsPrivileged returns the IsPrivileged field value if set, zero value otherwise.
@@ -1124,6 +1230,15 @@ func (o FullDiscoveredApplications) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RiskScore) {
 		toSerialize["riskScore"] = o.RiskScore
 	}
+	if !IsNil(o.IsBusiness) {
+		toSerialize["isBusiness"] = o.IsBusiness
+	}
+	if !IsNil(o.TotalSigninsCount) {
+		toSerialize["totalSigninsCount"] = o.TotalSigninsCount
+	}
+	if !IsNil(o.RiskLevel) {
+		toSerialize["riskLevel"] = o.RiskLevel
+	}
 	if !IsNil(o.IsPrivileged) {
 		toSerialize["isPrivileged"] = o.IsPrivileged
 	}
@@ -1181,6 +1296,9 @@ func (o *FullDiscoveredApplications) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "installType")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "riskScore")
+		delete(additionalProperties, "isBusiness")
+		delete(additionalProperties, "totalSigninsCount")
+		delete(additionalProperties, "riskLevel")
 		delete(additionalProperties, "isPrivileged")
 		delete(additionalProperties, "warrantyExpiration")
 		delete(additionalProperties, "attributes")

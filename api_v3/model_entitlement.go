@@ -39,6 +39,8 @@ type Entitlement struct {
 	// True if the entitlement is able to be directly requested
 	Requestable *bool `json:"requestable,omitempty"`
 	Owner NullableEntitlementOwner `json:"owner,omitempty"`
+	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
 	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
 	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
@@ -63,6 +65,10 @@ type _Entitlement Entitlement
 // will change when the set of required properties is changed
 func NewEntitlement() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
 	this.Requestable = &requestable
 	return &this
@@ -73,6 +79,10 @@ func NewEntitlement() *Entitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementWithDefaults() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
 	this.Requestable = &requestable
 	return &this
@@ -418,6 +428,39 @@ func (o *Entitlement) UnsetOwner() {
 	o.Owner.Unset()
 }
 
+// GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef {
+	if o == nil {
+		var ret []AdditionalOwnerRef
+		return ret
+	}
+	return o.AdditionalOwners
+}
+
+// GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Entitlement) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
+	if o == nil || IsNil(o.AdditionalOwners) {
+		return nil, false
+	}
+	return o.AdditionalOwners, true
+}
+
+// HasAdditionalOwners returns a boolean if a field has been set.
+func (o *Entitlement) HasAdditionalOwners() bool {
+	if o != nil && !IsNil(o.AdditionalOwners) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef) {
+	o.AdditionalOwners = v
+}
+
 // GetManuallyUpdatedFields returns the ManuallyUpdatedFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Entitlement) GetManuallyUpdatedFields() map[string]interface{} {
 	if o == nil {
@@ -716,6 +759,9 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
+	if o.AdditionalOwners != nil {
+		toSerialize["additionalOwners"] = o.AdditionalOwners
+	}
 	if o.ManuallyUpdatedFields != nil {
 		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields
 	}
@@ -772,6 +818,7 @@ func (o *Entitlement) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cloudGoverned")
 		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "additionalOwners")
 		delete(additionalProperties, "manuallyUpdatedFields")
 		delete(additionalProperties, "accessModelMetadata")
 		delete(additionalProperties, "created")

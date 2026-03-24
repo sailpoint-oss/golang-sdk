@@ -698,7 +698,7 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryExecute(r ApiS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
+			var v StartApplicationDiscovery403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
