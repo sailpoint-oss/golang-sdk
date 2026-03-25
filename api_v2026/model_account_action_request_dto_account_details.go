@@ -19,33 +19,27 @@ var _ MappedNullable = &AccountActionRequestDtoAccountDetails{}
 
 // AccountActionRequestDtoAccountDetails struct for AccountActionRequestDtoAccountDetails
 type AccountActionRequestDtoAccountDetails struct {
-	// ID of account
+	// unique id of this object
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 	AccountId *string `json:"accountId,omitempty"`
-	// Account name
-	AccountName *string `json:"accountName,omitempty"`
-	// Native identity of account
-	AccountNativeIdentity *string `json:"accountNativeIdentity,omitempty"`
-	// UUID associated with account
-	AccountUuid *string `json:"accountUuid,omitempty"`
-	// Type of account
-	AccountType *string `json:"accountType,omitempty"`
-	// Sub Type ID of account
-	AccountSubtypeId NullableString `json:"accountSubtypeId,omitempty"`
-	// Subtype of account
-	AccountSubtype NullableString `json:"accountSubtype,omitempty"`
-	// Account Description
-	Description NullableString `json:"description,omitempty"`
-	// ID of source
-	SourceId *string `json:"sourceId,omitempty"`
-	// Name of source
-	SourceName *string `json:"sourceName,omitempty"`
-	// Indicates entitlements assigned to identity or not
-	HasEntitlements *bool `json:"hasEntitlements,omitempty"`
-	// Indicates account is enabled/disabled
+	Description *string `json:"description,omitempty"`
+	NativeIdentity *string `json:"nativeIdentity,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
 	Disabled *bool `json:"disabled,omitempty"`
-	// Indicates account locked/unlocked
 	Locked *bool `json:"locked,omitempty"`
-	OwnerIdentity NullableAccountDetailsOwnerIdentity `json:"ownerIdentity,omitempty"`
+	Uncorrelated *bool `json:"uncorrelated,omitempty"`
+	SystemAccount *bool `json:"systemAccount,omitempty"`
+	Authoritative *bool `json:"authoritative,omitempty"`
+	SupportsPasswordChange *bool `json:"supportsPasswordChange,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Application map[string]interface{} `json:"application,omitempty"`
+	Identity map[string]interface{} `json:"identity,omitempty"`
+	Schema map[string]interface{} `json:"schema,omitempty"`
+	PendingAccessRequestIds []string `json:"pendingAccessRequestIds,omitempty"`
+	Features []string `json:"features,omitempty"`
+	Meta map[string]interface{} `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -57,12 +51,6 @@ type _AccountActionRequestDtoAccountDetails AccountActionRequestDtoAccountDetail
 // will change when the set of required properties is changed
 func NewAccountActionRequestDtoAccountDetails() *AccountActionRequestDtoAccountDetails {
 	this := AccountActionRequestDtoAccountDetails{}
-	var hasEntitlements bool = false
-	this.HasEntitlements = &hasEntitlements
-	var disabled bool = false
-	this.Disabled = &disabled
-	var locked bool = false
-	this.Locked = &locked
 	return &this
 }
 
@@ -71,13 +59,71 @@ func NewAccountActionRequestDtoAccountDetails() *AccountActionRequestDtoAccountD
 // but it doesn't guarantee that properties required by API are set
 func NewAccountActionRequestDtoAccountDetailsWithDefaults() *AccountActionRequestDtoAccountDetails {
 	this := AccountActionRequestDtoAccountDetails{}
-	var hasEntitlements bool = false
-	this.HasEntitlements = &hasEntitlements
-	var disabled bool = false
-	this.Disabled = &disabled
-	var locked bool = false
-	this.Locked = &locked
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AccountActionRequestDtoAccountDetails) SetId(v string) {
+	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *AccountActionRequestDtoAccountDetails) SetName(v string) {
+	o.Name = &v
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
@@ -112,354 +158,132 @@ func (o *AccountActionRequestDtoAccountDetails) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName) {
-		var ret string
-		return ret
-	}
-	return *o.AccountName
-}
-
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountName) {
-		return nil, false
-	}
-	return o.AccountName, true
-}
-
-// HasAccountName returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountName() bool {
-	if o != nil && !IsNil(o.AccountName) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountName gets a reference to the given string and assigns it to the AccountName field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountName(v string) {
-	o.AccountName = &v
-}
-
-// GetAccountNativeIdentity returns the AccountNativeIdentity field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountNativeIdentity() string {
-	if o == nil || IsNil(o.AccountNativeIdentity) {
-		var ret string
-		return ret
-	}
-	return *o.AccountNativeIdentity
-}
-
-// GetAccountNativeIdentityOk returns a tuple with the AccountNativeIdentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountNativeIdentityOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountNativeIdentity) {
-		return nil, false
-	}
-	return o.AccountNativeIdentity, true
-}
-
-// HasAccountNativeIdentity returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountNativeIdentity() bool {
-	if o != nil && !IsNil(o.AccountNativeIdentity) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountNativeIdentity gets a reference to the given string and assigns it to the AccountNativeIdentity field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountNativeIdentity(v string) {
-	o.AccountNativeIdentity = &v
-}
-
-// GetAccountUuid returns the AccountUuid field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountUuid() string {
-	if o == nil || IsNil(o.AccountUuid) {
-		var ret string
-		return ret
-	}
-	return *o.AccountUuid
-}
-
-// GetAccountUuidOk returns a tuple with the AccountUuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountUuid) {
-		return nil, false
-	}
-	return o.AccountUuid, true
-}
-
-// HasAccountUuid returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountUuid() bool {
-	if o != nil && !IsNil(o.AccountUuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountUuid gets a reference to the given string and assigns it to the AccountUuid field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountUuid(v string) {
-	o.AccountUuid = &v
-}
-
-// GetAccountType returns the AccountType field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountType() string {
-	if o == nil || IsNil(o.AccountType) {
-		var ret string
-		return ret
-	}
-	return *o.AccountType
-}
-
-// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetAccountTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountType) {
-		return nil, false
-	}
-	return o.AccountType, true
-}
-
-// HasAccountType returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountType() bool {
-	if o != nil && !IsNil(o.AccountType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountType(v string) {
-	o.AccountType = &v
-}
-
-// GetAccountSubtypeId returns the AccountSubtypeId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActionRequestDtoAccountDetails) GetAccountSubtypeId() string {
-	if o == nil || IsNil(o.AccountSubtypeId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AccountSubtypeId.Get()
-}
-
-// GetAccountSubtypeIdOk returns a tuple with the AccountSubtypeId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActionRequestDtoAccountDetails) GetAccountSubtypeIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccountSubtypeId.Get(), o.AccountSubtypeId.IsSet()
-}
-
-// HasAccountSubtypeId returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountSubtypeId() bool {
-	if o != nil && o.AccountSubtypeId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountSubtypeId gets a reference to the given NullableString and assigns it to the AccountSubtypeId field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountSubtypeId(v string) {
-	o.AccountSubtypeId.Set(&v)
-}
-// SetAccountSubtypeIdNil sets the value for AccountSubtypeId to be an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) SetAccountSubtypeIdNil() {
-	o.AccountSubtypeId.Set(nil)
-}
-
-// UnsetAccountSubtypeId ensures that no value is present for AccountSubtypeId, not even an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) UnsetAccountSubtypeId() {
-	o.AccountSubtypeId.Unset()
-}
-
-// GetAccountSubtype returns the AccountSubtype field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActionRequestDtoAccountDetails) GetAccountSubtype() string {
-	if o == nil || IsNil(o.AccountSubtype.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AccountSubtype.Get()
-}
-
-// GetAccountSubtypeOk returns a tuple with the AccountSubtype field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActionRequestDtoAccountDetails) GetAccountSubtypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccountSubtype.Get(), o.AccountSubtype.IsSet()
-}
-
-// HasAccountSubtype returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasAccountSubtype() bool {
-	if o != nil && o.AccountSubtype.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountSubtype gets a reference to the given NullableString and assigns it to the AccountSubtype field.
-func (o *AccountActionRequestDtoAccountDetails) SetAccountSubtype(v string) {
-	o.AccountSubtype.Set(&v)
-}
-// SetAccountSubtypeNil sets the value for AccountSubtype to be an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) SetAccountSubtypeNil() {
-	o.AccountSubtype.Set(nil)
-}
-
-// UnsetAccountSubtype ensures that no value is present for AccountSubtype, not even an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) UnsetAccountSubtype() {
-	o.AccountSubtype.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccountActionRequestDtoAccountDetails) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActionRequestDtoAccountDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccountActionRequestDtoAccountDetails) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AccountActionRequestDtoAccountDetails) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetSourceId returns the SourceId field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetSourceId() string {
-	if o == nil || IsNil(o.SourceId) {
+// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetNativeIdentity() string {
+	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
 	}
-	return *o.SourceId
+	return *o.NativeIdentity
 }
 
-// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetSourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceId) {
+func (o *AccountActionRequestDtoAccountDetails) GetNativeIdentityOk() (*string, bool) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
-	return o.SourceId, true
+	return o.NativeIdentity, true
 }
 
-// HasSourceId returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasSourceId() bool {
-	if o != nil && !IsNil(o.SourceId) {
+// HasNativeIdentity returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasNativeIdentity() bool {
+	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
-func (o *AccountActionRequestDtoAccountDetails) SetSourceId(v string) {
-	o.SourceId = &v
+// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
+func (o *AccountActionRequestDtoAccountDetails) SetNativeIdentity(v string) {
+	o.NativeIdentity = &v
 }
 
-// GetSourceName returns the SourceName field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetSourceName() string {
-	if o == nil || IsNil(o.SourceName) {
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
-	return *o.SourceName
+	return *o.Uuid
 }
 
-// GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetSourceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceName) {
+func (o *AccountActionRequestDtoAccountDetails) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
-	return o.SourceName, true
+	return o.Uuid, true
 }
 
-// HasSourceName returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasSourceName() bool {
-	if o != nil && !IsNil(o.SourceName) {
+// HasUuid returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceName gets a reference to the given string and assigns it to the SourceName field.
-func (o *AccountActionRequestDtoAccountDetails) SetSourceName(v string) {
-	o.SourceName = &v
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *AccountActionRequestDtoAccountDetails) SetUuid(v string) {
+	o.Uuid = &v
 }
 
-// GetHasEntitlements returns the HasEntitlements field value if set, zero value otherwise.
-func (o *AccountActionRequestDtoAccountDetails) GetHasEntitlements() bool {
-	if o == nil || IsNil(o.HasEntitlements) {
-		var ret bool
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetDisplayName() string {
+	if o == nil || IsNil(o.DisplayName) {
+		var ret string
 		return ret
 	}
-	return *o.HasEntitlements
+	return *o.DisplayName
 }
 
-// GetHasEntitlementsOk returns a tuple with the HasEntitlements field value if set, nil otherwise
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActionRequestDtoAccountDetails) GetHasEntitlementsOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasEntitlements) {
+func (o *AccountActionRequestDtoAccountDetails) GetDisplayNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
-	return o.HasEntitlements, true
+	return o.DisplayName, true
 }
 
-// HasHasEntitlements returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasHasEntitlements() bool {
-	if o != nil && !IsNil(o.HasEntitlements) {
+// HasDisplayName returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasDisplayName() bool {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
 	return false
 }
 
-// SetHasEntitlements gets a reference to the given bool and assigns it to the HasEntitlements field.
-func (o *AccountActionRequestDtoAccountDetails) SetHasEntitlements(v bool) {
-	o.HasEntitlements = &v
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+func (o *AccountActionRequestDtoAccountDetails) SetDisplayName(v string) {
+	o.DisplayName = &v
 }
 
 // GetDisabled returns the Disabled field value if set, zero value otherwise.
@@ -526,46 +350,356 @@ func (o *AccountActionRequestDtoAccountDetails) SetLocked(v bool) {
 	o.Locked = &v
 }
 
-// GetOwnerIdentity returns the OwnerIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActionRequestDtoAccountDetails) GetOwnerIdentity() AccountDetailsOwnerIdentity {
-	if o == nil || IsNil(o.OwnerIdentity.Get()) {
-		var ret AccountDetailsOwnerIdentity
+// GetUncorrelated returns the Uncorrelated field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetUncorrelated() bool {
+	if o == nil || IsNil(o.Uncorrelated) {
+		var ret bool
 		return ret
 	}
-	return *o.OwnerIdentity.Get()
+	return *o.Uncorrelated
 }
 
-// GetOwnerIdentityOk returns a tuple with the OwnerIdentity field value if set, nil otherwise
+// GetUncorrelatedOk returns a tuple with the Uncorrelated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActionRequestDtoAccountDetails) GetOwnerIdentityOk() (*AccountDetailsOwnerIdentity, bool) {
-	if o == nil {
+func (o *AccountActionRequestDtoAccountDetails) GetUncorrelatedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Uncorrelated) {
 		return nil, false
 	}
-	return o.OwnerIdentity.Get(), o.OwnerIdentity.IsSet()
+	return o.Uncorrelated, true
 }
 
-// HasOwnerIdentity returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoAccountDetails) HasOwnerIdentity() bool {
-	if o != nil && o.OwnerIdentity.IsSet() {
+// HasUncorrelated returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasUncorrelated() bool {
+	if o != nil && !IsNil(o.Uncorrelated) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnerIdentity gets a reference to the given NullableAccountDetailsOwnerIdentity and assigns it to the OwnerIdentity field.
-func (o *AccountActionRequestDtoAccountDetails) SetOwnerIdentity(v AccountDetailsOwnerIdentity) {
-	o.OwnerIdentity.Set(&v)
-}
-// SetOwnerIdentityNil sets the value for OwnerIdentity to be an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) SetOwnerIdentityNil() {
-	o.OwnerIdentity.Set(nil)
+// SetUncorrelated gets a reference to the given bool and assigns it to the Uncorrelated field.
+func (o *AccountActionRequestDtoAccountDetails) SetUncorrelated(v bool) {
+	o.Uncorrelated = &v
 }
 
-// UnsetOwnerIdentity ensures that no value is present for OwnerIdentity, not even an explicit nil
-func (o *AccountActionRequestDtoAccountDetails) UnsetOwnerIdentity() {
-	o.OwnerIdentity.Unset()
+// GetSystemAccount returns the SystemAccount field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetSystemAccount() bool {
+	if o == nil || IsNil(o.SystemAccount) {
+		var ret bool
+		return ret
+	}
+	return *o.SystemAccount
+}
+
+// GetSystemAccountOk returns a tuple with the SystemAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetSystemAccountOk() (*bool, bool) {
+	if o == nil || IsNil(o.SystemAccount) {
+		return nil, false
+	}
+	return o.SystemAccount, true
+}
+
+// HasSystemAccount returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasSystemAccount() bool {
+	if o != nil && !IsNil(o.SystemAccount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSystemAccount gets a reference to the given bool and assigns it to the SystemAccount field.
+func (o *AccountActionRequestDtoAccountDetails) SetSystemAccount(v bool) {
+	o.SystemAccount = &v
+}
+
+// GetAuthoritative returns the Authoritative field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetAuthoritative() bool {
+	if o == nil || IsNil(o.Authoritative) {
+		var ret bool
+		return ret
+	}
+	return *o.Authoritative
+}
+
+// GetAuthoritativeOk returns a tuple with the Authoritative field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetAuthoritativeOk() (*bool, bool) {
+	if o == nil || IsNil(o.Authoritative) {
+		return nil, false
+	}
+	return o.Authoritative, true
+}
+
+// HasAuthoritative returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasAuthoritative() bool {
+	if o != nil && !IsNil(o.Authoritative) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthoritative gets a reference to the given bool and assigns it to the Authoritative field.
+func (o *AccountActionRequestDtoAccountDetails) SetAuthoritative(v bool) {
+	o.Authoritative = &v
+}
+
+// GetSupportsPasswordChange returns the SupportsPasswordChange field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetSupportsPasswordChange() bool {
+	if o == nil || IsNil(o.SupportsPasswordChange) {
+		var ret bool
+		return ret
+	}
+	return *o.SupportsPasswordChange
+}
+
+// GetSupportsPasswordChangeOk returns a tuple with the SupportsPasswordChange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetSupportsPasswordChangeOk() (*bool, bool) {
+	if o == nil || IsNil(o.SupportsPasswordChange) {
+		return nil, false
+	}
+	return o.SupportsPasswordChange, true
+}
+
+// HasSupportsPasswordChange returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasSupportsPasswordChange() bool {
+	if o != nil && !IsNil(o.SupportsPasswordChange) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportsPasswordChange gets a reference to the given bool and assigns it to the SupportsPasswordChange field.
+func (o *AccountActionRequestDtoAccountDetails) SetSupportsPasswordChange(v bool) {
+	o.SupportsPasswordChange = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetAttributes() map[string]interface{} {
+	if o == nil || IsNil(o.Attributes) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasAttributes() bool {
+	if o != nil && !IsNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *AccountActionRequestDtoAccountDetails) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
+}
+
+// GetApplication returns the Application field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetApplication() map[string]interface{} {
+	if o == nil || IsNil(o.Application) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Application
+}
+
+// GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetApplicationOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Application) {
+		return map[string]interface{}{}, false
+	}
+	return o.Application, true
+}
+
+// HasApplication returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasApplication() bool {
+	if o != nil && !IsNil(o.Application) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplication gets a reference to the given map[string]interface{} and assigns it to the Application field.
+func (o *AccountActionRequestDtoAccountDetails) SetApplication(v map[string]interface{}) {
+	o.Application = v
+}
+
+// GetIdentity returns the Identity field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetIdentity() map[string]interface{} {
+	if o == nil || IsNil(o.Identity) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Identity
+}
+
+// GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetIdentityOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Identity) {
+		return map[string]interface{}{}, false
+	}
+	return o.Identity, true
+}
+
+// HasIdentity returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasIdentity() bool {
+	if o != nil && !IsNil(o.Identity) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentity gets a reference to the given map[string]interface{} and assigns it to the Identity field.
+func (o *AccountActionRequestDtoAccountDetails) SetIdentity(v map[string]interface{}) {
+	o.Identity = v
+}
+
+// GetSchema returns the Schema field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetSchema() map[string]interface{} {
+	if o == nil || IsNil(o.Schema) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Schema
+}
+
+// GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetSchemaOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Schema) {
+		return map[string]interface{}{}, false
+	}
+	return o.Schema, true
+}
+
+// HasSchema returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasSchema() bool {
+	if o != nil && !IsNil(o.Schema) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchema gets a reference to the given map[string]interface{} and assigns it to the Schema field.
+func (o *AccountActionRequestDtoAccountDetails) SetSchema(v map[string]interface{}) {
+	o.Schema = v
+}
+
+// GetPendingAccessRequestIds returns the PendingAccessRequestIds field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetPendingAccessRequestIds() []string {
+	if o == nil || IsNil(o.PendingAccessRequestIds) {
+		var ret []string
+		return ret
+	}
+	return o.PendingAccessRequestIds
+}
+
+// GetPendingAccessRequestIdsOk returns a tuple with the PendingAccessRequestIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetPendingAccessRequestIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PendingAccessRequestIds) {
+		return nil, false
+	}
+	return o.PendingAccessRequestIds, true
+}
+
+// HasPendingAccessRequestIds returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasPendingAccessRequestIds() bool {
+	if o != nil && !IsNil(o.PendingAccessRequestIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPendingAccessRequestIds gets a reference to the given []string and assigns it to the PendingAccessRequestIds field.
+func (o *AccountActionRequestDtoAccountDetails) SetPendingAccessRequestIds(v []string) {
+	o.PendingAccessRequestIds = v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetFeatures() []string {
+	if o == nil || IsNil(o.Features) {
+		var ret []string
+		return ret
+	}
+	return o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetFeaturesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Features) {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasFeatures() bool {
+	if o != nil && !IsNil(o.Features) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given []string and assigns it to the Features field.
+func (o *AccountActionRequestDtoAccountDetails) SetFeatures(v []string) {
+	o.Features = v
+}
+
+// GetMeta returns the Meta field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoAccountDetails) GetMeta() map[string]interface{} {
+	if o == nil || IsNil(o.Meta) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Meta
+}
+
+// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoAccountDetails) GetMetaOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Meta) {
+		return map[string]interface{}{}, false
+	}
+	return o.Meta, true
+}
+
+// HasMeta returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoAccountDetails) HasMeta() bool {
+	if o != nil && !IsNil(o.Meta) {
+		return true
+	}
+
+	return false
+}
+
+// SetMeta gets a reference to the given map[string]interface{} and assigns it to the Meta field.
+func (o *AccountActionRequestDtoAccountDetails) SetMeta(v map[string]interface{}) {
+	o.Meta = v
 }
 
 func (o AccountActionRequestDtoAccountDetails) MarshalJSON() ([]byte, error) {
@@ -578,38 +712,26 @@ func (o AccountActionRequestDtoAccountDetails) MarshalJSON() ([]byte, error) {
 
 func (o AccountActionRequestDtoAccountDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !IsNil(o.AccountName) {
-		toSerialize["accountName"] = o.AccountName
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.AccountNativeIdentity) {
-		toSerialize["accountNativeIdentity"] = o.AccountNativeIdentity
+	if !IsNil(o.NativeIdentity) {
+		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
-	if !IsNil(o.AccountUuid) {
-		toSerialize["accountUuid"] = o.AccountUuid
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
-	if !IsNil(o.AccountType) {
-		toSerialize["accountType"] = o.AccountType
-	}
-	if o.AccountSubtypeId.IsSet() {
-		toSerialize["accountSubtypeId"] = o.AccountSubtypeId.Get()
-	}
-	if o.AccountSubtype.IsSet() {
-		toSerialize["accountSubtype"] = o.AccountSubtype.Get()
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if !IsNil(o.SourceId) {
-		toSerialize["sourceId"] = o.SourceId
-	}
-	if !IsNil(o.SourceName) {
-		toSerialize["sourceName"] = o.SourceName
-	}
-	if !IsNil(o.HasEntitlements) {
-		toSerialize["hasEntitlements"] = o.HasEntitlements
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
@@ -617,8 +739,38 @@ func (o AccountActionRequestDtoAccountDetails) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if o.OwnerIdentity.IsSet() {
-		toSerialize["ownerIdentity"] = o.OwnerIdentity.Get()
+	if !IsNil(o.Uncorrelated) {
+		toSerialize["uncorrelated"] = o.Uncorrelated
+	}
+	if !IsNil(o.SystemAccount) {
+		toSerialize["systemAccount"] = o.SystemAccount
+	}
+	if !IsNil(o.Authoritative) {
+		toSerialize["authoritative"] = o.Authoritative
+	}
+	if !IsNil(o.SupportsPasswordChange) {
+		toSerialize["supportsPasswordChange"] = o.SupportsPasswordChange
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.Application) {
+		toSerialize["application"] = o.Application
+	}
+	if !IsNil(o.Identity) {
+		toSerialize["identity"] = o.Identity
+	}
+	if !IsNil(o.Schema) {
+		toSerialize["schema"] = o.Schema
+	}
+	if !IsNil(o.PendingAccessRequestIds) {
+		toSerialize["pendingAccessRequestIds"] = o.PendingAccessRequestIds
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.Meta) {
+		toSerialize["meta"] = o.Meta
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -642,20 +794,26 @@ func (o *AccountActionRequestDtoAccountDetails) UnmarshalJSON(data []byte) (err 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "accountName")
-		delete(additionalProperties, "accountNativeIdentity")
-		delete(additionalProperties, "accountUuid")
-		delete(additionalProperties, "accountType")
-		delete(additionalProperties, "accountSubtypeId")
-		delete(additionalProperties, "accountSubtype")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "sourceId")
-		delete(additionalProperties, "sourceName")
-		delete(additionalProperties, "hasEntitlements")
+		delete(additionalProperties, "nativeIdentity")
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "disabled")
 		delete(additionalProperties, "locked")
-		delete(additionalProperties, "ownerIdentity")
+		delete(additionalProperties, "uncorrelated")
+		delete(additionalProperties, "systemAccount")
+		delete(additionalProperties, "authoritative")
+		delete(additionalProperties, "supportsPasswordChange")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "application")
+		delete(additionalProperties, "identity")
+		delete(additionalProperties, "schema")
+		delete(additionalProperties, "pendingAccessRequestIds")
+		delete(additionalProperties, "features")
+		delete(additionalProperties, "meta")
 		o.AdditionalProperties = additionalProperties
 	}
 

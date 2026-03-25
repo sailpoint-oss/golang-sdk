@@ -19,14 +19,11 @@ var _ MappedNullable = &AccountActionRequestDtoCorrelatedIdentity{}
 
 // AccountActionRequestDtoCorrelatedIdentity struct for AccountActionRequestDtoCorrelatedIdentity
 type AccountActionRequestDtoCorrelatedIdentity struct {
-	// ID of identity
+	Type *DtoType `json:"type,omitempty"`
+	// Identity id
 	Id *string `json:"id,omitempty"`
-	// Name of Identity
+	// Human-readable display name of identity.
 	Name *string `json:"name,omitempty"`
-	// mail id of identity
-	Email NullableString `json:"email,omitempty"`
-	// status of identity UNREGISTERED/REGISTERED
-	Status NullableString `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,6 +44,38 @@ func NewAccountActionRequestDtoCorrelatedIdentity() *AccountActionRequestDtoCorr
 func NewAccountActionRequestDtoCorrelatedIdentityWithDefaults() *AccountActionRequestDtoCorrelatedIdentity {
 	this := AccountActionRequestDtoCorrelatedIdentity{}
 	return &this
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AccountActionRequestDtoCorrelatedIdentity) GetType() DtoType {
+	if o == nil || IsNil(o.Type) {
+		var ret DtoType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountActionRequestDtoCorrelatedIdentity) GetTypeOk() (*DtoType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AccountActionRequestDtoCorrelatedIdentity) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given DtoType and assigns it to the Type field.
+func (o *AccountActionRequestDtoCorrelatedIdentity) SetType(v DtoType) {
+	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -113,90 +142,6 @@ func (o *AccountActionRequestDtoCorrelatedIdentity) SetName(v string) {
 	o.Name = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActionRequestDtoCorrelatedIdentity) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Email.Get()
-}
-
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActionRequestDtoCorrelatedIdentity) GetEmailOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Email.Get(), o.Email.IsSet()
-}
-
-// HasEmail returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoCorrelatedIdentity) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *AccountActionRequestDtoCorrelatedIdentity) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *AccountActionRequestDtoCorrelatedIdentity) SetEmailNil() {
-	o.Email.Set(nil)
-}
-
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AccountActionRequestDtoCorrelatedIdentity) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountActionRequestDtoCorrelatedIdentity) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Status.Get()
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountActionRequestDtoCorrelatedIdentity) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Status.Get(), o.Status.IsSet()
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *AccountActionRequestDtoCorrelatedIdentity) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *AccountActionRequestDtoCorrelatedIdentity) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *AccountActionRequestDtoCorrelatedIdentity) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *AccountActionRequestDtoCorrelatedIdentity) UnsetStatus() {
-	o.Status.Unset()
-}
-
 func (o AccountActionRequestDtoCorrelatedIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -207,17 +152,14 @@ func (o AccountActionRequestDtoCorrelatedIdentity) MarshalJSON() ([]byte, error)
 
 func (o AccountActionRequestDtoCorrelatedIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
-	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -241,10 +183,9 @@ func (o *AccountActionRequestDtoCorrelatedIdentity) UnmarshalJSON(data []byte) (
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}
 

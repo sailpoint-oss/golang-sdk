@@ -12037,7 +12037,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            workgroupdto := []byte(`{
           "owner" : {
             "emailAddress" : "support@sailpoint.com",
@@ -12066,8 +12065,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupDto(workgroupDto).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupDto(workgroupDto).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).WorkgroupDto(workgroupDto).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).WorkgroupDto(workgroupDto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroup``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12094,15 +12093,14 @@
 
         func main() {
           id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
+          //r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroup``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12127,7 +12125,6 @@
 
         func main() {
           workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be removed from  a Governance Group members list.
 
           
@@ -12141,8 +12138,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupMembers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12168,7 +12165,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            workgroupbulkdeleterequest := []byte(`{
           "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
         }`) // WorkgroupBulkDeleteRequest | 
@@ -12184,8 +12180,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupsInBulk``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12212,15 +12208,14 @@
 
         func main() {
           id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroup``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12247,7 +12242,6 @@
 
         func main() {
           workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -12258,8 +12252,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListConnections``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12286,7 +12280,6 @@
 
         func main() {
           workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -12297,8 +12290,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupMembers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12324,7 +12317,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -12336,8 +12328,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroups(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroups(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroups``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12364,7 +12356,6 @@
 
         func main() {
           id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Governance Group new description.}]`) // []JsonPatchOperation |  (optional)
 
           
@@ -12372,8 +12363,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.PatchWorkgroup``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12400,7 +12391,6 @@
 
         func main() {
           workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be added to a Governance Group members list.
 
           
@@ -12414,8 +12404,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
-          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+          resp, r, err := apiClient.V2025.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+          //resp, r, err := apiClient.V2025.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroupMembers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32197,7 +32187,6 @@
 
         func main() {
           id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            completeinvocation := []byte(`{
           "output" : {
             "approved" : false
@@ -32217,8 +32206,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2025.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
-          //r, err := apiClient.V2025.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
+          r, err := apiClient.V2025.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
+          //r, err := apiClient.V2025.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocation``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32242,7 +32231,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            subscriptionpostrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -32280,8 +32268,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscription``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32308,15 +32296,14 @@
 
         func main() {
           id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2025.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.V2025.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.V2025.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
+          //r, err := apiClient.V2025.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscription``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32340,7 +32327,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -32352,8 +32338,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.ListSubscriptions(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.ListSubscriptions(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32379,7 +32365,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -32391,8 +32376,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatus``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32418,7 +32403,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -32430,8 +32414,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.ListTriggers(context.Background()).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.ListTriggers(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32458,7 +32442,6 @@
 
         func main() {
           id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           subscriptionpatchrequestinner := []byte(``) // []SubscriptionPatchRequestInner | 
 
           
@@ -32472,8 +32455,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscription``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32499,7 +32482,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            testinvocation := []byte(`{
           "input" : {
             "identityId" : "201327fda1c44704ac01181e963d463c"
@@ -32522,8 +32504,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocation``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32549,7 +32531,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            validatefilterinputdto := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "input" : {
@@ -32568,8 +32549,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilter``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32596,7 +32577,6 @@
 
         func main() {
           id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            subscriptionputrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -32633,8 +32613,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2025.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
-          //resp, r, err := apiClient.V2025.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+          resp, r, err := apiClient.V2025.TriggersAPI.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+          //resp, r, err := apiClient.V2025.TriggersAPI.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscription``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

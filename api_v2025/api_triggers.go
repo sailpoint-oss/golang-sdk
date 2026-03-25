@@ -27,14 +27,7 @@ type ApiCompleteTriggerInvocationRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	xSailPointExperimental *string
 	completeInvocation *CompleteInvocation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCompleteTriggerInvocationRequest) XSailPointExperimental(xSailPointExperimental string) ApiCompleteTriggerInvocationRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiCompleteTriggerInvocationRequest) CompleteInvocation(completeInvocation CompleteInvocation) ApiCompleteTriggerInvocationRequest {
@@ -82,21 +75,6 @@ func (a *TriggersAPIService) CompleteTriggerInvocationExecute(r ApiCompleteTrigg
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.completeInvocation == nil {
 		return nil, reportError("completeInvocation is required and must be specified")
 	}
@@ -118,7 +96,6 @@ func (a *TriggersAPIService) CompleteTriggerInvocationExecute(r ApiCompleteTrigg
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.completeInvocation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -206,14 +183,7 @@ func (a *TriggersAPIService) CompleteTriggerInvocationExecute(r ApiCompleteTrigg
 type ApiCreateSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	subscriptionPostRequest *SubscriptionPostRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateSubscriptionRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateSubscriptionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiCreateSubscriptionRequest) SubscriptionPostRequest(subscriptionPostRequest SubscriptionPostRequest) ApiCreateSubscriptionRequest {
@@ -262,21 +232,6 @@ func (a *TriggersAPIService) CreateSubscriptionExecute(r ApiCreateSubscriptionRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.subscriptionPostRequest == nil {
 		return localVarReturnValue, nil, reportError("subscriptionPostRequest is required and must be specified")
 	}
@@ -298,7 +253,6 @@ func (a *TriggersAPIService) CreateSubscriptionExecute(r ApiCreateSubscriptionRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.subscriptionPostRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -396,13 +350,6 @@ type ApiDeleteSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteSubscriptionRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteSubscriptionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteSubscriptionRequest) Execute() (*http.Response, error) {
@@ -445,15 +392,6 @@ func (a *TriggersAPIService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -472,7 +410,6 @@ func (a *TriggersAPIService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -569,18 +506,11 @@ func (a *TriggersAPIService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRe
 type ApiListSubscriptionsRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListSubscriptionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListSubscriptionsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -652,15 +582,6 @@ func (a *TriggersAPIService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -703,7 +624,6 @@ func (a *TriggersAPIService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -798,18 +718,11 @@ func (a *TriggersAPIService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 type ApiListTriggerInvocationStatusRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListTriggerInvocationStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiListTriggerInvocationStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -883,15 +796,6 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -934,7 +838,6 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1029,18 +932,11 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 type ApiListTriggersRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListTriggersRequest) XSailPointExperimental(xSailPointExperimental string) ApiListTriggersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1112,15 +1008,6 @@ func (a *TriggersAPIService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -1163,7 +1050,6 @@ func (a *TriggersAPIService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1259,14 +1145,7 @@ type ApiPatchSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	xSailPointExperimental *string
 	subscriptionPatchRequestInner *[]SubscriptionPatchRequestInner
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchSubscriptionRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchSubscriptionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPatchSubscriptionRequest) SubscriptionPatchRequestInner(subscriptionPatchRequestInner []SubscriptionPatchRequestInner) ApiPatchSubscriptionRequest {
@@ -1318,21 +1197,6 @@ func (a *TriggersAPIService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.subscriptionPatchRequestInner == nil {
 		return localVarReturnValue, nil, reportError("subscriptionPatchRequestInner is required and must be specified")
 	}
@@ -1354,7 +1218,6 @@ func (a *TriggersAPIService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.subscriptionPatchRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1462,14 +1325,7 @@ func (a *TriggersAPIService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 type ApiStartTestTriggerInvocationRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	testInvocation *TestInvocation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiStartTestTriggerInvocationRequest) XSailPointExperimental(xSailPointExperimental string) ApiStartTestTriggerInvocationRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiStartTestTriggerInvocationRequest) TestInvocation(testInvocation TestInvocation) ApiStartTestTriggerInvocationRequest {
@@ -1516,21 +1372,6 @@ func (a *TriggersAPIService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.testInvocation == nil {
 		return localVarReturnValue, nil, reportError("testInvocation is required and must be specified")
 	}
@@ -1552,7 +1393,6 @@ func (a *TriggersAPIService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.testInvocation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1649,14 +1489,7 @@ func (a *TriggersAPIService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 type ApiTestSubscriptionFilterRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	xSailPointExperimental *string
 	validateFilterInputDto *ValidateFilterInputDto
-}
-
-// Use this header to enable this experimental API.
-func (r ApiTestSubscriptionFilterRequest) XSailPointExperimental(xSailPointExperimental string) ApiTestSubscriptionFilterRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiTestSubscriptionFilterRequest) ValidateFilterInputDto(validateFilterInputDto ValidateFilterInputDto) ApiTestSubscriptionFilterRequest {
@@ -1704,21 +1537,6 @@ func (a *TriggersAPIService) TestSubscriptionFilterExecute(r ApiTestSubscription
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.validateFilterInputDto == nil {
 		return localVarReturnValue, nil, reportError("validateFilterInputDto is required and must be specified")
 	}
@@ -1740,7 +1558,6 @@ func (a *TriggersAPIService) TestSubscriptionFilterExecute(r ApiTestSubscription
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.validateFilterInputDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1838,14 +1655,7 @@ type ApiUpdateSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	xSailPointExperimental *string
 	subscriptionPutRequest *SubscriptionPutRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateSubscriptionRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateSubscriptionRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiUpdateSubscriptionRequest) SubscriptionPutRequest(subscriptionPutRequest SubscriptionPutRequest) ApiUpdateSubscriptionRequest {
@@ -1904,21 +1714,6 @@ func (a *TriggersAPIService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.subscriptionPutRequest == nil {
 		return localVarReturnValue, nil, reportError("subscriptionPutRequest is required and must be specified")
 	}
@@ -1940,7 +1735,6 @@ func (a *TriggersAPIService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.subscriptionPutRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -22,13 +22,15 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test EntitlementsAPIService GetAccountEntitlements", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService CreateAccessModelMetadataForEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var accountId string
+		var id string
+		var attributeKey string
+		var attributeValue string
 
-		resp, httpRes, err := apiClient.EntitlementsAPI.GetAccountEntitlements(context.Background(), accountId).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.CreateAccessModelMetadataForEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +38,54 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsAPIService GetEntitlement", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService CreateEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.CreateEntitlement(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService DeleteAccessModelMetadataFromEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		httpRes, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService GetEntitlementRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.GetEntitlementRequestConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService ImportEntitlementsBySource", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.ImportEntitlementsBySource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,13 +133,41 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsAPIService PatchEntitlement", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService ListEntitlementsByAccount", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var accountId string
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.ListEntitlementsByAccount(context.Background(), accountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService PutEntitlementRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService ResetSourceEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

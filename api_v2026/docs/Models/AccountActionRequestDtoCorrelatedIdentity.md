@@ -15,10 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountActionRequestDtoCorrelatedIden
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of identity | [optional] 
-**Name** | Pointer to **string** | Name of Identity | [optional] 
-**Email** | Pointer to **NullableString** | mail id of identity | [optional] 
-**Status** | Pointer to **NullableString** | status of identity UNREGISTERED/REGISTERED | [optional] 
+**Type** | Pointer to [**DtoType**](dto-type) |  | [optional] 
+**Id** | Pointer to **string** | Identity id | [optional] 
+**Name** | Pointer to **string** | Human-readable display name of identity. | [optional] 
 
 ## Methods
 
@@ -38,6 +37,31 @@ will change when the set of required properties is changed
 NewAccountActionRequestDtoCorrelatedIdentityWithDefaults instantiates a new AccountActionRequestDtoCorrelatedIdentity object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AccountActionRequestDtoCorrelatedIdentity) GetType() DtoType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AccountActionRequestDtoCorrelatedIdentity) GetTypeOk() (*DtoType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AccountActionRequestDtoCorrelatedIdentity) SetType(v DtoType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AccountActionRequestDtoCorrelatedIdentity) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetId
 
@@ -89,74 +113,4 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetEmail
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) GetEmail() string`
-
-GetEmail returns the Email field if non-nil, zero value otherwise.
-
-### GetEmailOk
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmail
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) SetEmail(v string)`
-
-SetEmail sets Email field to given value.
-
-### HasEmail
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
-
-### SetEmailNil
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) SetEmailNil(b bool)`
-
- SetEmailNil sets the value for Email to be an explicit nil
-
-### UnsetEmail
-`func (o *AccountActionRequestDtoCorrelatedIdentity) UnsetEmail()`
-
-UnsetEmail ensures that no value is present for Email, not even an explicit nil
-### GetStatus
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### SetStatusNil
-
-`func (o *AccountActionRequestDtoCorrelatedIdentity) SetStatusNil(b bool)`
-
- SetStatusNil sets the value for Status to be an explicit nil
-
-### UnsetStatus
-`func (o *AccountActionRequestDtoCorrelatedIdentity) UnsetStatus()`
-
-UnsetStatus ensures that no value is present for Status, not even an explicit nil
 

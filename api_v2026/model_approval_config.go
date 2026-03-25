@@ -17,12 +17,26 @@ import (
 // checks if the ApprovalConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalConfig{}
 
-// ApprovalConfig struct for ApprovalConfig
+// ApprovalConfig Approval config Object
 type ApprovalConfig struct {
-	// Approvers must be listed as a comma-separated string, with each entry representing an individual or group authorized to approve account creation or deletion requests.
-	Approvers *string `json:"approvers,omitempty"`
-	// Specifies the approval status for an account creation or deletion request. Allowed values are APPROVAL, REJECTION, ALL, and OFF.
-	Comments *string `json:"comments,omitempty"`
+	// Tenant ID of the approval configuration.
+	TenantId *string `json:"tenantId,omitempty"`
+	// The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+	Id *string `json:"id,omitempty"`
+	// The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+	Scope *string `json:"scope,omitempty"`
+	ReminderConfig *ApprovalConfigReminderConfig `json:"reminderConfig,omitempty"`
+	EscalationConfig *ApprovalConfigEscalationConfig `json:"escalationConfig,omitempty"`
+	TimeoutConfig *ApprovalConfigTimeoutConfig `json:"timeoutConfig,omitempty"`
+	CronTimezone *ApprovalConfigCronTimezone `json:"cronTimezone,omitempty"`
+	// If the approval request has an approvalCriteria of SERIAL this chain will be used to determine the assignment order.
+	SerialChain []ApprovalConfigSerialChainInner `json:"serialChain,omitempty"`
+	// Determines whether a comment is required when approving or rejecting the approval request.
+	RequiresComment *string `json:"requiresComment,omitempty"`
+	// Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist.
+	FallbackApprover ApprovalIdentity `json:"fallbackApprover,omitempty"`
+	// OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
+	AutoApprove *string `json:"autoApprove,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,68 +59,356 @@ func NewApprovalConfigWithDefaults() *ApprovalConfig {
 	return &this
 }
 
-// GetApprovers returns the Approvers field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetApprovers() string {
-	if o == nil || IsNil(o.Approvers) {
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetTenantId() string {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
-	return *o.Approvers
+	return *o.TenantId
 }
 
-// GetApproversOk returns a tuple with the Approvers field value if set, nil otherwise
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetApproversOk() (*string, bool) {
-	if o == nil || IsNil(o.Approvers) {
+func (o *ApprovalConfig) GetTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
-	return o.Approvers, true
+	return o.TenantId, true
 }
 
-// HasApprovers returns a boolean if a field has been set.
-func (o *ApprovalConfig) HasApprovers() bool {
-	if o != nil && !IsNil(o.Approvers) {
+// HasTenantId returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasTenantId() bool {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
 	return false
 }
 
-// SetApprovers gets a reference to the given string and assigns it to the Approvers field.
-func (o *ApprovalConfig) SetApprovers(v string) {
-	o.Approvers = &v
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *ApprovalConfig) SetTenantId(v string) {
+	o.TenantId = &v
 }
 
-// GetComments returns the Comments field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetComments() string {
-	if o == nil || IsNil(o.Comments) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Comments
+	return *o.Id
 }
 
-// GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetCommentsOk() (*string, bool) {
-	if o == nil || IsNil(o.Comments) {
+func (o *ApprovalConfig) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Comments, true
+	return o.Id, true
 }
 
-// HasComments returns a boolean if a field has been set.
-func (o *ApprovalConfig) HasComments() bool {
-	if o != nil && !IsNil(o.Comments) {
+// HasId returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetComments gets a reference to the given string and assigns it to the Comments field.
-func (o *ApprovalConfig) SetComments(v string) {
-	o.Comments = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ApprovalConfig) SetId(v string) {
+	o.Id = &v
+}
+
+// GetScope returns the Scope field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetScope() string {
+	if o == nil || IsNil(o.Scope) {
+		var ret string
+		return ret
+	}
+	return *o.Scope
+}
+
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetScopeOk() (*string, bool) {
+	if o == nil || IsNil(o.Scope) {
+		return nil, false
+	}
+	return o.Scope, true
+}
+
+// HasScope returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasScope() bool {
+	if o != nil && !IsNil(o.Scope) {
+		return true
+	}
+
+	return false
+}
+
+// SetScope gets a reference to the given string and assigns it to the Scope field.
+func (o *ApprovalConfig) SetScope(v string) {
+	o.Scope = &v
+}
+
+// GetReminderConfig returns the ReminderConfig field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetReminderConfig() ApprovalConfigReminderConfig {
+	if o == nil || IsNil(o.ReminderConfig) {
+		var ret ApprovalConfigReminderConfig
+		return ret
+	}
+	return *o.ReminderConfig
+}
+
+// GetReminderConfigOk returns a tuple with the ReminderConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetReminderConfigOk() (*ApprovalConfigReminderConfig, bool) {
+	if o == nil || IsNil(o.ReminderConfig) {
+		return nil, false
+	}
+	return o.ReminderConfig, true
+}
+
+// HasReminderConfig returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasReminderConfig() bool {
+	if o != nil && !IsNil(o.ReminderConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetReminderConfig gets a reference to the given ApprovalConfigReminderConfig and assigns it to the ReminderConfig field.
+func (o *ApprovalConfig) SetReminderConfig(v ApprovalConfigReminderConfig) {
+	o.ReminderConfig = &v
+}
+
+// GetEscalationConfig returns the EscalationConfig field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetEscalationConfig() ApprovalConfigEscalationConfig {
+	if o == nil || IsNil(o.EscalationConfig) {
+		var ret ApprovalConfigEscalationConfig
+		return ret
+	}
+	return *o.EscalationConfig
+}
+
+// GetEscalationConfigOk returns a tuple with the EscalationConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetEscalationConfigOk() (*ApprovalConfigEscalationConfig, bool) {
+	if o == nil || IsNil(o.EscalationConfig) {
+		return nil, false
+	}
+	return o.EscalationConfig, true
+}
+
+// HasEscalationConfig returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasEscalationConfig() bool {
+	if o != nil && !IsNil(o.EscalationConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetEscalationConfig gets a reference to the given ApprovalConfigEscalationConfig and assigns it to the EscalationConfig field.
+func (o *ApprovalConfig) SetEscalationConfig(v ApprovalConfigEscalationConfig) {
+	o.EscalationConfig = &v
+}
+
+// GetTimeoutConfig returns the TimeoutConfig field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetTimeoutConfig() ApprovalConfigTimeoutConfig {
+	if o == nil || IsNil(o.TimeoutConfig) {
+		var ret ApprovalConfigTimeoutConfig
+		return ret
+	}
+	return *o.TimeoutConfig
+}
+
+// GetTimeoutConfigOk returns a tuple with the TimeoutConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetTimeoutConfigOk() (*ApprovalConfigTimeoutConfig, bool) {
+	if o == nil || IsNil(o.TimeoutConfig) {
+		return nil, false
+	}
+	return o.TimeoutConfig, true
+}
+
+// HasTimeoutConfig returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasTimeoutConfig() bool {
+	if o != nil && !IsNil(o.TimeoutConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutConfig gets a reference to the given ApprovalConfigTimeoutConfig and assigns it to the TimeoutConfig field.
+func (o *ApprovalConfig) SetTimeoutConfig(v ApprovalConfigTimeoutConfig) {
+	o.TimeoutConfig = &v
+}
+
+// GetCronTimezone returns the CronTimezone field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetCronTimezone() ApprovalConfigCronTimezone {
+	if o == nil || IsNil(o.CronTimezone) {
+		var ret ApprovalConfigCronTimezone
+		return ret
+	}
+	return *o.CronTimezone
+}
+
+// GetCronTimezoneOk returns a tuple with the CronTimezone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetCronTimezoneOk() (*ApprovalConfigCronTimezone, bool) {
+	if o == nil || IsNil(o.CronTimezone) {
+		return nil, false
+	}
+	return o.CronTimezone, true
+}
+
+// HasCronTimezone returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasCronTimezone() bool {
+	if o != nil && !IsNil(o.CronTimezone) {
+		return true
+	}
+
+	return false
+}
+
+// SetCronTimezone gets a reference to the given ApprovalConfigCronTimezone and assigns it to the CronTimezone field.
+func (o *ApprovalConfig) SetCronTimezone(v ApprovalConfigCronTimezone) {
+	o.CronTimezone = &v
+}
+
+// GetSerialChain returns the SerialChain field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetSerialChain() []ApprovalConfigSerialChainInner {
+	if o == nil || IsNil(o.SerialChain) {
+		var ret []ApprovalConfigSerialChainInner
+		return ret
+	}
+	return o.SerialChain
+}
+
+// GetSerialChainOk returns a tuple with the SerialChain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetSerialChainOk() ([]ApprovalConfigSerialChainInner, bool) {
+	if o == nil || IsNil(o.SerialChain) {
+		return nil, false
+	}
+	return o.SerialChain, true
+}
+
+// HasSerialChain returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasSerialChain() bool {
+	if o != nil && !IsNil(o.SerialChain) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialChain gets a reference to the given []ApprovalConfigSerialChainInner and assigns it to the SerialChain field.
+func (o *ApprovalConfig) SetSerialChain(v []ApprovalConfigSerialChainInner) {
+	o.SerialChain = v
+}
+
+// GetRequiresComment returns the RequiresComment field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetRequiresComment() string {
+	if o == nil || IsNil(o.RequiresComment) {
+		var ret string
+		return ret
+	}
+	return *o.RequiresComment
+}
+
+// GetRequiresCommentOk returns a tuple with the RequiresComment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetRequiresCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.RequiresComment) {
+		return nil, false
+	}
+	return o.RequiresComment, true
+}
+
+// HasRequiresComment returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasRequiresComment() bool {
+	if o != nil && !IsNil(o.RequiresComment) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiresComment gets a reference to the given string and assigns it to the RequiresComment field.
+func (o *ApprovalConfig) SetRequiresComment(v string) {
+	o.RequiresComment = &v
+}
+
+// GetFallbackApprover returns the FallbackApprover field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetFallbackApprover() ApprovalIdentity {
+	if o == nil || IsNil(o.FallbackApprover) {
+		var ret ApprovalIdentity
+		return ret
+	}
+	return o.FallbackApprover
+}
+
+// GetFallbackApproverOk returns a tuple with the FallbackApprover field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetFallbackApproverOk() (ApprovalIdentity, bool) {
+	if o == nil || IsNil(o.FallbackApprover) {
+		return ApprovalIdentity{}, false
+	}
+	return o.FallbackApprover, true
+}
+
+// HasFallbackApprover returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasFallbackApprover() bool {
+	if o != nil && !IsNil(o.FallbackApprover) {
+		return true
+	}
+
+	return false
+}
+
+// SetFallbackApprover gets a reference to the given ApprovalIdentity and assigns it to the FallbackApprover field.
+func (o *ApprovalConfig) SetFallbackApprover(v ApprovalIdentity) {
+	o.FallbackApprover = v
+}
+
+// GetAutoApprove returns the AutoApprove field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetAutoApprove() string {
+	if o == nil || IsNil(o.AutoApprove) {
+		var ret string
+		return ret
+	}
+	return *o.AutoApprove
+}
+
+// GetAutoApproveOk returns a tuple with the AutoApprove field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetAutoApproveOk() (*string, bool) {
+	if o == nil || IsNil(o.AutoApprove) {
+		return nil, false
+	}
+	return o.AutoApprove, true
+}
+
+// HasAutoApprove returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasAutoApprove() bool {
+	if o != nil && !IsNil(o.AutoApprove) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoApprove gets a reference to the given string and assigns it to the AutoApprove field.
+func (o *ApprovalConfig) SetAutoApprove(v string) {
+	o.AutoApprove = &v
 }
 
 func (o ApprovalConfig) MarshalJSON() ([]byte, error) {
@@ -119,11 +421,38 @@ func (o ApprovalConfig) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Approvers) {
-		toSerialize["approvers"] = o.Approvers
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.Comments) {
-		toSerialize["comments"] = o.Comments
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Scope) {
+		toSerialize["scope"] = o.Scope
+	}
+	if !IsNil(o.ReminderConfig) {
+		toSerialize["reminderConfig"] = o.ReminderConfig
+	}
+	if !IsNil(o.EscalationConfig) {
+		toSerialize["escalationConfig"] = o.EscalationConfig
+	}
+	if !IsNil(o.TimeoutConfig) {
+		toSerialize["timeoutConfig"] = o.TimeoutConfig
+	}
+	if !IsNil(o.CronTimezone) {
+		toSerialize["cronTimezone"] = o.CronTimezone
+	}
+	if !IsNil(o.SerialChain) {
+		toSerialize["serialChain"] = o.SerialChain
+	}
+	if !IsNil(o.RequiresComment) {
+		toSerialize["requiresComment"] = o.RequiresComment
+	}
+	if !IsNil(o.FallbackApprover) {
+		toSerialize["fallbackApprover"] = o.FallbackApprover
+	}
+	if !IsNil(o.AutoApprove) {
+		toSerialize["autoApprove"] = o.AutoApprove
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -147,8 +476,17 @@ func (o *ApprovalConfig) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "approvers")
-		delete(additionalProperties, "comments")
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "reminderConfig")
+		delete(additionalProperties, "escalationConfig")
+		delete(additionalProperties, "timeoutConfig")
+		delete(additionalProperties, "cronTimezone")
+		delete(additionalProperties, "serialChain")
+		delete(additionalProperties, "requiresComment")
+		delete(additionalProperties, "fallbackApprover")
+		delete(additionalProperties, "autoApprove")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -26,16 +26,9 @@ type TaskManagementAPIService service
 type ApiGetPendingTaskHeadersRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetPendingTaskHeadersRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetPendingTaskHeadersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -63,7 +56,7 @@ func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
 /*
 GetPendingTaskHeaders Retrieve pending task list headers
 
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2026/task-status?count=true&filters=completionStatus isnull
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull
 
 Responds with headers only for list of task statuses for pending tasks.
 
@@ -99,15 +92,6 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -144,7 +128,6 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -230,16 +213,9 @@ func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 type ApiGetPendingTasksRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetPendingTasksRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetPendingTasksRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -267,9 +243,9 @@ func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, erro
 /*
 GetPendingTasks Retrieve pending task status list
 
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2026/task-status?filters=completionStatus isnull
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull
 
-Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned.
+Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -305,15 +281,6 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -350,7 +317,6 @@ func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -446,13 +412,6 @@ type ApiGetTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetTaskStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetTaskStatusRequest) Execute() (*TaskStatus, *http.Response, error) {
@@ -497,15 +456,6 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -524,7 +474,6 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -640,7 +589,7 @@ func (r ApiGetTaskStatusListRequest) Count(count bool) ApiGetTaskStatusListReque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
 func (r ApiGetTaskStatusListRequest) Filters(filters string) ApiGetTaskStatusListRequest {
 	r.filters = &filters
 	return r
@@ -659,7 +608,7 @@ func (r ApiGetTaskStatusListRequest) Execute() ([]TaskStatus, *http.Response, er
 /*
 GetTaskStatusList Retrieve task status list
 
-Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field.
+Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -850,14 +799,7 @@ type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateTaskStatusRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -908,21 +850,6 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -944,7 +871,6 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

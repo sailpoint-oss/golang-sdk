@@ -58,17 +58,6 @@ Method | HTTP request | Description
 
 
 ## complete-trigger-invocation
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Complete trigger invocation
 Completes an invocation to a REQUEST_RESPONSE type trigger.
 
@@ -90,7 +79,6 @@ Other parameters are passed through a pointer to a apiCompleteTriggerInvocationR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **completeInvocation** | [**CompleteInvocation**](../models/complete-invocation) |  | 
 
 ### Return type
@@ -118,7 +106,6 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     completeinvocation := []byte(`{
           "output" : {
             "approved" : false
@@ -136,8 +123,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
-	  //r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).XSailPointExperimental(xSailPointExperimental).CompleteInvocation(completeInvocation).Execute()
+    r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
+	  //r, err := apiClient.V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocation``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -149,17 +136,6 @@ func main() {
 [[Back to top]](#)
 
 ## create-subscription
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Create a subscription
 This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required:
 * HTTP subscriptions require httpConfig
@@ -178,7 +154,6 @@ Other parameters are passed through a pointer to a apiCreateSubscriptionRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **subscriptionPostRequest** | [**SubscriptionPostRequest**](../models/subscription-post-request) |  | 
 
 ### Return type
@@ -205,7 +180,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subscriptionpostrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -241,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).XSailPointExperimental(xSailPointExperimental).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscription``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,17 +229,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-subscription
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Delete a subscription
 Deletes an existing subscription to a trigger.
 
@@ -287,7 +250,6 @@ Other parameters are passed through a pointer to a apiDeleteSubscriptionRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -314,14 +276,13 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
+	  //r, err := apiClient.V2024.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscription``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,17 +294,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-subscriptions
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List subscriptions
 Gets a list of all trigger subscriptions.
 
@@ -360,7 +310,6 @@ Other parameters are passed through a pointer to a apiListSubscriptionsRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -391,7 +340,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -402,8 +350,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.ListSubscriptions(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,17 +364,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-trigger-invocation-status
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List latest invocation statuses
 Gets a list of latest invocation statuses.
 Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours.
@@ -445,7 +382,6 @@ Other parameters are passed through a pointer to a apiListTriggerInvocationStatu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -476,7 +412,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -487,8 +422,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatus``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -501,17 +436,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-triggers
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List triggers
 Gets a list of triggers that are available in the tenant.
 
@@ -528,7 +452,6 @@ Other parameters are passed through a pointer to a apiListTriggersRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -559,7 +482,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -570,8 +492,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.ListTriggers(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -584,17 +506,6 @@ func main() {
 [[Back to top]](#)
 
 ## patch-subscription
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Patch a subscription
 This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:
 
@@ -618,7 +529,6 @@ Other parameters are passed through a pointer to a apiPatchSubscriptionRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **subscriptionPatchRequestInner** | [**[]SubscriptionPatchRequestInner**](../models/subscription-patch-request-inner) |  | 
 
 ### Return type
@@ -646,7 +556,6 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subscriptionpatchrequestinner := []byte(``) // []SubscriptionPatchRequestInner | 
 
     var subscriptionPatchRequestInner []v2024.SubscriptionPatchRequestInner
@@ -658,8 +567,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscription``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -672,17 +581,6 @@ func main() {
 [[Back to top]](#)
 
 ## start-test-trigger-invocation
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Start a test invocation
 Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
@@ -699,7 +597,6 @@ Other parameters are passed through a pointer to a apiStartTestTriggerInvocation
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **testInvocation** | [**TestInvocation**](../models/test-invocation) |  | 
 
 ### Return type
@@ -726,7 +623,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     testinvocation := []byte(`{
           "input" : {
             "identityId" : "201327fda1c44704ac01181e963d463c"
@@ -747,8 +643,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).XSailPointExperimental(xSailPointExperimental).TestInvocation(testInvocation).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocation``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -761,17 +657,6 @@ func main() {
 [[Back to top]](#)
 
 ## test-subscription-filter
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Validate a subscription filter
 Validates a JSONPath filter expression against a provided mock input.
 Request requires a security scope of: 
@@ -789,7 +674,6 @@ Other parameters are passed through a pointer to a apiTestSubscriptionFilterRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **validateFilterInputDto** | [**ValidateFilterInputDto**](../models/validate-filter-input-dto) |  | 
 
 ### Return type
@@ -816,7 +700,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     validatefilterinputdto := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "input" : {
@@ -833,8 +716,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).XSailPointExperimental(xSailPointExperimental).ValidateFilterInputDto(validateFilterInputDto).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilter``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -847,17 +730,6 @@ func main() {
 [[Back to top]](#)
 
 ## update-subscription
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Update a subscription
 This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing
   Subscription is completely replaced. The following fields are immutable:
@@ -888,7 +760,6 @@ Other parameters are passed through a pointer to a apiUpdateSubscriptionRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **subscriptionPutRequest** | [**SubscriptionPutRequest**](../models/subscription-put-request) |  | 
 
 ### Return type
@@ -916,7 +787,6 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subscriptionputrequest := []byte(`{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -951,8 +821,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
-	  //resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+    resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+	  //resp, r, err := apiClient.V2024.TriggersAPI.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscription``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -32,14 +32,15 @@ type Entitlement struct {
 	SourceSchemaObjectType *string `json:"sourceSchemaObjectType,omitempty"`
 	// The description of the entitlement
 	Description NullableString `json:"description,omitempty"`
-	PrivilegeLevel *EntitlementPrivilegeLevel `json:"privilegeLevel,omitempty"`
-	// List of tags assigned to the entitlement
-	Tags []string `json:"tags,omitempty"`
+	// True if the entitlement is privileged
+	Privileged *bool `json:"privileged,omitempty"`
 	// True if the entitlement is cloud governed
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
 	// True if the entitlement is able to be directly requested
 	Requestable *bool `json:"requestable,omitempty"`
 	Owner NullableEntitlementOwner `json:"owner,omitempty"`
+	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
 	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
 	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
@@ -64,6 +65,8 @@ type _Entitlement Entitlement
 // will change when the set of required properties is changed
 func NewEntitlement() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
 	var cloudGoverned bool = false
 	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
@@ -76,6 +79,8 @@ func NewEntitlement() *Entitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementWithDefaults() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
 	var cloudGoverned bool = false
 	this.CloudGoverned = &cloudGoverned
 	var requestable bool = false
@@ -285,69 +290,36 @@ func (o *Entitlement) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetPrivilegeLevel returns the PrivilegeLevel field value if set, zero value otherwise.
-func (o *Entitlement) GetPrivilegeLevel() EntitlementPrivilegeLevel {
-	if o == nil || IsNil(o.PrivilegeLevel) {
-		var ret EntitlementPrivilegeLevel
+// GetPrivileged returns the Privileged field value if set, zero value otherwise.
+func (o *Entitlement) GetPrivileged() bool {
+	if o == nil || IsNil(o.Privileged) {
+		var ret bool
 		return ret
 	}
-	return *o.PrivilegeLevel
+	return *o.Privileged
 }
 
-// GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field value if set, nil otherwise
+// GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetPrivilegeLevelOk() (*EntitlementPrivilegeLevel, bool) {
-	if o == nil || IsNil(o.PrivilegeLevel) {
+func (o *Entitlement) GetPrivilegedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
-	return o.PrivilegeLevel, true
+	return o.Privileged, true
 }
 
-// HasPrivilegeLevel returns a boolean if a field has been set.
-func (o *Entitlement) HasPrivilegeLevel() bool {
-	if o != nil && !IsNil(o.PrivilegeLevel) {
+// HasPrivileged returns a boolean if a field has been set.
+func (o *Entitlement) HasPrivileged() bool {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrivilegeLevel gets a reference to the given EntitlementPrivilegeLevel and assigns it to the PrivilegeLevel field.
-func (o *Entitlement) SetPrivilegeLevel(v EntitlementPrivilegeLevel) {
-	o.PrivilegeLevel = &v
-}
-
-// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlement) GetTags() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlement) GetTagsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tags) {
-		return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *Entitlement) HasTags() bool {
-	if o != nil && !IsNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *Entitlement) SetTags(v []string) {
-	o.Tags = v
+// SetPrivileged gets a reference to the given bool and assigns it to the Privileged field.
+func (o *Entitlement) SetPrivileged(v bool) {
+	o.Privileged = &v
 }
 
 // GetCloudGoverned returns the CloudGoverned field value if set, zero value otherwise.
@@ -454,6 +426,39 @@ func (o *Entitlement) SetOwnerNil() {
 // UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 func (o *Entitlement) UnsetOwner() {
 	o.Owner.Unset()
+}
+
+// GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef {
+	if o == nil {
+		var ret []AdditionalOwnerRef
+		return ret
+	}
+	return o.AdditionalOwners
+}
+
+// GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Entitlement) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
+	if o == nil || IsNil(o.AdditionalOwners) {
+		return nil, false
+	}
+	return o.AdditionalOwners, true
+}
+
+// HasAdditionalOwners returns a boolean if a field has been set.
+func (o *Entitlement) HasAdditionalOwners() bool {
+	if o != nil && !IsNil(o.AdditionalOwners) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef) {
+	o.AdditionalOwners = v
 }
 
 // GetManuallyUpdatedFields returns the ManuallyUpdatedFields field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -742,11 +747,8 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.PrivilegeLevel) {
-		toSerialize["privilegeLevel"] = o.PrivilegeLevel
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	if !IsNil(o.Privileged) {
+		toSerialize["privileged"] = o.Privileged
 	}
 	if !IsNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
@@ -756,6 +758,9 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
+	}
+	if o.AdditionalOwners != nil {
+		toSerialize["additionalOwners"] = o.AdditionalOwners
 	}
 	if o.ManuallyUpdatedFields != nil {
 		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields
@@ -809,11 +814,11 @@ func (o *Entitlement) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "sourceSchemaObjectType")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "privilegeLevel")
-		delete(additionalProperties, "tags")
+		delete(additionalProperties, "privileged")
 		delete(additionalProperties, "cloudGoverned")
 		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "additionalOwners")
 		delete(additionalProperties, "manuallyUpdatedFields")
 		delete(additionalProperties, "accessModelMetadata")
 		delete(additionalProperties, "created")

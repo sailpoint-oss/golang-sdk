@@ -17,7 +17,7 @@ import (
 // checks if the BaseReferenceDto type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BaseReferenceDto{}
 
-// BaseReferenceDto Base object for referencing other DTOs, containing type, id, and name fields for identification and display purposes.
+// BaseReferenceDto struct for BaseReferenceDto
 type BaseReferenceDto struct {
 	Type *DtoType `json:"type,omitempty"`
 	// ID of the object to which this reference applies

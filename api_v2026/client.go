@@ -53,25 +53,221 @@ type APIClient struct {
 
 	// API Services
 
+	AccessModelMetadataAPI *AccessModelMetadataAPIService
+
+	AccessProfilesAPI *AccessProfilesAPIService
+
+	AccessRequestApprovalsAPI *AccessRequestApprovalsAPIService
+
+	AccessRequestIdentityMetricsAPI *AccessRequestIdentityMetricsAPIService
+
 	AccessRequestsAPI *AccessRequestsAPIService
+
+	AccountActivitiesAPI *AccountActivitiesAPIService
+
+	AccountAggregationsAPI *AccountAggregationsAPIService
 
 	AccountDeletionRequestsAPI *AccountDeletionRequestsAPIService
 
+	AccountUsagesAPI *AccountUsagesAPIService
+
+	AccountsAPI *AccountsAPIService
+
+	ApiUsageAPI *ApiUsageAPIService
+
+	ApplicationDiscoveryAPI *ApplicationDiscoveryAPIService
+
+	ApprovalsAPI *ApprovalsAPIService
+
+	AppsAPI *AppsAPIService
+
+	AuthProfileAPI *AuthProfileAPIService
+
+	AuthUsersAPI *AuthUsersAPIService
+
+	BrandingAPI *BrandingAPIService
+
+	CertificationCampaignFiltersAPI *CertificationCampaignFiltersAPIService
+
+	CertificationCampaignsAPI *CertificationCampaignsAPIService
+
+	CertificationSummariesAPI *CertificationSummariesAPIService
+
+	CertificationsAPI *CertificationsAPIService
+
+	ClassifySourceAPI *ClassifySourceAPIService
+
+	ConfigurationHubAPI *ConfigurationHubAPIService
+
+	ConnectorCustomizersAPI *ConnectorCustomizersAPIService
+
+	ConnectorRuleManagementAPI *ConnectorRuleManagementAPIService
+
+	ConnectorsAPI *ConnectorsAPIService
+
+	CustomFormsAPI *CustomFormsAPIService
+
+	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
+
+	CustomUserLevelsAPI *CustomUserLevelsAPIService
+
+	DataAccessSecurityAPI *DataAccessSecurityAPIService
+
+	DataSegmentationAPI *DataSegmentationAPIService
+
+	DeclassifySourceAPI *DeclassifySourceAPIService
+
 	DeleteAccountAPI *DeleteAccountAPIService
+
+	DimensionsAPI *DimensionsAPIService
 
 	EntitlementsAPI *EntitlementsAPIService
 
+	GlobalTenantSecuritySettingsAPI *GlobalTenantSecuritySettingsAPIService
+
+	GovernanceGroupsAPI *GovernanceGroupsAPIService
+
 	HumanAccountDeletionApprovalConfigAPI *HumanAccountDeletionApprovalConfigAPIService
 
+	IAIAccessRequestRecommendationsAPI *IAIAccessRequestRecommendationsAPIService
+
+	IAICommonAccessAPI *IAICommonAccessAPIService
+
+	IAIOutliersAPI *IAIOutliersAPIService
+
+	IAIPeerGroupStrategiesAPI *IAIPeerGroupStrategiesAPIService
+
+	IAIRecommendationsAPI *IAIRecommendationsAPIService
+
+	IAIRoleMiningAPI *IAIRoleMiningAPIService
+
+	IconsAPI *IconsAPIService
+
+	IdentitiesAPI *IdentitiesAPIService
+
+	IdentityAttributesAPI *IdentityAttributesAPIService
+
+	IdentityHistoryAPI *IdentityHistoryAPIService
+
+	IdentityProfilesAPI *IdentityProfilesAPIService
+
+	LaunchersAPI *LaunchersAPIService
+
+	LifecycleStatesAPI *LifecycleStatesAPIService
+
+	MFAConfigurationAPI *MFAConfigurationAPIService
+
+	MachineAccountClassifyAPI *MachineAccountClassifyAPIService
+
 	MachineAccountDeletionApprovalConfigAPI *MachineAccountDeletionApprovalConfigAPIService
+
+	MachineAccountMappingsAPI *MachineAccountMappingsAPIService
+
+	MachineAccountsAPI *MachineAccountsAPIService
+
+	MachineClassificationConfigAPI *MachineClassificationConfigAPIService
 
 	MachineIdentitiesAPI *MachineIdentitiesAPIService
 
 	MachineSubtypeApprovalConfigAPI *MachineSubtypeApprovalConfigAPIService
 
+	ManagedClientsAPI *ManagedClientsAPIService
+
+	ManagedClusterTypesAPI *ManagedClusterTypesAPIService
+
+	ManagedClustersAPI *ManagedClustersAPIService
+
+	MultiHostIntegrationAPI *MultiHostIntegrationAPIService
+
+	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
+
 	NotificationsAPI *NotificationsAPIService
 
+	OAuthClientsAPI *OAuthClientsAPIService
+
+	OrgConfigAPI *OrgConfigAPIService
+
+	ParameterStorageAPI *ParameterStorageAPIService
+
+	PasswordConfigurationAPI *PasswordConfigurationAPIService
+
+	PasswordDictionaryAPI *PasswordDictionaryAPIService
+
+	PasswordManagementAPI *PasswordManagementAPIService
+
+	PasswordPoliciesAPI *PasswordPoliciesAPIService
+
+	PasswordSyncGroupsAPI *PasswordSyncGroupsAPIService
+
+	PersonalAccessTokensAPI *PersonalAccessTokensAPIService
+
+	PrivilegeCriteriaAPI *PrivilegeCriteriaAPIService
+
+	PrivilegeCriteriaConfigurationAPI *PrivilegeCriteriaConfigurationAPIService
+
+	PublicIdentitiesAPI *PublicIdentitiesAPIService
+
+	PublicIdentitiesConfigAPI *PublicIdentitiesConfigAPIService
+
+	ReportsDataExtractionAPI *ReportsDataExtractionAPIService
+
+	RequestableObjectsAPI *RequestableObjectsAPIService
+
+	RoleInsightsAPI *RoleInsightsAPIService
+
+	RolePropagationAPI *RolePropagationAPIService
+
+	RolesAPI *RolesAPIService
+
+	SIMIntegrationsAPI *SIMIntegrationsAPIService
+
+	SODPoliciesAPI *SODPoliciesAPIService
+
+	SODViolationsAPI *SODViolationsAPIService
+
+	SPConfigAPI *SPConfigAPIService
+
+	SavedSearchAPI *SavedSearchAPIService
+
+	ScheduledSearchAPI *ScheduledSearchAPIService
+
+	SearchAPI *SearchAPIService
+
+	SearchAttributeConfigurationAPI *SearchAttributeConfigurationAPIService
+
+	SegmentsAPI *SegmentsAPIService
+
+	ServiceDeskIntegrationAPI *ServiceDeskIntegrationAPIService
+
+	SharedSignalsFrameworkSSFAPI *SharedSignalsFrameworkSSFAPIService
+
+	SourceUsagesAPI *SourceUsagesAPIService
+
+	SourcesAPI *SourcesAPIService
+
+	SuggestedEntitlementDescriptionAPI *SuggestedEntitlementDescriptionAPIService
+
+	TaggedObjectsAPI *TaggedObjectsAPIService
+
+	TagsAPI *TagsAPIService
+
 	TaskManagementAPI *TaskManagementAPIService
+
+	TenantAPI *TenantAPIService
+
+	TenantContextAPI *TenantContextAPIService
+
+	TransformsAPI *TransformsAPIService
+
+	TriggersAPI *TriggersAPIService
+
+	UIMetadataAPI *UIMetadataAPIService
+
+	WorkItemsAPI *WorkItemsAPIService
+
+	WorkReassignmentAPI *WorkReassignmentAPIService
+
+	WorkflowsAPI *WorkflowsAPIService
 }
 
 type service struct {
@@ -90,16 +286,114 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccessModelMetadataAPI = (*AccessModelMetadataAPIService)(&c.common)
+	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
+	c.AccessRequestApprovalsAPI = (*AccessRequestApprovalsAPIService)(&c.common)
+	c.AccessRequestIdentityMetricsAPI = (*AccessRequestIdentityMetricsAPIService)(&c.common)
 	c.AccessRequestsAPI = (*AccessRequestsAPIService)(&c.common)
+	c.AccountActivitiesAPI = (*AccountActivitiesAPIService)(&c.common)
+	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
 	c.AccountDeletionRequestsAPI = (*AccountDeletionRequestsAPIService)(&c.common)
+	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
+	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.ApiUsageAPI = (*ApiUsageAPIService)(&c.common)
+	c.ApplicationDiscoveryAPI = (*ApplicationDiscoveryAPIService)(&c.common)
+	c.ApprovalsAPI = (*ApprovalsAPIService)(&c.common)
+	c.AppsAPI = (*AppsAPIService)(&c.common)
+	c.AuthProfileAPI = (*AuthProfileAPIService)(&c.common)
+	c.AuthUsersAPI = (*AuthUsersAPIService)(&c.common)
+	c.BrandingAPI = (*BrandingAPIService)(&c.common)
+	c.CertificationCampaignFiltersAPI = (*CertificationCampaignFiltersAPIService)(&c.common)
+	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
+	c.CertificationSummariesAPI = (*CertificationSummariesAPIService)(&c.common)
+	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
+	c.ClassifySourceAPI = (*ClassifySourceAPIService)(&c.common)
+	c.ConfigurationHubAPI = (*ConfigurationHubAPIService)(&c.common)
+	c.ConnectorCustomizersAPI = (*ConnectorCustomizersAPIService)(&c.common)
+	c.ConnectorRuleManagementAPI = (*ConnectorRuleManagementAPIService)(&c.common)
+	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
+	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
+	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
+	c.CustomUserLevelsAPI = (*CustomUserLevelsAPIService)(&c.common)
+	c.DataAccessSecurityAPI = (*DataAccessSecurityAPIService)(&c.common)
+	c.DataSegmentationAPI = (*DataSegmentationAPIService)(&c.common)
+	c.DeclassifySourceAPI = (*DeclassifySourceAPIService)(&c.common)
 	c.DeleteAccountAPI = (*DeleteAccountAPIService)(&c.common)
+	c.DimensionsAPI = (*DimensionsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
+	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)
+	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
 	c.HumanAccountDeletionApprovalConfigAPI = (*HumanAccountDeletionApprovalConfigAPIService)(&c.common)
+	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
+	c.IAICommonAccessAPI = (*IAICommonAccessAPIService)(&c.common)
+	c.IAIOutliersAPI = (*IAIOutliersAPIService)(&c.common)
+	c.IAIPeerGroupStrategiesAPI = (*IAIPeerGroupStrategiesAPIService)(&c.common)
+	c.IAIRecommendationsAPI = (*IAIRecommendationsAPIService)(&c.common)
+	c.IAIRoleMiningAPI = (*IAIRoleMiningAPIService)(&c.common)
+	c.IconsAPI = (*IconsAPIService)(&c.common)
+	c.IdentitiesAPI = (*IdentitiesAPIService)(&c.common)
+	c.IdentityAttributesAPI = (*IdentityAttributesAPIService)(&c.common)
+	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)
+	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
+	c.LaunchersAPI = (*LaunchersAPIService)(&c.common)
+	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
+	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
+	c.MachineAccountClassifyAPI = (*MachineAccountClassifyAPIService)(&c.common)
 	c.MachineAccountDeletionApprovalConfigAPI = (*MachineAccountDeletionApprovalConfigAPIService)(&c.common)
+	c.MachineAccountMappingsAPI = (*MachineAccountMappingsAPIService)(&c.common)
+	c.MachineAccountsAPI = (*MachineAccountsAPIService)(&c.common)
+	c.MachineClassificationConfigAPI = (*MachineClassificationConfigAPIService)(&c.common)
 	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
 	c.MachineSubtypeApprovalConfigAPI = (*MachineSubtypeApprovalConfigAPIService)(&c.common)
+	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
+	c.ManagedClusterTypesAPI = (*ManagedClusterTypesAPIService)(&c.common)
+	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.MultiHostIntegrationAPI = (*MultiHostIntegrationAPIService)(&c.common)
+	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
+	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
+	c.OrgConfigAPI = (*OrgConfigAPIService)(&c.common)
+	c.ParameterStorageAPI = (*ParameterStorageAPIService)(&c.common)
+	c.PasswordConfigurationAPI = (*PasswordConfigurationAPIService)(&c.common)
+	c.PasswordDictionaryAPI = (*PasswordDictionaryAPIService)(&c.common)
+	c.PasswordManagementAPI = (*PasswordManagementAPIService)(&c.common)
+	c.PasswordPoliciesAPI = (*PasswordPoliciesAPIService)(&c.common)
+	c.PasswordSyncGroupsAPI = (*PasswordSyncGroupsAPIService)(&c.common)
+	c.PersonalAccessTokensAPI = (*PersonalAccessTokensAPIService)(&c.common)
+	c.PrivilegeCriteriaAPI = (*PrivilegeCriteriaAPIService)(&c.common)
+	c.PrivilegeCriteriaConfigurationAPI = (*PrivilegeCriteriaConfigurationAPIService)(&c.common)
+	c.PublicIdentitiesAPI = (*PublicIdentitiesAPIService)(&c.common)
+	c.PublicIdentitiesConfigAPI = (*PublicIdentitiesConfigAPIService)(&c.common)
+	c.ReportsDataExtractionAPI = (*ReportsDataExtractionAPIService)(&c.common)
+	c.RequestableObjectsAPI = (*RequestableObjectsAPIService)(&c.common)
+	c.RoleInsightsAPI = (*RoleInsightsAPIService)(&c.common)
+	c.RolePropagationAPI = (*RolePropagationAPIService)(&c.common)
+	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.SIMIntegrationsAPI = (*SIMIntegrationsAPIService)(&c.common)
+	c.SODPoliciesAPI = (*SODPoliciesAPIService)(&c.common)
+	c.SODViolationsAPI = (*SODViolationsAPIService)(&c.common)
+	c.SPConfigAPI = (*SPConfigAPIService)(&c.common)
+	c.SavedSearchAPI = (*SavedSearchAPIService)(&c.common)
+	c.ScheduledSearchAPI = (*ScheduledSearchAPIService)(&c.common)
+	c.SearchAPI = (*SearchAPIService)(&c.common)
+	c.SearchAttributeConfigurationAPI = (*SearchAttributeConfigurationAPIService)(&c.common)
+	c.SegmentsAPI = (*SegmentsAPIService)(&c.common)
+	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
+	c.SharedSignalsFrameworkSSFAPI = (*SharedSignalsFrameworkSSFAPIService)(&c.common)
+	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
+	c.SourcesAPI = (*SourcesAPIService)(&c.common)
+	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
+	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
+	c.TagsAPI = (*TagsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
+	c.TenantAPI = (*TenantAPIService)(&c.common)
+	c.TenantContextAPI = (*TenantContextAPIService)(&c.common)
+	c.TransformsAPI = (*TransformsAPIService)(&c.common)
+	c.TriggersAPI = (*TriggersAPIService)(&c.common)
+	c.UIMetadataAPI = (*UIMetadataAPIService)(&c.common)
+	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)
+	c.WorkReassignmentAPI = (*WorkReassignmentAPIService)(&c.common)
+	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)
 
 	return c
 }
@@ -449,7 +743,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.35"
+	userAgent := "SailPoint-SDK-Go/2.7.36"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

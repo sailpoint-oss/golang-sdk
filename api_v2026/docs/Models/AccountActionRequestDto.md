@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **RequesterComments** | Pointer to **string** | Comments added by the requester while creating the account deletion request. | [optional] 
 **AccountDetails** | Pointer to [**AccountActionRequestDtoAccountDetails**](account-action-request-dto-account-details) |  | [optional] 
 **CorrelatedIdentity** | Pointer to [**AccountActionRequestDtoCorrelatedIdentity**](account-action-request-dto-correlated-identity) |  | [optional] 
-**ManagerReference** | Pointer to [**IdentityReference**](identity-reference) |  | [optional] 
+**ManagerReference** | Pointer to [**NullableIdentityReference**](identity-reference) |  | [optional] 
 **ApprovalRequestId** | Pointer to **string** | ID of the approval request associated with the account deletion action. | [optional] 
 **AccountRequestPhases** | Pointer to [**[]AccountRequestPhase**](account-request-phase) | List of account request phases. | [optional] 
 **ApprovalDetails** | Pointer to [**[]ApprovalDetails**](approval-details) | List approval details | [optional] 
@@ -299,6 +299,16 @@ SetManagerReference sets ManagerReference field to given value.
 
 HasManagerReference returns a boolean if a field has been set.
 
+### SetManagerReferenceNil
+
+`func (o *AccountActionRequestDto) SetManagerReferenceNil(b bool)`
+
+ SetManagerReferenceNil sets the value for ManagerReference to be an explicit nil
+
+### UnsetManagerReference
+`func (o *AccountActionRequestDto) UnsetManagerReference()`
+
+UnsetManagerReference ensures that no value is present for ManagerReference, not even an explicit nil
 ### GetApprovalRequestId
 
 `func (o *AccountActionRequestDto) GetApprovalRequestId() string`

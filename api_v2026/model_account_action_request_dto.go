@@ -35,7 +35,7 @@ type AccountActionRequestDto struct {
 	RequesterComments *string `json:"requesterComments,omitempty"`
 	AccountDetails *AccountActionRequestDtoAccountDetails `json:"accountDetails,omitempty"`
 	CorrelatedIdentity *AccountActionRequestDtoCorrelatedIdentity `json:"correlatedIdentity,omitempty"`
-	ManagerReference *IdentityReference `json:"managerReference,omitempty"`
+	ManagerReference NullableIdentityReference `json:"managerReference,omitempty"`
 	// ID of the approval request associated with the account deletion action.
 	ApprovalRequestId *string `json:"approvalRequestId,omitempty"`
 	// List of account request phases.
@@ -354,36 +354,46 @@ func (o *AccountActionRequestDto) SetCorrelatedIdentity(v AccountActionRequestDt
 	o.CorrelatedIdentity = &v
 }
 
-// GetManagerReference returns the ManagerReference field value if set, zero value otherwise.
+// GetManagerReference returns the ManagerReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActionRequestDto) GetManagerReference() IdentityReference {
-	if o == nil || IsNil(o.ManagerReference) {
+	if o == nil || IsNil(o.ManagerReference.Get()) {
 		var ret IdentityReference
 		return ret
 	}
-	return *o.ManagerReference
+	return *o.ManagerReference.Get()
 }
 
 // GetManagerReferenceOk returns a tuple with the ManagerReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActionRequestDto) GetManagerReferenceOk() (*IdentityReference, bool) {
-	if o == nil || IsNil(o.ManagerReference) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ManagerReference, true
+	return o.ManagerReference.Get(), o.ManagerReference.IsSet()
 }
 
 // HasManagerReference returns a boolean if a field has been set.
 func (o *AccountActionRequestDto) HasManagerReference() bool {
-	if o != nil && !IsNil(o.ManagerReference) {
+	if o != nil && o.ManagerReference.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManagerReference gets a reference to the given IdentityReference and assigns it to the ManagerReference field.
+// SetManagerReference gets a reference to the given NullableIdentityReference and assigns it to the ManagerReference field.
 func (o *AccountActionRequestDto) SetManagerReference(v IdentityReference) {
-	o.ManagerReference = &v
+	o.ManagerReference.Set(&v)
+}
+// SetManagerReferenceNil sets the value for ManagerReference to be an explicit nil
+func (o *AccountActionRequestDto) SetManagerReferenceNil() {
+	o.ManagerReference.Set(nil)
+}
+
+// UnsetManagerReference ensures that no value is present for ManagerReference, not even an explicit nil
+func (o *AccountActionRequestDto) UnsetManagerReference() {
+	o.ManagerReference.Unset()
 }
 
 // GetApprovalRequestId returns the ApprovalRequestId field value if set, zero value otherwise.
@@ -561,8 +571,8 @@ func (o AccountActionRequestDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CorrelatedIdentity) {
 		toSerialize["correlatedIdentity"] = o.CorrelatedIdentity
 	}
-	if !IsNil(o.ManagerReference) {
-		toSerialize["managerReference"] = o.ManagerReference
+	if o.ManagerReference.IsSet() {
+		toSerialize["managerReference"] = o.ManagerReference.Get()
 	}
 	if !IsNil(o.ApprovalRequestId) {
 		toSerialize["approvalRequestId"] = o.ApprovalRequestId

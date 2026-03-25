@@ -17,120 +17,545 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
 // EntitlementsAPIService EntitlementsAPI service
 type EntitlementsAPIService service
 
-type ApiGetAccountEntitlementsRequest struct {
+type ApiCreateAccessModelMetadataForEntitlementRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
-	accountId string
-	limit *int32
-	offset *int32
-	count *bool
-	searchAfter *string
-	sorters *string
+	id string
+	attributeKey string
+	attributeValue string
 }
 
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetAccountEntitlementsRequest) Limit(limit int32) ApiGetAccountEntitlementsRequest {
-	r.limit = &limit
-	return r
-}
-
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetAccountEntitlementsRequest) Offset(offset int32) ApiGetAccountEntitlementsRequest {
-	r.offset = &offset
-	return r
-}
-
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetAccountEntitlementsRequest) Count(count bool) ApiGetAccountEntitlementsRequest {
-	r.count = &count
-	return r
-}
-
-// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
-func (r ApiGetAccountEntitlementsRequest) SearchAfter(searchAfter string) ApiGetAccountEntitlementsRequest {
-	r.searchAfter = &searchAfter
-	return r
-}
-
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
-func (r ApiGetAccountEntitlementsRequest) Sorters(sorters string) ApiGetAccountEntitlementsRequest {
-	r.sorters = &sorters
-	return r
-}
-
-func (r ApiGetAccountEntitlementsRequest) Execute() ([]Entitlement, *http.Response, error) {
-	return r.ApiService.GetAccountEntitlementsExecute(r)
+func (r ApiCreateAccessModelMetadataForEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
+	return r.ApiService.CreateAccessModelMetadataForEntitlementExecute(r)
 }
 
 /*
-GetAccountEntitlements Get entitlements for an account
+CreateAccessModelMetadataForEntitlement Add metadata to an entitlement.
 
-This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
+Add single Access Model Metadata to an entitlement.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId The account ID to get entitlements for
- @return ApiGetAccountEntitlementsRequest
+ @param id The entitlement id.
+ @param attributeKey Technical name of the Attribute.
+ @param attributeValue Technical name of the Attribute Value.
+ @return ApiCreateAccessModelMetadataForEntitlementRequest
 */
-func (a *EntitlementsAPIService) GetAccountEntitlements(ctx context.Context, accountId string) ApiGetAccountEntitlementsRequest {
-	return ApiGetAccountEntitlementsRequest{
+func (a *EntitlementsAPIService) CreateAccessModelMetadataForEntitlement(ctx context.Context, id string, attributeKey string, attributeValue string) ApiCreateAccessModelMetadataForEntitlementRequest {
+	return ApiCreateAccessModelMetadataForEntitlementRequest{
 		ApiService: a,
 		ctx: ctx,
-		accountId: accountId,
+		id: id,
+		attributeKey: attributeKey,
+		attributeValue: attributeValue,
 	}
 }
 
 // Execute executes the request
-//  @return []Entitlement
-func (a *EntitlementsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]Entitlement, *http.Response, error) {
+//  @return Entitlement
+func (a *EntitlementsAPIService) CreateAccessModelMetadataForEntitlementExecute(r ApiCreateAccessModelMetadataForEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlement
+		localVarReturnValue  *Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetAccountEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.CreateAccessModelMetadataForEntitlement")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/entitlements/account/{accountId}/entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"accountId"+"}", url.PathEscape(parameterValueToString(r.accountId, "accountId")), -1)
+	localVarPath := localBasePath + "/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeKey"+"}", url.PathEscape(parameterValueToString(r.attributeKey, "attributeKey")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeValue"+"}", url.PathEscape(parameterValueToString(r.attributeValue, "attributeValue")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
-	} else {
-		var defaultValue int32 = 250
-		r.limit = &defaultValue
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
-	} else {
-		var defaultValue int32 = 0
-		r.offset = &defaultValue
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
 	}
-	if r.searchAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
-	if r.sorters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateEntitlementRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	entitlementDTO *EntitlementDTO
+}
+
+func (r ApiCreateEntitlementRequest) EntitlementDTO(entitlementDTO EntitlementDTO) ApiCreateEntitlementRequest {
+	r.entitlementDTO = &entitlementDTO
+	return r
+}
+
+func (r ApiCreateEntitlementRequest) Execute() ([]EntitlementDTO, *http.Response, error) {
+	return r.ApiService.CreateEntitlementExecute(r)
+}
+
+/*
+CreateEntitlement Creates an entitlement
+
+This internal endpoint creates an entitlement using the given entitlement payload
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateEntitlementRequest
+*/
+func (a *EntitlementsAPIService) CreateEntitlement(ctx context.Context) ApiCreateEntitlementRequest {
+	return ApiCreateEntitlementRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []EntitlementDTO
+func (a *EntitlementsAPIService) CreateEntitlementExecute(r ApiCreateEntitlementRequest) ([]EntitlementDTO, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []EntitlementDTO
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.CreateEntitlement")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlements/{id}"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.entitlementDTO == nil {
+		return localVarReturnValue, nil, reportError("entitlementDTO is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.entitlementDTO
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteAccessModelMetadataFromEntitlementRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+	attributeKey string
+	attributeValue string
+}
+
+func (r ApiDeleteAccessModelMetadataFromEntitlementRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteAccessModelMetadataFromEntitlementExecute(r)
+}
+
+/*
+DeleteAccessModelMetadataFromEntitlement Remove metadata from an entitlement.
+
+Remove single Access Model Metadata from an entitlement.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The entitlement id.
+ @param attributeKey Technical name of the Attribute.
+ @param attributeValue Technical name of the Attribute Value.
+ @return ApiDeleteAccessModelMetadataFromEntitlementRequest
+*/
+func (a *EntitlementsAPIService) DeleteAccessModelMetadataFromEntitlement(ctx context.Context, id string, attributeKey string, attributeValue string) ApiDeleteAccessModelMetadataFromEntitlementRequest {
+	return ApiDeleteAccessModelMetadataFromEntitlementRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+		attributeKey: attributeKey,
+		attributeValue: attributeValue,
+	}
+}
+
+// Execute executes the request
+func (a *EntitlementsAPIService) DeleteAccessModelMetadataFromEntitlementExecute(r ApiDeleteAccessModelMetadataFromEntitlementRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.DeleteAccessModelMetadataFromEntitlement")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeKey"+"}", url.PathEscape(parameterValueToString(r.attributeKey, "attributeKey")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attributeValue"+"}", url.PathEscape(parameterValueToString(r.attributeValue, "attributeValue")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetEntitlementRequestConfigRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+}
+
+func (r ApiGetEntitlementRequestConfigRequest) Execute() (*EntitlementRequestConfig, *http.Response, error) {
+	return r.ApiService.GetEntitlementRequestConfigExecute(r)
+}
+
+/*
+GetEntitlementRequestConfig Get entitlement request config
+
+This API returns the entitlement request config for a specified entitlement.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Entitlement Id
+ @return ApiGetEntitlementRequestConfigRequest
+*/
+func (a *EntitlementsAPIService) GetEntitlementRequestConfig(ctx context.Context, id string) ApiGetEntitlementRequestConfigRequest {
+	return ApiGetEntitlementRequestConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EntitlementRequestConfig
+func (a *EntitlementsAPIService) GetEntitlementRequestConfigExecute(r ApiGetEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntitlementRequestConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetEntitlementRequestConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlements/{id}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -250,27 +675,40 @@ func (a *EntitlementsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetEntitlementRequest struct {
+type ApiImportEntitlementsBySourceRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
 	id string
+	csvFile *os.File
 }
 
-func (r ApiGetEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
-	return r.ApiService.GetEntitlementExecute(r)
+// The CSV file containing the source entitlements to aggregate.
+func (r ApiImportEntitlementsBySourceRequest) CsvFile(csvFile *os.File) ApiImportEntitlementsBySourceRequest {
+	r.csvFile = csvFile
+	return r
+}
+
+func (r ApiImportEntitlementsBySourceRequest) Execute() (*LoadEntitlementTask, *http.Response, error) {
+	return r.ApiService.ImportEntitlementsBySourceExecute(r)
 }
 
 /*
-GetEntitlement Get an entitlement
+ImportEntitlementsBySource Aggregate entitlements
 
-This API returns an entitlement by its ID.
+Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).
+
+If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.
+
+If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The entitlement ID
- @return ApiGetEntitlementRequest
+ @param id Source Id
+ @return ApiImportEntitlementsBySourceRequest
+
+Deprecated
 */
-func (a *EntitlementsAPIService) GetEntitlement(ctx context.Context, id string) ApiGetEntitlementRequest {
-	return ApiGetEntitlementRequest{
+func (a *EntitlementsAPIService) ImportEntitlementsBySource(ctx context.Context, id string) ApiImportEntitlementsBySourceRequest {
+	return ApiImportEntitlementsBySourceRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -278,21 +716,22 @@ func (a *EntitlementsAPIService) GetEntitlement(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//  @return Entitlement
-func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*Entitlement, *http.Response, error) {
+//  @return LoadEntitlementTask
+// Deprecated
+func (a *EntitlementsAPIService) ImportEntitlementsBySourceExecute(r ApiImportEntitlementsBySourceRequest) (*LoadEntitlementTask, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlement
+		localVarReturnValue  *LoadEntitlementTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetEntitlement")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ImportEntitlementsBySource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/entitlements/{id}"
+	localVarPath := localBasePath + "/entitlements/aggregate/sources/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -300,7 +739,7 @@ func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementReques
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -315,6 +754,21 @@ func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementReques
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var csvFileLocalVarFormFileName string
+	var csvFileLocalVarFileName     string
+	var csvFileLocalVarFileBytes    []byte
+
+	csvFileLocalVarFormFileName = "csvFile"
+	csvFileLocalVarFile := r.csvFile
+
+	if csvFileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(csvFileLocalVarFile)
+
+		csvFileLocalVarFileBytes = fbs
+		csvFileLocalVarFileName = csvFileLocalVarFile.Name()
+		csvFileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: csvFileLocalVarFileBytes, fileName: csvFileLocalVarFileName, formFileName: csvFileLocalVarFormFileName})
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -361,17 +815,6 @@ func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -895,24 +1338,30 @@ func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlem
 type ApiListEntitlementsRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
+	accountId *string
 	segmentedForIdentity *string
 	forSegmentIds *string
 	includeUnsegmented *bool
 	offset *int32
 	limit *int32
 	count *bool
-	searchAfter *string
 	sorters *string
 	filters *string
 }
 
-// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+// The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+func (r ApiListEntitlementsRequest) AccountId(accountId string) ApiListEntitlementsRequest {
+	r.accountId = &accountId
+	return r
+}
+
+// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
 func (r ApiListEntitlementsRequest) SegmentedForIdentity(segmentedForIdentity string) ApiListEntitlementsRequest {
 	r.segmentedForIdentity = &segmentedForIdentity
 	return r
 }
 
-// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
 func (r ApiListEntitlementsRequest) ForSegmentIds(forSegmentIds string) ApiListEntitlementsRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
@@ -942,19 +1391,13 @@ func (r ApiListEntitlementsRequest) Count(count bool) ApiListEntitlementsRequest
 	return r
 }
 
-// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
-func (r ApiListEntitlementsRequest) SearchAfter(searchAfter string) ApiListEntitlementsRequest {
-	r.searchAfter = &searchAfter
-	return r
-}
-
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
 func (r ApiListEntitlementsRequest) Sorters(sorters string) ApiListEntitlementsRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
 func (r ApiListEntitlementsRequest) Filters(filters string) ApiListEntitlementsRequest {
 	r.filters = &filters
 	return r
@@ -967,7 +1410,11 @@ func (r ApiListEntitlementsRequest) Execute() ([]Entitlement, *http.Response, er
 /*
 ListEntitlements Gets a list of entitlements.
 
-This API returns a list of entitlements. Any authenticated token can call this API.
+This API returns a list of entitlements.
+
+This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).
+
+Any authenticated token can call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListEntitlementsRequest
@@ -1000,6 +1447,9 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account-id", r.accountId, "", "")
+	}
 	if r.segmentedForIdentity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "segmented-for-identity", r.segmentedForIdentity, "", "")
 	}
@@ -1029,9 +1479,6 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
-	}
-	if r.searchAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -1147,67 +1594,116 @@ func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchEntitlementRequest struct {
+type ApiListEntitlementsByAccountRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
-	id string
-	jsonPatchOperation *[]JsonPatchOperation
+	accountId string
+	limit *int32
+	offset *int32
+	count *bool
+	searchAfter *string
+	sorters *string
 }
 
-func (r ApiPatchEntitlementRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchEntitlementRequest {
-	r.jsonPatchOperation = &jsonPatchOperation
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListEntitlementsByAccountRequest) Limit(limit int32) ApiListEntitlementsByAccountRequest {
+	r.limit = &limit
 	return r
 }
 
-func (r ApiPatchEntitlementRequest) Execute() (*Entitlement, *http.Response, error) {
-	return r.ApiService.PatchEntitlementExecute(r)
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListEntitlementsByAccountRequest) Offset(offset int32) ApiListEntitlementsByAccountRequest {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListEntitlementsByAccountRequest) Count(count bool) ApiListEntitlementsByAccountRequest {
+	r.count = &count
+	return r
+}
+
+// Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter&#x3D;Account Payable,2c91808375d8e80a0175e1f88a575221&amp;sorters&#x3D;name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \&quot;Account Payable\&quot;, then using that name and ID will start a new search after this entitlement.
+func (r ApiListEntitlementsByAccountRequest) SearchAfter(searchAfter string) ApiListEntitlementsByAccountRequest {
+	r.searchAfter = &searchAfter
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+func (r ApiListEntitlementsByAccountRequest) Sorters(sorters string) ApiListEntitlementsByAccountRequest {
+	r.sorters = &sorters
+	return r
+}
+
+func (r ApiListEntitlementsByAccountRequest) Execute() ([]Entitlement, *http.Response, error) {
+	return r.ApiService.ListEntitlementsByAccountExecute(r)
 }
 
 /*
-PatchEntitlement Patch an entitlement
+ListEntitlementsByAccount Get entitlements for an account
 
-This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
-
-The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**
-
-When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the entitlement to patch
- @return ApiPatchEntitlementRequest
+ @param accountId The account ID to get entitlements for
+ @return ApiListEntitlementsByAccountRequest
 */
-func (a *EntitlementsAPIService) PatchEntitlement(ctx context.Context, id string) ApiPatchEntitlementRequest {
-	return ApiPatchEntitlementRequest{
+func (a *EntitlementsAPIService) ListEntitlementsByAccount(ctx context.Context, accountId string) ApiListEntitlementsByAccountRequest {
+	return ApiListEntitlementsByAccountRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//  @return Entitlement
-func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRequest) (*Entitlement, *http.Response, error) {
+//  @return []Entitlement
+func (a *EntitlementsAPIService) ListEntitlementsByAccountExecute(r ApiListEntitlementsByAccountRequest) ([]Entitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlement
+		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.PatchEntitlement")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlementsByAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/entitlements/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/entitlements/account/{accountId}/entitlements"
+	localVarPath = strings.Replace(localVarPath, "{"+"accountId"+"}", url.PathEscape(parameterValueToString(r.accountId, "accountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.searchAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchAfter", r.searchAfter, "form", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json-patch+json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1223,8 +1719,6 @@ func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1281,6 +1775,343 @@ func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPutEntitlementRequestConfigRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+	entitlementRequestConfig *EntitlementRequestConfig
+}
+
+func (r ApiPutEntitlementRequestConfigRequest) EntitlementRequestConfig(entitlementRequestConfig EntitlementRequestConfig) ApiPutEntitlementRequestConfigRequest {
+	r.entitlementRequestConfig = &entitlementRequestConfig
+	return r
+}
+
+func (r ApiPutEntitlementRequestConfigRequest) Execute() (*EntitlementRequestConfig, *http.Response, error) {
+	return r.ApiService.PutEntitlementRequestConfigExecute(r)
+}
+
+/*
+PutEntitlementRequestConfig Replace entitlement request config
+
+This API replaces the entitlement request config for a specified entitlement.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Entitlement ID
+ @return ApiPutEntitlementRequestConfigRequest
+*/
+func (a *EntitlementsAPIService) PutEntitlementRequestConfig(ctx context.Context, id string) ApiPutEntitlementRequestConfigRequest {
+	return ApiPutEntitlementRequestConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EntitlementRequestConfig
+func (a *EntitlementsAPIService) PutEntitlementRequestConfigExecute(r ApiPutEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntitlementRequestConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.PutEntitlementRequestConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlements/{id}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.entitlementRequestConfig == nil {
+		return localVarReturnValue, nil, reportError("entitlementRequestConfig is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.entitlementRequestConfig
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiResetSourceEntitlementsRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+}
+
+func (r ApiResetSourceEntitlementsRequest) Execute() (*EntitlementSourceResetBaseReferenceDto, *http.Response, error) {
+	return r.ApiService.ResetSourceEntitlementsExecute(r)
+}
+
+/*
+ResetSourceEntitlements Reset source entitlements
+
+Remove all entitlements from a specific source.
+To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id ID of source for the entitlement reset
+ @return ApiResetSourceEntitlementsRequest
+*/
+func (a *EntitlementsAPIService) ResetSourceEntitlements(ctx context.Context, id string) ApiResetSourceEntitlementsRequest {
+	return ApiResetSourceEntitlementsRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EntitlementSourceResetBaseReferenceDto
+func (a *EntitlementsAPIService) ResetSourceEntitlementsExecute(r ApiResetSourceEntitlementsRequest) (*EntitlementSourceResetBaseReferenceDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntitlementSourceResetBaseReferenceDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ResetSourceEntitlements")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlements/reset/sources/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

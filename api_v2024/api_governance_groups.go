@@ -26,14 +26,7 @@ type GovernanceGroupsAPIService service
 type ApiCreateWorkgroupRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
-	xSailPointExperimental *string
 	workgroupDto *WorkgroupDto
-}
-
-// Use this header to enable this experimental API.
-func (r ApiCreateWorkgroupRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateWorkgroupRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiCreateWorkgroupRequest) WorkgroupDto(workgroupDto WorkgroupDto) ApiCreateWorkgroupRequest {
@@ -80,21 +73,6 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupExecute(r ApiCreateWorkgroup
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.workgroupDto == nil {
 		return localVarReturnValue, nil, reportError("workgroupDto is required and must be specified")
 	}
@@ -116,7 +94,6 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupExecute(r ApiCreateWorkgroup
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.workgroupDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -214,13 +191,6 @@ type ApiDeleteWorkgroupRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteWorkgroupRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteWorkgroupRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteWorkgroupRequest) Execute() (*http.Response, error) {
@@ -263,15 +233,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupExecute(r ApiDeleteWorkgroup
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -290,7 +251,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupExecute(r ApiDeleteWorkgroup
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -377,14 +337,7 @@ type ApiDeleteWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	xSailPointExperimental *string
 	identityPreviewResponseIdentity *[]IdentityPreviewResponseIdentity
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteWorkgroupMembersRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteWorkgroupMembersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // List of identities to be removed from  a Governance Group members list.
@@ -438,21 +391,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityPreviewResponseIdentity == nil {
 		return localVarReturnValue, nil, reportError("identityPreviewResponseIdentity is required and must be specified")
 	}
@@ -474,7 +412,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityPreviewResponseIdentity
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -571,14 +508,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 type ApiDeleteWorkgroupsInBulkRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
-	xSailPointExperimental *string
 	workgroupBulkDeleteRequest *WorkgroupBulkDeleteRequest
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteWorkgroupsInBulkRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteWorkgroupsInBulkRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteWorkgroupsInBulkRequest) WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest WorkgroupBulkDeleteRequest) ApiDeleteWorkgroupsInBulkRequest {
@@ -636,21 +566,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.workgroupBulkDeleteRequest == nil {
 		return localVarReturnValue, nil, reportError("workgroupBulkDeleteRequest is required and must be specified")
 	}
@@ -672,7 +587,6 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.workgroupBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -770,13 +684,6 @@ type ApiGetWorkgroupRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetWorkgroupRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetWorkgroupRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetWorkgroupRequest) Execute() (*WorkgroupDto, *http.Response, error) {
@@ -821,15 +728,6 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -848,7 +746,6 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -944,17 +841,10 @@ type ApiListConnectionsRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListConnectionsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListConnectionsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1023,15 +913,6 @@ func (a *GovernanceGroupsAPIService) ListConnectionsExecute(r ApiListConnections
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -1071,7 +952,6 @@ func (a *GovernanceGroupsAPIService) ListConnectionsExecute(r ApiListConnections
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1167,17 +1047,10 @@ type ApiListWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListWorkgroupMembersRequest) XSailPointExperimental(xSailPointExperimental string) ApiListWorkgroupMembersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1246,15 +1119,6 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersExecute(r ApiListWorkgr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -1294,7 +1158,6 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersExecute(r ApiListWorkgr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1389,18 +1252,11 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersExecute(r ApiListWorkgr
 type ApiListWorkgroupsRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
-	xSailPointExperimental *string
 	offset *int32
 	limit *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListWorkgroupsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListWorkgroupsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1472,15 +1328,6 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
@@ -1523,7 +1370,6 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1619,14 +1465,7 @@ type ApiPatchWorkgroupRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	id string
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchWorkgroupRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchWorkgroupRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPatchWorkgroupRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchWorkgroupRequest {
@@ -1679,15 +1518,6 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupExecute(r ApiPatchWorkgroupRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json"}
@@ -1706,7 +1536,6 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupExecute(r ApiPatchWorkgroupRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1804,14 +1633,7 @@ type ApiUpdateWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	xSailPointExperimental *string
 	identityPreviewResponseIdentity *[]IdentityPreviewResponseIdentity
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateWorkgroupMembersRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateWorkgroupMembersRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // List of identities to be added to a Governance Group members list.
@@ -1866,21 +1688,6 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.identityPreviewResponseIdentity == nil {
 		return localVarReturnValue, nil, reportError("identityPreviewResponseIdentity is required and must be specified")
 	}
@@ -1902,7 +1709,6 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.identityPreviewResponseIdentity
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

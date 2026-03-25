@@ -19,19 +19,20 @@ Name | Type | Description | Notes
 **Name** | **NullableString** | Name of the Object | 
 **Created** | Pointer to **SailPointTime** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **SailPointTime** | Last modification date of the Object | [optional] [readonly] 
-**NativeIdentity** | **string** | The native identity associated to the machine identity directly aggregated from a source | 
+**BusinessApplication** | **string** | The business application that the identity represents | 
 **Description** | Pointer to **string** | Description of machine identity | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | A map of custom machine identity attributes | [optional] 
 **Subtype** | **string** | The subtype value associated to the machine identity | 
 **Owners** | Pointer to [**MachineIdentityDtoOwners**](machine-identity-dto-owners) |  | [optional] 
 **SourceId** | Pointer to **string** | The source id associated to the machine identity | [optional] 
 **Uuid** | Pointer to **string** | The UUID associated to the machine identity directly aggregated from a source | [optional] 
+**NativeIdentity** | Pointer to **string** | The native identity associated to the machine identity directly aggregated from a source | [optional] 
 
 ## Methods
 
 ### NewMachineIdentity
 
-`func NewMachineIdentity(name NullableString, nativeIdentity string, subtype string, ) *MachineIdentity`
+`func NewMachineIdentity(name NullableString, businessApplication string, subtype string, ) *MachineIdentity`
 
 NewMachineIdentity instantiates a new MachineIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -151,24 +152,24 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### GetNativeIdentity
+### GetBusinessApplication
 
-`func (o *MachineIdentity) GetNativeIdentity() string`
+`func (o *MachineIdentity) GetBusinessApplication() string`
 
-GetNativeIdentity returns the NativeIdentity field if non-nil, zero value otherwise.
+GetBusinessApplication returns the BusinessApplication field if non-nil, zero value otherwise.
 
-### GetNativeIdentityOk
+### GetBusinessApplicationOk
 
-`func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool)`
+`func (o *MachineIdentity) GetBusinessApplicationOk() (*string, bool)`
 
-GetNativeIdentityOk returns a tuple with the NativeIdentity field if it's non-nil, zero value otherwise
+GetBusinessApplicationOk returns a tuple with the BusinessApplication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNativeIdentity
+### SetBusinessApplication
 
-`func (o *MachineIdentity) SetNativeIdentity(v string)`
+`func (o *MachineIdentity) SetBusinessApplication(v string)`
 
-SetNativeIdentity sets NativeIdentity field to given value.
+SetBusinessApplication sets BusinessApplication field to given value.
 
 
 ### GetDescription
@@ -315,5 +316,30 @@ SetUuid sets Uuid field to given value.
 `func (o *MachineIdentity) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetNativeIdentity
+
+`func (o *MachineIdentity) GetNativeIdentity() string`
+
+GetNativeIdentity returns the NativeIdentity field if non-nil, zero value otherwise.
+
+### GetNativeIdentityOk
+
+`func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool)`
+
+GetNativeIdentityOk returns a tuple with the NativeIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNativeIdentity
+
+`func (o *MachineIdentity) SetNativeIdentity(v string)`
+
+SetNativeIdentity sets NativeIdentity field to given value.
+
+### HasNativeIdentity
+
+`func (o *MachineIdentity) HasNativeIdentity() bool`
+
+HasNativeIdentity returns a boolean if a field has been set.
 
 

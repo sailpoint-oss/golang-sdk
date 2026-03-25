@@ -33,17 +33,6 @@ Method | HTTP request | Description
 
 
 ## create-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Create a new governance group.
 This API creates a new Governance Group.
 
@@ -60,7 +49,6 @@ Other parameters are passed through a pointer to a apiCreateWorkgroupRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **workgroupDto** | [**WorkgroupDto**](../models/workgroup-dto) |  | 
 
 ### Return type
@@ -87,7 +75,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     workgroupdto := []byte(`{
           "owner" : {
             "emailAddress" : "support@sailpoint.com",
@@ -114,8 +101,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupDto(workgroupDto).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupDto(workgroupDto).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).WorkgroupDto(workgroupDto).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).WorkgroupDto(workgroupDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroup``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,17 +115,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Delete a governance group
 This API deletes a Governance Group by its ID.
 
@@ -160,7 +136,6 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -187,14 +162,13 @@ import (
 
 func main() {
     id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
+	  //r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroup``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,17 +180,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Remove members from governance group
 This API removes one or more  members from a Governance Group.  A
 >  **Following field of Identity is an optional field in the request.**
@@ -241,7 +204,6 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupMembersRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **identityPreviewResponseIdentity** | [**[]IdentityPreviewResponseIdentity**](../models/identity-preview-response-identity) | List of identities to be removed from  a Governance Group members list. | 
 
 ### Return type
@@ -269,7 +231,6 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be removed from  a Governance Group members list.
 
     var identityPreviewResponseIdentity []v2024.IdentityPreviewResponseIdentity
@@ -281,8 +242,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupMembers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,17 +256,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-workgroups-in-bulk
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Delete governance group(s)
 
 This API initiates a bulk deletion of one or more Governance Groups.
@@ -333,7 +283,6 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupsInBulkRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **workgroupBulkDeleteRequest** | [**WorkgroupBulkDeleteRequest**](../models/workgroup-bulk-delete-request) |  | 
 
 ### Return type
@@ -360,7 +309,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     workgroupbulkdeleterequest := []byte(`{
           "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
         }`) // WorkgroupBulkDeleteRequest | 
@@ -374,8 +322,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).XSailPointExperimental(xSailPointExperimental).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupsInBulk``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -388,17 +336,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Get governance group by id
 This API returns a Governance Groups by its ID.
 
@@ -420,7 +357,6 @@ Other parameters are passed through a pointer to a apiGetWorkgroupRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -447,14 +383,13 @@ import (
 
 func main() {
     id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroup``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -467,17 +402,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-connections
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List connections for governance group
 This API returns list of connections associated with a Governance Group.
 
@@ -499,7 +423,6 @@ Other parameters are passed through a pointer to a apiListConnectionsRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -530,7 +453,6 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -540,8 +462,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListConnections``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,17 +476,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List governance group members
 This API returns list of members associated with a Governance Group.
 
@@ -586,7 +497,6 @@ Other parameters are passed through a pointer to a apiListWorkgroupMembersReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -617,7 +527,6 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -627,8 +536,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupMembers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -641,17 +550,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-workgroups
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List governance groups
 This API returns list of Governance Groups
 
@@ -668,7 +566,6 @@ Other parameters are passed through a pointer to a apiListWorkgroupsRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -699,7 +596,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -710,8 +606,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroups(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroups(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroups``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -724,17 +620,6 @@ func main() {
 [[Back to top]](#)
 
 ## patch-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Patch a governance group
 This API updates an existing governance group by ID. The following fields and objects are patchable:
 * name
@@ -759,7 +644,6 @@ Other parameters are passed through a pointer to a apiPatchWorkgroupRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
@@ -787,15 +671,14 @@ import (
 
 func main() {
     id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jsonpatchoperation := []byte(`[{op=replace, path=/description, value=Governance Group new description.}]`) // []JsonPatchOperation |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.PatchWorkgroup``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -808,17 +691,6 @@ func main() {
 [[Back to top]](#)
 
 ## update-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Add members to governance group
 This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
 
@@ -844,7 +716,6 @@ Other parameters are passed through a pointer to a apiUpdateWorkgroupMembersRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **identityPreviewResponseIdentity** | [**[]IdentityPreviewResponseIdentity**](../models/identity-preview-response-identity) | List of identities to be added to a Governance Group members list. | 
 
 ### Return type
@@ -872,7 +743,6 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     identitypreviewresponseidentity := []byte(``) // []IdentityPreviewResponseIdentity | List of identities to be added to a Governance Group members list.
 
     var identityPreviewResponseIdentity []v2024.IdentityPreviewResponseIdentity
@@ -884,8 +754,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
-	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).XSailPointExperimental(xSailPointExperimental).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+    resp, r, err := apiClient.V2024.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
+	  //resp, r, err := apiClient.V2024.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).IdentityPreviewResponseIdentity(identityPreviewResponseIdentity).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroupMembers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The object type of the entitlement from the source schema | [optional] 
 **Description** | Pointer to **NullableString** | The description of the entitlement | [optional] 
-**PrivilegeLevel** | Pointer to [**EntitlementPrivilegeLevel**](entitlement-privilege-level) |  | [optional] 
-**Tags** | Pointer to **[]string** | List of tags assigned to the entitlement | [optional] 
+**Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] [default to false]
 **CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
 **Requestable** | Pointer to **bool** | True if the entitlement is able to be directly requested | [optional] [default to false]
 **Owner** | Pointer to [**NullableEntitlementOwner**](entitlement-owner) |  | [optional] 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
 **AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](entitlement-access-model-metadata) |  | [optional] 
 **Created** | Pointer to **SailPointTime** | Time when the entitlement was created | [optional] 
@@ -214,66 +214,31 @@ HasDescription returns a boolean if a field has been set.
 `func (o *Entitlement) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetPrivilegeLevel
+### GetPrivileged
 
-`func (o *Entitlement) GetPrivilegeLevel() EntitlementPrivilegeLevel`
+`func (o *Entitlement) GetPrivileged() bool`
 
-GetPrivilegeLevel returns the PrivilegeLevel field if non-nil, zero value otherwise.
+GetPrivileged returns the Privileged field if non-nil, zero value otherwise.
 
-### GetPrivilegeLevelOk
+### GetPrivilegedOk
 
-`func (o *Entitlement) GetPrivilegeLevelOk() (*EntitlementPrivilegeLevel, bool)`
+`func (o *Entitlement) GetPrivilegedOk() (*bool, bool)`
 
-GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field if it's non-nil, zero value otherwise
+GetPrivilegedOk returns a tuple with the Privileged field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPrivilegeLevel
+### SetPrivileged
 
-`func (o *Entitlement) SetPrivilegeLevel(v EntitlementPrivilegeLevel)`
+`func (o *Entitlement) SetPrivileged(v bool)`
 
-SetPrivilegeLevel sets PrivilegeLevel field to given value.
+SetPrivileged sets Privileged field to given value.
 
-### HasPrivilegeLevel
+### HasPrivileged
 
-`func (o *Entitlement) HasPrivilegeLevel() bool`
+`func (o *Entitlement) HasPrivileged() bool`
 
-HasPrivilegeLevel returns a boolean if a field has been set.
+HasPrivileged returns a boolean if a field has been set.
 
-### GetTags
-
-`func (o *Entitlement) GetTags() []string`
-
-GetTags returns the Tags field if non-nil, zero value otherwise.
-
-### GetTagsOk
-
-`func (o *Entitlement) GetTagsOk() (*[]string, bool)`
-
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTags
-
-`func (o *Entitlement) SetTags(v []string)`
-
-SetTags sets Tags field to given value.
-
-### HasTags
-
-`func (o *Entitlement) HasTags() bool`
-
-HasTags returns a boolean if a field has been set.
-
-### SetTagsNil
-
-`func (o *Entitlement) SetTagsNil(b bool)`
-
- SetTagsNil sets the value for Tags to be an explicit nil
-
-### UnsetTags
-`func (o *Entitlement) UnsetTags()`
-
-UnsetTags ensures that no value is present for Tags, not even an explicit nil
 ### GetCloudGoverned
 
 `func (o *Entitlement) GetCloudGoverned() bool`
@@ -359,6 +324,41 @@ HasOwner returns a boolean if a field has been set.
 `func (o *Entitlement) UnsetOwner()`
 
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+### GetAdditionalOwners
+
+`func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef`
+
+GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
+
+### GetAdditionalOwnersOk
+
+`func (o *Entitlement) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
+
+GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalOwners
+
+`func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef)`
+
+SetAdditionalOwners sets AdditionalOwners field to given value.
+
+### HasAdditionalOwners
+
+`func (o *Entitlement) HasAdditionalOwners() bool`
+
+HasAdditionalOwners returns a boolean if a field has been set.
+
+### SetAdditionalOwnersNil
+
+`func (o *Entitlement) SetAdditionalOwnersNil(b bool)`
+
+ SetAdditionalOwnersNil sets the value for AdditionalOwners to be an explicit nil
+
+### UnsetAdditionalOwners
+`func (o *Entitlement) UnsetAdditionalOwners()`
+
+UnsetAdditionalOwners ensures that no value is present for AdditionalOwners, not even an explicit nil
 ### GetManuallyUpdatedFields
 
 `func (o *Entitlement) GetManuallyUpdatedFields() map[string]interface{}`
