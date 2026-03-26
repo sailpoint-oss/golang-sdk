@@ -82,9 +82,11 @@ Method | HTTP request | Description
 [**delete-source**](#delete-source) | **Delete** `/sources/{id}` | Delete source by id
 [**delete-source-schedule**](#delete-source-schedule) | **Delete** `/sources/{sourceId}/schedules/{scheduleType}` | Delete source schedule by type.
 [**delete-source-schema**](#delete-source-schema) | **Delete** `/sources/{sourceId}/schemas/{schemaId}` | Delete source schema by id
+[**get-account-delete-approval-config**](#get-account-delete-approval-config) | **Get** `/sources/{sourceId}/approval-config/account-delete` | Human Account Deletion Approval Config
 [**get-accounts-schema**](#get-accounts-schema) | **Get** `/sources/{id}/schemas/accounts` | Downloads source accounts schema template
 [**get-correlation-config**](#get-correlation-config) | **Get** `/sources/{id}/correlation-config` | Get source correlation configuration
 [**get-entitlements-schema**](#get-entitlements-schema) | **Get** `/sources/{id}/schemas/entitlements` | Downloads source entitlements schema template
+[**get-machine-account-deletion-approval-config-by-source**](#get-machine-account-deletion-approval-config-by-source) | **Get** `/sources/{sourceId}/approval-config/machine-account-delete` | Machine Account Deletion Approval Config
 [**get-native-change-detection-config**](#get-native-change-detection-config) | **Get** `/sources/{sourceId}/native-change-detection-config` | Native change detection configuration
 [**get-provisioning-policy**](#get-provisioning-policy) | **Get** `/sources/{sourceId}/provisioning-policies/{usageType}` | Get provisioning policy by usagetype
 [**get-source**](#get-source) | **Get** `/sources/{id}` | Get source by id
@@ -117,6 +119,8 @@ Method | HTTP request | Description
 [**sync-attributes-for-source**](#sync-attributes-for-source) | **Post** `/sources/{id}/synchronize-attributes` | Synchronize single source attributes.
 [**test-source-configuration**](#test-source-configuration) | **Post** `/sources/{sourceId}/connector/test-configuration` | Test configuration for source connector
 [**test-source-connection**](#test-source-connection) | **Post** `/sources/{sourceId}/connector/check-connection` | Check connection for source connector.
+[**update-account-deletion-approval-config**](#update-account-deletion-approval-config) | **Patch** `/sources/{sourceId}/approval-config/account-delete` | Human Account Deletion Approval Config
+[**update-machine-account-deletion-approval-config**](#update-machine-account-deletion-approval-config) | **Patch** `/sources/{sourceId}/approval-config/machine-account-delete` | Machine Account Deletion Approval Config
 [**update-password-policy-holders**](#update-password-policy-holders) | **Patch** `/sources/{sourceId}/password-policies` | Update password policy
 [**update-provisioning-policies-in-bulk**](#update-provisioning-policies-in-bulk) | **Post** `/sources/{sourceId}/provisioning-policies/bulk-update` | Bulk update provisioning policies
 [**update-provisioning-policy**](#update-provisioning-policy) | **Patch** `/sources/{sourceId}/provisioning-policies/{usageType}` | Partial update of provisioning policy
@@ -980,6 +984,86 @@ func main() {
 
 [[Back to top]](#)
 
+## get-account-delete-approval-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Human Account Deletion Approval Config
+The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-account-delete-approval-config)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountDeleteApprovalConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+
+### Return type
+
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourceId := `ha38f94347e94562b5bb8424a56498d8` // string | The Source id # string | The Source id
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountDeleteApprovalConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccountDeleteApprovalConfig`: AccountDeleteConfigDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetAccountDeleteApprovalConfig`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## get-accounts-schema
 Downloads source accounts schema template
 This API downloads the CSV schema that defines the account attributes on a source.
@@ -1176,6 +1260,85 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
+}
+```
+
+[[Back to top]](#)
+
+## get-machine-account-deletion-approval-config-by-source
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Machine Account Deletion Approval Config
+Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-machine-account-deletion-approval-config-by-source)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | source id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMachineAccountDeletionApprovalConfigBySourceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+
+### Return type
+
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourceId := `gt38f94347e94562b5bb8424a56498d8` // string | source id. # string | source id.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMachineAccountDeletionApprovalConfigBySource`: AccountDeleteConfigDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource`: %v\n", resp)
 }
 ```
 
@@ -3693,6 +3856,183 @@ func main() {
     }
     // response from `TestSourceConnection`: StatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.TestSourceConnection`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-account-deletion-approval-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Human Account Deletion Approval Config
+Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/update-account-deletion-approval-config)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Human account source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccountDeletionApprovalConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
+
+### Return type
+
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | Human account source ID. # string | Human account source ID.
+    jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
+
+    var jsonPatchOperation []v2026.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateAccountDeletionApprovalConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccountDeletionApprovalConfig`: AccountDeleteConfigDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateAccountDeletionApprovalConfig`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-machine-account-deletion-approval-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Machine Account Deletion Approval Config
+Use this endpoint to update the machine account deletion approval configuration for a specific source.
+The update is performed using a JSON Patch payload, which allows partial modifications to the approval config.
+This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion.
+The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/update-machine-account-deletion-approval-config)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | machine account source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateMachineAccountDeletionApprovalConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
+
+### Return type
+
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account source ID. # string | machine account source ID.
+    jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
+
+    var jsonPatchOperation []v2026.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperation, &jsonPatchOperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateMachineAccountDeletionApprovalConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateMachineAccountDeletionApprovalConfig`: AccountDeleteConfigDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateMachineAccountDeletionApprovalConfig`: %v\n", resp)
 }
 ```
 

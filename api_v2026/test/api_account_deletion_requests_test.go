@@ -22,6 +22,20 @@ func Test_api_v2026_AccountDeletionRequestsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test AccountDeletionRequestsAPIService DeleteAccountRequest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var accountId string
+
+		resp, httpRes, err := apiClient.AccountDeletionRequestsAPI.DeleteAccountRequest(context.Background(), accountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccountDeletionRequestsAPIService GetAccountDeletionRequests", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

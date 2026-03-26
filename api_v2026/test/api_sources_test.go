@@ -159,6 +159,20 @@ func Test_api_v2026_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService GetAccountDeleteApprovalConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService GetAccountsSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -195,6 +209,20 @@ func Test_api_v2026_SourcesAPIService(t *testing.T) {
 		httpRes, err := apiClient.SourcesAPI.GetEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetMachineAccountDeletionApprovalConfigBySource", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -641,6 +669,34 @@ func Test_api_v2026_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.TestSourceConnection(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService UpdateAccountDeletionApprovalConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService UpdateMachineAccountDeletionApprovalConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

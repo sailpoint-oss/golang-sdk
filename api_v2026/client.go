@@ -117,8 +117,6 @@ type APIClient struct {
 
 	DeclassifySourceAPI *DeclassifySourceAPIService
 
-	DeleteAccountAPI *DeleteAccountAPIService
-
 	DimensionsAPI *DimensionsAPIService
 
 	EntitlementsAPI *EntitlementsAPIService
@@ -126,8 +124,6 @@ type APIClient struct {
 	GlobalTenantSecuritySettingsAPI *GlobalTenantSecuritySettingsAPIService
 
 	GovernanceGroupsAPI *GovernanceGroupsAPIService
-
-	HumanAccountDeletionApprovalConfigAPI *HumanAccountDeletionApprovalConfigAPIService
 
 	IAIAccessRequestRecommendationsAPI *IAIAccessRequestRecommendationsAPIService
 
@@ -159,8 +155,6 @@ type APIClient struct {
 
 	MachineAccountClassifyAPI *MachineAccountClassifyAPIService
 
-	MachineAccountDeletionApprovalConfigAPI *MachineAccountDeletionApprovalConfigAPIService
-
 	MachineAccountMappingsAPI *MachineAccountMappingsAPIService
 
 	MachineAccountsAPI *MachineAccountsAPIService
@@ -168,8 +162,6 @@ type APIClient struct {
 	MachineClassificationConfigAPI *MachineClassificationConfigAPIService
 
 	MachineIdentitiesAPI *MachineIdentitiesAPIService
-
-	MachineSubtypeApprovalConfigAPI *MachineSubtypeApprovalConfigAPIService
 
 	ManagedClientsAPI *ManagedClientsAPIService
 
@@ -318,12 +310,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataAccessSecurityAPI = (*DataAccessSecurityAPIService)(&c.common)
 	c.DataSegmentationAPI = (*DataSegmentationAPIService)(&c.common)
 	c.DeclassifySourceAPI = (*DeclassifySourceAPIService)(&c.common)
-	c.DeleteAccountAPI = (*DeleteAccountAPIService)(&c.common)
 	c.DimensionsAPI = (*DimensionsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
-	c.HumanAccountDeletionApprovalConfigAPI = (*HumanAccountDeletionApprovalConfigAPIService)(&c.common)
 	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
 	c.IAICommonAccessAPI = (*IAICommonAccessAPIService)(&c.common)
 	c.IAIOutliersAPI = (*IAIOutliersAPIService)(&c.common)
@@ -339,12 +329,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
 	c.MachineAccountClassifyAPI = (*MachineAccountClassifyAPIService)(&c.common)
-	c.MachineAccountDeletionApprovalConfigAPI = (*MachineAccountDeletionApprovalConfigAPIService)(&c.common)
 	c.MachineAccountMappingsAPI = (*MachineAccountMappingsAPIService)(&c.common)
 	c.MachineAccountsAPI = (*MachineAccountsAPIService)(&c.common)
 	c.MachineClassificationConfigAPI = (*MachineClassificationConfigAPIService)(&c.common)
 	c.MachineIdentitiesAPI = (*MachineIdentitiesAPIService)(&c.common)
-	c.MachineSubtypeApprovalConfigAPI = (*MachineSubtypeApprovalConfigAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClusterTypesAPI = (*ManagedClusterTypesAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
@@ -743,7 +731,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.36"
+	userAgent := "SailPoint-SDK-Go/2.7.37"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

@@ -36,12 +36,10 @@ api_custom_user_levels.go
 api_data_access_security.go
 api_data_segmentation.go
 api_declassify_source.go
-api_delete_account.go
 api_dimensions.go
 api_entitlements.go
 api_global_tenant_security_settings.go
 api_governance_groups.go
-api_human_account_deletion_approval_config.go
 api_iai_access_request_recommendations.go
 api_iai_common_access.go
 api_iai_outliers.go
@@ -56,12 +54,10 @@ api_identity_profiles.go
 api_launchers.go
 api_lifecycle_states.go
 api_machine_account_classify.go
-api_machine_account_deletion_approval_config.go
 api_machine_account_mappings.go
 api_machine_accounts.go
 api_machine_classification_config.go
 api_machine_identities.go
-api_machine_subtype_approval_config.go
 api_managed_clients.go
 api_managed_cluster_types.go
 api_managed_clusters.go
@@ -606,8 +602,6 @@ docs/DataSegmentationAPI.md
 docs/DataSegmentationAPIdeveloperSite_code_examples.yaml
 docs/DeclassifySourceAPI.md
 docs/DeclassifySourceAPIdeveloperSite_code_examples.yaml
-docs/DeleteAccountAPI.md
-docs/DeleteAccountAPIdeveloperSite_code_examples.yaml
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DeliveryRequest.md
@@ -744,8 +738,6 @@ docs/HierarchicalRightSet.md
 docs/HttpAuthenticationType.md
 docs/HttpConfig.md
 docs/HttpDispatchMode.md
-docs/HumanAccountDeletionApprovalConfigAPI.md
-docs/HumanAccountDeletionApprovalConfigAPIdeveloperSite_code_examples.yaml
 docs/IAIAccessRequestRecommendationsAPI.md
 docs/IAIAccessRequestRecommendationsAPIdeveloperSite_code_examples.yaml
 docs/IAICommonAccessAPI.md
@@ -904,8 +896,6 @@ docs/MFAConfigurationAPIdeveloperSite_code_examples.yaml
 docs/MachineAccount.md
 docs/MachineAccountClassifyAPI.md
 docs/MachineAccountClassifyAPIdeveloperSite_code_examples.yaml
-docs/MachineAccountDeletionApprovalConfigAPI.md
-docs/MachineAccountDeletionApprovalConfigAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountMappingsAPI.md
 docs/MachineAccountMappingsAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountSubTypeConfigDto.md
@@ -948,8 +938,6 @@ docs/MachineIdentityUserEntitlementResponse.md
 docs/MachineIdentityUserEntitlementResponseEntitlement.md
 docs/MachineIdentityUserEntitlementResponseSource.md
 docs/MachineIdentityUserEntitlements.md
-docs/MachineSubtypeApprovalConfigAPI.md
-docs/MachineSubtypeApprovalConfigAPIdeveloperSite_code_examples.yaml
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -3023,12 +3011,10 @@ test/api_custom_user_levels_test.go
 test/api_data_access_security_test.go
 test/api_data_segmentation_test.go
 test/api_declassify_source_test.go
-test/api_delete_account_test.go
 test/api_dimensions_test.go
 test/api_entitlements_test.go
 test/api_global_tenant_security_settings_test.go
 test/api_governance_groups_test.go
-test/api_human_account_deletion_approval_config_test.go
 test/api_iai_access_request_recommendations_test.go
 test/api_iai_common_access_test.go
 test/api_iai_outliers_test.go
@@ -3043,12 +3029,10 @@ test/api_identity_profiles_test.go
 test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_machine_account_classify_test.go
-test/api_machine_account_deletion_approval_config_test.go
 test/api_machine_account_mappings_test.go
 test/api_machine_accounts_test.go
 test/api_machine_classification_config_test.go
 test/api_machine_identities_test.go
-test/api_machine_subtype_approval_config_test.go
 test/api_managed_clients_test.go
 test/api_managed_cluster_types_test.go
 test/api_managed_clusters_test.go
