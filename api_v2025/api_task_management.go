@@ -56,7 +56,7 @@ func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
 /*
 GetPendingTaskHeaders Retrieve pending task list headers
 
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2026/task-status?count=true&filters=completionStatus isnull
 
 Responds with headers only for list of task statuses for pending tasks.
 
@@ -243,7 +243,7 @@ func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, erro
 /*
 GetPendingTasks Retrieve pending task status list
 
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull
+This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2026/task-status?filters=completionStatus isnull
 
 Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 

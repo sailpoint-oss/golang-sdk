@@ -29,8 +29,8 @@ type MachineIdentity struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
 	Modified *SailPointTime `json:"modified,omitempty"`
-	// The business application that the identity represents
-	BusinessApplication string `json:"businessApplication"`
+	// The native identity associated to the machine identity directly aggregated from a source
+	NativeIdentity string `json:"nativeIdentity"`
 	// Description of machine identity
 	Description *string `json:"description,omitempty"`
 	// A map of custom machine identity attributes
@@ -42,8 +42,6 @@ type MachineIdentity struct {
 	SourceId *string `json:"sourceId,omitempty"`
 	// The UUID associated to the machine identity directly aggregated from a source
 	Uuid *string `json:"uuid,omitempty"`
-	// The native identity associated to the machine identity directly aggregated from a source
-	NativeIdentity *string `json:"nativeIdentity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,10 +51,10 @@ type _MachineIdentity MachineIdentity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineIdentity(name NullableString, businessApplication string, subtype string) *MachineIdentity {
+func NewMachineIdentity(name NullableString, nativeIdentity string, subtype string) *MachineIdentity {
 	this := MachineIdentity{}
 	this.Name = name
-	this.BusinessApplication = businessApplication
+	this.NativeIdentity = nativeIdentity
 	this.Subtype = subtype
 	return &this
 }
@@ -191,28 +189,28 @@ func (o *MachineIdentity) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
-// GetBusinessApplication returns the BusinessApplication field value
-func (o *MachineIdentity) GetBusinessApplication() string {
+// GetNativeIdentity returns the NativeIdentity field value
+func (o *MachineIdentity) GetNativeIdentity() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BusinessApplication
+	return o.NativeIdentity
 }
 
-// GetBusinessApplicationOk returns a tuple with the BusinessApplication field value
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value
 // and a boolean to check if the value has been set.
-func (o *MachineIdentity) GetBusinessApplicationOk() (*string, bool) {
+func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BusinessApplication, true
+	return &o.NativeIdentity, true
 }
 
-// SetBusinessApplication sets field value
-func (o *MachineIdentity) SetBusinessApplication(v string) {
-	o.BusinessApplication = v
+// SetNativeIdentity sets field value
+func (o *MachineIdentity) SetNativeIdentity(v string) {
+	o.NativeIdentity = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -399,38 +397,6 @@ func (o *MachineIdentity) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
-func (o *MachineIdentity) GetNativeIdentity() string {
-	if o == nil || IsNil(o.NativeIdentity) {
-		var ret string
-		return ret
-	}
-	return *o.NativeIdentity
-}
-
-// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MachineIdentity) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || IsNil(o.NativeIdentity) {
-		return nil, false
-	}
-	return o.NativeIdentity, true
-}
-
-// HasNativeIdentity returns a boolean if a field has been set.
-func (o *MachineIdentity) HasNativeIdentity() bool {
-	if o != nil && !IsNil(o.NativeIdentity) {
-		return true
-	}
-
-	return false
-}
-
-// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
-func (o *MachineIdentity) SetNativeIdentity(v string) {
-	o.NativeIdentity = &v
-}
-
 func (o MachineIdentity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -451,7 +417,7 @@ func (o MachineIdentity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	toSerialize["businessApplication"] = o.BusinessApplication
+	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -468,9 +434,6 @@ func (o MachineIdentity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
-	if !IsNil(o.NativeIdentity) {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -485,7 +448,7 @@ func (o *MachineIdentity) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"businessApplication",
+		"nativeIdentity",
 		"subtype",
 	}
 
@@ -520,14 +483,13 @@ func (o *MachineIdentity) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "businessApplication")
+		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "subtype")
 		delete(additionalProperties, "owners")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "nativeIdentity")
 		o.AdditionalProperties = additionalProperties
 	}
 

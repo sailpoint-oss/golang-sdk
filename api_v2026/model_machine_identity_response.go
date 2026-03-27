@@ -29,8 +29,8 @@ type MachineIdentityResponse struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
 	Modified *SailPointTime `json:"modified,omitempty"`
-	// The business application that the identity represents
-	BusinessApplication string `json:"businessApplication"`
+	// The native identity associated to the machine identity directly aggregated from a source
+	NativeIdentity string `json:"nativeIdentity"`
 	// Description of machine identity
 	Description *string `json:"description,omitempty"`
 	// A map of custom machine identity attributes
@@ -42,8 +42,6 @@ type MachineIdentityResponse struct {
 	SourceId *string `json:"sourceId,omitempty"`
 	// The UUID associated to the machine identity directly aggregated from a source
 	Uuid *string `json:"uuid,omitempty"`
-	// The native identity associated to the machine identity directly aggregated from a source
-	NativeIdentity *string `json:"nativeIdentity,omitempty"`
 	// Indicates if the machine identity has been manually edited
 	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 	// Indicates if the machine identity has been manually created
@@ -63,10 +61,10 @@ type _MachineIdentityResponse MachineIdentityResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineIdentityResponse(name NullableString, businessApplication string, subtype string) *MachineIdentityResponse {
+func NewMachineIdentityResponse(name NullableString, nativeIdentity string, subtype string) *MachineIdentityResponse {
 	this := MachineIdentityResponse{}
 	this.Name = name
-	this.BusinessApplication = businessApplication
+	this.NativeIdentity = nativeIdentity
 	this.Subtype = subtype
 	var manuallyEdited bool = false
 	this.ManuallyEdited = &manuallyEdited
@@ -209,28 +207,28 @@ func (o *MachineIdentityResponse) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
-// GetBusinessApplication returns the BusinessApplication field value
-func (o *MachineIdentityResponse) GetBusinessApplication() string {
+// GetNativeIdentity returns the NativeIdentity field value
+func (o *MachineIdentityResponse) GetNativeIdentity() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BusinessApplication
+	return o.NativeIdentity
 }
 
-// GetBusinessApplicationOk returns a tuple with the BusinessApplication field value
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value
 // and a boolean to check if the value has been set.
-func (o *MachineIdentityResponse) GetBusinessApplicationOk() (*string, bool) {
+func (o *MachineIdentityResponse) GetNativeIdentityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BusinessApplication, true
+	return &o.NativeIdentity, true
 }
 
-// SetBusinessApplication sets field value
-func (o *MachineIdentityResponse) SetBusinessApplication(v string) {
-	o.BusinessApplication = v
+// SetNativeIdentity sets field value
+func (o *MachineIdentityResponse) SetNativeIdentity(v string) {
+	o.NativeIdentity = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -417,38 +415,6 @@ func (o *MachineIdentityResponse) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
-func (o *MachineIdentityResponse) GetNativeIdentity() string {
-	if o == nil || IsNil(o.NativeIdentity) {
-		var ret string
-		return ret
-	}
-	return *o.NativeIdentity
-}
-
-// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MachineIdentityResponse) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || IsNil(o.NativeIdentity) {
-		return nil, false
-	}
-	return o.NativeIdentity, true
-}
-
-// HasNativeIdentity returns a boolean if a field has been set.
-func (o *MachineIdentityResponse) HasNativeIdentity() bool {
-	if o != nil && !IsNil(o.NativeIdentity) {
-		return true
-	}
-
-	return false
-}
-
-// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
-func (o *MachineIdentityResponse) SetNativeIdentity(v string) {
-	o.NativeIdentity = &v
-}
-
 // GetManuallyEdited returns the ManuallyEdited field value if set, zero value otherwise.
 func (o *MachineIdentityResponse) GetManuallyEdited() bool {
 	if o == nil || IsNil(o.ManuallyEdited) {
@@ -629,7 +595,7 @@ func (o MachineIdentityResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	toSerialize["businessApplication"] = o.BusinessApplication
+	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -645,9 +611,6 @@ func (o MachineIdentityResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
-	}
-	if !IsNil(o.NativeIdentity) {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
 	if !IsNil(o.ManuallyEdited) {
 		toSerialize["manuallyEdited"] = o.ManuallyEdited
@@ -678,7 +641,7 @@ func (o *MachineIdentityResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"businessApplication",
+		"nativeIdentity",
 		"subtype",
 	}
 
@@ -713,14 +676,13 @@ func (o *MachineIdentityResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "businessApplication")
+		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "subtype")
 		delete(additionalProperties, "owners")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "manuallyEdited")
 		delete(additionalProperties, "manuallyCreated")
 		delete(additionalProperties, "source")

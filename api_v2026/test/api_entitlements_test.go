@@ -38,18 +38,6 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsAPIService CreateEntitlement", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.EntitlementsAPI.CreateEntitlement(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test EntitlementsAPIService DeleteAccessModelMetadataFromEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -61,6 +49,20 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 		httpRes, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService GetEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -140,6 +142,20 @@ func Test_api_v2026_EntitlementsAPIService(t *testing.T) {
 		var accountId string
 
 		resp, httpRes, err := apiClient.EntitlementsAPI.ListEntitlementsByAccount(context.Background(), accountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService PatchEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

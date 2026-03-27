@@ -22,29 +22,6 @@ func Test_api_v2026_TaskManagementAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TaskManagementAPIService GetPendingTaskHeaders", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TaskManagementAPIService GetPendingTasks", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test TaskManagementAPIService GetTaskStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

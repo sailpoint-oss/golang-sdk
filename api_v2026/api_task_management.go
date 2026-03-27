@@ -23,395 +23,17 @@ import (
 // TaskManagementAPIService TaskManagementAPI service
 type TaskManagementAPIService service
 
-type ApiGetPendingTaskHeadersRequest struct {
-	ctx context.Context
-	ApiService *TaskManagementAPIService
-	offset *int32
-	limit *int32
-	count *bool
-}
-
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTaskHeadersRequest) Offset(offset int32) ApiGetPendingTaskHeadersRequest {
-	r.offset = &offset
-	return r
-}
-
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTaskHeadersRequest) Limit(limit int32) ApiGetPendingTaskHeadersRequest {
-	r.limit = &limit
-	return r
-}
-
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTaskHeadersRequest) Count(count bool) ApiGetPendingTaskHeadersRequest {
-	r.count = &count
-	return r
-}
-
-func (r ApiGetPendingTaskHeadersRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GetPendingTaskHeadersExecute(r)
-}
-
-/*
-GetPendingTaskHeaders Retrieve pending task list headers
-
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull
-
-Responds with headers only for list of task statuses for pending tasks.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetPendingTaskHeadersRequest
-
-Deprecated
-*/
-func (a *TaskManagementAPIService) GetPendingTaskHeaders(ctx context.Context) ApiGetPendingTaskHeadersRequest {
-	return ApiGetPendingTaskHeadersRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingTaskHeadersRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodHead
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetPendingTaskHeaders")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/task-status/pending-tasks"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
-	} else {
-		var defaultValue int32 = 0
-		r.offset = &defaultValue
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
-	} else {
-		var defaultValue int32 = 250
-		r.limit = &defaultValue
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetAccessRequestConfig401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetAccessRequestConfig429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiGetPendingTasksRequest struct {
-	ctx context.Context
-	ApiService *TaskManagementAPIService
-	offset *int32
-	limit *int32
-	count *bool
-}
-
-// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTasksRequest) Offset(offset int32) ApiGetPendingTasksRequest {
-	r.offset = &offset
-	return r
-}
-
-// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTasksRequest) Limit(limit int32) ApiGetPendingTasksRequest {
-	r.limit = &limit
-	return r
-}
-
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetPendingTasksRequest) Count(count bool) ApiGetPendingTasksRequest {
-	r.count = &count
-	return r
-}
-
-func (r ApiGetPendingTasksRequest) Execute() ([]TaskStatus, *http.Response, error) {
-	return r.ApiService.GetPendingTasksExecute(r)
-}
-
-/*
-GetPendingTasks Retrieve pending task status list
-
-This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull
-
-Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetPendingTasksRequest
-
-Deprecated
-*/
-func (a *TaskManagementAPIService) GetPendingTasks(ctx context.Context) ApiGetPendingTasksRequest {
-	return ApiGetPendingTasksRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []TaskStatus
-// Deprecated
-func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRequest) ([]TaskStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TaskStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetPendingTasks")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/task-status/pending-tasks"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
-	} else {
-		var defaultValue int32 = 0
-		r.offset = &defaultValue
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
-	} else {
-		var defaultValue int32 = 250
-		r.limit = &defaultValue
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
-	} else {
-		var defaultValue bool = false
-		r.count = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetAccessRequestConfig401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetAccessRequestConfig429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetTaskStatusRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetTaskStatusRequest) Execute() (*TaskStatus, *http.Response, error) {
@@ -456,6 +78,15 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -474,6 +105,7 @@ func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -589,7 +221,7 @@ func (r ApiGetTaskStatusListRequest) Count(count bool) ApiGetTaskStatusListReque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
 func (r ApiGetTaskStatusListRequest) Filters(filters string) ApiGetTaskStatusListRequest {
 	r.filters = &filters
 	return r
@@ -608,7 +240,7 @@ func (r ApiGetTaskStatusListRequest) Execute() ([]TaskStatus, *http.Response, er
 /*
 GetTaskStatusList Retrieve task status list
 
-Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field.
+Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -799,7 +431,14 @@ type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiUpdateTaskStatusRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateTaskStatusRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -850,6 +489,21 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -871,6 +525,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -587,9 +587,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-access-request-config
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 Get access request configuration
 This endpoint returns the current access-request configuration.
 
@@ -1038,9 +1035,6 @@ func main() {
 [[Back to top]](#)
 
 ## set-access-request-config
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 Update access request configuration
 This endpoint replaces the current access-request configuration.
 
@@ -1084,22 +1078,11 @@ import (
 
 func main() {
     accessrequestconfig := []byte(`{
+          "govGroupVisibilityEnabled" : true,
           "requestOnBehalfOfConfig" : {
             "allowRequestOnBehalfOfEmployeeByManager" : true,
             "allowRequestOnBehalfOfAnyoneByAnyone" : true
           },
-          "approvalReminderAndEscalationConfig" : {
-            "fallbackApproverRef" : {
-              "name" : "Alison Ferguso",
-              "id" : "5168015d32f890ca15812c9180835d2e",
-              "type" : "IDENTITY",
-              "email" : "alison.ferguso@identitysoon.com"
-            },
-            "maxReminders" : 1,
-            "daysUntilEscalation" : 0,
-            "daysBetweenReminders" : 0
-          },
-          "autoApprovalEnabled" : true,
           "entitlementRequestConfig" : {
             "accessRequestConfig" : {
               "denialCommentRequired" : false,

@@ -29,8 +29,8 @@ type MachineIdentityRequest struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
 	Modified *SailPointTime `json:"modified,omitempty"`
-	// The business application that the identity represents
-	BusinessApplication string `json:"businessApplication"`
+	// The native identity associated to the machine identity directly aggregated from a source
+	NativeIdentity string `json:"nativeIdentity"`
 	// Description of machine identity
 	Description *string `json:"description,omitempty"`
 	// A map of custom machine identity attributes
@@ -42,8 +42,6 @@ type MachineIdentityRequest struct {
 	SourceId *string `json:"sourceId,omitempty"`
 	// The UUID associated to the machine identity directly aggregated from a source
 	Uuid *string `json:"uuid,omitempty"`
-	// The native identity associated to the machine identity directly aggregated from a source
-	NativeIdentity *string `json:"nativeIdentity,omitempty"`
 	// The user entitlements associated to the machine identity
 	UserEntitlements []MachineIdentityRequestUserEntitlements `json:"userEntitlements,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -55,10 +53,10 @@ type _MachineIdentityRequest MachineIdentityRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineIdentityRequest(name NullableString, businessApplication string, subtype string) *MachineIdentityRequest {
+func NewMachineIdentityRequest(name NullableString, nativeIdentity string, subtype string) *MachineIdentityRequest {
 	this := MachineIdentityRequest{}
 	this.Name = name
-	this.BusinessApplication = businessApplication
+	this.NativeIdentity = nativeIdentity
 	this.Subtype = subtype
 	return &this
 }
@@ -193,28 +191,28 @@ func (o *MachineIdentityRequest) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
-// GetBusinessApplication returns the BusinessApplication field value
-func (o *MachineIdentityRequest) GetBusinessApplication() string {
+// GetNativeIdentity returns the NativeIdentity field value
+func (o *MachineIdentityRequest) GetNativeIdentity() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BusinessApplication
+	return o.NativeIdentity
 }
 
-// GetBusinessApplicationOk returns a tuple with the BusinessApplication field value
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value
 // and a boolean to check if the value has been set.
-func (o *MachineIdentityRequest) GetBusinessApplicationOk() (*string, bool) {
+func (o *MachineIdentityRequest) GetNativeIdentityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BusinessApplication, true
+	return &o.NativeIdentity, true
 }
 
-// SetBusinessApplication sets field value
-func (o *MachineIdentityRequest) SetBusinessApplication(v string) {
-	o.BusinessApplication = v
+// SetNativeIdentity sets field value
+func (o *MachineIdentityRequest) SetNativeIdentity(v string) {
+	o.NativeIdentity = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -401,38 +399,6 @@ func (o *MachineIdentityRequest) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
-func (o *MachineIdentityRequest) GetNativeIdentity() string {
-	if o == nil || IsNil(o.NativeIdentity) {
-		var ret string
-		return ret
-	}
-	return *o.NativeIdentity
-}
-
-// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MachineIdentityRequest) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || IsNil(o.NativeIdentity) {
-		return nil, false
-	}
-	return o.NativeIdentity, true
-}
-
-// HasNativeIdentity returns a boolean if a field has been set.
-func (o *MachineIdentityRequest) HasNativeIdentity() bool {
-	if o != nil && !IsNil(o.NativeIdentity) {
-		return true
-	}
-
-	return false
-}
-
-// SetNativeIdentity gets a reference to the given string and assigns it to the NativeIdentity field.
-func (o *MachineIdentityRequest) SetNativeIdentity(v string) {
-	o.NativeIdentity = &v
-}
-
 // GetUserEntitlements returns the UserEntitlements field value if set, zero value otherwise.
 func (o *MachineIdentityRequest) GetUserEntitlements() []MachineIdentityRequestUserEntitlements {
 	if o == nil || IsNil(o.UserEntitlements) {
@@ -485,7 +451,7 @@ func (o MachineIdentityRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	toSerialize["businessApplication"] = o.BusinessApplication
+	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -501,9 +467,6 @@ func (o MachineIdentityRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
-	}
-	if !IsNil(o.NativeIdentity) {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
 	if !IsNil(o.UserEntitlements) {
 		toSerialize["userEntitlements"] = o.UserEntitlements
@@ -522,7 +485,7 @@ func (o *MachineIdentityRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"businessApplication",
+		"nativeIdentity",
 		"subtype",
 	}
 
@@ -557,14 +520,13 @@ func (o *MachineIdentityRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "businessApplication")
+		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "subtype")
 		delete(additionalProperties, "owners")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "userEntitlements")
 		o.AdditionalProperties = additionalProperties
 	}

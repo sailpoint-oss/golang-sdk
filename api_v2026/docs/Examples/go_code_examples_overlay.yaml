@@ -1974,22 +1974,11 @@
 
         func main() {
            accessrequestconfig := []byte(`{
+          "govGroupVisibilityEnabled" : true,
           "requestOnBehalfOfConfig" : {
             "allowRequestOnBehalfOfEmployeeByManager" : true,
             "allowRequestOnBehalfOfAnyoneByAnyone" : true
           },
-          "approvalReminderAndEscalationConfig" : {
-            "fallbackApproverRef" : {
-              "name" : "Alison Ferguso",
-              "id" : "5168015d32f890ca15812c9180835d2e",
-              "type" : "IDENTITY",
-              "email" : "alison.ferguso@identitysoon.com"
-            },
-            "maxReminders" : 1,
-            "daysUntilEscalation" : 0,
-            "daysBetweenReminders" : 0
-          },
-          "autoApprovalEnabled" : true,
           "entitlementRequestConfig" : {
             "accessRequestConfig" : {
               "denialCommentRequired" : false,
@@ -11316,87 +11305,6 @@
           // response from `CreateAccessModelMetadataForEntitlement`: Entitlement
           fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.CreateAccessModelMetadataForEntitlement`: %v\n", resp)
         }
-- path: /entitlements/{id}
-  method: Post
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/entitlements#create-entitlement
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-        )
-
-        func main() {
-           entitlementdto := []byte(`{
-          "cloudEligible" : true,
-          "segmentStatus" : "GLOBAL",
-          "idnExceptional" : "PRIVILEGED",
-          "description" : "some entitlement description",
-          "source" : {
-            "id" : "2b86153b97a94abc936c8a11b106aaf8",
-            "type" : "SOURCE",
-            "value" : "accountant"
-          },
-          "uuid" : "6a099125e1614e4c9024bff6c6159f49",
-          "entitlementitlementAggregated" : "true",
-          "segments" : [ "[students]", "[students]" ],
-          "directPermissions" : [ {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          }, {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          } ],
-          "idnServiceApp" : "AppName123",
-          "modified" : "2015-05-28T14:07:17Z",
-          "sourceSchemaObjectType" : "group",
-          "id" : "id12345",
-          "attribute" : "authorizationType",
-          "value" : "CN=Users,dc=sailpoint,dc=com",
-          "owner" : {
-            "name" : "identity 1",
-            "id" : "2a2fdacca5e345f18bf7970cfbb8fec2",
-            "type" : "IDENTITY"
-          },
-          "lastRefresh" : "2022-06-24T16:12:53.389386Z",
-          "created" : "2015-05-28T14:07:17Z",
-          "privileged" : true,
-          "inheritFrom" : [ "[a9ced5a52d284b83a7f5595873d35b4e]", "[a9ced5a52d284b83a7f5595873d35b4e]" ],
-          "name" : "aName",
-          "attributes" : "{cn=Human Resources-bchun2, owner=CN=Fritz.8349b2f31e67,OU=flatfileAD,dc=flatfile,dc=endtoend,dc=com, objectguid=objectguidHuman-Resources-bchun2, description=HR-desc, sysDescriptions={en_US=HR-desc}, entitlementAggregated=true}",
-          "requestable" : true,
-          "isGroup" : true,
-          "cloudGoverned" : true,
-          "hash" : "5c8b309fa18a2c76d7fbee2b9e00dba99e4c82de"
-        }`) // EntitlementDTO | 
-
-          
-          var entitlementDTO v2026.EntitlementDTO
-          if err := json.Unmarshal(entitlementdto, &entitlementDTO); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.EntitlementsAPI.CreateEntitlement(context.Background()).EntitlementDTO(entitlementDTO).Execute()
-          //resp, r, err := apiClient.V2026.EntitlementsAPI.CreateEntitlement(context.Background()).EntitlementDTO(entitlementDTO).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.CreateEntitlement``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `CreateEntitlement`: []EntitlementDTO
-          fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.CreateEntitlement`: %v\n", resp)
-        }
 - path: /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
   method: Delete
   xCodeSample:
@@ -11430,6 +11338,40 @@
             fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
+        }
+- path: /entitlements/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/entitlements#get-entitlement
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2c91808874ff91550175097daaec161c` // string | The entitlement ID # string | The entitlement ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2026.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlement``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetEntitlement`: EntitlementV2
+          fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.GetEntitlement`: %v\n", resp)
         }
 - path: /entitlements/{id}/entitlement-request-config
   method: Get
@@ -11537,7 +11479,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementChildren``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListEntitlementChildren`: []Entitlement
+          // response from `ListEntitlementChildren`: []EntitlementV2
           fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementChildren`: %v\n", resp)
         }
 - path: /entitlements/{id}/parents
@@ -11577,7 +11519,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementParents``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListEntitlementParents`: []Entitlement
+          // response from `ListEntitlementParents`: []EntitlementV2
           fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementParents`: %v\n", resp)
         }
 - path: /entitlements
@@ -11598,15 +11540,15 @@
         )
 
         func main() {
-          accountId := `ef38f94347e94562b5bb8424a56397d8` // string | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional) # string | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional)
-          segmentedForIdentity := `e554098913544630b5985e9042f5e44b` // string | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional) # string | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional)
-          forSegmentIds := `041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649` // string | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional) # string | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional)
+          segmentedForIdentity := `e554098913544630b5985e9042f5e44b` // string | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional) # string | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional)
+          forSegmentIds := `041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649` // string | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional) # string | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional)
           includeUnsegmented := true // bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to true) # bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to true)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
-          filters := `attribute eq "memberOf"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional)
+          searchAfter := `Account Payable,2c91808375d8e80a0175e1f88a575221` // string | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional) # string | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional)
+          sorters := `name,id` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
+          filters := `attribute eq "memberOf"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional)
 
           
 
@@ -11614,12 +11556,12 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.V2026.EntitlementsAPI.ListEntitlements(context.Background()).Execute()
-          //resp, r, err := apiClient.V2026.EntitlementsAPI.ListEntitlements(context.Background()).AccountId(accountId).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+          //resp, r, err := apiClient.V2026.EntitlementsAPI.ListEntitlements(context.Background()).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlements``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListEntitlements`: []Entitlement
+          // response from `ListEntitlements`: []EntitlementV2
           fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlements`: %v\n", resp)
         }
 - path: /entitlements/account/{accountId}/entitlements
@@ -11658,8 +11600,43 @@
             fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementsByAccount``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListEntitlementsByAccount`: []Entitlement
+          // response from `ListEntitlementsByAccount`: []EntitlementV2
           fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementsByAccount`: %v\n", resp)
+        }
+- path: /entitlements/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/entitlements#patch-entitlement
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2c91808a7813090a017814121e121518` // string | ID of the entitlement to patch # string | ID of the entitlement to patch
+          jsonpatchoperation := []byte(`[{op=add, path=/segments/-, value=f7b1b8a3-5fed-4fd4-ad29-82014e137e19}]`) // []JsonPatchOperation |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
+          //resp, r, err := apiClient.V2026.EntitlementsAPI.PatchEntitlement(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PatchEntitlement``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchEntitlement`: EntitlementV2
+          fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.PatchEntitlement`: %v\n", resp)
         }
 - path: /entitlements/{id}/entitlement-request-config
   method: Put
@@ -11785,12 +11762,12 @@
           "entitlementIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
           "jsonPatch" : [ {
             "op" : "replace",
-            "path" : "/privileged",
+            "path" : "/requestable",
             "value" : false
           }, {
             "op" : "replace",
-            "path" : "/requestable",
-            "value" : false
+            "path" : "/privilegeOverride/level",
+            "value" : "HIGH"
           } ]
         }`) // EntitlementBulkUpdateRequest | 
 
@@ -17931,8 +17908,19 @@
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            machineidentityrequest := []byte(`{
           "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "subtype" : "Application",
           "created" : "2015-05-28T14:07:17Z",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
           "description" : "",
+          "attributes" : "{\"Region\":\"EU\"}",
           "owners" : {
             "primaryIdentity" : "{}",
             "secondaryIdentities" : [ {
@@ -17945,21 +17933,9 @@
               "type" : "IDENTITY"
             } ]
           },
+          "id" : "id12345",
           "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
-          "nativeIdentity" : "abc:123:dddd",
-          "subtype" : "Application",
-          "businessApplication" : "ADService",
-          "userEntitlements" : [ {
-            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
-            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
-          }, {
-            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
-            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
-          } ],
-          "name" : "aName",
-          "modified" : "2015-05-28T14:07:17Z",
-          "attributes" : "{\"Region\":\"EU\"}",
-          "id" : "id12345"
+          "nativeIdentity" : "abc:123:dddd"
         }`) // MachineIdentityRequest | 
 
           
@@ -18069,8 +18045,8 @@
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
-          sorters := `businessApplication` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
+          filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
+          sorters := `nativeIdentity` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -32084,76 +32060,6 @@
           // response from `ListTags`: []Tag
           fmt.Fprintf(os.Stdout, "Response from `TagsAPI.ListTags`: %v\n", resp)
         }
-- path: /task-status/pending-tasks
-  method: Head
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/task-management#get-pending-task-headers
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-            
-            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-        )
-
-        func main() {
-          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2026.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
-          //r, err := apiClient.V2026.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetPendingTaskHeaders``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-        }
-- path: /task-status/pending-tasks
-  method: Get
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/task-management#get-pending-tasks
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-            
-            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-        )
-
-        func main() {
-          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
-          //resp, r, err := apiClient.V2026.TaskManagementAPI.GetPendingTasks(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetPendingTasks``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `GetPendingTasks`: []TaskStatus
-          fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetPendingTasks`: %v\n", resp)
-        }
 - path: /task-status/{id}
   method: Get
   xCodeSample:
@@ -32173,14 +32079,15 @@
 
         func main() {
           id := `00eebcf881994e419d72e757fd30dc0e` // string | Task ID. # string | Task ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
-          //resp, r, err := apiClient.V2026.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
+          resp, r, err := apiClient.V2026.TaskManagementAPI.GetTaskStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.TaskManagementAPI.GetTaskStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatus``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -32210,7 +32117,7 @@
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-          filters := `completionStatus eq "Success"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional)
+          filters := `type eq "CLOUD_ACCOUNT_AGGREGATION" and completionStatus isnull` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional)
           sorters := `-created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional)
 
           
@@ -32246,6 +32153,7 @@
 
         func main() {
           id := `00eebcf881994e419d72e757fd30dc0e` // string | Task ID. # string | Task ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
           
@@ -32259,8 +32167,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2026.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2026.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatus``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
