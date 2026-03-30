@@ -385,13 +385,6 @@ type ApiGetMachineAccountRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetMachineAccountRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineAccountRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetMachineAccountRequest) Execute() (*MachineAccount, *http.Response, error) {
@@ -436,15 +429,6 @@ func (a *MachineAccountsAPIService) GetMachineAccountExecute(r ApiGetMachineAcco
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -463,7 +447,6 @@ func (a *MachineAccountsAPIService) GetMachineAccountExecute(r ApiGetMachineAcco
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1154,18 +1137,11 @@ func (a *MachineAccountsAPIService) ListMachineAccountSubtypesExecute(r ApiListM
 type ApiListMachineAccountsRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiListMachineAccountsRequest) XSailPointExperimental(xSailPointExperimental string) ApiListMachineAccountsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1237,15 +1213,6 @@ func (a *MachineAccountsAPIService) ListMachineAccountsExecute(r ApiListMachineA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -1288,7 +1255,6 @@ func (a *MachineAccountsAPIService) ListMachineAccountsExecute(r ApiListMachineA
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1592,14 +1558,7 @@ type ApiUpdateMachineAccountRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
 	id string
-	xSailPointExperimental *string
 	requestBody *[]map[string]interface{}
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateMachineAccountRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateMachineAccountRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
@@ -1651,21 +1610,6 @@ func (a *MachineAccountsAPIService) UpdateMachineAccountExecute(r ApiUpdateMachi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.requestBody == nil {
 		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
 	}
@@ -1687,7 +1631,6 @@ func (a *MachineAccountsAPIService) UpdateMachineAccountExecute(r ApiUpdateMachi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.requestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

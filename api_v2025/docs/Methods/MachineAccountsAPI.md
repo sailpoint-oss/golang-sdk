@@ -194,17 +194,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-machine-account
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Machine account details
 Use this API to return the details for a single machine account by its ID.  
 
@@ -226,7 +215,6 @@ Other parameters are passed through a pointer to a apiGetMachineAccountRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -253,14 +241,13 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.MachineAccountsAPI.GetMachineAccount(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.GetMachineAccount(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.V2025.MachineAccountsAPI.GetMachineAccount(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.GetMachineAccount(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccount``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -523,17 +510,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-machine-accounts
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Machine accounts list
 This returns a list of machine accounts.  
 
@@ -550,7 +526,6 @@ Other parameters are passed through a pointer to a apiListMachineAccountsRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -581,7 +556,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -592,8 +566,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.MachineAccountsAPI.ListMachineAccounts(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.ListMachineAccounts(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.V2025.MachineAccountsAPI.ListMachineAccounts(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.ListMachineAccounts(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.ListMachineAccounts``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -696,17 +670,6 @@ func main() {
 [[Back to top]](#)
 
 ## update-machine-account
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Update a machine account
 Use this API to update machine accounts details. 
 
@@ -729,7 +692,6 @@ Other parameters are passed through a pointer to a apiUpdateMachineAccountReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **requestBody** | **[]map[string]interface{}** | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes | 
 
 ### Return type
@@ -757,7 +719,6 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Account ID. # string | Machine Account ID.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{op=add, path=/environment, value=test}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
 
     var requestBody []v2025.RequestBody
@@ -769,8 +730,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2025.MachineAccountsAPI.UpdateMachineAccount(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.UpdateMachineAccount(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.V2025.MachineAccountsAPI.UpdateMachineAccount(context.Background(), id).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.V2025.MachineAccountsAPI.UpdateMachineAccount(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccount``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
