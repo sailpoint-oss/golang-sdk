@@ -17896,12 +17896,17 @@ paths:
             error.
       security:
       - userAuth:
+        - idn:identity:process
         - idn:identity:manage
       - applicationAuth:
+        - idn:identity:process
         - idn:identity:manage
       summary: Process a list of identityids
       tags:
       - Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
   /identities/{identityId}/reset:
     post:
       description: Use this endpoint to reset a user's identity if they have forgotten
