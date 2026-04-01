@@ -27996,7 +27996,6 @@ paths:
       - SOURCE_SUBADMIN
       - ROLE_ADMIN
       - ROLE_SUBADMIN
-      - HELPDESK
   /search/count:
     post:
       description: Performs a search with a provided query and returns the count of
@@ -28386,7 +28385,6 @@ paths:
       - SOURCE_SUBADMIN
       - ROLE_ADMIN
       - ROLE_SUBADMIN
-      - HELPDESK
   /segments:
     get:
       description: 'This API returns a list of all segments. '
