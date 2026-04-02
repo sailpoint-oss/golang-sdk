@@ -26,15 +26,8 @@ type AccountDeletionRequestsAPIService service
 type ApiDeleteAccountRequestRequest struct {
 	ctx context.Context
 	ApiService *AccountDeletionRequestsAPIService
-	xSailPointExperimental *string
 	accountId string
 	accountDeleteRequestInput *AccountDeleteRequestInput
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteAccountRequestRequest) XSailPointExperimental(xSailPointExperimental string) ApiDeleteAccountRequestRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteAccountRequestRequest) AccountDeleteRequestInput(accountDeleteRequestInput AccountDeleteRequestInput) ApiDeleteAccountRequestRequest {
@@ -87,15 +80,6 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestExecute(r ApiDel
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -114,7 +98,6 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestExecute(r ApiDel
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.accountDeleteRequestInput
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -222,17 +205,10 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestExecute(r ApiDel
 type ApiGetAccountDeletionRequestsRequest struct {
 	ctx context.Context
 	ApiService *AccountDeletionRequestsAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	mine *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetAccountDeletionRequestsRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetAccountDeletionRequestsRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -298,15 +274,6 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -349,7 +316,6 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsExecute(r 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

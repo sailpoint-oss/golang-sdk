@@ -1688,14 +1688,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaReq
 type ApiGetAccountDeleteApprovalConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	xSailPointExperimental *string
 	sourceId string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetAccountDeleteApprovalConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetAccountDeleteApprovalConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetAccountDeleteApprovalConfigRequest) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
@@ -1741,15 +1734,6 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigExecute(r ApiGetAccoun
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1768,7 +1752,6 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigExecute(r ApiGetAccoun
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2369,14 +2352,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaExecute(r ApiGetEntitlementsSch
 type ApiGetMachineAccountDeletionApprovalConfigBySourceRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	xSailPointExperimental *string
 	sourceId string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetMachineAccountDeletionApprovalConfigBySourceRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineAccountDeletionApprovalConfigBySourceRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetMachineAccountDeletionApprovalConfigBySourceRequest) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
@@ -2421,15 +2397,6 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2448,7 +2415,6 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceExecu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8373,15 +8339,8 @@ func (a *SourcesAPIService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 type ApiUpdateAccountDeletionApprovalConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	xSailPointExperimental *string
 	sourceId string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateAccountDeletionApprovalConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateAccountDeletionApprovalConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -8433,21 +8392,6 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigExecute(r ApiUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -8469,7 +8413,6 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigExecute(r ApiUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -8577,15 +8520,8 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigExecute(r ApiUpda
 type ApiUpdateMachineAccountDeletionApprovalConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
-	xSailPointExperimental *string
 	sourceId string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateMachineAccountDeletionApprovalConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateMachineAccountDeletionApprovalConfigRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -8640,21 +8576,6 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -8676,7 +8597,6 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigExecute(r 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

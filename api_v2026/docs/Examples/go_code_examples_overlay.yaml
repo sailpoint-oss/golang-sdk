@@ -2158,7 +2158,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           accountId := `ef38f94347e94562b5bb8424a56498d8` // string | Account ID. # string | Account ID.
            accountdeleterequestinput := []byte(`{
           "comments" : "Requesting account deletion request"
@@ -2169,8 +2168,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.DeleteAccountRequest(context.Background(), accountId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.DeleteAccountRequest(context.Background(), accountId).XSailPointExperimental(xSailPointExperimental).AccountDeleteRequestInput(accountDeleteRequestInput).Execute()
+          resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.DeleteAccountRequest(context.Background(), accountId).Execute()
+          //resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.DeleteAccountRequest(context.Background(), accountId).AccountDeleteRequestInput(accountDeleteRequestInput).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.DeleteAccountRequest``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2196,7 +2195,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -2207,8 +2205,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Mine(mine).Execute()
+          resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).Execute()
+          //resp, r, err := apiClient.V2026.AccountDeletionRequestsAPI.GetAccountDeletionRequests(context.Background()).Limit(limit).Offset(offset).Count(count).Mine(mine).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.GetAccountDeletionRequests``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -17431,7 +17429,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           subtypeId := `ef38f94347e94562b5bb8424a56498d8` // string | machine subtype id. # string | machine subtype id.
 
           
@@ -17439,8 +17436,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -17701,7 +17698,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
@@ -17716,8 +17712,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -29345,7 +29341,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           sourceId := `ha38f94347e94562b5bb8424a56498d8` // string | The Source id # string | The Source id
 
           
@@ -29353,8 +29348,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.V2026.SourcesAPI.GetAccountDeleteApprovalConfig(context.Background(), sourceId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountDeleteApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -29479,7 +29474,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           sourceId := `gt38f94347e94562b5bb8424a56498d8` // string | source id. # string | source id.
 
           
@@ -29487,8 +29481,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.V2026.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource(context.Background(), sourceId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySource``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -30880,7 +30874,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | Human account source ID. # string | Human account source ID.
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
@@ -30895,8 +30888,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.SourcesAPI.UpdateAccountDeletionApprovalConfig(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateAccountDeletionApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -30922,7 +30915,6 @@
         )
 
         func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account source ID. # string | machine account source ID.
           jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
@@ -30937,8 +30929,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.SourcesAPI.UpdateMachineAccountDeletionApprovalConfig(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateMachineAccountDeletionApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
