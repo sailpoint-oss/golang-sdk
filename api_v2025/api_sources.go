@@ -921,7 +921,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2223,7 +2223,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6397,7 +6397,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/native-change-detection-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
