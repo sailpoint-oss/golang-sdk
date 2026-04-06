@@ -392,7 +392,7 @@ func (r ApiGetMachineAccountRequest) Execute() (*MachineAccount, *http.Response,
 }
 
 /*
-GetMachineAccount Machine account details
+GetMachineAccount Get machine account details
 
 Use this API to return the details for a single machine account by its ID.  
 
@@ -1179,7 +1179,7 @@ func (r ApiListMachineAccountsRequest) Execute() ([]MachineAccount, *http.Respon
 }
 
 /*
-ListMachineAccounts Machine accounts list
+ListMachineAccounts List machine accounts
 
 This returns a list of machine accounts.  
 
@@ -1572,7 +1572,7 @@ func (r ApiUpdateMachineAccountRequest) Execute() (*MachineAccount, *http.Respon
 }
 
 /*
-UpdateMachineAccount Update a machine account
+UpdateMachineAccount Update machine account details
 
 Use this API to update machine accounts details. 
 

@@ -15,11 +15,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create-machine-identity**](#create-machine-identity) | **Post** `/machine-identities` | Create machine identities
+[**create-machine-identity**](#create-machine-identity) | **Post** `/machine-identities` | Create machine identity
 [**delete-machine-identity**](#delete-machine-identity) | **Delete** `/machine-identities/{id}` | Delete machine identity
-[**get-machine-identity**](#get-machine-identity) | **Get** `/machine-identities/{id}` | Machine identity details
+[**get-machine-identity**](#get-machine-identity) | **Get** `/machine-identities/{id}` | Get machine identity details
 [**list-machine-identities**](#list-machine-identities) | **Get** `/machine-identities` | List machine identities
-[**update-machine-identity**](#update-machine-identity) | **Patch** `/machine-identities/{id}` | Update a machine identity
+[**update-machine-identity**](#update-machine-identity) | **Patch** `/machine-identities/{id}` | Update machine identity details
 
 
 ## create-machine-identity
@@ -34,7 +34,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Create machine identities
+Create machine identity
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
 
@@ -202,7 +202,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine identity details
+Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/get-machine-identity)
@@ -364,7 +364,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Update a machine identity
+Update machine identity details
 Use this API to update machine identity details.
 
 

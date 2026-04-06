@@ -15,13 +15,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create-machine-identity**](#create-machine-identity) | **Post** `/machine-identities` | Create machine identities
+[**create-machine-identity**](#create-machine-identity) | **Post** `/machine-identities` | Create machine identity
 [**delete-machine-identity**](#delete-machine-identity) | **Delete** `/machine-identities/{id}` | Delete machine identity
-[**get-machine-identity**](#get-machine-identity) | **Get** `/machine-identities/{id}` | Machine identity details
+[**get-machine-identity**](#get-machine-identity) | **Get** `/machine-identities/{id}` | Get machine identity details
 [**list-machine-identities**](#list-machine-identities) | **Get** `/machine-identities` | List machine identities
 [**list-machine-identity-user-entitlements**](#list-machine-identity-user-entitlements) | **Get** `/machine-identity-user-entitlements` | List machine identity&#39;s user entitlements
-[**start-machine-identity-aggregation**](#start-machine-identity-aggregation) | **Post** `/sources/{sourceId}/aggregate-agents` | Start Machine Identity (AI Agent) Aggregation
-[**update-machine-identity**](#update-machine-identity) | **Patch** `/machine-identities/{id}` | Update a machine identity
+[**start-machine-identity-aggregation**](#start-machine-identity-aggregation) | **Post** `/sources/{sourceId}/aggregate-agents` | Start machine identity aggregation
+[**update-machine-identity**](#update-machine-identity) | **Patch** `/machine-identities/{id}` | Update machine identity details
 
 
 ## create-machine-identity
@@ -36,7 +36,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Create machine identities
+Create machine identity
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
 
@@ -225,7 +225,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine identity details
+Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/get-machine-identity)
@@ -470,8 +470,8 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Start Machine Identity (AI Agent) Aggregation
-Use this API to aggregate machine identities (AI Agents).
+Start machine identity aggregation
+Starts a machine identity (AI Agents) aggregation on the specified source.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/start-machine-identity-aggregation)
 
@@ -552,7 +552,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Update a machine identity
+Update machine identity details
 Use this API to update machine identity details.
 
 

@@ -399,7 +399,7 @@ func (r ApiGetMachineAccountRequest) Execute() (*MachineAccount, *http.Response,
 }
 
 /*
-GetMachineAccount Machine account details
+GetMachineAccount Get machine account details
 
 Use this API to return the details for a single machine account by its ID.  
 
@@ -569,7 +569,14 @@ func (a *MachineAccountsAPIService) GetMachineAccountExecute(r ApiGetMachineAcco
 type ApiGetMachineAccountDeletionSubTypeApprovalConfigRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
+	xSailPointExperimental *string
 	subtypeId string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetMachineAccountDeletionSubTypeApprovalConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineAccountDeletionSubTypeApprovalConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetMachineAccountDeletionSubTypeApprovalConfigRequest) Execute() (*MachineAccountSubTypeConfigDto, *http.Response, error) {
@@ -614,6 +621,15 @@ func (a *MachineAccountsAPIService) GetMachineAccountDeletionSubTypeApprovalConf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -632,6 +648,7 @@ func (a *MachineAccountsAPIService) GetMachineAccountDeletionSubTypeApprovalConf
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1371,7 +1388,7 @@ func (r ApiListMachineAccountsRequest) Execute() ([]MachineAccount, *http.Respon
 }
 
 /*
-ListMachineAccounts Machine accounts list
+ListMachineAccounts List machine accounts
 
 This returns a list of machine accounts.  
 
@@ -1781,7 +1798,7 @@ func (r ApiUpdateMachineAccountRequest) Execute() (*MachineAccount, *http.Respon
 }
 
 /*
-UpdateMachineAccount Update a machine account
+UpdateMachineAccount Update machine account details
 
 Use this API to update machine accounts details. 
 
@@ -1963,8 +1980,15 @@ func (a *MachineAccountsAPIService) UpdateMachineAccountExecute(r ApiUpdateMachi
 type ApiUpdateMachineAccountDeletionBySubTypeApprovalConfigRequest struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
+	xSailPointExperimental *string
 	subtypeId string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiUpdateMachineAccountDeletionBySubTypeApprovalConfigRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateMachineAccountDeletionBySubTypeApprovalConfigRequest {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The JSONPatch payload used to update the object.
@@ -2015,6 +2039,21 @@ func (a *MachineAccountsAPIService) UpdateMachineAccountDeletionBySubTypeApprova
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -2036,6 +2075,7 @@ func (a *MachineAccountsAPIService) UpdateMachineAccountDeletionBySubTypeApprova
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

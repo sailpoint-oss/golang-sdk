@@ -15,11 +15,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**send-classify-machine-account**](#send-classify-machine-account) | **Post** `/accounts/{id}/classify` | Classify a Single Machine Account
+[**send-classify-machine-account**](#send-classify-machine-account) | **Post** `/accounts/{id}/classify` | Classify single machine account
 
 
 ## send-classify-machine-account
-Classify a Single Machine Account
+Classify single machine account
 Use this API to classify a single machine account.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

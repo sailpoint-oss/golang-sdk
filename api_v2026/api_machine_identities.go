@@ -46,7 +46,7 @@ func (r ApiCreateMachineIdentityRequest) Execute() (*MachineIdentityResponse, *h
 }
 
 /*
-CreateMachineIdentity Create machine identities
+CreateMachineIdentity Create machine identity
 
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
@@ -414,7 +414,7 @@ func (r ApiGetMachineIdentityRequest) Execute() (*MachineIdentityResponse, *http
 }
 
 /*
-GetMachineIdentity Machine identity details
+GetMachineIdentity Get machine identity details
 
 This API returns a single machine identity using the Machine Identity ID.
 
@@ -1084,9 +1084,9 @@ func (r ApiStartMachineIdentityAggregationRequest) Execute() (*MachineIdentityAg
 }
 
 /*
-StartMachineIdentityAggregation Start Machine Identity (AI Agent) Aggregation
+StartMachineIdentityAggregation Start machine identity aggregation
 
-Use this API to aggregate machine identities (AI Agents).
+Starts a machine identity (AI Agents) aggregation on the specified source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartMachineIdentityAggregationRequest
@@ -1284,7 +1284,7 @@ func (r ApiUpdateMachineIdentityRequest) Execute() (*MachineIdentityResponse, *h
 }
 
 /*
-UpdateMachineIdentity Update a machine identity
+UpdateMachineIdentity Update machine identity details
 
 Use this API to update machine identity details.
 

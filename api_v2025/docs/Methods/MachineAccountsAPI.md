@@ -17,13 +17,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype**](#create-machine-account-subtype) | **Post** `/sources/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype**](#delete-machine-account-subtype) | **Delete** `/sources/{sourceId}/subtypes/{technicalName}` | Delete subtype
-[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Machine account details
+[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Get machine account details
 [**get-machine-account-subtype-by-id**](#get-machine-account-subtype-by-id) | **Get** `/sources/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name**](#get-machine-account-subtype-by-technical-name) | **Get** `/sources/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**list-machine-account-subtypes**](#list-machine-account-subtypes) | **Get** `/sources/{sourceId}/subtypes` | Retrieve all subtypes by source
-[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | Machine accounts list
+[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | List machine accounts
 [**patch-machine-account-subtype**](#patch-machine-account-subtype) | **Patch** `/sources/{sourceId}/subtypes/{technicalName}` | Patch subtype
-[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update a machine account
+[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update machine account details
 
 
 ## create-machine-account-subtype
@@ -194,7 +194,7 @@ func main() {
 [[Back to top]](#)
 
 ## get-machine-account
-Machine account details
+Get machine account details
 Use this API to return the details for a single machine account by its ID.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/get-machine-account)
@@ -510,7 +510,7 @@ func main() {
 [[Back to top]](#)
 
 ## list-machine-accounts
-Machine accounts list
+List machine accounts
 This returns a list of machine accounts.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/list-machine-accounts)
@@ -670,7 +670,7 @@ func main() {
 [[Back to top]](#)
 
 ## update-machine-account
-Update a machine account
+Update machine account details
 Use this API to update machine accounts details. 
 
 

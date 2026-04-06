@@ -41,7 +41,7 @@ func (r ApiSendClassifyMachineAccountRequest) Execute() (*SendClassifyMachineAcc
 }
 
 /*
-SendClassifyMachineAccount Classify a Single Machine Account
+SendClassifyMachineAccount Classify single machine account
 
 Use this API to classify a single machine account.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.

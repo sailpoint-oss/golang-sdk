@@ -15,9 +15,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Machine account details
-[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | Machine accounts list
-[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update a machine account
+[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Get machine account details
+[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | List machine accounts
+[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update machine account details
 
 
 ## get-machine-account
@@ -32,7 +32,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine account details
+Get machine account details
 Use this API to return the details for a single machine account by its ID.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/get-machine-account)
@@ -111,7 +111,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine accounts list
+List machine accounts
 This returns a list of machine accounts.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/list-machine-accounts)
@@ -194,7 +194,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Update a machine account
+Update machine account details
 Use this API to update machine accounts details. 
 
 

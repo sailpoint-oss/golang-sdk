@@ -17,14 +17,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype**](#create-machine-account-subtype) | **Post** `/sources/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype**](#delete-machine-account-subtype) | **Delete** `/sources/{sourceId}/subtypes/{technicalName}` | Delete subtype
-[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Machine account details
+[**get-machine-account**](#get-machine-account) | **Get** `/machine-accounts/{id}` | Get machine account details
 [**get-machine-account-deletion-sub-type-approval-config**](#get-machine-account-deletion-sub-type-approval-config) | **Get** `/source-subtypes/{subtypeId}/machine-config` | Machine Subtype Approval Config
 [**get-machine-account-subtype-by-id**](#get-machine-account-subtype-by-id) | **Get** `/sources/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name**](#get-machine-account-subtype-by-technical-name) | **Get** `/sources/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**list-machine-account-subtypes**](#list-machine-account-subtypes) | **Get** `/sources/{sourceId}/subtypes` | Retrieve all subtypes by source
-[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | Machine accounts list
+[**list-machine-accounts**](#list-machine-accounts) | **Get** `/machine-accounts` | List machine accounts
 [**patch-machine-account-subtype**](#patch-machine-account-subtype) | **Patch** `/sources/{sourceId}/subtypes/{technicalName}` | Patch subtype
-[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update a machine account
+[**update-machine-account**](#update-machine-account) | **Patch** `/machine-accounts/{id}` | Update machine account details
 [**update-machine-account-deletion-by-sub-type-approval-config**](#update-machine-account-deletion-by-sub-type-approval-config) | **Patch** `/source-subtypes/{subtypeId}/machine-config` | Machine Subtype Approval Config
 
 
@@ -207,7 +207,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine account details
+Get machine account details
 Use this API to return the details for a single machine account by its ID.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/get-machine-account)
@@ -275,6 +275,17 @@ func main() {
 [[Back to top]](#)
 
 ## get-machine-account-deletion-sub-type-approval-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Machine Subtype Approval Config
 This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
 
@@ -295,6 +306,7 @@ Other parameters are passed through a pointer to a apiGetMachineAccountDeletionS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 
 ### Return type
@@ -321,14 +333,15 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subtypeId := `ef38f94347e94562b5bb8424a56498d8` // string | machine subtype id. # string | machine subtype id.
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).Execute()
-	  //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).Execute()
+    resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -602,7 +615,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Machine accounts list
+List machine accounts
 This returns a list of machine accounts.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/list-machine-accounts)
@@ -775,7 +788,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.Experimental = true
  ```
 :::
-Update a machine account
+Update machine account details
 Use this API to update machine accounts details. 
 
 
@@ -851,6 +864,17 @@ func main() {
 [[Back to top]](#)
 
 ## update-machine-account-deletion-by-sub-type-approval-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Machine Subtype Approval Config
 Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
 
@@ -871,6 +895,7 @@ Other parameters are passed through a pointer to a apiUpdateMachineAccountDeleti
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
 
@@ -898,6 +923,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
     jsonpatchoperation := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
@@ -910,8 +936,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).JsonPatchOperation(jsonPatchOperation).Execute()
-	  //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
