@@ -36,14 +36,14 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService DeleteMachineAccountSubtype", func(t *testing.T) {
+	t.Run("Test MachineAccountsAPIService DeleteMachineAccountSubtypeByTechnicalName", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 		var technicalName string
 
-		httpRes, err := apiClient.MachineAccountsAPI.DeleteMachineAccountSubtype(context.Background(), sourceId, technicalName).Execute()
+		httpRes, err := apiClient.MachineAccountsAPI.DeleteMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -64,13 +64,13 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService GetMachineAccountDeletionSubTypeApprovalConfig", func(t *testing.T) {
+	t.Run("Test MachineAccountsAPIService GetMachineAccountSubtypeApprovalConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var subtypeId string
 
-		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).Execute()
+		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -133,14 +133,26 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService PatchMachineAccountSubtype", func(t *testing.T) {
+	t.Run("Test MachineAccountsAPIService LoadBulkSourceSubtypes", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.LoadBulkSourceSubtypes(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService PatchMachineAccountSubtypeByTechnicalName", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 		var technicalName string
 
-		resp, httpRes, err := apiClient.MachineAccountsAPI.PatchMachineAccountSubtype(context.Background(), sourceId, technicalName).Execute()
+		resp, httpRes, err := apiClient.MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -162,13 +174,13 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService UpdateMachineAccountDeletionBySubTypeApprovalConfig", func(t *testing.T) {
+	t.Run("Test MachineAccountsAPIService UpdateMachineAccountSubtypeApprovalConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var subtypeId string
 
-		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).Execute()
+		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

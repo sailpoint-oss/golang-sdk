@@ -25,6 +25,7 @@ const (
 	ACCOUNTREQUESTPHASESTATE_REJECTED AccountRequestPhaseState = "REJECTED"
 	ACCOUNTREQUESTPHASESTATE_PASSED AccountRequestPhaseState = "PASSED"
 	ACCOUNTREQUESTPHASESTATE_FAILED AccountRequestPhaseState = "FAILED"
+	ACCOUNTREQUESTPHASESTATE_NOT_STARTED AccountRequestPhaseState = "NOT_STARTED"
 )
 
 // All allowed values of AccountRequestPhaseState enum
@@ -35,6 +36,7 @@ var AllowedAccountRequestPhaseStateEnumValues = []AccountRequestPhaseState{
 	"REJECTED",
 	"PASSED",
 	"FAILED",
+	"NOT_STARTED",
 }
 
 func (v *AccountRequestPhaseState) UnmarshalJSON(src []byte) error {

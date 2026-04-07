@@ -26,4 +26,6 @@ tags: ['SDK', 'Software Development Kit', 'AccountRequestPhaseState', 'V2026Acco
 
 * `FAILED` (value: `"FAILED"`)
 
+* `NOT_STARTED` (value: `"NOT_STARTED"`)
+
 

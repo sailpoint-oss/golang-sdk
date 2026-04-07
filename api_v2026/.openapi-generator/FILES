@@ -54,7 +54,9 @@ api_identity_profiles.go
 api_launchers.go
 api_lifecycle_states.go
 api_machine_account_classify.go
+api_machine_account_creation_request.go
 api_machine_account_mappings.go
+api_machine_account_subtypes.go
 api_machine_accounts.go
 api_machine_classification_config.go
 api_machine_identities.go
@@ -241,7 +243,6 @@ docs/AccountCorrelatedIdentity.md
 docs/AccountCorrelatedSource.md
 docs/AccountCreated.md
 docs/AccountCreatedEvent.md
-docs/AccountDeleteAsyncResult.md
 docs/AccountDeleteConfigDto.md
 docs/AccountDeleteRequestInput.md
 docs/AccountDeleted.md
@@ -253,6 +254,9 @@ docs/AccountInfoDto.md
 docs/AccountInfoRef.md
 docs/AccountItemRef.md
 docs/AccountRequest.md
+docs/AccountRequestAsyncResult.md
+docs/AccountRequestDetailsDto.md
+docs/AccountRequestDetailsDtoRequester.md
 docs/AccountRequestInfo.md
 docs/AccountRequestPhase.md
 docs/AccountRequestPhaseState.md
@@ -897,11 +901,18 @@ docs/MFAConfigurationAPIdeveloperSite_code_examples.yaml
 docs/MachineAccount.md
 docs/MachineAccountClassifyAPI.md
 docs/MachineAccountClassifyAPIdeveloperSite_code_examples.yaml
+docs/MachineAccountCreateAccessDto.md
+docs/MachineAccountCreateAccessDtoSubtypesInner.md
+docs/MachineAccountCreateRequestInput.md
+docs/MachineAccountCreationRequestAPI.md
+docs/MachineAccountCreationRequestAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountMappingsAPI.md
 docs/MachineAccountMappingsAPIdeveloperSite_code_examples.yaml
-docs/MachineAccountSubTypeConfigDto.md
-docs/MachineAccountSubTypeConfigDtoMachineAccountCreate.md
-docs/MachineAccountSubTypeConfigDtoMachineAccountDelete.md
+docs/MachineAccountSubtypeConfigDto.md
+docs/MachineAccountSubtypeConfigDtoMachineAccountCreate.md
+docs/MachineAccountSubtypeConfigDtoMachineAccountDelete.md
+docs/MachineAccountSubtypesAPI.md
+docs/MachineAccountSubtypesAPIdeveloperSite_code_examples.yaml
 docs/MachineAccountsAPI.md
 docs/MachineAccountsAPIdeveloperSite_code_examples.yaml
 docs/MachineClassificationConfig.md
@@ -939,6 +950,7 @@ docs/MachineIdentityUserEntitlementResponse.md
 docs/MachineIdentityUserEntitlementResponseEntitlement.md
 docs/MachineIdentityUserEntitlementResponseSource.md
 docs/MachineIdentityUserEntitlements.md
+docs/MachineSubtypeApprovalConfig.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -1464,6 +1476,8 @@ docs/SourcePasswordPoliciesInner.md
 docs/SourceSchedule.md
 docs/SourceSchemasInner.md
 docs/SourceSubtype.md
+docs/SourceSubtypeWithSource.md
+docs/SourceSubtypeWithSourceSource.md
 docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
 docs/SourceUpdated.md
@@ -1767,7 +1781,6 @@ model_account_correlated_identity.go
 model_account_correlated_source.go
 model_account_created.go
 model_account_created_event.go
-model_account_delete_async_result.go
 model_account_delete_config_dto.go
 model_account_delete_request_input.go
 model_account_deleted.go
@@ -1777,6 +1790,9 @@ model_account_info_dto.go
 model_account_info_ref.go
 model_account_item_ref.go
 model_account_request.go
+model_account_request_async_result.go
+model_account_request_details_dto.go
+model_account_request_details_dto_requester.go
 model_account_request_info.go
 model_account_request_phase.go
 model_account_request_phase_state.go
@@ -2335,9 +2351,12 @@ model_localized_message.go
 model_lockout_configuration.go
 model_lookup_step.go
 model_machine_account.go
-model_machine_account_sub_type_config_dto.go
-model_machine_account_sub_type_config_dto_machine_account_create.go
-model_machine_account_sub_type_config_dto_machine_account_delete.go
+model_machine_account_create_access_dto.go
+model_machine_account_create_access_dto_subtypes_inner.go
+model_machine_account_create_request_input.go
+model_machine_account_subtype_config_dto.go
+model_machine_account_subtype_config_dto_machine_account_create.go
+model_machine_account_subtype_config_dto_machine_account_delete.go
 model_machine_classification_config.go
 model_machine_classification_criteria_level1.go
 model_machine_classification_criteria_level2.go
@@ -2369,6 +2388,7 @@ model_machine_identity_user_entitlement_response.go
 model_machine_identity_user_entitlement_response_entitlement.go
 model_machine_identity_user_entitlement_response_source.go
 model_machine_identity_user_entitlements.go
+model_machine_subtype_approval_config.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
@@ -2823,6 +2843,8 @@ model_source_password_policies_inner.go
 model_source_schedule.go
 model_source_schemas_inner.go
 model_source_subtype.go
+model_source_subtype_with_source.go
+model_source_subtype_with_source_source.go
 model_source_sync_job.go
 model_source_sync_payload.go
 model_source_updated.go
@@ -3029,7 +3051,9 @@ test/api_identity_profiles_test.go
 test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_machine_account_classify_test.go
+test/api_machine_account_creation_request_test.go
 test/api_machine_account_mappings_test.go
+test/api_machine_account_subtypes_test.go
 test/api_machine_accounts_test.go
 test/api_machine_classification_config_test.go
 test/api_machine_identities_test.go

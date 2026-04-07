@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountDeleteAsyncResult**](../models/account-delete-async-result)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### HTTP request headers
 
@@ -85,7 +85,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.DeleteAccountRequest``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccountRequest`: AccountDeleteAsyncResult
+    // response from `DeleteAccountRequest`: AccountRequestAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.DeleteAccountRequest`: %v\n", resp)
 }
 ```

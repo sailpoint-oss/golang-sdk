@@ -35,7 +35,7 @@ func (r ApiDeleteAccountRequestRequest) AccountDeleteRequestInput(accountDeleteR
 	return r
 }
 
-func (r ApiDeleteAccountRequestRequest) Execute() (*AccountDeleteAsyncResult, *http.Response, error) {
+func (r ApiDeleteAccountRequestRequest) Execute() (*AccountRequestAsyncResult, *http.Response, error) {
 	return r.ApiService.DeleteAccountRequestExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequest(ctx context.Con
 }
 
 // Execute executes the request
-//  @return AccountDeleteAsyncResult
-func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestExecute(r ApiDeleteAccountRequestRequest) (*AccountDeleteAsyncResult, *http.Response, error) {
+//  @return AccountRequestAsyncResult
+func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestExecute(r ApiDeleteAccountRequestRequest) (*AccountRequestAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AccountDeleteAsyncResult
+		localVarReturnValue  *AccountRequestAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountDeletionRequestsAPIService.DeleteAccountRequest")

@@ -2174,7 +2174,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.DeleteAccountRequest``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `DeleteAccountRequest`: AccountDeleteAsyncResult
+          // response from `DeleteAccountRequest`: AccountRequestAsyncResult
           fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.DeleteAccountRequest`: %v\n", resp)
         }
 - path: /account-requests/deletion
@@ -17110,6 +17110,130 @@
           // response from `SendClassifyMachineAccount`: SendClassifyMachineAccount200Response
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountClassifyAPI.SendClassifyMachineAccount`: %v\n", resp)
         }
+- path: /account-requests/machine-account-create
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-creation-request#create-machine-account-request
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           machineaccountcreaterequestinput := []byte(`{
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }`) // MachineAccountCreateRequestInput | 
+
+          
+          var machineAccountCreateRequestInput v2026.MachineAccountCreateRequestInput
+          if err := json.Unmarshal(machineaccountcreaterequestinput, &machineAccountCreateRequestInput); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.CreateMachineAccountRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.CreateMachineAccountRequest(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.CreateMachineAccountRequest``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineAccountRequest`: AccountRequestAsyncResult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.CreateMachineAccountRequest`: %v\n", resp)
+        }
+- path: /account-requests/machine-account-create/{accountRequestId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-creation-request#get-create-machine-account-request
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          accountRequestId := `gt38f94347e94562b5bb8424a56498d8` // string | Account Request ID # string | Account Request ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequest(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequest(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequest``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCreateMachineAccountRequest`: AccountRequestDetailsDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequest`: %v\n", resp)
+        }
+- path: /source-subtypes/machine-account-create-access
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-creation-request#get-machine-account-create-access-info
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          offset := 0 // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+          limit := 250 // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfo(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfo(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfo``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineAccountCreateAccessInfo`: []MachineAccountCreateAccessDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfo`: %v\n", resp)
+        }
 - path: /sources/{sourceId}/machine-account-mappings
   method: Post
   xCodeSample:
@@ -17300,6 +17424,113 @@
           // response from `SetMachineAccountMappings`: []AttributeMappings
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.SetMachineAccountMappings`: %v\n", resp)
         }
+- path: /source-subtypes/{subtypeId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-subtypes#delete-machine-account-subtype
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.V2026.MachineAccountSubtypesAPI.DeleteMachineAccountSubtype(context.Background(), subtypeId).Execute()
+          //r, err := apiClient.V2026.MachineAccountSubtypesAPI.DeleteMachineAccountSubtype(context.Background(), subtypeId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.DeleteMachineAccountSubtype``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /source-subtypes/{subtypeId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-subtypes#get-source-subtype-by-id
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountSubtypesAPI.GetSourceSubtypeById(context.Background(), subtypeId).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountSubtypesAPI.GetSourceSubtypeById(context.Background(), subtypeId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeById``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSourceSubtypeById`: SourceSubtypeWithSource
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeById`: %v\n", resp)
+        }
+- path: /source-subtypes/{subtypeId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-account-subtypes#patch-machine-account-subtype
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+          requestbody := []byte(`[{op=replace, path=/displayName, value=Test New DisplayName}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var requestBody []v2026.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountSubtypesAPI.PatchMachineAccountSubtype(context.Background(), subtypeId).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountSubtypesAPI.PatchMachineAccountSubtype(context.Background(), subtypeId).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtype``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchMachineAccountSubtype`: SourceSubtypeWithSource
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchMachineAccountSubtype`: %v\n", resp)
+        }
 - path: /sources/{sourceId}/subtypes
   method: Post
   xCodeSample:
@@ -17346,7 +17577,7 @@
   method: Delete
   xCodeSample:
     - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#delete-machine-account-subtype
+      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#delete-machine-account-subtype-by-technical-name
       source: |
         package main
 
@@ -17369,10 +17600,10 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.V2026.MachineAccountsAPI.DeleteMachineAccountSubtype(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.V2026.MachineAccountsAPI.DeleteMachineAccountSubtype(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.V2026.MachineAccountsAPI.DeleteMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.V2026.MachineAccountsAPI.DeleteMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.DeleteMachineAccountSubtype``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.DeleteMachineAccountSubtypeByTechnicalName``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }
@@ -17415,7 +17646,7 @@
   method: Get
   xCodeSample:
     - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#get-machine-account-deletion-sub-type-approval-config
+      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#get-machine-account-subtype-approval-config
       source: |
         package main
 
@@ -17437,14 +17668,14 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetMachineAccountDeletionSubTypeApprovalConfig`: MachineAccountSubTypeConfigDto
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountDeletionSubTypeApprovalConfig`: %v\n", resp)
+          // response from `GetMachineAccountSubtypeApprovalConfig`: MachineAccountSubtypeConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig`: %v\n", resp)
         }
 - path: /sources/subtypes/{subtypeId}
   method: Get
@@ -17596,11 +17827,52 @@
           // response from `ListMachineAccounts`: []MachineAccount
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ListMachineAccounts`: %v\n", resp)
         }
+- path: /source-subtypes/bulk-retrieve
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#load-bulk-source-subtypes
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          requestbody := []byte(``) // []string | 
+
+          
+          var requestBody []v2026.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.LoadBulkSourceSubtypes(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.LoadBulkSourceSubtypes(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.LoadBulkSourceSubtypes``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `LoadBulkSourceSubtypes`: []SourceSubtypeWithSource
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.LoadBulkSourceSubtypes`: %v\n", resp)
+        }
 - path: /sources/{sourceId}/subtypes/{technicalName}
   method: Patch
   xCodeSample:
     - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#patch-machine-account-subtype
+      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#patch-machine-account-subtype-by-technical-name
       source: |
         package main
 
@@ -17630,14 +17902,14 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.MachineAccountsAPI.PatchMachineAccountSubtype(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          //resp, r, err := apiClient.V2026.MachineAccountsAPI.PatchMachineAccountSubtype(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalName(context.Background(), sourceId, technicalName).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
           if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.PatchMachineAccountSubtype``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalName``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `PatchMachineAccountSubtype`: SourceSubtype
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.PatchMachineAccountSubtype`: %v\n", resp)
+          // response from `PatchMachineAccountSubtypeByTechnicalName`: SourceSubtype
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalName`: %v\n", resp)
         }
 - path: /machine-accounts/{id}
   method: Patch
@@ -17685,7 +17957,7 @@
   method: Patch
   xCodeSample:
     - lang: Go
-      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#update-machine-account-deletion-by-sub-type-approval-config
+      label: SDK_tools/sdk/go/v2026/methods/machine-accounts#update-machine-account-subtype-approval-config
       source: |
         package main
 
@@ -17714,14 +17986,14 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.V2026.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `UpdateMachineAccountDeletionBySubTypeApprovalConfig`: MachineAccountSubTypeConfigDto
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UpdateMachineAccountDeletionBySubTypeApprovalConfig`: %v\n", resp)
+          // response from `UpdateMachineAccountSubtypeApprovalConfig`: MachineAccountSubtypeConfigDto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig`: %v\n", resp)
         }
 - path: /sources/{sourceId}/machine-classification-config
   method: Delete
@@ -29211,7 +29483,7 @@
 
         func main() {
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.  # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
           
 
@@ -29545,7 +29817,7 @@
 
         func main() {
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.  # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
           
 
@@ -30175,6 +30447,8 @@
 
         func main() {
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
+          offset := 0 // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+          limit := 250 // int64 | Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int64 | Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
 
           
 
@@ -30182,7 +30456,7 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.V2026.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
-          //resp, r, err := apiClient.V2026.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.V2026.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Offset(offset).Limit(limit).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPolicies``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -30392,7 +30666,7 @@
 
         func main() {
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.  # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
            provisioningpolicydto := []byte(`{
           "name" : "example provisioning policy for inactive identities",
           "description" : "this provisioning policy creates access based on an identity going inactive",
@@ -31041,7 +31315,7 @@
 
         func main() {
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
-          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.  # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+          usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
           jsonpatchoperation := []byte(`[{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
           
