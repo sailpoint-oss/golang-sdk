@@ -22,6 +22,8 @@ var _ MappedNullable = &MachineIdentityAggregationRequest{}
 type MachineIdentityAggregationRequest struct {
 	// List of dataset Ids to aggregate machine identities
 	DatasetIds []string `json:"datasetIds"`
+	// Flag to disable optimization for the aggregation. Defaults to false when not provided. When set to true, it disables aggregation optimizations and may increase processing time.
+	DisableOptimization *bool `json:"disableOptimization,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +36,8 @@ type _MachineIdentityAggregationRequest MachineIdentityAggregationRequest
 func NewMachineIdentityAggregationRequest(datasetIds []string) *MachineIdentityAggregationRequest {
 	this := MachineIdentityAggregationRequest{}
 	this.DatasetIds = datasetIds
+	var disableOptimization bool = false
+	this.DisableOptimization = &disableOptimization
 	return &this
 }
 
@@ -42,6 +46,8 @@ func NewMachineIdentityAggregationRequest(datasetIds []string) *MachineIdentityA
 // but it doesn't guarantee that properties required by API are set
 func NewMachineIdentityAggregationRequestWithDefaults() *MachineIdentityAggregationRequest {
 	this := MachineIdentityAggregationRequest{}
+	var disableOptimization bool = false
+	this.DisableOptimization = &disableOptimization
 	return &this
 }
 
@@ -69,6 +75,38 @@ func (o *MachineIdentityAggregationRequest) SetDatasetIds(v []string) {
 	o.DatasetIds = v
 }
 
+// GetDisableOptimization returns the DisableOptimization field value if set, zero value otherwise.
+func (o *MachineIdentityAggregationRequest) GetDisableOptimization() bool {
+	if o == nil || IsNil(o.DisableOptimization) {
+		var ret bool
+		return ret
+	}
+	return *o.DisableOptimization
+}
+
+// GetDisableOptimizationOk returns a tuple with the DisableOptimization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MachineIdentityAggregationRequest) GetDisableOptimizationOk() (*bool, bool) {
+	if o == nil || IsNil(o.DisableOptimization) {
+		return nil, false
+	}
+	return o.DisableOptimization, true
+}
+
+// HasDisableOptimization returns a boolean if a field has been set.
+func (o *MachineIdentityAggregationRequest) HasDisableOptimization() bool {
+	if o != nil && !IsNil(o.DisableOptimization) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableOptimization gets a reference to the given bool and assigns it to the DisableOptimization field.
+func (o *MachineIdentityAggregationRequest) SetDisableOptimization(v bool) {
+	o.DisableOptimization = &v
+}
+
 func (o MachineIdentityAggregationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -80,6 +118,9 @@ func (o MachineIdentityAggregationRequest) MarshalJSON() ([]byte, error) {
 func (o MachineIdentityAggregationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["datasetIds"] = o.DatasetIds
+	if !IsNil(o.DisableOptimization) {
+		toSerialize["disableOptimization"] = o.DisableOptimization
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +165,7 @@ func (o *MachineIdentityAggregationRequest) UnmarshalJSON(data []byte) (err erro
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "datasetIds")
+		delete(additionalProperties, "disableOptimization")
 		o.AdditionalProperties = additionalProperties
 	}
 

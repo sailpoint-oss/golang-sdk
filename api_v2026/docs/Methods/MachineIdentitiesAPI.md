@@ -515,7 +515,8 @@ import (
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     machineidentityaggregationrequest := []byte(`{
-          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ]
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ],
+          "disableOptimization" : false
         }`) // MachineIdentityAggregationRequest | 
 
     var machineIdentityAggregationRequest v2026.MachineIdentityAggregationRequest

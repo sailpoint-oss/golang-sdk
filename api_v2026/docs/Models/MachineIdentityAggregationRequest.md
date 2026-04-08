@@ -16,6 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'MachineIdentityAggregationRequest', '
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DatasetIds** | **[]string** | List of dataset Ids to aggregate machine identities | 
+**DisableOptimization** | Pointer to **bool** | Flag to disable optimization for the aggregation. Defaults to false when not provided. When set to true, it disables aggregation optimizations and may increase processing time. | [optional] [default to false]
 
 ## Methods
 
@@ -55,5 +56,30 @@ and a boolean to check if the value has been set.
 
 SetDatasetIds sets DatasetIds field to given value.
 
+
+### GetDisableOptimization
+
+`func (o *MachineIdentityAggregationRequest) GetDisableOptimization() bool`
+
+GetDisableOptimization returns the DisableOptimization field if non-nil, zero value otherwise.
+
+### GetDisableOptimizationOk
+
+`func (o *MachineIdentityAggregationRequest) GetDisableOptimizationOk() (*bool, bool)`
+
+GetDisableOptimizationOk returns a tuple with the DisableOptimization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableOptimization
+
+`func (o *MachineIdentityAggregationRequest) SetDisableOptimization(v bool)`
+
+SetDisableOptimization sets DisableOptimization field to given value.
+
+### HasDisableOptimization
+
+`func (o *MachineIdentityAggregationRequest) HasDisableOptimization() bool`
+
+HasDisableOptimization returns a boolean if a field has been set.
 
 
