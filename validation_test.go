@@ -173,7 +173,7 @@ func Test_v2026(t *testing.T) {
 	apiClient := NewAPIClient(configuration)
 
 	t.Run("Test List Tasks", func(t *testing.T) {
-		resp, r, err := apiClient.V2026.TaskManagementAPI.GetTaskStatusList(context.TODO()).Execute()
+		resp, r, err := apiClient.V2026.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
 		}
