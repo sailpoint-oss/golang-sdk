@@ -61971,6 +61971,39 @@ paths:
     get:
       description: No parameters required.
       operationId: searchFormInstancesByTenant
+      parameters:
+      - description: |-
+          Offset
+
+          Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          The offset value is record-based, not page-based, and the index starts at 0.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int64
+          type: integer
+          x-go-name: Offset
+        x-go-name: Offset
+      - description: |-
+          Limit
+
+          Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          If it is not specified, a default limit is used.
+        example: 50
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int64
+          maximum: 50
+          minimum: 0
+          type: integer
+          x-go-name: Limit
+        x-go-name: Limit
       responses:
         "200":
           content:
@@ -62017,6 +62050,8 @@ paths:
       summary: List form instances by tenant.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       operationId: createFormInstance
       requestBody:
@@ -62078,6 +62113,8 @@ paths:
       summary: Creates a form instance.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
       x-codegen-request-body-name: Body
   /form-instances/{formInstanceID}:
     get:

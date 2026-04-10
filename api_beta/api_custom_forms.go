@@ -2905,6 +2905,20 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 type ApiSearchFormInstancesByTenantRequest struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
+	offset *int64
+	limit *int64
+}
+
+// Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+func (r ApiSearchFormInstancesByTenantRequest) Offset(offset int64) ApiSearchFormInstancesByTenantRequest {
+	r.offset = &offset
+	return r
+}
+
+// Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+func (r ApiSearchFormInstancesByTenantRequest) Limit(limit int64) ApiSearchFormInstancesByTenantRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiSearchFormInstancesByTenantRequest) Execute() ([]FormInstanceResponse, *http.Response, error) {
@@ -2947,6 +2961,18 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int64 = 0
+		r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int64 = 50
+		r.limit = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
