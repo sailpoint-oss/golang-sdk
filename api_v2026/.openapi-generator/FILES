@@ -329,6 +329,7 @@ docs/ApprovalApprovalCriteriaRejection.md
 docs/ApprovalApproveRequest.md
 docs/ApprovalAttributesRequest.md
 docs/ApprovalBatch.md
+docs/ApprovalCancelRequest.md
 docs/ApprovalComment.md
 docs/ApprovalComment1.md
 docs/ApprovalComment2.md
@@ -1857,6 +1858,7 @@ model_approval_approval_criteria_rejection.go
 model_approval_approve_request.go
 model_approval_attributes_request.go
 model_approval_batch.go
+model_approval_cancel_request.go
 model_approval_comment.go
 model_approval_comment_1.go
 model_approval_comment_2.go

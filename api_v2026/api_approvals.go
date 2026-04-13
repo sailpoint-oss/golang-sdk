@@ -42,12 +42,11 @@ func (r ApiApproveApprovalRequest) Execute() (*Approval, *http.Response, error) 
 /*
 ApproveApproval Post Approvals Approve
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved.
+Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
 If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Approval ID that correlates to an existing approval request that a user wants to approve
+ @param id Approval ID that correlates to an existing approval request that a user wants to approve.
  @return ApiApproveApprovalRequest
 */
 func (a *ApprovalsAPIService) ApproveApproval(ctx context.Context, id string) ApiApproveApprovalRequest {
@@ -394,7 +393,9 @@ func (r ApiCancelApprovalRequest) Execute() (map[string]interface{}, *http.Respo
 /*
 CancelApproval Post Bulk Cancel Approvals
 
-Bulk cancels specified approval requests on behalf of the caller
+Bulk cancels specified approval requests on behalf of the caller. 
+Note: To bulk cancel access request approvals, please use the following:
+/access-requests/bulk-cancel
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCancelApprovalRequest
@@ -551,6 +552,173 @@ func (a *ApprovalsAPIService) CancelApprovalExecute(r ApiCancelApprovalRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCancelApprovalByIdRequest struct {
+	ctx context.Context
+	ApiService *ApprovalsAPIService
+	id string
+	approvalCancelRequest *ApprovalCancelRequest
+}
+
+func (r ApiCancelApprovalByIdRequest) ApprovalCancelRequest(approvalCancelRequest ApprovalCancelRequest) ApiCancelApprovalByIdRequest {
+	r.approvalCancelRequest = &approvalCancelRequest
+	return r
+}
+
+func (r ApiCancelApprovalByIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CancelApprovalByIdExecute(r)
+}
+
+/*
+CancelApprovalById Post Approval Cancel
+
+Cancels a specified approval requests on behalf of the caller. 
+Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following:
+/access-requests/cancel
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id ID of the approval request to cancel.
+ @return ApiCancelApprovalByIdRequest
+*/
+func (a *ApprovalsAPIService) CancelApprovalById(ctx context.Context, id string) ApiCancelApprovalByIdRequest {
+	return ApiCancelApprovalByIdRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ApprovalsAPIService) CancelApprovalByIdExecute(r ApiCancelApprovalByIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.CancelApprovalById")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/generic-approvals/{id}/cancel"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.approvalCancelRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetAccessRequestConfig401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetAccessRequestConfig429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiDeleteApprovalConfigRequestRequest struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
@@ -569,8 +737,8 @@ Deletes an approval configuration.
 Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
- @param scope The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+ @param id The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+ @param scope The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
  @return ApiDeleteApprovalConfigRequestRequest
 */
 func (a *ApprovalsAPIService) DeleteApprovalConfigRequest(ctx context.Context, id string, scope string) ApiDeleteApprovalConfigRequestRequest {
@@ -726,8 +894,8 @@ func (r ApiGetApprovalRequest) Execute() (*Approval, *http.Response, error) {
 /*
 GetApproval Get an approval
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+Fetches an approval request by it's approval ID. For lookups by access request ID please use the following:
+/generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the approval that is to be returned
@@ -882,6 +1050,7 @@ type ApiGetApprovalsRequest struct {
 	countOnly *bool
 	includeComments *bool
 	includeApprovers *bool
+	includeReassignmentHistory *bool
 	includeBatchInfo *bool
 	filters *string
 	limit *int32
@@ -936,6 +1105,12 @@ func (r ApiGetApprovalsRequest) IncludeApprovers(includeApprovers bool) ApiGetAp
 	return r
 }
 
+// If set to true in the query, the approval requests returned will include reassignment history.
+func (r ApiGetApprovalsRequest) IncludeReassignmentHistory(includeReassignmentHistory bool) ApiGetApprovalsRequest {
+	r.includeReassignmentHistory = &includeReassignmentHistory
+	return r
+}
+
 // If set to true in the query, the approval requests returned will include batch information.
 func (r ApiGetApprovalsRequest) IncludeBatchInfo(includeBatchInfo bool) ApiGetApprovalsRequest {
 	r.includeBatchInfo = &includeBatchInfo
@@ -967,8 +1142,8 @@ func (r ApiGetApprovalsRequest) Execute() ([]Approval, *http.Response, error) {
 /*
 GetApprovals Get approvals
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. 
+Gets a list of approvals. For lookups by access request ID please use the following:
+/generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
 Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false.
 Absence of all query parameters for admins will return all approvals in the org.
 
@@ -1041,6 +1216,12 @@ func (a *ApprovalsAPIService) GetApprovalsExecute(r ApiGetApprovalsRequest) ([]A
 	} else {
 		var defaultValue bool = false
 		r.includeApprovers = &defaultValue
+	}
+	if r.includeReassignmentHistory != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-reassignment-history", r.includeReassignmentHistory, "", "")
+	} else {
+		var defaultValue bool = false
+		r.includeReassignmentHistory = &defaultValue
 	}
 	if r.includeBatchInfo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include-batch-info", r.includeBatchInfo, "", "")
@@ -1187,7 +1368,7 @@ GetApprovalsConfig Get Approval Config
 Retrieves a singular approval configuration that matches the given ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]
+ @param id The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]
  @return ApiGetApprovalsConfigRequest
 */
 func (a *ApprovalsAPIService) GetApprovalsConfig(ctx context.Context, id string) ApiGetApprovalsConfigRequest {
@@ -1527,8 +1708,8 @@ Upserts a singular approval configuration that matches the given configID and co
 For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
- @param scope The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+ @param id The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+ @param scope The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
  @return ApiPutApprovalsConfigRequest
 */
 func (a *ApprovalsAPIService) PutApprovalsConfig(ctx context.Context, id string, scope string) ApiPutApprovalsConfigRequest {
@@ -1706,9 +1887,8 @@ func (r ApiRejectApprovalRequest) Execute() (*http.Response, error) {
 /*
 RejectApproval Post Approvals Reject
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Rejects a specified approval request on behalf of the caller.
-If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
+If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to reject.
@@ -2048,8 +2228,7 @@ func (r ApiUpdateApprovalsAttributesRequest) Execute() (*Approval, *http.Respons
 /*
 UpdateApprovalsAttributes Post Approvals Attributes
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request. This endpoint does not support access request IDs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
@@ -2228,8 +2407,7 @@ func (r ApiUpdateApprovalsCommentsRequest) Execute() (*Approval, *http.Response,
 /*
 UpdateApprovalsComments Post Approvals Comments
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Adds comments to a specified approval request.
+Adds comments to a specified approval request. This endpoint does not support access request IDs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to add a comment to.
@@ -2408,8 +2586,7 @@ func (r ApiUpdateApprovalsReassignRequest) Execute() (*http.Response, error) {
 /*
 UpdateApprovalsReassign Post Approvals Reassign
 
-Currently this endpoint only supports Entitlement Description Approvals.
-Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+Reassigns an approval request to another identity resulting in that identity being added as an authorized approver. This endpoint does not support access request IDs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Approval ID that correlates to an existing approval request that a user wants to reassign.

@@ -19,12 +19,6 @@ var _ MappedNullable = &ApprovalConfig{}
 
 // ApprovalConfig Approval config Object
 type ApprovalConfig struct {
-	// Tenant ID of the approval configuration.
-	TenantId *string `json:"tenantId,omitempty"`
-	// The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-	Id *string `json:"id,omitempty"`
-	// The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-	Scope *string `json:"scope,omitempty"`
 	ReminderConfig *ApprovalConfigReminderConfig `json:"reminderConfig,omitempty"`
 	EscalationConfig *ApprovalConfigEscalationConfig `json:"escalationConfig,omitempty"`
 	TimeoutConfig *ApprovalConfigTimeoutConfig `json:"timeoutConfig,omitempty"`
@@ -35,6 +29,10 @@ type ApprovalConfig struct {
 	RequiresComment *string `json:"requiresComment,omitempty"`
 	// Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist.
 	FallbackApprover ApprovalIdentity `json:"fallbackApprover,omitempty"`
+	// Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.
+	MachineIdentityManagerAssignment *string `json:"machineIdentityManagerAssignment,omitempty"`
+	// When true, all approvals will be created with the status \"PASSED\".
+	CircumventApprovalProcess *bool `json:"circumventApprovalProcess,omitempty"`
 	// OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
 	AutoApprove *string `json:"autoApprove,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -48,6 +46,10 @@ type _ApprovalConfig ApprovalConfig
 // will change when the set of required properties is changed
 func NewApprovalConfig() *ApprovalConfig {
 	this := ApprovalConfig{}
+	var machineIdentityManagerAssignment string = "MACHINE_IDENTITY_OWNER"
+	this.MachineIdentityManagerAssignment = &machineIdentityManagerAssignment
+	var circumventApprovalProcess bool = false
+	this.CircumventApprovalProcess = &circumventApprovalProcess
 	return &this
 }
 
@@ -56,103 +58,11 @@ func NewApprovalConfig() *ApprovalConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalConfigWithDefaults() *ApprovalConfig {
 	this := ApprovalConfig{}
+	var machineIdentityManagerAssignment string = "MACHINE_IDENTITY_OWNER"
+	this.MachineIdentityManagerAssignment = &machineIdentityManagerAssignment
+	var circumventApprovalProcess bool = false
+	this.CircumventApprovalProcess = &circumventApprovalProcess
 	return &this
-}
-
-// GetTenantId returns the TenantId field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
-		var ret string
-		return ret
-	}
-	return *o.TenantId
-}
-
-// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
-	}
-	return o.TenantId, true
-}
-
-// HasTenantId returns a boolean if a field has been set.
-func (o *ApprovalConfig) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
-func (o *ApprovalConfig) SetTenantId(v string) {
-	o.TenantId = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ApprovalConfig) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApprovalConfig) SetId(v string) {
-	o.Id = &v
-}
-
-// GetScope returns the Scope field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetScope() string {
-	if o == nil || IsNil(o.Scope) {
-		var ret string
-		return ret
-	}
-	return *o.Scope
-}
-
-// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetScopeOk() (*string, bool) {
-	if o == nil || IsNil(o.Scope) {
-		return nil, false
-	}
-	return o.Scope, true
-}
-
-// HasScope returns a boolean if a field has been set.
-func (o *ApprovalConfig) HasScope() bool {
-	if o != nil && !IsNil(o.Scope) {
-		return true
-	}
-
-	return false
-}
-
-// SetScope gets a reference to the given string and assigns it to the Scope field.
-func (o *ApprovalConfig) SetScope(v string) {
-	o.Scope = &v
 }
 
 // GetReminderConfig returns the ReminderConfig field value if set, zero value otherwise.
@@ -379,6 +289,70 @@ func (o *ApprovalConfig) SetFallbackApprover(v ApprovalIdentity) {
 	o.FallbackApprover = v
 }
 
+// GetMachineIdentityManagerAssignment returns the MachineIdentityManagerAssignment field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetMachineIdentityManagerAssignment() string {
+	if o == nil || IsNil(o.MachineIdentityManagerAssignment) {
+		var ret string
+		return ret
+	}
+	return *o.MachineIdentityManagerAssignment
+}
+
+// GetMachineIdentityManagerAssignmentOk returns a tuple with the MachineIdentityManagerAssignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetMachineIdentityManagerAssignmentOk() (*string, bool) {
+	if o == nil || IsNil(o.MachineIdentityManagerAssignment) {
+		return nil, false
+	}
+	return o.MachineIdentityManagerAssignment, true
+}
+
+// HasMachineIdentityManagerAssignment returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasMachineIdentityManagerAssignment() bool {
+	if o != nil && !IsNil(o.MachineIdentityManagerAssignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineIdentityManagerAssignment gets a reference to the given string and assigns it to the MachineIdentityManagerAssignment field.
+func (o *ApprovalConfig) SetMachineIdentityManagerAssignment(v string) {
+	o.MachineIdentityManagerAssignment = &v
+}
+
+// GetCircumventApprovalProcess returns the CircumventApprovalProcess field value if set, zero value otherwise.
+func (o *ApprovalConfig) GetCircumventApprovalProcess() bool {
+	if o == nil || IsNil(o.CircumventApprovalProcess) {
+		var ret bool
+		return ret
+	}
+	return *o.CircumventApprovalProcess
+}
+
+// GetCircumventApprovalProcessOk returns a tuple with the CircumventApprovalProcess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalConfig) GetCircumventApprovalProcessOk() (*bool, bool) {
+	if o == nil || IsNil(o.CircumventApprovalProcess) {
+		return nil, false
+	}
+	return o.CircumventApprovalProcess, true
+}
+
+// HasCircumventApprovalProcess returns a boolean if a field has been set.
+func (o *ApprovalConfig) HasCircumventApprovalProcess() bool {
+	if o != nil && !IsNil(o.CircumventApprovalProcess) {
+		return true
+	}
+
+	return false
+}
+
+// SetCircumventApprovalProcess gets a reference to the given bool and assigns it to the CircumventApprovalProcess field.
+func (o *ApprovalConfig) SetCircumventApprovalProcess(v bool) {
+	o.CircumventApprovalProcess = &v
+}
+
 // GetAutoApprove returns the AutoApprove field value if set, zero value otherwise.
 func (o *ApprovalConfig) GetAutoApprove() string {
 	if o == nil || IsNil(o.AutoApprove) {
@@ -421,15 +395,6 @@ func (o ApprovalConfig) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Scope) {
-		toSerialize["scope"] = o.Scope
-	}
 	if !IsNil(o.ReminderConfig) {
 		toSerialize["reminderConfig"] = o.ReminderConfig
 	}
@@ -450,6 +415,12 @@ func (o ApprovalConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FallbackApprover) {
 		toSerialize["fallbackApprover"] = o.FallbackApprover
+	}
+	if !IsNil(o.MachineIdentityManagerAssignment) {
+		toSerialize["machineIdentityManagerAssignment"] = o.MachineIdentityManagerAssignment
+	}
+	if !IsNil(o.CircumventApprovalProcess) {
+		toSerialize["circumventApprovalProcess"] = o.CircumventApprovalProcess
 	}
 	if !IsNil(o.AutoApprove) {
 		toSerialize["autoApprove"] = o.AutoApprove
@@ -476,9 +447,6 @@ func (o *ApprovalConfig) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "tenantId")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "scope")
 		delete(additionalProperties, "reminderConfig")
 		delete(additionalProperties, "escalationConfig")
 		delete(additionalProperties, "timeoutConfig")
@@ -486,6 +454,8 @@ func (o *ApprovalConfig) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "serialChain")
 		delete(additionalProperties, "requiresComment")
 		delete(additionalProperties, "fallbackApprover")
+		delete(additionalProperties, "machineIdentityManagerAssignment")
+		delete(additionalProperties, "circumventApprovalProcess")
 		delete(additionalProperties, "autoApprove")
 		o.AdditionalProperties = additionalProperties
 	}

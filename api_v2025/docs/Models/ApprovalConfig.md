@@ -15,9 +15,6 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalConfig', 'V2025ApprovalConfig
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TenantId** | Pointer to **string** | Tenant ID of the approval configuration. | [optional] 
-**Id** | Pointer to **string** | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | [optional] 
-**Scope** | Pointer to **string** | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | [optional] 
 **ReminderConfig** | Pointer to [**ApprovalConfigReminderConfig**](approval-config-reminder-config) |  | [optional] 
 **EscalationConfig** | Pointer to [**ApprovalConfigEscalationConfig**](approval-config-escalation-config) |  | [optional] 
 **TimeoutConfig** | Pointer to [**ApprovalConfigTimeoutConfig**](approval-config-timeout-config) |  | [optional] 
@@ -25,6 +22,8 @@ Name | Type | Description | Notes
 **SerialChain** | Pointer to [**[]ApprovalConfigSerialChainInner**](approval-config-serial-chain-inner) | If the approval request has an approvalCriteria of SERIAL this chain will be used to determine the assignment order. | [optional] 
 **RequiresComment** | Pointer to **string** | Determines whether a comment is required when approving or rejecting the approval request. | [optional] 
 **FallbackApprover** | Pointer to [**ApprovalIdentity**](approval-identity) | Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist. | [optional] 
+**MachineIdentityManagerAssignment** | Pointer to **string** | Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity. | [optional] [default to "MACHINE_IDENTITY_OWNER"]
+**CircumventApprovalProcess** | Pointer to **bool** | When true, all approvals will be created with the status \"PASSED\". | [optional] [default to false]
 **AutoApprove** | Pointer to **string** | OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved. | [optional] 
 
 ## Methods
@@ -45,81 +44,6 @@ will change when the set of required properties is changed
 NewApprovalConfigWithDefaults instantiates a new ApprovalConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetTenantId
-
-`func (o *ApprovalConfig) GetTenantId() string`
-
-GetTenantId returns the TenantId field if non-nil, zero value otherwise.
-
-### GetTenantIdOk
-
-`func (o *ApprovalConfig) GetTenantIdOk() (*string, bool)`
-
-GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTenantId
-
-`func (o *ApprovalConfig) SetTenantId(v string)`
-
-SetTenantId sets TenantId field to given value.
-
-### HasTenantId
-
-`func (o *ApprovalConfig) HasTenantId() bool`
-
-HasTenantId returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *ApprovalConfig) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ApprovalConfig) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ApprovalConfig) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *ApprovalConfig) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetScope
-
-`func (o *ApprovalConfig) GetScope() string`
-
-GetScope returns the Scope field if non-nil, zero value otherwise.
-
-### GetScopeOk
-
-`func (o *ApprovalConfig) GetScopeOk() (*string, bool)`
-
-GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScope
-
-`func (o *ApprovalConfig) SetScope(v string)`
-
-SetScope sets Scope field to given value.
-
-### HasScope
-
-`func (o *ApprovalConfig) HasScope() bool`
-
-HasScope returns a boolean if a field has been set.
 
 ### GetReminderConfig
 
@@ -295,6 +219,56 @@ SetFallbackApprover sets FallbackApprover field to given value.
 `func (o *ApprovalConfig) HasFallbackApprover() bool`
 
 HasFallbackApprover returns a boolean if a field has been set.
+
+### GetMachineIdentityManagerAssignment
+
+`func (o *ApprovalConfig) GetMachineIdentityManagerAssignment() string`
+
+GetMachineIdentityManagerAssignment returns the MachineIdentityManagerAssignment field if non-nil, zero value otherwise.
+
+### GetMachineIdentityManagerAssignmentOk
+
+`func (o *ApprovalConfig) GetMachineIdentityManagerAssignmentOk() (*string, bool)`
+
+GetMachineIdentityManagerAssignmentOk returns a tuple with the MachineIdentityManagerAssignment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMachineIdentityManagerAssignment
+
+`func (o *ApprovalConfig) SetMachineIdentityManagerAssignment(v string)`
+
+SetMachineIdentityManagerAssignment sets MachineIdentityManagerAssignment field to given value.
+
+### HasMachineIdentityManagerAssignment
+
+`func (o *ApprovalConfig) HasMachineIdentityManagerAssignment() bool`
+
+HasMachineIdentityManagerAssignment returns a boolean if a field has been set.
+
+### GetCircumventApprovalProcess
+
+`func (o *ApprovalConfig) GetCircumventApprovalProcess() bool`
+
+GetCircumventApprovalProcess returns the CircumventApprovalProcess field if non-nil, zero value otherwise.
+
+### GetCircumventApprovalProcessOk
+
+`func (o *ApprovalConfig) GetCircumventApprovalProcessOk() (*bool, bool)`
+
+GetCircumventApprovalProcessOk returns a tuple with the CircumventApprovalProcess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCircumventApprovalProcess
+
+`func (o *ApprovalConfig) SetCircumventApprovalProcess(v bool)`
+
+SetCircumventApprovalProcess sets CircumventApprovalProcess field to given value.
+
+### HasCircumventApprovalProcess
+
+`func (o *ApprovalConfig) HasCircumventApprovalProcess() bool`
+
+HasCircumventApprovalProcess returns a boolean if a field has been set.
 
 ### GetAutoApprove
 
