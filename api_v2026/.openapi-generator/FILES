@@ -405,6 +405,10 @@ docs/AuthUserSlimResponse.md
 docs/AuthUsersAPI.md
 docs/AuthUsersAPIdeveloperSite_code_examples.yaml
 docs/AuthorizationScheme.md
+docs/AutoWriteSetting.md
+docs/AutoWriteSettingPatch.md
+docs/AutoWriteSettingPatchValue.md
+docs/AutoWriteSettingResponse.md
 docs/BackupOptions.md
 docs/BackupOptions1.md
 docs/BackupResponse.md
@@ -1926,6 +1930,10 @@ model_auth_user.go
 model_auth_user_levels_identity_count.go
 model_auth_user_slim_response.go
 model_authorization_scheme.go
+model_auto_write_setting.go
+model_auto_write_setting_patch.go
+model_auto_write_setting_patch_value.go
+model_auto_write_setting_response.go
 model_backup_options.go
 model_backup_options_1.go
 model_backup_response.go

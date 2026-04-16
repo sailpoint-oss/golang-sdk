@@ -18,6 +18,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create-auto-write-settings**](#create-auto-write-settings) | **Post** `/suggested-entitlement-descriptions/auto-write-settings` | Create auto-write settings for SED
+[**get-auto-write-settings**](#get-auto-write-settings) | **Get** `/suggested-entitlement-descriptions/auto-write-settings` | Get auto-write settings for SED
 [**get-sed-batch-stats**](#get-sed-batch-stats) | **Get** `/suggested-entitlement-description-batches/{batchId}/stats` | Submit sed batch stats request
 [**get-sed-batches**](#get-sed-batches) | **Get** `/suggested-entitlement-description-batches` | List Sed Batch Record
 [**list-seds**](#list-seds) | **Get** `/suggested-entitlement-descriptions` | List suggested entitlement descriptions
@@ -25,7 +27,136 @@ Method | HTTP request | Description
 [**submit-sed-approval**](#submit-sed-approval) | **Post** `/suggested-entitlement-description-approvals` | Submit bulk approval request
 [**submit-sed-assignment**](#submit-sed-assignment) | **Post** `/suggested-entitlement-description-assignments` | Submit sed assignment request
 [**submit-sed-batch-request**](#submit-sed-batch-request) | **Post** `/suggested-entitlement-description-batches` | Submit sed batch request
+[**update-auto-write-settings**](#update-auto-write-settings) | **Patch** `/suggested-entitlement-descriptions/auto-write-settings` | Update auto-write settings for SED
 
+
+## create-auto-write-settings
+Create auto-write settings for SED
+Create the initial auto-write settings for a tenant. Returns 409 Conflict if settings already exist. Use PATCH to update existing settings.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/create-auto-write-settings)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAutoWriteSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoWriteSetting** | [**AutoWriteSetting**](../models/auto-write-setting) | Auto-write settings to create | 
+
+### Return type
+
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, schema
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    autowritesetting := []byte(`{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }`) // AutoWriteSetting | Auto-write settings to create
+
+    var autoWriteSetting v2026.AutoWriteSetting
+    if err := json.Unmarshal(autowritesetting, &autoWriteSetting); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
+	  //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAutoWriteSettings`: AutoWriteSettingResponse
+    fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-auto-write-settings
+Get auto-write settings for SED
+Get the current auto-write configuration for the tenant, including the enabled state and source include/exclude lists.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-auto-write-settings)
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAutoWriteSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings(context.Background()).Execute()
+	  //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings(context.Background()).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAutoWriteSettings`: AutoWriteSettingResponse
+    fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
 
 ## get-sed-batch-stats
 Submit sed batch stats request
@@ -557,6 +688,73 @@ func main() {
     }
     // response from `SubmitSedBatchRequest`: SedBatchResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-auto-write-settings
+Update auto-write settings for SED
+Partially update the auto-write settings for a tenant using JSON Patch operations. Only the "replace" operation is supported. Returns 404 if no settings exist yet - use POST to create them first.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/update-auto-write-settings)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAutoWriteSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoWriteSettingPatch** | [**[]AutoWriteSettingPatch**](../models/auto-write-setting-patch) | Patch operations for auto-write settings | 
+
+### Return type
+
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    autowritesettingpatch := []byte(``) // []AutoWriteSettingPatch | Patch operations for auto-write settings
+
+    var autoWriteSettingPatch []v2026.AutoWriteSettingPatch
+    if err := json.Unmarshal(autowritesettingpatch, &autoWriteSettingPatch); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
+	  //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAutoWriteSettings`: AutoWriteSettingResponse
+    fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings`: %v\n", resp)
 }
 ```
 

@@ -31569,6 +31569,83 @@
           // response from `UpdateSourceSchema`: Schema
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceSchema`: %v\n", resp)
         }
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/suggested-entitlement-description#create-auto-write-settings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           autowritesetting := []byte(`{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }`) // AutoWriteSetting | Auto-write settings to create
+
+          
+          var autoWriteSetting v2026.AutoWriteSetting
+          if err := json.Unmarshal(autowritesetting, &autoWriteSetting); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
+          //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateAutoWriteSettings`: AutoWriteSettingResponse
+          fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettings`: %v\n", resp)
+        }
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/suggested-entitlement-description#get-auto-write-settings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings(context.Background()).Execute()
+          //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAutoWriteSettings`: AutoWriteSettingResponse
+          fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettings`: %v\n", resp)
+        }
 - path: /suggested-entitlement-description-batches/{batchId}/stats
   method: Get
   xCodeSample:
@@ -31868,6 +31945,46 @@
           }
           // response from `SubmitSedBatchRequest`: SedBatchResponse
           fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest`: %v\n", resp)
+        }
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/suggested-entitlement-description#update-auto-write-settings
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          autowritesettingpatch := []byte(``) // []AutoWriteSettingPatch | Patch operations for auto-write settings
+
+          
+          var autoWriteSettingPatch []v2026.AutoWriteSettingPatch
+          if err := json.Unmarshal(autowritesettingpatch, &autoWriteSettingPatch); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
+          //resp, r, err := apiClient.V2026.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAutoWriteSettings`: AutoWriteSettingResponse
+          fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettings`: %v\n", resp)
         }
 - path: /tagged-objects/{type}/{id}
   method: Delete
