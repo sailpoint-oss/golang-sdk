@@ -24,8 +24,11 @@ type WorkflowLibraryTrigger struct {
 	Id *string `json:"id,omitempty"`
 	// Trigger type
 	Type *string `json:"type,omitempty"`
+	// Whether the trigger is deprecated.
 	Deprecated *bool `json:"deprecated,omitempty"`
+	// Date the trigger was deprecated, if applicable.
 	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
+	// Whether the trigger can be simulated.
 	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
 	// Example output schema
 	OutputSchema map[string]interface{} `json:"outputSchema,omitempty"`
@@ -50,6 +53,10 @@ type _WorkflowLibraryTrigger WorkflowLibraryTrigger
 // will change when the set of required properties is changed
 func NewWorkflowLibraryTrigger() *WorkflowLibraryTrigger {
 	this := WorkflowLibraryTrigger{}
+	var deprecated bool = false
+	this.Deprecated = &deprecated
+	var isSimulationEnabled bool = false
+	this.IsSimulationEnabled = &isSimulationEnabled
 	var isDynamicSchema bool = false
 	this.IsDynamicSchema = &isDynamicSchema
 	return &this
@@ -60,6 +67,10 @@ func NewWorkflowLibraryTrigger() *WorkflowLibraryTrigger {
 // but it doesn't guarantee that properties required by API are set
 func NewWorkflowLibraryTriggerWithDefaults() *WorkflowLibraryTrigger {
 	this := WorkflowLibraryTrigger{}
+	var deprecated bool = false
+	this.Deprecated = &deprecated
+	var isSimulationEnabled bool = false
+	this.IsSimulationEnabled = &isSimulationEnabled
 	var isDynamicSchema bool = false
 	this.IsDynamicSchema = &isDynamicSchema
 	return &this

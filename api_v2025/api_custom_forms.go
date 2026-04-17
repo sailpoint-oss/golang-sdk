@@ -1475,6 +1475,8 @@ GetFormInstanceByKey Returns a form instance.
 
 Parameter `{formInstanceID}` should match a form instance ID.
 
+Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param formInstanceID Form instance ID
  @return ApiGetFormInstanceByKeyRequest
@@ -2168,6 +2170,8 @@ PatchFormInstance Patch a form instance.
 
 Parameter `{formInstanceID}` should match a form instance ID.
 
+Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param formInstanceID Form instance ID
  @return ApiPatchFormInstanceRequest
@@ -2817,7 +2821,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantExecute(r ApiSearchFo
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
-		var defaultValue int64 = 50
+		var defaultValue int64 = 250
 		r.limit = &defaultValue
 	}
 	if r.filters != nil {

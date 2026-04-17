@@ -2239,7 +2239,7 @@ func (r ApiListWorkflowLibraryTriggersRequest) Offset(offset int32) ApiListWorkf
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **type**: *eq*
 func (r ApiListWorkflowLibraryTriggersRequest) Filters(filters string) ApiListWorkflowLibraryTriggersRequest {
 	r.filters = &filters
 	return r

@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
 **Type** | Pointer to **string** | Trigger type | [optional] 
-**Deprecated** | Pointer to **bool** |  | [optional] 
-**DeprecatedBy** | Pointer to **SailPointTime** |  | [optional] 
-**IsSimulationEnabled** | Pointer to **bool** |  | [optional] 
+**Deprecated** | Pointer to **bool** | Whether the trigger is deprecated. | [optional] [default to false]
+**DeprecatedBy** | Pointer to **SailPointTime** | Date the trigger was deprecated, if applicable. | [optional] 
+**IsSimulationEnabled** | Pointer to **bool** | Whether the trigger can be simulated. | [optional] [default to false]
 **OutputSchema** | Pointer to **map[string]interface{}** | Example output schema | [optional] 
 **Name** | Pointer to **string** | Trigger Name | [optional] 
 **Description** | Pointer to **string** | Trigger Description | [optional] 

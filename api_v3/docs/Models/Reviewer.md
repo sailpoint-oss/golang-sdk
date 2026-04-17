@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The id of the reviewer. | [optional] 
 **Name** | Pointer to **string** | The name of the reviewer. | [optional] 
-**Email** | Pointer to **string** | The email of the reviewing identity. | [optional] 
+**Email** | Pointer to **NullableString** | The email of the reviewing identity. This is only applicable to reviewers of the `IDENTITY` type. | [optional] 
 **Type** | Pointer to **string** | The type of the reviewing identity. | [optional] 
 **Created** | Pointer to **NullableTime** | The created date of the reviewing identity. | [optional] 
 **Modified** | Pointer to **NullableTime** | The modified date of the reviewing identity. | [optional] 
@@ -116,6 +116,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *Reviewer) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *Reviewer) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetType
 
 `func (o *Reviewer) GetType() string`

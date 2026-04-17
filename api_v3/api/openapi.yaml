@@ -41362,6 +41362,10 @@ paths:
           Filtering is supported for the following fields and operators:
 
           **id**: *eq*
+
+          **name**: *eq*
+
+          **type**: *eq*
         example: id eq "idn:identity-attributes-changed"
         in: query
         name: filters
@@ -41440,6 +41444,10 @@ paths:
       summary: List workflow library triggers
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /workflow-library/operators:
     get:
       description: This lists the workflow operators available to you
@@ -48249,13 +48257,16 @@ components:
           example: Reviewer Name
           type: string
         email:
-          description: The email of the reviewing identity.
+          description: The email of the reviewing identity. This is only applicable
+            to reviewers of the `IDENTITY` type.
           example: reviewer@test.com
+          nullable: true
           type: string
         type:
           description: The type of the reviewing identity.
           enum:
           - IDENTITY
+          - GOVERNANCE_GROUP
           example: IDENTITY
           type: string
         created:
@@ -52101,6 +52112,8 @@ components:
           - MANAGER
           - SOURCE_OWNER
           - SEARCH
+          - ROLE_COMPOSITION
+          - MACHINE_ACCOUNT
           example: MANAGER
           type: string
         description:
@@ -60108,13 +60121,13 @@ components:
       type: object
     WorkflowLibraryTrigger:
       example:
-        outputSchema: "{}"
-        deprecated: true
-        isSimulationEnabled: true
+        outputSchema: {}
+        deprecated: false
+        isSimulationEnabled: false
         name: Identity Attributes Changed
         description: One or more identity attributes changed.
         id: idn:identity-attributes-changed
-        deprecatedBy: 2000-01-23T04:56:07.000+00:00
+        deprecatedBy: 2023-01-01T00:00:00Z
         formFields: []
         type: EVENT
         isDynamicSchema: false
@@ -60150,17 +60163,27 @@ components:
           - EVENT
           - SCHEDULED
           - EXTERNAL
+          - AccessRequestTrigger
           example: EVENT
           type: string
         deprecated:
+          default: false
+          description: Whether the trigger is deprecated.
+          example: false
           type: boolean
         deprecatedBy:
+          description: "Date the trigger was deprecated, if applicable."
+          example: 2023-01-01T00:00:00Z
           format: date-time
           type: string
         isSimulationEnabled:
+          default: false
+          description: Whether the trigger can be simulated.
+          example: false
           type: boolean
         outputSchema:
           description: Example output schema
+          example: {}
           type: object
         name:
           description: Trigger Name

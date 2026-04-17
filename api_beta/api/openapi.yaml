@@ -61992,14 +61992,14 @@ paths:
 
           Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
           If it is not specified, a default limit is used.
-        example: 50
+        example: 100
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int64
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
           x-go-name: Limit
@@ -62036,7 +62036,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Too many requests
+          description: Too many requests. The list form instances operation is limited
+            to 50 requests per 10 seconds per tenant; reduce call frequency or wait
+            before retrying.
         "500":
           content:
             application/json:
@@ -62118,7 +62120,10 @@ paths:
       x-codegen-request-body-name: Body
   /form-instances/{formInstanceID}:
     get:
-      description: "Parameter `{formInstanceID}` should match a form instance ID."
+      description: |-
+        Parameter `{formInstanceID}` should match a form instance ID.
+
+        Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
       operationId: getFormInstanceByKey
       parameters:
       - description: Form instance ID
@@ -62179,8 +62184,13 @@ paths:
       summary: Returns a form instance.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - USER
     patch:
-      description: "Parameter `{formInstanceID}` should match a form instance ID."
+      description: |-
+        Parameter `{formInstanceID}` should match a form instance ID.
+
+        Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
       operationId: patchFormInstance
       parameters:
       - description: Form instance ID
@@ -62265,6 +62275,8 @@ paths:
       summary: Patch a form instance.
       tags:
       - Custom Forms
+      x-sailpoint-userLevels:
+      - USER
       x-codegen-request-body-name: Body
   /form-instances/{formInstanceID}/data-source/{formElementID}:
     get:
@@ -71064,6 +71076,8 @@ components:
           - MANAGER
           - SOURCE_OWNER
           - SEARCH
+          - ROLE_COMPOSITION
+          - MACHINE_ACCOUNT
           example: MANAGER
           type: string
         description:
