@@ -14,6 +14,8 @@ import (
 	"github.com/hashicorp/go-retryablehttp"
 	beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
 	generic "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+	nerm "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
+	nermv2025 "github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025"
 	v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
 	v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
@@ -33,13 +35,15 @@ type APIClient struct {
 
 	// API Services
 
-	V3      *v3.APIClient
-	Beta    *beta.APIClient
-	V2024   *v2024.APIClient
-	V2025   *v2025.APIClient
-	V2026   *v2026.APIClient
-	Generic *generic.APIClient
-	token   string
+	V3        *v3.APIClient
+	Beta      *beta.APIClient
+	V2024     *v2024.APIClient
+	V2025     *v2025.APIClient
+	V2026     *v2026.APIClient
+	Generic   *generic.APIClient
+	NERM      *nerm.APIClient
+	NERMV2025 *nermv2025.APIClient
+	token     string
 }
 
 type service struct {
@@ -67,6 +71,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	CV2025 := v2025.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2025", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
 	CVGeneric := generic.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
 	CV2026 := v2026.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2026", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CNERM := nerm.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.NermBaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
+	CNERMV2025 := nermv2025.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.NermBaseURL+"/v2025", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, consumerSuffix, cfg.Experimental)
 
 	CV3.HTTPClient = cfg.HTTPClient
 	CBeta.HTTPClient = cfg.HTTPClient
@@ -74,6 +80,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	CV2025.HTTPClient = cfg.HTTPClient
 	CVGeneric.HTTPClient = cfg.HTTPClient
 	CV2026.HTTPClient = cfg.HTTPClient
+	CNERM.HTTPClient = cfg.HTTPClient
+	CNERMV2025.HTTPClient = cfg.HTTPClient
 
 	c.V3 = v3.NewAPIClient(CV3)
 	c.Beta = beta.NewAPIClient(CBeta)
@@ -81,6 +89,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.V2025 = v2025.NewAPIClient(CV2025)
 	c.Generic = generic.NewAPIClient(CVGeneric)
 	c.V2026 = v2026.NewAPIClient(CV2026)
+	c.NERM = nerm.NewAPIClient(CNERM)
+	c.NERMV2025 = nermv2025.NewAPIClient(CNERMV2025)
 	// API Services
 
 	return c
