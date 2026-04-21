@@ -51,6 +51,7 @@ api_identities.go
 api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
+api_jit_access.go
 api_launchers.go
 api_lifecycle_states.go
 api_machine_account_classify.go
@@ -852,9 +853,14 @@ docs/InviteIdentitiesRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
+docs/JITAccessAPI.md
+docs/JITAccessAPIdeveloperSite_code_examples.yaml
+docs/JITActivationConfigResponse.md
 docs/JITConfiguration.md
 docs/JWK.md
 docs/JWKS.md
+docs/JitAccessOperationRequest.md
+docs/JitAccessOperationRequestValue.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationRoleMining.md
@@ -2315,6 +2321,9 @@ model_invite_identities_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
+model_jit_access_operation_request.go
+model_jit_access_operation_request_value.go
+model_jit_activation_config_response.go
 model_jit_configuration.go
 model_json_patch.go
 model_json_patch_operation.go
@@ -3058,6 +3067,7 @@ test/api_identities_test.go
 test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
+test/api_jit_access_test.go
 test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_machine_account_classify_test.go
