@@ -100,6 +100,28 @@ runs:
           --config sdk-resources/v2026-config.yaml
         node sdk-resources/postscript.js ./api_v2026
 
+    - name: Build NERM SDK
+      shell: bash
+      run: |
+        rm -rf ./api_nerm
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/nerm/openapi.yaml \
+          -g go -o api_nerm \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/nerm-config.yaml
+        node sdk-resources/postscript.js ./api_nerm
+
+    - name: Build NERM V2025 SDK
+      shell: bash
+      run: |
+        rm -rf ./api_nerm_v2025
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/nerm/v2025/v2025.yaml \
+          -g go -o api_nerm_v2025 \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/v2025-nerm-config.yaml
+        node sdk-resources/postscript.js ./api_nerm_v2025
+
     - name: Build and Test
       shell: bash
       run: |

@@ -1,0 +1,24 @@
+templateDir: ./sdk-resources/resources
+packageName: api_nerm_v2025
+packageVersion: 2.7.56
+generateInterfaces: false
+disallowAdditionalPropertiesIfNotPresent: false
+useOneOfDiscriminatorLookup: false
+enumClassPrefix: true
+gitRepoId: golang-sdk/v2
+gitUserId: sailpoint-oss
+apiVersion: NERMV2025
+funtionPrefix: NERMV2025
+subModuleName: NERMV2025
+nerm: true
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025
+files:
+  developerSite_code_examples.mustache:
+    templateType: APIDocs
+    destinationFilename: developerSite_code_examples.yaml
+  docs_methods_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: docs/Methods/Index.md
+  docs_models_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: Index.md

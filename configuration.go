@@ -31,10 +31,11 @@ type Token struct {
 }
 
 type Environment struct {
-	TenantURL string    `mapstructure:"tenanturl"`
-	BaseURL   string    `mapstructure:"baseurl"`
-	Pat       PatConfig `mapstructure:"pat"`
-	OAuth     Token     `mapstructure:"oauth"`
+	TenantURL   string    `mapstructure:"tenanturl"`
+	BaseURL     string    `mapstructure:"baseurl"`
+	NermBaseURL string    `mapstructure:"nermbaseurl"`
+	Pat         PatConfig `mapstructure:"pat"`
+	OAuth       Token     `mapstructure:"oauth"`
 }
 
 type OrgConfig struct {
@@ -50,6 +51,7 @@ type ClientConfiguration struct {
 	ClientId     string
 	ClientSecret string
 	BaseURL      string
+	NermBaseURL  string
 	TokenURL     string
 	Token        string
 }
@@ -167,7 +169,7 @@ func homeConfig() ClientConfiguration {
 	simpleConfig.ClientId = config.Environments[config.ActiveEnvironment].Pat.ClientID
 	simpleConfig.ClientSecret = config.Environments[config.ActiveEnvironment].Pat.ClientSecret
 	simpleConfig.TokenURL = simpleConfig.BaseURL + "/oauth/token"
-
+	simpleConfig.NermBaseURL = config.Environments[config.ActiveEnvironment].NermBaseURL
 	return simpleConfig
 }
 
@@ -182,6 +184,10 @@ func envConfig() ClientConfiguration {
 	if os.Getenv("SAIL_CLIENT_SECRET") != "" {
 		simpleConfig.ClientSecret = os.Getenv("SAIL_CLIENT_SECRET")
 	}
+	if os.Getenv("SAIL_NERM_BASE_URL") != "" {
+		simpleConfig.NermBaseURL = os.Getenv("SAIL_NERM_BASE_URL")
+	}
+
 	simpleConfig.TokenURL = simpleConfig.BaseURL + "/oauth/token"
 	return simpleConfig
 }
