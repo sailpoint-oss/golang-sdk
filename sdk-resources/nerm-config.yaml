@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: api_nerm
-packageVersion: 2.7.56
+packageVersion: 2.7.57
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
