@@ -52,6 +52,7 @@ api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
 api_jit_access.go
+api_jit_activations.go
 api_launchers.go
 api_lifecycle_states.go
 api_machine_account_classify.go
@@ -299,6 +300,7 @@ docs/AccountsExportReportArguments.md
 docs/AccountsSelectionRequest.md
 docs/AccountsSelectionResponse.md
 docs/ActivateCampaignOptions.md
+docs/ActivationWorkflowStatus.md
 docs/ActivityConfigurationSettings.md
 docs/ActivityIdentity.md
 docs/ActivityInsights.md
@@ -856,11 +858,19 @@ docs/InvocationStatusType.md
 docs/JITAccessAPI.md
 docs/JITAccessAPIdeveloperSite_code_examples.yaml
 docs/JITActivationConfigResponse.md
+docs/JITActivationsAPI.md
+docs/JITActivationsAPIdeveloperSite_code_examples.yaml
 docs/JITConfiguration.md
 docs/JWK.md
 docs/JWKS.md
 docs/JitAccessOperationRequest.md
 docs/JitAccessOperationRequestValue.md
+docs/JitActivationActivateRequest.md
+docs/JitActivationActivateResponse.md
+docs/JitActivationDeactivateRequest.md
+docs/JitActivationDeactivateResponse.md
+docs/JitActivationExtendRequest.md
+docs/JitActivationExtendResponse.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationRoleMining.md
@@ -1316,6 +1326,8 @@ docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
 docs/RolePropagationAPI.md
 docs/RolePropagationAPIdeveloperSite_code_examples.yaml
+docs/RolePropagationConfigInput.md
+docs/RolePropagationConfigResponse.md
 docs/RolePropagationOngoingResponse.md
 docs/RolePropagationOngoingResponseRolePropagationDetails.md
 docs/RolePropagationResponse.md
@@ -1841,6 +1853,7 @@ model_accounts_export_report_arguments.go
 model_accounts_selection_request.go
 model_accounts_selection_response.go
 model_activate_campaign_options.go
+model_activation_workflow_status.go
 model_activity_configuration_settings.go
 model_activity_identity.go
 model_activity_insights.go
@@ -2323,7 +2336,13 @@ model_invocation_status.go
 model_invocation_status_type.go
 model_jit_access_operation_request.go
 model_jit_access_operation_request_value.go
+model_jit_activation_activate_request.go
+model_jit_activation_activate_response.go
 model_jit_activation_config_response.go
+model_jit_activation_deactivate_request.go
+model_jit_activation_deactivate_response.go
+model_jit_activation_extend_request.go
+model_jit_activation_extend_response.go
 model_jit_configuration.go
 model_json_patch.go
 model_json_patch_operation.go
@@ -2715,6 +2734,8 @@ model_role_mining_session_scope.go
 model_role_mining_session_scoping_method.go
 model_role_mining_session_state.go
 model_role_mining_session_status.go
+model_role_propagation_config_input.go
+model_role_propagation_config_response.go
 model_role_propagation_ongoing_response.go
 model_role_propagation_ongoing_response_role_propagation_details.go
 model_role_propagation_response.go
@@ -3068,6 +3089,7 @@ test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
 test/api_jit_access_test.go
+test/api_jit_activations_test.go
 test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_machine_account_classify_test.go

@@ -45,6 +45,18 @@ func Test_api_v2025_RolePropagationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RolePropagationAPIService GetRolePropagationConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolePropagationAPI.GetRolePropagationConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RolePropagationAPIService GetRolePropagationStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -52,6 +64,18 @@ func Test_api_v2025_RolePropagationAPIService(t *testing.T) {
 		var rolePropagationId string
 
 		resp, httpRes, err := apiClient.RolePropagationAPI.GetRolePropagationStatus(context.Background(), rolePropagationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolePropagationAPIService SetRolePropagationConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolePropagationAPI.SetRolePropagationConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

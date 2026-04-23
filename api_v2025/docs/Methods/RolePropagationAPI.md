@@ -21,7 +21,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel-role-propagation**](#cancel-role-propagation) | **Post** `/role-propagation/terminate` | Terminate Role Propagation process
 [**get-ongoing-role-propagation**](#get-ongoing-role-propagation) | **Get** `/role-propagation/is-running` | Get ongoing Role Propagation process
+[**get-role-propagation-config**](#get-role-propagation-config) | **Get** `/role-propagation-config` | Get Role Change Propagation Configuration
 [**get-role-propagation-status**](#get-role-propagation-status) | **Get** `/role-propagation/{rolePropagationId}/status` | Get status of Role-Propagation process
+[**set-role-propagation-config**](#set-role-propagation-config) | **Put** `/role-propagation-config` | Update Role Change Propagation Configuration
 [**start-role-propagation**](#start-role-propagation) | **Post** `/role-propagation` | Initiate Role Propagation process
 
 
@@ -170,6 +172,79 @@ func main() {
 
 [[Back to top]](#)
 
+## get-role-propagation-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get Role Change Propagation Configuration
+This endpoint fetches the Role Change Propagation Configuration for the tenant
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-role-propagation-config)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRolePropagationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2025.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.V2025.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRolePropagationConfig`: RolePropagationConfigResponse
+    fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationConfig`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## get-role-propagation-status
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
@@ -250,6 +325,86 @@ func main() {
     }
     // response from `GetRolePropagationStatus`: RolePropagationStatusResponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationStatus`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## set-role-propagation-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update Role Change Propagation Configuration
+This endpoint enables or disables the Role Change Propagation Process for the tenant
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/set-role-propagation-config)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetRolePropagationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **rolePropagationConfigInput** | [**RolePropagationConfigInput**](../models/role-propagation-config-input) |  | 
+
+### Return type
+
+[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    rolepropagationconfiginput := []byte(``) // RolePropagationConfigInput | 
+
+    var rolePropagationConfigInput v2025.RolePropagationConfigInput
+    if err := json.Unmarshal(rolepropagationconfiginput, &rolePropagationConfigInput); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V2025.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+	  //resp, r, err := apiClient.V2025.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfig``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetRolePropagationConfig`: RolePropagationConfigResponse
+    fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.SetRolePropagationConfig`: %v\n", resp)
 }
 ```
 

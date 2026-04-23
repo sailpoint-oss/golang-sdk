@@ -149,6 +149,8 @@ type APIClient struct {
 
 	JITAccessAPI *JITAccessAPIService
 
+	JITActivationsAPI *JITActivationsAPIService
+
 	LaunchersAPI *LaunchersAPIService
 
 	LifecycleStatesAPI *LifecycleStatesAPIService
@@ -332,6 +334,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
 	c.JITAccessAPI = (*JITAccessAPIService)(&c.common)
+	c.JITActivationsAPI = (*JITActivationsAPIService)(&c.common)
 	c.LaunchersAPI = (*LaunchersAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
@@ -740,7 +743,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.57"
+	userAgent := "SailPoint-SDK-Go/2.7.58"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

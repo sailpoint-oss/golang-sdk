@@ -16416,6 +16416,134 @@
           // response from `PatchJitActivationConfig`: JITActivationConfigResponse
           fmt.Fprintf(os.Stdout, "Response from `JITAccessAPI.PatchJitActivationConfig`: %v\n", resp)
         }
+- path: /jit-activations/activate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/jit-activations#start-activate-workflow
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           jitactivationactivaterequest := []byte(`{
+          "activationPeriodMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationActivateRequest | 
+
+          
+          var jitActivationActivateRequest v2026.JitActivationActivateRequest
+          if err := json.Unmarshal(jitactivationactivaterequest, &jitActivationActivateRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.JITActivationsAPI.StartActivateWorkflow(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
+          //resp, r, err := apiClient.V2026.JITActivationsAPI.StartActivateWorkflow(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartActivateWorkflow``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartActivateWorkflow`: JitActivationActivateResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartActivateWorkflow`: %v\n", resp)
+        }
+- path: /jit-activations/deactivate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/jit-activations#start-deactivate-workflow
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           jitactivationdeactivaterequest := []byte(`{
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationDeactivateRequest | 
+
+          
+          var jitActivationDeactivateRequest v2026.JitActivationDeactivateRequest
+          if err := json.Unmarshal(jitactivationdeactivaterequest, &jitActivationDeactivateRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.JITActivationsAPI.StartDeactivateWorkflow(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
+          //resp, r, err := apiClient.V2026.JITActivationsAPI.StartDeactivateWorkflow(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartDeactivateWorkflow``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartDeactivateWorkflow`: JitActivationDeactivateResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartDeactivateWorkflow`: %v\n", resp)
+        }
+- path: /jit-activations/extend
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/jit-activations#start-extend-workflow
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           jitactivationextendrequest := []byte(`{
+          "activationPeriodExtensionMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationExtendRequest | 
+
+          
+          var jitActivationExtendRequest v2026.JitActivationExtendRequest
+          if err := json.Unmarshal(jitactivationextendrequest, &jitActivationExtendRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.JITActivationsAPI.StartExtendWorkflow(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
+          //resp, r, err := apiClient.V2026.JITActivationsAPI.StartExtendWorkflow(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartExtendWorkflow``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartExtendWorkflow`: JitActivationExtendResponse
+          fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartExtendWorkflow`: %v\n", resp)
+        }
 - path: /launchers
   method: Post
   xCodeSample:
@@ -24413,6 +24541,40 @@
           // response from `GetOngoingRolePropagation`: RolePropagationOngoingResponse
           fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetOngoingRolePropagation`: %v\n", resp)
         }
+- path: /role-propagation-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/role-propagation#get-role-propagation-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2026.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetRolePropagationConfig`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationConfig`: %v\n", resp)
+        }
 - path: /role-propagation/{rolePropagationId}/status
   method: Get
   xCodeSample:
@@ -24447,6 +24609,47 @@
           }
           // response from `GetRolePropagationStatus`: RolePropagationStatusResponse
           fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationStatus`: %v\n", resp)
+        }
+- path: /role-propagation-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2026/methods/role-propagation#set-role-propagation-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2026 "github.com/sailpoint-oss/golang-sdk/v2/api_v2026"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           rolepropagationconfiginput := []byte(``) // RolePropagationConfigInput | 
+
+          
+          var rolePropagationConfigInput v2026.RolePropagationConfigInput
+          if err := json.Unmarshal(rolepropagationconfiginput, &rolePropagationConfigInput); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2026.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          //resp, r, err := apiClient.V2026.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetRolePropagationConfig`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.SetRolePropagationConfig`: %v\n", resp)
         }
 - path: /role-propagation
   method: Post

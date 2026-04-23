@@ -23812,6 +23812,40 @@
           // response from `GetOngoingRolePropagation`: RolePropagationOngoingResponse
           fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetOngoingRolePropagation`: %v\n", resp)
         }
+- path: /role-propagation-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/role-propagation#get-role-propagation-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.V2025.RolePropagationAPI.GetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetRolePropagationConfig`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationConfig`: %v\n", resp)
+        }
 - path: /role-propagation/{rolePropagationId}/status
   method: Get
   xCodeSample:
@@ -23846,6 +23880,47 @@
           }
           // response from `GetRolePropagationStatus`: RolePropagationStatusResponse
           fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationStatus`: %v\n", resp)
+        }
+- path: /role-propagation-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/v2025/methods/role-propagation#set-role-propagation-config
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_v2025"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           rolepropagationconfiginput := []byte(``) // RolePropagationConfigInput | 
+
+          
+          var rolePropagationConfigInput v2025.RolePropagationConfigInput
+          if err := json.Unmarshal(rolepropagationconfiginput, &rolePropagationConfigInput); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.V2025.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          //resp, r, err := apiClient.V2025.RolePropagationAPI.SetRolePropagationConfig(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfig``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetRolePropagationConfig`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.SetRolePropagationConfig`: %v\n", resp)
         }
 - path: /role-propagation
   method: Post

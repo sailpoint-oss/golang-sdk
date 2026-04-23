@@ -1271,6 +1271,8 @@ docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
 docs/RolePropagationAPI.md
 docs/RolePropagationAPIdeveloperSite_code_examples.yaml
+docs/RolePropagationConfigInput.md
+docs/RolePropagationConfigResponse.md
 docs/RolePropagationOngoingResponse.md
 docs/RolePropagationOngoingResponseRolePropagationDetails.md
 docs/RolePropagationResponse.md
@@ -2632,6 +2634,8 @@ model_role_mining_session_scope.go
 model_role_mining_session_scoping_method.go
 model_role_mining_session_state.go
 model_role_mining_session_status.go
+model_role_propagation_config_input.go
+model_role_propagation_config_response.go
 model_role_propagation_ongoing_response.go
 model_role_propagation_ongoing_response_role_propagation_details.go
 model_role_propagation_response.go
