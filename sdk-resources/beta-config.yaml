@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: api_beta
-packageVersion: 2.7.65
+packageVersion: 2.7.66
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
