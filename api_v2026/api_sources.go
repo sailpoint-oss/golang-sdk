@@ -3559,6 +3559,7 @@ func (a *SourcesAPIService) GetSourceConnectionsExecute(r ApiGetSourceConnection
 type ApiGetSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
+	id string
 	xSailPointExperimental *string
 }
 
@@ -3582,12 +3583,14 @@ Access request to any entitlements in the source should follow this configuratio
 - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The Source id
  @return ApiGetSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesAPIService) GetSourceEntitlementRequestConfig(ctx context.Context) ApiGetSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) GetSourceEntitlementRequestConfig(ctx context.Context, id string) ApiGetSourceEntitlementRequestConfigRequest {
 	return ApiGetSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
@@ -3607,6 +3610,7 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 	}
 
 	localVarPath := localBasePath + "/sources/{id}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9471,6 +9475,7 @@ func (a *SourcesAPIService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Sour
 type ApiUpdateSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
+	id string
 	xSailPointExperimental *string
 	sourceEntitlementRequestConfig *SourceEntitlementRequestConfig
 }
@@ -9500,12 +9505,14 @@ Access request to any entitlements in the source should follow this configuratio
 - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The Source id
  @return ApiUpdateSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfig(ctx context.Context) ApiUpdateSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfig(ctx context.Context, id string) ApiUpdateSourceEntitlementRequestConfigRequest {
 	return ApiUpdateSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
@@ -9525,6 +9532,7 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpd
 	}
 
 	localVarPath := localBasePath + "/sources/{id}/entitlement-request-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

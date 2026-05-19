@@ -19,13 +19,11 @@ var _ MappedNullable = &ApprovalConfigSerialChainInner{}
 
 // ApprovalConfigSerialChainInner struct for ApprovalConfigSerialChainInner
 type ApprovalConfigSerialChainInner struct {
-	// ID of the serial chain.
-	ChainId *string `json:"chainId,omitempty"`
 	// Starting at 1 defines the order in which the identities will get assigned
 	Tier *int64 `json:"tier,omitempty"`
-	// Identity ID in the serial chain.
+	// Optional Identity ID of the type of identity defined in the 'identityType' field.
 	IdentityId *string `json:"identityId,omitempty"`
-	// Type of identity in the serial chain.
+	// Type of identityId in the serial chain.
 	IdentityType *string `json:"identityType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,38 +45,6 @@ func NewApprovalConfigSerialChainInner() *ApprovalConfigSerialChainInner {
 func NewApprovalConfigSerialChainInnerWithDefaults() *ApprovalConfigSerialChainInner {
 	this := ApprovalConfigSerialChainInner{}
 	return &this
-}
-
-// GetChainId returns the ChainId field value if set, zero value otherwise.
-func (o *ApprovalConfigSerialChainInner) GetChainId() string {
-	if o == nil || IsNil(o.ChainId) {
-		var ret string
-		return ret
-	}
-	return *o.ChainId
-}
-
-// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalConfigSerialChainInner) GetChainIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ChainId) {
-		return nil, false
-	}
-	return o.ChainId, true
-}
-
-// HasChainId returns a boolean if a field has been set.
-func (o *ApprovalConfigSerialChainInner) HasChainId() bool {
-	if o != nil && !IsNil(o.ChainId) {
-		return true
-	}
-
-	return false
-}
-
-// SetChainId gets a reference to the given string and assigns it to the ChainId field.
-func (o *ApprovalConfigSerialChainInner) SetChainId(v string) {
-	o.ChainId = &v
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise.
@@ -187,9 +153,6 @@ func (o ApprovalConfigSerialChainInner) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalConfigSerialChainInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChainId) {
-		toSerialize["chainId"] = o.ChainId
-	}
 	if !IsNil(o.Tier) {
 		toSerialize["tier"] = o.Tier
 	}
@@ -221,7 +184,6 @@ func (o *ApprovalConfigSerialChainInner) UnmarshalJSON(data []byte) (err error) 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "chainId")
 		delete(additionalProperties, "tier")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "identityType")

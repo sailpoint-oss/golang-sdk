@@ -23,6 +23,8 @@ var _ MappedNullable = &JitActivationActivateResponse{}
 type JitActivationActivateResponse struct {
 	// Workflow or business identifier for this activation.
 	Id string `json:"id"`
+	// Persistent activation record identifier for this JIT activation.
+	ActivationId string `json:"activationId"`
 	// Entitlement connection identifier for the activation.
 	ConnectionId string `json:"connectionId"`
 	// Activation duration in minutes for this workflow.
@@ -39,9 +41,10 @@ type _JitActivationActivateResponse JitActivationActivateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJitActivationActivateResponse(id string, connectionId string, activationPeriodMins int32, status ActivationWorkflowStatus, startTime SailPointTime) *JitActivationActivateResponse {
+func NewJitActivationActivateResponse(id string, activationId string, connectionId string, activationPeriodMins int32, status ActivationWorkflowStatus, startTime SailPointTime) *JitActivationActivateResponse {
 	this := JitActivationActivateResponse{}
 	this.Id = id
+	this.ActivationId = activationId
 	this.ConnectionId = connectionId
 	this.ActivationPeriodMins = activationPeriodMins
 	this.Status = status
@@ -79,6 +82,30 @@ func (o *JitActivationActivateResponse) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *JitActivationActivateResponse) SetId(v string) {
 	o.Id = v
+}
+
+// GetActivationId returns the ActivationId field value
+func (o *JitActivationActivateResponse) GetActivationId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ActivationId
+}
+
+// GetActivationIdOk returns a tuple with the ActivationId field value
+// and a boolean to check if the value has been set.
+func (o *JitActivationActivateResponse) GetActivationIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ActivationId, true
+}
+
+// SetActivationId sets field value
+func (o *JitActivationActivateResponse) SetActivationId(v string) {
+	o.ActivationId = v
 }
 
 // GetConnectionId returns the ConnectionId field value
@@ -188,6 +215,7 @@ func (o JitActivationActivateResponse) MarshalJSON() ([]byte, error) {
 func (o JitActivationActivateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
+	toSerialize["activationId"] = o.ActivationId
 	toSerialize["connectionId"] = o.ConnectionId
 	toSerialize["activationPeriodMins"] = o.ActivationPeriodMins
 	toSerialize["status"] = o.Status
@@ -206,6 +234,7 @@ func (o *JitActivationActivateResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
+		"activationId",
 		"connectionId",
 		"activationPeriodMins",
 		"status",
@@ -240,6 +269,7 @@ func (o *JitActivationActivateResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "activationId")
 		delete(additionalProperties, "connectionId")
 		delete(additionalProperties, "activationPeriodMins")
 		delete(additionalProperties, "status")

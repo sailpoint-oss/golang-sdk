@@ -27,8 +27,7 @@ type ApprovalConfig struct {
 	SerialChain []ApprovalConfigSerialChainInner `json:"serialChain,omitempty"`
 	// Determines whether a comment is required when approving or rejecting the approval request.
 	RequiresComment *string `json:"requiresComment,omitempty"`
-	// Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist.
-	FallbackApprover ApprovalIdentity `json:"fallbackApprover,omitempty"`
+	FallbackApprover *ApprovalConfigFallbackApprover `json:"fallbackApprover,omitempty"`
 	// Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.
 	MachineIdentityManagerAssignment *string `json:"machineIdentityManagerAssignment,omitempty"`
 	// When true, all approvals will be created with the status \"PASSED\".
@@ -46,7 +45,7 @@ type _ApprovalConfig ApprovalConfig
 // will change when the set of required properties is changed
 func NewApprovalConfig() *ApprovalConfig {
 	this := ApprovalConfig{}
-	var machineIdentityManagerAssignment string = "MACHINE_IDENTITY_OWNER"
+	var machineIdentityManagerAssignment string = "MANAGER_OF_REQUESTER"
 	this.MachineIdentityManagerAssignment = &machineIdentityManagerAssignment
 	var circumventApprovalProcess bool = false
 	this.CircumventApprovalProcess = &circumventApprovalProcess
@@ -58,7 +57,7 @@ func NewApprovalConfig() *ApprovalConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalConfigWithDefaults() *ApprovalConfig {
 	this := ApprovalConfig{}
-	var machineIdentityManagerAssignment string = "MACHINE_IDENTITY_OWNER"
+	var machineIdentityManagerAssignment string = "MANAGER_OF_REQUESTER"
 	this.MachineIdentityManagerAssignment = &machineIdentityManagerAssignment
 	var circumventApprovalProcess bool = false
 	this.CircumventApprovalProcess = &circumventApprovalProcess
@@ -258,19 +257,19 @@ func (o *ApprovalConfig) SetRequiresComment(v string) {
 }
 
 // GetFallbackApprover returns the FallbackApprover field value if set, zero value otherwise.
-func (o *ApprovalConfig) GetFallbackApprover() ApprovalIdentity {
+func (o *ApprovalConfig) GetFallbackApprover() ApprovalConfigFallbackApprover {
 	if o == nil || IsNil(o.FallbackApprover) {
-		var ret ApprovalIdentity
+		var ret ApprovalConfigFallbackApprover
 		return ret
 	}
-	return o.FallbackApprover
+	return *o.FallbackApprover
 }
 
 // GetFallbackApproverOk returns a tuple with the FallbackApprover field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalConfig) GetFallbackApproverOk() (ApprovalIdentity, bool) {
+func (o *ApprovalConfig) GetFallbackApproverOk() (*ApprovalConfigFallbackApprover, bool) {
 	if o == nil || IsNil(o.FallbackApprover) {
-		return ApprovalIdentity{}, false
+		return nil, false
 	}
 	return o.FallbackApprover, true
 }
@@ -284,9 +283,9 @@ func (o *ApprovalConfig) HasFallbackApprover() bool {
 	return false
 }
 
-// SetFallbackApprover gets a reference to the given ApprovalIdentity and assigns it to the FallbackApprover field.
-func (o *ApprovalConfig) SetFallbackApprover(v ApprovalIdentity) {
-	o.FallbackApprover = v
+// SetFallbackApprover gets a reference to the given ApprovalConfigFallbackApprover and assigns it to the FallbackApprover field.
+func (o *ApprovalConfig) SetFallbackApprover(v ApprovalConfigFallbackApprover) {
+	o.FallbackApprover = &v
 }
 
 // GetMachineIdentityManagerAssignment returns the MachineIdentityManagerAssignment field value if set, zero value otherwise.

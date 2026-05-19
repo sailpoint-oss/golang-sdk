@@ -288,7 +288,9 @@ func Test_api_v2025_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -709,7 +711,9 @@ func Test_api_v2025_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

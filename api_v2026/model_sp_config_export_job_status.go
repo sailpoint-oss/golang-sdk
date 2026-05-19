@@ -28,7 +28,7 @@ type SpConfigExportJobStatus struct {
 	// Type of the job, either export or import.
 	Type string `json:"type"`
 	// The time until which the artifacts will be available for download.
-	Expiration SailPointTime `json:"expiration"`
+	Expiration *SailPointTime `json:"expiration,omitempty"`
 	// The time the job was started.
 	Created SailPointTime `json:"created"`
 	// The time of the last update to the job.
@@ -46,12 +46,11 @@ type _SpConfigExportJobStatus SpConfigExportJobStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration SailPointTime, created SailPointTime, modified SailPointTime) *SpConfigExportJobStatus {
+func NewSpConfigExportJobStatus(jobId string, status string, type_ string, created SailPointTime, modified SailPointTime) *SpConfigExportJobStatus {
 	this := SpConfigExportJobStatus{}
 	this.JobId = jobId
 	this.Status = status
 	this.Type = type_
-	this.Expiration = expiration
 	this.Created = created
 	this.Modified = modified
 	return &this
@@ -137,28 +136,36 @@ func (o *SpConfigExportJobStatus) SetType(v string) {
 	o.Type = v
 }
 
-// GetExpiration returns the Expiration field value
+// GetExpiration returns the Expiration field value if set, zero value otherwise.
 func (o *SpConfigExportJobStatus) GetExpiration() SailPointTime {
-	if o == nil {
+	if o == nil || IsNil(o.Expiration) {
 		var ret SailPointTime
 		return ret
 	}
-
-	return o.Expiration
+	return *o.Expiration
 }
 
-// GetExpirationOk returns a tuple with the Expiration field value
+// GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportJobStatus) GetExpirationOk() (*SailPointTime, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
-	return &o.Expiration, true
+	return o.Expiration, true
 }
 
-// SetExpiration sets field value
+// HasExpiration returns a boolean if a field has been set.
+func (o *SpConfigExportJobStatus) HasExpiration() bool {
+	if o != nil && !IsNil(o.Expiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiration gets a reference to the given SailPointTime and assigns it to the Expiration field.
 func (o *SpConfigExportJobStatus) SetExpiration(v SailPointTime) {
-	o.Expiration = v
+	o.Expiration = &v
 }
 
 // GetCreated returns the Created field value
@@ -286,7 +293,9 @@ func (o SpConfigExportJobStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["jobId"] = o.JobId
 	toSerialize["status"] = o.Status
 	toSerialize["type"] = o.Type
-	toSerialize["expiration"] = o.Expiration
+	if !IsNil(o.Expiration) {
+		toSerialize["expiration"] = o.Expiration
+	}
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
 	if !IsNil(o.Description) {
@@ -311,7 +320,6 @@ func (o *SpConfigExportJobStatus) UnmarshalJSON(data []byte) (err error) {
 		"jobId",
 		"status",
 		"type",
-		"expiration",
 		"created",
 		"modified",
 	}

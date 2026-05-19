@@ -25,13 +25,6 @@ type TenantContextAPIService service
 type ApiGetTenantContextRequest struct {
 	ctx context.Context
 	ApiService *TenantContextAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetTenantContextRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetTenantContextRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetTenantContextRequest) Execute() ([]GetTenantContext200ResponseInner, *http.Response, error) {
@@ -41,7 +34,8 @@ func (r ApiGetTenantContextRequest) Execute() ([]GetTenantContext200ResponseInne
 /*
 GetTenantContext Retrieve tenant context
 
-Returns a list of key-value pairs representing the current state of the tenant's context.
+Returns all key-value pairs representing the current state of the tenant's context.
+Each tenant is limited to a maximum of 100 key-value pairs.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -74,15 +68,6 @@ func (a *TenantContextAPIService) GetTenantContextExecute(r ApiGetTenantContextR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -101,7 +86,6 @@ func (a *TenantContextAPIService) GetTenantContextExecute(r ApiGetTenantContextR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -196,14 +180,7 @@ func (a *TenantContextAPIService) GetTenantContextExecute(r ApiGetTenantContextR
 type ApiPatchTenantContextRequest struct {
 	ctx context.Context
 	ApiService *TenantContextAPIService
-	xSailPointExperimental *string
 	jsonPatchOperation *JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchTenantContextRequest) XSailPointExperimental(xSailPointExperimental string) ApiPatchTenantContextRequest {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPatchTenantContextRequest) JsonPatchOperation(jsonPatchOperation JsonPatchOperation) ApiPatchTenantContextRequest {
@@ -253,21 +230,6 @@ func (a *TenantContextAPIService) PatchTenantContextExecute(r ApiPatchTenantCont
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -289,7 +251,6 @@ func (a *TenantContextAPIService) PatchTenantContextExecute(r ApiPatchTenantCont
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

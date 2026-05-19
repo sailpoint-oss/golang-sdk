@@ -72931,6 +72931,7 @@ components:
           description: Last modification date of the task this TaskStatus represents
           example: 2020-07-11T21:23:15Z
           format: date-time
+          nullable: true
           type: string
         launched:
           description: Launch date of the task this TaskStatus represents
@@ -80218,7 +80219,6 @@ components:
           type: string
       required:
       - created
-      - expiration
       - jobId
       - modified
       - status

@@ -320,6 +320,7 @@ docs/ApprovalConfig.md
 docs/ApprovalConfigCronTimezone.md
 docs/ApprovalConfigEscalationConfig.md
 docs/ApprovalConfigEscalationConfigEscalationChainInner.md
+docs/ApprovalConfigFallbackApprover.md
 docs/ApprovalConfigReminderConfig.md
 docs/ApprovalConfigSerialChainInner.md
 docs/ApprovalConfigTimeoutConfig.md
@@ -644,9 +645,7 @@ docs/EntityCreatedByDTO.md
 docs/Error.md
 docs/ErrorMessage.md
 docs/ErrorMessageDto.md
-docs/ErrorMessageDto1.md
 docs/ErrorResponseDto.md
-docs/ErrorResponseDto1.md
 docs/EvaluateResponse.md
 docs/Event.md
 docs/EventActor.md
@@ -1816,6 +1815,7 @@ model_approval_config.go
 model_approval_config_cron_timezone.go
 model_approval_config_escalation_config.go
 model_approval_config_escalation_config_escalation_chain_inner.go
+model_approval_config_fallback_approver.go
 model_approval_config_reminder_config.go
 model_approval_config_serial_chain_inner.go
 model_approval_config_timeout_config.go
@@ -2096,9 +2096,7 @@ model_entity_created_by_dto.go
 model_error.go
 model_error_message.go
 model_error_message_dto.go
-model_error_message_dto_1.go
 model_error_response_dto.go
-model_error_response_dto_1.go
 model_evaluate_response.go
 model_event.go
 model_event_actor.go

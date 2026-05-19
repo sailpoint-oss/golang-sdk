@@ -341,6 +341,7 @@ docs/ApprovalConfig.md
 docs/ApprovalConfigCronTimezone.md
 docs/ApprovalConfigEscalationConfig.md
 docs/ApprovalConfigEscalationConfigEscalationChainInner.md
+docs/ApprovalConfigFallbackApprover.md
 docs/ApprovalConfigReminderConfig.md
 docs/ApprovalConfigSerialChainInner.md
 docs/ApprovalConfigTimeoutConfig.md
@@ -439,6 +440,9 @@ docs/BucketAggregation.md
 docs/BucketType.md
 docs/BulkAddTaggedObject.md
 docs/BulkApproveAccessRequest.md
+docs/BulkApproveEntitlementRecommendationItem.md
+docs/BulkApproveEntitlementRecommendationRequest.md
+docs/BulkApproveEntitlementRecommendationResult.md
 docs/BulkApproveRequestDTO.md
 docs/BulkCancelAccessRequest.md
 docs/BulkCancelRequestDTO.md
@@ -659,6 +663,12 @@ docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 docs/EntitlementDocumentAllOfPermissions.md
 docs/EntitlementDocumentAllOfSource.md
 docs/EntitlementPrivilegeLevel.md
+docs/EntitlementRecommendationAssignRequest.md
+docs/EntitlementRecommendationAssignResult.md
+docs/EntitlementRecommendationAssignee.md
+docs/EntitlementRecommendationAssigneeOneOf.md
+docs/EntitlementRecommendationAssigneeOneOf1.md
+docs/EntitlementRecommendationRecord.md
 docs/EntitlementRef.md
 docs/EntitlementRequestConfig.md
 docs/EntitlementRevocationRequestConfig.md
@@ -676,9 +686,7 @@ docs/EntityCreatedByDTO.md
 docs/Error.md
 docs/ErrorMessage.md
 docs/ErrorMessageDto.md
-docs/ErrorMessageDto1.md
 docs/ErrorResponseDto.md
-docs/ErrorResponseDto1.md
 docs/EvaluateResponse.md
 docs/Event.md
 docs/EventActor.md
@@ -1147,6 +1155,8 @@ docs/PrivilegeCriteriaConfigurationAPIdeveloperSite_code_examples.yaml
 docs/PrivilegeCriteriaDTO.md
 docs/PrivilegeCriteriaDTOGroupsInner.md
 docs/PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner.md
+docs/PrivilegedRecommendationGroup.md
+docs/PrivilegedRecommendationInstance.md
 docs/ProcessIdentitiesRequest.md
 docs/ProcessingDetails.md
 docs/Product.md
@@ -1890,6 +1900,7 @@ model_approval_config.go
 model_approval_config_cron_timezone.go
 model_approval_config_escalation_config.go
 model_approval_config_escalation_config_escalation_chain_inner.go
+model_approval_config_fallback_approver.go
 model_approval_config_reminder_config.go
 model_approval_config_serial_chain_inner.go
 model_approval_config_timeout_config.go
@@ -1978,6 +1989,9 @@ model_bucket_aggregation.go
 model_bucket_type.go
 model_bulk_add_tagged_object.go
 model_bulk_approve_access_request.go
+model_bulk_approve_entitlement_recommendation_item.go
+model_bulk_approve_entitlement_recommendation_request.go
+model_bulk_approve_entitlement_recommendation_result.go
 model_bulk_approve_request_dto.go
 model_bulk_cancel_access_request.go
 model_bulk_cancel_request_dto.go
@@ -2166,6 +2180,12 @@ model_entitlement_document_all_of_manually_updated_fields.go
 model_entitlement_document_all_of_permissions.go
 model_entitlement_document_all_of_source.go
 model_entitlement_privilege_level.go
+model_entitlement_recommendation_assign_request.go
+model_entitlement_recommendation_assign_result.go
+model_entitlement_recommendation_assignee.go
+model_entitlement_recommendation_assignee_one_of.go
+model_entitlement_recommendation_assignee_one_of_1.go
+model_entitlement_recommendation_record.go
 model_entitlement_ref.go
 model_entitlement_request_config.go
 model_entitlement_revocation_request_config.go
@@ -2181,9 +2201,7 @@ model_entity_created_by_dto.go
 model_error.go
 model_error_message.go
 model_error_message_dto.go
-model_error_message_dto_1.go
 model_error_response_dto.go
-model_error_response_dto_1.go
 model_evaluate_response.go
 model_event.go
 model_event_actor.go
@@ -2567,6 +2585,8 @@ model_privilege_criteria_config_dto.go
 model_privilege_criteria_dto.go
 model_privilege_criteria_dto_groups_inner.go
 model_privilege_criteria_dto_groups_inner_criteria_items_inner.go
+model_privileged_recommendation_group.go
+model_privileged_recommendation_instance.go
 model_process_identities_request.go
 model_processing_details.go
 model_product.go

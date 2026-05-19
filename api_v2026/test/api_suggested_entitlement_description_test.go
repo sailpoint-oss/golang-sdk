@@ -22,6 +22,18 @@ func Test_api_v2026_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test SuggestedEntitlementDescriptionAPIService ApproveBulkEntitlementRecommendations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendations(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SuggestedEntitlementDescriptionAPIService CreateAutoWriteSettings", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -72,11 +84,49 @@ func Test_api_v2026_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SuggestedEntitlementDescriptionAPIService ListPendingEntitlementRecommendationApprovals", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovals(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SuggestedEntitlementDescriptionAPIService ListPrivilegedEntitlementRecommendations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendations(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SuggestedEntitlementDescriptionAPIService ListSeds", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SuggestedEntitlementDescriptionAPIService PatchEntitlementRecommendation", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendation(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,6 +141,18 @@ func Test_api_v2026_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SuggestedEntitlementDescriptionAPIService SubmitEntitlementRecommendationsAssignment", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignment(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

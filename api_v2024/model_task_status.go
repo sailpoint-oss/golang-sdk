@@ -37,7 +37,7 @@ type TaskStatus struct {
 	// Creation date of the task this TaskStatus represents
 	Created SailPointTime `json:"created"`
 	// Last modification date of the task this TaskStatus represents
-	Modified SailPointTime `json:"modified"`
+	Modified NullableTime `json:"modified"`
 	// Launch date of the task this TaskStatus represents
 	Launched NullableTime `json:"launched"`
 	// Completion date of the task this TaskStatus represents
@@ -64,7 +64,7 @@ type _TaskStatus TaskStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created SailPointTime, modified SailPointTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress NullableString, percentComplete int32) *TaskStatus {
+func NewTaskStatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created SailPointTime, modified NullableTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []TaskStatusMessage, returns []TaskReturnDetails, attributes map[string]interface{}, progress NullableString, percentComplete int32) *TaskStatus {
 	this := TaskStatus{}
 	this.Id = id
 	this.Type = type_
@@ -306,27 +306,29 @@ func (o *TaskStatus) SetCreated(v SailPointTime) {
 }
 
 // GetModified returns the Modified field value
+// If the value is explicit nil, the zero value for SailPointTime will be returned
 func (o *TaskStatus) GetModified() SailPointTime {
-	if o == nil {
+	if o == nil || o.Modified.Get() == nil {
 		var ret SailPointTime
 		return ret
 	}
 
-	return o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatus) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // SetModified sets field value
 func (o *TaskStatus) SetModified(v SailPointTime) {
-	o.Modified = v
+	o.Modified.Set(&v)
 }
 
 // GetLaunched returns the Launched field value
@@ -581,7 +583,7 @@ func (o TaskStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["target"] = o.Target.Get()
 	}
 	toSerialize["created"] = o.Created
-	toSerialize["modified"] = o.Modified
+	toSerialize["modified"] = o.Modified.Get()
 	toSerialize["launched"] = o.Launched.Get()
 	toSerialize["completed"] = o.Completed.Get()
 	toSerialize["completionStatus"] = o.CompletionStatus.Get()

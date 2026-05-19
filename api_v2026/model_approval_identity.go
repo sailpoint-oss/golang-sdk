@@ -21,7 +21,7 @@ var _ MappedNullable = &ApprovalIdentity{}
 type ApprovalIdentity struct {
 	// Email address.
 	Email *string `json:"email,omitempty"`
-	// Identity ID.
+	// Identity ID of the type of identity defined in the 'type' field.
 	IdentityID *string `json:"identityID,omitempty"`
 	// List of members of a governance group. Will be omitted if the identity is not a governance group.
 	Members []ApprovalIdentityMembersInner `json:"members,omitempty"`
@@ -31,7 +31,7 @@ type ApprovalIdentity struct {
 	OwnerOf []ApprovalIdentityOwnerOfInner `json:"ownerOf,omitempty"`
 	// The serial step of the identity in the approval. For example serialOrder 1 is the first identity to action in an approval request chain. Parallel approvals are set to 0.
 	SerialOrder *int64 `json:"serialOrder,omitempty"`
-	// Type of identity.
+	// Type of identityID.
 	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
