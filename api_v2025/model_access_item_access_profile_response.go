@@ -36,6 +36,8 @@ type AccessItemAccessProfileResponse struct {
 	SourceId *string `json:"sourceId,omitempty"`
 	// the list of app ids associated with the access profile
 	AppRefs []AccessItemAccessProfileResponseAppRefsInner `json:"appRefs"`
+	// the date the access profile will be assigned to the specified identity, in case requested with a future start date
+	StartDate NullableString `json:"startDate,omitempty"`
 	// the date the access profile is no longer assigned to the specified identity
 	RemoveDate NullableString `json:"removeDate,omitempty"`
 	// indicates whether the access profile is standalone
@@ -318,6 +320,48 @@ func (o *AccessItemAccessProfileResponse) SetAppRefs(v []AccessItemAccessProfile
 	o.AppRefs = v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessItemAccessProfileResponse) GetStartDate() string {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.StartDate.Get()
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessItemAccessProfileResponse) GetStartDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartDate.Get(), o.StartDate.IsSet()
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasStartDate() bool {
+	if o != nil && o.StartDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
+func (o *AccessItemAccessProfileResponse) SetStartDate(v string) {
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *AccessItemAccessProfileResponse) SetStartDateNil() {
+	o.StartDate.Set(nil)
+}
+
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *AccessItemAccessProfileResponse) UnsetStartDate() {
+	o.StartDate.Unset()
+}
+
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessItemAccessProfileResponse) GetRemoveDate() string {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
@@ -442,6 +486,9 @@ func (o AccessItemAccessProfileResponse) ToMap() (map[string]interface{}, error)
 		toSerialize["sourceId"] = o.SourceId
 	}
 	toSerialize["appRefs"] = o.AppRefs
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
+	}
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
@@ -501,6 +548,7 @@ func (o *AccessItemAccessProfileResponse) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "appRefs")
+		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "standalone")
 		delete(additionalProperties, "revocable")

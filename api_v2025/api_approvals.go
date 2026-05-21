@@ -890,7 +890,7 @@ type ApiGetApprovalsRequest struct {
 	offset *int32
 }
 
-// Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of &#39;approverId&#x3D;${your_identity_id}&#39;).
+// Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of &#39;approverId&#x3D;[your_identity_id]&#39;).
 func (r ApiGetApprovalsRequest) Mine(mine bool) ApiGetApprovalsRequest {
 	r.mine = &mine
 	return r
@@ -979,7 +979,7 @@ Gets a list of approvals.
 
 One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.
 
-The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=${your_identity_id}') 
+The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=[your_identity_id]') 
 while admins will default to mine=false (which will show all approvals in the org).
 
 For lookups by access request ID please use the following:

@@ -72081,6 +72081,7 @@ components:
           cloudAppName: Sample App
         - cloudAppId: 2c91808a77ff216301782327a50f09bf
           cloudAppName: Another App
+        startDate: 2024-07-01T05:00:00.00Z
       properties:
         id:
           description: the access item id
@@ -72122,6 +72123,12 @@ components:
           items:
             $ref: '#/components/schemas/AccessItemAccessProfileResponse_appRefs_inner'
           type: array
+        startDate:
+          description: "the date the access profile will be assigned to the specified\
+            \ identity, in case requested with a future start date"
+          example: 2024-07-01T05:00:00.00Z
+          nullable: true
+          type: string
         removeDate:
           description: the date the access profile is no longer assigned to the specified
             identity
@@ -72202,6 +72209,12 @@ components:
         description:
           description: the description for the role
           example: Role - Workday/Citizenship access
+          type: string
+        startDate:
+          description: "the date the access profile will be assigned to the specified\
+            \ identity, in case requested with a future start date"
+          example: 2024-07-01T05:00:00.00Z
+          nullable: true
           type: string
         removeDate:
           description: the date the role is no longer assigned to the specified identity
