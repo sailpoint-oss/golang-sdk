@@ -2314,6 +2314,8 @@ This endpoint allows a service outside of IdentityNow to initiate a workflow tha
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow
  @return ApiPostExternalExecuteWorkflowRequest
+
+Deprecated
 */
 func (a *WorkflowsAPIService) PostExternalExecuteWorkflow(ctx context.Context, id string) ApiPostExternalExecuteWorkflowRequest {
 	return ApiPostExternalExecuteWorkflowRequest{
@@ -2325,6 +2327,7 @@ func (a *WorkflowsAPIService) PostExternalExecuteWorkflow(ctx context.Context, i
 
 // Execute executes the request
 //  @return PostExternalExecuteWorkflow200Response
+// Deprecated
 func (a *WorkflowsAPIService) PostExternalExecuteWorkflowExecute(r ApiPostExternalExecuteWorkflowRequest) (*PostExternalExecuteWorkflow200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2804,6 +2807,8 @@ Validate a workflow with an "External Trigger" can receive input.  The response 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow
  @return ApiTestExternalExecuteWorkflowRequest
+
+Deprecated
 */
 func (a *WorkflowsAPIService) TestExternalExecuteWorkflow(ctx context.Context, id string) ApiTestExternalExecuteWorkflowRequest {
 	return ApiTestExternalExecuteWorkflowRequest{
@@ -2815,6 +2820,7 @@ func (a *WorkflowsAPIService) TestExternalExecuteWorkflow(ctx context.Context, i
 
 // Execute executes the request
 //  @return TestExternalExecuteWorkflow200Response
+// Deprecated
 func (a *WorkflowsAPIService) TestExternalExecuteWorkflowExecute(r ApiTestExternalExecuteWorkflowRequest) (*TestExternalExecuteWorkflow200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
