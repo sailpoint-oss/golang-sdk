@@ -89,7 +89,9 @@ func Test_api_v2026_MachineIdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregation(context.Background()).Execute()
+		var sourceId string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregation(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

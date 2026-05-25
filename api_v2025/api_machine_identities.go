@@ -1064,6 +1064,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsExecute
 type ApiStartMachineIdentityAggregationRequest struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
+	sourceId string
 	xSailPointExperimental *string
 	machineIdentityAggregationRequest *MachineIdentityAggregationRequest
 }
@@ -1089,12 +1090,14 @@ StartMachineIdentityAggregation Start machine identity aggregation
 Starts a machine identity (AI Agents) aggregation on the specified source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId Source ID.
  @return ApiStartMachineIdentityAggregationRequest
 */
-func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregation(ctx context.Context) ApiStartMachineIdentityAggregationRequest {
+func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregation(ctx context.Context, sourceId string) ApiStartMachineIdentityAggregationRequest {
 	return ApiStartMachineIdentityAggregationRequest{
 		ApiService: a,
 		ctx: ctx,
+		sourceId: sourceId,
 	}
 }
 
@@ -1114,6 +1117,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationExecute(r A
 	}
 
 	localVarPath := localBasePath + "/sources/{sourceId}/aggregate-agents"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
