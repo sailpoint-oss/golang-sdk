@@ -1043,6 +1043,9 @@ docs/MetricType.md
 docs/MfaConfigTestResponse.md
 docs/MfaDuoConfig.md
 docs/MfaOktaConfig.md
+docs/MisBulkRequest.md
+docs/MisBulkResponse.md
+docs/MisBulkUpdateRequest.md
 docs/MultiHostIntegrationAPI.md
 docs/MultiHostIntegrationAPIdeveloperSite_code_examples.yaml
 docs/MultiHostIntegrationTemplateType.md
@@ -2518,6 +2521,9 @@ model_metric_type.go
 model_mfa_config_test_response.go
 model_mfa_duo_config.go
 model_mfa_okta_config.go
+model_mis_bulk_request.go
+model_mis_bulk_response.go
+model_mis_bulk_update_request.go
 model_multi_host_integration_template_type.go
 model_multi_host_integrations.go
 model_multi_host_integrations_accounts_file.go

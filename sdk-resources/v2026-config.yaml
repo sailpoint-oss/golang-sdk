@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: api_v2026
-packageVersion: 2.7.83
+packageVersion: 2.7.84
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false

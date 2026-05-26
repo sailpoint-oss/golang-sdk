@@ -50,6 +50,30 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService DisableMachineAccountsInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.DisableMachineAccountsInBulk(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService EnableMachineAccountsInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.EnableMachineAccountsInBulk(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService GetMachineAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -160,6 +184,18 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineAccountsAPIService ReloadMachineAccountsInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.ReloadMachineAccountsInBulk(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineAccountsAPIService UpdateMachineAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -181,6 +217,18 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 		var subtypeId string
 
 		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineAccountsAPIService UpdateMachineAccountsInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountsInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
