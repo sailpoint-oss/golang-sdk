@@ -207,6 +207,8 @@ type APIClient struct {
 
 	PrivilegeCriteriaConfigurationAPI *PrivilegeCriteriaConfigurationAPIService
 
+	PromptInsightsAPI *PromptInsightsAPIService
+
 	PublicIdentitiesAPI *PublicIdentitiesAPIService
 
 	PublicIdentitiesConfigAPI *PublicIdentitiesConfigAPIService
@@ -365,6 +367,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PersonalAccessTokensAPI = (*PersonalAccessTokensAPIService)(&c.common)
 	c.PrivilegeCriteriaAPI = (*PrivilegeCriteriaAPIService)(&c.common)
 	c.PrivilegeCriteriaConfigurationAPI = (*PrivilegeCriteriaConfigurationAPIService)(&c.common)
+	c.PromptInsightsAPI = (*PromptInsightsAPIService)(&c.common)
 	c.PublicIdentitiesAPI = (*PublicIdentitiesAPIService)(&c.common)
 	c.PublicIdentitiesConfigAPI = (*PublicIdentitiesConfigAPIService)(&c.common)
 	c.ReportsDataExtractionAPI = (*ReportsDataExtractionAPIService)(&c.common)
@@ -746,7 +749,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.84"
+	userAgent := "SailPoint-SDK-Go/2.7.85"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}

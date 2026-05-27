@@ -81,6 +81,7 @@ api_password_sync_groups.go
 api_personal_access_tokens.go
 api_privilege_criteria.go
 api_privilege_criteria_configuration.go
+api_prompt_insights.go
 api_public_identities.go
 api_public_identities_config.go
 api_reports_data_extraction.go
@@ -1183,6 +1184,10 @@ docs/PrivilegedRecommendationInstance.md
 docs/ProcessIdentitiesRequest.md
 docs/ProcessingDetails.md
 docs/Product.md
+docs/PromptInsight.md
+docs/PromptInsightsAPI.md
+docs/PromptInsightsAPIdeveloperSite_code_examples.yaml
+docs/PromptInsightsMetrics.md
 docs/ProvisioningCompleted.md
 docs/ProvisioningCompletedAccountRequestsInner.md
 docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md
@@ -2633,6 +2638,8 @@ model_privileged_recommendation_instance.go
 model_process_identities_request.go
 model_processing_details.go
 model_product.go
+model_prompt_insight.go
+model_prompt_insights_metrics.go
 model_provisioning_completed.go
 model_provisioning_completed_account_requests_inner.go
 model_provisioning_completed_account_requests_inner_attribute_requests_inner.go
@@ -3181,6 +3188,7 @@ test/api_password_sync_groups_test.go
 test/api_personal_access_tokens_test.go
 test/api_privilege_criteria_configuration_test.go
 test/api_privilege_criteria_test.go
+test/api_prompt_insights_test.go
 test/api_public_identities_config_test.go
 test/api_public_identities_test.go
 test/api_reports_data_extraction_test.go
