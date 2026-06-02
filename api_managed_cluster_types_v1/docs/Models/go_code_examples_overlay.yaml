@@ -1,0 +1,185 @@
+- path: /managed-cluster-types/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustertypesv1/methods/managed-cluster-types#create-managed-cluster-type-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+        )
+
+        func main() {
+           managedclustertype := []byte(``) // Managedclustertype | 
+
+          
+          var managedclustertype v1.Managedclustertype
+          if err := json.Unmarshal(managedclustertype, &managedclustertype); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
+          //resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.CreateManagedClusterTypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateManagedClusterTypeV1`: Managedclustertype
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClusterTypesAPI.CreateManagedClusterTypeV1`: %v\n", resp)
+        }
+- path: /managed-cluster-types/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustertypesv1/methods/managed-cluster-types#delete-managed-cluster-type-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+        )
+
+        func main() {
+          id := `aClusterTypeId` // string | The Managed Cluster Type ID # string | The Managed Cluster Type ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
+          //r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.DeleteManagedClusterTypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /managed-cluster-types/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustertypesv1/methods/managed-cluster-types#get-managed-cluster-type-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+        )
+
+        func main() {
+          id := `aClusterTypeId` // string | The Managed Cluster Type ID # string | The Managed Cluster Type ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.GetManagedClusterTypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClusterTypeV1`: Managedclustertype
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClusterTypesAPI.GetManagedClusterTypeV1`: %v\n", resp)
+        }
+- path: /managed-cluster-types/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustertypesv1/methods/managed-cluster-types#get-managed-cluster-types-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+        )
+
+        func main() {
+          type_ := `IDN` // string | Type descriptor (optional) # string | Type descriptor (optional)
+          pod := `megapod-useast1` // string | Pinned pod (or default) (optional) # string | Pinned pod (or default) (optional)
+          org := `denali-xyz` // string | Pinned org (or default) (optional) # string | Pinned org (or default) (optional)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Type_(type_).Pod(pod).Org(org).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.GetManagedClusterTypesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClusterTypesV1`: []Managedclustertype
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClusterTypesAPI.GetManagedClusterTypesV1`: %v\n", resp)
+        }
+- path: /managed-cluster-types/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustertypesv1/methods/managed-cluster-types#update-managed-cluster-type-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types_v1"
+        )
+
+        func main() {
+          id := `aClusterTypeId` // string | The Managed Cluster Type ID # string | The Managed Cluster Type ID
+           jsonpatch := []byte(``) // Jsonpatch | The JSONPatch payload used to update the schema.
+
+          
+          var jsonpatch v1.Jsonpatch
+          if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+          //resp, r, err := apiClient.ManagedClusterTypesV1.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.UpdateManagedClusterTypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateManagedClusterTypeV1`: Managedclustertype
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClusterTypesAPI.UpdateManagedClusterTypeV1`: %v\n", resp)
+        }

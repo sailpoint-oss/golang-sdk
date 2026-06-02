@@ -1,0 +1,73 @@
+- path: /public-identities-config/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/publicidentitiesconfigv1/methods/public-identities-config#get-public-identity-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities_config_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities_config_v1"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PublicIdentitiesConfigV1.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.PublicIdentitiesConfigV1.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPublicIdentityConfigV1`: Publicidentityconfig
+          fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1`: %v\n", resp)
+        }
+- path: /public-identities-config/v1
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/publicidentitiesconfigv1/methods/public-identities-config#update-public-identity-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities_config_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities_config_v1"
+        )
+
+        func main() {
+           publicidentityconfig := []byte(``) // Publicidentityconfig | 
+
+          
+          var publicidentityconfig v1.Publicidentityconfig
+          if err := json.Unmarshal(publicidentityconfig, &publicidentityconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PublicIdentitiesConfigV1.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
+          //resp, r, err := apiClient.PublicIdentitiesConfigV1.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdatePublicIdentityConfigV1`: Publicidentityconfig
+          fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1`: %v\n", resp)
+        }

@@ -1,0 +1,267 @@
+- path: /access-request-approvals/v1/{approvalId}/approve
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#approve-access-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
+           commentdto := []byte(``) // Commentdto | Reviewer's comment. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ApproveAccessRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ApproveAccessRequestV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ApproveAccessRequestV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/{approvalId}/forward
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#forward-access-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
+           forwardapprovaldto := []byte(``) // Forwardapprovaldto | Information about the forwarded approval.
+
+          
+          var forwardapprovaldto v1.Forwardapprovaldto
+          if err := json.Unmarshal(forwardapprovaldto, &forwardapprovaldto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ForwardAccessRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ForwardAccessRequestV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ForwardAccessRequestV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/approval-summary
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#get-access-request-approval-summary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          ownerId := `2c91808568c529c60168cca6f90c1313` // string | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # string | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          fromDate := `from-date=2020-03-19T19:59:11Z` // string | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional) # string | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccessRequestApprovalSummaryV1`: Approvalsummary
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/{accessRequestId}/approvers
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#list-access-request-approvers-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          accessRequestId := `2c91808568c529c60168cca6f90c1313` // string | Access Request ID. # string | Access Request ID.
+          limit := 100 // int32 | Max number of results to return. (optional) (default to 250) # int32 | Max number of results to return. (optional) (default to 250)
+          offset := 10 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
+          count := false // bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListAccessRequestApproversV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListAccessRequestApproversV1`: []Accessrequestapproverslistresponse
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListAccessRequestApproversV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/completed
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#list-completed-approvals-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          ownerId := `2c91808568c529c60168cca6f90c1313` // string | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # string | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "2c91808568c529c60168cca6f90c1313"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, eq, in, ne, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, eq, in, ne, sw* (optional)
+          sorters := `modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListCompletedApprovalsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListCompletedApprovalsV1`: []Completedapproval
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListCompletedApprovalsV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/pending
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#list-pending-approvals-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          ownerId := `2c91808568c529c60168cca6f90c1313` // string | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # string | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "2c91808568c529c60168cca6f90c1313"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*  **accessRequestId**: *eq, in*  **created**: *gt, lt, ge, le, eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*  **accessRequestId**: *eq, in*  **created**: *gt, lt, ge, le, eq, in* (optional)
+          sorters := `modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListPendingApprovalsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListPendingApprovalsV1`: []Pendingapproval
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListPendingApprovalsV1`: %v\n", resp)
+        }
+- path: /access-request-approvals/v1/{approvalId}/reject
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessrequestapprovalsv1/methods/access-request-approvals#reject-access-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals_v1"
+        )
+
+        func main() {
+          approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
+           commentdto := []byte(``) // Commentdto | Reviewer's comment.
+
+          
+          var commentdto v1.Commentdto
+          if err := json.Unmarshal(commentdto, &commentdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+          //resp, r, err := apiClient.AccessRequestApprovalsV1.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.RejectAccessRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `RejectAccessRequestV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.RejectAccessRequestV1`: %v\n", resp)
+        }

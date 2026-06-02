@@ -1,0 +1,210 @@
+- path: /connector-customizers/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#create-connector-customizer-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+           connectorcustomizercreaterequest := []byte(``) // Connectorcustomizercreaterequest | Connector customizer to create.
+
+          
+          var connectorcustomizercreaterequest v1.Connectorcustomizercreaterequest
+          if err := json.Unmarshal(connectorcustomizercreaterequest, &connectorcustomizercreaterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
+          //resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateConnectorCustomizerV1`: Connectorcustomizercreateresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.CreateConnectorCustomizerV1`: %v\n", resp)
+        }
+- path: /connector-customizers/v1/{id}/versions
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#create-connector-customizer-version-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+          id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | The id of the connector customizer. # string | The id of the connector customizer.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateConnectorCustomizerVersionV1`: Connectorcustomizerversioncreateresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1`: %v\n", resp)
+        }
+- path: /connector-customizers/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#delete-connector-customizer-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+          id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | ID of the connector customizer to delete. # string | ID of the connector customizer to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
+          //r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.DeleteConnectorCustomizerV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /connector-customizers/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#get-connector-customizer-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+          id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | ID of the connector customizer to get. # string | ID of the connector customizer to get.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.GetConnectorCustomizerV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetConnectorCustomizerV1`: Connectorcustomizersresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.GetConnectorCustomizerV1`: %v\n", resp)
+        }
+- path: /connector-customizers/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#list-connector-customizers-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.ListConnectorCustomizersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListConnectorCustomizersV1`: []Connectorcustomizersresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.ListConnectorCustomizersV1`: %v\n", resp)
+        }
+- path: /connector-customizers/v1/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorcustomizersv1/methods/connector-customizers#put-connector-customizer-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers_v1"
+        )
+
+        func main() {
+          id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | ID of the connector customizer to update. # string | ID of the connector customizer to update.
+           connectorcustomizerupdaterequest := []byte(``) // Connectorcustomizerupdaterequest | Connector rule with updated data. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ConnectorCustomizersV1.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Connectorcustomizerupdaterequest(connectorcustomizerupdaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.PutConnectorCustomizerV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutConnectorCustomizerV1`: Connectorcustomizerupdateresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.PutConnectorCustomizerV1`: %v\n", resp)
+        }

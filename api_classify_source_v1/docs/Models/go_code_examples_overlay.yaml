@@ -1,0 +1,100 @@
+- path: /sources/v1/{sourceId}/classify
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/classifysourcev1/methods/classify-source#delete-classify-machine-account-from-source-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+          //r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v1/{sourceId}/classify
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/classifysourcev1/methods/classify-source#get-classify-machine-account-from-source-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetClassifyMachineAccountFromSourceStatusV1`: Sourceclassificationstatus
+          fmt.Fprintf(os.Stdout, "Response from `ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/classify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/classifysourcev1/methods/classify-source#send-classify-machine-account-from-source-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source_v1"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.ClassifySourceV1.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SendClassifyMachineAccountFromSourceV1`: SendClassifyMachineAccountFromSourceV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1`: %v\n", resp)
+        }

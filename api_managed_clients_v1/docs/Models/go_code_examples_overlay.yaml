@@ -1,0 +1,253 @@
+- path: /managed-clients/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#create-managed-client-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+           managedclientrequest := []byte(``) // Managedclientrequest | 
+
+          
+          var managedclientrequest v1.Managedclientrequest
+          if err := json.Unmarshal(managedclientrequest, &managedclientrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.CreateManagedClientV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateManagedClientV1`: Managedclient
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.CreateManagedClientV1`: %v\n", resp)
+        }
+- path: /managed-clients/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#delete-managed-client-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
+          //r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.DeleteManagedClientV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /managed-clients/v1/{id}/health-indicators
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#get-managed-client-health-indicators-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID to get health indicators for. # string | Managed client ID to get health indicators for.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientHealthIndicatorsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClientHealthIndicatorsV1`: Managedclienthealthindicators
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientHealthIndicatorsV1`: %v\n", resp)
+        }
+- path: /managed-clients/v1/{id}/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#get-managed-client-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          id := `aClientId` // string | Managed client ID to get status for. # string | Managed client ID to get status for.
+          type_ :=  // Managedclienttype | Managed client type to get status for. # Managedclienttype | Managed client type to get status for.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClientStatusV1`: Managedclientstatus
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientStatusV1`: %v\n", resp)
+        }
+- path: /managed-clients/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#get-managed-client-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClientV1`: Managedclient
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientV1`: %v\n", resp)
+        }
+- path: /managed-clients/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#get-managed-clients-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "client name"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **clientId**: *eq*  **clusterId**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **clientId**: *eq*  **clusterId**: *eq* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClientsV1`: []Managedclient
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientsV1`: %v\n", resp)
+        }
+- path: /managed-clients/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclientsv1/methods/managed-clients#update-managed-client-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients_v1"
+        )
+
+        func main() {
+          id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
+          jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.ManagedClientsV1.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClientV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateManagedClientV1`: Managedclient
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.UpdateManagedClientV1`: %v\n", resp)
+        }

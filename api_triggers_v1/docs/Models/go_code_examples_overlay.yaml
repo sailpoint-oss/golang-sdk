@@ -1,0 +1,387 @@
+- path: /trigger-invocations/v1/{id}/complete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#complete-trigger-invocation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
+           completeinvocation := []byte(`{"secret":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","output":{"approved":false}}`) // Completeinvocation | 
+
+          
+          var completeinvocation v1.Completeinvocation
+          if err := json.Unmarshal(completeinvocation, &completeinvocation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.TriggersV1.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
+          //r, err := apiClient.TriggersV1.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /trigger-subscriptions/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#create-subscription-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+           subscriptionpostrequest := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","triggerId":"idn:access-requested","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionpostrequest | 
+
+          
+          var subscriptionpostrequest v1.Subscriptionpostrequest
+          if err := json.Unmarshal(subscriptionpostrequest, &subscriptionpostrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscriptionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateSubscriptionV1`: Subscription
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.CreateSubscriptionV1`: %v\n", resp)
+        }
+- path: /trigger-subscriptions/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#delete-subscription-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.TriggersV1.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
+          //r, err := apiClient.TriggersV1.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscriptionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /trigger-subscriptions/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#list-subscriptions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "12cff757-c0c0-413b-8ad7-2a47956d1e89"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le* (optional)
+          sorters := `triggerName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.ListSubscriptionsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.ListSubscriptionsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListSubscriptionsV1`: []Subscription
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListSubscriptionsV1`: %v\n", resp)
+        }
+- path: /trigger-invocations/v1/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#list-trigger-invocation-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `triggerId eq "idn:access-request-dynamic-approver"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq* (optional)
+          sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListTriggerInvocationStatusV1`: []Invocationstatus
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListTriggerInvocationStatusV1`: %v\n", resp)
+        }
+- path: /triggers/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#list-triggers-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "idn:access-request-post-approval"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.ListTriggersV1(context.Background()).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.ListTriggersV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListTriggersV1`: []Trigger
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListTriggersV1`: %v\n", resp)
+        }
+- path: /trigger-subscriptions/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#patch-subscription-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
+          subscriptionpatchrequestinner := []byte(``) // []SubscriptionpatchrequestInner | 
+
+          
+          var subscriptionpatchrequestInner []v1.SubscriptionpatchrequestInner
+          if err := json.Unmarshal(subscriptionpatchrequestinner, &subscriptionpatchrequestInner); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscriptionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchSubscriptionV1`: Subscription
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.PatchSubscriptionV1`: %v\n", resp)
+        }
+- path: /trigger-invocations/v1/test
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#start-test-trigger-invocation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+           testinvocation := []byte(`{"triggerId":"idn:access-requested","input":{"identityId":"201327fda1c44704ac01181e963d463c"},"contentJson":{"workflowId":1234}}`) // Testinvocation | 
+
+          
+          var testinvocation v1.Testinvocation
+          if err := json.Unmarshal(testinvocation, &testinvocation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartTestTriggerInvocationV1`: []Invocation
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.StartTestTriggerInvocationV1`: %v\n", resp)
+        }
+- path: /trigger-subscriptions/v1/validate-filter
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#test-subscription-filter-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+           validatefilterinputdto := []byte(`{"input":{"identityId":"201327fda1c44704ac01181e963d463c"},"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Validatefilterinputdto | 
+
+          
+          var validatefilterinputdto v1.Validatefilterinputdto
+          if err := json.Unmarshal(validatefilterinputdto, &validatefilterinputdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `TestSubscriptionFilterV1`: Validatefilteroutputdto
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.TestSubscriptionFilterV1`: %v\n", resp)
+        }
+- path: /trigger-subscriptions/v1/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/triggersv1/methods/triggers#update-subscription-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers_v1"
+        )
+
+        func main() {
+          id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
+           subscriptionputrequest := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionputrequest | 
+
+          
+          var subscriptionputrequest v1.Subscriptionputrequest
+          if err := json.Unmarshal(subscriptionputrequest, &subscriptionputrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TriggersV1.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
+          //resp, r, err := apiClient.TriggersV1.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscriptionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateSubscriptionV1`: Subscription
+          fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.UpdateSubscriptionV1`: %v\n", resp)
+        }
