@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_identity_metrics_v1"
 )
 
 func Test_api_access_request_identity_metrics_v1_AccessRequestIdentityMetricsAPIService(t *testing.T) {

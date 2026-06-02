@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_connector_rule_management_v1"
 )
 
 func Test_api_connector_rule_management_v1_ConnectorRuleManagementAPIService(t *testing.T) {

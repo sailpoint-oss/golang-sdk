@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria_configuration_v1"
 )
 
 func Test_api_privilege_criteria_configuration_v1_PrivilegeCriteriaConfigurationAPIService(t *testing.T) {

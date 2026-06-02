@@ -63,7 +63,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_classify_v1"
 )
 
 func main() {

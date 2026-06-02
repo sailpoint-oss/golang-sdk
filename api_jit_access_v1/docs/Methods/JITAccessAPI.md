@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access_v1"
 )
 
 func main() {
@@ -142,7 +142,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access_v1"
 )
 
 func main() {

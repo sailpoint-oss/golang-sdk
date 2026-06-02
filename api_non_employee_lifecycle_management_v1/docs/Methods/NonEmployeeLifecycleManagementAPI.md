@@ -124,7 +124,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -194,7 +194,7 @@ import (
   "encoding/json"
     "time"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -262,7 +262,7 @@ import (
   "encoding/json"
     "time"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -335,7 +335,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -403,7 +403,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -475,7 +475,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -536,7 +536,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -607,7 +607,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -676,7 +676,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -742,7 +742,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -807,7 +807,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -872,7 +872,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -937,7 +937,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1006,7 +1006,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1076,7 +1076,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1145,7 +1145,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1212,7 +1212,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1282,7 +1282,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1352,7 +1352,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1420,7 +1420,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1488,7 +1488,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1558,7 +1558,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1625,7 +1625,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1697,7 +1697,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1770,7 +1770,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1845,7 +1845,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1919,7 +1919,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -1995,7 +1995,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -2072,7 +2072,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -2146,7 +2146,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -2219,7 +2219,7 @@ import (
 	"os"
   "encoding/json"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {
@@ -2297,7 +2297,7 @@ import (
   "encoding/json"
     "time"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 )
 
 func main() {

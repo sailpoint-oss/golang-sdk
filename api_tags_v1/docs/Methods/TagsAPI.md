@@ -63,7 +63,7 @@ import (
   "encoding/json"
     "time"
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
 )
 
 func main() {
@@ -136,7 +136,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
 )
 
 func main() {

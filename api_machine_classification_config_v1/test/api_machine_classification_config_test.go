@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config_v1"
 )
 
 func Test_api_machine_classification_config_v1_MachineClassificationConfigAPIService(t *testing.T) {

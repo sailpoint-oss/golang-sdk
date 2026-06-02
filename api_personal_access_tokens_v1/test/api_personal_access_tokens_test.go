@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens_v1"
 )
 
 func Test_api_personal_access_tokens_v1_PersonalAccessTokensAPIService(t *testing.T) {
