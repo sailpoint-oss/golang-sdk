@@ -1,0 +1,105 @@
+- path: /intelligence/v1/identities/{identityID}/access-history
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/intelligencepackagev1/methods/intelligence-package#get-intel-identity-access-history-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_intelligence_package_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          identityID := `ef38f94347e94562b5bb8424a56397d8` // string | Non-empty identity id path segment for Intelligence Package sub-resources. # string | Non-empty identity id path segment for Intelligence Package sub-resources.
+          limit := 100 // int32 | Maximum number of historical events to return in this page of results. (optional) # int32 | Maximum number of historical events to return in this page of results. (optional)
+          offset := 0 // int32 | Zero-based index of the first event row to return for pagination. (optional) # int32 | Zero-based index of the first event row to return for pagination. (optional)
+          count := false // bool | When true, the service may include total count metadata alongside the result list. (optional) (default to false) # bool | When true, the service may include total count metadata alongside the result list. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.GetIntelIdentityAccessHistoryV1(context.Background(), identityID).Execute()
+          //resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.GetIntelIdentityAccessHistoryV1(context.Background(), identityID).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IntelligencePackageAPI.GetIntelIdentityAccessHistoryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetIntelIdentityAccessHistoryV1`: Intelidentityaccesshistorybody
+          fmt.Fprintf(os.Stdout, "Response from `IntelligencePackageAPI.GetIntelIdentityAccessHistoryV1`: %v\n", resp)
+        }
+- path: /intelligence/v1/identities/{identityID}/access
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/intelligencepackagev1/methods/intelligence-package#get-intel-identity-access-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_intelligence_package_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          identityID := `ef38f94347e94562b5bb8424a56397d8` // string | Non-empty identity id path segment for Intelligence Package sub-resources. # string | Non-empty identity id path segment for Intelligence Package sub-resources.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.GetIntelIdentityAccessV1(context.Background(), identityID).Execute()
+          //resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.GetIntelIdentityAccessV1(context.Background(), identityID).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IntelligencePackageAPI.GetIntelIdentityAccessV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetIntelIdentityAccessV1`: Intelidentityaccessbody
+          fmt.Fprintf(os.Stdout, "Response from `IntelligencePackageAPI.GetIntelIdentityAccessV1`: %v\n", resp)
+        }
+- path: /intelligence/v1/identities
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/intelligencepackagev1/methods/intelligence-package#search-intel-identities-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_intelligence_package_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          filters := `id eq "00000000-0000-0000-0000-000000000000"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.SearchIntelIdentitiesV1(context.Background()).Filters(filters).Execute()
+          //resp, r, err := apiClient.IntelligencePackageV1.IntelligencePackageAPI.SearchIntelIdentitiesV1(context.Background()).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IntelligencePackageAPI.SearchIntelIdentitiesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SearchIntelIdentitiesV1`: Intelidentityresponse
+          fmt.Fprintf(os.Stdout, "Response from `IntelligencePackageAPI.SearchIntelIdentitiesV1`: %v\n", resp)
+        }

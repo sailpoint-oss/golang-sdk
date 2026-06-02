@@ -1,0 +1,3095 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Accounts
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement and customize account functionality.\nWith\
+    \ this functionality in place, administrators can manage users' access across\
+    \ sources in Identity Security Cloud. \n\nIn Identity Security Cloud, an account\
+    \ refers to a user's account on a supported source.\nThis typically includes a\
+    \ unique identifier for the user, a unique password, a set of permissions associated\
+    \ with the source and a set of attributes. Identity Security Cloud loads accounts\
+    \ through the creation of sources in Identity Security Cloud.\n\nAdministrators\
+    \ can correlate users' identities with the users' accounts on the different sources\
+    \ they use. \nThis allows Identity Security Cloud to govern the access of identities\
+    \ and all their correlated accounts securely and cohesively. \n\nTo view the accounts\
+    \ on a source and their correlated identities, administrators can use the Connections\
+    \ drop-down menu, select Sources, select the relevant source, and select its Account\
+    \ tab. \n\nTo view and edit source account statuses for an identity in Identity\
+    \ Security Cloud, administrators can use the Identities drop-down menu, select\
+    \ Identity List, select the relevant identity, and select its Accounts tab. \n\
+    Administrators can toggle an account's Actions to aggregate the account, enable/disable\
+    \ it, unlock it, or remove it from the identity. \n\nAccounts can have the following\
+    \ statuses: \n\n- Enabled: The account is enabled. The user can access it.\n\n\
+    - Disabled: The account is disabled, and the user cannot access it, but the identity\
+    \ is not disabled in Identity Security Cloud. This can occur when an administrator\
+    \ disables the account or when the user's lifecycle state changes. \n\n- Locked:\
+    \ The account is locked. This may occur when someone has entered an incorrect\
+    \ password for the account too many times.\n\n- Pending: The account is currently\
+    \ updating. This status typically lasts seconds. \n\nAdministrators can select\
+    \ the source account to view its attributes, entitlements, and the last time the\
+    \ account's password was changed.\n\nRefer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#managing-access)\
+    \ for more information about accounts.\n"
+  name: Accounts
+paths:
+  /accounts/v1:
+    get:
+      description: 'List accounts. '
+      operationId: listAccountsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: This value determines whether the API provides `SLIM` or increased
+          level of detail (`FULL`) for each account in the returned list. `FULL` is
+          the default behavior.
+        example: FULL
+        explode: true
+        in: query
+        name: detailLevel
+        required: false
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **identityId**: *eq, in, sw*
+
+          **name**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **hasEntitlements**: *eq*
+
+          **sourceId**: *eq, in, sw*
+
+          **uncorrelated**: *eq*
+
+          **entitlements**: *eq*
+
+          **origin**: *eq, in*
+
+          **manuallyCorrelated**: *eq*
+
+          **identity.name**: *eq, in, sw*
+
+          **identity.correlated**: *eq*
+
+          **identity.identityState**: *eq, in*
+
+          **source.displayableName**: *eq, in*
+
+          **source.authoritative**: *eq*
+
+          **source.connectionType**: *eq, in*
+
+          **recommendation.method**: *eq, in, isnull*
+
+          **created**: *eq, ge, gt, le, lt*
+
+          **modified**: *eq, ge, gt, le, lt*
+        example: identityId eq "2c9180858082150f0180893dbaf44201"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, entitlements, origin, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
+        example: "id,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/account'
+                type: array
+          description: List of account objects.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      summary: Accounts list
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    post:
+      description: "Submit an account creation task - the API then returns the task\
+        \ ID.  \n\nYou must include the `sourceId` where the account will be created\
+        \ in the `attributes` object.\n\nThis endpoint creates an account on the source\
+        \ record in your ISC tenant.\nThis is useful for Flat File (`DelimitedFile`)\
+        \ type sources because it allows you to aggregate new accounts without needing\
+        \ to import a new CSV file every time. \n\nHowever, if you use this endpoint\
+        \ to create an account for a Direct Connection type source, you must ensure\
+        \ that the account also exists on the target source. \nThe endpoint doesn't\
+        \ actually provision the account on the target source, which means that if\
+        \ the account doesn't also exist on the target source, an aggregation between\
+        \ the source and your tenant will remove it from your tenant. \n\nBy providing\
+        \ the account ID of an existing account in the request body, this API will\
+        \ function as a PATCH operation and update the account.\n"
+      operationId: createAccountV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountattributescreate'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
+      summary: Create account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /accounts/v1/{id}:
+    delete:
+      description: "Use this API to delete an account. \nThis endpoint submits an\
+        \ account delete task and returns the task ID. \nThis endpoint only deletes\
+        \ the account from IdentityNow, not the source itself, which can result in\
+        \ the account's returning with the next aggregation between the source and\
+        \ IdentityNow.  To avoid this scenario, it is recommended that you [disable\
+        \ accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather\
+        \ than delete them. This will also allow you to reenable the accounts in the\
+        \ future. \n>**NOTE: You can only delete accounts from sources of the \"DelimitedFile\"\
+        \ type.**"
+      operationId: deleteAccountV1
+      parameters:
+      - description: Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
+      summary: Delete account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    get:
+      description: 'Use this API to return the details for a single account by its
+        ID.  '
+      operationId: getAccountV1
+      parameters:
+      - description: Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+          description: Account object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      summary: Account details
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: "Use this API to update account details. \n\nThis API supports\
+        \ updating an account's correlation by modifying the `identityId` and `manuallyCorrelated`\
+        \ fields. \nTo reassign an account from one identity to another, replace the\
+        \ current `identityId` with a new value. \nIf the account you're assigning\
+        \ was provisioned by Identity Security Cloud (ISC), it's possible for ISC\
+        \ to create a new account \nfor the previous identity as soon as the account\
+        \ is moved. If the account you're assigning is authoritative, \nthis causes\
+        \ the previous identity to become uncorrelated and can even result in its\
+        \ deletion.\nAll accounts that are reassigned will be set to `manuallyCorrelated:\
+        \ true` unless you specify otherwise.\n\n>**Note:** The `attributes` field\
+        \ can only be modified for flat file accounts. \n"
+      operationId: updateAccountV1
+      parameters:
+      - description: Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Uncorrelate account:
+                description: Remove account from Identity
+                value:
+                - op: remove
+                  path: /identityId
+              Reassign account:
+                description: Move account from one Identity to another Identity
+                value:
+                - op: replace
+                  path: /identityId
+                  value: 2c9180857725c14301772a93bb77242d
+              Add account attribute:
+                description: Add flat file account's attribute
+                value:
+                - op: add
+                  path: /attributes/familyName
+                  value: Smith
+              Replace account attribute:
+                description: Replace flat file account's attribute
+                value:
+                - op: replace
+                  path: /attributes/familyName
+                  value: Smith
+              Remove account attribute:
+                description: Remove flat file account's attribute
+                value:
+                - op: remove
+                  path: /attributes/familyName
+            schema:
+              items:
+                type: object
+              type: array
+        description: "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
+      summary: Update account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    put:
+      description: "Use this API to update an account with a PUT request. \n\nThis\
+        \ endpoint submits an account update task and returns the task ID. \n\n>**Note:\
+        \ You can only use this PUT endpoint to update accounts from flat file sources.**\n"
+      operationId: putAccountV1
+      parameters:
+      - description: Account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountattributes'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
+      summary: Update account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /accounts/v1/{id}/entitlements:
+    get:
+      description: 'This API returns entitlements of the account.      '
+      operationId: getAccountEntitlementsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: The account id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/entitlement'
+                type: array
+          description: An array of account entitlements
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:read
+        - idn:accounts:manage
+      summary: Account entitlements
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /accounts/v1/{id}/reload:
+    post:
+      description: 'This API asynchronously reloads the account directly from the
+        connector and performs a one-time aggregation process.      '
+      operationId: submitReloadAccountV1
+      parameters:
+      - description: The account id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Reload account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /accounts/v1/{id}/enable:
+    post:
+      description: 'This API submits a task to enable account and returns the task
+        ID.      '
+      operationId: enableAccountV1
+      parameters:
+      - description: The account id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accounttogglerequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Enable account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /accounts/v1/{id}/disable:
+    post:
+      description: 'This API submits a task to disable the account and returns the
+        task ID.      '
+      operationId: disableAccountV1
+      parameters:
+      - description: The account id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accounttogglerequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Disable account
+      tags:
+      - Accounts
+      x-sailpont-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /accounts/v1/{id}/unlock:
+    post:
+      description: "This API submits a task to unlock an account and returns the task\
+        \ ID.  \nTo use this endpoint to unlock an account that has the `forceProvisioning`\
+        \ option set to true, the `idn:accounts-provisioning:manage` scope is required. "
+      operationId: unlockAccountV1
+      parameters:
+      - description: The account ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountunlockrequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountsasyncresult'
+          description: Async task details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Unlock account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+  /accounts/v1/{id}/remove:
+    post:
+      description: |
+        Use this endpoint to remove accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
+
+        This endpoint is good for:
+        * Removing accounts that no longer exist on the source.
+        * Removing accounts that won't be aggregated following updates to the source configuration.
+        * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc.
+      operationId: deleteAccountAsyncV1
+      parameters:
+      - description: The account id
+        example: c350d6aa4f104c61b062cb632421ad10
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccounts
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                type: TASK_RESULT
+                id: 464ae7bf791e49fdb74606a2e4a89635
+                name: null
+              schema:
+                $ref: '#/components/schemas/taskresultdto'
+          description: Accepted. Returns task result details of removal request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts:manage
+      - applicationAuth:
+        - idn:accounts:manage
+      summary: Remove account
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /identities-accounts/v1/{id}/enable:
+    post:
+      description: This API submits a task to enable IDN account for a single identity.
+      externalDocs:
+        description: Learn more about enabling identities here
+        url: https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#enabling-identities
+      operationId: enableAccountForIdentityV1
+      parameters:
+      - description: The identity id.
+        example: 2c91808384203c2d018437e631158309
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentities
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Enable idn account for identity
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /identities-accounts/v1/{id}/disable:
+    post:
+      description: This API submits a task to disable IDN account for a single identity.
+      externalDocs:
+        description: Learn more about disabling identities here
+        url: https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#disabling-identities
+      operationId: disableAccountForIdentityV1
+      parameters:
+      - description: The identity id.
+        example: 2c91808384203c2d018437e631158309
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentities
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Disable idn account for identity
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /identities-accounts/v1/enable:
+    post:
+      description: This API submits tasks to enable IDN account for each identity
+        provided in the request body.
+      externalDocs:
+        description: Learn more about enabling identities here
+        url: https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#enabling-identities
+      operationId: enableAccountsForIdentitiesV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/identitiesaccountsbulkrequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                example:
+                - id: 2c9180858082150f0180893dbaf553fe
+                  statusCode: 404
+                  message: Referenced identity "2c9180858082150f0180893dbaf553fe"
+                    was not found.
+                - id: 2c91808384203c2d018437e631158308
+                  statusCode: 202
+                  message: null
+                items:
+                  $ref: '#/components/schemas/bulkidentitiesaccountsresponse'
+                type: array
+          description: Bulk response details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Enable idn accounts for identities
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /identities-accounts/v1/disable:
+    post:
+      description: This API submits tasks to disable IDN account for each identity
+        provided in the request body.
+      externalDocs:
+        description: Learn more about disabling identities here
+        url: https://documentation.sailpoint.com/saas/help/accounts/identities.html?h=disabling+identities#disabling-identities
+      operationId: disableAccountsForIdentitiesV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/identitiesaccountsbulkrequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                example:
+                - id: 2c9180858082150f0180893dbaf553fe
+                  statusCode: 404
+                  message: Referenced identity "2c9180858082150f0180893dbaf553fe"
+                    was not found.
+                - id: 2c91808384203c2d018437e631158308
+                  statusCode: 202
+                  message: null
+                items:
+                  $ref: '#/components/schemas/bulkidentitiesaccountsresponse'
+                type: array
+          description: Bulk response details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:accounts-state:manage
+        - idn:accounts-provisioning:manage
+      - applicationAuth:
+        - idn:accounts-state:manage
+      summary: Disable idn accounts for identities
+      tags:
+      - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "202":
+      content:
+        application/json:
+          schema:
+            type: object
+      description: Accepted - Returned if the request was successfully accepted into
+        the system.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccountsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccountsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    basecommondto:
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: id12345
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Object
+          example: aName
+          nullable: true
+          type: string
+        created:
+          description: Creation date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the Object
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: Base Common Dto
+      type: object
+    recommendation:
+      properties:
+        type:
+          description: Recommended type of account.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: MACHINE
+          type: string
+        method:
+          description: "Method used to produce the recommendation. DISCOVERY - suggested\
+            \ by AI, SOURCE - the account comes from a source flagged as containing\
+            \ machine accounts, CRITERIA - the account satisfies classification criteria."
+          enum:
+          - DISCOVERY
+          - SOURCE
+          - CRITERIA
+          example: DISCOVERY
+          type: string
+      required:
+      - method
+      - type
+      title: Recommendation
+      type: object
+    dtotype:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    basereferencedto:
+      properties:
+        type:
+          $ref: '#/components/schemas/dtotype'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      title: Base Reference Dto
+      type: object
+    account:
+      allOf:
+      - $ref: '#/components/schemas/basecommondto'
+      - properties:
+          sourceId:
+            description: The unique ID of the source this account belongs to
+            example: 2c9180835d2e5168015d32f890ca1581
+            type: string
+          sourceName:
+            description: The display name of the source this account belongs to
+            example: Employees
+            nullable: true
+            type: string
+          identityId:
+            description: The unique ID of the identity this account is correlated
+              to
+            example: 2c9180835d2e5168015d32f890ca1581
+            type: string
+          cloudLifecycleState:
+            description: The lifecycle state of the identity this account is correlated
+              to
+            example: active
+            nullable: true
+            type: string
+          identityState:
+            description: The identity state of the identity this account is correlated
+              to
+            example: ACTIVE
+            nullable: true
+            type: string
+          connectionType:
+            description: The connection type of the source this account is from
+            example: direct
+            nullable: true
+            type: string
+          isMachine:
+            default: false
+            description: Indicates if the account is of machine type
+            example: true
+            type: boolean
+          recommendation:
+            $ref: '#/components/schemas/account_allOf_recommendation'
+          attributes:
+            additionalProperties: true
+            description: The account attributes that are aggregated
+            example:
+              firstName: SailPoint
+              lastName: Support
+              displayName: SailPoint Support
+            nullable: true
+            type: object
+          authoritative:
+            description: Indicates if this account is from an authoritative source
+            example: false
+            type: boolean
+          description:
+            description: A description of the account
+            nullable: true
+            type: string
+            example: null
+          disabled:
+            description: Indicates if the account is currently disabled
+            example: false
+            type: boolean
+          locked:
+            description: Indicates if the account is currently locked
+            example: false
+            type: boolean
+          nativeIdentity:
+            description: The unique ID of the account generated by the source system
+            example: "552775"
+            type: string
+          systemAccount:
+            description: "If true, this is a user account within IdentityNow.  If\
+              \ false, this is an account from a source system."
+            example: false
+            type: boolean
+          uncorrelated:
+            description: Indicates if this account is not correlated to an identity
+            example: false
+            type: boolean
+          uuid:
+            description: The unique ID of the account as determined by the account
+              schema
+            example: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+            nullable: true
+            type: string
+          manuallyCorrelated:
+            description: Indicates if the account has been manually correlated to
+              an identity
+            example: false
+            type: boolean
+          hasEntitlements:
+            description: Indicates if the account has entitlements
+            example: true
+            type: boolean
+          identity:
+            $ref: '#/components/schemas/account_allOf_identity'
+          sourceOwner:
+            $ref: '#/components/schemas/account_allOf_sourceOwner'
+          features:
+            description: A string list containing the owning source's features
+            example: ENABLE
+            nullable: true
+            type: string
+          origin:
+            description: The origin of the account either aggregated or provisioned
+            enum:
+            - AGGREGATED
+            - PROVISIONED
+            - null
+            example: AGGREGATED
+            nullable: true
+            type: string
+          ownerIdentity:
+            $ref: '#/components/schemas/account_allOf_ownerIdentity'
+        required:
+        - attributes
+        - authoritative
+        - disabled
+        - hasEntitlements
+        - locked
+        - manuallyCorrelated
+        - nativeIdentity
+        - sourceId
+        - sourceName
+        - systemAccount
+        - uncorrelated
+        type: object
+      example:
+        sourceId: 2c9180835d2e5168015d32f890ca1581
+        origin: AGGREGATED
+        recommendation:
+          method: DISCOVERY
+          type: MACHINE
+        description: description
+        sourceOwner:
+          name: Adam Kennedy
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+        connectionType: direct
+        uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
+        ownerIdentity:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        features: ENABLE
+        identity:
+          name: John Doe
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+        modified: 2015-05-28T14:07:17Z
+        disabled: false
+        hasEntitlements: true
+        id: id12345
+        locked: false
+        isMachine: true
+        authoritative: false
+        created: 2015-05-28T14:07:17Z
+        manuallyCorrelated: false
+        identityState: ACTIVE
+        nativeIdentity: "552775"
+        uncorrelated: false
+        identityId: 2c9180835d2e5168015d32f890ca1581
+        name: aName
+        cloudLifecycleState: active
+        attributes:
+          firstName: SailPoint
+          lastName: Support
+          displayName: SailPoint Support
+        sourceName: Employees
+        systemAccount: false
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    accountattributescreate:
+      properties:
+        attributes:
+          $ref: '#/components/schemas/accountattributescreate_attributes'
+      required:
+      - attributes
+      title: Account Attributes Create
+      type: object
+    accountsasyncresult:
+      description: Accounts async response containing details on started async process
+      example:
+        id: 2c91808474683da6017468693c260195
+      properties:
+        id:
+          description: id of the task
+          example: 2c91808474683da6017468693c260195
+          type: string
+      required:
+      - id
+      title: Accounts Async Result
+      type: object
+    accountattributes:
+      properties:
+        attributes:
+          additionalProperties: true
+          description: The schema attribute values for the account
+          example:
+            city: Austin
+            displayName: John Doe
+            userName: jdoe
+            sAMAccountName: jDoe
+            mail: john.doe@sailpoint.com
+          type: object
+      required:
+      - attributes
+      title: Account Attributes
+      type: object
+    additionalownerref:
+      description: Reference to an additional owner (identity or governance group).
+      example:
+        name: support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: "Type of the additional owner; IDENTITY for an identity, GOVERNANCE_GROUP\
+            \ for a governance group."
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the identity or governance group.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: "Display name. It may be left null or omitted on input. If\
+            \ set, it must match the current display name of the identity or governance\
+            \ group, otherwise a 400 Bad Request error may result."
+          example: support
+          nullable: true
+          type: string
+      type: object
+    accessmodelmetadata:
+      description: Metadata that describes an access item
+      example:
+        multiselect: true
+        values:
+        - name: Development
+          value: development
+          status: active
+        - name: Development
+          value: development
+          status: active
+        name: CSP
+        description: Indicates the type of deployment environment of an access item.
+        type: governance
+        objectTypes:
+        - general
+        key: iscCsp
+        status: active
+      properties:
+        key:
+          description: Unique identifier for the metadata type
+          example: iscCsp
+          type: string
+        name:
+          description: Human readable name of the metadata type
+          example: CSP
+          type: string
+        multiselect:
+          default: false
+          description: Allows selecting multiple values
+          example: true
+          type: boolean
+        status:
+          description: The state of the metadata item
+          example: active
+          type: string
+        type:
+          description: The type of the metadata item
+          example: governance
+          type: string
+        objectTypes:
+          description: The types of objects
+          example:
+          - general
+          items:
+            example: general
+            type: string
+          type: array
+        description:
+          description: Describes the metadata item
+          example: Indicates the type of deployment environment of an access item.
+          type: string
+        values:
+          description: The value to assign to the metadata item
+          items:
+            $ref: '#/components/schemas/accessmodelmetadata_values_inner'
+          type: array
+      title: Access Model Metadata
+      type: object
+    permissiondto:
+      description: "Simplified DTO for the Permission objects stored in SailPoint's\
+        \ database. The data is aggregated from customer systems and is free-form,\
+        \ so its appearance can vary largely between different clients/customers."
+      example:
+        rights: HereIsRight1
+        target: SYS.GV_$TRANSACTION
+      properties:
+        rights:
+          description: All the rights (e.g. actions) that this permission allows on
+            the target
+          example: HereIsRight1
+          items:
+            example: SELECT
+            type: string
+          readOnly: true
+          type: array
+        target:
+          description: The target the permission would grants rights on.
+          example: SYS.GV_$TRANSACTION
+          readOnly: true
+          type: string
+      title: Permission DTO
+      type: object
+    entitlement:
+      example:
+        owner:
+          name: john.doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
+        created: 2020-10-08T18:33:52.029Z
+        description: Grants the ability to access and manage payroll-related controls
+          and settings within the Corporate Active Directory system.
+        source:
+          name: Corporate Active Directory
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+        additionalOwners:
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        - name: support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        privileged: true
+        directPermissions:
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        - rights: HereIsRight1
+          target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
+        name: PayrollControls
+        modified: 2020-10-08T18:33:52.029Z
+        sourceSchemaObjectType: group
+        accessModelMetadata:
+          attributes:
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+          - multiselect: true
+            values:
+            - name: Development
+              value: development
+              status: active
+            - name: Development
+              value: development
+              status: active
+            name: CSP
+            description: Indicates the type of deployment environment of an access
+              item.
+            type: governance
+            objectTypes:
+            - general
+            key: iscCsp
+            status: active
+        attributes:
+          fieldName: fieldValue
+        id: 2c91808874ff91550175097daaec161c
+        attribute: memberOf
+        requestable: true
+        value: "CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        cloudGoverned: true
+      properties:
+        id:
+          description: The entitlement id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        name:
+          description: The entitlement name
+          example: PayrollControls
+          type: string
+        attribute:
+          description: The entitlement attribute name
+          example: memberOf
+          type: string
+        value:
+          description: The value of the entitlement
+          example: "CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          type: string
+        sourceSchemaObjectType:
+          description: The object type of the entitlement from the source schema
+          example: group
+          type: string
+        description:
+          description: The description of the entitlement
+          example: Grants the ability to access and manage payroll-related controls
+            and settings within the Corporate Active Directory system.
+          nullable: true
+          type: string
+        privileged:
+          default: false
+          description: True if the entitlement is privileged
+          example: true
+          type: boolean
+        cloudGoverned:
+          default: false
+          description: True if the entitlement is cloud governed
+          example: true
+          type: boolean
+        requestable:
+          default: false
+          description: True if the entitlement is able to be directly requested
+          example: true
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/entitlement_owner'
+        additionalOwners:
+          description: List of additional owner references beyond the primary owner.
+            Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
+          items:
+            $ref: '#/components/schemas/additionalownerref'
+          nullable: true
+          type: array
+        manuallyUpdatedFields:
+          additionalProperties: true
+          description: "A map of entitlement fields that have been manually updated.\
+            \ The key is the field name in UPPER_SNAKE_CASE format, and the value\
+            \ is true or false to indicate if the field has been updated."
+          example:
+            DISPLAY_NAME: true
+            DESCRIPTION: true
+          nullable: true
+          type: object
+        accessModelMetadata:
+          $ref: '#/components/schemas/entitlement_accessModelMetadata'
+        created:
+          description: Time when the entitlement was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the entitlement was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        source:
+          $ref: '#/components/schemas/entitlement_source'
+        attributes:
+          additionalProperties: true
+          description: A map of free-form key-value pairs from the source system
+          example:
+            fieldName: fieldValue
+          type: object
+        segments:
+          description: "List of IDs of segments, if any, to which this Entitlement\
+            \ is assigned."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          nullable: true
+          type: array
+        directPermissions:
+          items:
+            $ref: '#/components/schemas/permissiondto'
+          type: array
+      title: Entitlement
+      type: object
+    accounttogglerequest:
+      description: Request used for account enable/disable
+      properties:
+        externalVerificationId:
+          description: "If set, an external process validates that the user wants\
+            \ to proceed with this request."
+          example: 3f9180835d2e5168015d32f890ca1581
+          type: string
+        forceProvisioning:
+          description: "If set, provisioning updates the account attribute at the\
+            \ source.   This option is used when the account is not synced to ensure\
+            \ the attribute is updated. Providing 'true' for an unlocked account will\
+            \ add and process 'Unlock' operation by the workflow."
+          example: false
+          type: boolean
+      title: Account Toggle Request
+      type: object
+    accountunlockrequest:
+      description: Request used for account unlock
+      properties:
+        externalVerificationId:
+          description: "If set, an external process validates that the user wants\
+            \ to proceed with this request."
+          example: 3f9180835d2e5168015d32f890ca1581
+          type: string
+        unlockIDNAccount:
+          description: "If set, the IDN account is unlocked after the workflow completes."
+          example: false
+          type: boolean
+        forceProvisioning:
+          description: "If set, provisioning updates the account attribute at the\
+            \ source.   This option is used when the account is not synced to ensure\
+            \ the attribute is updated."
+          example: false
+          type: boolean
+      title: Account Unlock Request
+      type: object
+    taskresultdto:
+      description: Task result.
+      example:
+        name: name
+        id: 464ae7bf791e49fdb74606a2e4a89635
+        type: TASK_RESULT
+      properties:
+        type:
+          description: Task result DTO type.
+          enum:
+          - TASK_RESULT
+          example: TASK_RESULT
+          type: string
+        id:
+          description: Task result ID.
+          example: 464ae7bf791e49fdb74606a2e4a89635
+          type: string
+        name:
+          description: Task result display name.
+          nullable: true
+          type: string
+          example: null
+      title: Task Result Dto
+      type: object
+    identitiesaccountsbulkrequest:
+      properties:
+        identityIds:
+          description: The ids of the identities for which enable/disable accounts.
+          example:
+          - 2c91808384203c2d018437e631158308
+          - 2c9180858082150f0180893dbaf553fe
+          items:
+            type: string
+          type: array
+      title: Identities Accounts Bulk Request
+      type: object
+    bulkidentitiesaccountsresponse:
+      description: Bulk response object.
+      properties:
+        id:
+          description: Identifier of bulk request item.
+          example: 2c9180858082150f0180893dbaf553fe
+          type: string
+        statusCode:
+          description: Response status value.
+          example: 404
+          format: int32
+          type: integer
+        message:
+          description: Status containing additional context information about failures.
+          example: Referenced identity "2c9180858082150f0180893dbaf553fe" was not
+            found.
+          type: string
+      title: Bulk Identities Accounts Response
+      type: object
+    listAccountsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listAccountsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    account_allOf_recommendation:
+      allOf:
+      - $ref: '#/components/schemas/recommendation'
+      - description: Indicates that the account is currently classified to be one
+          type but is recommended to be a different one
+        example:
+          type: MACHINE
+          method: DISCOVERY
+        nullable: true
+      example:
+        method: DISCOVERY
+        type: MACHINE
+    account_allOf_identity:
+      description: The identity this account is correlated to
+      example:
+        name: John Doe
+        id: 2c918084660f45d6016617daa9210584
+        type: IDENTITY
+      properties:
+        id:
+          description: The ID of the identity
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: display name of identity
+          example: John Doe
+          type: string
+      type: object
+    account_allOf_sourceOwner:
+      description: The owner of the source this account belongs to.
+      example:
+        name: Adam Kennedy
+        id: 2c918084660f45d6016617daa9210584
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The ID of the identity
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: display name of identity
+          example: Adam Kennedy
+          type: string
+      type: object
+    account_allOf_ownerIdentity:
+      allOf:
+      - $ref: '#/components/schemas/basereferencedto'
+      - description: "The identity who owns this account, used only for machine accounts"
+        example:
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+          name: Adam Kennedy
+        nullable: true
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    accountattributescreate_attributes:
+      additionalProperties:
+        type: string
+      description: The schema attribute values for the account
+      example:
+        sourceId: 34bfcbe116c9407464af37acbaf7a4dc
+        city: Austin
+        displayName: John Doe
+        userName: jdoe
+        sAMAccountName: jDoe
+        mail: john.doe@sailpoint.com
+      properties:
+        sourceId:
+          description: Target source to create an account
+          example: 34bfcbe116c9407464af37acbaf7a4dc
+          type: string
+      required:
+      - sourceId
+      type: object
+    accessmodelmetadata_values_inner:
+      description: An individual value to assign to the metadata item
+      example:
+        name: Development
+        value: development
+        status: active
+      properties:
+        value:
+          description: The value to assign to the metdata item
+          example: development
+          type: string
+        name:
+          description: Display name of the value
+          example: Development
+          type: string
+        status:
+          description: The status of the individual value
+          example: active
+          type: string
+      type: object
+    entitlement_owner:
+      description: The identity that owns the entitlement
+      example:
+        name: john.doe
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The identity ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: The type of object
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: The display name of the identity
+          example: john.doe
+          type: string
+      type: object
+    entitlement_accessModelMetadata:
+      description: Additional data to classify the entitlement
+      example:
+        attributes:
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          key: iscCsp
+          status: active
+        - multiselect: true
+          values:
+          - name: Development
+            value: development
+            status: active
+          - name: Development
+            value: development
+            status: active
+          name: CSP
+          description: Indicates the type of deployment environment of an access item.
+          type: governance
+          objectTypes:
+          - general
+          key: iscCsp
+          status: active
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/accessmodelmetadata'
+          type: array
+      type: object
+    entitlement_source:
+      example:
+        name: Corporate Active Directory
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
+      properties:
+        id:
+          description: The source ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: "The source type, will always be \"SOURCE\""
+          example: SOURCE
+          type: string
+        name:
+          description: The source name
+          example: Corporate Active Directory
+          type: string
+      type: object

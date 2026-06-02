@@ -1,0 +1,121 @@
+- path: /common-access/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/iaicommonaccessv1/methods/iai-common-access#create-common-access-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_iai_common_access_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           commonaccessitemrequest := []byte(``) // Commonaccessitemrequest | 
+
+          
+          var commonaccessitemrequest v1.Commonaccessitemrequest
+          if err := json.Unmarshal(commonaccessitemrequest, &commonaccessitemrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
+          //resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.CreateCommonAccessV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCommonAccessV1`: Commonaccessitemresponse
+          fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.CreateCommonAccessV1`: %v\n", resp)
+        }
+- path: /common-access/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/iaicommonaccessv1/methods/iai-common-access#get-common-access-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_iai_common_access_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `access.type eq "ROLE"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq* (optional)
+          sorters := `access.name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending. (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.GetCommonAccessV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCommonAccessV1`: []Commonaccessresponse
+          fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.GetCommonAccessV1`: %v\n", resp)
+        }
+- path: /common-access/v1/update-status
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/iaicommonaccessv1/methods/iai-common-access#update-common-access-status-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_iai_common_access_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          commonaccessidstatus := []byte(``) // []Commonaccessidstatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
+
+          
+          var commonaccessidstatus []v1.Commonaccessidstatus
+          if err := json.Unmarshal(commonaccessidstatus, &commonaccessidstatus); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
+          //resp, r, err := apiClient.IaiCommonAccessV1.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateCommonAccessStatusInBulkV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1`: %v\n", resp)
+        }

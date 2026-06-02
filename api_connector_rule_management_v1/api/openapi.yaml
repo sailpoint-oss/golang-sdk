@@ -1,0 +1,1103 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Connector Rule Management
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement connector rule management functionality.\
+    \ \nWith this functionality in place, administrators can implement connector-executed\
+    \ rules in a programmatic, scalable way. \n\nIn Identity Security Cloud (ISC),\
+    \ [rules](https://developer.sailpoint.com/docs/extensibility/rules) serve as a\
+    \ flexible configuration framework you can leverage to perform complex or advanced\
+    \ configurations. \n[Connector-executed rules](https://developer.sailpoint.com/docs/extensibility/rules/connector-rules)\
+    \ are rules that are executed in the ISC virtual appliance (VA), usually extensions\
+    \ of the [connector](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html)\
+    \ itself, the bridge between the data source and ISC. \n\nThis API allows administrators\
+    \ to view existing connector-executed rules, make changes to them, delete them,\
+    \ and create new ones from the available types.\n"
+  name: Connector Rule Management
+paths:
+  /connector-rules/v1:
+    get:
+      description: List existing connector rules.
+      operationId: getConnectorRuleListV1
+      parameters:
+      - description: |-
+          Note that for this API the maximum value for limit is 50.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 50
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/connectorruleresponse'
+                type: array
+          description: List of connector rules.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:read
+        - idn:rule-management-connector:manage
+      summary: List connector rules
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Create a connector rule from the available types.
+      operationId: createConnectorRuleV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/connectorrulecreaterequest'
+        description: Connector rule to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/connectorruleresponse'
+          description: Created connector rule.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:manage
+      summary: Create connector rule
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /connector-rules/v1/{id}:
+    delete:
+      description: Delete the connector rule for the given ID.
+      operationId: deleteConnectorRuleV1
+      parameters:
+      - description: ID of the connector rule to delete.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:manage
+      summary: Delete connector rule
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: Get a connector rule by ID.
+      operationId: getConnectorRuleV1
+      parameters:
+      - description: ID of the connector rule to get.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/connectorruleresponse'
+          description: Connector rule with the given ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:read
+        - idn:rule-management-connector:manage
+      summary: Get connector rule
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: "Update an existing connector rule with the one provided in the\
+        \ request body. These fields are immutable: `id`, `name`, `type`"
+      operationId: putConnectorRuleV1
+      parameters:
+      - description: ID of the connector rule to update.
+        example: 8c190e6787aa4ed9a90bd9d5344523fb
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getConnectorRuleList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/connectorruleupdaterequest'
+        description: Connector rule with updated data.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/connectorruleresponse'
+          description: Updated connector rule.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:manage
+      summary: Update connector rule
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /connector-rules/v1/validate:
+    post:
+      description: Detect issues within the connector rule's code to fix and list
+        them.
+      operationId: testConnectorRuleV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sourcecode'
+        description: Code to validate.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/connectorrulevalidationresponse'
+          description: Status of the code's eligibility as a connector rule.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:rule-management-connector:read
+        - idn:rule-management-connector:manage
+      summary: Validate connector rule
+      tags:
+      - Connector Rule Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit50:
+      description: |-
+        Note that for this API the maximum value for limit is 50.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 50
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 50
+        format: int32
+        maximum: 50
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getConnectorRuleListV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getConnectorRuleListV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    argument:
+      example:
+        name: firstName
+        description: the first name of the identity
+        type: String
+      nullable: true
+      properties:
+        name:
+          description: the name of the argument
+          example: firstName
+          type: string
+        description:
+          description: the description of the argument
+          example: the first name of the identity
+          nullable: true
+          type: string
+        type:
+          description: the programmatic type of the argument
+          example: String
+          nullable: true
+          type: string
+      required:
+      - name
+      title: Argument
+      type: object
+    sourcecode:
+      description: SourceCode
+      example:
+        version: "1.0"
+        script: return "Mr. " + firstName;
+      properties:
+        version:
+          description: the version of the code
+          example: "1.0"
+          type: string
+        script:
+          description: The code
+          example: return "Mr. " + firstName;
+          type: string
+      required:
+      - script
+      - version
+      title: Source Code
+      type: object
+    connectorrulecreaterequest:
+      description: ConnectorRuleCreateRequest
+      properties:
+        name:
+          description: the name of the rule
+          example: WebServiceBeforeOperationRule
+          maxLength: 128
+          minLength: 1
+          type: string
+        description:
+          description: a description of the rule's purpose
+          example: This rule does that
+          nullable: true
+          type: string
+        type:
+          description: the type of rule
+          enum:
+          - BuildMap
+          - ConnectorAfterCreate
+          - ConnectorAfterDelete
+          - ConnectorAfterModify
+          - ConnectorBeforeCreate
+          - ConnectorBeforeDelete
+          - ConnectorBeforeModify
+          - JDBCBuildMap
+          - JDBCOperationProvisioning
+          - JDBCProvision
+          - PeopleSoftHRMSBuildMap
+          - PeopleSoftHRMSOperationProvisioning
+          - PeopleSoftHRMSProvision
+          - RACFPermissionCustomization
+          - ResourceObjectCustomization
+          - SAPBuildMap
+          - SapHrManagerRule
+          - SapHrOperationProvisioning
+          - SapHrProvision
+          - SuccessFactorsOperationProvisioning
+          - WebServiceAfterOperationRule
+          - WebServiceBeforeOperationRule
+          - ResourceObjectCustomization
+          example: BuildMap
+          type: string
+        signature:
+          $ref: '#/components/schemas/connectorrulecreaterequest_signature'
+        sourceCode:
+          $ref: '#/components/schemas/sourcecode'
+        attributes:
+          description: a map of string to objects
+          example: {}
+          nullable: true
+          type: object
+      required:
+      - name
+      - sourceCode
+      - type
+      title: Connector Rule Create Request
+      type: object
+    connectorruleresponse:
+      allOf:
+      - $ref: '#/components/schemas/connectorrulecreaterequest'
+      - nullable: true
+        properties:
+          id:
+            description: the ID of the rule
+            example: 8113d48c0b914f17b4c6072d4dcb9dfe
+            type: string
+          created:
+            description: an ISO 8601 UTC timestamp when this rule was created
+            example: 021-07-22T15:59:23Z
+            type: string
+          modified:
+            description: an ISO 8601 UTC timestamp when this rule was last modified
+            example: 021-07-22T15:59:23Z
+            nullable: true
+            type: string
+        required:
+        - created
+        - id
+        type: object
+      description: ConnectorRuleResponse
+      example:
+        sourceCode:
+          version: "1.0"
+          script: return "Mr. " + firstName;
+        signature:
+          output:
+            name: firstName
+            description: the first name of the identity
+            type: String
+          input:
+          - name: firstName
+            description: the first name of the identity
+            type: String
+          - name: firstName
+            description: the first name of the identity
+            type: String
+        created: 021-07-22T15:59:23Z
+        name: WebServiceBeforeOperationRule
+        description: This rule does that
+        modified: 021-07-22T15:59:23Z
+        attributes: {}
+        id: 8113d48c0b914f17b4c6072d4dcb9dfe
+        type: BuildMap
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    connectorruleupdaterequest:
+      allOf:
+      - properties:
+          id:
+            description: the ID of the rule to update
+            example: 8113d48c0b914f17b4c6072d4dcb9dfe
+            type: string
+        required:
+        - id
+        type: object
+      - $ref: '#/components/schemas/connectorrulecreaterequest'
+      description: ConnectorRuleUpdateRequest
+    connectorrulevalidationresponse:
+      description: ConnectorRuleValidationResponse
+      example:
+        details:
+        - line: 2
+          column: 5
+          messsage: Remove reference to .decrypt(
+        - line: 2
+          column: 5
+          messsage: Remove reference to .decrypt(
+        state: ERROR
+      properties:
+        state:
+          enum:
+          - OK
+          - ERROR
+          example: ERROR
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/connectorrulevalidationresponse_details_inner'
+          type: array
+      required:
+      - details
+      - state
+      title: Connector Rule Validation Response
+      type: object
+    getConnectorRuleListV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getConnectorRuleListV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    connectorrulecreaterequest_signature:
+      description: The rule's function signature. Describes the rule's input arguments
+        and output (if any)
+      example:
+        output:
+          name: firstName
+          description: the first name of the identity
+          type: String
+        input:
+        - name: firstName
+          description: the first name of the identity
+          type: String
+        - name: firstName
+          description: the first name of the identity
+          type: String
+      properties:
+        input:
+          items:
+            $ref: '#/components/schemas/argument'
+          type: array
+        output:
+          $ref: '#/components/schemas/argument'
+      required:
+      - input
+      type: object
+    connectorrulevalidationresponse_details_inner:
+      description: CodeErrorDetail
+      example:
+        line: 2
+        column: 5
+        messsage: Remove reference to .decrypt(
+      properties:
+        line:
+          description: The line number where the issue occurred
+          example: 2
+          type: integer
+        column:
+          description: the column number where the issue occurred
+          example: 5
+          type: integer
+        messsage:
+          description: a description of the issue in the code
+          example: Remove reference to .decrypt(
+          type: string
+      required:
+      - column
+      - line
+      - message
+      type: object

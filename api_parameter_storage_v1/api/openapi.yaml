@@ -1,0 +1,1392 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Parameter Storage
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    The Parameter Storage is SailPoint's centralized repository for authentication, authorization, and connection configurations, stored as typed Parameters.
+
+    The APIs can be used to input Parameters, which can then be referenced by other services, such as Workflow configurations. When these services are executed, the relevant values are fetched via an internal API (not documented here).
+
+    The usage of Parameters can be monitored via References managed by Parameter Storage. References provide an indirect mapping between a Parameter and its usage (e.g., within a Workflow), allowing for reports such as "Parameter X is used in Workflow Y" via APIs.
+
+    A Parameter is a named instance of typed configuration, where the state is stored as Fields. These Fields are either Public (cleartext, searchable) or Private (encrypted).
+
+    Parameter Types are grouped and fall into three Categories: Authentication, Authorization, and Connection.
+
+    Parameters are strongly typed; each Type's fields are named and exposed to the consumer. This means that if a service states that it expects a Credential Type, it will receive a Parameter with a Username and Password.
+
+    Fields are named, typed variables within a Parameter; the Fields on a Parameter depend on the Parameter's Type. Fields contain customer-provided data that will be referenced by another service, and their typing determines whether they're stored in cleartext or encrypted.
+
+    The Specification documents the supported Categories, Types, Fields, Field Names, and their relationships.
+
+    A Reference is an indirect pointer to a Parameter, where each usage of a Parameter has a corresponding Reference. This allows for usage tracking and safe deletion.
+  name: Parameter Storage
+paths:
+  /parameter-storage/v1/attestation:
+    get:
+      description: "Get an attestation document containing a NIST P-384 service public\
+        \ key for an ECDHE handshake, enabling the end-to-end-encrypted transport\
+        \ of parameter private fields."
+      operationId: getAttestationDocumentV1
+      parameters:
+      - description: Base64Url encoded NIST P-384 public key
+        example: BLdV-KA7nSRXx2XkksQX7bmOAShARsB3CCVWodKr4dOJj_puru76wy6drBTVlSytW_rDheLwepm9xdrRuqUI7p81wMP576frFBbsjndBKyRm3eouPbDcW8MAz0XRH1BB3w==
+        explode: true
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/parameterstorageattestationdocument'
+          description: Returns the attestation document. This contains the public
+            key needed to add a parameter to the store.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:read
+        - sp:parameter-storage:manage
+      summary: Get an attestation document.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+  /parameter-storage/v1/parameters:
+    get:
+      description: Query a stored parameter.
+      operationId: searchParametersV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, ne*
+
+          **name**: *eq, in, co*
+
+          **description**: *co*
+
+          **ownerId**: *eq*
+
+          **type**: *eq, sw*
+        example: id eq 550e8400-e29b-41d4-a716-446655440000
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, ownerId, type, description, lastModifiedAt, lastModifiedBy, privateFieldsLastModifiedAt, privateFieldsLastModifiedAt**
+        example: "type,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/parameterstorageparameter'
+                type: array
+          description: Search returned results.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:read
+        - sp:parameter-storage:manage
+      summary: Query stored parameters.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+    post:
+      description: Add a new parameter.
+      operationId: createParameterV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/parameterstoragenewparameter'
+        description: The parameter to add to the store.
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/parameterstorageparameter'
+          description: Created Parameter.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:manage
+      summary: Add a new parameter.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+  /parameter-storage/v1/parameters/{id}:
+    delete:
+      description: Delete a parameter. Will only delete parameters without existing
+        references.
+      operationId: deleteParameterV1
+      parameters:
+      - description: The ID of the parameter to be deleted.
+        example: 58de858b-83d9-4563-9e15-7393594c684a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchParameters
+      responses:
+        "200":
+          description: Parameter deleted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleteParameterV1_409_response'
+          description: Conflict - Indicates that the request could not be processed
+            because of conflict in the current state of the resource.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:manage
+      summary: Delete a parameter.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+    get:
+      description: Get a parameter by ID. This will only return the public fields
+        for the parameter.
+      operationId: getParameterV1
+      parameters:
+      - description: The ID of the parameter to be fetched
+        example: 58de858b-83d9-4563-9e15-7393594c684a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchParameters
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/parameterstorageparameter'
+          description: Return Parameter.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:read
+        - sp:parameter-storage:manage
+      summary: Get a specific parameter.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+    patch:
+      description: "Update a parameter. You cannot change a parameter's type once\
+        \ set. Only the name, owner, description, public fields, and private fields\
+        \ can be updated. Private field updates are made via JWE AES256 encrypted\
+        \ blobs."
+      operationId: updateParameterV1
+      parameters:
+      - description: The ID of the parameter to be updated.
+        example: 58de858b-83d9-4563-9e15-7393594c684a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchParameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/parameterstorageupdateparameter'
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/parameterstoragejsonpatch'
+              type: array
+        description: "The updated parameter. Supports both full and RFC 6902 JSON\
+          \ Patch updates. For RFC 6902 JSON Patch updates, move and copy operations\
+          \ are not supported for privateField updates."
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/parameterstorageparameter'
+          description: Updated Parameter.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleteParameterV1_409_response'
+          description: Conflict - Indicates that the request could not be processed
+            because of conflict in the current state of the resource.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:manage
+      summary: Update a parameter.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+  /parameter-storage/v1/parameters/{id}/references:
+    get:
+      description: Get the references for a given parameter.
+      operationId: getParameterReferencesV1
+      parameters:
+      - description: The ID of the parameter which you want to fetch the references
+          for.
+        example: 58de858b-83d9-4563-9e15-7393594c684a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchParameters
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, consumerId, parameterId, name, usageHint**
+        example: "consumerId,name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/parameterstoragereference'
+                type: array
+          description: Return references for given parameter.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:read
+        - sp:parameter-storage:manage
+      summary: Get parameter references.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+  /parameter-storage/v1/specification:
+    get:
+      description: Get the specifications for all parameter types. All parameters
+        must conform to this specification document.
+      operationId: getParameterStorageSpecificationV1
+      parameters:
+      - description: The i18n internationalization code for the language that the
+          spec is in. Defaults to english.
+        example: en
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          default: en
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Returns the JSON spec in the language chosen.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:parameter-storage:read
+        - sp:parameter-storage:manage
+      summary: Get specifications for parameter types.
+      tags:
+      - Parameter Storage
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      x-audience:
+      - external-public
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAttestationDocumentV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "409":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/deleteParameterV1_409_response'
+      description: Conflict - Indicates that the request could not be processed because
+        of conflict in the current state of the resource.
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAttestationDocumentV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    parameterstorageattestationdocument:
+      description: The attestation document. This is Base64Url encoded binary data
+        containing the attestation document. This has a cert with a public key that
+        needs to be used to encrypt the private fields of the parameter on creation
+        or update.
+      example:
+        attestationDocument: YmFzZTY0IGVuY29kZWQgYXR0ZXN0YXRpb24gZG9jdW1lbnQgZ29lcyBoZXJlLg==
+      properties:
+        attestationDocument:
+          description: The Base64Url encoded attestation document.
+          example: YmFzZTY0IGVuY29kZWQgYXR0ZXN0YXRpb24gZG9jdW1lbnQgZ29lcyBoZXJlLg==
+          type: string
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    parameterstorageparameter:
+      description: A parameter that has been retrieved from the store.
+      example:
+        privateFieldsLastModifiedBy: c0b4568a4fe7458c434ee77d1fbt156b
+        lastModifiedAt: 2025-09-16T12:47:08Z
+        lastModifiedBy: c0b4568a4fe7458c434ee77d1fbt156b
+        name: Credentials for server
+        primaryField: username
+        description: Credentials for server.
+        publicFields: "{\"username\": \"username\"}"
+        id: 58de858b-83d9-4563-9e15-7393594c684a
+        ownerId: c0b4568a4fe7458c434ee77d1fbt156b
+        type: "1.1"
+        privateFieldsLastModifiedAt: 2025-09-16T12:47:08Z
+      properties:
+        id:
+          description: The ID of the reference
+          example: 58de858b-83d9-4563-9e15-7393594c684a
+          type: string
+        ownerId:
+          description: The ID of the user who owns the parameter.
+          example: c0b4568a4fe7458c434ee77d1fbt156b
+          type: string
+        type:
+          description: The type of the parameter. This cannot be changed after being
+            set. Please see the types document for more information.
+          example: "1.1"
+          type: string
+        name:
+          description: The human-readable name of the parameter.
+          example: Credentials for server
+          type: string
+        primaryField:
+          description: The name of the primary field in the public fields.
+          example: username
+          type: string
+        publicFields:
+          description: The public fields stored for this parameter. See the types
+            document for information about what can be stored.
+          example: "{\"username\": \"username\"}"
+          type: object
+        description:
+          description: Describe the parameter
+          example: Credentials for server.
+          type: string
+        lastModifiedAt:
+          description: ISO8606 format datetime of the last time any field of the parameter
+            was changed.
+          example: 2025-09-16T12:47:08Z
+          format: datetime
+          type: string
+        lastModifiedBy:
+          description: The ID of the user who last modified the parameter. Empty when
+            identity is not known.
+          example: c0b4568a4fe7458c434ee77d1fbt156b
+          type: string
+        privateFieldsLastModifiedAt:
+          description: ISO8606 format datetime of the time the secret fields were
+            changed on the parameter.
+          example: 2025-09-16T12:47:08Z
+          format: datetime
+          type: string
+        privateFieldsLastModifiedBy:
+          description: The ID of the user who last modified the private fields. Empty
+            when identity is not known.
+          example: c0b4568a4fe7458c434ee77d1fbt156b
+          type: string
+      required:
+      - id
+      - name
+      - ownerId
+      - publicFields
+      type: object
+    parameterstoragenewparameter:
+      description: A parameter to add to parameter storage. The public and private
+        fields must match the type specification.
+      properties:
+        ownerId:
+          description: The UUID of the parameter owner.
+          example: c0b4568a4fe7458c434ee77d1fbt156b
+          type: string
+        name:
+          description: The human-readable name for the parameter.
+          example: Credentials for server.
+          type: string
+        type:
+          description: The type of the parameter. This cannot be changed after being
+            set. Please see the types document for more information.
+          example: "1.1"
+          type: string
+        publicFields:
+          description: The content must be a JSON object containing the public fields
+            that can be stored with this parameter.
+          example: "{\"username\": \"username\"}"
+          type: object
+        privateFields:
+          description: |
+            Must be a JWE AES256 encrypted blob.
+            The content of the blob must be a JSON object containing the private fields that can be stored with this parameter.
+          example: ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu
+          type: string
+        description:
+          description: Describe the parameter
+          example: Credentials for server.
+          type: string
+      required:
+      - name
+      - ownerId
+      - type
+      type: object
+    parameterstorageupdateparameter:
+      description: An existing parameter that needs to be updated. The type cannot
+        be changed once the parameter is created.
+      properties:
+        ownerId:
+          description: The UUID of the parameter owner.
+          example: c0b4568a4fe7458c434ee77d1fbt156b
+          type: string
+        name:
+          description: The human-readable name for the parameter.
+          example: Credentials for server.
+          type: string
+        publicFields:
+          description: The public fields that can be stored with this parameter.
+          example: "{\"username\": \"username\"}"
+          type: object
+        privateFields:
+          description: The private fields that can be stored with this parameter.
+          example: ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu
+          type: string
+        description:
+          description: Describe the parameter
+          example: Credentials for server.
+          type: string
+      type: object
+    parameterstoragejsonpatch:
+      description: RFC 6902 JSON Patch operation
+      properties:
+        op:
+          description: "The operation to perform (add, remove, replace, move, copy,\
+            \ test)"
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A JSON-Pointer describing the target location
+          example: /name
+          type: string
+        value:
+          description: The value to be used within the operations. Required for add/replace/test.
+          example: Credentials for server.
+        from:
+          description: A JSON-Pointer describing the source location for move/copy.
+          example: /description
+          type: string
+      required:
+      - op
+      - path
+      type: object
+    parameterstoragereference:
+      description: Reference information returned in response to a request.
+      example:
+        parameterId: 58de858b-83d9-4563-9e15-7393594c684a
+        consumerId: sp-workflow-config
+        usageHint: "{\"workflowId\": \"6d3d0677-b6fb-470c-b931-89195bedcebe\"}"
+        name: Workflow 6d3d0677-b6fb-470c-b931-89195bedcebe
+        id: 4018c3ec-2714-42b5-92e8-232b17333b52
+      properties:
+        id:
+          description: The ID of the reference
+          example: 4018c3ec-2714-42b5-92e8-232b17333b52
+          type: string
+        consumerId:
+          description: The ID of the consumer holding the reference
+          example: sp-workflow-config
+          type: string
+        parameterId:
+          description: The ID of the parameter that the reference is pointing to.
+          example: 58de858b-83d9-4563-9e15-7393594c684a
+          type: string
+        name:
+          description: The human-readable name of the reference
+          example: Workflow 6d3d0677-b6fb-470c-b931-89195bedcebe
+          type: string
+        usageHint:
+          description: The hint string used to validate the reference
+          example: "{\"workflowId\": \"6d3d0677-b6fb-470c-b931-89195bedcebe\"}"
+          type: string
+      required:
+      - consumerId
+      - id
+      - name
+      - parameterId
+      type: object
+    getAttestationDocumentV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAttestationDocumentV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    deleteParameterV1_409_response:
+      example:
+        errorName: ConflictException
+        errorMessage: Failed to store object
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        errorName:
+          description: A message describing the error
+          example: ConflictException
+        errorMessage:
+          description: Description of the error
+          example: Failed to store object
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+      type: object

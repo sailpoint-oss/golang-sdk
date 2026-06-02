@@ -1,0 +1,65 @@
+- path: /password-dictionary/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passworddictionaryv1/methods/password-dictionary#get-password-dictionary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PasswordDictionaryV1.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
+          //resp, r, err := apiClient.PasswordDictionaryV1.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPasswordDictionaryV1`: string
+          fmt.Fprintf(os.Stdout, "Response from `PasswordDictionaryAPI.GetPasswordDictionaryV1`: %v\n", resp)
+        }
+- path: /password-dictionary/v1
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passworddictionaryv1/methods/password-dictionary#put-password-dictionary-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          file := BINARY_DATA_HERE // *os.File |  (optional) # *os.File |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.PasswordDictionaryV1.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).Execute()
+          //r, err := apiClient.PasswordDictionaryV1.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).File(file).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionaryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }

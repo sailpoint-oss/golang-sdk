@@ -1,0 +1,585 @@
+- path: /verified-domains/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#create-domain-dkim-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           domainaddress := []byte(``) // Domainaddress | 
+
+          
+          var domainaddress v1.Domainaddress
+          if err := json.Unmarshal(domainaddress, &domainaddress); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateDomainDkimV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateDomainDkimV1`: Domainstatusdto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateDomainDkimV1`: %v\n", resp)
+        }
+- path: /notification-templates/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#create-notification-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           templatedto := []byte(``) // Templatedto | 
+
+          
+          var templatedto v1.Templatedto
+          if err := json.Unmarshal(templatedto, &templatedto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateNotificationTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateNotificationTemplateV1`: Templatedto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateNotificationTemplateV1`: %v\n", resp)
+        }
+- path: /verified-from-addresses/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#create-verified-from-address-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           emailstatusdto := []byte(`{"email":"sender@example.com"}`) // Emailstatusdto | 
+
+          
+          var emailstatusdto v1.Emailstatusdto
+          if err := json.Unmarshal(emailstatusdto, &emailstatusdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateVerifiedFromAddressV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateVerifiedFromAddressV1`: Emailstatusdto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateVerifiedFromAddressV1`: %v\n", resp)
+        }
+- path: /notification-templates/v1/bulk-delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#delete-notification-templates-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          templatebulkdeletedto := []byte(``) // []Templatebulkdeletedto | 
+
+          
+          var templatebulkdeletedto []v1.Templatebulkdeletedto
+          if err := json.Unmarshal(templatebulkdeletedto, &templatebulkdeletedto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NotificationsV1.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
+          //r, err := apiClient.NotificationsV1.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteNotificationTemplatesInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /verified-from-addresses/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#delete-verified-from-address-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Unique identifier of the verified sender address to delete. # string | Unique identifier of the verified sender address to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NotificationsV1.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
+          //r, err := apiClient.NotificationsV1.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteVerifiedFromAddressV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /verified-domains/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-dkim-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetDkimAttributesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetDkimAttributesV1(context.Background()).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetDkimAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetDkimAttributesV1`: []Dkimattributes
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetDkimAttributesV1`: %v\n", resp)
+        }
+- path: /mail-from-attributes/v1/{identity}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-mail-from-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          identity := `bobsmith@sailpoint.com` // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status # string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMailFromAttributesV1`: Mailfromattributes
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetMailFromAttributesV1`: %v\n", resp)
+        }
+- path: /notification-preferences/v1/{key}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-notification-preferences-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          key := `key_example` // string | The key. # string | The key.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreferencesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetNotificationPreferencesV1`: Preferencesdto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationPreferencesV1`: %v\n", resp)
+        }
+- path: /notification-templates/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-notification-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the Notification Template # string | Id of the Notification Template
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetNotificationTemplateV1`: Templatedto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplateV1`: %v\n", resp)
+        }
+- path: /notification-template-variables/v1/{key}/{medium}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-notification-template-variables-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          key := `approval_request_notification` // string | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation.  # string | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation. 
+          medium := `EMAIL` // string | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation.  # string | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation. 
+          sorters := `-description` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateVariablesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetNotificationTemplateVariablesV1`: Templatevariablesdto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplateVariablesV1`: %v\n", resp)
+        }
+- path: /notification-template-context/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#get-notifications-template-context-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationsTemplateContextV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetNotificationsTemplateContextV1`: Notificationtemplatecontext
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationsTemplateContextV1`: %v\n", resp)
+        }
+- path: /verified-from-addresses/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#list-from-addresses-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `email eq "john.doe@company.com"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, ge, le, gt, lt* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, ge, le, gt, lt* (optional)
+          sorters := `email` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListFromAddressesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListFromAddressesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListFromAddressesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListFromAddressesV1`: []Emailstatusdto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListFromAddressesV1`: %v\n", resp)
+        }
+- path: /notification-template-defaults/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#list-notification-template-defaults-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          filters := `key eq "cloud_manual_work_item_summary"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplateDefaultsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListNotificationTemplateDefaultsV1`: []Templatedtodefault
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplateDefaultsV1`: %v\n", resp)
+        }
+- path: /notification-templates/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#list-notification-templates-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          filters := `medium eq "EMAIL"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
+          sorters := `key, -name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, medium** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, medium** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListNotificationTemplatesV1`: []Templatedto
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplatesV1`: %v\n", resp)
+        }
+- path: /mail-from-attributes/v1
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#put-mail-from-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           mailfromattributesdto := []byte(`{"identity":"BobSmith@sailpoint.com","mailFromDomain":"example.sailpoint.com"}`) // Mailfromattributesdto | 
+
+          
+          var mailfromattributesdto v1.Mailfromattributesdto
+          if err := json.Unmarshal(mailfromattributesdto, &mailfromattributesdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.NotificationsV1.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
+          //resp, r, err := apiClient.NotificationsV1.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutMailFromAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutMailFromAttributesV1`: Mailfromattributes
+          fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.PutMailFromAttributesV1`: %v\n", resp)
+        }
+- path: /send-test-notification/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/notificationsv1/methods/notifications#send-test-notification-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           sendtestnotificationrequestdto := []byte(`{"key":"cloud_manual_work_item_summary","medium":"EMAIL","context":{"numberOfPendingTasks":"4","ownerId":"201327fda1c44704ac01181e963d463c"}}`) // Sendtestnotificationrequestdto | 
+
+          
+          var sendtestnotificationrequestdto v1.Sendtestnotificationrequestdto
+          if err := json.Unmarshal(sendtestnotificationrequestdto, &sendtestnotificationrequestdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.NotificationsV1.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
+          //r, err := apiClient.NotificationsV1.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.SendTestNotificationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }

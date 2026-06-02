@@ -1,0 +1,107 @@
+- path: /source-subtypes/v1/{subtypeId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountsubtypesv1/methods/machine-account-subtypes#delete-machine-account-subtype-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
+          //r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /source-subtypes/v1/{subtypeId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountsubtypesv1/methods/machine-account-subtypes#get-source-subtype-by-id-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSourceSubtypeByIdV1`: Sourcesubtypewithsource
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1`: %v\n", resp)
+        }
+- path: /source-subtypes/v1/{subtypeId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountsubtypesv1/methods/machine-account-subtypes#patch-machine-account-subtype-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
+          requestbody := []byte(`[{"op":"replace","path":"/displayName","value":"Test New DisplayName"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var requestBody []v1.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypesV1.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchMachineAccountSubtypeV1`: Sourcesubtypewithsource
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1`: %v\n", resp)
+        }

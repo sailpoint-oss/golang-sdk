@@ -1,0 +1,2565 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Access Request Approvals
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement and customize access request approval functionality.\
+    \ \nWith this functionality in place, administrators can delegate qualified users\
+    \ to review users' requests for access or managers' requests to revoke team members'\
+    \ access to applications, entitlements, or roles.      \nThis enables more qualified\
+    \ users to review access requests and the others to spend their time on other\
+    \ tasks.  \n\nIn Identity Security Cloud, users can request access to applications,\
+    \ entitlements, and roles, and managers can request that team members' access\
+    \ be revoked.   \nFor applications and entitlements, administrators can set access\
+    \ profiles to require approval from the access profile owner, the application\
+    \ owner, the source owner, the requesting user's manager, or a governance group\
+    \ for access to be granted or revoked.   \nFor roles, administrators can also\
+    \ set roles to allow access requests and require approval from the role owner,\
+    \ the requesting user's manager, or a governance group for access to be granted\
+    \ or revoked.   \nIf the administrator designates a governance group as the required\
+    \ approver, any governance group member can approve the requests.\n\nWhen a user\
+    \ submits an access request, Identity Security Cloud sends the first required\
+    \ approver in the queue an email notification, based on the access request configuration's\
+    \ approval and reminder escalation configuration.\n\nIn Approvals in Identity\
+    \ Security Cloud, required approvers can view pending access requests under the\
+    \ Requested tab and approve or deny them, or the approvers can reassign the requests\
+    \ to different reviewers for approval.   \nIf the required approver approves the\
+    \ request and is the only reviewer required, Identity Security Cloud grants or\
+    \ revokes access, based on the request.   \nIf multiple reviewers are required,\
+    \ Identity Security Cloud sends the request to the next reviewer in the queue,\
+    \ based on the access request configuration's approval reminder and escalation\
+    \ configuration.   \nThe required approver can then view any completed access\
+    \ requests under the Reviewed tab.   \n\nRefer to [Access Requests](https://documentation.sailpoint.com/saas/help/requests/index.html)\
+    \ for more information about access request approvals.\n"
+  name: Access Request Approvals
+paths:
+  /access-request-approvals/v1/pending:
+    get:
+      description: This endpoint returns a list of pending approvals. See "owner-id"
+        query parameter below for authorization info.
+      operationId: listPendingApprovalsV1
+      parameters:
+      - description: |-
+          If present, the value returns only pending approvals for the specified identity.
+             * ORG_ADMIN users can call this with any identity ID value.
+             * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.
+             * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: owner-id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **requestedFor.id**: *eq, in*
+
+          **modified**: *gt, lt, ge, le, eq, in*
+
+          **accessRequestId**: *eq, in*
+
+          **created**: *gt, lt, ge, le, eq, in*
+        example: id eq "2c91808568c529c60168cca6f90c1313"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created, modified**
+        example: modified
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/pendingapproval'
+                type: array
+          description: List of Pending Approvals.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
+      summary: Pending access request approvals list
+      tags:
+      - Access Request Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-request-approvals/v1/completed:
+    get:
+      description: This endpoint returns list of completed approvals. See *owner-id*
+        query parameter below for authorization info.
+      operationId: listCompletedApprovalsV1
+      parameters:
+      - description: |-
+          If present, the value returns only completed approvals for the specified identity.
+             * ORG_ADMIN users can call this with any identity ID value.
+             * ORG_ADMIN users can also fetch all the approvals in the org, when
+          owner-id is not used.
+             * Non-ORG_ADMIN users can only specify *me* or pass their own
+          identity ID value.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: owner-id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+
+          **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+
+          **modified**: *gt, lt, ge, le, eq, in, ne, sw*
+        example: id eq "2c91808568c529c60168cca6f90c1313"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **created, modified**
+        example: modified
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/completedapproval'
+                type: array
+          description: List of Completed Approvals.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
+      summary: Completed access request approvals list
+      tags:
+      - Access Request Approvals
+  /access-request-approvals/v1/{approvalId}/approve:
+    post:
+      description: Use this endpoint to approve an access request approval. Only the
+        owner of the approval and ORG_ADMIN users are allowed to perform this action.
+      operationId: approveAccessRequestV1
+      parameters:
+      - description: Approval ID.
+        example: 2c91808b7294bea301729568c68c002e
+        explode: false
+        in: path
+        name: approvalId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPendingApprovals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/commentdto'
+        description: Reviewer's comment.
+        required: false
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Approve access request approval
+      tags:
+      - Access Request Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - APPROVAL_OWNER
+  /access-request-approvals/v1/{approvalId}/reject:
+    post:
+      description: Use this API to reject an access request approval. Only the owner
+        of the approval and admin users are allowed to perform this action.
+      operationId: rejectAccessRequestV1
+      parameters:
+      - description: Approval ID.
+        example: 2c91808b7294bea301729568c68c002e
+        explode: false
+        in: path
+        name: approvalId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPendingApprovals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/commentdto'
+        description: Reviewer's comment.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Reject access request approval
+      tags:
+      - Access Request Approvals
+  /access-request-approvals/v1/{approvalId}/forward:
+    post:
+      description: Use this API to forward an access request approval to a new owner.
+        Only the owner of the approval and ORG_ADMIN users are allowed to perform
+        this action. Only the owner of the approval and ORG_ADMIN users are allowed
+        to perform this action.
+      operationId: forwardAccessRequestV1
+      parameters:
+      - description: Approval ID.
+        example: 2c91808b7294bea301729568c68c002e
+        explode: false
+        in: path
+        name: approvalId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPendingApprovals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/forwardapprovaldto'
+        description: Information about the forwarded approval.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Forward access request approval
+      tags:
+      - Access Request Approvals
+  /access-request-approvals/v1/approval-summary:
+    get:
+      description: "Use this API to return the number of pending, approved and rejected\
+        \ access requests approvals. See the \"owner-id\" query parameter for authorization\
+        \ information. info."
+      operationId: getAccessRequestApprovalSummaryV1
+      parameters:
+      - description: |-
+          The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.
+             * ORG_ADMIN users can call this with any identity ID value.
+             * ORG_ADMIN user can also fetch all the approvals in the org, when
+          owner-id is not used.
+             * Non ORG_ADMIN users can only specify *me* or pass their own
+          identity ID value.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: owner-id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: This is the date and time the results will be shown from. It
+          must be in a valid ISO-8601 format.
+        example: from-date=2020-03-19T19:59:11Z
+        explode: true
+        in: query
+        name: from-date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approvalsummary'
+          description: "Number of pending, approved, rejected access request approvals."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the query parameter is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
+      summary: Get access requests approvals number
+      tags:
+      - Access Request Approvals
+  /access-request-approvals/v1/{accessRequestId}/approvers:
+    get:
+      description: |
+        This API endpoint returns the list of approvers for the given access request id.
+      operationId: listAccessRequestApproversV1
+      parameters:
+      - description: Access Request ID.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: false
+        in: path
+        name: accessRequestId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPendingApprovals
+      - description: Max number of results to return.
+        example: 100
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results. Defaults to 0 if not specified.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: "If this is true, the *X-Total-Count* response header populates\
+          \ with the number of results that would be returned if limit and offset\
+          \ were ignored."
+        example: false
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestapproverslistresponse'
+                type: array
+          description: List of Approvers.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-administration:read
+      summary: Access request approvers
+      tags:
+      - Access Request Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "202":
+      content:
+        application/json:
+          schema:
+            type: object
+      description: Accepted - Returned if the request was successfully accepted into
+        the system.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listPendingApprovalsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listPendingApprovalsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    accessrequesttype:
+      description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
+        can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS
+        type is used for updating access expiration dates or other access modifications.
+      enum:
+      - GRANT_ACCESS
+      - REVOKE_ACCESS
+      - MODIFY_ACCESS
+      - null
+      example: GRANT_ACCESS
+      nullable: true
+      type: string
+    accessitemrequester:
+      description: Access item requester's identity.
+      example:
+        name: William Wilson
+        id: 2c7180a46faadee4016fb4e018c20648
+        type: IDENTITY
+      properties:
+        type:
+          description: Access item requester's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Access item requester's identity ID.
+          example: 2c7180a46faadee4016fb4e018c20648
+          type: string
+        name:
+          description: Access item owner's human-readable display name.
+          example: William Wilson
+          type: string
+      title: Access Item Requester
+      type: object
+    accessitemrequestedfor:
+      description: Identity the access item is requested for.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
+      properties:
+        type:
+          description: DTO type of identity the access item is requested for.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of identity the access item is requested for.
+          example: 2c4180a46faadee4016fb4e018c20626
+          type: string
+        name:
+          description: Human-readable display name of identity the access item is
+            requested for.
+          example: Robert Robinson
+          type: string
+      title: Access Item Requested For
+      type: object
+    requestableobjectreference:
+      example:
+        name: Applied Research Access
+        description: "Access to research information, lab results, and schematics"
+        id: 2c9180835d2e5168015d32f890ca1581
+        type: ROLE
+      properties:
+        id:
+          description: Id of the object.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        name:
+          description: Name of the object.
+          example: Applied Research Access
+          type: string
+        description:
+          description: Description of the object.
+          example: "Access to research information, lab results, and schematics"
+          type: string
+        type:
+          description: Type of the object.
+          enum:
+          - ACCESS_PROFILE
+          - ROLE
+          - ENTITLEMENT
+          example: ROLE
+          type: string
+      title: Requestable Object Reference
+      type: object
+    commentdto:
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
+      properties:
+        comment:
+          description: Comment content.
+          example: This is a comment.
+          nullable: true
+          type: string
+        created:
+          description: Date and time comment was created.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        author:
+          $ref: '#/components/schemas/commentdto_author'
+      title: Comment Dto
+      type: object
+    reassignmenttype:
+      description: "The approval reassignment type. \n* MANUAL_REASSIGNMENT: An approval\
+        \ with this reassignment type has been specifically reassigned by the approval\
+        \ task's owner, from their queue to someone else's. \n* AUTOMATIC_REASSIGNMENT:\
+        \ An approval with this reassignment type has been automatically reassigned\
+        \ from another approver's queue, according to that approver's reassignment\
+        \ configuration. The approver's reassignment configuration may be set up to\
+        \ automatically reassign approval tasks for a defined (or possibly open-ended)\
+        \ period of time.\n* AUTO_ESCALATION: An approval with this reassignment type\
+        \ has been automatically reassigned from another approver's queue, according\
+        \ to the request's escalation configuration. For more information about escalation\
+        \ configuration, refer to [Setting Global Reminders and Escalation Policies](https://documentation.sailpoint.com/saas/help/requests/config_emails.html).\n\
+        * SELF_REVIEW_DELEGATION: An approval with this reassignment type has been\
+        \ automatically reassigned by the system to prevent self-review. This helps\
+        \ prevent situations like a requester being tasked with approving their own\
+        \ request. For more information about preventing self-review, refer to [Self-review\
+        \ Prevention](https://documentation.sailpoint.com/saas/help/users/work_reassignment.html#self-review-prevention)\
+        \ and [Preventing Self-approval](https://documentation.sailpoint.com/saas/help/requests/config_ap_roles.html#preventing-self-approval)."
+      enum:
+      - MANUAL_REASSIGNMENT
+      - AUTOMATIC_REASSIGNMENT
+      - AUTO_ESCALATION
+      - SELF_REVIEW_DELEGATION
+      example: AUTOMATIC_REASSIGNMENT
+      type: string
+    approvalforwardhistory:
+      example:
+        forwarderName: William Wilson
+        reassignmentType: AUTOMATIC_REASSIGNMENT
+        modified: 2019-08-23T18:52:57.398Z
+        oldApproverName: Frank Mir
+        newApproverName: Al Volta
+        comment: Forwarding from Frank to Al
+      properties:
+        oldApproverName:
+          description: Display name of approver from whom the approval was forwarded.
+          example: Frank Mir
+          type: string
+        newApproverName:
+          description: Display name of approver to whom the approval was forwarded.
+          example: Al Volta
+          type: string
+        comment:
+          description: Comment made while forwarding.
+          example: Forwarding from Frank to Al
+          nullable: true
+          type: string
+        modified:
+          description: Time at which approval was forwarded.
+          example: 2019-08-23T18:52:57.398Z
+          format: date-time
+          type: string
+        forwarderName:
+          description: Display name of forwarder who forwarded the approval.
+          example: William Wilson
+          nullable: true
+          type: string
+        reassignmentType:
+          $ref: '#/components/schemas/reassignmenttype'
+      title: Approval Forward History
+      type: object
+    pendingapprovalaction:
+      description: Enum represents action that is being processed on an approval.
+      enum:
+      - APPROVED
+      - REJECTED
+      - FORWARDED
+      example: APPROVED
+      type: string
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    sodpolicydto:
+      description: SOD policy.
+      example:
+        name: Business SOD Policy
+        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        type: SOD_POLICY
+      properties:
+        type:
+          description: SOD policy DTO type.
+          enum:
+          - SOD_POLICY
+          example: SOD_POLICY
+          type: string
+        id:
+          description: SOD policy ID.
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: string
+        name:
+          description: SOD policy display name.
+          example: Business SOD Policy
+          type: string
+      title: Sod Policy Dto
+      type: object
+    dtotype:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    sodexemptcriteria:
+      description: Details of the Entitlement criteria
+      example:
+        existing: true
+        name: My HR Entitlement
+        id: 2c918085771e9d3301773b3cb66f6398
+        type: IDENTITY
+      properties:
+        existing:
+          default: false
+          description: If the entitlement already belonged to the user or not.
+          example: true
+          type: boolean
+        type:
+          $ref: '#/components/schemas/dtotype'
+        id:
+          description: Entitlement ID
+          example: 2c918085771e9d3301773b3cb66f6398
+          type: string
+        name:
+          description: Entitlement name
+          example: My HR Entitlement
+          type: string
+      title: Sod Exempt Criteria
+      type: object
+    sodviolationcontext:
+      description: The contextual information of the violated criteria
+      example:
+        conflictingAccessCriteria:
+          leftCriteria:
+            criteriaList:
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+          rightCriteria:
+            criteriaList:
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+            - existing: true
+              name: My HR Entitlement
+              id: 2c918085771e9d3301773b3cb66f6398
+              type: IDENTITY
+        policy:
+          name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+      properties:
+        policy:
+          $ref: '#/components/schemas/sodpolicydto'
+        conflictingAccessCriteria:
+          $ref: '#/components/schemas/sodviolationcontext_conflictingAccessCriteria'
+      title: Sod Violation Context
+      type: object
+    sodviolationcheckresult:
+      description: The inner object representing the completed SOD Violation check
+      example:
+        clientMetadata:
+          requestedAppName: test-app
+          requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        violationContexts:
+        - conflictingAccessCriteria:
+            leftCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+            rightCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+          policy:
+            name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+        - conflictingAccessCriteria:
+            leftCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+            rightCriteria:
+              criteriaList:
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+              - existing: true
+                name: My HR Entitlement
+                id: 2c918085771e9d3301773b3cb66f6398
+                type: IDENTITY
+          policy:
+            name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+        violatedPolicies:
+        - name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+        - name: Business SOD Policy
+          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          type: SOD_POLICY
+        message:
+          localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+      properties:
+        message:
+          $ref: '#/components/schemas/errormessagedto'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: Arbitrary key-value pairs. They will never be processed by
+            the IdentityNow system but will be returned on completion of the violation
+            check.
+          example:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          nullable: true
+          type: object
+        violationContexts:
+          items:
+            $ref: '#/components/schemas/sodviolationcontext'
+          nullable: true
+          type: array
+        violatedPolicies:
+          description: A list of the SOD policies that were violated.
+          items:
+            $ref: '#/components/schemas/sodpolicydto'
+          nullable: true
+          type: array
+      title: Sod Violation Check Result
+      type: object
+    sodviolationcontextcheckcompleted:
+      description: An object referencing a completed SOD violation check
+      example:
+        violationCheckResult:
+          clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          violationContexts:
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          violatedPolicies:
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          message:
+            localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        state: SUCCESS
+        uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+      nullable: true
+      properties:
+        state:
+          description: The status of SOD violation check
+          enum:
+          - SUCCESS
+          - ERROR
+          - null
+          example: SUCCESS
+          nullable: true
+          type: string
+        uuid:
+          description: The id of the Violation check event
+          example: f73d16e9-a038-46c5-b217-1246e15fdbdd
+          nullable: true
+          type: string
+        violationCheckResult:
+          $ref: '#/components/schemas/sodviolationcheckresult'
+      title: Sod Violation Context Check Completed
+      type: object
+    requestedaccountref:
+      example:
+        accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+        name: Glen.067da3248e914
+        accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+        sourceName: Multi Account AD source name
+        type: IDENTITY
+      properties:
+        name:
+          description: Display name of the account for the user
+          example: Glen.067da3248e914
+          type: string
+        type:
+          $ref: '#/components/schemas/dtotype'
+        accountUuid:
+          description: The uuid for the account
+          example: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          nullable: true
+          type: string
+        accountId:
+          description: The native identity for the account
+          example: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          nullable: true
+          type: string
+        sourceName:
+          description: Display name of the source for the account
+          example: Multi Account AD source name
+          nullable: false
+          type: string
+      title: Requested Account Ref
+      type: object
+    pendingapproval:
+      example:
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        requestedFor:
+          name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        owner:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        removeDate: 2020-07-11T00:00:00Z
+        clientMetadata:
+          customKey1: custom value 1
+          customKey2: custom value 2
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        requestType: GRANT_ACCESS
+        privilegeLevel: High
+        commentRequiredWhenRejected: true
+        created: 2017-07-11T18:45:37.098Z
+        previousReviewersComments:
+        - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        currentRemoveDate: 2020-07-11T00:00:00Z
+        requestedObject:
+          name: Applied Research Access
+          description: "Access to research information, lab results, and schematics"
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ROLE
+        sodViolationContext:
+          violationCheckResult:
+            clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            violationContexts:
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            violatedPolicies:
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            message:
+              localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          state: SUCCESS
+          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+        requestCreated: 2017-07-11T18:45:35.098Z
+        actionInProcess: APPROVED
+        accessRequestId: 2b838de9db9babcfe646d4f274ad4238
+        name: aName
+        modified: 2018-07-25T20:22:28.104Z
+        id: id12345
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        removeDateUpdateRequested: true
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
+      properties:
+        id:
+          description: The approval id.
+          example: id12345
+          type: string
+        accessRequestId:
+          description: This is the access request id.
+          example: 2b838de9db9babcfe646d4f274ad4238
+          type: string
+        name:
+          description: The name of the approval.
+          example: aName
+          type: string
+        created:
+          description: When the approval was created.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: When the approval was modified last time.
+          example: 2018-07-25T20:22:28.104Z
+          format: date-time
+          type: string
+        requestCreated:
+          description: When the access-request was created.
+          example: 2017-07-11T18:45:35.098Z
+          format: date-time
+          type: string
+        requestType:
+          $ref: '#/components/schemas/accessrequesttype'
+        requester:
+          $ref: '#/components/schemas/accessitemrequester'
+        requestedFor:
+          $ref: '#/components/schemas/accessitemrequestedfor'
+        owner:
+          $ref: '#/components/schemas/pendingapproval_owner'
+        requestedObject:
+          $ref: '#/components/schemas/requestableobjectreference'
+        requesterComment:
+          $ref: '#/components/schemas/commentdto'
+        previousReviewersComments:
+          description: The history of the previous reviewers comments.
+          items:
+            $ref: '#/components/schemas/commentdto'
+          type: array
+        forwardHistory:
+          description: The history of approval forward action.
+          items:
+            $ref: '#/components/schemas/approvalforwardhistory'
+          type: array
+        commentRequiredWhenRejected:
+          default: false
+          description: When true the rejector has to provide comments when rejecting
+          example: true
+          type: boolean
+        actionInProcess:
+          $ref: '#/components/schemas/pendingapprovalaction'
+        removeDate:
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          type: string
+        removeDateUpdateRequested:
+          default: false
+          description: "If true, then the request is to change the remove date or\
+            \ sunset date."
+          example: true
+          type: boolean
+        currentRemoveDate:
+          description: The remove date or sunset date that was assigned at the time
+            of the request.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          type: string
+        sodViolationContext:
+          $ref: '#/components/schemas/sodviolationcontextcheckcompleted'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: "Arbitrary key-value pairs, if any were included in the corresponding\
+            \ access request item"
+          example:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          nullable: true
+          type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/requestedaccountref'
+          nullable: true
+          type: array
+        privilegeLevel:
+          description: "The privilege level of the requested access item, if applicable."
+          example: High
+          nullable: true
+          type: string
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/pendingapproval_maxPermittedAccessDuration'
+      title: Pending Approval
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    accessitemreviewedby:
+      description: Identity who reviewed the access item request.
+      example:
+        name: Allen Albertson
+        id: 2c3780a46faadee4016fb4e018c20652
+        type: IDENTITY
+      properties:
+        type:
+          description: DTO type of identity who reviewed the access item request.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of identity who reviewed the access item request.
+          example: 2c3780a46faadee4016fb4e018c20652
+          type: string
+        name:
+          description: Human-readable display name of identity who reviewed the access
+            item request.
+          example: Allen Albertson
+          type: string
+      title: Access Item Reviewed By
+      type: object
+    ownerdto:
+      description: Owner's identity.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: Owner's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's identity ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's name.
+          example: Support
+          type: string
+      title: Owner Dto
+      type: object
+    completedapprovalstate:
+      description: Enum represents completed approval object's state.
+      enum:
+      - APPROVED
+      - REJECTED
+      example: APPROVED
+      type: string
+    completedapproval:
+      example:
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        requestedAccounts:
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+          name: Glen.067da3248e914
+          accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+          sourceName: Multi Account AD source name
+          type: IDENTITY
+        privilegeLevel: High
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        modified: 2018-07-25T20:22:28.104Z
+        id: id12345
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        owner:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        reviewerComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        removeDate: 2020-07-11T00:00:00Z
+        clientMetadata:
+          requestedAppName: test-app
+          requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        requestType: GRANT_ACCESS
+        commentRequiredWhenRejected: true
+        created: 2017-07-11T18:45:37.098Z
+        previousReviewersComments:
+        - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        currentRemoveDate: 2020-07-11T00:00:00Z
+        reviewedBy:
+          name: Allen Albertson
+          id: 2c3780a46faadee4016fb4e018c20652
+          type: IDENTITY
+        requestedObject:
+          name: Applied Research Access
+          description: "Access to research information, lab results, and schematics"
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ROLE
+        sodViolationContext:
+          violationCheckResult:
+            clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            violationContexts:
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            violatedPolicies:
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            message:
+              localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          state: SUCCESS
+          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+        requestCreated: 2017-07-11T18:45:35.098Z
+        name: aName
+      properties:
+        id:
+          description: The approval id.
+          example: id12345
+          type: string
+        name:
+          description: The name of the approval.
+          example: aName
+          type: string
+        created:
+          description: When the approval was created.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: When the approval was modified last time.
+          example: 2018-07-25T20:22:28.104Z
+          format: date-time
+          type: string
+        requestCreated:
+          description: When the access-request was created.
+          example: 2017-07-11T18:45:35.098Z
+          format: date-time
+          type: string
+        requestType:
+          $ref: '#/components/schemas/accessrequesttype'
+        requester:
+          $ref: '#/components/schemas/accessitemrequester'
+        requestedFor:
+          $ref: '#/components/schemas/completedapproval_requestedFor'
+        reviewedBy:
+          $ref: '#/components/schemas/accessitemreviewedby'
+        owner:
+          $ref: '#/components/schemas/ownerdto'
+        requestedObject:
+          $ref: '#/components/schemas/requestableobjectreference'
+        requesterComment:
+          $ref: '#/components/schemas/completedapproval_requesterComment'
+        reviewerComment:
+          $ref: '#/components/schemas/completedapproval_reviewerComment'
+        previousReviewersComments:
+          description: The history of the previous reviewers comments.
+          items:
+            $ref: '#/components/schemas/commentdto'
+          type: array
+        forwardHistory:
+          description: The history of approval forward action.
+          items:
+            $ref: '#/components/schemas/approvalforwardhistory'
+          type: array
+        commentRequiredWhenRejected:
+          default: false
+          description: When true the rejector has to provide comments when rejecting
+          example: true
+          type: boolean
+        state:
+          $ref: '#/components/schemas/completedapprovalstate'
+        removeDate:
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        removeDateUpdateRequested:
+          default: false
+          description: "If true, then the request was to change the remove date or\
+            \ sunset date."
+          example: true
+          type: boolean
+        currentRemoveDate:
+          description: The remove date or sunset date that was assigned at the time
+            of the request.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        sodViolationContext:
+          $ref: '#/components/schemas/sodviolationcontextcheckcompleted'
+        preApprovalTriggerResult:
+          $ref: '#/components/schemas/completedapproval_preApprovalTriggerResult'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: Arbitrary key-value pairs provided during the request.
+          example:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          type: object
+        requestedAccounts:
+          description: "The accounts selected by the user for the access to be provisioned\
+            \ on, in case they have multiple accounts on one or more sources."
+          items:
+            $ref: '#/components/schemas/requestedaccountref'
+          nullable: true
+          type: array
+        privilegeLevel:
+          description: "The privilege level of the requested access item, if applicable."
+          example: High
+          nullable: true
+          type: string
+        maxPermittedAccessDuration:
+          $ref: '#/components/schemas/pendingapproval_maxPermittedAccessDuration'
+      title: Completed Approval
+      type: object
+    forwardapprovaldto:
+      properties:
+        newOwnerId:
+          description: The Id of the new owner
+          example: 2c91808568c529c60168cca6f90c1314
+          maxLength: 255
+          minLength: 1
+          type: string
+        comment:
+          description: The comment provided by the forwarder
+          example: 2c91808568c529c60168cca6f90c1313
+          maxLength: 255
+          minLength: 1
+          type: string
+      required:
+      - comment
+      - newOwnerId
+      title: Forward Approval Dto
+      type: object
+    approvalsummary:
+      example:
+        approved: 0
+        rejected: 0
+        pending: 0
+      properties:
+        pending:
+          description: The number of pending access requests approvals.
+          example: 0
+          format: int32
+          type: integer
+        approved:
+          description: The number of approved access requests approvals.
+          example: 0
+          format: int32
+          type: integer
+        rejected:
+          description: The number of rejected access requests approvals.
+          example: 0
+          format: int32
+          type: integer
+      title: Approval Summary
+      type: object
+    accessrequestapproverslistresponse:
+      example:
+        name: John Doe
+        approvalId: ap12345
+        id: id12345
+        type: Identity
+        email: jdoe@sailpoint.com
+      properties:
+        id:
+          description: Approver id.
+          example: id12345
+          type: string
+        email:
+          description: Email of the approver.
+          example: jdoe@sailpoint.com
+          type: string
+        name:
+          description: Name of the approver.
+          example: John Doe
+          type: string
+        approvalId:
+          description: Id of the approval item.
+          example: ap12345
+          type: string
+        type:
+          description: "Type of the object returned. In this case, the value for this\
+            \ field will always Identity."
+          example: Identity
+          type: string
+      title: Access Request Approvers List Response
+      type: object
+    listPendingApprovalsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listPendingApprovalsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    commentdto_author:
+      description: Author of the comment
+      example:
+        name: john.doe
+        id: 2c9180847e25f377017e2ae8cae4650b
+        type: IDENTITY
+      properties:
+        type:
+          description: The type of object
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The unique ID of the object
+          example: 2c9180847e25f377017e2ae8cae4650b
+          type: string
+        name:
+          description: The display name of the object
+          example: john.doe
+          type: string
+      readOnly: true
+      type: object
+    sodviolationcontext_conflictingAccessCriteria_leftCriteria:
+      example:
+        criteriaList:
+        - existing: true
+          name: My HR Entitlement
+          id: 2c918085771e9d3301773b3cb66f6398
+          type: IDENTITY
+        - existing: true
+          name: My HR Entitlement
+          id: 2c918085771e9d3301773b3cb66f6398
+          type: IDENTITY
+      properties:
+        criteriaList:
+          items:
+            $ref: '#/components/schemas/sodexemptcriteria'
+          type: array
+      type: object
+    sodviolationcontext_conflictingAccessCriteria:
+      description: The object which contains the left and right hand side of the entitlements
+        that got violated according to the policy.
+      example:
+        leftCriteria:
+          criteriaList:
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+        rightCriteria:
+          criteriaList:
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+          - existing: true
+            name: My HR Entitlement
+            id: 2c918085771e9d3301773b3cb66f6398
+            type: IDENTITY
+      properties:
+        leftCriteria:
+          $ref: '#/components/schemas/sodviolationcontext_conflictingAccessCriteria_leftCriteria'
+        rightCriteria:
+          $ref: '#/components/schemas/sodviolationcontext_conflictingAccessCriteria_leftCriteria'
+      type: object
+    pendingapproval_owner:
+      description: Access item owner's identity.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: Access item owner's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Access item owner's identity ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Access item owner's human-readable display name.
+          example: Support
+          type: string
+      type: object
+    pendingapproval_maxPermittedAccessDuration:
+      description: The maximum duration for which the access is permitted.
+      example:
+        value: 5
+        timeUnit: DAYS
+      nullable: true
+      properties:
+        value:
+          description: The numeric value of the duration.
+          example: 5
+          format: int32
+          type: integer
+        timeUnit:
+          description: The time unit for the duration.
+          enum:
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+          example: DAYS
+          type: string
+      type: object
+    completedapproval_requestedFor:
+      description: Identity access was requested for.
+      example:
+        name: William Wilson
+        id: 2c9180835d191a86015d28455b4b232a
+        type: IDENTITY
+      properties:
+        type:
+          description: Type of the object to which this reference applies
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c9180835d191a86015d28455b4b232a
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
+    completedapproval_requesterComment:
+      allOf:
+      - $ref: '#/components/schemas/commentdto'
+      - description: The requester's comment.
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
+    completedapproval_reviewerComment:
+      allOf:
+      - $ref: '#/components/schemas/commentdto'
+      - description: The approval's reviewer's comment.
+        nullable: true
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
+    completedapproval_preApprovalTriggerResult:
+      description: "If the access request submitted event trigger is configured and\
+        \ this access request was intercepted by it, then this is the result of the\
+        \ trigger's decision to either approve or deny the request."
+      example:
+        date: 2022-06-07T19:18:40.748Z
+        decision: APPROVED
+        comment: This request was autoapproved by our automated ETS subscriber
+        reviewer: Automated AR Approval
+      nullable: true
+      properties:
+        comment:
+          description: The comment from the trigger
+          example: This request was autoapproved by our automated ETS subscriber
+          type: string
+        decision:
+          $ref: '#/components/schemas/completedapprovalstate'
+        reviewer:
+          description: The name of the approver
+          example: Automated AR Approval
+          type: string
+        date:
+          description: The date and time the trigger decided on the request
+          example: 2022-06-07T19:18:40.748Z
+          format: date-time
+          type: string
+      type: object

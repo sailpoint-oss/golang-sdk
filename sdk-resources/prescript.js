@@ -23,8 +23,9 @@ const fixFiles = function (myArray) {
     let rawDataArra = rawdata.split("\n");
 
   
-    // remove the complex transform schema
-    if (file.includes(path.join("schemas","Transform.yaml"))) {
+    // remove the complex transform schema (year-versioned and apis/ paths)
+    if (file.includes(path.join("schemas","Transform.yaml")) ||
+        file.includes(path.join("transforms","schemas","transform.yaml"))) {
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
           line = line.replaceAll("oneOf:", "type: object")
@@ -41,7 +42,10 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    if (file.includes(path.join("schemas","WorkflowTrigger.yaml")) || file.includes(path.join("schemas","workflows","WorkflowTrigger.yaml"))) {
+    // remove the complex workflow trigger schema (year-versioned and apis/ paths)
+    if (file.includes(path.join("schemas","WorkflowTrigger.yaml")) ||
+        file.includes(path.join("schemas","workflows","WorkflowTrigger.yaml")) ||
+        file.includes(path.join("workflows","schemas","workflowtrigger.yaml"))) {
       for (let line of rawDataArra) {
         if (line.includes('anyOf')) {
           line = line.replaceAll("anyOf:", "type: object")
@@ -58,7 +62,7 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    // remove the complex account schema
+    // remove the complex account schema (year-versioned paths only — not needed in apis/ structure)
     if (file.includes(path.join("paths","accounts.yaml"))) {
       
       for (let line of rawDataArra) {
@@ -77,16 +81,18 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    // remove the complex search scema
-    if (file.includes(path.join("documents", "SearchDocument.yaml"))) {
+    // remove the complex search schema (year-versioned and apis/ paths)
+    if (file.includes(path.join("documents", "SearchDocument.yaml")) ||
+        file.includes(path.join("search","schemas","searchdocument.yaml"))) {
           fileOut.push("type: object");
           rawDataArra = fileOut.slice();
           fileOut = [];
           madeChange = true;
     }
 
-    // remove the complex search scema
-    if (file.includes(path.join("documents", "SearchDocuments.yaml"))) {
+    // remove the complex search schema (year-versioned and apis/ paths)
+    if (file.includes(path.join("documents", "SearchDocuments.yaml")) ||
+        file.includes(path.join("search","schemas","searchdocuments.yaml"))) {
       fileOut.push("type: object");
       rawDataArra = fileOut.slice();
       fileOut = [];

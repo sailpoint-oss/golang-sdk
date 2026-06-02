@@ -1,0 +1,112 @@
+- path: /account-requests/v1/machine-account-create
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountcreationrequestv1/methods/machine-account-creation-request#create-machine-account-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           machineaccountcreaterequestinput := []byte(``) // Machineaccountcreaterequestinput | 
+
+          
+          var machineaccountcreaterequestinput v1.Machineaccountcreaterequestinput
+          if err := json.Unmarshal(machineaccountcreaterequestinput, &machineaccountcreaterequestinput); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+          //resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineAccountRequestV1`: Accountrequestasyncresult
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1`: %v\n", resp)
+        }
+- path: /account-requests/v1/machine-account-create/{accountRequestId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountcreationrequestv1/methods/machine-account-creation-request#get-create-machine-account-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          accountRequestId := `gt38f94347e94562b5bb8424a56498d8` // string | Account Request ID # string | Account Request ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCreateMachineAccountRequestV1`: Accountrequestdetailsdto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1`: %v\n", resp)
+        }
+- path: /source-subtypes/v1/machine-account-create-access
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountcreationrequestv1/methods/machine-account-creation-request#get-machine-account-create-access-info-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          offset := 0 // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+          limit := 250 // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountCreationRequestV1.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineAccountCreateAccessInfoV1`: []Machineaccountcreateaccessdto
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1`: %v\n", resp)
+        }

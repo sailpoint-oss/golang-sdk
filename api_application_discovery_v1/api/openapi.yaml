@@ -1,0 +1,1793 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Application Discovery
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement application discovery functionality. \n\
+    With this functionality in place, you can discover applications within your Okta\
+    \ connector and receive connector recommendations by manually uploading application\
+    \ names.\n"
+  name: Application Discovery
+paths:
+  /sources/v1/{sourceId}/discover-applications:
+    post:
+      description: Use this API to discover applications.
+      operationId: startApplicationDiscoveryV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: The sourceId.
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/applicationdiscoveryrequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/applicationdiscoveryresponse'
+          description: Application Discovery task was started successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                access_denied:
+                  summary: An example of a 403 response when access is denied
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+                quota_exceeded:
+                  summary: Quota exceeded - cannot execute more than one application
+                    discovery task within 24 hours
+                  value:
+                    error: cannot execute more than one application discovery task
+                      within 24 hours
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_403_response'
+          description: |
+            Forbidden. Returned when the user doesn't have access to this endpoint, or when the quota of allowed invocations for the day has been exceeded.
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:application-discovery:write
+      summary: Start Application Discovery
+      tags:
+      - Application Discovery
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /discovered-applications/v1:
+    get:
+      description: |
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
+      operationId: getDiscoveredApplicationsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: "Determines whether slim, or increased level of detail is provided\
+          \ for each discovered application in the returned list. SLIM is the default\
+          \ behavior."
+        example: FULL
+        explode: true
+        in: query
+        name: detail
+        required: false
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
+        style: form
+      - description: |
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *eq, sw, co*
+
+          **description**: *eq, sw, co*
+
+          **createdAtStart**: *eq, le, ge*
+
+          **createdAtEnd**: *eq, le, ge*
+
+          **discoveredAtStart**: *eq, le, ge*
+
+          **discoveredAtEnd**: *eq, le, ge*
+
+          **discoverySource**: *eq, in*
+
+          **discoverySourceName**: *eq, in*
+
+          **discoverySourceCategory**: *eq, in*
+        example: "name eq \"Okta\" and description co \"Okta\" and discoverySource\
+          \ in (\"csv\", \"Okta Saas\")"
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+        x-sailpoint-resource-operation-id: getDiscoveredApplications
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Slim Discovered Application:
+                  $ref: '#/components/examples/slimdiscoveredapplications'
+                Discovered Application:
+                  $ref: '#/components/examples/fulldiscoveredapplications'
+              schema:
+                items:
+                  $ref: '#/components/schemas/getDiscoveredApplicationsV1_200_response_inner'
+                type: array
+          description: "List of discovered applications. By default, the API returns\
+            \ a list of SLIM discovered applications."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:application-discovery:read
+      summary: Get discovered applications for tenant
+      tags:
+      - Application Discovery
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /manual-discover-applications-template/v1:
+    get:
+      description: |
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+
+        The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint.
+      operationId: getManualDiscoverApplicationsCsvTemplateV1
+      responses:
+        "200":
+          content:
+            text/csv:
+              example: |
+                application_name,description
+                Example Application,Example Description
+              schema:
+                $ref: '#/components/schemas/manualdiscoverapplicationstemplate'
+          description: A CSV file download was successful.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:application-discovery:read
+      summary: Download csv template for discovery
+      tags:
+      - Application Discovery
+  /manual-discover-applications/v1:
+    post:
+      description: "Uploading a CSV file with application data for manual correlation\
+        \ to specific ISC connectors. \nIf a suitable ISC connector is unavailable,\
+        \ the system will recommend generic connectors instead."
+      operationId: sendManualDiscoverApplicationsCsvTemplateV1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/manualdiscoverapplications'
+      responses:
+        "200":
+          description: The CSV has been successfully processed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startApplicationDiscoveryV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:application-discovery:write
+      - applicationAuth:
+        - idn:application-discovery:write
+      summary: Upload csv to discover applications
+      tags:
+      - Application Discovery
+components:
+  examples:
+    slimdiscoveredapplications:
+      description: List of discovered applications
+      value:
+      - id: 09d88a67-bae8-422c-a09b-f7a72f5ab032
+        name: Example App
+        discoverySource: csv
+        discoveredVendor: Example Vendor
+        description: An application for managing examples.
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        discoveredAt: 2023-07-01T12:00:00Z
+        createdAt: 2024-06-01T12:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: null
+        discoverySourceCategory: csv
+        licenseCount: null
+        isSanctioned: false
+        logo: null
+        appUrl: null
+        groups: null
+        usersCount: null
+        applicationOwner:
+        - Ms. jane.doe
+        itApplicationOwner:
+        - Mr. mark.smith
+        businessCriticality: Medium
+        dataClassification: Confidential
+        businessUnit: Operations
+        installType: null
+        environment: null
+        riskScore: null
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
+        isPrivileged: false
+        warrantyExpiration: null
+        attributes: null
+      - id: 59310a1e-0d8f-42fa-95aa-b82b263de7f6
+        name: Sample Tracker
+        discoverySource: ServiceNow CMDB
+        discoveredVendor: Sample Vendor
+        description: A tool for monitoring and managing samples.
+        recommendedConnectors:
+        - ConnectorC
+        - ConnectorD
+        discoveredAt: 2023-08-15T08:00:00Z
+        createdAt: 2024-05-20T08:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: cmdb-servicenow:applications
+        discoverySourceCategory: cmdb
+        licenseCount: ""
+        isSanctioned: false
+        logo: ""
+        appUrl: ""
+        groups: null
+        usersCount: ""
+        applicationOwner:
+        - Ms. lisa.brown
+        itApplicationOwner:
+        - Mr. david.lee
+        businessCriticality: High
+        dataClassification: Internal
+        businessUnit: R&D
+        installType: SaaS
+        environment: Production
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Medium
+        isPrivileged: false
+        warrantyExpiration: 2024-09-01T00:00:00.000+0000
+        attributes:
+          identityStack: NOT_SHARED
+          selfService: false
+          signOnMode: SAML_2_0
+      - id: dfe675cb-f689-475f-99f1-49e348449867
+        name: Demo Manager
+        discoverySource: Okta SaaS
+        discoveredVendor: Demo Provider
+        description: Software to demonstrate basic functionalities.
+        recommendedConnectors:
+        - ConnectorE
+        - ConnectorF
+        discoveredAt: 2023-09-10T15:00:00Z
+        createdAt: 2024-07-03T15:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: sso-okta:applications
+        discoverySourceCategory: sso
+        licenseCount: 175
+        isSanctioned: true
+        logo: https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo
+        appUrl: https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24
+        groups:
+        - map:
+            id: id
+            name: JIRA Users
+            nativeIdentifiers:
+              map:
+                distinguishedName: "CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com"
+                id: nativeId
+                objectSid: S-1-5-21-717838489-685202119-709183397-1177
+            type: EXTERNAL_GROUP|LOCAL_GROUP
+        usersCount: "175"
+        applicationOwner:
+        - Mr. abel.tuter
+        itApplicationOwner:
+        - Mr. john doe
+        businessCriticality: High
+        dataClassification: Restricted
+        businessUnit: Finance
+        installType: On Premise
+        environment: Production
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
+        isPrivileged: false
+        warrantyExpiration: 2023-09-25T14:07:27.000+0000
+        attributes:
+          features:
+          - IMPORT_PROFILE_UPDATES
+          - IMPORT_USER_SCHEMA
+          - IMPORT_NEW_USERS
+          identityStack: NOT_SHARED
+          selfService: false
+          signOnMode: SAML_2_0
+    fulldiscoveredapplications:
+      description: List of discovered applications with their respective associated
+        sources
+      value:
+      - id: 6f672248-2dac-4cf5-9531-fca0719cbb4a
+        name: Example App
+        discoverySource: csv
+        discoveredVendor: Example Vendor
+        description: An application for managing examples.
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        discoveredAt: 2023-07-01T12:00:00Z
+        createdAt: 2024-06-01T12:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: null
+        discoverySourceCategory: csv
+        licenseCount: null
+        isSanctioned: false
+        logo: null
+        appUrl: null
+        groups: null
+        usersCount: null
+        applicationOwner:
+        - Ms. jane.doe
+        itApplicationOwner:
+        - Mr. mark.smith
+        businessCriticality: Medium
+        dataClassification: Confidential
+        businessUnit: Operations
+        installType: null
+        environment: null
+        riskScore: null
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
+        isPrivileged: false
+        warrantyExpiration: null
+        attributes: null
+        associatedSources:
+        - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+      - id: b3a3a704-6a45-45ee-a501-bbc332388222
+        name: Sample Tracker
+        discoverySource: ServiceNow CMDB
+        discoveredVendor: Sample Vendor
+        description: A tool for monitoring and managing samples.
+        recommendedConnectors:
+        - ConnectorC
+        - ConnectorD
+        discoveredAt: 2023-08-15T08:00:00Z
+        createdAt: 2024-05-20T08:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: cmdb-servicenow:applications
+        discoverySourceCategory: cmdb
+        licenseCount: ""
+        isSanctioned: false
+        logo: ""
+        appUrl: ""
+        groups: null
+        usersCount: ""
+        applicationOwner:
+        - Ms. lisa.brown
+        itApplicationOwner:
+        - Mr. david.lee
+        businessCriticality: High
+        dataClassification: Internal
+        businessUnit: R&D
+        installType: SaaS
+        environment: Production
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Medium
+        isPrivileged: false
+        warrantyExpiration: 2024-09-01T00:00:00.000+0000
+        attributes:
+          identityStack: NOT_SHARED
+          selfService: false
+          signOnMode: SAML_2_0
+        associatedSources:
+        - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+        - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+      - id: dfe675cb-f689-475f-99f1-49e348449867
+        name: Demo Manager
+        discoverySource: Okta SaaS
+        discoveredVendor: Demo Provider
+        description: Software to demonstrate basic functionalities.
+        recommendedConnectors:
+        - ConnectorE
+        - ConnectorF
+        discoveredAt: 2023-09-10T15:00:00Z
+        createdAt: 2024-07-03T15:00:00Z
+        status: ACTIVE
+        operationalStatus: Operational
+        datasetId: sso-okta:applications
+        discoverySourceCategory: sso
+        licenseCount: 175
+        isSanctioned: true
+        logo: https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo
+        appUrl: https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24
+        groups:
+        - map:
+            id: id
+            name: JIRA Users
+            nativeIdentifiers:
+              map:
+                distinguishedName: "CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com"
+                id: nativeId
+                objectSid: S-1-5-21-717838489-685202119-709183397-1177
+            type: EXTERNAL_GROUP|LOCAL_GROUP
+        usersCount: "175"
+        applicationOwner:
+        - Mr. abel.tuter
+        itApplicationOwner:
+        - Mr. john doe
+        businessCriticality: High
+        dataClassification: Restricted
+        businessUnit: Finance
+        installType: On Premise
+        environment: Production
+        riskScore: 1
+        isBusiness: false
+        totalSigninsCount: 1
+        riskLevel: Low
+        isPrivileged: false
+        warrantyExpiration: 2023-09-25T14:07:27.000+0000
+        attributes:
+          features:
+          - IMPORT_PROFILE_UPDATES
+          - IMPORT_USER_SCHEMA
+          - IMPORT_NEW_USERS
+          identityStack: NOT_SHARED
+          selfService: false
+          signOnMode: SAML_2_0
+        associatedSources: []
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/startApplicationDiscoveryV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/startApplicationDiscoveryV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    applicationdiscoveryrequest:
+      properties:
+        datasetIds:
+          description: List of dataset Ids to discover applications
+          items:
+            description: The dataset Id of the source
+            example: source:datasetId12345
+            type: string
+          type: array
+      required:
+      - datasetIds
+      title: Application Discovery Request
+      type: object
+    dtotype:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    basereferencedto:
+      properties:
+        type:
+          $ref: '#/components/schemas/dtotype'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      title: Base Reference Dto
+      type: object
+    taskdefinitionsummary:
+      description: "Definition of a type of task, used to invoke tasks"
+      example:
+        parentName: Cloud Account Aggregation
+        uniqueName: Cloud Account Aggregation
+        executor: sailpoint.task.ServiceTaskExecutor
+        description: Aggregates from the specified application.
+        arguments:
+          mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+          eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+          serviceClass: sailpoint.thunderbolt.service.AggregationService
+          serviceMethod: accountAggregationTask
+        id: 2c91808475b4334b0175e1dff64b63c5
+      properties:
+        id:
+          description: System-generated unique ID of the TaskDefinition
+          example: 2c91808475b4334b0175e1dff64b63c5
+          type: string
+        uniqueName:
+          description: Name of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        description:
+          description: Description of the TaskDefinition
+          example: Aggregates from the specified application.
+          nullable: true
+          type: string
+        parentName:
+          description: Name of the parent of the TaskDefinition
+          example: Cloud Account Aggregation
+          type: string
+        executor:
+          description: Executor of the TaskDefinition
+          example: sailpoint.task.ServiceTaskExecutor
+          nullable: true
+          type: string
+        arguments:
+          additionalProperties: true
+          description: "Formal parameters of the TaskDefinition, without values"
+          example:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          type: object
+      required:
+      - arguments
+      - description
+      - executor
+      - id
+      - parentName
+      - uniqueName
+      title: Task Definition Summary
+      type: object
+    localizedmessage:
+      description: Localized error message to indicate a failed invocation or error
+        if any.
+      example:
+        locale: An error has occurred!
+        message: Error has occurred!
+      nullable: true
+      properties:
+        locale:
+          description: Message locale
+          example: An error has occurred!
+          type: string
+        message:
+          description: Message text
+          example: Error has occurred!
+          type: string
+      required:
+      - locale
+      - message
+      title: Localized Message
+      type: object
+    taskstatusmessage:
+      description: TaskStatus Message
+      example:
+        type: INFO
+        parameters:
+        - name: value
+        key: akey
+        localizedText:
+          locale: An error has occurred!
+          message: Error has occurred!
+      properties:
+        type:
+          description: Type of the message
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: INFO
+          type: string
+        localizedText:
+          $ref: '#/components/schemas/localizedmessage'
+        key:
+          description: Key of the message
+          example: akey
+          type: string
+        parameters:
+          description: Message parameters for internationalization
+          example:
+          - name: value
+          items:
+            $ref: '#/components/schemas/taskstatusmessage_parameters_inner'
+          nullable: true
+          type: array
+      required:
+      - key
+      - localizedText
+      - parameters
+      - type
+      title: Task Status Message
+      type: object
+    taskreturndetails:
+      description: Task return details
+      example:
+        name: label
+        attributeName: identityCount
+      properties:
+        name:
+          description: Display name of the TaskReturnDetails
+          example: label
+          type: string
+        attributeName:
+          description: Attribute the TaskReturnDetails is for
+          example: identityCount
+          type: string
+      required:
+      - attributeName
+      - name
+      title: Task Return Details
+      type: object
+    applicationdiscoveryresponse:
+      example:
+        taskDefinitionSummary:
+          parentName: Cloud Account Aggregation
+          uniqueName: Cloud Account Aggregation
+          executor: sailpoint.task.ServiceTaskExecutor
+          description: Aggregates from the specified application.
+          arguments:
+            mantisExecutor: com.sailpoint.mantis.sources.task.AccountAggregationTask
+            eventClassesCsv: sailpoint.thunderbolt.events.AggregationEvents
+            serviceClass: sailpoint.thunderbolt.service.AggregationService
+            serviceMethod: accountAggregationTask
+          id: 2c91808475b4334b0175e1dff64b63c5
+        created: 2020-07-11T21:23:15Z
+        description: Application Discovery - From given dataset IDs
+        completed: 2020-07-11T21:23:15Z
+        percentComplete: 100
+        type: QUARTZ
+        launched: 2020-07-11T21:23:15Z
+        target:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        parentName: Parent Task
+        uniqueName: Application Discovery - ID123
+        modified: 2020-07-11T21:23:15Z
+        messages:
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        progress: Started
+        returns:
+        - name: label
+          attributeName: identityCount
+        - name: label
+          attributeName: identityCount
+        attributes:
+          creatorRequestId: ed5a371bbaba411fb8f1f6970b842334
+        id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        completionStatus: SUCCESS
+        launcher: System
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: string
+        type:
+          description: Type of task for app discovery
+          enum:
+          - QUARTZ
+          - QPOC
+          - QUEUED_TASK
+          example: QUARTZ
+          type: string
+        uniqueName:
+          description: Name of the task for app discovery
+          example: Application Discovery - ID123
+          type: string
+        description:
+          description: Description of the app discovery aggregation
+          example: Application Discovery - From given dataset IDs
+          type: string
+        parentName:
+          description: Name of the parent of the task for app discovery
+          example: Parent Task
+          nullable: true
+          type: string
+        launcher:
+          description: Service to execute app discovery
+          example: System
+          type: string
+        target:
+          $ref: '#/components/schemas/applicationdiscoveryresponse_target'
+        created:
+          description: Creation date of app discovery task
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        modified:
+          description: Last modification date of app discovery task
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        launched:
+          description: Launch date of app discovery task
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        completed:
+          description: Completion date of app discovery task
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          nullable: true
+          type: string
+        taskDefinitionSummary:
+          $ref: '#/components/schemas/taskdefinitionsummary'
+        completionStatus:
+          description: Completion status of app discovery task
+          enum:
+          - SUCCESS
+          - WARNING
+          - ERROR
+          - TERMINATED
+          - TEMPERROR
+          - null
+          example: SUCCESS
+          nullable: true
+          type: string
+        messages:
+          description: Messages associated with the app discovery task
+          items:
+            $ref: '#/components/schemas/taskstatusmessage'
+          type: array
+        returns:
+          description: Return values associated with the app discovery task
+          items:
+            $ref: '#/components/schemas/taskreturndetails'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Attributes of the app discovery task
+          example:
+            creatorRequestId: ed5a371bbaba411fb8f1f6970b842334
+          type: object
+        progress:
+          description: Current progress of aggregation
+          example: Started
+          nullable: true
+          type: string
+        percentComplete:
+          description: Current percentage completion of app discovery task
+          example: 100
+          format: int32
+          type: integer
+      title: Application Discovery Response
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    slimdiscoveredapplications:
+      description: Discovered applications
+      example:
+        operationalStatus: Operational
+        discoveredVendor: ExampleVendor
+        businessUnit: Finance
+        riskLevel: Low
+        businessCriticality: High
+        description: An application for managing examples.
+        isSanctioned: true
+        createdAt: 2023-01-01T12:00:00Z
+        isPrivileged: false
+        dataClassification: Restricted
+        isBusiness: false
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        logo: https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo
+        totalSigninsCount: 1
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        riskScore: 1
+        discoverySourceCategory: sso
+        licenseCount: 175
+        discoverySource: csv
+        warrantyExpiration: 2023-09-25T14:07:27.000+0000
+        applicationOwner:
+        - owner1@example.com
+        - owner2@example.com
+        groups:
+        - map:
+            id: id
+            name: JIRA Users
+            nativeIdentifiers:
+              map:
+                distinguishedName: "CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com"
+                id: nativeId
+                objectSid: S-1-5-21-717838489-685202119-709183397-1177
+            type: EXTERNAL_GROUP|LOCAL_GROUP
+        appUrl: https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24
+        usersCount: "175"
+        discoveredAt: 2023-01-01T12:00:00Z
+        itApplicationOwner:
+        - itowner1@example.com
+        - itowner2@example.com
+        environment: Production
+        installType: On Premise
+        name: ExampleApp
+        attributes:
+          features:
+          - IMPORT_PROFILE_UPDATES
+          - IMPORT_USER_SCHEMA
+          - IMPORT_NEW_USERS
+          identityStack: NOT_SHARED
+          selfService: false
+          signOnMode: SAML_2_0
+        status: ACTIVE
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: csv
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
+        operationalStatus:
+          description: The operational status of the application.
+          example: Operational
+          type: string
+        discoverySourceCategory:
+          description: The category of the discovery source.
+          example: sso
+          type: string
+        licenseCount:
+          description: The number of licenses associated with the application.
+          example: 175
+          format: int32
+          type: integer
+        isSanctioned:
+          default: false
+          description: Indicates whether the application is sanctioned.
+          example: true
+          type: boolean
+        logo:
+          description: URL of the application's logo.
+          example: https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo
+          type: string
+        appUrl:
+          description: The URL of the application.
+          example: https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24
+          type: string
+        groups:
+          description: List of groups associated with the application.
+          example:
+          - map:
+              id: id
+              name: JIRA Users
+              nativeIdentifiers:
+                map:
+                  distinguishedName: "CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com"
+                  id: nativeId
+                  objectSid: S-1-5-21-717838489-685202119-709183397-1177
+              type: EXTERNAL_GROUP|LOCAL_GROUP
+          items:
+            type: object
+          type: array
+        usersCount:
+          description: The count of users associated with the application.
+          example: "175"
+          type: string
+        applicationOwner:
+          description: The owners of the application.
+          example:
+          - owner1@example.com
+          - owner2@example.com
+          items:
+            type: string
+          type: array
+        itApplicationOwner:
+          description: The IT owners of the application.
+          example:
+          - itowner1@example.com
+          - itowner2@example.com
+          items:
+            type: string
+          type: array
+        businessCriticality:
+          description: The business criticality level of the application.
+          example: High
+          type: string
+        dataClassification:
+          description: The data classification level of the application.
+          example: Restricted
+          type: string
+        businessUnit:
+          description: The business unit associated with the application.
+          example: Finance
+          type: string
+        installType:
+          description: The installation type of the application.
+          example: On Premise
+          type: string
+        environment:
+          description: The environment in which the application operates.
+          example: Production
+          type: string
+        riskScore:
+          description: "The risk score of the application ranging from 0-100, 100\
+            \ being highest risk."
+          example: 1
+          format: int32
+          type: integer
+        isBusiness:
+          default: true
+          description: Indicates whether the application is used for business purposes.
+          example: false
+          type: boolean
+        totalSigninsCount:
+          description: The total number of sign-in accounts for the application.
+          example: 1
+          format: int32
+          type: integer
+        riskLevel:
+          description: The risk level of the application.
+          enum:
+          - High
+          - Medium
+          - Low
+          example: Low
+          type: string
+        isPrivileged:
+          default: false
+          description: Indicates whether the application has privileged access.
+          example: false
+          type: boolean
+        warrantyExpiration:
+          description: The warranty expiration date of the application.
+          example: 2023-09-25T14:07:27.000+0000
+          type: string
+        attributes:
+          description: Additional attributes of the application useful for visibility
+            of governance posture.
+          example:
+            features:
+            - IMPORT_PROFILE_UPDATES
+            - IMPORT_USER_SCHEMA
+            - IMPORT_NEW_USERS
+            identityStack: NOT_SHARED
+            selfService: false
+            signOnMode: SAML_2_0
+          type: object
+      title: Slim Discovered Application
+      type: object
+    fulldiscoveredapplications:
+      description: Discovered applications with their respective associated sources
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: csv
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
+        associatedSources:
+          description: List of associated sources related to this discovered application.
+          example:
+          - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+          - a0303682-5e4a-44f7-bdc2-6ce6112549c1
+          items:
+            format: uuid
+            type: string
+          type: array
+        operationalStatus:
+          description: The operational status of the application.
+          example: Operational
+          type: string
+        discoverySourceCategory:
+          description: The category of the discovery source.
+          example: sso
+          type: string
+        licenseCount:
+          description: The number of licenses associated with the application.
+          example: 175
+          format: int32
+          type: integer
+        isSanctioned:
+          default: false
+          description: Indicates whether the application is sanctioned.
+          example: true
+          type: boolean
+        logo:
+          description: URL of the application's logo.
+          example: https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo
+          type: string
+        appUrl:
+          description: The URL of the application.
+          example: https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24
+          type: string
+        groups:
+          description: List of groups associated with the application.
+          example:
+          - map:
+              id: id
+              name: JIRA Users
+              nativeIdentifiers:
+                map:
+                  distinguishedName: "CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com"
+                  id: nativeId
+                  objectSid: S-1-5-21-717838489-685202119-709183397-1177
+              type: EXTERNAL_GROUP|LOCAL_GROUP
+          items:
+            type: object
+          type: array
+        usersCount:
+          description: The count of users associated with the application.
+          example: "175"
+          type: string
+        applicationOwner:
+          description: The owners of the application.
+          example:
+          - owner1@example.com
+          - owner2@example.com
+          items:
+            type: string
+          type: array
+        itApplicationOwner:
+          description: The IT owners of the application.
+          example:
+          - itowner1@example.com
+          - itowner2@example.com
+          items:
+            type: string
+          type: array
+        businessCriticality:
+          description: The business criticality level of the application.
+          example: High
+          type: string
+        dataClassification:
+          description: The data classification level of the application.
+          example: Restricted
+          type: string
+        businessUnit:
+          description: The business unit associated with the application.
+          example: Finance
+          type: string
+        installType:
+          description: The installation type of the application.
+          example: On Premise
+          type: string
+        environment:
+          description: The environment in which the application operates.
+          example: Production
+          type: string
+        riskScore:
+          description: "The risk score of the application ranging from 0-100, 100\
+            \ being highest risk."
+          example: 1
+          format: int32
+          type: integer
+        isBusiness:
+          default: true
+          description: Indicates whether the application is used for business purposes.
+          example: false
+          type: boolean
+        totalSigninsCount:
+          description: The total number of sign-in accounts for the application.
+          example: 1
+          format: int32
+          type: integer
+        riskLevel:
+          description: The risk level of the application.
+          enum:
+          - High
+          - Medium
+          - Low
+          example: Low
+          type: string
+        isPrivileged:
+          default: false
+          description: Indicates whether the application has privileged access.
+          example: false
+          type: boolean
+        warrantyExpiration:
+          description: The warranty expiration date of the application.
+          example: 2023-09-25T14:07:27.000+0000
+          type: string
+        attributes:
+          description: Additional attributes of the application useful for visibility
+            of governance posture.
+          example:
+            features:
+            - IMPORT_PROFILE_UPDATES
+            - IMPORT_USER_SCHEMA
+            - IMPORT_NEW_USERS
+            identityStack: NOT_SHARED
+            selfService: false
+            signOnMode: SAML_2_0
+          type: object
+      title: Discovered Application
+      type: object
+    manualdiscoverapplicationstemplate:
+      properties:
+        application_name:
+          description: Name of the application.
+          example: Example Application
+          type: string
+        description:
+          description: Description of the application.
+          example: Example Description
+          type: string
+      title: Manual Discover Applications Template
+      type: object
+    manualdiscoverapplications:
+      properties:
+        file:
+          description: The CSV file to upload containing `application_name` and `description`
+            columns. Each row represents an application to be discovered.
+          example: !!binary |-
+            YXBwbGljYXRpb25fbmFtZSxkZXNjcmlwdGlvbgoiU2FtcGxlIEFwcCIsIlRoaXMgaXMgYSBzYW1w
+            bGUgZGVzY3JpcHRpb24gZm9yIFNhbXBsZSBBcHAuIgoiQW5vdGhlciBBcHAiLCJEZXNjcmlwdGlv
+            biBmb3IgQW5vdGhlciBBcHAuIg==
+          format: binary
+          type: string
+      required:
+      - file
+      title: Manual Discover Applications
+      type: object
+    startApplicationDiscoveryV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    startApplicationDiscoveryV1_403_response_oneOf:
+      properties:
+        error:
+          description: Error message when quota is exceeded
+          type: string
+      required:
+      - error
+      type: object
+    startApplicationDiscoveryV1_403_response:
+      oneOf:
+      - $ref: '#/components/schemas/errorresponsedto'
+      - $ref: '#/components/schemas/startApplicationDiscoveryV1_403_response_oneOf'
+    startApplicationDiscoveryV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    getDiscoveredApplicationsV1_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/slimdiscoveredapplications'
+      - $ref: '#/components/schemas/fulldiscoveredapplications'
+    taskstatusmessage_parameters_inner:
+      anyOf:
+      - type: object
+      - type: string
+    applicationdiscoveryresponse_target:
+      allOf:
+      - $ref: '#/components/schemas/basereferencedto'
+      - example:
+          id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          name: Source name
+          type: APPLICATION
+        type: object
+      description: The target(source) of app discovery
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY

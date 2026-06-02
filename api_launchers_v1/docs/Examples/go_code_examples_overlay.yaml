@@ -1,0 +1,217 @@
+- path: /launchers/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#create-launcher-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           launcherrequest := []byte(``) // Launcherrequest | Payload to create a Launcher
+
+          
+          var launcherrequest v1.Launcherrequest
+          if err := json.Unmarshal(launcherrequest, &launcherrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LaunchersV1.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
+          //resp, r, err := apiClient.LaunchersV1.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.CreateLauncherV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateLauncherV1`: Launcher
+          fmt.Fprintf(os.Stdout, "Response from `LaunchersAPI.CreateLauncherV1`: %v\n", resp)
+        }
+- path: /launchers/v1/{launcherID}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#delete-launcher-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be deleted # string | ID of the Launcher to be deleted
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.LaunchersV1.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
+          //r, err := apiClient.LaunchersV1.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.DeleteLauncherV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /launchers/v1/{launcherID}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#get-launcher-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be retrieved # string | ID of the Launcher to be retrieved
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LaunchersV1.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
+          //resp, r, err := apiClient.LaunchersV1.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.GetLauncherV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetLauncherV1`: Launcher
+          fmt.Fprintf(os.Stdout, "Response from `LaunchersAPI.GetLauncherV1`: %v\n", resp)
+        }
+- path: /launchers/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#get-launchers-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          filters := `disabled eq "true"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **description**: *sw*  **disabled**: *eq*  **name**: *sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **description**: *sw*  **disabled**: *eq*  **name**: *sw* (optional)
+          next := `eyJuZXh0IjoxMjN9Cg==` // string | Pagination marker (optional) # string | Pagination marker (optional)
+          limit := 42 // int32 | Number of Launchers to return (optional) (default to 10) # int32 | Number of Launchers to return (optional) (default to 10)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LaunchersV1.LaunchersAPI.GetLaunchersV1(context.Background()).Execute()
+          //resp, r, err := apiClient.LaunchersV1.LaunchersAPI.GetLaunchersV1(context.Background()).Filters(filters).Next(next).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.GetLaunchersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetLaunchersV1`: GetLaunchersV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `LaunchersAPI.GetLaunchersV1`: %v\n", resp)
+        }
+- path: /launchers/v1/{launcherID}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#put-launcher-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be replaced # string | ID of the Launcher to be replaced
+           launcherrequest := []byte(``) // Launcherrequest | Payload to replace Launcher
+
+          
+          var launcherrequest v1.Launcherrequest
+          if err := json.Unmarshal(launcherrequest, &launcherrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LaunchersV1.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
+          //resp, r, err := apiClient.LaunchersV1.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.PutLauncherV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutLauncherV1`: Launcher
+          fmt.Fprintf(os.Stdout, "Response from `LaunchersAPI.PutLauncherV1`: %v\n", resp)
+        }
+- path: /launchers/v1/{launcherID}/launch
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/launchersv1/methods/launchers#start-launcher-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be launched # string | ID of the Launcher to be launched
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LaunchersV1.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
+          //resp, r, err := apiClient.LaunchersV1.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.StartLauncherV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartLauncherV1`: StartLauncherV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `LaunchersAPI.StartLauncherV1`: %v\n", resp)
+        }

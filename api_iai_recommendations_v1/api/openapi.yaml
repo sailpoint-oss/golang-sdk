@@ -1,0 +1,818 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - IAI Recommendations
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- name: IAI Recommendations
+paths:
+  /recommendations/v1/request:
+    post:
+      description: The getRecommendations API returns recommendations based on the
+        requested object. The recommendations are invoked by IdentityIQ and IdentityNow
+        plug-ins that retrieve recommendations based on the performed calculations.
+      operationId: getRecommendationsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/recommendationrequestdto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recommendationresponsedto'
+          description: The recommendations for a customer
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:decisions:manage
+      summary: Returns recommendation based on object
+      tags:
+      - IAI Recommendations
+      x-sailpoint-userLevels:
+      - Any
+  /recommendations/v1/config:
+    get:
+      description: Retrieves configuration attributes used by certification recommendations.
+      operationId: getRecommendationsConfigV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recommendationconfigdto'
+          description: Cert recommendation configuration attributes
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:configuration:read
+      summary: Get certification recommendation config values
+      tags:
+      - IAI Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: Updates configuration attributes used by certification recommendations.
+      operationId: updateRecommendationsConfigV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/recommendationconfigdto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recommendationconfigdto'
+          description: Cert recommendation configuration attributes after update
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:configuration:manage
+      summary: Update certification recommendation config values
+      tags:
+      - IAI Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getRecommendationsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getRecommendationsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    accessitemref:
+      example:
+        id: 2c938083633d259901633d2623ec0375
+        type: ENTITLEMENT
+      properties:
+        id:
+          description: ID of the access item to retrieve the recommendation for.
+          example: 2c938083633d259901633d2623ec0375
+          type: string
+        type:
+          description: Access item's type.
+          enum:
+          - ENTITLEMENT
+          - ACCESS_PROFILE
+          - ROLE
+          example: ENTITLEMENT
+          type: string
+      title: Access Item Ref
+      type: object
+    recommendationrequest:
+      example:
+        item:
+          id: 2c938083633d259901633d2623ec0375
+          type: ENTITLEMENT
+        identityId: 2c938083633d259901633d25c68c00fa
+      properties:
+        identityId:
+          description: The identity ID
+          example: 2c938083633d259901633d25c68c00fa
+          type: string
+        item:
+          $ref: '#/components/schemas/accessitemref'
+      title: Recommendation Request
+      type: object
+    recommendationrequestdto:
+      properties:
+        requests:
+          items:
+            $ref: '#/components/schemas/recommendationrequest'
+          type: array
+        excludeInterpretations:
+          default: false
+          description: Exclude interpretations in the response if "true". Return interpretations
+            in the response if this attribute is not specified.
+          example: false
+          type: boolean
+        includeTranslationMessages:
+          default: false
+          description: "When set to true, the calling system uses the translated messages\
+            \ for the specified language"
+          example: false
+          type: boolean
+        includeDebugInformation:
+          default: false
+          description: Returns the recommender calculations if set to true
+          example: true
+          type: boolean
+        prescribeMode:
+          default: false
+          description: "When set to true, uses prescribedRulesRecommenderConfig to\
+            \ get identity attributes and peer group threshold instead of standard\
+            \ config."
+          example: false
+          type: boolean
+      title: Recommendation Request Dto
+      type: object
+    translationmessage:
+      properties:
+        key:
+          description: The key of the translation message
+          example: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+          type: string
+        values:
+          description: The values corresponding to the translation messages
+          example:
+          - "75"
+          - department
+          items:
+            type: string
+          type: array
+      title: Translation Message
+      type: object
+    featurevaluedto:
+      example:
+        feature: department
+        numerator: 14
+        denominator: 14
+      properties:
+        feature:
+          description: The type of feature
+          example: department
+          type: string
+        numerator:
+          description: The number of identities that have access to the feature
+          example: 14
+          format: int32
+          type: integer
+        denominator:
+          description: The number of identities with the corresponding feature
+          example: 14
+          format: int32
+          type: integer
+      title: Feature Value Dto
+      type: object
+    recommendercalculations:
+      example:
+        identityId: 2c91808457d8f3ab0157e3e62cb4213c
+        entitlementId: 2c91809050db617d0150e0bf3215385e
+        overallWeightedScore: 0.8008281904610115
+        featureWeightedScores:
+          key: 6.027456183070403
+        recommendation: "YES"
+        threshold: 1.4658129805029452
+        identityAttributes:
+          key:
+            value: value
+        featureValues:
+          feature: department
+          numerator: 14
+          denominator: 14
+      properties:
+        identityId:
+          description: The ID of the identity
+          example: 2c91808457d8f3ab0157e3e62cb4213c
+          type: string
+        entitlementId:
+          description: The entitlement ID
+          example: 2c91809050db617d0150e0bf3215385e
+          type: string
+        recommendation:
+          description: The actual recommendation
+          example: "YES"
+          type: string
+        overallWeightedScore:
+          description: The overall weighted score
+          type: number
+        featureWeightedScores:
+          additionalProperties:
+            type: number
+          description: The weighted score of each individual feature
+          type: object
+        threshold:
+          description: The configured value against which the overallWeightedScore
+            is compared
+          type: number
+        identityAttributes:
+          additionalProperties:
+            $ref: '#/components/schemas/recommendercalculations_identityAttributes_value'
+          description: The values for your configured features
+          type: object
+        featureValues:
+          $ref: '#/components/schemas/featurevaluedto'
+    recommendationresponse:
+      example:
+        request:
+          item:
+            id: 2c938083633d259901633d2623ec0375
+            type: ENTITLEMENT
+          identityId: 2c938083633d259901633d25c68c00fa
+        recommenderCalculations:
+          identityId: 2c91808457d8f3ab0157e3e62cb4213c
+          entitlementId: 2c91809050db617d0150e0bf3215385e
+          overallWeightedScore: 0.8008281904610115
+          featureWeightedScores:
+            key: 6.027456183070403
+          recommendation: "YES"
+          threshold: 1.4658129805029452
+          identityAttributes:
+            key:
+              value: value
+          featureValues:
+            feature: department
+            numerator: 14
+            denominator: 14
+        translationMessages:
+        - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+          values:
+          - "75"
+          - department
+        recommendation: "YES"
+        interpretations:
+        - 75% of identities with the same department have this access. This information
+          had a high impact on the overall score.
+        - 67% of identities with the same peer group have this access. This information
+          had a low impact on the overall score.
+        - 42% of identities with the same location have this access. This information
+          had a low impact on the overall score.
+      properties:
+        request:
+          $ref: '#/components/schemas/recommendationrequest'
+        recommendation:
+          description: "The recommendation - YES if the access is recommended, NO\
+            \ if not recommended, MAYBE if there is not enough information to make\
+            \ a recommendation, NOT_FOUND if the identity is not found in the system"
+          enum:
+          - "YES"
+          - "NO"
+          - MAYBE
+          - NOT_FOUND
+          example: "YES"
+          type: string
+        interpretations:
+          description: "The list of interpretations explaining the recommendation.\
+            \ The array is empty if includeInterpretations is false or not present\
+            \ in the request. e.g. - [ \"Not approved in the last 6 months.\" ]. Interpretations\
+            \ will be translated using the client's locale as found in the Accept-Language\
+            \ header. If a translation for the client's locale cannot be found, the\
+            \ US English translation will be returned."
+          example:
+          - 75% of identities with the same department have this access. This information
+            had a high impact on the overall score.
+          - 67% of identities with the same peer group have this access. This information
+            had a low impact on the overall score.
+          - 42% of identities with the same location have this access. This information
+            had a low impact on the overall score.
+          items:
+            type: string
+          type: array
+        translationMessages:
+          description: "The list of translation messages, if they have been requested."
+          example:
+          - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+            values:
+            - "75"
+            - department
+          items:
+            $ref: '#/components/schemas/translationmessage'
+          type: array
+        recommenderCalculations:
+          $ref: '#/components/schemas/recommendercalculations'
+      title: Recommendation Response
+      type: object
+    recommendationresponsedto:
+      example:
+        response:
+        - request:
+            item:
+              id: 2c938083633d259901633d2623ec0375
+              type: ENTITLEMENT
+            identityId: 2c938083633d259901633d25c68c00fa
+          recommenderCalculations:
+            identityId: 2c91808457d8f3ab0157e3e62cb4213c
+            entitlementId: 2c91809050db617d0150e0bf3215385e
+            overallWeightedScore: 0.8008281904610115
+            featureWeightedScores:
+              key: 6.027456183070403
+            recommendation: "YES"
+            threshold: 1.4658129805029452
+            identityAttributes:
+              key:
+                value: value
+            featureValues:
+              feature: department
+              numerator: 14
+              denominator: 14
+          translationMessages:
+          - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+            values:
+            - "75"
+            - department
+          recommendation: "YES"
+          interpretations:
+          - 75% of identities with the same department have this access. This information
+            had a high impact on the overall score.
+          - 67% of identities with the same peer group have this access. This information
+            had a low impact on the overall score.
+          - 42% of identities with the same location have this access. This information
+            had a low impact on the overall score.
+        - request:
+            item:
+              id: 2c938083633d259901633d2623ec0375
+              type: ENTITLEMENT
+            identityId: 2c938083633d259901633d25c68c00fa
+          recommenderCalculations:
+            identityId: 2c91808457d8f3ab0157e3e62cb4213c
+            entitlementId: 2c91809050db617d0150e0bf3215385e
+            overallWeightedScore: 0.8008281904610115
+            featureWeightedScores:
+              key: 6.027456183070403
+            recommendation: "YES"
+            threshold: 1.4658129805029452
+            identityAttributes:
+              key:
+                value: value
+            featureValues:
+              feature: department
+              numerator: 14
+              denominator: 14
+          translationMessages:
+          - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+            values:
+            - "75"
+            - department
+          recommendation: "YES"
+          interpretations:
+          - 75% of identities with the same department have this access. This information
+            had a high impact on the overall score.
+          - 67% of identities with the same peer group have this access. This information
+            had a low impact on the overall score.
+          - 42% of identities with the same location have this access. This information
+            had a low impact on the overall score.
+      properties:
+        response:
+          items:
+            $ref: '#/components/schemas/recommendationresponse'
+          type: array
+      title: Recommendation Response Dto
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    recommendationconfigdto:
+      example:
+        recommenderFeatures:
+        - jobTitle
+        - location
+        - peer_group
+        - department
+        - active
+        peerGroupPercentageThreshold: 0.5
+        runAutoSelectOnce: false
+        onlyTuneThreshold: false
+      properties:
+        recommenderFeatures:
+          description: List of identity attributes to use for calculating certification
+            recommendations
+          example:
+          - jobTitle
+          - location
+          - peer_group
+          - department
+          - active
+          items:
+            type: string
+          type: array
+        peerGroupPercentageThreshold:
+          description: The percent value that the recommendation calculation must
+            surpass to produce a YES recommendation
+          example: 0.5
+          format: float
+          maximum: 1
+          minimum: 0
+          type: number
+        runAutoSelectOnce:
+          default: false
+          description: "If true, rulesRecommenderConfig will be refreshed with new\
+            \ programatically selected attribute and threshold values on the next\
+            \ pipeline run"
+          example: false
+          type: boolean
+        onlyTuneThreshold:
+          default: false
+          description: "If true, rulesRecommenderConfig will be refreshed with new\
+            \ programatically selected threshold values on the next pipeline run"
+          example: false
+          type: boolean
+      title: Recommendation Config Dto
+      type: object
+    getRecommendationsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getRecommendationsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    recommendercalculations_identityAttributes_value:
+      example:
+        value: value
+      properties:
+        value:
+          type: string
+      type: object

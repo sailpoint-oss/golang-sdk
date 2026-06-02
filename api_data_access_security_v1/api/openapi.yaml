@@ -1,0 +1,3721 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Data Access Security
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to enable data ownership election campaigns, assign resource owners, and respond to identity lifecycle events to maintain continuous accountability.
+    This API can also trigger and manage DAS tasks such as scans-starting them on demand, updating configurations or schedules, and retrieving statuses. Additionally, you can onboard and manage applications at scale by creating and configuring them, setting scanning schedules, retrieving metadata, and associating them with Virtual Appliances and Identity Collectors.
+  name: Data Access Security
+paths:
+  /das/v1/tasks:
+    get:
+      description: This end-point lists all the tasks in Data Access Security.
+      operationId: getTasksV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **taskIds**: *eq, in*
+
+          **statuses**: *eq, in*
+
+          **taskTypeName**: *eq, in*
+
+          **taskName**: *eq*
+
+          **endBeforeTime**: *eq*
+
+          Supported composite operators are *and, or*
+
+          Example: taskTypeName eq "DataSync" and endBeforeTime eq 1762240800
+        example: TaskTypeName eq "DataClassification and EndBeforeTime eq 1762240800
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/taskinfo'
+                type: array
+          description: OK. Returns a list of Data Access Security tasks.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:read
+        - das:task:manage
+      - applicationAuth:
+        - das:task:read
+        - das:task:manage
+      summary: Lists all DAS tasks.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/tasks/{id}:
+    delete:
+      description: |
+        This end-point sends a request to delete a task in Data Access Security.
+      operationId: deleteTaskV1
+      parameters:
+      - description: The unique identifier of the task to delete.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Delete a DAS task.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This end-point gets a task in Data Access Security.
+      operationId: getTaskV1
+      parameters:
+      - description: The unique identifier of the task to retrieve.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/taskinfo'
+          description: A Task object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:read
+        - das:task:manage
+      - applicationAuth:
+        - das:task:read
+        - das:task:manage
+      summary: Get a DAS task.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/tasks/cancel/{id}:
+    post:
+      description: This end-point sends a request to cancel a task in Data Access
+        Security.
+      operationId: cancelTaskV1
+      parameters:
+      - description: The unique identifier of the task to cancel.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Cancel a DAS task.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/tasks/rerun/{id}:
+    post:
+      description: This end-point sends a request to re-run a task in Data Access
+        Security.
+      operationId: startTaskRerunV1
+      parameters:
+      - description: The unique identifier of the task to rerun.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Rerun a DAS task.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/tasks/schedules:
+    get:
+      description: This end-point lists all the schedules in Data Access Security.
+      operationId: getSchedulesV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **scheduleTaskIds**: *eq, in*
+
+          **taskTypeName**: *eq, in*
+
+          **status**: *eq*
+
+          **applicationId**: *eq*
+
+          **fullName**: *eq*
+
+          **nameSubString**: *eq*
+
+          **scheduleType**: *eq*
+
+          Supported composite operators are *and, or*
+        example: ScheduleType eq "Daily" and startTime eq 1762237200
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/scheduleinfo'
+                type: array
+          description: List of Schedule objects.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:read
+        - das:task:manage
+      - applicationAuth:
+        - das:task:read
+        - das:task:manage
+      summary: List all schedules.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      operationId: createScheduleV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createschedulerequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: int64
+                type: integer
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Create a new schedule.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/tasks/schedules/{id}:
+    delete:
+      description: This end-point sends a request to delete a schedule in Data Access
+        Security.
+      operationId: deleteScheduleV1
+      parameters:
+      - description: The unique identifier of the schedule to delete.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Delete a DAS schedule.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This end-point gets a schedule in Data Access Security.
+      operationId: getScheduleV1
+      parameters:
+      - description: The unique identifier of the schedule to retrieve.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduleinfo'
+          description: A schedule object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:read
+        - das:task:manage
+      - applicationAuth:
+        - das:task:read
+        - das:task:manage
+      summary: Get a DAS schedule.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      operationId: putScheduleV1
+      parameters:
+      - description: The unique identifier of the schedule to update.
+        example: 1001
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateschedulerequest'
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:task:manage
+      - applicationAuth:
+        - das:task:manage
+      summary: Update a schedule.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/applications:
+    get:
+      description: This endpoint lists all the applications in Data Access Security
+        with optional filtering.
+      operationId: getApplicationsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **appIds**: *eq, in*
+
+          **tagIds**: *eq, in*
+
+          **statuses**: *eq, in*
+
+          **groupCodes**: *eq, in*
+
+          **virtualAppId**: *eq*
+
+          **appName**: *eq*
+
+          **supportsValidation**: *eq*
+
+          Supported composite operators are *and, or*
+        example: AppType eq 'ActiveDirectory' and Statuses eq 'Passed'
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/applicationitem'
+                type: array
+          description: A list of applications matching the filter criteria.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:applications:read
+        - das:applications:manage
+      - applicationAuth:
+        - das:applications:read
+        - das:applications:manage
+      summary: Search applications in DAS.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: This endpoint creates a new application in Data Access Security
+        with the specified configuration.
+      operationId: createApplicationV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/basecreateapplicationrequest'
+        description: Request body containing the details required to create a new
+          application.
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:applications:manage
+      - applicationAuth:
+        - das:applications:manage
+      summary: Create application
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/applications/{id}:
+    delete:
+      description: This endpoint deletes an application from Data Access Security
+        by its unique identifier.
+      operationId: deleteApplicationV1
+      parameters:
+      - description: The unique identifier of the application to delete.
+        example: 12345
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:applications:manage
+      - applicationAuth:
+        - das:applications:manage
+      summary: Delete an application by identifier.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This endpoint retrieves the details of a specific application in
+        Data Access Security by its unique identifier.
+      operationId: getApplicationV1
+      parameters:
+      - description: The unique identifier of the application to retrieve.
+        example: 12345
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/applicationitem'
+          description: The application details were retrieved successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:applications:read
+        - das:applications:manage
+      - applicationAuth:
+        - das:applications:read
+        - das:applications:manage
+      summary: Retrieve application details by identifier.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: This endpoint updates an existing application in Data Access Security
+        with the specified configuration.
+      operationId: putApplicationV1
+      parameters:
+      - description: The unique identifier of the application to update.
+        example: 12345
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/basecreateapplicationrequest'
+        description: Request body containing the updated details for the application.
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:applications:manage
+      - applicationAuth:
+        - das:applications:manage
+      summary: Update application by identifier.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/applications/{appId}:
+    get:
+      operationId: getOwnersV1
+      parameters:
+      - description: The unique identifier of the application for which to retrieve
+          owners.
+        example: 2001
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Not applicable for this endpoint. Do not use.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Not applicable for this endpoint. Do not use.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/dataownermodel'
+                type: array
+          description: OK. Returns a list of DataOwnerModel objects.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:read
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:read
+        - das:owners:manage
+      summary: Retrieve owners per application.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/resources/{resourceId}:
+    get:
+      parameters:
+      - description: Unique identifier for the resource.
+        example: 101
+        explode: false
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Not applicable for this endpoint. Do not use.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Not applicable for this endpoint. Do not use.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Example owner identity list
+                  value:
+                  - a3f1c2d4-5678-4e9b-8c2d-123456789abc
+                  - b4e2d3c5-6789-4f0a-9d3e-234567890bcd
+              schema:
+                items:
+                  format: uuid
+                  type: string
+                type: array
+          description: A list of owner identity UUIDs for the specified resource was
+            retrieved successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:read
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:read
+        - das:owners:manage
+      summary: List owners for resource.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/{ownerIdentityId}/resources:
+    get:
+      parameters:
+      - description: Unique identifier for the owner. This should be a UUID representing
+          the owner's identity.
+        example: a3f1c2d4-5678-4e9b-8c2d-123456789abc
+        explode: false
+        in: path
+        name: ownerIdentityId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getOwners
+      - description: Not applicable for this endpoint. Do not use.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Not applicable for this endpoint. Do not use.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/resourcemodel'
+                type: array
+          description: A list of resources owned by the specified identity was retrieved
+            successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:read
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:read
+        - das:owners:manage
+      summary: List resources for owner.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/assign:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assignresourceownerrequest'
+        description: "The request body must contain the application ID, resource path,\
+          \ and identity ID to be assigned as the resource owner."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+          description: "1 - success, otherwise failure."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:manage
+      summary: Assign owner to application resource.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId}:
+    post:
+      parameters:
+      - description: Unique identifier for the source owner. This should be a UUID
+          representing the identity to reassign from.
+        example: a3f1c2d4-5678-4e9b-8c2d-123456789abc
+        explode: false
+        in: path
+        name: sourceIdentityId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getOwners
+      - description: Unique identifier for the destination owner. This should be a
+          UUID representing the identity to reassign to.
+        example: b4e2d3c5-6789-4f0a-9d3e-234567890bcd
+        explode: false
+        in: path
+        name: destinationIdentityId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getOwners
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Example number of resources overwritten
+                  value: 1
+              schema:
+                format: int32
+                type: integer
+          description: The number of resources whose owners were overwritten.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:manage
+      summary: Reassign resource owner.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /das/v1/owners/reelect:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reelectrequest'
+        description: The request body must contain details for re-electing a resource
+          owner. Date/time fields should use epoch format in seconds.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Example number of elections created
+                  value: 1
+              schema:
+                format: int32
+                type: integer
+          description: "The number of elections CREATED. In case of failure, some\
+            \ elections may not be STARTED."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTasksV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - das:owners:manage
+      - applicationAuth:
+        - das:owners:manage
+      summary: Re-elect resource owner.
+      tags:
+      - Data Access Security
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTasksV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTasksV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    taskinfo:
+      example:
+        scheduleTaskId: 2001
+        progress: 75
+        startTime: 1762237200
+        taskName: Daily Data Sync
+        details: Task is processing files in the Finance folder.
+        endTime: 1762240800
+        taskTypeName: DataSync
+        taskId: 1001
+        createdByDisplayName: Jane Doe
+        status: Running
+      properties:
+        taskId:
+          description: The unique identifier for the task.
+          example: 1001
+          format: int64
+          nullable: true
+          type: integer
+        taskTypeName:
+          description: The type or category of the task.
+          example: DataSync
+          nullable: true
+          type: string
+        startTime:
+          description: "The start time of the task, represented as epoch seconds."
+          example: 1762237200
+          format: int64
+          nullable: true
+          type: integer
+        endTime:
+          description: "The end time of the task, represented as epoch seconds."
+          example: 1762240800
+          format: int64
+          nullable: true
+          type: integer
+        taskName:
+          description: The display name of the task.
+          example: Daily Data Sync
+          nullable: true
+          type: string
+        createdByDisplayName:
+          description: The display name of the user who created the task.
+          example: Jane Doe
+          nullable: true
+          type: string
+        progress:
+          description: "The progress of the task, typically represented as a percentage\
+            \ (0-100)."
+          example: 75
+          format: int32
+          type: integer
+        status:
+          description: "The current status of the task (e.g., \"Running\", \"Completed\"\
+            , \"Failed\")."
+          example: Running
+          nullable: true
+          type: string
+        details:
+          description: Additional details or information about the task.
+          example: Task is processing files in the Finance folder.
+          nullable: true
+          type: string
+        scheduleTaskId:
+          description: "The unique identifier of the associated scheduled task, if\
+            \ applicable."
+          example: 2001
+          format: int64
+          nullable: true
+          type: integer
+      title: TaskInfo
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    scheduleinfo:
+      example:
+        lastRun: 1762237200
+        active: true
+        taskTypeName: DataSync
+        daysOfWeek:
+        - Monday
+        - Wednesday
+        - Friday
+        runAfterScheduleTaskId: 1000
+        createdByDisplayName: Jane Doe
+        nextRun: 1762323600
+        scheduleTaskName: Daily Data Sync
+        scheduleType: Daily
+        scheduleTaskId: 1001
+        interval: 1440
+        startTime: 1762237200
+        endTime: 1762240800
+        applicationId: 2001
+        runAfterScheduleTaskName: Pre-Sync Task
+      properties:
+        scheduleTaskId:
+          description: The unique identifier for the scheduled task.
+          example: 1001
+          format: int64
+          type: integer
+        scheduleTaskName:
+          description: The display name of the scheduled task.
+          example: Daily Data Sync
+          nullable: true
+          type: string
+        taskTypeName:
+          description: The type or category of the scheduled task.
+          example: DataSync
+          nullable: true
+          type: string
+        interval:
+          description: "The interval depends on the chosen schedule cycle (scheduleType),\
+            \ i.e. if the schedule is daily, the interval will represent the days\
+            \ between executions."
+          example: 1440
+          format: int32
+          type: integer
+        scheduleType:
+          description: "The scheduling type, such as \"Daily\", \"Weekly\", or \"\
+            Manual\" etc."
+          example: Daily
+          nullable: true
+          type: string
+        active:
+          default: false
+          description: Indicates whether the scheduled task is currently active.
+          example: true
+          type: boolean
+        startTime:
+          description: "The start time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762237200
+          format: int64
+          nullable: true
+          type: integer
+        endTime:
+          description: "The end time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762240800
+          format: int64
+          nullable: true
+          type: integer
+        daysOfWeek:
+          description: "A list of days of the week when the task should run (e.g.,\
+            \ \"Monday\", \"Wednesday\")."
+          example:
+          - Monday
+          - Wednesday
+          - Friday
+          items:
+            type: string
+          nullable: true
+          type: array
+        runAfterScheduleTaskId:
+          description: The ID of another scheduled task that triggers this scheduled
+            task upon its completion.
+          example: 1000
+          format: int64
+          nullable: true
+          type: integer
+        runAfterScheduleTaskName:
+          description: The name of the scheduled task that must complete before this
+            task runs.
+          example: Pre-Sync Task
+          nullable: true
+          type: string
+        applicationId:
+          description: The unique identifier of the application associated with the
+            scheduled task.
+          example: 2001
+          format: int64
+          nullable: true
+          type: integer
+        createdByDisplayName:
+          description: The display name of the user who created the scheduled task.
+          example: Jane Doe
+          nullable: true
+          type: string
+        nextRun:
+          description: "The next scheduled run time for the task, represented as epoch\
+            \ seconds."
+          example: 1762323600
+          format: int64
+          nullable: true
+          type: integer
+        lastRun:
+          description: "The last run time of the task, represented as epoch seconds."
+          example: 1762237200
+          format: int64
+          nullable: true
+          type: integer
+      title: ScheduleInfo
+      type: object
+    createschedulerequest:
+      properties:
+        taskTypeName:
+          description: The type or category of the scheduled task.
+          example: DataSync
+          nullable: true
+          type: string
+        scheduleType:
+          description: "The scheduling type, such as \"Daily\", \"Weekly\" etc."
+          example: Daily
+          nullable: true
+          type: string
+        interval:
+          description: "The interval depends on the chosen schedule cycle (scheduleType),\
+            \ i.e. if the schedule is daily, the interval will represent the days\
+            \ between executions."
+          example: 1440
+          format: int32
+          nullable: true
+          type: integer
+        scheduleTaskName:
+          description: The display name of the scheduled task.
+          example: Daily Data Sync
+          nullable: true
+          type: string
+        startTime:
+          description: "The start time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762237200
+          format: int64
+          type: integer
+        endTime:
+          description: "The end time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762240800
+          format: int64
+          type: integer
+        daysOfWeek:
+          description: "A list of days of the week when the task should run (e.g.,\
+            \ \"Monday\", \"Wednesday\")."
+          example:
+          - Monday
+          - Wednesday
+          - Friday
+          items:
+            type: string
+          nullable: true
+          type: array
+        active:
+          default: false
+          description: Indicates whether the scheduled task is currently active.
+          example: true
+          type: boolean
+        runAfterScheduleTaskId:
+          description: The ID of another scheduled task that triggers this scheduled
+            task upon its completion.
+          example: 1000
+          format: int64
+          nullable: true
+          type: integer
+        applicationId:
+          description: The unique identifier of the application associated with the
+            scheduled task.
+          example: 2001
+          format: int64
+          nullable: true
+          type: integer
+      type: object
+    updateschedulerequest:
+      properties:
+        taskTypeName:
+          description: The type or category of the scheduled task.
+          example: DataSync
+          nullable: true
+          type: string
+        scheduleType:
+          description: "The scheduling type, such as \"Daily\", \"Weekly\", or \"\
+            Manual\" etc."
+          example: Daily
+          nullable: true
+          type: string
+        interval:
+          description: "The interval depends on the chosen schedule cycle (scheduleType),\
+            \ i.e. if the schedule is daily, the interval will represent the days\
+            \ between executions."
+          example: 1440
+          format: int32
+          nullable: true
+          type: integer
+        scheduleTaskName:
+          description: The display name of the scheduled task.
+          example: Daily Data Sync
+          nullable: true
+          type: string
+        startTime:
+          description: "The start time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762237200
+          format: int64
+          type: integer
+        endTime:
+          description: "The end time for the scheduled task, represented as epoch\
+            \ seconds."
+          example: 1762240800
+          format: int64
+          type: integer
+        daysOfWeek:
+          description: "A list of days of the week when the task should run (e.g.,\
+            \ \"Monday\", \"Wednesday\")."
+          example:
+          - Monday
+          - Wednesday
+          - Friday
+          items:
+            type: string
+          nullable: true
+          type: array
+        active:
+          default: false
+          description: Indicates whether the scheduled task is currently active.
+          example: true
+          type: boolean
+        runAfterScheduleTaskId:
+          description: The ID of another scheduled task that triggers this scheduled
+            task upon its completion.
+          example: 1000
+          format: int64
+          nullable: true
+          type: integer
+        applicationId:
+          description: The unique identifier of the application associated with the
+            scheduled task.
+          example: 2001
+          format: int64
+          nullable: true
+          type: integer
+      type: object
+    tag:
+      properties:
+        id:
+          description: The unique identifier for the tag.
+          example: 101
+          format: int64
+          type: integer
+        name:
+          description: The display name or label for the tag.
+          example: Confidential
+          nullable: true
+          type: string
+      type: object
+    applicationitem:
+      example:
+        pcClusterId: E1304AA9-D8FA-4574-A5CD-B59A6D8CB918
+        name: HR File Server
+        testConnectionDate: 1700000000000
+        description: Stores HR documents and employee records.
+        testConnectionStatus: Success
+        rcClusterId: 459B5ABB-47BE-4069-8DB1-D6A8BE3F4D47
+        id: 12345
+        dcClusterId: B28B4B37-9E47-426B-BAFD-A1FF048B4DAC
+        type: OneDriveForBusiness
+        tags:
+        - id: 101
+          name: Confidential
+      properties:
+        id:
+          description: The unique identifier of the application.
+          example: 12345
+          format: int64
+          type: integer
+        name:
+          description: The display name of the application.
+          example: HR File Server
+          nullable: true
+          type: string
+        description:
+          description: A brief description of the application and its purpose.
+          example: Stores HR documents and employee records.
+          nullable: true
+          type: string
+        type:
+          description: The type of the application.
+          example: OneDriveForBusiness
+          nullable: true
+          type: string
+        tags:
+          description: A list of tags associated with the application.
+          example:
+          - id: 101
+            name: Confidential
+          items:
+            $ref: '#/components/schemas/tag'
+          nullable: true
+          type: array
+        testConnectionStatus:
+          description: The status of the last connection test performed on the application.
+          example: Success
+          nullable: true
+          type: string
+        testConnectionDate:
+          description: "The timestamp of the last connection test performed on the\
+            \ application, in milliseconds since epoch."
+          example: 1700000000000
+          format: int64
+          nullable: true
+          type: integer
+        rcClusterId:
+          description: The identifier of the cluster used for crawling resources.
+          example: 459B5ABB-47BE-4069-8DB1-D6A8BE3F4D47
+          nullable: true
+          type: string
+        dcClusterId:
+          description: The identifier of the cluster used for data classification.
+          example: B28B4B37-9E47-426B-BAFD-A1FF048B4DAC
+          nullable: true
+          type: string
+        pcClusterId:
+          description: The identifier of the cluster used for permission collection.
+          example: E1304AA9-D8FA-4574-A5CD-B59A6D8CB918
+          nullable: true
+          type: string
+      type: object
+    applicationtype:
+      description: |
+        Specifies the type of application. Possible values:
+          1  - Sharepoint
+          8  - WindowsFileServer
+          9  - ActiveDirectory
+          11 - EmcCelerraCifs
+          15 - NetappCifs
+          20 - EmcIsilon
+          21 - GoogleDrive
+          24 - Box
+          25 - Dropbox
+          27 - OneDriveForBusiness
+          28 - SharepointOnline
+          29 - ExchangeOnline
+          33 - Cifs
+          35 - AwsS3
+          37 - Snowflake
+      enum:
+      - 1
+      - 8
+      - 9
+      - 11
+      - 15
+      - 20
+      - 21
+      - 24
+      - 25
+      - 27
+      - 28
+      - 29
+      - 33
+      - 35
+      - 37
+      example: 9
+      format: int32
+      type: integer
+    int64stringkeyvaluepair:
+      properties:
+        key:
+          description: The key for the tag or pair.
+          example: 1
+          format: int64
+          type: integer
+        value:
+          description: The value for the tag or pair.
+          example: Confidential
+          nullable: true
+          type: string
+      type: object
+    basesettings:
+      properties:
+        isEnabled:
+          default: false
+          description: Indicates whether the feature or configuration is enabled.
+          example: true
+          type: boolean
+        clusterId:
+          description: "The identifier of the cluster associated with this configuration,\
+            \ if applicable."
+          example: cluster-001
+          nullable: true
+          type: string
+      type: object
+    crawlresourcessizesoptions:
+      description: "Specifies when resource sizes should be calculated during a crawl\
+        \ operation. - 0: Unspecified - No specific option set. - 1: Never - Resource\
+        \ sizes are never calculated. - 2: Always - Resource sizes are always calculated.\
+        \ - 3: Secondcrawl - Resource sizes are calculated only on a second crawl."
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      example: 2
+      format: int32
+      type: integer
+    applicationcrawlersettings:
+      allOf:
+      - $ref: '#/components/schemas/basesettings'
+      - properties:
+          calculateResourceSize:
+            $ref: '#/components/schemas/crawlresourcessizesoptions'
+          crawlSnapshotsFolder:
+            default: false
+            description: Indicates whether to crawl the snapshots folder.
+            example: true
+            nullable: true
+            type: boolean
+          crawlMailboxes:
+            default: false
+            description: Indicates whether to crawl mailboxes.
+            example: false
+            nullable: true
+            type: boolean
+          crawlPublicFolders:
+            default: false
+            description: Indicates whether to crawl public folders.
+            example: true
+            nullable: true
+            type: boolean
+          excludedPathsByRegex:
+            description: Regular expression pattern for paths to exclude from crawling.
+            example: ^/archive/.*
+            nullable: true
+            type: string
+          crawlTopLevelShares:
+            description: List of top-level shares to crawl.
+            example:
+            - share1
+            - share2
+            items:
+              type: string
+            nullable: true
+            type: array
+          excludedResources:
+            description: List of resource identifiers to exclude from crawling.
+            example:
+            - resourceA
+            - resourceB
+            items:
+              type: string
+            nullable: true
+            type: array
+          includeResources:
+            description: List of resource identifiers to include in crawling.
+            example:
+            - resourceX
+            - resourceY
+            items:
+              type: string
+            nullable: true
+            type: array
+        type: object
+    permissioncollectorsettings:
+      allOf:
+      - $ref: '#/components/schemas/basesettings'
+      - properties:
+          analyzeUniquePermissions:
+            default: false
+            description: Indicates whether unique permissions should be analyzed for
+              resources.
+            example: true
+            nullable: true
+            type: boolean
+          calculateEffectivePermissions:
+            default: false
+            description: Indicates whether effective permissions should be calculated.
+            example: true
+            nullable: true
+            type: boolean
+          calculateRiskiestPermissions:
+            default: false
+            description: Indicates whether riskiest permissions should be calculated.
+            example: false
+            nullable: true
+            type: boolean
+          effectivePermissionsSource:
+            description: Source for effective permissions calculation.
+            example: S3
+            nullable: true
+            type: string
+        type: object
+    dataclassificationsettings:
+      allOf:
+      - $ref: '#/components/schemas/basesettings'
+      - description: |
+          Extend with additional data classification configuration properties as needed.
+        example:
+          isEnabled: true
+          clusterId: cluster-001
+        type: object
+    activityconfigurationsettings:
+      allOf:
+      - $ref: '#/components/schemas/basesettings'
+      - description: Inherits base settings for activity configuration.
+        properties:
+          retentionTimePeriod:
+            description: The time period for retaining activity logs.
+            example: 30
+            format: int32
+            type: integer
+          retentionTimeType:
+            description: "The type of retention period (e.g., days, months, years)."
+            example: days
+            nullable: true
+            type: string
+          excludeUsers:
+            description: List of user identifiers to exclude from activity tracking.
+            example:
+            - user1
+            - user2
+            items:
+              type: string
+            nullable: true
+            type: array
+          excludeFolders:
+            description: List of folder paths to exclude from activity tracking.
+            example:
+            - /tmp
+            - /archive
+            items:
+              type: string
+            nullable: true
+            type: array
+          excludeFileExtensions:
+            description: List of file extensions to exclude from activity tracking.
+            example:
+            - .log
+            - .bak
+            items:
+              type: string
+            nullable: true
+            type: array
+          excludeActions:
+            description: List of actions to exclude from activity tracking.
+            example:
+            - delete
+            - move
+            items:
+              type: string
+            nullable: true
+            type: array
+        type: object
+    basecreateapplicationrequest:
+      properties:
+        applicationType:
+          $ref: '#/components/schemas/applicationtype'
+        name:
+          description: The display name of the application.
+          example: HR File Server
+          type: string
+        description:
+          description: A brief description of the application and its purpose.
+          example: Stores HR documents and employee records.
+          nullable: true
+          type: string
+        tags:
+          description: A list of tags to categorize or identify the application.
+          example:
+          - key: 1
+            value: Confidential
+          items:
+            $ref: '#/components/schemas/int64stringkeyvaluepair'
+          nullable: true
+          type: array
+        identityCollectorId:
+          description: The unique identifier for the identity collector associated
+            with this application.
+          example: 123456789
+          format: int64
+          nullable: true
+          type: integer
+        adIdentityCollectorId:
+          description: The unique identifier for the AD identity collector.
+          example: 987654321
+          format: int64
+          nullable: true
+          type: integer
+        nisIdentityCollectorId:
+          description: The unique identifier for the NIS identity collector.
+          example: 192837465
+          format: int64
+          nullable: true
+          type: integer
+        applicationCrawlerSettings:
+          $ref: '#/components/schemas/applicationcrawlersettings'
+        permissionCollectorSettings:
+          $ref: '#/components/schemas/permissioncollectorsettings'
+        dataClassificationSettings:
+          $ref: '#/components/schemas/dataclassificationsettings'
+        activityConfigurationSettings:
+          $ref: '#/components/schemas/activityconfigurationsettings'
+        executeNow:
+          default: false
+          description: "If true, the application setup will be executed immediately\
+            \ after creation."
+          example: false
+          type: boolean
+      required:
+      - applicationType
+      - name
+      type: object
+    dataownermodel:
+      example:
+        fullPath: /departments/finance/shared
+        resourceId: 1001
+        identityId: c1a2b3d4-e5f6-7890-abcd-1234567890ab
+      properties:
+        identityId:
+          description: The unique identifier (UUID) of the identity assigned as the
+            owner of the resource.
+          example: c1a2b3d4-e5f6-7890-abcd-1234567890ab
+          format: uuid
+          type: string
+        resourceId:
+          description: The unique identifier of the resource owned by the identity.
+          example: 1001
+          format: int64
+          type: integer
+        fullPath:
+          description: The full path to the resource within the system or application.
+          example: /departments/finance/shared
+          nullable: true
+          type: string
+      type: object
+    businessservicetype:
+      description: |
+        Specifies the type of business service or resource. Possible values include:
+          0    - Folder
+          1    - Computer
+          2    - Container
+          3    - Domain
+          4    - Group / GPO
+          5    - OrganizationalUnit
+          6    - User
+          7    - Document
+          8    - List / WindowsFileServer / SharepointOnline
+          9    - ListItem
+          10   - Site
+          11   - Unknown / DropboxUser
+          12   - WSSFolder
+          13   - Web
+          14   - ExchangeFolder
+          15   - Mailbox
+          16   - PublicFolder
+          18   - UserSAMAccountName
+          24   - (reserved)
+          25   - GroupPolicyContainer
+          30   - File
+          801  - WindowsClusterServerName
+          908  - GoogleFolder
+          909  - GoogleUser
+          910  - DropboxFolder
+          912  - BoxFolder
+          913  - BoxUser
+          914  - BoxFile
+          950  - WSSFile
+          951  - HiddenList
+          952  - HiddenWSSFolder
+          953  - HiddenWSSFile
+          1000 - BuiltinDomain
+          1100 - DfsNamespace
+          1101 - DfsLink
+          1200 - SqlServerInstance
+          1201 - SqlServerDatabase
+          1202 - SqlServerSchema
+          1203 - SqlServerTable
+          1204 - SqlServerView
+          1205 - SqlServerStoredProcedure
+          1206 - SqlServerFunction
+          1207 - SqlServerAssemblie
+          1208 - SqlServerType
+          1209 - SqlServerDatabaseRole
+          1210 - SqlServerDatabaseUser
+          1211 - SqlServerApplicationRole
+          1212 - SqlServerLogin
+          1213 - SqlServerServerRole
+          1214 - SqlServerVirtualContainer
+          1215 - SqlServerSynonym
+          1216 - SqlServerExtendedStoredProcedure
+          1300 - AwsS3Root
+          1301 - AwsS3OU
+          1302 - AwsS3Account
+          1303 - AwsS3Bucket
+          1304 - AwsS3Folder
+          1305 - AwsS3File
+          1400 - SnowflakeDatabase
+          1401 - SnowflakeSchema
+          1402 - SnowflakeTable
+          1403 - SnowflakeView
+          1404 - SnowflakeFunction
+          1405 - SnowflakeProcedure
+          1406 - SnowflakeVirtualContainer
+          1407 - SnowflakeDatabaseApplication
+          1408 - SnowflakeDatabaseApplicationPackage
+          1409 - SnowflakeDatabasePersonal
+          1410 - SnowflakeDatabaseImported
+          1411 - SnowflakeViewMaterialized
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 18
+      - 24
+      - 25
+      - 30
+      - 801
+      - 908
+      - 909
+      - 910
+      - 912
+      - 913
+      - 914
+      - 950
+      - 951
+      - 952
+      - 953
+      - 1000
+      - 1100
+      - 1101
+      - 1200
+      - 1201
+      - 1202
+      - 1203
+      - 1204
+      - 1205
+      - 1206
+      - 1207
+      - 1208
+      - 1209
+      - 1210
+      - 1211
+      - 1212
+      - 1213
+      - 1214
+      - 1215
+      - 1216
+      - 1300
+      - 1301
+      - 1302
+      - 1303
+      - 1304
+      - 1305
+      - 1400
+      - 1401
+      - 1402
+      - 1403
+      - 1404
+      - 1405
+      - 1406
+      - 1407
+      - 1408
+      - 1409
+      - 1410
+      - 1411
+      example: 6
+      format: int32
+      type: integer
+    resourcemodel:
+      example:
+        fullPath: /departments/finance/shared
+        name: Finance Shared Folder
+        owners:
+        - c1a2b3d4-e5f6-7890-abcd-1234567890ab
+        - d4e5f6a7-b8c9-0123-4567-89abcdef0123
+        id: 1001
+        applicationId: 2001
+        type: 6
+      properties:
+        id:
+          description: The unique identifier for the resource.
+          example: 1001
+          format: int64
+          type: integer
+        name:
+          description: The display name or label for the resource.
+          example: Finance Shared Folder
+          nullable: true
+          type: string
+        fullPath:
+          description: The full path to the resource within the system or application.
+          example: /departments/finance/shared
+          nullable: true
+          type: string
+        applicationId:
+          description: The unique identifier of the application to which this resource
+            belongs.
+          example: 2001
+          format: int64
+          type: integer
+        type:
+          $ref: '#/components/schemas/businessservicetype'
+        owners:
+          description: A list of UUIDs representing the owners of the resource.
+          example:
+          - c1a2b3d4-e5f6-7890-abcd-1234567890ab
+          - d4e5f6a7-b8c9-0123-4567-89abcdef0123
+          items:
+            format: uuid
+            type: string
+          nullable: true
+          type: array
+      type: object
+    assignresourceownerrequest:
+      properties:
+        appId:
+          description: The unique identifier of the application containing the resource.
+          example: 12345
+          format: int64
+          type: integer
+        fullPath:
+          description: "The full path to the resource within the application (e.g.,\
+            \ file path or object path)."
+          example: /shared/hr/documents/employee-records.pdf
+          nullable: true
+          type: string
+        identityId:
+          description: The unique identifier (UUID) of the identity to be assigned
+            as the resource owner.
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          format: uuid
+          type: string
+      type: object
+    reelectrequest:
+      properties:
+        ownerId:
+          description: The UUID of the identity proposed to be re-elected as the resource
+            owner.
+          example: c1a2b3d4-e5f6-7890-abcd-1234567890ab
+          format: uuid
+          type: string
+        campaignName:
+          description: The name of the campaign or election process for re-electing
+            the owner.
+          example: Annual Resource Owner Election
+          nullable: true
+          type: string
+        reviewers:
+          description: A list of UUIDs representing the identities of reviewers participating
+            in the re-election process.
+          example:
+          - d4e5f6a7-b8c9-0123-4567-89abcdef0123
+          - e7f8g9h0-i1j2-3456-7890-klmnopqrstuv
+          items:
+            format: uuid
+            type: string
+          nullable: true
+          type: array
+      type: object
+    getTasksV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getTasksV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

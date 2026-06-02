@@ -1,0 +1,2026 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Work Items
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement work item functionality. \nWith this functionality\
+    \ in place, users can manage their work items (tasks). \n\nWork items refer to\
+    \ the tasks users see in Identity Security Cloud's Task Manager. \nThey can see\
+    \ the pending work items they need to complete, as well as the work items they\
+    \ have already completed. \nTask Manager lists the work items along with the involved\
+    \ sources, identities, accounts, and the timestamp when the work item was created.\
+    \ \nFor example, a user may see a pending 'Create an Account' work item for the\
+    \ identity Fred.Astaire in GitHub for Fred's GitHub account, fred-astaire-sp.\
+    \ \nOnce the user completes the work item, the work item will be listed with his\
+    \ or her other completed work items. \n\nTo complete work items, users can use\
+    \ their dashboards and select the 'My Tasks' widget. \nThe widget will list any\
+    \ work items they need to complete, and they can select the work item from the\
+    \ list to review its details. \nWhen they complete the work item, they can select\
+    \ 'Mark Complete' to add it to their list of completed work items. \n\nRefer to\
+    \ [Task Manager](https://documentation.sailpoint.com/saas/user-help/task_manager.html)\
+    \ for more information about work items, including the different types of work\
+    \ items users may need to complete.\n"
+  name: Work Items
+paths:
+  /work-items/v1:
+    get:
+      description: "This gets a collection of work items belonging to either the specified\
+        \ user(admin required), or the current user."
+      operationId: listWorkItemsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: ID of the work item owner.
+        example: 1211bcaa32112bcef6122adb21cef1ac
+        explode: true
+        in: query
+        name: ownerId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/workitems'
+                type: array
+          description: List of work items
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: List work items
+      tags:
+      - Work Items
+  /work-items/v1/completed:
+    get:
+      description: "This gets a collection of completed work items belonging to either\
+        \ the specified user(admin required), or the current user."
+      operationId: getCompletedWorkItemsV1
+      parameters:
+      - description: "The id of the owner of the work item list being requested. \
+          \ Either an admin, or the owning/current user must make this request."
+        example: 1211bcaa32112bcef6122adb21cef1ac
+        explode: true
+        in: query
+        name: ownerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/workitems'
+                type: array
+          description: List of completed work items.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Completed work items
+      tags:
+      - Work Items
+  /work-items/v1/count:
+    get:
+      description: "This gets a count of work items belonging to either the specified\
+        \ user(admin required), or the current user."
+      operationId: getCountWorkItemsV1
+      parameters:
+      - description: ID of the work item owner.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: true
+        in: query
+        name: ownerId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitemscount'
+          description: List of work items
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Count work items
+      tags:
+      - Work Items
+  /work-items/v1/completed/count:
+    get:
+      description: "This gets a count of completed work items belonging to either\
+        \ the specified user(admin required), or the current user."
+      operationId: getCountCompletedWorkItemsV1
+      parameters:
+      - description: ID of the work item owner.
+        explode: true
+        in: query
+        name: ownerId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitemscount'
+          description: List of work items
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+      summary: Count completed work items
+      tags:
+      - Work Items
+  /work-items/v1/summary:
+    get:
+      description: "This gets a summary of work items belonging to either the specified\
+        \ user(admin required), or the current user."
+      operationId: getWorkItemsSummaryV1
+      parameters:
+      - description: ID of the work item owner.
+        example: 1211bcaa32112bcef6122adb21cef1ac
+        explode: true
+        in: query
+        name: ownerId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitemssummary'
+          description: List of work items
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Work items summary
+      tags:
+      - Work Items
+  /work-items/v1/{id}:
+    get:
+      description: "This gets the details of a Work Item belonging to either the specified\
+        \ user(admin required), or the current user."
+      operationId: getWorkItemV1
+      parameters:
+      - description: ID of the work item.
+        example: 2c9180835d191a86015d28455b4a2329
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: The work item with the given ID.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Get a work item
+      tags:
+      - Work Items
+    post:
+      description: "This API completes a work item. Either an admin, or the owning/current\
+        \ user must make this request."
+      operationId: completeWorkItemV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              nullable: true
+              type: string
+        description: Body is the request payload to create form definition request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A WorkItems object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Complete a work item
+      tags:
+      - Work Items
+  /work-items/v1/{id}/approve/{approvalItemId}:
+    post:
+      description: "This API approves an Approval Item. Either an admin, or the owning/current\
+        \ user must make this request."
+      operationId: approveApprovalItemV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      - description: The ID of the approval item.
+        example: 1211bcaa32112bcef6122adb21cef1ac
+        explode: false
+        in: path
+        name: approvalItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A work items details object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Approve an approval item
+      tags:
+      - Work Items
+  /work-items/v1/{id}/reject/{approvalItemId}:
+    post:
+      description: "This API rejects an Approval Item. Either an admin, or the owning/current\
+        \ user must make this request."
+      operationId: rejectApprovalItemV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      - description: The ID of the approval item.
+        example: 1211bcaa32112bcef6122adb21cef1ac
+        explode: false
+        in: path
+        name: approvalItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A work items details object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Reject an approval item
+      tags:
+      - Work Items
+  /work-items/v1/bulk-approve/{id}:
+    post:
+      description: "This API bulk approves Approval Items. Either an admin, or the\
+        \ owning/current user must make this request."
+      operationId: approveApprovalItemsInBulkV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A work items details object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Bulk approve approval items
+      tags:
+      - Work Items
+  /work-items/v1/bulk-reject/{id}:
+    post:
+      description: "This API bulk rejects Approval Items. Either an admin, or the\
+        \ owning/current user must make this request."
+      operationId: rejectApprovalItemsInBulkV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A work items details object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Bulk reject approval items
+      tags:
+      - Work Items
+  /work-items/v1/{id}/submit-account-selection:
+    post:
+      description: "This API submits account selections. Either an admin, or the owning/current\
+        \ user must make this request."
+      operationId: submitAccountSelectionV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      requestBody:
+        content:
+          application/json:
+            example:
+              fieldName: fieldValue
+            schema:
+              additionalProperties: true
+              type: object
+        description: "Account Selection Data map, keyed on fieldName"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workitems'
+          description: A work items details object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Submit account selections
+      tags:
+      - Work Items
+  /work-items/v1/{id}/forward:
+    post:
+      description: "This API forwards a work item to a new owner. Either an admin,\
+        \ or the owning/current user must make this request."
+      operationId: forwardWorkItemV1
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/workitemforward'
+        required: true
+      responses:
+        "200":
+          description: "Success, but no data is returned."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkItemsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Forward a work item
+      tags:
+      - Work Items
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listWorkItemsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listWorkItemsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    workitemstatemanualworkitems:
+      description: The state of a work item
+      enum:
+      - Finished
+      - Rejected
+      - Returned
+      - Expired
+      - Pending
+      - Canceled
+      example: Finished
+      type: string
+    workitemtypemanualworkitems:
+      description: The type of the work item
+      enum:
+      - Generic
+      - Certification
+      - Remediation
+      - Delegation
+      - Approval
+      - ViolationReview
+      - Form
+      - PolicyVioloation
+      - Challenge
+      - ImpactAnalysis
+      - Signoff
+      - Event
+      - ManualAction
+      - Test
+      example: Generic
+      type: string
+    remediationitemdetails:
+      example:
+        targetName: john.smith
+        targetId: 2c9180835d2e5168015d32f890ca1581
+        attributeValue: 512-555-1212
+        targetDisplayName: emailAddress
+        attributeName: phoneNumber
+        id: 2c9180835d2e5168015d32f890ca1581
+        applicationName: Active Directory
+        attributeOperation: update
+        nativeIdentity: jason.smith2
+      properties:
+        id:
+          description: The ID of the certification
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        targetId:
+          description: The ID of the certification target
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        targetName:
+          description: The name of the certification target
+          example: john.smith
+          type: string
+        targetDisplayName:
+          description: The display name of the certification target
+          example: emailAddress
+          type: string
+        applicationName:
+          description: The name of the application/source
+          example: Active Directory
+          type: string
+        attributeName:
+          description: The name of the attribute being certified
+          example: phoneNumber
+          type: string
+        attributeOperation:
+          description: The operation of the certification on the attribute
+          example: update
+          type: string
+        attributeValue:
+          description: The value of the attribute being certified
+          example: 512-555-1212
+          type: string
+        nativeIdentity:
+          description: The native identity of the target
+          example: jason.smith2
+          type: string
+      title: Remediation Item Details
+      type: object
+    workitemstate:
+      description: The state of a work item
+      enum:
+      - Finished
+      - Rejected
+      - Returned
+      - Expired
+      - Pending
+      - Canceled
+      - null
+      example: Pending
+      nullable: true
+      type: string
+    approvalitemdetails:
+      example:
+        application: Active Directory
+        name: emailAddress
+        id: 2c9180835d2e5168015d32f890ca1581
+        state: ""
+        operation: update
+        value: a@b.com
+        account: john.smith
+      properties:
+        id:
+          description: The approval item's ID
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        account:
+          description: The account referenced by the approval item
+          example: john.smith
+          nullable: true
+          type: string
+        application:
+          description: The name of the application/source
+          example: Active Directory
+          type: string
+        name:
+          description: The attribute's name
+          example: emailAddress
+          nullable: true
+          type: string
+        operation:
+          description: The attribute's operation
+          example: update
+          type: string
+        value:
+          description: The attribute's value
+          example: a@b.com
+          nullable: true
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/workitemstate'
+          - nullable: true
+      title: Approval Item Details
+      type: object
+    formitemdetails:
+      properties:
+        name:
+          description: Name of the FormItem
+          example: Field1
+          nullable: true
+          type: string
+      title: Form Item Details
+      type: object
+    sectiondetails:
+      allOf:
+      - $ref: '#/components/schemas/formitemdetails'
+      - properties:
+          label:
+            description: Label of the section
+            example: Section 1
+            nullable: true
+            type: string
+          formItems:
+            description: List of FormItems. FormItems can be SectionDetails and/or
+              FieldDetails
+            example: []
+            items:
+              type: object
+            type: array
+        type: object
+      example:
+        formItems: []
+        name: Field1
+        label: Section 1
+      title: Section Details
+      type: object
+    formdetails:
+      properties:
+        id:
+          description: ID of the form
+          example: 2c9180835d2e5168015d32f890ca1581
+          nullable: true
+          type: string
+        name:
+          description: Name of the form
+          example: AccountSelection Form
+          nullable: true
+          type: string
+        title:
+          description: The form title
+          example: Account Selection for John.Doe
+          nullable: true
+          type: string
+        subtitle:
+          description: The form subtitle.
+          example: Please select from the following
+          nullable: true
+          type: string
+        targetUser:
+          description: The name of the user that should be shown this form
+          example: Jane.Doe
+          type: string
+        sections:
+          description: Sections of the form
+          items:
+            $ref: '#/components/schemas/sectiondetails'
+          type: array
+      title: Form Details
+      type: object
+    workitems:
+      example:
+        requesterDisplayName: John Smith
+        requesterId: 2c9180835d2e5168015d32f890ca1581
+        created: 2017-07-11T18:45:37.098Z
+        approvalItems:
+        - application: Active Directory
+          name: emailAddress
+          id: 2c9180835d2e5168015d32f890ca1581
+          state: ""
+          operation: update
+          value: a@b.com
+          account: john.smith
+        - application: Active Directory
+          name: emailAddress
+          id: 2c9180835d2e5168015d32f890ca1581
+          state: ""
+          operation: update
+          value: a@b.com
+          account: john.smith
+        description: Create account on source 'AD'
+        completed: 2018-10-19T13:49:37.385Z
+        ownerId: 2c9180835d2e5168015d32f890ca1581
+        type: Generic
+        numItems: 19
+        ownerName: Jason Smith
+        form:
+          subtitle: Please select from the following
+          name: AccountSelection Form
+          id: 2c9180835d2e5168015d32f890ca1581
+          title: Account Selection for John.Doe
+          targetUser: Jane.Doe
+          sections:
+          - formItems: []
+            name: Field1
+            label: Section 1
+          - formItems: []
+            name: Field1
+            label: Section 1
+        remediationItems:
+        - targetName: john.smith
+          targetId: 2c9180835d2e5168015d32f890ca1581
+          attributeValue: 512-555-1212
+          targetDisplayName: emailAddress
+          attributeName: phoneNumber
+          id: 2c9180835d2e5168015d32f890ca1581
+          applicationName: Active Directory
+          attributeOperation: update
+          nativeIdentity: jason.smith2
+        - targetName: john.smith
+          targetId: 2c9180835d2e5168015d32f890ca1581
+          attributeValue: 512-555-1212
+          targetDisplayName: emailAddress
+          attributeName: phoneNumber
+          id: 2c9180835d2e5168015d32f890ca1581
+          applicationName: Active Directory
+          attributeOperation: update
+          nativeIdentity: jason.smith2
+        name: Account Create
+        modified: 2018-06-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+        state: Finished
+        errors:
+        - The work item ID that was specified was not found.
+      properties:
+        id:
+          description: ID of the work item
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        requesterId:
+          description: ID of the requester
+          example: 2c9180835d2e5168015d32f890ca1581
+          nullable: true
+          type: string
+        requesterDisplayName:
+          description: The displayname of the requester
+          example: John Smith
+          nullable: true
+          type: string
+        ownerId:
+          description: The ID of the owner
+          example: 2c9180835d2e5168015d32f890ca1581
+          nullable: true
+          type: string
+        ownerName:
+          description: The name of the owner
+          example: Jason Smith
+          type: string
+        created:
+          description: Time when the work item was created
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the work item was last updated
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
+          type: string
+        description:
+          description: The description of the work item
+          example: Create account on source 'AD'
+          type: string
+        state:
+          $ref: '#/components/schemas/workitemstatemanualworkitems'
+        type:
+          $ref: '#/components/schemas/workitemtypemanualworkitems'
+        remediationItems:
+          description: A list of remediation items
+          items:
+            $ref: '#/components/schemas/remediationitemdetails'
+          nullable: true
+          type: array
+        approvalItems:
+          description: A list of items that need to be approved
+          items:
+            $ref: '#/components/schemas/approvalitemdetails'
+          nullable: true
+          type: array
+        name:
+          description: The work item name
+          example: Account Create
+          nullable: true
+          type: string
+        completed:
+          description: The time at which the work item completed
+          example: 2018-10-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        numItems:
+          description: The number of items in the work item
+          example: 19
+          format: int32
+          nullable: true
+          type: integer
+        form:
+          $ref: '#/components/schemas/workitems_form'
+        errors:
+          description: An array of errors that ocurred during the work item
+          example:
+          - The work item ID that was specified was not found.
+          items:
+            type: string
+          type: array
+      title: Work Items
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    workitemscount:
+      example:
+        count: 29
+      properties:
+        count:
+          description: The count of work items
+          example: 29
+          type: integer
+      title: Work Items Count
+      type: object
+    workitemssummary:
+      example:
+        total: 30
+        completed: 1
+        open: 29
+      properties:
+        open:
+          description: The count of open work items
+          example: 29
+          type: integer
+        completed:
+          description: The count of completed work items
+          example: 1
+          type: integer
+        total:
+          description: The count of total work items
+          example: 30
+          type: integer
+      title: Work Items Summary
+      type: object
+    workitemforward:
+      properties:
+        targetOwnerId:
+          description: The ID of the identity to forward this work item to.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        comment:
+          description: Comments to send to the target owner
+          example: I'm going on vacation.
+          type: string
+        sendNotifications:
+          default: true
+          description: "If true, send a notification to the target owner."
+          example: true
+          type: boolean
+      required:
+      - comment
+      - targetOwnerId
+      title: Work Item Forward
+      type: object
+    listWorkItemsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listWorkItemsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    workitems_form:
+      allOf:
+      - $ref: '#/components/schemas/formdetails'
+      - nullable: true
+      example:
+        subtitle: Please select from the following
+        name: AccountSelection Form
+        id: 2c9180835d2e5168015d32f890ca1581
+        title: Account Selection for John.Doe
+        targetUser: Jane.Doe
+        sections:
+        - formItems: []
+          name: Field1
+          label: Section 1
+        - formItems: []
+          name: Field1
+          label: Section 1

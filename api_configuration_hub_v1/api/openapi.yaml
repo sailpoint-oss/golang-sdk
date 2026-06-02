@@ -1,0 +1,3584 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Configuration Hub
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to implement and customize configuration settings management. With this functionality, you can access the Configuration Hub actions and build your own automated pipeline for Identity Security Cloud configuration change delivery and deployment.
+
+    Common usages for Configuration Hub includes:
+
+    - Upload configuration file - Configuration files can be managed and deployed using Configuration Hub by uploading a JSON file which contains configuration data.
+    - Manage object mapping - Create rules to map and substitute attributes when migrating configurations.
+    - Manage backups for configuration settings
+    - Manage configuration drafts
+    - Upload configurations and manage object mappings between tenants.
+
+    Refer to [Using the SailPoint Configuration Hub](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html) for more information about Configuration Hub.
+  name: Configuration Hub
+paths:
+  /configuration-hub/v1/object-mappings/{sourceOrg}:
+    get:
+      description: |-
+        This gets a list of existing object mappings between current org and source org.
+        Source org should be "default" when getting object mappings that are not associated to any particular org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:read
+      operationId: getObjectMappingsV1
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        explode: false
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+                objectType: GOVERNANCE_GROUP
+                jsonPath: $.description
+                sourceValue: Sample Governance Group
+                targetValue: Sample Governance Group - Updated
+                enabled: true
+                created: 2024-03-19T23:18:53.732Z
+                modified: 2024-03-19T23:18:53.732Z
+              - objectMappingId: e1d5cb80-65e2-4f92-ae2e-9588f61cc4cd
+                objectType: IDENTITY
+                jsonPath: $.name
+                sourceValue: SailPoint Support
+                targetValue: john.doe
+                enabled: false
+                created: 2024-03-19T23:18:06.238Z
+                modified: 2024-03-19T23:18:06.238Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/objectmappingresponse'
+                type: array
+          description: List of existing object mappings between current org and source
+            org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-object-mapping:read
+        - sp:config-object-mapping:manage
+      summary: Gets list of object mappings
+      tags:
+      - Configuration Hub
+    post:
+      description: |-
+        This creates an object mapping between current org and source org.
+        Source org should be "default" when creating an object mapping that is not to be associated to any particular org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: createObjectMappingV1
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        explode: false
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              objectType: GOVERNANCE_GROUP
+              jsonPath: $.description
+              sourceValue: Sample Governance Group
+              targetValue: Sample Governance Group - Updated
+              enabled: true
+            schema:
+              $ref: '#/components/schemas/objectmappingrequest'
+        description: The object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+                objectType: GOVERNANCE_GROUP
+                jsonPath: $.description
+                sourceValue: Sample Governance Group
+                targetValue: Sample Governance Group - Updated
+                enabled: true
+                created: 2024-03-19T23:18:53.732Z
+                modified: 2024-03-19T23:18:53.732Z
+              schema:
+                $ref: '#/components/schemas/objectmappingresponse'
+          description: The created object mapping between current org and source org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-object-mapping:manage
+      summary: Creates an object mapping
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/object-mappings/{sourceOrg}/{objectMappingId}:
+    delete:
+      description: |-
+        This deletes an existing object mapping.
+        Source org should be "default" when deleting an object mapping that is not associated to any particular org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: deleteObjectMappingV1
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        explode: false
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the object mapping to be deleted.
+        example: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+        explode: false
+        in: path
+        name: objectMappingId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-object-mapping:manage
+      summary: Deletes an object mapping
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/object-mappings/{sourceOrg}/bulk-create:
+    post:
+      description: |-
+        This creates a set of object mappings (Max 25) between current org and source org.
+        Source org should be "default" when creating object mappings that are not to be associated to any particular org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: createObjectMappingsV1
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        explode: false
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              newObjectsMappings:
+              - objectType: SOURCE
+                jsonPath: $.name
+                sourceValue: Original SOURCE Name
+                targetValue: New SOURCE Name
+                enabled: true
+              - objectType: IDENTITY
+                jsonPath: $.name
+                sourceValue: Original IDENTITY Name
+                targetValue: 'New IDENTITY Name '
+                enabled: true
+            schema:
+              $ref: '#/components/schemas/objectmappingbulkcreaterequest'
+        description: The bulk create object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                addedObjects:
+                - objectMappingId: 603b1a61-d03d-4ed1-864f-a508fbd1995d
+                  objectType: SOURCE
+                  jsonPath: $.name
+                  sourceValue: Original SOURCE Name
+                  targetValue: New SOURCE Name
+                  enabled: true
+                  created: 2024-03-25T15:50:41.314Z
+                  modified: 2024-03-25T15:50:41.299Z
+                - objectMappingId: 00bece34-f50d-4227-8878-76f620b5a971
+                  objectType: IDENTITY
+                  jsonPath: $.name
+                  sourceValue: Original IDENTITY Name
+                  targetValue: 'New IDENTITY Name '
+                  enabled: true
+                  created: 2024-03-25T15:50:41.316Z
+                  modified: 2024-03-25T15:50:41.316Z
+              schema:
+                $ref: '#/components/schemas/objectmappingbulkcreateresponse'
+          description: The created object mapping between current org and source org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-object-mapping:manage
+      summary: Bulk creates object mappings
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/object-mappings/{sourceOrg}/bulk-patch:
+    post:
+      description: |-
+        This updates a set of object mappings, only enabled and targetValue fields can be updated.
+        Source org should be "default" when updating object mappings that are not associated to any particular org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: updateObjectMappingsV1
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        explode: false
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              patches:
+                "603b1a61-d03d-4ed1-864f-a508fbd1995d":
+                - op: replace
+                  path: /enabled
+                  value: true
+                "00bece34-f50d-4227-8878-76f620b5a971":
+                - op: replace
+                  path: /targetValue
+                  value: New Target Value
+            schema:
+              $ref: '#/components/schemas/objectmappingbulkpatchrequest'
+        description: The object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                patchedObjects:
+                - objectMappingId: 603b1a61-d03d-4ed1-864f-a508fbd1995d
+                  objectType: SOURCE
+                  jsonPath: $.name
+                  sourceValue: Original SOURCE Name
+                  targetValue: New SOURCE Name
+                  enabled: true
+                  created: 2024-03-25T15:50:41.314Z
+                  modified: 2024-03-25T15:50:41.299Z
+                - objectMappingId: 00bece34-f50d-4227-8878-76f620b5a971
+                  objectType: IDENTITY
+                  jsonPath: $.name
+                  sourceValue: Original IDENTITY Name
+                  targetValue: 'New IDENTITY Name '
+                  enabled: true
+                  created: 2024-03-25T15:50:41.316Z
+                  modified: 2024-03-25T15:50:41.316Z
+              schema:
+                $ref: '#/components/schemas/objectmappingbulkpatchresponse'
+          description: The updated object mappings.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-object-mapping:manage
+      summary: Bulk updates object mappings
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/scheduled-actions:
+    get:
+      description: This API gets a list of existing scheduled actions for the current
+        tenant.
+      operationId: listScheduledActionsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                created: 2024-08-16T14:16:58.389Z
+                jobType: BACKUP
+                content:
+                  name: Backup Name
+                  backupOptions:
+                    includeTypes:
+                    - SOURCE
+                    - IDENTITY
+                    objectOptions: []
+                startTime: 2024-08-16T14:16:58.389Z
+                cronString: 0 0 * * * *
+              schema:
+                items:
+                  $ref: '#/components/schemas/scheduledactionresponse'
+                type: array
+          description: List of existing scheduled actions.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-scheduled-action:read
+        - sp:config-scheduled-action:manage
+      summary: List scheduled actions
+      tags:
+      - Configuration Hub
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: This API creates a new scheduled action for the current tenant.
+      operationId: createScheduledActionV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              jobType: BACKUP
+              startTime: 2024-08-16T14:16:58.389Z
+              cronString: 0 0 * * * *
+              timeZoneId: America/Chicago
+              content:
+                name: Daily Backup
+                backupOptions:
+                  includeTypes:
+                  - SOURCE
+                  - IDENTITY
+                  objectOptions:
+                    SOURCE:
+                      includedNames:
+                      - Source1
+                      - Source2
+            schema:
+              $ref: '#/components/schemas/scheduledactionpayload'
+        description: The scheduled action creation request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                created: 2024-08-16T14:16:58.389Z
+                jobType: BACKUP
+                content:
+                  name: Daily Backup
+                  backupOptions:
+                    includeTypes:
+                    - SOURCE
+                    - IDENTITY
+                    objectOptions:
+                      SOURCE:
+                        includedNames:
+                        - Source1
+                        - Source2
+                startTime: 2024-08-16T14:16:58.389Z
+                cronString: 0 0 * * * *
+              schema:
+                $ref: '#/components/schemas/scheduledactionresponse'
+          description: The created scheduled action.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-scheduled-action:manage
+      summary: Create scheduled action
+      tags:
+      - Configuration Hub
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /configuration-hub/v1/scheduled-actions/{id}:
+    delete:
+      description: This API deletes an existing scheduled action.
+      operationId: deleteScheduledActionV1
+      parameters:
+      - description: The ID of the scheduled action.
+        example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listScheduledActions
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-scheduled-action:manage
+      summary: Delete scheduled action
+      tags:
+      - Configuration Hub
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: This API updates an existing scheduled action using JSON Patch
+        format.
+      operationId: updateScheduledActionV1
+      parameters:
+      - description: The ID of the scheduled action.
+        example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listScheduledActions
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /content/name
+              value: Updated Backup Name
+            - op: replace
+              path: /cronString
+              value: 0 0 9 * * ?
+            schema:
+              $ref: '#/components/schemas/jsonpatch'
+        description: The JSON Patch document containing the changes to apply to the
+          scheduled action.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                created: 2024-08-16T14:16:58.389Z
+                jobType: BACKUP
+                content:
+                  name: Updated Backup Name
+                  backupOptions:
+                    includeTypes:
+                    - SOURCE
+                    - IDENTITY
+                    objectOptions:
+                      SOURCE:
+                        includedNames:
+                        - Source1
+                        - Source2
+                startTime: 2024-08-16T14:16:58.389Z
+                cronString: 0 0 9 * * ?
+              schema:
+                $ref: '#/components/schemas/scheduledactionresponse'
+          description: The updated scheduled action.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-scheduled-action:manage
+      summary: Update scheduled action
+      tags:
+      - Configuration Hub
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /configuration-hub/v1/backups/uploads:
+    get:
+      description: This API gets a list of existing uploaded configurations for the
+        current tenant.
+      operationId: listUploadedConfigurationsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **status**: *eq*
+        example: status eq "COMPLETE"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - jobId: 281d421c-0643-4004-9fe5-29a95d2f73df
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-03-07T21:11:00.375Z
+                modified: 2024-03-07T21:11:25.046Z
+                completed: 2024-03-07T21:11:00.66Z
+                name: test1
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 64
+              schema:
+                items:
+                  $ref: '#/components/schemas/backupresponse'
+                type: array
+          description: List of existing uploaded configurations.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:read
+        - sp:config-backup:manage
+      summary: List uploaded configurations
+      tags:
+      - Configuration Hub
+    post:
+      description: |-
+        This API uploads a JSON configuration file into a tenant.
+
+        Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.
+
+        Refer to [SaaS Configuration](https://developer.sailpoint.com/docs/extensibility/configuration-management/saas-configuration#supported-objects) for more information about supported objects.
+      operationId: createUploadedConfigurationV1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/createUploadedConfigurationV1_request'
+        description: |
+          The body will consist of "data" which should contain the json file and name wish should be the name you want to assign to the uploaded file"
+
+          __Example__
+
+              data: "uploaded.json",
+              name: "A_NEW_UPLOADED_BACKUP"
+
+          __Sample Upload File__
+
+              {
+                "version": 1,
+                "tenant": "a-sample-tenant",
+                "objects":
+                [
+                  {
+                    "version": 1,
+                    "self":
+                      {
+                        "id": "0a59c7196d2917f8aa6d29686e6600fb",
+                        "type": "SOURCE",
+                        "name": "Extended Form"
+                      },
+                    "object":
+                      {
+                        "id": "0a59c7196d2917f8aa6d29686e6600fb",
+                        "name": "Extended Form",
+                        "type": "DelimitedFile",
+                        "connectorClass": "sailpoint.connector.DelimitedFileConnector",
+                        "connectorScriptName": "delimited-file-angularsc",
+                        "description": "Migrated app - Extended Form (original ID: 0a59c7196d2917f8aa6d29686e6600fb)",
+                        "deleteThreshold": 10,
+                        "provisionAsCsv": false,
+                        "owner":
+                          {
+                            "type": "IDENTITY",
+                            "id": "0a59c7196d2917f8816d29685fed00c3",
+                            "name": "slpt.services"
+                          },
+                        "connectorAttributes":
+                          {
+                            "beforemoveAccount": "Do Nothing",
+                            "beforemoverAccount": "Do Nothing",
+                            "busApp": "false",
+                            "file": "Empty",
+                            "filetransport": "local",
+                            "filterEmptyRecords": "true",
+                            "group.filetransport": "local",
+                            "group.filterEmptyRecords": "true",
+                            "group.partitionMode": "auto",
+                            "hasHeader": "true",
+                            "indexColumn": "ID",
+                            "isCaseInsensitiveMerge": "false",
+                            "isSortedByIndexColumn": "false",
+                            "loaProcess": "Do Nothing",
+                            "ltdProcess": "Do Nothing",
+                            "mergeRows": "false",
+                            "moverProcess": "Do Nothing",
+                            "moverRevocation": "Do Nothing",
+                            "nativeChangeDetectionAttributeScope": "entitlements",
+                            "nativeChangeDetectionEnabled": "false",
+                            "nativeChangeProcess": "Do Nothing",
+                            "parseType": "delimited",
+                            "partitionMode": "auto",
+                            "policyType": "Do Nothing",
+                            "rehireProcess": "Do Nothing",
+                            "reverseleaverProcess": "Do Nothing",
+                            "rtwloaProcess": "Do Nothing",
+                            "rtwltdProcess": "Do Nothing",
+                            "stopIfLineHasWrongColumnLength": "false",
+                            "templateApplication": "DelimitedFile Template",
+                            "terminationProcess": "Do Nothing"
+                          },
+                        "schemas":
+                          [],
+                        "provisioningPolicies":
+                          [],
+                        "features":
+                          [
+                            "DIRECT_PERMISSIONS",
+                            "NO_RANDOM_ACCESS",
+                            "DISCOVER_SCHEMA"
+                          ]
+                      }
+                  }
+                ]
+            }
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/backupresponse'
+          description: Upload job accepted and queued for processing.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:manage
+      summary: Upload a configuration
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/backups/uploads/{id}:
+    delete:
+      description: |-
+        This API deletes an uploaded configuration based on Id.
+
+        On success, this endpoint will return an empty response.
+
+        The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
+      operationId: deleteUploadedConfigurationV1
+      parameters:
+      - description: The id of the uploaded configuration.
+        example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:manage
+      summary: Delete an uploaded configuration
+      tags:
+      - Configuration Hub
+    get:
+      description: This API gets an existing uploaded configuration for the current
+        tenant.
+      operationId: getUploadedConfigurationV1
+      parameters:
+      - description: The id of the uploaded configuration.
+        example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                jobId: 2ea830f3-2b14-4772-8a20-3d006742e419
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-20T22:08:31.064Z
+                modified: 2024-02-20T22:13:15.662Z
+                completed: 2024-02-20T22:08:31.689Z
+                name: something new
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+              schema:
+                $ref: '#/components/schemas/backupresponse'
+          description: Gets an uploaded configuration details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:read
+        - sp:config-backup:manage
+      summary: Get an uploaded configuration
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/backups:
+    get:
+      description: This API gets a list of existing backups for the current tenant.
+      operationId: listBackupsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **status**: *eq*
+        example: status eq "COMPLETE"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - jobId: 09491993-9cb6-49a7-8d37-8bef54d33502
+                status: COMPLETE
+                type: BACKUP
+                tenant: tenant-name
+                requesterName: Requester Name
+                fileExists: true
+                created: 2024-02-19T19:54:15.373Z
+                modified: 2024-02-19T20:39:00.341Z
+                completed: 2024-02-19T19:54:15.605Z
+                name: Backup name
+                userCanDelete: false
+                isPartial: true
+                backupType: MANUAL
+                options:
+                  includeTypes:
+                  - SOURCE
+                  objectOptions:
+                    SOURCE:
+                      includedNames:
+                      - Source Name
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+                cloudStorageStatus: SYNCED
+              schema:
+                items:
+                  $ref: '#/components/schemas/backupresponse'
+                type: array
+          description: List of existing backups.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:read
+        - sp:config-backup:manage
+      summary: List backups
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/backups/{id}:
+    delete:
+      description: |-
+        This API deletes an existing backup for the current tenant.
+
+        On success, this endpoint will return an empty response.
+
+        The backup id can be obtained from the response after a backup was successfully created, or from the list backups endpoint.
+      operationId: deleteBackupV1
+      parameters:
+      - description: The id of the backup to delete.
+        example: 07659d7d-2cce-47c0-9e49-185787ee565a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-backup:manage
+      summary: Delete a backup
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/drafts:
+    get:
+      description: This API gets a list of existing drafts for the current tenant.
+      operationId: listDraftsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **status**: *eq*
+
+          **approvalStatus**: *eq*
+        example: status eq "COMPLETE"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+                status: COMPLETE
+                type: CREATE_DRAFT
+                message: Draft creation message
+                requesterName: Requester Name
+                fileExists: true
+                created: 2024-08-16T14:16:58.389Z
+                completed: 2024-08-16T14:17:12.355Z
+                name: Draft Name
+                sourceTenant: source-tenant
+                sourceBackupId: 9393e1f5-bed6-4fa8-80fb-6f86b19bd3d6
+                sourceBackupName: Source Backup Name
+                mode: RESTORE
+                approvalStatus: DEFAULT
+                approvalComment:
+                - comment: Approval comment
+                  timestamp: 2024-08-26T19:32:46.384137Z
+                  user: User name
+                  id: User id
+                  changedToStatus: PENDING_FOR_APPROVAL
+              schema:
+                items:
+                  $ref: '#/components/schemas/draftresponse'
+                type: array
+          description: List of existing drafts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-draft:read
+        - sp:config-draft:manage
+      summary: List drafts
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/drafts/{id}:
+    delete:
+      description: |-
+        This API deletes an existing draft for the current tenant.
+
+        On success, this endpoint will return an empty response.
+
+        The draft id can be obtained from the response after a draft was successfully created, or from the list drafts endpoint.
+      operationId: deleteDraftV1
+      parameters:
+      - description: The id of the draft to delete.
+        example: 07659d7d-2cce-47c0-9e49-185787ee565a
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-draft:manage
+      summary: Delete a draft
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/deploys:
+    get:
+      description: This API gets a list of deploys for the current tenant.
+      operationId: listDeploysV1
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                items:
+                - jobId: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+                  status: COMPLETE
+                  type: CONFIG_DEPLOY_DRAFT
+                  message: Deploy outcome message
+                  requesterName: requester.name
+                  fileExists: true
+                  created: 2023-08-29T01:54:37.069Z
+                  modified: 2024-07-15T16:53:45.925Z
+                  completed: 2023-08-29T01:54:41.924Z
+                  draftId: 925e34e3-fa7c-4e7a-9b9a-cf3b8b4b1068
+                  draftName: Source draft name
+                  cloudStorageStatus: SYNCED
+                - jobId: bdbcaae6-5e2a-4ebd-9eb3-37b09ec7eea4
+                  status: FAILED
+                  type: CONFIG_DEPLOY_DRAFT
+                  message: Deploy outcome message
+                  requesterName: requester.name
+                  fileExists: true
+                  created: 2023-07-20T18:38:00.812Z
+                  modified: 2024-07-15T16:53:59.778Z
+                  completed: 2023-07-20T18:38:01.783Z
+                  draftId: e04da89d-941f-41e8-83ab-dd185ef5e646
+                  draftName: Source draft name
+                  cloudStorageStatus: NOT_SYNCED
+              schema:
+                $ref: '#/components/schemas/listDeploysV1_200_response'
+          description: List of existing deploys.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-deploy:read
+        - sp:config-deploy:manage
+      summary: List deploys
+      tags:
+      - Configuration Hub
+    post:
+      description: This API performs a deploy based on an existing daft.
+      operationId: createDeployV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              draftId: c9a38d8c-5edf-4182-9d39-f6581d3ebd05
+            schema:
+              $ref: '#/components/schemas/deployrequest'
+        description: The deploy request body.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                jobId: ce928190-b50a-4e9a-9854-b56959be8bb1
+                status: NOT_STARTED
+                type: CONFIG_DEPLOY_DRAFT
+                requesterName: support
+                fileExists: false
+                created: 2024-09-19T19:28:58.503Z
+                modified: 2024-09-19T19:28:58.509Z
+                draftId: ebee8250-841f-41de-b74f-288b81137d12
+                draftName: Draft for 46207915-854f-4894-8723-782fdcc677d6
+              schema:
+                $ref: '#/components/schemas/deployresponse'
+          description: Deploy job accepted and queued for processing.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-deploy:manage
+      summary: Create a deploy
+      tags:
+      - Configuration Hub
+  /configuration-hub/v1/deploys/{id}:
+    get:
+      description: This API gets an existing deploy for the current tenant.
+      operationId: getDeployV1
+      parameters:
+      - description: The id of the deploy.
+        example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                jobId: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+                status: COMPLETE
+                type: CONFIG_DEPLOY_DRAFT
+                message: Deploy outcome message
+                requesterName: requester.name
+                fileExists: true
+                created: 2023-08-29T01:54:37.069Z
+                modified: 2024-07-15T16:53:45.925Z
+                completed: 2023-08-29T01:54:41.924Z
+                draftId: 925e34e3-fa7c-4e7a-9b9a-cf3b8b4b1068
+                draftName: Source draft name
+                cloudStorageStatus: SYNCED
+              schema:
+                $ref: '#/components/schemas/deployresponse'
+          description: Gets the details of a deploy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:config-deploy:read
+        - sp:config-deploy:manage
+      summary: Get a deploy
+      tags:
+      - Configuration Hub
+components:
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getObjectMappingsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getObjectMappingsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    objectmappingresponse:
+      example:
+        created: 2024-03-19T23:18:53.732Z
+        targetValue: My New Governance Group Name
+        modified: 2024-03-19T23:18:53.732Z
+        jsonPath: $.name
+        sourceValue: My Governance Group Name
+        objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+        enabled: false
+        objectType: IDENTITY
+      properties:
+        objectMappingId:
+          description: Id of the object mapping
+          example: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          type: string
+        objectType:
+          description: Type of the object the mapping value applies to
+          enum:
+          - ACCESS_PROFILE
+          - ACCESS_REQUEST_CONFIG
+          - ATTR_SYNC_SOURCE_CONFIG
+          - AUTH_ORG
+          - CAMPAIGN_FILTER
+          - ENTITLEMENT
+          - FORM_DEFINITION
+          - GOVERNANCE_GROUP
+          - IDENTITY
+          - IDENTITY_OBJECT_CONFIG
+          - IDENTITY_PROFILE
+          - LIFECYCLE_STATE
+          - NOTIFICATION_TEMPLATE
+          - PASSWORD_POLICY
+          - PASSWORD_SYNC_GROUP
+          - PUBLIC_IDENTITIES_CONFIG
+          - ROLE
+          - RULE
+          - SEGMENT
+          - SERVICE_DESK_INTEGRATION
+          - SOD_POLICY
+          - SOURCE
+          - TAG
+          - TRANSFORM
+          - TRIGGER_SUBSCRIPTION
+          - WORKFLOW
+          example: IDENTITY
+          type: string
+        jsonPath:
+          description: JSONPath expression denoting the path within the object where
+            the mapping value should be applied
+          example: $.name
+          type: string
+        sourceValue:
+          description: Original value at the jsonPath location within the object
+          example: My Governance Group Name
+          type: string
+        targetValue:
+          description: Value to be assigned at the jsonPath location within the object
+          example: My New Governance Group Name
+          type: string
+        enabled:
+          default: false
+          description: Whether or not this object mapping is enabled
+          example: false
+          type: boolean
+        created:
+          description: Object mapping creation timestamp
+          example: 2024-03-19T23:18:53.732Z
+          type: string
+        modified:
+          description: Object mapping latest update timestamp
+          example: 2024-03-19T23:18:53.732Z
+          type: string
+      title: Object Mapping Response
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    objectmappingrequest:
+      properties:
+        objectType:
+          description: "Type of the object the mapping value applies to, must be one\
+            \ from enum"
+          enum:
+          - ACCESS_PROFILE
+          - ACCESS_REQUEST_CONFIG
+          - ATTR_SYNC_SOURCE_CONFIG
+          - AUTH_ORG
+          - CAMPAIGN_FILTER
+          - ENTITLEMENT
+          - FORM_DEFINITION
+          - GOVERNANCE_GROUP
+          - IDENTITY
+          - IDENTITY_OBJECT_CONFIG
+          - IDENTITY_PROFILE
+          - LIFECYCLE_STATE
+          - NOTIFICATION_TEMPLATE
+          - PASSWORD_POLICY
+          - PASSWORD_SYNC_GROUP
+          - PUBLIC_IDENTITIES_CONFIG
+          - ROLE
+          - RULE
+          - SEGMENT
+          - SERVICE_DESK_INTEGRATION
+          - SOD_POLICY
+          - SOURCE
+          - TAG
+          - TRANSFORM
+          - TRIGGER_SUBSCRIPTION
+          - WORKFLOW
+          example: IDENTITY
+          type: string
+        jsonPath:
+          description: JSONPath expression denoting the path within the object where
+            the mapping value should be applied
+          example: $.name
+          type: string
+        sourceValue:
+          description: Original value at the jsonPath location within the object
+          example: My Governance Group Name
+          type: string
+        targetValue:
+          description: Value to be assigned at the jsonPath location within the object
+          example: My New Governance Group Name
+          type: string
+        enabled:
+          default: false
+          description: Whether or not this object mapping is enabled
+          example: false
+          type: boolean
+      required:
+      - jsonPath
+      - objectType
+      - sourceValue
+      - targetValue
+      title: Object Mapping Request
+      type: object
+    objectmappingbulkcreaterequest:
+      properties:
+        newObjectsMappings:
+          items:
+            $ref: '#/components/schemas/objectmappingrequest'
+          type: array
+      required:
+      - newObjectsMappings
+      title: Bulk Create Object Mapping Request
+      type: object
+    objectmappingbulkcreateresponse:
+      example:
+        addedObjects:
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+      properties:
+        addedObjects:
+          items:
+            $ref: '#/components/schemas/objectmappingresponse'
+          type: array
+      title: Bulk Create Object Mapping Response
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    objectmappingbulkpatchrequest:
+      properties:
+        patches:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/jsonpatchoperation'
+            type: array
+          description: Map of id of the object mapping to a JsonPatchOperation describing
+            what to patch on that object mapping.
+          example:
+            "603b1a61-d03d-4ed1-864f-a508fbd1995d":
+            - op: replace
+              path: /enabled
+              value: true
+            "00bece34-f50d-4227-8878-76f620b5a971":
+            - op: replace
+              path: /targetValue
+              value: New Target Value
+          type: object
+      required:
+      - patches
+      title: Bulk Update Object Mapping Request
+      type: object
+    objectmappingbulkpatchresponse:
+      example:
+        patchedObjects:
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+      properties:
+        patchedObjects:
+          items:
+            $ref: '#/components/schemas/objectmappingresponse'
+          type: array
+      title: Bulk Update Object Mapping Response
+      type: object
+    scheduledactionresponse:
+      example:
+        cronString: 0 0 * * * *
+        created: 2021-05-11T22:23:16Z
+        timeZoneId: America/Chicago
+        startTime: 2021-05-12T10:00:00Z
+        id: 3469b87d-48ca-439a-868f-2160001da8c1
+        jobType: BACKUP
+        content:
+          sourceTenant: tenant-name
+          draftId: 9012b87d-48ca-439a-868f-2160001da8c3
+          name: Daily Backup
+          backupOptions:
+            includeTypes:
+            - ROLE
+            - IDENTITY_PROFILE
+            objectOptions:
+              SOURCE:
+                includedNames:
+                - Source1
+                - Source2
+              ROLE:
+                includedNames:
+                - Admin Role
+                - User Role
+          sourceBackupId: 5678b87d-48ca-439a-868f-2160001da8c2
+      properties:
+        id:
+          description: Unique identifier for this scheduled action.
+          example: 3469b87d-48ca-439a-868f-2160001da8c1
+          type: string
+        created:
+          description: The time when this scheduled action was created.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        jobType:
+          description: Type of the scheduled job.
+          enum:
+          - BACKUP
+          - CREATE_DRAFT
+          - CONFIG_DEPLOY_DRAFT
+          example: BACKUP
+          type: string
+        content:
+          $ref: '#/components/schemas/scheduledactionresponse_content'
+        startTime:
+          description: The time when this scheduled action should start.
+          example: 2021-05-12T10:00:00Z
+          format: date-time
+          type: string
+        cronString:
+          description: Cron expression defining the schedule for this action.
+          example: 0 0 * * * *
+          type: string
+        timeZoneId:
+          description: Time zone ID for interpreting the cron expression.
+          example: America/Chicago
+          type: string
+      type: object
+    scheduledactionpayload:
+      properties:
+        jobType:
+          description: Type of the scheduled job.
+          enum:
+          - BACKUP
+          - CREATE_DRAFT
+          - CONFIG_DEPLOY_DRAFT
+          example: BACKUP
+          type: string
+        startTime:
+          description: The time when this scheduled action should start. Optional.
+          example: 2024-08-16T14:16:58.389Z
+          format: date-time
+          type: string
+        cronString:
+          description: Cron expression defining the schedule for this action. Optional
+            for repeated events.
+          example: 0 0 * * * *
+          type: string
+        timeZoneId:
+          description: "Time zone ID for interpreting the cron expression. Optional,\
+            \ will default to current time zone."
+          example: America/Chicago
+          type: string
+        content:
+          $ref: '#/components/schemas/scheduledactionpayload_content'
+      required:
+      - content
+      - jobType
+      type: object
+    jsonpatch:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/jsonpatchoperation'
+          type: array
+      title: Json Patch
+      type: object
+    objectexportimportnames:
+      properties:
+        includedNames:
+          description: Object names to be included in a backup.
+          items:
+            example: Test Object name
+            type: string
+          type: array
+      type: object
+    backupoptions:
+      description: Backup options control what will be included in the backup.
+      example:
+        includeTypes:
+        - TRIGGER_SUBSCRIPTION
+        - TRIGGER_SUBSCRIPTION
+        objectOptions:
+          TRIGGER_SUBSCRIPTION:
+            includedNames:
+            - Trigger Subscription name
+      nullable: true
+      properties:
+        includeTypes:
+          description: Object type names to be included in a Configuration Hub backup
+            command.
+          items:
+            enum:
+            - ACCESS_PROFILE
+            - ACCESS_REQUEST_CONFIG
+            - ATTR_SYNC_SOURCE_CONFIG
+            - AUTH_ORG
+            - CAMPAIGN_FILTER
+            - FORM_DEFINITION
+            - GOVERNANCE_GROUP
+            - IDENTITY_OBJECT_CONFIG
+            - IDENTITY_PROFILE
+            - LIFECYCLE_STATE
+            - NOTIFICATION_TEMPLATE
+            - PASSWORD_POLICY
+            - PASSWORD_SYNC_GROUP
+            - PUBLIC_IDENTITIES_CONFIG
+            - ROLE
+            - RULE
+            - SEGMENT
+            - SERVICE_DESK_INTEGRATION
+            - SOD_POLICY
+            - SOURCE
+            - TAG
+            - TRANSFORM
+            - TRIGGER_SUBSCRIPTION
+            - WORKFLOW
+            example: TRIGGER_SUBSCRIPTION
+            type: string
+          type: array
+        objectOptions:
+          additionalProperties:
+            $ref: '#/components/schemas/objectexportimportnames'
+          description: Additional options targeting specific objects related to each
+            item in the includeTypes field.
+          example:
+            TRIGGER_SUBSCRIPTION:
+              includedNames:
+              - Trigger Subscription name
+          type: object
+      type: object
+    backupresponse:
+      example:
+        userCanDelete: false
+        totalObjectCount: 10
+        created: 2021-05-11T22:23:16Z
+        fileExists: true
+        completed: 2021-05-11T22:23:16Z
+        type: BACKUP
+        hydrationStatus: NOT_HYDRATED
+        backupType: MANUAL
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        requesterName: Requester Name
+        name: Backup Name
+        options:
+          includeTypes:
+          - TRIGGER_SUBSCRIPTION
+          - TRIGGER_SUBSCRIPTION
+          objectOptions:
+            TRIGGER_SUBSCRIPTION:
+              includedNames:
+              - Trigger Subscription name
+        modified: 2021-05-11T22:23:16Z
+        isPartial: false
+        cloudStorageStatus: SYNCED
+        tenant: tenant-name
+        status: COMPLETE
+      properties:
+        jobId:
+          description: Unique id assigned to this backup.
+          example: 3469b87d-48ca-439a-868f-2160001da8c1
+          type: string
+        status:
+          description: Status of the backup.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, will always be BACKUP for this type of job."
+          enum:
+          - BACKUP
+          example: BACKUP
+          type: string
+        tenant:
+          description: The name of the tenant performing the upload
+          example: tenant-name
+          type: string
+        requesterName:
+          description: The name of the requester.
+          example: Requester Name
+          type: string
+        fileExists:
+          default: true
+          description: Whether or not a file was created and stored for this backup.
+          example: true
+          type: boolean
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        completed:
+          description: The time the job was completed.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        name:
+          description: The name assigned to the upload file in the request body.
+          example: Backup Name
+          type: string
+        userCanDelete:
+          default: true
+          description: Whether this backup can be deleted by a regular user.
+          example: false
+          type: boolean
+        isPartial:
+          default: false
+          description: Whether this backup contains all supported object types or
+            only some of them.
+          example: false
+          type: boolean
+        backupType:
+          description: |-
+            Denotes how this backup was created.
+            - MANUAL - The backup was created by a user.
+            - AUTOMATED - The backup was created by devops.
+            - AUTOMATED_DRAFT - The backup was created during a draft process.
+            - UPLOADED - The backup was created by uploading an existing configuration file.
+          enum:
+          - UPLOADED
+          - AUTOMATED
+          - MANUAL
+          example: MANUAL
+          type: string
+        options:
+          $ref: '#/components/schemas/backupoptions'
+        hydrationStatus:
+          description: Whether the object details of this backup are ready.
+          enum:
+          - HYDRATED
+          - NOT_HYDRATED
+          example: NOT_HYDRATED
+          type: string
+        totalObjectCount:
+          description: Number of objects contained in this backup.
+          example: 10
+          format: int64
+          type: integer
+        cloudStorageStatus:
+          description: Whether this backup has been transferred to a customer storage
+            location.
+          enum:
+          - SYNCED
+          - NOT_SYNCED
+          - SYNC_FAILED
+          example: SYNCED
+          type: string
+      type: object
+    approvalcomment:
+      example:
+        changedToStatus: PENDING_APPROVAL
+        comment: Approval comment
+        id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+        user: user.name
+        timestamp: 2021-05-11T22:23:16Z
+      properties:
+        comment:
+          description: Comment provided either by the approval requester or the approver.
+          example: Approval comment
+          type: string
+        timestamp:
+          description: The time when this comment was provided.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        user:
+          description: Name of the user that provided this comment.
+          example: user.name
+          type: string
+        id:
+          description: Id of the user that provided this comment.
+          example: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          type: string
+        changedToStatus:
+          description: Status transition of the draft.
+          enum:
+          - PENDING_APPROVAL
+          - APPROVED
+          - REJECTED
+          example: PENDING_APPROVAL
+          type: string
+      required:
+      - changedToStatus
+      - comment
+      - id
+      - timestamp
+      - user
+      title: Approval Comment
+      type: object
+    draftresponse:
+      example:
+        approvalStatus: APPROVED
+        sourceTenant: source-tenant
+        created: 2021-05-11T22:23:16Z
+        sourceBackupName: Source backup name
+        fileExists: true
+        completed: 2021-05-11T22:23:16Z
+        type: CREATE_DRAFT
+        message: Draft creation message
+        sourceBackupId: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+        mode: RESTORE
+        jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+        approvalComment:
+        - changedToStatus: PENDING_APPROVAL
+          comment: Approval comment
+          id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          user: user.name
+          timestamp: 2021-05-11T22:23:16Z
+        - changedToStatus: PENDING_APPROVAL
+          comment: Approval comment
+          id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          user: user.name
+          timestamp: 2021-05-11T22:23:16Z
+        requesterName: requester.name
+        name: Draft name
+        modified: 2021-05-11T22:23:16Z
+        status: COMPLETE
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 07659d7d-2cce-47c0-9e49-185787ee565a
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, will always be CREATE_DRAFT for this type\
+            \ of job."
+          enum:
+          - CREATE_DRAFT
+          example: CREATE_DRAFT
+          type: string
+        message:
+          description: Message providing information about the outcome of the draft
+            process.
+          example: Draft creation message
+          type: string
+        requesterName:
+          description: The name of user that that initiated the draft process.
+          example: requester.name
+          type: string
+        fileExists:
+          default: true
+          description: Whether or not a file was generated for this draft.
+          example: true
+          type: boolean
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        completed:
+          description: The time the job was completed.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        name:
+          description: Name of the draft.
+          example: Draft name
+          type: string
+        sourceTenant:
+          description: Tenant owner of the backup from which the draft was generated.
+          example: source-tenant
+          type: string
+        sourceBackupId:
+          description: Id of the backup from which the draft was generated.
+          example: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          type: string
+        sourceBackupName:
+          description: Name of the backup from which the draft was generated.
+          example: Source backup name
+          type: string
+        mode:
+          description: |-
+            Denotes the origin of the source backup from which the draft was generated.
+            - RESTORE - Same tenant.
+            - PROMOTE - Different tenant.
+            - UPLOAD - Uploaded configuration.
+          enum:
+          - RESTORE
+          - PROMOTE
+          - UPLOAD
+          example: RESTORE
+          type: string
+        approvalStatus:
+          description: Approval status of the draft used to determine whether or not
+            the draft can be deployed.
+          enum:
+          - DEFAULT
+          - PENDING_APPROVAL
+          - APPROVED
+          - DENIED
+          example: APPROVED
+          type: string
+        approvalComment:
+          description: List of comments that have been exchanged between an approval
+            requester and an approver.
+          items:
+            $ref: '#/components/schemas/approvalcomment'
+          type: array
+      type: object
+    deployresponse:
+      example:
+        jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+        draftId: 07659d7d-2cce-47c0-9e49-185787ee565a
+        requesterName: requester.name
+        created: 2021-05-11T22:23:16Z
+        modified: 2021-05-11T22:23:16Z
+        fileExists: true
+        completed: 2021-05-11T22:23:16Z
+        type: CONFIG_DEPLOY_DRAFT
+        message: Deploy creation message
+        cloudStorageStatus: SYNCED
+        status: COMPLETE
+        draftName: Draft Name
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 07659d7d-2cce-47c0-9e49-185787ee565a
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, will always be CONFIG_DEPLOY_DRAFT for this\
+            \ type of job."
+          enum:
+          - CONFIG_DEPLOY_DRAFT
+          example: CONFIG_DEPLOY_DRAFT
+          type: string
+        message:
+          description: Message providing information about the outcome of the deploy
+            process.
+          example: Deploy creation message
+          type: string
+        requesterName:
+          description: The name of the user that initiated the deploy process.
+          example: requester.name
+          type: string
+        fileExists:
+          default: true
+          description: Whether or not a results file was created and stored for this
+            deploy.
+          example: true
+          type: boolean
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        completed:
+          description: The time the job was completed.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        draftId:
+          description: The id of the draft that was used for this deploy.
+          example: 07659d7d-2cce-47c0-9e49-185787ee565a
+          type: string
+        draftName:
+          description: The name of the draft that was used for this deploy.
+          example: Draft Name
+          type: string
+        cloudStorageStatus:
+          description: Whether this deploy results file has been transferred to a
+            customer storage location.
+          enum:
+          - SYNCED
+          - NOT_SYNCED
+          - SYNC_FAILED
+          example: SYNCED
+          type: string
+      type: object
+    deployrequest:
+      properties:
+        draftId:
+          description: The id of the draft to be used by this deploy.
+          example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+          type: string
+      required:
+      - draftId
+      title: Deploy Request
+      type: object
+    getObjectMappingsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getObjectMappingsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    createUploadedConfigurationV1_request:
+      properties:
+        data:
+          description: JSON file containing the objects to be imported.
+          format: binary
+          type: string
+        name:
+          description: Name that will be assigned to the uploaded configuration file.
+          type: string
+      required:
+      - data
+      - name
+      type: object
+    listDeploysV1_200_response:
+      example:
+        items:
+        - jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+          draftId: 07659d7d-2cce-47c0-9e49-185787ee565a
+          requesterName: requester.name
+          created: 2021-05-11T22:23:16Z
+          modified: 2021-05-11T22:23:16Z
+          fileExists: true
+          completed: 2021-05-11T22:23:16Z
+          type: CONFIG_DEPLOY_DRAFT
+          message: Deploy creation message
+          cloudStorageStatus: SYNCED
+          status: COMPLETE
+          draftName: Draft Name
+        - jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+          draftId: 07659d7d-2cce-47c0-9e49-185787ee565a
+          requesterName: requester.name
+          created: 2021-05-11T22:23:16Z
+          modified: 2021-05-11T22:23:16Z
+          fileExists: true
+          completed: 2021-05-11T22:23:16Z
+          type: CONFIG_DEPLOY_DRAFT
+          message: Deploy creation message
+          cloudStorageStatus: SYNCED
+          status: COMPLETE
+          draftName: Draft Name
+      properties:
+        items:
+          description: list of deployments
+          items:
+            $ref: '#/components/schemas/deployresponse'
+          type: array
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    scheduledactionresponse_content_backupOptions_objectOptions_value:
+      properties:
+        includedNames:
+          description: Set of names to be included.
+          example:
+          - Admin Role
+          - User Role
+          items:
+            type: string
+          type: array
+      type: object
+    scheduledactionresponse_content_backupOptions:
+      description: "Options for BACKUP type jobs. Optional, applicable for BACKUP\
+        \ jobs only."
+      example:
+        includeTypes:
+        - ROLE
+        - IDENTITY_PROFILE
+        objectOptions:
+          SOURCE:
+            includedNames:
+            - Source1
+            - Source2
+          ROLE:
+            includedNames:
+            - Admin Role
+            - User Role
+      properties:
+        includeTypes:
+          description: Object types that are to be included in the backup.
+          example:
+          - ROLE
+          - IDENTITY_PROFILE
+          items:
+            type: string
+          type: array
+        objectOptions:
+          additionalProperties:
+            $ref: '#/components/schemas/scheduledactionresponse_content_backupOptions_objectOptions_value'
+          description: Map of objectType string to the options to be passed to the
+            target service for that objectType.
+          example:
+            SOURCE:
+              includedNames:
+              - Source1
+              - Source2
+            ROLE:
+              includedNames:
+              - Admin Role
+              - User Role
+          type: object
+      type: object
+    scheduledactionresponse_content:
+      description: Content details for the scheduled action.
+      example:
+        sourceTenant: tenant-name
+        draftId: 9012b87d-48ca-439a-868f-2160001da8c3
+        name: Daily Backup
+        backupOptions:
+          includeTypes:
+          - ROLE
+          - IDENTITY_PROFILE
+          objectOptions:
+            SOURCE:
+              includedNames:
+              - Source1
+              - Source2
+            ROLE:
+              includedNames:
+              - Admin Role
+              - User Role
+        sourceBackupId: 5678b87d-48ca-439a-868f-2160001da8c2
+      properties:
+        name:
+          description: Name of the scheduled action (maximum 50 characters).
+          example: Daily Backup
+          maxLength: 50
+          type: string
+        backupOptions:
+          $ref: '#/components/schemas/scheduledactionresponse_content_backupOptions'
+        sourceBackupId:
+          description: ID of the source backup. Required for CREATE_DRAFT jobs only.
+          example: 5678b87d-48ca-439a-868f-2160001da8c2
+          type: string
+        sourceTenant:
+          description: Source tenant identifier. Required for CREATE_DRAFT jobs only.
+          example: tenant-name
+          type: string
+        draftId:
+          description: ID of the draft to be deployed. Required for CONFIG_DEPLOY_DRAFT
+            jobs only.
+          example: 9012b87d-48ca-439a-868f-2160001da8c3
+          type: string
+      type: object
+    scheduledactionpayload_content_backupOptions:
+      description: Options for BACKUP type jobs. Required for BACKUP jobs.
+      properties:
+        includeTypes:
+          description: Object types that are to be included in the backup.
+          example:
+          - ROLE
+          - IDENTITY_PROFILE
+          items:
+            type: string
+          type: array
+        objectOptions:
+          additionalProperties:
+            $ref: '#/components/schemas/scheduledactionresponse_content_backupOptions_objectOptions_value'
+          description: Map of objectType string to the options to be passed to the
+            target service for that objectType.
+          example:
+            SOURCE:
+              includedNames:
+              - Source1
+              - Source2
+            ROLE:
+              includedNames:
+              - Admin Role
+              - User Role
+          type: object
+      type: object
+    scheduledactionpayload_content:
+      properties:
+        name:
+          description: Name of the scheduled action (maximum 50 characters).
+          example: Daily Backup
+          maxLength: 50
+          type: string
+        backupOptions:
+          $ref: '#/components/schemas/scheduledactionpayload_content_backupOptions'
+        sourceBackupId:
+          description: ID of the source backup. Required for CREATE_DRAFT jobs.
+          example: 5678b87d-48ca-439a-868f-2160001da8c2
+          type: string
+        sourceTenant:
+          description: Source tenant identifier. Required for CREATE_DRAFT jobs.
+          example: tenant-name
+          type: string
+        draftId:
+          description: ID of the draft to be deployed. Required for CONFIG_DEPLOY_DRAFT
+            jobs.
+          example: 9012b87d-48ca-439a-868f-2160001da8c3
+          type: string
+      required:
+      - name
+      type: object

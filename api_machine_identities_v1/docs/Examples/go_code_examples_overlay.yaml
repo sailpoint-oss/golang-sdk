@@ -1,0 +1,271 @@
+- path: /machine-identities/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#create-machine-identity-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           machineidentityrequest := []byte(``) // Machineidentityrequest | 
+
+          
+          var machineidentityrequest v1.Machineidentityrequest
+          if err := json.Unmarshal(machineidentityrequest, &machineidentityrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentityV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineIdentityV1`: Machineidentityresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentityV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#delete-machine-identity-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID # string | Machine Identity ID
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentityV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /machine-identities/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#get-machine-identity-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID # string | Machine Identity ID
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentityV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineIdentityV1`: Machineidentityresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetMachineIdentityV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#list-machine-identities-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
+          sorters := `nativeIdentity` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentitiesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineIdentitiesV1`: []Machineidentityresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentitiesV1`: %v\n", resp)
+        }
+- path: /machine-identity-user-entitlements/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#list-machine-identity-user-entitlements-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `machineIdentityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **machineIdentityId**: *eq, in*  **machineIdentityName**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **source.id**: *eq, in*  **source.name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **machineIdentityId**: *eq, in*  **machineIdentityName**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **source.id**: *eq, in*  **source.name**: *eq, in, sw* (optional)
+          sorters := `machineIdentityName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **machineIdentityName, entitlement.name, source.name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **machineIdentityName, entitlement.name, source.name** (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineIdentityUserEntitlementsV1`: []Machineidentityuserentitlementresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/aggregate-agents
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#start-machine-identity-aggregation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           machineidentityaggregationrequest := []byte(``) // Machineidentityaggregationrequest | 
+
+          
+          var machineidentityaggregationrequest v1.Machineidentityaggregationrequest
+          if err := json.Unmarshal(machineidentityaggregationrequest, &machineidentityaggregationrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.StartMachineIdentityAggregationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartMachineIdentityAggregationV1`: Machineidentityaggregationresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.StartMachineIdentityAggregationV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitiesv1/methods/machine-identities#update-machine-identity-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          requestbody := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var requestBody []v1.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesV1.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateMachineIdentityV1`: Machineidentityresponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.UpdateMachineIdentityV1`: %v\n", resp)
+        }

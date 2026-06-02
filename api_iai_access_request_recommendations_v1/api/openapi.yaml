@@ -1,0 +1,1718 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - IAI Access Request Recommendations
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- name: IAI Access Request Recommendations
+paths:
+  /ai-access-request-recommendations/v1:
+    get:
+      description: This API returns the access request recommendations for the specified
+        identity. The default identity is *me* which indicates the current user.
+      operationId: getAccessRequestRecommendationsV1
+      parameters:
+      - description: Get access request recommendations for an identityId. *me* indicates
+          the current user.
+        example: 2c91808570313110017040b06f344ec9
+        explode: true
+        in: query
+        name: identity-id
+        required: false
+        schema:
+          default: me
+          type: string
+        style: form
+      - description: Max number of results to return.
+        example: 15
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 15
+          format: int32
+          maximum: 15
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: If *true* it will populate a list of translation messages in
+          the response.
+        example: false
+        explode: true
+        in: query
+        name: include-translation-messages
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **access.name**: *co*
+
+          **access.type**: *eq, in*
+
+          **access.description**: *co, eq, in*
+        example: access.name co "admin"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **access.name, access.type**
+
+          By default the recommendations are sorted by highest confidence first.
+        example: access.name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestrecommendationitemdetail'
+                type: array
+          description: List of access request recommendations for the identityId
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+      - applicationAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+      summary: Identity access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+  /ai-access-request-recommendations/v1/config:
+    get:
+      description: This API returns the configurations for Access Request Recommender
+        for the tenant.
+      operationId: getAccessRequestRecommendationsConfigV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+          description: Configurations for Access Request Recommender for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:configuration:read
+        - iai:configuration:manage
+      - applicationAuth:
+        - iai:configuration:read
+        - iai:configuration:manage
+      summary: Get access request recommendations config
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: This API updates the configurations for Access Request Recommender
+        for the tenant.
+      operationId: setAccessRequestRecommendationsConfigV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+        description: The desired configurations for Access Request Recommender for
+          the tenant.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+          description: Successfully updated configurations for Access Request Recommender
+            for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:configuration:read
+        - iai:configuration:manage
+      - applicationAuth:
+        - iai:configuration:read
+        - iai:configuration:manage
+      summary: Update access request recommendations config
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /ai-access-request-recommendations/v1/ignored-items:
+    get:
+      description: This API returns the list of ignored access request recommendations.
+      operationId: getAccessRequestRecommendationsIgnoredItemsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **access.id**: *eq, in*
+
+          **access.type**: *eq, in*
+
+          **identityId**: *eq, in*
+        example: identityId eq "2c9180846b0a0583016b299f210c1314"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**
+        example: access.id
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                type: array
+          description: Returns list of ignored access request recommendations.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      summary: List ignored access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+    post:
+      description: "This API ignores a recommended access request item. Once an item\
+        \ is ignored, it will be marked as ignored=true if it is still a recommended\
+        \ item. The consumer can decide to hide ignored recommendations."
+      operationId: addAccessRequestRecommendationsIgnoredItemV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+        description: The recommended access item to ignore for an identity.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+          description: Recommendation successfully stored as ignored.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      summary: Ignore access request recommendation
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+  /ai-access-request-recommendations/v1/requested-items:
+    get:
+      description: This API returns a list of requested access request recommendations.
+      operationId: getAccessRequestRecommendationsRequestedItemsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **access.id**: *eq, in*
+
+          **access.type**: *eq, in*
+
+          **identityId**: *eq, in*
+        example: access.id eq "2c9180846b0a0583016b299f210c1314"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**
+        example: access.id
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                type: array
+          description: Returns the list of requested access request recommendations.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      summary: List accepted access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+    post:
+      description: "This API consumes a notification that a recommended access request\
+        \ item was requested. This API does not actually make the request, it is just\
+        \ a notification. This will help provide feedback in order to improve our\
+        \ recommendations."
+      operationId: addAccessRequestRecommendationsRequestedItemV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+        description: The recommended access item that was requested for an identity.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+          description: Notification successfully acknowledged.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      summary: Accept access request recommendation
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+  /ai-access-request-recommendations/v1/viewed-items:
+    get:
+      description: This API returns the list of viewed access request recommendations.
+      operationId: getAccessRequestRecommendationsViewedItemsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **access.id**: *eq, in*
+
+          **access.type**: *eq, in*
+
+          **identityId**: *eq, in*
+        example: access.id eq "2c9180846b0a0583016b299f210c1314"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**
+        example: access.id
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                type: array
+          description: Returns list of viewed access request recommendations.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      - applicationAuth:
+        - iai:access-request-recommender:read
+        - iai:access-request-recommender:manage
+        - idn:access-request:manage
+      summary: List viewed access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+    post:
+      description: This API consumes a notification that a recommended access request
+        item was viewed. Future recommendations with this item will be marked with
+        viewed=true. This can be useful for the consumer to determine if there are
+        any new/unviewed recommendations.
+      operationId: addAccessRequestRecommendationsViewedItemV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+        description: The recommended access that was viewed for an identity.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+          description: Recommendation successfully stored as viewed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+      summary: Mark viewed access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+  /ai-access-request-recommendations/v1/viewed-items/bulk-create:
+    post:
+      description: This API consumes a notification that a set of recommended access
+        request item were viewed. Future recommendations with these items will be
+        marked with viewed=true. This can be useful for the consumer to determine
+        if there are any new/unviewed recommendations.
+      operationId: addAccessRequestRecommendationsViewedItemsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+              type: array
+        description: The recommended access items that were viewed for an identity.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                type: array
+          description: Recommendations successfully stored as viewed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-request-recommender:manage
+      - applicationAuth:
+        - iai:access-request-recommender:manage
+      summary: Bulk mark viewed access request recommendations
+      tags:
+      - IAI Access Request Recommendations
+      x-sailpoint-userLevels:
+      - Any
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAccessRequestRecommendationsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAccessRequestRecommendationsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    accessrequestrecommendationitemtype:
+      description: The type of access item.
+      enum:
+      - ACCESS_PROFILE
+      - ROLE
+      example: ACCESS_PROFILE
+      type: string
+    accessrecommendationmessage:
+      example:
+        interpretation: 95% of your peers have this access.
+      properties:
+        interpretation:
+          description: Information about why the access item was recommended.
+          example: 95% of your peers have this access.
+          type: string
+      title: Access Recommendation Message
+      type: object
+    translationmessage:
+      properties:
+        key:
+          description: The key of the translation message
+          example: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+          type: string
+        values:
+          description: The values corresponding to the translation messages
+          example:
+          - "75"
+          - department
+          items:
+            type: string
+          type: array
+      title: Translation Message
+      type: object
+    accessrequestrecommendationitemdetail:
+      example:
+        ignored: true
+        requested: true
+        access:
+          name: Employee-database-read-write
+          description: This item grants an employee read and write access to the database
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+        translationMessages:
+        - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+          values:
+          - "75"
+          - department
+        identityId: 2c91808570313110017040b06f344ec9
+        viewed: true
+        messages:
+        - interpretation: 95% of your peers have this access.
+        - interpretation: 95% of your peers have this access.
+      properties:
+        identityId:
+          description: Identity ID for the recommendation
+          example: 2c91808570313110017040b06f344ec9
+          format: UUID
+          type: string
+        access:
+          $ref: '#/components/schemas/accessrequestrecommendationitemdetail_access'
+        ignored:
+          description: Whether or not the identity has already chosen to ignore this
+            recommendation.
+          example: true
+          type: boolean
+        requested:
+          description: Whether or not the identity has already chosen to request this
+            recommendation.
+          example: true
+          type: boolean
+        viewed:
+          description: Whether or not the identity reportedly viewed this recommendation.
+          example: true
+          type: boolean
+        messages:
+          items:
+            $ref: '#/components/schemas/accessrecommendationmessage'
+          type: array
+        translationMessages:
+          description: The list of translation messages
+          example:
+          - key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+            values:
+            - "75"
+            - department
+          items:
+            $ref: '#/components/schemas/translationmessage'
+          type: array
+      title: Access Request Recommendation Item Detail
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    accessrequestrecommendationconfigdto:
+      example:
+        scoreThreshold: 0.5
+        startDateAttribute: startDate
+        restrictionAttribute: location
+        moverAttribute: isMover
+        joinerAttribute: isJoiner
+        useRestrictionAttribute: true
+      properties:
+        scoreThreshold:
+          description: The value that internal calculations need to exceed for recommendations
+            to be made.
+          example: 0.5
+          format: float
+          type: number
+        startDateAttribute:
+          description: Use to map an attribute name for determining identities' start
+            date.
+          example: startDate
+          type: string
+        restrictionAttribute:
+          description: Use to only give recommendations based on this attribute.
+          example: location
+          type: string
+        moverAttribute:
+          description: Use to map an attribute name for determining whether identities
+            are movers.
+          example: isMover
+          type: string
+        joinerAttribute:
+          description: Use to map an attribute name for determining whether identities
+            are joiners.
+          example: isJoiner
+          type: string
+        useRestrictionAttribute:
+          default: false
+          description: Use only the attribute named in restrictionAttribute to make
+            recommendations.
+          example: true
+          type: boolean
+      required:
+      - scoreThreshold
+      title: Access Request Recommendation Config Dto
+      type: object
+    accessrequestrecommendationitem:
+      example:
+        id: 2c9180835d2e5168015d32f890ca1581
+        type: ACCESS_PROFILE
+      properties:
+        id:
+          description: ID of access item being recommended.
+          example: 2c9180835d2e5168015d32f890ca1581
+          format: UUID
+          type: string
+        type:
+          $ref: '#/components/schemas/accessrequestrecommendationitemtype'
+      title: Access Request Recommendation Item
+      type: object
+    accessrequestrecommendationactionitemresponsedto:
+      example:
+        access:
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+        identityId: 2c91808570313110017040b06f344ec9
+        timestamp: 2017-07-11T18:45:37.098Z
+      properties:
+        identityId:
+          description: The identity ID taking the action.
+          example: 2c91808570313110017040b06f344ec9
+          format: UUID
+          type: string
+        access:
+          $ref: '#/components/schemas/accessrequestrecommendationitem'
+        timestamp:
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+      title: Access Request Recommendation Action Item Response Dto
+      type: object
+    accessrequestrecommendationactionitemdto:
+      properties:
+        identityId:
+          description: The identity ID taking the action.
+          example: 2c91808570313110017040b06f344ec9
+          format: UUID
+          type: string
+        access:
+          $ref: '#/components/schemas/accessrequestrecommendationitem'
+      required:
+      - access
+      - identityId
+      title: Access Request Recommendation Action Item Dto
+      type: object
+    getAccessRequestRecommendationsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAccessRequestRecommendationsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    accessrequestrecommendationitemdetail_access:
+      example:
+        name: Employee-database-read-write
+        description: This item grants an employee read and write access to the database
+        id: 2c9180835d2e5168015d32f890ca1581
+        type: ACCESS_PROFILE
+      properties:
+        id:
+          description: ID of access item being recommended.
+          example: 2c9180835d2e5168015d32f890ca1581
+          format: UUID
+          type: string
+        type:
+          $ref: '#/components/schemas/accessrequestrecommendationitemtype'
+        name:
+          description: Name of the access item
+          example: Employee-database-read-write
+          type: string
+        description:
+          description: Description of the access item
+          example: This item grants an employee read and write access to the database
+          type: string
+      type: object

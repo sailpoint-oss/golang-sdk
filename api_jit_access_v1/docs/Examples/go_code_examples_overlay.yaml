@@ -1,0 +1,75 @@
+- path: /jit-activation-config/v1/{configType}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/jitaccessv1/methods/jit-access#get-jit-activation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          configType := `policy` // string | Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.JitAccessV1.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
+          //resp, r, err := apiClient.JitAccessV1.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.GetJitActivationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetJitActivationConfigV1`: Jitactivationconfigresponse
+          fmt.Fprintf(os.Stdout, "Response from `JITAccessAPI.GetJitActivationConfigV1`: %v\n", resp)
+        }
+- path: /jit-activation-config/v1/{configType}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/jitaccessv1/methods/jit-access#patch-jit-activation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          configType := `policy` // string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
+          jitaccessoperationrequest := []byte(``) // []Jitaccessoperationrequest | 
+
+          
+          var jitaccessoperationrequest []v1.Jitaccessoperationrequest
+          if err := json.Unmarshal(jitaccessoperationrequest, &jitaccessoperationrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.JitAccessV1.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
+          //resp, r, err := apiClient.JitAccessV1.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.PatchJitActivationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchJitActivationConfigV1`: Jitactivationconfigresponse
+          fmt.Fprintf(os.Stdout, "Response from `JITAccessAPI.PatchJitActivationConfigV1`: %v\n", resp)
+        }

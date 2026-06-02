@@ -1,0 +1,254 @@
+- path: /mfa/v1/duo-web/config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#get-mfa-duo-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFADuoConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMFADuoConfigV1`: Mfaduoconfig
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFADuoConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/kba/config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#get-mfa-kba-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          allLanguages := allLanguages=true // bool | Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false (optional) # bool | Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).AllLanguages(allLanguages).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAKbaConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMFAKbaConfigV1`: []Kbaquestion
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAKbaConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/okta-verify/config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#get-mfa-okta-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAOktaConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMFAOktaConfigV1`: Mfaoktaconfig
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAOktaConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/duo-web/config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#set-mfa-duo-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           mfaduoconfig := []byte(`{"mfaMethod":"duo-web","enabled":true,"host":"www.example.com","accessKey":"qw123Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email","configProperties":{"skey":"12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B","ikey":"Q123WE45R6TY7890ZXCV"}}`) // Mfaduoconfig | 
+
+          
+          var mfaduoconfig v1.Mfaduoconfig
+          if err := json.Unmarshal(mfaduoconfig, &mfaduoconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFADuoConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMFADuoConfigV1`: Mfaduoconfig
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFADuoConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/kba/config/answers
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#set-mfakba-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          kbaanswerrequestitem := []byte(`[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]`) // []Kbaanswerrequestitem | 
+
+          
+          var kbaanswerrequestitem []v1.Kbaanswerrequestitem
+          if err := json.Unmarshal(kbaanswerrequestitem, &kbaanswerrequestitem); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAKBAConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMFAKBAConfigV1`: []Kbaanswerresponseitem
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAKBAConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/okta-verify/config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#set-mfa-okta-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           mfaoktaconfig := []byte(`{"mfaMethod":"okta-verify","enabled":true,"host":"www.example.com","accessKey":"dk778Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email"}`) // Mfaoktaconfig | 
+
+          
+          var mfaoktaconfig v1.Mfaoktaconfig
+          if err := json.Unmarshal(mfaoktaconfig, &mfaoktaconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAOktaConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMFAOktaConfigV1`: Mfaoktaconfig
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAOktaConfigV1`: %v\n", resp)
+        }
+- path: /mfa/v1/{method}/test
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/mfaconfigurationv1/methods/mfa-configuration#test-mfa-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          method := `okta-verify` // string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. # string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
+          //resp, r, err := apiClient.MfaConfigurationV1.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.TestMFAConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `TestMFAConfigV1`: Mfaconfigtestresponse
+          fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.TestMFAConfigV1`: %v\n", resp)
+        }

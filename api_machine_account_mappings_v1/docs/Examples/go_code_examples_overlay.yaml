@@ -1,0 +1,150 @@
+- path: /sources/v1/{sourceId}/machine-account-mappings
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountmappingsv1/methods/machine-account-mappings#create-machine-account-mappings-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+           attributemappings := []byte(``) // Attributemappings | 
+
+          
+          var attributemappings v1.Attributemappings
+          if err := json.Unmarshal(attributemappings, &attributemappings); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineAccountMappingsV1`: []Attributemappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/machine-account-mappings
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountmappingsv1/methods/machine-account-mappings#delete-machine-account-mappings-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | source ID. # string | source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+          //r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v1/{sourceId}/machine-account-mappings
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountmappingsv1/methods/machine-account-mappings#list-machine-account-mappings-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappingsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineAccountMappingsV1`: []Attributemappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.ListMachineAccountMappingsV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/machine-mappings
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineaccountmappingsv1/methods/machine-account-mappings#set-machine-account-mappings-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+           attributemappings := []byte(``) // Attributemappings | 
+
+          
+          var attributemappings v1.Attributemappings
+          if err := json.Unmarshal(attributemappings, &attributemappings); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsV1.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.SetMachineAccountMappingsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMachineAccountMappingsV1`: []Attributemappings
+          fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.SetMachineAccountMappingsV1`: %v\n", resp)
+        }

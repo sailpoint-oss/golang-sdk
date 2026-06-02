@@ -1,0 +1,1010 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Account Activities
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement account activity tracking functionality.\n\
+    With this functionality in place, users can track source account activity in Identity\
+    \ Security Cloud, which greatly improves traceability in the system. \n\nAn account\
+    \ activity refers to a log of each action performed on a source account. This\
+    \ is useful for auditing the changes performed on an account throughout its life.\
+    \ \nIn Identity Security Cloud's Search, users can search for account activities\
+    \ and select the activity's row to get an overview of the activity's account action\
+    \ and view its progress, its involved sources, and its most basic metadata, such\
+    \ as the identity requesting the option and the recipient. \n\nAccount activity\
+    \ includes most actions Identity Security Cloud completes on source accounts.\
+    \ Users can search in Identity Security Cloud for the following account action\
+    \ types: \n\n- Access Request: These include any access requests the source account\
+    \ is involved in. \n\n- Account Attribute Updates: These include updates to a\
+    \ single attribute on an account on a source. \n\n- Account State Update: These\
+    \ include locking or unlocking actions on an account on a source. \n\n- Certification:\
+    \ These include actions removing an entitlement from an account on a source as\
+    \ a result of the entitlement's revocation during a certification.\n\n- Cloud\
+    \ Automated `Lifecyclestate`: These include automated lifecycle state changes\
+    \ that result in a source account's correlated identity being assigned to a different\
+    \ lifecycle state. \nIdentity Security Cloud replaces the `Lifecyclestate` variable\
+    \ with the name of the lifecycle state it has moved the account's identity to.\
+    \ \n\n- Identity Attribute Update: These include updates to a source account's\
+    \ correlated identity attributes as the result of a provisioning action. \nWhen\
+    \ you update an identity attribute that also updates an identity's lifecycle state,\
+    \ the cloud automated `Lifecyclestate` event also displays.\nAccount Activity\
+    \ does not include attribute updates that occur as a result of aggregation.\n\n\
+    - Identity Refresh: These include correlated identity refreshes that occur for\
+    \ an account on a source whenever the account's correlated identity profile gets\
+    \ a new role or updates. \nThese also include refreshes that occur whenever Identity\
+    \ Security Cloud assigns an application to the account's correlated identity based\
+    \ on the application's being assigned to All Users From Source or Specific Users\
+    \ From Source. \n\n- Lifecycle State Refresh: These include the actions that took\
+    \ place when a lifecycle state changed. This event only occurs after a cloud automated\
+    \ `Lifecyclestate` change or a lifecycle state change. \n\n- Lifecycle State Change:\
+    \ These include the account activities that result from an identity's manual assignment\
+    \ to a null lifecycle state.\n\n- Password Change: These include password changes\
+    \ on sources.\n\nRefer to [Account Activity](https://documentation.sailpoint.com/saas/help/search/index.html#account-activity)\
+    \ for more information about account activities.\n"
+  name: Account Activities
+paths:
+  /account-activities/v1:
+    get:
+      description: This gets a collection of account activities that satisfy the given
+        query parameters.
+      operationId: listAccountActivitiesV1
+      parameters:
+      - description: The identity that the activity was requested for. *me* indicates
+          the current user. Mutually exclusive with *regarding-identity*.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: requested-for
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The identity that requested the activity. *me* indicates the
+          current user. Mutually exclusive with *regarding-identity*.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: requested-by
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The specified identity will be either the requester or target
+          of the account activity. *me* indicates the current user. Mutually exclusive
+          with *requested-for* and *requested-by*.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: true
+        in: query
+        name: regarding-identity
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **type**: *eq, in, ge, le, lt, ne, isnull, sw*
+
+          **created**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
+
+          **modified**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
+        example: type eq "Identity Refresh"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **type, created, modified**
+        example: created
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accountactivity'
+                type: array
+          description: List of account activities
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountActivitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountActivitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: List account activities
+      tags:
+      - Account Activities
+  /account-activities/v1/{id}:
+    get:
+      description: This gets a single account activity by its id.
+      operationId: getAccountActivityV1
+      parameters:
+      - description: The account activity id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccountActivities
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountactivity'
+          description: An account activity object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountActivitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccountActivitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Get an account activity
+      tags:
+      - Account Activities
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccountActivitiesV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccountActivitiesV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    completionstatus:
+      description: The status after completion.
+      enum:
+      - SUCCESS
+      - FAILURE
+      - INCOMPLETE
+      - PENDING
+      - null
+      example: SUCCESS
+      nullable: true
+      type: string
+    identitysummary:
+      example:
+        identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+        name: SailPoint Services
+        id: ff80818155fe8c080155fe8d925b0316
+        completed: true
+      nullable: true
+      properties:
+        id:
+          description: ID of this identity summary
+          example: ff80818155fe8c080155fe8d925b0316
+          type: string
+        name:
+          description: Human-readable display name of identity
+          example: SailPoint Services
+          type: string
+        identityId:
+          description: ID of the identity that this summary represents
+          example: c15b9f5cca5a4e9599eaa0e64fa921bd
+          type: string
+        completed:
+          default: false
+          description: Indicates if all access items for this summary have been decided
+            on
+          example: true
+          type: boolean
+      title: Identity Summary
+      type: object
+    accountactivityapprovalstatus:
+      description: The state of an approval status
+      enum:
+      - FINISHED
+      - REJECTED
+      - RETURNED
+      - EXPIRED
+      - PENDING
+      - CANCELED
+      - null
+      example: PENDING
+      nullable: true
+      type: string
+    provisioningstate:
+      description: Provisioning state of an account activity item
+      enum:
+      - PENDING
+      - FINISHED
+      - UNVERIFIABLE
+      - COMMITED
+      - FAILED
+      - RETRY
+      example: PENDING
+      type: string
+    comment:
+      example:
+        date: 2017-07-11T18:45:37.098Z
+        commenterName: Adam Kennedy
+        body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+          erat.
+        commenterId: 2c918084660f45d6016617daa9210584
+      nullable: true
+      properties:
+        commenterId:
+          description: Id of the identity making the comment
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        commenterName:
+          description: Human-readable display name of the identity making the comment
+          example: Adam Kennedy
+          type: string
+        body:
+          description: Content of the comment
+          example: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+            erat.
+          type: string
+        date:
+          description: Date and time comment was made
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+      title: Comment
+      type: object
+    accountactivityitemoperation:
+      description: Represents an operation in an account activity item
+      enum:
+      - ADD
+      - CREATE
+      - MODIFY
+      - DELETE
+      - DISABLE
+      - ENABLE
+      - UNLOCK
+      - LOCK
+      - REMOVE
+      - SET
+      - null
+      example: ADD
+      nullable: true
+      type: string
+    requestableobjecttype:
+      description: Currently supported requestable object types.
+      enum:
+      - ACCESS_PROFILE
+      - ROLE
+      - ENTITLEMENT
+      example: ACCESS_PROFILE
+      type: string
+    accountrequestinfo:
+      description: "If an account activity item is associated with an access request,\
+        \ captures details of that request."
+      example:
+        requestedObjectId: 2c91808563ef85690164001c31140c0c
+        requestedObjectName: Treasury Analyst
+        requestedObjectType: ACCESS_PROFILE
+      nullable: true
+      properties:
+        requestedObjectId:
+          description: Id of requested object
+          example: 2c91808563ef85690164001c31140c0c
+          type: string
+        requestedObjectName:
+          description: Human-readable name of requested object
+          example: Treasury Analyst
+          type: string
+        requestedObjectType:
+          $ref: '#/components/schemas/requestableobjecttype'
+      title: Account Request Info
+      type: object
+    accountactivityitem:
+      example:
+        approvalStatus: PENDING
+        reviewerComment:
+          date: 2017-07-11T18:45:37.098Z
+          commenterName: Adam Kennedy
+          body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+            erat.
+          commenterId: 2c918084660f45d6016617daa9210584
+        sourceId: 2c91808363ef85290164000587130c0c
+        clientMetadata:
+          customKey1: custom value 1
+          customKey2: custom value 2
+        removeDate: 2020-07-11T00:00:00Z
+        reviewerIdentitySummary:
+          identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+          name: SailPoint Services
+          id: ff80818155fe8c080155fe8d925b0316
+          completed: true
+        requesterComment:
+          date: 2017-07-11T18:45:37.098Z
+          commenterName: Adam Kennedy
+          body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+            erat.
+          commenterId: 2c918084660f45d6016617daa9210584
+        accountRequestInfo:
+          requestedObjectId: 2c91808563ef85690164001c31140c0c
+          requestedObjectName: Treasury Analyst
+          requestedObjectType: ACCESS_PROFILE
+        nativeIdentity: Sandie.Camero
+        requested: 2017-07-11T18:45:37.098Z
+        provisioningStatus: PENDING
+        name: 48c545831b264409a81befcabb0e3c5a
+        id: 48c545831b264409a81befcabb0e3c5a
+        attribute: detectedRoles
+        operation: ADD
+        value: "Treasury Analyst [AccessProfile-1529010191212]"
+      properties:
+        id:
+          description: Item id
+          example: 48c545831b264409a81befcabb0e3c5a
+          type: string
+        name:
+          description: Human-readable display name of item
+          example: 48c545831b264409a81befcabb0e3c5a
+          type: string
+        requested:
+          description: Date and time item was requested
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        approvalStatus:
+          $ref: '#/components/schemas/accountactivityapprovalstatus'
+        provisioningStatus:
+          $ref: '#/components/schemas/provisioningstate'
+        requesterComment:
+          $ref: '#/components/schemas/comment'
+        reviewerIdentitySummary:
+          $ref: '#/components/schemas/identitysummary'
+        reviewerComment:
+          $ref: '#/components/schemas/comment'
+        operation:
+          $ref: '#/components/schemas/accountactivityitemoperation'
+        attribute:
+          description: Attribute to which account activity applies
+          example: detectedRoles
+          nullable: true
+          type: string
+        value:
+          description: Value of attribute
+          example: "Treasury Analyst [AccessProfile-1529010191212]"
+          nullable: true
+          type: string
+        nativeIdentity:
+          description: Native identity in the target system to which the account activity
+            applies
+          example: Sandie.Camero
+          nullable: true
+          type: string
+        sourceId:
+          description: Id of Source to which account activity applies
+          example: 2c91808363ef85290164000587130c0c
+          type: string
+        accountRequestInfo:
+          $ref: '#/components/schemas/accountrequestinfo'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: "Arbitrary key-value pairs, if any were included in the corresponding\
+            \ access request item"
+          example:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          nullable: true
+          type: object
+        removeDate:
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Account Activity Item
+      type: object
+    executionstatus:
+      description: The current state of execution.
+      enum:
+      - EXECUTING
+      - VERIFYING
+      - TERMINATED
+      - COMPLETED
+      example: COMPLETED
+      type: string
+    accountactivity:
+      example:
+        clientMetadata:
+          customKey1: custom value 1
+          customKey2: custom value 2
+        created: 2017-07-11T18:45:37.098Z
+        warnings:
+        - "Some warning, another warning"
+        executionStatus: COMPLETED
+        completed: 2018-10-19T13:49:37.385Z
+        type: appRequest
+        targetIdentitySummary:
+          identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+          name: SailPoint Services
+          id: ff80818155fe8c080155fe8d925b0316
+          completed: true
+        name: 2c9180835d2e5168015d32f890ca1581
+        requesterIdentitySummary:
+          identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+          name: SailPoint Services
+          id: ff80818155fe8c080155fe8d925b0316
+          completed: true
+        modified: 2018-06-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+        completionStatus: SUCCESS
+        items:
+        - approvalStatus: PENDING
+          reviewerComment:
+            date: 2017-07-11T18:45:37.098Z
+            commenterName: Adam Kennedy
+            body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+              erat.
+            commenterId: 2c918084660f45d6016617daa9210584
+          sourceId: 2c91808363ef85290164000587130c0c
+          clientMetadata:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          removeDate: 2020-07-11T00:00:00Z
+          reviewerIdentitySummary:
+            identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+            name: SailPoint Services
+            id: ff80818155fe8c080155fe8d925b0316
+            completed: true
+          requesterComment:
+            date: 2017-07-11T18:45:37.098Z
+            commenterName: Adam Kennedy
+            body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+              erat.
+            commenterId: 2c918084660f45d6016617daa9210584
+          accountRequestInfo:
+            requestedObjectId: 2c91808563ef85690164001c31140c0c
+            requestedObjectName: Treasury Analyst
+            requestedObjectType: ACCESS_PROFILE
+          nativeIdentity: Sandie.Camero
+          requested: 2017-07-11T18:45:37.098Z
+          provisioningStatus: PENDING
+          name: 48c545831b264409a81befcabb0e3c5a
+          id: 48c545831b264409a81befcabb0e3c5a
+          attribute: detectedRoles
+          operation: ADD
+          value: "Treasury Analyst [AccessProfile-1529010191212]"
+        - approvalStatus: PENDING
+          reviewerComment:
+            date: 2017-07-11T18:45:37.098Z
+            commenterName: Adam Kennedy
+            body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+              erat.
+            commenterId: 2c918084660f45d6016617daa9210584
+          sourceId: 2c91808363ef85290164000587130c0c
+          clientMetadata:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          removeDate: 2020-07-11T00:00:00Z
+          reviewerIdentitySummary:
+            identityId: c15b9f5cca5a4e9599eaa0e64fa921bd
+            name: SailPoint Services
+            id: ff80818155fe8c080155fe8d925b0316
+            completed: true
+          requesterComment:
+            date: 2017-07-11T18:45:37.098Z
+            commenterName: Adam Kennedy
+            body: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
+              erat.
+            commenterId: 2c918084660f45d6016617daa9210584
+          accountRequestInfo:
+            requestedObjectId: 2c91808563ef85690164001c31140c0c
+            requestedObjectName: Treasury Analyst
+            requestedObjectType: ACCESS_PROFILE
+          nativeIdentity: Sandie.Camero
+          requested: 2017-07-11T18:45:37.098Z
+          provisioningStatus: PENDING
+          name: 48c545831b264409a81befcabb0e3c5a
+          id: 48c545831b264409a81befcabb0e3c5a
+          attribute: detectedRoles
+          operation: ADD
+          value: "Treasury Analyst [AccessProfile-1529010191212]"
+        errors:
+        - "sailpoint.connector.ConnectorException: java.lang.InterruptedException:\
+          \ Timeout waiting for response to message 0 from client 57a4ab97-ab3f-4aef-9fe2-0eaf15c73d26\
+          \ after 60 seconds."
+      properties:
+        id:
+          description: Id of the account activity
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        name:
+          description: The name of the activity
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        created:
+          description: When the activity was first created
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: When the activity was last modified
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
+          type: string
+        completed:
+          description: When the activity was completed
+          example: 2018-10-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        completionStatus:
+          $ref: '#/components/schemas/completionstatus'
+        type:
+          description: |
+            The type of action the activity performed.  Please see the following list of types.  This list may grow over time.
+
+            - CloudAutomated
+            - IdentityAttributeUpdate
+            - appRequest
+            - LifecycleStateChange
+            - AccountStateUpdate
+            - AccountAttributeUpdate
+            - CloudPasswordRequest
+            - Attribute Synchronization Refresh
+            - Certification
+            - Identity Refresh
+            - Lifecycle Change Refresh
+
+
+            [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data).
+          example: appRequest
+          nullable: true
+          type: string
+        requesterIdentitySummary:
+          $ref: '#/components/schemas/identitysummary'
+        targetIdentitySummary:
+          $ref: '#/components/schemas/identitysummary'
+        errors:
+          description: "A list of error messages, if any, that were encountered."
+          example:
+          - "sailpoint.connector.ConnectorException: java.lang.InterruptedException:\
+            \ Timeout waiting for response to message 0 from client 57a4ab97-ab3f-4aef-9fe2-0eaf15c73d26\
+            \ after 60 seconds."
+          items:
+            type: string
+          nullable: true
+          type: array
+        warnings:
+          description: "A list of warning messages, if any, that were encountered."
+          example:
+          - "Some warning, another warning"
+          items:
+            type: string
+          nullable: true
+          type: array
+        items:
+          description: Individual actions performed as part of this account activity
+          items:
+            $ref: '#/components/schemas/accountactivityitem'
+          nullable: true
+          type: array
+        executionStatus:
+          $ref: '#/components/schemas/executionstatus'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: "Arbitrary key-value pairs, if any were included in the corresponding\
+            \ access request"
+          example:
+            customKey1: custom value 1
+            customKey2: custom value 2
+          nullable: true
+          type: object
+      title: Account Activity
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    listAccountActivitiesV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listAccountActivitiesV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

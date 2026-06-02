@@ -1,0 +1,4498 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Certifications
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement certification functionality. \nWith this\
+    \ functionality in place, administrators and designated certification reviewers\
+    \ can review users' access certifications and decide whether to approve access,\
+    \ revoke it, or reassign the review to another reviewer. \nImplementing certifications\
+    \ improves organizations' data security by reducing inappropriate access through\
+    \ a distributed review process and helping them satisfy audit and regulatory requirements.\
+    \ \n\nA certification refers to Identity Security Cloud's mechanism for reviewing\
+    \ a user's access to entitlements (sets of permissions) and approving or removing\
+    \ that access. \nThese serve as a way of showing that a user's access has been\
+    \ reviewed and approved. \nMultiple certifications by different reviewers are\
+    \ often required to approve a user's access. \nA set of multiple certifications\
+    \ is called a certification campaign.\n\nFor example, an organization may use\
+    \ a Manager Certification as a way of showing that a user's access has been reviewed\
+    \ and approved by their manager, or if the certification is part of a campaign,\
+    \ that the user's access has been reviewed and approved by multiple managers.\
+    \ \nOnce this certification has been completed, Identity Security Cloud  would\
+    \ provision all the access the user needs, nothing more. \n\nOrganization administrators\
+    \ or certification administrators can designate other Identity Security Cloud\
+    \ users as certification reviewers. \nThose reviewers can select the 'Certifications'\
+    \ tab to view any of the certifications they either need to review or have already\
+    \ reviewed under the 'Active' and 'Completed' tabs, respectively. \n\nWhen a certification\
+    \ campaign is in progress, certification reviewers will see certifications listed\
+    \ under 'Active,' where they can review the involved identities. \nUnder the 'Decision'\
+    \ column on the right, next to each access item, reviewers can select the checkmark\
+    \ to approve access, select the 'X' to revoke access, or they can toggle the 'More\
+    \ Options' menu to reassign the certification to another reviewer and provide\
+    \ a reason for reassignment in the form of a comment. \n\nOnce a reviewer has\
+    \ made decisions on all the certification's involved access items, he or she must\
+    \ select 'Sign Off' to complete the review process.\nDoing so converts the certification\
+    \ into read-only status, preventing any further changes to the review decisions\
+    \ and deleting the work item (task) from the reviewer's list of work items. \n\
+    \nOnce all the reviewers have signed off, the certification campaign either completes\
+    \ or, if any reviewers decided to revoke access for any of the involved identities,\
+    \ it moves into a remediation phase. In the remediation phase, identities' entitlements\
+    \ are altered to remove any entitlements marked for revocation.\nIn this situation,\
+    \ the certification campaign completes once all the remediation requests are completed.\n"
+  name: Certifications
+paths:
+  /certifications/v1:
+    get:
+      description: "Use this API to get a list of identity campaign certifications\
+        \ for the specified query parameters. Any authenticated token can call this\
+        \ API, but only certifications you are authorized to review will be returned.\
+        \ This API does not support requests for certifications assigned to governance\
+        \ groups."
+      operationId: listIdentityCertificationsV1
+      parameters:
+      - description: Reviewer's identity. *me* indicates the current user.
+        example: me
+        explode: true
+        in: query
+        name: reviewer-identity
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **campaign.id**: *eq, in*
+
+          **phase**: *eq*
+
+          **completed**: *eq*
+        example: id eq "ef38f94347e94562b5bb8424a56397d8"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, due, signed**
+        example: "name,due"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/identitycertificationdto'
+                type: array
+          description: List of identity campaign certifications.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: List identity campaign certifications
+      tags:
+      - Certifications
+  /certifications/v1/{id}:
+    get:
+      description: This API returns a single identity campaign certification by its
+        ID. Reviewers for this certification can also call this API.
+      operationId: getIdentityCertificationV1
+      parameters:
+      - description: The certification id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identitycertificationdto'
+          description: An identity campaign certification object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: Identity certification by id
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{id}/access-review-items:
+    get:
+      description: This API returns a list of access review items for an identity
+        campaign certification. Reviewers for this certification can also call this
+        API. This API does not support requests for certifications assigned to Governance
+        Groups.
+      operationId: listIdentityAccessReviewItemsV1
+      parameters:
+      - description: The identity campaign certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **type**: *eq*
+
+          **access.type**: *eq*
+
+          **completed**: *eq, ne*
+
+          **identitySummary.id**: *eq, in*
+
+          **identitySummary.name**: *eq, sw*
+
+          **access.id**: *eq, in*
+
+          **access.name**: *eq, sw*
+
+          **entitlement.sourceName**: *eq, sw*
+
+          **accessProfile.sourceName**: *eq, sw*
+        example: id eq "ef38f94347e94562b5bb8424a56397d8"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **identitySummary.name, access.name, access.type, entitlement.sourceName, accessProfile.sourceName**
+        example: "access.name,-accessProfile.sourceName"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results to view access review items that pertain to any of the specified comma-separated entitlement IDs.
+
+          An error will occur if this param is used with **access-profiles** or **roles** as only one of these query params can be used at a time.
+        example: identityEntitlement
+        explode: true
+        in: query
+        name: entitlements
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results to view access review items that pertain to any of the specified comma-separated access-profle IDs.
+
+          An error will occur if this param is used with **entitlements** or **roles** as only one of these query params can be used at a time.
+        example: accessProfile1
+        explode: true
+        in: query
+        name: access-profiles
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results to view access review items that pertain to any of the specified comma-separated role IDs.
+
+          An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time.
+        example: userRole
+        explode: true
+        in: query
+        name: roles
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accessreviewitem'
+                type: array
+          description: A list of access review items
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: List of access review items
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{id}/decide:
+    post:
+      description: The API makes a decision to approve or revoke one or more identity
+        campaign certification items. Reviewers for this certification can also call
+        this API. This API does not support requests for certifications assigned to
+        Governance Groups.
+      operationId: makeIdentityDecisionV1
+      parameters:
+      - description: The ID of the identity campaign certification on which to make
+          decisions
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: ef38f94347e94562b5bb8424a56396b5
+              decision: APPROVE
+              bulk: true
+              comments: This user still needs access to this source.
+            - id: ef38f94347e94562b5bb8424a56397d8
+              decision: APPROVE
+              bulk: true
+              comments: This user still needs access to this source too.
+            schema:
+              items:
+                $ref: '#/components/schemas/reviewdecision'
+              maxItems: 250
+              minItems: 1
+              type: array
+        description: A non-empty array of decisions to be made.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identitycertificationdto'
+          description: An identity campaign certification object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:manage
+      summary: Decide on a certification item
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{id}/reassign:
+    post:
+      description: This API reassigns up to 50 identities or items in an identity
+        campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN
+        authority is required to call this API. Reviewers for this certification can
+        also call this API. This API does not support requests for certifications
+        assigned to Governance Groups.
+      operationId: reassignIdentityCertificationsV1
+      parameters:
+      - description: The identity campaign certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reviewreassign'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identitycertificationdto'
+          description: An identity campaign certification details after completing
+            the reassignment.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:manage
+      summary: Reassign identities or items
+      tags:
+      - Certifications
+  /certifications/v1/{id}/sign-off:
+    post:
+      description: This API finalizes all decisions made on an identity campaign certification
+        and initiates any remediations required. Reviewers for this certification
+        can also call this API. This API does not support requests for certifications
+        assigned to Governance Groups.
+      operationId: signOffIdentityCertificationV1
+      parameters:
+      - description: The identity campaign certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identitycertificationdto'
+          description: An identity campaign certification object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:manage
+      summary: Finalize identity certification decisions
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{certificationId}/access-review-items/{itemId}/permissions:
+    get:
+      description: This API returns the permissions associated with an entitlement
+        certification item based on the certification item's ID. Reviewers for this
+        certification can also call this API.
+      operationId: getIdentityCertificationItemPermissionsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **target**: *eq, sw*
+
+          **rights**: *ca*
+
+          Supported composite operators: *and, or*
+
+          All field values (second filter operands) are case-insensitive for this API.
+
+          Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.
+
+          For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`
+
+          The following is invalid: 1?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)1
+        example: target eq "SYS.OBJAUTH2"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      - description: The certification item ID
+        example: 2c91808671bcbab40171bd945d961227
+        explode: false
+        in: path
+        name: itemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityAccessReviewItems
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/permissiondto'
+                type: array
+          description: A list of permissions associated with the given itemId
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: Permissions for entitlement certification item
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{id}/reviewers:
+    get:
+      description: This API returns a list of reviewers for the certification. Reviewers
+        for this certification can also call this API.
+      operationId: listCertificationReviewersV1
+      parameters:
+      - description: The certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, sw*
+
+          **email**: *eq, sw*
+        example: name eq "Bob"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, email**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/identityreferencewithnameandemail'
+                type: array
+          description: A list of reviewers
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: List of reviewers for certification
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certifications/v1/{id}/reassign-async:
+    post:
+      description: "This API initiates a task to reassign up to 500 identities or\
+        \ items in an identity campaign certification to another\nreviewer. The `certification-tasks`\
+        \ API can be used to get an updated status on the task and determine when\
+        \ the\nreassignment is complete. \n\nReviewers for this certification can\
+        \ also call this API.\n"
+      operationId: submitReassignCertsAsyncV1
+      parameters:
+      - description: The identity campaign certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentityCertifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reviewreassign'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/certificationtask'
+          description: A certification task object for the reassignment which can
+            be queried for status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:manage
+      summary: Reassign certifications asynchronously
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certification-tasks/v1/{id}:
+    get:
+      description: This API returns the certification task for the specified ID. Reviewers
+        for the specified certification can also call this API.
+      operationId: getCertificationTaskV1
+      parameters:
+      - description: The task ID
+        example: 63b32151-26c0-42f4-9299-8898dc1c9daa
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getPendingCertificationTasks
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/certificationtask'
+          description: A certification task
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: Certification task by id
+      tags:
+      - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+  /certification-tasks/v1:
+    get:
+      description: "This API returns a list of pending (`QUEUED` or `IN_PROGRESS`)\
+        \ certification tasks. Any authenticated token can call this API, but only\
+        \ certification tasks you are authorized to review will be returned."
+      operationId: getPendingCertificationTasksV1
+      parameters:
+      - description: The ID of reviewer identity. *me* indicates the current user.
+        explode: true
+        in: query
+        name: reviewer-identity
+        required: false
+        schema:
+          example: Ada.1de82e55078344
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **targetId**: *eq, in*
+
+          **type**: *eq, in*
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          example: type eq "ADMIN_REASSIGN"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/certificationtask'
+                type: array
+          description: A list of pending certification tasks
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:campaign:read
+      summary: List of pending certification tasks
+      tags:
+      - Certifications
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listIdentityCertificationsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listIdentityCertificationsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    campaignreference:
+      example:
+        campaignType: MANAGER
+        name: Campaign Name
+        mandatoryCommentRequirement: NO_DECISIONS
+        description: A description of the campaign
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: CAMPAIGN
+        correlatedStatus: CORRELATED
+      properties:
+        id:
+          description: The unique ID of the campaign.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        name:
+          description: The name of the campaign.
+          example: Campaign Name
+          type: string
+        type:
+          description: The type of object that is being referenced.
+          enum:
+          - CAMPAIGN
+          example: CAMPAIGN
+          type: string
+        campaignType:
+          description: The type of the campaign.
+          enum:
+          - MANAGER
+          - SOURCE_OWNER
+          - SEARCH
+          - ROLE_COMPOSITION
+          - MACHINE_ACCOUNT
+          example: MANAGER
+          type: string
+        description:
+          description: The description of the campaign set by the admin who created
+            it.
+          example: A description of the campaign
+          nullable: true
+          type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: string
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
+      required:
+      - campaignType
+      - correlatedStatus
+      - description
+      - id
+      - mandatoryCommentRequirement
+      - name
+      - type
+      title: Campaign Reference
+      type: object
+    reviewer:
+      example:
+        created: 2018-06-25T20:22:28.104Z
+        name: Reviewer Name
+        modified: 2018-06-25T20:22:28.104Z
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: IDENTITY
+        email: reviewer@test.com
+      properties:
+        id:
+          description: The id of the reviewer.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        name:
+          description: The name of the reviewer.
+          example: Reviewer Name
+          type: string
+        email:
+          description: The email of the reviewing identity. This is only applicable
+            to reviewers of the `IDENTITY` type.
+          example: reviewer@test.com
+          nullable: true
+          type: string
+        type:
+          description: The type of the reviewing identity.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        created:
+          description: The created date of the reviewing identity.
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
+          type: string
+        modified:
+          description: The modified date of the reviewing identity.
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Reviewer
+      type: object
+    certificationreference:
+      example:
+        name: Certification Name
+        id: ef38f94347e94562b5bb8424a56397d8
+        reviewer:
+          created: 2018-06-25T20:22:28.104Z
+          name: Reviewer Name
+          modified: 2018-06-25T20:22:28.104Z
+          id: ef38f94347e94562b5bb8424a56397d8
+          type: IDENTITY
+          email: reviewer@test.com
+        type: CERTIFICATION
+      properties:
+        id:
+          description: The id of the certification.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        name:
+          description: The name of the certification.
+          example: Certification Name
+          type: string
+        type:
+          enum:
+          - CERTIFICATION
+          example: CERTIFICATION
+          type: string
+        reviewer:
+          $ref: '#/components/schemas/reviewer'
+      title: Certification Reference
+      type: object
+    reassignment:
+      example:
+        from:
+          name: Certification Name
+          id: ef38f94347e94562b5bb8424a56397d8
+          reviewer:
+            created: 2018-06-25T20:22:28.104Z
+            name: Reviewer Name
+            modified: 2018-06-25T20:22:28.104Z
+            id: ef38f94347e94562b5bb8424a56397d8
+            type: IDENTITY
+            email: reviewer@test.com
+          type: CERTIFICATION
+        comment: Reassigned for a reason
+      nullable: true
+      properties:
+        from:
+          $ref: '#/components/schemas/certificationreference'
+        comment:
+          description: The comment entered when the Certification was reassigned
+          example: Reassigned for a reason
+          type: string
+      title: Reassignment
+      type: object
+    certificationphase:
+      description: |
+        The current phase of the campaign.
+        * `STAGED`: The campaign is waiting to be activated.
+        * `ACTIVE`: The campaign is active.
+        * `SIGNED`: The reviewer has signed off on the campaign, and it is considered complete.
+      enum:
+      - STAGED
+      - ACTIVE
+      - SIGNED
+      example: ACTIVE
+      type: string
+    identitycertificationdto:
+      example:
+        phase: ACTIVE
+        reassignment:
+          from:
+            name: Certification Name
+            id: ef38f94347e94562b5bb8424a56397d8
+            reviewer:
+              created: 2018-06-25T20:22:28.104Z
+              name: Reviewer Name
+              modified: 2018-06-25T20:22:28.104Z
+              id: ef38f94347e94562b5bb8424a56397d8
+              type: IDENTITY
+              email: reviewer@test.com
+            type: CERTIFICATION
+          comment: Reassigned for a reason
+        hasErrors: false
+        identitiesTotal: 10
+        created: 2018-06-25T20:22:28.104Z
+        decisionsTotal: 40
+        errorMessage: The certification has an error
+        signed: 2018-10-19T13:49:37.385Z
+        completed: true
+        reviewer:
+          created: 2018-06-25T20:22:28.104Z
+          name: Reviewer Name
+          modified: 2018-06-25T20:22:28.104Z
+          id: ef38f94347e94562b5bb8424a56397d8
+          type: IDENTITY
+          email: reviewer@test.com
+        identitiesCompleted: 5
+        due: 2018-10-19T13:49:37.385Z
+        name: "Source Owner Access Review for Employees [source]"
+        campaign:
+          campaignType: MANAGER
+          name: Campaign Name
+          mandatoryCommentRequirement: NO_DECISIONS
+          description: A description of the campaign
+          id: ef38f94347e94562b5bb8424a56397d8
+          type: CAMPAIGN
+          correlatedStatus: CORRELATED
+        modified: 2018-06-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+        decisionsMade: 20
+      properties:
+        id:
+          description: id of the certification
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        name:
+          description: name of the certification
+          example: "Source Owner Access Review for Employees [source]"
+          type: string
+        campaign:
+          $ref: '#/components/schemas/campaignreference'
+        completed:
+          description: Have all decisions been made?
+          example: true
+          type: boolean
+        identitiesCompleted:
+          description: The number of identities for whom all decisions have been made
+            and are complete.
+          example: 5
+          format: int32
+          type: integer
+        identitiesTotal:
+          description: "The total number of identities in the Certification, both\
+            \ complete and incomplete."
+          example: 10
+          format: int32
+          type: integer
+        created:
+          description: created date
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          type: string
+        modified:
+          description: modified date
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          type: string
+        decisionsMade:
+          description: The number of approve/revoke/acknowledge decisions that have
+            been made.
+          example: 20
+          format: int32
+          type: integer
+        decisionsTotal:
+          description: The total number of approve/revoke/acknowledge decisions.
+          example: 40
+          format: int32
+          type: integer
+        due:
+          description: The due date of the certification.
+          example: 2018-10-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        signed:
+          description: The date the reviewer signed off on the Certification.
+          example: 2018-10-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        reviewer:
+          $ref: '#/components/schemas/reviewer'
+        reassignment:
+          $ref: '#/components/schemas/reassignment'
+        hasErrors:
+          description: Identifies if the certification has an error
+          example: false
+          type: boolean
+        errorMessage:
+          description: Description of the certification error
+          example: The certification has an error
+          nullable: true
+          type: string
+        phase:
+          $ref: '#/components/schemas/certificationphase'
+      title: Identity Certification Dto
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    dtotype:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
+    identityreferencewithnameandemail:
+      example:
+        name: Alison Ferguso
+        id: 5168015d32f890ca15812c9180835d2e
+        type: IDENTITY
+        email: alison.ferguso@identitysoon.com
+      nullable: true
+      properties:
+        type:
+          description: The type can only be IDENTITY. This is read-only.
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity ID.
+          example: 5168015d32f890ca15812c9180835d2e
+          type: string
+        name:
+          description: Identity's human-readable display name. This is read-only.
+          example: Alison Ferguso
+          type: string
+        email:
+          description: Identity's email address. This is read-only.
+          example: alison.ferguso@identitysoon.com
+          nullable: true
+          type: string
+      title: Identity Reference With Name And Email
+      type: object
+    dataaccess:
+      description: DAS data for the entitlement
+      example:
+        policies:
+        - value: GDPR-20
+        - value: GDPR-20
+        categories:
+        - matchCount: 10
+          value: email-7
+        - matchCount: 10
+          value: email-7
+        impactScore:
+          value: Medium
+      nullable: true
+      properties:
+        policies:
+          description: List of classification policies that apply to resources the
+            entitlement \ groups has access to
+          items:
+            $ref: '#/components/schemas/dataaccess_policies_inner'
+          type: array
+        categories:
+          description: List of classification categories that apply to resources the
+            entitlement \ groups has access to
+          items:
+            $ref: '#/components/schemas/dataaccess_categories_inner'
+          type: array
+        impactScore:
+          $ref: '#/components/schemas/dataaccess_impactScore'
+      title: Data Access
+      type: object
+    activityinsights:
+      description: Insights into account activity
+      example:
+        accountID: c4ddd5421d8549f0abd309162cafd3b1
+        usageDays: 45
+        usageDaysState: COMPLETE
+      properties:
+        accountID:
+          description: UUID of the account
+          example: c4ddd5421d8549f0abd309162cafd3b1
+          type: string
+        usageDays:
+          description: The number of days of activity
+          example: 45
+          format: int32
+          maximum: 90
+          minimum: 0
+          type: integer
+        usageDaysState:
+          description: Status indicating if the activity is complete or unknown
+          enum:
+          - COMPLETE
+          - UNKNOWN
+          example: COMPLETE
+          type: string
+      title: Activity Insights
+      type: object
+    reviewableentitlement:
+      example:
+        owner:
+          name: Alison Ferguso
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+          email: alison.ferguso@identitysoon.com
+        sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+        dataAccess:
+          policies:
+          - value: GDPR-20
+          - value: GDPR-20
+          categories:
+          - matchCount: 10
+            value: email-7
+          - matchCount: 10
+            value: email-7
+          impactScore:
+            value: Medium
+        hasPermissions: false
+        attributeValue: CN=entitlement.bbb7c650
+        containsDataAccess: true
+        description: Gives read/write access to the company database
+        isPermission: false
+        revocable: true
+        privileged: false
+        sourceType: Active Directory - Direct
+        name: CN=entitlement.bbb7c650
+        attributeName: memberOf
+        sourceSchemaObjectType: groups
+        id: 2c918085718230600171993742c63558
+        sourceName: ODS-AD-Source
+        cloudGoverned: false
+        account:
+          owner:
+            displayName: Alison Ferguson
+            id: 2c9180857182305e0171993737eb29e8
+            type: IDENTITY
+          created: 2020-04-20T20:11:05.067Z
+          name: Alison Ferguso
+          modified: 2020-05-20T18:57:16.987Z
+          description: Account for Read/write to the company database
+          disabled: false
+          governanceGroupId: 2c9180857182305e0171993737eb29e6
+          id: 2c9180857182305e0171993737eb29e6
+          locked: false
+          type: IDENTITY
+          nativeIdentity: CN=Alison Ferguso
+          activityInsights:
+            accountID: c4ddd5421d8549f0abd309162cafd3b1
+            usageDays: 45
+            usageDaysState: COMPLETE
+      nullable: true
+      properties:
+        id:
+          description: The id for the entitlement
+          example: 2c918085718230600171993742c63558
+          type: string
+        name:
+          description: The name of the entitlement
+          example: CN=entitlement.bbb7c650
+          type: string
+        description:
+          description: Information about the entitlement
+          example: Gives read/write access to the company database
+          nullable: true
+          type: string
+        privileged:
+          default: false
+          description: Indicates if the entitlement is a privileged entitlement
+          example: false
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/identityreferencewithnameandemail'
+        attributeName:
+          description: The name of the attribute on the source
+          example: memberOf
+          type: string
+        attributeValue:
+          description: The value of the attribute on the source
+          example: CN=entitlement.bbb7c650
+          type: string
+        sourceSchemaObjectType:
+          description: The schema object type on the source used to represent the
+            entitlement and its attributes
+          example: groups
+          type: string
+        sourceName:
+          description: The name of the source for which this entitlement belongs
+          example: ODS-AD-Source
+          type: string
+        sourceType:
+          description: The type of the source for which the entitlement belongs
+          example: Active Directory - Direct
+          type: string
+        sourceId:
+          description: The ID of the source for which the entitlement belongs
+          example: 78ca6be511cb41fbb86dba2fcca7780c
+          type: string
+        hasPermissions:
+          default: false
+          description: Indicates if the entitlement has permissions
+          example: false
+          type: boolean
+        isPermission:
+          default: false
+          description: Indicates if the entitlement is a representation of an account
+            permission
+          example: false
+          type: boolean
+        revocable:
+          default: false
+          description: Indicates whether the entitlement can be revoked
+          example: true
+          type: boolean
+        cloudGoverned:
+          default: false
+          description: True if the entitlement is cloud governed
+          example: false
+          type: boolean
+        containsDataAccess:
+          default: false
+          description: True if the entitlement has DAS data
+          example: true
+          type: boolean
+        dataAccess:
+          $ref: '#/components/schemas/dataaccess'
+        account:
+          $ref: '#/components/schemas/reviewableentitlement_account'
+      type: object
+    reviewableaccessprofile:
+      example:
+        privileged: false
+        owner:
+          name: Alison Ferguso
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+          email: alison.ferguso@identitysoon.com
+        entitlements:
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
+            disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
+            disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        endDate: 2021-12-25T00:00:00Z
+        created: 2021-01-01T22:32:58.104Z
+        name: Employee-database-read-write
+        description: Collection of entitlements to read/write the employee database
+        modified: 2021-02-01T22:32:58.104Z
+        id: 2c91808a7190d06e01719938fcd20792
+        cloudGoverned: false
+      properties:
+        id:
+          description: The id of the Access Profile
+          example: 2c91808a7190d06e01719938fcd20792
+          type: string
+        name:
+          description: Name of the Access Profile
+          example: Employee-database-read-write
+          type: string
+        description:
+          description: Information about the Access Profile
+          example: Collection of entitlements to read/write the employee database
+          type: string
+        privileged:
+          description: Indicates if the entitlement is a privileged entitlement
+          example: false
+          type: boolean
+        cloudGoverned:
+          description: True if the entitlement is cloud governed
+          example: false
+          type: boolean
+        endDate:
+          description: The date at which a user's access expires
+          example: 2021-12-25T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        owner:
+          $ref: '#/components/schemas/identityreferencewithnameandemail'
+        entitlements:
+          description: A list of entitlements associated with this Access Profile
+          items:
+            $ref: '#/components/schemas/reviewableentitlement'
+          type: array
+        created:
+          description: Date the Access Profile was created.
+          example: 2021-01-01T22:32:58.104Z
+          format: date-time
+          type: string
+        modified:
+          description: Date the Access Profile was last modified.
+          example: 2021-02-01T22:32:58.104Z
+          format: date-time
+          type: string
+      type: object
+    reviewablerole:
+      example:
+        privileged: false
+        owner:
+          name: Alison Ferguso
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+          email: alison.ferguso@identitysoon.com
+        entitlements:
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
+            disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
+            disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        endDate: 2021-12-25T00:00:00Z
+        accessProfiles:
+        - privileged: false
+          owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          endDate: 2021-12-25T00:00:00Z
+          created: 2021-01-01T22:32:58.104Z
+          name: Employee-database-read-write
+          description: Collection of entitlements to read/write the employee database
+          modified: 2021-02-01T22:32:58.104Z
+          id: 2c91808a7190d06e01719938fcd20792
+          cloudGoverned: false
+        - privileged: false
+          owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          endDate: 2021-12-25T00:00:00Z
+          created: 2021-01-01T22:32:58.104Z
+          name: Employee-database-read-write
+          description: Collection of entitlements to read/write the employee database
+          modified: 2021-02-01T22:32:58.104Z
+          id: 2c91808a7190d06e01719938fcd20792
+          cloudGoverned: false
+        name: Accounting-Employees
+        description: Role for members of the accounting department with the necessary
+          Access Profiles
+        id: 2c91808a7190d06e0171993907fd0794
+        revocable: false
+      nullable: true
+      properties:
+        id:
+          description: The id for the Role
+          example: 2c91808a7190d06e0171993907fd0794
+          type: string
+        name:
+          description: The name of the Role
+          example: Accounting-Employees
+          type: string
+        description:
+          description: Information about the Role
+          example: Role for members of the accounting department with the necessary
+            Access Profiles
+          type: string
+        privileged:
+          description: Indicates if the entitlement is a privileged entitlement
+          example: false
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/identityreferencewithnameandemail'
+        revocable:
+          description: Indicates whether the Role can be revoked or requested
+          example: false
+          type: boolean
+        endDate:
+          description: The date when a user's access expires.
+          example: 2021-12-25T00:00:00Z
+          format: date-time
+          type: string
+        accessProfiles:
+          description: The list of Access Profiles associated with this Role
+          items:
+            $ref: '#/components/schemas/reviewableaccessprofile'
+          type: array
+        entitlements:
+          description: The list of entitlements associated with this Role
+          items:
+            $ref: '#/components/schemas/reviewableentitlement'
+          type: array
+      type: object
+    accesssummary:
+      description: An object holding the access that is being reviewed
+      example:
+        access:
+          name: Entitlement for Company Database
+          id: 2c9180867160846801719932c5153fb7
+          type: IDENTITY
+        role:
+          privileged: false
+          owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          endDate: 2021-12-25T00:00:00Z
+          accessProfiles:
+          - privileged: false
+            owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            endDate: 2021-12-25T00:00:00Z
+            created: 2021-01-01T22:32:58.104Z
+            name: Employee-database-read-write
+            description: Collection of entitlements to read/write the employee database
+            modified: 2021-02-01T22:32:58.104Z
+            id: 2c91808a7190d06e01719938fcd20792
+            cloudGoverned: false
+          - privileged: false
+            owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            endDate: 2021-12-25T00:00:00Z
+            created: 2021-01-01T22:32:58.104Z
+            name: Employee-database-read-write
+            description: Collection of entitlements to read/write the employee database
+            modified: 2021-02-01T22:32:58.104Z
+            id: 2c91808a7190d06e01719938fcd20792
+            cloudGoverned: false
+          name: Accounting-Employees
+          description: Role for members of the accounting department with the necessary
+            Access Profiles
+          id: 2c91808a7190d06e0171993907fd0794
+          revocable: false
+        entitlement:
+          owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
+            disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        accessProfile:
+          privileged: false
+          owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          endDate: 2021-12-25T00:00:00Z
+          created: 2021-01-01T22:32:58.104Z
+          name: Employee-database-read-write
+          description: Collection of entitlements to read/write the employee database
+          modified: 2021-02-01T22:32:58.104Z
+          id: 2c91808a7190d06e01719938fcd20792
+          cloudGoverned: false
+      properties:
+        access:
+          $ref: '#/components/schemas/accesssummary_access'
+        entitlement:
+          $ref: '#/components/schemas/reviewableentitlement'
+        accessProfile:
+          $ref: '#/components/schemas/reviewableaccessprofile'
+        role:
+          $ref: '#/components/schemas/reviewablerole'
+      title: Access Summary
+      type: object
+    certificationidentitysummary:
+      example:
+        identityId: 2c9180857182306001719937377a33de
+        name: Alison Ferguso
+        id: 2c91808772a504f50172a9540e501ba7
+        completed: true
+      properties:
+        id:
+          description: The ID of the identity summary
+          example: 2c91808772a504f50172a9540e501ba7
+          type: string
+        name:
+          description: Name of the linked identity
+          example: Alison Ferguso
+          type: string
+        identityId:
+          description: The ID of the identity being certified
+          example: 2c9180857182306001719937377a33de
+          type: string
+        completed:
+          description: Indicates whether the review items for the linked identity's
+            certification have been completed
+          example: true
+          type: boolean
+      title: Certification Identity Summary
+      type: object
+    certificationdecision:
+      description: The decision to approve or revoke the review item
+      enum:
+      - APPROVE
+      - REVOKE
+      example: APPROVE
+      type: string
+    accessreviewitem:
+      example:
+        identitySummary:
+          identityId: 2c9180857182306001719937377a33de
+          name: Alison Ferguso
+          id: 2c91808772a504f50172a9540e501ba7
+          completed: true
+        comments: This user still needs access to this source
+        newAccess: false
+        decision: APPROVE
+        accessSummary:
+          access:
+            name: Entitlement for Company Database
+            id: 2c9180867160846801719932c5153fb7
+            type: IDENTITY
+          role:
+            privileged: false
+            owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            endDate: 2021-12-25T00:00:00Z
+            accessProfiles:
+            - privileged: false
+              owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              entitlements:
+              - owner:
+                  name: Alison Ferguso
+                  id: 5168015d32f890ca15812c9180835d2e
+                  type: IDENTITY
+                  email: alison.ferguso@identitysoon.com
+                sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+                dataAccess:
+                  policies:
+                  - value: GDPR-20
+                  - value: GDPR-20
+                  categories:
+                  - matchCount: 10
+                    value: email-7
+                  - matchCount: 10
+                    value: email-7
+                  impactScore:
+                    value: Medium
+                hasPermissions: false
+                attributeValue: CN=entitlement.bbb7c650
+                containsDataAccess: true
+                description: Gives read/write access to the company database
+                isPermission: false
+                revocable: true
+                privileged: false
+                sourceType: Active Directory - Direct
+                name: CN=entitlement.bbb7c650
+                attributeName: memberOf
+                sourceSchemaObjectType: groups
+                id: 2c918085718230600171993742c63558
+                sourceName: ODS-AD-Source
+                cloudGoverned: false
+                account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
+                  created: 2020-04-20T20:11:05.067Z
+                  name: Alison Ferguso
+                  modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
+                  disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
+                  id: 2c9180857182305e0171993737eb29e6
+                  locked: false
+                  type: IDENTITY
+                  nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
+              - owner:
+                  name: Alison Ferguso
+                  id: 5168015d32f890ca15812c9180835d2e
+                  type: IDENTITY
+                  email: alison.ferguso@identitysoon.com
+                sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+                dataAccess:
+                  policies:
+                  - value: GDPR-20
+                  - value: GDPR-20
+                  categories:
+                  - matchCount: 10
+                    value: email-7
+                  - matchCount: 10
+                    value: email-7
+                  impactScore:
+                    value: Medium
+                hasPermissions: false
+                attributeValue: CN=entitlement.bbb7c650
+                containsDataAccess: true
+                description: Gives read/write access to the company database
+                isPermission: false
+                revocable: true
+                privileged: false
+                sourceType: Active Directory - Direct
+                name: CN=entitlement.bbb7c650
+                attributeName: memberOf
+                sourceSchemaObjectType: groups
+                id: 2c918085718230600171993742c63558
+                sourceName: ODS-AD-Source
+                cloudGoverned: false
+                account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
+                  created: 2020-04-20T20:11:05.067Z
+                  name: Alison Ferguso
+                  modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
+                  disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
+                  id: 2c9180857182305e0171993737eb29e6
+                  locked: false
+                  type: IDENTITY
+                  nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
+              endDate: 2021-12-25T00:00:00Z
+              created: 2021-01-01T22:32:58.104Z
+              name: Employee-database-read-write
+              description: Collection of entitlements to read/write the employee database
+              modified: 2021-02-01T22:32:58.104Z
+              id: 2c91808a7190d06e01719938fcd20792
+              cloudGoverned: false
+            - privileged: false
+              owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              entitlements:
+              - owner:
+                  name: Alison Ferguso
+                  id: 5168015d32f890ca15812c9180835d2e
+                  type: IDENTITY
+                  email: alison.ferguso@identitysoon.com
+                sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+                dataAccess:
+                  policies:
+                  - value: GDPR-20
+                  - value: GDPR-20
+                  categories:
+                  - matchCount: 10
+                    value: email-7
+                  - matchCount: 10
+                    value: email-7
+                  impactScore:
+                    value: Medium
+                hasPermissions: false
+                attributeValue: CN=entitlement.bbb7c650
+                containsDataAccess: true
+                description: Gives read/write access to the company database
+                isPermission: false
+                revocable: true
+                privileged: false
+                sourceType: Active Directory - Direct
+                name: CN=entitlement.bbb7c650
+                attributeName: memberOf
+                sourceSchemaObjectType: groups
+                id: 2c918085718230600171993742c63558
+                sourceName: ODS-AD-Source
+                cloudGoverned: false
+                account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
+                  created: 2020-04-20T20:11:05.067Z
+                  name: Alison Ferguso
+                  modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
+                  disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
+                  id: 2c9180857182305e0171993737eb29e6
+                  locked: false
+                  type: IDENTITY
+                  nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
+              - owner:
+                  name: Alison Ferguso
+                  id: 5168015d32f890ca15812c9180835d2e
+                  type: IDENTITY
+                  email: alison.ferguso@identitysoon.com
+                sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+                dataAccess:
+                  policies:
+                  - value: GDPR-20
+                  - value: GDPR-20
+                  categories:
+                  - matchCount: 10
+                    value: email-7
+                  - matchCount: 10
+                    value: email-7
+                  impactScore:
+                    value: Medium
+                hasPermissions: false
+                attributeValue: CN=entitlement.bbb7c650
+                containsDataAccess: true
+                description: Gives read/write access to the company database
+                isPermission: false
+                revocable: true
+                privileged: false
+                sourceType: Active Directory - Direct
+                name: CN=entitlement.bbb7c650
+                attributeName: memberOf
+                sourceSchemaObjectType: groups
+                id: 2c918085718230600171993742c63558
+                sourceName: ODS-AD-Source
+                cloudGoverned: false
+                account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
+                  created: 2020-04-20T20:11:05.067Z
+                  name: Alison Ferguso
+                  modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
+                  disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
+                  id: 2c9180857182305e0171993737eb29e6
+                  locked: false
+                  type: IDENTITY
+                  nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
+              endDate: 2021-12-25T00:00:00Z
+              created: 2021-01-01T22:32:58.104Z
+              name: Employee-database-read-write
+              description: Collection of entitlements to read/write the employee database
+              modified: 2021-02-01T22:32:58.104Z
+              id: 2c91808a7190d06e01719938fcd20792
+              cloudGoverned: false
+            name: Accounting-Employees
+            description: Role for members of the accounting department with the necessary
+              Access Profiles
+            id: 2c91808a7190d06e0171993907fd0794
+            revocable: false
+          entitlement:
+            owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
+              disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          accessProfile:
+            privileged: false
+            owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
+                disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            endDate: 2021-12-25T00:00:00Z
+            created: 2021-01-01T22:32:58.104Z
+            name: Employee-database-read-write
+            description: Collection of entitlements to read/write the employee database
+            modified: 2021-02-01T22:32:58.104Z
+            id: 2c91808a7190d06e01719938fcd20792
+            cloudGoverned: false
+        id: ef38f94347e94562b5bb8424a56397d8
+        completed: false
+      properties:
+        accessSummary:
+          $ref: '#/components/schemas/accesssummary'
+        identitySummary:
+          $ref: '#/components/schemas/certificationidentitysummary'
+        id:
+          description: The review item's id
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        completed:
+          description: Whether the review item is complete
+          example: false
+          type: boolean
+        newAccess:
+          description: Indicates whether the review item is for new access to a source
+          example: false
+          type: boolean
+        decision:
+          $ref: '#/components/schemas/certificationdecision'
+        comments:
+          description: Comments for this review item
+          example: This user still needs access to this source
+          nullable: true
+          type: string
+      title: Access Review Item
+      type: object
+    reviewrecommendation:
+      properties:
+        recommendation:
+          description: The recommendation from IAI at the time of the decision. This
+            field will be null if no recommendation was made.
+          nullable: true
+          type: string
+          example: null
+        reasons:
+          description: A list of reasons for the recommendation.
+          example:
+          - Reason 1
+          - Reason 2
+          items:
+            type: string
+          type: array
+        timestamp:
+          description: The time at which the recommendation was recorded.
+          example: 2020-06-01T13:49:37.385Z
+          format: date-time
+          type: string
+      title: Review Recommendation
+      type: object
+    reviewdecision:
+      properties:
+        id:
+          description: The id of the review decision
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        decision:
+          $ref: '#/components/schemas/certificationdecision'
+        proposedEndDate:
+          description: The date at which a user's access should be taken away. Should
+            only be set for `REVOKE` decisions.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        bulk:
+          description: Indicates whether decision should be marked as part of a larger
+            bulk decision
+          example: true
+          type: boolean
+        recommendation:
+          $ref: '#/components/schemas/reviewrecommendation'
+        comments:
+          description: Comments recorded when the decision was made
+          example: This user no longer needs access to this source
+          type: string
+      required:
+      - bulk
+      - decision
+      - id
+      title: Review Decision
+      type: object
+    reassignreference:
+      properties:
+        id:
+          description: The ID of item or identity being reassigned.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        type:
+          description: The type of item or identity being reassigned.
+          enum:
+          - TARGET_SUMMARY
+          - ITEM
+          - IDENTITY_SUMMARY
+          example: ITEM
+          type: string
+      required:
+      - id
+      - type
+      title: Reassign Reference
+      type: object
+    reviewreassign:
+      properties:
+        reassign:
+          items:
+            $ref: '#/components/schemas/reassignreference'
+          type: array
+        reassignTo:
+          description: The ID of the identity to which the certification is reassigned
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        reason:
+          description: The reason comment for why the reassign was made
+          example: reassigned for some reason
+          type: string
+      required:
+      - reason
+      - reassign
+      - reassignTo
+      title: Review Reassign
+      type: object
+    permissiondto:
+      description: "Simplified DTO for the Permission objects stored in SailPoint's\
+        \ database. The data is aggregated from customer systems and is free-form,\
+        \ so its appearance can vary largely between different clients/customers."
+      example:
+        rights: HereIsRight1
+        target: SYS.GV_$TRANSACTION
+      properties:
+        rights:
+          description: All the rights (e.g. actions) that this permission allows on
+            the target
+          example: HereIsRight1
+          items:
+            example: SELECT
+            type: string
+          readOnly: true
+          type: array
+        target:
+          description: The target the permission would grants rights on.
+          example: SYS.GV_$TRANSACTION
+          readOnly: true
+          type: string
+      title: Permission DTO
+      type: object
+    errormessagedtolist:
+      description: List of error messages
+      example:
+        locale: en-US
+        localeOrigin: DEFAULT
+        text: Error Message
+      items:
+        $ref: '#/components/schemas/errormessagedto'
+      type: array
+    reassignmenttraildto:
+      properties:
+        previousOwner:
+          description: The ID of previous owner identity.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        newOwner:
+          description: The ID of new owner identity.
+          example: ef38f94347e94562b5bb8424a56397a3
+          type: string
+        reassignmentType:
+          description: The type of reassignment.
+          example: AUTOMATIC_REASSIGNMENT
+          type: string
+      title: Reassignment Trail DTO
+      type: object
+    reassignmenttraildtolist:
+      description: Reassignment trails that lead to self certification identity
+      example:
+        previousOwner: ef38f94347e94562b5bb8424a56397d8
+        newOwner: ef38f94347e94562b5bb8424a56397a3
+        reassignmentType: AUTOMATIC_REASSIGNMENT
+      items:
+        $ref: '#/components/schemas/reassignmenttraildto'
+      type: array
+    certificationtask:
+      example:
+        targetId: 2c918086719eec070171a7e3355a834c
+        created: 2020-09-24T18:10:47.693Z
+        targetType: CAMPAIGN
+        id: 2c918086719eec070171a7e3355a360a
+        type: ADMIN_REASSIGN
+        reassignmentTrailDTOs:
+          previousOwner: ef38f94347e94562b5bb8424a56397d8
+          newOwner: ef38f94347e94562b5bb8424a56397a3
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+        errors:
+          locale: en-US
+          localeOrigin: DEFAULT
+          text: Error Message
+        status: QUEUED
+      properties:
+        id:
+          description: The ID of the certification task.
+          example: 2c918086719eec070171a7e3355a360a
+          type: string
+        type:
+          description: The type of the certification task. More values may be added
+            in the future.
+          enum:
+          - REASSIGN
+          - ADMIN_REASSIGN
+          - COMPLETE_CERTIFICATION
+          - FINISH_CERTIFICATION
+          - COMPLETE_CAMPAIGN
+          - ACTIVATE_CAMPAIGN
+          - CAMPAIGN_CREATE
+          - CAMPAIGN_DELETE
+          example: ADMIN_REASSIGN
+          type: string
+        targetType:
+          description: The type of item that is being operated on by this task whose
+            ID is stored in the targetId field.
+          enum:
+          - CERTIFICATION
+          - CAMPAIGN
+          example: CAMPAIGN
+          type: string
+        targetId:
+          description: The ID of the item being operated on by this task.
+          example: 2c918086719eec070171a7e3355a834c
+          type: string
+        status:
+          description: The status of the task.
+          enum:
+          - QUEUED
+          - IN_PROGRESS
+          - SUCCESS
+          - ERROR
+          example: QUEUED
+          type: string
+        errors:
+          description: List of error messages
+          example:
+            locale: en-US
+            localeOrigin: DEFAULT
+            text: Error Message
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        reassignmentTrailDTOs:
+          description: Reassignment trails that lead to self certification identity
+          example:
+            previousOwner: ef38f94347e94562b5bb8424a56397d8
+            newOwner: ef38f94347e94562b5bb8424a56397a3
+            reassignmentType: AUTOMATIC_REASSIGNMENT
+          items:
+            $ref: '#/components/schemas/reassignmenttraildto'
+          type: array
+        created:
+          description: The date and time on which this task was created.
+          example: 2020-09-24T18:10:47.693Z
+          format: date-time
+          type: string
+      title: Certification Task
+      type: object
+    listIdentityCertificationsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listIdentityCertificationsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    dataaccess_policies_inner:
+      example:
+        value: GDPR-20
+      properties:
+        value:
+          description: Value of the policy
+          example: GDPR-20
+          type: string
+      type: object
+    dataaccess_categories_inner:
+      example:
+        matchCount: 10
+        value: email-7
+      properties:
+        value:
+          description: Value of the category
+          example: email-7
+          type: string
+        matchCount:
+          description: Number of matched for each category
+          example: 10
+          type: integer
+      type: object
+    dataaccess_impactScore:
+      example:
+        value: Medium
+      properties:
+        value:
+          description: Impact Score for this data
+          example: Medium
+          type: string
+      type: object
+    reviewableentitlement_account_owner:
+      description: Information about the machine account owner
+      example:
+        displayName: Alison Ferguson
+        id: 2c9180857182305e0171993737eb29e8
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The id associated with the machine account owner
+          example: 2c9180857182305e0171993737eb29e8
+          nullable: true
+          type: string
+        type:
+          description: An enumeration of the types of Owner supported within the IdentityNow
+            infrastructure.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        displayName:
+          description: The machine account owner's display name
+          example: Alison Ferguson
+          nullable: true
+          type: string
+      type: object
+    reviewableentitlement_account:
+      description: Information about the status of the entitlement
+      example:
+        owner:
+          displayName: Alison Ferguson
+          id: 2c9180857182305e0171993737eb29e8
+          type: IDENTITY
+        created: 2020-04-20T20:11:05.067Z
+        name: Alison Ferguso
+        modified: 2020-05-20T18:57:16.987Z
+        description: Account for Read/write to the company database
+        disabled: false
+        governanceGroupId: 2c9180857182305e0171993737eb29e6
+        id: 2c9180857182305e0171993737eb29e6
+        locked: false
+        type: IDENTITY
+        nativeIdentity: CN=Alison Ferguso
+        activityInsights:
+          accountID: c4ddd5421d8549f0abd309162cafd3b1
+          usageDays: 45
+          usageDaysState: COMPLETE
+      nullable: true
+      properties:
+        nativeIdentity:
+          description: The native identity for this account
+          example: CN=Alison Ferguso
+          type: string
+        disabled:
+          default: false
+          description: Indicates whether this account is currently disabled
+          example: false
+          type: boolean
+        locked:
+          default: false
+          description: Indicates whether this account is currently locked
+          example: false
+          type: boolean
+        type:
+          $ref: '#/components/schemas/dtotype'
+        id:
+          description: The id associated with the account
+          example: 2c9180857182305e0171993737eb29e6
+          nullable: true
+          type: string
+        name:
+          description: The account name
+          example: Alison Ferguso
+          nullable: true
+          type: string
+        created:
+          description: When the account was created
+          example: 2020-04-20T20:11:05.067Z
+          format: date-time
+          nullable: true
+          type: string
+        modified:
+          description: When the account was last modified
+          example: 2020-05-20T18:57:16.987Z
+          format: date-time
+          nullable: true
+          type: string
+        activityInsights:
+          $ref: '#/components/schemas/activityinsights'
+        description:
+          description: Information about the account
+          example: Account for Read/write to the company database
+          nullable: true
+          type: string
+        governanceGroupId:
+          description: The id associated with the machine Account Governance Group
+          example: 2c9180857182305e0171993737eb29e6
+          nullable: true
+          type: string
+        owner:
+          $ref: '#/components/schemas/reviewableentitlement_account_owner'
+      type: object
+    accesssummary_access:
+      example:
+        name: Entitlement for Company Database
+        id: 2c9180867160846801719932c5153fb7
+        type: IDENTITY
+      properties:
+        type:
+          $ref: '#/components/schemas/dtotype'
+        id:
+          description: The ID of the item being certified
+          example: 2c9180867160846801719932c5153fb7
+          type: string
+        name:
+          description: The name of the item being certified
+          example: Entitlement for Company Database
+          type: string
+      type: object

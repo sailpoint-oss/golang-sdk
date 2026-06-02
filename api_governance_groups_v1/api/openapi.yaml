@@ -1,0 +1,1778 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Governance Groups
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to implement and customize Governance Group functionality. With this functionality in place, administrators can create Governance Groups and configure them for use throughout Identity Security Cloud.
+
+    A governance group is a group of users that can make governance decisions about access. If your organization has the Access Request or Certifications service, you can configure governance groups to review access requests or certifications. A governance group can determine whether specific access is appropriate for a user.
+
+    Refer to [Creating and Managing Governance Groups](https://documentation.sailpoint.com/saas/help/common/users/governance_groups.html) for more information about how to build Governance Groups in the visual builder in the Identity Security Cloud UI.
+  name: Governance Groups
+paths:
+  /workgroups/v1:
+    get:
+      description: This API returns list of Governance Groups
+      operationId: listWorkgroupsV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **name**: *eq, sw, in*
+
+          **memberships.identityId**: *eq, in*
+        example: name sw "Test"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified, id, description**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/workgroupdto'
+                type: array
+          description: List of Governance Groups
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      summary: List governance groups
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: This API creates a new Governance Group.
+      operationId: createWorkgroupV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/workgroupdto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupdto'
+          description: Governance Group object created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
+      summary: Create a new governance group.
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/{id}:
+    delete:
+      description: This API deletes a Governance Group by its ID.
+      operationId: deleteWorkgroupV1
+      parameters:
+      - description: ID of the Governance Group
+        example: 2c9180837ca6693d017ca8d097500149
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
+      summary: Delete a governance group
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This API returns a Governance Groups by its ID.
+      operationId: getWorkgroupV1
+      parameters:
+      - description: ID of the Governance Group
+        example: 2c9180837ca6693d017ca8d097500149
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupdto'
+          description: A Governance Group
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      summary: Get governance group by id
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: |-
+        This API updates an existing governance group by ID. The following fields and objects are patchable:
+        * name
+        * description
+        * owner
+      operationId: patchWorkgroupV1
+      parameters:
+      - description: ID of the Governance Group
+        example: 2c9180837ca6693d017ca8d097500149
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Replace Description:
+                description: Replace description of a Governance Group.
+                value:
+                - op: replace
+                  path: /description
+                  value: Governance Group new description.
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupdto'
+          description: A Governance Group.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
+      summary: Patch a governance group
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/bulk-delete:
+    post:
+      description: "\nThis API initiates a bulk deletion of one or more Governance\
+        \ Groups.\n\n>  If any of the indicated Governance Groups have one or more\
+        \ connections associated with it,then those Governance Groups will be added\
+        \ in  **inUse** list of the response. Governance Group(s) marked as **inUse**\
+        \ can not be deleted.\n\n>  If any of the indicated Governance Groups is not\
+        \ does not exists in Organization,then those Governance Groups will be added\
+        \ in **notFound** list of the response. Governance Groups marked as **notFound**\
+        \ will not be deleted.\n\n>  If any of the indicated Governance Groups does\
+        \ not have any connections associated with it,then those Governance Groups\
+        \ will be added in **deleted** list of the response. A Governance Group marked\
+        \ as **deleted** will be deleted from current Organization.\n\n>  If the request\
+        \ contains any **inUse** or **notFound** Governance Group IDs then it skips\
+        \ only these Governance Groups for deletion and deletes the rest of Governance\
+        \ Groups which have no connections associated with it. \n\n>  **This API has\
+        \ limit number of Governance Groups can be deleted at one time. If the request\
+        \ contains more then 100 Governance Groups IDs to be deleted then the API\
+        \ will throw an exception.**"
+      operationId: deleteWorkgroupsInBulkV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              ids:
+              - 567a697e-885b-495a-afc5-d55e1c23a302
+              - c7b0f7b2-1e78-4063-b294-a555333dacd2
+            schema:
+              $ref: '#/components/schemas/workgroupbulkdeleterequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupbulkdeleteresponse'
+          description: Governance Group bulk delete response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:manage
+      summary: Delete governance group(s)
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/{workgroupId}/connections:
+    get:
+      description: This API returns list of connections associated with a Governance
+        Group.
+      operationId: listConnectionsV1
+      parameters:
+      - description: ID of the Governance Group.
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Note that for this API the maximum value for limit is 50.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 50
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/workgroupconnectiondto'
+                type: array
+          description: List all connections associated with a Governance Group.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      summary: List connections for governance group
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/{workgroupId}/members:
+    get:
+      description: This API returns list of members associated with a Governance Group.
+      operationId: listWorkgroupMembersV1
+      parameters:
+      - description: ID of the Governance Group.
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Note that for this API the maximum value for limit is 50.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 50
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 50
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, created, modified**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listWorkgroupMembersV1_200_response_inner'
+                type: array
+          description: List all members associated with a Governance Group.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      - applicationAuth:
+        - idn:workgroup:read
+        - idn:workgroup:manage
+      summary: List governance group members
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/{workgroupId}/members/bulk-add:
+    post:
+      description: |-
+        This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
+
+        >  **Following field of Identity is an optional field in the request.**
+
+        >  **name**
+      operationId: updateWorkgroupMembersV1
+      parameters:
+      - description: ID of the Governance Group.
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkworkgroupmembersrequest'
+        description: List of identities to be added to a Governance Group members
+          list.
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupmemberbulkaddresponse'
+          description: List of added and not added identities into  Governance Group
+            members list.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:write
+      - applicationAuth:
+        - idn:workgroup:write
+      summary: Add members to governance group
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /workgroups/v1/{workgroupId}/members/bulk-delete:
+    post:
+      description: |-
+        This API removes one or more  members from a Governance Group.  A
+        >  **Following field of Identity is an optional field in the request.**
+
+        >  **name**
+      operationId: deleteWorkgroupMembersV1
+      parameters:
+      - description: ID of the Governance Group.
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listWorkgroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkworkgroupmembersrequest'
+        description: List of identities to be removed from  a Governance Group members
+          list.
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/workgroupmemberbulkdeleteresponse'
+          description: List of deleted and not deleted identities from Governance
+            Group members list.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:workgroup:write
+      - applicationAuth:
+        - idn:workgroup:write
+      summary: Remove members from governance group
+      tags:
+      - Governance Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    limit50:
+      description: |-
+        Note that for this API the maximum value for limit is 50.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 50
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 50
+        format: int32
+        maximum: 50
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listWorkgroupsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listWorkgroupsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    ownerdto:
+      description: Owner's identity.
+      properties:
+        type:
+          description: Owner's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's identity ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's name.
+          example: Support
+          type: string
+      title: Owner Dto
+      type: object
+    workgroupdto:
+      example:
+        owner:
+          emailAddress: support@sailpoint.com
+          displayName: Support
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        connectionCount: 1641498673000
+        created: 2022-01-06T19:51:13Z
+        memberCount: 1641498673000
+        name: DB Access Governance Group
+        description: Description of the Governance Group
+        modified: 2022-01-06T19:51:13Z
+        id: 2c91808568c529c60168cca6f90c1313
+      properties:
+        owner:
+          $ref: '#/components/schemas/workgroupdto_owner'
+        id:
+          description: Governance group ID.
+          example: 2c91808568c529c60168cca6f90c1313
+          readOnly: true
+          type: string
+        name:
+          description: Governance group name.
+          example: DB Access Governance Group
+          type: string
+        description:
+          description: Governance group description.
+          example: Description of the Governance Group
+          type: string
+        memberCount:
+          description: Number of members in the governance group.
+          example: 1641498673000
+          format: int64
+          readOnly: true
+          type: integer
+        connectionCount:
+          description: Number of connections in the governance group.
+          example: 1641498673000
+          format: int64
+          readOnly: true
+          type: integer
+        created:
+          example: 2022-01-06T19:51:13Z
+          format: date-time
+          type: string
+        modified:
+          example: 2022-01-06T19:51:13Z
+          format: date-time
+          type: string
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    workgroupbulkdeleterequest:
+      properties:
+        ids:
+          description: List of IDs of Governance Groups to be deleted.
+          example:
+          - 567a697e-885b-495a-afc5-d55e1c23a302
+          - c7b0f7b2-1e78-4063-b294-a555333dacd2
+          items:
+            type: string
+          type: array
+      type: object
+    workgroupdeleteitem:
+      properties:
+        id:
+          description: Id of the Governance Group.
+          example: 464ae7bf791e49fdb74606a2e4a89635
+          type: string
+        status:
+          description: |2
+
+            The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.
+
+            > 204   -  Governance Group deleted successfully.
+
+            > 409   - Governance Group is in use,hence can not be deleted.
+
+            > 404   - Governance Group not found.
+          example: 204
+          format: int32
+          type: integer
+        description:
+          description: |
+            Human readable status description and containing additional context information about success or failures etc.
+          example: |2
+
+            > Governance Group deleted successfully.
+
+            > Unable to delete Governance Group f80bba83-98c4-4ec2-81c8-373c00e9663b because it is in use.
+
+            > Referenced Governance Group 2b711763-ed35-42a2-a80c-8f1ce0dc4a7f was not found.
+          type: string
+      required:
+      - id
+      - status
+      type: object
+    workgroupbulkdeleteresponse:
+      description: Bulk remove Governance Groups Response.
+      example:
+      - id: 464ae7bf791e49fdb74606a2e4a89635
+        status: 204
+        description: Governance Group deleted successfully.
+      items:
+        $ref: '#/components/schemas/workgroupdeleteitem'
+      type: array
+    connectedobjecttype:
+      description: "An enumeration of the types of Objects associated with a Governance\
+        \ Group. Supported object types are ACCESS_PROFILE, ROLE, SOD_POLICY and SOURCE."
+      enum:
+      - ACCESS_PROFILE
+      - ROLE
+      - SOD_POLICY
+      - SOURCE
+      example: ACCESS_PROFILE
+      type: string
+    connectedobject:
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/connectedobjecttype'
+          - description: Connection Object type
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable name of Connected object
+          example: Employee-database-read-write
+          type: string
+        description:
+          description: Description of the Connected object.
+          example: Collection of entitlements to read/write the employee database.
+          nullable: true
+          type: string
+      type: object
+    workgroupconnectiondto:
+      example:
+        connectionType: AccessRequestReviewer
+        object:
+          name: Employee-database-read-write
+          description: Collection of entitlements to read/write the employee database.
+          id: 2c91808568c529c60168cca6f90c1313
+          type: ""
+      properties:
+        object:
+          $ref: '#/components/schemas/workgroupconnectiondto_object'
+        connectionType:
+          description: Connection Type.
+          enum:
+          - AccessRequestReviewer
+          - Owner
+          - ManagementWorkgroup
+          example: AccessRequestReviewer
+          type: string
+      type: object
+    bulkworkgroupmembersrequest:
+      description: List of identities to be added or removed to a Governance Group
+        members list.
+      example:
+      - type: IDENTITY
+        id: 464ae7bf791e49fdb74606a2e4a89635
+        name: Addie Smith
+      items:
+        $ref: '#/components/schemas/bulkworkgroupmembersrequest_inner'
+      type: array
+    workgroupmemberadditem:
+      properties:
+        id:
+          description: Identifier of identity in bulk member add request.
+          example: 464ae7bf791e49fdb74606a2e4a89635
+          type: string
+        status:
+          description: |2
+
+            The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.
+            The HTTP response status code returned for an individual Governance Group is requested for deletion.
+
+            > 201   - Identity is added into Governance Group members list.
+
+            > 409   - Identity is already member of  Governance Group.
+          example: 201
+          format: int32
+          type: integer
+        description:
+          description: |
+            Human readable status description and containing additional context information about success or failures etc.
+          example: |2
+
+            > Identity is added into Governance Group members list.
+
+            > Unable to set Membership of Identity "3244d5f2d04447498520f54c6789ae33" to Governance Group "f80bba83-98c4-4ec2-81c8-373c00e9663b"; the relationship already exists.
+          type: string
+      required:
+      - id
+      - status
+      type: object
+    workgroupmemberbulkaddresponse:
+      description: Bulk add Governance Group members Response.
+      example:
+      - id: 464ae7bf791e49fdb74606a2e4a89635
+        status: 201
+        description: Identity added to Governance Group members list.
+      items:
+        $ref: '#/components/schemas/workgroupmemberadditem'
+      type: array
+    workgroupmemberdeleteitem:
+      properties:
+        id:
+          description: Identifier of identity in bulk member add /remove request.
+          example: 464ae7bf791e49fdb74606a2e4a89635
+          type: string
+        status:
+          description: |
+            The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.
+
+            > 204   - Identity is removed from Governance Group members list.
+
+            > 404   - Identity is not member of Governance Group.
+          example: 204
+          format: int32
+          type: integer
+        description:
+          description: |
+            Human readable status description and containing additional context information about success or failures etc.
+          example: |2
+
+            > Identity deleted from Governance Group members list.
+
+            > Referenced Governance Group Member with Identity Id "bc3a744678534eb78a8002ee2085df64" was not found.
+          type: string
+      required:
+      - id
+      - status
+      type: object
+    workgroupmemberbulkdeleteresponse:
+      description: Bulk add Governance Group members Response.
+      example:
+      - id: 464ae7bf791e49fdb74606a2e4a89635
+        status: 204
+        description: Identity deleted from Governance Group members list.
+      items:
+        $ref: '#/components/schemas/workgroupmemberdeleteitem'
+      type: array
+    listWorkgroupsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listWorkgroupsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    listWorkgroupMembersV1_200_response_inner:
+      description: Identity of workgroup member.
+      example:
+        name: Michael Michaels
+        id: 2c7180a46faadee4016fb4e018c20642
+        type: IDENTITY
+        email: michael.michaels@sailpoint.com
+      properties:
+        type:
+          description: Workgroup member identity DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Workgroup member identity ID.
+          example: 2c7180a46faadee4016fb4e018c20642
+          type: string
+        name:
+          description: Workgroup member identity display name.
+          example: Michael Michaels
+          type: string
+        email:
+          description: Workgroup member identity email.
+          example: michael.michaels@sailpoint.com
+          type: string
+      type: object
+    workgroupdto_owner:
+      allOf:
+      - $ref: '#/components/schemas/ownerdto'
+      - description: Governance group owner.
+        properties:
+          displayName:
+            description: The display name of the identity
+            example: Support
+            readOnly: true
+            type: string
+          emailAddress:
+            description: The primary email address of the identity
+            example: support@sailpoint.com
+            readOnly: true
+            type: string
+        type: object
+      example:
+        emailAddress: support@sailpoint.com
+        displayName: Support
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    workgroupconnectiondto_object:
+      allOf:
+      - $ref: '#/components/schemas/connectedobject'
+      - description: Connected object to Governance Group
+      example:
+        name: Employee-database-read-write
+        description: Collection of entitlements to read/write the employee database.
+        id: 2c91808568c529c60168cca6f90c1313
+        type: ""
+    bulkworkgroupmembersrequest_inner:
+      description: Identity's basic details.
+      properties:
+        type:
+          description: Identity's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity ID.
+          example: 2c7180a46faadee4016fb4e018c20642
+          type: string
+        name:
+          description: Identity's display name.
+          example: Michael Michaels
+          type: string
+      type: object

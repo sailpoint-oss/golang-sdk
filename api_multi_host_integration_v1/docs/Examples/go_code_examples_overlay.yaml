@@ -1,0 +1,507 @@
+- path: /multihosts/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#create-multi-host-integration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           multihostintegrationscreate := []byte(``) // Multihostintegrationscreate | The specifics of the Multi-Host Integration to create
+
+          
+          var multihostintegrationscreate v1.Multihostintegrationscreate
+          if err := json.Unmarshal(multihostintegrationscreate, &multihostintegrationscreate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateMultiHostIntegrationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMultiHostIntegrationV1`: Multihostintegrations
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.CreateMultiHostIntegrationV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multihostId}
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#create-sources-within-multi-host-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of the Multi-Host Integration. # string | ID of the Multi-Host Integration.
+          multihostintegrationscreatesources := []byte(``) // []Multihostintegrationscreatesources | The specifics of the sources to create within Multi-Host Integration.
+
+          
+          var multihostintegrationscreatesources []v1.Multihostintegrationscreatesources
+          if err := json.Unmarshal(multihostintegrationscreatesources, &multihostintegrationscreatesources); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
+          //r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /multihosts/v1/{multiHostId}/sources/bulk-delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#delete-multi-host-sources-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multiHostId := `004091cb79b04636b88662afa50a4440` // string | ID of the Multi-Host Integration # string | ID of the Multi-Host Integration
+          requestbody := []byte(``) // []string | The delete bulk sources within multi-host integration request body
+
+          
+          var requestBody []v1.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
+          //r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.DeleteMultiHostSourcesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /multihosts/v1/{multihostId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#delete-multi-host-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of Multi-Host Integration to delete. # string | ID of Multi-Host Integration to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
+          //r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.DeleteMultiHostV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /multihosts/v1/{multihostId}/acctAggregationGroups
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-acct-aggregation-groups-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `aMultiHostId` // string | ID of the Multi-Host Integration to update # string | ID of the Multi-Host Integration to update
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetAcctAggregationGroupsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAcctAggregationGroupsV1`: []Multihostintegrationsaggscheduleupdate
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetAcctAggregationGroupsV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multiHostId}/entitlementAggregationGroups
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-entitlement-aggregation-groups-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multiHostId := `aMultiHostId` // string | ID of the Multi-Host Integration to update # string | ID of the Multi-Host Integration to update
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetEntitlementAggregationGroupsV1`: []Multihostintegrationsaggscheduleupdate
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1`: %v\n", resp)
+        }
+- path: /multihosts/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-multi-host-integrations-list-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+          filters := `id eq 2c91808b6ef1d43e016efba0ce470904` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *in*  **forSubAdminId**: *in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *in*  **forSubAdminId**: *in* (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          forSubadmin := `5168015d32f890ca15812c9180835d2e` // string | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity or SOURCE_SUBADMIN identity.  The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) # string | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity or SOURCE_SUBADMIN identity.  The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).ForSubadmin(forSubadmin).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMultiHostIntegrationsListV1`: []Multihostintegrations
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multihostId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-multi-host-integrations-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of the Multi-Host Integration. # string | ID of the Multi-Host Integration.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMultiHostIntegrationsV1`: Multihostintegrations
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostIntegrationsV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multiHostId}/sources/errors
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-multi-host-source-creation-errors-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multiHostId := `004091cb79b04636b88662afa50a4440` // string | ID of the Multi-Host Integration # string | ID of the Multi-Host Integration
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMultiHostSourceCreationErrorsV1`: []Sourcecreationerrors
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/types
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-multihost-integration-types-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMultihostIntegrationTypesV1`: []Multihostintegrationtemplatetype
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multihostId}/sources
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#get-sources-within-multi-host-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `aMultiHostId` // string | ID of the Multi-Host Integration to update # string | ID of the Multi-Host Integration to update
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+          filters := `id eq 2c91808b6ef1d43e016efba0ce470904` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *in* (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSourcesWithinMultiHostV1`: []Multihostsources
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multihostId}/sources/testConnection
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#test-connection-multi-host-sources-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `2c91808568c529c60168cca6f90c1324` // string | ID of the Multi-Host Integration # string | ID of the Multi-Host Integration
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
+          //r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /multihosts/v1/{multihostId}/sources/{sourceId}/testConnection
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#test-source-connection-multihost-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of the Multi-Host Integration # string | ID of the Multi-Host Integration
+          sourceId := `2c91808568c529f60168cca6f90c1324` // string | ID of the source within the Multi-Host Integration # string | ID of the source within the Multi-Host Integration
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
+          //resp, r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.TestSourceConnectionMultihostV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `TestSourceConnectionMultihostV1`: TestSourceConnectionMultihostV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.TestSourceConnectionMultihostV1`: %v\n", resp)
+        }
+- path: /multihosts/v1/{multihostId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/multihostintegrationv1/methods/multi-host-integration#update-multi-host-sources-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          multihostId := `anId` // string | ID of the Multi-Host Integration to update. # string | ID of the Multi-Host Integration to update.
+          updatemultihostsourcesv1requestinner := []byte(`[{"op":"add","path":"/description","value":"MDK Multi-Host Integration 222 description"}]`) // []UpdateMultiHostSourcesV1RequestInner | This endpoint allows you to update a Multi-Host Integration. 
+
+          
+          var updateMultiHostSourcesV1RequestInner []v1.UpdateMultiHostSourcesV1RequestInner
+          if err := json.Unmarshal(updatemultihostsourcesv1requestinner, &updateMultiHostSourcesV1RequestInner); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
+          //r, err := apiClient.MultiHostIntegrationV1.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.UpdateMultiHostSourcesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }

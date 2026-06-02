@@ -1,0 +1,2274 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Access Model Metadata
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to create and manage metadata attributes for your Access Model.
+    Access Model Metadata allows you to add contextual information to your ISC Access Model items using pre-defined metadata for risk, regulations, privacy levels, etc., or by creating your own metadata attributes to reflect the unique needs of your organization. This release of the API includes support for entitlement metadata. Support for role and access profile metadata will be introduced in a subsequent release.
+
+    Common usages for Access Model metadata include:
+
+    - Organizing and categorizing access items to make it easier for your users to search for and find the access rights they want to request, certify, or manage.
+
+    - Providing richer information about access that is being acted on to allow stakeholders to make better decisions when approving, certifying, or managing access rights.
+
+    - Identifying access that may requires additional approval requirements or be subject to more frequent review.
+  name: Access Model Metadata
+paths:
+  /access-model-metadata/v1/attributes:
+    get:
+      description: Get a list of Access Model Metadata Attributes
+      operationId: listAccessModelMetadataAttributeV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **key**: *eq*
+
+          **name**: *eq*
+
+          **type**: *eq*
+
+          **status**: *eq*
+
+          **objectTypes**: *eq*
+
+          Supported composite operators are *and, or*
+        example: name eq "Privacy"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, key**
+        example: "name,-key"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/attributedto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      summary: List access model metadata attributes
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: |
+        Create a new Access Model Metadata Attribute.
+      operationId: createAccessModelMetadataAttributeV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/attributedto'
+        description: Attribute to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributedto'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:create
+      - applicationAuth:
+        - idn:access-model-metadata:create
+      summary: Create access model metadata attribute
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/attributes/{key}:
+    get:
+      description: Get single Access Model Metadata Attribute
+      operationId: getAccessModelMetadataAttributeV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributedto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      summary: Get access model metadata attribute
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: "Update an existing Access Model Metadata Attribute.  \nThe following\
+        \ fields are patchable: **name**, **description**, **multiselect**, **values**\n"
+      operationId: updateAccessModelMetadataAttributeV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: JSON Patch array to apply
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributedto'
+          description: OK - Attribute updated successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:update
+      - applicationAuth:
+        - idn:access-model-metadata:update
+      summary: Update access model metadata attribute
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/attributes/{key}/values:
+    get:
+      description: Get a list of Access Model Metadata Attribute Values
+      operationId: listAccessModelMetadataAttributeValueV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/attributevaluedto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      summary: List access model metadata values
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: "Create a new value for an existing Access Model Metadata Attribute.\
+        \    \n"
+      operationId: createAccessModelMetadataAttributeValueV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/attributevaluedto'
+        description: Attribute value to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributevaluedto'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:create
+      - applicationAuth:
+        - idn:access-model-metadata:create
+      summary: Create access model metadata value
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/attributes/{key}/values/{value}:
+    get:
+      description: Get single Access Model Metadata Attribute Value
+      operationId: getAccessModelMetadataAttributeValueV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      - description: Technical name of the Attribute value.
+        example: public
+        explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributevaluedto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      - applicationAuth:
+        - idn:access-model-metadata:read
+        - idn:access-model-metadata:manage
+      summary: Get access model metadata value
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: "Update an existing Access Model Metadata Attribute Value.    \n\
+        The following fields are patchable: **name**\n"
+      operationId: updateAccessModelMetadataAttributeValueV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttribute
+      - description: Technical name of the Attribute value.
+        example: public
+        explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValue
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: JSON Patch array to apply
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attributevaluedto'
+          description: OK - Attribute value updated successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:update
+      - applicationAuth:
+        - idn:access-model-metadata:update
+      summary: Update access model metadata value
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/bulk-update/filter:
+    post:
+      deprecated: true
+      description: Bulk update Access Model Metadata Attribute Values using a filter
+      operationId: updateAccessModelMetadataByFilterV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitlementattributebulkupdatefilterrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessmodelmetadatabulkupdateresponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Metadata Attribute update by filter
+      tags:
+      - Access Model Metadata
+      x-deprecated-description: |
+        This API has been deprecated, please refer to entitlements, roles and access-profile documentations for latest API.
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/bulk-update/query:
+    post:
+      deprecated: true
+      description: Bulk update Access Model Metadata Attribute Values using a query
+      operationId: updateAccessModelMetadataByQueryV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitlementattributebulkupdatequeryrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessmodelmetadatabulkupdateresponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Metadata Attribute update by query
+      tags:
+      - Access Model Metadata
+      x-deprecated-description: |
+        This API has been deprecated, please refer to entitlements, roles and access-profile documentations for latest API.
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /access-model-metadata/v1/bulk-update/ids:
+    post:
+      deprecated: true
+      description: Bulk update Access Model Metadata Attribute Values using ids.
+      operationId: updateAccessModelMetadataByIdsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitlementattributebulkupdateidsrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessmodelmetadatabulkupdateresponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Metadata Attribute update by ids
+      tags:
+      - Access Model Metadata
+      x-deprecated-description: |
+        This API has been deprecated, please refer to entitlements, roles and access-profile documentations for latest API.
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    attributevaluedto:
+      example:
+        name: Public
+        value: public
+        status: active
+      properties:
+        value:
+          description: Technical name of the Attribute value. This is unique and cannot
+            be changed after creation.
+          example: public
+          type: string
+        name:
+          description: The display name of the Attribute value.
+          example: Public
+          type: string
+        status:
+          description: The status of the Attribute value.
+          example: active
+          type: string
+      type: object
+    attributedto:
+      example:
+        multiselect: false
+        values:
+        - name: Public
+          value: public
+          status: active
+        - name: Public
+          value: public
+          status: active
+        name: Privacy
+        description: Specifies the level of privacy associated with an access item.
+        type: governance
+        objectTypes:
+        - entitlement
+        key: iscPrivacy
+        status: active
+      properties:
+        key:
+          description: Technical name of the Attribute. This is unique and cannot
+            be changed after creation.
+          example: iscPrivacy
+          type: string
+        name:
+          description: The display name of the key.
+          example: Privacy
+          type: string
+        multiselect:
+          default: false
+          description: Indicates whether the attribute can have multiple values.
+          example: false
+          type: boolean
+        status:
+          description: The status of the Attribute.
+          example: active
+          type: string
+        type:
+          description: The type of the Attribute. This can be either "custom" or "governance".
+          example: governance
+          type: string
+        objectTypes:
+          description: An array of object types this attributes values can be applied
+            to. Possible values are "all" or "entitlement". Value "all" means this
+            attribute can be used with all object types that are supported.
+          example:
+          - entitlement
+          items:
+            type: string
+          nullable: true
+          type: array
+        description:
+          description: The description of the Attribute.
+          example: Specifies the level of privacy associated with an access item.
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/attributevaluedto'
+          nullable: true
+          type: array
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    bulkupdateammkeyvalue:
+      description: "The metadata to be updated, including attribute and values."
+      example:
+      - attribute: iscFederalClassifications
+        values:
+        - topSecret
+      items:
+        $ref: '#/components/schemas/bulkupdateammkeyvalue_inner'
+      nullable: false
+      type: array
+    entitlementattributebulkupdatefilterrequest:
+      properties:
+        filters:
+          description: |-
+            Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+            Filtering is supported for the following fields and operators:
+
+            **id**: *eq*
+          example: id eq 2c9180867817ac4d017817c491119a20
+          type: string
+        operation:
+          description: Operation to perform on the attributes in the bulk update request.
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: add
+          type: string
+        replaceScope:
+          description: The choice of update scope.
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: attribute
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute and values."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/bulkupdateammkeyvalue_inner'
+          nullable: false
+          type: array
+      type: object
+    accessmodelmetadatabulkupdateresponse:
+      example:
+        created: 2020-10-08T18:33:52.029Z
+        id: 2c9180867817ac4d017817c491119a20
+        type: Role
+        status: CREATED
+      properties:
+        id:
+          description: ID of the task which is executing the bulk update.
+          example: 2c9180867817ac4d017817c491119a20
+          type: string
+        type:
+          description: Type of the bulk update object.
+          example: Role
+          type: string
+        status:
+          description: "The status of the bulk update request, only list unfinished\
+            \ request's status."
+          enum:
+          - CREATED
+          - PRE_PROCESS
+          - PRE_PROCESS_COMPLETED
+          - POST_PROCESS
+          - COMPLETED
+          - CHUNK_PENDING
+          - CHUNK_PROCESSING
+          - RE_PROCESSING
+          - PRE_PROCESS_FAILED
+          - FAILED
+          example: CREATED
+          type: string
+        created:
+          description: Time when the bulk update request was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+      type: object
+    index:
+      description: |-
+        Enum representing the currently supported indices.
+        Additional values may be added in the future without notice.
+      enum:
+      - accessprofiles
+      - accountactivities
+      - entitlements
+      - events
+      - identities
+      - roles
+      - '*'
+      example: identities
+      type: string
+    querytype:
+      default: SAILPOINT
+      description: |-
+        The type of query to use.  By default, the `SAILPOINT` query type is used, which requires the `query` object to be defined in the request body.
+        To use the `queryDsl` or `typeAheadQuery` objects in the request, you must set the type to `DSL` or `TYPEAHEAD` accordingly.
+        Additional values may be added in the future without notice.
+      enum:
+      - DSL
+      - SAILPOINT
+      - TEXT
+      - TYPEAHEAD
+      example: SAILPOINT
+      type: string
+    elasticversion:
+      default: "5.2"
+      description: The current Elasticserver version.
+      example: "5.2"
+      type: string
+    innerhit:
+      description: Inner Hit query object that will cause the specified nested type
+        to be returned as the result matching the supplied query.
+      properties:
+        query:
+          description: "The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
+            \ syntax from the Query DSL extended by SailPoint to support Nested queries."
+          example: source.name:\"Active Directory\"
+          type: string
+        type:
+          description: "The nested type to use in the inner hits query.  The nested\
+            \ type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html)\
+            \ refers to a document \"nested\" within another document. For example,\
+            \ an identity can have nested documents for access, accounts, and apps."
+          example: access
+          type: string
+      required:
+      - query
+      - type
+      type: object
+    query:
+      description: Query parameters used to construct an Elasticsearch query object.
+      properties:
+        query:
+          description: "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
+            \ syntax from the Query DSL extended by SailPoint to support Nested queries."
+          example: name:a*
+          type: string
+        fields:
+          description: "The fields the query will be applied to.  Fields provide you\
+            \ with a simple way to add additional fields to search, without making\
+            \ the query too complicated.  For example, you can use the fields to specify\
+            \ that you want your query of \"a*\" to be applied to \"name\", \"firstName\"\
+            , and the \"source.name\".  The response will include all results matching\
+            \ the \"a*\" query found in those three fields. \nA field's availability\
+            \ depends on the indices being searched.  For example, if you are searching\
+            \ \"identities\", you can apply your search to the \"firstName\" field,\
+            \ but you couldn't use \"firstName\" with a search on \"access profiles\"\
+            .  Refer to the response schema for the respective lists of available\
+            \ fields. "
+          example: "[\"firstName,lastName,email\"]"
+          type: string
+        timeZone:
+          description: The time zone to be applied to any range query related to dates.
+          example: America/Chicago
+          type: string
+        innerHit:
+          $ref: '#/components/schemas/innerhit'
+      type: object
+    textquery:
+      description: Query parameters used to construct an Elasticsearch text query
+        object.
+      properties:
+        terms:
+          description: Words or characters that specify a particular thing to be searched
+            for.
+          example:
+          - The quick brown fox
+          - "3141592"
+          - "7"
+          items:
+            type: string
+          type: array
+        fields:
+          description: The fields to be searched.
+          example:
+          - displayName
+          - employeeNumber
+          - roleCount
+          items:
+            type: string
+          type: array
+        matchAny:
+          default: false
+          description: "Indicates that at least one of the terms must be found in\
+            \ the specified fields;  otherwise, all terms must be found."
+          example: false
+          type: boolean
+        contains:
+          default: false
+          description: "Indicates that the terms can be located anywhere in the specified\
+            \ fields;  otherwise, the fields must begin with the terms."
+          example: true
+          type: boolean
+      required:
+      - fields
+      - terms
+      type: object
+    typeaheadquery:
+      description: "Query parameters used to construct an Elasticsearch type ahead\
+        \ query object.  The typeAheadQuery performs a search for top values beginning\
+        \ with the typed values. For example, typing \"Jo\" results in top hits matching\
+        \ \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" "
+      properties:
+        query:
+          description: The type ahead query string used to construct a phrase prefix
+            match query.
+          example: Work
+          type: string
+        field:
+          description: The field on which to perform the type ahead search.
+          example: source.name
+          type: string
+        nestedType:
+          description: The nested type.
+          example: access
+          type: string
+        maxExpansions:
+          default: 10
+          description: |-
+            The number of suffixes the last term will be expanded into.
+            Influences the performance of the query and the number results returned.
+            Valid values: 1 to 1000.
+          example: 10
+          format: int32
+          maximum: 1000
+          minimum: 1
+          type: integer
+        size:
+          default: 100
+          description: The max amount of records the search will return.
+          example: 100
+          format: int32
+          minimum: 1
+          type: integer
+        sort:
+          default: desc
+          description: The sort order of the returned records.
+          example: asc
+          type: string
+        sortByValue:
+          default: false
+          description: "The flag that defines the sort type, by count or value."
+          example: true
+          type: boolean
+      required:
+      - field
+      - query
+      type: object
+    queryresultfilter:
+      description: Allows the query results to be filtered by specifying a list of
+        fields to include and/or exclude from the result documents.
+      properties:
+        includes:
+          description: The list of field names to include in the result documents.
+          example:
+          - name
+          - displayName
+          items:
+            type: string
+          type: array
+        excludes:
+          description: The list of field names to exclude from the result documents.
+          example:
+          - stacktrace
+          items:
+            type: string
+          type: array
+      type: object
+    aggregationtype:
+      default: DSL
+      description: |
+        Enum representing the currently available query languages for aggregations, which are used to perform calculations or groupings on search results.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - DSL
+      - SAILPOINT
+      example: DSL
+      type: string
+    nestedaggregation:
+      description: The nested aggregation object.
+      properties:
+        name:
+          description: The name of the nested aggregate to be included in the result.
+          example: id
+          type: string
+        type:
+          description: The type of the nested object.
+          example: access
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    metrictype:
+      default: UNIQUE_COUNT
+      description: |-
+        Enum representing the currently supported metric aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - COUNT
+      - UNIQUE_COUNT
+      - AVG
+      - SUM
+      - MEDIAN
+      - MIN
+      - MAX
+      example: COUNT
+      type: string
+    metricaggregation:
+      description: The calculation done on the results of the query
+      properties:
+        name:
+          description: |-
+            The name of the metric aggregate to be included in the result.
+            If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.
+          example: Access Name Count
+          type: string
+        type:
+          $ref: '#/components/schemas/metrictype'
+        field:
+          description: |
+            The field the calculation is performed on.
+
+            Prefix the field name with '@' to reference a nested object.
+          example: '@access.name'
+          type: string
+      required:
+      - field
+      - name
+      type: object
+    searchfiltertype:
+      default: TERM
+      description: |-
+        Enum representing the currently supported filter aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - TERM
+      example: TERM
+      type: string
+    filteraggregation:
+      description: An additional filter to constrain the results of the search query.
+      properties:
+        name:
+          description: The name of the filter aggregate to be included in the result.
+          example: Entitlements
+          type: string
+        type:
+          $ref: '#/components/schemas/searchfiltertype'
+        field:
+          description: |
+            The search field to apply the filter to.
+
+            Prefix the field name with '@' to reference a nested object.
+          example: access.type
+          type: string
+        value:
+          description: The value to filter on.
+          example: ENTITLEMENT
+          type: string
+      required:
+      - field
+      - name
+      - value
+      type: object
+    buckettype:
+      default: TERMS
+      description: |-
+        Enum representing the currently supported bucket aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - TERMS
+      example: TERMS
+      type: string
+    bucketaggregation:
+      description: The bucket to group the results of the aggregation query by.
+      properties:
+        name:
+          description: The name of the bucket aggregate to be included in the result.
+          example: Identity Locations
+          type: string
+        type:
+          $ref: '#/components/schemas/buckettype'
+        field:
+          description: |-
+            The field to bucket on.
+            Prefix the field name with '@' to reference a nested object.
+          example: attributes.city
+          type: string
+        size:
+          description: Maximum number of buckets to include.
+          example: 100
+          format: int32
+          type: integer
+        minDocCount:
+          description: Minimum number of documents a bucket should have.
+          example: 2
+          format: int32
+          type: integer
+      required:
+      - field
+      - name
+      type: object
+    aggregations:
+      properties:
+        nested:
+          $ref: '#/components/schemas/nestedaggregation'
+        metric:
+          $ref: '#/components/schemas/metricaggregation'
+        filter:
+          $ref: '#/components/schemas/filteraggregation'
+        bucket:
+          $ref: '#/components/schemas/bucketaggregation'
+      type: object
+    subsearchaggregationspecification:
+      allOf:
+      - $ref: '#/components/schemas/aggregations'
+      - properties:
+          subAggregation:
+            $ref: '#/components/schemas/aggregations'
+        type: object
+    searchaggregationspecification:
+      allOf:
+      - $ref: '#/components/schemas/aggregations'
+      - properties:
+          subAggregation:
+            $ref: '#/components/schemas/subsearchaggregationspecification'
+        type: object
+    filtertype:
+      description: |-
+        Enum representing the currently supported filter types.
+        Additional values may be added in the future without notice.
+      enum:
+      - EXISTS
+      - RANGE
+      - TERMS
+      example: RANGE
+      type: string
+    bound:
+      properties:
+        value:
+          description: The value of the range's endpoint.
+          example: "1"
+          type: string
+        inclusive:
+          default: false
+          description: Indicates if the endpoint is included in the range.
+          example: false
+          type: boolean
+      required:
+      - value
+      type: object
+    range:
+      description: The range of values to be filtered.
+      properties:
+        lower:
+          $ref: '#/components/schemas/bound'
+        upper:
+          $ref: '#/components/schemas/bound'
+      type: object
+    filter:
+      properties:
+        type:
+          $ref: '#/components/schemas/filtertype'
+        range:
+          $ref: '#/components/schemas/range'
+        terms:
+          description: The terms to be filtered.
+          items:
+            example: account_count
+            type: string
+          type: array
+        exclude:
+          default: false
+          description: Indicates if the filter excludes results.
+          example: false
+          type: boolean
+      type: object
+    search:
+      properties:
+        indices:
+          description: "The names of the Elasticsearch indices in which to search.\
+            \ If none are provided, then all indices will be searched."
+          example:
+          - identities
+          externalDocs:
+            description: Learn more about search indices here.
+            url: https://documentation.sailpoint.com/saas/help/search/searchable-fields.html
+          items:
+            $ref: '#/components/schemas/index'
+          type: array
+        queryType:
+          $ref: '#/components/schemas/querytype'
+        queryVersion:
+          allOf:
+          - $ref: '#/components/schemas/elasticversion'
+          - description: |-
+              The version of the query object.
+              This version number will map to the version of Elasticsearch for the query strings and objects being used.
+            type: string
+        query:
+          $ref: '#/components/schemas/query'
+        queryDsl:
+          description: "The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html)\
+            \ syntax."
+          example:
+            match:
+              name: john.doe
+          type: object
+        textQuery:
+          $ref: '#/components/schemas/textquery'
+        typeAheadQuery:
+          $ref: '#/components/schemas/typeaheadquery'
+        includeNested:
+          default: true
+          description: Indicates whether nested objects from returned search results
+            should be included.
+          example: true
+          type: boolean
+        queryResultFilter:
+          $ref: '#/components/schemas/queryresultfilter'
+        aggregationType:
+          $ref: '#/components/schemas/aggregationtype'
+        aggregationsVersion:
+          allOf:
+          - $ref: '#/components/schemas/elasticversion'
+          - description: |-
+              The version of the language being used for aggregation queries.
+              This version number will map to the version of Elasticsearch for the aggregation query object.
+            type: string
+        aggregationsDsl:
+          description: "The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html)\
+            \ syntax."
+          example: {}
+          type: object
+        aggregations:
+          $ref: '#/components/schemas/searchaggregationspecification'
+        sort:
+          description: The fields to be used to sort the search results. Use + or
+            - to specify the sort direction.
+          example:
+          - displayName
+          - +id
+          items:
+            type: string
+          type: array
+        searchAfter:
+          description: "Used to begin the search window at the values specified.\n\
+            This parameter consists of the last values of the sorted fields in the\
+            \ current record set.\nThis is used to expand the Elasticsearch limit\
+            \ of 10K records by shifting the 10K window to begin at this value.\n\
+            It is recommended that you always include the ID of the object in addition\
+            \ to any other fields on this parameter in order to ensure you don't get\
+            \ duplicate results while paging.\nFor example, when searching for identities,\
+            \ if you are sorting by displayName you will also want to include ID,\
+            \ for example [\"displayName\", \"id\"]. \nIf the last identity ID in\
+            \ the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName\
+            \ is \"John Doe\", then using that displayName and ID will start a new\
+            \ search after this identity.\nThe searchAfter value will look like [\"\
+            John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]"
+          example:
+          - John Doe
+          - 2c91808375d8e80a0175e1f88a575221
+          items:
+            type: string
+          type: array
+        filters:
+          additionalProperties:
+            $ref: '#/components/schemas/filter'
+          description: The filters to be applied for each filtered field name.
+          example: {}
+          type: object
+      type: object
+    entitlementattributebulkupdatequeryrequest:
+      properties:
+        query:
+          $ref: '#/components/schemas/search'
+        operation:
+          description: Operation to perform on the attributes in the bulk update request.
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: add
+          type: string
+        replaceScope:
+          description: The choice of update scope.
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: attribute
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute and values."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/bulkupdateammkeyvalue_inner'
+          nullable: false
+          type: array
+      type: object
+    entitlementattributebulkupdateidsrequest:
+      properties:
+        entitlements:
+          description: List of entitlement IDs to update.
+          example:
+          - 2c9180867817ac4d017817c491119a20
+          - 2c9180867817ac4d017817c491119a21
+          items:
+            type: string
+          type: array
+        operation:
+          description: Operation to perform on the attributes in the bulk update request.
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: add
+          type: string
+        replaceScope:
+          description: The choice of update scope.
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: attribute
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute and values."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/bulkupdateammkeyvalue_inner'
+          nullable: false
+          type: array
+      type: object
+    listAccessModelMetadataAttributeV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listAccessModelMetadataAttributeV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    bulkupdateammkeyvalue_inner:
+      properties:
+        attribute:
+          description: the key of metadata attribute
+          example: iscFederalClassifications
+          type: string
+        values:
+          description: the values of attribute to be updated
+          example:
+          - secret
+          items:
+            example: secret
+            type: string
+          nullable: true
+          type: array
+      required:
+      - attribute
+      - values
+      type: object

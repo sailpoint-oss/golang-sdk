@@ -1,0 +1,1558 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Global Tenant Security Settings
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to implement and customize global tenant security settings.
+    With this functionality in place, administrators can manage the global security settings that a tenant/org has.
+    This API can be used to configure the networks and Geographies allowed to access Identity Security Cloud URLs.
+  name: Global Tenant Security Settings
+paths:
+  /auth-org/v1/network-config:
+    get:
+      description: This API returns the details of an org's network auth configuration.
+      operationId: getAuthOrgNetworkConfigV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/networkconfiguration'
+          description: Network configuration for the tenant's auth org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:read
+      - applicationAuth:
+        - sp:auth-org:read
+      summary: Get security network configuration.
+      tags:
+      - Global Tenant Security Settings
+    patch:
+      description: |-
+        This API updates an existing network configuration for an org using PATCH
+         Requires security scope of:  'sp:auth-org:manage'
+      operationId: patchAuthOrgNetworkConfigV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /whitelisted
+              value: "false,"
+            - op: add
+              path: /geolocation
+              value:
+              - AF
+              - HN
+              - ES
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: |-
+          A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          Ensures that the patched Network Config conforms to certain logical guidelines, which are:
+            1. Each string element in the range array must be a valid ip address or
+          ip subnet mask.
+            2. Each string element in the geolocation array must be 2 characters,
+          and they can only be uppercase letters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/networkconfiguration'
+          description: Updated Auth Org network configuration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
+      summary: Update security network configuration.
+      tags:
+      - Global Tenant Security Settings
+    post:
+      description: "This API returns the details of an org's network auth configuration.\
+        \ Requires security scope of: 'sp:auth-org:manage'"
+      operationId: createAuthOrgNetworkConfigV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/networkconfiguration'
+        description: |-
+          Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:
+            1. Each string element in the range array must be a valid ip address or
+          ip subnet mask.
+            2. Each string element in the geolocation array must be 2 characters,
+          and they can only be uppercase letters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/networkconfiguration'
+          description: Network configuration for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
+      summary: Create security network configuration.
+      tags:
+      - Global Tenant Security Settings
+  /auth-org/v1/lockout-config:
+    get:
+      description: This API returns the details of an org's lockout auth configuration.
+      operationId: getAuthOrgLockoutConfigV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lockoutconfiguration'
+          description: Lockout configuration for the tenant's auth org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:read
+      - applicationAuth:
+        - sp:auth-org:read
+      summary: Get auth org lockout configuration.
+      tags:
+      - Global Tenant Security Settings
+    patch:
+      description: |
+        This API updates an existing lockout configuration for an org using PATCH
+      operationId: patchAuthOrgLockoutConfigV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /maximumAttempts
+              value: "7,"
+            - op: add
+              path: /lockoutDuration
+              value: 35
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: |-
+          A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:
+            `1. maximumAttempts >= 1 && maximumAttempts <= 15
+            2. lockoutDuration >= 5 && lockoutDuration <= 60
+            3. lockoutWindow >= 5 && lockoutDuration <= 60`
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lockoutconfiguration'
+          description: Updated Auth Org lockout configuration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
+      summary: Update auth org lockout configuration
+      tags:
+      - Global Tenant Security Settings
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+  /auth-org/v1/service-provider-config:
+    get:
+      description: This API returns the details of an org's service provider auth
+        configuration.
+      operationId: getAuthOrgServiceProviderConfigV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serviceproviderconfiguration'
+          description: Service provider configuration for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - 'sp:auth-org:read '
+      - applicationAuth:
+        - 'sp:auth-org:read '
+      summary: Get service provider configuration.
+      tags:
+      - Global Tenant Security Settings
+    patch:
+      description: This API updates an existing service provider configuration for
+        an org using PATCH.
+      operationId: patchAuthOrgServiceProviderConfigV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /enabled
+              value: "true,"
+            - op: add
+              path: /federationProtocolDetails/0/jitConfiguration
+              value:
+                enabled: true
+                sourceId: 2c9180857377ed2901739c12a2da5ac8
+                sourceAttributeMappings:
+                  firstName: okta.firstName
+                  lastName: okta.lastName
+                  email: okta.email
+                  employeeNumber: okta.employeeNumber
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: |-
+          A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails
+          Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:
+            1. Do not add or remove any elements in the federation protocol details
+          in the service provider configuration.
+            2. Do not modify, add, or delete the service provider details element in
+          the federation protocol details.
+            3. If this is the first time the patched ServiceProviderConfig enables
+          Remote IDP sign-in, it must also include IDPDetails.
+            4. If the patch enables Remote IDP sign in, the entityID in the
+          IDPDetails cannot be null. IDPDetails must include an entityID.
+            5. Any JIT configuration update must be valid.
+
+          Just in time configuration update must be valid when enabled. This includes:
+            - A Source ID
+            - Source attribute mappings
+            - Source attribute maps have all the required key values (firstName,
+          lastName, email)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serviceproviderconfiguration'
+          description: Auth Org Service Provider configuration updated.
+        "400":
+          content:
+            application/json:
+              examples:
+                "400.1 Bad Request Content":
+                  description: Response for bad request content
+                  value:
+                    detailCode: 400.1 Bad Request Content
+                    trackingId: e7eab60924f64aa284175b9fa3309599
+                    messages:
+                    - locale: en
+                      localeOrigin: REQUEST
+                      text: firstName is required; accountName is required;
+                "400.1.3 Illegal value":
+                  description: Response for Illegal value
+                  value:
+                    detailCode: 400.1.3 Illegal value
+                    trackingId: e7eab60924f64aa284175b9fa3309599
+                    messages:
+                    - locale: en
+                      localeOrigin: REQUEST
+                      text: JIT source id is invalid.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
+      summary: Update service provider configuration
+      tags:
+      - Global Tenant Security Settings
+  /auth-org/v1/session-config:
+    get:
+      description: This API returns the details of an org's session auth configuration.
+      operationId: getAuthOrgSessionConfigV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sessionconfiguration'
+          description: Session configuration for the tenant's auth org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:read
+      - applicationAuth:
+        - sp:auth-org:read
+      summary: Get auth org session configuration.
+      tags:
+      - Global Tenant Security Settings
+    patch:
+      description: This API updates an existing session configuration for an org using
+        PATCH.
+      operationId: patchAuthOrgSessionConfigV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /rememberMe
+              value: "true,"
+            - op: add
+              path: /maxSessionTime
+              value: 480
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: |
+          A list of auth org session configuration update operations according to
+          the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          Ensures that the patched Session Config conforms to certain logical
+          guidelines, which are:
+            `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)
+            2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)
+            3. maxSessionTime must have a greater duration than maxIdleTime.`
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sessionconfiguration'
+          description: Updated Auth Org session configuration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-org:manage
+      - applicationAuth:
+        - sp:auth-org:manage
+      summary: Update auth org session configuration
+      tags:
+      - Global Tenant Security Settings
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAuthOrgNetworkConfigV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    networkconfiguration:
+      example:
+        range:
+        - 1.3.7.2
+        - 255.255.255.252/30
+        whitelisted: true
+        geolocation:
+        - CA
+        - FR
+        - HT
+      properties:
+        range:
+          description: The collection of ip ranges.
+          example:
+          - 1.3.7.2
+          - 255.255.255.252/30
+          items:
+            type: string
+          nullable: true
+          type: array
+        geolocation:
+          description: The collection of country codes.
+          example:
+          - CA
+          - FR
+          - HT
+          items:
+            type: string
+          nullable: true
+          type: array
+        whitelisted:
+          default: false
+          description: Denotes whether the provided lists are whitelisted or blacklisted
+            for geo location.
+          example: true
+          type: boolean
+      title: Network Configuration
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    lockoutconfiguration:
+      example:
+        maximumAttempts: 5
+        lockoutDuration: 15
+        lockoutWindow: 5
+      properties:
+        maximumAttempts:
+          description: The maximum attempts allowed before lockout occurs.
+          example: 5
+          format: int32
+          type: integer
+        lockoutDuration:
+          description: The total time in minutes a user will be locked out.
+          example: 15
+          format: int32
+          type: integer
+        lockoutWindow:
+          description: A rolling window where authentication attempts in a series
+            count towards the maximum before lockout occurs.
+          example: 5
+          format: int32
+          type: integer
+      title: Lockout Configuration
+      type: object
+    federationprotocoldetails:
+      properties:
+        role:
+          description: Federation protocol role
+          enum:
+          - SAML_IDP
+          - SAML_SP
+          example: SAML_IDP
+          type: string
+        entityId:
+          description: "An entity ID is a globally unique name for a SAML entity,\
+            \ either an Identity Provider (IDP) or a Service Provider (SP)."
+          example: http://www.okta.com/exkdaruy8Ln5Ry7C54x6
+          type: string
+      title: Federation Protocol Details
+      type: object
+    jitconfiguration:
+      properties:
+        enabled:
+          default: false
+          description: The indicator for just-in-time provisioning enabled
+          example: false
+          type: boolean
+        sourceId:
+          description: the sourceId that mapped to just-in-time provisioning configuration
+          example: 2c9180857377ed2901739c12a2da5ac8
+          type: string
+        sourceAttributeMappings:
+          additionalProperties:
+            description: a mapping of JIT source attributes to the SAML assertion
+              attribute
+            type: string
+          description: A mapping of identity profile attribute names to SAML assertion
+            attribute names
+          example:
+            firstName: okta.firstName
+            lastName: okta.lastName
+            email: okta.email
+          type: object
+      title: JIT Configuration
+      type: object
+    idpdetails:
+      allOf:
+      - $ref: '#/components/schemas/federationprotocoldetails'
+      - description: Specification of Identity Provider Details section of Service
+          Provider Config
+        properties:
+          binding:
+            description: Defines the binding used for the SAML flow. Used with IDP
+              configurations.
+            example: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+            type: string
+          authnContext:
+            description: Specifies the SAML authentication method to use. Used with
+              IDP configurations.
+            example: urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+            type: string
+          logoutUrl:
+            description: The IDP logout URL. Used with IDP configurations.
+            example: https://dev-206445.oktapreview.com/login/signout
+            type: string
+          includeAuthnContext:
+            default: false
+            description: Determines if the configured AuthnContext should be used
+              or the default. Used with IDP configurations.
+            example: false
+            type: boolean
+          nameId:
+            description: The name id format to use. Used with IDP configurations.
+            example: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+            type: string
+          jitConfiguration:
+            $ref: '#/components/schemas/jitconfiguration'
+          cert:
+            description: The Base64-encoded certificate used by the IDP. Used with
+              IDP configurations.
+            example: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
+            type: string
+          loginUrlPost:
+            description: "The IDP POST URL, used with IDP HTTP-POST bindings for IDP-initiated\
+              \ logins. Used with IDP configurations."
+            example: https://dev-157216.okta.com/app/sailpointdev157216_cdovsaml_1/exkdaruy8Ln5Ry7C54x6/sso/saml
+            type: string
+          loginUrlRedirect:
+            description: The IDP Redirect URL. Used with IDP configurations.
+            example: https://dev-157216.okta.com/app/sailpointdev157216_cdovsaml_1/exkdaruy8Ln5Ry7C54x6/sso/saml
+            type: string
+          mappingAttribute:
+            description: "Return the saml Id for the given user, based on the IDN\
+              \ as SP settings of the org. Used with IDP configurations."
+            example: email
+            type: string
+          certificateExpirationDate:
+            description: The expiration date extracted from the certificate.
+            example: Fri Mar 08 08:54:24 UTC 2013
+            type: string
+          certificateName:
+            description: The name extracted from the certificate.
+            example: "OU=Conext, O=Surfnet, L=Utrecht, ST=Utrecht, C=NL"
+            type: string
+        required:
+        - mappingAttribute
+        type: object
+    spdetails:
+      allOf:
+      - $ref: '#/components/schemas/federationprotocoldetails'
+      - description: Specification of a Service Provider Details
+        properties:
+          alias:
+            description: Unique alias used to identify the selected local service
+              provider based on used URL. Used with SP configurations.
+            example: acme-sp
+            type: string
+          callbackUrl:
+            description: The allowed callback URL where users will be redirected to
+              after authentication. Used with SP configurations.
+            example: https://example-tenant.identitynow.com/sso/Consumer/metaAlias/example-tenant-sp
+            type: string
+          legacyAcsUrl:
+            description: The legacy ACS URL used for SAML authentication. Used with
+              SP configurations.
+            example: https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp
+            type: string
+        required:
+        - callbackUrl
+        type: object
+    serviceproviderconfiguration:
+      description: Represents the IdentityNow as Service Provider Configuration allowing
+        customers to log into IDN via an Identity Provider
+      example:
+        bypassIdp: true
+        samlConfigurationValid: true
+        federationProtocolDetails:
+        - role: SAML_IDP
+          entityId: http://www.okta.com/exktq4o24bmQA4fr60h7
+          cert: MIIDpDCCAoygAwIBAgIGAYhZ+b29MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi0yMDY0NDUxHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjMwNTI2MjEzMDU5WhcNMzMwNTI2MjEzMTU5WjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtMjA2NDQ1MRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwvi1+WbF2ceGlLCrLl5PrG1lpj04IsrHX6OE666ObC2WFh+Nxvpxy+Vmzon9c9+akhK3bTv+9ifEoVc6tA1qWuCfXISAn9g81JqI68I1PGUbe6eF8pmOA18rjOrt7x94k4QukpR3+I8DfPJ+TynatltB51laLb8H4jchMafA4rDTjV/ZiYPxV0LMEIbprVyGuvBEhiEWha3wwVdDuJq996okX36YNS8PcGH+5CJ8c3YWZp/wrspgJmfCooMXeV+6zBpZfXqPpMWlUo0gcZqDOFgy3r4vkXehJdVYRlInMfDv04Lvy8VI1YAZClG/duO/6o9YVUFLjD9s+mQfhgaF5wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQB1CTrA/pTHkarbhMHsdSFAjVoYWwdAfrssG99rIjwwr/CW9tavTC3keaoUmUeddcnLY4V/TfL07+xgQGHCBR88cnzG9h6rC9qWxt6C3nug3YDVQfkdCDgnW9A8QEvLeq/KVLoRccpJNEENb2Y5ESUXHi1+PtjkFBtvfSgZ4eEhVggirL0bJdWVm700hCnjb2iCGSbSX7WflfPi0GSmjht983caG9OwZDnDzNFt8qGWCxo4bNSThT00JnWEN/6f1BWNOt9YDrxqEyNclqhLL+RDqFsPBFIrQlsoXzqpWqCL8oS9UMNxbGATK2v3d5ueE9+SswBAFBhirCuqZw19Ri2W
+          loginUrlPost: https://dev-206445.oktapreview.com/app/tivolidev206445_acmeidntest_1/exktq4o24bmQA4fr60h7/sso/saml
+          loginUrlRedirect: https://dev-206445.oktapreview.com/app/tivolidev206445_acmeidntest_1/exktq4o24bmQA4fr60h7/sso/saml
+          logoutUrl: https://dev-206445.oktapreview.com/login/signout
+          nameId: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+          binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+          authnContext: urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+          includeAuthnContext: true
+          mappingAttribute: email
+          jitConfiguration:
+            enabled: true
+            sourceId: 2c9180897427f3a501745042afc83144
+            sourceAttributeMappings:
+              firstName: okta.firstName
+              lastName: okta.lastName
+              email: okta.email
+          certificateExpirationDate: Thu May 26 21:31:59 GMT 2033
+          certificateName: "EMAILADDRESS=info@okta.com, CN=dev-206445, OU=SSOProvider,\
+            \ O=Okta, L=San Francisco, ST=California, C=US"
+        - role: SAML_SP
+          entityId: https://acme.identitysoon.com/sp
+          alias: acme-sp
+          callbackUrl: https://acme.test-login.sailpoint.com/saml/SSO/alias/acme-sp
+          legacyAcsUrl: https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp
+        enabled: true
+      properties:
+        enabled:
+          default: false
+          description: This determines whether or not the SAML authentication flow
+            is enabled for an org
+          example: true
+          type: boolean
+        bypassIdp:
+          default: false
+          description: "This allows basic login with the parameter prompt=true. This\
+            \ is often toggled on when debugging SAML authentication setup. When false,\
+            \ only org admins with MFA-enabled can bypass the IDP."
+          example: true
+          type: boolean
+        samlConfigurationValid:
+          default: false
+          description: This indicates whether or not the SAML configuration is valid.
+          example: true
+          type: boolean
+        federationProtocolDetails:
+          description: "A list of the abstract implementations of the Federation Protocol\
+            \ details. Typically, this will include on SpDetails object and one IdpDetails\
+            \ object used in tandem to define a SAML integration between a customer's\
+            \ identity provider and a customer's SailPoint instance (i.e., the service\
+            \ provider)."
+          example:
+          - role: SAML_IDP
+            entityId: http://www.okta.com/exktq4o24bmQA4fr60h7
+            cert: MIIDpDCCAoygAwIBAgIGAYhZ+b29MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi0yMDY0NDUxHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjMwNTI2MjEzMDU5WhcNMzMwNTI2MjEzMTU5WjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtMjA2NDQ1MRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwvi1+WbF2ceGlLCrLl5PrG1lpj04IsrHX6OE666ObC2WFh+Nxvpxy+Vmzon9c9+akhK3bTv+9ifEoVc6tA1qWuCfXISAn9g81JqI68I1PGUbe6eF8pmOA18rjOrt7x94k4QukpR3+I8DfPJ+TynatltB51laLb8H4jchMafA4rDTjV/ZiYPxV0LMEIbprVyGuvBEhiEWha3wwVdDuJq996okX36YNS8PcGH+5CJ8c3YWZp/wrspgJmfCooMXeV+6zBpZfXqPpMWlUo0gcZqDOFgy3r4vkXehJdVYRlInMfDv04Lvy8VI1YAZClG/duO/6o9YVUFLjD9s+mQfhgaF5wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQB1CTrA/pTHkarbhMHsdSFAjVoYWwdAfrssG99rIjwwr/CW9tavTC3keaoUmUeddcnLY4V/TfL07+xgQGHCBR88cnzG9h6rC9qWxt6C3nug3YDVQfkdCDgnW9A8QEvLeq/KVLoRccpJNEENb2Y5ESUXHi1+PtjkFBtvfSgZ4eEhVggirL0bJdWVm700hCnjb2iCGSbSX7WflfPi0GSmjht983caG9OwZDnDzNFt8qGWCxo4bNSThT00JnWEN/6f1BWNOt9YDrxqEyNclqhLL+RDqFsPBFIrQlsoXzqpWqCL8oS9UMNxbGATK2v3d5ueE9+SswBAFBhirCuqZw19Ri2W
+            loginUrlPost: https://dev-206445.oktapreview.com/app/tivolidev206445_acmeidntest_1/exktq4o24bmQA4fr60h7/sso/saml
+            loginUrlRedirect: https://dev-206445.oktapreview.com/app/tivolidev206445_acmeidntest_1/exktq4o24bmQA4fr60h7/sso/saml
+            logoutUrl: https://dev-206445.oktapreview.com/login/signout
+            nameId: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+            binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+            authnContext: urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+            includeAuthnContext: true
+            mappingAttribute: email
+            jitConfiguration:
+              enabled: true
+              sourceId: 2c9180897427f3a501745042afc83144
+              sourceAttributeMappings:
+                firstName: okta.firstName
+                lastName: okta.lastName
+                email: okta.email
+            certificateExpirationDate: Thu May 26 21:31:59 GMT 2033
+            certificateName: "EMAILADDRESS=info@okta.com, CN=dev-206445, OU=SSOProvider,\
+              \ O=Okta, L=San Francisco, ST=California, C=US"
+          - role: SAML_SP
+            entityId: https://acme.identitysoon.com/sp
+            alias: acme-sp
+            callbackUrl: https://acme.test-login.sailpoint.com/saml/SSO/alias/acme-sp
+            legacyAcsUrl: https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp
+          items:
+            $ref: '#/components/schemas/serviceproviderconfiguration_federationProtocolDetails_inner'
+          type: array
+      title: Service Provider Configuration
+      type: object
+    sessionconfiguration:
+      example:
+        maxSessionTime: 45
+        maxIdleTime: 15
+        rememberMe: true
+      properties:
+        maxIdleTime:
+          description: The maximum time in minutes a session can be idle.
+          example: 15
+          format: int32
+          type: integer
+        rememberMe:
+          default: false
+          description: Denotes if 'remember me' is enabled.
+          example: true
+          type: boolean
+        maxSessionTime:
+          description: The maximum allowable session time in minutes.
+          example: 45
+          format: int32
+          type: integer
+      title: Session Configuration
+      type: object
+    getAuthOrgNetworkConfigV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAuthOrgNetworkConfigV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    serviceproviderconfiguration_federationProtocolDetails_inner:
+      anyOf:
+      - $ref: '#/components/schemas/idpdetails'
+      - $ref: '#/components/schemas/spdetails'

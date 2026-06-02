@@ -1,0 +1,294 @@
+- path: /managed-clusters/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#create-managed-cluster-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           managedclusterrequest := []byte(``) // Managedclusterrequest | 
+
+          
+          var managedclusterrequest v1.Managedclusterrequest
+          if err := json.Unmarshal(managedclusterrequest, &managedclusterrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.CreateManagedClusterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateManagedClusterV1`: Managedcluster
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.CreateManagedClusterV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#delete-managed-cluster-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2c9180897de347a2017de8859e8c5039` // string | Managed cluster ID. # string | Managed cluster ID.
+          removeClients := false // bool | Flag to determine the need to delete a cluster with clients. (optional) (default to false) # bool | Flag to determine the need to delete a cluster with clients. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).Execute()
+          //r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).RemoveClients(removeClients).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.DeleteManagedClusterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /managed-clusters/v1/{id}/log-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#get-client-log-configuration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | ID of managed cluster to get log configuration for. # string | ID of managed cluster to get log configuration for.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfigurationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetClientLogConfigurationV1`: Clientlogconfiguration
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetClientLogConfigurationV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#get-managed-cluster-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2c9180897de347a2017de8859e8c5039` // string | Managed cluster ID. # string | Managed cluster ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClusterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClusterV1`: Managedcluster
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedClusterV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#get-managed-clusters-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `operational eq "operation"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClustersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManagedClustersV1`: []Managedcluster
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedClustersV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1/{id}/log-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#put-client-log-configuration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | ID of the managed cluster to update the log configuration for. # string | ID of the managed cluster to update the log configuration for.
+           putclientlogconfigurationv1request := []byte(``) // PutClientLogConfigurationV1Request | Client log configuration for the given managed cluster.
+
+          
+          var putClientLogConfigurationV1Request v1.PutClientLogConfigurationV1Request
+          if err := json.Unmarshal(putclientlogconfigurationv1request, &putClientLogConfigurationV1Request); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfigurationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutClientLogConfigurationV1`: Clientlogconfiguration
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.PutClientLogConfigurationV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#update-managed-cluster-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2c9180897de347a2017de8859e8c5039` // string | Managed cluster ID. # string | Managed cluster ID.
+          jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateManagedClusterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateManagedClusterV1`: Managedcluster
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.UpdateManagedClusterV1`: %v\n", resp)
+        }
+- path: /managed-clusters/v1/{id}/manualUpgrade
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/managedclustersv1/methods/managed-clusters#update-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | ID of managed cluster to trigger manual upgrade. # string | ID of managed cluster to trigger manual upgrade.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClustersV1.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateV1`: Clustermanualupgrade
+          fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.UpdateV1`: %v\n", resp)
+        }

@@ -1,0 +1,145 @@
+- path: /tags/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/tagsv1/methods/tags#create-tag-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            "time"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+           tag2 := []byte(``) // Tag2 | 
+
+          
+          var tag2 v1.Tag2
+          if err := json.Unmarshal(tag2, &tag2); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TagsV1.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
+          //resp, r, err := apiClient.TagsV1.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.CreateTagV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateTagV1`: Tag2
+          fmt.Fprintf(os.Stdout, "Response from `TagsAPI.CreateTagV1`: %v\n", resp)
+        }
+- path: /tags/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/tagsv1/methods/tags#delete-tag-by-id-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `329d96cf-3bdb-40a9-988a-b5037ab89022` // string | The ID of the object reference to delete. # string | The ID of the object reference to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.TagsV1.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
+          //r, err := apiClient.TagsV1.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.DeleteTagByIdV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /tags/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/tagsv1/methods/tags#get-tag-by-id-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          id := `329d96cf-3bdb-40a9-988a-b5037ab89022` // string | The ID of the object reference to retrieve. # string | The ID of the object reference to retrieve.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TagsV1.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.TagsV1.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.GetTagByIdV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetTagByIdV1`: Tag2
+          fmt.Fprintf(os.Stdout, "Response from `TagsAPI.GetTagByIdV1`: %v\n", resp)
+        }
+- path: /tags/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/tagsv1/methods/tags#list-tags-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tags_v1"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `id eq "27462f54-61c7-4140-b5da-d5dbe27fc6db"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw* (optional)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.TagsV1.TagsAPI.ListTagsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.TagsV1.TagsAPI.ListTagsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.ListTagsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListTagsV1`: []Tag2
+          fmt.Fprintf(os.Stdout, "Response from `TagsAPI.ListTagsV1`: %v\n", resp)
+        }

@@ -1,0 +1,1972 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Managed Clients
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement managed client functionality. \nWith this\
+    \ functionality in place, administrators can modify and delete existing managed\
+    \ clients, create new ones, and view and make changes to their log configurations.\n"
+  name: Managed Clients
+paths:
+  /managed-clients/v1:
+    get:
+      description: List managed clients.
+      operationId: getManagedClientsV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq*
+
+          **name**: *eq*
+
+          **clientId**: *eq*
+
+          **clusterId**: *eq*
+        example: name eq "client name"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/managedclient'
+                type: array
+          description: "Response with a list of managed clients, based on the specified\
+            \ query parameters."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      - applicationAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      summary: Get managed clients
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: |-
+        Create a new managed client.
+        The API returns a result that includes the managed client ID.
+      operationId: createManagedClientV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/managedclientrequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/managedclient'
+          description: Created managed client.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:manage
+      summary: Create managed client
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /managed-clients/v1/{id}:
+    delete:
+      description: Delete an existing managed client.
+      operationId: deleteManagedClientV1
+      parameters:
+      - description: Managed client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getManagedClients
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:manage
+      summary: Delete managed client
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: 'Get managed client by ID. '
+      operationId: getManagedClientV1
+      parameters:
+      - description: Managed client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getManagedClients
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/managedclient'
+          description: Managed client response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+        - idn:managed-client-status:read
+        - idn:managed-client-status:manage
+      - applicationAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+        - idn:managed-client-status:read
+        - idn:managed-client-status:manage
+      summary: Get managed client
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    patch:
+      description: Update an existing managed client.
+      operationId: updateManagedClientV1
+      parameters:
+      - description: Managed client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getManagedClients
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: JSONPatch payload used to update the object.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/managedclient'
+          description: Updated managed client.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:manage
+      summary: Update managed client
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /managed-clients/v1/{id}/status:
+    get:
+      description: "Get a managed client's status, using its ID."
+      operationId: getManagedClientStatusV1
+      parameters:
+      - description: Managed client ID to get status for.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: aClientId
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getManagedClients
+      - description: Managed client type to get status for.
+        explode: true
+        in: query
+        name: type
+        required: true
+        schema:
+          $ref: '#/components/schemas/managedclienttype'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/managedclientstatus'
+          description: "Response with the managed client status, with the given ID\
+            \ and type."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:managed-client-status:read
+      - applicationAuth:
+        - idn:managed-client-status:read
+      summary: Get managed client status
+      tags:
+      - Managed Clients
+  /managed-clients/v1/{id}/health-indicators:
+    get:
+      description: "Get a managed client's health indicators, using its ID."
+      operationId: getManagedClientHealthIndicatorsV1
+      parameters:
+      - description: Managed client ID to get health indicators for.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getManagedClients
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/managedclienthealthindicators'
+          description: "Response with the managed client health indicators, with the\
+            \ given ID."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getManagedClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:remote-client:manage
+      - applicationAuth:
+        - idn:remote-client:manage
+      summary: Get managed client health indicators
+      tags:
+      - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getManagedClientsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getManagedClientsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    managedclient:
+      description: Managed Client
+      example:
+        clusterType: idn
+        clientId: 00be54a2-bb6d-402f-9159-beb2d5319347
+        apiGatewayBaseUrl: apiGatewayBaseUrl
+        vaVersion: va-megapod-useast1-610-1621372012
+        ipAddress: 123.456.78.90
+        description: A short description of the ManagedClient
+        sinceLastSeen: "15000"
+        alertKey: CLIENT_STATUS_NOT_CONFIGURED
+        clusterId: e1ff7bb24c934240bbf55e1aa39e41c5
+        secret: ef878e15eaa8c8d3e2fa52f41125e2a0eeadadc6a14f931a33ad3e1b62d56381
+        type: VA
+        vaDownloadUrl: aUrl
+        createdAt: 2023-08-04T20:48:01.865Z
+        lastSeen: 2020-01-01T00:00:00Z
+        provisionStatus: PROVISIONED
+        cookbook: cookbook
+        ccId: 2248
+        name: aName
+        id: 2c9180878eaf4204018eb019c3570003
+        status: NORMAL
+        updatedAt: 2023-08-04T20:48:01.865Z
+      properties:
+        id:
+          description: ManagedClient ID
+          example: 2c9180878eaf4204018eb019c3570003
+          nullable: true
+          readOnly: true
+          type: string
+        alertKey:
+          description: ManagedClient alert key
+          example: CLIENT_STATUS_NOT_CONFIGURED
+          nullable: true
+          readOnly: true
+          type: string
+        apiGatewayBaseUrl:
+          nullable: true
+          type: string
+        cookbook:
+          nullable: true
+          type: string
+        ccId:
+          description: Previous CC ID to be used in data migration. (This field will
+            be deleted after CC migration!)
+          example: 2248
+          format: int64
+          nullable: true
+          type: integer
+        clientId:
+          description: The client ID used in API management
+          example: 00be54a2-bb6d-402f-9159-beb2d5319347
+          type: string
+        clusterId:
+          description: Cluster ID that the ManagedClient is linked to
+          example: e1ff7bb24c934240bbf55e1aa39e41c5
+          type: string
+        description:
+          default: ""
+          description: ManagedClient description
+          example: A short description of the ManagedClient
+          type: string
+        ipAddress:
+          description: The public IP address of the ManagedClient
+          example: 123.456.78.90
+          nullable: true
+          readOnly: true
+          type: string
+        lastSeen:
+          description: When the ManagedClient was last seen by the server
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          default: VA-$clientId
+          description: ManagedClient name
+          example: aName
+          nullable: true
+          type: string
+        sinceLastSeen:
+          description: Milliseconds since the ManagedClient has polled the server
+          example: "15000"
+          nullable: true
+          readOnly: true
+          type: string
+        status:
+          description: Status of the ManagedClient
+          enum:
+          - NORMAL
+          - UNDEFINED
+          - NOT_CONFIGURED
+          - CONFIGURING
+          - WARNING
+          - ERROR
+          - FAILED
+          - null
+          example: NORMAL
+          nullable: true
+          readOnly: true
+          type: string
+        type:
+          description: "Type of the ManagedClient (VA, CCG)"
+          example: VA
+          type: string
+        clusterType:
+          description: Cluster Type of the ManagedClient
+          enum:
+          - null
+          - idn
+          - iai
+          - spConnectCluster
+          - sqsCluster
+          - das-rc
+          - das-pc
+          - das-dc
+          example: idn
+          nullable: true
+          readOnly: true
+          type: string
+        vaDownloadUrl:
+          description: ManagedClient VA download URL
+          example: aUrl
+          nullable: true
+          readOnly: true
+          type: string
+        vaVersion:
+          description: Version that the ManagedClient's VA is running
+          example: va-megapod-useast1-610-1621372012
+          nullable: true
+          readOnly: true
+          type: string
+        secret:
+          description: Client's apiKey
+          example: ef878e15eaa8c8d3e2fa52f41125e2a0eeadadc6a14f931a33ad3e1b62d56381
+          nullable: true
+          type: string
+        createdAt:
+          description: The date/time this ManagedClient was created
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        updatedAt:
+          description: The date/time this ManagedClient was last updated
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        provisionStatus:
+          description: The provisioning status of the ManagedClient
+          enum:
+          - null
+          - PROVISIONED
+          - DRAFT
+          example: PROVISIONED
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - clientId
+      - clusterId
+      - description
+      - type
+      title: Managed Client
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    managedclientrequest:
+      description: Managed Client Request
+      properties:
+        clusterId:
+          description: Cluster ID that the ManagedClient is linked to
+          example: aClusterId
+          type: string
+        description:
+          description: description for the ManagedClient to create
+          example: A short description of the ManagedClient
+          nullable: true
+          type: string
+        name:
+          description: name for the ManagedClient to create
+          example: aName
+          nullable: true
+          type: string
+        type:
+          description: "Type of the ManagedClient (VA, CCG) to create"
+          example: VA
+          nullable: true
+          type: string
+      required:
+      - clusterId
+      title: Managed Client Request
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    managedclienttype:
+      description: Managed Client type
+      enum:
+      - CCG
+      - VA
+      - INTERNAL
+      - IIQ_HARVESTER
+      - null
+      example: CCG
+      nullable: true
+      type: string
+    managedclientstatuscode:
+      description: Status of a Managed Client
+      enum:
+      - NORMAL
+      - UNDEFINED
+      - NOT_CONFIGURED
+      - CONFIGURING
+      - WARNING
+      - ERROR
+      - FAILED
+      example: NORMAL
+      type: string
+    managedclientstatus:
+      description: Managed Client Status
+      example:
+        body:
+          alertKey: ""
+          id: "5678"
+          clusterId: "1234"
+          ccg_etag: ccg_etag123xyz456
+          ccg_pin: NONE
+          cookbook_etag: 20210420125956-20210511144538
+          hostname: megapod-useast1-secret-hostname.sailpoint.com
+          internal_ip: 127.0.0.1
+          lastSeen: "1620843964604"
+          sinceSeen: "14708"
+          sinceSeenMillis: "14708"
+          localDev: false
+          stacktrace: ""
+          state: null
+          status: NORMAL
+          uuid: null
+          product: idn
+          va_version: null
+          platform_version: "2"
+          os_version: 2345.3.1
+          os_type: flatcar
+          hypervisor: unknown
+        type: CCG
+        status: NORMAL
+        timestamp: 2020-01-01T00:00:00Z
+      properties:
+        body:
+          description: ManagedClientStatus body information
+          example:
+            alertKey: ""
+            id: "5678"
+            clusterId: "1234"
+            ccg_etag: ccg_etag123xyz456
+            ccg_pin: NONE
+            cookbook_etag: 20210420125956-20210511144538
+            hostname: megapod-useast1-secret-hostname.sailpoint.com
+            internal_ip: 127.0.0.1
+            lastSeen: "1620843964604"
+            sinceSeen: "14708"
+            sinceSeenMillis: "14708"
+            localDev: false
+            stacktrace: ""
+            state: null
+            status: NORMAL
+            uuid: null
+            product: idn
+            va_version: null
+            platform_version: "2"
+            os_version: 2345.3.1
+            os_type: flatcar
+            hypervisor: unknown
+          type: object
+        status:
+          $ref: '#/components/schemas/managedclientstatuscode'
+        type:
+          $ref: '#/components/schemas/managedclienttype'
+        timestamp:
+          description: timestamp on the Client Status update
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - body
+      - status
+      - timestamp
+      - type
+      title: Managed Client Status
+      type: object
+    healthevent:
+      description: Individual error or warning event
+      example:
+        detailedMessage: CPU utilization is high
+        cpuUtilizationPercentage: 80
+        uuid: "5"
+        freeSpacePercentage: 8
+        url: https://example.com:80/
+        timestamp: 2025-03-25T14:46:58.605Z
+        lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+      properties:
+        detailedMessage:
+          description: Description of the issue
+          example: CPU utilization is high
+          type: string
+        uuid:
+          description: Unique identifier for the health event
+          example: "5"
+          type: string
+        url:
+          description: Optional URL associated with the issue
+          example: https://example.com:80/
+          nullable: true
+          type: string
+        timestamp:
+          description: Time when the event occurred
+          example: 2025-03-25T14:46:58.605Z
+          format: date-time
+          type: string
+        lastNotifiedTimeStamp:
+          description: Last time notification was sent for this issue
+          example: 2025-08-06T06:53:22.206956Z
+          format: date-time
+          type: string
+        cpuUtilizationPercentage:
+          description: CPU usage percentage
+          example: 80
+          nullable: true
+          type: number
+        freeSpacePercentage:
+          description: Free memory percentage
+          example: 8
+          nullable: true
+          type: number
+      type: object
+    healthindicatorcategory:
+      description: Health indicator category data with errors and warnings
+      example:
+        warnings:
+        - detailedMessage: CPU utilization is high
+          cpuUtilizationPercentage: 80
+          uuid: "5"
+          freeSpacePercentage: 8
+          url: https://example.com:80/
+          timestamp: 2025-03-25T14:46:58.605Z
+          lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        - detailedMessage: CPU utilization is high
+          cpuUtilizationPercentage: 80
+          uuid: "5"
+          freeSpacePercentage: 8
+          url: https://example.com:80/
+          timestamp: 2025-03-25T14:46:58.605Z
+          lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        errors:
+        - detailedMessage: CPU utilization is high
+          cpuUtilizationPercentage: 80
+          uuid: "5"
+          freeSpacePercentage: 8
+          url: https://example.com:80/
+          timestamp: 2025-03-25T14:46:58.605Z
+          lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        - detailedMessage: CPU utilization is high
+          cpuUtilizationPercentage: 80
+          uuid: "5"
+          freeSpacePercentage: 8
+          url: https://example.com:80/
+          timestamp: 2025-03-25T14:46:58.605Z
+          lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+      properties:
+        errors:
+          description: List of error events for this category
+          items:
+            $ref: '#/components/schemas/healthevent'
+          type: array
+        warnings:
+          description: List of warning events for this category
+          items:
+            $ref: '#/components/schemas/healthevent'
+          type: array
+      type: object
+    managedclienthealthindicators:
+      description: Health Indicators for a Managed Client
+      example:
+        body:
+          deployed_processes: deployed_processes
+          ccg_etag: c95e5c4417952dbcc9b4974999ece14e
+          va_version: va_version
+          lastNotifiedCcgVersion: "1068"
+          clusterId: c2a2139cbc754e42b4279a69ec5f58ec
+          ccg_pin: NONE
+          uuid: uuid
+          apiUser: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+          sinceSeenMillis: "23195"
+          internal_ip: 172.18.54.5
+          hostname: Testing1
+          cookbook_etag: 3018-master-2ce6ac16-20250717124641-3077-master-a101b5fe-20250722162527
+          platform_version: "2"
+          health_indicators:
+            container:
+              warnings:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              errors:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            memory:
+              warnings:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              errors:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            cpu:
+              warnings:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              errors:
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+              - detailedMessage: CPU utilization is high
+                cpuUtilizationPercentage: 80
+                uuid: "5"
+                freeSpacePercentage: 8
+                url: https://example.com:80/
+                timestamp: 2025-03-25T14:46:58.605Z
+                lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          hypervisor: vmware
+          id: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+          state: state
+          localDev: false
+          product: idn
+          consolidatedHealthIndicatorsStatus: ERROR
+          os_version: 4230.2.1
+          alertKey: ""
+          lastSeen: "1754465728720"
+          stacktrace: stacktrace
+          os_type: flatcar
+          sinceSeen: "23195"
+          status: NORMAL
+        type: VA
+        status: NORMAL
+        timestamp: 2025-08-06T07:35:28.7223Z
+      properties:
+        body:
+          $ref: '#/components/schemas/managedclienthealthindicators_body'
+        status:
+          description: Top-level status of the Managed Client
+          enum:
+          - NORMAL
+          - UNDEFINED
+          - WARNING
+          - ERROR
+          - FAILED
+          example: NORMAL
+          type: string
+        type:
+          description: Type of the Managed Client
+          enum:
+          - VA
+          - CCG
+          example: VA
+          type: string
+        timestamp:
+          description: Timestamp when this report was generated
+          example: 2025-08-06T07:35:28.7223Z
+          format: date-time
+          type: string
+      required:
+      - body
+      - status
+      - timestamp
+      - type
+      title: Managed Client Health Indicators
+      type: object
+    getManagedClientsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getManagedClientsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    managedclienthealthindicators_body_health_indicators:
+      description: Health indicators grouped by category
+      example:
+        container:
+          warnings:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          errors:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        memory:
+          warnings:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          errors:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        cpu:
+          warnings:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          errors:
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          - detailedMessage: CPU utilization is high
+            cpuUtilizationPercentage: 80
+            uuid: "5"
+            freeSpacePercentage: 8
+            url: https://example.com:80/
+            timestamp: 2025-03-25T14:46:58.605Z
+            lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+      properties:
+        container:
+          $ref: '#/components/schemas/healthindicatorcategory'
+        memory:
+          $ref: '#/components/schemas/healthindicatorcategory'
+        cpu:
+          $ref: '#/components/schemas/healthindicatorcategory'
+      type: object
+    managedclienthealthindicators_body:
+      description: Health indicator details from the Managed Client
+      example:
+        deployed_processes: deployed_processes
+        ccg_etag: c95e5c4417952dbcc9b4974999ece14e
+        va_version: va_version
+        lastNotifiedCcgVersion: "1068"
+        clusterId: c2a2139cbc754e42b4279a69ec5f58ec
+        ccg_pin: NONE
+        uuid: uuid
+        apiUser: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+        sinceSeenMillis: "23195"
+        internal_ip: 172.18.54.5
+        hostname: Testing1
+        cookbook_etag: 3018-master-2ce6ac16-20250717124641-3077-master-a101b5fe-20250722162527
+        platform_version: "2"
+        health_indicators:
+          container:
+            warnings:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            errors:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          memory:
+            warnings:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            errors:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+          cpu:
+            warnings:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            errors:
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+            - detailedMessage: CPU utilization is high
+              cpuUtilizationPercentage: 80
+              uuid: "5"
+              freeSpacePercentage: 8
+              url: https://example.com:80/
+              timestamp: 2025-03-25T14:46:58.605Z
+              lastNotifiedTimeStamp: 2025-08-06T06:53:22.206956Z
+        hypervisor: vmware
+        id: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+        state: state
+        localDev: false
+        product: idn
+        consolidatedHealthIndicatorsStatus: ERROR
+        os_version: 4230.2.1
+        alertKey: ""
+        lastSeen: "1754465728720"
+        stacktrace: stacktrace
+        os_type: flatcar
+        sinceSeen: "23195"
+        status: NORMAL
+      properties:
+        alertKey:
+          description: Health indicator alert key
+          example: ""
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          description: Unique identifier for the health report
+          example: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+          type: string
+        clusterId:
+          description: Cluster ID the health report belongs to
+          example: c2a2139cbc754e42b4279a69ec5f58ec
+          type: string
+        apiUser:
+          description: API user ID sending the health data
+          example: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
+          type: string
+        ccg_etag:
+          description: ETag value for CCG version control
+          example: c95e5c4417952dbcc9b4974999ece14e
+          nullable: true
+          type: string
+        ccg_pin:
+          description: PIN value for CCG validation
+          example: NONE
+          nullable: true
+          type: string
+        cookbook_etag:
+          description: ETag for cookbook version
+          example: 3018-master-2ce6ac16-20250717124641-3077-master-a101b5fe-20250722162527
+          nullable: true
+          type: string
+        hostname:
+          description: Hostname of the Managed Client
+          example: Testing1
+          type: string
+        internal_ip:
+          description: Internal IP address of the Managed Client
+          example: 172.18.54.5
+          type: string
+        lastSeen:
+          description: Epoch timestamp (in millis) when last seen
+          example: "1754465728720"
+          type: string
+        sinceSeen:
+          description: Seconds since last seen
+          example: "23195"
+          type: string
+        sinceSeenMillis:
+          description: Milliseconds since last seen
+          example: "23195"
+          type: string
+        localDev:
+          default: false
+          description: Indicates if this is a local development instance
+          example: false
+          type: boolean
+        stacktrace:
+          description: "Stacktrace associated with any error, if available"
+          nullable: true
+          type: string
+        state:
+          description: Optional state value from the client
+          nullable: true
+          type: string
+        status:
+          description: Status of the client at the time of report
+          enum:
+          - NORMAL
+          - UNDEFINED
+          - WARNING
+          - ERROR
+          - FAILED
+          example: NORMAL
+          type: string
+        uuid:
+          description: Optional UUID from the client
+          nullable: true
+          type: string
+        product:
+          description: "Product type (e.g., idn)"
+          example: idn
+          type: string
+        va_version:
+          description: VA version installed on the client
+          nullable: true
+          type: string
+        platform_version:
+          description: Version of the platform on which VA is running
+          example: "2"
+          type: string
+        os_version:
+          description: Operating system version
+          example: 4230.2.1
+          type: string
+        os_type:
+          description: Operating system type
+          example: flatcar
+          type: string
+        hypervisor:
+          description: Virtualization platform used
+          example: vmware
+          type: string
+        consolidatedHealthIndicatorsStatus:
+          description: Consolidated health indicator status
+          enum:
+          - NORMAL
+          - WARNING
+          - ERROR
+          example: ERROR
+          type: string
+        lastNotifiedCcgVersion:
+          description: The last CCG version for which notification was sent
+          example: "1068"
+          type: string
+        deployed_processes:
+          description: Information about deployed processes
+          nullable: true
+          type: string
+        health_indicators:
+          $ref: '#/components/schemas/managedclienthealthindicators_body_health_indicators'
+      required:
+      - apiUser
+      - clusterId
+      - consolidatedHealthIndicatorsStatus
+      - health_indicators
+      - hostname
+      - hypervisor
+      - id
+      - os_type
+      - os_version
+      - platform_version
+      - product
+      - status
+      type: object
