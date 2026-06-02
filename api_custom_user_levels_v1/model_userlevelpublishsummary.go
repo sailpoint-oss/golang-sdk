@@ -12,7 +12,7 @@ package api_custom_user_levels_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Userlevelpublishsummary type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type Userlevelpublishsummary struct {
 	// The status of the UserLevel publish operation.
 	Status *string `json:"status,omitempty"`
 	// The last modification timestamp of the UserLevel.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -151,9 +151,9 @@ func (o *Userlevelpublishsummary) SetStatus(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Userlevelpublishsummary) GetModified() time.Time {
+func (o *Userlevelpublishsummary) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -161,7 +161,7 @@ func (o *Userlevelpublishsummary) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Userlevelpublishsummary) GetModifiedOk() (*time.Time, bool) {
+func (o *Userlevelpublishsummary) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -177,8 +177,8 @@ func (o *Userlevelpublishsummary) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Userlevelpublishsummary) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Userlevelpublishsummary) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

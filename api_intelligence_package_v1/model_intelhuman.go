@@ -12,7 +12,7 @@ package api_intelligence_package_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -401,9 +401,9 @@ func (o *Intelhuman) SetIsManager(v bool) {
 }
 
 // GetLastRefreshAt returns the LastRefreshAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Intelhuman) GetLastRefreshAt() time.Time {
+func (o *Intelhuman) GetLastRefreshAt() SailPointTime {
 	if o == nil || IsNil(o.LastRefreshAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastRefreshAt.Get()
@@ -412,7 +412,7 @@ func (o *Intelhuman) GetLastRefreshAt() time.Time {
 // GetLastRefreshAtOk returns a tuple with the LastRefreshAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Intelhuman) GetLastRefreshAtOk() (*time.Time, bool) {
+func (o *Intelhuman) GetLastRefreshAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -429,7 +429,7 @@ func (o *Intelhuman) HasLastRefreshAt() bool {
 }
 
 // SetLastRefreshAt gets a reference to the given NullableTime and assigns it to the LastRefreshAt field.
-func (o *Intelhuman) SetLastRefreshAt(v time.Time) {
+func (o *Intelhuman) SetLastRefreshAt(v SailPointTime) {
 	o.LastRefreshAt.Set(&v)
 }
 // SetLastRefreshAtNil sets the value for LastRefreshAt to be an explicit nil

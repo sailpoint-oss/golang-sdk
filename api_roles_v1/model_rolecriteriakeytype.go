@@ -12,7 +12,6 @@ package api_roles_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Rolecriteriakeytype Indicates whether the associated criteria represents an expression on identity attributes, account attributes, or entitlements, respectively.

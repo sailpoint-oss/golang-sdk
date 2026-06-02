@@ -12,7 +12,7 @@ package api_account_deletion_requests_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approvaldetails type satisfies the MappedNullable interface at compile time
@@ -24,7 +24,7 @@ type Approvaldetails struct {
 	// Comments added by approver while rejecting or approving the account deletion request.
 	ApproverComments *string `json:"approverComments,omitempty"`
 	// Decision date of approval rejected or approved.
-	DecisionDate *time.Time `json:"decisionDate,omitempty"`
+	DecisionDate *SailPointTime `json:"decisionDate,omitempty"`
 	// SerialOrder of approval details.
 	SerialOrder *int64 `json:"serialOrder,omitempty"`
 	Status *Accountrequestphasestate `json:"status,omitempty"`
@@ -115,9 +115,9 @@ func (o *Approvaldetails) SetApproverComments(v string) {
 }
 
 // GetDecisionDate returns the DecisionDate field value if set, zero value otherwise.
-func (o *Approvaldetails) GetDecisionDate() time.Time {
+func (o *Approvaldetails) GetDecisionDate() SailPointTime {
 	if o == nil || IsNil(o.DecisionDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DecisionDate
@@ -125,7 +125,7 @@ func (o *Approvaldetails) GetDecisionDate() time.Time {
 
 // GetDecisionDateOk returns a tuple with the DecisionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approvaldetails) GetDecisionDateOk() (*time.Time, bool) {
+func (o *Approvaldetails) GetDecisionDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DecisionDate) {
 		return nil, false
 	}
@@ -141,8 +141,8 @@ func (o *Approvaldetails) HasDecisionDate() bool {
 	return false
 }
 
-// SetDecisionDate gets a reference to the given time.Time and assigns it to the DecisionDate field.
-func (o *Approvaldetails) SetDecisionDate(v time.Time) {
+// SetDecisionDate gets a reference to the given SailPointTime and assigns it to the DecisionDate field.
+func (o *Approvaldetails) SetDecisionDate(v SailPointTime) {
 	o.DecisionDate = &v
 }
 

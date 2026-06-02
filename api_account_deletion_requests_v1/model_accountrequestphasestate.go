@@ -12,7 +12,6 @@ package api_account_deletion_requests_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accountrequestphasestate The current phase state of the account request, indicating its progress or outcome in the approval workflow.

@@ -18,15 +18,15 @@ import (
 
 // AccountattributeschangedChangesInnerNewValue - The new value of the attribute.
 type AccountattributeschangedChangesInnerNewValue struct {
-	ArrayOf*string *[]*string
+	ArrayOfstring *[]*string
 	Bool *bool
 	String *string
 }
 
 // []*stringAsAccountattributeschangedChangesInnerNewValue is a convenience function that returns []*string wrapped in AccountattributeschangedChangesInnerNewValue
-func ArrayOf*stringAsAccountattributeschangedChangesInnerNewValue(v *[]*string) AccountattributeschangedChangesInnerNewValue {
+func ArrayOfstringAsAccountattributeschangedChangesInnerNewValue(v *[]*string) AccountattributeschangedChangesInnerNewValue {
 	return AccountattributeschangedChangesInnerNewValue{
-		ArrayOf*string: v,
+		ArrayOfstring: v,
 	}
 }
 
@@ -54,21 +54,21 @@ func (dst *AccountattributeschangedChangesInnerNewValue) UnmarshalJSON(data []by
 	}
 
 	match := 0
-	// try to unmarshal data into ArrayOf*string
-	err = newStrictDecoder(data).Decode(&dst.ArrayOf*string)
+	// try to unmarshal data into ArrayOfstring
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfstring)
 	if err == nil {
-		jsonArrayOf*string, _ := json.Marshal(dst.ArrayOf*string)
-		if string(jsonArrayOf*string) == "{}" { // empty struct
-			dst.ArrayOf*string = nil
+		jsonArrayOfstring, _ := json.Marshal(dst.ArrayOfstring)
+		if string(jsonArrayOfstring) == "{}" { // empty struct
+			dst.ArrayOfstring = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOf*string); err != nil {
-				dst.ArrayOf*string = nil
+			if err = validator.Validate(dst.ArrayOfstring); err != nil {
+				dst.ArrayOfstring = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ArrayOf*string = nil
+		dst.ArrayOfstring = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -107,7 +107,7 @@ func (dst *AccountattributeschangedChangesInnerNewValue) UnmarshalJSON(data []by
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOf*string = nil
+		dst.ArrayOfstring = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -121,8 +121,8 @@ func (dst *AccountattributeschangedChangesInnerNewValue) UnmarshalJSON(data []by
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src AccountattributeschangedChangesInnerNewValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOf*string != nil {
-		return json.Marshal(&src.ArrayOf*string)
+	if src.ArrayOfstring != nil {
+		return json.Marshal(&src.ArrayOfstring)
 	}
 
 	if src.Bool != nil {
@@ -141,8 +141,8 @@ func (obj *AccountattributeschangedChangesInnerNewValue) GetActualInstance() (in
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOf*string != nil {
-		return obj.ArrayOf*string
+	if obj.ArrayOfstring != nil {
+		return obj.ArrayOfstring
 	}
 
 	if obj.Bool != nil {
@@ -159,8 +159,8 @@ func (obj *AccountattributeschangedChangesInnerNewValue) GetActualInstance() (in
 
 // Get the actual instance value
 func (obj AccountattributeschangedChangesInnerNewValue) GetActualInstanceValue() (interface{}) {
-	if obj.ArrayOf*string != nil {
-		return *obj.ArrayOf*string
+	if obj.ArrayOfstring != nil {
+		return *obj.ArrayOfstring
 	}
 
 	if obj.Bool != nil {

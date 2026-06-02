@@ -12,7 +12,7 @@ package api_identities_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Roleassignmentref type satisfies the MappedNullable interface at compile time
@@ -24,7 +24,7 @@ type Roleassignmentref struct {
 	Id *string `json:"id,omitempty"`
 	Role *Basereferencedto `json:"role,omitempty"`
 	// Date that the assignment was added
-	AddedDate *time.Time `json:"addedDate,omitempty"`
+	AddedDate *SailPointTime `json:"addedDate,omitempty"`
 	// Date that the assignment will be removed
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -114,9 +114,9 @@ func (o *Roleassignmentref) SetRole(v Basereferencedto) {
 }
 
 // GetAddedDate returns the AddedDate field value if set, zero value otherwise.
-func (o *Roleassignmentref) GetAddedDate() time.Time {
+func (o *Roleassignmentref) GetAddedDate() SailPointTime {
 	if o == nil || IsNil(o.AddedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.AddedDate
@@ -124,7 +124,7 @@ func (o *Roleassignmentref) GetAddedDate() time.Time {
 
 // GetAddedDateOk returns a tuple with the AddedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleassignmentref) GetAddedDateOk() (*time.Time, bool) {
+func (o *Roleassignmentref) GetAddedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.AddedDate) {
 		return nil, false
 	}
@@ -140,15 +140,15 @@ func (o *Roleassignmentref) HasAddedDate() bool {
 	return false
 }
 
-// SetAddedDate gets a reference to the given time.Time and assigns it to the AddedDate field.
-func (o *Roleassignmentref) SetAddedDate(v time.Time) {
+// SetAddedDate gets a reference to the given SailPointTime and assigns it to the AddedDate field.
+func (o *Roleassignmentref) SetAddedDate(v SailPointTime) {
 	o.AddedDate = &v
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Roleassignmentref) GetRemoveDate() time.Time {
+func (o *Roleassignmentref) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -157,7 +157,7 @@ func (o *Roleassignmentref) GetRemoveDate() time.Time {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Roleassignmentref) GetRemoveDateOk() (*time.Time, bool) {
+func (o *Roleassignmentref) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -174,7 +174,7 @@ func (o *Roleassignmentref) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *Roleassignmentref) SetRemoveDate(v time.Time) {
+func (o *Roleassignmentref) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil

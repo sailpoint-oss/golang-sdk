@@ -12,7 +12,7 @@ package api_non_employee_lifecycle_management_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -38,9 +38,9 @@ type Nonemployeerequestbody struct {
 	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
 	Data *map[string]string `json:"data,omitempty"`
 	// Non-Employee employment start date.
-	StartDate time.Time `json:"startDate"`
+	StartDate SailPointTime `json:"startDate"`
 	// Non-Employee employment end date.
-	EndDate time.Time `json:"endDate"`
+	EndDate SailPointTime `json:"endDate"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -50,7 +50,7 @@ type _Nonemployeerequestbody Nonemployeerequestbody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNonemployeerequestbody(accountName string, firstName string, lastName string, email string, phone string, manager string, sourceId string, startDate time.Time, endDate time.Time) *Nonemployeerequestbody {
+func NewNonemployeerequestbody(accountName string, firstName string, lastName string, email string, phone string, manager string, sourceId string, startDate SailPointTime, endDate SailPointTime) *Nonemployeerequestbody {
 	this := Nonemployeerequestbody{}
 	this.AccountName = accountName
 	this.FirstName = firstName
@@ -273,9 +273,9 @@ func (o *Nonemployeerequestbody) SetData(v map[string]string) {
 }
 
 // GetStartDate returns the StartDate field value
-func (o *Nonemployeerequestbody) GetStartDate() time.Time {
+func (o *Nonemployeerequestbody) GetStartDate() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -284,7 +284,7 @@ func (o *Nonemployeerequestbody) GetStartDate() time.Time {
 
 // GetStartDateOk returns a tuple with the StartDate field value
 // and a boolean to check if the value has been set.
-func (o *Nonemployeerequestbody) GetStartDateOk() (*time.Time, bool) {
+func (o *Nonemployeerequestbody) GetStartDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -292,14 +292,14 @@ func (o *Nonemployeerequestbody) GetStartDateOk() (*time.Time, bool) {
 }
 
 // SetStartDate sets field value
-func (o *Nonemployeerequestbody) SetStartDate(v time.Time) {
+func (o *Nonemployeerequestbody) SetStartDate(v SailPointTime) {
 	o.StartDate = v
 }
 
 // GetEndDate returns the EndDate field value
-func (o *Nonemployeerequestbody) GetEndDate() time.Time {
+func (o *Nonemployeerequestbody) GetEndDate() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -308,7 +308,7 @@ func (o *Nonemployeerequestbody) GetEndDate() time.Time {
 
 // GetEndDateOk returns a tuple with the EndDate field value
 // and a boolean to check if the value has been set.
-func (o *Nonemployeerequestbody) GetEndDateOk() (*time.Time, bool) {
+func (o *Nonemployeerequestbody) GetEndDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -316,7 +316,7 @@ func (o *Nonemployeerequestbody) GetEndDateOk() (*time.Time, bool) {
 }
 
 // SetEndDate sets field value
-func (o *Nonemployeerequestbody) SetEndDate(v time.Time) {
+func (o *Nonemployeerequestbody) SetEndDate(v SailPointTime) {
 	o.EndDate = v
 }
 

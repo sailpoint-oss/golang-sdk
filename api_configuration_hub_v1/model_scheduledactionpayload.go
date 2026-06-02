@@ -12,7 +12,7 @@ package api_configuration_hub_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -24,7 +24,7 @@ type Scheduledactionpayload struct {
 	// Type of the scheduled job.
 	JobType string `json:"jobType"`
 	// The time when this scheduled action should start. Optional.
-	StartTime *time.Time `json:"startTime,omitempty"`
+	StartTime *SailPointTime `json:"startTime,omitempty"`
 	// Cron expression defining the schedule for this action. Optional for repeated events.
 	CronString *string `json:"cronString,omitempty"`
 	// Time zone ID for interpreting the cron expression. Optional, will default to current time zone.
@@ -79,9 +79,9 @@ func (o *Scheduledactionpayload) SetJobType(v string) {
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
-func (o *Scheduledactionpayload) GetStartTime() time.Time {
+func (o *Scheduledactionpayload) GetStartTime() SailPointTime {
 	if o == nil || IsNil(o.StartTime) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.StartTime
@@ -89,7 +89,7 @@ func (o *Scheduledactionpayload) GetStartTime() time.Time {
 
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scheduledactionpayload) GetStartTimeOk() (*time.Time, bool) {
+func (o *Scheduledactionpayload) GetStartTimeOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *Scheduledactionpayload) HasStartTime() bool {
 	return false
 }
 
-// SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
-func (o *Scheduledactionpayload) SetStartTime(v time.Time) {
+// SetStartTime gets a reference to the given SailPointTime and assigns it to the StartTime field.
+func (o *Scheduledactionpayload) SetStartTime(v SailPointTime) {
 	o.StartTime = &v
 }
 

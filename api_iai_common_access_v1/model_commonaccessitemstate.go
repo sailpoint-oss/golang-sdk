@@ -12,7 +12,6 @@ package api_iai_common_access_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Commonaccessitemstate State of common access item.

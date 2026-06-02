@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **DetailedMessage** | Pointer to **string** | Description of the issue | [optional] 
 **Uuid** | Pointer to **string** | Unique identifier for the health event | [optional] 
 **Url** | Pointer to **NullableString** | Optional URL associated with the issue | [optional] 
-**Timestamp** | Pointer to **time.Time** | Time when the event occurred | [optional] 
-**LastNotifiedTimeStamp** | Pointer to **time.Time** | Last time notification was sent for this issue | [optional] 
+**Timestamp** | Pointer to **SailPointTime** | Time when the event occurred | [optional] 
+**LastNotifiedTimeStamp** | Pointer to **SailPointTime** | Last time notification was sent for this issue | [optional] 
 **CpuUtilizationPercentage** | Pointer to **NullableFloat32** | CPU usage percentage | [optional] 
 **FreeSpacePercentage** | Pointer to **NullableFloat32** | Free memory percentage | [optional] 
 
@@ -129,20 +129,20 @@ HasUrl returns a boolean if a field has been set.
 UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetTimestamp
 
-`func (o *Healthevent) GetTimestamp() time.Time`
+`func (o *Healthevent) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Healthevent) GetTimestampOk() (*time.Time, bool)`
+`func (o *Healthevent) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Healthevent) SetTimestamp(v time.Time)`
+`func (o *Healthevent) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 
@@ -154,20 +154,20 @@ HasTimestamp returns a boolean if a field has been set.
 
 ### GetLastNotifiedTimeStamp
 
-`func (o *Healthevent) GetLastNotifiedTimeStamp() time.Time`
+`func (o *Healthevent) GetLastNotifiedTimeStamp() SailPointTime`
 
 GetLastNotifiedTimeStamp returns the LastNotifiedTimeStamp field if non-nil, zero value otherwise.
 
 ### GetLastNotifiedTimeStampOk
 
-`func (o *Healthevent) GetLastNotifiedTimeStampOk() (*time.Time, bool)`
+`func (o *Healthevent) GetLastNotifiedTimeStampOk() (*SailPointTime, bool)`
 
 GetLastNotifiedTimeStampOk returns a tuple with the LastNotifiedTimeStamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastNotifiedTimeStamp
 
-`func (o *Healthevent) SetLastNotifiedTimeStamp(v time.Time)`
+`func (o *Healthevent) SetLastNotifiedTimeStamp(v SailPointTime)`
 
 SetLastNotifiedTimeStamp sets LastNotifiedTimeStamp field to given value.
 

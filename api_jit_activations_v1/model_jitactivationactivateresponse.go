@@ -12,7 +12,7 @@ package api_jit_activations_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -31,7 +31,7 @@ type Jitactivationactivateresponse struct {
 	ActivationPeriodMins int32 `json:"activationPeriodMins"`
 	Status Activationworkflowstatus `json:"status"`
 	// Time when the activation workflow was started (ISO-8601).
-	StartTime time.Time `json:"startTime"`
+	StartTime SailPointTime `json:"startTime"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,7 +41,7 @@ type _Jitactivationactivateresponse Jitactivationactivateresponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJitactivationactivateresponse(id string, activationId string, connectionId string, activationPeriodMins int32, status Activationworkflowstatus, startTime time.Time) *Jitactivationactivateresponse {
+func NewJitactivationactivateresponse(id string, activationId string, connectionId string, activationPeriodMins int32, status Activationworkflowstatus, startTime SailPointTime) *Jitactivationactivateresponse {
 	this := Jitactivationactivateresponse{}
 	this.Id = id
 	this.ActivationId = activationId
@@ -181,9 +181,9 @@ func (o *Jitactivationactivateresponse) SetStatus(v Activationworkflowstatus) {
 }
 
 // GetStartTime returns the StartTime field value
-func (o *Jitactivationactivateresponse) GetStartTime() time.Time {
+func (o *Jitactivationactivateresponse) GetStartTime() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -192,7 +192,7 @@ func (o *Jitactivationactivateresponse) GetStartTime() time.Time {
 
 // GetStartTimeOk returns a tuple with the StartTime field value
 // and a boolean to check if the value has been set.
-func (o *Jitactivationactivateresponse) GetStartTimeOk() (*time.Time, bool) {
+func (o *Jitactivationactivateresponse) GetStartTimeOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -200,7 +200,7 @@ func (o *Jitactivationactivateresponse) GetStartTimeOk() (*time.Time, bool) {
 }
 
 // SetStartTime sets field value
-func (o *Jitactivationactivateresponse) SetStartTime(v time.Time) {
+func (o *Jitactivationactivateresponse) SetStartTime(v SailPointTime) {
 	o.StartTime = v
 }
 

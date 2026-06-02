@@ -12,7 +12,7 @@ package api_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approvalreassignmenthistory type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type Approvalreassignmenthistory struct {
 	ReassignedTo *Approvalidentity `json:"reassignedTo,omitempty"`
 	Reassigner *Approvalidentity `json:"reassigner,omitempty"`
 	// Date and time when the reassignment occurred.
-	ReassignmentDate *time.Time `json:"reassignmentDate,omitempty"`
+	ReassignmentDate *SailPointTime `json:"reassignmentDate,omitempty"`
 	// Type of reassignment, such as escalation or manual reassignment.
 	ReassignmentType *string `json:"reassignmentType,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -180,9 +180,9 @@ func (o *Approvalreassignmenthistory) SetReassigner(v Approvalidentity) {
 }
 
 // GetReassignmentDate returns the ReassignmentDate field value if set, zero value otherwise.
-func (o *Approvalreassignmenthistory) GetReassignmentDate() time.Time {
+func (o *Approvalreassignmenthistory) GetReassignmentDate() SailPointTime {
 	if o == nil || IsNil(o.ReassignmentDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ReassignmentDate
@@ -190,7 +190,7 @@ func (o *Approvalreassignmenthistory) GetReassignmentDate() time.Time {
 
 // GetReassignmentDateOk returns a tuple with the ReassignmentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approvalreassignmenthistory) GetReassignmentDateOk() (*time.Time, bool) {
+func (o *Approvalreassignmenthistory) GetReassignmentDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ReassignmentDate) {
 		return nil, false
 	}
@@ -206,8 +206,8 @@ func (o *Approvalreassignmenthistory) HasReassignmentDate() bool {
 	return false
 }
 
-// SetReassignmentDate gets a reference to the given time.Time and assigns it to the ReassignmentDate field.
-func (o *Approvalreassignmenthistory) SetReassignmentDate(v time.Time) {
+// SetReassignmentDate gets a reference to the given SailPointTime and assigns it to the ReassignmentDate field.
+func (o *Approvalreassignmenthistory) SetReassignmentDate(v SailPointTime) {
 	o.ReassignmentDate = &v
 }
 

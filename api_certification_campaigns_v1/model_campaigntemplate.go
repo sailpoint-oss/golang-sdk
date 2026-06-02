@@ -12,7 +12,7 @@ package api_certification_campaigns_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type Campaigntemplate struct {
 	// This template's description. Has no bearing on generated campaigns' descriptions.
 	Description string `json:"description"`
 	// Creation date of Campaign Template
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Modification date of Campaign Template
 	Modified NullableTime `json:"modified"`
 	// Indicates if this campaign template has been scheduled.
@@ -46,7 +46,7 @@ type _Campaigntemplate Campaigntemplate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaigntemplate(name string, description string, created time.Time, modified NullableTime, campaign Campaign2) *Campaigntemplate {
+func NewCampaigntemplate(name string, description string, created SailPointTime, modified NullableTime, campaign Campaign2) *Campaigntemplate {
 	this := Campaigntemplate{}
 	this.Name = name
 	this.Description = description
@@ -145,9 +145,9 @@ func (o *Campaigntemplate) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *Campaigntemplate) GetCreated() time.Time {
+func (o *Campaigntemplate) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -156,7 +156,7 @@ func (o *Campaigntemplate) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Campaigntemplate) GetCreatedOk() (*time.Time, bool) {
+func (o *Campaigntemplate) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,15 +164,15 @@ func (o *Campaigntemplate) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Campaigntemplate) SetCreated(v time.Time) {
+func (o *Campaigntemplate) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-// If the value is explicit nil, the zero value for time.Time will be returned
-func (o *Campaigntemplate) GetModified() time.Time {
+// If the value is explicit nil, the zero value for SailPointTime will be returned
+func (o *Campaigntemplate) GetModified() SailPointTime {
 	if o == nil || o.Modified.Get() == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -182,7 +182,7 @@ func (o *Campaigntemplate) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Campaigntemplate) GetModifiedOk() (*time.Time, bool) {
+func (o *Campaigntemplate) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -190,7 +190,7 @@ func (o *Campaigntemplate) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Campaigntemplate) SetModified(v time.Time) {
+func (o *Campaigntemplate) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 

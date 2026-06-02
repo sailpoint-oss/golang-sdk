@@ -12,7 +12,7 @@ package api_lifecycle_states_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Lifecyclestate struct {
 	// Name of the Object
 	Name NullableString `json:"name"`
 	// Creation date of the Object
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Indicates whether the lifecycle state is enabled or disabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	// The lifecycle state's technical name. This is for internal use.
@@ -133,9 +133,9 @@ func (o *Lifecyclestate) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Lifecyclestate) GetCreated() time.Time {
+func (o *Lifecyclestate) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -143,7 +143,7 @@ func (o *Lifecyclestate) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Lifecyclestate) GetCreatedOk() (*time.Time, bool) {
+func (o *Lifecyclestate) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -159,15 +159,15 @@ func (o *Lifecyclestate) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Lifecyclestate) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Lifecyclestate) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Lifecyclestate) GetModified() time.Time {
+func (o *Lifecyclestate) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -175,7 +175,7 @@ func (o *Lifecyclestate) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Lifecyclestate) GetModifiedOk() (*time.Time, bool) {
+func (o *Lifecyclestate) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -191,8 +191,8 @@ func (o *Lifecyclestate) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Lifecyclestate) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Lifecyclestate) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

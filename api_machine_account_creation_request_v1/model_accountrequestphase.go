@@ -12,7 +12,7 @@ package api_machine_account_creation_request_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Accountrequestphase type satisfies the MappedNullable interface at compile time
@@ -24,9 +24,9 @@ type Accountrequestphase struct {
 	Name *string `json:"name,omitempty"`
 	State *Accountrequestphasestate `json:"state,omitempty"`
 	// Start date of account request phase.
-	Started *time.Time `json:"started,omitempty"`
+	Started *SailPointTime `json:"started,omitempty"`
 	// Finish date of account request phase.
-	Finished *time.Time `json:"finished,omitempty"`
+	Finished *SailPointTime `json:"finished,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -114,9 +114,9 @@ func (o *Accountrequestphase) SetState(v Accountrequestphasestate) {
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise.
-func (o *Accountrequestphase) GetStarted() time.Time {
+func (o *Accountrequestphase) GetStarted() SailPointTime {
 	if o == nil || IsNil(o.Started) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Started
@@ -124,7 +124,7 @@ func (o *Accountrequestphase) GetStarted() time.Time {
 
 // GetStartedOk returns a tuple with the Started field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountrequestphase) GetStartedOk() (*time.Time, bool) {
+func (o *Accountrequestphase) GetStartedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
@@ -140,15 +140,15 @@ func (o *Accountrequestphase) HasStarted() bool {
 	return false
 }
 
-// SetStarted gets a reference to the given time.Time and assigns it to the Started field.
-func (o *Accountrequestphase) SetStarted(v time.Time) {
+// SetStarted gets a reference to the given SailPointTime and assigns it to the Started field.
+func (o *Accountrequestphase) SetStarted(v SailPointTime) {
 	o.Started = &v
 }
 
 // GetFinished returns the Finished field value if set, zero value otherwise.
-func (o *Accountrequestphase) GetFinished() time.Time {
+func (o *Accountrequestphase) GetFinished() SailPointTime {
 	if o == nil || IsNil(o.Finished) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Finished
@@ -156,7 +156,7 @@ func (o *Accountrequestphase) GetFinished() time.Time {
 
 // GetFinishedOk returns a tuple with the Finished field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountrequestphase) GetFinishedOk() (*time.Time, bool) {
+func (o *Accountrequestphase) GetFinishedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Finished) {
 		return nil, false
 	}
@@ -172,8 +172,8 @@ func (o *Accountrequestphase) HasFinished() bool {
 	return false
 }
 
-// SetFinished gets a reference to the given time.Time and assigns it to the Finished field.
-func (o *Accountrequestphase) SetFinished(v time.Time) {
+// SetFinished gets a reference to the given SailPointTime and assigns it to the Finished field.
+func (o *Accountrequestphase) SetFinished(v SailPointTime) {
 	o.Finished = &v
 }
 

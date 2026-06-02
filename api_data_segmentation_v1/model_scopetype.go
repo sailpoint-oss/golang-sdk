@@ -12,7 +12,6 @@ package api_data_segmentation_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Scopetype An enumeration of the types of scope choices

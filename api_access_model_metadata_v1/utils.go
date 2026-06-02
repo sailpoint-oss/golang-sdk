@@ -40,7 +40,7 @@ func PtrFloat64(v float64) *float64 { return &v }
 func PtrString(v string) *string { return &v }
 
 // PtrTime is helper routine that returns a pointer to given Time value.
-func PtrTime(v time.Time) *time.Time { return &v }
+func PtrTime(v SailPointTime) *SailPointTime { return &v }
 
 type NullableBool struct {
 	value *bool

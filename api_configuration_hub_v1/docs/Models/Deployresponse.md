@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **Message** | Pointer to **string** | Message providing information about the outcome of the deploy process. | [optional] 
 **RequesterName** | Pointer to **string** | The name of the user that initiated the deploy process. | [optional] 
 **FileExists** | Pointer to **bool** | Whether or not a results file was created and stored for this deploy. | [optional] [default to true]
-**Created** | Pointer to **time.Time** | The time the job was started. | [optional] 
-**Modified** | Pointer to **time.Time** | The time of the last update to the job. | [optional] 
-**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time the job was started. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The time of the last update to the job. | [optional] 
+**Completed** | Pointer to **SailPointTime** | The time the job was completed. | [optional] 
 **DraftId** | Pointer to **string** | The id of the draft that was used for this deploy. | [optional] 
 **DraftName** | Pointer to **string** | The name of the draft that was used for this deploy. | [optional] 
 **CloudStorageStatus** | Pointer to **string** | Whether this deploy results file has been transferred to a customer storage location. | [optional] 
@@ -199,20 +199,20 @@ HasFileExists returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Deployresponse) GetCreated() time.Time`
+`func (o *Deployresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Deployresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Deployresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Deployresponse) SetCreated(v time.Time)`
+`func (o *Deployresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -224,20 +224,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Deployresponse) GetModified() time.Time`
+`func (o *Deployresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Deployresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Deployresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Deployresponse) SetModified(v time.Time)`
+`func (o *Deployresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -249,20 +249,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCompleted
 
-`func (o *Deployresponse) GetCompleted() time.Time`
+`func (o *Deployresponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Deployresponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *Deployresponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Deployresponse) SetCompleted(v time.Time)`
+`func (o *Deployresponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

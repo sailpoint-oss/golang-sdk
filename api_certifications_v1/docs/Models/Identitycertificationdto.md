@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **Completed** | Pointer to **bool** | Have all decisions been made? | [optional] 
 **IdentitiesCompleted** | Pointer to **int32** | The number of identities for whom all decisions have been made and are complete. | [optional] 
 **IdentitiesTotal** | Pointer to **int32** | The total number of identities in the Certification, both complete and incomplete. | [optional] 
-**Created** | Pointer to **time.Time** | created date | [optional] 
-**Modified** | Pointer to **time.Time** | modified date | [optional] 
+**Created** | Pointer to **SailPointTime** | created date | [optional] 
+**Modified** | Pointer to **SailPointTime** | modified date | [optional] 
 **DecisionsMade** | Pointer to **int32** | The number of approve/revoke/acknowledge decisions that have been made. | [optional] 
 **DecisionsTotal** | Pointer to **int32** | The total number of approve/revoke/acknowledge decisions. | [optional] 
 **Due** | Pointer to **NullableTime** | The due date of the certification. | [optional] 
@@ -204,20 +204,20 @@ HasIdentitiesTotal returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Identitycertificationdto) GetCreated() time.Time`
+`func (o *Identitycertificationdto) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Identitycertificationdto) GetCreatedOk() (*time.Time, bool)`
+`func (o *Identitycertificationdto) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Identitycertificationdto) SetCreated(v time.Time)`
+`func (o *Identitycertificationdto) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -229,20 +229,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Identitycertificationdto) GetModified() time.Time`
+`func (o *Identitycertificationdto) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Identitycertificationdto) GetModifiedOk() (*time.Time, bool)`
+`func (o *Identitycertificationdto) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Identitycertificationdto) SetModified(v time.Time)`
+`func (o *Identitycertificationdto) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -304,20 +304,20 @@ HasDecisionsTotal returns a boolean if a field has been set.
 
 ### GetDue
 
-`func (o *Identitycertificationdto) GetDue() time.Time`
+`func (o *Identitycertificationdto) GetDue() SailPointTime`
 
 GetDue returns the Due field if non-nil, zero value otherwise.
 
 ### GetDueOk
 
-`func (o *Identitycertificationdto) GetDueOk() (*time.Time, bool)`
+`func (o *Identitycertificationdto) GetDueOk() (*SailPointTime, bool)`
 
 GetDueOk returns a tuple with the Due field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDue
 
-`func (o *Identitycertificationdto) SetDue(v time.Time)`
+`func (o *Identitycertificationdto) SetDue(v SailPointTime)`
 
 SetDue sets Due field to given value.
 
@@ -339,20 +339,20 @@ HasDue returns a boolean if a field has been set.
 UnsetDue ensures that no value is present for Due, not even an explicit nil
 ### GetSigned
 
-`func (o *Identitycertificationdto) GetSigned() time.Time`
+`func (o *Identitycertificationdto) GetSigned() SailPointTime`
 
 GetSigned returns the Signed field if non-nil, zero value otherwise.
 
 ### GetSignedOk
 
-`func (o *Identitycertificationdto) GetSignedOk() (*time.Time, bool)`
+`func (o *Identitycertificationdto) GetSignedOk() (*SailPointTime, bool)`
 
 GetSignedOk returns a tuple with the Signed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigned
 
-`func (o *Identitycertificationdto) SetSigned(v time.Time)`
+`func (o *Identitycertificationdto) SetSigned(v SailPointTime)`
 
 SetSigned sets Signed field to given value.
 

@@ -12,7 +12,7 @@ package api_classify_source_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Sourceclassificationstatus type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type Sourceclassificationstatus struct {
 	// Status of Classification Process
 	Status *string `json:"status,omitempty"`
 	// Time when the process was started
-	Started *time.Time `json:"started,omitempty"`
+	Started *SailPointTime `json:"started,omitempty"`
 	// Time when the process status was last updated
 	Updated NullableTime `json:"updated,omitempty"`
 	Counts *SourceclassificationstatusAllOfCounts `json:"counts,omitempty"`
@@ -82,9 +82,9 @@ func (o *Sourceclassificationstatus) SetStatus(v string) {
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise.
-func (o *Sourceclassificationstatus) GetStarted() time.Time {
+func (o *Sourceclassificationstatus) GetStarted() SailPointTime {
 	if o == nil || IsNil(o.Started) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Started
@@ -92,7 +92,7 @@ func (o *Sourceclassificationstatus) GetStarted() time.Time {
 
 // GetStartedOk returns a tuple with the Started field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourceclassificationstatus) GetStartedOk() (*time.Time, bool) {
+func (o *Sourceclassificationstatus) GetStartedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
@@ -108,15 +108,15 @@ func (o *Sourceclassificationstatus) HasStarted() bool {
 	return false
 }
 
-// SetStarted gets a reference to the given time.Time and assigns it to the Started field.
-func (o *Sourceclassificationstatus) SetStarted(v time.Time) {
+// SetStarted gets a reference to the given SailPointTime and assigns it to the Started field.
+func (o *Sourceclassificationstatus) SetStarted(v SailPointTime) {
 	o.Started = &v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Sourceclassificationstatus) GetUpdated() time.Time {
+func (o *Sourceclassificationstatus) GetUpdated() SailPointTime {
 	if o == nil || IsNil(o.Updated.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Updated.Get()
@@ -125,7 +125,7 @@ func (o *Sourceclassificationstatus) GetUpdated() time.Time {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Sourceclassificationstatus) GetUpdatedOk() (*time.Time, bool) {
+func (o *Sourceclassificationstatus) GetUpdatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -142,7 +142,7 @@ func (o *Sourceclassificationstatus) HasUpdated() bool {
 }
 
 // SetUpdated gets a reference to the given NullableTime and assigns it to the Updated field.
-func (o *Sourceclassificationstatus) SetUpdated(v time.Time) {
+func (o *Sourceclassificationstatus) SetUpdated(v SailPointTime) {
 	o.Updated.Set(&v)
 }
 // SetUpdatedNil sets the value for Updated to be an explicit nil

@@ -12,7 +12,7 @@ package api_service_desk_integration_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type Servicedeskintegrationtemplatedto struct {
 	// Name of the Object
 	Name NullableString `json:"name"`
 	// Creation date of the Object
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// The 'type' property specifies the type of the Service Desk integration template.
 	Type string `json:"type"`
 	// The 'attributes' property value is a map of attributes available for integrations using this Service Desk integration template.
@@ -121,9 +121,9 @@ func (o *Servicedeskintegrationtemplatedto) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Servicedeskintegrationtemplatedto) GetCreated() time.Time {
+func (o *Servicedeskintegrationtemplatedto) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -131,7 +131,7 @@ func (o *Servicedeskintegrationtemplatedto) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Servicedeskintegrationtemplatedto) GetCreatedOk() (*time.Time, bool) {
+func (o *Servicedeskintegrationtemplatedto) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -147,15 +147,15 @@ func (o *Servicedeskintegrationtemplatedto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Servicedeskintegrationtemplatedto) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Servicedeskintegrationtemplatedto) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Servicedeskintegrationtemplatedto) GetModified() time.Time {
+func (o *Servicedeskintegrationtemplatedto) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -163,7 +163,7 @@ func (o *Servicedeskintegrationtemplatedto) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Servicedeskintegrationtemplatedto) GetModifiedOk() (*time.Time, bool) {
+func (o *Servicedeskintegrationtemplatedto) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -179,8 +179,8 @@ func (o *Servicedeskintegrationtemplatedto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Servicedeskintegrationtemplatedto) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Servicedeskintegrationtemplatedto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

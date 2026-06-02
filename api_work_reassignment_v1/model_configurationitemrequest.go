@@ -12,7 +12,7 @@ package api_work_reassignment_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Configurationitemrequest type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type Configurationitemrequest struct {
 	ReassignedToId *string `json:"reassignedToId,omitempty"`
 	ConfigType *Configtypeenum `json:"configType,omitempty"`
 	// The date from which to start reassigning work items
-	StartDate *time.Time `json:"startDate,omitempty"`
+	StartDate *SailPointTime `json:"startDate,omitempty"`
 	// The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment.
 	EndDate NullableTime `json:"endDate,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -148,9 +148,9 @@ func (o *Configurationitemrequest) SetConfigType(v Configtypeenum) {
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *Configurationitemrequest) GetStartDate() time.Time {
+func (o *Configurationitemrequest) GetStartDate() SailPointTime {
 	if o == nil || IsNil(o.StartDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.StartDate
@@ -158,7 +158,7 @@ func (o *Configurationitemrequest) GetStartDate() time.Time {
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Configurationitemrequest) GetStartDateOk() (*time.Time, bool) {
+func (o *Configurationitemrequest) GetStartDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
@@ -174,15 +174,15 @@ func (o *Configurationitemrequest) HasStartDate() bool {
 	return false
 }
 
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *Configurationitemrequest) SetStartDate(v time.Time) {
+// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+func (o *Configurationitemrequest) SetStartDate(v SailPointTime) {
 	o.StartDate = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Configurationitemrequest) GetEndDate() time.Time {
+func (o *Configurationitemrequest) GetEndDate() SailPointTime {
 	if o == nil || IsNil(o.EndDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.EndDate.Get()
@@ -191,7 +191,7 @@ func (o *Configurationitemrequest) GetEndDate() time.Time {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Configurationitemrequest) GetEndDateOk() (*time.Time, bool) {
+func (o *Configurationitemrequest) GetEndDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *Configurationitemrequest) HasEndDate() bool {
 }
 
 // SetEndDate gets a reference to the given NullableTime and assigns it to the EndDate field.
-func (o *Configurationitemrequest) SetEndDate(v time.Time) {
+func (o *Configurationitemrequest) SetEndDate(v SailPointTime) {
 	o.EndDate.Set(&v)
 }
 // SetEndDateNil sets the value for EndDate to be an explicit nil

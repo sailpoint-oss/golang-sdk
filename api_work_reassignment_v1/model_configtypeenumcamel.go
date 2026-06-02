@@ -12,7 +12,6 @@ package api_work_reassignment_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Configtypeenumcamel Enum list of valid work types that can be selected for a Reassignment Configuration

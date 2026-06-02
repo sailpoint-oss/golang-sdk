@@ -17,15 +17,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Tag id | [readonly] 
 **Name** | **string** | Name of the tag. | 
-**Created** | **time.Time** | Date the tag was created. | [readonly] 
-**Modified** | **time.Time** | Date the tag was last modified. | [readonly] 
+**Created** | **SailPointTime** | Date the tag was created. | [readonly] 
+**Modified** | **SailPointTime** | Date the tag was last modified. | [readonly] 
 **TagCategoryRefs** | [**[]Tag2TagCategoryRefsInner**](tag2-tag-category-refs-inner) |  | [readonly] 
 
 ## Methods
 
 ### NewTag2
 
-`func NewTag2(id string, name string, created time.Time, modified time.Time, tagCategoryRefs []Tag2TagCategoryRefsInner, ) *Tag2`
+`func NewTag2(id string, name string, created SailPointTime, modified SailPointTime, tagCategoryRefs []Tag2TagCategoryRefsInner, ) *Tag2`
 
 NewTag2 instantiates a new Tag2 object
 This constructor will assign default values to properties that have it defined,
@@ -82,40 +82,40 @@ SetName sets Name field to given value.
 
 ### GetCreated
 
-`func (o *Tag2) GetCreated() time.Time`
+`func (o *Tag2) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Tag2) GetCreatedOk() (*time.Time, bool)`
+`func (o *Tag2) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Tag2) SetCreated(v time.Time)`
+`func (o *Tag2) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Tag2) GetModified() time.Time`
+`func (o *Tag2) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Tag2) GetModifiedOk() (*time.Time, bool)`
+`func (o *Tag2) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Tag2) SetModified(v time.Time)`
+`func (o *Tag2) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

@@ -12,7 +12,6 @@ package api_managed_clients_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Managedclienttype Managed Client type

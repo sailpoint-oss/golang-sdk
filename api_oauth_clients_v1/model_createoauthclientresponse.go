@@ -12,7 +12,7 @@ package api_oauth_clients_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -52,9 +52,9 @@ type Createoauthclientresponse struct {
 	// An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow
 	ClaimsSupported bool `json:"claimsSupported"`
 	// The date and time, down to the millisecond, when the API Client was created
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The date and time, down to the millisecond, when the API Client was last updated
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	// Scopes of the API Client.
 	Scope []string `json:"scope"`
 	AdditionalProperties map[string]interface{}
@@ -66,7 +66,7 @@ type _Createoauthclientresponse Createoauthclientresponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateoauthclientresponse(id string, secret string, businessName string, homepageUrl string, name string, description string, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []Granttype, accessType Accesstype, type_ Clienttype, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created time.Time, modified time.Time, scope []string) *Createoauthclientresponse {
+func NewCreateoauthclientresponse(id string, secret string, businessName string, homepageUrl string, name string, description string, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []Granttype, accessType Accesstype, type_ Clienttype, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created SailPointTime, modified SailPointTime, scope []string) *Createoauthclientresponse {
 	this := Createoauthclientresponse{}
 	this.Id = id
 	this.Secret = secret
@@ -483,9 +483,9 @@ func (o *Createoauthclientresponse) SetClaimsSupported(v bool) {
 }
 
 // GetCreated returns the Created field value
-func (o *Createoauthclientresponse) GetCreated() time.Time {
+func (o *Createoauthclientresponse) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -494,7 +494,7 @@ func (o *Createoauthclientresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Createoauthclientresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Createoauthclientresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -502,14 +502,14 @@ func (o *Createoauthclientresponse) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Createoauthclientresponse) SetCreated(v time.Time) {
+func (o *Createoauthclientresponse) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *Createoauthclientresponse) GetModified() time.Time {
+func (o *Createoauthclientresponse) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -518,7 +518,7 @@ func (o *Createoauthclientresponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *Createoauthclientresponse) GetModifiedOk() (*time.Time, bool) {
+func (o *Createoauthclientresponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -526,7 +526,7 @@ func (o *Createoauthclientresponse) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Createoauthclientresponse) SetModified(v time.Time) {
+func (o *Createoauthclientresponse) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 

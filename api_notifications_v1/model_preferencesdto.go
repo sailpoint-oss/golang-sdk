@@ -12,7 +12,7 @@ package api_notifications_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Preferencesdto type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type Preferencesdto struct {
 	// List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.
 	Mediums []Medium `json:"mediums,omitempty"`
 	// Modified date of preference
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -113,9 +113,9 @@ func (o *Preferencesdto) SetMediums(v []Medium) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Preferencesdto) GetModified() time.Time {
+func (o *Preferencesdto) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -123,7 +123,7 @@ func (o *Preferencesdto) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Preferencesdto) GetModifiedOk() (*time.Time, bool) {
+func (o *Preferencesdto) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *Preferencesdto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Preferencesdto) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Preferencesdto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

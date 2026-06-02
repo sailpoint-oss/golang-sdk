@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The bulk upload job's ID. (UUID) | [optional] 
 **SourceId** | Pointer to **string** | The ID of the source to bulk-upload non-employees to. (UUID) | [optional] 
-**Created** | Pointer to **time.Time** | The date-time the job was submitted. | [optional] 
-**Modified** | Pointer to **time.Time** | The date-time that the job was last updated. | [optional] 
+**Created** | Pointer to **SailPointTime** | The date-time the job was submitted. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The date-time that the job was last updated. | [optional] 
 **Status** | Pointer to **string** | Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors.  | [optional] 
 
 ## Methods
@@ -92,20 +92,20 @@ HasSourceId returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Nonemployeebulkuploadjob) GetCreated() time.Time`
+`func (o *Nonemployeebulkuploadjob) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Nonemployeebulkuploadjob) GetCreatedOk() (*time.Time, bool)`
+`func (o *Nonemployeebulkuploadjob) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Nonemployeebulkuploadjob) SetCreated(v time.Time)`
+`func (o *Nonemployeebulkuploadjob) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -117,20 +117,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Nonemployeebulkuploadjob) GetModified() time.Time`
+`func (o *Nonemployeebulkuploadjob) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Nonemployeebulkuploadjob) GetModifiedOk() (*time.Time, bool)`
+`func (o *Nonemployeebulkuploadjob) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Nonemployeebulkuploadjob) SetModified(v time.Time)`
+`func (o *Nonemployeebulkuploadjob) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

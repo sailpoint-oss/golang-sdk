@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique identifier for the machine identity. | 
 **Name** | Pointer to **string** | Name of the machine identity. | [optional] 
-**Created** | **time.Time** | Creation timestamp. | 
-**Modified** | **time.Time** | Last modified timestamp. | 
+**Created** | **SailPointTime** | Creation timestamp. | 
+**Modified** | **SailPointTime** | Last modified timestamp. | 
 **BusinessApplication** | Pointer to **string** | Associated business application. | [optional] 
 **Description** | Pointer to **string** | Description of the machine identity. | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | The attributes assigned to the identity. | [optional] 
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewMachineidentitydeletedMachineIdentity
 
-`func NewMachineidentitydeletedMachineIdentity(id string, created time.Time, modified time.Time, subtype string, manuallyEdited bool, ) *MachineidentitydeletedMachineIdentity`
+`func NewMachineidentitydeletedMachineIdentity(id string, created SailPointTime, modified SailPointTime, subtype string, manuallyEdited bool, ) *MachineidentitydeletedMachineIdentity`
 
 NewMachineidentitydeletedMachineIdentity instantiates a new MachineidentitydeletedMachineIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -100,40 +100,40 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *MachineidentitydeletedMachineIdentity) GetCreated() time.Time`
+`func (o *MachineidentitydeletedMachineIdentity) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *MachineidentitydeletedMachineIdentity) GetCreatedOk() (*time.Time, bool)`
+`func (o *MachineidentitydeletedMachineIdentity) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *MachineidentitydeletedMachineIdentity) SetCreated(v time.Time)`
+`func (o *MachineidentitydeletedMachineIdentity) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *MachineidentitydeletedMachineIdentity) GetModified() time.Time`
+`func (o *MachineidentitydeletedMachineIdentity) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *MachineidentitydeletedMachineIdentity) GetModifiedOk() (*time.Time, bool)`
+`func (o *MachineidentitydeletedMachineIdentity) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *MachineidentitydeletedMachineIdentity) SetModified(v time.Time)`
+`func (o *MachineidentitydeletedMachineIdentity) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

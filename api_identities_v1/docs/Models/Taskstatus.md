@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ParentName** | **NullableString** | Name of the parent of the task this TaskStatus represents | 
 **Launcher** | **string** | Service to execute the task this TaskStatus represents | 
 **Target** | Pointer to [**NullableTarget**](target) |  | [optional] 
-**Created** | **time.Time** | Creation date of the task this TaskStatus represents | 
+**Created** | **SailPointTime** | Creation date of the task this TaskStatus represents | 
 **Modified** | **NullableTime** | Last modification date of the task this TaskStatus represents | 
 **Launched** | **NullableTime** | Launch date of the task this TaskStatus represents | 
 **Completed** | **NullableTime** | Completion date of the task this TaskStatus represents | 
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewTaskstatus
 
-`func NewTaskstatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created time.Time, modified NullableTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []Taskstatusmessage, returns []Taskreturndetails, attributes map[string]interface{}, progress NullableString, percentComplete int32, ) *Taskstatus`
+`func NewTaskstatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created SailPointTime, modified NullableTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []Taskstatusmessage, returns []Taskreturndetails, attributes map[string]interface{}, progress NullableString, percentComplete int32, ) *Taskstatus`
 
 NewTaskstatus instantiates a new Taskstatus object
 This constructor will assign default values to properties that have it defined,
@@ -220,40 +220,40 @@ HasTarget returns a boolean if a field has been set.
 UnsetTarget ensures that no value is present for Target, not even an explicit nil
 ### GetCreated
 
-`func (o *Taskstatus) GetCreated() time.Time`
+`func (o *Taskstatus) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Taskstatus) GetCreatedOk() (*time.Time, bool)`
+`func (o *Taskstatus) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Taskstatus) SetCreated(v time.Time)`
+`func (o *Taskstatus) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Taskstatus) GetModified() time.Time`
+`func (o *Taskstatus) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Taskstatus) GetModifiedOk() (*time.Time, bool)`
+`func (o *Taskstatus) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Taskstatus) SetModified(v time.Time)`
+`func (o *Taskstatus) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -270,20 +270,20 @@ SetModified sets Modified field to given value.
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetLaunched
 
-`func (o *Taskstatus) GetLaunched() time.Time`
+`func (o *Taskstatus) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *Taskstatus) GetLaunchedOk() (*time.Time, bool)`
+`func (o *Taskstatus) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *Taskstatus) SetLaunched(v time.Time)`
+`func (o *Taskstatus) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -300,20 +300,20 @@ SetLaunched sets Launched field to given value.
 UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
-`func (o *Taskstatus) GetCompleted() time.Time`
+`func (o *Taskstatus) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Taskstatus) GetCompletedOk() (*time.Time, bool)`
+`func (o *Taskstatus) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Taskstatus) SetCompleted(v time.Time)`
+`func (o *Taskstatus) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

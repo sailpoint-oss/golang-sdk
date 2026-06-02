@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique ID of the source. | 
 **Name** | **string** | The user friendly name of the source. | 
 **Type** | **string** | The connection type of the source. | 
-**Modified** | **time.Time** | The date and time the source was modified. | 
+**Modified** | **SailPointTime** | The date and time the source was modified. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
 **Actor** | [**SourceupdatedActor**](sourceupdated-actor) |  | 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewSourceupdated
 
-`func NewSourceupdated(id string, name string, type_ string, modified time.Time, connector string, actor SourceupdatedActor, ) *Sourceupdated`
+`func NewSourceupdated(id string, name string, type_ string, modified SailPointTime, connector string, actor SourceupdatedActor, ) *Sourceupdated`
 
 NewSourceupdated instantiates a new Sourceupdated object
 This constructor will assign default values to properties that have it defined,
@@ -103,20 +103,20 @@ SetType sets Type field to given value.
 
 ### GetModified
 
-`func (o *Sourceupdated) GetModified() time.Time`
+`func (o *Sourceupdated) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Sourceupdated) GetModifiedOk() (*time.Time, bool)`
+`func (o *Sourceupdated) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Sourceupdated) SetModified(v time.Time)`
+`func (o *Sourceupdated) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Optional stream description. | [optional] 
 **InactivityTimeout** | Pointer to **int32** | Inactivity timeout in seconds (optional). | [optional] 
 **MinVerificationInterval** | Pointer to **int32** | Minimum verification interval in seconds (optional). | [optional] 
-**UpdatedAt** | Pointer to **time.Time** | Timestamp of the last configuration update. | [optional] 
+**UpdatedAt** | Pointer to **SailPointTime** | Timestamp of the last configuration update. | [optional] 
 
 ## Methods
 
@@ -298,20 +298,20 @@ HasMinVerificationInterval returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *Updatestreamconfigresponse) GetUpdatedAt() time.Time`
+`func (o *Updatestreamconfigresponse) GetUpdatedAt() SailPointTime`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Updatestreamconfigresponse) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *Updatestreamconfigresponse) GetUpdatedAtOk() (*SailPointTime, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Updatestreamconfigresponse) SetUpdatedAt(v time.Time)`
+`func (o *Updatestreamconfigresponse) SetUpdatedAt(v SailPointTime)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

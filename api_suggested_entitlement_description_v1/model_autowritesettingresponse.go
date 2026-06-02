@@ -12,7 +12,7 @@ package api_suggested_entitlement_description_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Autowritesettingresponse type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type Autowritesettingresponse struct {
 	// Source IDs to exclude from auto-write. Always applied.
 	ExcludedSourceIds []string `json:"excludedSourceIds,omitempty"`
 	// When settings were first created
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *SailPointTime `json:"createdAt,omitempty"`
 	// When settings were last modified
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt *SailPointTime `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -155,9 +155,9 @@ func (o *Autowritesettingresponse) SetExcludedSourceIds(v []string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Autowritesettingresponse) GetCreatedAt() time.Time {
+func (o *Autowritesettingresponse) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt
@@ -165,7 +165,7 @@ func (o *Autowritesettingresponse) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Autowritesettingresponse) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Autowritesettingresponse) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -181,15 +181,15 @@ func (o *Autowritesettingresponse) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *Autowritesettingresponse) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given SailPointTime and assigns it to the CreatedAt field.
+func (o *Autowritesettingresponse) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Autowritesettingresponse) GetUpdatedAt() time.Time {
+func (o *Autowritesettingresponse) GetUpdatedAt() SailPointTime {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UpdatedAt
@@ -197,7 +197,7 @@ func (o *Autowritesettingresponse) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Autowritesettingresponse) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *Autowritesettingresponse) GetUpdatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -213,8 +213,8 @@ func (o *Autowritesettingresponse) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *Autowritesettingresponse) SetUpdatedAt(v time.Time) {
+// SetUpdatedAt gets a reference to the given SailPointTime and assigns it to the UpdatedAt field.
+func (o *Autowritesettingresponse) SetUpdatedAt(v SailPointTime) {
 	o.UpdatedAt = &v
 }
 

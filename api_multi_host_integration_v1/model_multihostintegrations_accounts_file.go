@@ -12,7 +12,7 @@ package api_multi_host_integration_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the MultihostintegrationsAccountsFile type satisfies the MappedNullable interface at compile time
@@ -25,9 +25,9 @@ type MultihostintegrationsAccountsFile struct {
 	// The accounts file key.
 	Key *string `json:"key,omitempty"`
 	// Date-time when the file was uploaded
-	UploadTime *time.Time `json:"uploadTime,omitempty"`
+	UploadTime *SailPointTime `json:"uploadTime,omitempty"`
 	// Date-time when the accounts file expired.
-	Expiry *time.Time `json:"expiry,omitempty"`
+	Expiry *SailPointTime `json:"expiry,omitempty"`
 	// If this is true, it indicates that the accounts file has expired.
 	Expired *bool `json:"expired,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -121,9 +121,9 @@ func (o *MultihostintegrationsAccountsFile) SetKey(v string) {
 }
 
 // GetUploadTime returns the UploadTime field value if set, zero value otherwise.
-func (o *MultihostintegrationsAccountsFile) GetUploadTime() time.Time {
+func (o *MultihostintegrationsAccountsFile) GetUploadTime() SailPointTime {
 	if o == nil || IsNil(o.UploadTime) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UploadTime
@@ -131,7 +131,7 @@ func (o *MultihostintegrationsAccountsFile) GetUploadTime() time.Time {
 
 // GetUploadTimeOk returns a tuple with the UploadTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultihostintegrationsAccountsFile) GetUploadTimeOk() (*time.Time, bool) {
+func (o *MultihostintegrationsAccountsFile) GetUploadTimeOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.UploadTime) {
 		return nil, false
 	}
@@ -147,15 +147,15 @@ func (o *MultihostintegrationsAccountsFile) HasUploadTime() bool {
 	return false
 }
 
-// SetUploadTime gets a reference to the given time.Time and assigns it to the UploadTime field.
-func (o *MultihostintegrationsAccountsFile) SetUploadTime(v time.Time) {
+// SetUploadTime gets a reference to the given SailPointTime and assigns it to the UploadTime field.
+func (o *MultihostintegrationsAccountsFile) SetUploadTime(v SailPointTime) {
 	o.UploadTime = &v
 }
 
 // GetExpiry returns the Expiry field value if set, zero value otherwise.
-func (o *MultihostintegrationsAccountsFile) GetExpiry() time.Time {
+func (o *MultihostintegrationsAccountsFile) GetExpiry() SailPointTime {
 	if o == nil || IsNil(o.Expiry) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Expiry
@@ -163,7 +163,7 @@ func (o *MultihostintegrationsAccountsFile) GetExpiry() time.Time {
 
 // GetExpiryOk returns a tuple with the Expiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultihostintegrationsAccountsFile) GetExpiryOk() (*time.Time, bool) {
+func (o *MultihostintegrationsAccountsFile) GetExpiryOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Expiry) {
 		return nil, false
 	}
@@ -179,8 +179,8 @@ func (o *MultihostintegrationsAccountsFile) HasExpiry() bool {
 	return false
 }
 
-// SetExpiry gets a reference to the given time.Time and assigns it to the Expiry field.
-func (o *MultihostintegrationsAccountsFile) SetExpiry(v time.Time) {
+// SetExpiry gets a reference to the given SailPointTime and assigns it to the Expiry field.
+func (o *MultihostintegrationsAccountsFile) SetExpiry(v SailPointTime) {
 	o.Expiry = &v
 }
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **ReassignedFrom** | Pointer to [**Approvalidentity**](approvalidentity) |  | [optional] 
 **ReassignedTo** | Pointer to [**Approvalidentity**](approvalidentity) |  | [optional] 
 **Reassigner** | Pointer to [**Approvalidentity**](approvalidentity) |  | [optional] 
-**ReassignmentDate** | Pointer to **time.Time** | Date and time when the reassignment occurred. | [optional] 
+**ReassignmentDate** | Pointer to **SailPointTime** | Date and time when the reassignment occurred. | [optional] 
 **ReassignmentType** | Pointer to **string** | Type of reassignment, such as escalation or manual reassignment. | [optional] 
 
 ## Methods
@@ -143,20 +143,20 @@ HasReassigner returns a boolean if a field has been set.
 
 ### GetReassignmentDate
 
-`func (o *Approvalreassignmenthistory) GetReassignmentDate() time.Time`
+`func (o *Approvalreassignmenthistory) GetReassignmentDate() SailPointTime`
 
 GetReassignmentDate returns the ReassignmentDate field if non-nil, zero value otherwise.
 
 ### GetReassignmentDateOk
 
-`func (o *Approvalreassignmenthistory) GetReassignmentDateOk() (*time.Time, bool)`
+`func (o *Approvalreassignmenthistory) GetReassignmentDateOk() (*SailPointTime, bool)`
 
 GetReassignmentDateOk returns a tuple with the ReassignmentDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReassignmentDate
 
-`func (o *Approvalreassignmenthistory) SetReassignmentDate(v time.Time)`
+`func (o *Approvalreassignmenthistory) SetReassignmentDate(v SailPointTime)`
 
 SetReassignmentDate sets ReassignmentDate field to given value.
 

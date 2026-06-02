@@ -12,7 +12,7 @@ package api_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approval2 type satisfies the MappedNullable interface at compile time
@@ -70,7 +70,7 @@ type Approval2 struct {
 	// Field that can include any static additional info that may be needed by the service that the approval request originated from
 	StaticAttributes map[string]interface{} `json:"staticAttributes,omitempty"`
 	// Date/time that the approval request was last updated
-	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	// RequestedTarget used to specify the actual object or target the approval request is for
 	RequestedTarget []Approvalrequestedtarget `json:"requestedTarget,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -964,9 +964,9 @@ func (o *Approval2) SetStaticAttributes(v map[string]interface{}) {
 }
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
-func (o *Approval2) GetModifiedDate() time.Time {
+func (o *Approval2) GetModifiedDate() SailPointTime {
 	if o == nil || IsNil(o.ModifiedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ModifiedDate
@@ -974,7 +974,7 @@ func (o *Approval2) GetModifiedDate() time.Time {
 
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetModifiedDateOk() (*time.Time, bool) {
+func (o *Approval2) GetModifiedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ModifiedDate) {
 		return nil, false
 	}
@@ -990,8 +990,8 @@ func (o *Approval2) HasModifiedDate() bool {
 	return false
 }
 
-// SetModifiedDate gets a reference to the given time.Time and assigns it to the ModifiedDate field.
-func (o *Approval2) SetModifiedDate(v time.Time) {
+// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
+func (o *Approval2) SetModifiedDate(v SailPointTime) {
 	o.ModifiedDate = &v
 }
 

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Indicates whether Classification is enabled for a Source | [optional] [default to false]
 **ClassificationMethod** | Pointer to **string** | Classification Method | [optional] 
 **Criteria** | Pointer to [**Machineclassificationcriterialevel1**](machineclassificationcriterialevel1) |  | [optional] 
-**Created** | Pointer to **time.Time** | Date the config was created | [optional] 
+**Created** | Pointer to **SailPointTime** | Date the config was created | [optional] 
 **Modified** | Pointer to **NullableTime** | Date the config was last updated | [optional] 
 
 ## Methods
@@ -117,20 +117,20 @@ HasCriteria returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Machineclassificationconfig) GetCreated() time.Time`
+`func (o *Machineclassificationconfig) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Machineclassificationconfig) GetCreatedOk() (*time.Time, bool)`
+`func (o *Machineclassificationconfig) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Machineclassificationconfig) SetCreated(v time.Time)`
+`func (o *Machineclassificationconfig) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -142,20 +142,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Machineclassificationconfig) GetModified() time.Time`
+`func (o *Machineclassificationconfig) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Machineclassificationconfig) GetModifiedOk() (*time.Time, bool)`
+`func (o *Machineclassificationconfig) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Machineclassificationconfig) SetModified(v time.Time)`
+`func (o *Machineclassificationconfig) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

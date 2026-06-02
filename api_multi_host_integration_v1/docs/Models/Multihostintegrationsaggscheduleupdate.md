@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **AggregationCronSchedule** | **string** | Cron expression to schedule aggregation | 
 **EnableSchedule** | **bool** | Boolean value for Multi-Host Integration aggregation schedule.  This specifies if scheduled aggregation is enabled or disabled. | [default to false]
 **SourceIdList** | **[]string** | Source IDs of the Multi-Host Integration | 
-**Created** | Pointer to **time.Time** | Created date of Multi-Host Integration aggregation schedule | [optional] 
-**Modified** | Pointer to **time.Time** | Modified date of Multi-Host Integration aggregation schedule | [optional] 
+**Created** | Pointer to **SailPointTime** | Created date of Multi-Host Integration aggregation schedule | [optional] 
+**Modified** | Pointer to **SailPointTime** | Modified date of Multi-Host Integration aggregation schedule | [optional] 
 
 ## Methods
 
@@ -165,20 +165,20 @@ SetSourceIdList sets SourceIdList field to given value.
 
 ### GetCreated
 
-`func (o *Multihostintegrationsaggscheduleupdate) GetCreated() time.Time`
+`func (o *Multihostintegrationsaggscheduleupdate) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Multihostintegrationsaggscheduleupdate) GetCreatedOk() (*time.Time, bool)`
+`func (o *Multihostintegrationsaggscheduleupdate) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Multihostintegrationsaggscheduleupdate) SetCreated(v time.Time)`
+`func (o *Multihostintegrationsaggscheduleupdate) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -190,20 +190,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Multihostintegrationsaggscheduleupdate) GetModified() time.Time`
+`func (o *Multihostintegrationsaggscheduleupdate) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Multihostintegrationsaggscheduleupdate) GetModifiedOk() (*time.Time, bool)`
+`func (o *Multihostintegrationsaggscheduleupdate) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Multihostintegrationsaggscheduleupdate) SetModified(v time.Time)`
+`func (o *Multihostintegrationsaggscheduleupdate) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

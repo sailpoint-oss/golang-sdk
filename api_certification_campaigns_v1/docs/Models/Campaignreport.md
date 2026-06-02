@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
 **Status** | Pointer to **string** | Status of a SOD policy violation report. | [optional] 
 **ReportType** | [**Reporttype**](reporttype) |  | 
-**LastRunAt** | Pointer to **time.Time** | The most recent date and time this report was run | [optional] [readonly] 
+**LastRunAt** | Pointer to **SailPointTime** | The most recent date and time this report was run | [optional] [readonly] 
 
 ## Methods
 
@@ -163,20 +163,20 @@ SetReportType sets ReportType field to given value.
 
 ### GetLastRunAt
 
-`func (o *Campaignreport) GetLastRunAt() time.Time`
+`func (o *Campaignreport) GetLastRunAt() SailPointTime`
 
 GetLastRunAt returns the LastRunAt field if non-nil, zero value otherwise.
 
 ### GetLastRunAtOk
 
-`func (o *Campaignreport) GetLastRunAtOk() (*time.Time, bool)`
+`func (o *Campaignreport) GetLastRunAtOk() (*SailPointTime, bool)`
 
 GetLastRunAtOk returns a tuple with the LastRunAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastRunAt
 
-`func (o *Campaignreport) SetLastRunAt(v time.Time)`
+`func (o *Campaignreport) SetLastRunAt(v SailPointTime)`
 
 SetLastRunAt sets LastRunAt field to given value.
 

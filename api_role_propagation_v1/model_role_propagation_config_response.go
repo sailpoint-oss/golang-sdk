@@ -12,7 +12,7 @@ package api_role_propagation_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RolePropagationConfigResponse type satisfies the MappedNullable interface at compile time
@@ -23,11 +23,11 @@ type RolePropagationConfigResponse struct {
 	// Indicates if the Role Change Propagation process is enabled for the tenant
 	Enabled *bool `json:"enabled,omitempty"`
 	// The time when Role Change Propagation Process was last enabled on the tenant
-	EnabledDate *time.Time `json:"enabledDate,omitempty"`
+	EnabledDate *SailPointTime `json:"enabledDate,omitempty"`
 	// The time when Role Change Propagation Configuration was first created for the tenant
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The time when Role Change Propagation Config was updated on the tenant
-	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -87,9 +87,9 @@ func (o *RolePropagationConfigResponse) SetEnabled(v bool) {
 }
 
 // GetEnabledDate returns the EnabledDate field value if set, zero value otherwise.
-func (o *RolePropagationConfigResponse) GetEnabledDate() time.Time {
+func (o *RolePropagationConfigResponse) GetEnabledDate() SailPointTime {
 	if o == nil || IsNil(o.EnabledDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.EnabledDate
@@ -97,7 +97,7 @@ func (o *RolePropagationConfigResponse) GetEnabledDate() time.Time {
 
 // GetEnabledDateOk returns a tuple with the EnabledDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RolePropagationConfigResponse) GetEnabledDateOk() (*time.Time, bool) {
+func (o *RolePropagationConfigResponse) GetEnabledDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.EnabledDate) {
 		return nil, false
 	}
@@ -113,15 +113,15 @@ func (o *RolePropagationConfigResponse) HasEnabledDate() bool {
 	return false
 }
 
-// SetEnabledDate gets a reference to the given time.Time and assigns it to the EnabledDate field.
-func (o *RolePropagationConfigResponse) SetEnabledDate(v time.Time) {
+// SetEnabledDate gets a reference to the given SailPointTime and assigns it to the EnabledDate field.
+func (o *RolePropagationConfigResponse) SetEnabledDate(v SailPointTime) {
 	o.EnabledDate = &v
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *RolePropagationConfigResponse) GetCreatedDate() time.Time {
+func (o *RolePropagationConfigResponse) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -129,7 +129,7 @@ func (o *RolePropagationConfigResponse) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RolePropagationConfigResponse) GetCreatedDateOk() (*time.Time, bool) {
+func (o *RolePropagationConfigResponse) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -145,15 +145,15 @@ func (o *RolePropagationConfigResponse) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *RolePropagationConfigResponse) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *RolePropagationConfigResponse) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
-func (o *RolePropagationConfigResponse) GetModifiedDate() time.Time {
+func (o *RolePropagationConfigResponse) GetModifiedDate() SailPointTime {
 	if o == nil || IsNil(o.ModifiedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ModifiedDate
@@ -161,7 +161,7 @@ func (o *RolePropagationConfigResponse) GetModifiedDate() time.Time {
 
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RolePropagationConfigResponse) GetModifiedDateOk() (*time.Time, bool) {
+func (o *RolePropagationConfigResponse) GetModifiedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ModifiedDate) {
 		return nil, false
 	}
@@ -177,8 +177,8 @@ func (o *RolePropagationConfigResponse) HasModifiedDate() bool {
 	return false
 }
 
-// SetModifiedDate gets a reference to the given time.Time and assigns it to the ModifiedDate field.
-func (o *RolePropagationConfigResponse) SetModifiedDate(v time.Time) {
+// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
+func (o *RolePropagationConfigResponse) SetModifiedDate(v SailPointTime) {
 	o.ModifiedDate = &v
 }
 

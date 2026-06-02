@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Id** | **string** | ID of Role, Access Profile or Entitlement being requested. | 
 **Comment** | Pointer to **string** | Comment provided by requester. * Comment is required when the request is of type Revoke Access.  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status. | [optional] 
-**RemoveDate** | Pointer to **time.Time** | The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for.  | [optional] 
+**RemoveDate** | Pointer to **SailPointTime** | The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for.  | [optional] 
 **AccountSelection** | Pointer to [**[]Sourceitemref**](sourceitemref) | The accounts where the access item will be provisioned to * Includes selections performed by the user in the event of multiple accounts existing on the same source * Also includes details for sources where user only has one account  | [optional] 
 
 ## Methods
@@ -133,20 +133,20 @@ HasClientMetadata returns a boolean if a field has been set.
 
 ### GetRemoveDate
 
-`func (o *Requesteditemdtoref) GetRemoveDate() time.Time`
+`func (o *Requesteditemdtoref) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *Requesteditemdtoref) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *Requesteditemdtoref) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *Requesteditemdtoref) SetRemoveDate(v time.Time)`
+`func (o *Requesteditemdtoref) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 

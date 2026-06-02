@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Sodviolationcheck', 'V1Sodviolationch
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestId** | **string** | The id of the original request | 
-**Created** | Pointer to **time.Time** | The date-time when this request was created. | [optional] [readonly] 
+**Created** | Pointer to **SailPointTime** | The date-time when this request was created. | [optional] [readonly] 
 
 ## Methods
 
@@ -59,20 +59,20 @@ SetRequestId sets RequestId field to given value.
 
 ### GetCreated
 
-`func (o *Sodviolationcheck) GetCreated() time.Time`
+`func (o *Sodviolationcheck) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Sodviolationcheck) GetCreatedOk() (*time.Time, bool)`
+`func (o *Sodviolationcheck) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Sodviolationcheck) SetCreated(v time.Time)`
+`func (o *Sodviolationcheck) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

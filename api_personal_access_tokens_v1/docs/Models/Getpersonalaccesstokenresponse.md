@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
 **Scope** | **[]string** | Scopes of the personal  access token. | 
 **Owner** | [**Patowner**](patowner) |  | 
-**Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
+**Created** | **SailPointTime** | The date and time, down to the millisecond, when this personal access token was created. | 
 **LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
 **Managed** | Pointer to **bool** | If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows. | [optional] [default to false]
 **AccessTokenValiditySeconds** | Pointer to **int32** | Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200. | [optional] [default to 43200]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewGetpersonalaccesstokenresponse
 
-`func NewGetpersonalaccesstokenresponse(id string, name string, scope []string, owner Patowner, created time.Time, ) *Getpersonalaccesstokenresponse`
+`func NewGetpersonalaccesstokenresponse(id string, name string, scope []string, owner Patowner, created SailPointTime, ) *Getpersonalaccesstokenresponse`
 
 NewGetpersonalaccesstokenresponse instantiates a new Getpersonalaccesstokenresponse object
 This constructor will assign default values to properties that have it defined,
@@ -137,40 +137,40 @@ SetOwner sets Owner field to given value.
 
 ### GetCreated
 
-`func (o *Getpersonalaccesstokenresponse) GetCreated() time.Time`
+`func (o *Getpersonalaccesstokenresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Getpersonalaccesstokenresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Getpersonalaccesstokenresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Getpersonalaccesstokenresponse) SetCreated(v time.Time)`
+`func (o *Getpersonalaccesstokenresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetLastUsed
 
-`func (o *Getpersonalaccesstokenresponse) GetLastUsed() time.Time`
+`func (o *Getpersonalaccesstokenresponse) GetLastUsed() SailPointTime`
 
 GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
 
 ### GetLastUsedOk
 
-`func (o *Getpersonalaccesstokenresponse) GetLastUsedOk() (*time.Time, bool)`
+`func (o *Getpersonalaccesstokenresponse) GetLastUsedOk() (*SailPointTime, bool)`
 
 GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUsed
 
-`func (o *Getpersonalaccesstokenresponse) SetLastUsed(v time.Time)`
+`func (o *Getpersonalaccesstokenresponse) SetLastUsed(v SailPointTime)`
 
 SetLastUsed sets LastUsed field to given value.
 
@@ -242,20 +242,20 @@ HasAccessTokenValiditySeconds returns a boolean if a field has been set.
 
 ### GetExpirationDate
 
-`func (o *Getpersonalaccesstokenresponse) GetExpirationDate() time.Time`
+`func (o *Getpersonalaccesstokenresponse) GetExpirationDate() SailPointTime`
 
 GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
 
 ### GetExpirationDateOk
 
-`func (o *Getpersonalaccesstokenresponse) GetExpirationDateOk() (*time.Time, bool)`
+`func (o *Getpersonalaccesstokenresponse) GetExpirationDateOk() (*SailPointTime, bool)`
 
 GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpirationDate
 
-`func (o *Getpersonalaccesstokenresponse) SetExpirationDate(v time.Time)`
+`func (o *Getpersonalaccesstokenresponse) SetExpirationDate(v SailPointTime)`
 
 SetExpirationDate sets ExpirationDate field to given value.
 

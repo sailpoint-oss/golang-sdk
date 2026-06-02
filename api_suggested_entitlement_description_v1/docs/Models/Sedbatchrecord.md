@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **RequestedBy** | Pointer to **string** | The ID of the user who requested the batch. | [optional] 
 **MaterializedCount** | Pointer to **int32** | The number of items materialized in the batch. | [optional] 
 **ProcessedCount** | Pointer to **int32** | The number of items processed in the batch. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | The timestamp when the batch was created. | [optional] 
+**CreatedAt** | Pointer to **SailPointTime** | The timestamp when the batch was created. | [optional] 
 **UpdatedAt** | Pointer to **NullableTime** | The timestamp when the batch was last updated. | [optional] 
 
 ## Methods
@@ -241,20 +241,20 @@ HasProcessedCount returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Sedbatchrecord) GetCreatedAt() time.Time`
+`func (o *Sedbatchrecord) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Sedbatchrecord) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Sedbatchrecord) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Sedbatchrecord) SetCreatedAt(v time.Time)`
+`func (o *Sedbatchrecord) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -266,20 +266,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *Sedbatchrecord) GetUpdatedAt() time.Time`
+`func (o *Sedbatchrecord) GetUpdatedAt() SailPointTime`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Sedbatchrecord) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *Sedbatchrecord) GetUpdatedAtOk() (*SailPointTime, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Sedbatchrecord) SetUpdatedAt(v time.Time)`
+`func (o *Sedbatchrecord) SetUpdatedAt(v SailPointTime)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

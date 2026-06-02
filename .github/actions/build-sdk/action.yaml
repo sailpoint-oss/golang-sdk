@@ -69,11 +69,17 @@ runs:
           --config sdk-resources/v2025-nerm-config.yaml
         node sdk-resources/postscript.js ./api_nerm_v2025
 
+    - name: Wire Go workspace
+      shell: bash
+      run: |
+        go work init . 2>/dev/null || true
+        go work use -r .
+        go work sync
+
     - name: Build and Test
       shell: bash
       run: |
-        go get -d ./...
-        go install
+        go build -o /dev/null .
         if [ "${{ inputs.skip-tests }}" != "true" ]; then
-          go test
+          go test ./...
         fi

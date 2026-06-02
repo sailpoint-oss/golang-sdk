@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Name of the accounts file. | [optional] 
 **Key** | Pointer to **string** | The accounts file key. | [optional] 
-**UploadTime** | Pointer to **time.Time** | Date-time when the file was uploaded | [optional] 
-**Expiry** | Pointer to **time.Time** | Date-time when the accounts file expired. | [optional] 
+**UploadTime** | Pointer to **SailPointTime** | Date-time when the file was uploaded | [optional] 
+**Expiry** | Pointer to **SailPointTime** | Date-time when the accounts file expired. | [optional] 
 **Expired** | Pointer to **bool** | If this is true, it indicates that the accounts file has expired. | [optional] [default to false]
 
 ## Methods
@@ -92,20 +92,20 @@ HasKey returns a boolean if a field has been set.
 
 ### GetUploadTime
 
-`func (o *MultihostintegrationsAccountsFile) GetUploadTime() time.Time`
+`func (o *MultihostintegrationsAccountsFile) GetUploadTime() SailPointTime`
 
 GetUploadTime returns the UploadTime field if non-nil, zero value otherwise.
 
 ### GetUploadTimeOk
 
-`func (o *MultihostintegrationsAccountsFile) GetUploadTimeOk() (*time.Time, bool)`
+`func (o *MultihostintegrationsAccountsFile) GetUploadTimeOk() (*SailPointTime, bool)`
 
 GetUploadTimeOk returns a tuple with the UploadTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUploadTime
 
-`func (o *MultihostintegrationsAccountsFile) SetUploadTime(v time.Time)`
+`func (o *MultihostintegrationsAccountsFile) SetUploadTime(v SailPointTime)`
 
 SetUploadTime sets UploadTime field to given value.
 
@@ -117,20 +117,20 @@ HasUploadTime returns a boolean if a field has been set.
 
 ### GetExpiry
 
-`func (o *MultihostintegrationsAccountsFile) GetExpiry() time.Time`
+`func (o *MultihostintegrationsAccountsFile) GetExpiry() SailPointTime`
 
 GetExpiry returns the Expiry field if non-nil, zero value otherwise.
 
 ### GetExpiryOk
 
-`func (o *MultihostintegrationsAccountsFile) GetExpiryOk() (*time.Time, bool)`
+`func (o *MultihostintegrationsAccountsFile) GetExpiryOk() (*SailPointTime, bool)`
 
 GetExpiryOk returns a tuple with the Expiry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiry
 
-`func (o *MultihostintegrationsAccountsFile) SetExpiry(v time.Time)`
+`func (o *MultihostintegrationsAccountsFile) SetExpiry(v SailPointTime)`
 
 SetExpiry sets Expiry field to given value.
 

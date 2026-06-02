@@ -12,7 +12,7 @@ package api_role_propagation_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RolePropagationOngoingResponseRolePropagationDetails type satisfies the MappedNullable interface at compile time
@@ -27,11 +27,11 @@ type RolePropagationOngoingResponseRolePropagationDetails struct {
 	// Current execution stage of the Role Propagation process.
 	ExecutionStage *string `json:"executionStage,omitempty"`
 	// Time when the Role Propagation process was launched.
-	Launched *time.Time `json:"launched,omitempty"`
+	Launched *SailPointTime `json:"launched,omitempty"`
 	LaunchedBy *RolePropagationStatusResponseLaunchedBy `json:"launchedBy,omitempty"`
 	TerminatedBy *RolePropagationStatusResponseTerminatedBy `json:"terminatedBy,omitempty"`
 	// Time when the Role Propagation process was completed.
-	Completed *time.Time `json:"completed,omitempty"`
+	Completed *SailPointTime `json:"completed,omitempty"`
 	// Reason for failure if the Role Propagation process failed.
 	FailureReason *string `json:"failureReason,omitempty"`
 	// Indicates if the role refresh was skipped during the Role Propagation process.
@@ -159,9 +159,9 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) SetExecutionStage
 }
 
 // GetLaunched returns the Launched field value if set, zero value otherwise.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) GetLaunched() time.Time {
+func (o *RolePropagationOngoingResponseRolePropagationDetails) GetLaunched() SailPointTime {
 	if o == nil || IsNil(o.Launched) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Launched
@@ -169,7 +169,7 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) GetLaunched() tim
 
 // GetLaunchedOk returns a tuple with the Launched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) GetLaunchedOk() (*time.Time, bool) {
+func (o *RolePropagationOngoingResponseRolePropagationDetails) GetLaunchedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Launched) {
 		return nil, false
 	}
@@ -185,8 +185,8 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) HasLaunched() boo
 	return false
 }
 
-// SetLaunched gets a reference to the given time.Time and assigns it to the Launched field.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) SetLaunched(v time.Time) {
+// SetLaunched gets a reference to the given SailPointTime and assigns it to the Launched field.
+func (o *RolePropagationOngoingResponseRolePropagationDetails) SetLaunched(v SailPointTime) {
 	o.Launched = &v
 }
 
@@ -255,9 +255,9 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) SetTerminatedBy(v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) GetCompleted() time.Time {
+func (o *RolePropagationOngoingResponseRolePropagationDetails) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed
@@ -265,7 +265,7 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) GetCompleted() ti
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) GetCompletedOk() (*time.Time, bool) {
+func (o *RolePropagationOngoingResponseRolePropagationDetails) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -281,8 +281,8 @@ func (o *RolePropagationOngoingResponseRolePropagationDetails) HasCompleted() bo
 	return false
 }
 
-// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
-func (o *RolePropagationOngoingResponseRolePropagationDetails) SetCompleted(v time.Time) {
+// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
+func (o *RolePropagationOngoingResponseRolePropagationDetails) SetCompleted(v SailPointTime) {
 	o.Completed = &v
 }
 

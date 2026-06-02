@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Scheduledactionpayload', 'V1Scheduled
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **JobType** | **string** | Type of the scheduled job. | 
-**StartTime** | Pointer to **time.Time** | The time when this scheduled action should start. Optional. | [optional] 
+**StartTime** | Pointer to **SailPointTime** | The time when this scheduled action should start. Optional. | [optional] 
 **CronString** | Pointer to **string** | Cron expression defining the schedule for this action. Optional for repeated events. | [optional] 
 **TimeZoneId** | Pointer to **string** | Time zone ID for interpreting the cron expression. Optional, will default to current time zone. | [optional] 
 **Content** | [**ScheduledactionpayloadContent**](scheduledactionpayload-content) |  | 
@@ -62,20 +62,20 @@ SetJobType sets JobType field to given value.
 
 ### GetStartTime
 
-`func (o *Scheduledactionpayload) GetStartTime() time.Time`
+`func (o *Scheduledactionpayload) GetStartTime() SailPointTime`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Scheduledactionpayload) GetStartTimeOk() (*time.Time, bool)`
+`func (o *Scheduledactionpayload) GetStartTimeOk() (*SailPointTime, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *Scheduledactionpayload) SetStartTime(v time.Time)`
+`func (o *Scheduledactionpayload) SetStartTime(v SailPointTime)`
 
 SetStartTime sets StartTime field to given value.
 

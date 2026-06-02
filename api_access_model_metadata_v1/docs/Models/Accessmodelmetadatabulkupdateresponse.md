@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID of the task which is executing the bulk update. | [optional] 
 **Type** | Pointer to **string** | Type of the bulk update object. | [optional] 
 **Status** | Pointer to **string** | The status of the bulk update request, only list unfinished request's status. | [optional] 
-**Created** | Pointer to **time.Time** | Time when the bulk update request was created | [optional] 
+**Created** | Pointer to **SailPointTime** | Time when the bulk update request was created | [optional] 
 
 ## Methods
 
@@ -116,20 +116,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Accessmodelmetadatabulkupdateresponse) GetCreated() time.Time`
+`func (o *Accessmodelmetadatabulkupdateresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Accessmodelmetadatabulkupdateresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Accessmodelmetadatabulkupdateresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Accessmodelmetadatabulkupdateresponse) SetCreated(v time.Time)`
+`func (o *Accessmodelmetadatabulkupdateresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

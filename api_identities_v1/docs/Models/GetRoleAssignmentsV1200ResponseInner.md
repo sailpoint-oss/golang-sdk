@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
 **Role** | Pointer to [**Basereferencedto**](basereferencedto) |  | [optional] 
-**AddedDate** | Pointer to **time.Time** | Date that the assignment was added | [optional] 
+**AddedDate** | Pointer to **SailPointTime** | Date that the assignment was added | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | Date that the assignment will be removed | [optional] 
 **Comments** | Pointer to **NullableString** | Comments added by the user when the assignment was made | [optional] 
 **AssignmentSource** | Pointer to **string** | Source describing how this assignment was made | [optional] 
@@ -97,20 +97,20 @@ HasRole returns a boolean if a field has been set.
 
 ### GetAddedDate
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAddedDate() time.Time`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAddedDate() SailPointTime`
 
 GetAddedDate returns the AddedDate field if non-nil, zero value otherwise.
 
 ### GetAddedDateOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAddedDateOk() (*time.Time, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAddedDateOk() (*SailPointTime, bool)`
 
 GetAddedDateOk returns a tuple with the AddedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddedDate
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetAddedDate(v time.Time)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetAddedDate(v SailPointTime)`
 
 SetAddedDate sets AddedDate field to given value.
 
@@ -122,20 +122,20 @@ HasAddedDate returns a boolean if a field has been set.
 
 ### GetRemoveDate
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetRemoveDate() time.Time`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetRemoveDate(v time.Time)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 

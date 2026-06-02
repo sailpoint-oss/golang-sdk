@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The id of the review decision | 
 **Decision** | [**Certificationdecision**](certificationdecision) |  | 
-**ProposedEndDate** | Pointer to **time.Time** | The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions. | [optional] 
+**ProposedEndDate** | Pointer to **SailPointTime** | The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions. | [optional] 
 **Bulk** | **bool** | Indicates whether decision should be marked as part of a larger bulk decision | 
 **Recommendation** | Pointer to [**Reviewrecommendation**](reviewrecommendation) |  | [optional] 
 **Comments** | Pointer to **string** | Comments recorded when the decision was made | [optional] 
@@ -83,20 +83,20 @@ SetDecision sets Decision field to given value.
 
 ### GetProposedEndDate
 
-`func (o *Reviewdecision) GetProposedEndDate() time.Time`
+`func (o *Reviewdecision) GetProposedEndDate() SailPointTime`
 
 GetProposedEndDate returns the ProposedEndDate field if non-nil, zero value otherwise.
 
 ### GetProposedEndDateOk
 
-`func (o *Reviewdecision) GetProposedEndDateOk() (*time.Time, bool)`
+`func (o *Reviewdecision) GetProposedEndDateOk() (*SailPointTime, bool)`
 
 GetProposedEndDateOk returns a tuple with the ProposedEndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProposedEndDate
 
-`func (o *Reviewdecision) SetProposedEndDate(v time.Time)`
+`func (o *Reviewdecision) SetProposedEndDate(v SailPointTime)`
 
 SetProposedEndDate sets ProposedEndDate field to given value.
 

@@ -12,7 +12,6 @@ package api_oauth_clients_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accesstype Access type of API Client indicating online or offline use

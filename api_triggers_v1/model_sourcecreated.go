@@ -12,7 +12,7 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type Sourcecreated struct {
 	// The connection type.
 	Type string `json:"type"`
 	// The date and time the source was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourcecreatedActor `json:"actor"`
@@ -41,7 +41,7 @@ type _Sourcecreated Sourcecreated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourcecreated(id string, name string, type_ string, created time.Time, connector string, actor SourcecreatedActor) *Sourcecreated {
+func NewSourcecreated(id string, name string, type_ string, created SailPointTime, connector string, actor SourcecreatedActor) *Sourcecreated {
 	this := Sourcecreated{}
 	this.Id = id
 	this.Name = name
@@ -133,9 +133,9 @@ func (o *Sourcecreated) SetType(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *Sourcecreated) GetCreated() time.Time {
+func (o *Sourcecreated) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *Sourcecreated) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Sourcecreated) GetCreatedOk() (*time.Time, bool) {
+func (o *Sourcecreated) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *Sourcecreated) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Sourcecreated) SetCreated(v time.Time) {
+func (o *Sourcecreated) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 

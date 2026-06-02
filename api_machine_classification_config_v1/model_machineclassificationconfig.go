@@ -12,7 +12,7 @@ package api_machine_classification_config_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Machineclassificationconfig type satisfies the MappedNullable interface at compile time
@@ -26,7 +26,7 @@ type Machineclassificationconfig struct {
 	ClassificationMethod *string `json:"classificationMethod,omitempty"`
 	Criteria *Machineclassificationcriterialevel1 `json:"criteria,omitempty"`
 	// Date the config was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Date the config was last updated
 	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -152,9 +152,9 @@ func (o *Machineclassificationconfig) SetCriteria(v Machineclassificationcriteri
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Machineclassificationconfig) GetCreated() time.Time {
+func (o *Machineclassificationconfig) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -162,7 +162,7 @@ func (o *Machineclassificationconfig) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineclassificationconfig) GetCreatedOk() (*time.Time, bool) {
+func (o *Machineclassificationconfig) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -178,15 +178,15 @@ func (o *Machineclassificationconfig) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Machineclassificationconfig) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Machineclassificationconfig) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Machineclassificationconfig) GetModified() time.Time {
+func (o *Machineclassificationconfig) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -195,7 +195,7 @@ func (o *Machineclassificationconfig) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Machineclassificationconfig) GetModifiedOk() (*time.Time, bool) {
+func (o *Machineclassificationconfig) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -212,7 +212,7 @@ func (o *Machineclassificationconfig) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *Machineclassificationconfig) SetModified(v time.Time) {
+func (o *Machineclassificationconfig) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

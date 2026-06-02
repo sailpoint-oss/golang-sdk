@@ -24,10 +24,10 @@ Name | Type | Description | Notes
 **Manager** | Pointer to **string** | The account ID of a valid identity to serve as this non-employee's manager. | [optional] 
 **SourceId** | Pointer to **string** | Non-Employee's source id. | [optional] 
 **Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
-**StartDate** | Pointer to **time.Time** | Non-Employee employment start date. | [optional] 
-**EndDate** | Pointer to **time.Time** | Non-Employee employment end date. | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
+**StartDate** | Pointer to **SailPointTime** | Non-Employee employment start date. | [optional] 
+**EndDate** | Pointer to **SailPointTime** | Non-Employee employment end date. | [optional] 
+**Modified** | Pointer to **SailPointTime** | When the request was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | When the request was created. | [optional] 
 
 ## Methods
 
@@ -275,20 +275,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetStartDate
 
-`func (o *Nonemployeerecord) GetStartDate() time.Time`
+`func (o *Nonemployeerecord) GetStartDate() SailPointTime`
 
 GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
 ### GetStartDateOk
 
-`func (o *Nonemployeerecord) GetStartDateOk() (*time.Time, bool)`
+`func (o *Nonemployeerecord) GetStartDateOk() (*SailPointTime, bool)`
 
 GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartDate
 
-`func (o *Nonemployeerecord) SetStartDate(v time.Time)`
+`func (o *Nonemployeerecord) SetStartDate(v SailPointTime)`
 
 SetStartDate sets StartDate field to given value.
 
@@ -300,20 +300,20 @@ HasStartDate returns a boolean if a field has been set.
 
 ### GetEndDate
 
-`func (o *Nonemployeerecord) GetEndDate() time.Time`
+`func (o *Nonemployeerecord) GetEndDate() SailPointTime`
 
 GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
 ### GetEndDateOk
 
-`func (o *Nonemployeerecord) GetEndDateOk() (*time.Time, bool)`
+`func (o *Nonemployeerecord) GetEndDateOk() (*SailPointTime, bool)`
 
 GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndDate
 
-`func (o *Nonemployeerecord) SetEndDate(v time.Time)`
+`func (o *Nonemployeerecord) SetEndDate(v SailPointTime)`
 
 SetEndDate sets EndDate field to given value.
 
@@ -325,20 +325,20 @@ HasEndDate returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Nonemployeerecord) GetModified() time.Time`
+`func (o *Nonemployeerecord) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Nonemployeerecord) GetModifiedOk() (*time.Time, bool)`
+`func (o *Nonemployeerecord) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Nonemployeerecord) SetModified(v time.Time)`
+`func (o *Nonemployeerecord) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -350,20 +350,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Nonemployeerecord) GetCreated() time.Time`
+`func (o *Nonemployeerecord) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Nonemployeerecord) GetCreatedOk() (*time.Time, bool)`
+`func (o *Nonemployeerecord) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Nonemployeerecord) SetCreated(v time.Time)`
+`func (o *Nonemployeerecord) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

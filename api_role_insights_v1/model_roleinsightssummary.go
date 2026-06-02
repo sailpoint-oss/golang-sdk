@@ -12,7 +12,7 @@ package api_role_insights_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Roleinsightssummary type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type Roleinsightssummary struct {
 	// Total number of roles with updates
 	NumberOfUpdates *int32 `json:"numberOfUpdates,omitempty"`
 	// The date-time role insights were last found.
-	LastGenerated *time.Time `json:"lastGenerated,omitempty"`
+	LastGenerated *SailPointTime `json:"lastGenerated,omitempty"`
 	// The number of entitlements included in roles (vs free radicals).
 	EntitlementsIncludedInRoles *int32 `json:"entitlementsIncludedInRoles,omitempty"`
 	// The total number of entitlements.
@@ -87,9 +87,9 @@ func (o *Roleinsightssummary) SetNumberOfUpdates(v int32) {
 }
 
 // GetLastGenerated returns the LastGenerated field value if set, zero value otherwise.
-func (o *Roleinsightssummary) GetLastGenerated() time.Time {
+func (o *Roleinsightssummary) GetLastGenerated() SailPointTime {
 	if o == nil || IsNil(o.LastGenerated) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastGenerated
@@ -97,7 +97,7 @@ func (o *Roleinsightssummary) GetLastGenerated() time.Time {
 
 // GetLastGeneratedOk returns a tuple with the LastGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleinsightssummary) GetLastGeneratedOk() (*time.Time, bool) {
+func (o *Roleinsightssummary) GetLastGeneratedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.LastGenerated) {
 		return nil, false
 	}
@@ -113,8 +113,8 @@ func (o *Roleinsightssummary) HasLastGenerated() bool {
 	return false
 }
 
-// SetLastGenerated gets a reference to the given time.Time and assigns it to the LastGenerated field.
-func (o *Roleinsightssummary) SetLastGenerated(v time.Time) {
+// SetLastGenerated gets a reference to the given SailPointTime and assigns it to the LastGenerated field.
+func (o *Roleinsightssummary) SetLastGenerated(v SailPointTime) {
 	o.LastGenerated = &v
 }
 

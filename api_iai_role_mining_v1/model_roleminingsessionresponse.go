@@ -12,7 +12,7 @@ package api_iai_role_mining_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Roleminingsessionresponse type satisfies the MappedNullable interface at compile time
@@ -48,9 +48,9 @@ type Roleminingsessionresponse struct {
 	// Session Id for this role mining session
 	Id *string `json:"id,omitempty"`
 	// The date-time when this role mining session was created.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The date-time when this role mining session was completed.
-	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	Type *Roleminingroletype `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -629,9 +629,9 @@ func (o *Roleminingsessionresponse) SetId(v string) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *Roleminingsessionresponse) GetCreatedDate() time.Time {
+func (o *Roleminingsessionresponse) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -639,7 +639,7 @@ func (o *Roleminingsessionresponse) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleminingsessionresponse) GetCreatedDateOk() (*time.Time, bool) {
+func (o *Roleminingsessionresponse) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -655,15 +655,15 @@ func (o *Roleminingsessionresponse) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *Roleminingsessionresponse) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *Roleminingsessionresponse) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
-func (o *Roleminingsessionresponse) GetModifiedDate() time.Time {
+func (o *Roleminingsessionresponse) GetModifiedDate() SailPointTime {
 	if o == nil || IsNil(o.ModifiedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ModifiedDate
@@ -671,7 +671,7 @@ func (o *Roleminingsessionresponse) GetModifiedDate() time.Time {
 
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleminingsessionresponse) GetModifiedDateOk() (*time.Time, bool) {
+func (o *Roleminingsessionresponse) GetModifiedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ModifiedDate) {
 		return nil, false
 	}
@@ -687,8 +687,8 @@ func (o *Roleminingsessionresponse) HasModifiedDate() bool {
 	return false
 }
 
-// SetModifiedDate gets a reference to the given time.Time and assigns it to the ModifiedDate field.
-func (o *Roleminingsessionresponse) SetModifiedDate(v time.Time) {
+// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
+func (o *Roleminingsessionresponse) SetModifiedDate(v SailPointTime) {
 	o.ModifiedDate = &v
 }
 

@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Enum of account request phase type | [optional] 
 **State** | Pointer to [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
-**Started** | Pointer to **time.Time** | Start date of account request phase. | [optional] [readonly] 
-**Finished** | Pointer to **time.Time** | Finish date of account request phase. | [optional] [readonly] 
+**Started** | Pointer to **SailPointTime** | Start date of account request phase. | [optional] [readonly] 
+**Finished** | Pointer to **SailPointTime** | Finish date of account request phase. | [optional] [readonly] 
 
 ## Methods
 
@@ -91,20 +91,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetStarted
 
-`func (o *Accountrequestphase) GetStarted() time.Time`
+`func (o *Accountrequestphase) GetStarted() SailPointTime`
 
 GetStarted returns the Started field if non-nil, zero value otherwise.
 
 ### GetStartedOk
 
-`func (o *Accountrequestphase) GetStartedOk() (*time.Time, bool)`
+`func (o *Accountrequestphase) GetStartedOk() (*SailPointTime, bool)`
 
 GetStartedOk returns a tuple with the Started field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStarted
 
-`func (o *Accountrequestphase) SetStarted(v time.Time)`
+`func (o *Accountrequestphase) SetStarted(v SailPointTime)`
 
 SetStarted sets Started field to given value.
 
@@ -116,20 +116,20 @@ HasStarted returns a boolean if a field has been set.
 
 ### GetFinished
 
-`func (o *Accountrequestphase) GetFinished() time.Time`
+`func (o *Accountrequestphase) GetFinished() SailPointTime`
 
 GetFinished returns the Finished field if non-nil, zero value otherwise.
 
 ### GetFinishedOk
 
-`func (o *Accountrequestphase) GetFinishedOk() (*time.Time, bool)`
+`func (o *Accountrequestphase) GetFinishedOk() (*SailPointTime, bool)`
 
 GetFinishedOk returns a tuple with the Finished field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFinished
 
-`func (o *Accountrequestphase) SetFinished(v time.Time)`
+`func (o *Accountrequestphase) SetFinished(v SailPointTime)`
 
 SetFinished sets Finished field to given value.
 

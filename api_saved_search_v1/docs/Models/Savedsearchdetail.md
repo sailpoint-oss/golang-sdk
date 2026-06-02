@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Indices** | [**[]Index**](index) | The names of the Elasticsearch indices in which to search.  | 
-**Columns** | Pointer to [**map[string][]Column**](array) | The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_.  | [optional] 
+**Columns** | Pointer to [**map[string][]Column**](https://go.dev/tour/moretypes/6) | The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_.  | [optional] 
 **Query** | **string** | The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL.  | 
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
 **OrderBy** | Pointer to **map[string][]string** | Sort by index. This takes precedence over the `sort` property.  | [optional] 
@@ -46,20 +46,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreated
 
-`func (o *Savedsearchdetail) GetCreated() time.Time`
+`func (o *Savedsearchdetail) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Savedsearchdetail) GetCreatedOk() (*time.Time, bool)`
+`func (o *Savedsearchdetail) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Savedsearchdetail) SetCreated(v time.Time)`
+`func (o *Savedsearchdetail) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -81,20 +81,20 @@ HasCreated returns a boolean if a field has been set.
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
-`func (o *Savedsearchdetail) GetModified() time.Time`
+`func (o *Savedsearchdetail) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Savedsearchdetail) GetModifiedOk() (*time.Time, bool)`
+`func (o *Savedsearchdetail) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Savedsearchdetail) SetModified(v time.Time)`
+`func (o *Savedsearchdetail) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

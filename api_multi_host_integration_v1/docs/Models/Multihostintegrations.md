@@ -37,13 +37,13 @@ Name | Type | Description | Notes
 **ManagementWorkgroup** | Pointer to [**NullableMultihostintegrationsManagementWorkgroup**](multihostintegrations-management-workgroup) |  | [optional] 
 **Healthy** | Pointer to **bool** | When this is true, it indicates that the source is healthy. | [optional] [default to false]
 **Status** | Pointer to **string** | Status identifier that gives specific information about why a source is or isn't healthy. | [optional] 
-**Since** | Pointer to **time.Time** | Timestamp that shows when a source health check was last performed. | [optional] 
+**Since** | Pointer to **SailPointTime** | Timestamp that shows when a source health check was last performed. | [optional] 
 **ConnectorId** | Pointer to **string** | Connector ID | [optional] 
 **ConnectorName** | Pointer to **string** | Name of the connector that was chosen during source creation. | [optional] 
 **ConnectionType** | Pointer to **string** | Type of connection (direct or file). | [optional] 
 **ConnectorImplementationId** | Pointer to **string** | Connector implementation ID. | [optional] 
-**Created** | Pointer to **time.Time** | Date-time when the source was created | [optional] 
-**Modified** | Pointer to **time.Time** | Date-time when the source was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | Date-time when the source was created | [optional] 
+**Modified** | Pointer to **SailPointTime** | Date-time when the source was last modified. | [optional] 
 **CredentialProviderEnabled** | Pointer to **bool** | If this is true, it enables a credential provider for the source. If credentialProvider is turned on,  then the source can use credential provider(s) to fetch credentials. | [optional] [default to false]
 **Category** | Pointer to **NullableString** | Source category (e.g. null, CredentialProvider). | [optional] 
 **AccountsFile** | Pointer to [**NullableMultihostintegrationsAccountsFile**](multihostintegrations-accounts-file) |  | [optional] 
@@ -664,20 +664,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetSince
 
-`func (o *Multihostintegrations) GetSince() time.Time`
+`func (o *Multihostintegrations) GetSince() SailPointTime`
 
 GetSince returns the Since field if non-nil, zero value otherwise.
 
 ### GetSinceOk
 
-`func (o *Multihostintegrations) GetSinceOk() (*time.Time, bool)`
+`func (o *Multihostintegrations) GetSinceOk() (*SailPointTime, bool)`
 
 GetSinceOk returns a tuple with the Since field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSince
 
-`func (o *Multihostintegrations) SetSince(v time.Time)`
+`func (o *Multihostintegrations) SetSince(v SailPointTime)`
 
 SetSince sets Since field to given value.
 
@@ -789,20 +789,20 @@ HasConnectorImplementationId returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Multihostintegrations) GetCreated() time.Time`
+`func (o *Multihostintegrations) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Multihostintegrations) GetCreatedOk() (*time.Time, bool)`
+`func (o *Multihostintegrations) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Multihostintegrations) SetCreated(v time.Time)`
+`func (o *Multihostintegrations) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -814,20 +814,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Multihostintegrations) GetModified() time.Time`
+`func (o *Multihostintegrations) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Multihostintegrations) GetModifiedOk() (*time.Time, bool)`
+`func (o *Multihostintegrations) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Multihostintegrations) SetModified(v time.Time)`
+`func (o *Multihostintegrations) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

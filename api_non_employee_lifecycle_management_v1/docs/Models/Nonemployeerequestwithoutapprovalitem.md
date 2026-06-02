@@ -27,11 +27,11 @@ Name | Type | Description | Notes
 **Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
 **ApprovalStatus** | Pointer to [**Approvalstatus**](approvalstatus) |  | [optional] 
 **Comment** | Pointer to **string** | Comment of requester | [optional] 
-**CompletionDate** | Pointer to **time.Time** | When the request was completely approved. | [optional] 
+**CompletionDate** | Pointer to **SailPointTime** | When the request was completely approved. | [optional] 
 **StartDate** | Pointer to **string** | Non-Employee employment start date. | [optional] 
 **EndDate** | Pointer to **string** | Non-Employee employment end date. | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
+**Modified** | Pointer to **SailPointTime** | When the request was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | When the request was created. | [optional] 
 
 ## Methods
 
@@ -354,20 +354,20 @@ HasComment returns a boolean if a field has been set.
 
 ### GetCompletionDate
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetCompletionDate() time.Time`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetCompletionDate() SailPointTime`
 
 GetCompletionDate returns the CompletionDate field if non-nil, zero value otherwise.
 
 ### GetCompletionDateOk
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetCompletionDateOk() (*time.Time, bool)`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetCompletionDateOk() (*SailPointTime, bool)`
 
 GetCompletionDateOk returns a tuple with the CompletionDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletionDate
 
-`func (o *Nonemployeerequestwithoutapprovalitem) SetCompletionDate(v time.Time)`
+`func (o *Nonemployeerequestwithoutapprovalitem) SetCompletionDate(v SailPointTime)`
 
 SetCompletionDate sets CompletionDate field to given value.
 
@@ -429,20 +429,20 @@ HasEndDate returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetModified() time.Time`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetModifiedOk() (*time.Time, bool)`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Nonemployeerequestwithoutapprovalitem) SetModified(v time.Time)`
+`func (o *Nonemployeerequestwithoutapprovalitem) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -454,20 +454,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetCreated() time.Time`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Nonemployeerequestwithoutapprovalitem) GetCreatedOk() (*time.Time, bool)`
+`func (o *Nonemployeerequestwithoutapprovalitem) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Nonemployeerequestwithoutapprovalitem) SetCreated(v time.Time)`
+`func (o *Nonemployeerequestwithoutapprovalitem) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

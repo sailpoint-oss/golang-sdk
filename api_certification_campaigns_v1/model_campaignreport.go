@@ -12,7 +12,7 @@ package api_certification_campaigns_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -31,7 +31,7 @@ type Campaignreport struct {
 	Status *string `json:"status,omitempty"`
 	ReportType Reporttype `json:"reportType"`
 	// The most recent date and time this report was run
-	LastRunAt *time.Time `json:"lastRunAt,omitempty"`
+	LastRunAt *SailPointTime `json:"lastRunAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,9 +208,9 @@ func (o *Campaignreport) SetReportType(v Reporttype) {
 }
 
 // GetLastRunAt returns the LastRunAt field value if set, zero value otherwise.
-func (o *Campaignreport) GetLastRunAt() time.Time {
+func (o *Campaignreport) GetLastRunAt() SailPointTime {
 	if o == nil || IsNil(o.LastRunAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastRunAt
@@ -218,7 +218,7 @@ func (o *Campaignreport) GetLastRunAt() time.Time {
 
 // GetLastRunAtOk returns a tuple with the LastRunAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaignreport) GetLastRunAtOk() (*time.Time, bool) {
+func (o *Campaignreport) GetLastRunAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.LastRunAt) {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *Campaignreport) HasLastRunAt() bool {
 	return false
 }
 
-// SetLastRunAt gets a reference to the given time.Time and assigns it to the LastRunAt field.
-func (o *Campaignreport) SetLastRunAt(v time.Time) {
+// SetLastRunAt gets a reference to the given SailPointTime and assigns it to the LastRunAt field.
+func (o *Campaignreport) SetLastRunAt(v SailPointTime) {
 	o.LastRunAt = &v
 }
 

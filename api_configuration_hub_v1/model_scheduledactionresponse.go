@@ -12,7 +12,7 @@ package api_configuration_hub_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Scheduledactionresponse type satisfies the MappedNullable interface at compile time
@@ -23,12 +23,12 @@ type Scheduledactionresponse struct {
 	// Unique identifier for this scheduled action.
 	Id *string `json:"id,omitempty"`
 	// The time when this scheduled action was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Type of the scheduled job.
 	JobType *string `json:"jobType,omitempty"`
 	Content *ScheduledactionresponseContent `json:"content,omitempty"`
 	// The time when this scheduled action should start.
-	StartTime *time.Time `json:"startTime,omitempty"`
+	StartTime *SailPointTime `json:"startTime,omitempty"`
 	// Cron expression defining the schedule for this action.
 	CronString *string `json:"cronString,omitempty"`
 	// Time zone ID for interpreting the cron expression.
@@ -88,9 +88,9 @@ func (o *Scheduledactionresponse) SetId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Scheduledactionresponse) GetCreated() time.Time {
+func (o *Scheduledactionresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -98,7 +98,7 @@ func (o *Scheduledactionresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scheduledactionresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Scheduledactionresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -114,8 +114,8 @@ func (o *Scheduledactionresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Scheduledactionresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Scheduledactionresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
@@ -184,9 +184,9 @@ func (o *Scheduledactionresponse) SetContent(v ScheduledactionresponseContent) {
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
-func (o *Scheduledactionresponse) GetStartTime() time.Time {
+func (o *Scheduledactionresponse) GetStartTime() SailPointTime {
 	if o == nil || IsNil(o.StartTime) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.StartTime
@@ -194,7 +194,7 @@ func (o *Scheduledactionresponse) GetStartTime() time.Time {
 
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scheduledactionresponse) GetStartTimeOk() (*time.Time, bool) {
+func (o *Scheduledactionresponse) GetStartTimeOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
@@ -210,8 +210,8 @@ func (o *Scheduledactionresponse) HasStartTime() bool {
 	return false
 }
 
-// SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
-func (o *Scheduledactionresponse) SetStartTime(v time.Time) {
+// SetStartTime gets a reference to the given SailPointTime and assigns it to the StartTime field.
+func (o *Scheduledactionresponse) SetStartTime(v SailPointTime) {
 	o.StartTime = &v
 }
 

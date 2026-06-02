@@ -12,7 +12,7 @@ package api_certification_campaigns_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -196,9 +196,9 @@ func (o *Campaign2) SetDescription(v string) {
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Campaign2) GetDeadline() time.Time {
+func (o *Campaign2) GetDeadline() SailPointTime {
 	if o == nil || IsNil(o.Deadline.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Deadline.Get()
@@ -207,7 +207,7 @@ func (o *Campaign2) GetDeadline() time.Time {
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Campaign2) GetDeadlineOk() (*time.Time, bool) {
+func (o *Campaign2) GetDeadlineOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *Campaign2) HasDeadline() bool {
 }
 
 // SetDeadline gets a reference to the given NullableTime and assigns it to the Deadline field.
-func (o *Campaign2) SetDeadline(v time.Time) {
+func (o *Campaign2) SetDeadline(v SailPointTime) {
 	o.Deadline.Set(&v)
 }
 // SetDeadlineNil sets the value for Deadline to be an explicit nil
@@ -432,9 +432,9 @@ func (o *Campaign2) SetCorrelatedStatus(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Campaign2) GetCreated() time.Time {
+func (o *Campaign2) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -443,7 +443,7 @@ func (o *Campaign2) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Campaign2) GetCreatedOk() (*time.Time, bool) {
+func (o *Campaign2) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -460,7 +460,7 @@ func (o *Campaign2) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *Campaign2) SetCreated(v time.Time) {
+func (o *Campaign2) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -591,9 +591,9 @@ func (o *Campaign2) SetAlerts(v []Campaignalert) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Campaign2) GetModified() time.Time {
+func (o *Campaign2) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -602,7 +602,7 @@ func (o *Campaign2) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Campaign2) GetModifiedOk() (*time.Time, bool) {
+func (o *Campaign2) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -619,7 +619,7 @@ func (o *Campaign2) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *Campaign2) SetModified(v time.Time) {
+func (o *Campaign2) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | the ID of connector customizer. | [optional] 
 **Name** | Pointer to **string** | name of the connector customizer. | [optional] 
 **TenantID** | Pointer to **string** | Connector customizer tenant id. | [optional] 
-**Created** | Pointer to **time.Time** | Date-time when the connector customizer was created. | [optional] 
+**Created** | Pointer to **SailPointTime** | Date-time when the connector customizer was created. | [optional] 
 **ImageVersion** | Pointer to **int64** | Connector customizer image version. | [optional] 
 **ImageID** | Pointer to **string** | Connector customizer image id. | [optional] 
 
@@ -118,20 +118,20 @@ HasTenantID returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Connectorcustomizerupdateresponse) GetCreated() time.Time`
+`func (o *Connectorcustomizerupdateresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Connectorcustomizerupdateresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Connectorcustomizerupdateresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Connectorcustomizerupdateresponse) SetCreated(v time.Time)`
+`func (o *Connectorcustomizerupdateresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

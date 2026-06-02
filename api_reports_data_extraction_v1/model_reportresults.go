@@ -12,7 +12,7 @@ package api_reports_data_extraction_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Reportresults type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type Reportresults struct {
 	// Unique task definition identifier.
 	Id *string `json:"id,omitempty"`
 	// Report processing start date
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Report current state or result status.
 	Status *string `json:"status,omitempty"`
 	// Report processing time in ms.
@@ -155,9 +155,9 @@ func (o *Reportresults) SetId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Reportresults) GetCreated() time.Time {
+func (o *Reportresults) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -165,7 +165,7 @@ func (o *Reportresults) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Reportresults) GetCreatedOk() (*time.Time, bool) {
+func (o *Reportresults) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -181,8 +181,8 @@ func (o *Reportresults) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Reportresults) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Reportresults) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

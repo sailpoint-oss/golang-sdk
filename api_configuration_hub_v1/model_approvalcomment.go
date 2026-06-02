@@ -12,7 +12,7 @@ package api_configuration_hub_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -24,7 +24,7 @@ type Approvalcomment struct {
 	// Comment provided either by the approval requester or the approver.
 	Comment string `json:"comment"`
 	// The time when this comment was provided.
-	Timestamp time.Time `json:"timestamp"`
+	Timestamp SailPointTime `json:"timestamp"`
 	// Name of the user that provided this comment.
 	User string `json:"user"`
 	// Id of the user that provided this comment.
@@ -40,7 +40,7 @@ type _Approvalcomment Approvalcomment
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApprovalcomment(comment string, timestamp time.Time, user string, id string, changedToStatus string) *Approvalcomment {
+func NewApprovalcomment(comment string, timestamp SailPointTime, user string, id string, changedToStatus string) *Approvalcomment {
 	this := Approvalcomment{}
 	this.Comment = comment
 	this.Timestamp = timestamp
@@ -83,9 +83,9 @@ func (o *Approvalcomment) SetComment(v string) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *Approvalcomment) GetTimestamp() time.Time {
+func (o *Approvalcomment) GetTimestamp() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *Approvalcomment) GetTimestamp() time.Time {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *Approvalcomment) GetTimestampOk() (*time.Time, bool) {
+func (o *Approvalcomment) GetTimestampOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *Approvalcomment) GetTimestampOk() (*time.Time, bool) {
 }
 
 // SetTimestamp sets field value
-func (o *Approvalcomment) SetTimestamp(v time.Time) {
+func (o *Approvalcomment) SetTimestamp(v SailPointTime) {
 	o.Timestamp = v
 }
 

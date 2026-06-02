@@ -145,20 +145,20 @@ SetDescription sets Description field to given value.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetDeadline
 
-`func (o *GetCampaignV1200Response) GetDeadline() time.Time`
+`func (o *GetCampaignV1200Response) GetDeadline() SailPointTime`
 
 GetDeadline returns the Deadline field if non-nil, zero value otherwise.
 
 ### GetDeadlineOk
 
-`func (o *GetCampaignV1200Response) GetDeadlineOk() (*time.Time, bool)`
+`func (o *GetCampaignV1200Response) GetDeadlineOk() (*SailPointTime, bool)`
 
 GetDeadlineOk returns a tuple with the Deadline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeadline
 
-`func (o *GetCampaignV1200Response) SetDeadline(v time.Time)`
+`func (o *GetCampaignV1200Response) SetDeadline(v SailPointTime)`
 
 SetDeadline sets Deadline field to given value.
 
@@ -335,20 +335,20 @@ HasCorrelatedStatus returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *GetCampaignV1200Response) GetCreated() time.Time`
+`func (o *GetCampaignV1200Response) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *GetCampaignV1200Response) GetCreatedOk() (*time.Time, bool)`
+`func (o *GetCampaignV1200Response) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *GetCampaignV1200Response) SetCreated(v time.Time)`
+`func (o *GetCampaignV1200Response) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -475,20 +475,20 @@ HasAlerts returns a boolean if a field has been set.
 UnsetAlerts ensures that no value is present for Alerts, not even an explicit nil
 ### GetModified
 
-`func (o *GetCampaignV1200Response) GetModified() time.Time`
+`func (o *GetCampaignV1200Response) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *GetCampaignV1200Response) GetModifiedOk() (*time.Time, bool)`
+`func (o *GetCampaignV1200Response) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *GetCampaignV1200Response) SetModified(v time.Time)`
+`func (o *GetCampaignV1200Response) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

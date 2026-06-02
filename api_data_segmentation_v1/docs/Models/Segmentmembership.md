@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Segments** | Pointer to **[]string** | List of segment ids that the identity is associated with. | [optional] 
 **AllAccessScopes** | Pointer to [**[]Scopetype**](scopetype) | They type of scopes that are assigned to the identity. | [optional] 
-**RefreshBy** | Pointer to **time.Time** | Date time string that lets you know when the membership data is going to be refreshed. | [optional] 
+**RefreshBy** | Pointer to **SailPointTime** | Date time string that lets you know when the membership data is going to be refreshed. | [optional] 
 
 ## Methods
 
@@ -90,20 +90,20 @@ HasAllAccessScopes returns a boolean if a field has been set.
 
 ### GetRefreshBy
 
-`func (o *Segmentmembership) GetRefreshBy() time.Time`
+`func (o *Segmentmembership) GetRefreshBy() SailPointTime`
 
 GetRefreshBy returns the RefreshBy field if non-nil, zero value otherwise.
 
 ### GetRefreshByOk
 
-`func (o *Segmentmembership) GetRefreshByOk() (*time.Time, bool)`
+`func (o *Segmentmembership) GetRefreshByOk() (*SailPointTime, bool)`
 
 GetRefreshByOk returns a tuple with the RefreshBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreshBy
 
-`func (o *Segmentmembership) SetRefreshBy(v time.Time)`
+`func (o *Segmentmembership) SetRefreshBy(v SailPointTime)`
 
 SetRefreshBy sets RefreshBy field to given value.
 

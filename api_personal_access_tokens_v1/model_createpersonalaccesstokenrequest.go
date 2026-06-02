@@ -12,7 +12,7 @@ package api_personal_access_tokens_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -158,9 +158,9 @@ func (o *Createpersonalaccesstokenrequest) UnsetAccessTokenValiditySeconds() {
 }
 
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Createpersonalaccesstokenrequest) GetExpirationDate() time.Time {
+func (o *Createpersonalaccesstokenrequest) GetExpirationDate() SailPointTime {
 	if o == nil || IsNil(o.ExpirationDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ExpirationDate.Get()
@@ -169,7 +169,7 @@ func (o *Createpersonalaccesstokenrequest) GetExpirationDate() time.Time {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Createpersonalaccesstokenrequest) GetExpirationDateOk() (*time.Time, bool) {
+func (o *Createpersonalaccesstokenrequest) GetExpirationDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *Createpersonalaccesstokenrequest) HasExpirationDate() bool {
 }
 
 // SetExpirationDate gets a reference to the given NullableTime and assigns it to the ExpirationDate field.
-func (o *Createpersonalaccesstokenrequest) SetExpirationDate(v time.Time) {
+func (o *Createpersonalaccesstokenrequest) SetExpirationDate(v SailPointTime) {
 	o.ExpirationDate.Set(&v)
 }
 // SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil

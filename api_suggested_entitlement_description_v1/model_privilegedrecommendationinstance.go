@@ -12,7 +12,7 @@ package api_suggested_entitlement_description_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Privilegedrecommendationinstance type satisfies the MappedNullable interface at compile time
@@ -39,7 +39,7 @@ type Privilegedrecommendationinstance struct {
 	// The current description of the entitlement, if one exists.
 	Description NullableString `json:"description,omitempty"`
 	// The timestamp when this instance was recommended.
-	RecommendedAt *time.Time `json:"recommendedAt,omitempty"`
+	RecommendedAt *SailPointTime `json:"recommendedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -371,9 +371,9 @@ func (o *Privilegedrecommendationinstance) UnsetDescription() {
 }
 
 // GetRecommendedAt returns the RecommendedAt field value if set, zero value otherwise.
-func (o *Privilegedrecommendationinstance) GetRecommendedAt() time.Time {
+func (o *Privilegedrecommendationinstance) GetRecommendedAt() SailPointTime {
 	if o == nil || IsNil(o.RecommendedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RecommendedAt
@@ -381,7 +381,7 @@ func (o *Privilegedrecommendationinstance) GetRecommendedAt() time.Time {
 
 // GetRecommendedAtOk returns a tuple with the RecommendedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Privilegedrecommendationinstance) GetRecommendedAtOk() (*time.Time, bool) {
+func (o *Privilegedrecommendationinstance) GetRecommendedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.RecommendedAt) {
 		return nil, false
 	}
@@ -397,8 +397,8 @@ func (o *Privilegedrecommendationinstance) HasRecommendedAt() bool {
 	return false
 }
 
-// SetRecommendedAt gets a reference to the given time.Time and assigns it to the RecommendedAt field.
-func (o *Privilegedrecommendationinstance) SetRecommendedAt(v time.Time) {
+// SetRecommendedAt gets a reference to the given SailPointTime and assigns it to the RecommendedAt field.
+func (o *Privilegedrecommendationinstance) SetRecommendedAt(v SailPointTime) {
 	o.RecommendedAt = &v
 }
 

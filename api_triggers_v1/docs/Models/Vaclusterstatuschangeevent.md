@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Vaclusterstatuschangeevent', 'V1Vaclu
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | **time.Time** | The date and time the status change occurred. | 
+**Created** | **SailPointTime** | The date and time the status change occurred. | 
 **Type** | **string** | The type of the object that initiated this event. | 
 **Application** | [**VaclusterstatuschangeeventApplication**](vaclusterstatuschangeevent-application) |  | 
 **HealthCheckResult** | [**VaclusterstatuschangeeventHealthCheckResult**](vaclusterstatuschangeevent-health-check-result) |  | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewVaclusterstatuschangeevent
 
-`func NewVaclusterstatuschangeevent(created time.Time, type_ string, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult, ) *Vaclusterstatuschangeevent`
+`func NewVaclusterstatuschangeevent(created SailPointTime, type_ string, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult, ) *Vaclusterstatuschangeevent`
 
 NewVaclusterstatuschangeevent instantiates a new Vaclusterstatuschangeevent object
 This constructor will assign default values to properties that have it defined,
@@ -42,20 +42,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreated
 
-`func (o *Vaclusterstatuschangeevent) GetCreated() time.Time`
+`func (o *Vaclusterstatuschangeevent) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Vaclusterstatuschangeevent) GetCreatedOk() (*time.Time, bool)`
+`func (o *Vaclusterstatuschangeevent) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Vaclusterstatuschangeevent) SetCreated(v time.Time)`
+`func (o *Vaclusterstatuschangeevent) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **ActivationId** | **string** | Persistent activation record identifier for this JIT activation. | 
 **ConnectionId** | **string** | Entitlement connection identifier for the activation. | 
 **Status** | [**Activationworkflowstatus**](activationworkflowstatus) |  | 
-**StartTime** | **time.Time** | Time associated with this deactivation request (ISO-8601). | 
+**StartTime** | **SailPointTime** | Time associated with this deactivation request (ISO-8601). | 
 
 ## Methods
 
 ### NewJitactivationdeactivateresponse
 
-`func NewJitactivationdeactivateresponse(id string, activationId string, connectionId string, status Activationworkflowstatus, startTime time.Time, ) *Jitactivationdeactivateresponse`
+`func NewJitactivationdeactivateresponse(id string, activationId string, connectionId string, status Activationworkflowstatus, startTime SailPointTime, ) *Jitactivationdeactivateresponse`
 
 NewJitactivationdeactivateresponse instantiates a new Jitactivationdeactivateresponse object
 This constructor will assign default values to properties that have it defined,
@@ -122,20 +122,20 @@ SetStatus sets Status field to given value.
 
 ### GetStartTime
 
-`func (o *Jitactivationdeactivateresponse) GetStartTime() time.Time`
+`func (o *Jitactivationdeactivateresponse) GetStartTime() SailPointTime`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Jitactivationdeactivateresponse) GetStartTimeOk() (*time.Time, bool)`
+`func (o *Jitactivationdeactivateresponse) GetStartTimeOk() (*SailPointTime, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *Jitactivationdeactivateresponse) SetStartTime(v time.Time)`
+`func (o *Jitactivationdeactivateresponse) SetStartTime(v SailPointTime)`
 
 SetStartTime sets StartTime field to given value.
 

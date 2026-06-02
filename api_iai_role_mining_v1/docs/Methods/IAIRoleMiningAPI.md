@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](../models/os-file)
+[***os.File**](https://pkg.go.dev/os)
 
 ### HTTP request headers
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](../models/os-file)
+[***os.File**](https://pkg.go.dev/os)
 
 ### HTTP request headers
 

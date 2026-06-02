@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Access** | Pointer to [**Commonaccessitemaccess**](commonaccessitemaccess) |  | [optional] 
 **Status** | Pointer to **string** | CONFIRMED or DENIED | [optional] 
 **CommonAccessType** | Pointer to **string** |  | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] [readonly] 
+**LastUpdated** | Pointer to **SailPointTime** |  | [optional] [readonly] 
 **ReviewedByUser** | Pointer to **bool** | true if user has confirmed or denied status | [optional] 
 **LastReviewed** | Pointer to **NullableTime** |  | [optional] [readonly] 
 **CreatedByUser** | Pointer to **bool** |  | [optional] [default to false]
@@ -145,20 +145,20 @@ HasCommonAccessType returns a boolean if a field has been set.
 
 ### GetLastUpdated
 
-`func (o *Commonaccessresponse) GetLastUpdated() time.Time`
+`func (o *Commonaccessresponse) GetLastUpdated() SailPointTime`
 
 GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
 
 ### GetLastUpdatedOk
 
-`func (o *Commonaccessresponse) GetLastUpdatedOk() (*time.Time, bool)`
+`func (o *Commonaccessresponse) GetLastUpdatedOk() (*SailPointTime, bool)`
 
 GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUpdated
 
-`func (o *Commonaccessresponse) SetLastUpdated(v time.Time)`
+`func (o *Commonaccessresponse) SetLastUpdated(v SailPointTime)`
 
 SetLastUpdated sets LastUpdated field to given value.
 
@@ -195,20 +195,20 @@ HasReviewedByUser returns a boolean if a field has been set.
 
 ### GetLastReviewed
 
-`func (o *Commonaccessresponse) GetLastReviewed() time.Time`
+`func (o *Commonaccessresponse) GetLastReviewed() SailPointTime`
 
 GetLastReviewed returns the LastReviewed field if non-nil, zero value otherwise.
 
 ### GetLastReviewedOk
 
-`func (o *Commonaccessresponse) GetLastReviewedOk() (*time.Time, bool)`
+`func (o *Commonaccessresponse) GetLastReviewedOk() (*SailPointTime, bool)`
 
 GetLastReviewedOk returns a tuple with the LastReviewed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastReviewed
 
-`func (o *Commonaccessresponse) SetLastReviewed(v time.Time)`
+`func (o *Commonaccessresponse) SetLastReviewed(v SailPointTime)`
 
 SetLastReviewed sets LastReviewed field to given value.
 

@@ -12,7 +12,7 @@ package api_managed_clusters_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,7 +26,7 @@ type Clientlogconfiguration struct {
 	// Duration in minutes for log configuration to remain in effect before resetting to defaults.
 	DurationMinutes *int32 `json:"durationMinutes,omitempty"`
 	// Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time.
-	Expiration *time.Time `json:"expiration,omitempty"`
+	Expiration *SailPointTime `json:"expiration,omitempty"`
 	RootLevel Standardlevel `json:"rootLevel"`
 	// Mapping of identifiers to Standard Log Level values
 	LogLevels *map[string]Standardlevel `json:"logLevels,omitempty"`
@@ -122,9 +122,9 @@ func (o *Clientlogconfiguration) SetDurationMinutes(v int32) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
-func (o *Clientlogconfiguration) GetExpiration() time.Time {
+func (o *Clientlogconfiguration) GetExpiration() SailPointTime {
 	if o == nil || IsNil(o.Expiration) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Expiration
@@ -132,7 +132,7 @@ func (o *Clientlogconfiguration) GetExpiration() time.Time {
 
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Clientlogconfiguration) GetExpirationOk() (*time.Time, bool) {
+func (o *Clientlogconfiguration) GetExpirationOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
@@ -148,8 +148,8 @@ func (o *Clientlogconfiguration) HasExpiration() bool {
 	return false
 }
 
-// SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
-func (o *Clientlogconfiguration) SetExpiration(v time.Time) {
+// SetExpiration gets a reference to the given SailPointTime and assigns it to the Expiration field.
+func (o *Clientlogconfiguration) SetExpiration(v SailPointTime) {
 	o.Expiration = &v
 }
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Roleinsightssummary', 'V1Roleinsights
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NumberOfUpdates** | Pointer to **int32** | Total number of roles with updates | [optional] 
-**LastGenerated** | Pointer to **time.Time** | The date-time role insights were last found. | [optional] 
+**LastGenerated** | Pointer to **SailPointTime** | The date-time role insights were last found. | [optional] 
 **EntitlementsIncludedInRoles** | Pointer to **int32** | The number of entitlements included in roles (vs free radicals). | [optional] 
 **TotalNumberOfEntitlements** | Pointer to **int32** | The total number of entitlements. | [optional] 
 **IdentitiesWithAccessViaRoles** | Pointer to **int32** | The number of identities in roles vs. identities with just entitlements and not in roles. | [optional] 
@@ -68,20 +68,20 @@ HasNumberOfUpdates returns a boolean if a field has been set.
 
 ### GetLastGenerated
 
-`func (o *Roleinsightssummary) GetLastGenerated() time.Time`
+`func (o *Roleinsightssummary) GetLastGenerated() SailPointTime`
 
 GetLastGenerated returns the LastGenerated field if non-nil, zero value otherwise.
 
 ### GetLastGeneratedOk
 
-`func (o *Roleinsightssummary) GetLastGeneratedOk() (*time.Time, bool)`
+`func (o *Roleinsightssummary) GetLastGeneratedOk() (*SailPointTime, bool)`
 
 GetLastGeneratedOk returns a tuple with the LastGenerated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastGenerated
 
-`func (o *Roleinsightssummary) SetLastGenerated(v time.Time)`
+`func (o *Roleinsightssummary) SetLastGenerated(v SailPointTime)`
 
 SetLastGenerated sets LastGenerated field to given value.
 

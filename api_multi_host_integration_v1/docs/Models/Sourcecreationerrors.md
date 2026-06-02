@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **MultihostId** | Pointer to **string** | Multi-Host Integration ID. | [optional] [readonly] 
 **SourceName** | Pointer to **string** | Source's human-readable name. | [optional] 
 **SourceError** | Pointer to **string** | Source's human-readable description. | [optional] 
-**Created** | Pointer to **time.Time** | Date-time when the source was created | [optional] 
-**Modified** | Pointer to **time.Time** | Date-time when the source was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | Date-time when the source was created | [optional] 
+**Modified** | Pointer to **SailPointTime** | Date-time when the source was last modified. | [optional] 
 **Operation** | Pointer to **NullableString** | operation category (e.g. DELETE). | [optional] 
 
 ## Methods
@@ -118,20 +118,20 @@ HasSourceError returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Sourcecreationerrors) GetCreated() time.Time`
+`func (o *Sourcecreationerrors) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Sourcecreationerrors) GetCreatedOk() (*time.Time, bool)`
+`func (o *Sourcecreationerrors) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Sourcecreationerrors) SetCreated(v time.Time)`
+`func (o *Sourcecreationerrors) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -143,20 +143,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Sourcecreationerrors) GetModified() time.Time`
+`func (o *Sourcecreationerrors) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Sourcecreationerrors) GetModifiedOk() (*time.Time, bool)`
+`func (o *Sourcecreationerrors) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Sourcecreationerrors) SetModified(v time.Time)`
+`func (o *Sourcecreationerrors) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

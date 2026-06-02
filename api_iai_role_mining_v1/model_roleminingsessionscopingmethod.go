@@ -12,7 +12,6 @@ package api_iai_role_mining_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Roleminingsessionscopingmethod The scoping method used in the current role mining session.

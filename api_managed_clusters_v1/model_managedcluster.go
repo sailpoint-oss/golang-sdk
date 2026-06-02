@@ -12,7 +12,7 @@ package api_managed_clusters_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -909,9 +909,9 @@ func (o *Managedcluster) SetCcId(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Managedcluster) GetCreatedAt() time.Time {
+func (o *Managedcluster) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt.Get()
@@ -920,7 +920,7 @@ func (o *Managedcluster) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Managedcluster) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Managedcluster) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -937,7 +937,7 @@ func (o *Managedcluster) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
-func (o *Managedcluster) SetCreatedAt(v time.Time) {
+func (o *Managedcluster) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt.Set(&v)
 }
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
@@ -951,9 +951,9 @@ func (o *Managedcluster) UnsetCreatedAt() {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Managedcluster) GetUpdatedAt() time.Time {
+func (o *Managedcluster) GetUpdatedAt() SailPointTime {
 	if o == nil || IsNil(o.UpdatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UpdatedAt.Get()
@@ -962,7 +962,7 @@ func (o *Managedcluster) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Managedcluster) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *Managedcluster) GetUpdatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -979,7 +979,7 @@ func (o *Managedcluster) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
-func (o *Managedcluster) SetUpdatedAt(v time.Time) {
+func (o *Managedcluster) SetUpdatedAt(v SailPointTime) {
 	o.UpdatedAt.Set(&v)
 }
 // SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
@@ -993,9 +993,9 @@ func (o *Managedcluster) UnsetUpdatedAt() {
 }
 
 // GetLastReleaseNotifiedAt returns the LastReleaseNotifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Managedcluster) GetLastReleaseNotifiedAt() time.Time {
+func (o *Managedcluster) GetLastReleaseNotifiedAt() SailPointTime {
 	if o == nil || IsNil(o.LastReleaseNotifiedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastReleaseNotifiedAt.Get()
@@ -1004,7 +1004,7 @@ func (o *Managedcluster) GetLastReleaseNotifiedAt() time.Time {
 // GetLastReleaseNotifiedAtOk returns a tuple with the LastReleaseNotifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Managedcluster) GetLastReleaseNotifiedAtOk() (*time.Time, bool) {
+func (o *Managedcluster) GetLastReleaseNotifiedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1021,7 +1021,7 @@ func (o *Managedcluster) HasLastReleaseNotifiedAt() bool {
 }
 
 // SetLastReleaseNotifiedAt gets a reference to the given NullableTime and assigns it to the LastReleaseNotifiedAt field.
-func (o *Managedcluster) SetLastReleaseNotifiedAt(v time.Time) {
+func (o *Managedcluster) SetLastReleaseNotifiedAt(v SailPointTime) {
 	o.LastReleaseNotifiedAt.Set(&v)
 }
 // SetLastReleaseNotifiedAtNil sets the value for LastReleaseNotifiedAt to be an explicit nil
@@ -1151,9 +1151,9 @@ func (o *Managedcluster) UnsetUpdatePackage() {
 }
 
 // GetIsOutOfDateNotifiedAt returns the IsOutOfDateNotifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Managedcluster) GetIsOutOfDateNotifiedAt() time.Time {
+func (o *Managedcluster) GetIsOutOfDateNotifiedAt() SailPointTime {
 	if o == nil || IsNil(o.IsOutOfDateNotifiedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.IsOutOfDateNotifiedAt.Get()
@@ -1162,7 +1162,7 @@ func (o *Managedcluster) GetIsOutOfDateNotifiedAt() time.Time {
 // GetIsOutOfDateNotifiedAtOk returns a tuple with the IsOutOfDateNotifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Managedcluster) GetIsOutOfDateNotifiedAtOk() (*time.Time, bool) {
+func (o *Managedcluster) GetIsOutOfDateNotifiedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1179,7 +1179,7 @@ func (o *Managedcluster) HasIsOutOfDateNotifiedAt() bool {
 }
 
 // SetIsOutOfDateNotifiedAt gets a reference to the given NullableTime and assigns it to the IsOutOfDateNotifiedAt field.
-func (o *Managedcluster) SetIsOutOfDateNotifiedAt(v time.Time) {
+func (o *Managedcluster) SetIsOutOfDateNotifiedAt(v SailPointTime) {
 	o.IsOutOfDateNotifiedAt.Set(&v)
 }
 // SetIsOutOfDateNotifiedAtNil sets the value for IsOutOfDateNotifiedAt to be an explicit nil

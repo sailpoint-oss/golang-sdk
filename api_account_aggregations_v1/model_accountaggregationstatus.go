@@ -12,7 +12,7 @@ package api_account_aggregations_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Accountaggregationstatus type satisfies the MappedNullable interface at compile time
@@ -59,9 +59,9 @@ func NewAccountaggregationstatusWithDefaults() *Accountaggregationstatus {
 }
 
 // GetStart returns the Start field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Accountaggregationstatus) GetStart() time.Time {
+func (o *Accountaggregationstatus) GetStart() SailPointTime {
 	if o == nil || IsNil(o.Start.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Start.Get()
@@ -70,7 +70,7 @@ func (o *Accountaggregationstatus) GetStart() time.Time {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Accountaggregationstatus) GetStartOk() (*time.Time, bool) {
+func (o *Accountaggregationstatus) GetStartOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *Accountaggregationstatus) HasStart() bool {
 }
 
 // SetStart gets a reference to the given NullableTime and assigns it to the Start field.
-func (o *Accountaggregationstatus) SetStart(v time.Time) {
+func (o *Accountaggregationstatus) SetStart(v SailPointTime) {
 	o.Start.Set(&v)
 }
 // SetStartNil sets the value for Start to be an explicit nil

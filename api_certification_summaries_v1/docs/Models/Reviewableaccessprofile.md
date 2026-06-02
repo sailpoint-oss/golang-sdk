@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **EndDate** | Pointer to **NullableTime** | The date at which a user's access expires | [optional] 
 **Owner** | Pointer to [**NullableIdentityreferencewithnameandemail**](identityreferencewithnameandemail) |  | [optional] 
 **Entitlements** | Pointer to [**[]Reviewableentitlement**](reviewableentitlement) | A list of entitlements associated with this Access Profile | [optional] 
-**Created** | Pointer to **time.Time** | Date the Access Profile was created. | [optional] 
-**Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | Date the Access Profile was created. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Date the Access Profile was last modified. | [optional] 
 
 ## Methods
 
@@ -172,20 +172,20 @@ HasCloudGoverned returns a boolean if a field has been set.
 
 ### GetEndDate
 
-`func (o *Reviewableaccessprofile) GetEndDate() time.Time`
+`func (o *Reviewableaccessprofile) GetEndDate() SailPointTime`
 
 GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
 ### GetEndDateOk
 
-`func (o *Reviewableaccessprofile) GetEndDateOk() (*time.Time, bool)`
+`func (o *Reviewableaccessprofile) GetEndDateOk() (*SailPointTime, bool)`
 
 GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndDate
 
-`func (o *Reviewableaccessprofile) SetEndDate(v time.Time)`
+`func (o *Reviewableaccessprofile) SetEndDate(v SailPointTime)`
 
 SetEndDate sets EndDate field to given value.
 
@@ -267,20 +267,20 @@ HasEntitlements returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Reviewableaccessprofile) GetCreated() time.Time`
+`func (o *Reviewableaccessprofile) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Reviewableaccessprofile) GetCreatedOk() (*time.Time, bool)`
+`func (o *Reviewableaccessprofile) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Reviewableaccessprofile) SetCreated(v time.Time)`
+`func (o *Reviewableaccessprofile) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -292,20 +292,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Reviewableaccessprofile) GetModified() time.Time`
+`func (o *Reviewableaccessprofile) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Reviewableaccessprofile) GetModifiedOk() (*time.Time, bool)`
+`func (o *Reviewableaccessprofile) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Reviewableaccessprofile) SetModified(v time.Time)`
+`func (o *Reviewableaccessprofile) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

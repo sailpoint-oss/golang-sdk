@@ -12,7 +12,6 @@ package api_work_items_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Workitemtypemanualworkitems The type of the work item

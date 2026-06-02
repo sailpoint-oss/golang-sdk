@@ -12,7 +12,7 @@ package api_access_requests_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RequesteditemstatusCancelledRequestDetails type satisfies the MappedNullable interface at compile time
@@ -24,7 +24,7 @@ type RequesteditemstatusCancelledRequestDetails struct {
 	Comment *string `json:"comment,omitempty"`
 	Owner *Ownerdto `json:"owner,omitempty"`
 	// Date comment was added by the owner when cancelling the associated request.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,9 +112,9 @@ func (o *RequesteditemstatusCancelledRequestDetails) SetOwner(v Ownerdto) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *RequesteditemstatusCancelledRequestDetails) GetModified() time.Time {
+func (o *RequesteditemstatusCancelledRequestDetails) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -122,7 +122,7 @@ func (o *RequesteditemstatusCancelledRequestDetails) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequesteditemstatusCancelledRequestDetails) GetModifiedOk() (*time.Time, bool) {
+func (o *RequesteditemstatusCancelledRequestDetails) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -138,8 +138,8 @@ func (o *RequesteditemstatusCancelledRequestDetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *RequesteditemstatusCancelledRequestDetails) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *RequesteditemstatusCancelledRequestDetails) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

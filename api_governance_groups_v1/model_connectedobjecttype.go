@@ -12,7 +12,6 @@ package api_governance_groups_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Connectedobjecttype An enumeration of the types of Objects associated with a Governance Group. Supported object types are ACCESS_PROFILE, ROLE, SOD_POLICY and SOURCE.

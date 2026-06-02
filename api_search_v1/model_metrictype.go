@@ -12,7 +12,6 @@ package api_search_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Metrictype Enum representing the currently supported metric aggregation types. Additional values may be added in the future without notice.

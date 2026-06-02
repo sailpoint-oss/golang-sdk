@@ -12,7 +12,6 @@ package api_search_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Searchfiltertype Enum representing the currently supported filter aggregation types. Additional values may be added in the future without notice.

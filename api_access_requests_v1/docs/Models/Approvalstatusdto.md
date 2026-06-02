@@ -121,20 +121,20 @@ HasCurrentOwner returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Approvalstatusdto) GetModified() time.Time`
+`func (o *Approvalstatusdto) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Approvalstatusdto) GetModifiedOk() (*time.Time, bool)`
+`func (o *Approvalstatusdto) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Approvalstatusdto) SetModified(v time.Time)`
+`func (o *Approvalstatusdto) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -276,20 +276,20 @@ HasComment returns a boolean if a field has been set.
 UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetRemoveDate
 
-`func (o *Approvalstatusdto) GetRemoveDate() time.Time`
+`func (o *Approvalstatusdto) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *Approvalstatusdto) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *Approvalstatusdto) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *Approvalstatusdto) SetRemoveDate(v time.Time)`
+`func (o *Approvalstatusdto) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 

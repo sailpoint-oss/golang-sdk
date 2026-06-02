@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID of the requested target. | [optional] 
 **Name** | Pointer to **string** | Name of the requested target. | [optional] 
 **ReauthRequired** | Pointer to **bool** | Indicates if reauthentication is required. | [optional] [default to false]
-**RemovalDate** | Pointer to **time.Time** | Date when the target will be removed. | [optional] 
+**RemovalDate** | Pointer to **SailPointTime** | Date when the target will be removed. | [optional] 
 **RequestType** | Pointer to **string** | Type of the request. | [optional] 
 **TargetType** | Pointer to **string** | Type of the target. | [optional] 
 
@@ -144,20 +144,20 @@ HasReauthRequired returns a boolean if a field has been set.
 
 ### GetRemovalDate
 
-`func (o *Approvalrequestedtarget) GetRemovalDate() time.Time`
+`func (o *Approvalrequestedtarget) GetRemovalDate() SailPointTime`
 
 GetRemovalDate returns the RemovalDate field if non-nil, zero value otherwise.
 
 ### GetRemovalDateOk
 
-`func (o *Approvalrequestedtarget) GetRemovalDateOk() (*time.Time, bool)`
+`func (o *Approvalrequestedtarget) GetRemovalDateOk() (*SailPointTime, bool)`
 
 GetRemovalDateOk returns a tuple with the RemovalDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemovalDate
 
-`func (o *Approvalrequestedtarget) SetRemovalDate(v time.Time)`
+`func (o *Approvalrequestedtarget) SetRemovalDate(v SailPointTime)`
 
 SetRemovalDate sets RemovalDate field to given value.
 

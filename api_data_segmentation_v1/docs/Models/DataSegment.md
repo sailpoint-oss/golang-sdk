@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The segment's ID. | [optional] 
 **Name** | Pointer to **string** | The segment's business name. | [optional] 
-**Created** | Pointer to **time.Time** | The time when the segment is created. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when the segment is modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time when the segment is created. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The time when the segment is modified. | [optional] 
 **Description** | Pointer to **string** | The segment's optional description. | [optional] 
 **Scopes** | Pointer to [**[]Scope**](scope) | List of Scopes that are assigned to the segment | [optional] 
 **MemberSelection** | Pointer to [**[]Ref**](ref) | List of Identities that are assigned to the segment | [optional] 
@@ -98,20 +98,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *DataSegment) GetCreated() time.Time`
+`func (o *DataSegment) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *DataSegment) GetCreatedOk() (*time.Time, bool)`
+`func (o *DataSegment) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *DataSegment) SetCreated(v time.Time)`
+`func (o *DataSegment) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -123,20 +123,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *DataSegment) GetModified() time.Time`
+`func (o *DataSegment) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *DataSegment) GetModifiedOk() (*time.Time, bool)`
+`func (o *DataSegment) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *DataSegment) SetModified(v time.Time)`
+`func (o *DataSegment) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

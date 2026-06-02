@@ -12,7 +12,7 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type Sourcedeleted struct {
 	// The connection type.
 	Type string `json:"type"`
 	// The date and time the source was deleted.
-	Deleted time.Time `json:"deleted"`
+	Deleted SailPointTime `json:"deleted"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
 	Actor SourcedeletedActor `json:"actor"`
@@ -41,7 +41,7 @@ type _Sourcedeleted Sourcedeleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourcedeleted(id string, name string, type_ string, deleted time.Time, connector string, actor SourcedeletedActor) *Sourcedeleted {
+func NewSourcedeleted(id string, name string, type_ string, deleted SailPointTime, connector string, actor SourcedeletedActor) *Sourcedeleted {
 	this := Sourcedeleted{}
 	this.Id = id
 	this.Name = name
@@ -133,9 +133,9 @@ func (o *Sourcedeleted) SetType(v string) {
 }
 
 // GetDeleted returns the Deleted field value
-func (o *Sourcedeleted) GetDeleted() time.Time {
+func (o *Sourcedeleted) GetDeleted() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *Sourcedeleted) GetDeleted() time.Time {
 
 // GetDeletedOk returns a tuple with the Deleted field value
 // and a boolean to check if the value has been set.
-func (o *Sourcedeleted) GetDeletedOk() (*time.Time, bool) {
+func (o *Sourcedeleted) GetDeletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *Sourcedeleted) GetDeletedOk() (*time.Time, bool) {
 }
 
 // SetDeleted sets field value
-func (o *Sourcedeleted) SetDeleted(v time.Time) {
+func (o *Sourcedeleted) SetDeleted(v SailPointTime) {
 	o.Deleted = v
 }
 

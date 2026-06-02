@@ -12,7 +12,7 @@ package api_machine_identities_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Machineidentityaggregationresponse type satisfies the MappedNullable interface at compile time
@@ -34,9 +34,9 @@ type Machineidentityaggregationresponse struct {
 	Launcher *string `json:"launcher,omitempty"`
 	Target *MachineidentityaggregationresponseTarget `json:"target,omitempty"`
 	// Creation date of the aggregation
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the aggregation
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Launch date of the aggregation
 	Launched NullableTime `json:"launched,omitempty"`
 	// Completion date of the aggregation
@@ -311,9 +311,9 @@ func (o *Machineidentityaggregationresponse) SetTarget(v Machineidentityaggregat
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Machineidentityaggregationresponse) GetCreated() time.Time {
+func (o *Machineidentityaggregationresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -321,7 +321,7 @@ func (o *Machineidentityaggregationresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityaggregationresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Machineidentityaggregationresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -337,15 +337,15 @@ func (o *Machineidentityaggregationresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Machineidentityaggregationresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Machineidentityaggregationresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Machineidentityaggregationresponse) GetModified() time.Time {
+func (o *Machineidentityaggregationresponse) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -353,7 +353,7 @@ func (o *Machineidentityaggregationresponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityaggregationresponse) GetModifiedOk() (*time.Time, bool) {
+func (o *Machineidentityaggregationresponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -369,15 +369,15 @@ func (o *Machineidentityaggregationresponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Machineidentityaggregationresponse) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Machineidentityaggregationresponse) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetLaunched returns the Launched field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Machineidentityaggregationresponse) GetLaunched() time.Time {
+func (o *Machineidentityaggregationresponse) GetLaunched() SailPointTime {
 	if o == nil || IsNil(o.Launched.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Launched.Get()
@@ -386,7 +386,7 @@ func (o *Machineidentityaggregationresponse) GetLaunched() time.Time {
 // GetLaunchedOk returns a tuple with the Launched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Machineidentityaggregationresponse) GetLaunchedOk() (*time.Time, bool) {
+func (o *Machineidentityaggregationresponse) GetLaunchedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -403,7 +403,7 @@ func (o *Machineidentityaggregationresponse) HasLaunched() bool {
 }
 
 // SetLaunched gets a reference to the given NullableTime and assigns it to the Launched field.
-func (o *Machineidentityaggregationresponse) SetLaunched(v time.Time) {
+func (o *Machineidentityaggregationresponse) SetLaunched(v SailPointTime) {
 	o.Launched.Set(&v)
 }
 // SetLaunchedNil sets the value for Launched to be an explicit nil
@@ -417,9 +417,9 @@ func (o *Machineidentityaggregationresponse) UnsetLaunched() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Machineidentityaggregationresponse) GetCompleted() time.Time {
+func (o *Machineidentityaggregationresponse) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed.Get()
@@ -428,7 +428,7 @@ func (o *Machineidentityaggregationresponse) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Machineidentityaggregationresponse) GetCompletedOk() (*time.Time, bool) {
+func (o *Machineidentityaggregationresponse) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -445,7 +445,7 @@ func (o *Machineidentityaggregationresponse) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *Machineidentityaggregationresponse) SetCompleted(v time.Time) {
+func (o *Machineidentityaggregationresponse) SetCompleted(v SailPointTime) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

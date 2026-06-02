@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ReportType** | Pointer to **string** | Use this property to define what report should be processed in the RDE service. | [optional] 
 **TaskDefName** | Pointer to **string** | Name of the task definition which is started to process requesting report. Usually the same as report name | [optional] 
 **Id** | Pointer to **string** | Unique task definition identifier. | [optional] 
-**Created** | Pointer to **time.Time** | Report processing start date | [optional] 
+**Created** | Pointer to **SailPointTime** | Report processing start date | [optional] 
 **Status** | Pointer to **string** | Report current state or result status. | [optional] 
 **Duration** | Pointer to **int64** | Report processing time in ms. | [optional] 
 **Rows** | Pointer to **int64** | Report size in rows. | [optional] 
@@ -120,20 +120,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Reportresults) GetCreated() time.Time`
+`func (o *Reportresults) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Reportresults) GetCreatedOk() (*time.Time, bool)`
+`func (o *Reportresults) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Reportresults) SetCreated(v time.Time)`
+`func (o *Reportresults) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

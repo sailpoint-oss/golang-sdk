@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | The status of the task. | [optional] 
 **Errors** | Pointer to [**[]Errormessagedto**](errormessagedto) | List of error messages | [optional] 
 **ReassignmentTrailDTOs** | Pointer to [**[]Reassignmenttraildto**](reassignmenttraildto) | Reassignment trails that lead to self certification identity | [optional] 
-**Created** | Pointer to **time.Time** | The date and time on which this task was created. | [optional] 
+**Created** | Pointer to **SailPointTime** | The date and time on which this task was created. | [optional] 
 
 ## Methods
 
@@ -220,20 +220,20 @@ HasReassignmentTrailDTOs returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Certificationtask) GetCreated() time.Time`
+`func (o *Certificationtask) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Certificationtask) GetCreatedOk() (*time.Time, bool)`
+`func (o *Certificationtask) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Certificationtask) SetCreated(v time.Time)`
+`func (o *Certificationtask) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

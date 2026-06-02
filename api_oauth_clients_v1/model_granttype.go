@@ -12,7 +12,6 @@ package api_oauth_clients_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Granttype OAuth2 Grant Type

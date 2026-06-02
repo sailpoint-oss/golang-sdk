@@ -28,8 +28,8 @@ Name | Type | Description | Notes
 **Owner** | Pointer to [**NullableEntitlementv2Owner**](entitlementv2-owner) |  | [optional] 
 **ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
 **AccessModelMetadata** | Pointer to [**Entitlementv2AccessModelMetadata**](entitlementv2-access-model-metadata) |  | [optional] 
-**Created** | Pointer to **time.Time** | Time when the entitlement was created | [optional] 
-**Modified** | Pointer to **time.Time** | Time when the entitlement was last modified | [optional] 
+**Created** | Pointer to **SailPointTime** | Time when the entitlement was created | [optional] 
+**Modified** | Pointer to **SailPointTime** | Time when the entitlement was last modified | [optional] 
 **Source** | Pointer to [**Entitlementv2Source**](entitlementv2-source) |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
@@ -421,20 +421,20 @@ HasAccessModelMetadata returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Entitlementv2) GetCreated() time.Time`
+`func (o *Entitlementv2) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Entitlementv2) GetCreatedOk() (*time.Time, bool)`
+`func (o *Entitlementv2) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Entitlementv2) SetCreated(v time.Time)`
+`func (o *Entitlementv2) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -446,20 +446,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Entitlementv2) GetModified() time.Time`
+`func (o *Entitlementv2) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Entitlementv2) GetModifiedOk() (*time.Time, bool)`
+`func (o *Entitlementv2) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Entitlementv2) SetModified(v time.Time)`
+`func (o *Entitlementv2) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

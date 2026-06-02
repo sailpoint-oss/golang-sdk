@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **UserLevelId** | Pointer to **string** | The unique identifier of the UserLevel. | [optional] 
 **Publish** | Pointer to **bool** | Indicates whether the API call triggered a publish operation. | [optional] [default to false]
 **Status** | Pointer to **string** | The status of the UserLevel publish operation. | [optional] 
-**Modified** | Pointer to **time.Time** | The last modification timestamp of the UserLevel. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The last modification timestamp of the UserLevel. | [optional] 
 
 ## Methods
 
@@ -116,20 +116,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Userlevelpublishsummary) GetModified() time.Time`
+`func (o *Userlevelpublishsummary) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Userlevelpublishsummary) GetModifiedOk() (*time.Time, bool)`
+`func (o *Userlevelpublishsummary) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Userlevelpublishsummary) SetModified(v time.Time)`
+`func (o *Userlevelpublishsummary) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

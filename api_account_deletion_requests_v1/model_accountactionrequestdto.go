@@ -12,7 +12,7 @@ package api_account_deletion_requests_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Accountactionrequestdto type satisfies the MappedNullable interface at compile time
@@ -25,9 +25,9 @@ type Accountactionrequestdto struct {
 	// Access item requester's identity ID.
 	RequestType *string `json:"requestType,omitempty"`
 	// Creation date and time of account deletion request date.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *SailPointTime `json:"createdAt,omitempty"`
 	// Account deletion request completion date and time.
-	CompletedAt *time.Time `json:"completedAt,omitempty"`
+	CompletedAt *SailPointTime `json:"completedAt,omitempty"`
 	// Overall status of deletion request.
 	OverallStatus *string `json:"overallStatus,omitempty"`
 	Requester *AccountactionrequestdtoRequester `json:"requester,omitempty"`
@@ -131,9 +131,9 @@ func (o *Accountactionrequestdto) SetRequestType(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Accountactionrequestdto) GetCreatedAt() time.Time {
+func (o *Accountactionrequestdto) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt
@@ -141,7 +141,7 @@ func (o *Accountactionrequestdto) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountactionrequestdto) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Accountactionrequestdto) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -157,15 +157,15 @@ func (o *Accountactionrequestdto) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *Accountactionrequestdto) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given SailPointTime and assigns it to the CreatedAt field.
+func (o *Accountactionrequestdto) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt = &v
 }
 
 // GetCompletedAt returns the CompletedAt field value if set, zero value otherwise.
-func (o *Accountactionrequestdto) GetCompletedAt() time.Time {
+func (o *Accountactionrequestdto) GetCompletedAt() SailPointTime {
 	if o == nil || IsNil(o.CompletedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CompletedAt
@@ -173,7 +173,7 @@ func (o *Accountactionrequestdto) GetCompletedAt() time.Time {
 
 // GetCompletedAtOk returns a tuple with the CompletedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountactionrequestdto) GetCompletedAtOk() (*time.Time, bool) {
+func (o *Accountactionrequestdto) GetCompletedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CompletedAt) {
 		return nil, false
 	}
@@ -189,8 +189,8 @@ func (o *Accountactionrequestdto) HasCompletedAt() bool {
 	return false
 }
 
-// SetCompletedAt gets a reference to the given time.Time and assigns it to the CompletedAt field.
-func (o *Accountactionrequestdto) SetCompletedAt(v time.Time) {
+// SetCompletedAt gets a reference to the given SailPointTime and assigns it to the CompletedAt field.
+func (o *Accountactionrequestdto) SetCompletedAt(v SailPointTime) {
 	o.CompletedAt = &v
 }
 

@@ -12,7 +12,7 @@ package api_machine_accounts_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -32,9 +32,9 @@ type Sourcesubtype struct {
 	// Description of the subtype.
 	Description string `json:"description"`
 	// Creation timestamp.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Last modified timestamp.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Type of the subtype. Either MACHINE OR null.
 	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -199,9 +199,9 @@ func (o *Sourcesubtype) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Sourcesubtype) GetCreated() time.Time {
+func (o *Sourcesubtype) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -209,7 +209,7 @@ func (o *Sourcesubtype) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourcesubtype) GetCreatedOk() (*time.Time, bool) {
+func (o *Sourcesubtype) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -225,15 +225,15 @@ func (o *Sourcesubtype) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Sourcesubtype) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Sourcesubtype) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Sourcesubtype) GetModified() time.Time {
+func (o *Sourcesubtype) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -241,7 +241,7 @@ func (o *Sourcesubtype) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourcesubtype) GetModifiedOk() (*time.Time, bool) {
+func (o *Sourcesubtype) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -257,8 +257,8 @@ func (o *Sourcesubtype) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Sourcesubtype) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Sourcesubtype) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

@@ -12,7 +12,6 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Httpdispatchmode HTTP response modes, i.e. SYNC, ASYNC, or DYNAMIC.

@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **ApprovalStatus** | Pointer to [**Approvalstatus**](approvalstatus) |  | [optional] 
 **ApprovalOrder** | Pointer to **float32** | Approval order | [optional] 
 **Comment** | Pointer to **string** | comment of approver | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
+**Modified** | Pointer to **SailPointTime** | When the request was last modified. | [optional] 
+**Created** | Pointer to **SailPointTime** | When the request was created. | [optional] 
 **NonEmployeeRequest** | Pointer to [**Nonemployeerequestwithoutapprovalitem**](nonemployeerequestwithoutapprovalitem) |  | [optional] 
 
 ## Methods
@@ -196,20 +196,20 @@ HasComment returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Nonemployeeapprovalitemdetail) GetModified() time.Time`
+`func (o *Nonemployeeapprovalitemdetail) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Nonemployeeapprovalitemdetail) GetModifiedOk() (*time.Time, bool)`
+`func (o *Nonemployeeapprovalitemdetail) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Nonemployeeapprovalitemdetail) SetModified(v time.Time)`
+`func (o *Nonemployeeapprovalitemdetail) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -221,20 +221,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Nonemployeeapprovalitemdetail) GetCreated() time.Time`
+`func (o *Nonemployeeapprovalitemdetail) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Nonemployeeapprovalitemdetail) GetCreatedOk() (*time.Time, bool)`
+`func (o *Nonemployeeapprovalitemdetail) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Nonemployeeapprovalitemdetail) SetCreated(v time.Time)`
+`func (o *Nonemployeeapprovalitemdetail) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

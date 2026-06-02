@@ -12,7 +12,7 @@ package api_access_requests_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Manualworkitemdetails type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type Manualworkitemdetails struct {
 	OriginalOwner NullableManualworkitemdetailsOriginalOwner `json:"originalOwner,omitempty"`
 	CurrentOwner NullableManualworkitemdetailsCurrentOwner `json:"currentOwner,omitempty"`
 	// Time at which item was modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	Status *Manualworkitemstate `json:"status,omitempty"`
 	// The history of approval forward action.
 	ForwardHistory []Approvalforwardhistory `json:"forwardHistory,omitempty"`
@@ -172,9 +172,9 @@ func (o *Manualworkitemdetails) UnsetCurrentOwner() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Manualworkitemdetails) GetModified() time.Time {
+func (o *Manualworkitemdetails) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -182,7 +182,7 @@ func (o *Manualworkitemdetails) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Manualworkitemdetails) GetModifiedOk() (*time.Time, bool) {
+func (o *Manualworkitemdetails) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *Manualworkitemdetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Manualworkitemdetails) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Manualworkitemdetails) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

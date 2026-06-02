@@ -12,7 +12,7 @@ package api_access_request_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Pendingapproval type satisfies the MappedNullable interface at compile time
@@ -27,11 +27,11 @@ type Pendingapproval struct {
 	// The name of the approval.
 	Name *string `json:"name,omitempty"`
 	// When the approval was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// When the approval was modified last time.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the access-request was created.
-	RequestCreated *time.Time `json:"requestCreated,omitempty"`
+	RequestCreated *SailPointTime `json:"requestCreated,omitempty"`
 	RequestType NullableAccessrequesttype `json:"requestType,omitempty"`
 	Requester *Accessitemrequester `json:"requester,omitempty"`
 	RequestedFor *Accessitemrequestedfor `json:"requestedFor,omitempty"`
@@ -46,11 +46,11 @@ type Pendingapproval struct {
 	CommentRequiredWhenRejected *bool `json:"commentRequiredWhenRejected,omitempty"`
 	ActionInProcess *Pendingapprovalaction `json:"actionInProcess,omitempty"`
 	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
-	RemoveDate *time.Time `json:"removeDate,omitempty"`
+	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
 	// If true, then the request is to change the remove date or sunset date.
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
-	CurrentRemoveDate *time.Time `json:"currentRemoveDate,omitempty"`
+	CurrentRemoveDate *SailPointTime `json:"currentRemoveDate,omitempty"`
 	SodViolationContext NullableSodviolationcontextcheckcompleted `json:"sodViolationContext,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
@@ -186,9 +186,9 @@ func (o *Pendingapproval) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Pendingapproval) GetCreated() time.Time {
+func (o *Pendingapproval) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -196,7 +196,7 @@ func (o *Pendingapproval) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pendingapproval) GetCreatedOk() (*time.Time, bool) {
+func (o *Pendingapproval) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -212,15 +212,15 @@ func (o *Pendingapproval) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Pendingapproval) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Pendingapproval) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Pendingapproval) GetModified() time.Time {
+func (o *Pendingapproval) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -228,7 +228,7 @@ func (o *Pendingapproval) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pendingapproval) GetModifiedOk() (*time.Time, bool) {
+func (o *Pendingapproval) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -244,15 +244,15 @@ func (o *Pendingapproval) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Pendingapproval) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Pendingapproval) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetRequestCreated returns the RequestCreated field value if set, zero value otherwise.
-func (o *Pendingapproval) GetRequestCreated() time.Time {
+func (o *Pendingapproval) GetRequestCreated() SailPointTime {
 	if o == nil || IsNil(o.RequestCreated) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RequestCreated
@@ -260,7 +260,7 @@ func (o *Pendingapproval) GetRequestCreated() time.Time {
 
 // GetRequestCreatedOk returns a tuple with the RequestCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pendingapproval) GetRequestCreatedOk() (*time.Time, bool) {
+func (o *Pendingapproval) GetRequestCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.RequestCreated) {
 		return nil, false
 	}
@@ -276,8 +276,8 @@ func (o *Pendingapproval) HasRequestCreated() bool {
 	return false
 }
 
-// SetRequestCreated gets a reference to the given time.Time and assigns it to the RequestCreated field.
-func (o *Pendingapproval) SetRequestCreated(v time.Time) {
+// SetRequestCreated gets a reference to the given SailPointTime and assigns it to the RequestCreated field.
+func (o *Pendingapproval) SetRequestCreated(v SailPointTime) {
 	o.RequestCreated = &v
 }
 
@@ -612,9 +612,9 @@ func (o *Pendingapproval) SetActionInProcess(v Pendingapprovalaction) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
-func (o *Pendingapproval) GetRemoveDate() time.Time {
+func (o *Pendingapproval) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate
@@ -622,7 +622,7 @@ func (o *Pendingapproval) GetRemoveDate() time.Time {
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pendingapproval) GetRemoveDateOk() (*time.Time, bool) {
+func (o *Pendingapproval) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
@@ -638,8 +638,8 @@ func (o *Pendingapproval) HasRemoveDate() bool {
 	return false
 }
 
-// SetRemoveDate gets a reference to the given time.Time and assigns it to the RemoveDate field.
-func (o *Pendingapproval) SetRemoveDate(v time.Time) {
+// SetRemoveDate gets a reference to the given SailPointTime and assigns it to the RemoveDate field.
+func (o *Pendingapproval) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate = &v
 }
 
@@ -676,9 +676,9 @@ func (o *Pendingapproval) SetRemoveDateUpdateRequested(v bool) {
 }
 
 // GetCurrentRemoveDate returns the CurrentRemoveDate field value if set, zero value otherwise.
-func (o *Pendingapproval) GetCurrentRemoveDate() time.Time {
+func (o *Pendingapproval) GetCurrentRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.CurrentRemoveDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CurrentRemoveDate
@@ -686,7 +686,7 @@ func (o *Pendingapproval) GetCurrentRemoveDate() time.Time {
 
 // GetCurrentRemoveDateOk returns a tuple with the CurrentRemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pendingapproval) GetCurrentRemoveDateOk() (*time.Time, bool) {
+func (o *Pendingapproval) GetCurrentRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CurrentRemoveDate) {
 		return nil, false
 	}
@@ -702,8 +702,8 @@ func (o *Pendingapproval) HasCurrentRemoveDate() bool {
 	return false
 }
 
-// SetCurrentRemoveDate gets a reference to the given time.Time and assigns it to the CurrentRemoveDate field.
-func (o *Pendingapproval) SetCurrentRemoveDate(v time.Time) {
+// SetCurrentRemoveDate gets a reference to the given SailPointTime and assigns it to the CurrentRemoveDate field.
+func (o *Pendingapproval) SetCurrentRemoveDate(v SailPointTime) {
 	o.CurrentRemoveDate = &v
 }
 

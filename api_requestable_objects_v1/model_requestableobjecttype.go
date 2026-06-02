@@ -12,7 +12,6 @@ package api_requestable_objects_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Requestableobjecttype Currently supported requestable object types.

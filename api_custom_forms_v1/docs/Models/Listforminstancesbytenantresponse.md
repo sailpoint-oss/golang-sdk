@@ -27,8 +27,8 @@ Name | Type | Description | Notes
 **FormData** | Pointer to **map[string]interface{}** | FormData is the data provided by the form on submit. The data is in a key -> value map | [optional] 
 **FormErrors** | Pointer to [**[]Formerror**](formerror) | FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors | [optional] 
 **FormConditions** | Pointer to [**[]Formcondition**](formcondition) | FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form | [optional] 
-**Created** | Pointer to **time.Time** | Created is the date the form instance was assigned | [optional] 
-**Modified** | Pointer to **time.Time** | Modified is the last date the form instance was modified | [optional] 
+**Created** | Pointer to **SailPointTime** | Created is the date the form instance was assigned | [optional] 
+**Modified** | Pointer to **SailPointTime** | Modified is the last date the form instance was modified | [optional] 
 **Recipients** | Pointer to [**[]Forminstancerecipient**](forminstancerecipient) | Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it | [optional] 
 
 ## Methods
@@ -372,20 +372,20 @@ HasFormConditions returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Listforminstancesbytenantresponse) GetCreated() time.Time`
+`func (o *Listforminstancesbytenantresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Listforminstancesbytenantresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Listforminstancesbytenantresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Listforminstancesbytenantresponse) SetCreated(v time.Time)`
+`func (o *Listforminstancesbytenantresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -397,20 +397,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Listforminstancesbytenantresponse) GetModified() time.Time`
+`func (o *Listforminstancesbytenantresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Listforminstancesbytenantresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Listforminstancesbytenantresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Listforminstancesbytenantresponse) SetModified(v time.Time)`
+`func (o *Listforminstancesbytenantresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

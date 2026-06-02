@@ -12,7 +12,6 @@ package api_access_request_approvals_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Completedapprovalstate Enum represents completed approval object's state.

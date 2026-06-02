@@ -12,7 +12,6 @@ package api_notifications_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Medium The notification medium (EMAIL, SLACK, or TEAMS)

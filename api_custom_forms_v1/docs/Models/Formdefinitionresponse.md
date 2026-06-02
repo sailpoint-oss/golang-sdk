@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **FormInput** | Pointer to [**[]Formdefinitioninput**](formdefinitioninput) | List of form inputs required to create a form-instance object. | [optional] 
 **FormElements** | Pointer to [**[]Formelement**](formelement) | List of nested form elements. | [optional] 
 **FormConditions** | Pointer to [**[]Formcondition**](formcondition) | Conditional logic that can dynamically modify the form as the recipient is interacting with it. | [optional] 
-**Created** | Pointer to **time.Time** | Created is the date the form definition was created | [optional] 
-**Modified** | Pointer to **time.Time** | Modified is the last date the form definition was modified | [optional] 
+**Created** | Pointer to **SailPointTime** | Created is the date the form definition was created | [optional] 
+**Modified** | Pointer to **SailPointTime** | Modified is the last date the form definition was modified | [optional] 
 
 ## Methods
 
@@ -247,20 +247,20 @@ HasFormConditions returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Formdefinitionresponse) GetCreated() time.Time`
+`func (o *Formdefinitionresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Formdefinitionresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Formdefinitionresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Formdefinitionresponse) SetCreated(v time.Time)`
+`func (o *Formdefinitionresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -272,20 +272,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Formdefinitionresponse) GetModified() time.Time`
+`func (o *Formdefinitionresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Formdefinitionresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Formdefinitionresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Formdefinitionresponse) SetModified(v time.Time)`
+`func (o *Formdefinitionresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

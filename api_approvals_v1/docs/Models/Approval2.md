@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **ReferenceData** | Pointer to [**[]Approvalreference**](approvalreference) | Reference data related to the approval | [optional] 
 **ReassignmentHistory** | Pointer to [**[]Approvalreassignmenthistory**](approvalreassignmenthistory) | History of whom the approval request was assigned to | [optional] 
 **StaticAttributes** | Pointer to **map[string]interface{}** | Field that can include any static additional info that may be needed by the service that the approval request originated from | [optional] 
-**ModifiedDate** | Pointer to **time.Time** | Date/time that the approval request was last updated | [optional] 
+**ModifiedDate** | Pointer to **SailPointTime** | Date/time that the approval request was last updated | [optional] 
 **RequestedTarget** | Pointer to [**[]Approvalrequestedtarget**](approvalrequestedtarget) | RequestedTarget used to specify the actual object or target the approval request is for | [optional] 
 
 ## Methods
@@ -741,20 +741,20 @@ HasStaticAttributes returns a boolean if a field has been set.
 
 ### GetModifiedDate
 
-`func (o *Approval2) GetModifiedDate() time.Time`
+`func (o *Approval2) GetModifiedDate() SailPointTime`
 
 GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
 
 ### GetModifiedDateOk
 
-`func (o *Approval2) GetModifiedDateOk() (*time.Time, bool)`
+`func (o *Approval2) GetModifiedDateOk() (*SailPointTime, bool)`
 
 GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModifiedDate
 
-`func (o *Approval2) SetModifiedDate(v time.Time)`
+`func (o *Approval2) SetModifiedDate(v SailPointTime)`
 
 SetModifiedDate sets ModifiedDate field to given value.
 

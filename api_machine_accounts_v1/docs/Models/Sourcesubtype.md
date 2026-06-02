@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **TechnicalName** | **string** | Technical name of the subtype. | 
 **DisplayName** | **string** | Display name of the subtype. | 
 **Description** | **string** | Description of the subtype. | 
-**Created** | Pointer to **time.Time** | Creation timestamp. | [optional] 
-**Modified** | Pointer to **time.Time** | Last modified timestamp. | [optional] 
+**Created** | Pointer to **SailPointTime** | Creation timestamp. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Last modified timestamp. | [optional] 
 **Type** | Pointer to **string** | Type of the subtype. Either MACHINE OR null. | [optional] 
 
 ## Methods
@@ -155,20 +155,20 @@ SetDescription sets Description field to given value.
 
 ### GetCreated
 
-`func (o *Sourcesubtype) GetCreated() time.Time`
+`func (o *Sourcesubtype) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Sourcesubtype) GetCreatedOk() (*time.Time, bool)`
+`func (o *Sourcesubtype) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Sourcesubtype) SetCreated(v time.Time)`
+`func (o *Sourcesubtype) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -180,20 +180,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Sourcesubtype) GetModified() time.Time`
+`func (o *Sourcesubtype) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Sourcesubtype) GetModifiedOk() (*time.Time, bool)`
+`func (o *Sourcesubtype) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Sourcesubtype) SetModified(v time.Time)`
+`func (o *Sourcesubtype) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

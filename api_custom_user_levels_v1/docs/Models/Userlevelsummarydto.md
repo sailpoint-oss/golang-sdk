@@ -27,8 +27,8 @@ Name | Type | Description | Notes
 **TranslatedRemove** | Pointer to **NullableString** | The translated remove message for the UserLevel. | [optional] 
 **Owner** | Pointer to [**Publicidentity**](publicidentity) |  | [optional] 
 **Status** | Pointer to **string** | The status of the UserLevel. | [optional] 
-**Created** | Pointer to **time.Time** | The creation timestamp of the UserLevel. | [optional] 
-**Modified** | Pointer to **time.Time** | The last modification timestamp of the UserLevel. | [optional] 
+**Created** | Pointer to **SailPointTime** | The creation timestamp of the UserLevel. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The last modification timestamp of the UserLevel. | [optional] 
 **AssociatedIdentitiesCount** | Pointer to **NullableInt32** | The count of associated identities for the UserLevel. | [optional] 
 
 ## Methods
@@ -402,20 +402,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Userlevelsummarydto) GetCreated() time.Time`
+`func (o *Userlevelsummarydto) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Userlevelsummarydto) GetCreatedOk() (*time.Time, bool)`
+`func (o *Userlevelsummarydto) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Userlevelsummarydto) SetCreated(v time.Time)`
+`func (o *Userlevelsummarydto) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -427,20 +427,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Userlevelsummarydto) GetModified() time.Time`
+`func (o *Userlevelsummarydto) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Userlevelsummarydto) GetModifiedOk() (*time.Time, bool)`
+`func (o *Userlevelsummarydto) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Userlevelsummarydto) SetModified(v time.Time)`
+`func (o *Userlevelsummarydto) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

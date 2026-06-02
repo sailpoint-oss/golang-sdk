@@ -12,7 +12,7 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &Vaclusterstatuschangeevent{}
 // Vaclusterstatuschangeevent struct for Vaclusterstatuschangeevent
 type Vaclusterstatuschangeevent struct {
 	// The date and time the status change occurred.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The type of the object that initiated this event.
 	Type string `json:"type"`
 	Application VaclusterstatuschangeeventApplication `json:"application"`
@@ -37,7 +37,7 @@ type _Vaclusterstatuschangeevent Vaclusterstatuschangeevent
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVaclusterstatuschangeevent(created time.Time, type_ string, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult) *Vaclusterstatuschangeevent {
+func NewVaclusterstatuschangeevent(created SailPointTime, type_ string, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult) *Vaclusterstatuschangeevent {
 	this := Vaclusterstatuschangeevent{}
 	this.Created = created
 	this.Type = type_
@@ -56,9 +56,9 @@ func NewVaclusterstatuschangeeventWithDefaults() *Vaclusterstatuschangeevent {
 }
 
 // GetCreated returns the Created field value
-func (o *Vaclusterstatuschangeevent) GetCreated() time.Time {
+func (o *Vaclusterstatuschangeevent) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -67,7 +67,7 @@ func (o *Vaclusterstatuschangeevent) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Vaclusterstatuschangeevent) GetCreatedOk() (*time.Time, bool) {
+func (o *Vaclusterstatuschangeevent) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *Vaclusterstatuschangeevent) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Vaclusterstatuschangeevent) SetCreated(v time.Time) {
+func (o *Vaclusterstatuschangeevent) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 

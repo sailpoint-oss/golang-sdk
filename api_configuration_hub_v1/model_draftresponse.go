@@ -12,7 +12,7 @@ package api_configuration_hub_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Draftresponse type satisfies the MappedNullable interface at compile time
@@ -33,11 +33,11 @@ type Draftresponse struct {
 	// Whether or not a file was generated for this draft.
 	FileExists *bool `json:"fileExists,omitempty"`
 	// The time the job was started.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The time of the last update to the job.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// The time the job was completed.
-	Completed *time.Time `json:"completed,omitempty"`
+	Completed *SailPointTime `json:"completed,omitempty"`
 	// Name of the draft.
 	Name *string `json:"name,omitempty"`
 	// Tenant owner of the backup from which the draft was generated.
@@ -271,9 +271,9 @@ func (o *Draftresponse) SetFileExists(v bool) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Draftresponse) GetCreated() time.Time {
+func (o *Draftresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -281,7 +281,7 @@ func (o *Draftresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Draftresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Draftresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -297,15 +297,15 @@ func (o *Draftresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Draftresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Draftresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Draftresponse) GetModified() time.Time {
+func (o *Draftresponse) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -313,7 +313,7 @@ func (o *Draftresponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Draftresponse) GetModifiedOk() (*time.Time, bool) {
+func (o *Draftresponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -329,15 +329,15 @@ func (o *Draftresponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Draftresponse) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Draftresponse) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *Draftresponse) GetCompleted() time.Time {
+func (o *Draftresponse) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed
@@ -345,7 +345,7 @@ func (o *Draftresponse) GetCompleted() time.Time {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Draftresponse) GetCompletedOk() (*time.Time, bool) {
+func (o *Draftresponse) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -361,8 +361,8 @@ func (o *Draftresponse) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
-func (o *Draftresponse) SetCompleted(v time.Time) {
+// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
+func (o *Draftresponse) SetCompleted(v SailPointTime) {
 	o.Completed = &v
 }
 

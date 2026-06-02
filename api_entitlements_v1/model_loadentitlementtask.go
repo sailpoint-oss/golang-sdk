@@ -12,7 +12,7 @@ package api_entitlements_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Loadentitlementtask type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type Loadentitlementtask struct {
 	// The user who initiated the task
 	Launcher *string `json:"launcher,omitempty"`
 	// The creation date of the task
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Return values from the task
 	Returns []LoadentitlementtaskReturnsInner `json:"returns,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -217,9 +217,9 @@ func (o *Loadentitlementtask) SetLauncher(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Loadentitlementtask) GetCreated() time.Time {
+func (o *Loadentitlementtask) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -227,7 +227,7 @@ func (o *Loadentitlementtask) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Loadentitlementtask) GetCreatedOk() (*time.Time, bool) {
+func (o *Loadentitlementtask) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -243,8 +243,8 @@ func (o *Loadentitlementtask) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Loadentitlementtask) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Loadentitlementtask) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

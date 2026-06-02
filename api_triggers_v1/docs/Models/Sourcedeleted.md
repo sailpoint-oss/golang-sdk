@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique ID of the source. | 
 **Name** | **string** | Human friendly name of the source. | 
 **Type** | **string** | The connection type. | 
-**Deleted** | **time.Time** | The date and time the source was deleted. | 
+**Deleted** | **SailPointTime** | The date and time the source was deleted. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
 **Actor** | [**SourcedeletedActor**](sourcedeleted-actor) |  | 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewSourcedeleted
 
-`func NewSourcedeleted(id string, name string, type_ string, deleted time.Time, connector string, actor SourcedeletedActor, ) *Sourcedeleted`
+`func NewSourcedeleted(id string, name string, type_ string, deleted SailPointTime, connector string, actor SourcedeletedActor, ) *Sourcedeleted`
 
 NewSourcedeleted instantiates a new Sourcedeleted object
 This constructor will assign default values to properties that have it defined,
@@ -103,20 +103,20 @@ SetType sets Type field to given value.
 
 ### GetDeleted
 
-`func (o *Sourcedeleted) GetDeleted() time.Time`
+`func (o *Sourcedeleted) GetDeleted() SailPointTime`
 
 GetDeleted returns the Deleted field if non-nil, zero value otherwise.
 
 ### GetDeletedOk
 
-`func (o *Sourcedeleted) GetDeletedOk() (*time.Time, bool)`
+`func (o *Sourcedeleted) GetDeletedOk() (*SailPointTime, bool)`
 
 GetDeletedOk returns a tuple with the Deleted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeleted
 
-`func (o *Sourcedeleted) SetDeleted(v time.Time)`
+`func (o *Sourcedeleted) SetDeleted(v SailPointTime)`
 
 SetDeleted sets Deleted field to given value.
 

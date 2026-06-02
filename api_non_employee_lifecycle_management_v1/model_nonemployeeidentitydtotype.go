@@ -12,7 +12,6 @@ package api_non_employee_lifecycle_management_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Nonemployeeidentitydtotype Identifies if the identity is a normal identity or a governance group

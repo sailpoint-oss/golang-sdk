@@ -20,13 +20,13 @@ Name | Type | Description | Notes
 **ConnectionId** | **string** | Entitlement connection identifier for the activation. | 
 **ActivationPeriodMins** | **int32** | Activation duration in minutes for this workflow. | 
 **Status** | [**Activationworkflowstatus**](activationworkflowstatus) |  | 
-**StartTime** | **time.Time** | Time when the activation workflow was started (ISO-8601). | 
+**StartTime** | **SailPointTime** | Time when the activation workflow was started (ISO-8601). | 
 
 ## Methods
 
 ### NewJitactivationactivateresponse
 
-`func NewJitactivationactivateresponse(id string, activationId string, connectionId string, activationPeriodMins int32, status Activationworkflowstatus, startTime time.Time, ) *Jitactivationactivateresponse`
+`func NewJitactivationactivateresponse(id string, activationId string, connectionId string, activationPeriodMins int32, status Activationworkflowstatus, startTime SailPointTime, ) *Jitactivationactivateresponse`
 
 NewJitactivationactivateresponse instantiates a new Jitactivationactivateresponse object
 This constructor will assign default values to properties that have it defined,
@@ -143,20 +143,20 @@ SetStatus sets Status field to given value.
 
 ### GetStartTime
 
-`func (o *Jitactivationactivateresponse) GetStartTime() time.Time`
+`func (o *Jitactivationactivateresponse) GetStartTime() SailPointTime`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Jitactivationactivateresponse) GetStartTimeOk() (*time.Time, bool)`
+`func (o *Jitactivationactivateresponse) GetStartTimeOk() (*SailPointTime, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *Jitactivationactivateresponse) SetStartTime(v time.Time)`
+`func (o *Jitactivationactivateresponse) SetStartTime(v SailPointTime)`
 
 SetStartTime sets StartTime field to given value.
 

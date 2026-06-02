@@ -12,7 +12,7 @@ package api_access_requests_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approvalstatusdto type satisfies the MappedNullable interface at compile time
@@ -157,9 +157,9 @@ func (o *Approvalstatusdto) SetCurrentOwner(v ApprovalstatusdtoCurrentOwner) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Approvalstatusdto) GetModified() time.Time {
+func (o *Approvalstatusdto) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -168,7 +168,7 @@ func (o *Approvalstatusdto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Approvalstatusdto) GetModifiedOk() (*time.Time, bool) {
+func (o *Approvalstatusdto) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *Approvalstatusdto) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *Approvalstatusdto) SetModified(v time.Time) {
+func (o *Approvalstatusdto) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -338,9 +338,9 @@ func (o *Approvalstatusdto) UnsetComment() {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Approvalstatusdto) GetRemoveDate() time.Time {
+func (o *Approvalstatusdto) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -349,7 +349,7 @@ func (o *Approvalstatusdto) GetRemoveDate() time.Time {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Approvalstatusdto) GetRemoveDateOk() (*time.Time, bool) {
+func (o *Approvalstatusdto) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -366,7 +366,7 @@ func (o *Approvalstatusdto) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *Approvalstatusdto) SetRemoveDate(v time.Time) {
+func (o *Approvalstatusdto) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil

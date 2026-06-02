@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Spconfigexportresults', 'V1Spconfigex
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Version** | Pointer to **int32** | Current version of the export results object. | [optional] 
-**Timestamp** | Pointer to **time.Time** | Time the export was completed. | [optional] 
+**Timestamp** | Pointer to **SailPointTime** | Time the export was completed. | [optional] 
 **Tenant** | Pointer to **string** | Name of the tenant where this export originated. | [optional] 
 **Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
 **Options** | Pointer to [**Exportoptions**](exportoptions) |  | [optional] 
@@ -68,20 +68,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *Spconfigexportresults) GetTimestamp() time.Time`
+`func (o *Spconfigexportresults) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Spconfigexportresults) GetTimestampOk() (*time.Time, bool)`
+`func (o *Spconfigexportresults) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Spconfigexportresults) SetTimestamp(v time.Time)`
+`func (o *Spconfigexportresults) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 

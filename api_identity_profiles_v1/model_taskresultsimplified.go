@@ -12,7 +12,7 @@ package api_identity_profiles_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Taskresultsimplified type satisfies the MappedNullable interface at compile time
@@ -29,9 +29,9 @@ type Taskresultsimplified struct {
 	// User or process who launched the task
 	Launcher *string `json:"launcher,omitempty"`
 	// Date time of completion
-	Completed *time.Time `json:"completed,omitempty"`
+	Completed *SailPointTime `json:"completed,omitempty"`
 	// Date time when the task was launched
-	Launched *time.Time `json:"launched,omitempty"`
+	Launched *SailPointTime `json:"launched,omitempty"`
 	// Task result status
 	CompletionStatus *string `json:"completionStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -185,9 +185,9 @@ func (o *Taskresultsimplified) SetLauncher(v string) {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *Taskresultsimplified) GetCompleted() time.Time {
+func (o *Taskresultsimplified) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed
@@ -195,7 +195,7 @@ func (o *Taskresultsimplified) GetCompleted() time.Time {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Taskresultsimplified) GetCompletedOk() (*time.Time, bool) {
+func (o *Taskresultsimplified) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -211,15 +211,15 @@ func (o *Taskresultsimplified) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
-func (o *Taskresultsimplified) SetCompleted(v time.Time) {
+// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
+func (o *Taskresultsimplified) SetCompleted(v SailPointTime) {
 	o.Completed = &v
 }
 
 // GetLaunched returns the Launched field value if set, zero value otherwise.
-func (o *Taskresultsimplified) GetLaunched() time.Time {
+func (o *Taskresultsimplified) GetLaunched() SailPointTime {
 	if o == nil || IsNil(o.Launched) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Launched
@@ -227,7 +227,7 @@ func (o *Taskresultsimplified) GetLaunched() time.Time {
 
 // GetLaunchedOk returns a tuple with the Launched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Taskresultsimplified) GetLaunchedOk() (*time.Time, bool) {
+func (o *Taskresultsimplified) GetLaunchedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Launched) {
 		return nil, false
 	}
@@ -243,8 +243,8 @@ func (o *Taskresultsimplified) HasLaunched() bool {
 	return false
 }
 
-// SetLaunched gets a reference to the given time.Time and assigns it to the Launched field.
-func (o *Taskresultsimplified) SetLaunched(v time.Time) {
+// SetLaunched gets a reference to the given SailPointTime and assigns it to the Launched field.
+func (o *Taskresultsimplified) SetLaunched(v SailPointTime) {
 	o.Launched = &v
 }
 

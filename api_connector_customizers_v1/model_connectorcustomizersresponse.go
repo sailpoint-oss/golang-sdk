@@ -12,7 +12,7 @@ package api_connector_customizers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Connectorcustomizersresponse type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type Connectorcustomizersresponse struct {
 	// Connector customizer tenant id.
 	TenantID *string `json:"tenantID,omitempty"`
 	// Date-time when the connector customizer was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -215,9 +215,9 @@ func (o *Connectorcustomizersresponse) SetTenantID(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Connectorcustomizersresponse) GetCreated() time.Time {
+func (o *Connectorcustomizersresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -225,7 +225,7 @@ func (o *Connectorcustomizersresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connectorcustomizersresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Connectorcustomizersresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -241,8 +241,8 @@ func (o *Connectorcustomizersresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Connectorcustomizersresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Connectorcustomizersresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

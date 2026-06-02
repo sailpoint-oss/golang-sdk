@@ -12,7 +12,6 @@ package api_jit_activations_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Activationworkflowstatus JIT activation workflow status.

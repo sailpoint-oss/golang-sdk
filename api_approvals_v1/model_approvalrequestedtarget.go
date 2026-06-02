@@ -12,7 +12,7 @@ package api_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approvalrequestedtarget type satisfies the MappedNullable interface at compile time
@@ -29,7 +29,7 @@ type Approvalrequestedtarget struct {
 	// Indicates if reauthentication is required.
 	ReauthRequired *bool `json:"reauthRequired,omitempty"`
 	// Date when the target will be removed.
-	RemovalDate *time.Time `json:"removalDate,omitempty"`
+	RemovalDate *SailPointTime `json:"removalDate,omitempty"`
 	// Type of the request.
 	RequestType *string `json:"requestType,omitempty"`
 	// Type of the target.
@@ -189,9 +189,9 @@ func (o *Approvalrequestedtarget) SetReauthRequired(v bool) {
 }
 
 // GetRemovalDate returns the RemovalDate field value if set, zero value otherwise.
-func (o *Approvalrequestedtarget) GetRemovalDate() time.Time {
+func (o *Approvalrequestedtarget) GetRemovalDate() SailPointTime {
 	if o == nil || IsNil(o.RemovalDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemovalDate
@@ -199,7 +199,7 @@ func (o *Approvalrequestedtarget) GetRemovalDate() time.Time {
 
 // GetRemovalDateOk returns a tuple with the RemovalDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approvalrequestedtarget) GetRemovalDateOk() (*time.Time, bool) {
+func (o *Approvalrequestedtarget) GetRemovalDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.RemovalDate) {
 		return nil, false
 	}
@@ -215,8 +215,8 @@ func (o *Approvalrequestedtarget) HasRemovalDate() bool {
 	return false
 }
 
-// SetRemovalDate gets a reference to the given time.Time and assigns it to the RemovalDate field.
-func (o *Approvalrequestedtarget) SetRemovalDate(v time.Time) {
+// SetRemovalDate gets a reference to the given SailPointTime and assigns it to the RemovalDate field.
+func (o *Approvalrequestedtarget) SetRemovalDate(v SailPointTime) {
 	o.RemovalDate = &v
 }
 

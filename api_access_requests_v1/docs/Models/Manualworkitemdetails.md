@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
 **OriginalOwner** | Pointer to [**NullableManualworkitemdetailsOriginalOwner**](manualworkitemdetails-original-owner) |  | [optional] 
 **CurrentOwner** | Pointer to [**NullableManualworkitemdetailsCurrentOwner**](manualworkitemdetails-current-owner) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
+**Modified** | Pointer to **SailPointTime** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**Manualworkitemstate**](manualworkitemstate) |  | [optional] 
 **ForwardHistory** | Pointer to [**[]Approvalforwardhistory**](approvalforwardhistory) | The history of approval forward action. | [optional] 
 
@@ -138,20 +138,20 @@ HasCurrentOwner returns a boolean if a field has been set.
 UnsetCurrentOwner ensures that no value is present for CurrentOwner, not even an explicit nil
 ### GetModified
 
-`func (o *Manualworkitemdetails) GetModified() time.Time`
+`func (o *Manualworkitemdetails) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Manualworkitemdetails) GetModifiedOk() (*time.Time, bool)`
+`func (o *Manualworkitemdetails) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Manualworkitemdetails) SetModified(v time.Time)`
+`func (o *Manualworkitemdetails) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

@@ -12,7 +12,7 @@ package api_apps_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Sourceapp type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type Sourceapp struct {
 	// The source app name
 	Name *string `json:"name,omitempty"`
 	// Time when the source app was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the source app was last modified
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// True if the source app is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 	// True if the app allows access request
@@ -178,9 +178,9 @@ func (o *Sourceapp) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Sourceapp) GetCreated() time.Time {
+func (o *Sourceapp) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -188,7 +188,7 @@ func (o *Sourceapp) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourceapp) GetCreatedOk() (*time.Time, bool) {
+func (o *Sourceapp) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -204,15 +204,15 @@ func (o *Sourceapp) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Sourceapp) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Sourceapp) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Sourceapp) GetModified() time.Time {
+func (o *Sourceapp) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -220,7 +220,7 @@ func (o *Sourceapp) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourceapp) GetModifiedOk() (*time.Time, bool) {
+func (o *Sourceapp) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -236,8 +236,8 @@ func (o *Sourceapp) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Sourceapp) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Sourceapp) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

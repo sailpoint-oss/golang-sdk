@@ -16,9 +16,9 @@ tags: ['SDK', 'Software Development Kit', 'RolePropagationConfigResponse', 'V1Ro
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Indicates if the Role Change Propagation process is enabled for the tenant | [optional] [default to false]
-**EnabledDate** | Pointer to **time.Time** | The time when Role Change Propagation Process was last enabled on the tenant | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The time when Role Change Propagation Configuration was first created for the tenant | [optional] 
-**ModifiedDate** | Pointer to **time.Time** | The time when Role Change Propagation Config was updated on the tenant | [optional] 
+**EnabledDate** | Pointer to **SailPointTime** | The time when Role Change Propagation Process was last enabled on the tenant | [optional] 
+**CreatedDate** | Pointer to **SailPointTime** | The time when Role Change Propagation Configuration was first created for the tenant | [optional] 
+**ModifiedDate** | Pointer to **SailPointTime** | The time when Role Change Propagation Config was updated on the tenant | [optional] 
 
 ## Methods
 
@@ -66,20 +66,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetEnabledDate
 
-`func (o *RolePropagationConfigResponse) GetEnabledDate() time.Time`
+`func (o *RolePropagationConfigResponse) GetEnabledDate() SailPointTime`
 
 GetEnabledDate returns the EnabledDate field if non-nil, zero value otherwise.
 
 ### GetEnabledDateOk
 
-`func (o *RolePropagationConfigResponse) GetEnabledDateOk() (*time.Time, bool)`
+`func (o *RolePropagationConfigResponse) GetEnabledDateOk() (*SailPointTime, bool)`
 
 GetEnabledDateOk returns a tuple with the EnabledDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabledDate
 
-`func (o *RolePropagationConfigResponse) SetEnabledDate(v time.Time)`
+`func (o *RolePropagationConfigResponse) SetEnabledDate(v SailPointTime)`
 
 SetEnabledDate sets EnabledDate field to given value.
 
@@ -91,20 +91,20 @@ HasEnabledDate returns a boolean if a field has been set.
 
 ### GetCreatedDate
 
-`func (o *RolePropagationConfigResponse) GetCreatedDate() time.Time`
+`func (o *RolePropagationConfigResponse) GetCreatedDate() SailPointTime`
 
 GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
 
 ### GetCreatedDateOk
 
-`func (o *RolePropagationConfigResponse) GetCreatedDateOk() (*time.Time, bool)`
+`func (o *RolePropagationConfigResponse) GetCreatedDateOk() (*SailPointTime, bool)`
 
 GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedDate
 
-`func (o *RolePropagationConfigResponse) SetCreatedDate(v time.Time)`
+`func (o *RolePropagationConfigResponse) SetCreatedDate(v SailPointTime)`
 
 SetCreatedDate sets CreatedDate field to given value.
 
@@ -116,20 +116,20 @@ HasCreatedDate returns a boolean if a field has been set.
 
 ### GetModifiedDate
 
-`func (o *RolePropagationConfigResponse) GetModifiedDate() time.Time`
+`func (o *RolePropagationConfigResponse) GetModifiedDate() SailPointTime`
 
 GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
 
 ### GetModifiedDateOk
 
-`func (o *RolePropagationConfigResponse) GetModifiedDateOk() (*time.Time, bool)`
+`func (o *RolePropagationConfigResponse) GetModifiedDateOk() (*SailPointTime, bool)`
 
 GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModifiedDate
 
-`func (o *RolePropagationConfigResponse) SetModifiedDate(v time.Time)`
+`func (o *RolePropagationConfigResponse) SetModifiedDate(v SailPointTime)`
 
 SetModifiedDate sets ModifiedDate field to given value.
 

@@ -12,7 +12,6 @@ package api_access_request_approvals_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Pendingapprovalaction Enum represents action that is being processed on an approval.

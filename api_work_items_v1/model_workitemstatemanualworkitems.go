@@ -12,7 +12,6 @@ package api_work_items_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Workitemstatemanualworkitems The state of a work item

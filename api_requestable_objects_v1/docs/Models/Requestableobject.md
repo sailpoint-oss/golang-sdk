@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Id of the requestable object itself | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of the requestable object | [optional] 
-**Created** | Pointer to **time.Time** | The time when the requestable object was created | [optional] 
+**Created** | Pointer to **SailPointTime** | The time when the requestable object was created | [optional] 
 **Modified** | Pointer to **NullableTime** | The time when the requestable object was last modified | [optional] 
 **Description** | Pointer to **NullableString** | Description of the requestable object. | [optional] 
 **Type** | Pointer to [**Requestableobjecttype**](requestableobjecttype) |  | [optional] 
@@ -97,20 +97,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Requestableobject) GetCreated() time.Time`
+`func (o *Requestableobject) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Requestableobject) GetCreatedOk() (*time.Time, bool)`
+`func (o *Requestableobject) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Requestableobject) SetCreated(v time.Time)`
+`func (o *Requestableobject) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -122,20 +122,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Requestableobject) GetModified() time.Time`
+`func (o *Requestableobject) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Requestableobject) GetModifiedOk() (*time.Time, bool)`
+`func (o *Requestableobject) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Requestableobject) SetModified(v time.Time)`
+`func (o *Requestableobject) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

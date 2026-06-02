@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | An indicator of whether the API Client is enabled for use | 
 **StrongAuthSupported** | **bool** | An indicator of whether the API Client supports strong authentication | 
 **ClaimsSupported** | **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
-**Created** | **time.Time** | The date and time, down to the millisecond, when the API Client was created | 
-**Modified** | **time.Time** | The date and time, down to the millisecond, when the API Client was last updated | 
+**Created** | **SailPointTime** | The date and time, down to the millisecond, when the API Client was created | 
+**Modified** | **SailPointTime** | The date and time, down to the millisecond, when the API Client was last updated | 
 **Secret** | Pointer to **NullableString** |  | [optional] 
 **Metadata** | Pointer to **NullableString** |  | [optional] 
 **LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 
 ### NewGetoauthclientresponse
 
-`func NewGetoauthclientresponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []Granttype, accessType Accesstype, type_ Clienttype, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created time.Time, modified time.Time, scope []string, ) *Getoauthclientresponse`
+`func NewGetoauthclientresponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []Granttype, accessType Accesstype, type_ Clienttype, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created SailPointTime, modified SailPointTime, scope []string, ) *Getoauthclientresponse`
 
 NewGetoauthclientresponse instantiates a new Getoauthclientresponse object
 This constructor will assign default values to properties that have it defined,
@@ -398,40 +398,40 @@ SetClaimsSupported sets ClaimsSupported field to given value.
 
 ### GetCreated
 
-`func (o *Getoauthclientresponse) GetCreated() time.Time`
+`func (o *Getoauthclientresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Getoauthclientresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Getoauthclientresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Getoauthclientresponse) SetCreated(v time.Time)`
+`func (o *Getoauthclientresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Getoauthclientresponse) GetModified() time.Time`
+`func (o *Getoauthclientresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Getoauthclientresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Getoauthclientresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Getoauthclientresponse) SetModified(v time.Time)`
+`func (o *Getoauthclientresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -508,20 +508,20 @@ HasMetadata returns a boolean if a field has been set.
 UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetLastUsed
 
-`func (o *Getoauthclientresponse) GetLastUsed() time.Time`
+`func (o *Getoauthclientresponse) GetLastUsed() SailPointTime`
 
 GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
 
 ### GetLastUsedOk
 
-`func (o *Getoauthclientresponse) GetLastUsedOk() (*time.Time, bool)`
+`func (o *Getoauthclientresponse) GetLastUsedOk() (*SailPointTime, bool)`
 
 GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUsed
 
-`func (o *Getoauthclientresponse) SetLastUsed(v time.Time)`
+`func (o *Getoauthclientresponse) SetLastUsed(v SailPointTime)`
 
 SetLastUsed sets LastUsed field to given value.
 

@@ -12,7 +12,6 @@ package api_account_activities_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accountactivityitemoperation Represents an operation in an account activity item

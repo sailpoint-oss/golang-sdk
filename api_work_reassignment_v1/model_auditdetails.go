@@ -12,7 +12,7 @@ package api_work_reassignment_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Auditdetails type satisfies the MappedNullable interface at compile time
@@ -21,10 +21,10 @@ var _ MappedNullable = &Auditdetails{}
 // Auditdetails Audit details for the reassignment configuration of an identity
 type Auditdetails struct {
 	// Initial date and time when the record was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	CreatedBy *Identity2 `json:"createdBy,omitempty"`
 	// Last modified date and time for the record
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	ModifiedBy *Identity2 `json:"modifiedBy,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,9 +49,9 @@ func NewAuditdetailsWithDefaults() *Auditdetails {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Auditdetails) GetCreated() time.Time {
+func (o *Auditdetails) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -59,7 +59,7 @@ func (o *Auditdetails) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Auditdetails) GetCreatedOk() (*time.Time, bool) {
+func (o *Auditdetails) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *Auditdetails) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Auditdetails) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Auditdetails) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
@@ -113,9 +113,9 @@ func (o *Auditdetails) SetCreatedBy(v Identity2) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Auditdetails) GetModified() time.Time {
+func (o *Auditdetails) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -123,7 +123,7 @@ func (o *Auditdetails) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Auditdetails) GetModifiedOk() (*time.Time, bool) {
+func (o *Auditdetails) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *Auditdetails) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Auditdetails) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Auditdetails) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

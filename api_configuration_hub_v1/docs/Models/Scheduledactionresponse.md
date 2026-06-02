@@ -16,10 +16,10 @@ tags: ['SDK', 'Software Development Kit', 'Scheduledactionresponse', 'V1Schedule
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique identifier for this scheduled action. | [optional] 
-**Created** | Pointer to **time.Time** | The time when this scheduled action was created. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time when this scheduled action was created. | [optional] 
 **JobType** | Pointer to **string** | Type of the scheduled job. | [optional] 
 **Content** | Pointer to [**ScheduledactionresponseContent**](scheduledactionresponse-content) |  | [optional] 
-**StartTime** | Pointer to **time.Time** | The time when this scheduled action should start. | [optional] 
+**StartTime** | Pointer to **SailPointTime** | The time when this scheduled action should start. | [optional] 
 **CronString** | Pointer to **string** | Cron expression defining the schedule for this action. | [optional] 
 **TimeZoneId** | Pointer to **string** | Time zone ID for interpreting the cron expression. | [optional] 
 
@@ -69,20 +69,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Scheduledactionresponse) GetCreated() time.Time`
+`func (o *Scheduledactionresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Scheduledactionresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Scheduledactionresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Scheduledactionresponse) SetCreated(v time.Time)`
+`func (o *Scheduledactionresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -144,20 +144,20 @@ HasContent returns a boolean if a field has been set.
 
 ### GetStartTime
 
-`func (o *Scheduledactionresponse) GetStartTime() time.Time`
+`func (o *Scheduledactionresponse) GetStartTime() SailPointTime`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Scheduledactionresponse) GetStartTimeOk() (*time.Time, bool)`
+`func (o *Scheduledactionresponse) GetStartTimeOk() (*SailPointTime, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *Scheduledactionresponse) SetStartTime(v time.Time)`
+`func (o *Scheduledactionresponse) SetStartTime(v SailPointTime)`
 
 SetStartTime sets StartTime field to given value.
 

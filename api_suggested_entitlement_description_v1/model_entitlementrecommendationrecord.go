@@ -12,7 +12,7 @@ package api_suggested_entitlement_description_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Entitlementrecommendationrecord type satisfies the MappedNullable interface at compile time
@@ -691,9 +691,9 @@ func (o *Entitlementrecommendationrecord) UnsetApprovedType() {
 }
 
 // GetApprovedWhen returns the ApprovedWhen field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlementrecommendationrecord) GetApprovedWhen() time.Time {
+func (o *Entitlementrecommendationrecord) GetApprovedWhen() SailPointTime {
 	if o == nil || IsNil(o.ApprovedWhen.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ApprovedWhen.Get()
@@ -702,7 +702,7 @@ func (o *Entitlementrecommendationrecord) GetApprovedWhen() time.Time {
 // GetApprovedWhenOk returns a tuple with the ApprovedWhen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlementrecommendationrecord) GetApprovedWhenOk() (*time.Time, bool) {
+func (o *Entitlementrecommendationrecord) GetApprovedWhenOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -719,7 +719,7 @@ func (o *Entitlementrecommendationrecord) HasApprovedWhen() bool {
 }
 
 // SetApprovedWhen gets a reference to the given NullableTime and assigns it to the ApprovedWhen field.
-func (o *Entitlementrecommendationrecord) SetApprovedWhen(v time.Time) {
+func (o *Entitlementrecommendationrecord) SetApprovedWhen(v SailPointTime) {
 	o.ApprovedWhen.Set(&v)
 }
 // SetApprovedWhenNil sets the value for ApprovedWhen to be an explicit nil
@@ -733,9 +733,9 @@ func (o *Entitlementrecommendationrecord) UnsetApprovedWhen() {
 }
 
 // GetLlmBatchCreatedAt returns the LlmBatchCreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAt() time.Time {
+func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.LlmBatchCreatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LlmBatchCreatedAt.Get()
@@ -744,7 +744,7 @@ func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAt() time.Time {
 // GetLlmBatchCreatedAtOk returns a tuple with the LlmBatchCreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAtOk() (*time.Time, bool) {
+func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -761,7 +761,7 @@ func (o *Entitlementrecommendationrecord) HasLlmBatchCreatedAt() bool {
 }
 
 // SetLlmBatchCreatedAt gets a reference to the given NullableTime and assigns it to the LlmBatchCreatedAt field.
-func (o *Entitlementrecommendationrecord) SetLlmBatchCreatedAt(v time.Time) {
+func (o *Entitlementrecommendationrecord) SetLlmBatchCreatedAt(v SailPointTime) {
 	o.LlmBatchCreatedAt.Set(&v)
 }
 // SetLlmBatchCreatedAtNil sets the value for LlmBatchCreatedAt to be an explicit nil

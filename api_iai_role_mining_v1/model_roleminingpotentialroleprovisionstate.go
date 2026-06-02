@@ -12,7 +12,6 @@ package api_iai_role_mining_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Roleminingpotentialroleprovisionstate Provision state

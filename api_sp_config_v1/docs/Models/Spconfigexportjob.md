@@ -18,16 +18,16 @@ Name | Type | Description | Notes
 **JobId** | **string** | Unique id assigned to this job. | 
 **Status** | **string** | Status of the job. | 
 **Type** | **string** | Type of the job, either export or import. | 
-**Expiration** | Pointer to **time.Time** | The time until which the artifacts will be available for download. | [optional] 
-**Created** | **time.Time** | The time the job was started. | 
-**Modified** | **time.Time** | The time of the last update to the job. | 
+**Expiration** | Pointer to **SailPointTime** | The time until which the artifacts will be available for download. | [optional] 
+**Created** | **SailPointTime** | The time the job was started. | 
+**Modified** | **SailPointTime** | The time of the last update to the job. | 
 **Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
 
 ## Methods
 
 ### NewSpconfigexportjob
 
-`func NewSpconfigexportjob(jobId string, status string, type_ string, created time.Time, modified time.Time, ) *Spconfigexportjob`
+`func NewSpconfigexportjob(jobId string, status string, type_ string, created SailPointTime, modified SailPointTime, ) *Spconfigexportjob`
 
 NewSpconfigexportjob instantiates a new Spconfigexportjob object
 This constructor will assign default values to properties that have it defined,
@@ -104,20 +104,20 @@ SetType sets Type field to given value.
 
 ### GetExpiration
 
-`func (o *Spconfigexportjob) GetExpiration() time.Time`
+`func (o *Spconfigexportjob) GetExpiration() SailPointTime`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *Spconfigexportjob) GetExpirationOk() (*time.Time, bool)`
+`func (o *Spconfigexportjob) GetExpirationOk() (*SailPointTime, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *Spconfigexportjob) SetExpiration(v time.Time)`
+`func (o *Spconfigexportjob) SetExpiration(v SailPointTime)`
 
 SetExpiration sets Expiration field to given value.
 
@@ -129,40 +129,40 @@ HasExpiration returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Spconfigexportjob) GetCreated() time.Time`
+`func (o *Spconfigexportjob) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Spconfigexportjob) GetCreatedOk() (*time.Time, bool)`
+`func (o *Spconfigexportjob) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Spconfigexportjob) SetCreated(v time.Time)`
+`func (o *Spconfigexportjob) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Spconfigexportjob) GetModified() time.Time`
+`func (o *Spconfigexportjob) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Spconfigexportjob) GetModifiedOk() (*time.Time, bool)`
+`func (o *Spconfigexportjob) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Spconfigexportjob) SetModified(v time.Time)`
+`func (o *Spconfigexportjob) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

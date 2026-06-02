@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **MachineIdentityId** | Pointer to **string** | System-generated unique ID of the Machine Identity | [optional] 
 **Source** | Pointer to [**MachineidentityuserentitlementresponseSource**](machineidentityuserentitlementresponse-source) |  | [optional] 
 **Entitlement** | Pointer to [**MachineidentityuserentitlementresponseEntitlement**](machineidentityuserentitlementresponse-entitlement) |  | [optional] 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
+**Created** | Pointer to **SailPointTime** | Creation date of the Object | [optional] [readonly] 
 
 ## Methods
 
@@ -142,20 +142,20 @@ HasEntitlement returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Machineidentityuserentitlementresponse) GetCreated() time.Time`
+`func (o *Machineidentityuserentitlementresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Machineidentityuserentitlementresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Machineidentityuserentitlementresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Machineidentityuserentitlementresponse) SetCreated(v time.Time)`
+`func (o *Machineidentityuserentitlementresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 

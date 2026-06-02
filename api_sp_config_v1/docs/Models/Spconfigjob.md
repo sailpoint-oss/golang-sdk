@@ -18,15 +18,15 @@ Name | Type | Description | Notes
 **JobId** | **string** | Unique id assigned to this job. | 
 **Status** | **string** | Status of the job. | 
 **Type** | **string** | Type of the job, either export or import. | 
-**Expiration** | Pointer to **time.Time** | The time until which the artifacts will be available for download. | [optional] 
-**Created** | **time.Time** | The time the job was started. | 
-**Modified** | **time.Time** | The time of the last update to the job. | 
+**Expiration** | Pointer to **SailPointTime** | The time until which the artifacts will be available for download. | [optional] 
+**Created** | **SailPointTime** | The time the job was started. | 
+**Modified** | **SailPointTime** | The time of the last update to the job. | 
 
 ## Methods
 
 ### NewSpconfigjob
 
-`func NewSpconfigjob(jobId string, status string, type_ string, created time.Time, modified time.Time, ) *Spconfigjob`
+`func NewSpconfigjob(jobId string, status string, type_ string, created SailPointTime, modified SailPointTime, ) *Spconfigjob`
 
 NewSpconfigjob instantiates a new Spconfigjob object
 This constructor will assign default values to properties that have it defined,
@@ -103,20 +103,20 @@ SetType sets Type field to given value.
 
 ### GetExpiration
 
-`func (o *Spconfigjob) GetExpiration() time.Time`
+`func (o *Spconfigjob) GetExpiration() SailPointTime`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *Spconfigjob) GetExpirationOk() (*time.Time, bool)`
+`func (o *Spconfigjob) GetExpirationOk() (*SailPointTime, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *Spconfigjob) SetExpiration(v time.Time)`
+`func (o *Spconfigjob) SetExpiration(v SailPointTime)`
 
 SetExpiration sets Expiration field to given value.
 
@@ -128,40 +128,40 @@ HasExpiration returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Spconfigjob) GetCreated() time.Time`
+`func (o *Spconfigjob) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Spconfigjob) GetCreatedOk() (*time.Time, bool)`
+`func (o *Spconfigjob) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Spconfigjob) SetCreated(v time.Time)`
+`func (o *Spconfigjob) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Spconfigjob) GetModified() time.Time`
+`func (o *Spconfigjob) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Spconfigjob) GetModifiedOk() (*time.Time, bool)`
+`func (o *Spconfigjob) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Spconfigjob) SetModified(v time.Time)`
+`func (o *Spconfigjob) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

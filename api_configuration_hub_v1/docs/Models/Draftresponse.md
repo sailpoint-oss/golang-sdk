@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **Message** | Pointer to **string** | Message providing information about the outcome of the draft process. | [optional] 
 **RequesterName** | Pointer to **string** | The name of user that that initiated the draft process. | [optional] 
 **FileExists** | Pointer to **bool** | Whether or not a file was generated for this draft. | [optional] [default to true]
-**Created** | Pointer to **time.Time** | The time the job was started. | [optional] 
-**Modified** | Pointer to **time.Time** | The time of the last update to the job. | [optional] 
-**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time the job was started. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The time of the last update to the job. | [optional] 
+**Completed** | Pointer to **SailPointTime** | The time the job was completed. | [optional] 
 **Name** | Pointer to **string** | Name of the draft. | [optional] 
 **SourceTenant** | Pointer to **string** | Tenant owner of the backup from which the draft was generated. | [optional] 
 **SourceBackupId** | Pointer to **string** | Id of the backup from which the draft was generated. | [optional] 
@@ -203,20 +203,20 @@ HasFileExists returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Draftresponse) GetCreated() time.Time`
+`func (o *Draftresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Draftresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Draftresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Draftresponse) SetCreated(v time.Time)`
+`func (o *Draftresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -228,20 +228,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Draftresponse) GetModified() time.Time`
+`func (o *Draftresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Draftresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Draftresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Draftresponse) SetModified(v time.Time)`
+`func (o *Draftresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -253,20 +253,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCompleted
 
-`func (o *Draftresponse) GetCompleted() time.Time`
+`func (o *Draftresponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Draftresponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *Draftresponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Draftresponse) SetCompleted(v time.Time)`
+`func (o *Draftresponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

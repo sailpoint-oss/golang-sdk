@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **ParentName** | Pointer to **NullableString** | Name of the parent of the task for app discovery | [optional] 
 **Launcher** | Pointer to **string** | Service to execute app discovery | [optional] 
 **Target** | Pointer to [**ApplicationdiscoveryresponseTarget**](applicationdiscoveryresponse-target) |  | [optional] 
-**Created** | Pointer to **time.Time** | Creation date of app discovery task | [optional] 
-**Modified** | Pointer to **time.Time** | Last modification date of app discovery task | [optional] 
+**Created** | Pointer to **SailPointTime** | Creation date of app discovery task | [optional] 
+**Modified** | Pointer to **SailPointTime** | Last modification date of app discovery task | [optional] 
 **Launched** | Pointer to **NullableTime** | Launch date of app discovery task | [optional] 
 **Completed** | Pointer to **NullableTime** | Completion date of app discovery task | [optional] 
 **TaskDefinitionSummary** | Pointer to [**Taskdefinitionsummary**](taskdefinitionsummary) |  | [optional] 
@@ -240,20 +240,20 @@ HasTarget returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Applicationdiscoveryresponse) GetCreated() time.Time`
+`func (o *Applicationdiscoveryresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Applicationdiscoveryresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Applicationdiscoveryresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Applicationdiscoveryresponse) SetCreated(v time.Time)`
+`func (o *Applicationdiscoveryresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -265,20 +265,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Applicationdiscoveryresponse) GetModified() time.Time`
+`func (o *Applicationdiscoveryresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Applicationdiscoveryresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Applicationdiscoveryresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Applicationdiscoveryresponse) SetModified(v time.Time)`
+`func (o *Applicationdiscoveryresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -290,20 +290,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetLaunched
 
-`func (o *Applicationdiscoveryresponse) GetLaunched() time.Time`
+`func (o *Applicationdiscoveryresponse) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *Applicationdiscoveryresponse) GetLaunchedOk() (*time.Time, bool)`
+`func (o *Applicationdiscoveryresponse) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *Applicationdiscoveryresponse) SetLaunched(v time.Time)`
+`func (o *Applicationdiscoveryresponse) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -325,20 +325,20 @@ HasLaunched returns a boolean if a field has been set.
 UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
-`func (o *Applicationdiscoveryresponse) GetCompleted() time.Time`
+`func (o *Applicationdiscoveryresponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Applicationdiscoveryresponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *Applicationdiscoveryresponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Applicationdiscoveryresponse) SetCompleted(v time.Time)`
+`func (o *Applicationdiscoveryresponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **RequestedItemsStatus** | [**[]AccessrequestpostapprovalRequestedItemsStatusInner**](accessrequestpostapproval-requested-items-status-inner) | Details on the outcome of each access item. | 
 **Source** | [**Accountsourcereference**](accountsourcereference) |  | 
 **Status** | **string** | The overall status of the collection. | 
-**Started** | **time.Time** | The date and time when the account collection started. | 
-**Completed** | **time.Time** | The date and time when the account collection finished. | 
+**Started** | **SailPointTime** | The date and time when the account collection started. | 
+**Completed** | **SailPointTime** | The date and time when the account collection finished. | 
 **Errors** | **[]string** | A list of any accumulated error messages that occurred during provisioning. | 
 **Warnings** | **[]string** | A list of any accumulated warning messages that occurred during provisioning. | 
 **Stats** | [**AccountscollectedforaggregationStats**](accountscollectedforaggregation-stats) |  | 
@@ -66,11 +66,11 @@ Name | Type | Description | Notes
 **IdentityName** | **string** | The name of the identity that is correlated with this account. | 
 **Name** | **string** | The user friendly name of the source. | 
 **Type** | **string** | The connection type of the source. | 
-**Created** | **time.Time** | The date and time the status change occurred. | 
+**Created** | **SailPointTime** | The date and time the status change occurred. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
 **Actor** | [**SourceupdatedActor**](sourceupdated-actor) |  | 
-**Deleted** | **time.Time** | The date and time the source was deleted. | 
-**Modified** | **time.Time** | The date and time the source was modified. | 
+**Deleted** | **SailPointTime** | The date and time the source was deleted. | 
+**Modified** | **SailPointTime** | The date and time the source was modified. | 
 **Application** | [**VaclusterstatuschangeeventApplication**](vaclusterstatuschangeevent-application) |  | 
 **HealthCheckResult** | [**VaclusterstatuschangeeventHealthCheckResult**](vaclusterstatuschangeevent-health-check-result) |  | 
 **PreviousHealthCheckResult** | [**VaclusterstatuschangeeventPreviousHealthCheckResult**](vaclusterstatuschangeevent-previous-health-check-result) |  | 
@@ -79,7 +79,7 @@ Name | Type | Description | Notes
 
 ### NewTriggerExampleInput
 
-`func NewTriggerExampleInput(accessRequestId string, requestedFor []Accessitemrequestedfordto, requestedItems []AccessrequestpreapprovalRequestedItemsInner, requestedBy Accessitemrequesterdto, requestedItemsStatus []AccessrequestpostapprovalRequestedItemsStatusInner, source Accountsourcereference, status string, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountscollectedforaggregationStats, identity IdentitydeletedIdentity, account Accountv2, changes []IdentityattributeschangedChangesInner, attributes map[string]interface{}, event AccountupdatedEvent, accountChangeTypes []string, singleValueAttributeChanges []MachineidentityupdatedSingleValueAttributeChangesInner, multiValueAttributeChanges []AccountupdatedMultiValueAttributeChangesInner, entitlementChanges []AccountupdatedEntitlementChangesInner, campaign CampaigngeneratedCampaign, certification CertificationsignedoffCertification, eventType string, machineIdentity MachineidentitydeletedMachineIdentity, machineIdentityChangeTypes []string, userEntitlementChanges MachineidentityupdatedUserEntitlementChanges, ownerChanges MachineidentityupdatedOwnerChanges, trackingNumber string, sources string, recipient ProvisioningcompletedRecipient, accountRequests []ProvisioningcompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedsearchcompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ string, created time.Time, connector string, actor SourceupdatedActor, deleted time.Time, modified time.Time, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult, ) *TriggerExampleInput`
+`func NewTriggerExampleInput(accessRequestId string, requestedFor []Accessitemrequestedfordto, requestedItems []AccessrequestpreapprovalRequestedItemsInner, requestedBy Accessitemrequesterdto, requestedItemsStatus []AccessrequestpostapprovalRequestedItemsStatusInner, source Accountsourcereference, status string, started SailPointTime, completed SailPointTime, errors []string, warnings []string, stats AccountscollectedforaggregationStats, identity IdentitydeletedIdentity, account Accountv2, changes []IdentityattributeschangedChangesInner, attributes map[string]interface{}, event AccountupdatedEvent, accountChangeTypes []string, singleValueAttributeChanges []MachineidentityupdatedSingleValueAttributeChangesInner, multiValueAttributeChanges []AccountupdatedMultiValueAttributeChangesInner, entitlementChanges []AccountupdatedEntitlementChangesInner, campaign CampaigngeneratedCampaign, certification CertificationsignedoffCertification, eventType string, machineIdentity MachineidentitydeletedMachineIdentity, machineIdentityChangeTypes []string, userEntitlementChanges MachineidentityupdatedUserEntitlementChanges, ownerChanges MachineidentityupdatedOwnerChanges, trackingNumber string, sources string, recipient ProvisioningcompletedRecipient, accountRequests []ProvisioningcompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedsearchcompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ string, created SailPointTime, connector string, actor SourceupdatedActor, deleted SailPointTime, modified SailPointTime, application VaclusterstatuschangeeventApplication, healthCheckResult VaclusterstatuschangeeventHealthCheckResult, previousHealthCheckResult VaclusterstatuschangeeventPreviousHealthCheckResult, ) *TriggerExampleInput`
 
 NewTriggerExampleInput instantiates a new TriggerExampleInput object
 This constructor will assign default values to properties that have it defined,
@@ -236,40 +236,40 @@ SetStatus sets Status field to given value.
 
 ### GetStarted
 
-`func (o *TriggerExampleInput) GetStarted() time.Time`
+`func (o *TriggerExampleInput) GetStarted() SailPointTime`
 
 GetStarted returns the Started field if non-nil, zero value otherwise.
 
 ### GetStartedOk
 
-`func (o *TriggerExampleInput) GetStartedOk() (*time.Time, bool)`
+`func (o *TriggerExampleInput) GetStartedOk() (*SailPointTime, bool)`
 
 GetStartedOk returns a tuple with the Started field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStarted
 
-`func (o *TriggerExampleInput) SetStarted(v time.Time)`
+`func (o *TriggerExampleInput) SetStarted(v SailPointTime)`
 
 SetStarted sets Started field to given value.
 
 
 ### GetCompleted
 
-`func (o *TriggerExampleInput) GetCompleted() time.Time`
+`func (o *TriggerExampleInput) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *TriggerExampleInput) GetCompletedOk() (*time.Time, bool)`
+`func (o *TriggerExampleInput) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *TriggerExampleInput) SetCompleted(v time.Time)`
+`func (o *TriggerExampleInput) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 
@@ -1206,20 +1206,20 @@ SetType sets Type field to given value.
 
 ### GetCreated
 
-`func (o *TriggerExampleInput) GetCreated() time.Time`
+`func (o *TriggerExampleInput) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *TriggerExampleInput) GetCreatedOk() (*time.Time, bool)`
+`func (o *TriggerExampleInput) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *TriggerExampleInput) SetCreated(v time.Time)`
+`func (o *TriggerExampleInput) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -1266,40 +1266,40 @@ SetActor sets Actor field to given value.
 
 ### GetDeleted
 
-`func (o *TriggerExampleInput) GetDeleted() time.Time`
+`func (o *TriggerExampleInput) GetDeleted() SailPointTime`
 
 GetDeleted returns the Deleted field if non-nil, zero value otherwise.
 
 ### GetDeletedOk
 
-`func (o *TriggerExampleInput) GetDeletedOk() (*time.Time, bool)`
+`func (o *TriggerExampleInput) GetDeletedOk() (*SailPointTime, bool)`
 
 GetDeletedOk returns a tuple with the Deleted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeleted
 
-`func (o *TriggerExampleInput) SetDeleted(v time.Time)`
+`func (o *TriggerExampleInput) SetDeleted(v SailPointTime)`
 
 SetDeleted sets Deleted field to given value.
 
 
 ### GetModified
 
-`func (o *TriggerExampleInput) GetModified() time.Time`
+`func (o *TriggerExampleInput) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *TriggerExampleInput) GetModifiedOk() (*time.Time, bool)`
+`func (o *TriggerExampleInput) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *TriggerExampleInput) SetModified(v time.Time)`
+`func (o *TriggerExampleInput) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

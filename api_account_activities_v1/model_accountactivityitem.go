@@ -12,7 +12,7 @@ package api_account_activities_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Accountactivityitem type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type Accountactivityitem struct {
 	// Human-readable display name of item
 	Name *string `json:"name,omitempty"`
 	// Date and time item was requested
-	Requested *time.Time `json:"requested,omitempty"`
+	Requested *SailPointTime `json:"requested,omitempty"`
 	ApprovalStatus NullableAccountactivityapprovalstatus `json:"approvalStatus,omitempty"`
 	ProvisioningStatus *Provisioningstate `json:"provisioningStatus,omitempty"`
 	RequesterComment NullableComment `json:"requesterComment,omitempty"`
@@ -132,9 +132,9 @@ func (o *Accountactivityitem) SetName(v string) {
 }
 
 // GetRequested returns the Requested field value if set, zero value otherwise.
-func (o *Accountactivityitem) GetRequested() time.Time {
+func (o *Accountactivityitem) GetRequested() SailPointTime {
 	if o == nil || IsNil(o.Requested) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Requested
@@ -142,7 +142,7 @@ func (o *Accountactivityitem) GetRequested() time.Time {
 
 // GetRequestedOk returns a tuple with the Requested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountactivityitem) GetRequestedOk() (*time.Time, bool) {
+func (o *Accountactivityitem) GetRequestedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Requested) {
 		return nil, false
 	}
@@ -158,8 +158,8 @@ func (o *Accountactivityitem) HasRequested() bool {
 	return false
 }
 
-// SetRequested gets a reference to the given time.Time and assigns it to the Requested field.
-func (o *Accountactivityitem) SetRequested(v time.Time) {
+// SetRequested gets a reference to the given SailPointTime and assigns it to the Requested field.
+func (o *Accountactivityitem) SetRequested(v SailPointTime) {
 	o.Requested = &v
 }
 
@@ -639,9 +639,9 @@ func (o *Accountactivityitem) SetClientMetadata(v map[string]string) {
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Accountactivityitem) GetRemoveDate() time.Time {
+func (o *Accountactivityitem) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RemoveDate.Get()
@@ -650,7 +650,7 @@ func (o *Accountactivityitem) GetRemoveDate() time.Time {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Accountactivityitem) GetRemoveDateOk() (*time.Time, bool) {
+func (o *Accountactivityitem) GetRemoveDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -667,7 +667,7 @@ func (o *Accountactivityitem) HasRemoveDate() bool {
 }
 
 // SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
-func (o *Accountactivityitem) SetRemoveDate(v time.Time) {
+func (o *Accountactivityitem) SetRemoveDate(v SailPointTime) {
 	o.RemoveDate.Set(&v)
 }
 // SetRemoveDateNil sets the value for RemoveDate to be an explicit nil

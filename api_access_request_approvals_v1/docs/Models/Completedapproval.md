@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The approval id. | [optional] 
 **Name** | Pointer to **string** | The name of the approval. | [optional] 
-**Created** | Pointer to **time.Time** | When the approval was created. | [optional] 
-**Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
-**RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
+**Created** | Pointer to **SailPointTime** | When the approval was created. | [optional] 
+**Modified** | Pointer to **SailPointTime** | When the approval was modified last time. | [optional] 
+**RequestCreated** | Pointer to **SailPointTime** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**NullableAccessrequesttype**](accessrequesttype) |  | [optional] 
 **Requester** | Pointer to [**Accessitemrequester**](accessitemrequester) |  | [optional] 
 **RequestedFor** | Pointer to [**CompletedapprovalRequestedFor**](completedapproval-requested-for) |  | [optional] 
@@ -113,20 +113,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Completedapproval) GetCreated() time.Time`
+`func (o *Completedapproval) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Completedapproval) GetCreatedOk() (*time.Time, bool)`
+`func (o *Completedapproval) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Completedapproval) SetCreated(v time.Time)`
+`func (o *Completedapproval) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -138,20 +138,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Completedapproval) GetModified() time.Time`
+`func (o *Completedapproval) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Completedapproval) GetModifiedOk() (*time.Time, bool)`
+`func (o *Completedapproval) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Completedapproval) SetModified(v time.Time)`
+`func (o *Completedapproval) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -163,20 +163,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetRequestCreated
 
-`func (o *Completedapproval) GetRequestCreated() time.Time`
+`func (o *Completedapproval) GetRequestCreated() SailPointTime`
 
 GetRequestCreated returns the RequestCreated field if non-nil, zero value otherwise.
 
 ### GetRequestCreatedOk
 
-`func (o *Completedapproval) GetRequestCreatedOk() (*time.Time, bool)`
+`func (o *Completedapproval) GetRequestCreatedOk() (*SailPointTime, bool)`
 
 GetRequestCreatedOk returns a tuple with the RequestCreated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestCreated
 
-`func (o *Completedapproval) SetRequestCreated(v time.Time)`
+`func (o *Completedapproval) SetRequestCreated(v SailPointTime)`
 
 SetRequestCreated sets RequestCreated field to given value.
 
@@ -498,20 +498,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetRemoveDate
 
-`func (o *Completedapproval) GetRemoveDate() time.Time`
+`func (o *Completedapproval) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *Completedapproval) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *Completedapproval) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *Completedapproval) SetRemoveDate(v time.Time)`
+`func (o *Completedapproval) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 
@@ -558,20 +558,20 @@ HasRemoveDateUpdateRequested returns a boolean if a field has been set.
 
 ### GetCurrentRemoveDate
 
-`func (o *Completedapproval) GetCurrentRemoveDate() time.Time`
+`func (o *Completedapproval) GetCurrentRemoveDate() SailPointTime`
 
 GetCurrentRemoveDate returns the CurrentRemoveDate field if non-nil, zero value otherwise.
 
 ### GetCurrentRemoveDateOk
 
-`func (o *Completedapproval) GetCurrentRemoveDateOk() (*time.Time, bool)`
+`func (o *Completedapproval) GetCurrentRemoveDateOk() (*SailPointTime, bool)`
 
 GetCurrentRemoveDateOk returns a tuple with the CurrentRemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentRemoveDate
 
-`func (o *Completedapproval) SetCurrentRemoveDate(v time.Time)`
+`func (o *Completedapproval) SetCurrentRemoveDate(v SailPointTime)`
 
 SetCurrentRemoveDate sets CurrentRemoveDate field to given value.
 

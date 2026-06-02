@@ -12,7 +12,6 @@ package api_sources_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Attributedefinitiontype The underlying type of the value which an AttributeDefinition represents.

@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Quality** | Pointer to **int32** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
 **Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
 **CreatedBy** | Pointer to [**RoleminingpotentialrolesummaryCreatedBy**](roleminingpotentialrolesummary-created-by) |  | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time when this potential role was created. | [optional] 
+**CreatedDate** | Pointer to **SailPointTime** | The date-time when this potential role was created. | [optional] 
 **Saved** | Pointer to **bool** | The potential role's saved status | [optional] [default to false]
 **Description** | Pointer to **NullableString** | Description of the potential role | [optional] 
 **Session** | Pointer to [**Roleminingsessionparametersdto**](roleminingsessionparametersdto) |  | [optional] 
@@ -389,20 +389,20 @@ HasCreatedBy returns a boolean if a field has been set.
 
 ### GetCreatedDate
 
-`func (o *Roleminingpotentialrolesummary) GetCreatedDate() time.Time`
+`func (o *Roleminingpotentialrolesummary) GetCreatedDate() SailPointTime`
 
 GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
 
 ### GetCreatedDateOk
 
-`func (o *Roleminingpotentialrolesummary) GetCreatedDateOk() (*time.Time, bool)`
+`func (o *Roleminingpotentialrolesummary) GetCreatedDateOk() (*SailPointTime, bool)`
 
 GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedDate
 
-`func (o *Roleminingpotentialrolesummary) SetCreatedDate(v time.Time)`
+`func (o *Roleminingpotentialrolesummary) SetCreatedDate(v SailPointTime)`
 
 SetCreatedDate sets CreatedDate field to given value.
 

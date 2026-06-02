@@ -12,7 +12,7 @@ package api_multi_host_integration_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -33,9 +33,9 @@ type Multihostintegrationscreate struct {
 	ConnectorAttributes map[string]interface{} `json:"connectorAttributes,omitempty"`
 	ManagementWorkgroup NullableMultihostintegrationsManagementWorkgroup `json:"managementWorkgroup,omitempty"`
 	// Date-time when the source was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Date-time when the source was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -275,9 +275,9 @@ func (o *Multihostintegrationscreate) UnsetManagementWorkgroup() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Multihostintegrationscreate) GetCreated() time.Time {
+func (o *Multihostintegrationscreate) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -285,7 +285,7 @@ func (o *Multihostintegrationscreate) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Multihostintegrationscreate) GetCreatedOk() (*time.Time, bool) {
+func (o *Multihostintegrationscreate) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -301,15 +301,15 @@ func (o *Multihostintegrationscreate) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Multihostintegrationscreate) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Multihostintegrationscreate) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Multihostintegrationscreate) GetModified() time.Time {
+func (o *Multihostintegrationscreate) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -317,7 +317,7 @@ func (o *Multihostintegrationscreate) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Multihostintegrationscreate) GetModifiedOk() (*time.Time, bool) {
+func (o *Multihostintegrationscreate) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -333,8 +333,8 @@ func (o *Multihostintegrationscreate) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Multihostintegrationscreate) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Multihostintegrationscreate) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

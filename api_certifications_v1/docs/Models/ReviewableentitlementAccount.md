@@ -219,20 +219,20 @@ HasName returns a boolean if a field has been set.
 UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCreated
 
-`func (o *ReviewableentitlementAccount) GetCreated() time.Time`
+`func (o *ReviewableentitlementAccount) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *ReviewableentitlementAccount) GetCreatedOk() (*time.Time, bool)`
+`func (o *ReviewableentitlementAccount) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *ReviewableentitlementAccount) SetCreated(v time.Time)`
+`func (o *ReviewableentitlementAccount) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -254,20 +254,20 @@ HasCreated returns a boolean if a field has been set.
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
-`func (o *ReviewableentitlementAccount) GetModified() time.Time`
+`func (o *ReviewableentitlementAccount) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *ReviewableentitlementAccount) GetModifiedOk() (*time.Time, bool)`
+`func (o *ReviewableentitlementAccount) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *ReviewableentitlementAccount) SetModified(v time.Time)`
+`func (o *ReviewableentitlementAccount) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

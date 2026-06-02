@@ -12,7 +12,6 @@ package api_machine_account_creation_request_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accountrequestphasestate The current phase state of the account request, indicating its progress or outcome in the approval workflow.

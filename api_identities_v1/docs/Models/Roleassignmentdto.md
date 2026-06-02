@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **AssignmentContext** | Pointer to [**RoleassignmentdtoAssignmentContext**](roleassignmentdto-assignment-context) |  | [optional] 
 **AccountTargets** | Pointer to [**[]Roletargetdto**](roletargetdto) |  | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | Date that the assignment will be removed | [optional] 
-**AddedDate** | Pointer to **time.Time** | Date that the assignment was added | [optional] 
+**AddedDate** | Pointer to **SailPointTime** | Date that the assignment was added | [optional] 
 
 ## Methods
 
@@ -257,20 +257,20 @@ HasAccountTargets returns a boolean if a field has been set.
 
 ### GetRemoveDate
 
-`func (o *Roleassignmentdto) GetRemoveDate() time.Time`
+`func (o *Roleassignmentdto) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *Roleassignmentdto) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *Roleassignmentdto) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *Roleassignmentdto) SetRemoveDate(v time.Time)`
+`func (o *Roleassignmentdto) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 
@@ -292,20 +292,20 @@ HasRemoveDate returns a boolean if a field has been set.
 UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 ### GetAddedDate
 
-`func (o *Roleassignmentdto) GetAddedDate() time.Time`
+`func (o *Roleassignmentdto) GetAddedDate() SailPointTime`
 
 GetAddedDate returns the AddedDate field if non-nil, zero value otherwise.
 
 ### GetAddedDateOk
 
-`func (o *Roleassignmentdto) GetAddedDateOk() (*time.Time, bool)`
+`func (o *Roleassignmentdto) GetAddedDateOk() (*SailPointTime, bool)`
 
 GetAddedDateOk returns a tuple with the AddedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddedDate
 
-`func (o *Roleassignmentdto) SetAddedDate(v time.Time)`
+`func (o *Roleassignmentdto) SetAddedDate(v SailPointTime)`
 
 SetAddedDate sets AddedDate field to given value.
 

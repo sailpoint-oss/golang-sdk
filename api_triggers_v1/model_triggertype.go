@@ -12,7 +12,6 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Triggertype The type of trigger.

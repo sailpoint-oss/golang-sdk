@@ -12,7 +12,7 @@ package api_jit_activations_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -29,7 +29,7 @@ type Jitactivationdeactivateresponse struct {
 	ConnectionId string `json:"connectionId"`
 	Status Activationworkflowstatus `json:"status"`
 	// Time associated with this deactivation request (ISO-8601).
-	StartTime time.Time `json:"startTime"`
+	StartTime SailPointTime `json:"startTime"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,7 +39,7 @@ type _Jitactivationdeactivateresponse Jitactivationdeactivateresponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJitactivationdeactivateresponse(id string, activationId string, connectionId string, status Activationworkflowstatus, startTime time.Time) *Jitactivationdeactivateresponse {
+func NewJitactivationdeactivateresponse(id string, activationId string, connectionId string, status Activationworkflowstatus, startTime SailPointTime) *Jitactivationdeactivateresponse {
 	this := Jitactivationdeactivateresponse{}
 	this.Id = id
 	this.ActivationId = activationId
@@ -154,9 +154,9 @@ func (o *Jitactivationdeactivateresponse) SetStatus(v Activationworkflowstatus) 
 }
 
 // GetStartTime returns the StartTime field value
-func (o *Jitactivationdeactivateresponse) GetStartTime() time.Time {
+func (o *Jitactivationdeactivateresponse) GetStartTime() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -165,7 +165,7 @@ func (o *Jitactivationdeactivateresponse) GetStartTime() time.Time {
 
 // GetStartTimeOk returns a tuple with the StartTime field value
 // and a boolean to check if the value has been set.
-func (o *Jitactivationdeactivateresponse) GetStartTimeOk() (*time.Time, bool) {
+func (o *Jitactivationdeactivateresponse) GetStartTimeOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,7 +173,7 @@ func (o *Jitactivationdeactivateresponse) GetStartTimeOk() (*time.Time, bool) {
 }
 
 // SetStartTime sets field value
-func (o *Jitactivationdeactivateresponse) SetStartTime(v time.Time) {
+func (o *Jitactivationdeactivateresponse) SetStartTime(v SailPointTime) {
 	o.StartTime = v
 }
 

@@ -12,7 +12,7 @@ package api_non_employee_lifecycle_management_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Nonemployeeapprovalitemdetail type satisfies the MappedNullable interface at compile time
@@ -31,9 +31,9 @@ type Nonemployeeapprovalitemdetail struct {
 	// comment of approver
 	Comment *string `json:"comment,omitempty"`
 	// When the request was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	NonEmployeeRequest *Nonemployeerequestwithoutapprovalitem `json:"nonEmployeeRequest,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -250,9 +250,9 @@ func (o *Nonemployeeapprovalitemdetail) SetComment(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Nonemployeeapprovalitemdetail) GetModified() time.Time {
+func (o *Nonemployeeapprovalitemdetail) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -260,7 +260,7 @@ func (o *Nonemployeeapprovalitemdetail) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Nonemployeeapprovalitemdetail) GetModifiedOk() (*time.Time, bool) {
+func (o *Nonemployeeapprovalitemdetail) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -276,15 +276,15 @@ func (o *Nonemployeeapprovalitemdetail) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Nonemployeeapprovalitemdetail) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Nonemployeeapprovalitemdetail) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Nonemployeeapprovalitemdetail) GetCreated() time.Time {
+func (o *Nonemployeeapprovalitemdetail) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -292,7 +292,7 @@ func (o *Nonemployeeapprovalitemdetail) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Nonemployeeapprovalitemdetail) GetCreatedOk() (*time.Time, bool) {
+func (o *Nonemployeeapprovalitemdetail) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -308,8 +308,8 @@ func (o *Nonemployeeapprovalitemdetail) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Nonemployeeapprovalitemdetail) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Nonemployeeapprovalitemdetail) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

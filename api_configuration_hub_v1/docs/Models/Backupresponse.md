@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **Tenant** | Pointer to **string** | The name of the tenant performing the upload | [optional] 
 **RequesterName** | Pointer to **string** | The name of the requester. | [optional] 
 **FileExists** | Pointer to **bool** | Whether or not a file was created and stored for this backup. | [optional] [default to true]
-**Created** | Pointer to **time.Time** | The time the job was started. | [optional] 
-**Modified** | Pointer to **time.Time** | The time of the last update to the job. | [optional] 
-**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time the job was started. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The time of the last update to the job. | [optional] 
+**Completed** | Pointer to **SailPointTime** | The time the job was completed. | [optional] 
 **Name** | Pointer to **string** | The name assigned to the upload file in the request body. | [optional] 
 **UserCanDelete** | Pointer to **bool** | Whether this backup can be deleted by a regular user. | [optional] [default to true]
 **IsPartial** | Pointer to **bool** | Whether this backup contains all supported object types or only some of them. | [optional] [default to false]
@@ -204,20 +204,20 @@ HasFileExists returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Backupresponse) GetCreated() time.Time`
+`func (o *Backupresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Backupresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Backupresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Backupresponse) SetCreated(v time.Time)`
+`func (o *Backupresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -229,20 +229,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Backupresponse) GetModified() time.Time`
+`func (o *Backupresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Backupresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Backupresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Backupresponse) SetModified(v time.Time)`
+`func (o *Backupresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -254,20 +254,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetCompleted
 
-`func (o *Backupresponse) GetCompleted() time.Time`
+`func (o *Backupresponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Backupresponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *Backupresponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Backupresponse) SetCompleted(v time.Time)`
+`func (o *Backupresponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

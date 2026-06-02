@@ -12,7 +12,7 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -24,9 +24,9 @@ type Certificationdto struct {
 	CampaignRef Campaignreference `json:"campaignRef"`
 	Phase Certificationphase `json:"phase"`
 	// The due date of the certification.
-	Due time.Time `json:"due"`
+	Due SailPointTime `json:"due"`
 	// The date the reviewer signed off on the certification.
-	Signed time.Time `json:"signed"`
+	Signed SailPointTime `json:"signed"`
 	Reviewer Reviewer `json:"reviewer"`
 	Reassignment NullableReassignment `json:"reassignment,omitempty"`
 	// Indicates it the certification has any errors.
@@ -52,7 +52,7 @@ type _Certificationdto Certificationdto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificationdto(campaignRef Campaignreference, phase Certificationphase, due time.Time, signed time.Time, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *Certificationdto {
+func NewCertificationdto(campaignRef Campaignreference, phase Certificationphase, due SailPointTime, signed SailPointTime, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *Certificationdto {
 	this := Certificationdto{}
 	this.CampaignRef = campaignRef
 	this.Phase = phase
@@ -125,9 +125,9 @@ func (o *Certificationdto) SetPhase(v Certificationphase) {
 }
 
 // GetDue returns the Due field value
-func (o *Certificationdto) GetDue() time.Time {
+func (o *Certificationdto) GetDue() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -136,7 +136,7 @@ func (o *Certificationdto) GetDue() time.Time {
 
 // GetDueOk returns a tuple with the Due field value
 // and a boolean to check if the value has been set.
-func (o *Certificationdto) GetDueOk() (*time.Time, bool) {
+func (o *Certificationdto) GetDueOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,14 +144,14 @@ func (o *Certificationdto) GetDueOk() (*time.Time, bool) {
 }
 
 // SetDue sets field value
-func (o *Certificationdto) SetDue(v time.Time) {
+func (o *Certificationdto) SetDue(v SailPointTime) {
 	o.Due = v
 }
 
 // GetSigned returns the Signed field value
-func (o *Certificationdto) GetSigned() time.Time {
+func (o *Certificationdto) GetSigned() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -160,7 +160,7 @@ func (o *Certificationdto) GetSigned() time.Time {
 
 // GetSignedOk returns a tuple with the Signed field value
 // and a boolean to check if the value has been set.
-func (o *Certificationdto) GetSignedOk() (*time.Time, bool) {
+func (o *Certificationdto) GetSignedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *Certificationdto) GetSignedOk() (*time.Time, bool) {
 }
 
 // SetSigned sets field value
-func (o *Certificationdto) SetSigned(v time.Time) {
+func (o *Certificationdto) SetSigned(v SailPointTime) {
 	o.Signed = v
 }
 

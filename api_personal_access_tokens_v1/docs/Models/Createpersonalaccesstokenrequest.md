@@ -132,20 +132,20 @@ HasAccessTokenValiditySeconds returns a boolean if a field has been set.
 UnsetAccessTokenValiditySeconds ensures that no value is present for AccessTokenValiditySeconds, not even an explicit nil
 ### GetExpirationDate
 
-`func (o *Createpersonalaccesstokenrequest) GetExpirationDate() time.Time`
+`func (o *Createpersonalaccesstokenrequest) GetExpirationDate() SailPointTime`
 
 GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
 
 ### GetExpirationDateOk
 
-`func (o *Createpersonalaccesstokenrequest) GetExpirationDateOk() (*time.Time, bool)`
+`func (o *Createpersonalaccesstokenrequest) GetExpirationDateOk() (*SailPointTime, bool)`
 
 GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpirationDate
 
-`func (o *Createpersonalaccesstokenrequest) SetExpirationDate(v time.Time)`
+`func (o *Createpersonalaccesstokenrequest) SetExpirationDate(v SailPointTime)`
 
 SetExpirationDate sets ExpirationDate field to given value.
 

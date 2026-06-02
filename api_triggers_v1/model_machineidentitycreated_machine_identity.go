@@ -12,7 +12,7 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type MachineidentitycreatedMachineIdentity struct {
 	// Name of the machine identity.
 	Name *string `json:"name,omitempty"`
 	// Creation timestamp.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Last modified timestamp.
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	// Associated business application.
 	BusinessApplication *string `json:"businessApplication,omitempty"`
 	// Description of the machine identity.
@@ -65,7 +65,7 @@ type _MachineidentitycreatedMachineIdentity MachineidentitycreatedMachineIdentit
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineidentitycreatedMachineIdentity(id string, created time.Time, modified time.Time, subtype string, manuallyEdited bool) *MachineidentitycreatedMachineIdentity {
+func NewMachineidentitycreatedMachineIdentity(id string, created SailPointTime, modified SailPointTime, subtype string, manuallyEdited bool) *MachineidentitycreatedMachineIdentity {
 	this := MachineidentitycreatedMachineIdentity{}
 	this.Id = id
 	this.Created = created
@@ -146,9 +146,9 @@ func (o *MachineidentitycreatedMachineIdentity) SetName(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *MachineidentitycreatedMachineIdentity) GetCreated() time.Time {
+func (o *MachineidentitycreatedMachineIdentity) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -157,7 +157,7 @@ func (o *MachineidentitycreatedMachineIdentity) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *MachineidentitycreatedMachineIdentity) GetCreatedOk() (*time.Time, bool) {
+func (o *MachineidentitycreatedMachineIdentity) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -165,14 +165,14 @@ func (o *MachineidentitycreatedMachineIdentity) GetCreatedOk() (*time.Time, bool
 }
 
 // SetCreated sets field value
-func (o *MachineidentitycreatedMachineIdentity) SetCreated(v time.Time) {
+func (o *MachineidentitycreatedMachineIdentity) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *MachineidentitycreatedMachineIdentity) GetModified() time.Time {
+func (o *MachineidentitycreatedMachineIdentity) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -181,7 +181,7 @@ func (o *MachineidentitycreatedMachineIdentity) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *MachineidentitycreatedMachineIdentity) GetModifiedOk() (*time.Time, bool) {
+func (o *MachineidentitycreatedMachineIdentity) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *MachineidentitycreatedMachineIdentity) GetModifiedOk() (*time.Time, boo
 }
 
 // SetModified sets field value
-func (o *MachineidentitycreatedMachineIdentity) SetModified(v time.Time) {
+func (o *MachineidentitycreatedMachineIdentity) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 

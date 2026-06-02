@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Workflowexecutionevent', 'V1Workflowe
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | The type of event | [optional] 
-**Timestamp** | Pointer to **time.Time** | The date-time when the event occurred | [optional] 
+**Timestamp** | Pointer to **SailPointTime** | The date-time when the event occurred | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | Additional attributes associated with the event | [optional] 
 
 ## Methods
@@ -65,20 +65,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *Workflowexecutionevent) GetTimestamp() time.Time`
+`func (o *Workflowexecutionevent) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Workflowexecutionevent) GetTimestampOk() (*time.Time, bool)`
+`func (o *Workflowexecutionevent) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Workflowexecutionevent) SetTimestamp(v time.Time)`
+`func (o *Workflowexecutionevent) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 

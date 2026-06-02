@@ -704,20 +704,20 @@ HasCcId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Managedcluster) GetCreatedAt() time.Time`
+`func (o *Managedcluster) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Managedcluster) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Managedcluster) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Managedcluster) SetCreatedAt(v time.Time)`
+`func (o *Managedcluster) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -739,20 +739,20 @@ HasCreatedAt returns a boolean if a field has been set.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *Managedcluster) GetUpdatedAt() time.Time`
+`func (o *Managedcluster) GetUpdatedAt() SailPointTime`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Managedcluster) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *Managedcluster) GetUpdatedAtOk() (*SailPointTime, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Managedcluster) SetUpdatedAt(v time.Time)`
+`func (o *Managedcluster) SetUpdatedAt(v SailPointTime)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -774,20 +774,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetLastReleaseNotifiedAt
 
-`func (o *Managedcluster) GetLastReleaseNotifiedAt() time.Time`
+`func (o *Managedcluster) GetLastReleaseNotifiedAt() SailPointTime`
 
 GetLastReleaseNotifiedAt returns the LastReleaseNotifiedAt field if non-nil, zero value otherwise.
 
 ### GetLastReleaseNotifiedAtOk
 
-`func (o *Managedcluster) GetLastReleaseNotifiedAtOk() (*time.Time, bool)`
+`func (o *Managedcluster) GetLastReleaseNotifiedAtOk() (*SailPointTime, bool)`
 
 GetLastReleaseNotifiedAtOk returns a tuple with the LastReleaseNotifiedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastReleaseNotifiedAt
 
-`func (o *Managedcluster) SetLastReleaseNotifiedAt(v time.Time)`
+`func (o *Managedcluster) SetLastReleaseNotifiedAt(v SailPointTime)`
 
 SetLastReleaseNotifiedAt sets LastReleaseNotifiedAt field to given value.
 
@@ -904,20 +904,20 @@ HasUpdatePackage returns a boolean if a field has been set.
 UnsetUpdatePackage ensures that no value is present for UpdatePackage, not even an explicit nil
 ### GetIsOutOfDateNotifiedAt
 
-`func (o *Managedcluster) GetIsOutOfDateNotifiedAt() time.Time`
+`func (o *Managedcluster) GetIsOutOfDateNotifiedAt() SailPointTime`
 
 GetIsOutOfDateNotifiedAt returns the IsOutOfDateNotifiedAt field if non-nil, zero value otherwise.
 
 ### GetIsOutOfDateNotifiedAtOk
 
-`func (o *Managedcluster) GetIsOutOfDateNotifiedAtOk() (*time.Time, bool)`
+`func (o *Managedcluster) GetIsOutOfDateNotifiedAtOk() (*SailPointTime, bool)`
 
 GetIsOutOfDateNotifiedAtOk returns a tuple with the IsOutOfDateNotifiedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsOutOfDateNotifiedAt
 
-`func (o *Managedcluster) SetIsOutOfDateNotifiedAt(v time.Time)`
+`func (o *Managedcluster) SetIsOutOfDateNotifiedAt(v SailPointTime)`
 
 SetIsOutOfDateNotifiedAt sets IsOutOfDateNotifiedAt field to given value.
 

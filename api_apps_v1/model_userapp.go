@@ -12,7 +12,7 @@ package api_apps_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Userapp type satisfies the MappedNullable interface at compile time
@@ -23,9 +23,9 @@ type Userapp struct {
 	// The user app id
 	Id *string `json:"id,omitempty"`
 	// Time when the user app was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the user app was last modified
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// True if the owner has multiple accounts for the source
 	HasMultipleAccounts *bool `json:"hasMultipleAccounts,omitempty"`
 	// True if the source has password feature
@@ -109,9 +109,9 @@ func (o *Userapp) SetId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Userapp) GetCreated() time.Time {
+func (o *Userapp) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -119,7 +119,7 @@ func (o *Userapp) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Userapp) GetCreatedOk() (*time.Time, bool) {
+func (o *Userapp) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -135,15 +135,15 @@ func (o *Userapp) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Userapp) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Userapp) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Userapp) GetModified() time.Time {
+func (o *Userapp) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -151,7 +151,7 @@ func (o *Userapp) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Userapp) GetModifiedOk() (*time.Time, bool) {
+func (o *Userapp) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -167,8 +167,8 @@ func (o *Userapp) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Userapp) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Userapp) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

@@ -12,7 +12,7 @@ package api_sp_config_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,11 +28,11 @@ type Spconfigjob struct {
 	// Type of the job, either export or import.
 	Type string `json:"type"`
 	// The time until which the artifacts will be available for download.
-	Expiration *time.Time `json:"expiration,omitempty"`
+	Expiration *SailPointTime `json:"expiration,omitempty"`
 	// The time the job was started.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The time of the last update to the job.
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +42,7 @@ type _Spconfigjob Spconfigjob
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpconfigjob(jobId string, status string, type_ string, created time.Time, modified time.Time) *Spconfigjob {
+func NewSpconfigjob(jobId string, status string, type_ string, created SailPointTime, modified SailPointTime) *Spconfigjob {
 	this := Spconfigjob{}
 	this.JobId = jobId
 	this.Status = status
@@ -133,9 +133,9 @@ func (o *Spconfigjob) SetType(v string) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
-func (o *Spconfigjob) GetExpiration() time.Time {
+func (o *Spconfigjob) GetExpiration() SailPointTime {
 	if o == nil || IsNil(o.Expiration) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Expiration
@@ -143,7 +143,7 @@ func (o *Spconfigjob) GetExpiration() time.Time {
 
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Spconfigjob) GetExpirationOk() (*time.Time, bool) {
+func (o *Spconfigjob) GetExpirationOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
@@ -159,15 +159,15 @@ func (o *Spconfigjob) HasExpiration() bool {
 	return false
 }
 
-// SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
-func (o *Spconfigjob) SetExpiration(v time.Time) {
+// SetExpiration gets a reference to the given SailPointTime and assigns it to the Expiration field.
+func (o *Spconfigjob) SetExpiration(v SailPointTime) {
 	o.Expiration = &v
 }
 
 // GetCreated returns the Created field value
-func (o *Spconfigjob) GetCreated() time.Time {
+func (o *Spconfigjob) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -176,7 +176,7 @@ func (o *Spconfigjob) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Spconfigjob) GetCreatedOk() (*time.Time, bool) {
+func (o *Spconfigjob) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -184,14 +184,14 @@ func (o *Spconfigjob) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Spconfigjob) SetCreated(v time.Time) {
+func (o *Spconfigjob) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *Spconfigjob) GetModified() time.Time {
+func (o *Spconfigjob) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -200,7 +200,7 @@ func (o *Spconfigjob) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *Spconfigjob) GetModifiedOk() (*time.Time, bool) {
+func (o *Spconfigjob) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *Spconfigjob) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Spconfigjob) SetModified(v time.Time) {
+func (o *Spconfigjob) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 

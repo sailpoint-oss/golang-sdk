@@ -12,7 +12,6 @@ package api_dimensions_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Dimensionmembershipselectortype This enum characterizes the type of a Dimension's membership selector. Only the STANDARD type supported:  STANDARD: Indicates that Dimension membership is defined in terms of a criteria expression

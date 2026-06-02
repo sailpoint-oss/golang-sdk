@@ -12,7 +12,7 @@ package api_certification_campaigns_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -179,9 +179,9 @@ func (o *Slimcampaign) SetDescription(v string) {
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Slimcampaign) GetDeadline() time.Time {
+func (o *Slimcampaign) GetDeadline() SailPointTime {
 	if o == nil || IsNil(o.Deadline.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Deadline.Get()
@@ -190,7 +190,7 @@ func (o *Slimcampaign) GetDeadline() time.Time {
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Slimcampaign) GetDeadlineOk() (*time.Time, bool) {
+func (o *Slimcampaign) GetDeadlineOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -207,7 +207,7 @@ func (o *Slimcampaign) HasDeadline() bool {
 }
 
 // SetDeadline gets a reference to the given NullableTime and assigns it to the Deadline field.
-func (o *Slimcampaign) SetDeadline(v time.Time) {
+func (o *Slimcampaign) SetDeadline(v SailPointTime) {
 	o.Deadline.Set(&v)
 }
 // SetDeadlineNil sets the value for Deadline to be an explicit nil
@@ -415,9 +415,9 @@ func (o *Slimcampaign) SetCorrelatedStatus(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Slimcampaign) GetCreated() time.Time {
+func (o *Slimcampaign) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -426,7 +426,7 @@ func (o *Slimcampaign) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Slimcampaign) GetCreatedOk() (*time.Time, bool) {
+func (o *Slimcampaign) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -443,7 +443,7 @@ func (o *Slimcampaign) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *Slimcampaign) SetCreated(v time.Time) {
+func (o *Slimcampaign) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil

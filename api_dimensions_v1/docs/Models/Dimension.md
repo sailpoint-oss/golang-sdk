@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The id of the Dimension. This field must be left null when creating a dimension, otherwise a 400 Bad Request error will result. | [optional] 
 **Name** | **string** | The human-readable display name of the Dimension | 
-**Created** | Pointer to **time.Time** | Date the Dimension was created | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Date the Dimension was last modified. | [optional] [readonly] 
+**Created** | Pointer to **SailPointTime** | Date the Dimension was created | [optional] [readonly] 
+**Modified** | Pointer to **SailPointTime** | Date the Dimension was last modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | A human-readable description of the Dimension | [optional] 
 **Owner** | [**NullableOwnerreference**](ownerreference) |  | 
 **AccessProfiles** | Pointer to [**[]Accessprofileref**](accessprofileref) |  | [optional] 
@@ -92,20 +92,20 @@ SetName sets Name field to given value.
 
 ### GetCreated
 
-`func (o *Dimension) GetCreated() time.Time`
+`func (o *Dimension) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Dimension) GetCreatedOk() (*time.Time, bool)`
+`func (o *Dimension) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Dimension) SetCreated(v time.Time)`
+`func (o *Dimension) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -117,20 +117,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Dimension) GetModified() time.Time`
+`func (o *Dimension) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Dimension) GetModifiedOk() (*time.Time, bool)`
+`func (o *Dimension) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Dimension) SetModified(v time.Time)`
+`func (o *Dimension) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

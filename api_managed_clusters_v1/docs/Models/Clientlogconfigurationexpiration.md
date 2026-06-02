@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Clientlogconfigurationexpiration', 'V
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | Log configuration's client ID | [optional] 
-**Expiration** | Pointer to **time.Time** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
+**Expiration** | Pointer to **SailPointTime** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
 **RootLevel** | [**Standardlevel**](standardlevel) |  | 
 **LogLevels** | Pointer to [**map[string]Standardlevel**](standardlevel) | Mapping of identifiers to Standard Log Level values | [optional] 
 
@@ -66,20 +66,20 @@ HasClientId returns a boolean if a field has been set.
 
 ### GetExpiration
 
-`func (o *Clientlogconfigurationexpiration) GetExpiration() time.Time`
+`func (o *Clientlogconfigurationexpiration) GetExpiration() SailPointTime`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *Clientlogconfigurationexpiration) GetExpirationOk() (*time.Time, bool)`
+`func (o *Clientlogconfigurationexpiration) GetExpirationOk() (*SailPointTime, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *Clientlogconfigurationexpiration) SetExpiration(v time.Time)`
+`func (o *Clientlogconfigurationexpiration) SetExpiration(v SailPointTime)`
 
 SetExpiration sets Expiration field to given value.
 

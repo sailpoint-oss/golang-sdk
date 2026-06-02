@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique identifier for the Service Desk integration | [optional] 
 **Name** | **string** | Service Desk integration's name. The name must be unique. | 
-**Created** | Pointer to **time.Time** | The date and time the Service Desk integration was created | [optional] 
-**Modified** | Pointer to **time.Time** | The date and time the Service Desk integration was last modified | [optional] 
+**Created** | Pointer to **SailPointTime** | The date and time the Service Desk integration was created | [optional] 
+**Modified** | Pointer to **SailPointTime** | The date and time the Service Desk integration was last modified | [optional] 
 **Description** | **string** | Service Desk integration's description. | 
 **Type** | **string** | Service Desk integration types:  - ServiceNowSDIM - ServiceNow  | [default to "ServiceNowSDIM"]
 **OwnerRef** | Pointer to [**Ownerdto**](ownerdto) |  | [optional] 
@@ -95,20 +95,20 @@ SetName sets Name field to given value.
 
 ### GetCreated
 
-`func (o *Servicedeskintegrationdto) GetCreated() time.Time`
+`func (o *Servicedeskintegrationdto) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Servicedeskintegrationdto) GetCreatedOk() (*time.Time, bool)`
+`func (o *Servicedeskintegrationdto) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Servicedeskintegrationdto) SetCreated(v time.Time)`
+`func (o *Servicedeskintegrationdto) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -120,20 +120,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Servicedeskintegrationdto) GetModified() time.Time`
+`func (o *Servicedeskintegrationdto) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Servicedeskintegrationdto) GetModifiedOk() (*time.Time, bool)`
+`func (o *Servicedeskintegrationdto) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Servicedeskintegrationdto) SetModified(v time.Time)`
+`func (o *Servicedeskintegrationdto) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

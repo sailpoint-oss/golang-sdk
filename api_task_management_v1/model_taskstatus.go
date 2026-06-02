@@ -12,7 +12,7 @@ package api_task_management_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -35,7 +35,7 @@ type Taskstatus struct {
 	Launcher string `json:"launcher"`
 	Target NullableTarget `json:"target,omitempty"`
 	// Creation date of the task this TaskStatus represents
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Last modification date of the task this TaskStatus represents
 	Modified NullableTime `json:"modified"`
 	// Launch date of the task this TaskStatus represents
@@ -64,7 +64,7 @@ type _Taskstatus Taskstatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskstatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created time.Time, modified NullableTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []Taskstatusmessage, returns []Taskreturndetails, attributes map[string]interface{}, progress NullableString, percentComplete int32) *Taskstatus {
+func NewTaskstatus(id string, type_ string, uniqueName string, description string, parentName NullableString, launcher string, created SailPointTime, modified NullableTime, launched NullableTime, completed NullableTime, completionStatus NullableString, messages []Taskstatusmessage, returns []Taskreturndetails, attributes map[string]interface{}, progress NullableString, percentComplete int32) *Taskstatus {
 	this := Taskstatus{}
 	this.Id = id
 	this.Type = type_
@@ -282,9 +282,9 @@ func (o *Taskstatus) UnsetTarget() {
 }
 
 // GetCreated returns the Created field value
-func (o *Taskstatus) GetCreated() time.Time {
+func (o *Taskstatus) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -293,7 +293,7 @@ func (o *Taskstatus) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Taskstatus) GetCreatedOk() (*time.Time, bool) {
+func (o *Taskstatus) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,15 +301,15 @@ func (o *Taskstatus) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Taskstatus) SetCreated(v time.Time) {
+func (o *Taskstatus) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-// If the value is explicit nil, the zero value for time.Time will be returned
-func (o *Taskstatus) GetModified() time.Time {
+// If the value is explicit nil, the zero value for SailPointTime will be returned
+func (o *Taskstatus) GetModified() SailPointTime {
 	if o == nil || o.Modified.Get() == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -319,7 +319,7 @@ func (o *Taskstatus) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Taskstatus) GetModifiedOk() (*time.Time, bool) {
+func (o *Taskstatus) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -327,15 +327,15 @@ func (o *Taskstatus) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Taskstatus) SetModified(v time.Time) {
+func (o *Taskstatus) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 
 // GetLaunched returns the Launched field value
-// If the value is explicit nil, the zero value for time.Time will be returned
-func (o *Taskstatus) GetLaunched() time.Time {
+// If the value is explicit nil, the zero value for SailPointTime will be returned
+func (o *Taskstatus) GetLaunched() SailPointTime {
 	if o == nil || o.Launched.Get() == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -345,7 +345,7 @@ func (o *Taskstatus) GetLaunched() time.Time {
 // GetLaunchedOk returns a tuple with the Launched field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Taskstatus) GetLaunchedOk() (*time.Time, bool) {
+func (o *Taskstatus) GetLaunchedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -353,15 +353,15 @@ func (o *Taskstatus) GetLaunchedOk() (*time.Time, bool) {
 }
 
 // SetLaunched sets field value
-func (o *Taskstatus) SetLaunched(v time.Time) {
+func (o *Taskstatus) SetLaunched(v SailPointTime) {
 	o.Launched.Set(&v)
 }
 
 // GetCompleted returns the Completed field value
-// If the value is explicit nil, the zero value for time.Time will be returned
-func (o *Taskstatus) GetCompleted() time.Time {
+// If the value is explicit nil, the zero value for SailPointTime will be returned
+func (o *Taskstatus) GetCompleted() SailPointTime {
 	if o == nil || o.Completed.Get() == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -371,7 +371,7 @@ func (o *Taskstatus) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Taskstatus) GetCompletedOk() (*time.Time, bool) {
+func (o *Taskstatus) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -379,7 +379,7 @@ func (o *Taskstatus) GetCompletedOk() (*time.Time, bool) {
 }
 
 // SetCompleted sets field value
-func (o *Taskstatus) SetCompleted(v time.Time) {
+func (o *Taskstatus) SetCompleted(v SailPointTime) {
 	o.Completed.Set(&v)
 }
 

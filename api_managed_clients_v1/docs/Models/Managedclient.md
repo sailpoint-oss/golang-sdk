@@ -328,20 +328,20 @@ HasIpAddress returns a boolean if a field has been set.
 UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
 ### GetLastSeen
 
-`func (o *Managedclient) GetLastSeen() time.Time`
+`func (o *Managedclient) GetLastSeen() SailPointTime`
 
 GetLastSeen returns the LastSeen field if non-nil, zero value otherwise.
 
 ### GetLastSeenOk
 
-`func (o *Managedclient) GetLastSeenOk() (*time.Time, bool)`
+`func (o *Managedclient) GetLastSeenOk() (*SailPointTime, bool)`
 
 GetLastSeenOk returns a tuple with the LastSeen field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastSeen
 
-`func (o *Managedclient) SetLastSeen(v time.Time)`
+`func (o *Managedclient) SetLastSeen(v SailPointTime)`
 
 SetLastSeen sets LastSeen field to given value.
 
@@ -628,20 +628,20 @@ HasSecret returns a boolean if a field has been set.
 UnsetSecret ensures that no value is present for Secret, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Managedclient) GetCreatedAt() time.Time`
+`func (o *Managedclient) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Managedclient) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Managedclient) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Managedclient) SetCreatedAt(v time.Time)`
+`func (o *Managedclient) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -663,20 +663,20 @@ HasCreatedAt returns a boolean if a field has been set.
 UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
-`func (o *Managedclient) GetUpdatedAt() time.Time`
+`func (o *Managedclient) GetUpdatedAt() SailPointTime`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Managedclient) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *Managedclient) GetUpdatedAtOk() (*SailPointTime, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Managedclient) SetUpdatedAt(v time.Time)`
+`func (o *Managedclient) SetUpdatedAt(v SailPointTime)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

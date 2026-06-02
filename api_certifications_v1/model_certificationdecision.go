@@ -12,7 +12,6 @@ package api_certifications_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Certificationdecision The decision to approve or revoke the review item

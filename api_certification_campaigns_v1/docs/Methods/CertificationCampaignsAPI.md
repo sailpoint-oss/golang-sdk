@@ -221,7 +221,7 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    "time"
+    
     v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns_v1"
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns_v1"
 )

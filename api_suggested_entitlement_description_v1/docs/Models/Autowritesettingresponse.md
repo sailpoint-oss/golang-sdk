@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Whether auto-write is currently enabled for the tenant | [optional] [default to false]
 **IncludedSourceIds** | Pointer to **[]string** | Source IDs in the allowlist. Empty array means not in allowlist mode. | [optional] 
 **ExcludedSourceIds** | Pointer to **[]string** | Source IDs to exclude from auto-write. Always applied. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | When settings were first created | [optional] 
-**UpdatedAt** | Pointer to **time.Time** | When settings were last modified | [optional] 
+**CreatedAt** | Pointer to **SailPointTime** | When settings were first created | [optional] 
+**UpdatedAt** | Pointer to **SailPointTime** | When settings were last modified | [optional] 
 
 ## Methods
 
@@ -137,20 +137,20 @@ HasExcludedSourceIds returns a boolean if a field has been set.
 UnsetExcludedSourceIds ensures that no value is present for ExcludedSourceIds, not even an explicit nil
 ### GetCreatedAt
 
-`func (o *Autowritesettingresponse) GetCreatedAt() time.Time`
+`func (o *Autowritesettingresponse) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Autowritesettingresponse) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Autowritesettingresponse) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Autowritesettingresponse) SetCreatedAt(v time.Time)`
+`func (o *Autowritesettingresponse) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -162,20 +162,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *Autowritesettingresponse) GetUpdatedAt() time.Time`
+`func (o *Autowritesettingresponse) GetUpdatedAt() SailPointTime`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Autowritesettingresponse) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *Autowritesettingresponse) GetUpdatedAtOk() (*SailPointTime, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Autowritesettingresponse) SetUpdatedAt(v time.Time)`
+`func (o *Autowritesettingresponse) SetUpdatedAt(v SailPointTime)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

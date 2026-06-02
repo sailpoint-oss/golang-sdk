@@ -28,14 +28,14 @@ Name | Type | Description | Notes
 **ManuallyCorrelated** | **bool** | True when an administrator manually correlated the account to an identity. | 
 **ConnectionType** | **string** | Connector connection type identifier for the backing source system. | 
 **NativeIdentity** | Pointer to **NullableString** | Native identifier string on the source directory or application. | [optional] 
-**Created** | **time.Time** | Timestamp when the account record was created in Identity Security Cloud. | 
-**Modified** | **time.Time** | Timestamp when the account record was last modified in Identity Security Cloud. | 
+**Created** | **SailPointTime** | Timestamp when the account record was created in Identity Security Cloud. | 
+**Modified** | **SailPointTime** | Timestamp when the account record was last modified in Identity Security Cloud. | 
 
 ## Methods
 
 ### NewIntelaccessaccountwire
 
-`func NewIntelaccessaccountwire(id string, name string, disabled bool, locked bool, uncorrelated bool, authoritative bool, systemAccount bool, isMachine bool, hasEntitlements bool, manuallyCorrelated bool, connectionType string, created time.Time, modified time.Time, ) *Intelaccessaccountwire`
+`func NewIntelaccessaccountwire(id string, name string, disabled bool, locked bool, uncorrelated bool, authoritative bool, systemAccount bool, isMachine bool, hasEntitlements bool, manuallyCorrelated bool, connectionType string, created SailPointTime, modified SailPointTime, ) *Intelaccessaccountwire`
 
 NewIntelaccessaccountwire instantiates a new Intelaccessaccountwire object
 This constructor will assign default values to properties that have it defined,
@@ -332,40 +332,40 @@ HasNativeIdentity returns a boolean if a field has been set.
 UnsetNativeIdentity ensures that no value is present for NativeIdentity, not even an explicit nil
 ### GetCreated
 
-`func (o *Intelaccessaccountwire) GetCreated() time.Time`
+`func (o *Intelaccessaccountwire) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Intelaccessaccountwire) GetCreatedOk() (*time.Time, bool)`
+`func (o *Intelaccessaccountwire) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Intelaccessaccountwire) SetCreated(v time.Time)`
+`func (o *Intelaccessaccountwire) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *Intelaccessaccountwire) GetModified() time.Time`
+`func (o *Intelaccessaccountwire) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Intelaccessaccountwire) GetModifiedOk() (*time.Time, bool)`
+`func (o *Intelaccessaccountwire) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Intelaccessaccountwire) SetModified(v time.Time)`
+`func (o *Intelaccessaccountwire) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

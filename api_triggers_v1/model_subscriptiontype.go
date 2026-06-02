@@ -12,7 +12,6 @@ package api_triggers_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Subscriptiontype Subscription type. **NOTE** If type is EVENTBRIDGE, then eventBridgeConfig is required. If type is HTTP, then httpConfig is required.

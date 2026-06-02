@@ -12,7 +12,6 @@ package api_certification_campaigns_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Reporttype type of a Report

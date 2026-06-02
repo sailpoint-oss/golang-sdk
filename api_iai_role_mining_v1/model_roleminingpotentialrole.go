@@ -12,7 +12,7 @@ package api_iai_role_mining_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Roleminingpotentialrole type satisfies the MappedNullable interface at compile time
@@ -54,9 +54,9 @@ type Roleminingpotentialrole struct {
 	// Id of the potential role
 	Id *string `json:"id,omitempty"`
 	// The date-time when this potential role was created.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The date-time when this potential role was modified.
-	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -734,9 +734,9 @@ func (o *Roleminingpotentialrole) SetId(v string) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *Roleminingpotentialrole) GetCreatedDate() time.Time {
+func (o *Roleminingpotentialrole) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -744,7 +744,7 @@ func (o *Roleminingpotentialrole) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleminingpotentialrole) GetCreatedDateOk() (*time.Time, bool) {
+func (o *Roleminingpotentialrole) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -760,15 +760,15 @@ func (o *Roleminingpotentialrole) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *Roleminingpotentialrole) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *Roleminingpotentialrole) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
-func (o *Roleminingpotentialrole) GetModifiedDate() time.Time {
+func (o *Roleminingpotentialrole) GetModifiedDate() SailPointTime {
 	if o == nil || IsNil(o.ModifiedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ModifiedDate
@@ -776,7 +776,7 @@ func (o *Roleminingpotentialrole) GetModifiedDate() time.Time {
 
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Roleminingpotentialrole) GetModifiedDateOk() (*time.Time, bool) {
+func (o *Roleminingpotentialrole) GetModifiedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ModifiedDate) {
 		return nil, false
 	}
@@ -792,8 +792,8 @@ func (o *Roleminingpotentialrole) HasModifiedDate() bool {
 	return false
 }
 
-// SetModifiedDate gets a reference to the given time.Time and assigns it to the ModifiedDate field.
-func (o *Roleminingpotentialrole) SetModifiedDate(v time.Time) {
+// SetModifiedDate gets a reference to the given SailPointTime and assigns it to the ModifiedDate field.
+func (o *Roleminingpotentialrole) SetModifiedDate(v SailPointTime) {
 	o.ModifiedDate = &v
 }
 

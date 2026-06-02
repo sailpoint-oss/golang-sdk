@@ -12,7 +12,7 @@ package api_data_segmentation_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Segmentmembership type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type Segmentmembership struct {
 	// They type of scopes that are assigned to the identity.
 	AllAccessScopes []Scopetype `json:"allAccessScopes,omitempty"`
 	// Date time string that lets you know when the membership data is going to be refreshed.
-	RefreshBy *time.Time `json:"refreshBy,omitempty"`
+	RefreshBy *SailPointTime `json:"refreshBy,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -113,9 +113,9 @@ func (o *Segmentmembership) SetAllAccessScopes(v []Scopetype) {
 }
 
 // GetRefreshBy returns the RefreshBy field value if set, zero value otherwise.
-func (o *Segmentmembership) GetRefreshBy() time.Time {
+func (o *Segmentmembership) GetRefreshBy() SailPointTime {
 	if o == nil || IsNil(o.RefreshBy) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.RefreshBy
@@ -123,7 +123,7 @@ func (o *Segmentmembership) GetRefreshBy() time.Time {
 
 // GetRefreshByOk returns a tuple with the RefreshBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Segmentmembership) GetRefreshByOk() (*time.Time, bool) {
+func (o *Segmentmembership) GetRefreshByOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.RefreshBy) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *Segmentmembership) HasRefreshBy() bool {
 	return false
 }
 
-// SetRefreshBy gets a reference to the given time.Time and assigns it to the RefreshBy field.
-func (o *Segmentmembership) SetRefreshBy(v time.Time) {
+// SetRefreshBy gets a reference to the given SailPointTime and assigns it to the RefreshBy field.
+func (o *Segmentmembership) SetRefreshBy(v SailPointTime) {
 	o.RefreshBy = &v
 }
 

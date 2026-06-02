@@ -12,7 +12,6 @@ package api_roles_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Rolecriteriaoperation An operation

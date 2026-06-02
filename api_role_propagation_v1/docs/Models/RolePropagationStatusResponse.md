@@ -18,10 +18,10 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Id of the Role Propagation process triggered. | [optional] 
 **Status** | Pointer to **string** | Status of the Role Propagation process. | [optional] 
 **ExecutionStage** | Pointer to **string** | Current execution stage of the Role Propagation process. | [optional] 
-**Launched** | Pointer to **time.Time** | Time when the Role Propagation process was launched. | [optional] 
+**Launched** | Pointer to **SailPointTime** | Time when the Role Propagation process was launched. | [optional] 
 **LaunchedBy** | Pointer to [**RolePropagationStatusResponseLaunchedBy**](role-propagation-status-response-launched-by) |  | [optional] 
 **TerminatedBy** | Pointer to [**RolePropagationStatusResponseTerminatedBy**](role-propagation-status-response-terminated-by) |  | [optional] 
-**Completed** | Pointer to **time.Time** | Time when the Role Propagation process was completed. | [optional] 
+**Completed** | Pointer to **SailPointTime** | Time when the Role Propagation process was completed. | [optional] 
 **FailureReason** | Pointer to **string** | Reason for failure if the Role Propagation process failed. | [optional] 
 **SkipRoleRefresh** | Pointer to **bool** | Indicates if the role refresh was skipped during the Role Propagation process. | [optional] [default to false]
 
@@ -121,20 +121,20 @@ HasExecutionStage returns a boolean if a field has been set.
 
 ### GetLaunched
 
-`func (o *RolePropagationStatusResponse) GetLaunched() time.Time`
+`func (o *RolePropagationStatusResponse) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *RolePropagationStatusResponse) GetLaunchedOk() (*time.Time, bool)`
+`func (o *RolePropagationStatusResponse) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *RolePropagationStatusResponse) SetLaunched(v time.Time)`
+`func (o *RolePropagationStatusResponse) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -196,20 +196,20 @@ HasTerminatedBy returns a boolean if a field has been set.
 
 ### GetCompleted
 
-`func (o *RolePropagationStatusResponse) GetCompleted() time.Time`
+`func (o *RolePropagationStatusResponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *RolePropagationStatusResponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *RolePropagationStatusResponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *RolePropagationStatusResponse) SetCompleted(v time.Time)`
+`func (o *RolePropagationStatusResponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

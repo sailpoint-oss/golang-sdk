@@ -12,7 +12,7 @@ package api_sod_violations_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -24,7 +24,7 @@ type Sodviolationcheck struct {
 	// The id of the original request
 	RequestId string `json:"requestId"`
 	// The date-time when this request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -73,9 +73,9 @@ func (o *Sodviolationcheck) SetRequestId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Sodviolationcheck) GetCreated() time.Time {
+func (o *Sodviolationcheck) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -83,7 +83,7 @@ func (o *Sodviolationcheck) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sodviolationcheck) GetCreatedOk() (*time.Time, bool) {
+func (o *Sodviolationcheck) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *Sodviolationcheck) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Sodviolationcheck) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Sodviolationcheck) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

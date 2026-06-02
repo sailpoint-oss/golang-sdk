@@ -65,20 +65,20 @@ SetSavedSearchId sets SavedSearchId field to given value.
 
 ### GetCreated
 
-`func (o *Searchschedule) GetCreated() time.Time`
+`func (o *Searchschedule) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Searchschedule) GetCreatedOk() (*time.Time, bool)`
+`func (o *Searchschedule) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Searchschedule) SetCreated(v time.Time)`
+`func (o *Searchschedule) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -100,20 +100,20 @@ HasCreated returns a boolean if a field has been set.
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
-`func (o *Searchschedule) GetModified() time.Time`
+`func (o *Searchschedule) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Searchschedule) GetModifiedOk() (*time.Time, bool)`
+`func (o *Searchschedule) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Searchschedule) SetModified(v time.Time)`
+`func (o *Searchschedule) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

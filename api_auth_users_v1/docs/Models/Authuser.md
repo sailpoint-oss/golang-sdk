@@ -450,20 +450,20 @@ HasAlias returns a boolean if a field has been set.
 
 ### GetLastPasswordChangeDate
 
-`func (o *Authuser) GetLastPasswordChangeDate() time.Time`
+`func (o *Authuser) GetLastPasswordChangeDate() SailPointTime`
 
 GetLastPasswordChangeDate returns the LastPasswordChangeDate field if non-nil, zero value otherwise.
 
 ### GetLastPasswordChangeDateOk
 
-`func (o *Authuser) GetLastPasswordChangeDateOk() (*time.Time, bool)`
+`func (o *Authuser) GetLastPasswordChangeDateOk() (*SailPointTime, bool)`
 
 GetLastPasswordChangeDateOk returns a tuple with the LastPasswordChangeDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastPasswordChangeDate
 
-`func (o *Authuser) SetLastPasswordChangeDate(v time.Time)`
+`func (o *Authuser) SetLastPasswordChangeDate(v SailPointTime)`
 
 SetLastPasswordChangeDate sets LastPasswordChangeDate field to given value.
 
@@ -535,20 +535,20 @@ HasCurrentLoginTimestamp returns a boolean if a field has been set.
 
 ### GetLastUnlockTimestamp
 
-`func (o *Authuser) GetLastUnlockTimestamp() time.Time`
+`func (o *Authuser) GetLastUnlockTimestamp() SailPointTime`
 
 GetLastUnlockTimestamp returns the LastUnlockTimestamp field if non-nil, zero value otherwise.
 
 ### GetLastUnlockTimestampOk
 
-`func (o *Authuser) GetLastUnlockTimestampOk() (*time.Time, bool)`
+`func (o *Authuser) GetLastUnlockTimestampOk() (*SailPointTime, bool)`
 
 GetLastUnlockTimestampOk returns a tuple with the LastUnlockTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUnlockTimestamp
 
-`func (o *Authuser) SetLastUnlockTimestamp(v time.Time)`
+`func (o *Authuser) SetLastUnlockTimestamp(v SailPointTime)`
 
 SetLastUnlockTimestamp sets LastUnlockTimestamp field to given value.
 

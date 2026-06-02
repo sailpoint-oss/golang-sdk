@@ -323,20 +323,20 @@ SetIsManager sets IsManager field to given value.
 
 ### GetLastRefreshAt
 
-`func (o *Intelhuman) GetLastRefreshAt() time.Time`
+`func (o *Intelhuman) GetLastRefreshAt() SailPointTime`
 
 GetLastRefreshAt returns the LastRefreshAt field if non-nil, zero value otherwise.
 
 ### GetLastRefreshAtOk
 
-`func (o *Intelhuman) GetLastRefreshAtOk() (*time.Time, bool)`
+`func (o *Intelhuman) GetLastRefreshAtOk() (*SailPointTime, bool)`
 
 GetLastRefreshAtOk returns a tuple with the LastRefreshAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastRefreshAt
 
-`func (o *Intelhuman) SetLastRefreshAt(v time.Time)`
+`func (o *Intelhuman) SetLastRefreshAt(v SailPointTime)`
 
 SetLastRefreshAt sets LastRefreshAt field to given value.
 

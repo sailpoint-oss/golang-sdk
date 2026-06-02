@@ -12,7 +12,7 @@ package api_managed_clients_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Healthevent type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type Healthevent struct {
 	// Optional URL associated with the issue
 	Url NullableString `json:"url,omitempty"`
 	// Time when the event occurred
-	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Timestamp *SailPointTime `json:"timestamp,omitempty"`
 	// Last time notification was sent for this issue
-	LastNotifiedTimeStamp *time.Time `json:"lastNotifiedTimeStamp,omitempty"`
+	LastNotifiedTimeStamp *SailPointTime `json:"lastNotifiedTimeStamp,omitempty"`
 	// CPU usage percentage
 	CpuUtilizationPercentage NullableFloat32 `json:"cpuUtilizationPercentage,omitempty"`
 	// Free memory percentage
@@ -163,9 +163,9 @@ func (o *Healthevent) UnsetUrl() {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *Healthevent) GetTimestamp() time.Time {
+func (o *Healthevent) GetTimestamp() SailPointTime {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Timestamp
@@ -173,7 +173,7 @@ func (o *Healthevent) GetTimestamp() time.Time {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Healthevent) GetTimestampOk() (*time.Time, bool) {
+func (o *Healthevent) GetTimestampOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -189,15 +189,15 @@ func (o *Healthevent) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
-func (o *Healthevent) SetTimestamp(v time.Time) {
+// SetTimestamp gets a reference to the given SailPointTime and assigns it to the Timestamp field.
+func (o *Healthevent) SetTimestamp(v SailPointTime) {
 	o.Timestamp = &v
 }
 
 // GetLastNotifiedTimeStamp returns the LastNotifiedTimeStamp field value if set, zero value otherwise.
-func (o *Healthevent) GetLastNotifiedTimeStamp() time.Time {
+func (o *Healthevent) GetLastNotifiedTimeStamp() SailPointTime {
 	if o == nil || IsNil(o.LastNotifiedTimeStamp) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastNotifiedTimeStamp
@@ -205,7 +205,7 @@ func (o *Healthevent) GetLastNotifiedTimeStamp() time.Time {
 
 // GetLastNotifiedTimeStampOk returns a tuple with the LastNotifiedTimeStamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Healthevent) GetLastNotifiedTimeStampOk() (*time.Time, bool) {
+func (o *Healthevent) GetLastNotifiedTimeStampOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.LastNotifiedTimeStamp) {
 		return nil, false
 	}
@@ -221,8 +221,8 @@ func (o *Healthevent) HasLastNotifiedTimeStamp() bool {
 	return false
 }
 
-// SetLastNotifiedTimeStamp gets a reference to the given time.Time and assigns it to the LastNotifiedTimeStamp field.
-func (o *Healthevent) SetLastNotifiedTimeStamp(v time.Time) {
+// SetLastNotifiedTimeStamp gets a reference to the given SailPointTime and assigns it to the LastNotifiedTimeStamp field.
+func (o *Healthevent) SetLastNotifiedTimeStamp(v SailPointTime) {
 	o.LastNotifiedTimeStamp = &v
 }
 

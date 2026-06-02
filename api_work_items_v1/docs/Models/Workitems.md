@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **RequesterDisplayName** | Pointer to **NullableString** | The displayname of the requester | [optional] 
 **OwnerId** | Pointer to **NullableString** | The ID of the owner | [optional] 
 **OwnerName** | Pointer to **string** | The name of the owner | [optional] 
-**Created** | Pointer to **time.Time** | Time when the work item was created | [optional] 
+**Created** | Pointer to **SailPointTime** | Time when the work item was created | [optional] 
 **Modified** | Pointer to **NullableTime** | Time when the work item was last updated | [optional] 
 **Description** | Pointer to **string** | The description of the work item | [optional] 
 **State** | Pointer to [**Workitemstatemanualworkitems**](workitemstatemanualworkitems) |  | [optional] 
@@ -209,20 +209,20 @@ HasOwnerName returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Workitems) GetCreated() time.Time`
+`func (o *Workitems) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Workitems) GetCreatedOk() (*time.Time, bool)`
+`func (o *Workitems) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Workitems) SetCreated(v time.Time)`
+`func (o *Workitems) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -234,20 +234,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Workitems) GetModified() time.Time`
+`func (o *Workitems) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Workitems) GetModifiedOk() (*time.Time, bool)`
+`func (o *Workitems) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Workitems) SetModified(v time.Time)`
+`func (o *Workitems) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -449,20 +449,20 @@ HasName returns a boolean if a field has been set.
 UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCompleted
 
-`func (o *Workitems) GetCompleted() time.Time`
+`func (o *Workitems) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Workitems) GetCompletedOk() (*time.Time, bool)`
+`func (o *Workitems) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Workitems) SetCompleted(v time.Time)`
+`func (o *Workitems) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

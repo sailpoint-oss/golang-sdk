@@ -23,14 +23,14 @@ Name | Type | Description | Notes
 **Manager** | **string** | The account ID of a valid identity to serve as this non-employee's manager. | 
 **SourceId** | **string** | Non-Employee's source id. | 
 **Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
-**StartDate** | **time.Time** | Non-Employee employment start date. | 
-**EndDate** | **time.Time** | Non-Employee employment end date. | 
+**StartDate** | **SailPointTime** | Non-Employee employment start date. | 
+**EndDate** | **SailPointTime** | Non-Employee employment end date. | 
 
 ## Methods
 
 ### NewNonemployeerequestbody
 
-`func NewNonemployeerequestbody(accountName string, firstName string, lastName string, email string, phone string, manager string, sourceId string, startDate time.Time, endDate time.Time, ) *Nonemployeerequestbody`
+`func NewNonemployeerequestbody(accountName string, firstName string, lastName string, email string, phone string, manager string, sourceId string, startDate SailPointTime, endDate SailPointTime, ) *Nonemployeerequestbody`
 
 NewNonemployeerequestbody instantiates a new Nonemployeerequestbody object
 This constructor will assign default values to properties that have it defined,
@@ -212,40 +212,40 @@ HasData returns a boolean if a field has been set.
 
 ### GetStartDate
 
-`func (o *Nonemployeerequestbody) GetStartDate() time.Time`
+`func (o *Nonemployeerequestbody) GetStartDate() SailPointTime`
 
 GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
 ### GetStartDateOk
 
-`func (o *Nonemployeerequestbody) GetStartDateOk() (*time.Time, bool)`
+`func (o *Nonemployeerequestbody) GetStartDateOk() (*SailPointTime, bool)`
 
 GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartDate
 
-`func (o *Nonemployeerequestbody) SetStartDate(v time.Time)`
+`func (o *Nonemployeerequestbody) SetStartDate(v SailPointTime)`
 
 SetStartDate sets StartDate field to given value.
 
 
 ### GetEndDate
 
-`func (o *Nonemployeerequestbody) GetEndDate() time.Time`
+`func (o *Nonemployeerequestbody) GetEndDate() SailPointTime`
 
 GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
 ### GetEndDateOk
 
-`func (o *Nonemployeerequestbody) GetEndDateOk() (*time.Time, bool)`
+`func (o *Nonemployeerequestbody) GetEndDateOk() (*SailPointTime, bool)`
 
 GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndDate
 
-`func (o *Nonemployeerequestbody) SetEndDate(v time.Time)`
+`func (o *Nonemployeerequestbody) SetEndDate(v SailPointTime)`
 
 SetEndDate sets EndDate field to given value.
 

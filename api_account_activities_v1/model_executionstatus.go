@@ -12,7 +12,6 @@ package api_account_activities_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Executionstatus The current state of execution.

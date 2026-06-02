@@ -12,7 +12,6 @@ package api_roles_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Roleassignmentsourcetype Type which indicates how a particular Identity obtained a particular Role

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Sourceclassificationstatus', 'V1Sourc
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **string** | Status of Classification Process | [optional] 
-**Started** | Pointer to **time.Time** | Time when the process was started | [optional] 
+**Started** | Pointer to **SailPointTime** | Time when the process was started | [optional] 
 **Updated** | Pointer to **NullableTime** | Time when the process status was last updated | [optional] 
 **Counts** | Pointer to [**SourceclassificationstatusAllOfCounts**](sourceclassificationstatus-all-of-counts) |  | [optional] 
 
@@ -66,20 +66,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetStarted
 
-`func (o *Sourceclassificationstatus) GetStarted() time.Time`
+`func (o *Sourceclassificationstatus) GetStarted() SailPointTime`
 
 GetStarted returns the Started field if non-nil, zero value otherwise.
 
 ### GetStartedOk
 
-`func (o *Sourceclassificationstatus) GetStartedOk() (*time.Time, bool)`
+`func (o *Sourceclassificationstatus) GetStartedOk() (*SailPointTime, bool)`
 
 GetStartedOk returns a tuple with the Started field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStarted
 
-`func (o *Sourceclassificationstatus) SetStarted(v time.Time)`
+`func (o *Sourceclassificationstatus) SetStarted(v SailPointTime)`
 
 SetStarted sets Started field to given value.
 
@@ -91,20 +91,20 @@ HasStarted returns a boolean if a field has been set.
 
 ### GetUpdated
 
-`func (o *Sourceclassificationstatus) GetUpdated() time.Time`
+`func (o *Sourceclassificationstatus) GetUpdated() SailPointTime`
 
 GetUpdated returns the Updated field if non-nil, zero value otherwise.
 
 ### GetUpdatedOk
 
-`func (o *Sourceclassificationstatus) GetUpdatedOk() (*time.Time, bool)`
+`func (o *Sourceclassificationstatus) GetUpdatedOk() (*SailPointTime, bool)`
 
 GetUpdatedOk returns a tuple with the Updated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdated
 
-`func (o *Sourceclassificationstatus) SetUpdated(v time.Time)`
+`func (o *Sourceclassificationstatus) SetUpdated(v SailPointTime)`
 
 SetUpdated sets Updated field to given value.
 

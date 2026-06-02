@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Recommendation** | Pointer to **NullableString** | The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made. | [optional] 
 **Reasons** | Pointer to **[]string** | A list of reasons for the recommendation. | [optional] 
-**Timestamp** | Pointer to **time.Time** | The time at which the recommendation was recorded. | [optional] 
+**Timestamp** | Pointer to **SailPointTime** | The time at which the recommendation was recorded. | [optional] 
 
 ## Methods
 
@@ -100,20 +100,20 @@ HasReasons returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *Reviewrecommendation) GetTimestamp() time.Time`
+`func (o *Reviewrecommendation) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Reviewrecommendation) GetTimestampOk() (*time.Time, bool)`
+`func (o *Reviewrecommendation) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Reviewrecommendation) SetTimestamp(v time.Time)`
+`func (o *Reviewrecommendation) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 

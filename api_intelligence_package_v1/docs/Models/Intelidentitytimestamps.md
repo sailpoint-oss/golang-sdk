@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'Intelidentitytimestamps', 'V1Intelide
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** | Timestamp when the identity record was first created in Identity Security Cloud. | 
-**ModifiedAt** | **time.Time** | Timestamp when the identity record was last modified in Identity Security Cloud. | 
+**CreatedAt** | **SailPointTime** | Timestamp when the identity record was first created in Identity Security Cloud. | 
+**ModifiedAt** | **SailPointTime** | Timestamp when the identity record was last modified in Identity Security Cloud. | 
 
 ## Methods
 
 ### NewIntelidentitytimestamps
 
-`func NewIntelidentitytimestamps(createdAt time.Time, modifiedAt time.Time, ) *Intelidentitytimestamps`
+`func NewIntelidentitytimestamps(createdAt SailPointTime, modifiedAt SailPointTime, ) *Intelidentitytimestamps`
 
 NewIntelidentitytimestamps instantiates a new Intelidentitytimestamps object
 This constructor will assign default values to properties that have it defined,
@@ -39,40 +39,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreatedAt
 
-`func (o *Intelidentitytimestamps) GetCreatedAt() time.Time`
+`func (o *Intelidentitytimestamps) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Intelidentitytimestamps) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Intelidentitytimestamps) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Intelidentitytimestamps) SetCreatedAt(v time.Time)`
+`func (o *Intelidentitytimestamps) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetModifiedAt
 
-`func (o *Intelidentitytimestamps) GetModifiedAt() time.Time`
+`func (o *Intelidentitytimestamps) GetModifiedAt() SailPointTime`
 
 GetModifiedAt returns the ModifiedAt field if non-nil, zero value otherwise.
 
 ### GetModifiedAtOk
 
-`func (o *Intelidentitytimestamps) GetModifiedAtOk() (*time.Time, bool)`
+`func (o *Intelidentitytimestamps) GetModifiedAtOk() (*SailPointTime, bool)`
 
 GetModifiedAtOk returns a tuple with the ModifiedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModifiedAt
 
-`func (o *Intelidentitytimestamps) SetModifiedAt(v time.Time)`
+`func (o *Intelidentitytimestamps) SetModifiedAt(v SailPointTime)`
 
 SetModifiedAt sets ModifiedAt field to given value.
 

@@ -12,7 +12,6 @@ package api_access_request_approvals_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accessrequesttype Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS type is used for updating access expiration dates or other access modifications.

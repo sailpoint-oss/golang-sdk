@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Approvalcomment', 'V1Approvalcomment'
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Comment provided either by the approval requester or the approver. | 
-**Timestamp** | **time.Time** | The time when this comment was provided. | 
+**Timestamp** | **SailPointTime** | The time when this comment was provided. | 
 **User** | **string** | Name of the user that provided this comment. | 
 **Id** | **string** | Id of the user that provided this comment. | 
 **ChangedToStatus** | **string** | Status transition of the draft. | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewApprovalcomment
 
-`func NewApprovalcomment(comment string, timestamp time.Time, user string, id string, changedToStatus string, ) *Approvalcomment`
+`func NewApprovalcomment(comment string, timestamp SailPointTime, user string, id string, changedToStatus string, ) *Approvalcomment`
 
 NewApprovalcomment instantiates a new Approvalcomment object
 This constructor will assign default values to properties that have it defined,
@@ -62,20 +62,20 @@ SetComment sets Comment field to given value.
 
 ### GetTimestamp
 
-`func (o *Approvalcomment) GetTimestamp() time.Time`
+`func (o *Approvalcomment) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Approvalcomment) GetTimestampOk() (*time.Time, bool)`
+`func (o *Approvalcomment) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Approvalcomment) SetTimestamp(v time.Time)`
+`func (o *Approvalcomment) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 

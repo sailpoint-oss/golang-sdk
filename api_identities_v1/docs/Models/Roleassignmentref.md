@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
 **Role** | Pointer to [**Basereferencedto**](basereferencedto) |  | [optional] 
-**AddedDate** | Pointer to **time.Time** | Date that the assignment was added | [optional] 
+**AddedDate** | Pointer to **SailPointTime** | Date that the assignment was added | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | Date that the assignment will be removed | [optional] 
 
 ## Methods
@@ -91,20 +91,20 @@ HasRole returns a boolean if a field has been set.
 
 ### GetAddedDate
 
-`func (o *Roleassignmentref) GetAddedDate() time.Time`
+`func (o *Roleassignmentref) GetAddedDate() SailPointTime`
 
 GetAddedDate returns the AddedDate field if non-nil, zero value otherwise.
 
 ### GetAddedDateOk
 
-`func (o *Roleassignmentref) GetAddedDateOk() (*time.Time, bool)`
+`func (o *Roleassignmentref) GetAddedDateOk() (*SailPointTime, bool)`
 
 GetAddedDateOk returns a tuple with the AddedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddedDate
 
-`func (o *Roleassignmentref) SetAddedDate(v time.Time)`
+`func (o *Roleassignmentref) SetAddedDate(v SailPointTime)`
 
 SetAddedDate sets AddedDate field to given value.
 
@@ -116,20 +116,20 @@ HasAddedDate returns a boolean if a field has been set.
 
 ### GetRemoveDate
 
-`func (o *Roleassignmentref) GetRemoveDate() time.Time`
+`func (o *Roleassignmentref) GetRemoveDate() SailPointTime`
 
 GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
 
 ### GetRemoveDateOk
 
-`func (o *Roleassignmentref) GetRemoveDateOk() (*time.Time, bool)`
+`func (o *Roleassignmentref) GetRemoveDateOk() (*SailPointTime, bool)`
 
 GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoveDate
 
-`func (o *Roleassignmentref) SetRemoveDate(v time.Time)`
+`func (o *Roleassignmentref) SetRemoveDate(v SailPointTime)`
 
 SetRemoveDate sets RemoveDate field to given value.
 

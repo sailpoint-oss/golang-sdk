@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Privileged** | Pointer to **bool** | Indicates if the entitlement is a privileged entitlement | [optional] 
 **Owner** | Pointer to [**NullableIdentityreferencewithnameandemail**](identityreferencewithnameandemail) |  | [optional] 
 **Revocable** | Pointer to **bool** | Indicates whether the Role can be revoked or requested | [optional] 
-**EndDate** | Pointer to **time.Time** | The date when a user's access expires. | [optional] 
+**EndDate** | Pointer to **SailPointTime** | The date when a user's access expires. | [optional] 
 **AccessProfiles** | Pointer to [**[]Reviewableaccessprofile**](reviewableaccessprofile) | The list of Access Profiles associated with this Role | [optional] 
 **Entitlements** | Pointer to [**[]Reviewableentitlement**](reviewableentitlement) | The list of entitlements associated with this Role | [optional] 
 
@@ -206,20 +206,20 @@ HasRevocable returns a boolean if a field has been set.
 
 ### GetEndDate
 
-`func (o *Reviewablerole) GetEndDate() time.Time`
+`func (o *Reviewablerole) GetEndDate() SailPointTime`
 
 GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
 ### GetEndDateOk
 
-`func (o *Reviewablerole) GetEndDateOk() (*time.Time, bool)`
+`func (o *Reviewablerole) GetEndDateOk() (*SailPointTime, bool)`
 
 GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndDate
 
-`func (o *Reviewablerole) SetEndDate(v time.Time)`
+`func (o *Reviewablerole) SetEndDate(v SailPointTime)`
 
 SetEndDate sets EndDate field to given value.
 

@@ -12,7 +12,6 @@ package api_dimensions_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Dimensioncriteriakeytype Indicates whether the associated criteria represents an expression on identity attributes.

@@ -12,7 +12,6 @@ package api_work_reassignment_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Reassignmenttypeenum Enum list containing types of Reassignment that can be found in the evaluate response.

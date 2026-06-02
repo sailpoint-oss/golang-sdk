@@ -12,7 +12,7 @@ package api_certifications_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the ReviewableentitlementAccount type satisfies the MappedNullable interface at compile time
@@ -284,9 +284,9 @@ func (o *ReviewableentitlementAccount) UnsetName() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableentitlementAccount) GetCreated() time.Time {
+func (o *ReviewableentitlementAccount) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -295,7 +295,7 @@ func (o *ReviewableentitlementAccount) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableentitlementAccount) GetCreatedOk() (*time.Time, bool) {
+func (o *ReviewableentitlementAccount) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -312,7 +312,7 @@ func (o *ReviewableentitlementAccount) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *ReviewableentitlementAccount) SetCreated(v time.Time) {
+func (o *ReviewableentitlementAccount) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -326,9 +326,9 @@ func (o *ReviewableentitlementAccount) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReviewableentitlementAccount) GetModified() time.Time {
+func (o *ReviewableentitlementAccount) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -337,7 +337,7 @@ func (o *ReviewableentitlementAccount) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReviewableentitlementAccount) GetModifiedOk() (*time.Time, bool) {
+func (o *ReviewableentitlementAccount) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -354,7 +354,7 @@ func (o *ReviewableentitlementAccount) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *ReviewableentitlementAccount) SetModified(v time.Time) {
+func (o *ReviewableentitlementAccount) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

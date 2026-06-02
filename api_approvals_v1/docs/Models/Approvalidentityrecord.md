@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the identity. | [optional] 
 **ActionedAs** | Pointer to [**[]Approvalreference**](approvalreference) | List of references representing actions taken by the identity. | [optional] 
 **Members** | Pointer to [**[]Approvalreference**](approvalreference) | List of references representing members of the identity. | [optional] 
-**DecisionDate** | Pointer to **time.Time** | Date when the decision was made. | [optional] 
+**DecisionDate** | Pointer to **SailPointTime** | Date when the decision was made. | [optional] 
 **Email** | Pointer to **string** | Email associated with the identity. | [optional] 
 
 ## Methods
@@ -169,20 +169,20 @@ HasMembers returns a boolean if a field has been set.
 
 ### GetDecisionDate
 
-`func (o *Approvalidentityrecord) GetDecisionDate() time.Time`
+`func (o *Approvalidentityrecord) GetDecisionDate() SailPointTime`
 
 GetDecisionDate returns the DecisionDate field if non-nil, zero value otherwise.
 
 ### GetDecisionDateOk
 
-`func (o *Approvalidentityrecord) GetDecisionDateOk() (*time.Time, bool)`
+`func (o *Approvalidentityrecord) GetDecisionDateOk() (*SailPointTime, bool)`
 
 GetDecisionDateOk returns a tuple with the DecisionDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDecisionDate
 
-`func (o *Approvalidentityrecord) SetDecisionDate(v time.Time)`
+`func (o *Approvalidentityrecord) SetDecisionDate(v SailPointTime)`
 
 SetDecisionDate sets DecisionDate field to given value.
 

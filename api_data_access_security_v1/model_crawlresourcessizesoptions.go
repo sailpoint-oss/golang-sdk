@@ -12,7 +12,6 @@ package api_data_access_security_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Crawlresourcessizesoptions Specifies when resource sizes should be calculated during a crawl operation. - 0: Unspecified - No specific option set. - 1: Never - Resource sizes are never calculated. - 2: Always - Resource sizes are always calculated. - 3: Secondcrawl - Resource sizes are calculated only on a second crawl.

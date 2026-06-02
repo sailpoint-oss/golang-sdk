@@ -12,7 +12,6 @@ package api_data_access_security_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Applicationtype Specifies the type of application. Possible values:   1  - Sharepoint   8  - WindowsFileServer   9  - ActiveDirectory   11 - EmcCelerraCifs   15 - NetappCifs   20 - EmcIsilon   21 - GoogleDrive   24 - Box   25 - Dropbox   27 - OneDriveForBusiness   28 - SharepointOnline   29 - ExchangeOnline   33 - Cifs   35 - AwsS3   37 - Snowflake 

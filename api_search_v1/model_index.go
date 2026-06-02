@@ -12,7 +12,6 @@ package api_search_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Index Enum representing the currently supported indices. Additional values may be added in the future without notice.

@@ -12,7 +12,7 @@ package api_personal_access_tokens_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -31,11 +31,11 @@ type Createpersonalaccesstokenresponse struct {
 	Name string `json:"name"`
 	Owner Patowner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
 	AccessTokenValiditySeconds int32 `json:"accessTokenValiditySeconds"`
 	// Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.
-	ExpirationDate time.Time `json:"expirationDate"`
+	ExpirationDate SailPointTime `json:"expirationDate"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,7 +45,7 @@ type _Createpersonalaccesstokenresponse Createpersonalaccesstokenresponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatepersonalaccesstokenresponse(id string, secret string, scope []string, name string, owner Patowner, created time.Time, accessTokenValiditySeconds int32, expirationDate time.Time) *Createpersonalaccesstokenresponse {
+func NewCreatepersonalaccesstokenresponse(id string, secret string, scope []string, name string, owner Patowner, created SailPointTime, accessTokenValiditySeconds int32, expirationDate SailPointTime) *Createpersonalaccesstokenresponse {
 	this := Createpersonalaccesstokenresponse{}
 	this.Id = id
 	this.Secret = secret
@@ -189,9 +189,9 @@ func (o *Createpersonalaccesstokenresponse) SetOwner(v Patowner) {
 }
 
 // GetCreated returns the Created field value
-func (o *Createpersonalaccesstokenresponse) GetCreated() time.Time {
+func (o *Createpersonalaccesstokenresponse) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -200,7 +200,7 @@ func (o *Createpersonalaccesstokenresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Createpersonalaccesstokenresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Createpersonalaccesstokenresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *Createpersonalaccesstokenresponse) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Createpersonalaccesstokenresponse) SetCreated(v time.Time) {
+func (o *Createpersonalaccesstokenresponse) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
@@ -237,9 +237,9 @@ func (o *Createpersonalaccesstokenresponse) SetAccessTokenValiditySeconds(v int3
 }
 
 // GetExpirationDate returns the ExpirationDate field value
-func (o *Createpersonalaccesstokenresponse) GetExpirationDate() time.Time {
+func (o *Createpersonalaccesstokenresponse) GetExpirationDate() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -248,7 +248,7 @@ func (o *Createpersonalaccesstokenresponse) GetExpirationDate() time.Time {
 
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value
 // and a boolean to check if the value has been set.
-func (o *Createpersonalaccesstokenresponse) GetExpirationDateOk() (*time.Time, bool) {
+func (o *Createpersonalaccesstokenresponse) GetExpirationDateOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *Createpersonalaccesstokenresponse) GetExpirationDateOk() (*time.Time, b
 }
 
 // SetExpirationDate sets field value
-func (o *Createpersonalaccesstokenresponse) SetExpirationDate(v time.Time) {
+func (o *Createpersonalaccesstokenresponse) SetExpirationDate(v SailPointTime) {
 	o.ExpirationDate = v
 }
 

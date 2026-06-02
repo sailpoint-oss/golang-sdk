@@ -12,7 +12,7 @@ package api_intelligence_package_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &Intelidentitytimestamps{}
 // Intelidentitytimestamps struct for Intelidentitytimestamps
 type Intelidentitytimestamps struct {
 	// Timestamp when the identity record was first created in Identity Security Cloud.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt SailPointTime `json:"createdAt"`
 	// Timestamp when the identity record was last modified in Identity Security Cloud.
-	ModifiedAt time.Time `json:"modifiedAt"`
+	ModifiedAt SailPointTime `json:"modifiedAt"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +34,7 @@ type _Intelidentitytimestamps Intelidentitytimestamps
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntelidentitytimestamps(createdAt time.Time, modifiedAt time.Time) *Intelidentitytimestamps {
+func NewIntelidentitytimestamps(createdAt SailPointTime, modifiedAt SailPointTime) *Intelidentitytimestamps {
 	this := Intelidentitytimestamps{}
 	this.CreatedAt = createdAt
 	this.ModifiedAt = modifiedAt
@@ -50,9 +50,9 @@ func NewIntelidentitytimestampsWithDefaults() *Intelidentitytimestamps {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *Intelidentitytimestamps) GetCreatedAt() time.Time {
+func (o *Intelidentitytimestamps) GetCreatedAt() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *Intelidentitytimestamps) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *Intelidentitytimestamps) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Intelidentitytimestamps) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,14 +69,14 @@ func (o *Intelidentitytimestamps) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *Intelidentitytimestamps) SetCreatedAt(v time.Time) {
+func (o *Intelidentitytimestamps) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt = v
 }
 
 // GetModifiedAt returns the ModifiedAt field value
-func (o *Intelidentitytimestamps) GetModifiedAt() time.Time {
+func (o *Intelidentitytimestamps) GetModifiedAt() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *Intelidentitytimestamps) GetModifiedAt() time.Time {
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value
 // and a boolean to check if the value has been set.
-func (o *Intelidentitytimestamps) GetModifiedAtOk() (*time.Time, bool) {
+func (o *Intelidentitytimestamps) GetModifiedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *Intelidentitytimestamps) GetModifiedAtOk() (*time.Time, bool) {
 }
 
 // SetModifiedAt sets field value
-func (o *Intelidentitytimestamps) SetModifiedAt(v time.Time) {
+func (o *Intelidentitytimestamps) SetModifiedAt(v SailPointTime) {
 	o.ModifiedAt = v
 }
 

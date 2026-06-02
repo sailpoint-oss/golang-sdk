@@ -12,7 +12,7 @@ package api_custom_forms_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Listforminstancesbytenantresponse type satisfies the MappedNullable interface at compile time
@@ -44,9 +44,9 @@ type Listforminstancesbytenantresponse struct {
 	// FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form
 	FormConditions []Formcondition `json:"formConditions,omitempty"`
 	// Created is the date the form instance was assigned
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Modified is the last date the form instance was modified
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it
 	Recipients []Forminstancerecipient `json:"recipients,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -462,9 +462,9 @@ func (o *Listforminstancesbytenantresponse) SetFormConditions(v []Formcondition)
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Listforminstancesbytenantresponse) GetCreated() time.Time {
+func (o *Listforminstancesbytenantresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -472,7 +472,7 @@ func (o *Listforminstancesbytenantresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Listforminstancesbytenantresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Listforminstancesbytenantresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -488,15 +488,15 @@ func (o *Listforminstancesbytenantresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Listforminstancesbytenantresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Listforminstancesbytenantresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Listforminstancesbytenantresponse) GetModified() time.Time {
+func (o *Listforminstancesbytenantresponse) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -504,7 +504,7 @@ func (o *Listforminstancesbytenantresponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Listforminstancesbytenantresponse) GetModifiedOk() (*time.Time, bool) {
+func (o *Listforminstancesbytenantresponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -520,8 +520,8 @@ func (o *Listforminstancesbytenantresponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Listforminstancesbytenantresponse) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Listforminstancesbytenantresponse) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

@@ -12,7 +12,6 @@ package api_certification_campaign_filters_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Operation Operation on a specific criteria

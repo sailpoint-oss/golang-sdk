@@ -12,7 +12,7 @@ package api_account_activities_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Accountactivity type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ type Accountactivity struct {
 	// The name of the activity
 	Name *string `json:"name,omitempty"`
 	// When the activity was first created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// When the activity was last modified
 	Modified NullableTime `json:"modified,omitempty"`
 	// When the activity was completed
@@ -131,9 +131,9 @@ func (o *Accountactivity) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Accountactivity) GetCreated() time.Time {
+func (o *Accountactivity) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -141,7 +141,7 @@ func (o *Accountactivity) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accountactivity) GetCreatedOk() (*time.Time, bool) {
+func (o *Accountactivity) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -157,15 +157,15 @@ func (o *Accountactivity) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Accountactivity) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Accountactivity) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Accountactivity) GetModified() time.Time {
+func (o *Accountactivity) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -174,7 +174,7 @@ func (o *Accountactivity) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Accountactivity) GetModifiedOk() (*time.Time, bool) {
+func (o *Accountactivity) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -191,7 +191,7 @@ func (o *Accountactivity) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *Accountactivity) SetModified(v time.Time) {
+func (o *Accountactivity) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -205,9 +205,9 @@ func (o *Accountactivity) UnsetModified() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Accountactivity) GetCompleted() time.Time {
+func (o *Accountactivity) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed.Get()
@@ -216,7 +216,7 @@ func (o *Accountactivity) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Accountactivity) GetCompletedOk() (*time.Time, bool) {
+func (o *Accountactivity) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -233,7 +233,7 @@ func (o *Accountactivity) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *Accountactivity) SetCompleted(v time.Time) {
+func (o *Accountactivity) SetCompleted(v SailPointTime) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Approver** | Pointer to [**Approverdto**](approverdto) |  | [optional] 
 **ApproverComments** | Pointer to **string** | Comments added by approver while rejecting or approving the account deletion request. | [optional] 
-**DecisionDate** | Pointer to **time.Time** | Decision date of approval rejected or approved. | [optional] [readonly] 
+**DecisionDate** | Pointer to **SailPointTime** | Decision date of approval rejected or approved. | [optional] [readonly] 
 **SerialOrder** | Pointer to **int64** | SerialOrder of approval details. | [optional] 
 **Status** | Pointer to [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
 
@@ -92,20 +92,20 @@ HasApproverComments returns a boolean if a field has been set.
 
 ### GetDecisionDate
 
-`func (o *Approvaldetails) GetDecisionDate() time.Time`
+`func (o *Approvaldetails) GetDecisionDate() SailPointTime`
 
 GetDecisionDate returns the DecisionDate field if non-nil, zero value otherwise.
 
 ### GetDecisionDateOk
 
-`func (o *Approvaldetails) GetDecisionDateOk() (*time.Time, bool)`
+`func (o *Approvaldetails) GetDecisionDateOk() (*SailPointTime, bool)`
 
 GetDecisionDateOk returns a tuple with the DecisionDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDecisionDate
 
-`func (o *Approvaldetails) SetDecisionDate(v time.Time)`
+`func (o *Approvaldetails) SetDecisionDate(v SailPointTime)`
 
 SetDecisionDate sets DecisionDate field to given value.
 

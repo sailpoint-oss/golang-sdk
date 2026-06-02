@@ -12,7 +12,6 @@ package api_machine_classification_config_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Machineclassificationcriteriaoperation An operation to perform on the classification criteria

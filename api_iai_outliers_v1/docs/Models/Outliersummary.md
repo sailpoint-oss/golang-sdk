@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Outliersummary', 'V1Outliersummary']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | The type of outlier summary | [optional] 
-**SnapshotDate** | Pointer to **time.Time** | The date the bulk outlier detection ran/snapshot was created | [optional] 
+**SnapshotDate** | Pointer to **SailPointTime** | The date the bulk outlier detection ran/snapshot was created | [optional] 
 **TotalOutliers** | Pointer to **int32** | Total number of outliers for the customer making the request | [optional] 
 **TotalIdentities** | Pointer to **int32** | Total number of identities for the customer making the request | [optional] 
 **TotalIgnored** | Pointer to **int32** |  | [optional] [default to 0]
@@ -67,20 +67,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetSnapshotDate
 
-`func (o *Outliersummary) GetSnapshotDate() time.Time`
+`func (o *Outliersummary) GetSnapshotDate() SailPointTime`
 
 GetSnapshotDate returns the SnapshotDate field if non-nil, zero value otherwise.
 
 ### GetSnapshotDateOk
 
-`func (o *Outliersummary) GetSnapshotDateOk() (*time.Time, bool)`
+`func (o *Outliersummary) GetSnapshotDateOk() (*SailPointTime, bool)`
 
 GetSnapshotDateOk returns a tuple with the SnapshotDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnapshotDate
 
-`func (o *Outliersummary) SetSnapshotDate(v time.Time)`
+`func (o *Outliersummary) SetSnapshotDate(v SailPointTime)`
 
 SetSnapshotDate sets SnapshotDate field to given value.
 

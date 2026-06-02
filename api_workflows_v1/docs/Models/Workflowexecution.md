@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Workflow execution ID. | [optional] 
 **WorkflowId** | Pointer to **string** | Workflow ID. | [optional] 
 **RequestId** | Pointer to **string** | Backend ID that tracks a workflow request in the system. Provide this ID in a customer support ticket for debugging purposes. | [optional] 
-**StartTime** | Pointer to **time.Time** | Date/time when the workflow started. | [optional] 
-**CloseTime** | Pointer to **time.Time** | Date/time when the workflow ended. | [optional] 
+**StartTime** | Pointer to **SailPointTime** | Date/time when the workflow started. | [optional] 
+**CloseTime** | Pointer to **SailPointTime** | Date/time when the workflow ended. | [optional] 
 **Status** | Pointer to **string** | Workflow execution status. | [optional] 
 
 ## Methods
@@ -118,20 +118,20 @@ HasRequestId returns a boolean if a field has been set.
 
 ### GetStartTime
 
-`func (o *Workflowexecution) GetStartTime() time.Time`
+`func (o *Workflowexecution) GetStartTime() SailPointTime`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *Workflowexecution) GetStartTimeOk() (*time.Time, bool)`
+`func (o *Workflowexecution) GetStartTimeOk() (*SailPointTime, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *Workflowexecution) SetStartTime(v time.Time)`
+`func (o *Workflowexecution) SetStartTime(v SailPointTime)`
 
 SetStartTime sets StartTime field to given value.
 
@@ -143,20 +143,20 @@ HasStartTime returns a boolean if a field has been set.
 
 ### GetCloseTime
 
-`func (o *Workflowexecution) GetCloseTime() time.Time`
+`func (o *Workflowexecution) GetCloseTime() SailPointTime`
 
 GetCloseTime returns the CloseTime field if non-nil, zero value otherwise.
 
 ### GetCloseTimeOk
 
-`func (o *Workflowexecution) GetCloseTimeOk() (*time.Time, bool)`
+`func (o *Workflowexecution) GetCloseTimeOk() (*SailPointTime, bool)`
 
 GetCloseTimeOk returns a tuple with the CloseTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloseTime
 
-`func (o *Workflowexecution) SetCloseTime(v time.Time)`
+`func (o *Workflowexecution) SetCloseTime(v SailPointTime)`
 
 SetCloseTime sets CloseTime field to given value.
 

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of uncorrelated accounts process | [optional] 
 **Description** | Pointer to **string** | The description of the task | [optional] 
 **Launcher** | Pointer to **string** | The user who initiated the task | [optional] 
-**Created** | Pointer to **time.Time** | The Task creation date | [optional] 
+**Created** | Pointer to **SailPointTime** | The Task creation date | [optional] 
 **Launched** | Pointer to **NullableTime** | The task start date | [optional] 
 **Completed** | Pointer to **NullableTime** | The task completion date | [optional] 
 **CompletionStatus** | Pointer to **NullableString** | Task completion status. | [optional] 
@@ -176,20 +176,20 @@ HasLauncher returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetCreated() time.Time`
+`func (o *LoaduncorrelatedaccountstaskTask) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetCreatedOk() (*time.Time, bool)`
+`func (o *LoaduncorrelatedaccountstaskTask) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *LoaduncorrelatedaccountstaskTask) SetCreated(v time.Time)`
+`func (o *LoaduncorrelatedaccountstaskTask) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -201,20 +201,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetLaunched
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetLaunched() time.Time`
+`func (o *LoaduncorrelatedaccountstaskTask) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetLaunchedOk() (*time.Time, bool)`
+`func (o *LoaduncorrelatedaccountstaskTask) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *LoaduncorrelatedaccountstaskTask) SetLaunched(v time.Time)`
+`func (o *LoaduncorrelatedaccountstaskTask) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -236,20 +236,20 @@ HasLaunched returns a boolean if a field has been set.
 UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetCompleted() time.Time`
+`func (o *LoaduncorrelatedaccountstaskTask) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *LoaduncorrelatedaccountstaskTask) GetCompletedOk() (*time.Time, bool)`
+`func (o *LoaduncorrelatedaccountstaskTask) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *LoaduncorrelatedaccountstaskTask) SetCompleted(v time.Time)`
+`func (o *LoaduncorrelatedaccountstaskTask) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

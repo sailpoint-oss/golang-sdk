@@ -12,7 +12,7 @@ package api_suggested_entitlement_description_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Sedbatchrecord type satisfies the MappedNullable interface at compile time
@@ -35,7 +35,7 @@ type Sedbatchrecord struct {
 	// The number of items processed in the batch.
 	ProcessedCount *int32 `json:"processedCount,omitempty"`
 	// The timestamp when the batch was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *SailPointTime `json:"createdAt,omitempty"`
 	// The timestamp when the batch was last updated.
 	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -305,9 +305,9 @@ func (o *Sedbatchrecord) SetProcessedCount(v int32) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Sedbatchrecord) GetCreatedAt() time.Time {
+func (o *Sedbatchrecord) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt
@@ -315,7 +315,7 @@ func (o *Sedbatchrecord) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sedbatchrecord) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Sedbatchrecord) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -331,15 +331,15 @@ func (o *Sedbatchrecord) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *Sedbatchrecord) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given SailPointTime and assigns it to the CreatedAt field.
+func (o *Sedbatchrecord) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Sedbatchrecord) GetUpdatedAt() time.Time {
+func (o *Sedbatchrecord) GetUpdatedAt() SailPointTime {
 	if o == nil || IsNil(o.UpdatedAt.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UpdatedAt.Get()
@@ -348,7 +348,7 @@ func (o *Sedbatchrecord) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Sedbatchrecord) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *Sedbatchrecord) GetUpdatedAtOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -365,7 +365,7 @@ func (o *Sedbatchrecord) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
-func (o *Sedbatchrecord) SetUpdatedAt(v time.Time) {
+func (o *Sedbatchrecord) SetUpdatedAt(v SailPointTime) {
 	o.UpdatedAt.Set(&v)
 }
 // SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil

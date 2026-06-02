@@ -12,7 +12,6 @@ package api_roles_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Dtotype An enumeration of the types of DTOs supported within the IdentityNow infrastructure.

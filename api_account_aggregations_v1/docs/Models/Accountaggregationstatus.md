@@ -45,20 +45,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStart
 
-`func (o *Accountaggregationstatus) GetStart() time.Time`
+`func (o *Accountaggregationstatus) GetStart() SailPointTime`
 
 GetStart returns the Start field if non-nil, zero value otherwise.
 
 ### GetStartOk
 
-`func (o *Accountaggregationstatus) GetStartOk() (*time.Time, bool)`
+`func (o *Accountaggregationstatus) GetStartOk() (*SailPointTime, bool)`
 
 GetStartOk returns a tuple with the Start field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStart
 
-`func (o *Accountaggregationstatus) SetStart(v time.Time)`
+`func (o *Accountaggregationstatus) SetStart(v SailPointTime)`
 
 SetStart sets Start field to given value.
 

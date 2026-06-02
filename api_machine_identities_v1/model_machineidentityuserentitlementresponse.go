@@ -12,7 +12,7 @@ package api_machine_identities_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Machineidentityuserentitlementresponse type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type Machineidentityuserentitlementresponse struct {
 	Source *MachineidentityuserentitlementresponseSource `json:"source,omitempty"`
 	Entitlement *MachineidentityuserentitlementresponseEntitlement `json:"entitlement,omitempty"`
 	// Creation date of the Object
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -179,9 +179,9 @@ func (o *Machineidentityuserentitlementresponse) SetEntitlement(v Machineidentit
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Machineidentityuserentitlementresponse) GetCreated() time.Time {
+func (o *Machineidentityuserentitlementresponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -189,7 +189,7 @@ func (o *Machineidentityuserentitlementresponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityuserentitlementresponse) GetCreatedOk() (*time.Time, bool) {
+func (o *Machineidentityuserentitlementresponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -205,8 +205,8 @@ func (o *Machineidentityuserentitlementresponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Machineidentityuserentitlementresponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Machineidentityuserentitlementresponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

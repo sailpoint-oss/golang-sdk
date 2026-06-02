@@ -12,7 +12,6 @@ package api_scheduled_search_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Selectortype Enum representing the currently supported selector types.  LIST - the *values* array contains one or more distinct values.  RANGE - the *values* array contains two values: the start and end of the range, inclusive.  Additional values may be added in the future without notice. 

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the operator | [optional] 
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **Deprecated** | Pointer to **bool** |  | [optional] 
-**DeprecatedBy** | Pointer to **time.Time** |  | [optional] 
+**DeprecatedBy** | Pointer to **SailPointTime** |  | [optional] 
 **IsSimulationEnabled** | Pointer to **bool** |  | [optional] 
 **FormFields** | Pointer to [**[]Workflowlibraryformfields**](workflowlibraryformfields) | One or more inputs that the operator accepts | [optional] 
 
@@ -196,20 +196,20 @@ HasDeprecated returns a boolean if a field has been set.
 
 ### GetDeprecatedBy
 
-`func (o *Workflowlibraryoperator) GetDeprecatedBy() time.Time`
+`func (o *Workflowlibraryoperator) GetDeprecatedBy() SailPointTime`
 
 GetDeprecatedBy returns the DeprecatedBy field if non-nil, zero value otherwise.
 
 ### GetDeprecatedByOk
 
-`func (o *Workflowlibraryoperator) GetDeprecatedByOk() (*time.Time, bool)`
+`func (o *Workflowlibraryoperator) GetDeprecatedByOk() (*SailPointTime, bool)`
 
 GetDeprecatedByOk returns a tuple with the DeprecatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeprecatedBy
 
-`func (o *Workflowlibraryoperator) SetDeprecatedBy(v time.Time)`
+`func (o *Workflowlibraryoperator) SetDeprecatedBy(v SailPointTime)`
 
 SetDeprecatedBy sets DeprecatedBy field to given value.
 

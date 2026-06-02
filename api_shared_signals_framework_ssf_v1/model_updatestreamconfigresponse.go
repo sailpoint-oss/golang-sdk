@@ -12,7 +12,7 @@ package api_shared_signals_framework_ssf_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Updatestreamconfigresponse type satisfies the MappedNullable interface at compile time
@@ -40,7 +40,7 @@ type Updatestreamconfigresponse struct {
 	// Minimum verification interval in seconds (optional).
 	MinVerificationInterval *int32 `json:"min_verification_interval,omitempty"`
 	// Timestamp of the last configuration update.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt *SailPointTime `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -384,9 +384,9 @@ func (o *Updatestreamconfigresponse) SetMinVerificationInterval(v int32) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Updatestreamconfigresponse) GetUpdatedAt() time.Time {
+func (o *Updatestreamconfigresponse) GetUpdatedAt() SailPointTime {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.UpdatedAt
@@ -394,7 +394,7 @@ func (o *Updatestreamconfigresponse) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Updatestreamconfigresponse) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *Updatestreamconfigresponse) GetUpdatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -410,8 +410,8 @@ func (o *Updatestreamconfigresponse) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *Updatestreamconfigresponse) SetUpdatedAt(v time.Time) {
+// SetUpdatedAt gets a reference to the given SailPointTime and assigns it to the UpdatedAt field.
+func (o *Updatestreamconfigresponse) SetUpdatedAt(v SailPointTime) {
 	o.UpdatedAt = &v
 }
 

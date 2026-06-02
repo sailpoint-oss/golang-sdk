@@ -12,7 +12,7 @@ package api_multi_host_integration_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Sourcecreationerrors type satisfies the MappedNullable interface at compile time
@@ -27,9 +27,9 @@ type Sourcecreationerrors struct {
 	// Source's human-readable description.
 	SourceError *string `json:"source_error,omitempty"`
 	// Date-time when the source was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Date-time when the source was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// operation category (e.g. DELETE).
 	Operation NullableString `json:"operation,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -151,9 +151,9 @@ func (o *Sourcecreationerrors) SetSourceError(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Sourcecreationerrors) GetCreated() time.Time {
+func (o *Sourcecreationerrors) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -161,7 +161,7 @@ func (o *Sourcecreationerrors) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourcecreationerrors) GetCreatedOk() (*time.Time, bool) {
+func (o *Sourcecreationerrors) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -177,15 +177,15 @@ func (o *Sourcecreationerrors) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Sourcecreationerrors) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Sourcecreationerrors) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Sourcecreationerrors) GetModified() time.Time {
+func (o *Sourcecreationerrors) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -193,7 +193,7 @@ func (o *Sourcecreationerrors) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sourcecreationerrors) GetModifiedOk() (*time.Time, bool) {
+func (o *Sourcecreationerrors) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -209,8 +209,8 @@ func (o *Sourcecreationerrors) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Sourcecreationerrors) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Sourcecreationerrors) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

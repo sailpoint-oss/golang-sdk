@@ -12,7 +12,7 @@ package api_access_request_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the CompletedapprovalReviewerComment type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type CompletedapprovalReviewerComment struct {
 	// Comment content.
 	Comment NullableString `json:"comment,omitempty"`
 	// Date and time comment was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	Author *CommentdtoAuthor `json:"author,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -90,9 +90,9 @@ func (o *CompletedapprovalReviewerComment) UnsetComment() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *CompletedapprovalReviewerComment) GetCreated() time.Time {
+func (o *CompletedapprovalReviewerComment) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -100,7 +100,7 @@ func (o *CompletedapprovalReviewerComment) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedapprovalReviewerComment) GetCreatedOk() (*time.Time, bool) {
+func (o *CompletedapprovalReviewerComment) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *CompletedapprovalReviewerComment) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *CompletedapprovalReviewerComment) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *CompletedapprovalReviewerComment) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

@@ -12,7 +12,7 @@ package api_approvals_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Approvalidentityrecord type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type Approvalidentityrecord struct {
 	// List of references representing members of the identity.
 	Members []Approvalreference `json:"members,omitempty"`
 	// Date when the decision was made.
-	DecisionDate *time.Time `json:"decisionDate,omitempty"`
+	DecisionDate *SailPointTime `json:"decisionDate,omitempty"`
 	// Email associated with the identity.
 	Email *string `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -217,9 +217,9 @@ func (o *Approvalidentityrecord) SetMembers(v []Approvalreference) {
 }
 
 // GetDecisionDate returns the DecisionDate field value if set, zero value otherwise.
-func (o *Approvalidentityrecord) GetDecisionDate() time.Time {
+func (o *Approvalidentityrecord) GetDecisionDate() SailPointTime {
 	if o == nil || IsNil(o.DecisionDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DecisionDate
@@ -227,7 +227,7 @@ func (o *Approvalidentityrecord) GetDecisionDate() time.Time {
 
 // GetDecisionDateOk returns a tuple with the DecisionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approvalidentityrecord) GetDecisionDateOk() (*time.Time, bool) {
+func (o *Approvalidentityrecord) GetDecisionDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DecisionDate) {
 		return nil, false
 	}
@@ -243,8 +243,8 @@ func (o *Approvalidentityrecord) HasDecisionDate() bool {
 	return false
 }
 
-// SetDecisionDate gets a reference to the given time.Time and assigns it to the DecisionDate field.
-func (o *Approvalidentityrecord) SetDecisionDate(v time.Time) {
+// SetDecisionDate gets a reference to the given SailPointTime and assigns it to the DecisionDate field.
+func (o *Approvalidentityrecord) SetDecisionDate(v SailPointTime) {
 	o.DecisionDate = &v
 }
 

@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | The current review status of this instance. | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The currently assigned privilege level, if any. | [optional] 
 **Description** | Pointer to **NullableString** | The current description of the entitlement, if one exists. | [optional] 
-**RecommendedAt** | Pointer to **time.Time** | The timestamp when this instance was recommended. | [optional] 
+**RecommendedAt** | Pointer to **SailPointTime** | The timestamp when this instance was recommended. | [optional] 
 
 ## Methods
 
@@ -292,20 +292,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetRecommendedAt
 
-`func (o *Privilegedrecommendationinstance) GetRecommendedAt() time.Time`
+`func (o *Privilegedrecommendationinstance) GetRecommendedAt() SailPointTime`
 
 GetRecommendedAt returns the RecommendedAt field if non-nil, zero value otherwise.
 
 ### GetRecommendedAtOk
 
-`func (o *Privilegedrecommendationinstance) GetRecommendedAtOk() (*time.Time, bool)`
+`func (o *Privilegedrecommendationinstance) GetRecommendedAtOk() (*SailPointTime, bool)`
 
 GetRecommendedAtOk returns a tuple with the RecommendedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecommendedAt
 
-`func (o *Privilegedrecommendationinstance) SetRecommendedAt(v time.Time)`
+`func (o *Privilegedrecommendationinstance) SetRecommendedAt(v SailPointTime)`
 
 SetRecommendedAt sets RecommendedAt field to given value.
 

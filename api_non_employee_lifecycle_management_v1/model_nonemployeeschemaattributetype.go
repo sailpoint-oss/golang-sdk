@@ -12,7 +12,6 @@ package api_non_employee_lifecycle_management_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Nonemployeeschemaattributetype Enum representing the type of data a schema attribute accepts.

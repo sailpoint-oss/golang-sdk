@@ -12,7 +12,6 @@ package api_access_requests_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Approvalscheme Describes the individual or group that is responsible for an approval step.

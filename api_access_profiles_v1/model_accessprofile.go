@@ -12,7 +12,7 @@ package api_access_profiles_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,9 +28,9 @@ type Accessprofile struct {
 	// Access profile description.
 	Description NullableString `json:"description,omitempty"`
 	// Date and time when the access profile was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Date and time when the access profile was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Indicates whether the access profile is enabled. If it's enabled, you must include at least one entitlement.
 	Enabled *bool `json:"enabled,omitempty"`
 	Owner NullableOwnerreference `json:"owner"`
@@ -179,9 +179,9 @@ func (o *Accessprofile) UnsetDescription() {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Accessprofile) GetCreated() time.Time {
+func (o *Accessprofile) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -189,7 +189,7 @@ func (o *Accessprofile) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofile) GetCreatedOk() (*time.Time, bool) {
+func (o *Accessprofile) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -205,15 +205,15 @@ func (o *Accessprofile) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Accessprofile) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Accessprofile) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Accessprofile) GetModified() time.Time {
+func (o *Accessprofile) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -221,7 +221,7 @@ func (o *Accessprofile) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Accessprofile) GetModifiedOk() (*time.Time, bool) {
+func (o *Accessprofile) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -237,8 +237,8 @@ func (o *Accessprofile) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Accessprofile) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Accessprofile) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

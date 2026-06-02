@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Auditdetails', 'V1Auditdetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | Pointer to **time.Time** | Initial date and time when the record was created | [optional] 
+**Created** | Pointer to **SailPointTime** | Initial date and time when the record was created | [optional] 
 **CreatedBy** | Pointer to [**Identity2**](identity2) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Last modified date and time for the record | [optional] 
+**Modified** | Pointer to **SailPointTime** | Last modified date and time for the record | [optional] 
 **ModifiedBy** | Pointer to [**Identity2**](identity2) |  | [optional] 
 
 ## Methods
@@ -41,20 +41,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreated
 
-`func (o *Auditdetails) GetCreated() time.Time`
+`func (o *Auditdetails) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Auditdetails) GetCreatedOk() (*time.Time, bool)`
+`func (o *Auditdetails) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Auditdetails) SetCreated(v time.Time)`
+`func (o *Auditdetails) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -91,20 +91,20 @@ HasCreatedBy returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Auditdetails) GetModified() time.Time`
+`func (o *Auditdetails) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Auditdetails) GetModifiedOk() (*time.Time, bool)`
+`func (o *Auditdetails) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Auditdetails) SetModified(v time.Time)`
+`func (o *Auditdetails) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the report purpose and/or contents. | [optional] 
 **ParentName** | Pointer to **NullableString** | Name of the parent task/report if exists. | [optional] 
 **Launcher** | Pointer to **string** | Name of the report processing initiator. | [optional] 
-**Created** | Pointer to **time.Time** | Report creation date | [optional] 
+**Created** | Pointer to **SailPointTime** | Report creation date | [optional] 
 **Launched** | Pointer to **NullableTime** | Report start date | [optional] 
 **Completed** | Pointer to **NullableTime** | Report completion date | [optional] 
 **CompletionStatus** | Pointer to **NullableString** | Report completion status. | [optional] 
@@ -211,20 +211,20 @@ HasLauncher returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Taskresultdetails) GetCreated() time.Time`
+`func (o *Taskresultdetails) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Taskresultdetails) GetCreatedOk() (*time.Time, bool)`
+`func (o *Taskresultdetails) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Taskresultdetails) SetCreated(v time.Time)`
+`func (o *Taskresultdetails) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -236,20 +236,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetLaunched
 
-`func (o *Taskresultdetails) GetLaunched() time.Time`
+`func (o *Taskresultdetails) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *Taskresultdetails) GetLaunchedOk() (*time.Time, bool)`
+`func (o *Taskresultdetails) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *Taskresultdetails) SetLaunched(v time.Time)`
+`func (o *Taskresultdetails) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -271,20 +271,20 @@ HasLaunched returns a boolean if a field has been set.
 UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
-`func (o *Taskresultdetails) GetCompleted() time.Time`
+`func (o *Taskresultdetails) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Taskresultdetails) GetCompletedOk() (*time.Time, bool)`
+`func (o *Taskresultdetails) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Taskresultdetails) SetCompleted(v time.Time)`
+`func (o *Taskresultdetails) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

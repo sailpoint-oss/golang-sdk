@@ -27,8 +27,8 @@ Name | Type | Description | Notes
 **ReplyTo** | Pointer to **string** | The \"Reply To\" line in the template | [optional] 
 **Description** | Pointer to **string** | The description in the template | [optional] 
 **Id** | Pointer to **string** | This is auto-generated. | [optional] 
-**Created** | Pointer to **time.Time** | The time when this template is created. This is auto-generated. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this template was last modified. This is auto-generated. | [optional] 
+**Created** | Pointer to **SailPointTime** | The time when this template is created. This is auto-generated. | [optional] 
+**Modified** | Pointer to **SailPointTime** | The time when this template was last modified. This is auto-generated. | [optional] 
 **SlackTemplate** | Pointer to [**TemplatedtoSlackTemplate**](templatedto-slack-template) |  | [optional] 
 **TeamsTemplate** | Pointer to [**TemplatedtoTeamsTemplate**](templatedto-teams-template) |  | [optional] 
 
@@ -358,20 +358,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Templatedto) GetCreated() time.Time`
+`func (o *Templatedto) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Templatedto) GetCreatedOk() (*time.Time, bool)`
+`func (o *Templatedto) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Templatedto) SetCreated(v time.Time)`
+`func (o *Templatedto) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -383,20 +383,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Templatedto) GetModified() time.Time`
+`func (o *Templatedto) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Templatedto) GetModifiedOk() (*time.Time, bool)`
+`func (o *Templatedto) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Templatedto) SetModified(v time.Time)`
+`func (o *Templatedto) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountRequestId** | Pointer to **string** | Account request ID. | [optional] 
 **RequestType** | Pointer to **string** | Type of the account request. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | Machine account creation request creation date and time. | [optional] [readonly] 
+**CreatedAt** | Pointer to **SailPointTime** | Machine account creation request creation date and time. | [optional] [readonly] 
 **CompletedAt** | Pointer to **NullableTime** | Machine account creation request completion date and time. | [optional] [readonly] 
 **OverallStatus** | Pointer to **string** | Overall status of the creation request. | [optional] 
 **Requester** | Pointer to [**AccountrequestdetailsdtoRequester**](accountrequestdetailsdto-requester) |  | [optional] 
@@ -95,20 +95,20 @@ HasRequestType returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Accountrequestdetailsdto) GetCreatedAt() time.Time`
+`func (o *Accountrequestdetailsdto) GetCreatedAt() SailPointTime`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Accountrequestdetailsdto) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Accountrequestdetailsdto) GetCreatedAtOk() (*SailPointTime, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Accountrequestdetailsdto) SetCreatedAt(v time.Time)`
+`func (o *Accountrequestdetailsdto) SetCreatedAt(v SailPointTime)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -120,20 +120,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCompletedAt
 
-`func (o *Accountrequestdetailsdto) GetCompletedAt() time.Time`
+`func (o *Accountrequestdetailsdto) GetCompletedAt() SailPointTime`
 
 GetCompletedAt returns the CompletedAt field if non-nil, zero value otherwise.
 
 ### GetCompletedAtOk
 
-`func (o *Accountrequestdetailsdto) GetCompletedAtOk() (*time.Time, bool)`
+`func (o *Accountrequestdetailsdto) GetCompletedAtOk() (*SailPointTime, bool)`
 
 GetCompletedAtOk returns a tuple with the CompletedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletedAt
 
-`func (o *Accountrequestdetailsdto) SetCompletedAt(v time.Time)`
+`func (o *Accountrequestdetailsdto) SetCompletedAt(v SailPointTime)`
 
 SetCompletedAt sets CompletedAt field to given value.
 

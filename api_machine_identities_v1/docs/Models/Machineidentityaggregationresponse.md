@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **ParentName** | Pointer to **NullableString** | Name of the parent of the task for aggregation | [optional] 
 **Launcher** | Pointer to **string** | Service to execute the aggregation | [optional] 
 **Target** | Pointer to [**MachineidentityaggregationresponseTarget**](machineidentityaggregationresponse-target) |  | [optional] 
-**Created** | Pointer to **time.Time** | Creation date of the aggregation | [optional] 
-**Modified** | Pointer to **time.Time** | Last modification date of the aggregation | [optional] 
+**Created** | Pointer to **SailPointTime** | Creation date of the aggregation | [optional] 
+**Modified** | Pointer to **SailPointTime** | Last modification date of the aggregation | [optional] 
 **Launched** | Pointer to **NullableTime** | Launch date of the aggregation | [optional] 
 **Completed** | Pointer to **NullableTime** | Completion date of the aggregation | [optional] 
 **TaskDefinitionSummary** | Pointer to [**Taskdefinitionsummary**](taskdefinitionsummary) |  | [optional] 
@@ -240,20 +240,20 @@ HasTarget returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *Machineidentityaggregationresponse) GetCreated() time.Time`
+`func (o *Machineidentityaggregationresponse) GetCreated() SailPointTime`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *Machineidentityaggregationresponse) GetCreatedOk() (*time.Time, bool)`
+`func (o *Machineidentityaggregationresponse) GetCreatedOk() (*SailPointTime, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *Machineidentityaggregationresponse) SetCreated(v time.Time)`
+`func (o *Machineidentityaggregationresponse) SetCreated(v SailPointTime)`
 
 SetCreated sets Created field to given value.
 
@@ -265,20 +265,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Machineidentityaggregationresponse) GetModified() time.Time`
+`func (o *Machineidentityaggregationresponse) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Machineidentityaggregationresponse) GetModifiedOk() (*time.Time, bool)`
+`func (o *Machineidentityaggregationresponse) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Machineidentityaggregationresponse) SetModified(v time.Time)`
+`func (o *Machineidentityaggregationresponse) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 
@@ -290,20 +290,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetLaunched
 
-`func (o *Machineidentityaggregationresponse) GetLaunched() time.Time`
+`func (o *Machineidentityaggregationresponse) GetLaunched() SailPointTime`
 
 GetLaunched returns the Launched field if non-nil, zero value otherwise.
 
 ### GetLaunchedOk
 
-`func (o *Machineidentityaggregationresponse) GetLaunchedOk() (*time.Time, bool)`
+`func (o *Machineidentityaggregationresponse) GetLaunchedOk() (*SailPointTime, bool)`
 
 GetLaunchedOk returns a tuple with the Launched field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLaunched
 
-`func (o *Machineidentityaggregationresponse) SetLaunched(v time.Time)`
+`func (o *Machineidentityaggregationresponse) SetLaunched(v SailPointTime)`
 
 SetLaunched sets Launched field to given value.
 
@@ -325,20 +325,20 @@ HasLaunched returns a boolean if a field has been set.
 UnsetLaunched ensures that no value is present for Launched, not even an explicit nil
 ### GetCompleted
 
-`func (o *Machineidentityaggregationresponse) GetCompleted() time.Time`
+`func (o *Machineidentityaggregationresponse) GetCompleted() SailPointTime`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *Machineidentityaggregationresponse) GetCompletedOk() (*time.Time, bool)`
+`func (o *Machineidentityaggregationresponse) GetCompletedOk() (*SailPointTime, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *Machineidentityaggregationresponse) SetCompleted(v time.Time)`
+`func (o *Machineidentityaggregationresponse) SetCompleted(v SailPointTime)`
 
 SetCompleted sets Completed field to given value.
 

@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CampaignRef** | [**Campaignreference**](campaignreference) |  | 
 **Phase** | [**Certificationphase**](certificationphase) |  | 
-**Due** | **time.Time** | The due date of the certification. | 
-**Signed** | **time.Time** | The date the reviewer signed off on the certification. | 
+**Due** | **SailPointTime** | The due date of the certification. | 
+**Signed** | **SailPointTime** | The date the reviewer signed off on the certification. | 
 **Reviewer** | [**Reviewer**](reviewer) |  | 
 **Reassignment** | Pointer to [**NullableReassignment**](reassignment) |  | [optional] 
 **HasErrors** | **bool** | Indicates it the certification has any errors. | 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewCertificationdto
 
-`func NewCertificationdto(campaignRef Campaignreference, phase Certificationphase, due time.Time, signed time.Time, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32, ) *Certificationdto`
+`func NewCertificationdto(campaignRef Campaignreference, phase Certificationphase, due SailPointTime, signed SailPointTime, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32, ) *Certificationdto`
 
 NewCertificationdto instantiates a new Certificationdto object
 This constructor will assign default values to properties that have it defined,
@@ -90,40 +90,40 @@ SetPhase sets Phase field to given value.
 
 ### GetDue
 
-`func (o *Certificationdto) GetDue() time.Time`
+`func (o *Certificationdto) GetDue() SailPointTime`
 
 GetDue returns the Due field if non-nil, zero value otherwise.
 
 ### GetDueOk
 
-`func (o *Certificationdto) GetDueOk() (*time.Time, bool)`
+`func (o *Certificationdto) GetDueOk() (*SailPointTime, bool)`
 
 GetDueOk returns a tuple with the Due field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDue
 
-`func (o *Certificationdto) SetDue(v time.Time)`
+`func (o *Certificationdto) SetDue(v SailPointTime)`
 
 SetDue sets Due field to given value.
 
 
 ### GetSigned
 
-`func (o *Certificationdto) GetSigned() time.Time`
+`func (o *Certificationdto) GetSigned() SailPointTime`
 
 GetSigned returns the Signed field if non-nil, zero value otherwise.
 
 ### GetSignedOk
 
-`func (o *Certificationdto) GetSignedOk() (*time.Time, bool)`
+`func (o *Certificationdto) GetSignedOk() (*SailPointTime, bool)`
 
 GetSignedOk returns a tuple with the Signed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigned
 
-`func (o *Certificationdto) SetSigned(v time.Time)`
+`func (o *Certificationdto) SetSigned(v SailPointTime)`
 
 SetSigned sets Signed field to given value.
 

@@ -12,7 +12,6 @@ package api_oauth_clients_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Clienttype Type of an API Client indicating public or confidentials use

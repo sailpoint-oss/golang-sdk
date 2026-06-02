@@ -174,8 +174,7 @@ const fixFiles = async function (myArray) {
       fileOut = [];
     };
 
-    if (file.includes("go.mod") || file.includes("go.sum")) {
-      fs.unlink(file)
+    if (file.includes("go.sum")) {
       continue
     }
 
@@ -387,7 +386,7 @@ const fixFiles = async function (myArray) {
       ]);
     }
 
-    if (file.includes("model_") || file.includes(".md")) {
+    if (path.basename(file).startsWith("model_") || file.endsWith(".md")) {
       console.log(`Processing file: ${file}`);
       for (const line of rawDataArra) {
         if (line.includes("\"time\"")) {
@@ -408,7 +407,7 @@ const fixFiles = async function (myArray) {
 
     if (madeChange) {
       fixCheck += 1;
-      fs.writeFile(file, rawDataArra.join("\n"));
+      await fs.writeFile(file, rawDataArra.join("\n"));
     }
   }
   console.log(`fixed ${fixCheck} files`)

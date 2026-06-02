@@ -555,20 +555,20 @@ HasApprovedType returns a boolean if a field has been set.
 UnsetApprovedType ensures that no value is present for ApprovedType, not even an explicit nil
 ### GetApprovedWhen
 
-`func (o *Entitlementrecommendationrecord) GetApprovedWhen() time.Time`
+`func (o *Entitlementrecommendationrecord) GetApprovedWhen() SailPointTime`
 
 GetApprovedWhen returns the ApprovedWhen field if non-nil, zero value otherwise.
 
 ### GetApprovedWhenOk
 
-`func (o *Entitlementrecommendationrecord) GetApprovedWhenOk() (*time.Time, bool)`
+`func (o *Entitlementrecommendationrecord) GetApprovedWhenOk() (*SailPointTime, bool)`
 
 GetApprovedWhenOk returns a tuple with the ApprovedWhen field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovedWhen
 
-`func (o *Entitlementrecommendationrecord) SetApprovedWhen(v time.Time)`
+`func (o *Entitlementrecommendationrecord) SetApprovedWhen(v SailPointTime)`
 
 SetApprovedWhen sets ApprovedWhen field to given value.
 
@@ -590,20 +590,20 @@ HasApprovedWhen returns a boolean if a field has been set.
 UnsetApprovedWhen ensures that no value is present for ApprovedWhen, not even an explicit nil
 ### GetLlmBatchCreatedAt
 
-`func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAt() time.Time`
+`func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAt() SailPointTime`
 
 GetLlmBatchCreatedAt returns the LlmBatchCreatedAt field if non-nil, zero value otherwise.
 
 ### GetLlmBatchCreatedAtOk
 
-`func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAtOk() (*time.Time, bool)`
+`func (o *Entitlementrecommendationrecord) GetLlmBatchCreatedAtOk() (*SailPointTime, bool)`
 
 GetLlmBatchCreatedAtOk returns a tuple with the LlmBatchCreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLlmBatchCreatedAt
 
-`func (o *Entitlementrecommendationrecord) SetLlmBatchCreatedAt(v time.Time)`
+`func (o *Entitlementrecommendationrecord) SetLlmBatchCreatedAt(v SailPointTime)`
 
 SetLlmBatchCreatedAt sets LlmBatchCreatedAt field to given value.
 

@@ -65,20 +65,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetModified
 
-`func (o *Publicidentityconfig) GetModified() time.Time`
+`func (o *Publicidentityconfig) GetModified() SailPointTime`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *Publicidentityconfig) GetModifiedOk() (*time.Time, bool)`
+`func (o *Publicidentityconfig) GetModifiedOk() (*SailPointTime, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *Publicidentityconfig) SetModified(v time.Time)`
+`func (o *Publicidentityconfig) SetModified(v SailPointTime)`
 
 SetModified sets Modified field to given value.
 

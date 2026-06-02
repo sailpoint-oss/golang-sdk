@@ -18,13 +18,13 @@ Name | Type | Description | Notes
 **Body** | [**ManagedclienthealthindicatorsBody**](managedclienthealthindicators-body) |  | 
 **Status** | **string** | Top-level status of the Managed Client | 
 **Type** | **string** | Type of the Managed Client | 
-**Timestamp** | **time.Time** | Timestamp when this report was generated | 
+**Timestamp** | **SailPointTime** | Timestamp when this report was generated | 
 
 ## Methods
 
 ### NewManagedclienthealthindicators
 
-`func NewManagedclienthealthindicators(body ManagedclienthealthindicatorsBody, status string, type_ string, timestamp time.Time, ) *Managedclienthealthindicators`
+`func NewManagedclienthealthindicators(body ManagedclienthealthindicatorsBody, status string, type_ string, timestamp SailPointTime, ) *Managedclienthealthindicators`
 
 NewManagedclienthealthindicators instantiates a new Managedclienthealthindicators object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +101,20 @@ SetType sets Type field to given value.
 
 ### GetTimestamp
 
-`func (o *Managedclienthealthindicators) GetTimestamp() time.Time`
+`func (o *Managedclienthealthindicators) GetTimestamp() SailPointTime`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Managedclienthealthindicators) GetTimestampOk() (*time.Time, bool)`
+`func (o *Managedclienthealthindicators) GetTimestampOk() (*SailPointTime, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Managedclienthealthindicators) SetTimestamp(v time.Time)`
+`func (o *Managedclienthealthindicators) SetTimestamp(v SailPointTime)`
 
 SetTimestamp sets Timestamp field to given value.
 

@@ -12,7 +12,7 @@ package api_sources_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the LoadaccountstaskTask type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type LoadaccountstaskTask struct {
 	// The user who initiated the task
 	Launcher *string `json:"launcher,omitempty"`
 	// The Task creation date
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The task start date
 	Launched NullableTime `json:"launched,omitempty"`
 	// The task completion date
@@ -230,9 +230,9 @@ func (o *LoadaccountstaskTask) SetLauncher(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *LoadaccountstaskTask) GetCreated() time.Time {
+func (o *LoadaccountstaskTask) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -240,7 +240,7 @@ func (o *LoadaccountstaskTask) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadaccountstaskTask) GetCreatedOk() (*time.Time, bool) {
+func (o *LoadaccountstaskTask) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -256,15 +256,15 @@ func (o *LoadaccountstaskTask) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *LoadaccountstaskTask) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *LoadaccountstaskTask) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetLaunched returns the Launched field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoadaccountstaskTask) GetLaunched() time.Time {
+func (o *LoadaccountstaskTask) GetLaunched() SailPointTime {
 	if o == nil || IsNil(o.Launched.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Launched.Get()
@@ -273,7 +273,7 @@ func (o *LoadaccountstaskTask) GetLaunched() time.Time {
 // GetLaunchedOk returns a tuple with the Launched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadaccountstaskTask) GetLaunchedOk() (*time.Time, bool) {
+func (o *LoadaccountstaskTask) GetLaunchedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -290,7 +290,7 @@ func (o *LoadaccountstaskTask) HasLaunched() bool {
 }
 
 // SetLaunched gets a reference to the given NullableTime and assigns it to the Launched field.
-func (o *LoadaccountstaskTask) SetLaunched(v time.Time) {
+func (o *LoadaccountstaskTask) SetLaunched(v SailPointTime) {
 	o.Launched.Set(&v)
 }
 // SetLaunchedNil sets the value for Launched to be an explicit nil
@@ -304,9 +304,9 @@ func (o *LoadaccountstaskTask) UnsetLaunched() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoadaccountstaskTask) GetCompleted() time.Time {
+func (o *LoadaccountstaskTask) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed.Get()
@@ -315,7 +315,7 @@ func (o *LoadaccountstaskTask) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadaccountstaskTask) GetCompletedOk() (*time.Time, bool) {
+func (o *LoadaccountstaskTask) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -332,7 +332,7 @@ func (o *LoadaccountstaskTask) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *LoadaccountstaskTask) SetCompleted(v time.Time) {
+func (o *LoadaccountstaskTask) SetCompleted(v SailPointTime) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

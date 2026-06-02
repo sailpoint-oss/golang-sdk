@@ -12,7 +12,7 @@ package api_non_employee_lifecycle_management_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Nonemployeesourcewithcloudexternalid type satisfies the MappedNullable interface at compile time
@@ -33,9 +33,9 @@ type Nonemployeesourcewithcloudexternalid struct {
 	// List of account managers
 	AccountManagers []Nonemployeeidentityreferencewithid `json:"accountManagers,omitempty"`
 	// When the request was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.
 	CloudExternalId *string `json:"cloudExternalId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -253,9 +253,9 @@ func (o *Nonemployeesourcewithcloudexternalid) SetAccountManagers(v []Nonemploye
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Nonemployeesourcewithcloudexternalid) GetModified() time.Time {
+func (o *Nonemployeesourcewithcloudexternalid) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -263,7 +263,7 @@ func (o *Nonemployeesourcewithcloudexternalid) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Nonemployeesourcewithcloudexternalid) GetModifiedOk() (*time.Time, bool) {
+func (o *Nonemployeesourcewithcloudexternalid) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -279,15 +279,15 @@ func (o *Nonemployeesourcewithcloudexternalid) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Nonemployeesourcewithcloudexternalid) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Nonemployeesourcewithcloudexternalid) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Nonemployeesourcewithcloudexternalid) GetCreated() time.Time {
+func (o *Nonemployeesourcewithcloudexternalid) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -295,7 +295,7 @@ func (o *Nonemployeesourcewithcloudexternalid) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Nonemployeesourcewithcloudexternalid) GetCreatedOk() (*time.Time, bool) {
+func (o *Nonemployeesourcewithcloudexternalid) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -311,8 +311,8 @@ func (o *Nonemployeesourcewithcloudexternalid) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Nonemployeesourcewithcloudexternalid) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Nonemployeesourcewithcloudexternalid) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

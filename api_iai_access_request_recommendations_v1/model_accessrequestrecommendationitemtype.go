@@ -12,7 +12,6 @@ package api_iai_access_request_recommendations_v1
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // Accessrequestrecommendationitemtype The type of access item.

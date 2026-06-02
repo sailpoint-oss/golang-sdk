@@ -12,7 +12,7 @@ package api_intelligence_package_v1
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -48,9 +48,9 @@ type Intelaccessaccountwire struct {
 	// Native identifier string on the source directory or application.
 	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
 	// Timestamp when the account record was created in Identity Security Cloud.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// Timestamp when the account record was last modified in Identity Security Cloud.
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -60,7 +60,7 @@ type _Intelaccessaccountwire Intelaccessaccountwire
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntelaccessaccountwire(id string, name string, disabled bool, locked bool, uncorrelated bool, authoritative bool, systemAccount bool, isMachine bool, hasEntitlements bool, manuallyCorrelated bool, connectionType string, created time.Time, modified time.Time) *Intelaccessaccountwire {
+func NewIntelaccessaccountwire(id string, name string, disabled bool, locked bool, uncorrelated bool, authoritative bool, systemAccount bool, isMachine bool, hasEntitlements bool, manuallyCorrelated bool, connectionType string, created SailPointTime, modified SailPointTime) *Intelaccessaccountwire {
 	this := Intelaccessaccountwire{}
 	this.Id = id
 	this.Name = name
@@ -425,9 +425,9 @@ func (o *Intelaccessaccountwire) UnsetNativeIdentity() {
 }
 
 // GetCreated returns the Created field value
-func (o *Intelaccessaccountwire) GetCreated() time.Time {
+func (o *Intelaccessaccountwire) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -436,7 +436,7 @@ func (o *Intelaccessaccountwire) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *Intelaccessaccountwire) GetCreatedOk() (*time.Time, bool) {
+func (o *Intelaccessaccountwire) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -444,14 +444,14 @@ func (o *Intelaccessaccountwire) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *Intelaccessaccountwire) SetCreated(v time.Time) {
+func (o *Intelaccessaccountwire) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *Intelaccessaccountwire) GetModified() time.Time {
+func (o *Intelaccessaccountwire) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -460,7 +460,7 @@ func (o *Intelaccessaccountwire) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *Intelaccessaccountwire) GetModifiedOk() (*time.Time, bool) {
+func (o *Intelaccessaccountwire) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -468,7 +468,7 @@ func (o *Intelaccessaccountwire) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *Intelaccessaccountwire) SetModified(v time.Time) {
+func (o *Intelaccessaccountwire) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 
