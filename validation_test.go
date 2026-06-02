@@ -157,6 +157,7 @@ func Test_transforms(t *testing.T) {
 	apiClient := NewAPIClient(configuration)
 
 	t.Run("Test List Transforms", func(t *testing.T) {
+
 		resp, r, err := apiClient.Transforms.TransformsAPI.ListTransformsV1(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
@@ -206,7 +207,7 @@ func Test_workflows(t *testing.T) {
 
 		for _, wf := range workflows {
 			if wf.GetName() == randomName {
-				_, r, err := apiClient.Workflows.WorkflowsAPI.DeleteWorkflowV1(context.TODO(), wf.GetId()).Execute()
+				r, err := apiClient.Workflows.WorkflowsAPI.DeleteWorkflowV1(context.TODO(), wf.GetId()).Execute()
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "during test: %v\n", err)
 					t.FailNow()
