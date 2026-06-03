@@ -315,6 +315,9 @@ docs/Aggregations.md
 docs/ApiUsageAPI.md
 docs/ApiUsageAPIdeveloperSite_code_examples.yaml
 docs/App.md
+docs/AppAccessProfileSelector.md
+docs/AppAccessProfileSelectorAccountMatchConfig.md
+docs/AppAccessProfileSelectorAccountMatchConfigMatchExpression.md
 docs/AppAccountDetails.md
 docs/AppAccountDetailsSourceAccount.md
 docs/AppAllOfAccount.md
@@ -1459,8 +1462,7 @@ docs/SegmentVisibilityCriteria.md
 docs/SegmentsAPI.md
 docs/SegmentsAPIdeveloperSite_code_examples.yaml
 docs/Selector.md
-docs/SelectorAccountMatchConfig.md
-docs/SelectorAccountMatchConfigMatchExpression.md
+docs/SelectorType.md
 docs/SelfImportExportDto.md
 docs/SendAccountVerificationRequest.md
 docs/SendClassifyMachineAccount200Response.md
@@ -1902,6 +1904,9 @@ model_aggregation_result.go
 model_aggregation_type.go
 model_aggregations.go
 model_app.go
+model_app_access_profile_selector.go
+model_app_access_profile_selector_account_match_config.go
+model_app_access_profile_selector_account_match_config_match_expression.go
 model_app_account_details.go
 model_app_account_details_source_account.go
 model_app_all_of_account.go
@@ -2879,8 +2884,7 @@ model_sed_patch.go
 model_segment.go
 model_segment_visibility_criteria.go
 model_selector.go
-model_selector_account_match_config.go
-model_selector_account_match_config_match_expression.go
+model_selector_type.go
 model_self_import_export_dto.go
 model_send_account_verification_request.go
 model_send_classify_machine_account_200_response.go

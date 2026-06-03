@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessProfileDetailsAccountSelector{}
 
 // AccessProfileDetailsAccountSelector How to select account when there are multiple accounts for the user
 type AccessProfileDetailsAccountSelector struct {
-	Selectors []Selector `json:"selectors,omitempty"`
+	Selectors []AppAccessProfileSelector `json:"selectors,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,9 +43,9 @@ func NewAccessProfileDetailsAccountSelectorWithDefaults() *AccessProfileDetailsA
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccessProfileDetailsAccountSelector) GetSelectors() []Selector {
+func (o *AccessProfileDetailsAccountSelector) GetSelectors() []AppAccessProfileSelector {
 	if o == nil {
-		var ret []Selector
+		var ret []AppAccessProfileSelector
 		return ret
 	}
 	return o.Selectors
@@ -54,7 +54,7 @@ func (o *AccessProfileDetailsAccountSelector) GetSelectors() []Selector {
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfileDetailsAccountSelector) GetSelectorsOk() ([]Selector, bool) {
+func (o *AccessProfileDetailsAccountSelector) GetSelectorsOk() ([]AppAccessProfileSelector, bool) {
 	if o == nil || IsNil(o.Selectors) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *AccessProfileDetailsAccountSelector) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
-func (o *AccessProfileDetailsAccountSelector) SetSelectors(v []Selector) {
+// SetSelectors gets a reference to the given []AppAccessProfileSelector and assigns it to the Selectors field.
+func (o *AccessProfileDetailsAccountSelector) SetSelectors(v []AppAccessProfileSelector) {
 	o.Selectors = v
 }
 
