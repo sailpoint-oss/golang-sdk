@@ -50,6 +50,34 @@ func Test_api_v2026_IntelligencePackageAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IntelligencePackageAPIService GetIntelIdentityRisk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityID string
+
+		resp, httpRes, err := apiClient.IntelligencePackageAPI.GetIntelIdentityRisk(context.Background(), identityID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IntelligencePackageAPIService GetIntelIdentityRiskOutliers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityID string
+
+		resp, httpRes, err := apiClient.IntelligencePackageAPI.GetIntelIdentityRiskOutliers(context.Background(), identityID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IntelligencePackageAPIService SearchIntelIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

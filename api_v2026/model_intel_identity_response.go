@@ -18,7 +18,7 @@ import (
 // checks if the IntelIdentityResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IntelIdentityResponse{}
 
-// IntelIdentityResponse HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access and accessHistory only). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
+// IntelIdentityResponse HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access, risk, and accessHistory). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
 type IntelIdentityResponse struct {
 	// Identity Security Cloud identifier for this identity.
 	Id string `json:"id"`

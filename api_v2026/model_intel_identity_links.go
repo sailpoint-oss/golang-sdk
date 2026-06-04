@@ -22,6 +22,8 @@ var _ MappedNullable = &IntelIdentityLinks{}
 type IntelIdentityLinks struct {
 	// Hyperlink to the Intelligence Package access document for this identity.
 	Access IntelHref `json:"access"`
+	// Hyperlink to the Intelligence Package risk document for this identity.
+	Risk IntelHref `json:"risk"`
 	// Hyperlink to the Intelligence Package access history document for this identity.
 	AccessHistory IntelHref `json:"accessHistory"`
 	AdditionalProperties map[string]interface{}
@@ -33,9 +35,10 @@ type _IntelIdentityLinks IntelIdentityLinks
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntelIdentityLinks(access IntelHref, accessHistory IntelHref) *IntelIdentityLinks {
+func NewIntelIdentityLinks(access IntelHref, risk IntelHref, accessHistory IntelHref) *IntelIdentityLinks {
 	this := IntelIdentityLinks{}
 	this.Access = access
+	this.Risk = risk
 	this.AccessHistory = accessHistory
 	return &this
 }
@@ -70,6 +73,30 @@ func (o *IntelIdentityLinks) GetAccessOk() (*IntelHref, bool) {
 // SetAccess sets field value
 func (o *IntelIdentityLinks) SetAccess(v IntelHref) {
 	o.Access = v
+}
+
+// GetRisk returns the Risk field value
+func (o *IntelIdentityLinks) GetRisk() IntelHref {
+	if o == nil {
+		var ret IntelHref
+		return ret
+	}
+
+	return o.Risk
+}
+
+// GetRiskOk returns a tuple with the Risk field value
+// and a boolean to check if the value has been set.
+func (o *IntelIdentityLinks) GetRiskOk() (*IntelHref, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Risk, true
+}
+
+// SetRisk sets field value
+func (o *IntelIdentityLinks) SetRisk(v IntelHref) {
+	o.Risk = v
 }
 
 // GetAccessHistory returns the AccessHistory field value
@@ -107,6 +134,7 @@ func (o IntelIdentityLinks) MarshalJSON() ([]byte, error) {
 func (o IntelIdentityLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access"] = o.Access
+	toSerialize["risk"] = o.Risk
 	toSerialize["accessHistory"] = o.AccessHistory
 
 	for key, value := range o.AdditionalProperties {
@@ -122,6 +150,7 @@ func (o *IntelIdentityLinks) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"access",
+		"risk",
 		"accessHistory",
 	}
 
@@ -153,6 +182,7 @@ func (o *IntelIdentityLinks) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "access")
+		delete(additionalProperties, "risk")
 		delete(additionalProperties, "accessHistory")
 		o.AdditionalProperties = additionalProperties
 	}
