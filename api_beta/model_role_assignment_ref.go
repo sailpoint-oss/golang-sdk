@@ -25,6 +25,8 @@ type RoleAssignmentRef struct {
 	Role *BaseReferenceDto1 `json:"role,omitempty"`
 	// Date that the assignment was added
 	AddedDate *SailPointTime `json:"addedDate,omitempty"`
+	// Date when assignment will be active, if requested with a future date. If null, assignment is active immediately
+	StartDate NullableTime `json:"startDate,omitempty"`
 	// Date that the assignment will be removed
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -145,6 +147,48 @@ func (o *RoleAssignmentRef) SetAddedDate(v SailPointTime) {
 	o.AddedDate = &v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleAssignmentRef) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate.Get()
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleAssignmentRef) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartDate.Get(), o.StartDate.IsSet()
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *RoleAssignmentRef) HasStartDate() bool {
+	if o != nil && o.StartDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given NullableTime and assigns it to the StartDate field.
+func (o *RoleAssignmentRef) SetStartDate(v SailPointTime) {
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *RoleAssignmentRef) SetStartDateNil() {
+	o.StartDate.Set(nil)
+}
+
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *RoleAssignmentRef) UnsetStartDate() {
+	o.StartDate.Unset()
+}
+
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleAssignmentRef) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
@@ -206,6 +250,9 @@ func (o RoleAssignmentRef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddedDate) {
 		toSerialize["addedDate"] = o.AddedDate
 	}
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
+	}
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
@@ -234,6 +281,7 @@ func (o *RoleAssignmentRef) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "addedDate")
+		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		o.AdditionalProperties = additionalProperties
 	}

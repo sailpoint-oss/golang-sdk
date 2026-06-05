@@ -26,10 +26,12 @@ type RequestabilityForRole struct {
 	// Indicates whether reauthorization is required for the request.
 	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
 	// Indicates whether the requester of the containing object must provide access end date.
-	RequireEndDate NullableBool `json:"requireEndDate,omitempty"`
+	RequireEndDate *bool `json:"requireEndDate,omitempty"`
 	MaxPermittedAccessDuration NullableAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	// List describing the steps in approving the request
 	ApprovalSchemes []ApprovalSchemeForRole `json:"approvalSchemes,omitempty"`
+	// The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.
+	FormDefinitionId NullableString `json:"formDefinitionId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,7 +50,7 @@ func NewRequestabilityForRole() *RequestabilityForRole {
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	var requireEndDate bool = false
-	this.RequireEndDate = *NewNullableBool(&requireEndDate)
+	this.RequireEndDate = &requireEndDate
 	return &this
 }
 
@@ -64,7 +66,7 @@ func NewRequestabilityForRoleWithDefaults() *RequestabilityForRole {
 	var reauthorizationRequired bool = false
 	this.ReauthorizationRequired = *NewNullableBool(&reauthorizationRequired)
 	var requireEndDate bool = false
-	this.RequireEndDate = *NewNullableBool(&requireEndDate)
+	this.RequireEndDate = &requireEndDate
 	return &this
 }
 
@@ -194,46 +196,36 @@ func (o *RequestabilityForRole) UnsetReauthorizationRequired() {
 	o.ReauthorizationRequired.Unset()
 }
 
-// GetRequireEndDate returns the RequireEndDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequireEndDate returns the RequireEndDate field value if set, zero value otherwise.
 func (o *RequestabilityForRole) GetRequireEndDate() bool {
-	if o == nil || IsNil(o.RequireEndDate.Get()) {
+	if o == nil || IsNil(o.RequireEndDate) {
 		var ret bool
 		return ret
 	}
-	return *o.RequireEndDate.Get()
+	return *o.RequireEndDate
 }
 
 // GetRequireEndDateOk returns a tuple with the RequireEndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestabilityForRole) GetRequireEndDateOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequireEndDate) {
 		return nil, false
 	}
-	return o.RequireEndDate.Get(), o.RequireEndDate.IsSet()
+	return o.RequireEndDate, true
 }
 
 // HasRequireEndDate returns a boolean if a field has been set.
 func (o *RequestabilityForRole) HasRequireEndDate() bool {
-	if o != nil && o.RequireEndDate.IsSet() {
+	if o != nil && !IsNil(o.RequireEndDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequireEndDate gets a reference to the given NullableBool and assigns it to the RequireEndDate field.
+// SetRequireEndDate gets a reference to the given bool and assigns it to the RequireEndDate field.
 func (o *RequestabilityForRole) SetRequireEndDate(v bool) {
-	o.RequireEndDate.Set(&v)
-}
-// SetRequireEndDateNil sets the value for RequireEndDate to be an explicit nil
-func (o *RequestabilityForRole) SetRequireEndDateNil() {
-	o.RequireEndDate.Set(nil)
-}
-
-// UnsetRequireEndDate ensures that no value is present for RequireEndDate, not even an explicit nil
-func (o *RequestabilityForRole) UnsetRequireEndDate() {
-	o.RequireEndDate.Unset()
+	o.RequireEndDate = &v
 }
 
 // GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -310,6 +302,48 @@ func (o *RequestabilityForRole) SetApprovalSchemes(v []ApprovalSchemeForRole) {
 	o.ApprovalSchemes = v
 }
 
+// GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestabilityForRole) GetFormDefinitionId() string {
+	if o == nil || IsNil(o.FormDefinitionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FormDefinitionId.Get()
+}
+
+// GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestabilityForRole) GetFormDefinitionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FormDefinitionId.Get(), o.FormDefinitionId.IsSet()
+}
+
+// HasFormDefinitionId returns a boolean if a field has been set.
+func (o *RequestabilityForRole) HasFormDefinitionId() bool {
+	if o != nil && o.FormDefinitionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFormDefinitionId gets a reference to the given NullableString and assigns it to the FormDefinitionId field.
+func (o *RequestabilityForRole) SetFormDefinitionId(v string) {
+	o.FormDefinitionId.Set(&v)
+}
+// SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+func (o *RequestabilityForRole) SetFormDefinitionIdNil() {
+	o.FormDefinitionId.Set(nil)
+}
+
+// UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
+func (o *RequestabilityForRole) UnsetFormDefinitionId() {
+	o.FormDefinitionId.Unset()
+}
+
 func (o RequestabilityForRole) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -329,14 +363,17 @@ func (o RequestabilityForRole) ToMap() (map[string]interface{}, error) {
 	if o.ReauthorizationRequired.IsSet() {
 		toSerialize["reauthorizationRequired"] = o.ReauthorizationRequired.Get()
 	}
-	if o.RequireEndDate.IsSet() {
-		toSerialize["requireEndDate"] = o.RequireEndDate.Get()
+	if !IsNil(o.RequireEndDate) {
+		toSerialize["requireEndDate"] = o.RequireEndDate
 	}
 	if o.MaxPermittedAccessDuration.IsSet() {
 		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
 	}
 	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
+	}
+	if o.FormDefinitionId.IsSet() {
+		toSerialize["formDefinitionId"] = o.FormDefinitionId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -366,6 +403,7 @@ func (o *RequestabilityForRole) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requireEndDate")
 		delete(additionalProperties, "maxPermittedAccessDuration")
 		delete(additionalProperties, "approvalSchemes")
+		delete(additionalProperties, "formDefinitionId")
 		o.AdditionalProperties = additionalProperties
 	}
 

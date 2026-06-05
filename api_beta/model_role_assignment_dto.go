@@ -32,6 +32,8 @@ type RoleAssignmentDto struct {
 	AssignedDimensions []BaseReferenceDto1 `json:"assignedDimensions,omitempty"`
 	AssignmentContext *RoleAssignmentDtoAssignmentContext `json:"assignmentContext,omitempty"`
 	AccountTargets []RoleTargetDto `json:"accountTargets,omitempty"`
+	// Date when assignment will be active, if access was requested with a future start date. If null, assignment is active immediately
+	StartDate NullableTime `json:"startDate,omitempty"`
 	// Date that the assignment will be removed
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// Date that the assignment was added
@@ -324,6 +326,48 @@ func (o *RoleAssignmentDto) SetAccountTargets(v []RoleTargetDto) {
 	o.AccountTargets = v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleAssignmentDto) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate.Get()
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleAssignmentDto) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartDate.Get(), o.StartDate.IsSet()
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *RoleAssignmentDto) HasStartDate() bool {
+	if o != nil && o.StartDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given NullableTime and assigns it to the StartDate field.
+func (o *RoleAssignmentDto) SetStartDate(v SailPointTime) {
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *RoleAssignmentDto) SetStartDateNil() {
+	o.StartDate.Set(nil)
+}
+
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *RoleAssignmentDto) UnsetStartDate() {
+	o.StartDate.Unset()
+}
+
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleAssignmentDto) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
@@ -432,6 +476,9 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountTargets) {
 		toSerialize["accountTargets"] = o.AccountTargets
 	}
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
+	}
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
@@ -468,6 +515,7 @@ func (o *RoleAssignmentDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "assignedDimensions")
 		delete(additionalProperties, "assignmentContext")
 		delete(additionalProperties, "accountTargets")
+		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "addedDate")
 		o.AdditionalProperties = additionalProperties

@@ -52,6 +52,8 @@ type Role struct {
 	// List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.
 	DimensionRefs []DimensionRef `json:"dimensionRefs,omitempty"`
 	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
+	// The privilege level of the role, if applicable.
+	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -715,6 +717,48 @@ func (o *Role) SetAccessModelMetadata(v AttributeDTOList) {
 	o.AccessModelMetadata = &v
 }
 
+// GetPrivilegeLevel returns the PrivilegeLevel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Role) GetPrivilegeLevel() string {
+	if o == nil || IsNil(o.PrivilegeLevel.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PrivilegeLevel.Get()
+}
+
+// GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Role) GetPrivilegeLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivilegeLevel.Get(), o.PrivilegeLevel.IsSet()
+}
+
+// HasPrivilegeLevel returns a boolean if a field has been set.
+func (o *Role) HasPrivilegeLevel() bool {
+	if o != nil && o.PrivilegeLevel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivilegeLevel gets a reference to the given NullableString and assigns it to the PrivilegeLevel field.
+func (o *Role) SetPrivilegeLevel(v string) {
+	o.PrivilegeLevel.Set(&v)
+}
+// SetPrivilegeLevelNil sets the value for PrivilegeLevel to be an explicit nil
+func (o *Role) SetPrivilegeLevelNil() {
+	o.PrivilegeLevel.Set(nil)
+}
+
+// UnsetPrivilegeLevel ensures that no value is present for PrivilegeLevel, not even an explicit nil
+func (o *Role) UnsetPrivilegeLevel() {
+	o.PrivilegeLevel.Unset()
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -777,6 +821,9 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccessModelMetadata) {
 		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
+	}
+	if o.PrivilegeLevel.IsSet() {
+		toSerialize["privilegeLevel"] = o.PrivilegeLevel.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -841,6 +888,7 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "dimensional")
 		delete(additionalProperties, "dimensionRefs")
 		delete(additionalProperties, "accessModelMetadata")
+		delete(additionalProperties, "privilegeLevel")
 		o.AdditionalProperties = additionalProperties
 	}
 

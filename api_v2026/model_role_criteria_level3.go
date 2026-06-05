@@ -21,8 +21,8 @@ var _ MappedNullable = &RoleCriteriaLevel3{}
 type RoleCriteriaLevel3 struct {
 	Operation *RoleCriteriaOperation `json:"operation,omitempty"`
 	Key NullableRoleCriteriaKey `json:"key,omitempty"`
-	// String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.
-	StringValue *string `json:"stringValue,omitempty"`
+	// String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, DOES_NOT_CONTAIN, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.
+	StringValue NullableString `json:"stringValue,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -119,36 +119,46 @@ func (o *RoleCriteriaLevel3) UnsetKey() {
 	o.Key.Unset()
 }
 
-// GetStringValue returns the StringValue field value if set, zero value otherwise.
+// GetStringValue returns the StringValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel3) GetStringValue() string {
-	if o == nil || IsNil(o.StringValue) {
+	if o == nil || IsNil(o.StringValue.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StringValue
+	return *o.StringValue.Get()
 }
 
 // GetStringValueOk returns a tuple with the StringValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleCriteriaLevel3) GetStringValueOk() (*string, bool) {
-	if o == nil || IsNil(o.StringValue) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StringValue, true
+	return o.StringValue.Get(), o.StringValue.IsSet()
 }
 
 // HasStringValue returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel3) HasStringValue() bool {
-	if o != nil && !IsNil(o.StringValue) {
+	if o != nil && o.StringValue.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStringValue gets a reference to the given string and assigns it to the StringValue field.
+// SetStringValue gets a reference to the given NullableString and assigns it to the StringValue field.
 func (o *RoleCriteriaLevel3) SetStringValue(v string) {
-	o.StringValue = &v
+	o.StringValue.Set(&v)
+}
+// SetStringValueNil sets the value for StringValue to be an explicit nil
+func (o *RoleCriteriaLevel3) SetStringValueNil() {
+	o.StringValue.Set(nil)
+}
+
+// UnsetStringValue ensures that no value is present for StringValue, not even an explicit nil
+func (o *RoleCriteriaLevel3) UnsetStringValue() {
+	o.StringValue.Unset()
 }
 
 func (o RoleCriteriaLevel3) MarshalJSON() ([]byte, error) {
@@ -167,8 +177,8 @@ func (o RoleCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
 	}
-	if !IsNil(o.StringValue) {
-		toSerialize["stringValue"] = o.StringValue
+	if o.StringValue.IsSet() {
+		toSerialize["stringValue"] = o.StringValue.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
