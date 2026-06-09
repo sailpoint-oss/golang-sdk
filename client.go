@@ -82,7 +82,6 @@ import (
 	api_managed_clusters_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters_v1"
 	api_mfa_configuration_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration_v1"
 	api_multi_host_integration_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration_v1"
-	api_nerm_v2025 "github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025"
 	api_non_employee_lifecycle_management_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management_v1"
 	api_notifications_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_notifications_v1"
 	api_oauth_clients_v1 "github.com/sailpoint-oss/golang-sdk/v2/api_oauth_clients_v1"
@@ -141,122 +140,123 @@ var (
 // APIClient manages communication with the SailPoint Identity Security Cloud API.
 // In most cases there should be only one, shared, APIClient.
 //
-// Per-resource versioned clients are available as fields (e.g. c.Accounts, c.Roles).
+// Per-resource API services are available as fields (e.g. c.AccountsAPI, c.RolesAPI).
+// Single-version resources use the plain name; multi-version resources include the
+// version number (e.g. c.AccountsV1API, c.AccountsV2API).
 // Use NewPartitionConfiguration to build a config for directly importing a single package.
 type APIClient struct {
 	cfg *Configuration
 
-	// Per-resource versioned clients (auto-generated)
-	AccessModelMetadata *api_access_model_metadata_v1.APIClient
-	AccessProfiles *api_access_profiles_v1.APIClient
-	AccessRequestApprovals *api_access_request_approvals_v1.APIClient
-	AccessRequestIdentityMetrics *api_access_request_identity_metrics_v1.APIClient
-	AccessRequests *api_access_requests_v1.APIClient
-	AccountActivities *api_account_activities_v1.APIClient
-	AccountAggregations *api_account_aggregations_v1.APIClient
-	AccountDeletionRequests *api_account_deletion_requests_v1.APIClient
-	AccountUsages *api_account_usages_v1.APIClient
-	Accounts *api_accounts_v1.APIClient
-	ApiUsage *api_api_usage_v1.APIClient
-	ApplicationDiscovery *api_application_discovery_v1.APIClient
-	Approvals *api_approvals_v1.APIClient
-	Apps *api_apps_v1.APIClient
-	AuthProfile *api_auth_profile_v1.APIClient
-	AuthUsers *api_auth_users_v1.APIClient
-	Branding *api_branding_v1.APIClient
-	CertificationCampaignFilters *api_certification_campaign_filters_v1.APIClient
-	CertificationCampaigns *api_certification_campaigns_v1.APIClient
-	CertificationSummaries *api_certification_summaries_v1.APIClient
-	Certifications *api_certifications_v1.APIClient
-	ClassifySource *api_classify_source_v1.APIClient
-	ConfigurationHub *api_configuration_hub_v1.APIClient
-	ConnectorCustomizers *api_connector_customizers_v1.APIClient
-	ConnectorRuleManagement *api_connector_rule_management_v1.APIClient
-	Connectors *api_connectors_v1.APIClient
-	CustomForms *api_custom_forms_v1.APIClient
-	CustomPasswordInstructions *api_custom_password_instructions_v1.APIClient
-	CustomUserLevels *api_custom_user_levels_v1.APIClient
-	DataAccessSecurity *api_data_access_security_v1.APIClient
-	DataSegmentation *api_data_segmentation_v1.APIClient
-	DeclassifySource *api_declassify_source_v1.APIClient
-	Dimensions *api_dimensions_v1.APIClient
-	Entitlements *api_entitlements_v1.APIClient
-	GlobalTenantSecuritySettings *api_global_tenant_security_settings_v1.APIClient
-	GovernanceGroups *api_governance_groups_v1.APIClient
-	IaiAccessRequestRecommendations *api_iai_access_request_recommendations_v1.APIClient
-	IaiCommonAccess *api_iai_common_access_v1.APIClient
-	IaiOutliers *api_iai_outliers_v1.APIClient
-	IaiPeerGroupStrategies *api_iai_peer_group_strategies_v1.APIClient
-	IaiRecommendations *api_iai_recommendations_v1.APIClient
-	IaiRoleMining *api_iai_role_mining_v1.APIClient
-	Icons *api_icons_v1.APIClient
-	Identities *api_identities_v1.APIClient
-	IdentityAttributes *api_identity_attributes_v1.APIClient
-	IdentityHistory *api_identity_history_v1.APIClient
-	IdentityProfiles *api_identity_profiles_v1.APIClient
-	IntelligencePackage *api_intelligence_package_v1.APIClient
-	JitAccess *api_jit_access_v1.APIClient
-	JitActivations *api_jit_activations_v1.APIClient
-	Launchers *api_launchers_v1.APIClient
-	LifecycleStates *api_lifecycle_states_v1.APIClient
-	MachineAccountClassify *api_machine_account_classify_v1.APIClient
-	MachineAccountCreationRequest *api_machine_account_creation_request_v1.APIClient
-	MachineAccountMappings *api_machine_account_mappings_v1.APIClient
-	MachineAccountSubtypes *api_machine_account_subtypes_v1.APIClient
-	MachineAccounts *api_machine_accounts_v1.APIClient
-	MachineClassificationConfig *api_machine_classification_config_v1.APIClient
-	MachineIdentities *api_machine_identities_v1.APIClient
-	ManagedClients *api_managed_clients_v1.APIClient
-	ManagedClusterTypes *api_managed_cluster_types_v1.APIClient
-	ManagedClusters *api_managed_clusters_v1.APIClient
-	MfaConfiguration *api_mfa_configuration_v1.APIClient
-	MultiHostIntegration *api_multi_host_integration_v1.APIClient
-	Nerm *api_nerm_v2025.APIClient
-	NonEmployeeLifecycleManagement *api_non_employee_lifecycle_management_v1.APIClient
-	Notifications *api_notifications_v1.APIClient
-	OauthClients *api_oauth_clients_v1.APIClient
-	OrgConfig *api_org_config_v1.APIClient
-	ParameterStorage *api_parameter_storage_v1.APIClient
-	PasswordConfiguration *api_password_configuration_v1.APIClient
-	PasswordDictionary *api_password_dictionary_v1.APIClient
-	PasswordManagement *api_password_management_v1.APIClient
-	PasswordPolicies *api_password_policies_v1.APIClient
-	PasswordSyncGroups *api_password_sync_groups_v1.APIClient
-	PersonalAccessTokens *api_personal_access_tokens_v1.APIClient
-	PrivilegeCriteriaConfiguration *api_privilege_criteria_configuration_v1.APIClient
-	PrivilegeCriteria *api_privilege_criteria_v1.APIClient
-	PublicIdentitiesConfig *api_public_identities_config_v1.APIClient
-	PublicIdentities *api_public_identities_v1.APIClient
-	ReportsDataExtraction *api_reports_data_extraction_v1.APIClient
-	RequestableObjects *api_requestable_objects_v1.APIClient
-	RoleInsights *api_role_insights_v1.APIClient
-	RolePropagation *api_role_propagation_v1.APIClient
-	Roles *api_roles_v1.APIClient
-	SavedSearch *api_saved_search_v1.APIClient
-	ScheduledSearch *api_scheduled_search_v1.APIClient
-	SearchAttributeConfiguration *api_search_attribute_configuration_v1.APIClient
-	Search *api_search_v1.APIClient
-	Segments *api_segments_v1.APIClient
-	ServiceDeskIntegration *api_service_desk_integration_v1.APIClient
-	SharedSignalsFrameworkSsf *api_shared_signals_framework_ssf_v1.APIClient
-	SimIntegrations *api_sim_integrations_v1.APIClient
-	SodPolicies *api_sod_policies_v1.APIClient
-	SodViolations *api_sod_violations_v1.APIClient
-	SourceUsages *api_source_usages_v1.APIClient
-	Sources *api_sources_v1.APIClient
-	SpConfig *api_sp_config_v1.APIClient
-	SuggestedEntitlementDescription *api_suggested_entitlement_description_v1.APIClient
-	TaggedObjects *api_tagged_objects_v1.APIClient
-	Tags *api_tags_v1.APIClient
-	TaskManagement *api_task_management_v1.APIClient
-	TenantContext *api_tenant_context_v1.APIClient
-	Tenant *api_tenant_v1.APIClient
-	Transforms *api_transforms_v1.APIClient
-	Triggers *api_triggers_v1.APIClient
-	UiMetadata *api_ui_metadata_v1.APIClient
-	WorkItems *api_work_items_v1.APIClient
-	WorkReassignment *api_work_reassignment_v1.APIClient
-	Workflows *api_workflows_v1.APIClient
+	// Per-resource versioned API services (auto-generated by build-versioned-sdk.js)
+	AccessModelMetadataAPI *api_access_model_metadata_v1.AccessModelMetadataAPIService
+	AccessProfilesAPI *api_access_profiles_v1.AccessProfilesAPIService
+	AccessRequestApprovalsAPI *api_access_request_approvals_v1.AccessRequestApprovalsAPIService
+	AccessRequestIdentityMetricsAPI *api_access_request_identity_metrics_v1.AccessRequestIdentityMetricsAPIService
+	AccessRequestsAPI *api_access_requests_v1.AccessRequestsAPIService
+	AccountActivitiesAPI *api_account_activities_v1.AccountActivitiesAPIService
+	AccountAggregationsAPI *api_account_aggregations_v1.AccountAggregationsAPIService
+	AccountDeletionRequestsAPI *api_account_deletion_requests_v1.AccountDeletionRequestsAPIService
+	AccountUsagesAPI *api_account_usages_v1.AccountUsagesAPIService
+	AccountsAPI *api_accounts_v1.AccountsAPIService
+	ApiUsageAPI *api_api_usage_v1.ApiUsageAPIService
+	ApplicationDiscoveryAPI *api_application_discovery_v1.ApplicationDiscoveryAPIService
+	ApprovalsAPI *api_approvals_v1.ApprovalsAPIService
+	AppsAPI *api_apps_v1.AppsAPIService
+	AuthProfileAPI *api_auth_profile_v1.AuthProfileAPIService
+	AuthUsersAPI *api_auth_users_v1.AuthUsersAPIService
+	BrandingAPI *api_branding_v1.BrandingAPIService
+	CertificationCampaignFiltersAPI *api_certification_campaign_filters_v1.CertificationCampaignFiltersAPIService
+	CertificationCampaignsAPI *api_certification_campaigns_v1.CertificationCampaignsAPIService
+	CertificationSummariesAPI *api_certification_summaries_v1.CertificationSummariesAPIService
+	CertificationsAPI *api_certifications_v1.CertificationsAPIService
+	ClassifySourceAPI *api_classify_source_v1.ClassifySourceAPIService
+	ConfigurationHubAPI *api_configuration_hub_v1.ConfigurationHubAPIService
+	ConnectorCustomizersAPI *api_connector_customizers_v1.ConnectorCustomizersAPIService
+	ConnectorRuleManagementAPI *api_connector_rule_management_v1.ConnectorRuleManagementAPIService
+	ConnectorsAPI *api_connectors_v1.ConnectorsAPIService
+	CustomFormsAPI *api_custom_forms_v1.CustomFormsAPIService
+	CustomPasswordInstructionsAPI *api_custom_password_instructions_v1.CustomPasswordInstructionsAPIService
+	CustomUserLevelsAPI *api_custom_user_levels_v1.CustomUserLevelsAPIService
+	DataAccessSecurityAPI *api_data_access_security_v1.DataAccessSecurityAPIService
+	DataSegmentationAPI *api_data_segmentation_v1.DataSegmentationAPIService
+	DeclassifySourceAPI *api_declassify_source_v1.DeclassifySourceAPIService
+	DimensionsAPI *api_dimensions_v1.DimensionsAPIService
+	EntitlementsAPI *api_entitlements_v1.EntitlementsAPIService
+	GlobalTenantSecuritySettingsAPI *api_global_tenant_security_settings_v1.GlobalTenantSecuritySettingsAPIService
+	GovernanceGroupsAPI *api_governance_groups_v1.GovernanceGroupsAPIService
+	IAIAccessRequestRecommendationsAPI *api_iai_access_request_recommendations_v1.IAIAccessRequestRecommendationsAPIService
+	IAICommonAccessAPI *api_iai_common_access_v1.IAICommonAccessAPIService
+	IAIOutliersAPI *api_iai_outliers_v1.IAIOutliersAPIService
+	IAIPeerGroupStrategiesAPI *api_iai_peer_group_strategies_v1.IAIPeerGroupStrategiesAPIService
+	IAIRecommendationsAPI *api_iai_recommendations_v1.IAIRecommendationsAPIService
+	IAIRoleMiningAPI *api_iai_role_mining_v1.IAIRoleMiningAPIService
+	IconsAPI *api_icons_v1.IconsAPIService
+	IdentitiesAPI *api_identities_v1.IdentitiesAPIService
+	IdentityAttributesAPI *api_identity_attributes_v1.IdentityAttributesAPIService
+	IdentityHistoryAPI *api_identity_history_v1.IdentityHistoryAPIService
+	IdentityProfilesAPI *api_identity_profiles_v1.IdentityProfilesAPIService
+	IntelligencePackageAPI *api_intelligence_package_v1.IntelligencePackageAPIService
+	JITAccessAPI *api_jit_access_v1.JITAccessAPIService
+	JITActivationsAPI *api_jit_activations_v1.JITActivationsAPIService
+	LaunchersAPI *api_launchers_v1.LaunchersAPIService
+	LifecycleStatesAPI *api_lifecycle_states_v1.LifecycleStatesAPIService
+	MachineAccountClassifyAPI *api_machine_account_classify_v1.MachineAccountClassifyAPIService
+	MachineAccountCreationRequestAPI *api_machine_account_creation_request_v1.MachineAccountCreationRequestAPIService
+	MachineAccountMappingsAPI *api_machine_account_mappings_v1.MachineAccountMappingsAPIService
+	MachineAccountSubtypesAPI *api_machine_account_subtypes_v1.MachineAccountSubtypesAPIService
+	MachineAccountsAPI *api_machine_accounts_v1.MachineAccountsAPIService
+	MachineClassificationConfigAPI *api_machine_classification_config_v1.MachineClassificationConfigAPIService
+	MachineIdentitiesAPI *api_machine_identities_v1.MachineIdentitiesAPIService
+	ManagedClientsAPI *api_managed_clients_v1.ManagedClientsAPIService
+	ManagedClusterTypesAPI *api_managed_cluster_types_v1.ManagedClusterTypesAPIService
+	ManagedClustersAPI *api_managed_clusters_v1.ManagedClustersAPIService
+	MFAConfigurationAPI *api_mfa_configuration_v1.MFAConfigurationAPIService
+	MultiHostIntegrationAPI *api_multi_host_integration_v1.MultiHostIntegrationAPIService
+	NonEmployeeLifecycleManagementAPI *api_non_employee_lifecycle_management_v1.NonEmployeeLifecycleManagementAPIService
+	NotificationsAPI *api_notifications_v1.NotificationsAPIService
+	OAuthClientsAPI *api_oauth_clients_v1.OAuthClientsAPIService
+	OrgConfigAPI *api_org_config_v1.OrgConfigAPIService
+	ParameterStorageAPI *api_parameter_storage_v1.ParameterStorageAPIService
+	PasswordConfigurationAPI *api_password_configuration_v1.PasswordConfigurationAPIService
+	PasswordDictionaryAPI *api_password_dictionary_v1.PasswordDictionaryAPIService
+	PasswordManagementAPI *api_password_management_v1.PasswordManagementAPIService
+	PasswordPoliciesAPI *api_password_policies_v1.PasswordPoliciesAPIService
+	PasswordSyncGroupsAPI *api_password_sync_groups_v1.PasswordSyncGroupsAPIService
+	PersonalAccessTokensAPI *api_personal_access_tokens_v1.PersonalAccessTokensAPIService
+	PrivilegeCriteriaConfigurationAPI *api_privilege_criteria_configuration_v1.PrivilegeCriteriaConfigurationAPIService
+	PrivilegeCriteriaAPI *api_privilege_criteria_v1.PrivilegeCriteriaAPIService
+	PublicIdentitiesConfigAPI *api_public_identities_config_v1.PublicIdentitiesConfigAPIService
+	PublicIdentitiesAPI *api_public_identities_v1.PublicIdentitiesAPIService
+	ReportsDataExtractionAPI *api_reports_data_extraction_v1.ReportsDataExtractionAPIService
+	RequestableObjectsAPI *api_requestable_objects_v1.RequestableObjectsAPIService
+	RoleInsightsAPI *api_role_insights_v1.RoleInsightsAPIService
+	RolePropagationAPI *api_role_propagation_v1.RolePropagationAPIService
+	RolesAPI *api_roles_v1.RolesAPIService
+	SavedSearchAPI *api_saved_search_v1.SavedSearchAPIService
+	ScheduledSearchAPI *api_scheduled_search_v1.ScheduledSearchAPIService
+	SearchAttributeConfigurationAPI *api_search_attribute_configuration_v1.SearchAttributeConfigurationAPIService
+	SearchAPI *api_search_v1.SearchAPIService
+	SegmentsAPI *api_segments_v1.SegmentsAPIService
+	ServiceDeskIntegrationAPI *api_service_desk_integration_v1.ServiceDeskIntegrationAPIService
+	SharedSignalsFrameworkSSFAPI *api_shared_signals_framework_ssf_v1.SharedSignalsFrameworkSSFAPIService
+	SIMIntegrationsAPI *api_sim_integrations_v1.SIMIntegrationsAPIService
+	SODPoliciesAPI *api_sod_policies_v1.SODPoliciesAPIService
+	SODViolationsAPI *api_sod_violations_v1.SODViolationsAPIService
+	SourceUsagesAPI *api_source_usages_v1.SourceUsagesAPIService
+	SourcesAPI *api_sources_v1.SourcesAPIService
+	SPConfigAPI *api_sp_config_v1.SPConfigAPIService
+	SuggestedEntitlementDescriptionAPI *api_suggested_entitlement_description_v1.SuggestedEntitlementDescriptionAPIService
+	TaggedObjectsAPI *api_tagged_objects_v1.TaggedObjectsAPIService
+	TagsAPI *api_tags_v1.TagsAPIService
+	TaskManagementAPI *api_task_management_v1.TaskManagementAPIService
+	TenantContextAPI *api_tenant_context_v1.TenantContextAPIService
+	TenantAPI *api_tenant_v1.TenantAPIService
+	TransformsAPI *api_transforms_v1.TransformsAPIService
+	TriggersAPI *api_triggers_v1.TriggersAPIService
+	UIMetadataAPI *api_ui_metadata_v1.UIMetadataAPIService
+	WorkItemsAPI *api_work_items_v1.WorkItemsAPIService
+	WorkReassignmentAPI *api_work_reassignment_v1.WorkReassignmentAPIService
+	WorkflowsAPI *api_workflows_v1.WorkflowsAPIService
 
 	// Shared utility clients
 	Generic   *generic.APIClient
@@ -276,7 +276,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	consumerSuffix := cfg.ConsumerSuffix()
 
-	// Per-resource versioned clients
+	// Per-resource versioned API services
 	_cfgAccessModelMetadata := api_access_model_metadata_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -287,7 +287,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccessModelMetadata.HTTPClient = cfg.HTTPClient
-	c.AccessModelMetadata = api_access_model_metadata_v1.NewAPIClient(_cfgAccessModelMetadata)
+	c.AccessModelMetadataAPI = api_access_model_metadata_v1.NewAPIClient(_cfgAccessModelMetadata).AccessModelMetadataAPI
 
 	_cfgAccessProfiles := api_access_profiles_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -299,7 +299,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccessProfiles.HTTPClient = cfg.HTTPClient
-	c.AccessProfiles = api_access_profiles_v1.NewAPIClient(_cfgAccessProfiles)
+	c.AccessProfilesAPI = api_access_profiles_v1.NewAPIClient(_cfgAccessProfiles).AccessProfilesAPI
 
 	_cfgAccessRequestApprovals := api_access_request_approvals_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -311,7 +311,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccessRequestApprovals.HTTPClient = cfg.HTTPClient
-	c.AccessRequestApprovals = api_access_request_approvals_v1.NewAPIClient(_cfgAccessRequestApprovals)
+	c.AccessRequestApprovalsAPI = api_access_request_approvals_v1.NewAPIClient(_cfgAccessRequestApprovals).AccessRequestApprovalsAPI
 
 	_cfgAccessRequestIdentityMetrics := api_access_request_identity_metrics_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -323,7 +323,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccessRequestIdentityMetrics.HTTPClient = cfg.HTTPClient
-	c.AccessRequestIdentityMetrics = api_access_request_identity_metrics_v1.NewAPIClient(_cfgAccessRequestIdentityMetrics)
+	c.AccessRequestIdentityMetricsAPI = api_access_request_identity_metrics_v1.NewAPIClient(_cfgAccessRequestIdentityMetrics).AccessRequestIdentityMetricsAPI
 
 	_cfgAccessRequests := api_access_requests_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -335,7 +335,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccessRequests.HTTPClient = cfg.HTTPClient
-	c.AccessRequests = api_access_requests_v1.NewAPIClient(_cfgAccessRequests)
+	c.AccessRequestsAPI = api_access_requests_v1.NewAPIClient(_cfgAccessRequests).AccessRequestsAPI
 
 	_cfgAccountActivities := api_account_activities_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -347,7 +347,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccountActivities.HTTPClient = cfg.HTTPClient
-	c.AccountActivities = api_account_activities_v1.NewAPIClient(_cfgAccountActivities)
+	c.AccountActivitiesAPI = api_account_activities_v1.NewAPIClient(_cfgAccountActivities).AccountActivitiesAPI
 
 	_cfgAccountAggregations := api_account_aggregations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -359,7 +359,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccountAggregations.HTTPClient = cfg.HTTPClient
-	c.AccountAggregations = api_account_aggregations_v1.NewAPIClient(_cfgAccountAggregations)
+	c.AccountAggregationsAPI = api_account_aggregations_v1.NewAPIClient(_cfgAccountAggregations).AccountAggregationsAPI
 
 	_cfgAccountDeletionRequests := api_account_deletion_requests_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -371,7 +371,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccountDeletionRequests.HTTPClient = cfg.HTTPClient
-	c.AccountDeletionRequests = api_account_deletion_requests_v1.NewAPIClient(_cfgAccountDeletionRequests)
+	c.AccountDeletionRequestsAPI = api_account_deletion_requests_v1.NewAPIClient(_cfgAccountDeletionRequests).AccountDeletionRequestsAPI
 
 	_cfgAccountUsages := api_account_usages_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -383,7 +383,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccountUsages.HTTPClient = cfg.HTTPClient
-	c.AccountUsages = api_account_usages_v1.NewAPIClient(_cfgAccountUsages)
+	c.AccountUsagesAPI = api_account_usages_v1.NewAPIClient(_cfgAccountUsages).AccountUsagesAPI
 
 	_cfgAccounts := api_accounts_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -395,7 +395,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAccounts.HTTPClient = cfg.HTTPClient
-	c.Accounts = api_accounts_v1.NewAPIClient(_cfgAccounts)
+	c.AccountsAPI = api_accounts_v1.NewAPIClient(_cfgAccounts).AccountsAPI
 
 	_cfgApiUsage := api_api_usage_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -407,7 +407,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgApiUsage.HTTPClient = cfg.HTTPClient
-	c.ApiUsage = api_api_usage_v1.NewAPIClient(_cfgApiUsage)
+	c.ApiUsageAPI = api_api_usage_v1.NewAPIClient(_cfgApiUsage).ApiUsageAPI
 
 	_cfgApplicationDiscovery := api_application_discovery_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -419,7 +419,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgApplicationDiscovery.HTTPClient = cfg.HTTPClient
-	c.ApplicationDiscovery = api_application_discovery_v1.NewAPIClient(_cfgApplicationDiscovery)
+	c.ApplicationDiscoveryAPI = api_application_discovery_v1.NewAPIClient(_cfgApplicationDiscovery).ApplicationDiscoveryAPI
 
 	_cfgApprovals := api_approvals_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -431,7 +431,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgApprovals.HTTPClient = cfg.HTTPClient
-	c.Approvals = api_approvals_v1.NewAPIClient(_cfgApprovals)
+	c.ApprovalsAPI = api_approvals_v1.NewAPIClient(_cfgApprovals).ApprovalsAPI
 
 	_cfgApps := api_apps_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -443,7 +443,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgApps.HTTPClient = cfg.HTTPClient
-	c.Apps = api_apps_v1.NewAPIClient(_cfgApps)
+	c.AppsAPI = api_apps_v1.NewAPIClient(_cfgApps).AppsAPI
 
 	_cfgAuthProfile := api_auth_profile_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -455,7 +455,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAuthProfile.HTTPClient = cfg.HTTPClient
-	c.AuthProfile = api_auth_profile_v1.NewAPIClient(_cfgAuthProfile)
+	c.AuthProfileAPI = api_auth_profile_v1.NewAPIClient(_cfgAuthProfile).AuthProfileAPI
 
 	_cfgAuthUsers := api_auth_users_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -467,7 +467,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgAuthUsers.HTTPClient = cfg.HTTPClient
-	c.AuthUsers = api_auth_users_v1.NewAPIClient(_cfgAuthUsers)
+	c.AuthUsersAPI = api_auth_users_v1.NewAPIClient(_cfgAuthUsers).AuthUsersAPI
 
 	_cfgBranding := api_branding_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -479,7 +479,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgBranding.HTTPClient = cfg.HTTPClient
-	c.Branding = api_branding_v1.NewAPIClient(_cfgBranding)
+	c.BrandingAPI = api_branding_v1.NewAPIClient(_cfgBranding).BrandingAPI
 
 	_cfgCertificationCampaignFilters := api_certification_campaign_filters_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -491,7 +491,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCertificationCampaignFilters.HTTPClient = cfg.HTTPClient
-	c.CertificationCampaignFilters = api_certification_campaign_filters_v1.NewAPIClient(_cfgCertificationCampaignFilters)
+	c.CertificationCampaignFiltersAPI = api_certification_campaign_filters_v1.NewAPIClient(_cfgCertificationCampaignFilters).CertificationCampaignFiltersAPI
 
 	_cfgCertificationCampaigns := api_certification_campaigns_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -503,7 +503,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCertificationCampaigns.HTTPClient = cfg.HTTPClient
-	c.CertificationCampaigns = api_certification_campaigns_v1.NewAPIClient(_cfgCertificationCampaigns)
+	c.CertificationCampaignsAPI = api_certification_campaigns_v1.NewAPIClient(_cfgCertificationCampaigns).CertificationCampaignsAPI
 
 	_cfgCertificationSummaries := api_certification_summaries_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -515,7 +515,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCertificationSummaries.HTTPClient = cfg.HTTPClient
-	c.CertificationSummaries = api_certification_summaries_v1.NewAPIClient(_cfgCertificationSummaries)
+	c.CertificationSummariesAPI = api_certification_summaries_v1.NewAPIClient(_cfgCertificationSummaries).CertificationSummariesAPI
 
 	_cfgCertifications := api_certifications_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -527,7 +527,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCertifications.HTTPClient = cfg.HTTPClient
-	c.Certifications = api_certifications_v1.NewAPIClient(_cfgCertifications)
+	c.CertificationsAPI = api_certifications_v1.NewAPIClient(_cfgCertifications).CertificationsAPI
 
 	_cfgClassifySource := api_classify_source_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -539,7 +539,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgClassifySource.HTTPClient = cfg.HTTPClient
-	c.ClassifySource = api_classify_source_v1.NewAPIClient(_cfgClassifySource)
+	c.ClassifySourceAPI = api_classify_source_v1.NewAPIClient(_cfgClassifySource).ClassifySourceAPI
 
 	_cfgConfigurationHub := api_configuration_hub_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -551,7 +551,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgConfigurationHub.HTTPClient = cfg.HTTPClient
-	c.ConfigurationHub = api_configuration_hub_v1.NewAPIClient(_cfgConfigurationHub)
+	c.ConfigurationHubAPI = api_configuration_hub_v1.NewAPIClient(_cfgConfigurationHub).ConfigurationHubAPI
 
 	_cfgConnectorCustomizers := api_connector_customizers_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -563,7 +563,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgConnectorCustomizers.HTTPClient = cfg.HTTPClient
-	c.ConnectorCustomizers = api_connector_customizers_v1.NewAPIClient(_cfgConnectorCustomizers)
+	c.ConnectorCustomizersAPI = api_connector_customizers_v1.NewAPIClient(_cfgConnectorCustomizers).ConnectorCustomizersAPI
 
 	_cfgConnectorRuleManagement := api_connector_rule_management_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -575,7 +575,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgConnectorRuleManagement.HTTPClient = cfg.HTTPClient
-	c.ConnectorRuleManagement = api_connector_rule_management_v1.NewAPIClient(_cfgConnectorRuleManagement)
+	c.ConnectorRuleManagementAPI = api_connector_rule_management_v1.NewAPIClient(_cfgConnectorRuleManagement).ConnectorRuleManagementAPI
 
 	_cfgConnectors := api_connectors_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -587,7 +587,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgConnectors.HTTPClient = cfg.HTTPClient
-	c.Connectors = api_connectors_v1.NewAPIClient(_cfgConnectors)
+	c.ConnectorsAPI = api_connectors_v1.NewAPIClient(_cfgConnectors).ConnectorsAPI
 
 	_cfgCustomForms := api_custom_forms_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -599,7 +599,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCustomForms.HTTPClient = cfg.HTTPClient
-	c.CustomForms = api_custom_forms_v1.NewAPIClient(_cfgCustomForms)
+	c.CustomFormsAPI = api_custom_forms_v1.NewAPIClient(_cfgCustomForms).CustomFormsAPI
 
 	_cfgCustomPasswordInstructions := api_custom_password_instructions_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -611,7 +611,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCustomPasswordInstructions.HTTPClient = cfg.HTTPClient
-	c.CustomPasswordInstructions = api_custom_password_instructions_v1.NewAPIClient(_cfgCustomPasswordInstructions)
+	c.CustomPasswordInstructionsAPI = api_custom_password_instructions_v1.NewAPIClient(_cfgCustomPasswordInstructions).CustomPasswordInstructionsAPI
 
 	_cfgCustomUserLevels := api_custom_user_levels_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -623,7 +623,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgCustomUserLevels.HTTPClient = cfg.HTTPClient
-	c.CustomUserLevels = api_custom_user_levels_v1.NewAPIClient(_cfgCustomUserLevels)
+	c.CustomUserLevelsAPI = api_custom_user_levels_v1.NewAPIClient(_cfgCustomUserLevels).CustomUserLevelsAPI
 
 	_cfgDataAccessSecurity := api_data_access_security_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -635,7 +635,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgDataAccessSecurity.HTTPClient = cfg.HTTPClient
-	c.DataAccessSecurity = api_data_access_security_v1.NewAPIClient(_cfgDataAccessSecurity)
+	c.DataAccessSecurityAPI = api_data_access_security_v1.NewAPIClient(_cfgDataAccessSecurity).DataAccessSecurityAPI
 
 	_cfgDataSegmentation := api_data_segmentation_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -647,7 +647,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgDataSegmentation.HTTPClient = cfg.HTTPClient
-	c.DataSegmentation = api_data_segmentation_v1.NewAPIClient(_cfgDataSegmentation)
+	c.DataSegmentationAPI = api_data_segmentation_v1.NewAPIClient(_cfgDataSegmentation).DataSegmentationAPI
 
 	_cfgDeclassifySource := api_declassify_source_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -659,7 +659,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgDeclassifySource.HTTPClient = cfg.HTTPClient
-	c.DeclassifySource = api_declassify_source_v1.NewAPIClient(_cfgDeclassifySource)
+	c.DeclassifySourceAPI = api_declassify_source_v1.NewAPIClient(_cfgDeclassifySource).DeclassifySourceAPI
 
 	_cfgDimensions := api_dimensions_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -671,7 +671,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgDimensions.HTTPClient = cfg.HTTPClient
-	c.Dimensions = api_dimensions_v1.NewAPIClient(_cfgDimensions)
+	c.DimensionsAPI = api_dimensions_v1.NewAPIClient(_cfgDimensions).DimensionsAPI
 
 	_cfgEntitlements := api_entitlements_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -683,7 +683,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgEntitlements.HTTPClient = cfg.HTTPClient
-	c.Entitlements = api_entitlements_v1.NewAPIClient(_cfgEntitlements)
+	c.EntitlementsAPI = api_entitlements_v1.NewAPIClient(_cfgEntitlements).EntitlementsAPI
 
 	_cfgGlobalTenantSecuritySettings := api_global_tenant_security_settings_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -695,7 +695,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgGlobalTenantSecuritySettings.HTTPClient = cfg.HTTPClient
-	c.GlobalTenantSecuritySettings = api_global_tenant_security_settings_v1.NewAPIClient(_cfgGlobalTenantSecuritySettings)
+	c.GlobalTenantSecuritySettingsAPI = api_global_tenant_security_settings_v1.NewAPIClient(_cfgGlobalTenantSecuritySettings).GlobalTenantSecuritySettingsAPI
 
 	_cfgGovernanceGroups := api_governance_groups_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -707,9 +707,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgGovernanceGroups.HTTPClient = cfg.HTTPClient
-	c.GovernanceGroups = api_governance_groups_v1.NewAPIClient(_cfgGovernanceGroups)
+	c.GovernanceGroupsAPI = api_governance_groups_v1.NewAPIClient(_cfgGovernanceGroups).GovernanceGroupsAPI
 
-	_cfgIaiAccessRequestRecommendations := api_iai_access_request_recommendations_v1.NewConfiguration(
+	_cfgIAIAccessRequestRecommendations := api_iai_access_request_recommendations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -718,10 +718,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiAccessRequestRecommendations.HTTPClient = cfg.HTTPClient
-	c.IaiAccessRequestRecommendations = api_iai_access_request_recommendations_v1.NewAPIClient(_cfgIaiAccessRequestRecommendations)
+	_cfgIAIAccessRequestRecommendations.HTTPClient = cfg.HTTPClient
+	c.IAIAccessRequestRecommendationsAPI = api_iai_access_request_recommendations_v1.NewAPIClient(_cfgIAIAccessRequestRecommendations).IAIAccessRequestRecommendationsAPI
 
-	_cfgIaiCommonAccess := api_iai_common_access_v1.NewConfiguration(
+	_cfgIAICommonAccess := api_iai_common_access_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -730,10 +730,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiCommonAccess.HTTPClient = cfg.HTTPClient
-	c.IaiCommonAccess = api_iai_common_access_v1.NewAPIClient(_cfgIaiCommonAccess)
+	_cfgIAICommonAccess.HTTPClient = cfg.HTTPClient
+	c.IAICommonAccessAPI = api_iai_common_access_v1.NewAPIClient(_cfgIAICommonAccess).IAICommonAccessAPI
 
-	_cfgIaiOutliers := api_iai_outliers_v1.NewConfiguration(
+	_cfgIAIOutliers := api_iai_outliers_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -742,10 +742,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiOutliers.HTTPClient = cfg.HTTPClient
-	c.IaiOutliers = api_iai_outliers_v1.NewAPIClient(_cfgIaiOutliers)
+	_cfgIAIOutliers.HTTPClient = cfg.HTTPClient
+	c.IAIOutliersAPI = api_iai_outliers_v1.NewAPIClient(_cfgIAIOutliers).IAIOutliersAPI
 
-	_cfgIaiPeerGroupStrategies := api_iai_peer_group_strategies_v1.NewConfiguration(
+	_cfgIAIPeerGroupStrategies := api_iai_peer_group_strategies_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -754,10 +754,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiPeerGroupStrategies.HTTPClient = cfg.HTTPClient
-	c.IaiPeerGroupStrategies = api_iai_peer_group_strategies_v1.NewAPIClient(_cfgIaiPeerGroupStrategies)
+	_cfgIAIPeerGroupStrategies.HTTPClient = cfg.HTTPClient
+	c.IAIPeerGroupStrategiesAPI = api_iai_peer_group_strategies_v1.NewAPIClient(_cfgIAIPeerGroupStrategies).IAIPeerGroupStrategiesAPI
 
-	_cfgIaiRecommendations := api_iai_recommendations_v1.NewConfiguration(
+	_cfgIAIRecommendations := api_iai_recommendations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -766,10 +766,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiRecommendations.HTTPClient = cfg.HTTPClient
-	c.IaiRecommendations = api_iai_recommendations_v1.NewAPIClient(_cfgIaiRecommendations)
+	_cfgIAIRecommendations.HTTPClient = cfg.HTTPClient
+	c.IAIRecommendationsAPI = api_iai_recommendations_v1.NewAPIClient(_cfgIAIRecommendations).IAIRecommendationsAPI
 
-	_cfgIaiRoleMining := api_iai_role_mining_v1.NewConfiguration(
+	_cfgIAIRoleMining := api_iai_role_mining_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -778,8 +778,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgIaiRoleMining.HTTPClient = cfg.HTTPClient
-	c.IaiRoleMining = api_iai_role_mining_v1.NewAPIClient(_cfgIaiRoleMining)
+	_cfgIAIRoleMining.HTTPClient = cfg.HTTPClient
+	c.IAIRoleMiningAPI = api_iai_role_mining_v1.NewAPIClient(_cfgIAIRoleMining).IAIRoleMiningAPI
 
 	_cfgIcons := api_icons_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -791,7 +791,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIcons.HTTPClient = cfg.HTTPClient
-	c.Icons = api_icons_v1.NewAPIClient(_cfgIcons)
+	c.IconsAPI = api_icons_v1.NewAPIClient(_cfgIcons).IconsAPI
 
 	_cfgIdentities := api_identities_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -803,7 +803,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIdentities.HTTPClient = cfg.HTTPClient
-	c.Identities = api_identities_v1.NewAPIClient(_cfgIdentities)
+	c.IdentitiesAPI = api_identities_v1.NewAPIClient(_cfgIdentities).IdentitiesAPI
 
 	_cfgIdentityAttributes := api_identity_attributes_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -815,7 +815,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIdentityAttributes.HTTPClient = cfg.HTTPClient
-	c.IdentityAttributes = api_identity_attributes_v1.NewAPIClient(_cfgIdentityAttributes)
+	c.IdentityAttributesAPI = api_identity_attributes_v1.NewAPIClient(_cfgIdentityAttributes).IdentityAttributesAPI
 
 	_cfgIdentityHistory := api_identity_history_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -827,7 +827,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIdentityHistory.HTTPClient = cfg.HTTPClient
-	c.IdentityHistory = api_identity_history_v1.NewAPIClient(_cfgIdentityHistory)
+	c.IdentityHistoryAPI = api_identity_history_v1.NewAPIClient(_cfgIdentityHistory).IdentityHistoryAPI
 
 	_cfgIdentityProfiles := api_identity_profiles_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -839,7 +839,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIdentityProfiles.HTTPClient = cfg.HTTPClient
-	c.IdentityProfiles = api_identity_profiles_v1.NewAPIClient(_cfgIdentityProfiles)
+	c.IdentityProfilesAPI = api_identity_profiles_v1.NewAPIClient(_cfgIdentityProfiles).IdentityProfilesAPI
 
 	_cfgIntelligencePackage := api_intelligence_package_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -851,9 +851,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgIntelligencePackage.HTTPClient = cfg.HTTPClient
-	c.IntelligencePackage = api_intelligence_package_v1.NewAPIClient(_cfgIntelligencePackage)
+	c.IntelligencePackageAPI = api_intelligence_package_v1.NewAPIClient(_cfgIntelligencePackage).IntelligencePackageAPI
 
-	_cfgJitAccess := api_jit_access_v1.NewConfiguration(
+	_cfgJITAccess := api_jit_access_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -862,10 +862,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgJitAccess.HTTPClient = cfg.HTTPClient
-	c.JitAccess = api_jit_access_v1.NewAPIClient(_cfgJitAccess)
+	_cfgJITAccess.HTTPClient = cfg.HTTPClient
+	c.JITAccessAPI = api_jit_access_v1.NewAPIClient(_cfgJITAccess).JITAccessAPI
 
-	_cfgJitActivations := api_jit_activations_v1.NewConfiguration(
+	_cfgJITActivations := api_jit_activations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -874,8 +874,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgJitActivations.HTTPClient = cfg.HTTPClient
-	c.JitActivations = api_jit_activations_v1.NewAPIClient(_cfgJitActivations)
+	_cfgJITActivations.HTTPClient = cfg.HTTPClient
+	c.JITActivationsAPI = api_jit_activations_v1.NewAPIClient(_cfgJITActivations).JITActivationsAPI
 
 	_cfgLaunchers := api_launchers_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -887,7 +887,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgLaunchers.HTTPClient = cfg.HTTPClient
-	c.Launchers = api_launchers_v1.NewAPIClient(_cfgLaunchers)
+	c.LaunchersAPI = api_launchers_v1.NewAPIClient(_cfgLaunchers).LaunchersAPI
 
 	_cfgLifecycleStates := api_lifecycle_states_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -899,7 +899,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgLifecycleStates.HTTPClient = cfg.HTTPClient
-	c.LifecycleStates = api_lifecycle_states_v1.NewAPIClient(_cfgLifecycleStates)
+	c.LifecycleStatesAPI = api_lifecycle_states_v1.NewAPIClient(_cfgLifecycleStates).LifecycleStatesAPI
 
 	_cfgMachineAccountClassify := api_machine_account_classify_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -911,7 +911,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineAccountClassify.HTTPClient = cfg.HTTPClient
-	c.MachineAccountClassify = api_machine_account_classify_v1.NewAPIClient(_cfgMachineAccountClassify)
+	c.MachineAccountClassifyAPI = api_machine_account_classify_v1.NewAPIClient(_cfgMachineAccountClassify).MachineAccountClassifyAPI
 
 	_cfgMachineAccountCreationRequest := api_machine_account_creation_request_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -923,7 +923,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineAccountCreationRequest.HTTPClient = cfg.HTTPClient
-	c.MachineAccountCreationRequest = api_machine_account_creation_request_v1.NewAPIClient(_cfgMachineAccountCreationRequest)
+	c.MachineAccountCreationRequestAPI = api_machine_account_creation_request_v1.NewAPIClient(_cfgMachineAccountCreationRequest).MachineAccountCreationRequestAPI
 
 	_cfgMachineAccountMappings := api_machine_account_mappings_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -935,7 +935,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineAccountMappings.HTTPClient = cfg.HTTPClient
-	c.MachineAccountMappings = api_machine_account_mappings_v1.NewAPIClient(_cfgMachineAccountMappings)
+	c.MachineAccountMappingsAPI = api_machine_account_mappings_v1.NewAPIClient(_cfgMachineAccountMappings).MachineAccountMappingsAPI
 
 	_cfgMachineAccountSubtypes := api_machine_account_subtypes_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -947,7 +947,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineAccountSubtypes.HTTPClient = cfg.HTTPClient
-	c.MachineAccountSubtypes = api_machine_account_subtypes_v1.NewAPIClient(_cfgMachineAccountSubtypes)
+	c.MachineAccountSubtypesAPI = api_machine_account_subtypes_v1.NewAPIClient(_cfgMachineAccountSubtypes).MachineAccountSubtypesAPI
 
 	_cfgMachineAccounts := api_machine_accounts_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -959,7 +959,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineAccounts.HTTPClient = cfg.HTTPClient
-	c.MachineAccounts = api_machine_accounts_v1.NewAPIClient(_cfgMachineAccounts)
+	c.MachineAccountsAPI = api_machine_accounts_v1.NewAPIClient(_cfgMachineAccounts).MachineAccountsAPI
 
 	_cfgMachineClassificationConfig := api_machine_classification_config_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -971,7 +971,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineClassificationConfig.HTTPClient = cfg.HTTPClient
-	c.MachineClassificationConfig = api_machine_classification_config_v1.NewAPIClient(_cfgMachineClassificationConfig)
+	c.MachineClassificationConfigAPI = api_machine_classification_config_v1.NewAPIClient(_cfgMachineClassificationConfig).MachineClassificationConfigAPI
 
 	_cfgMachineIdentities := api_machine_identities_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -983,7 +983,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMachineIdentities.HTTPClient = cfg.HTTPClient
-	c.MachineIdentities = api_machine_identities_v1.NewAPIClient(_cfgMachineIdentities)
+	c.MachineIdentitiesAPI = api_machine_identities_v1.NewAPIClient(_cfgMachineIdentities).MachineIdentitiesAPI
 
 	_cfgManagedClients := api_managed_clients_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -995,7 +995,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgManagedClients.HTTPClient = cfg.HTTPClient
-	c.ManagedClients = api_managed_clients_v1.NewAPIClient(_cfgManagedClients)
+	c.ManagedClientsAPI = api_managed_clients_v1.NewAPIClient(_cfgManagedClients).ManagedClientsAPI
 
 	_cfgManagedClusterTypes := api_managed_cluster_types_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1007,7 +1007,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgManagedClusterTypes.HTTPClient = cfg.HTTPClient
-	c.ManagedClusterTypes = api_managed_cluster_types_v1.NewAPIClient(_cfgManagedClusterTypes)
+	c.ManagedClusterTypesAPI = api_managed_cluster_types_v1.NewAPIClient(_cfgManagedClusterTypes).ManagedClusterTypesAPI
 
 	_cfgManagedClusters := api_managed_clusters_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1019,9 +1019,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgManagedClusters.HTTPClient = cfg.HTTPClient
-	c.ManagedClusters = api_managed_clusters_v1.NewAPIClient(_cfgManagedClusters)
+	c.ManagedClustersAPI = api_managed_clusters_v1.NewAPIClient(_cfgManagedClusters).ManagedClustersAPI
 
-	_cfgMfaConfiguration := api_mfa_configuration_v1.NewConfiguration(
+	_cfgMFAConfiguration := api_mfa_configuration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1030,8 +1030,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgMfaConfiguration.HTTPClient = cfg.HTTPClient
-	c.MfaConfiguration = api_mfa_configuration_v1.NewAPIClient(_cfgMfaConfiguration)
+	_cfgMFAConfiguration.HTTPClient = cfg.HTTPClient
+	c.MFAConfigurationAPI = api_mfa_configuration_v1.NewAPIClient(_cfgMFAConfiguration).MFAConfigurationAPI
 
 	_cfgMultiHostIntegration := api_multi_host_integration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1043,19 +1043,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgMultiHostIntegration.HTTPClient = cfg.HTTPClient
-	c.MultiHostIntegration = api_multi_host_integration_v1.NewAPIClient(_cfgMultiHostIntegration)
-
-	_cfgNerm := api_nerm_v2025.NewConfiguration(
-		cfg.ClientConfiguration.ClientId,
-		cfg.ClientConfiguration.ClientSecret,
-		cfg.ClientConfiguration.BaseURL,
-		cfg.ClientConfiguration.TokenURL,
-		cfg.ClientConfiguration.Token,
-		consumerSuffix,
-		cfg.Experimental,
-	)
-	_cfgNerm.HTTPClient = cfg.HTTPClient
-	c.Nerm = api_nerm_v2025.NewAPIClient(_cfgNerm)
+	c.MultiHostIntegrationAPI = api_multi_host_integration_v1.NewAPIClient(_cfgMultiHostIntegration).MultiHostIntegrationAPI
 
 	_cfgNonEmployeeLifecycleManagement := api_non_employee_lifecycle_management_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1067,7 +1055,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgNonEmployeeLifecycleManagement.HTTPClient = cfg.HTTPClient
-	c.NonEmployeeLifecycleManagement = api_non_employee_lifecycle_management_v1.NewAPIClient(_cfgNonEmployeeLifecycleManagement)
+	c.NonEmployeeLifecycleManagementAPI = api_non_employee_lifecycle_management_v1.NewAPIClient(_cfgNonEmployeeLifecycleManagement).NonEmployeeLifecycleManagementAPI
 
 	_cfgNotifications := api_notifications_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1079,9 +1067,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgNotifications.HTTPClient = cfg.HTTPClient
-	c.Notifications = api_notifications_v1.NewAPIClient(_cfgNotifications)
+	c.NotificationsAPI = api_notifications_v1.NewAPIClient(_cfgNotifications).NotificationsAPI
 
-	_cfgOauthClients := api_oauth_clients_v1.NewConfiguration(
+	_cfgOAuthClients := api_oauth_clients_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1090,8 +1078,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgOauthClients.HTTPClient = cfg.HTTPClient
-	c.OauthClients = api_oauth_clients_v1.NewAPIClient(_cfgOauthClients)
+	_cfgOAuthClients.HTTPClient = cfg.HTTPClient
+	c.OAuthClientsAPI = api_oauth_clients_v1.NewAPIClient(_cfgOAuthClients).OAuthClientsAPI
 
 	_cfgOrgConfig := api_org_config_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1103,7 +1091,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgOrgConfig.HTTPClient = cfg.HTTPClient
-	c.OrgConfig = api_org_config_v1.NewAPIClient(_cfgOrgConfig)
+	c.OrgConfigAPI = api_org_config_v1.NewAPIClient(_cfgOrgConfig).OrgConfigAPI
 
 	_cfgParameterStorage := api_parameter_storage_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1115,7 +1103,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgParameterStorage.HTTPClient = cfg.HTTPClient
-	c.ParameterStorage = api_parameter_storage_v1.NewAPIClient(_cfgParameterStorage)
+	c.ParameterStorageAPI = api_parameter_storage_v1.NewAPIClient(_cfgParameterStorage).ParameterStorageAPI
 
 	_cfgPasswordConfiguration := api_password_configuration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1127,7 +1115,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPasswordConfiguration.HTTPClient = cfg.HTTPClient
-	c.PasswordConfiguration = api_password_configuration_v1.NewAPIClient(_cfgPasswordConfiguration)
+	c.PasswordConfigurationAPI = api_password_configuration_v1.NewAPIClient(_cfgPasswordConfiguration).PasswordConfigurationAPI
 
 	_cfgPasswordDictionary := api_password_dictionary_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1139,7 +1127,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPasswordDictionary.HTTPClient = cfg.HTTPClient
-	c.PasswordDictionary = api_password_dictionary_v1.NewAPIClient(_cfgPasswordDictionary)
+	c.PasswordDictionaryAPI = api_password_dictionary_v1.NewAPIClient(_cfgPasswordDictionary).PasswordDictionaryAPI
 
 	_cfgPasswordManagement := api_password_management_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1151,7 +1139,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPasswordManagement.HTTPClient = cfg.HTTPClient
-	c.PasswordManagement = api_password_management_v1.NewAPIClient(_cfgPasswordManagement)
+	c.PasswordManagementAPI = api_password_management_v1.NewAPIClient(_cfgPasswordManagement).PasswordManagementAPI
 
 	_cfgPasswordPolicies := api_password_policies_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1163,7 +1151,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPasswordPolicies.HTTPClient = cfg.HTTPClient
-	c.PasswordPolicies = api_password_policies_v1.NewAPIClient(_cfgPasswordPolicies)
+	c.PasswordPoliciesAPI = api_password_policies_v1.NewAPIClient(_cfgPasswordPolicies).PasswordPoliciesAPI
 
 	_cfgPasswordSyncGroups := api_password_sync_groups_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1175,7 +1163,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPasswordSyncGroups.HTTPClient = cfg.HTTPClient
-	c.PasswordSyncGroups = api_password_sync_groups_v1.NewAPIClient(_cfgPasswordSyncGroups)
+	c.PasswordSyncGroupsAPI = api_password_sync_groups_v1.NewAPIClient(_cfgPasswordSyncGroups).PasswordSyncGroupsAPI
 
 	_cfgPersonalAccessTokens := api_personal_access_tokens_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1187,7 +1175,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPersonalAccessTokens.HTTPClient = cfg.HTTPClient
-	c.PersonalAccessTokens = api_personal_access_tokens_v1.NewAPIClient(_cfgPersonalAccessTokens)
+	c.PersonalAccessTokensAPI = api_personal_access_tokens_v1.NewAPIClient(_cfgPersonalAccessTokens).PersonalAccessTokensAPI
 
 	_cfgPrivilegeCriteriaConfiguration := api_privilege_criteria_configuration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1199,7 +1187,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPrivilegeCriteriaConfiguration.HTTPClient = cfg.HTTPClient
-	c.PrivilegeCriteriaConfiguration = api_privilege_criteria_configuration_v1.NewAPIClient(_cfgPrivilegeCriteriaConfiguration)
+	c.PrivilegeCriteriaConfigurationAPI = api_privilege_criteria_configuration_v1.NewAPIClient(_cfgPrivilegeCriteriaConfiguration).PrivilegeCriteriaConfigurationAPI
 
 	_cfgPrivilegeCriteria := api_privilege_criteria_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1211,7 +1199,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPrivilegeCriteria.HTTPClient = cfg.HTTPClient
-	c.PrivilegeCriteria = api_privilege_criteria_v1.NewAPIClient(_cfgPrivilegeCriteria)
+	c.PrivilegeCriteriaAPI = api_privilege_criteria_v1.NewAPIClient(_cfgPrivilegeCriteria).PrivilegeCriteriaAPI
 
 	_cfgPublicIdentitiesConfig := api_public_identities_config_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1223,7 +1211,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPublicIdentitiesConfig.HTTPClient = cfg.HTTPClient
-	c.PublicIdentitiesConfig = api_public_identities_config_v1.NewAPIClient(_cfgPublicIdentitiesConfig)
+	c.PublicIdentitiesConfigAPI = api_public_identities_config_v1.NewAPIClient(_cfgPublicIdentitiesConfig).PublicIdentitiesConfigAPI
 
 	_cfgPublicIdentities := api_public_identities_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1235,7 +1223,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgPublicIdentities.HTTPClient = cfg.HTTPClient
-	c.PublicIdentities = api_public_identities_v1.NewAPIClient(_cfgPublicIdentities)
+	c.PublicIdentitiesAPI = api_public_identities_v1.NewAPIClient(_cfgPublicIdentities).PublicIdentitiesAPI
 
 	_cfgReportsDataExtraction := api_reports_data_extraction_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1247,7 +1235,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgReportsDataExtraction.HTTPClient = cfg.HTTPClient
-	c.ReportsDataExtraction = api_reports_data_extraction_v1.NewAPIClient(_cfgReportsDataExtraction)
+	c.ReportsDataExtractionAPI = api_reports_data_extraction_v1.NewAPIClient(_cfgReportsDataExtraction).ReportsDataExtractionAPI
 
 	_cfgRequestableObjects := api_requestable_objects_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1259,7 +1247,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgRequestableObjects.HTTPClient = cfg.HTTPClient
-	c.RequestableObjects = api_requestable_objects_v1.NewAPIClient(_cfgRequestableObjects)
+	c.RequestableObjectsAPI = api_requestable_objects_v1.NewAPIClient(_cfgRequestableObjects).RequestableObjectsAPI
 
 	_cfgRoleInsights := api_role_insights_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1271,7 +1259,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgRoleInsights.HTTPClient = cfg.HTTPClient
-	c.RoleInsights = api_role_insights_v1.NewAPIClient(_cfgRoleInsights)
+	c.RoleInsightsAPI = api_role_insights_v1.NewAPIClient(_cfgRoleInsights).RoleInsightsAPI
 
 	_cfgRolePropagation := api_role_propagation_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1283,7 +1271,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgRolePropagation.HTTPClient = cfg.HTTPClient
-	c.RolePropagation = api_role_propagation_v1.NewAPIClient(_cfgRolePropagation)
+	c.RolePropagationAPI = api_role_propagation_v1.NewAPIClient(_cfgRolePropagation).RolePropagationAPI
 
 	_cfgRoles := api_roles_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1295,7 +1283,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgRoles.HTTPClient = cfg.HTTPClient
-	c.Roles = api_roles_v1.NewAPIClient(_cfgRoles)
+	c.RolesAPI = api_roles_v1.NewAPIClient(_cfgRoles).RolesAPI
 
 	_cfgSavedSearch := api_saved_search_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1307,7 +1295,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSavedSearch.HTTPClient = cfg.HTTPClient
-	c.SavedSearch = api_saved_search_v1.NewAPIClient(_cfgSavedSearch)
+	c.SavedSearchAPI = api_saved_search_v1.NewAPIClient(_cfgSavedSearch).SavedSearchAPI
 
 	_cfgScheduledSearch := api_scheduled_search_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1319,7 +1307,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgScheduledSearch.HTTPClient = cfg.HTTPClient
-	c.ScheduledSearch = api_scheduled_search_v1.NewAPIClient(_cfgScheduledSearch)
+	c.ScheduledSearchAPI = api_scheduled_search_v1.NewAPIClient(_cfgScheduledSearch).ScheduledSearchAPI
 
 	_cfgSearchAttributeConfiguration := api_search_attribute_configuration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1331,7 +1319,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSearchAttributeConfiguration.HTTPClient = cfg.HTTPClient
-	c.SearchAttributeConfiguration = api_search_attribute_configuration_v1.NewAPIClient(_cfgSearchAttributeConfiguration)
+	c.SearchAttributeConfigurationAPI = api_search_attribute_configuration_v1.NewAPIClient(_cfgSearchAttributeConfiguration).SearchAttributeConfigurationAPI
 
 	_cfgSearch := api_search_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1343,7 +1331,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSearch.HTTPClient = cfg.HTTPClient
-	c.Search = api_search_v1.NewAPIClient(_cfgSearch)
+	c.SearchAPI = api_search_v1.NewAPIClient(_cfgSearch).SearchAPI
 
 	_cfgSegments := api_segments_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1355,7 +1343,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSegments.HTTPClient = cfg.HTTPClient
-	c.Segments = api_segments_v1.NewAPIClient(_cfgSegments)
+	c.SegmentsAPI = api_segments_v1.NewAPIClient(_cfgSegments).SegmentsAPI
 
 	_cfgServiceDeskIntegration := api_service_desk_integration_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1367,9 +1355,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgServiceDeskIntegration.HTTPClient = cfg.HTTPClient
-	c.ServiceDeskIntegration = api_service_desk_integration_v1.NewAPIClient(_cfgServiceDeskIntegration)
+	c.ServiceDeskIntegrationAPI = api_service_desk_integration_v1.NewAPIClient(_cfgServiceDeskIntegration).ServiceDeskIntegrationAPI
 
-	_cfgSharedSignalsFrameworkSsf := api_shared_signals_framework_ssf_v1.NewConfiguration(
+	_cfgSharedSignalsFrameworkSSF := api_shared_signals_framework_ssf_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1378,10 +1366,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgSharedSignalsFrameworkSsf.HTTPClient = cfg.HTTPClient
-	c.SharedSignalsFrameworkSsf = api_shared_signals_framework_ssf_v1.NewAPIClient(_cfgSharedSignalsFrameworkSsf)
+	_cfgSharedSignalsFrameworkSSF.HTTPClient = cfg.HTTPClient
+	c.SharedSignalsFrameworkSSFAPI = api_shared_signals_framework_ssf_v1.NewAPIClient(_cfgSharedSignalsFrameworkSSF).SharedSignalsFrameworkSSFAPI
 
-	_cfgSimIntegrations := api_sim_integrations_v1.NewConfiguration(
+	_cfgSIMIntegrations := api_sim_integrations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1390,10 +1378,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgSimIntegrations.HTTPClient = cfg.HTTPClient
-	c.SimIntegrations = api_sim_integrations_v1.NewAPIClient(_cfgSimIntegrations)
+	_cfgSIMIntegrations.HTTPClient = cfg.HTTPClient
+	c.SIMIntegrationsAPI = api_sim_integrations_v1.NewAPIClient(_cfgSIMIntegrations).SIMIntegrationsAPI
 
-	_cfgSodPolicies := api_sod_policies_v1.NewConfiguration(
+	_cfgSODPolicies := api_sod_policies_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1402,10 +1390,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgSodPolicies.HTTPClient = cfg.HTTPClient
-	c.SodPolicies = api_sod_policies_v1.NewAPIClient(_cfgSodPolicies)
+	_cfgSODPolicies.HTTPClient = cfg.HTTPClient
+	c.SODPoliciesAPI = api_sod_policies_v1.NewAPIClient(_cfgSODPolicies).SODPoliciesAPI
 
-	_cfgSodViolations := api_sod_violations_v1.NewConfiguration(
+	_cfgSODViolations := api_sod_violations_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1414,8 +1402,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgSodViolations.HTTPClient = cfg.HTTPClient
-	c.SodViolations = api_sod_violations_v1.NewAPIClient(_cfgSodViolations)
+	_cfgSODViolations.HTTPClient = cfg.HTTPClient
+	c.SODViolationsAPI = api_sod_violations_v1.NewAPIClient(_cfgSODViolations).SODViolationsAPI
 
 	_cfgSourceUsages := api_source_usages_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1427,7 +1415,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSourceUsages.HTTPClient = cfg.HTTPClient
-	c.SourceUsages = api_source_usages_v1.NewAPIClient(_cfgSourceUsages)
+	c.SourceUsagesAPI = api_source_usages_v1.NewAPIClient(_cfgSourceUsages).SourceUsagesAPI
 
 	_cfgSources := api_sources_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1439,9 +1427,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSources.HTTPClient = cfg.HTTPClient
-	c.Sources = api_sources_v1.NewAPIClient(_cfgSources)
+	c.SourcesAPI = api_sources_v1.NewAPIClient(_cfgSources).SourcesAPI
 
-	_cfgSpConfig := api_sp_config_v1.NewConfiguration(
+	_cfgSPConfig := api_sp_config_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1450,8 +1438,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgSpConfig.HTTPClient = cfg.HTTPClient
-	c.SpConfig = api_sp_config_v1.NewAPIClient(_cfgSpConfig)
+	_cfgSPConfig.HTTPClient = cfg.HTTPClient
+	c.SPConfigAPI = api_sp_config_v1.NewAPIClient(_cfgSPConfig).SPConfigAPI
 
 	_cfgSuggestedEntitlementDescription := api_suggested_entitlement_description_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1463,7 +1451,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgSuggestedEntitlementDescription.HTTPClient = cfg.HTTPClient
-	c.SuggestedEntitlementDescription = api_suggested_entitlement_description_v1.NewAPIClient(_cfgSuggestedEntitlementDescription)
+	c.SuggestedEntitlementDescriptionAPI = api_suggested_entitlement_description_v1.NewAPIClient(_cfgSuggestedEntitlementDescription).SuggestedEntitlementDescriptionAPI
 
 	_cfgTaggedObjects := api_tagged_objects_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1475,7 +1463,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTaggedObjects.HTTPClient = cfg.HTTPClient
-	c.TaggedObjects = api_tagged_objects_v1.NewAPIClient(_cfgTaggedObjects)
+	c.TaggedObjectsAPI = api_tagged_objects_v1.NewAPIClient(_cfgTaggedObjects).TaggedObjectsAPI
 
 	_cfgTags := api_tags_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1487,7 +1475,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTags.HTTPClient = cfg.HTTPClient
-	c.Tags = api_tags_v1.NewAPIClient(_cfgTags)
+	c.TagsAPI = api_tags_v1.NewAPIClient(_cfgTags).TagsAPI
 
 	_cfgTaskManagement := api_task_management_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1499,7 +1487,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTaskManagement.HTTPClient = cfg.HTTPClient
-	c.TaskManagement = api_task_management_v1.NewAPIClient(_cfgTaskManagement)
+	c.TaskManagementAPI = api_task_management_v1.NewAPIClient(_cfgTaskManagement).TaskManagementAPI
 
 	_cfgTenantContext := api_tenant_context_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1511,7 +1499,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTenantContext.HTTPClient = cfg.HTTPClient
-	c.TenantContext = api_tenant_context_v1.NewAPIClient(_cfgTenantContext)
+	c.TenantContextAPI = api_tenant_context_v1.NewAPIClient(_cfgTenantContext).TenantContextAPI
 
 	_cfgTenant := api_tenant_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1523,7 +1511,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTenant.HTTPClient = cfg.HTTPClient
-	c.Tenant = api_tenant_v1.NewAPIClient(_cfgTenant)
+	c.TenantAPI = api_tenant_v1.NewAPIClient(_cfgTenant).TenantAPI
 
 	_cfgTransforms := api_transforms_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1535,7 +1523,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTransforms.HTTPClient = cfg.HTTPClient
-	c.Transforms = api_transforms_v1.NewAPIClient(_cfgTransforms)
+	c.TransformsAPI = api_transforms_v1.NewAPIClient(_cfgTransforms).TransformsAPI
 
 	_cfgTriggers := api_triggers_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1547,9 +1535,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgTriggers.HTTPClient = cfg.HTTPClient
-	c.Triggers = api_triggers_v1.NewAPIClient(_cfgTriggers)
+	c.TriggersAPI = api_triggers_v1.NewAPIClient(_cfgTriggers).TriggersAPI
 
-	_cfgUiMetadata := api_ui_metadata_v1.NewConfiguration(
+	_cfgUIMetadata := api_ui_metadata_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
 		cfg.ClientConfiguration.BaseURL,
@@ -1558,8 +1546,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		consumerSuffix,
 		cfg.Experimental,
 	)
-	_cfgUiMetadata.HTTPClient = cfg.HTTPClient
-	c.UiMetadata = api_ui_metadata_v1.NewAPIClient(_cfgUiMetadata)
+	_cfgUIMetadata.HTTPClient = cfg.HTTPClient
+	c.UIMetadataAPI = api_ui_metadata_v1.NewAPIClient(_cfgUIMetadata).UIMetadataAPI
 
 	_cfgWorkItems := api_work_items_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1571,7 +1559,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgWorkItems.HTTPClient = cfg.HTTPClient
-	c.WorkItems = api_work_items_v1.NewAPIClient(_cfgWorkItems)
+	c.WorkItemsAPI = api_work_items_v1.NewAPIClient(_cfgWorkItems).WorkItemsAPI
 
 	_cfgWorkReassignment := api_work_reassignment_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1583,7 +1571,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgWorkReassignment.HTTPClient = cfg.HTTPClient
-	c.WorkReassignment = api_work_reassignment_v1.NewAPIClient(_cfgWorkReassignment)
+	c.WorkReassignmentAPI = api_work_reassignment_v1.NewAPIClient(_cfgWorkReassignment).WorkReassignmentAPI
 
 	_cfgWorkflows := api_workflows_v1.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
@@ -1595,7 +1583,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.Experimental,
 	)
 	_cfgWorkflows.HTTPClient = cfg.HTTPClient
-	c.Workflows = api_workflows_v1.NewAPIClient(_cfgWorkflows)
+	c.WorkflowsAPI = api_workflows_v1.NewAPIClient(_cfgWorkflows).WorkflowsAPI
 
 	// Shared utility clients
 	CVGeneric := generic.NewConfiguration(
@@ -1643,6 +1631,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 //
 //	cfg := api_accounts_v1.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
 //	client := api_accounts_v1.NewAPIClient(cfg)
+//	resp, r, err := client.AccountsAPI.ListAccountsV1(ctx).Execute()
 func NewPartitionConfiguration(cfg *Configuration) (clientId, clientSecret, baseURL, tokenURL, token, consumerSuffix string, experimental bool) {
 	return cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,

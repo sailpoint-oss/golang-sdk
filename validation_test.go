@@ -134,13 +134,13 @@ func Test_generic(t *testing.T) {
 }
 
 // Test_accounts validates the typed per-partition accounts client
-// via the top-level APIClient (c.Accounts).
+// via the top-level APIClient (c.AccountsAPI).
 func Test_accounts(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
 	t.Run("Test List Accounts", func(t *testing.T) {
-		resp, r, err := apiClient.Accounts.AccountsAPI.ListAccountsV1(context.TODO()).Execute()
+		resp, r, err := apiClient.AccountsAPI.ListAccountsV1(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
 		}
@@ -151,14 +151,14 @@ func Test_accounts(t *testing.T) {
 }
 
 // Test_transforms validates the typed per-partition transforms client
-// via the top-level APIClient (c.Transforms).
+// via the top-level APIClient (c.TransformsAPI).
 func Test_transforms(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
 	t.Run("Test List Transforms", func(t *testing.T) {
 
-		resp, r, err := apiClient.Transforms.TransformsAPI.ListTransformsV1(context.TODO()).Execute()
+		resp, r, err := apiClient.TransformsAPI.ListTransformsV1(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
 		}
@@ -169,7 +169,7 @@ func Test_transforms(t *testing.T) {
 }
 
 // Test_workflows validates the typed per-partition workflows client
-// via the top-level APIClient (c.Workflows). Creates, lists, then deletes a workflow.
+// via the top-level APIClient (c.WorkflowsAPI). Creates, lists, then deletes a workflow.
 func Test_workflows(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
@@ -188,7 +188,7 @@ func Test_workflows(t *testing.T) {
 		req.SetEnabled(enabled)
 		req.SetTrigger(*trigger)
 
-		resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateWorkflowV1(context.TODO()).
+		resp, r, err := apiClient.WorkflowsAPI.CreateWorkflowV1(context.TODO()).
 			CreateWorkflowV1Request(*req).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
@@ -197,7 +197,7 @@ func Test_workflows(t *testing.T) {
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, r.StatusCode)
 
-		workflows, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowsV1(context.TODO()).Execute()
+		workflows, r, err := apiClient.WorkflowsAPI.ListWorkflowsV1(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
 			t.FailNow()
@@ -207,7 +207,7 @@ func Test_workflows(t *testing.T) {
 
 		for _, wf := range workflows {
 			if wf.GetName() == randomName {
-				r, err := apiClient.Workflows.WorkflowsAPI.DeleteWorkflowV1(context.TODO(), wf.GetId()).Execute()
+				r, err := apiClient.WorkflowsAPI.DeleteWorkflowV1(context.TODO(), wf.GetId()).Execute()
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "during test: %v\n", err)
 					t.FailNow()

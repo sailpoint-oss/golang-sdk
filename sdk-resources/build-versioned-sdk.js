@@ -559,49 +559,121 @@ function packageToFieldName(pkgName) {
 }
 
 /**
- * Regenerate golang-sdk/client.go from the api_*_v1 packages currently on disk.
+ * Regenerate golang-sdk/client.go from the api_*_v{n} packages currently on disk.
  * Also keeps api_generic, api_nerm, and api_nerm_v2025 as special cases.
+ *
+ * Field naming convention:
+ *   Single-version resource  →  AccountsAPI *api_accounts_v1.AccountsAPIService
+ *   Multi-version resource   →  AccountsV1API *api_accounts_v1.AccountsAPIService
+ *                               AccountsV2API *api_accounts_v2.AccountsAPIService
+ *
+ * Year-based packages like api_nerm_v2025 are excluded from partition processing
+ * (they are handled as special cases) by matching only 1-2 digit version numbers.
  */
 function generateClientGo() {
   const MODULE = "github.com/sailpoint-oss/golang-sdk/v2";
 
-  // Discover all api_*_v1 packages on disk
+  // Only resource-version packages (_v1, _v2 … _v99); excludes year-based (_v2025)
   const partitionPkgs = fs.readdirSync(SDK_ROOT)
-    .filter(d => /^api_.+_v\d+$/.test(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory())
+    .filter(d => /^api_.+_v\d{1,2}$/.test(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory())
     .sort();
 
   if (partitionPkgs.length === 0) {
-    console.log("  No api_*_v1 packages found, skipping client.go generation.");
+    console.log("  No api_*_v{n} packages found, skipping client.go generation.");
     return;
   }
 
-  // Build import block
+  // Read the actual service field name from each package's generated client.go.
+  // The generator uses acronym-aware casing (IAI, JIT, MFA, OAuth…) which
+  // packageToFieldName cannot reproduce from the directory name alone.
+  // Pattern in each client.go:  \t{ServiceField}API *{ServiceField}APIService
+  function readServiceFieldName(pkg) {
+    const clientGoPath = path.join(SDK_ROOT, pkg, "client.go");
+    const src = fs.existsSync(clientGoPath) ? fs.readFileSync(clientGoPath, "utf8") : "";
+    const m = src.match(/^\s+(\w+API)\s+\*\w+APIService/m);
+    return m ? m[1].replace(/API$/, "") : packageToFieldName(pkg); // fallback
+  }
+
+  // Collect { pkg, serviceBase } for every partition
+  // serviceBase: e.g. "Accounts", "IAIAccessRequestRecommendations"
+  const pkgInfos = partitionPkgs.map(pkg => ({
+    pkg,
+    ver: parseInt(pkg.match(/_v(\d+)$/)[1]),
+    serviceBase: readServiceFieldName(pkg),
+  }));
+
+  // Group by serviceBase, sorted oldest→newest
+  const byResource = new Map();
+  for (const info of pkgInfos) {
+    if (!byResource.has(info.serviceBase)) byResource.set(info.serviceBase, []);
+    byResource.get(info.serviceBase).push(info);
+  }
+  for (const group of byResource.values()) {
+    group.sort((a, b) => a.ver - b.ver);
+  }
+
+  // Build import block (one line per package)
   const partitionImports = partitionPkgs
     .map(pkg => `\t${pkg} "${MODULE}/${pkg}"`)
     .join("\n");
 
   // Build struct fields
-  const partitionFields = partitionPkgs
-    .map(pkg => `\t${packageToFieldName(pkg)} *${pkg}.APIClient`)
-    .join("\n");
+  //   Single version:  AccountsAPI     *api_accounts_v1.AccountsAPIService
+  //   Multi-version:   AccountsV1API   *api_accounts_v1.AccountsAPIService
+  //                    AccountsV2API   *api_accounts_v2.AccountsAPIService
+  const fieldLines = [];
+  for (const [svcBase, group] of byResource.entries()) {
+    if (group.length === 1) {
+      const { pkg } = group[0];
+      fieldLines.push(`\t${svcBase}API *${pkg}.${svcBase}APIService`);
+    } else {
+      for (const { pkg, ver } of group) {
+        fieldLines.push(`\t${svcBase}V${ver}API *${pkg}.${svcBase}APIService`);
+      }
+    }
+  }
+  const partitionFields = fieldLines.join("\n");
 
   // Build NewAPIClient instantiation lines
-  const partitionInits = partitionPkgs.map(pkg => {
-    const field = packageToFieldName(pkg);
-    return [
-      `\t_cfg${field} := ${pkg}.NewConfiguration(`,
-      `\t\tcfg.ClientConfiguration.ClientId,`,
-      `\t\tcfg.ClientConfiguration.ClientSecret,`,
-      `\t\tcfg.ClientConfiguration.BaseURL,`,
-      `\t\tcfg.ClientConfiguration.TokenURL,`,
-      `\t\tcfg.ClientConfiguration.Token,`,
-      `\t\tconsumerSuffix,`,
-      `\t\tcfg.Experimental,`,
-      `\t)`,
-      `\t_cfg${field}.HTTPClient = cfg.HTTPClient`,
-      `\tc.${field} = ${pkg}.NewAPIClient(_cfg${field})`,
-    ].join("\n");
-  }).join("\n\n");
+  const initBlocks = [];
+  for (const [svcBase, group] of byResource.entries()) {
+    if (group.length === 1) {
+      const { pkg } = group[0];
+      const cfgVar = `_cfg${svcBase}`;
+      initBlocks.push([
+        `\t${cfgVar} := ${pkg}.NewConfiguration(`,
+        `\t\tcfg.ClientConfiguration.ClientId,`,
+        `\t\tcfg.ClientConfiguration.ClientSecret,`,
+        `\t\tcfg.ClientConfiguration.BaseURL,`,
+        `\t\tcfg.ClientConfiguration.TokenURL,`,
+        `\t\tcfg.ClientConfiguration.Token,`,
+        `\t\tconsumerSuffix,`,
+        `\t\tcfg.Experimental,`,
+        `\t)`,
+        `\t${cfgVar}.HTTPClient = cfg.HTTPClient`,
+        `\tc.${svcBase}API = ${pkg}.NewAPIClient(${cfgVar}).${svcBase}API`,
+      ].join("\n"));
+    } else {
+      for (const { pkg, ver } of group) {
+        const fieldName = `${svcBase}V${ver}API`;
+        const cfgVar = `_cfg${svcBase}V${ver}`;
+        initBlocks.push([
+          `\t${cfgVar} := ${pkg}.NewConfiguration(`,
+          `\t\tcfg.ClientConfiguration.ClientId,`,
+          `\t\tcfg.ClientConfiguration.ClientSecret,`,
+          `\t\tcfg.ClientConfiguration.BaseURL,`,
+          `\t\tcfg.ClientConfiguration.TokenURL,`,
+          `\t\tcfg.ClientConfiguration.Token,`,
+          `\t\tconsumerSuffix,`,
+          `\t\tcfg.Experimental,`,
+          `\t)`,
+          `\t${cfgVar}.HTTPClient = cfg.HTTPClient`,
+          `\tc.${fieldName} = ${pkg}.NewAPIClient(${cfgVar}).${svcBase}API`,
+        ].join("\n"));
+      }
+    }
+  }
+  const partitionInits = initBlocks.join("\n\n");
 
   const content = `/*
 SailPoint Identity Security Cloud API
@@ -637,12 +709,14 @@ var (
 // APIClient manages communication with the SailPoint Identity Security Cloud API.
 // In most cases there should be only one, shared, APIClient.
 //
-// Per-resource versioned clients are available as fields (e.g. c.Accounts, c.Roles).
+// Per-resource API services are available as fields (e.g. c.AccountsAPI, c.RolesAPI).
+// Single-version resources use the plain name; multi-version resources include the
+// version number (e.g. c.AccountsV1API, c.AccountsV2API).
 // Use NewPartitionConfiguration to build a config for directly importing a single package.
 type APIClient struct {
 \tcfg *Configuration
 
-\t// Per-resource versioned clients (auto-generated)
+\t// Per-resource versioned API services (auto-generated by build-versioned-sdk.js)
 ${partitionFields}
 
 \t// Shared utility clients
@@ -712,6 +786,7 @@ ${partitionInits}
 //
 //\tcfg := api_accounts_v1.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
 //\tclient := api_accounts_v1.NewAPIClient(cfg)
+//\tresp, r, err := client.AccountsAPI.ListAccountsV1(ctx).Execute()
 func NewPartitionConfiguration(cfg *Configuration) (clientId, clientSecret, baseURL, tokenURL, token, consumerSuffix string, experimental bool) {
 \treturn cfg.ClientConfiguration.ClientId,
 \t\tcfg.ClientConfiguration.ClientSecret,
