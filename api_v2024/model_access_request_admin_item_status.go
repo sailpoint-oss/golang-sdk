@@ -51,6 +51,8 @@ type AccessRequestAdminItemStatus struct {
 	AccessRequestPhases []AccessRequestPhases `json:"accessRequestPhases,omitempty"`
 	// Description associated to the requested object.
 	Description NullableString `json:"description,omitempty"`
+	// When the role access is scheduled for provisioning.
+	StartDate NullableTime `json:"startDate,omitempty"`
 	// When the role access is scheduled for removal.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// True if the request can be canceled.
@@ -794,6 +796,48 @@ func (o *AccessRequestAdminItemStatus) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequestAdminItemStatus) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate.Get()
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequestAdminItemStatus) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartDate.Get(), o.StartDate.IsSet()
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *AccessRequestAdminItemStatus) HasStartDate() bool {
+	if o != nil && o.StartDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given NullableTime and assigns it to the StartDate field.
+func (o *AccessRequestAdminItemStatus) SetStartDate(v SailPointTime) {
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *AccessRequestAdminItemStatus) SetStartDateNil() {
+	o.StartDate.Set(nil)
+}
+
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *AccessRequestAdminItemStatus) UnsetStartDate() {
+	o.StartDate.Unset()
+}
+
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestAdminItemStatus) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate.Get()) {
@@ -1035,6 +1079,9 @@ func (o AccessRequestAdminItemStatus) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
+	}
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
@@ -1092,6 +1139,7 @@ func (o *AccessRequestAdminItemStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "preApprovalTriggerDetails")
 		delete(additionalProperties, "accessRequestPhases")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "cancelable")
 		delete(additionalProperties, "reauthorizationRequired")

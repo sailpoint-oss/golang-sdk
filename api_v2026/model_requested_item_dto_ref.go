@@ -29,6 +29,8 @@ type RequestedItemDtoRef struct {
 	Comment *string `json:"comment,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	// The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date. * Specify a date-time in the future. * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for. * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible. 
+	StartDate *SailPointTime `json:"startDate,omitempty"`
 	// The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. 
 	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
 	// The accounts where the access item will be provisioned to * Includes selections performed by the user in the event of multiple accounts existing on the same source * Also includes details for sources where user only has one account 
@@ -169,6 +171,38 @@ func (o *RequestedItemDtoRef) SetClientMetadata(v map[string]string) {
 	o.ClientMetadata = &v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *RequestedItemDtoRef) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestedItemDtoRef) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.StartDate) {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *RequestedItemDtoRef) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+func (o *RequestedItemDtoRef) SetStartDate(v SailPointTime) {
+	o.StartDate = &v
+}
+
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
 func (o *RequestedItemDtoRef) GetRemoveDate() SailPointTime {
 	if o == nil || IsNil(o.RemoveDate) {
@@ -252,6 +286,9 @@ func (o RequestedItemDtoRef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
+	}
 	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
 	}
@@ -306,6 +343,7 @@ func (o *RequestedItemDtoRef) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "accountSelection")
 		o.AdditionalProperties = additionalProperties
