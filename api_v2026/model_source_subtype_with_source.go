@@ -37,6 +37,8 @@ type SourceSubtypeWithSource struct {
 	// Type of the subtype. Either MACHINE OR null.
 	Type *string `json:"type,omitempty"`
 	Source *SourceSubtypeWithSourceSource `json:"source,omitempty"`
+	// Indicates if the subtype is managed by the system.
+	SystemManaged *bool `json:"systemManaged,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,6 +50,8 @@ type _SourceSubtypeWithSource SourceSubtypeWithSource
 // will change when the set of required properties is changed
 func NewSourceSubtypeWithSource() *SourceSubtypeWithSource {
 	this := SourceSubtypeWithSource{}
+	var systemManaged bool = false
+	this.SystemManaged = &systemManaged
 	return &this
 }
 
@@ -56,6 +60,8 @@ func NewSourceSubtypeWithSource() *SourceSubtypeWithSource {
 // but it doesn't guarantee that properties required by API are set
 func NewSourceSubtypeWithSourceWithDefaults() *SourceSubtypeWithSource {
 	this := SourceSubtypeWithSource{}
+	var systemManaged bool = false
+	this.SystemManaged = &systemManaged
 	return &this
 }
 
@@ -347,6 +353,38 @@ func (o *SourceSubtypeWithSource) SetSource(v SourceSubtypeWithSourceSource) {
 	o.Source = &v
 }
 
+// GetSystemManaged returns the SystemManaged field value if set, zero value otherwise.
+func (o *SourceSubtypeWithSource) GetSystemManaged() bool {
+	if o == nil || IsNil(o.SystemManaged) {
+		var ret bool
+		return ret
+	}
+	return *o.SystemManaged
+}
+
+// GetSystemManagedOk returns a tuple with the SystemManaged field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SourceSubtypeWithSource) GetSystemManagedOk() (*bool, bool) {
+	if o == nil || IsNil(o.SystemManaged) {
+		return nil, false
+	}
+	return o.SystemManaged, true
+}
+
+// HasSystemManaged returns a boolean if a field has been set.
+func (o *SourceSubtypeWithSource) HasSystemManaged() bool {
+	if o != nil && !IsNil(o.SystemManaged) {
+		return true
+	}
+
+	return false
+}
+
+// SetSystemManaged gets a reference to the given bool and assigns it to the SystemManaged field.
+func (o *SourceSubtypeWithSource) SetSystemManaged(v bool) {
+	o.SystemManaged = &v
+}
+
 func (o SourceSubtypeWithSource) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -384,6 +422,9 @@ func (o SourceSubtypeWithSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
+	if !IsNil(o.SystemManaged) {
+		toSerialize["systemManaged"] = o.SystemManaged
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -415,6 +456,7 @@ func (o *SourceSubtypeWithSource) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "systemManaged")
 		o.AdditionalProperties = additionalProperties
 	}
 

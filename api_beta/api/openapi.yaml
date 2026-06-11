@@ -69274,22 +69274,10 @@ components:
       type: object
     PendingApproval:
       example:
-        requester:
-          name: William Wilson
-          id: 2c7180a46faadee4016fb4e018c20648
-          type: IDENTITY
         requestedFor:
           name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
-        owner:
-          name: Support
-          id: 2c9180a46faadee4016fb4e018c20639
-          type: IDENTITY
-        removeDate: 2020-07-11T00:00:00Z
-        clientMetadata:
-          customKey1: custom value 1
-          customKey2: custom value 2
         requestedAccounts:
         - accountId: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
           name: Glen.067da3248e914
@@ -69301,8 +69289,49 @@ components:
           accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
           sourceName: Multi Account AD source name
           type: IDENTITY
-        requestType: GRANT_ACCESS
         privilegeLevel: High
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        actionInProcess: APPROVED
+        startUpdateRequested: true
+        currentStartDate: 2020-07-11T00:00:00Z
+        modified: 2018-07-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        removeDateUpdateRequested: true
+        maxPermittedAccessDuration:
+          value: 5
+          timeUnit: DAYS
+        requester:
+          name: William Wilson
+          id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        owner:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        removeDate: 2020-07-11T00:00:00Z
+        clientMetadata:
+          customKey1: custom value 1
+          customKey2: custom value 2
+        requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
@@ -69313,13 +69342,6 @@ components:
             type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
           author:
             name: john.doe
             id: 2c9180847e25f377017e2ae8cae4650b
@@ -69402,27 +69424,8 @@ components:
           state: SUCCESS
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
-        actionInProcess: APPROVED
         name: Pending approval name
-        modified: 2018-07-25T20:22:28.104Z
-        id: 2c9180835d2e5168015d32f890ca1581
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        removeDateUpdateRequested: true
-        maxPermittedAccessDuration:
-          value: 5
-          timeUnit: DAYS
+        startDate: 2020-07-11T00:00:00Z
       properties:
         id:
           description: The approval id.
@@ -69494,6 +69497,24 @@ components:
           example: 2020-07-11T00:00:00Z
           format: date-time
           type: string
+        startDate:
+          description: The date the role or access profile or entitlement is/will
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          type: string
+        startUpdateRequested:
+          default: false
+          description: "If true, then the request is to change the start date or sunrise\
+            \ date."
+          example: true
+          type: boolean
+        currentStartDate:
+          description: The start date or sunrise date that was assigned at the time
+            of the request.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          type: string
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted_2'
         clientMetadata:
@@ -69547,6 +69568,8 @@ components:
             id: 2c9180847e25f377017e2ae8cae4650b
             type: IDENTITY
           comment: This is a comment.
+        startUpdateRequested: true
+        currentStartDate: 2020-07-11T00:00:00Z
         modified: 2018-07-25T20:22:28.104Z
         id: 2c938083633d259901633d25c68c00fa
         forwardHistory:
@@ -69683,6 +69706,7 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: Approval Name
+        startDate: 2020-07-11T00:00:00Z
       properties:
         id:
           description: The approval id.
@@ -69763,6 +69787,24 @@ components:
           example: 2020-07-11T00:00:00Z
           format: date-time
           nullable: true
+          type: string
+        startDate:
+          description: The date the role or access profile or entitlement is/will
+            assigned to the specified identity.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
+          type: string
+        startUpdateRequested:
+          default: false
+          description: "If true, then the request is to change the start date or sunrise\
+            \ date."
+          example: true
+          type: boolean
+        currentStartDate:
+          description: The start date or sunrise date that was assigned at the time
+            of the request.
+          example: 2020-07-11T00:00:00Z
+          format: date-time
           type: string
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted_2'

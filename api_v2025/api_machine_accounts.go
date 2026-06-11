@@ -54,6 +54,8 @@ Create a new machine account subtype for a source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the source.
  @return ApiCreateMachineAccountSubtypeRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) CreateMachineAccountSubtype(ctx context.Context, sourceId string) ApiCreateMachineAccountSubtypeRequest {
 	return ApiCreateMachineAccountSubtypeRequest{
@@ -65,6 +67,7 @@ func (a *MachineAccountsAPIService) CreateMachineAccountSubtype(ctx context.Cont
 
 // Execute executes the request
 //  @return SourceSubtype
+// Deprecated
 func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeExecute(r ApiCreateMachineAccountSubtypeRequest) (*SourceSubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -241,6 +244,8 @@ Delete a machine account subtype by source ID and technical name.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiDeleteMachineAccountSubtypeRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) DeleteMachineAccountSubtype(ctx context.Context, sourceId string, technicalName string) ApiDeleteMachineAccountSubtypeRequest {
 	return ApiDeleteMachineAccountSubtypeRequest{
@@ -252,6 +257,7 @@ func (a *MachineAccountsAPIService) DeleteMachineAccountSubtype(ctx context.Cont
 }
 
 // Execute executes the request
+// Deprecated
 func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeExecute(r ApiDeleteMachineAccountSubtypeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -574,6 +580,8 @@ Get a machine account subtype by its unique ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param subtypeId The ID of the machine account subtype.
  @return ApiGetMachineAccountSubtypeByIdRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeById(ctx context.Context, subtypeId string) ApiGetMachineAccountSubtypeByIdRequest {
 	return ApiGetMachineAccountSubtypeByIdRequest{
@@ -585,6 +593,7 @@ func (a *MachineAccountsAPIService) GetMachineAccountSubtypeById(ctx context.Con
 
 // Execute executes the request
 //  @return SourceSubtype
+// Deprecated
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByIdExecute(r ApiGetMachineAccountSubtypeByIdRequest) (*SourceSubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -750,6 +759,8 @@ Get a machine account subtype by source ID and technical name.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiGetMachineAccountSubtypeByTechnicalNameRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalName(ctx context.Context, sourceId string, technicalName string) ApiGetMachineAccountSubtypeByTechnicalNameRequest {
 	return ApiGetMachineAccountSubtypeByTechnicalNameRequest{
@@ -762,6 +773,7 @@ func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalName(ctx 
 
 // Execute executes the request
 //  @return SourceSubtype
+// Deprecated
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalNameExecute(r ApiGetMachineAccountSubtypeByTechnicalNameRequest) (*SourceSubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -961,6 +973,8 @@ Get all machine account subtypes for a given source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the source.
  @return ApiListMachineAccountSubtypesRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) ListMachineAccountSubtypes(ctx context.Context, sourceId string) ApiListMachineAccountSubtypesRequest {
 	return ApiListMachineAccountSubtypesRequest{
@@ -972,6 +986,7 @@ func (a *MachineAccountsAPIService) ListMachineAccountSubtypes(ctx context.Conte
 
 // Execute executes the request
 //  @return []SourceSubtype
+// Deprecated
 func (a *MachineAccountsAPIService) ListMachineAccountSubtypesExecute(r ApiListMachineAccountSubtypesRequest) ([]SourceSubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1392,6 +1407,8 @@ Patchable fields include: `displayName`, `description`.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiPatchMachineAccountSubtypeRequest
+
+Deprecated
 */
 func (a *MachineAccountsAPIService) PatchMachineAccountSubtype(ctx context.Context, sourceId string, technicalName string) ApiPatchMachineAccountSubtypeRequest {
 	return ApiPatchMachineAccountSubtypeRequest{
@@ -1404,6 +1421,7 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtype(ctx context.Conte
 
 // Execute executes the request
 //  @return SourceSubtype
+// Deprecated
 func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeExecute(r ApiPatchMachineAccountSubtypeRequest) (*SourceSubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch

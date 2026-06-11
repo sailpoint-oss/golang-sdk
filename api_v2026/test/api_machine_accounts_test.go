@@ -64,20 +64,6 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService GetMachineAccountSubtypeApprovalConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var subtypeId string
-
-		resp, httpRes, err := apiClient.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MachineAccountsAPIService GetMachineAccountSubtypeById", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -133,18 +119,6 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MachineAccountsAPIService LoadBulkSourceSubtypes", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MachineAccountsAPI.LoadBulkSourceSubtypes(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MachineAccountsAPIService PatchMachineAccountSubtypeByTechnicalName", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -167,20 +141,6 @@ func Test_api_v2026_MachineAccountsAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccount(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MachineAccountsAPIService UpdateMachineAccountSubtypeApprovalConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var subtypeId string
-
-		resp, httpRes, err := apiClient.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfig(context.Background(), subtypeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

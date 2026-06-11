@@ -49,6 +49,12 @@ type PendingApproval struct {
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate *SailPointTime `json:"currentRemoveDate,omitempty"`
+	// The date the role or access profile or entitlement is/will assigned to the specified identity.
+	StartDate *SailPointTime `json:"startDate,omitempty"`
+	// If true, then the request is to change the start date or sunrise date.
+	StartUpdateRequested *bool `json:"startUpdateRequested,omitempty"`
+	// The start date or sunrise date that was assigned at the time of the request.
+	CurrentStartDate *SailPointTime `json:"currentStartDate,omitempty"`
 	SodViolationContext NullableSodViolationContextCheckCompleted2 `json:"sodViolationContext,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
@@ -72,6 +78,8 @@ func NewPendingApproval() *PendingApproval {
 	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
 	var removeDateUpdateRequested bool = false
 	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
+	var startUpdateRequested bool = false
+	this.StartUpdateRequested = &startUpdateRequested
 	return &this
 }
 
@@ -84,6 +92,8 @@ func NewPendingApprovalWithDefaults() *PendingApproval {
 	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
 	var removeDateUpdateRequested bool = false
 	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
+	var startUpdateRequested bool = false
+	this.StartUpdateRequested = &startUpdateRequested
 	return &this
 }
 
@@ -673,6 +683,102 @@ func (o *PendingApproval) SetCurrentRemoveDate(v SailPointTime) {
 	o.CurrentRemoveDate = &v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *PendingApproval) GetStartDate() SailPointTime {
+	if o == nil || IsNil(o.StartDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingApproval) GetStartDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.StartDate) {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *PendingApproval) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given SailPointTime and assigns it to the StartDate field.
+func (o *PendingApproval) SetStartDate(v SailPointTime) {
+	o.StartDate = &v
+}
+
+// GetStartUpdateRequested returns the StartUpdateRequested field value if set, zero value otherwise.
+func (o *PendingApproval) GetStartUpdateRequested() bool {
+	if o == nil || IsNil(o.StartUpdateRequested) {
+		var ret bool
+		return ret
+	}
+	return *o.StartUpdateRequested
+}
+
+// GetStartUpdateRequestedOk returns a tuple with the StartUpdateRequested field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingApproval) GetStartUpdateRequestedOk() (*bool, bool) {
+	if o == nil || IsNil(o.StartUpdateRequested) {
+		return nil, false
+	}
+	return o.StartUpdateRequested, true
+}
+
+// HasStartUpdateRequested returns a boolean if a field has been set.
+func (o *PendingApproval) HasStartUpdateRequested() bool {
+	if o != nil && !IsNil(o.StartUpdateRequested) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartUpdateRequested gets a reference to the given bool and assigns it to the StartUpdateRequested field.
+func (o *PendingApproval) SetStartUpdateRequested(v bool) {
+	o.StartUpdateRequested = &v
+}
+
+// GetCurrentStartDate returns the CurrentStartDate field value if set, zero value otherwise.
+func (o *PendingApproval) GetCurrentStartDate() SailPointTime {
+	if o == nil || IsNil(o.CurrentStartDate) {
+		var ret SailPointTime
+		return ret
+	}
+	return *o.CurrentStartDate
+}
+
+// GetCurrentStartDateOk returns a tuple with the CurrentStartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingApproval) GetCurrentStartDateOk() (*SailPointTime, bool) {
+	if o == nil || IsNil(o.CurrentStartDate) {
+		return nil, false
+	}
+	return o.CurrentStartDate, true
+}
+
+// HasCurrentStartDate returns a boolean if a field has been set.
+func (o *PendingApproval) HasCurrentStartDate() bool {
+	if o != nil && !IsNil(o.CurrentStartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentStartDate gets a reference to the given SailPointTime and assigns it to the CurrentStartDate field.
+func (o *PendingApproval) SetCurrentStartDate(v SailPointTime) {
+	o.CurrentStartDate = &v
+}
+
 // GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted2 {
 	if o == nil || IsNil(o.SodViolationContext.Get()) {
@@ -929,6 +1035,15 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CurrentRemoveDate) {
 		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate
 	}
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
+	}
+	if !IsNil(o.StartUpdateRequested) {
+		toSerialize["startUpdateRequested"] = o.StartUpdateRequested
+	}
+	if !IsNil(o.CurrentStartDate) {
+		toSerialize["currentStartDate"] = o.CurrentStartDate
+	}
 	if o.SodViolationContext.IsSet() {
 		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
 	}
@@ -984,6 +1099,9 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "removeDateUpdateRequested")
 		delete(additionalProperties, "currentRemoveDate")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "startUpdateRequested")
+		delete(additionalProperties, "currentStartDate")
 		delete(additionalProperties, "sodViolationContext")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "requestedAccounts")
