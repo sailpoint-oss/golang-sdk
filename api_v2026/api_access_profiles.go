@@ -1486,7 +1486,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkExecute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 412 {
-			var v UpdateAccessProfilesInBulk412Response
+			var v ListEntitlementConnections412Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

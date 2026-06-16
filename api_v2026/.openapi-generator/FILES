@@ -37,6 +37,7 @@ api_data_access_security.go
 api_data_segmentation.go
 api_declassify_source.go
 api_dimensions.go
+api_entitlement_connections.go
 api_entitlements.go
 api_global_tenant_security_settings.go
 api_governance_groups.go
@@ -663,6 +664,14 @@ docs/EntitlementAttributeBulkUpdateFilterRequest.md
 docs/EntitlementAttributeBulkUpdateIdsRequest.md
 docs/EntitlementAttributeBulkUpdateQueryRequest.md
 docs/EntitlementBulkUpdateRequest.md
+docs/EntitlementConnection.md
+docs/EntitlementConnectionBulkUpdateItem.md
+docs/EntitlementConnectionBulkUpdateResultItem.md
+docs/EntitlementConnectionSearchHit.md
+docs/EntitlementConnectionSearchHitEntitlement.md
+docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md
+docs/EntitlementConnectionsAPI.md
+docs/EntitlementConnectionsAPIdeveloperSite_code_examples.yaml
 docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 docs/EntitlementDocumentAllOfPermissions.md
@@ -908,6 +917,7 @@ docs/LifecyclestateDeleted.md
 docs/ListCampaignFilters200Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListDeploys200Response.md
+docs/ListEntitlementConnections412Response.md
 docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
 docs/ListFormInstancesByTenantResponse.md
@@ -1634,7 +1644,6 @@ docs/TypedReference.md
 docs/UIMetadataAPI.md
 docs/UIMetadataAPIdeveloperSite_code_examples.yaml
 docs/UncorrelatedAccountsReportArguments.md
-docs/UpdateAccessProfilesInBulk412Response.md
 docs/UpdateDetail.md
 docs/UpdateMultiHostSourcesRequestInner.md
 docs/UpdateMultiHostSourcesRequestInnerValue.md
@@ -2190,6 +2199,12 @@ model_entitlement_attribute_bulk_update_filter_request.go
 model_entitlement_attribute_bulk_update_ids_request.go
 model_entitlement_attribute_bulk_update_query_request.go
 model_entitlement_bulk_update_request.go
+model_entitlement_connection.go
+model_entitlement_connection_bulk_update_item.go
+model_entitlement_connection_bulk_update_result_item.go
+model_entitlement_connection_search_hit.go
+model_entitlement_connection_search_hit_entitlement.go
+model_entitlement_connection_search_hit_entitlement_privilege_level.go
 model_entitlement_document.go
 model_entitlement_document_all_of_manually_updated_fields.go
 model_entitlement_document_all_of_permissions.go
@@ -2399,6 +2414,7 @@ model_lifecyclestate_deleted.go
 model_list_campaign_filters_200_response.go
 model_list_complete_workflow_library_200_response_inner.go
 model_list_deploys_200_response.go
+model_list_entitlement_connections_412_response.go
 model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
 model_list_form_instances_by_tenant_response.go
@@ -3014,7 +3030,6 @@ model_trigger_type.go
 model_type_ahead_query.go
 model_typed_reference.go
 model_uncorrelated_accounts_report_arguments.go
-model_update_access_profiles_in_bulk_412_response.go
 model_update_detail.go
 model_update_multi_host_sources_request_inner.go
 model_update_multi_host_sources_request_inner_value.go
@@ -3113,6 +3128,7 @@ test/api_data_access_security_test.go
 test/api_data_segmentation_test.go
 test/api_declassify_source_test.go
 test/api_dimensions_test.go
+test/api_entitlement_connections_test.go
 test/api_entitlements_test.go
 test/api_global_tenant_security_settings_test.go
 test/api_governance_groups_test.go

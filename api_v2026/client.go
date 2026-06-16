@@ -119,6 +119,8 @@ type APIClient struct {
 
 	DimensionsAPI *DimensionsAPIService
 
+	EntitlementConnectionsAPI *EntitlementConnectionsAPIService
+
 	EntitlementsAPI *EntitlementsAPIService
 
 	GlobalTenantSecuritySettingsAPI *GlobalTenantSecuritySettingsAPIService
@@ -321,6 +323,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataSegmentationAPI = (*DataSegmentationAPIService)(&c.common)
 	c.DeclassifySourceAPI = (*DeclassifySourceAPIService)(&c.common)
 	c.DimensionsAPI = (*DimensionsAPIService)(&c.common)
+	c.EntitlementConnectionsAPI = (*EntitlementConnectionsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
@@ -746,7 +749,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/2.7.98"
+	userAgent := "SailPoint-SDK-Go/2.7.99"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}
