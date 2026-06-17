@@ -41,7 +41,7 @@ func (r ApiCreateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 /*
 CreateIdentityProfile Create identity profile
 
-Creates an identity profile.    
+Creates an identity profile.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityProfileRequest

@@ -19008,11 +19008,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:read
+      - applicationAuth:
+        - idn:identity-profile:read
       summary: List identity profiles
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
     post:
       description: |-
         Create an identity profile.
@@ -19090,11 +19093,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:manage
       summary: Create identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
   /identity-profiles/bulk-delete:
     post:
       description: |-
@@ -19180,9 +19186,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:delete
+      - applicationAuth:
+        - idn:identity-profile:delete
       summary: Delete identity profiles
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/export:
     get:
       description: This exports existing identity profiles in the format specified
@@ -19505,9 +19516,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:manage
       summary: Generate identity profile preview
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/{identity-profile-id}:
     delete:
       description: |-
@@ -19610,11 +19626,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:delete
+      - applicationAuth:
+        - idn:identity-profile:delete
       summary: Delete identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
     get:
       description: |-
         Get a single identity profile by ID.
@@ -19715,11 +19734,15 @@ paths:
       - userAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:read
+        - idn:identity-profile:manage
       summary: Get identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
     patch:
       description: "Update the specified identity profile with this PATCH request.\
         \ \nA token with ORG_ADMIN authority is required to call this API to update\
@@ -19845,11 +19868,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:manage
       summary: Update identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - API
   /identity-profiles/{identity-profile-id}/default-identity-attribute-config:
     get:
       description: |-
@@ -19950,9 +19976,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:manage
       summary: Default identity attribute config
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/{identity-profile-id}/process-identities:
     post:
       description: "Process identities under the profile\nThis operation should not\
@@ -20071,9 +20102,15 @@ paths:
       - userAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:read
+        - idn:identity-profile:manage
       summary: Process identities under profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}:
     get:
       description: "Use this endpoint to get a lifecycle state by its ID and its associated\
