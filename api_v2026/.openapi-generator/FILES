@@ -1517,6 +1517,9 @@ docs/SourceConnectionsDto.md
 docs/SourceCreated.md
 docs/SourceCreatedActor.md
 docs/SourceCreationErrors.md
+docs/SourceDataset.md
+docs/SourceDatasetResource.md
+docs/SourceDatasetResourcesInner.md
 docs/SourceDeleted.md
 docs/SourceDeletedActor.md
 docs/SourceEntitlementRequestConfig.md
@@ -2925,6 +2928,9 @@ model_source_connections_dto.go
 model_source_created.go
 model_source_created_actor.go
 model_source_creation_errors.go
+model_source_dataset.go
+model_source_dataset_resource.go
+model_source_dataset_resources_inner.go
 model_source_deleted.go
 model_source_deleted_actor.go
 model_source_entitlement_request_config.go
